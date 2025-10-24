@@ -1,10 +1,6 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OJFuPzbh7O6f2CFrQTfOl/eafe854b1a8cffa1e1233fe25fc85e60/running-serverless-puppeteer-workers-durable-objects.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6q1qWS257ltTlrgJ2rOFcf/baaa779be33983d718fa574c7794adf9/Running-Serverless-Puppeteer-with-Workers-and-Durable-Objects.png" alt="Running Serverless Puppeteer with Workers and Durable Objects" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Last year, we <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">announced the Browser Rendering API</a> – letting users running Puppeteer, a browser automation library, directly in Workers. Puppeteer is one of the most popular libraries used to interact with a headless browser instance to accomplish tasks like taking screenshots, generating PDFs, crawling web pages, and testing <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security">web applications</a>. We’ve heard from developers that configuring and maintaining their own serverless browser automation systems can be quite painful.</p>
 	<p>The <a href="https://developers.cloudflare.com/browser-rendering">Workers Browser Rendering API</a> solves this. It makes the Puppeteer library available directly in your Worker, connected to a real web browser, without the need to configure and manage infrastructure or keep browser sessions warm yourself. You can use <a href="https://www.npmjs.com/package/@cloudflare/puppeteer">@cloudflare/puppeteer</a> to run the full Puppeteer API directly on Workers!</p>
 	<p>We’ve seen so much interest from the developer community since launching last year. While the Browser Rendering API is still in beta (sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2">waitlist</a> to get access), we wanted to share a way to get more out of our <a href="https://developers.cloudflare.com/browser-rendering/platform/limits">current limits</a> by using the Browser Rendering API with <a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>. We’ll also be sharing pricing for the Rendering API, so you can build knowing exactly what you’ll pay for.</p>

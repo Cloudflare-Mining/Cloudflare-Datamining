@@ -1,11 +1,7 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-socket-workers">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-socket-workers">日本語</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-socket-workers">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-socket-workers">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5DfFwXRDH0cDrR0MsaA2zX/6b55e4dbe2685775b823bada57b6c6b8/introducing-socket-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BgonTNWdD0eYX6V4RW2DK/b052342ed57969c6b160dce359b516c6/unnamed--1--4.png" alt="Making connections with TCP and Sockets for Workers" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Today we are excited to announce that we are developing <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> and infrastructure to support more TCP, UDP, and QUIC-based protocols in Cloudflare Workers. Once released, these new capabilities will make it possible to use non-HTTP socket connections to and from a Worker or Durable Object as easily as one can use HTTP and WebSockets today.</p>
 	<p>Out of the box, <a href="https://workers.cloudflare.com/?_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=1013686&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eXuRcLLiS_c0CtV8uR9xVVQhymoIrK5uHE_yReRLtVkHkekfCWprUaAtoyEALw_wcB&amp;gclsrc=aw.ds">Cloudflare Workers</a> support the ability to open HTTP and WebSocket connections using the standardized <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch">fetch</a> and <a href="https://developers.cloudflare.com/workers/runtime-apis/websockets">WebSocket APIs</a>. With just a few internal changes to make it operational in Workers, we’ve developed an <a href="https://blog.cloudflare.com/relational-database-connectors">example</a> using an off-the-shelf driver (in this example, a Deno-based <a href="https://deno.land/x/postgres@v0.13.0">Postgres client driver</a>) to communicate with a remote Postgres server via WebSocket over a secure <a href="https://www.cloudflare.com/products/tunnel">Cloudflare Tunnel</a>.</p>
 	<pre class="language-typescript"><code class="language-typescript">import { Client } from './driver/postgres/postgres'

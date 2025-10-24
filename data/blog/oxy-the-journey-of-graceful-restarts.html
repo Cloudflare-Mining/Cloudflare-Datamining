@@ -1,10 +1,6 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IaYxwSjIU3M4HyrEQOk39/ae1d64a845f0b158fd0c93cf27156952/oxy-the-journey-of-graceful-restarts.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59qtGB1K6e1gi7um2N2DLo/c11dcba9d2119c7a34e30ff4110cc321/image1-1.png" alt="Oxy: the journey of graceful restarts." class="kg-image" width="1999" height="1126" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Any software under continuous development and improvement will eventually need a new version deployed to the systems running it. This can happen in several ways, depending on how much you care about things like reliability, availability, and correctness. When I started out in web development, I didn’t think about any of these qualities; I simply blasted my new code over FTP directly to my <code>/cgi-bin/</code> directory, which was the style at the time. For those of us producing desktop software, often you sidestep this entirely by having the user save their work, close the program and install an update – but they usually get to decide when this happens.</p>
 	<p>At Cloudflare we have to take this seriously. Our software is in constant use and cannot simply be stopped abruptly. A dropped HTTP request can cause an entire webpage to load incorrectly, and a broken connection can kick you out of a video call. Taking away reliability creates a vacuum filled only by user frustration.</p>
 	<div class="flex anchor relative">

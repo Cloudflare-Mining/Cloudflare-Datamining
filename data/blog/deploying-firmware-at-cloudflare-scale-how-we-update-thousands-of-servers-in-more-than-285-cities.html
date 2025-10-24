@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1x0JbvWmETQId5r0cL2tyX/f4ac7316e6694f349c8551b7d29e4e71/deploying-firmware-at-cloudflare-scale-how-we-update-thousands-of-servers-in-more-than-285-cities.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aFHXMhZa8uGHc3cxgaXPm/acc44f6d43497ad246c8acfdb213f4dd/image2-4.png" alt="Deploying firmware at Cloudflare-scale: How we update thousands of servers in more than 285 cities" class="kg-image" width="1800" height="1014" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>As a security company, it’s critical that we have good processes for dealing with security issues. We regularly release software to our servers - on a daily basis even - which includes new features, bug fixes, and as required, security patches. But just as critical is the software which is <i>embedded</i> into the server hardware, known as firmware. Primarily of interest is the BIOS and <a href="https://blog.cloudflare.com/bmc-vuln">Baseboard Management Controller</a> (BMC), but many other components also have firmware such as Network Interface Cards (NICs).</p>
 	<p>As the world becomes more digital, software which needs updating is appearing in more and more devices. As well as my computer, over the last year, I have waited patiently while firmware has updated in my TV, vacuum cleaner, lawn mower and light bulbs. It can be a cumbersome process, including obtaining the firmware, deploying it to the device which needs updating, navigating menus and other commands to initiate the update, and then waiting several minutes for the update to complete.</p>
 	<p>Firmware updates can be annoying even if you only have a couple of devices. We have more than a few devices at Cloudflare. We have a huge number of servers of varying kinds, from varying vendors, spread over 285 cities worldwide. We need to be able to rapidly deploy various types of firmware updates to all of them, reliably, and automatically, without any kind of manual intervention.</p>

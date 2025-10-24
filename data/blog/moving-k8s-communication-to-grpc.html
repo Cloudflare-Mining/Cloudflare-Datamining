@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pYLaiB5bExAts9dDmvIXC/8a83920c96e234ab54dbd628f183623b/moving-k8s-communication-to-grpc.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2S1Sgp1RE5mlT3UI7j9jwo/9e14c93e386e7916e2da73aa299d75a4/Group-1.png" alt="Moving k8s communication to gRPC" class="kg-image" width="1571" height="839" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Over the past year and a half, Cloudflare has been hard at work moving our back-end services running in our non-edge locations from bare metal solutions and Mesos Marathon to a more unified approach using <a href="https://kubernetes.io">Kubernetes(K8s)</a>. We chose Kubernetes because it allowed us to split up our monolithic application into many different microservices with granular control of communication.</p>
 	<p>For example, a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset">ReplicaSet</a> in Kubernetes can provide high availability by ensuring that the correct number of pods are always available. A <a href="https://kubernetes.io/docs/concepts/workloads/pods">Pod</a> in Kubernetes is similar to a container in <a href="https://www.docker.com">Docker</a>. Both are responsible for running the actual application. These pods can then be exposed through a Kubernetes <a href="https://kubernetes.io/docs/concepts/services-networking/service">Service</a> to abstract away the number of replicas by providing a single endpoint that load balances to the pods behind it. The services can then be exposed to the Internet via an <a href="https://kubernetes.io/docs/concepts/services-networking/ingress">Ingress</a>. Lastly, a network policy can protect against unwanted communication by ensuring the correct policies are applied to the application. These policies can include L3 or L4 rules.</p>
 	<p>The diagram below shows a simple example of this setup.</p>

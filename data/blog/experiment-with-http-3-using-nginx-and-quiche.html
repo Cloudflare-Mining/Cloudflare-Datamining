@@ -1,11 +1,7 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/experiment-with-http-3-using-nginx-and-quiche">한국어</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/experiment-with-http-3-using-nginx-and-quiche">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S3sSj49psOqOu1XFbbeHW/e96c476073228c99a34ef9203cc68866/experiment-with-http-3-using-nginx-and-quiche.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GewSku8hqAHAyubNYEXl4/b896c88a9def673a40ff9218e5d43760/HTTP3-portal_3x.png" alt="" class="kg-image" width="1600" height="1361" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Just a few weeks ago <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">we announced</a> the availability on our edge network of <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a>, the new revision of HTTP intended to improve security and performance on the Internet. Everyone can now enable HTTP/3 on their Cloudflare zone and experiment with it using <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a> as well as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a>, among other clients.</p>
 	<p>We have previously made available <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-server.rs">an example HTTP/3 server as part of the quiche project</a> to allow people to experiment with the protocol, but it’s quite limited in the functionality that it offers, and was never intended to replace other general-purpose web servers.</p>
 	<p>We are now happy to announce that <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">our implementation of HTTP/3 and QUIC</a> can be integrated into your own installation of NGINX as well. This is made available <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx">as a patch</a> to NGINX, that can be applied and built directly with the upstream NGINX codebase.</p>

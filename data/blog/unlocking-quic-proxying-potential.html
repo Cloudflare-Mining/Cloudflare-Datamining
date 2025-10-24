@@ -1,10 +1,6 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cRa8jlfd62m2j2bSp5DLQ/4cb7eafc5978f103144c263beb1332d4/unlocking-quic-proxying-potential.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jyWDPQCkpnp8AGkJl07o1/4f730f07ffbc2845fc93d46b7067ba2c/image1-86.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>In the last post on <a href="https://blog.cloudflare.com/a-primer-on-proxies">proxy TCP-based applications</a>, we discussed how HTTP CONNECT can be used to proxy TCP-based applications, including DNS-over-HTTPS and generic HTTPS traffic, between a client and target server. This provides significant benefits for those applications, but it doesn’t lend itself to non-TCP applications. And if you’re wondering whether or not we care about these, the answer is an affirmative yes!</p>
 	<p>For instance, <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> is based on QUIC, which runs on top of UDP. What if we wanted to speak HTTP/3 to a target server? That requires two things: (1) the means to encapsulate a UDP payload between client and proxy (which the proxy decapsulates and forward to the target in an actual UDP datagram), and (2) a way to instruct the proxy to open a UDP association to a target so that it knows where to forward the decapsulated payload. In this post, we’ll discuss answers to these two questions, starting with encapsulation.</p>
 	<div class="flex anchor relative">

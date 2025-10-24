@@ -1,11 +1,7 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/id-id/heartbleed-revisited">Indonesia</a> and <a href="https://blog.cloudflare.com/th-th/heartbleed-revisited">ไทย</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/id-id/heartbleed-revisited">Indonesia</a> and <a href="https://blog.cloudflare.com/th-th/heartbleed-revisited">ไทย</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33z6TbfnFDiNMULhyQrHwg/1e39e1491d88e31b2d1ca019a67ba929/heartbleed-revisited.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cy9wQeZ4nZNu6gjukc5jh/250cf16d8a12867765cca6b434f3adfb/image4-48.png" alt="Preventable hack #6: TLS private key compromises" class="kg-image" width="1513" height="708" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>In 2014, a bug was found in OpenSSL, a popular encryption library used to secure the majority of servers on the Internet. This bug allowed attackers to abuse an obscure feature called TLS heartbeats to read memory from affected servers. Heartbleed was big news because it allowed attackers to extract the most important secret on a server: its TLS/SSL certificate private key. After confirming that the bug was <a href="https://blog.cloudflare.com/the-results-of-the-cloudflare-challenge">easy to exploit</a>, we revoked and reissued over <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">100,000 certificates</a>, which highlighted some major issues with how the Internet is secured.</p>
 	<p>As much as Heartbleed and <a href="https://www.bankinfosecurity.com/private-keys-for-23000-digital-certificates-leaked-a-10689">other key compromise events</a> were painful for security and operations teams around the world, they also provided a learning opportunity for the industry. Over the past seven years, Cloudflare has taken the lessons of Heartbleed and applied them to improve the design of our systems and the resiliency of the Internet overall. Read on to learn how using Cloudflare reduces the risk of key compromise and reduces the cost of recovery if it happens.</p>
 	<div class="flex anchor relative">

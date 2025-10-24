@@ -1,11 +1,7 @@
 <div class="mb2 gray5">12 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-workers-durable-objects">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-workers-durable-objects">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-workers-durable-objects">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-workers-durable-objects">Français</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-workers-durable-objects">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-workers-durable-objects">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-workers-durable-objects">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-workers-durable-objects">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5K7EEnYxK1Pg0GpPqRnuTj/6daffc9d7c002a5319c0cdc867183688/introducing-workers-durable-objects.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mcw3kQ2ZM9rODjsZIfG8B/0b891f4a1b7e93a3b87e06e45307fb87/BDES-1018_Cloudflare_Object_Workers_Birthday_Week_Blog_Hero.png" alt="Workers Durable Objects Beta: A New Approach to Stateful Serverless" class="kg-image" width="1600" height="759" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>We <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">launched Cloudflare Workers® in 2017</a> with a radical vision: code running at the network edge could not only improve performance, but also be easier to deploy and cheaper to run than code running in a single datacenter. That vision means Workers is about more than just edge compute -- we're rethinking how applications are built.</p>
 	<p>Using a "serverless" approach has allowed us to make deploys dead simple, and using <a href="https://blog.cloudflare.com/cloud-computing-without-containers">isolate technology</a> has allowed us to deliver serverless more cheaply and <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers">without the lengthy cold starts</a> that hold back other providers. We added easy-to-use eventually-consistent edge storage to the platform with <a href="https://blog.cloudflare.com/workers-kv-is-ga">Workers KV</a>.</p>
 	<p>But up until today, it hasn't been possible to manage state with strong consistency, or to coordinate in real time between multiple clients, entirely on the edge. Thus, these parts of your application still had to be hosted elsewhere.</p>

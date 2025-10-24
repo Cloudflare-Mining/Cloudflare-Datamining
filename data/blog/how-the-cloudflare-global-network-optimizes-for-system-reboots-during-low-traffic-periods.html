@@ -1,10 +1,6 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Cqq50Gm9vpw1vDk7Xtd5a/7a119a0ee41ab871be15b24d97d2c18e/how-the-cloudflare-global-network-optimizes-for-system-reboots-during-low-traffic-periods.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/65eDRbf8jNnmNCZdeHQzcC/e0998e5c947abaec05d4b40c90db4a4d/image6-2.png" alt="How the Cloudflare global network optimizes for system reboots during low-traffic periods" class="kg-image" width="1255" height="698" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>To facilitate the huge scale of Cloudflare’s customer base, we maintain data centers which span more than 300 cities in over 100 countries, including approximately 30 locations in Mainland China.</p>
 	<p>The Cloudflare global network is built to be continuously updated in a zero downtime manner, but some changes may need a server reboot to safely take effect. To enable this, we have mechanisms for the whole fleet to automatically reboot with changes gated on a unique identifier for the reboot cycle. Each data center has a <b>maintenance window</b>, which is a time period - usually a couple of hours - during which reboots are permitted.</p>
 	<p>We take our customer experience very seriously, and hence we have several mechanisms to ensure that disruption to customer traffic does not occur. One example is <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a>, our in-house load balancer that spreads load across the servers in a data center, ensuring that there is no disruption when a server is taken out for routine maintenance.</p>

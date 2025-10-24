@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BRZiFhPn4IPv8HCojyOB8/be04b057c617ab51b3b272a69d3f5f1d/ecdsa-the-digital-signature-algorithm-of-a-better-internet.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47umkoGPDxbxzVw9Sn5BFy/faef60d7867a7f54f80a96c030c353c7/image02_1.png" alt="" class="kg-image" width="409" height="410" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p><i>This blog post is dedicated to the memory of </i><a href="https://en.wikipedia.org/wiki/Scott_Vanstone"><i>Dr. Scott Vanstone</i></a><i>, popularizer of elliptic curve cryptography and inventor of the ECDSA algorithm. He passed away on March 2, 2014.</i></p>
 	<p>At CloudFlare we are constantly working on ways to make the Internet better. An important part of this is enabling our customers to serve their sites encrypted over SSL/TLS. There are some interesting technical challenges in serving sites over TLS at CloudFlare’s scale. The computational cost of the cryptography required on our servers is one of those challenges. <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">Elliptic curve cryptography (ECC)</a> is one of the more promising technologies in this area. ECC-enabled TLS is faster and more scalable on our servers and provides the same or better security than the default cryptography in use on the web.</p>
 	<p>In this blog post we will explore how one elliptic curve algorithm, the <a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">elliptic curve digital signature algorithm (ECDSA)</a>, can be used to improve performance on the Internet. The tl;dr is: CloudFlare now supports custom ECDSA certificates for our customers and that’s good for everybody using the Internet.</p>

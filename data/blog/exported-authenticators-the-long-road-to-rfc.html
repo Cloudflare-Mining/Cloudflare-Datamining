@@ -1,10 +1,6 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0Zs6LqudmjnXUvpvu9vkO/b1040b1454c260209c87f21fe719b3e0/exported-authenticators-the-long-road-to-rfc.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m9ffXbFd7tncHGVqZhPb1/3cc9de4feae682a5e87102dad47f99b8/image3-22.png" alt="" class="kg-image" width="1803" height="1013" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Our earlier <a href="https://blog.cloudflare.com/cloudflare-and-the-ietf">blog post</a> talked in general terms about how we work with the IETF. In this post we’re going to talk about a particular IETF project we’ve been working on, Exported Authenticators (EAs). Exported Authenticators is a new extension to TLS that we think will prove really exciting. It unlocks all sorts of fancy new authentication possibilities, from TLS connections with multiple certificates attached, to logging in to a website without ever revealing your password.</p>
 	<p>Now, you might have thought that given the innumerable hours that went into the design of TLS 1.3 that it couldn’t possibly be improved, but it turns out that there are a number of places where the design falls a little short. TLS allows us to establish a secure connection between a client and a server. The TLS connection presents a certificate to the browser, which proves the server is authorised to use the name written on the certificate, for example <a href="https://blog.cloudflare.com">blog.cloudflare.com</a>. One of the most common things we use that ability for is delivering webpages. In fact, if you’re reading this, your browser has already done this for you. The Cloudflare Blog is delivered over TLS, and by presenting a certificate for <a href="https://blog.cloudflare.com">blog.cloudflare.com</a> the server proves that it’s allowed to deliver Cloudflare’s blog.</p>
 	<p>When your browser requests <a href="https://blog.cloudflare.com">blog.cloudflare.com</a> you receive a big blob of HTML that your browser then starts to render. In the dim and distant past, this might have been the end of the story. Your browser would render the HTML, and display it. Nowadays, the web has become more complex, and the HTML your browser receives often tells it to go and load lots of other resources. For example, when I loaded the Cloudflare blog just now, my browser made 73 subrequests.</p>

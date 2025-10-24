@@ -26,20 +26,34 @@
 
 	</figure>
 	<p><a href="https://www.flickr.com/photos/cmichel67/11235945713">Image</a> by <a href="https://www.flickr.com/photos/cmichel67">Christopher Michel</a>CC BY 2.0</p>
-	<h1>ANY is hard for modern DNS servers</h1>
+	<div class="flex anchor relative">
+		<h2 id="any-is-hard-for-modern-dns-servers">ANY is hard for modern DNS servers</h2>
+		<a href="https://blog.cloudflare.com/#any-is-hard-for-modern-dns-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>"ANY" queries, also called "* queries" in old RFCs, are supposed to return "all records" (citing <a href="https://tools.ietf.org/html/rfc1035">RFC1035</a>). There are two problems with this notion.</p>
 	<p>First, it assumes the server is able to retrieve "all records". In our implementation - we can't. Our DNS server, like many modern implementations, doesn't have a single "zone" file listing all properties of a DNS zone. This design allows us to respond fast and with information always up to date, but it makes it incredibly hard to retrieve "all records". Correct handling of "ANY" adds unreasonable code complexity for an obscure, rarely used query type.</p>
 	<p>Second, many of the DNS responses are generated on-demand. To mention just two use cases:</p>
 	<ul>
 		<li>
-			<p>Some of our DNS responses <a href="http://staging.blog.mrk.cfdata.org/dnssec-done-right">are based on location</a></p>
+			<p>Some of our DNS responses <a href="https://blog.cloudflare.com/dnssec-done-right">are based on location</a></p>
 		</li>
 		<li>
-			<p><a href="http://staging.blog.mrk.cfdata.org/black-lies">We are using black lies and DNS shotgun for DNSSEC</a></p>
+			<p><a href="https://blog.cloudflare.com/black-lies">We are using black lies and DNS shotgun for DNSSEC</a></p>
 		</li>
 	</ul>
 	<p>Storing data in modern databases and dynamically generating responses poses a fundamental problem to ANY.</p>
-	<h1>ANY is hard for clients</h1>
+	<div class="flex anchor relative">
+		<h2 id="any-is-hard-for-clients">ANY is hard for clients</h2>
+		<a href="https://blog.cloudflare.com/#any-is-hard-for-clients" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>Around the same time a catastrophe happened - <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2015-March/012899.html">Firefox started shipping with DNS code issuing "ANY" types</a>. The intention was, as usual, benign. Firefox developers wanted to get the TTL value for A and AAAA queries.</p>
 	<p>To cite a DNS guru <a href="https://icannwiki.org/Andrew_Sullivan">Andrew Sullivan</a>:</p>
 	<blockquote>
@@ -61,7 +75,15 @@
 		</li>
 	</ul>
 	<p>Different implementations do different things. "ANY" does not mean "ALL", which is the main source of confusion. To our joy, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1093983#c14">Firefox quickly backpedaled</a> on the change and stopped issuing ANY queries.</p>
-	<h1>ANY is hard for network operators</h1>
+	<div class="flex anchor relative">
+		<h2 id="any-is-hard-for-network-operators">ANY is hard for network operators</h2>
+		<a href="https://blog.cloudflare.com/#any-is-hard-for-network-operators" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FBoDQ01mFhkylbffAGioR/b08d10f697d24c84f232a1a2ca9bff02/Screenshot-from-2019-03-15-14-44-58.png" alt="Screenshot-from-2019-03-15-14-44-58" class="kg-image" width="1168" height="308" loading="lazy">
@@ -71,20 +93,20 @@
 	<p>Furthermore, since the "ANY" query can generate a large response, they were often used for DNS reflection attacks. Authoritative providers receive a spoofed ANY query and send the large answer to a target, potentially causing DoS damage. We have blogged about that many times:</p>
 	<ul>
 		<li>
-			<p><a href="http://staging.blog.mrk.cfdata.org/the-ddos-that-knocked-spamhaus-offline-and-ho">The DDoS that knocked Spamhaus offline</a></p>
+			<p><a href="https://blog.cloudflare.com/the-ddos-that-knocked-spamhaus-offline-and-ho">The DDoS that knocked Spamhaus offline</a></p>
 		</li>
 		<li>
-			<p><a href="http://staging.blog.mrk.cfdata.org/deep-inside-a-dns-amplification-ddos-attack">Deep inside a DNS amplification attack</a></p>
+			<p><a href="https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack">Deep inside a DNS amplification attack</a></p>
 		</li>
 		<li>
-			<p><a href="http://staging.blog.mrk.cfdata.org/reflections-on-reflections">Reflections on reflections</a></p>
+			<p><a href="https://blog.cloudflare.com/reflections-on-reflections">Reflections on reflections</a></p>
 		</li>
 		<li>
-			<p><a href="http://staging.blog.mrk.cfdata.org/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the CPSC is inadvertently behind the largest attacks</a></p>
+			<p><a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">How the CPSC is inadvertently behind the largest attacks</a></p>
 		</li>
 	</ul>
-	<p>The DoS problem with ANY is really old. Here is a discussion about a <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2013-May/010178.html">patch to bind tweaking ANY from 2013</a>.</p>
-	<p>There is also a second angle to the ANY DoS problem. Some reports suggested that performant DNS servers (authoritative or resolvers) <a href="https://fanf.livejournal.com/140566.html">can fill their outbound network capacity</a> with a large number of ANY responses.</p>
+	<p>The DoS problem with ANY is ancient. Here is a discussion about a <a href="https://lists.dns-oarc.net/pipermail/dns-operations/2013-May/010178.html">patch to bind tweaking ANY from 2013</a>.</p>
+	<p>There is also a second angle to the ANY DoS problem. Some reports suggested that performant DNS servers (authoritative or resolvers) <a href="https://fanf.livejournal.com/140566.html">can fill their outbound network capacity</a> with numerous ANY responses.</p>
 	<p>The recommendation is simple - network operators must use <a href="https://kb.isc.org/docs/aa-00994">"response rate limiting"</a> when answering large DNS queries, otherwise they pose a DoS threat. The "ANY" query type just happens to often give such large responses, while providing little value to legitimate users.</p>
 	<div class="flex anchor relative">
 		<h2 id="terminating-any">Terminating ANY</h2>
@@ -97,13 +119,13 @@
 	<p>In 2015 frustrated with the experience we announced we would like to stop giving responses to "ANY" queries and wrote a (controversial at a time) blog post:</p>
 	<ul>
 		<li>
-			<p><a href="http://staging.blog.mrk.cfdata.org/deprecating-dns-any-meta-query-type">Deprecating DNS ANY meta-query type</a></p>
+			<p><a href="https://blog.cloudflare.com/deprecating-dns-any-meta-query-type">Deprecating DNS ANY meta-query type</a></p>
 		</li>
 	</ul>
 	<p>A year later we followed up explaining possible solutions:</p>
 	<ul>
 		<li>
-			<p><a href="http://staging.blog.mrk.cfdata.org/what-happened-next-the-deprecation-of-any">What happened next - the deprecation of ANY</a></p>
+			<p><a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">What happened next - the deprecation of ANY</a></p>
 		</li>
 	</ul>
 	<p>And here we come today! With <a href="https://tools.ietf.org/html/rfc8482">RFC8482</a> we have an RFC proposed standard clarifying that controversial query.</p>

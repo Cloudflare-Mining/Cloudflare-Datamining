@@ -1,10 +1,6 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HZJGzRahSl0a9NNbyfvw5/77f7d03776c039e31d09178a4a2fbf95/handshake-encryption-endgame-an-ech-update.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IdpRFD18ADERM709mvFJP/c498ccf42bf923584851dd68d006352c/Enrypted-Client-Hello-1.png" alt="Handshake Encryption: Endgame (an ECH update)" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Privacy and security are fundamental to Cloudflare, and we believe in and champion the use of cryptography to help provide these fundamentals for customers, end-users, and the Internet at large. In the past, we helped <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">specify, implement, and ship TLS 1.3</a>, the latest version of the transport security protocol underlying the web, to all of our users. TLS 1.3 vastly improved upon prior versions of the protocol with respect to security, privacy, and performance: simpler cryptographic algorithms, more handshake encryption, and fewer round trips are just a few of the many great features of this protocol.</p>
 	<p>TLS 1.3 was a tremendous improvement over TLS 1.2, but there is still room for improvement. Sensitive metadata relating to application or user intent is still visible in plaintext on the wire. In particular, all client parameters, including the name of the target server the client is connecting to, are visible in plaintext. For obvious reasons, this is problematic from a privacy perspective: Even if your application traffic to crypto.cloudflare.com is encrypted, the fact you’re visiting crypto.cloudflare.com can be quite revealing.</p>
 	<p>And so, in collaboration with other participants in the standardization community and members of industry, <a href="https://blog.cloudflare.com/esni">we embarked towards a solution</a> for encrypting all sensitive TLS metadata in transit. The result: <a href="https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-13">TLS Encrypted ClientHello (ECH)</a>, an extension to protect this sensitive metadata during connection establishment.</p>

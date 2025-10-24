@@ -1,10 +1,6 @@
-<div class="mb2 gray5">10 min read</div>
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OiAzA4oJ8YkaI7wtRmdjs/0449c50c27fceaae9260bf7e7ad4843c/kyber-isnt-broken.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WL1V7ZuPLdXFnkGjYOJyL/349a07946aff4103d2cd8c9abcb88475/image2-18.png" alt="No, AI did not break post-quantum cryptography" class="kg-image" width="1801" height="1013" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p><a href="https://www.securityweek.com/ai-helps-crack-a-nist-recommended-post-quantum-encryption-algorithm">News coverage</a> of a recent paper caused a bit of a stir with this headline: “<a href="https://www.securityweek.com/ai-helps-crack-a-nist-recommended-post-quantum-encryption-algorithm">AI Helps Crack NIST-Recommended Post-Quantum Encryption Algorithm</a>”. The news article claimed that <a href="https://pq-crystals.org/kyber/index.shtml">Kyber</a>, the encryption algorithm in question, <a href="https://blog.cloudflare.com/post-quantum-for-all">which we have deployed world-wide</a>, had been “broken.” Even more dramatically, the news article claimed that “the revolutionary aspect of the research was to apply deep learning analysis to side-channel differential analysis”, which seems aimed to scare the reader into wondering what will <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">Artificial Intelligence (AI)</a> break next?</p>
 	<p>Reporting on the paper has been wildly inaccurate: <b>Kyber is not broken</b> and AI has been used for more than a decade now to aid side-channel attacks. To be crystal clear: our concern is with the news reporting around the paper, not the quality of the paper itself. In this blog post, we will explain how AI is actually helpful in cryptanalysis and dive into the <a href="https://eprint.iacr.org/2022/1713">paper</a> by Dubrova, Ngo, and Gärtner (DNG), that has been misrepresented by the news coverage. We’re honored to have Prof. Dr. <a href="https://www.cs.ru.nl/~lejla">Lejla Batina</a> and Dr. <a href="https://www.ru.nl/en/people/picek-s">Stjepan Picek</a>, world-renowned experts in the field of applying AI to side-channel attacks, join us on this blog.</p>
 	<p>We start with some background, first on side-channel attacks and then on Kyber, before we dive into the paper.</p>

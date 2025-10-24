@@ -1,10 +1,6 @@
-<div class="mb2 gray5">9 min read</div>
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38U9IIBJaf4blWZCIR7JAO/3313277600dc73530a4375fe2f53f995/part1-coreless-purge.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26dK4PepHvX10LE1alFDZk/a86e48932ec530e2b2639dcaecd0d4a6/Cache-Reserve-3.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>There is a famous <a href="https://skeptics.stackexchange.com/questions/19836/has-phil-karlton-ever-said-there-are-only-two-hard-things-in-computer-science">quote</a> attributed to a Netscape engineer: “There are only two difficult problems in computer science: cache invalidation and naming things.” While naming things does oddly take up an inordinate amount of time, cache invalidation shouldn’t.</p>
 	<p>In the past we’ve written about Cloudflare’s <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">incredibly fast</a> response times, whether content is cached on our global network or not. If content is cached, it can be served from a Cloudflare cache server, which are distributed across the globe and are generally a lot closer in physical proximity to the visitor. This saves the visitor’s request from needing to go all the way back to an origin server for a response. But what happens when a webmaster updates something on their origin and would like these caches to be updated as well? This is where cache “purging” (also known as “invalidation”) comes in.</p>
 	<p>Customers thinking about setting up a CDN and caching infrastructure consider questions like:</p>

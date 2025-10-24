@@ -1,10 +1,6 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/wRprrzRDWVvESOtd4wx6e/2ba1551afef1db23c799d8a799b6ba33/the-hard-costs-of-heartbleed.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50XQVPRCziIjoYNbefzUTS/7eccf7a2173fb568838236da20265eac/1.png" alt="" class="kg-image" width="469" height="264" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>A quick followup to our <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued">last blog post</a> on our decision to reissue and revoke all of CloudFlare's customers' SSL certificates. One question we've received is why we didn't just reissue and revoke all SSL certificates as soon as we got word about the Heartbleed vulnerability? The answer is that the revocation process for SSL certificates is far from perfect and imposes a significant cost on the Internet's infrastructure.</p>
 	<p>Today, after having done a mass reissuance and revocation, we have a tangible sense of that cost. To understand it, you need to understand a bit about how your browser checks if an SSL certificate has been revoked.</p>
 	<div class="flex anchor relative">

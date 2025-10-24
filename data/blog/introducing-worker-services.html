@@ -1,11 +1,7 @@
 <div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-worker-services">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-worker-services">日本語</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-worker-services">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-worker-services">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26bWRFg6lJegSjtm9POfYP/9f353d1618219c53c0d75a25138ce3ef/introducing-worker-services.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4JgxwN8ogWhTVIkezjkPDL/b7a83e3fd18b82b629f5d2ed2a07556b/unnamed-14.png" alt="Introducing Services: Build Composable, Distributed Applications on Cloudflare Workers" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>First, there was the Worker script. It was simple, yet elegant. With just a few lines of code, you could rewrite an HTTP request, append a header, or make a quick fix to your website.</p>
 	<p>Though, what if you wanted to build an entire application on Workers? You’d need a lot more tools in your developer toolbox. That’s why we’ve introduced extensions to Workers platform like <a href="https://blog.cloudflare.com/workers-kv-is-ga">KV</a>, our distributed key-value store; <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>, — a strongly consistent, object-oriented database; and soon <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>, the no-egress object storage. While these tools allow you to build a more robust application, there’s still a gap when it comes to building a system architecture, composed of <i>many</i> applications or services.</p>
 	<p>Imagine you’ve built an authentication service that authorizes requests to your API. You’d want to re-use that logic among all your other services. Moreover, when you make changes to that authentication service, you’d want to test it in a controlled environment that doesn’t affect those other services in production. Well, you don’t need to imagine anymore.</p>

@@ -1,10 +1,6 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NSwPO77JLWkzE7F1ZwSNH/577a73e489199fe3fa3dd05cbd234e5d/lost-in-transit-debugging-dropped-packets-from-negative-header-lengths.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tokKH49S2rHSl2HiAEeHl/080a08f57d2ad3af60d1f3a477d95818/image3-29.png" alt="Lost in transit: debugging dropped packets from negative header lengths." class="kg-image" width="1921" height="1080" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Previously, I wrote about building <a href="https://blog.cloudflare.com/high-availability-load-balancers-with-maglev">network load balancers with the maglev scheduler</a>, which we use for ingress into our Kubernetes clusters. At the time of that post we were using Foo-over-UDP encapsulation with virtual interfaces, one for each Internet Protocol version for each worker node.</p>
 	<p>To reduce operational toil managing the traffic director nodes, we've recently switched to using IP Virtual Server's (IPVS) native support for encapsulation. Much to our surprise, instead of a smooth change, we instead observed significant drops in bandwidth and failing API requests. In this post I'll discuss the impact observed, the multi-week search for the root cause, and the ultimate fix.</p>
 	<div class="flex anchor relative">

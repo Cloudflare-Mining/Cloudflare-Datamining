@@ -1,10 +1,6 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2nbFtKrx4TvvzYMC5t6Jzd/1ec2a729185af375d29dd814a7e894c6/building-even-faster-interpreters-in-rust.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NJezhsJZ3Up74AGwLZpi6/552e4017a10432d1eabf618d2b6b1b6d/Cloudflare-reflections-copy-2_2x.png" alt="" class="kg-image" width="2214" height="1067" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>At Cloudflare, we’re <a href="https://blog.cloudflare.com/making-the-waf-40-faster">constantly working on</a> improving the performance of our edge — and that was exactly what my internship this summer entailed. I’m excited to share some improvements we’ve made to our popular <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">Firewall Rules</a> product over the past few months.</p>
 	<p>Firewall Rules lets customers filter the traffic hitting their site. It’s built using our engine, Wirefilter, which takes powerful boolean expressions written by customers and matches incoming requests against them. Customers can then choose how to respond to traffic which matches these rules. We will discuss some in-depth optimizations we have recently made to Wirefilter, so you may wish to <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust">get familiar</a> with how it works if you haven’t already.</p>
 	<div class="flex anchor relative">

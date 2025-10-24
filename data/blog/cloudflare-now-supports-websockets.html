@@ -1,5 +1,6 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dQfmNI53nbZh0sjX5jkx1/6ba37c1649952ad4c37f12682ca6e832/cloudflare-now-supports-websockets.jpg" alt="">
 <div class="post-content lh-copy gray1">
+	<p></p>
 	<p>CC BY 2.0 from <a href="https://www.flickr.com/photos/exfordy">Brian Snelson</a></p>
 	<p>I'm pleased to announce that CloudFlare now supports WebSockets. The ability to protect and accelerate WebSockets has been one of our most requested features. As of today, CloudFlare is rolling out WebSocket support for any Enterprise customer, and a limited set of CloudFlare Business customers. Over the coming months, we expect to extend support to all Business and Pro customers.</p>
 	<p>We're rolling out WebSockets slowly because it presents a new set of challenges. The story below chronicles the challenges of supporting WebSockets, and what we’ve done to overcome them.</p>
@@ -94,7 +95,14 @@
 		s.connect(("<a href="https://www.google.com">www.google.com</a>", 80))</p>
 	<p>If you specify a source port of 0 when you call bind(), then you're instructing the operating system to randomly find an available port for you:</p>
 	<p>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
-	<h1>Set source port to 0, instructing the OS to find an available port</h1>
+	<div class="flex anchor relative">
+		<h2 id="set-source-port-to-0-instructing-the-os-to-find-an-available-port">Set source port to 0, instructing the OS to find an available port</h2>
+		<a href="https://blog.cloudflare.com/#set-source-port-to-0-instructing-the-os-to-find-an-available-port" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>s.bind(("1.1.1.1", 0))
 		s.connect(("<a href="https://www.google.com">www.google.com</a>", 80))</p>
 	<p>That works great, however, Linux's bind function is conservative. Because it doesn't know what you're going to be using the port for, when a port is reserved the bind function holds it regardless of the protocol, destination IP, or destination port. In other words, if you bind this way you're only using two of the possible five variables in the connection tuple.</p>
@@ -116,7 +124,14 @@
 	</div>
 	<p>Our solution was to instruct the operating system to be less conservative, and allow ports to be reused. You can do this when you set up a socket by setting the SO_REUSEADDR option. Here's the code:</p>
 	<p>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
-	<h1>Specify that it's ok to reuse the same port even if it's been used before</h1>
+	<div class="flex anchor relative">
+		<h2 id="specify-that-its-ok-to-reuse-the-same-port-even-if-its-been-used-before">Specify that it's ok to reuse the same port even if it's been used before</h2>
+		<a href="https://blog.cloudflare.com/#specify-that-its-ok-to-reuse-the-same-port-even-if-its-been-used-before" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		s.bind(("1.1.1.1", 0))
 		s.connect(("<a href="https://www.google.com">www.google.com</a>", 80))</p>

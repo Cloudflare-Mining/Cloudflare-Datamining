@@ -1,10 +1,6 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DzcgyofntOSaQQlIqBYyq/9557dabc14fa40a7e7b99ba899068fed/connection-coalescing-experiments.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZsTPnkr2T9etYYX57AwcJ/d60316332e3477abc74365da55cf4926/image4-20.png" alt="Coalescing Connections to Improve Network Privacy and Performance" class="kg-image" width="750" height="326" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Web pages typically have <a href="https://discuss.httparchive.org/t/whats-the-distribution-of-requests-per-page/21/10?u=patmeenan">a large number</a> of embedded subresources (e.g., JavaScript, CSS, image files, ads, beacons) that are fetched by a browser on page loads. Requests for these subresources can prompt browsers to perform further DNS lookups, TCP connections, and TLS handshakes, which can have a significant impact on how long it takes for the user to see the content and interact with the page. Further, each additional request exposes metadata (such as plaintext DNS queries, or unencrypted SNI in TLS handshake) which can have potential privacy implications for the user. With these factors in mind, we carried out a measurement study to understand how we can leverage <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing">Connection Coalescing</a> (aka <a href="https://datatracker.ietf.org/doc/html/rfc7540#section-9.1.1">Connection Reuse</a>) to address such concerns, and study its feasibility.</p>
 	<div class="flex anchor relative">
 		<h3 id="background">Background</h3>

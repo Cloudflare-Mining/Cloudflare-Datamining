@@ -1,10 +1,6 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7cqkkjNIki9BkD26Is7ByM/59e6b34348c12f751b68e1d875b670e2/zaraz-adds-jsonata-support.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KHrDvLnG9ZIhs7000zsYn/8f4b9332b54b5612fc6e47d93f440d9a/image1-44.png" alt="Cloudflare Zaraz supports JSONata" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Cloudflare users leverage Zaraz for loading their third-party JavaScript tools. Tools like analytics, conversion pixels, widgets and alike, <a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools">load faster and safer when loaded through Zaraz</a>.</p>
 	<p>When configuring a tool in Zaraz, users can specify the payload to be included when sending information to it. This allows for the transmission of more detailed data. For example, when sending the "Button Clicked" event to Google Analytics, users can include additional information such as the ID of the button element and the content of the <code>user_id</code> cookie at the time of the button press. In Zaraz, users have the flexibility to add as many fields as desired when configuring the action.</p>
 	<p>Typically, information reaches Zaraz through the execution of <code>zaraz.track("event name", { properties })</code> within the website's code. The <code>properties</code> object can contain relevant details that will be sent to third-party tools, such as the button ID in the previous example. However, there are cases where users may need to process and manipulate the information before sending it to their third-party tools.</p>

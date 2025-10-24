@@ -1,10 +1,6 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4MTrFqjQMbfyOQ9o0m9BIu/069b460ae39ecf44c3a502a6f18cdb56/a-ci.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3y6n4AKvsaJaYys4qO1Vdp/bbb2e275363ee79e6cc5bf22013daf56/Workers-Illustration--WiP-as-of-2.21.18--copy_2x-1.png" alt="" class="kg-image" width="935" height="654" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>In today’s post we’re going to talk about building a CI/CD pipeline for Cloudflare Worker’s using Travis CI. If you aren’t yet aware, Cloudflare Workers allow you to run Javascript in all 165 of our data centers, and they deploy globally in about 30 seconds. Learn more <a href="https://developers.cloudflare.com/workers/about">here</a>.</p>
 	<p>There are a few steps before we get started. We need to have a Worker script we want to deploy, some optional unit tests for the script, a <code>serverless.yml</code> &nbsp;file to deploy via the Serverless Framework, a <code>.gitignore</code> file to ignore the <code>node_modules</code> folder, and finally, a <code>.travis.yml</code> configuration file. All of these files will live in the same GitHub repository, which should have a final layout like:</p>
 	<pre class="language-javascript"><code class="language-javascript">----- worker.js

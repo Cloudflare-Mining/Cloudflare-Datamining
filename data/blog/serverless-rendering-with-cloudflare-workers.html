@@ -1,10 +1,6 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yeNRpKBdmk6PCOtd056Gp/9620dc24b087aa483c44619032142739/serverless-rendering-with-cloudflare-workers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gSJDyDBc2BfpA4vZe9j0G/4c59f6eabac3c9dcceef94f2f8f5fc32/image1-12.png" alt="Serverless Rendering with Cloudflare Workers" class="kg-image" width="1999" height="1014" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Cloudflare’s Workers platform is a powerful tool; a single compute platform for tasks as simple as manipulating requests or complex as bringing application logic to the network edge. Today I want to show you how to do server-side rendering at the network edge using Workers Sites, Wrangler, HTMLRewriter, and tools from the broader Workers platform.</p>
 	<p>Each page returned to the user will be static HTML, with dynamic content being rendered on our serverless stack upon user request. Cloudflare’s ability to run this across the global network allows pages to be rendered in a distributed fashion, close to the user, with miniscule cold start times for the application logic. Because this is all built into Cloudflare’s edge, we can implement caching logic to significantly reduce load times, support link previews, and maximize SEO rankings, all while allowing the site to feel like a dynamic application.</p>
 	<div class="flex anchor relative">

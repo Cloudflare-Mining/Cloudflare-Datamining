@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qqRrU4XLB1lvcScw667jg/952d5e918691f7825e6dabca88962bb0/oxy-fish-bumblebee-splicer-subsystems-to-improve-reliability.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mZpm1Hj9LNc3hy0ygY0XY/733741a82056440aab35bc52fec04747/image3-7.png" alt="Oxy: Fish/Bumblebee/Splicer subsystems to improve reliability" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>At Cloudflare, we are building proxy applications on top of <a href="https://blog.cloudflare.com/introducing-oxy">Oxy</a> that must be able to handle a <i>huge</i> amount of traffic. Besides high performance requirements, the applications must also be resilient against crashes or reloads. As the framework evolves, the complexity also increases. While migrating WARP to support soft-unicast (<a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore">Cloudflare servers don't own IPs anymore</a>), we needed to add different functionalities to our proxy framework. Those additions increased not only the code size but also resource usage and states required to be <a href="https://blog.cloudflare.com/oxy-the-journey-of-graceful-restarts">preserved between process upgrades</a>.</p>
 	<p>To address those issues, we opted to split a big proxy process into smaller, specialized services. Following the Unix philosophy, each service should have a single responsibility, and it must do it well. In this blog post, we will talk about how our proxy interacts with three different services - Splicer (which pipes data between sockets), Bumblebee (which upgrades an IP flow to a TCP socket), and Fish (which handles layer 3 egress using soft-unicast IPs). Those three services help us to improve system reliability and efficiency as we migrated WARP to support soft-unicast.</p>
 	<figure class="kg-card kg-image-card ">

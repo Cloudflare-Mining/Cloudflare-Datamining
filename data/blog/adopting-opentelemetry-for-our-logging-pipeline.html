@@ -1,10 +1,6 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DaUMxmlGu2HsbLYI2XomK/b8ded60b482bd20300b03d6604b51587/adopting-opentelemetry-for-our-logging-pipeline.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/45CLpQoXM7URxmOSq3dWL5/41bf6ea4e02db135cee9c7433edfb53b/image3-9.png" alt="Adopting OpenTelemetry for our logging pipeline" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Cloudflare’s logging pipeline is one of the largest data pipelines that Cloudflare has, serving millions of log events per second globally, from every server we run. Recently, we undertook a project to migrate the underlying systems of our logging pipeline from <a href="https://www.syslog-ng.com">syslog-ng</a> to <a href="https://github.com/open-telemetry/opentelemetry-collector">OpenTelemetry Collector</a> and in this post we want to share how we managed to swap out such a significant piece of our infrastructure, why we did it, what went well, what went wrong, and how we plan to improve the pipeline even more going forward.</p>
 	<div class="flex anchor relative">
 		<h2 id="background">Background</h2>

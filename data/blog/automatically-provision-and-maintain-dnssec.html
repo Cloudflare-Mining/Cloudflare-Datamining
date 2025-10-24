@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47YzVJkxffwzKPJQ8tn07i/0af7492892194a1bac642cc0a3f363f6/automatically-provision-and-maintain-dnssec.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3l4KpASzsILdAr3Ou3jZWO/e390d13348ff6feac3c9ffb514494e74/DNSSEC.png" alt="" class="kg-image" width="1408" height="1232" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Cloudflare first started talking about <a href="https://www.cloudflare.com/dns/dnssec/universal-dnssec">DNSSEC</a> in <a href="https://blog.cloudflare.com/dnssec-an-introduction">2014</a> and at the time, <a href="https://twitter.com/grittygrease">Nick Sullivan</a> wrote: “DNSSEC is a valuable tool for improving the trust and integrity of <a href="https://www.cloudflare.com/learning/dns/what-is-dns">DNS</a>, the backbone of the modern Internet.”</p>
 	<p>Over the past four years, it has become an even more critical part of securing the internet. While <a href="https://blog.cloudflare.com/chrome-not-secure-for-http">HTTPS</a> has gone a long way in preventing user sessions from being hijacked and maliciously (or innocuously) redirected, not all internet traffic is HTTPS. A safer Internet should secure every possible layer between a user and the origin they are intending to visit.</p>
 	<p>As a quick refresher, DNSSEC allows a user, application, or recursive resolver to trust that the answer to their DNS query is what the domain owner intends it to be. Put another way: DNSSEC proves authenticity and integrity (though not confidentiality) of a response from the authoritative nameserver. Doing so makes it much harder for a bad actor to inject malicious DNS records into the resolution path through <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies">BGP Leaks</a> and cache poisoning. Trust in DNS matters even more when a domain is publishing <a href="https://blog.cloudflare.com/additional-record-types-available-with-cloudflare-dns">record types</a> that are used to declare trust for other systems. As a specific example, DNSSEC is helpful for preventing malicious actors from obtaining fraudulent certificates for a domain. <a href="https://blog.powerdns.com/2018/09/10/spoofing-dns-with-fragments">Research</a> has shown how DNS responses can be spoofed for domain validation.</p>

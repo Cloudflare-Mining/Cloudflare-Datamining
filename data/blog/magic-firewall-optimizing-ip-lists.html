@@ -1,10 +1,6 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zFdYwbtRYUyrtIQSZpYpy/b82a4ecec768b7663c6237ff934209a6/magic-firewall-optimizing-ip-lists.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BbNn6mc6zkIL0pFqoyoOr/1bf4fd2fa0b8b31f5bc09b944f6e6a33/image6-10.png" alt="Optimizing Magic Firewall’s IP Lists" class="kg-image" width="1600" height="800" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Magic Firewall is Cloudflare’s replacement for network-level firewall hardware. It evaluates gigabits of traffic every second against user-defined rules that can include millions of IP addresses. Writing a firewall rule for each IP address is cumbersome and verbose, so we have been building out support for various <a href="https://developers.cloudflare.com/magic-firewall/about/list-types">IP lists</a> in Magic Firewall—essentially named groups that make the rules easier to read and write. Some users want to reject packets based on our growing <a href="https://blog.cloudflare.com/magic-firewall-gets-smarter">threat intelligence</a> of bad actors, while others know the exact set of IPs they want to match, which Magic Firewall supports via the same <a href="https://api.cloudflare.com/#rules-lists-create-list">API</a> as Cloudflare’s WAF.</p>
 	<p>With all those IPs, the system was using more of our memory budget than we’d like. To understand why, we need to first peek behind the curtain of our magic.</p>
 	<div class="flex anchor relative">

@@ -1,11 +1,7 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/transform-http-response-headers">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/transform-http-response-headers">日本語</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/transform-http-response-headers">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/transform-http-response-headers">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PnhPkHFKpGQ8R9YI8gcPo/6d871860bb876dce8e2705d7b6fdea52/transform-http-response-headers.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zkpN5uwphjJCBQPthlDGt/e5fac509b1eea1da3ffa5b3c95b51a9d/xIRzQzY5oV76YW-9BT0XgH75tyP5ERyfkvNfNNbbD2fJjkfJeCad-eeyqugGULMrWUQQ-R6bDm1VYqdh-DRryDWwBoIyfIZ4bf0LJII22r55dD8SZO9QGLahQ6yC.png" alt="Modifying HTTP response headers with Transform Rules" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>HTTP headers are central to how the web works. They are used for passing additional information between the client and server, such as which security permissions to apply and information about the client, allowing the correct content to be served.</p>
 	<p>Today we are announcing the immediate availability of the third action within Transform Rules, “HTTP Response Header Modification”, available for all Cloudflare plans. This new functionality provides Cloudflare users the ability to set or remove HTTP response headers as traffic returns through Cloudflare back to the client. This allows customers to enrich responses with information about how their request was handled, debugging information and even <a href="https://frenxi.com/http-headers-you-dont-expect">recruitment messages</a>.</p>
 	<p>Previously, HTTP response header modification was done using a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>. Today we’re introducing an easier way to do this without writing a single line of code.</p>

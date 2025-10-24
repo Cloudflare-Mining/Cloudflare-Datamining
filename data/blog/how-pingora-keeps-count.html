@@ -1,10 +1,6 @@
-<div class="mb2 gray5">6 min read</div>
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xtRDxFaUOpEAexlXx3jMM/9323156adcf35ea8847c489868d269bd/how-pingora-keeps-count.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SXVdoukjYf7lxtyQLYY6p/03cb231617194c7d8c8bb13557988ad3/image1-13.png" alt="How Pingora keeps count" class="kg-image" width="1999" height="1126" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>A while ago we shared how we replaced NGINX with our in-house proxy, <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">Pingora</a>. We promised to share more technical details as well as our open sourcing plan. This blog post will be the first of a series that shares both the code libraries that power Pingora and the ideas behind them.</p>
 	<p>Today, we take a look at one of Pingora’s libraries: pingora-limits.</p>
 	<p>pingora-limits provides the functionality to count inflight events and estimate the rate of events over time. These functions are commonly used to protect infrastructure and services from being overwhelmed by certain types of malicious or misbehaving requests.</p>

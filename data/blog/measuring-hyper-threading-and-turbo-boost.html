@@ -1,10 +1,6 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Zj4dpUNR8GpDa7LcgUj9t/daf794e17a849eff4a1f79d90475f8f6/measuring-hyper-threading-and-turbo-boost.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NBGzrE0uIc9owf085UHbX/d2468cff9316a93079be555b332b435f/unnamed-6.png" alt="" class="kg-image" width="2048" height="1154" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>We often put together experiments that measure hardware performance to improve our understanding and provide insights to our hardware partners. We recently wanted to know more about Hyper-Threading and Turbo Boost. The last time we assessed these two technologies was when we were still <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">deploying the Intel Xeons</a> (Skylake/Purley), but beginning with our Gen X servers we <a href="https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers">switched over to the AMD EPYC</a> (Zen 2/Rome). This blog is about our latest attempt at quantifying the performance impact of Hyper-Threading and Turbo Boost on our AMD-based servers running our software stack.</p>
 	<p>Intel briefly introduced Hyper-Threading with NetBurst (Northwood) back in 2002, then reintroduced Hyper-Threading six years later with Nehalem along with Turbo Boost. AMD presented their own implementation of these technologies with Zen in 2017, but AMD’s version of Turbo Boost actually dates back to AMD K10 (Thuban), in 2010, when it used to be called Turbo Core. Since Zen, Hyper-Threading and Turbo Boost are known as simultaneous multithreading (SMT) and Core Performance Boost (CPB), respectively. The underlying implementation of Hyper-Threading and Turbo Boost differs between the two vendors, but the high-level concept remains the same.</p>
 	<p>Hyper-Threading or simultaneous multithreading creates a second hardware thread within a processor’s core, also known as a logical core, by duplicating various parts of the core to support the context of a second application thread. The two hardware threads execute simultaneously within the core, across their dedicated and remaining shared resources. If neither hardware threads contend over a particular shared resource, then the throughput can be drastically increased.</p>

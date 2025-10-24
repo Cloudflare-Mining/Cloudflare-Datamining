@@ -1,11 +1,7 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-smarter-tiered-cache-topology-generation">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-smarter-tiered-cache-topology-generation">日本語</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-smarter-tiered-cache-topology-generation">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-smarter-tiered-cache-topology-generation">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2zPEXibkI7tkfPKr8FxqjU/83ed375efa23c1b21f31548ae4142ecc/introducing-smarter-tiered-cache-topology-generation.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xhrqeLbpFrRRfakfwEt9g/bd5587b9a9be5f3c7a000d75fa4f873d/image3.png" alt="" class="kg-image" width="1200" height="619" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Caching is a magic trick. Instead of a customer’s origin responding to every request, Cloudflare’s 200+ data centers around the world respond with content that is cached geographically close to visitors. This dramatically improves the load performance for web pages while decreasing the bandwidth costs by having Cloudflare respond to a request with cached content.</p>
 	<p>However, if content is not in cache, Cloudflare data centers must contact the origin server to receive the content. This isn’t as fast as delivering content from cache. It also places load on an origin server, and is more costly compared to serving directly from cache. These issues can be amplified depending on the geographic distribution of a website’s visitors, the number of data centers contacting the origin, and the available origin resources for responding to requests.</p>
 	<p>To decrease the number of times our network of data centers communicate with an origin, we organize data centers into tiers so that only upper-tier data centers can request content from an origin and then they spread content to lower tiers. This means content that loads faster for visitors, is cheaper to serve, and reduces origin resource consumption.</p>

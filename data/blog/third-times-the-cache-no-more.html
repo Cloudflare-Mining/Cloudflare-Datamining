@@ -1,10 +1,6 @@
-<div class="mb2 gray5">4 min read</div>
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Vbdg5q0h79G3DymW7YcZ0/fb0cb1e213d42c25526b552a6b2e8da8/third-times-the-cache-no-more.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4O1uuMmglOLHOnjissasIm/fc8d17ddb00f8badf076190b8c67ade4/image1-23.png" alt="Third Time’s the Cache, No More" class="kg-image" width="1918" height="1068" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Caching is a big part of how Cloudflare CDN makes the Internet faster and more reliable. When a visitor to a customer’s website requests an asset, we retrieve it from the customer’s origin server. After that first request, in many cases we <i>cache</i> that asset. Whenever anyone requests it again, we can serve it from one of our data centers close to them, dramatically speeding up load times.</p>
 	<p>Did you notice the small caveat? We cache after the <i>first</i> request in <i>many</i> cases, not all. One notable exception since 2010 up until now: requests with <i>query strings</i>. When a request came with a query string (think <a href="https://example.com/image.jpg?width=500">https://example.com/image.jpg?width=500</a>; the <code>?width=500</code> is the query string), we needed to see it a whole <i>three</i> times before we would cache it on our <a href="https://support.cloudflare.com/hc/en-us/articles/200168256-Understand-Cloudflare-Caching-Level">default cache level</a>. Weird!</p>
 	<p>This is a short tale of that strange exception, why we thought we needed it, and how, more than ten years later, we showed ourselves that we didn’t.</p>

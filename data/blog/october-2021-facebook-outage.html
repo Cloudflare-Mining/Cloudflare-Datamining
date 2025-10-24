@@ -1,16 +1,12 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/october-2021-facebook-outage">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/october-2021-facebook-outage">Français</a>, <a href="https://blog.cloudflare.com/de-de/october-2021-facebook-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/october-2021-facebook-outage">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/october-2021-facebook-outage">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/october-2021-facebook-outage">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/october-2021-facebook-outage">Português</a>, <a href="https://blog.cloudflare.com/es-es/october-2021-facebook-outage">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/october-2021-facebook-outage">Рyсский</a> and <a href="https://blog.cloudflare.com/zh-tw/october-2021-facebook-outage">繁體中文</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/october-2021-facebook-outage">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/october-2021-facebook-outage">Français</a>, <a href="https://blog.cloudflare.com/de-de/october-2021-facebook-outage">Deutsch</a>, <a href="https://blog.cloudflare.com/it-it/october-2021-facebook-outage">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/october-2021-facebook-outage">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/october-2021-facebook-outage">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/october-2021-facebook-outage">Português</a>, <a href="https://blog.cloudflare.com/es-es/october-2021-facebook-outage">Español</a>, <a href="https://blog.cloudflare.com/ru-ru/october-2021-facebook-outage">Рyсский</a> and <a href="https://blog.cloudflare.com/zh-tw/october-2021-facebook-outage">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7y9jJTgSukF7V3DIHZyBPK/2387ab2641e6b8c0da2402279321b0f7/october-2021-facebook-outage.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uTJHu7xMujVNtSw76DdWY/62464b4e0bc895d38c063c5148c011b0/Screen-Shot-2021-10-26-at-2.44.18-PM-19.png" alt="The Internet - A Network of Networks" class="kg-image" width="896" height="466" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>The Internet - A Network of Networks</p>
 	<p>“<i>Facebook can't be down, can it?</i>”, we thought, for a second.</p>
 	<p>Today at 15:51 UTC, we opened an internal incident entitled "Facebook DNS lookup returning SERVFAIL" because we were worried that something was wrong with our DNS resolver <a href="https://developers.cloudflare.com/warp-client">1.1.1.1</a>. &nbsp;But as we were about to post on our <a href="https://www.cloudflarestatus.com">public status</a> page we realized something else more serious was going on.</p>
 	<p>Social media quickly burst into flames, reporting what our engineers rapidly confirmed too. Facebook and its affiliated services WhatsApp and Instagram were, in fact, all down. Their DNS names stopped resolving, and their infrastructure IPs were unreachable. It was as if someone had "pulled the cables" from their data centers all at once and disconnected them from the Internet.</p>
-	<p>This wasn't a DNS issue itself, but failing DNS was the first symptom we'd seen of a larger Facebook outage.</p>
+	<p>This wasn't a <a href="https://www.cloudflare.com/learning/dns/common-dns-issues">DNS issue</a> itself, but failing DNS was the first symptom we'd seen of a larger Facebook outage.</p>
 	<p>How's that even possible?</p>
 	<div class="flex anchor relative">
 		<h3 id="update-from-facebook">Update from Facebook</h3>

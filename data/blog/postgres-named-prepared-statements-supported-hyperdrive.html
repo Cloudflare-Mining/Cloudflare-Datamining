@@ -1,10 +1,6 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yH3UeRAmvornIOYNexfJz/419bfddc9f4051de1d847411d7cfd4df/postgres-named-prepared-statements-supported-hyperdrive.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sAqx5qSgmjeoBYdvwQ5mS/2288d893764028e86bee5cb801d8aff0/image2-11.png" alt="Supporting Postgres Named Prepared Statements in Hyperdrive" class="kg-image" width="1800" height="647" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Hyperdrive (Cloudflare’s globally distributed SQL connection pooler and cache) recently added support for Postgres protocol-level named prepared statements across pooled connections. Named prepared statements allow Postgres to cache query execution plans, providing potentially substantial performance improvements. Further, many popular drivers in the ecosystem use these by default, meaning that not having them is a bit of a footgun for developers. We are very excited that Hyperdrive’s users will now have access to better performance and a more seamless development experience, without needing to make any significant changes to their applications!</p>
 	<p>While we're not the first connection pooler to add this support (<a href="https://www.pgbouncer.org">PgBouncer</a> got to it in October 2023 in <a href="https://github.com/pgbouncer/pgbouncer/releases/tag/pgbouncer_1_21_0">version 1.21</a>, for example), there were some unique challenges in how we implemented it. To that end, we wanted to do a deep dive on what it took for us to deliver this.</p>
 	<div class="flex anchor relative">

@@ -35,7 +35,14 @@
 &lt;!-- Loaded from a common location across many sites --&gt;
 &lt;script src="https://cdnjs.cloudflare.com/jquery.js"&gt;&lt;/script&gt;</code></pre>
 	<p>Beyond the performance advantage, including files this way also made it very easy for users to experiment and create. When using a web browser as a creation tool users often didn't have elaborate build systems (this was also before <a href="https://www.npmjs.com">npm</a>), so being able to include a simple script tag was a boon. It's worth noting that it's not clear a massive performance advantage was ever actually provided by this scheme. It is becoming even less of a performance advantage now that browser vendors are beginning to use separate cache's for each website you visit, but with millions of sites using CDNJS there's no doubt it is a critical part of the web.</p>
-	<h1>A CDN for all of us</h1>
+	<div class="flex anchor relative">
+		<h2 id="a-cdn-for-all-of-us">A CDN for all of us</h2>
+		<a href="https://blog.cloudflare.com/#a-cdn-for-all-of-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
 	<p>My first <a href="https://github.com/cdnjs/cdnjs/pull/1369">Pull Request</a> into the CDNJS project was in 2013. Back then if you created a JavaScript project it wasn't possible to have it included in the jQuery CDN, or the ones provided by large companies like Google and Microsoft. They were only for big, important, projects. Of course, however, even the biggest project starts small. The community needed a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> which would agree to host nearly all JavaScript projects, even the ones which weren't world-changing (yet). In 2011, that project was launched by Ryan Kirkman and Thomas Davis as <a href="https://cdnjs.com">CDNJS</a>.</p>
 	<p>The project was quickly wildly successful, far beyond their expectations. Their CDN bill quickly began to skyrocket (it would now be over a million dollars a year on AWS). Under the threat of having to shut down the service, Cloudflare was approached by the CDNJS team to see if we could help. We agreed to support their efforts and created cdnjs.cloudflare.com which serves the CDNJS project free of charge.</p>
 	<p>CDNJS has been astonishingly successful. The project is currently installed on over eighteen million websites (<a href="https://w3techs.com/technologies/overview/content_delivery">10%</a> of the Internet!), offers files totaling over <a href="https://cdnjs.com/git_stats/cdnjs/general.html">1.5 billion lines of code</a>, and serves over 173 billion requests a month. CDNJS only gets more popular as sites get larger, with <a href="https://trends.builtwith.com/cdn/CDN-JS">34%</a> of the top 10k websites using the service. Each month we serve almost three petabytes of JavaScript, CSS, and other resources which power the web via cdnjs.cloudflare.com.</p>
@@ -54,7 +61,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>CDNJS starts with a Github repo. That project contains every file served by CDNJS, at every version which it has ever offered. That’s 182 GB without the commit history, over five million files, and over 1.5 billion lines of code.</p>
+	<p>CDNJS starts with a GitHub repo. That project contains every file served by CDNJS, at every version which it has ever offered. That’s 182 GB without the commit history, over five million files, and over 1.5 billion lines of code.</p>
 	<p>Given that it stores and delivers versioned code files, in many ways it was the Internet’s first JavaScript package manager. Unlike other package managers and even other CDNs everything CDNJS serves is publicly versioned. All 67,724 commits! This means you as a user can verify that you are being served files which haven’t been tampered with.</p>
 	<p>To make changes to CDNJS a commit has to be made. For new projects being added to CDNJS, or when projects change significantly, these commits are made by humans, and get reviewed by other humans. When projects just release new versions there is a bot made by <a href="https://twitter.com/PeterDaveHello">Peter</a> and maintained by <a href="https://github.com/xtuc">Sven</a> which sucks up changes from npm and automatically creates commits.</p>
 	<p>Within Cloudflare’s infrastructure there is a set of machines which are responsible for pulling the latest version of the repo periodically. Those machines then become the origin for cdnjs.cloudflare.com, with <a href="https://www.cloudflare.com/load-balancing">Cloudflare’s Global Load Balancer</a> automatically handling failures. Cloudflare’s cache automatically stores copies of many of the projects making it possible for us to deliver them quickly from all 195 of our data centers.</p>
@@ -88,7 +95,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>One example of an area where we could use your help is in charting a path towards a CDNJS which requires less manual moderation. Nothing can replace the intelligence and creativity of a human (yet), but for a task like managing what resources go into a CDN, it is error prone and time consuming. At present a human has to review every new project to be included, and often has to take additional steps to include new versions of a project.</p>
+	<p>One example of an area where we could use your help is in charting a path towards a CDNJS which requires less manual moderation. Nothing can replace the intelligence and creativity of a human (yet), but for a task like managing what resources go into a CDN, it is error-prone and time-consuming. At present a human has to review every new project to be included, and often has to take additional steps to include new versions of a project.</p>
 	<p>As a part of our analysis of the project we examined a snapshot of the still-open PRs made against CDNJS for several months:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 

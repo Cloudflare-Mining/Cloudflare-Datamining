@@ -1,5 +1,6 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Q40OQS4X9lWrapglxsMpG/d9b0f5173f28bac09d7ea15d92146f95/solarwinds-orion-compromise-trend-data.png" alt="">
 <div class="post-content lh-copy gray1">
+	<p></p>
 	<p>On Sunday, December 13, <a href="https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html">FireEye released a report</a> on a sophisticated supply chain attack leveraging SolarWinds' Orion IT monitoring software. The malware was distributed as part of regular updates to Orion and had a valid digital signature.</p>
 	<p>One of the notable features of the malware is the way it hides its network traffic using a multi-staged approach. First, the malware determines its command and control (C2) server using a domain generation algorithm (DGA) to construct and resolve a subdomain of avsvmcloud[.]com.</p>
 	<p>These algorithmically generated strings are added as a subdomain of one of the following <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name">domain names</a> to create a new fully-qualified domain name to resolve:</p>

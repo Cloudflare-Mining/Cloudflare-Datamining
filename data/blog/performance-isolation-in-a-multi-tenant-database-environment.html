@@ -1,10 +1,6 @@
-<div class="mb2 gray5">7 min read</div>
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Q32VOTdA9HUbsGXeQwZFi/1d03d3cde4391f4c5e5e390eba8d43ea/performance-isolation-in-a-multi-tenant-database-environment.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/looJPdLd0quZjC5W1ef4W/a13075baf1094cc3bb91824f6e24d87f/1.png" alt="" class="kg-image" width="1600" height="830" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Operating at Cloudflare scale means that across the technology stack we spend a great deal of time handling different load conditions. In this blog post we talk about how we solved performance difficulties with our Postgres clusters. These clusters support a large number of tenants and highly variable load conditions leading to the need to isolate activity to prevent tenants taking too much time from others. Welcome to real-world, large database cluster management!</p>
 	<p>As an intern at Cloudflare I got to work on improving how our database clusters behave under load and open source the resulting code.</p>
 	<p>Cloudflare operates production Postgres clusters across multiple regions in data centers. Some of our earliest service offerings, such as our DNS Resolver, Firewall, and DDoS Protection, depend on our Postgres clusters' high availability for OLTP workloads. The high availability cluster manager, <a href="https://github.com/sorintlab/stolon">Stolon</a>, is employed across all clusters to independently control and replicate data across Postgres instances and elect Postgres leaders and failover under high load scenarios.</p>

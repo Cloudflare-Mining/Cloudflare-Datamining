@@ -1,10 +1,6 @@
-<div class="mb2 gray5">2 min read</div>
+<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qRNZdMMFcmDWu5lILHhhn/ca8cf10760f3773b794bd30b2ac9bc5c/cloudflare-relay-worker.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VJzT6fPBtK9XhRPREMdbp/3f521f963557ea243cd2e6587651dd3d/image5-13.png" alt="" class="kg-image" width="1800" height="1013" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Our <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">Notification Center</a> offers first class support for a variety of popular services (a list of which are available <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks">here</a>). However, even with such extensive support, you may use a tool that isn’t on that list. In that case, it is possible to leverage <a href="https://workers.cloudflare.com">Cloudflare Workers</a> in combination with a generic webhook to deliver notifications to <i>any</i> service that accepts webhooks.</p>
 	<p>Today, we are excited to announce that we are open sourcing a Cloudflare Worker that will make it as easy as possible for you to transform our generic webhook response into any format you require. Here’s how to do it.</p>
 	<p>For this example, we are going to write a Cloudflare Worker that takes a generic webhook response, transforms it into the correct format and delivers it to Rocket Chat, a popular customer service messaging platform. &nbsp;When Cloudflare sends you a generic webhook, it will have the following schema, where “text” and “data” will vary depending on the alert that has fired:</p>

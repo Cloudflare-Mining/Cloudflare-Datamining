@@ -1,10 +1,6 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4keLxyHjI12YJ5CVM3yFSj/260d71dfee4d208664bd668f1720fc31/open-sourcing-our-fork-of-pgbouncer.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32baeHUVDC0ZxTOXAlJyVV/fb472bc46e9fa4ae0bc3238e1673b03b/Magic-Nat.png" alt="" class="kg-image" width="1600" height="890" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Cloudflare operates highly available Postgres production clusters across multiple data centers, supporting the transactional workloads of our core service offerings such as our DNS Resolver, Firewall, and DDoS Protection.</p>
 	<p>Multiple PgBouncer instances sit at the front of the gateway layer per each cluster, acting as a TCP proxy that provides Postgres connection pooling. PgBouncer’s pooling enables upstream applications to connect to Postgres, without having to constantly open and close connections (expensive) at the database level, while also reducing the number of Postgres connections used. Each tenant acquires client-side connections from PgBouncer instead of Postgres directly.</p>
 	<figure class="kg-card kg-image-card ">

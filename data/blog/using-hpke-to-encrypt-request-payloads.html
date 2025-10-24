@@ -1,11 +1,7 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/using-hpke-to-encrypt-request-payloads">日本語</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/using-hpke-to-encrypt-request-payloads">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/oAzsnsY3v0xwziA1wY1BJ/7c2ec2d3276b8bd970f15eb22a5e8192/using-hpke-to-encrypt-request-payloads.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XG4TCzi8BAF4IgXcN6pPO/9310076760243a9019e133af6c7a21ad/Hybrid-WAF-keys.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>The Managed Rules team was recently given the task of allowing Enterprise users to <a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke">debug Firewall Rules</a> by viewing the part of a request that matched the rule. This makes it easier to determine what specific attacks a rule is stopping or why a request was a false positive, and what possible refinements of a rule could improve it.</p>
 	<p>The fundamental problem, though, was how to securely store this debugging data as it may contain sensitive data such as personally identifiable information from submissions, cookies, and other parts of the request. We needed to store this data in such a way that <b>only</b> the user who is allowed to access it can do so. Even Cloudflare shouldn't be able to see the data, following our philosophy that any personally identifiable information that passes through our network is a <a href="https://blog.cloudflare.com/welcome-to-privacy-and-compliance-week">toxic asset</a>.</p>
 	<p>This means we needed to encrypt the data in such a way that we can allow the user to decrypt it, but not Cloudflare. This means <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work">public key encryption</a>.</p>

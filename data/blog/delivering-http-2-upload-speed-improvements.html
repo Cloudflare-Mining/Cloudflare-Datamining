@@ -1,11 +1,7 @@
 <div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/delivering-http-2-upload-speed-improvements">한국어</a>.</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/delivering-http-2-upload-speed-improvements">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1npVYpgA27awEVgHkjfnbR/d99f45ec838533d0595f990373c35073/delivering-http-2-upload-speed-improvements.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ppm94raHeMnhgW9XULeSz/f58f637a697b21263b3835db8b96843e/Speed-header_2x-1.png" alt="" class="kg-image" width="2832" height="1472" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Cloudflare recently shipped improved <i>upload</i> speeds across our network for clients using HTTP/2. This post describes our journey from troubleshooting an issue to fixing it and delivering faster upload speeds to the global Internet.</p>
 	<p>We <a href="https://blog.cloudflare.com/test-your-home-network-performance">launched</a> <a href="https://blog.cloudflare.com/test-your-home-network-performance">speed.cloudflare.com</a> in May 2020 to give our users insight into how well their networks perform. The test provides download, upload and latency tests. Soon after release, we received reports from a small number of users that sometimes upload speeds were underreported. Our investigation determined that it seemed to happen with end users that had high upload bandwidth available (several hundreds Mbps class cable modem or fiber service). Our speed tests are performed via browser JavaScript, and most browsers use HTTP/2 by default. We found that HTTP/2 upload speeds were sometimes much slower than HTTP/1.1 (assuming all TLS) when the user had high available upload bandwidth.</p>
 	<p>Upload speed is more important than ever, especially for people using home broadband connections. As many people have been forced to work from home they’re using their broadband connections differently than before. Prior to the pandemic broadband traffic was very asymmetric (you downloaded way more than you uploaded… think listening to music, or streaming a movie), but now we’re seeing an increase in uploading as people video conference from home or create content from their home office.</p>

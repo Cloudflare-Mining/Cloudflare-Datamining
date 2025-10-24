@@ -1,10 +1,6 @@
-<div class="mb2 gray5">14 min read</div>
+<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/507iK0gADvrSqjlYRoVuvQ/a499609894e22b725d1f3ad483bd073e/optimizing-tcp-for-high-throughput-and-low-latency.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3HNI6ivdZlqIiHle3kw74q/7dcfbb260b4f50415f1909df397b52f6/BLOG-1004-header.png" alt="" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Here at Cloudflare we're constantly working on improving our service. Our engineers are looking at hundreds of parameters of our traffic, making sure that we get better all the time.</p>
 	<p>One of the core numbers we keep a close eye on is HTTP request latency, which is important for many of our products. We regard latency spikes as bugs to be fixed. One example is the 2017 story of <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">"Why does one NGINX worker take all the load?"</a>, where we optimized our TCP Accept queues to improve overall latency of TCP sockets waiting for accept().</p>
 	<p>Performance tuning is a holistic endeavor, and we monitor and continuously improve a range of other performance metrics as well, including throughput. Sometimes, tradeoffs have to be made. Such a case occurred in 2015, when a latency spike was discovered in our processing of HTTP requests. The solution at the time was to set tcp_rmem to 4 MiB, which minimizes the amount of time the kernel spends on TCP collapse processing. It was this collapse processing that was causing the latency spikes. Later in this post we discuss TCP collapse processing in more detail.</p>

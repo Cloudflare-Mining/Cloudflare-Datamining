@@ -1,10 +1,6 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/43r4ZeCFuPAznXQ3Rh38uu/8e67d951c52b982eb4f0c35c4dbf45e8/stream-firewall-events-directly-to-your-siem.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/S0UdwP7WLweIT6uBlkMlI/b602120c7d0313bf07fe575bec04d8ff/image3-14.png" alt="" class="kg-image" width="1999" height="990" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>The highest trafficked sites using Cloudflare receive billions of requests per day. But only about 5% of those requests typically trigger security rules, whether they be “managed” rules such as our <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">WAF</a> and DDoS protections, or custom rules such as those configured by customers using our powerful Firewall Rules and Rate Limiting engines.</p>
 	<p>When enforcement is taken on a request that interrupts the flow of malicious traffic, a <a href="https://blog.cloudflare.com/updates-to-firewall-analytics/#event-based-logging">Firewall Event is logged with detail</a> about the request including which rule triggered us to take action and what action we took, e.g., challenged or blocked outright.</p>
 	<p>Previously, if you wanted to ingest all of these events into your <a href="https://www.cloudflare.com/learning/security/what-is-siem">SIEM</a> or logging platform, you had to take the whole firehose of requests—good and bad—and then filter them client side. If you’re paying by the log line or scaling your own storage solution, this cost can add up quickly. And if you have a security team monitoring logs, they’re being sent a lot of extraneous data to sift through before determining what needs their attention most.</p>

@@ -1,11 +1,6 @@
-<div class="mb2 gray5">8 min read</div>
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37JoAt8zKiP6Jy9DyYNFXF/600fea565df9d1edfdcb6cc9adfb8c0d/cloudflares-architecture-eliminating-single-p.jpg" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zhIba0L3usvHFlrEANI0l/729e35ef96b669a9abe3d2f826514dd7/balance.jpg.scaled500.jpg" alt="Load Balancing without Load
-Balancers" class="kg-image" width="500" height="375" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>CloudFlare had an <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">hour-long outage</a> this last weekend. Thankfully, outages like this have been a relatively rare occurrance for our service. This is in spite of hundreds of thousands of customers, the enormous volume of legitimate traffic they generate, and the barrage of large denial of service attacks we are constantly <a href="https://blog.cloudflare.com/65gbps-ddos-no-problem">mitigating on their behalf</a>. While last weekend's outage exposed a flaw in our architecture that we're working to fully eliminate, largely our systems have been designed to be balanced and have no single points of failure. We haven't talked much about the architecture of CloudFlare's systems but thought the rest of the community might benefit from seeing some of the choices we've made, how we load balance our systems, and how this has allowed us to scale quickly and efficiently.</p>
 	<div class="flex anchor relative">
 		<h3 id="failure-isnt-an-option-its-a-fact">Failure Isn't an Option, It's a Fact</h3>

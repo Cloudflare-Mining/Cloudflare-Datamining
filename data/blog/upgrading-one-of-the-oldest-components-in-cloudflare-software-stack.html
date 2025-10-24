@@ -1,10 +1,6 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77Fe5L2HY3ik8emRUu2Ky/cd9d8f546e2d82c00dff396006852820/upgrading-one-of-the-oldest-components-in-cloudflare-software-stack.png" alt="">
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QjhVnpTUGt3W5Pf5bJm8q/05e3925a26baee187aee212b4428080e/image4-23.png" alt="Upgrading one of the oldest components in Cloudflare’s software stack" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
+	<p></p>
 	<p>Cloudflare serves a huge amount of traffic: 45 million HTTP requests per second on average (as of 2023; 61 million at peak) from more than 285 cities in over 100 countries. What inevitably happens with that kind of scale is that software will be pushed to its limits. As we grew, one of the problems we faced was related to deploying our code. Sometimes, a release would be delayed because of inadequate hardware resources on our servers. Buying more and more hardware is expensive and there are limits to e.g. how much memory we can realistically have on a server. In this article, we explain how we optimised our software and its release process so that no additional resources are needed.</p>
 	<p>In order to handle traffic, each of our servers runs a set of specialised proxies. Historically, they were based on NGINX, but increasingly they <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">include services created in Rust</a>. Out of our proxy applications, FL (Front Line) is the oldest and still has a broad set of responsibilities.</p>
 	<p>At its core, it’s one of the last uses of NGINX at Cloudflare. It contains a large amount of business logic that runs many Cloudflare products, using a variety of Lua and Rust libraries. As a result, it consumes a large amount of system resources: up to 50-60 GiB of RAM. As FL grew, it became more and more difficult to release it. The upgrade mechanism requires double the memory (which sometimes is not available) than at runtime. This was causing delays in releases. We have now improved the release procedure of FL, and in effect, removed the need for additional memory during the release process, improving its speed and performance.</p>
