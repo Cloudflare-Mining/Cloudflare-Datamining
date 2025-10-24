@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "55ebc86d-0778-5a10-8b26-5af15ca52b56")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "a0ad553d-9b48-595f-9b1c-027f3e2b46f2")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -890,10 +890,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "5b1d779121df3f4c396c920c674d98bc6f02dfa1",
-							dashVersion: "36789672",
+							commit: "4248302d3b79e958d347ba777a49e75bab08ee06",
+							dashVersion: "36796331",
 							env: "production",
-							builtAt: 0x19a16df62a4,
+							builtAt: 0x19a17cc7e34,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -34230,16 +34230,16 @@
 			"use strict";
 			n.d(t, {
 				m8: function() {
-					return eu.m8
+					return ea.m8
 				},
 				b4: function() {
-					return ea
+					return ee
 				},
 				Tg: function() {
 					return p
 				},
 				Fl: function() {
-					return K
+					return H
 				},
 				r4: function() {
 					return S
@@ -34248,7 +34248,7 @@
 					return f
 				},
 				Tp: function() {
-					return M
+					return R
 				},
 				K: function() {
 					return _
@@ -34260,64 +34260,64 @@
 					return g
 				},
 				oW: function() {
-					return V
+					return $
 				},
 				Q1: function() {
 					return h
 				},
 				nm: function() {
-					return ei
+					return et
 				},
 				_f: function() {
-					return es
+					return er
 				},
 				BF: function() {
-					return ec
+					return eo
 				},
 				Zs: function() {
 					return y.Zs
 				},
 				Fu: function() {
-					return eu.Fu
+					return ea.Fu
 				},
 				Hc: function() {
 					return w
 				},
 				Vw: function() {
-					return eu.Vw
+					return ea.Vw
 				},
 				W3: function() {
-					return A
+					return O.W3
 				},
 				hO: function() {
-					return k
+					return O.hO
 				},
 				AA: function() {
 					return y.AA
 				},
 				Sh: function() {
-					return et.S
+					return Y.S
 				},
 				tB: function() {
-					return eu.tB
+					return ea.tB
 				},
 				AY: function() {
-					return W
+					return F
 				},
 				B2: function() {
-					return eu.B2
+					return ea.B2
 				},
 				hr: function() {
-					return eu.hr
+					return ea.hr
 				},
 				P5: function() {
 					return r
 				},
 				Mj: function() {
-					return eu.Mj
+					return ea.Mj
 				},
 				pi: function() {
-					return eu.pi
+					return ea.pi
 				},
 				Qv: function() {
 					return y.Qv
@@ -34326,40 +34326,40 @@
 					return c.A
 				},
 				Gc: function() {
-					return B
+					return N
 				},
 				s7: function() {
-					return U
+					return P
 				},
 				LI: function() {
-					return G
+					return L
 				},
 				BQ: function() {
-					return z
+					return D
 				},
 				WR: function() {
-					return F
+					return B
 				},
 				XF: function() {
-					return q
+					return G
 				},
 				AN: function() {
-					return H
+					return U
 				},
 				Sl: function() {
-					return Y
+					return q
 				},
 				vc: function() {
-					return et.v
+					return Y.v
 				},
 				tN: function() {
-					return eu.tN
+					return ea.tN
 				},
 				rI: function() {
-					return eu.rI
+					return ea.rI
 				},
 				hV: function() {
-					return eo
+					return X
 				},
 				L_: function() {
 					return y.L_
@@ -34374,28 +34374,28 @@
 					return y.MR
 				},
 				E8: function() {
-					return Z
+					return z
 				},
 				Oe: function() {
-					return Q
+					return Z
 				},
 				jo: function() {
-					return X
+					return W
 				},
 				u_: function() {
-					return ee
+					return K
 				},
 				pH: function() {
-					return eu.pH
+					return ea.pH
 				},
 				Uy: function() {
 					return E
 				},
 				Pd: function() {
-					return er
+					return J
 				},
 				NB: function() {
-					return en
+					return Q
 				},
 				S7: function() {
 					return y.S7
@@ -34407,7 +34407,7 @@
 					return y.j3
 				},
 				IO: function() {
-					return $
+					return M
 				},
 				Qr: function() {
 					return d
@@ -34416,40 +34416,40 @@
 					return C
 				},
 				jN: function() {
-					return eu.jN
+					return ea.jN
 				},
 				LX: function() {
 					return u
 				},
 				PE: function() {
-					return eu.PE
+					return ea.PE
 				},
 				g7: function() {
-					return eu.g7
+					return ea.g7
 				},
 				WX: function() {
-					return eu.WX
+					return ea.WX
 				},
 				sg: function() {
 					return T.s
 				},
 				cE: function() {
-					return O
+					return O.cE
 				},
 				vV: function() {
-					return P
+					return k
 				},
 				JK: function() {
 					return o
 				},
 				c2: function() {
-					return eu.c2
+					return ea.c2
 				},
 				Pp: function() {
-					return I
+					return O.Pp
 				},
 				bc: function() {
-					return el
+					return en
 				}
 			});
 			let r = e => !!(null == e ? void 0 : e.id),
@@ -34767,124 +34767,100 @@
 					let t = (0, y.AA)(e);
 					return !!t && x.includes(t)
 				};
-			var T = n("../react/pages/home/domain-registration/utils/common/tlds/uk.ts");
-			let O = e => !!e && "us" === (0, y.AA)(e),
-				I = e => ["us"].includes(e),
-				k = e => "us" === e ? R() : [],
-				A = e => "us" === e ? j : {},
-				j = {
-					[s.A9.P3]: [s.Fi.C11]
-				},
-				R = () => [{
-					name: s.IP.application_purpose,
-					label: s.rb.application_purpose,
-					options: Object.entries(s.A9).map(([e, t]) => ({
-						value: e,
-						label: t
-					})),
-					display: {
-						columns: 3,
-						rowsOnDesktop: 3
-					}
-				}, {
-					name: s.IP.nexus_category,
-					label: s.rb.nexus_category,
-					options: Object.entries(s.Fi).map(([e, t]) => ({
-						value: e,
-						label: t
-					}))
-				}];
-			var N = n("../../../../node_modules/@cloudflare/util-regex/es/index.js");
-			let P = e => !!e.match(N.default.email);
-			var L = n("../../../common/util/types/src/api/domain.ts"),
-				D = n("../react/pages/home/domain-registration/registrar.translations.ts");
+			n("../react/pages/home/domain-registration/utils/common/tlds/mx.ts");
+			var T = n("../react/pages/home/domain-registration/utils/common/tlds/uk.ts"),
+				O = n("../react/pages/home/domain-registration/utils/common/tlds/us.ts"),
+				I = n("../../../../node_modules/@cloudflare/util-regex/es/index.js");
+			let k = e => !!e.match(I.default.email);
+			var A = n("../../../common/util/types/src/api/domain.ts"),
+				j = n("../react/pages/home/domain-registration/registrar.translations.ts");
+
+			function R(e) {
+				return e === A.W7.PENDING_UPDATE
+			}
+
+			function N(e) {
+				return !!e && Object.values(A.wR).filter(e => e !== A.wR.OFFBOARDED).includes(e)
+			}
+
+			function P(e) {
+				return !!e && [A.wR.LOCKED, A.wR.ONBOARDED, A.wR.ONBOARDING_INITIATED, A.wR.PENDING_REGISTRY_LOCK, A.wR.PENDING_REGISTRY_UNLOCK, A.wR.PENDING_UNLOCK_APPROVAL].includes(e)
+			}
+
+			function L(e) {
+				return !!e && A.wR.PENDING_REGISTRY_LOCK === e
+			}
+
+			function D(e) {
+				return !!e && [A.wR.PENDING_REGISTRY_UNLOCK, A.wR.PENDING_UNLOCK_APPROVAL].includes(e)
+			}
 
 			function M(e) {
-				return e === L.W7.PENDING_UPDATE
+				return !1
 			}
 
 			function B(e) {
-				return !!e && Object.values(L.wR).filter(e => e !== L.wR.OFFBOARDED).includes(e)
+				return !1
 			}
 
 			function U(e) {
-				return !!e && [L.wR.LOCKED, L.wR.ONBOARDED, L.wR.ONBOARDING_INITIATED, L.wR.PENDING_REGISTRY_LOCK, L.wR.PENDING_REGISTRY_UNLOCK, L.wR.PENDING_UNLOCK_APPROVAL].includes(e)
+				return !1
 			}
 
 			function G(e) {
-				return !!e && L.wR.PENDING_REGISTRY_LOCK === e
+				return !1
 			}
 
 			function z(e) {
-				return !!e && [L.wR.PENDING_REGISTRY_UNLOCK, L.wR.PENDING_UNLOCK_APPROVAL].includes(e)
+				return !1
 			}
 
 			function $(e) {
-				return !1
+				return Object.keys(A.wR).find(t => A.wR[t].toLowerCase() === e.toLowerCase())
 			}
 
 			function F(e) {
-				return !1
+				var t;
+				let n = null == (t = $(e)) ? void 0 : t.toLowerCase();
+				return n ? j.keys.protection_status[n] : j.keys.protection_status.unknown
 			}
 
 			function H(e) {
-				return !1
+				return ["com", "net"].includes((0, y.AA)(e)) ? A.wR.PENDING_REGISTRY_LOCK : A.wR.LOCKED
 			}
 
 			function q(e) {
-				return !1
-			}
-
-			function Z(e) {
-				return !1
-			}
-
-			function V(e) {
-				return Object.keys(L.wR).find(t => L.wR[t].toLowerCase() === e.toLowerCase())
-			}
-
-			function W(e) {
-				var t;
-				let n = null == (t = V(e)) ? void 0 : t.toLowerCase();
-				return n ? D.keys.protection_status[n] : D.keys.protection_status.unknown
-			}
-
-			function K(e) {
-				return ["com", "net"].includes((0, y.AA)(e)) ? L.wR.PENDING_REGISTRY_LOCK : L.wR.LOCKED
-			}
-
-			function Y(e) {
 				var t;
 				return !(null == (t = e.domainMove) ? void 0 : t.ineligibilityReasons.length)
 			}
 
-			function Q(e) {
+			function Z(e) {
 				var t, n;
 				return !!(null == (t = e.domainMove) || null == (n = t.ineligibilityReasons) ? void 0 : n.includes(s.Ah.DOMAIN_EXISTING_PENDING_REQUEST))
 			}
 
-			function J(e) {
+			function V(e) {
 				var t;
 				return null == (t = e.actionableMetadata) ? void 0 : t.find(e => e.type === s.wg.DOMAIN_MOVE)
 			}
 
-			function X(e) {
-				let t = J(e);
+			function W(e) {
+				let t = V(e);
 				return (null == t ? void 0 : t.status) === "pending" && t.accountContext === s._5.GAINING
 			}
 
-			function ee(e) {
-				let t = J(e);
+			function K(e) {
+				let t = V(e);
 				return (null == t ? void 0 : t.status) === "pending" && t.accountContext === s._5.LOSING
 			}
-			var et = n("../react/pages/home/domain-registration/utils/manageDomain/manageDomain.ts");
-			let en = e => !!e && ["restorationPending", "restorationAuthFailure", "restorationFailure", "restorationSuccess", "restorationRenewPending", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess", "restorationPendingZoneCreate", "restorationPendingZoneActivate", "restorationFailedZoneCreate", "restorationFailedZoneActivate", "restorationZoneCreateSuccess", "restorationZoneActivateSuccess", "restorationSuccessWithoutReport"].includes(e),
-				er = e => !!e && ["restorationAuthFailure", "restorationFailure", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess"].includes(e),
-				eo = e => {
+			var Y = n("../react/pages/home/domain-registration/utils/manageDomain/manageDomain.ts");
+			let Q = e => !!e && ["restorationPending", "restorationAuthFailure", "restorationFailure", "restorationSuccess", "restorationRenewPending", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess", "restorationPendingZoneCreate", "restorationPendingZoneActivate", "restorationFailedZoneCreate", "restorationFailedZoneActivate", "restorationZoneCreateSuccess", "restorationZoneActivateSuccess", "restorationSuccessWithoutReport"].includes(e),
+				J = e => !!e && ["restorationAuthFailure", "restorationFailure", "restorationRenewFailure", "restorationRenewSettleFailure", "restorationRenewSuccess"].includes(e),
+				X = e => {
 					var t;
 					return !!(null == e ? void 0 : e.lastKnownStatus) && (null == (t = e.lastKnownStatus) ? void 0 : t.includes("deletionIrredeemable"))
 				},
-				ea = e => {
+				ee = e => {
 					if (l.no) return [!0, ""];
 					if (!(0, y.MR)(e)) return [!1, s.ok.NotOnCF];
 					if (e.isCorLocked) return [!1, e.corLockedUntil ? s.ok.CorLockedUntil : s.ok.CorLock];
@@ -34900,78 +34876,80 @@
 					}
 					return [!0, ""]
 				},
-				ei = (e, t) => {
+				et = (e, t) => {
 					if (t) return 1;
 					let n = (0, y.AA)(e);
 					return "co" === n ? 5 : "org" === n ? 1 : 10
 				},
-				el = e => l.QZ.includes(e),
-				es = ({
+				en = e => l.QZ.includes(e),
+				er = ({
 					accountName: e
 				}) => {
 					var t;
 					return (null == (t = e.toLowerCase().match(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+/)) ? void 0 : t[0]) || ""
 				},
-				ec = e => i()().add(e, "year").format(l.Am);
-			var eu = n("../react/pages/home/domain-registration/utils/transferDomain/transferDomain.ts")
+				eo = e => i()().add(e, "year").format(l.Am);
+			var ea = n("../react/pages/home/domain-registration/utils/transferDomain/transferDomain.ts")
 		},
 		"../react/pages/home/domain-registration/config.ts": function(e, t, n) {
 			"use strict";
 			n.d(t, {
 				Am: function() {
-					return g
-				},
-				HG: function() {
-					return en
-				},
-				Hv: function() {
-					return er
-				},
-				JM: function() {
-					return a
-				},
-				Ni: function() {
 					return _
 				},
-				Pf: function() {
-					return p
+				HG: function() {
+					return eo
 				},
-				Py: function() {
-					return s
+				Hv: function() {
+					return ea
 				},
-				QZ: function() {
-					return f
-				},
-				WK: function() {
-					return u
-				},
-				g5: function() {
-					return d
-				},
-				gM: function() {
+				JM: function() {
 					return l
 				},
-				it: function() {
-					return m
+				Ni: function() {
+					return h
 				},
-				jk: function() {
-					return et
+				Pf: function() {
+					return f
 				},
-				kO: function() {
+				Py: function() {
+					return u
+				},
+				QZ: function() {
 					return b
 				},
-				no: function() {
+				WK: function() {
+					return p
+				},
+				g5: function() {
+					return m
+				},
+				gM: function() {
 					return c
 				},
+				it: function() {
+					return g
+				},
+				jk: function() {
+					return er
+				},
+				kO: function() {
+					return v
+				},
+				no: function() {
+					return d
+				},
 				ui: function() {
-					return i
+					return s
 				}
 			});
 			var r = n("../flags.ts"),
-				o = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
-			let a = "Unknown",
-				i = "unknown",
-				l = {
+				o = n("../../../../node_modules/@cloudflare/util-routes/es/index.js"),
+				a = n("../react/pages/home/domain-registration/utils/common/tlds/mx.ts"),
+				i = n("../react/pages/home/domain-registration/utils/common/tlds/us.ts");
+			let l = "Unknown",
+				s = "unknown",
+				c = {
 					godaddycomllc: "godaddycomllc",
 					namecheap: "namecheap",
 					enom: "enom",
@@ -34979,95 +34957,95 @@
 					"1&1internetse": "1&1internetse",
 					uk: "uk"
 				},
-				s = Object.keys(l);
+				u = Object.keys(c);
 			(0, r.J8)("registrar_mock_transfer_out");
-			let c = (0, r.J8)("registrar_show_unlock_ui") || !1,
-				u = 250,
-				d = "cf_registrar.enabled",
-				p = ["us"],
-				m = e => ["us"].includes(e),
-				f = ["ngo", "ong", "travel", "us"],
-				g = "MMM D, YYYY",
-				b = ["BR", "CA", "MX", "US"],
-				_ = ["ca"],
-				v = (0, o.BC)`/${"accountId"}`,
-				h = (0, o.BC)`${v}/add-site`,
-				y = (0, o.BC)`${v}/registrar`,
-				w = (0, o.BC)`${y}/domains`,
-				E = (0, o.BC)`${y}/action-center`,
-				S = (0, o.BC)`${y}/domain/${"zoneName"}`,
-				x = (0, o.BC)`${S}/configuration`,
-				C = (0, o.BC)`${S}/contacts`,
-				T = (0, o.BC)`${y}/pricing`,
-				O = (0, o.BC)`${y}/protection`,
-				I = (0, o.BC)`${y}/register`,
-				k = (0, o.BC)`${I}/checkout`,
-				A = (0, o.BC)`${I}/checkout/${"token"}`,
-				j = (0, o.BC)`${I}/success`,
-				R = (0, o.BC)`${y}/tlds`,
-				N = (0, o.BC)`${y}/transfer`,
-				P = (0, o.BC)`${y}/transfer/${"zoneName"}`,
-				L = (0, o.BC)`/registrar/accounts/verify_email`,
-				D = (0, o.BC)`/registrar/domains/verify_email`,
-				M = (0, o.BC)`/sign-up/registrar`,
-				B = (0, o.BC)`${y}/verify-email`,
-				U = (0, o.BC)`${v}/${"zoneName"}`,
-				G = (0, o.BC)`${v}/domains`,
-				z = (0, o.BC)`${G}/action-center`,
-				$ = (0, o.BC)`${G}/${"zoneName"}`,
-				F = (0, o.BC)`${$}/configuration`,
-				H = (0, o.BC)`${$}/contacts`,
-				q = (0, o.BC)`${G}/pricing`,
-				Z = (0, o.BC)`${G}/protection`,
-				V = (0, o.BC)`${G}/register`,
-				W = (0, o.BC)`${V}/checkout`,
-				K = (0, o.BC)`${V}/checkout/${"token"}`,
-				Y = (0, o.BC)`${V}/success`,
-				Q = (0, o.BC)`${G}/tlds`,
-				J = (0, o.BC)`${G}/transfer`,
-				X = (0, o.BC)`${G}/transfer/${"zoneName"}`,
-				ee = (0, o.BC)`${G}/verify-email`,
-				et = {
-					addSite: h,
-					domains: w,
-					domainsActionCenter: E,
-					domainsDomain: S,
-					domainsDomainConfiguration: x,
-					domainsDomainContacts: C,
-					domainsPricing: T,
-					domainsProtection: O,
-					domainsRegister: I,
-					domainsRegisterCheckout: k,
-					domainsRegisterCheckoutToken: A,
-					domainsRegisterSuccess: j,
-					domainsTlds: R,
-					domainsTransfer: N,
-					domainsTransferZone: P,
-					registrar: y,
-					registrarAccountsVerifyEmail: L,
-					registrarDomainsVerifyEmail: D,
-					signup: M,
-					verifyEmail: B,
-					zone: U
-				},
-				en = {
-					LEGACY_domains: G,
-					LEGACY_domainsActionCenter: z,
-					LEGACY_domainsDomain: $,
-					LEGACY_domainsDomainConfiguration: F,
-					LEGACY_domainsDomainContacts: H,
-					LEGACY_domainsPricing: q,
-					LEGACY_domainsProtection: Z,
-					LEGACY_domainsRegister: V,
-					LEGACY_domainsRegisterCheckout: W,
-					LEGACY_domainsRegisterCheckoutToken: K,
-					LEGACY_domainsRegisterSuccess: Y,
-					LEGACY_domainsTlds: Q,
-					LEGACY_domainsTransfer: J,
-					LEGACY_domainsTransferZone: X,
-					LEGACY_verifyEmail: ee
-				},
+			let d = (0, r.J8)("registrar_show_unlock_ui") || !1,
+				p = 250,
+				m = "cf_registrar.enabled",
+				f = [...i.H9, ...a.t],
+				g = e => f.includes(e),
+				b = ["ngo", "ong", "travel", "us", "mx", "com.mx", "org.mx"],
+				_ = "MMM D, YYYY",
+				v = ["BR", "CA", "MX", "US"],
+				h = ["ca"],
+				y = (0, o.BC)`/${"accountId"}`,
+				w = (0, o.BC)`${y}/add-site`,
+				E = (0, o.BC)`${y}/registrar`,
+				S = (0, o.BC)`${E}/domains`,
+				x = (0, o.BC)`${E}/action-center`,
+				C = (0, o.BC)`${E}/domain/${"zoneName"}`,
+				T = (0, o.BC)`${C}/configuration`,
+				O = (0, o.BC)`${C}/contacts`,
+				I = (0, o.BC)`${E}/pricing`,
+				k = (0, o.BC)`${E}/protection`,
+				A = (0, o.BC)`${E}/register`,
+				j = (0, o.BC)`${A}/checkout`,
+				R = (0, o.BC)`${A}/checkout/${"token"}`,
+				N = (0, o.BC)`${A}/success`,
+				P = (0, o.BC)`${E}/tlds`,
+				L = (0, o.BC)`${E}/transfer`,
+				D = (0, o.BC)`${E}/transfer/${"zoneName"}`,
+				M = (0, o.BC)`/registrar/accounts/verify_email`,
+				B = (0, o.BC)`/registrar/domains/verify_email`,
+				U = (0, o.BC)`/sign-up/registrar`,
+				G = (0, o.BC)`${E}/verify-email`,
+				z = (0, o.BC)`${y}/${"zoneName"}`,
+				$ = (0, o.BC)`${y}/domains`,
+				F = (0, o.BC)`${$}/action-center`,
+				H = (0, o.BC)`${$}/${"zoneName"}`,
+				q = (0, o.BC)`${H}/configuration`,
+				Z = (0, o.BC)`${H}/contacts`,
+				V = (0, o.BC)`${$}/pricing`,
+				W = (0, o.BC)`${$}/protection`,
+				K = (0, o.BC)`${$}/register`,
+				Y = (0, o.BC)`${K}/checkout`,
+				Q = (0, o.BC)`${K}/checkout/${"token"}`,
+				J = (0, o.BC)`${K}/success`,
+				X = (0, o.BC)`${$}/tlds`,
+				ee = (0, o.BC)`${$}/transfer`,
+				et = (0, o.BC)`${$}/transfer/${"zoneName"}`,
+				en = (0, o.BC)`${$}/verify-email`,
 				er = {
+					addSite: w,
+					domains: S,
+					domainsActionCenter: x,
+					domainsDomain: C,
+					domainsDomainConfiguration: T,
+					domainsDomainContacts: O,
+					domainsPricing: I,
+					domainsProtection: k,
+					domainsRegister: A,
+					domainsRegisterCheckout: j,
+					domainsRegisterCheckoutToken: R,
+					domainsRegisterSuccess: N,
+					domainsTlds: P,
+					domainsTransfer: L,
+					domainsTransferZone: D,
+					registrar: E,
+					registrarAccountsVerifyEmail: M,
+					registrarDomainsVerifyEmail: B,
+					signup: U,
+					verifyEmail: G,
+					zone: z
+				},
+				eo = {
+					LEGACY_domains: $,
+					LEGACY_domainsActionCenter: F,
+					LEGACY_domainsDomain: H,
+					LEGACY_domainsDomainConfiguration: q,
+					LEGACY_domainsDomainContacts: Z,
+					LEGACY_domainsPricing: V,
+					LEGACY_domainsProtection: W,
+					LEGACY_domainsRegister: K,
+					LEGACY_domainsRegisterCheckout: Y,
+					LEGACY_domainsRegisterCheckoutToken: Q,
+					LEGACY_domainsRegisterSuccess: J,
+					LEGACY_domainsTlds: X,
+					LEGACY_domainsTransfer: ee,
+					LEGACY_domainsTransferZone: et,
+					LEGACY_verifyEmail: en
+				},
+				ea = {
 					domains: (0, o.BC)`/accounts/${"accountId"}/registrar/domains/${"domainName"}`
 				}
 		},
@@ -35346,6 +35324,15 @@
 					return !!e && (null == e ? void 0 : e.length) !== 0 && (!e || !t.includes(e))
 				}
 		},
+		"../react/pages/home/domain-registration/utils/common/tlds/mx.ts": function(e, t, n) {
+			"use strict";
+			n.d(t, {
+				t: function() {
+					return r
+				}
+			}), n("../react/pages/home/domain-registration/utils/common/domain.ts");
+			let r = ["mx", "com.mx", "org.mx"]
+		},
 		"../react/pages/home/domain-registration/utils/common/tlds/uk.ts": function(e, t, n) {
 			"use strict";
 			n.d(t, {
@@ -35360,6 +35347,59 @@
 					let t = (0, r.AA)(e);
 					return !!t && o.includes(t)
 				}
+		},
+		"../react/pages/home/domain-registration/utils/common/tlds/us.ts": function(e, t, n) {
+			"use strict";
+			n.d(t, {
+				H9: function() {
+					return a
+				},
+				Pp: function() {
+					return l
+				},
+				W3: function() {
+					return c
+				},
+				cE: function() {
+					return i
+				},
+				hO: function() {
+					return s
+				}
+			});
+			var r = n("../react/pages/home/domain-registration/types.ts"),
+				o = n("../react/pages/home/domain-registration/utils/common/domain.ts");
+			let a = ["us"],
+				i = e => {
+					if (!e) return !1;
+					let t = (0, o.AA)(e);
+					return a.includes(t)
+				},
+				l = e => a.includes(e),
+				s = e => "us" === e ? d() : [],
+				c = e => "us" === e ? u : {},
+				u = {
+					[r.A9.P3]: [r.Fi.C11]
+				},
+				d = () => [{
+					name: r.IP.application_purpose,
+					label: r.rb.application_purpose,
+					options: Object.entries(r.A9).map(([e, t]) => ({
+						value: e,
+						label: t
+					})),
+					display: {
+						columns: 3,
+						rowsOnDesktop: 3
+					}
+				}, {
+					name: r.IP.nexus_category,
+					label: r.rb.nexus_category,
+					options: Object.entries(r.Fi).map(([e, t]) => ({
+						value: e,
+						label: t
+					}))
+				}]
 		},
 		"../react/pages/home/domain-registration/utils/manageDomain/manageDomain.ts": function(e, t, n) {
 			"use strict";
@@ -72290,4 +72330,4 @@ SOFTWARE.`,
 		}
 	}
 ]);
-//# debugId=55ebc86d-0778-5a10-8b26-5af15ca52b56
+//# debugId=a0ad553d-9b48-595f-9b1c-027f3e2b46f2
