@@ -5,30 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is looking for a bright, proactive and detail-oriented <strong>Senior Administrative Assistant</strong> to support two leaders on our GTM team. We are looking for a dynamic and dedicated candidate who is comfortable with multi-tasking and prioritization in a fast-speed environment with close attention to detail, accuracy, and timeliness.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Austin, TX (Hybrid)<br><br><strong>About the Team</strong></p>
+<p>Cloudflare’s Cloud Email Security (CES) service builds advanced technology focused on the source of 95% of data breaches on the internet: phishing.</p>
+<p>Hunting for bad actors on the internet is an intellectual and technical challenge. We hunt at scale with web crawling, machine learning, computer vision, petabytes of data, and a global network of sensors.</p>
+<p>All of this technology delivers a comprehensive email, network and web protection layer around each of our customers. Customers know that with Cloudflare CES solution deployed their users won’t enable a hacker to gain a foothold that results in a breach of their systems.</p>
+<p>Come and join an engineering team that builds extensible, reliable, scalable web-based, and data processing applications that our customers count on every second of the day.</p>
+<p><strong>RESPONSIBILITIES</strong></p>
 <ul>
-	<li>Manage and organize calendars</li>
-	<li>Coordinate international / domestic travel (including visa and passport needs)</li>
-	<li>Prepare and manage expense reports</li>
-	<li>Coordinate both internal and external meeting needs</li>
-	<li>Assist with special projects as needed</li>
-	<li>Take meeting notes and prepare reports for leadership as needed</li>
-	<li>Coordinate / assist with event planning as needed</li>
+	<li>Create the product’s subsystems and key components by applying up-to-date expertise in Software Engineering to define, design and create world-class implementations.</li>
+	<li>Collaborate with other senior engineers to improve the overall system at the architectural, design, and implementation levels.</li>
+	<li>Design and implement new features for our cloud-based email gateway solution that empowers Fortune 1000 customers.</li>
+	<li>Design and implement forward-looking portions of the system to execute a long-term product vision.</li>
+	<li>Work with large scale data systems in both online/streaming and offline/batch fashions</li>
+	<li>Design and implement revisions to areas of the system to enhance key features such as performance, reliability, scalability, or add new functionality</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p>&nbsp;</p>
+<p><strong>MIN REQUIREMENTS:</strong></p>
 <ul>
-	<li><strong>3-5+</strong> of experience as an Administrative Assistant</li>
-	<li>Strong written and verbal communication skills</li>
-	<li>Detail oriented</li>
-	<li>Strong sense of urgency and proactiveness</li>
-	<li>Strong organizational skills</li>
-	<li>Ability to manage their own time with limited or no supervision</li>
-	<li>A "no task is too small" attitude</li>
-	<li>Ability to hit the ground running and take charge of the position</li>
-	<li>Start-up background is a plus</li>
+	<li>~5+ years of experience designing and implementing software systems</li>
+	<li>Advanced ability to design and implement software systems in Java.</li>
+	<li>Someone who enjoys security work focused on email detections that identify and protect our users.</li>
+	<li>Distributed systems experience in a Unix environment&nbsp;</li>
+</ul>
+<p><strong>PREFERRED:</strong></p>
+<ul>
+	<li>BS/MS in Computer Science or similar engineering discipline</li>
+	<li>Strong software engineering skills and substantial expertise in additional programming and scripting languages: Rust, Python, and shell scripting</li>
+	<li>Experience with SMTP</li>
+	<li>Significant experience in networking, security, cryptography, malware analysis, data analysis, high-reliability clusters, statistics</li>
+	<li>Detailed understanding of object-oriented design practices.</li>
+	<li>Expert who specializes in big data analysis and design and construction of large-scale multi-tier systems using open-source technologies</li>
+	<li>Recent development or architectural leadership experience with large-scale data systems, streaming analytics.</li>
+	<li>Experience with continuous integration and delivery environments and agile methodologies.</li>
+	<li>Experience developing, deploying, maintaining applications using public cloud providers (AWS/GCP/Azure)</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
