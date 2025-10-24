@@ -1,0 +1,164 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/h1prkvCEIJWvVZ9BTsjyh/c157764ce0328e33fb02051f0ceb8285/BLOG-3050_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>The era of agentic commerce is coming, and it brings with it significant new challenges for security. That’s why Cloudflare is partnering with Visa and Mastercard to help secure automated commerce as AI agents search, compare, and purchase on behalf of consumers.</p>
+	<p>Through our collaboration, Visa developed the <a href="https://github.com/visa/trusted-agent-protocol"><u>Trusted Agent Protocol</u></a> and Mastercard developed <a href="https://www.mastercard.com/us/en/business/artificial-intelligence/mastercard-agent-pay.html"><u>Agent Pay</u></a> to help merchants distinguish legitimate, approved agents from malicious bots. Both Trusted Agent Protocol and Agent Pay leverage <a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a> as the agent authentication layer to allow networks like Cloudflare to verify traffic from AI shopping agents that register with a payment network.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-challenges-with-agentic-commerce">The challenges with agentic commerce</h2>
+		<a href="https://blog.cloudflare.com/#the-challenges-with-agentic-commerce" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Agentic commerce is commerce driven by AI agents. As AI agents execute more transactions, merchants need to protect themselves and maintain trust with their customers. Merchants are beginning to see the promise of agentic commerce but face significant challenges:&nbsp;</p>
+	<ul>
+		<li>
+			<p>How can they distinguish a helpful, approved AI shopping agent from a malicious bot or web crawler?&nbsp;</p>
+		</li>
+		<li>
+			<p>Is the agent representing a known, repeat customer or someone entirely new?&nbsp;</p>
+		</li>
+		<li>
+			<p>Are there particular instructions the consumer gave to their agent that the merchant should respect?</p>
+		</li>
+	</ul>
+	<p>We are working with Visa and Mastercard, two of the most trusted consumer brands in payments, to address each of these challenges.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="web-bot-auth-is-the-foundation-to-securing-agentic-commerce">Web Bot Auth is the foundation to securing agentic commerce</h2>
+		<a href="https://blog.cloudflare.com/#web-bot-auth-is-the-foundation-to-securing-agentic-commerce" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In May, we shared a new proposal called <a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a> to cryptographically authenticate agent traffic. Historically, agent traffic has been classified using the user agent and IP address. However, these fields can be spoofed, leading to inaccurate classifications and bot mitigations can be applied inaccurately. Web Bot Auth allows an agent to provide a stable identifier by using <a href="https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture"><u>HTTP Message Signatures</u></a> with public key cryptography.</p>
+	<p>As we spent time collaborating with the teams at Visa and Mastercard, we found that we could leverage Web Bot Auth as the foundation to ensure that each commerce agent request was verifiable, time-based, and non-replayable.</p>
+	<p>Visa’s Trusted Agent Protocol and Mastercard’s Agent Pay present three key solutions for merchants to manage agentic commerce transactions. First, merchants can identify a registered agent and distinguish whether a particular interaction is intended to browse or to pay. Last, merchants can indicate to agents how a payment is expected, whether that is through a network token, browser-use guest checkout, or a micropayment.</p>
+	<p>This allows merchants that integrate with these protocols to instantly recognize a trusted agent during two key interactions: the initial browsing phase to determine product details and final costs, and the final payment interaction to complete a purchase. Ultimately, this provides merchants with the tools to verify these signatures, identify trusted interactions, and securely manage how these agents can interact with their site.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-leveraging-http-message-signatures">How it works: leveraging HTTP message signatures&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-leveraging-http-message-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To make this work, an ecosystem of participants need to be on the same page. It all starts with <i>agent</i> <i>developers</i>, who build the agents to shop on behalf of consumers. These agents then interact with <i>merchants</i>, who need a reliable way to assess the request is made on behalf of consumers. Merchants rely on networks like Cloudflare to verify the agent's cryptographic signatures and ensure the interaction is legitimate. Finally, there are payment networks like Visa and Mastercard, who can link cardholder identity to agentic commerce transactions, helping ensure that transactions are verifiable and accountable.</p>
+	<p>When developing their protocols, Visa and Mastercard needed a secure way to authenticate each agent developer and securely transmit information from the agent to the merchant’s website. That’s where we came in and worked with their teams to build upon Web Bot Auth. <a href="https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture"><u>Web Bot Auth</u></a> proposals specify how developers of bots and agents can attach their cryptographic signatures in HTTP requests by using <a href="https://www.rfc-editor.org/rfc/rfc9421"><u>HTTP Message Signatures</u></a>. </p>
+	<p>Both Visa and Mastercard protocols require agents to register and have their public keys (referenced as the <code>keyid</code> in the Signature-Input header) in a well-known directory, allowing merchants and networks to fetch the keys to validate these HTTP message signatures. To start, Visa and Mastercard will be hosting their own directories for Visa-registered and Mastercard-registered agents, respectively</p>
+	<p>The newly created agents then communicate their registration, identity, and payment details with the merchant using these HTTP Message Signatures. Both protocols build on Web Bot Auth by introducing a new tag that agents must supply in the <code>Signature-Input </code>header, which indicates whether the agent is browsing or purchasing. Merchants can use the tag to determine whether to interact with the agent. Agents must also include the nonce field, a unique sequence included in the signature, to provide protection against replay attacks.</p>
+	<p>An agent visiting a merchant’s website to browse a catalog would include an HTTP Message Signature in their request to verify their agent is authorized to browse the merchant’s storefront on behalf of a specific Visa cardholder:</p>
+	<pre class="language-Rust"><code class="language-Rust">GET /path/to/resource HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 Chrome/113.0.0 MyShoppingAgent/1.1
+Signature-Input: 
+  sig2=("@authority" "@path"); 
+  created=1735689600; 
+  expires=1735693200; 
+  keyid="poqkLGiymh_W0uP6PZFw-dvez3QJT5SolqXBCW38r0U"; 
+  alg="Ed25519";   nonce="e8N7S2MFd/qrd6T2R3tdfAuuANngKI7LFtKYI/vowzk4IAZyadIX6wW25MwG7DCT9RUKAJ0qVkU0mEeLEIW1qg=="; 
+  tag="web-bot-auth"
+Signature: sig2=:jdq0SqOwHdyHr9+r5jw3iYZH6aNGKijYp/EstF4RQTQdi5N5YYKrD+mCT1HA1nZDsi6nJKuHxUi/5Syp3rLWBA==:</code></pre>
+	<p>Trusted Agent Protocol and Agent Pay are designed for merchants to benefit from its validation mechanisms without changing their infrastructure. Instead, merchants can set the rules for agent interactions on their site and rely upon Cloudflare as the validator. For these requests, Cloudflare will run <a href="https://blog.cloudflare.com/verified-bots-with-cryptography/#message-signature-verification-for-origins"><u>the following checks</u></a>:</p>
+	<ol>
+		<li>
+			<p>Confirm the presence of the <code>Signature-Input</code> and <code>Signature</code> headers.</p>
+		</li>
+		<li>
+			<p>Pull the <code>keyid</code> from the Signature-Input. If Cloudflare has not previously retrieved and cached the key, fetch it from the public key directory.</p>
+		</li>
+		<li>
+			<p>Confirm the current time falls between the <code>created</code> and <code>expires</code> timestamps.</p>
+		</li>
+		<li>
+			<p>Check <code>nonce</code> uniqueness in the cache. By checking if a nonce has been recently used, Cloudflare can reject reused or expired signatures, ensuring the request is not a malicious copy of a prior, legitimate interaction.</p>
+		</li>
+		<li>
+			<p>Check the validity of the <code>tag</code>, as defined by the protocol. If the agent is browsing, the tag should be <code>agent-browser-auth</code>. If the agent is paying, the tag should be <code>agent-payer-auth</code>.&nbsp;</p>
+		</li>
+		<li>
+			<p>Reconstruct the canonical <a href="https://www.rfc-editor.org/rfc/rfc9421#name-creating-the-signature-base"><u>signature base</u></a> using the <a href="https://www.rfc-editor.org/rfc/rfc9421#covered-components"><u>components</u></a> from the <code>Signature-Input</code> header.&nbsp;</p>
+		</li>
+		<li>
+			<p>Perform the cryptographic <a href="https://www.rfc-editor.org/rfc/rfc9421#name-eddsa-using-curve-edwards25"><u>ed25519 signature verification</u></a> using the key supplied in <code>keyid</code>.</p>
+		</li>
+	</ol>
+	<p>Here is an <a href="https://github.com/visa/trusted-agent-protocol"><u>example from Visa</u></a> on the flow for agent validation:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Preu2aFUSuW5o3UWE6281/caf5354a009fb89c8b01cfef10fc3e87/image3.png" alt="" class="kg-image" width="1648" height="1246" loading="lazy">
+	</figure>
+	<p>Mastercard’s Agent Pay validation flow is outlined below:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vzpRtW4dRzsNGdc4Vnxf1/c780ef45a0b1fc263eb13b62b2af5457/image2.png" alt="" class="kg-image" width="1246" height="1404" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-cloudflares-agent-sdk-managed-rules">What’s next: Cloudflare’s Agent SDK &amp; Managed Rules</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-cloudflares-agent-sdk-managed-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We recently introduced support for <a href="https://blog.cloudflare.com/x402/#cloudflares-mcp-servers-agents-sdk-and-x402-payments"><u>x402 transactions</u></a> into Cloudflare’s <a href="https://agents.cloudflare.com"><u>Agent SDK</u></a>, allowing anyone building an agent to easily transact using the new x402 protocol. We will similarly be working with Visa and Mastercard over the coming months to bring support for their protocols directly to the Agents SDK. This will allow developers to manage their registered agent’s private keys and to easily create the correct HTTP message signatures to authorize their agent to browse and transact on a merchant website.</p>
+	<p>Conceptually, the requests in a Cloudflare Worker would look something like this:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">/**
+ * Pseudocode example of a Cloudflare Worker acting as a trusted agent.
+ * This version explicitly illustrates the signing logic to show the core flow. 
+ */
+
+
+// Helper function to encapsulate the signing protocol logic.
+async function createSignatureHeaders(targetUrl, credentials) {
+    // Internally, this function would perform the detailed cryptographic steps:
+    // 1. Generate timestamps and a unique nonce.
+    // 2. Construct the 'Signature-Input' header string with all required parameters.
+    // 3. Build the canonical 'Signature Base' string according to the spec.
+    // 4. Use the private key to sign the base string.
+    // 5. Return the fully formed 'Signature-Input' and 'Signature' headers.
+    
+    const signedHeaders = new Headers();
+    
+    signedHeaders.set('Signature-Input', 'sig2=(...); keyid="..."; ...');
+    signedHeaders.set('Signature', 'sig2=:...');
+    return signedHeaders;
+}
+
+
+export default {
+    async fetch(request, env) {
+        // 1. Load the final API endpoint and private signing credentials.
+        const targetUrl = new URL(request.url).searchParams.get('target');
+        const credentials = { 
+            privateKey: env.PAYMENT_NETWORK_PRIVATE_KEY, 
+            keyId: env.PAYMENT_NETWORK_KEY_ID 
+        };
+
+
+        // 2. Generate the required signature headers using the helper.
+        const signatureHeaders = await createSignatureHeaders(targetUrl, credentials);
+
+
+        // 3. Attach the newly created signature headers to the request for authentication.
+        const signedRequestHeaders = new Headers(request.headers);
+        signedRequestHeaders.set('Host', new URL(targetUrl).hostname);
+        signedRequestHeaders.set('Signature-Input', signatureHeaders.get('Signature-Input'));
+        signedRequestHeaders.set('Signature', signatureHeaders.get('Signature'));
+
+
+       // 4. Forward the fully signed request to the protected API.
+        return fetch(targetUrl, { headers: signedRequestHeaders });
+    },
+};</code></pre>
+	<p>We’ll also be creating new <a href="https://developers.cloudflare.com/waf/managed-rules"><u>managed rulesets</u></a> for our customers that make it easy to allow agents that are using the Trusted Agent Protocol or Agent Pay. You might want to disallow most automated traffic to your storefront but not miss out on revenue opportunities from agents authorized to make a purchase on behalf of a cardholder. A managed rule would make this straightforward to implement. As the website owner, you could enable a managed rule that automatically allows all trusted agents registered with Visa or Mastercard to come to your site, passing your other bot protection &amp; WAF rules.&nbsp;</p>
+	<p>These will continue to evolve, and we will incorporate feedback to ensure that agent registration and validation works seamlessly across all networks and aligns with the Web Bot Auth proposal. American Express will also be leveraging Web Bot Auth as the foundation to their agentic commerce offering.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started-today">How to get started today&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You can start building with Cloudflare’s <a href="https://agents.cloudflare.com"><u>Agent SDK today</u></a>, see a sample implementation of the <a href="https://github.com/visa/trusted-agent-protocol"><u>Trusted Agent Protocol</u></a>, and view the <a href="https://developer.visa.com/capabilities/trusted-agent-protocol/trusted-agent-protocol-specifications"><u>Trusted Agent Protocol</u></a> and <a href="https://www.mastercard.com/us/en/business/artificial-intelligence/mastercard-agent-pay.html"><u>Agent Pay</u></a> docs. </p>
+	<p>We look forward to your contribution and feedback, should this be engaging on GitHub, building apps, or engaging in mailing lists discussions.</p>
+</div>
