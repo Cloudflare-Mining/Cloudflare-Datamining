@@ -25,7 +25,6 @@ while (hasMore) {
 		break;
 	}
 	const json = await res.json();
-	console.log(json);
 	if (!json.result) {
 		console.log(`models failed: ${json.errors[0].message}`);
 		break;
@@ -43,16 +42,20 @@ while (hasMore) {
 models = models.sort((modelA, modelB) => modelA.id - modelB.id);
 await fs.writeJson(file, models, { spaces: '\t' });
 
-const schemaFile = path.resolve(dir, 'models-schema.json');
-const schemaRes = await fetch('https://ai.cloudflare.com/api/models');
-if (!schemaRes.ok) {
-	console.log(`models-schema failed: ${schemaRes.status} ${schemaRes.statusText}`);
-} else {
-	const schemaJson = await schemaRes.json();
-	if (schemaJson.models) {
-		schemaJson.models = schemaJson.models.sort((modelA, modelB) => modelA.id - modelB.id);
+try {
+	const schemaFile = path.resolve(dir, 'models-schema.json');
+	const schemaRes = await fetch('https://ai.cloudflare.com/api/models');
+	if (!schemaRes.ok) {
+		console.log(`models-schema failed: ${schemaRes.status} ${schemaRes.statusText}`);
+	} else {
+		const schemaJson = await schemaRes.json();
+		if (schemaJson.models) {
+			schemaJson.models = schemaJson.models.sort((modelA, modelB) => modelA.id - modelB.id);
+		}
+		await fs.writeJson(schemaFile, schemaJson, { spaces: '\t' });
 	}
-	await fs.writeJson(schemaFile, schemaJson, { spaces: '\t' });
+} catch (err) {
+	console.log('models-schema failed:', err);
 }
 
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
