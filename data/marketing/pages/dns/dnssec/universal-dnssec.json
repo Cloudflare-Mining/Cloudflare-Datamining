@@ -64,6 +64,72 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentfulId": "27jLxG2x3YSV5dO67Wh9kC",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Universal DNSSEC",
+						"titleSize": null,
+						"subtitle": null,
+						"subtitleSize": null,
+						"copy": "<h3 class=\"marketing-h3 marketing-h3--no-top-margin\">\nSecure Your Domain Against DNS Vulnerabilities, For Free.\n</h3>\n<p>DNSSEC improves the trust and integrity of DNS. Often referred to as the phone book of the Internet, DNS translates <a href='https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/'>domain names</a> into numeric Internet addresses. However, DNS is a fundamentally insecure protocol. It does not guarantee where DNS records come from, and it accepts any address given to it, no questions asked. </p>\n<p>Cloudflare offers easy-to-use DNSSEC, and it only takes a few minutes to set up.</p>\n",
+						"buttonColor": null,
+						"buttonColor2": null,
+						"buttonText1": "Sign Up Now",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Large",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Zh69Q2hj2uY6WqgWcwkcS/e27ff686df7a092cfc2f41f072ca88cc/dnssec_logo.png"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "500444ce-cf6c-5d58-8733-9f3c49f65ccf",
+							"altText": "dnssec logo",
+							"title": "dnssec logo",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Zh69Q2hj2uY6WqgWcwkcS/e27ff686df7a092cfc2f41f072ca88cc/dnssec_logo.png"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "6MDeXx4b0IQJXClsuBpjL6",
 						"menuTitle": "DNSSEC Articles",
@@ -880,6 +946,62 @@
 								}
 							}
 						]
+					},
+					{
+						"contentfulId": "7I1IwUj5SaUuLphtZGu23M",
+						"title": "Cloudflare Makes DNSSEC Easy",
+						"copy": "<p>Universal DNSSEC is now available to all websites on Cloudflare, for\nfree. We'll do all the heavy lifting by signing your zone and managing\nthe keys. Protecting your domain from DNS forgeries is just a few clicks\naway. All you need to do is enable DNSSEC in your Cloudflare dashboard\nand add one DNS record to your <a href='https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/'>registrar</a>.</p>\n<ol class=\"marketing-ul\">\n<li>\nLog in to your <a class=\"text--white\" href=\"https://dash.cloudflare.com/login\">Cloudflare dashboard</a>.\n</li>\n<li>\nOpen the DNS app.\n</li>\n<li>\nScroll down to the DNSSEC module.\n</li>\n<li>\nClick Enable DNSSEC.\n</li>\n<li>\nA pop-up will open with instructions for how to\n<a href=\"https://support.cloudflare.com/hc/en-us/articles/209114378\"> add the DS record</a>\nto your registrar.\n</li>\n<li>\nCopy the DS record and paste it into your registrar's dashboard.\n</li>\n</ol>\n<p>Once your registrar publishes the DS record, your domain will be\nDNSSEC-enabled. You can verify your DNSSEC configuration with the\nthird-party <a class=\"text--white\" href=\"http://dnsviz.net/\">DNSViz</a>\ntool.</p>\n<p>Universal DNSSEC is designed to work seamlessly with all other\nCloudflare security and performance features, including Universal SSL, a\nglobal CDN, and automatic web content optimization.</p>\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wmrOVYzSuJcKjryAyQWOJ/24c05ecfd7b4267479c15ac0565acad7/enabling-dnssec.png"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "5f268019-87f5-51aa-a57b-defb1b353a19",
+							"altText": "enabling-dnssec",
+							"title": "enabling-dnssec",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wmrOVYzSuJcKjryAyQWOJ/24c05ecfd7b4267479c15ac0565acad7/enabling-dnssec.png"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeHtml",
