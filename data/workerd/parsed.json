@@ -3319,6 +3319,14 @@
 						"compatEnableFlag": "cache_reload_enabled",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "streamsNodejsV24Compat",
+					"annotations": {
+						"compatDisableFlag": "disable_streams_nodejs_v24_compat",
+						"compatEnableFlag": "enable_streams_nodejs_v24_compat",
+						"impliedByAfterDate": "unhandled type"
+					}
 				}
 			]
 		},
