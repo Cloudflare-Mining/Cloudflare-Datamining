@@ -5,46 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location</strong></p>
-<p>Hybrid: Lisbon, Portugal</p>
-<p><strong>Team Mission</strong></p>
-<p>The Security Response Team’s mission is to respond to security threats and to safeguard Cloudflare. We operate 24/7 across the globe to respond to security incidents, continuously improve our response capabilities, lead digital investigations and enhance our overall security posture. Our “Cloudflare on Cloudflare”, data and automation first philosophy makes us a cohesive team with high impact.&nbsp;</p>
-<p><strong>The Role</strong></p>
-<p>The Incident Response Engineer role on the Security Response Team focuses on triaging alerts, refining security processes and leading critical incidents—from threat detection and cyber-attack analysis to containment and forensics. This role collaborates with IT, Engineering, Product, and Legal teams to build scalable response systems, leveraging expertise in tooling, automation, custom log analysis, and SIEM systems. Additionally, it requires effective communication of technical topics to a non-technical audience and participation in a shared on-call rotation with rotating weekend and holiday shifts.</p>
-<p><strong>Responsibilities&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the role</strong></p>
+<p>As a Senior Stock Administrator, you will manage global equity program and ensure&nbsp;compliance with global equity administration requirements. From managing transactions&nbsp;to supporting education and communication efforts, you'll help deliver an exceptional employee experience and scale equity operations as Cloudflare grows.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Monitor and investigate security and privacy incidents, vulnerabilities, and threats, and take appropriate action to mitigate risks and minimize potential impact.</li>
-	<li>Partake in incident response on-call schedule.</li>
-	<li>Make critical decisions during incidents, balancing the need for rapid response with thorough analysis and risk assessment.</li>
-	<li>Support log analysis to identify indicators of compromise and anomalous behavior across various systems, networks, and applications.</li>
-	<li>Help in analyzing and interpreting system and network logs, and other relevant data sources to identify and track potential threats.</li>
-	<li>Automate manual tasks using standard tools or by developing custom scripts.</li>
-	<li>Design, build and introduce processes to automate data collection and processing.</li>
-	<li>Design, build and introduce processes to automatically produce reports based on collected data.</li>
-	<li>Design, build and introduce mechanisms to clean up existing data.</li>
-	<li>Monitor and maintain existing automations.</li>
+	<li>Manage and execute the day-to-day operations of Cloudflare’s global equity&nbsp;programs, ensuring accuracy, timeliness, and compliance.</li>
+	<li>Lead and support special projects related to equity administration, including&nbsp;system improvements, process automation, and data integrity initiatives.</li>
+	<li>Administer and maintain equity-related systems and tools (e.g., E*TRADE Equity&nbsp;Edge Online), including data imports/exports, reconciliations, and audit support.</li>
+	<li>Perform data analysis using internal equity data to generate insights, support&nbsp;reporting, and recommend process enhancements.</li>
+	<li>Collaborate cross-functionally with Payroll, Legal, Finance, HR, and external&nbsp;vendors (e.g., brokers, transfer agents) to support program execution and&nbsp;resolve issues.</li>
+	<li>Assist employees in understanding and maximizing their equity compensation&nbsp;through education, communications, and support.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Understanding of log analysis, email (SPAM,&nbsp; phishing), Operating System security and Incident Response.</li>
-	<li>Good documentation and reporting skills, with the ability to prepare reports.</li>
-	<li>Strong understanding of cybersecurity concepts.</li>
-	<li>Programming and scripting skills in languages such as Javascript, Python, Bash and/or SQL.</li>
-	<li>Ability to analyze and interpret security data, identify trends, patterns, and anomalies, and provide actionable recommendations.</li>
-	<li>Ability to hunt for anomalous activity within a wide set of data.</li>
-	<li>Great verbal/written communication, problem solving, analytical and judgment skills to support an environment driven by teamwork.</li>
-	<li>Ability to work in a high speed and high pressure environment.</li>
+	<li>Minimum 5-7 years of experience in stock administration, in a publicly traded&nbsp;company.</li>
+	<li>Bachelor's degree in Accounting/Finance or similar preferred.</li>
+	<li>Experience with E*TRADE / EEO equity administration platform.</li>
+	<li>Certiﬁed Equity Professional (CEP), Level 3 preferred.</li>
+	<li>Strong working knowledge and demonstrated experience with stock options,&nbsp;RSUs and ESPP</li>
 </ul>
-<p><strong>Examples of desirable skills and experience</strong></p>
-<ul>
-	<li>Experience in Incident response, including triage and investigation of security incidents.</li>
-	<li>Workflow automation with tools like Jira.</li>
-	<li>Programming experience (Javascript, Bash, Python, or Golang).</li>
-	<li>DevOps and configuration management with tools like Terraform, Ansible, git, and CI/CD pipelines.</li>
-	<li>Experience with Cloudflare's development platform.</li>
-	<li>Knowledge of EDR tools like Crowstrike.</li>
-	<li>Experience with SIEM tools.</li>
-</ul>
+<p>Nice to have:<br>Extensive knowledge of Excel and G-Suite<br>Experience with Workday’s HRIS system and it’s integrations with E*TRADE</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

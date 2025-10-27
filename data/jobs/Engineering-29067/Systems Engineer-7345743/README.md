@@ -5,40 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Description: US Enterprise Field Marketing Manager–Northeast</strong></p>
-<p>New York, NY, or Northeast US <strong>(Within 2 hours travel from New York)&nbsp;</strong></p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an experienced, enthusiastic and highly-motivated Senior Field Marketing Manager, Enterprise, Northeast Region who will be responsible for building the growth marketing strategy and managing field initiatives from end-to-end marketing to the Enterprise segment in the US.&nbsp;You will build the marketing plan for the region, integrating field campaigns and events, ABM initiatives, and partner marketing activities in order to grow Cloudflare’s customer base. You have a natural inclination to measure the effectiveness of marketing activities, show strong project management skills and are able to think strategically while orchestrating many moving parts. The programs you oversee will ultimately amplify campaign and event initiatives to drive demand and pipeline in the Americas Northeast Enterprise region.</p>
-<p><strong>Responsibilities</strong></p>
-<p>Build the marketing plan for the region, integrating hosted and 3rd party field events, ABM programs, and partner marketing activities in order to grow our customer base and drive demand for Cloudflare.</p>
+<p><strong>Available Locations: London, Amsterdam, Lisbon, Austin</strong></p>
+<p><strong>What you'll do/ responsibilities</strong>&nbsp;</p>
+<p>Quicksilver is Cloudflare’s globally distributed key-value store. It replicates our data all around the world, over tens of thousands of servers and over 500 data centers. It handles all kinds of network conditions and serves billions of keys per second.&nbsp;In this role, you can expect to see&nbsp;challenges like unexpected network issues, hardware failures, kernel bugs and still have to deliver the data to the edge in a fast and reliable way. Along with the rest of the team,&nbsp;you will own and support the whole stack: the code base, the unit and integration test, deployment and rollback plans, operations, monitoring, alerting, debugging and on-call.&nbsp;Quicksilver is written in Go and C.&nbsp;If working at this scale excites you and you are intrigued by very tricky bugs, rather than being scared by them, you might be a match for this role.</p>
+<p>&nbsp;</p>
+<p>Your daily duties will be:</p>
 <ul>
-	<li>Identify opportunities to drive various hosted event formats such as: CxO events, customer-led panels, fireside chats, roundtables, webinars, Executive Briefings, and other bespoke experiences.</li>
-	<li>Work with cross-functional team members (Sales, BDRs, MarkOps, MarTech, SalesOps, ABM Marketing, Product Marketing, Partner Marketing, etc.) to support the orchestration of high-impact marketing campaigns and programs.</li>
-	<li>Ensure that your accounts get the right share of corporate and regional resources that provide marketing aircover (Branding, PR, ABM, Pay Per Click, Social, Advertising, Outbound Campaigns, etc).</li>
-	<li>Help evaluate and manage external vendors and third-party event sponsorship opportunities based on market reach and audience relevance.</li>
-	<li>Track spend within the allocated budget, and build effective reports to determine performance and ROI (efficiency) of marketing initiatives.</li>
-	<li>Own the lead lifecycle and constantly drive to accelerate funnel velocity to maximize conversions and help drive the revenue goal in your region.</li>
-	<li>Be responsible for communications to regional stakeholders on results, issue management, and feedback loops.</li>
+	<li>Working on our distributed large scale key-value store, you will write new features in Go and reviewing pull request</li>
+	<li>Improving performance, CPU, memory usage, etc.</li>
+	<li>Improving our monitoring and our tools, all written in Go</li>
+	<li>Help with debugging and investigating hard to reproduce problems</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Requirements</strong></p>
+<p>You have previous experience writing robust systems, code quality, performance and technical debt. You understand the tradeoffs that doing rigorous engineering requires.</p>
 <ul>
-	<li>Must have 8+ years of proven experience in B2B marketing (enterprise software, SaaS, Security, etc.).</li>
-	<li>Must be comfortable with reporting and communicating marketing impact across the organization.</li>
-	<li>Analytically inclined, exceptional organizational skills, with rigorous attention to detail.</li>
-	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines.</li>
-	<li>Prior marketing experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus.</li>
-	<li>Experience delivering, accelerating, and expanding sales pipeline through regional field marketing initiatives executed under an integrated ABM strategy</li>
-	<li>Understanding of the customer journey and the best marketing approaches by stage</li>
-	<li>Hands-on experience with Salesforce, Marketo, Tableau (or other marketing automation and analytics tools).</li>
-	<li>Analytically inclined and metrics-driven with rigorous attention to detail; great at solving complex problems with curious and creative mindset</li>
-	<li>Team player with exceptional organizational skills, and the ability to work strategically and tactically.</li>
-	<li>Ability to execute multiple projects simultaneously in a fast-paced and changing environment with tight deadlines</li>
-	<li>Excellent writing and presentation skills</li>
-	<li>Ability to travel when needed (20-30%)</li>
+	<li>You have proven experience with storage systems, peer to peer systems, large scale distributed systems or simply system programming in general.</li>
+	<li>You have previous experience of chasing problems through multiple layers of our software stack. You can be flexible and you are very curious.</li>
+	<li>You are flexible and very autonomous. You won’t be micromanaged in this role and will be looked to have experience thinking out of the box and coming up with simple and smart designs for complex issues.</li>
+	<li>You have a previous track record of being pragmatic and believe in the value of simple solutions.</li>
+	<li>You equally enjoy low-level and high-level programming. You have a taste for programming languages.</li>
+	<li>You enjoy being a part of a team that challenges each other's designs -- you are good at taking and giving constructive criticism with a goal of producing the best solution.</li>
+	<li>You are not afraid of engaging in outages on anti-social hours.</li>
 </ul>
-<p><strong>Compensation -&nbsp;</strong>Compensation may be adjusted depending on work location.</p>
-<p>New York Compensation Range 142,000 - 174,000</p>
-<p>Equity Eligible</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
