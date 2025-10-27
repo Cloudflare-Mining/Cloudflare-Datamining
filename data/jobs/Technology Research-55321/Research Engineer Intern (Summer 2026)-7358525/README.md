@@ -5,37 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, Washington, DC</strong></p>
-<p><strong>About the Team</strong></p>
-<p>The Legal, Policy, and Trust &amp; Safety (“LPT”) department is staffed by a world-class group of professionals who help Cloudflare navigate complex challenges while staying compliant and minimizing risk. Legal Operations plays a central role in scaling the LPT department – from driving contract management excellence, implementing technology solutions, and building processes that make our department more efficient and impactful.&nbsp;</p>
-<p>We are seeking a highly motivated Legal Operations Analyst to join our growing team. In this role, you will be responsible for optimizing and scaling our contract lifecycle management (CLM) processes, and advancing the LPT department’s technology roadmap. You will work with the Head of Legal Operations to optimize our Ironclad CLM system for efficient, scalable, and compliant workflows, while also driving automation, technology, and AI initiatives. You will partner with Legal, IT, and business teams to evaluate tools, lead implementations, and enhance the user experience across the organization.</p>
-<p>The ideal candidate brings hands-on Ironclad experience, a deep understanding of legal operations best practices, and a passion for process improvement and technology. This highly impactful role offers the opportunity to shape contract management, drive adoption of AI and automation, and help scale the LPT department’s operations in a fast-paced, evolving environment.</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Research Team pursues strategic projects that have a large impact on Cloudflare systems and the Internet at large. Our focus is on solving difficult problems to connect and protect users, applications, and data, while helping to make the Internet more resilient, efficient, and transparent.</p>
+<p>In our quest to help make a better Internet, we frequently find ourselves exploring open problems at the boundaries of knowledge in scalable computing, with a focus on security and&nbsp; privacy, using techniques including AI/ML and performance analysis.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>
+<p>Our team includes experts in many disciplines, including applied cryptography, privacy, network architectures and protocols, measurement, distributed systems, storage optimization, machine learning for systems, and more.&nbsp; We seek interns that augment our existing expertise as well as those who are working in broadly related areas. We have a vast set of potential projects focussed on our current priorities. We also welcome new ideas via concrete proposals that, more than just satisfying curiosity, may help to improve Cloudflare or aspects of the Internet and surrounding technologies touched by Cloudflare. We are, after all, researchers at heart and love learning, too!</p>
+<p>More information about Cloudflare's approach to research can be found <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">here</a>.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>Cloudflare's Research Team solves difficult problems in security, privacy, and systems at scale. This involves engineering, data analysis, open source software development, protocol design, implementation of primitives, with lots of measurement alongside.&nbsp;</p>
+<p>Successful candidates will be matched to suitable projects in on-going research directions. We also welcome novel proposals and ideas that can help to inform or build a better Internet (in the form of a max 200 word proposal).</p>
+<p>The Internet is evolving in ways that challenge convention, and many existing assumptions no longer hold. Interns and internship projects are designed to help maintain the integrity of the Internet, its systems, and its applications. Some of the fundamental areas we’re investigating focus on include advanced cryptography, hardware isolation, balancing user privacy against notions of identity, network and internetwork observability in a seemingly fragmented world, even applications of formal methods at scale — and this is just a small view into our <a href="https://research.cloudflare.com/outreach/updates/">work</a>! We’re also acutely aware that AI will impact all layers of a globally distributed system and the wider Internet.</p>
+<p><strong>General Research Intern Requirements</strong></p>
 <ul>
-	<li><strong>CLM Administration:</strong> Serve as a co-administrator for Ironclad, managing legal workflows, templates, clause libraries, reporting, and user access. Facilitate end-to-end contract processes, track milestones, and ensure timely approvals.</li>
-	<li><strong>AI &amp; Technology Initiatives:</strong> Help pilot, implement, and optimize AI and automation tools to streamline legal workflows and enhance productivity. Document requirements and help build business cases, evaluate new technologies, and help drive adoption across the department.</li>
-	<li><strong>Process Improvement: </strong>Identify opportunities to streamline in contract and workflow processes, recommend solutions, and help implement best practices to scale the legal function.</li>
-	<li><strong>Project Management:</strong> Support projects end-to-end – from planning and coordination to rollout and adoption. Partner with Legal, IT, Finance, vendors, and other business stakeholders to ensure seamless implementations and integrations.</li>
-	<li><strong>Analytics &amp; Reporting:</strong> Build dashboards and reports on contract metrics, KPIs, and technology adoption metrics to maintain data for leadership review.</li>
-	<li><strong>Training &amp; Enablement:</strong> Develop documentation and training for LPT teams and business partners to maximize adoption of CLM and AI tools.</li>
-	<li><strong>General Legal Ops Support:</strong> Ensure smooth execution of department workflows by supporting day-to-day operations, including maintaining knowledge bases, driving cross-functional initiatives, and supporting strategic ad hoc projects.</li>
+	<li>Evidence of tackling hard or open-ended problems</li>
+	<li>Proven track record of peer-reviewed research, open-source software contributions, <strong>or</strong> standards development, that is commensurate with level of training --- students at all levels are welcome to apply</li>
+	<li>Experience clearly communicating research ideas through papers, pre-prints, standards documents, blogs, or similar media</li>
+	<li>Ability to work in a systems-level programming language (e.g. Rust, C, Go)&nbsp;</li>
+	<li>Passion for debugging and ensuring system reliability</li>
+	<li>Familiarity with continuous integration workflows and source control systems (e.g., Gitlab, Github)</li>
+	<li>Willing and eager to share knowledge, with the skills to do so</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Additional Requirements</strong></p>
+<p>Knowledge or experience with at least one of the following:</p>
 <ul>
-	<li>5+ years of experience in legal operations, preferably at a fast-paced global technology company.</li>
-	<li>Highly organized and proven in defining and executing a project from start to finish, ability to manage multiple concurrent projects, high-volume workloads, and shifting priorities with confidence.</li>
-	<li>Strong technical acumen with hands-on experience designing processes, implementing, managing, and integrating legal systems with enterprise platforms.</li>
-	<li>Proven track record of evaluating technology, driving automation initiatives, and delivering measurable improvements in legal workflows.</li>
-	<li>Skilled in legal data analytics (ROI, cycle times, volumes, trends).</li>
-	<li>Excellent communicator with strong writing skills; able to present complex issues clearly and concisely.</li>
-	<li>Collaborative, adaptable, and cross-functional team player with integrity, curiosity, and strong interpersonal skills – with the ability to work independently or cross-functionally.</li>
+	<li>Computer networking protocols (TCP/IP, DNS, BGP, QUIC, etc.) and related algorithms</li>
+	<li>Machine learning analysis, ideally in systems or network optimization</li>
+	<li>Authentication protocols, applied cryptography, PKI and SSL/TLS</li>
+	<li>Operating or distributed systems analysis or development</li>
+	<li>Measurement for network and computer systems</li>
+	<li>Proficiency in a scripting language, such as Python</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p>&nbsp;<strong>Bonus Points:</strong></p>
 <ul>
-	<li>Working knowledge of AI tools and applications, including prompt design, data extraction, document analysis, and model training.&nbsp;</li>
-	<li>A sense of humor!</li>
+	<li>Proven track record of independently driving projects in a fast-paced environment</li>
+	<li>Experience working in groups, or with multiple stakeholders</li>
+	<li>Able to fluently work across multiple programming languages</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Internship Availability and Expectations:</strong></p>
+<ul>
+	<li>Ability to commit to a 12 week summer internship</li>
+	<li>In office 3-4 days a week in Austin, TX.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

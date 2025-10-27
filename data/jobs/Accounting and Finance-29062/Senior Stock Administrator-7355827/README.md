@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, Dallas, Houton, San Antonio TX</strong></p>
 <p><strong>About the role</strong></p>
 <p>As a Senior Stock Administrator, you will manage global equity program and ensure&nbsp;compliance with global equity administration requirements. From managing transactions&nbsp;to supporting education and communication efforts, you'll help deliver an exceptional employee experience and scale equity operations as Cloudflare grows.</p>
 <h4><strong>What you'll do</strong></h4>
