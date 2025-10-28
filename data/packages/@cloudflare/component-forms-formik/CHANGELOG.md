@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.0.31
+
+### Patch Changes
+
+- @cloudflare/component-forms@7.0.30
+
 ## 8.0.30
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.3.0
+
+### Minor Changes
+
+- 49d6feda8a: Expose listbox's formatSelectedValue in TimePeriodPicker
+
 ## 7.2.19
 
 ### Patch Changes
