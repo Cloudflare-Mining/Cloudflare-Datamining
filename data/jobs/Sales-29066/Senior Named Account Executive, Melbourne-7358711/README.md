@@ -8,12 +8,12 @@
 <h3><strong>Available Location: Melbourne<br></strong></h3>
 <hr>
 <h3><strong>About the Role</strong></h3>
-<p>We are seeking a highly accomplished and strategic Account Executive<strong> </strong>to join our Enterprise/Field Sales team to lead the engagement with Key Public Sector Named Accounts.</p>
+<p>We are seeking a highly accomplished and strategic Account Executive<strong> </strong>to join our Enterprise/Field Sales team.</p>
 <p>Based in Melbourne, you will be pivotal in driving significant growth by leading comprehensive sales cycles within a portfolio of assigned enterprise-level clients, and strategically acquiring new logos. The ideal candidate possesses a deep blend of advanced sales acumen and sophisticated technical understanding, enabling them to lead engagements at all levels, from the C-suite to technical leaders (e.g., Head of/VP of Networking or Security).</p>
 <p>As an Account Executive, you will consistently demonstrate advanced proficiency in all sales activities, ensuring highly accurate forecasting, proactive and strategic pipeline management, and consistently exceeding attainment targets. You will be a subject matter expert, speaking fluently about Cloudflare's products, features, benefits, and use cases across diverse customer segments. This role demands the ability to deeply understand complex customer IT Architectures, match them with relevant Cloudflare Reference Architectures, and orchestrate successful, large-scale platform sales. You will be a key driver of digital transformation for our customers, understanding their broader market trends and how Cloudflare uniquely enables their strategic initiatives.</p>
 <h3><strong>What You'll Do</strong></h3>
 <ul>
-	<li><strong>Strategic Revenue Generation:</strong> Architect and execute advanced territory and account plans to consistently exceed multi-million dollar sales targets and annual quotas, with a strong focus on new business acquisition and expansion within complex enterprise environments across the Public Sector Domain</li>
+	<li><strong>Strategic Revenue Generation:</strong> Architect and execute advanced territory and account plans to consistently exceed multi-million dollar sales targets and annual quotas, with a strong focus on new business acquisition and expansion within complex enterprise environments&nbsp;</li>
 	<li><strong>Expert Pipeline &amp; Forecasting:</strong> Lead proactive and strategic pipeline management efforts, demonstrating a sophisticated understanding of sales cycles and customer buying processes. Deliver highly accurate forecasts, providing clear insights and strategic guidance to sales leadership.</li>
 	<li><strong>Deep Customer &amp; IT Architecture Understanding:</strong> Develop a profound understanding of customers' IT architectures, including applications and third-party technologies. Architect and align Cloudflare Reference Architectures to customer environments, driving comprehensive platform solutions.</li>
 	<li><strong>Multi-Engagement Leadership:</strong> Orchestrate and manage multiple complex customer engagements simultaneously across various business units within an organization. Strategically connect disparate needs to strengthen Cloudflare's platform sale, actively involving and influencing technical C-level minus one executives.</li>
@@ -27,7 +27,6 @@
 <h3><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></h3>
 <ul>
 	<li><strong>8+ years of advanced experience selling complex technology solutions in a B2B enterprise model</strong>, with a significant track record of consistently exceeding quota targets&nbsp;</li>
-	<li>Experience driving <strong>Public Sector </strong>accounts acquisition preferred</li>
 	<li><strong>Deep expertise and fluency in Cloud Networking, Security, and Edge Computing technologies</strong>, with an exceptional ability to articulate features, benefits, and use cases across diverse customer segments (e.g., SMBs, enterprise, vertical markets).</li>
 	<li><strong>Proven ability to deeply understand complex customer IT architectures</strong> and effectively map them to Cloudflare Reference Architectures for successful platform sales.</li>
 	<li><strong>Demonstrated success leading and influencing virtual cross-functional teams</strong> (e.g., Solution Engineers, Product Managers, Legal) to drive complex deals to closure.</li>
@@ -42,6 +41,8 @@
 	<li><strong>Ability to travel</strong> as required to engage with key customers and internal teams.</li>
 </ul>
 <h3><br><br></h3>
+<div id="te-floating-button-container"></div>
+<div id="te-floating-button-container"></div>
 <div id="te-floating-button-container"></div>
 <div id="te-floating-button-container"></div>
 <div class="content-conclusion">

@@ -5,37 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, Washington, DC, New York, NY, San Diego, CA, Los Angeles, CA</strong></p>
-<p><strong>About the Team</strong></p>
-<p>The Legal, Policy, and Trust &amp; Safety (“LPT”) department is staffed by a world-class group of professionals who help Cloudflare navigate complex challenges while staying compliant and minimizing risk. Legal Operations plays a central role in scaling the LPT department – from driving contract management excellence, implementing technology solutions, and building processes that make our department more efficient and impactful.&nbsp;</p>
-<p>We are seeking a highly motivated Legal Operations Analyst to join our growing team. In this role, you will be responsible for optimizing and scaling our contract lifecycle management (CLM) processes, and advancing the LPT department’s technology roadmap. You will work with the Head of Legal Operations to optimize our Ironclad CLM system for efficient, scalable, and compliant workflows, while also driving automation, technology, and AI initiatives. You will partner with Legal, IT, and business teams to evaluate tools, lead implementations, and enhance the user experience across the organization.</p>
-<p>The ideal candidate brings hands-on Ironclad experience, a deep understanding of legal operations best practices, and a passion for process improvement and technology. This highly impactful role offers the opportunity to shape contract management, drive adoption of AI and automation, and help scale the LPT department’s operations in a fast-paced, evolving environment.</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
+<p><strong>About the Department</strong></p>
+<p>Security at Cloudflare is a diverse, focused team committed to helping secure both Cloudflare and our customers.&nbsp; The Enterprise Identity &amp; Access Management team is a core pillar of our cybersecurity organization, securing our environment and enabling workforce productivity.&nbsp;&nbsp;&nbsp;</p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li><strong>CLM Administration:</strong> Serve as a co-administrator for Ironclad, managing legal workflows, templates, clause libraries, reporting, and user access. Facilitate end-to-end contract processes, track milestones, and ensure timely approvals.</li>
-	<li><strong>AI &amp; Technology Initiatives:</strong> Help pilot, implement, and optimize AI and automation tools to streamline legal workflows and enhance productivity. Document requirements and help build business cases, evaluate new technologies, and help drive adoption across the department.</li>
-	<li><strong>Process Improvement: </strong>Identify opportunities to streamline in contract and workflow processes, recommend solutions, and help implement best practices to scale the legal function.</li>
-	<li><strong>Project Management:</strong> Support projects end-to-end – from planning and coordination to rollout and adoption. Partner with Legal, IT, Finance, vendors, and other business stakeholders to ensure seamless implementations and integrations.</li>
-	<li><strong>Analytics &amp; Reporting:</strong> Build dashboards and reports on contract metrics, KPIs, and technology adoption metrics to maintain data for leadership review.</li>
-	<li><strong>Training &amp; Enablement:</strong> Develop documentation and training for LPT teams and business partners to maximize adoption of CLM and AI tools.</li>
-	<li><strong>General Legal Ops Support:</strong> Ensure smooth execution of department workflows by supporting day-to-day operations, including maintaining knowledge bases, driving cross-functional initiatives, and supporting strategic ad hoc projects.</li>
+	<li>Establish and execute access governance programs and policies</li>
+	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
+	<li>Ensure access adheres to the principle of least privilege and segregation of duties (SoD).</li>
+	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
+	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
+	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
+	<li>Manage user onboarding, offboarding, and role changes, ensuring adherence to security policies and compliance requirements.</li>
+	<li>Collaborate with cross-functional teams, including IT, security, and compliance, to ensure IAM aligns with business goals.</li>
+	<li>Communicate IAM-related updates and recommendations to stakeholders.</li>
+	<li>Maintain comprehensive documentation of IAM policies, processes, and configurations.</li>
+	<li>Generate reports and metrics related to IAM activities and security posture.</li>
+	<li>Stay current with industry best practices, regulations, and compliance standards related to IAM, such as FedRamp, SOX, GDPR, PCI, and NIST.</li>
+	<li>Provide operational support of IAM systems including an on-call rotation that may include after hours calls</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>5+ years of experience in legal operations, preferably at a fast-paced global technology company.</li>
-	<li>Highly organized and proven in defining and executing a project from start to finish, ability to manage multiple concurrent projects, high-volume workloads, and shifting priorities with confidence.</li>
-	<li>Strong technical acumen with hands-on experience designing processes, implementing, managing, and integrating legal systems with enterprise platforms.</li>
-	<li>Proven track record of evaluating technology, driving automation initiatives, and delivering measurable improvements in legal workflows.</li>
-	<li>Skilled in legal data analytics (ROI, cycle times, volumes, trends).</li>
-	<li>Excellent communicator with strong writing skills; able to present complex issues clearly and concisely.</li>
-	<li>Collaborative, adaptable, and cross-functional team player with integrity, curiosity, and strong interpersonal skills – with the ability to work independently or cross-functionally.</li>
+	<li>In-depth understanding of access governance&nbsp;</li>
+	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
+	<li>Performing policy enforcement, role management, and access certifications</li>
+	<li>Experience implementing privileged access management (PAM)</li>
+	<li>Experience developing IAM security standards and policies</li>
+	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
 </ul>
-<p><strong>Bonus</strong></p>
-<ul>
-	<li>Working knowledge of AI tools and applications, including prompt design, data extraction, document analysis, and model training.&nbsp;</li>
-	<li>A sense of humor!</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

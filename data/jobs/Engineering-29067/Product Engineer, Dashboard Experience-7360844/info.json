@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7343801?gh_jid=7343801",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7360844?gh_jid=7360844",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3265035,
+	"internal_job_id": 3282752,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -25,9 +25,12 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
+				"Denver, US",
 				"Lisbon, Portugal",
-				"London, UK"
+				"London, UK",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -40,12 +43,12 @@
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7343801,
-	"updated_at": "2025-10-27T17:36:01-04:00",
+	"id": 7360844,
+	"updated_at": "2025-10-27T18:10:59-04:00",
 	"requisition_id": null,
-	"title": "Systems Engineer, Cloudflare Tunnel",
+	"title": "Product Engineer, Dashboard Experience",
 	"company_name": "Cloudflare",
-	"first_published": "2025-10-20T11:24:30-04:00",
+	"first_published": "2025-10-27T18:07:31-04:00",
 	"departments": [
 		{
 			"id": 29067,
@@ -70,11 +73,51 @@
 			"parent_id": 74843
 		},
 		{
-			"id": 63782,
-			"name": "Lisbon, Portugal",
-			"location": "Lisboa, Lisboa, Portugal",
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 74843,
+			"name": "EMEA",
+			"location": "Dubai, United Arab Emirates",
+			"child_ids": [
+				82439,
+				86073,
+				78483,
+				82452,
+				77970,
+				82454,
+				82455,
+				82456,
+				89601,
+				114974,
+				265930,
+				84343,
+				69464,
+				63782,
+				84344,
+				19988,
+				48350,
+				48758
+			],
+			"parent_id": null
 		}
 	]
 }
