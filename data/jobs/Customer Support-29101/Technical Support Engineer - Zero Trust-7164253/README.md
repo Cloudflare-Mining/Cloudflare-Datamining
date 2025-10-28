@@ -11,11 +11,12 @@
 <h3><strong>What You'll Do</strong></h3>
 <p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for Zero Trust </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's Zero Trust solutions with confidence.&nbsp;</p>
 <ul>
-	<li>Serve as a trusted technical advisor, providing advanced support for enterprise customers using Cloudflare’s Zero Trust platform, including products like Access, Gateway, and Teams.</li>
+	<li>Serve as a trusted technical advisor, providing advanced support for enterprise customers using Cloudflare’s Zero Trust platform, including products like Access, Gateway and WARP.&nbsp;</li>
+	<li>Troubleshoot and diagnose complicated network issues for all Zero Trust products, involving OSI layer 3, 4 and 7 and various protocols, e.g. DNS, SSL/TLS, TCP/IP, firewalls and HTTP/S issues.</li>
 	<li>Troubleshoot and resolve complex technical issues related to identity, device security, and secure application access.</li>
 	<li>Work directly with customers to diagnose and remediate configuration and integration challenges with authentication protocols (e.g., SSO, SAML, OIDC) and network security settings.</li>
 	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>Partner with Cloudflare’s Product, Engineering, and Security teams to escalate and resolve advanced customer issues.</li>
+	<li>Partner with Cloudflare’s Product, Escalation, Engineering, and Security teams to escalate and resolve advanced customer issues.</li>
 	<li>Provide feedback based on customer interactions to drive product improvements and ensure alignment with user needs.</li>
 	<li>Assist customers in identifying and responding to security incidents, leveraging Cloudflare’s threat intelligence and security tools.</li>
 </ul>
@@ -25,14 +26,14 @@
 	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
 	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
 	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>You have experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
+	<li>Strong understanding of networking fundamentals, including TCP/IP, DNS, SSL/TLS, HTTP/S, traffic routing, and firewalls.</li>
+	<li>Experience with troubleshooting various OS platforms, and understanding of how VPN works on different OS.</li>
 	<li>Hands-on experience with identity and access management (IAM) systems, such as Okta, Ping Identity, or Azure Active Directory.</li>
 	<li>Strong knowledge of authentication protocols (SAML, OIDC, LDAP) and secure web gateway technologies.</li>
-	<li>Proficiency in networking fundamentals, including DNS, VPNs, firewalls, and traffic routing.</li>
 	<li>Experience supporting cloud platforms (AWS, Azure, GCP) and SaaS application integrations.</li>
 	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers.</li>
 	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
-	<li>Relevant certifications such as Cloudflare Certified Zero Trust Specialist, CISSP, or CCSP.</li>
+	<li>Relevant certifications such as Zero Trust Specialist certification, CISSP, or CCSP.</li>
 </ul>
 <div id="te-floating-button-container"></div>
 <div id="te-floating-button-container"></div>
