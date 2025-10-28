@@ -1,0 +1,578 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ai/how-to-secure-ai-systems/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "1vvOGzryLHoGcsL8eeCuNg",
+				"urlSlug": "ai/how-to-secure-ai-systems",
+				"metaTags": {
+					"metaTitle": "How to secure AI systems",
+					"metaDescription": "Secure AI models, training data, and infrastructure from a growing array of cyber threats. ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "5JjQb2yV1d1T7WTVZQkNEW",
+					"learningCenterName": "artificialintelligence",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+							"displayText": "What is artificial intelligence (AI)?",
+							"url": "/learning/ai/what-is-artificial-intelligence/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "What is a large language model (LLM)?",
+							"url": "/learning/ai/what-is-large-language-model/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2WaoB1uAGPdfW9vr56U72B",
+							"name": "Glossary - AI subheader",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+									"displayText": "Model Context Protocol (MCP)",
+									"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+									"displayText": "AI for cybersecurity",
+									"url": "/learning/ai/ai-for-cybersecurity/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+									"displayText": "ChatGPT plugins",
+									"url": "/learning/ai/chatgpt-plugins/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4fHZ91razv1xm1g6m2sAcT",
+					"learningCenterName": "artificialintelligence",
+					"column1Title": "Artificial intelligence",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "504wIqF2RxToUI652YFAHo",
+						"name": "AI Footer - Artificial intelligence",
+						"displayText": "Artificial intelligence",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+								"displayText": "What is artificial intelligence (AI)?",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
+							}
+						]
+					},
+					"column2Title": "Machine learning",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4WbETih2OgXGNXGsvb7kMZ",
+						"name": "AI footer - Machine Learning",
+						"displayText": "Machine learning",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+								"displayText": "What is a large language model (LLM)?",
+								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
+							}
+						]
+					},
+					"column3Title": "Big data",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3q3KTRPkBi7rS3aDeQoMNn",
+						"name": "AI footer - Big Data",
+						"displayText": "Big data",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+								"displayText": "What are embeddings?",
+								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1UCfw4v8J5rpL4BsVNlgVC",
+						"name": "AI footer - Glossary",
+						"displayText": "AI glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+								"displayText": "Vector database",
+								"url": "/learning/ai/what-is-vector-database/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+								"displayText": "Predictive AI",
+								"url": "/learning/ai/what-is-predictive-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+								"displayText": "ChatGPT plugins",
+								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+								"displayText": "Model Context Protocol (MCP)",
+								"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+								"displayText": "AI for cybersecurity",
+								"url": "/learning/ai/ai-for-cybersecurity/"
+							}
+						]
+					},
+					"column5Title": "Learning Center",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5kj4ISBExxQfI9CaYifpU9",
+						"name": "AI Learning Center footer",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							}
+						]
+					}
+				},
+				"header": "How to secure AI systems",
+				"blurbSubHeader": "AI security includes all of the resources used to safeguard the development of AI applications, govern the employee use of AI, and protect AI-powered applications and models.  ",
+				"objectivesHeader": "AI security",
+				"objectivesList": [
+					"Understand why it's important to secure AI systems",
+					"Identify the top AI security risks",
+					"Implement 5 practices to secure AI systems"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+						"displayText": "What is artificial intelligence (AI)?",
+						"url": "/learning/ai/what-is-artificial-intelligence/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+						"displayText": "What is generative AI?",
+						"url": "/learning/ai/what-is-generative-ai/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+						"displayText": "What is a large language model (LLM)?",
+						"url": "/learning/ai/what-is-large-language-model/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+						"displayText": "OWASP Top 10 for LLMs",
+						"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Artificial Intelligence Security: Protecting Your AI Systems</h2>\n\n<p><a href=\"/learning/ai/what-is-artificial-intelligence/\">Artificial intelligence</a> (AI) has become an essential technology for organizations of every size and in every industry. In fact, in early 2025, <a href=\"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai.\">71% of organizations</a> reported they were already using <a href=\"/learning/ai/what-is-generative-ai/\">generative AI (GenAI)</a> regularly.</p>\n\n<p>As organizations race to integrate AI into everything from customer service to cybersecurity, attackers work just as feverishly to exploit the new systems, data flows, and decision-making logic those AI-powered systems create.</p>\n\n<p>AI security is no longer a theoretical concern; it's a practical imperative. Protecting models, data, and infrastructure means preserving the trustworthiness of the very systems that increasingly power business, government, and research.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why it's important to secure AI systems</h2>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>AI expands the attack surface</strong></h3>\n\n<p>Traditional applications have well-defined boundaries: web servers, APIs, and user interfaces. AI systems, however, introduce a web of new surfaces that can be probed and exploited:</p>\n\n<ul class=\"learning-list\">\n  <li><a href=\"/learning/ai/what-is-large-language-model/\"><strong>Models</strong></a><strong>:</strong> Trained weights can leak proprietary knowledge or be reverse-engineered to reveal intellectual property.\n\n  <li><strong>Training data:</strong> Often collected from multiple sources, datasets may contain sensitive or toxic content, or be intentionally <a href=\"/learning/ai/data-poisoning/\">poisoned</a> by attackers.\n\n  <li><a href=\"/learning/security/api/what-is-an-api/\"><strong>APIs</strong></a><strong>:</strong> Model endpoints exposed for inference are often inadequately authenticated, allowing malicious queries, excessive usage, or model extraction.\n\n  <li><strong>Inference pipelines:</strong> The process of connecting inputs, preprocessing, model calls, and outputs can create pathways for injection attacks or <a href=\"/learning/security/what-is-data-exfiltration/\">data exfiltration</a>.\n</ul>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>AI systems are high-value targets</strong></h3>\n\n<p>AI systems do increasingly important work, and that makes their inputs and outputs appealing targets. Attackers target AI models and applications to steal or replicate intellectual property, corrupt decision pipelines, leak sensitive information, and undermine public confidence in AI-powered services. The more an organization depends on AI, the more critical it becomes to secure it like any other crown-jewel asset.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the top AI security risks?</h2>\n\n<p>While AI systems inherit many traditional IT risks, they also introduce new ones specific to their design and operation.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Shadow AI</strong></h3>\n\n<p><a href=\"https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-ai/\">Shadow AI</a> refers to the use of AI tools or systems outside formal IT oversight, just as \"shadow IT\" once described unsanctioned cloud apps. Outside of standard IT procurement, employees experiment with external GenAI tools, connect them to internal data sources, or even deploy their own open-source models on local servers. Without visibility, organizations cannot enforce consistent controls or compliance, leaving gaps for adversaries to exploit.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Data poisoning</strong></h3>\n\n<p><a href=\"/learning/ai/data-poisoning/\">Data poisoning</a> happens when an attacker alters a model's training data to manipulate its outputs. It's a particularly problematic issue for <a href=\"/the-net/vulnerable-llm-ai/\">securing large language models</a> (LLMs), which are trained to comprehend and create human language text.</p>\n\n<p>The goal of data poisoning is to manipulate model outputs in the attacker's favor or to degrade the model's overall performance. The effects may not be immediately visible, but poisoned data can undermine both performance and trust over time.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Adversarial attacks</strong></h3>\n\n<p>Even a well-trained model can be tricked. Attacks might introduce perturbations — small, carefully crafted changes — to input data to trick the model. Adding a few random pixels to a photo of a stop sign, for example, could lead an image recognition model to misidentify it. In <a href=\"/learning/ai/natural-language-processing-nlp/\">natural-language</a> models, slightly rephrased prompts might elicit unauthorized or harmful outputs.These modifications are often imperceptible to humans, but they may be enough to cause the model to make incorrect predictions or classifications. </p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Prompt injection and manipulation</strong></h3>\n\n<p>GenAI models are uniquely susceptible to prompt-based attacks. A malicious user can craft instructions that override system prompts, leak internal data, or manipulate behavior. Examples include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Indirect prompt injection</strong>, where external content (a webpage or document, for example) contains hidden instructions. Prompt injection is often the most prominent type of LLM attack, according to the Open Web Application Security Project (OWASP).\n\n  <li><strong>\"Jailbreak\" prompts</strong> that trick models into ignoring safety rules.\n\n  <li><strong>Long-term memory poisoning</strong> in autonomous <a href=\"/learning/ai/what-is-agentic-ai/\">AI agents</a>.\n</ul>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Amplification of traditional threats</strong></h3>\n\n<p>AI doesn't replace conventional cybersecurity problems — it magnifies them. For example, because AI relies on vast ecosystems of data providers, model repositories, pretrained weights, and open-source libraries, AI systems can be susceptible to <a href=\"/learning/security/what-is-a-supply-chain-attack/\">supply chain</a> attacks.</p>\n\n<p>Attackers are now using AI to enhance their own operations. GenAI models can quickly craft massive amounts of convincing <a href=\"/learning/access-management/phishing-attack/\">phishing</a> emails or deepfakes. Reinforcement-learning agents can optimize lateral-movement strategies in networks. Even <a href=\"/learning/ddos/what-is-a-ddos-attack/\">DDoS attacks</a> can be tuned using AI models that predict defensive responses.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Five ways you can secure your AI systems</h2>\n\n<p>Securing AI systems requires a holistic approach that addresses assets, data, access, and policy. Here are five essential steps:</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>1. Inventory AI assets</strong></h3>\n\n<p>You can't protect what you don't know exists. The first step is comprehensive visibility into both the AI tools employees are using and the AI components integrated into applications:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Catalog all models</strong> in development and production, whether in the cloud, on premises, or embedded in applications.\n\n  <li><strong>Track associated metadata:</strong> training datasets, APIs, dependencies, and maintainers.\n\n  <li><strong>Include third-party AI services and integrations</strong>, which may have their own exposure profiles.\n</ul>\n\n<p>Automated discovery tools or an AI security posture management platform helps identify \"shadow AI\" instances, model versions, and data flows across environments.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>2. Assess risk in your AI environment</strong></h3>\n\n<p>Once you have an inventory of the models, data sources, and AI applications in use in your organization, you can assess each component for vulnerabilities and misconfigurations. Common risks include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Model risks:</strong> exposure of weights, insecure endpoints, susceptibility to inference attacks\n\n  <li><strong>Data risks:</strong> leakage of personally identifiable information (PII), regulatory non-compliance, use of data from unverified sources\n\n  <li><strong>Pipeline risks:</strong> poor sanitization of input data, lack of isolation between data stages (collection, preparation, input, processing, and output)\n\n  <li><strong>Infrastructure risks:</strong> weak authentication, unpatched systems, and excessive permissions</li>\n</ul>\n\n<p>Every organization has its own level of risk tolerance and approach to mitigating risk. As a rule, though, you should approach AI risk as rigorously as you do software vulnerability management — scanning, prioritizing, and remediating weaknesses. </p>\n\n<p>If your firm or agency is still developing its understanding of AI risk, model frameworks from <a href=\"https://www.iso.org/standard/42001#lifecycle\">the International Organization for Standardization</a> (ISO) and <a href=\"https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf\">National Institute of Standards and Technology</a> (NIST) are useful resources.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>3. Safeguard data from leakage</strong></h3>\n\n<p>Because models learn from and sometimes reproduce training data, protecting that data is fundamental. Key practices include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Classifying data:</strong> Label sensitive data and restrict its use in model training.\n\n  <li><strong>Implementing differential privacy:</strong> Add controlled noise during training to obscure individual data points.\n\n  <li><strong>Encrypting pipelines:</strong> Protect data in transit and at rest with strong encryption.\n\n  <li><strong>Monitoring outputs:</strong> Detect potential leakage of confidential information in model responses or embeddings.\n</ul>\n\n<p>In regulated industries like healthcare and finance, apply data-minimization principles — e.g., train on only what you need — and maintain audit logs of data sources and transformations.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>4. Adopt stronger access controls</strong></h3>\n\n<p>Access management for AI systems should mirror that of critical applications, but extend to new layers:</p>\n\n<ul class=\"learning-list\">\n  <li>Require <a href=\"/learning/access-management/role-based-access-control-rbac/\">role-based access control (RBAC)</a> for model deployment and inference.\n\n  <li>Use <a href=\"/learning/security/api/what-is-an-api-gateway/\">API gateways</a> and authentication tokens to restrict inference endpoints.\n\n  <li>Isolate environments for development, testing, and production.\n\n  <li>Monitor privileged users who can retrain or modify models, as their actions may have cascading effects.\n</ul>\n\n<p><a href=\"/learning/access-management/what-is-multi-factor-authentication/\">Multi-factor authentication (MFA)</a>, key rotation, and fine-grained logging are vital to prevent both external breaches and insider misuse.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>5. Enforce consistency at the policy level</strong></h3>\n\n<p>AI introduces unique governance challenges. Consistent policies and practices can help embed security and ethical considerations in models themselves and user interactions. Consider implementing:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Model lifecycle governance:</strong> Define policies for data sourcing, model retraining, and decommissioning.\n\n  <li><strong>Prompt management:</strong> Enforce restrictions on system prompts, context injection, and tool access.\n\n  <li><strong>Cross-team alignment:</strong> Coordinate among data science, DevSecOps, and compliance teams so that standards remain consistent.\n</ul>\n\n<p>Policy enforcement can be automated through configuration-as-code, continuous compliance scanning, and integration with continuous integration and continuous delivery (CI / CD) pipelines. The goal is to make security an inherent property of the AI system — not an afterthought.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How you can use AI to enhance your overall security</h2>\n\n<p>AI can also be a powerful defender. Properly secured and governed, AI-powered cybersecurity solutions can help you detect, respond to, and even anticipate threats more effectively than ever.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Detect threats at scale</strong></h3>\n\n<p>AI excels at pattern recognition. Modern <a href=\"/learning/security/glossary/what-is-a-security-operations-center-soc/\">security operations centers (SOCs)</a> are deploying models to:</p>\n\n<ul class=\"learning-list\">\n  <li>Identify anomalies in network traffic or user behavior\n\n  <li>Detect <a href=\"/learning/security/threats/zero-day-exploit/\">zero-day attacks</a> through behavioral baselining\n\n  <li>Correlate alerts across multiple telemetry sources\n</ul>\n\n<p>GenAI extends this by providing natural-language interfaces to query complex datasets, turning raw telemetry into actionable intelligence in seconds.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Automate responses</strong></h3>\n\n<p>Automation reduces response time and human fatigue. With AI-driven security orchestration, automation, and response platforms:</p>\n\n<ul class=\"learning-list\">\n  <li>Routine incidents (such as quarantining endpoints or resetting credentials) can be handled autonomously.\n\n  <li>Playbooks can be generated dynamically based on evolving threat intelligence.\n\n  <li>LLMs can summarize incidents for analysts, improving triage efficiency.\n</ul>\n\n<p>AI-driven automation frees human analysts to focus on higher-value investigation and strategic defense.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Practice predictive security</strong></h3>\n\n<p>Beyond detection, AI enables a proactive stance. <a href=\"/learning/ai/what-is-predictive-ai/\">Predictive</a> security uses AI to forecast potential vulnerabilities or attack paths before bad actors exploit them.</p>\n\n<p>Applying predictive analytics to configuration data can reveal systems drifting toward risky states. Generative simulations can model how attackers might move laterally through your environment. Historical breach data can inform risk scoring, prioritizing patch management and defense investments. Over time, these insights can shift your AI security posture from reaction to preemption.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Bolster human security teams</strong></h3>\n\n<p>AI models should augment human expertise, not replace it. With AI, analysts who are overwhelmed by alerts and logs can shift their focus to the big picture.</p>\n\n<p>Conversational assistants allow analysts to query incidents in natural language. Pattern recognition models offer context enrichment, automatically linking threat indicators to <a href=\"https://attack.mitre.org/\">known techniques</a> or campaigns. AI copilots can elevate junior analysts to near-expert levels of performance through guided recommendations.</p>\n\n<p>The result is a security team that's faster, better informed, and more resilient — leveraging the same AI revolution that adversaries are attempting to exploit.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare can help</h2>\n\n<p>With <a href=\"/ai-security/\">Cloudflare AI Security Suite</a>, leaders get the visibility tools and security controls to protect teams and AI tools with simplicity and consistency. This platform consolidates connectivity, network security, application security, and developer tooling into a single solution that lets you stay ahead of threats by making faster, smarter security decisions throughout the AI lifecycle.</p>\n\n<p>Learn more about how to secure AI systems with <a href=\"/ai-security/\">Cloudflare AI Security Suite</a>.</p>\n\n<h2>FAQs</h2>\n<h4>Why is securing AI systems important?</h4>\n<p>AI security is an imperative because attackers are actively trying to exploit the new systems, data flows, and decision-making logic that AI creates. Protecting the models, data, and infrastructure is key to preserving the trustworthiness of the systems that power business, government, and research.</p>\n<h4>What are the primary ways AI systems increase an organization's attack surface? </h4>\n<p>AI systems introduce several new surfaces for exploitation, including the models themselves, training data, APIs, and inference pipelines.</p>\n<h4>What is \"shadow AI\" and why is it a security risk?</h4>\n<p>Shadow AI is the use of AI tools or systems outside the formal oversight of the IT department. This lack of visibility, often from employees experimenting with external GenAI tools or deploying open-source models, prevents organizations from enforcing consistent security controls or compliance, creating gaps for attackers to exploit.</p>\n<h4>How do adversarial attacks manipulate AI models?</h4>\n<p>Adversarial attacks introduce perturbations — small, meticulously crafted changes — to the input data that are often imperceptible to humans but cause the model to make incorrect predictions or classifications. In language models, this can involve slightly rephrasing prompts to elicit unauthorized or harmful outputs.</p>\n<h4>What are the five essential steps for securing AI systems?</h4>\n<p>Securing AI systems requires a holistic approach that includes: inventorying all AI assets; assessing risk in the AI environment; safeguarding data from leakage; adopting stronger access controls; and enforcing consistency at the policy level.</p>\n<h4>How can organizations safeguard data within AI systems from leakage?</h4>\n<p>Organizations can safeguard data by classifying sensitive data to restrict its use in training; implementing differential privacy; encrypting pipelines for data in transit and at rest; and monitoring model outputs for potential leaks of confidential information.</p>\n<h4>Beyond detection, how can AI enhance a security team's capabilities?</h4>\n<p>AI can enhance security by automating responses to routine incidents and generating playbooks; facilitating predictive security to forecast vulnerabilities before exploitation; and bolstering human teams with conversational assistants to improve analyst efficiency.</p>\n<h4>How does Cloudflare AI Security Suite help secure AI systems?</h4>\n<p>Cloudflare AI Security Suite provides visibility tools and security controls for protecting teams and AI tools. It is a single platform that consolidates connectivity, network security, application security, and developer tooling to enable faster, smarter security decisions throughout the AI lifecycle.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Why is securing AI systems important?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI security is an imperative because attackers are actively trying to exploit the new systems, data flows, and decision-making logic that AI creates. Protecting the models, data, and infrastructure is key to preserving the trustworthiness of the systems that power business, government, and research.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the primary ways AI systems increase an organization's attack surface?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI systems introduce several new surfaces for exploitation, including the models themselves, training data, APIs, and inference pipelines.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is \\\"shadow AI\\\" and why is it a security risk?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Shadow AI is the use of AI tools or systems outside the formal oversight of the IT department. This lack of visibility, often from employees experimenting with external GenAI tools or deploying open-source models, prevents organizations from enforcing consistent security controls or compliance, creating gaps for attackers to exploit.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How do adversarial attacks manipulate AI models?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Adversarial attacks introduce perturbations — small, meticulously crafted changes — to the input data that are often imperceptible to humans but cause the model to make incorrect predictions or classifications. In language models, this can involve slightly rephrasing prompts to elicit unauthorized or harmful outputs.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the five essential steps for securing AI systems?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Securing AI systems requires a holistic approach that includes: inventorying all AI assets; assessing risk in the AI environment; safeguarding data from leakage; adopting stronger access controls; and enforcing consistency at the policy level.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can organizations safeguard data within AI systems from leakage?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Organizations can safeguard data by classifying sensitive data to restrict its use in training; implementing differential privacy; encrypting pipelines for data in transit and at rest; and monitoring model outputs for potential leaks of confidential information.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Beyond detection, how can AI enhance a security team's capabilities?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI can enhance security by automating responses to routine incidents and generating playbooks; facilitating predictive security to forecast vulnerabilities before exploitation; and bolstering human teams with conversational assistants to improve analyst efficiency.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does Cloudflare AI Security Suite help secure AI systems?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Cloudflare AI Security Suite provides visibility tools and security controls for protecting teams and AI tools. It is a single platform that consolidates connectivity, network security, application security, and developer tooling to enable faster, smarter security decisions throughout the AI lifecycle.\"\n      }\n    }\n  ]\n}\n</script>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1vvOGzryLHoGcsL8eeCuNg",
+			"pathname": "/learning/ai/how-to-secure-ai-systems/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
