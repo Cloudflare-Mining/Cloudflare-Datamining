@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/ai/what-is-generative-ai/",
+	"path": "/learning/ai/how-to-prevent-web-scraping/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "7Bp9wuDdJWKtdHeiaOgiEA",
-				"urlSlug": "ai/what-is-generative-ai",
+				"contentfulId": "2PcjqIaXYEK0ro149xqqlx",
+				"urlSlug": "ai/how-to-prevent-web-scraping",
 				"metaTags": {
-					"metaTitle": "What is generative AI?",
-					"metaDescription": "Generative AI is a type of deep learning model that can produce text, code, or images in response to prompts. Learn how generative AI works.",
+					"metaTitle": "How to prevent web scraping",
+					"metaDescription": "AI-powered web scrapers can steal intellectual property and diminish ad revenue. Prevent web scraping with new tools for website owners. ",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -496,16 +496,28 @@
 						]
 					}
 				},
-				"header": "What is generative AI?",
-				"blurbSubHeader": "Generative artificial intelligence (AI) is a type of computer program that can produce content in response to human prompts.",
-				"objectivesHeader": "Generative AI",
+				"header": "How to prevent web scraping",
+				"blurbSubHeader": "AI-powered web crawlers and scrapers steal original content and restrict website visitors. Learn how website owners and content publishers can regain control of web scraping.  ",
+				"objectivesHeader": "Prevent web scraping",
 				"objectivesList": [
-					"Define generative AI",
-					"Explain how generative AI works",
-					"List the benefits and drawbacks of generative AI"
+					"Understand the original benefits of web scraping",
+					"Identify the problems caused by web scraping",
+					"Apply best practices for preventing web scraping"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "lPnhhxwLhjTEC8rurRhbS",
+						"displayText": "Web crawler",
+						"url": "/learning/bots/what-is-a-web-crawler/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6zUsw3wyoBqtsDX8JNwzWM",
+						"displayText": "What is robots.txt?",
+						"url": "/learning/bots/what-is-robots-txt/"
+					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
@@ -514,45 +526,33 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
-						"displayText": "What is deep learning?",
-						"url": "/learning/ai/what-is-deep-learning/"
+						"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+						"displayText": "What is generative AI?",
+						"url": "/learning/ai/what-is-generative-ai/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
-						"displayText": "What is machine learning?",
-						"url": "/learning/ai/what-is-machine-learning/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
-						"displayText": "Predictive AI",
-						"url": "/learning/ai/what-is-predictive-ai/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
-						"displayText": "What is agentic AI?",
-						"url": "/learning/ai/what-is-agentic-ai/"
+						"contentfulId": "1p5yVGMlR7uAX8Y6PlnIi5",
+						"displayText": "What is bot management?",
+						"url": "/learning/bots/what-is-bot-management/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is generative AI?</h2>\n\n<p>Generative <a href='/learning/ai/what-is-artificial-intelligence/'>artificial intelligence (AI)</a> is a type of <a href='/learning/ai/what-is-deep-learning/'>deep learning</a> model that can produce text, images, computer code, and audiovisual content in response to prompts.</p>\n\n<p>Generative AI models are trained on vast quantities of raw data — generally, the same kinds of data they are built to produce. From that data, they learn to form responses, when given arbitrary inputs, that are statistically likely to be relevant for those inputs. For example, some generative AI models are trained on large amounts of text, in order to be able to respond to written prompts in a seemingly organic and original manner.</p>\n\n<p>In simpler terms, generative AI can react to requests much like human artists or authors, but more quickly. Whether the content these models generate can be considered \"new\" or \"original\" is up for debate, but in many cases they can match or exceed certain human creative abilities.</p>\n\n<p>Popular generative AI models include ChatGPT for text generation and DALL-E for image generation. Many organizations have built their own models as well.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does generative AI work?</h2>\n\n<h4 class=\"learning-content-h4\">Machine learning, deep learning, and neural networks</h4>\n\n<p>Generative AI is a type of <a href='/learning/ai/what-is-machine-learning/'>machine learning</a>, which means it relies on mathematical analysis to find relevant concepts, images, or patterns. It then uses this analysis to produce content that is statistically likely to be similar or related to the prompt it received.</p>\n\n<p>Specifically, generative AI relies on a type of machine learning called deep learning. Deep learning models are powerful enough to learn from unlabeled data. They use a type of computing architecture called a <a href='/learning/ai/what-is-neural-network/'>neural network</a>. Such architectures are composed of multiple nodes that pass data to each other, similarly to how a human brain passes data via neurons. Neural networks are able to perform highly sophisticated and refined tasks.</p>\n\n<h4 class=\"learning-content-h4\">Transformers and self-attention</h4>\n\n<p>Generative AI models that can interpret language need to understand more than individual words. They must be able to interpret entire sentences, paragraphs, and documents. Early machine learning models struggled with understanding entire sentences and would \"forget\" the beginning of a sentence by the time they reached the  end, resulting in misinterpretation. </p>\n\n<p>Modern generative AI models use a specific kind of neural network called transformers. These use a capability called self-attention to detect how elements in a sequence are connected. Transformers enable generative AI models to do things like process and contextualize large blocks of text instead of just individual words and phrases.</p>\n\n<h4 class=\"learning-content-h4\">Training data</h4>\n\n<p>In order to work well, generative AI models have to be fed a large amount of data: more data, in most cases, than a human could process over the course of a lifetime. For example, the large language model ChatGPT was trained on millions of documents. An image generator might be trained on millions of images, and a code generator on billions of lines of code.</p>\n\n<p>This training data is stored in a <a href='/learning/ai/what-is-vector-database/'>vector database</a>. In such a database, points of data are stored as vectors — or, a set of coordinates within a multi-dimensional field. Just as latitude and longitude enable someone looking at a map to find nearby locations, storing data as vectors enables machine learning models to find \"nearby\" points of data. This allows models to make associations and understand the context of a word, an image, a sound, or any other type of content.</p>\n\n<p>Once the generative AI model reaches a certain level of fine tuning, it does not need quite as much data in order to produce a result. For example, voice-generating AI models may be trained on thousands of hours of vocal recordings. But once they are fine-tuned, some models only need a few seconds of a sample recording to realistically imitate someone's voice.</p>\n\n<p>Even after fine-tuning, many generative AI models (or their operators) continue to <a href='/learning/bots/what-is-a-web-crawler/'>crawl the web</a> for more content. They do this for a wide range of reasons, including retrieving up-to-date data in response to user requests and gathering more data for training.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the benefits and drawbacks of generative AI?</h2>\n\n<p>Generative AI models are growing in popularity, since they offer a number of potential benefits. These benefits include, but are not limited to:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Content ideation:</strong> The use of generative AI can help content creators come up with a creative direction more quickly.</li>\n  <li><strong>Better chatbots:</strong> Generative AI models can be integrated into chatbots to better answer customer questions, engage prospects, and so on.</li>\n  <li><strong>Enhanced research:</strong> Generative AI models can rapidly process vast amounts of data, including medical data or scientific studies, to aid in research.</li>\n  <li><strong>Improved search results:</strong> Search engines and virtual assistants can incorporate generative AI capabilities to more quickly provide relevant information in response to queries.</li>\n  <li><strong>Entertainment:</strong> Many people use publicly available generative AI tools solely for fun.</li>\n  <li><strong>Quick software prototyping:</strong> An approach to software development called \"<a href='/learning/ai/ai-vibe-coding/'>vibe coding</a>\" has grown in popularity. In this approach, a developer relies upon a generative AI tool to create actual lines of code, providing only high-level directions to the tool.</li>\n  <li><strong>Other benefits:</strong> AI is a rapidly growing field, and further benefits from generative AI are likely still yet to come.</li>\n</ul>\n\n<p>However, generative AI does come with its share of drawbacks, including:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Hallucination and other inaccuracies:</strong> Generative AI models are typically very good at identifying patterns, but sometimes they identify patterns that do not actually exist. This can result in the models providing false information, a phenomenon known as \"<a href='/learning/ai/what-are-ai-hallucinations/'>hallucination</a>.\" Additionally, generative AI models are only as accurate as the data they are fed, and fact-checking generative AI outputs can prove difficult without access to the source data.</li>\n  <li><strong>Data leaks:</strong> Models can take the data they are fed in prompts and reveal it in unexpected contexts. Several large enterprises have accidentally leaked confidential information or source code in this way.</li>\n  <li><strong>Negative impacts on content creators:</strong> Many generative AI models regularly crawl websites while sending very little referral traffic in return. This can harm content creators and publishers who depend on user traffic for revenue.</li>\n  <li><strong>Accidental plagiarism or misuse of intellectual property:</strong> Because generative AI models are based on preexisting content, they may reproduce content they were fed without permission from that content's original author or copyright holder. <a href='https://www.cloudflare.com/ai-security/'>Cloudflare helps protect AI models</a> from accessing original content without permission via the AI Audit <a href='/paypercrawl-signup/'>pay per crawl</a> feature.</li>\n  <li><strong>Malicious response manipulation:</strong> Attackers can feed data to a generative AI model that causes it to produce dangerous or unsafe information for other users.</li>\n  <li><strong>Biases:</strong> Any biases in the information fed to a model as it is trained are likely to be retained or even exacerbated unless the model is fine-tuned to correct for them. And even then, ensuring results are free from bias without reviewing the entire training set is near-impossible.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a large language model (LLM)?</h2>\n\n<p>\"<a href='/learning/ai/what-is-large-language-model/'>Large language model</a>\" (LLM) is the technical term for generative AI models that process language and can generate text, including both human-spoken languages and programming languages. Popular LLMs include ChatGPT (from OpenAI), Llama (from Meta), Bard (from Google), Copilot (from GitHub), and Bing Chat (from Microsoft).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an AI image generator?</h2>\n\n<p><a href='/learning/ai/ai-image-generation/'>AI image generators</a> work similarly to LLMs, but for images instead of text. DALL-E and Midjourney are two examples of popular generative AI-based image generators.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare support generative AI development?</h2>\n\n<p>Cloudflare empowers developers and businesses to build their own generative AI models. Cloudflare offers Vectorize so that developers can generate and store <a href='/learning/ai/what-are-embeddings/'>embeddings</a> on the Cloudflare global network from their own data, and Cloudflare Workers AI for running generative AI tasks on a global network of GPUs. Learn more about <a href='https://ai.cloudflare.com/' target='_blank'>how Cloudflare is enabling the next generation of generative AI</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How to prevent web scraping</h2>\n\n<p>Web scraping, also known as website scraping, is the automated process of extracting data or content from websites. It is a well-established Internet practice originally designed to help search engines more efficiently guide users to the specific content they wanted to see. Essentially, web scrapers, also known as <a href=\"/learning/bots/what-is-a-web-crawler/\">crawlers</a>, would \"crawl\" across websites and extract their content to classify the website in the search engine's index.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the historical benefits of web scraping?</h2>\n\n<p>Initially, web scraping worked quite well for most parties:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Users</strong> could access comprehensive, accurate lists of web content.\n  <li><strong>Search engines</strong> were able to increase the efficiency of their processes, retrieving the information that searchers were looking for quicker and more accurately.\n  <li><strong>Websites and content providers</strong> were able to monetize their unique intellectual property (IP), capitalizing on unique visitors, ad clicks, and downloads of their proprietary IP.\n</ul>\n\n<p>Content providers were incentivized to keep updating their content, and the system worked relatively smoothly overall, with users, search engines, and content providers each getting what they were looking for and existing in a relatively stable state of triangulated homeostasis.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the problems caused by web scraping?</h2>\n\n<p>While the web scraping ecosystem worked well initially, it is vulnerable to attack and misuse. For example:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Content theft:</strong> Attackers can use scraping techniques to steal proprietary information from sites. They can access product pricing information and then sell the same item on a competing website for less. They can also steal information or insights that others have spent time and effort to compile or report.\n  <li><a href=\"/learning/performance/more/website-performance-conversion-rates/\"><strong>Degraded site performance</strong></a><strong>:</strong> Bots can be programmed to repeatedly scrape a website, slowing down its servers and increasing page load times. This results in user frustration and higher costs for content providers.\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What tools have websites been using against excessive web scraping?</h2>\n\n<p>Realizing that excessive web scraping is a direct threat to their business, content providers have implemented a variety of defenses against IP theft and excessive scraping, including <a href=\"/learning/bots/what-is-bot-management/\">bot management</a> and <a href=\"https:/learning/ddos/glossary/web-application-firewall-waf/\">web application firewall (WAF)</a> solutions. Many have also implemented a <a href=\"/learning/bots/what-is-robots-txt/\">robots.txt</a> file, which provides guidelines for how bots can interact with websites, but those files rely on bots to \"do the right thing\" and are often ignored.</p>\n\n<p>These web scraping defenses can be overmatched by sophisticated adversaries using evasive bots, techniques, and technologies. Website owners have experienced more theft of proprietary data and exfiltration of pricing and product information, all of which chips away at their competitive advantage.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How has AI added to content providers' web scraping problem?</h2>\n\n<p>A growing number of search engine and AI companies are using web scrapers in conjunction with <a href=\"/learning/ai/what-is-large-language-model/\">large language models (LLMs)</a> to collect content from websites and then present summarized versions to users. Reading AI-generated summaries from search engines or <a href=\"/learning/ai/what-is-generative-ai/\">generative AI (GenAI)</a> tools can save users a step by providing information faster. But the practice can also be harmful and disruptive for website owners and content publishers.</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Loss of referral traffic:</strong> While some AI summaries might provide links to original content, users will be less likely to visit those sites when they already have a short summary.\n  <li><strong>Lost revenue:</strong> Many content publishers rely on web traffic to fund their business, whether through display ads or subscriptions. Less traffic generally means less revenue.\n  <li><strong>Content misrepresentation:</strong> GenAI summaries of web content may misrepresent that content.\n</ul>\n\n<p>With less income coming in, content publishers have less motivation and fewer funds to create original or timely content. And if they create less content, LLMs will have less credible information from legitimate sources to draw from, which will reduce the flow and dissemination of new information even more.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do WordPress users protect their sites from web scraping?</h2>\n\n<p>Many bloggers and other content creators continue to use WordPress due to its relatively straightforward, non-technical interface. WordPress users have adopted a number of tactics to defend against web scraping, including using <a href=\"/learning/bots/what-is-robots-txt/\">robots.txt protocols</a> to help guide bonafide crawlers through their content as well as adopting advanced <a href=\"/learning/bots/how-captchas-work/\">CAPTCHA</a> identification methods to block malicious bots and separate them from legitimate traffic. Some also use advanced security measures to block suspicious addresses, and employ <a href=\"/learning/bots/what-is-rate-limiting/\">rate limiting</a> to reduce the strain on a site's traffic load and resource allocation.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the best ways for content publishers to combat web scraping?</h2>\n\n<p>For content publishers, content is literally their business. Preventing excessive and malicious web scraping must be a top priority.</p>\n\n<p>A few best practices can make a huge difference:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Limit unnecessary and malicious web scraping:</strong> Implement solutions that can block certain sites' bots or limit the volume of scraping allowed. Modern defenses can limit the number of requests from a specific IP address, or limit access to a reasonable amount of scraping attempts in a given period of time, allowing \"normal\" human user web navigation to continue unimpeded.\n  <li><strong>Use AI-powered solutions:</strong> Web scrapers are increasingly relying on AI-powered bots to scrape sites. Defending against those bots requires AI-powered solutions. Those solutions might monitor real-time threat intelligence feeds to identify emerging threats, or analyze site traffic to detect behavioral anomalies that signal bot activity.\n  <li><strong>Restrict which pages and content can be scraped:</strong> You might decide to allow certain pages to be scraped — like marketing pages about products or developer documentation. And you might restrict scraping on pages where you are monetizing original content through ads.\n  <li><strong>Use a solution with AI-powered bot detection:</strong> You could employ a solution that automatically triggers a \"Turing\"-style test to differentiate human activity from bot behavior. For example, <a href=\"/application-services/products/turnstile/\">Cloudflare Turnstile</a> improves upon widely used CAPTCHA technology with a short snippet of code to automatically detect bots without degrading your site's performance for human users.\n  <li><strong>Implement updated compensation models:</strong> Website owners and content publishers could create more paywall-protected content to offset revenue losses from scraping. However, this approach creates a two-tiered Internet, where the best and most innovative content is increasingly sequestered behind walls. Instead, website owners and content publishers should implement a compensation model that works for all involved parties. Charging AI-scrapers to access sites can offset lost income for site owners and publishers while providing scrapers with original content.\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Regain control of web scraping with Cloudflare</h2>\n\n<p>Cloudflare enables website owners and content publishers to regain control over web scraping. <a href=\"/lp/pg-ai-crawl-control/\">Cloudflare AI Crawl Control</a> provides full visibility into AI crawling and scraping activity. You can allow or block crawlers with a single click; limit scraping to select pages or types of content on your site; and slow or block activity from specific IP addresses. And you can manage everything from a single, intuitive dashboard. <a href=\"/application-services/products/bot-management/\">Cloudflare Bot Management</a> distinguishes good and bad bots in real time, enabling you to allow good bots to crawl your site while stopping harmful ones.</p>\n\n<p>Learn more about how Cloudflare lets you <a href=\"/ai-crawl-control/\">take back control over your content</a>.</p>\n\n<h2>FAQs</h2>\n<h4>What is web scraping and what is its original purpose?</h4>\n<p>Web scraping, or website scraping, is an automated process used to extract data or content from websites. The practice was originally established to help search engines more efficiently classify content and guide users to the specific information.</p>\n<h4>What are the historical benefits of web scraping for users and content creators?</h4>\n<p>Initially, web scraping helped users gain access to comprehensive and accurate lists of web content. And content providers were able to monetize their unique intellectual property (IP).</p>\n<h4>How does excessive or malicious web scraping harm content providers?</h4>\n<p>Excessive web scraping can lead to content theft and degraded site performance. When bots repeatedly scrape a site, it can increase page load times and frustrate users while leading to higher costs for the content provider.</p>\n<h4>What are the common security tools content providers use to defend against web scraping?</h4>\n<p>Content providers have traditionally used defenses like bot management and web application firewall (WAF) solutions to protect against IP theft and excessive scraping. They also commonly implement a robots.txt file, though it is often ignored by malicious bots.</p>\n<h4>How does generative AI (GenAI) exacerbate the content scraping problem?</h4>\n<p>Search engine and AI companies use web scrapers with large language models (LLMs) to collect content and present users with summarized versions. This practice leads to a loss of referral traffic, which causes lost revenue for publishers.</p>\n<h4>What are key best practices for publishers who want to combat malicious web scraping?</h4>\n<p>Publishers should limit unnecessary and malicious web scraping by restricting the volume of scraping allowed. They can also use AI-powered solutions to defend against sophisticated AI-powered bots and implement a compensation model, charging AI-scrapers to access sites.</p>\n<h4>What are some specific tactics WordPress users employ to protect their sites?</h4>\n<p>Many WordPress users adopt robots.txt protocols to guide legitimate crawlers. They also use advanced CAPTCHA identification methods to block malicious bots and separate them from human traffic. Some employ security measures to block suspicious addresses and use rate limiting.</p>\n<h4>What Cloudflare solutions can help content publishers regain control over scraping?</h4>\n<p>Cloudflare AI Crawl Control provides visibility into AI crawling activity and allows publishers to block, limit, or slow down specific crawlers with a single click. Cloudflare Bot Management distinguishes between good and bad bots in real time, allowing helpful bots to crawl the site while stopping harmful ones.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is web scraping and what is its original purpose?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Web scraping, or website scraping, is an automated process used to extract data or content from websites. The practice was originally established to help search engines more efficiently classify content and guide users to the specific information.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the historical benefits of web scraping for users and content creators?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Initially, web scraping helped users gain access to comprehensive and accurate lists of web content. And content providers were able to monetize their unique intellectual property (IP).\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does excessive or malicious web scraping harm content providers?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Excessive web scraping can lead to content theft and degraded site performance. When bots repeatedly scrape a site, it can increase page load times and frustrate users while leading to higher costs for the content provider.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the common security tools content providers use to defend against web scraping?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Content providers have traditionally used defenses like bot management and web application firewall (WAF) solutions to protect against IP theft and excessive scraping. They also commonly implement a robots.txt file, though it is often ignored by malicious bots.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does generative AI (GenAI) exacerbate the content scraping problem?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Search engine and AI companies use web scrapers with large language models (LLMs) to collect content and present users with summarized versions. This practice leads to a loss of referral traffic, which causes lost revenue for publishers.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are key best practices for publishers who want to combat malicious web scraping?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Publishers should limit unnecessary and malicious web scraping by restricting the volume of scraping allowed. They can also use AI-powered solutions to defend against sophisticated AI-powered bots and implement a compensation model, charging AI-scrapers to access sites.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are some specific tactics WordPress users employ to protect their sites?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Many WordPress users adopt robots.txt protocols to guide legitimate crawlers. They also use advanced CAPTCHA identification methods to block malicious bots and separate them from human traffic. Some employ security measures to block suspicious addresses and use rate limiting.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What Cloudflare solutions can help content publishers regain control over scraping?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Cloudflare AI Crawl Control provides visibility into AI crawling activity and allows publishers to block, limit, or slow down specific crawlers with a single click. Cloudflare Bot Management distinguishes between good and bad bots in real time, allowing helpful bots to crawl the site while stopping harmful ones.\"\n      }\n    }\n  ]\n}\n</script>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -564,63 +564,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "7Bp9wuDdJWKtdHeiaOgiEA",
-			"pathname": "/learning/ai/what-is-generative-ai/",
+			"contentfulId": "2PcjqIaXYEK0ro149xqqlx",
+			"pathname": "/learning/ai/how-to-prevent-web-scraping/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
