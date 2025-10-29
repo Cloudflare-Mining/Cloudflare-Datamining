@@ -26,7 +26,6 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
-	<li><span data-sheets-root="1">For Austin Texas based hires: Estimated annual salary of $137,000 - 167,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

@@ -18,7 +18,7 @@
 </ul>
 <p><strong>Requirements</strong><strong>:</strong></p>
 <ul>
-	<li>2+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Trust &amp; Safety.</li>
+	<li>5+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Trust &amp; Safety.</li>
 	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
 	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
 	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
