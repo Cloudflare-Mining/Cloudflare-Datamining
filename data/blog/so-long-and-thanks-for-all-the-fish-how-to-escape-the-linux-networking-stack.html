@@ -1,0 +1,160 @@
+<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fOktF0s69EPk5vhB016nD/692ac1bf85d78a09b4bd74bb43065901/unnamed.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><b></b><a href="https://www.goodreads.com/quotes/2397-there-is-a-theory-which-states-that-if-ever-anyone"><u>There is a theory which states</u></a> that if ever anyone discovers exactly what the Linux networking stack does and why it does it, it will instantly disappear and be replaced by something even more bizarre and inexplicable.</p>
+	<p>There is another theory which states that Git was created to track how many times this has already happened.</p>
+	<p>Many products at Cloudflare aren’t possible without pushing the limits of network hardware and software to deliver improved performance, increased efficiency, or novel capabilities such as <a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore"><u>soft-unicast, our method for sharing IP subnets across data centers</u></a>. Happily, most people do not need to know the intricacies of how your operating system handles network and Internet access in general. Yes, even most people within Cloudflare.</p>
+	<p>But sometimes we try to push well beyond the design intentions of Linux’s networking stack. This is a story about one of those attempts.</p>
+	<div class="flex anchor relative">
+		<h2 id="hard-solutions-for-soft-problems">Hard solutions for soft problems</h2>
+		<a href="https://blog.cloudflare.com/#hard-solutions-for-soft-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>My previous blog post about the Linux networking stack teased a problem matching the ideal model of soft-unicast with the basic reality of IP packet forwarding rules. Soft-unicast is the name given to our method of sharing IP addresses between machines. <a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore"><u>You may learn about all the cool things we do with it</u></a>, but as far as a single machine is concerned, it has dozens to hundreds of combinations of IP address and source-port range, any of which may be chosen for use by outgoing connections.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NsU3FdxgJ0FNL78SDCo9D/65a27e8fd4339d3318a1b55b5979e3c6/image3.png" alt="" class="kg-image" width="1400" height="720" loading="lazy">
+	</figure>
+	<p>The SNAT target in iptables supports a source-port range option to restrict the ports selected during NAT. In theory, we could continue to use iptables for this purpose, and to support multiple IP/port combinations we could use separate packet marks or multiple TUN devices. In actual deployment we would have to overcome challenges such as managing large numbers of iptables rules and possibly network devices, interference with other uses of packet marks, and deployment and reallocation of existing IP ranges.</p>
+	<p>Rather than increase the workload on our firewall, we wrote a single-purpose service dedicated to egressing IP packets on soft-unicast address space. For reasons lost in the mists of time, we named it SLATFATF, or “fish” for short. This service’s sole responsibility is to proxy IP packets using soft-unicast address space and manage the lease of those addresses.</p>
+	<p>WARP is not the only user of soft-unicast IP space in our network. Many Cloudflare products and services make use of the soft-unicast capability, and many of them use it in scenarios where we create a TCP socket in order to proxy or carry HTTP connections and other TCP-based protocols. Fish therefore needs to lease addresses that are not used by open sockets, and ensure that sockets cannot be opened to addresses leased by fish.</p>
+	<p>Our first attempt was to use distinct per-client addresses in fish and continue to let Netfilter/conntrack apply SNAT rules. However, we discovered an unfortunate interaction between Linux’s socket subsystem and the Netfilter conntrack module that reveals itself starkly when you use packet rewriting.</p>
+	<div class="flex anchor relative">
+		<h2 id="collision-avoidance">Collision avoidance</h2>
+		<a href="https://blog.cloudflare.com/#collision-avoidance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Suppose we have a soft-unicast address slice, 198.51.100.10:9000-9009. Then, suppose we have two separate processes that want to bind a TCP socket at 198.51.100.10:9000 and connect it to 203.0.113.1:443. The first process can do this successfully, but the second process will receive an error when it attempts to connect, because there is already a socket matching the requested 5-tuple.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2eXmHlyC0pdDUkZ9OI3JI/b83286088b4efa6ddee897e8b5d3b191/image8.png" alt="" class="kg-image" width="1466" height="364" loading="lazy">
+	</figure>
+	<p>Instead of creating sockets, what happens when we emit packets on a TUN device with the same destination IP but a unique source IP, and use source NAT to rewrite those packets to an address in this range?</p>
+	<p>If we add an nftables “snat” rule that rewrites the source address to 198.51.100.10:9000-9009, Netfilter will create an entry in the conntrack table for each new connection seen on fishtun, mapping the new source address to the original one. If we try to forward more connections on that TUN device to the same destination IP, new source ports will be selected in the requested range, until all ten available ports have been allocated; once this happens, new connections will be dropped until an existing connection expires, freeing an entry in the conntrack table.</p>
+	<p>Unlike when binding a socket, Netfilter will simply pick the first free space in the conntrack table. However, if you use up all the possible entries in the table <a href="https://blog.cloudflare.com/conntrack-tales-one-thousand-and-one-flows"><u>you will get an EPERM error when writing an IP packet</u></a>. Either way, whether you bind kernel sockets or you rewrite packets with conntrack, errors will indicate when there isn’t a free entry matching your requirements.</p>
+	<p>Now suppose that you combine the two approaches: a first process emits an IP packet on the TUN device that is rewritten to a packet on our soft-unicast port range. Then, a second process binds and connects a TCP socket with the same addresses as that IP packet:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57KuCP4vkp4TGPiLwDRPZv/c066279cd8a84a511f09ed5218488cec/image7.png" alt="" class="kg-image" width="1720" height="780" loading="lazy">
+	</figure>
+	<p>The first problem is that there is no way for the second process to know that there is an active connection from 198.51.100.10:9000 to 203.0.113.1:443, at the time the <code>connect() </code>call is made. The second problem is that the connection is successful from the point of view of that second process.</p>
+	<p>It should not be possible for two connections to share the same 5-tuple. Indeed, they don’t. Instead, the source address of the TCP socket is <a href="https://github.com/torvalds/linux/blob/v6.15/net/netfilter/nf_nat_core.c#L734"><u>silently rewritten to the next free port</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DWpWJ5gBIDoEhimxIR8TT/fd3d8bd46353cd42ed09a527d4841da8/image6.png" alt="" class="kg-image" width="1536" height="654" loading="lazy">
+	</figure>
+	<p>This behaviour is present even if you use conntrack without either SNAT or MASQUERADE rules. It usually happens that the lifetime of conntrack entries matches the lifetime of the sockets they’re related to, but this is not guaranteed, and you cannot depend on the source address of your socket matching the source address of the generated IP packets.</p>
+	<p>Crucially for soft-unicast, it means conntrack may rewrite our connection to have a source port outside of the port slice assigned to our machine. This will silently break the connection, causing unnecessary delays and false reports of connection timeouts. We need another solution.</p>
+	<div class="flex anchor relative">
+		<h2 id="taking-a-breather">Taking a breather</h2>
+		<a href="https://blog.cloudflare.com/#taking-a-breather" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For WARP, the solution we chose was to stop rewriting and forwarding IP packets, instead to terminate all TCP connections within the server and proxy them to a locally-created TCP socket with the correct soft-unicast address. This was an easy and viable solution that we already employed for a portion of our connections, such as those directed at the CDN, or intercepted as part of the Zero Trust Secure Web Gateway. However, it does introduce additional resource usage and potentially increased latency compared to the status quo. We wanted to find another way (to) forward.</p>
+	<div class="flex anchor relative">
+		<h2 id="an-inefficient-interface">An inefficient interface</h2>
+		<a href="https://blog.cloudflare.com/#an-inefficient-interface" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>If you want to use both packet rewriting and bound sockets, you need to decide on a single source of truth. Netfilter is not aware of the socket subsystem, but most of the code that uses sockets and is also aware of soft-unicast is code that Cloudflare wrote and controls. A slightly younger version of myself therefore thought it made sense to change our code to work correctly in the face of Netfilter’s design.</p>
+	<p>Our first attempt was to use the Netlink interface to the conntrack module, to inspect and manipulate the connection tracking tables before sockets were created. <a href="https://docs.kernel.org/userspace-api/netlink/intro.html"><u>Netlink is an extensible interface to various Linux subsystems</u></a> and is used by many command-line tools like <a href="https://man7.org/linux/man-pages/man8/ip.8.html"><u>ip</u></a> and, in our case, <a href="https://conntrack-tools.netfilter.org/manual.html"><u>conntrack-tools</u></a>. By creating the conntrack entry for the socket we are about to bind, we can guarantee that conntrack won’t rewrite the connection to an invalid port number, and ensure success every time. Likewise, if creating the entry fails, then we can try another valid address. This approach works regardless of whether we are binding a socket or forwarding IP packets.</p>
+	<p>There is one problem with this — it’s not terribly efficient. Netlink is slow compared to the bind/connect socket dance, and when creating conntrack entries you have to specify a timeout for the flow and delete the entry if your connection attempt fails, to ensure that the connection table doesn’t fill up too quickly for a given 5-tuple. In other words, you have to manually reimplement <a href="https://sysctl-explorer.net/net/ipv4/tcp_tw_reuse"><u>tcp_tw_reuse</u></a> option to support high-traffic destinations with limited resources. In addition, a stray RST packet can erase your connection tracking entry. At our scale, anything like this that can happen, will happen. It is not a place for fragile solutions.</p>
+	<div class="flex anchor relative">
+		<h2 id="socket-to-em">Socket to ‘em</h2>
+		<a href="https://blog.cloudflare.com/#socket-to-em" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Instead of creating conntrack entries, we can abuse kernel features for our own benefit. Some time ago Linux added <a href="https://lwn.net/Articles/495304"><u>the TCP_REPAIR socket option</u></a>, ostensibly to support connection migration between servers e.g. to relocate a VM. The scope of this feature allows you to create a new TCP socket and specify its entire connection state by hand.</p>
+	<p>An alternative use of this is to create a “connected” socket that never performed the TCP three-way handshake needed to establish that connection. At least, the kernel didn’t do that — if you are forwarding the IP packet containing a TCP SYN, you have more certainty about the expected state of the world.</p>
+	<p>However, the introduction of <a href="https://en.wikipedia.org/wiki/TCP_Fast_Open"><u>TCP Fast Open</u></a> provides an even simpler way to do this: you can create a “connected” socket that doesn’t perform the traditional three-way handshake, on the assumption that the SYN packet — when sent with its initial payload — contains a valid cookie to immediately establish the connection. However, as nothing is sent until you write to the socket, this serves our needs perfectly.</p>
+	<p>You can try this yourself:</p>
+	<pre class="language-Rust"><code class="language-Rust">TCP_FASTOPEN_CONNECT = 30
+TCP_FASTOPEN_NO_COOKIE = 34
+s = socket(AF_INET, SOCK_STREAM)
+s.setsockopt(SOL_TCP, TCP_FASTOPEN_CONNECT, 1)
+s.setsockopt(SOL_TCP, TCP_FASTOPEN_NO_COOKIE, 1)
+s.bind(('198.51.100.10', 9000))
+s.connect(('1.1.1.1', 53))</code></pre>
+	<p>Binding a “connected” socket that nevertheless corresponds to no actual socket has one important feature: if other processes attempt to bind to the same addresses as the socket, they will fail to do so. This satisfies the problem we had at the beginning to make packet forwarding coexist with socket usage.</p>
+	<div class="flex anchor relative">
+		<h2 id="jumping-the-queue">Jumping the queue</h2>
+		<a href="https://blog.cloudflare.com/#jumping-the-queue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While this solves one problem, it creates another. By default, you can’t use an IP address for both locally-originated packets and forwarded packets.</p>
+	<p>For example, we assign the IP address 198.51.100.10 to a TUN device. This allows any program to create a TCP socket using the address 198.51.100.10:9000. We can also write packets to that TUN device with the address 198.51.100.10:9001, and Linux can be configured to forward those packets to a gateway, following the same route as the TCP socket. So far, so good.</p>
+	<p>On the inbound path, TCP packets addressed to 198.51.100.10:9000 will be accepted and data put into the TCP socket. TCP packets addressed to 198.51.100.10:9001, however, will be dropped. They are not forwarded to the TUN device at all.</p>
+	<p>Why is this the case? Local routing is special. If packets are received to a local address, they are treated as “input” and not forwarded, regardless of any routing you think should apply. Behold the default routing rules:</p>
+	<p><code>cbranch@linux:~$ ip rule
+			cbranch@linux:~$ ip rule
+			0:&nbsp; &nbsp; &nbsp; &nbsp; from all lookup local
+			32766:&nbsp; &nbsp; from all lookup main
+			32767:&nbsp; &nbsp; from all lookup default</code></p>
+	<p>The rule priority is a nonnegative integer, the smallest priority value is evaluated first. This requires some slightly awkward rule manipulation to “insert” a lookup rule at the beginning that redirects marked packets to the packet forwarding service’s TUN device; you have to delete the existing rule, then create new rules in the right order. However, you don’t want to leave the routing rules without any route to the “local” table, in case you lose a packet while manipulating these rules. In the end, the result looks something like this:</p>
+	<p><code>ip rule add fwmark 42 table 100 priority 10
+			ip rule add lookup local priority 11
+			ip rule del priority 0
+			ip route add 0.0.0.0/0 proto static dev fishtun table 100</code></p>
+	<p>As with WARP, we simplify connection management by assigning a mark to packets coming from the “fishtun” interface, which we can use to route them back there. To prevent locally-originated TCP sockets from having this same mark applied, we assign the IP to the loopback interface instead of fishtun, leaving fishtun with no assigned address. But it doesn’t need one, as we have explicit routing rules now.</p>
+	<div class="flex anchor relative">
+		<h2 id="uncharted-territory">Uncharted territory</h2>
+		<a href="https://blog.cloudflare.com/#uncharted-territory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While testing this last fix, I ran into an unfortunate problem. It did not work in our production environment.</p>
+	<p>It is not simple to debug the path of a packet through Linux’s networking stack. There are a few tools you can use, such as setting nftrace in nftables or applying the LOG/TRACE targets in iptables, which help you understand which rules and tables are applied for a given packet.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ofuljq2tDVVUyzyPOMYSp/3da5954ef254aa3aae5397b310f6dcad/image5.png" alt="" class="kg-image" width="1600" height="510" loading="lazy">
+	</figure>
+	<p><sup></sup><a href="https://en.m.wikipedia.org/wiki/File:Netfilter-packet-flow.svg"><sup><u>Schematic for the packet flow paths through Linux networking and *tables</u></sup></a><sup> by </sup><a href="https://commons.wikimedia.org/wiki/User_talk:Jengelh"><sup>Jan Engelhardt</sup></a></p>
+	<p>Our expectation is that the packet will pass the prerouting hook, a routing decision is made to send the packet to our TUN device, then the packet will traverse the forward table. By tracing packets originating from the IP of a test host, we could see the packets enter the prerouting phase, but disappear after the ‘routing decision’ block.</p>
+	<p>While there is a block in the diagram for “socket lookup”, this occurs after processing the input table. Our packet doesn’t ever enter the input table; the only change we made was to create a local socket. If we stop creating the socket, the packet passes to the forward table as before.</p>
+	<p>It turns out that part of the ‘routing decision’ involves some protocol-specific processing. For IP packets, <a href="https://github.com/torvalds/linux/blob/89be9a83ccf1f88522317ce02f854f30d6115c41/net/ipv4/ip_input.c#L317"><u>routing decisions can be cached</u></a>, and some basic address validation is performed. In 2012, an additional feature was added: <a href="https://lore.kernel.org/all/20120619.163911.2094057156011157978.davem@davemloft.net"><u>early demux</u></a>. The rationale being, at this point in packet processing we are already looking up something, and the majority of packets received are expected to be for local sockets, rather than an unknown packet or one that needs to be forwarded somewhere. In this case, why not look up the socket directly here and save yourself an extra route lookup?</p>
+	<div class="flex anchor relative">
+		<h2 id="the-workaround-at-the-end-of-the-universe">The workaround at the end of the universe</h2>
+		<a href="https://blog.cloudflare.com/#the-workaround-at-the-end-of-the-universe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Unfortunately for us, we just created a socket and didn’t want it to receive packets. Our adjustment to the routing table is ignored, because that routing lookup is skipped entirely when the socket is found. Raw sockets avoid this by receiving all packets regardless of the routing decision, but the packet rate is too high for this to be efficient. The only way around this is disabling the early demux feature. According to the patch’s claims, though, this feature improves performance: how far will performance regress on our existing workloads if we disable it?</p>
+	<p>This calls for a simple experiment: set the <a href="https://docs.kernel.org/6.16/networking/ip-sysctl.html"><u>net.ipv4.tcp_early_demux</u></a> syscall to 0 on some machines in a datacenter, let it run for a while, then compare the CPU usage with machines using default settings and the same hardware configuration as the machines under test.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ypZGWN811vIQu04YERP8m/709e115068bad3994c88ce899cdfba29/image4.png" alt="" class="kg-image" width="1668" height="614" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eF441OrGSDwvAFEFYWbtT/40c330d687bf7e30597d046274d959e1/image2.png" alt="" class="kg-image" width="1668" height="614" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34gBimlHXXvLLbGJpriVJA/39f7408dd6ef37aaff3f0fa50a37518f/image1.png" alt="" class="kg-image" width="1658" height="608" loading="lazy">
+	</figure>
+	<p>The key metrics are CPU usage from /proc/stat. If there is a performance degradation, we would expect to see higher CPU usage allocated to “softirq” — the context in which Linux network processing occurs — with little change to either userspace (top) or kernel time (bottom). The observed difference is slight, and mostly appears to reduce efficiency during off-peak hours.</p>
+	<div class="flex anchor relative">
+		<h2 id="swimming-upstream">Swimming upstream</h2>
+		<a href="https://blog.cloudflare.com/#swimming-upstream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While we tested different solutions to IP packet forwarding, we continued to terminate TCP connections on our network. Despite our initial concerns, the performance impact was small, and the benefits of increased visibility into origin reachability, fast internal routing within our network, and simpler observability of soft-unicast address usage flipped the burden of proof: was it worth trying to implement pure IP forwarding and supporting two different layers of egress?</p>
+	<p>So far, the answer is no. Fish runs on our network today, but with the much smaller responsibility of handling ICMP packets. However, when we decide to tunnel all IP packets, we know exactly how to do it.</p>
+	<p>A typical engineering role at Cloudflare involves solving many strange and difficult problems at scale. If you are the kind of goal-focused engineer willing to try novel approaches and explore the capabilities of the Linux kernel despite minimal documentation, look at <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering"><u>our open positions</u></a> — we would love to hear from you!</p>
+</div>

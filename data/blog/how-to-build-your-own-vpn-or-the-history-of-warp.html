@@ -1,0 +1,121 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3NQ735PxiKa2lse7NqfF61/9b12261ad02b05ba6d60ec8fc20eadc2/image7.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>Linux’s networking capabilities are a crucial part of how Cloudflare serves billions of requests in the face of DDoS attacks. The tools it provides us are <a href="https://blog.cloudflare.com/why-we-use-the-linux-kernels-tcp-stack"><u>invaluable and useful</u></a>, and a constant stream of contributions from developers worldwide ensures it <a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world"><u>continually gets more capable and performant</u></a>.</p>
+	<p>When we developed <a href="https://blog.cloudflare.com/1111-warp-better-vpn"><u>WARP, our mobile-first performance and security app</u></a>, we faced a new challenge: how to securely and efficiently egress arbitrary user packets for millions of mobile clients from our edge machines. This post explores our first solution, which was essentially building our own high-performance VPN with the Linux networking stack. We needed to integrate it into our existing network; not just directly linking it into our CDN service, but providing a way to securely egress arbitrary user packets from Cloudflare machines. The lessons we learned here helped us develop new <a href="https://www.cloudflare.com/en-gb/zero-trust/products/gateway"><u>products</u></a> and <a href="https://blog.cloudflare.com/icloud-private-relay"><u>capabilities</u></a> and discover more strange things besides. But first, how did we get started?</p>
+	<div class="flex anchor relative">
+		<h2 id="a-bridge-between-two-worlds">A bridge between two worlds</h2>
+		<a href="https://blog.cloudflare.com/#a-bridge-between-two-worlds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WARP’s initial implementation resembled a virtual private network (VPN) that allows Internet access through it. Specifically, a Layer 3 VPN – a tunnel for IP packets.</p>
+	<p>IP packets are the building blocks of the Internet. When you send data over the Internet, it is split into small chunks and sent separately in packets, each one labeled with a destination address (who the packet goes to) and a source address (who to send a reply to). If you are connected to the Internet, you have an IP address.</p>
+	<p>You may not have a <i>unique</i> IP address, though. This is certainly true for IPv4 which, despite our and many others’ long-standing efforts to move everyone to IPv6, is still in widespread use. IPv4 has only 4 billion possible addresses and they have all been assigned – you’re gonna have to share.</p>
+	<p>When you use WiFi at home, work or the coffee shop, you’re connected to a local network. Your device is assigned a local IP address to talk to the access point and any other devices in your network. However, that address has no meaning outside of the local network. You can’t use that address in IP packets sent over the Internet, because every local IPv4 network uses <a href="https://en.wikipedia.org/wiki/Private_network"><u>the same few sets of addresses</u></a>.</p>
+	<p>So how does Internet access work? Local IPv4 networks generally employ a <i>router</i>, a device to perform network-address translation (NAT). NAT is used to convert the private IPv4 network addresses allocated to devices on the local-area network to a small set of publicly-routable addresses given by your Internet service provider. The router keeps track of the conversions it applies between the two networks in a translation table. When a packet is received on either network, the router consults the translation table and applies the appropriate conversion before sending the packet to the opposite network.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uT2VOMUn2fJ9NleofEfVB/b871de07a16714f1d05b2b3d0d547aa7/image6.png" alt="Diagram of a router using NAT to bridge connections from devices on a private network to the public Internet." class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>Diagram of a router using NAT to bridge connections from devices on a private network to the public Internet</sup></p>
+	<p>A VPN that provides Internet access is no different in this respect to a LAN – the only unusual aspect is that the user of the VPN communicates with the VPN server over the public Internet. The model is simple: private network IP packets are tunnelled, or encapsulated, in public IP packets addressed to the VPN server.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/613OhwoQSh2JHzIsBLzo8U/876446bed57eb8b70ba9ecac0d8f0c75/image5.png" alt="Schematic of HTTPS packets being encapsulated between a VPN client and server" class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>Schematic of HTTPS packets being encapsulated between a VPN client and server</sup></p>
+	<p>Most times, VPN software only handles the encapsulation and decapsulation of packets, and gives you a virtual network device to send and receive packets on the VPN. This gives you the freedom to configure the VPN however you like. For WARP, we need our servers to act as a router between the VPN client and the Internet.</p>
+	<div class="flex anchor relative">
+		<h2 id="nats-how-you-do-it">NAT’s how you do it</h2>
+		<a href="https://blog.cloudflare.com/#nats-how-you-do-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Linux – the operating system powering our servers – can be configured to perform routing with NAT in its <a href="https://en.wikipedia.org/wiki/Netfilter"><u>Netfilter</u></a> subsystem. Netfilter is frequently configured through nftables or iptables rules. Configuring a “source NAT” to rewrite the source IP of outgoing packets is achieved with a single rule:</p>
+	<p><code>nft add rule ip nat postrouting oifname "eth0" ip saddr 10.0.0.0/8 snat to 198.51.100.42</code></p>
+	<p>This rule configures Netfilter’s NAT feature to perform source address translation for any packet matching the following criteria:</p>
+	<ol>
+		<li>
+			<p>The source address is the 10.0.0.0/8 private network subnet - in this example, let’s say VPN clients have addresses from this subnet.</p>
+		</li>
+		<li>
+			<p>The packet shall be sent on the “eth0” interface - in this example, it’s the server’s only physical network interface, and thus the route to the public Internet.</p>
+		</li>
+	</ol>
+	<p>Where these two conditions are true, we apply the “snat” action to rewrite the source IP packet, from whichever address the VPN client is using, to our example server’s public IP address 198.51.100.42. We keep track of the original and rewritten addresses in the rewrite table.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sUznAhNxIXRCdhjILq6fe/539a2ee09eb149ae9856172043a7d527/image1.png" alt="Schematic of an encapsulated packet being decapsulated and rewritten by a VPN server." class="kg-image" width="1634" height="694" loading="lazy">
+	</figure>
+	<p><sup>Schematic of an encapsulated packet being decapsulated and rewritten by a VPN server</sup></p>
+	<p><sup></sup><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html/configuring_firewalls_and_packet_filters/configuring-nat-using-nftables"><u>You may require additional configuration</u></a> depending on how your distribution ships nftables – nftables is more flexible than the deprecated iptables, but has fewer “implicit” tables ready to use.</p>
+	<p>You also might need to <a href="https://linux-audit.com/kernel/sysctl/net/net.ipv4.ip_forward"><u>enable IP forwarding in general</u></a>, as by default you don’t want a machine connected to two different networks to forward between them without realising it.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-conntrack-is-a-conntrack-is-a-conntrack">A conntrack is a conntrack is a conntrack</h2>
+		<a href="https://blog.cloudflare.com/#a-conntrack-is-a-conntrack-is-a-conntrack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We said before that a router keeps track of the conversions between addresses in the two networks. In the diagram above, that state is held in the rewrite table.</p>
+	<p>In practice, any device may only implement NAT usefully if it understands the TCP and UDP protocols, in particular how they use port numbers to support multiple independent flows of data on a single IP address. The NAT device – in our case Linux – ensures that a unique source port and address is used for each connection, and reassigns the port if required. It also needs to understand the lifecycle of a TCP connection, so that it knows when it is safe to reuse a port number: with only 65,536 possible ports, port reuse is essential.</p>
+	<p>Linux Netfilter has the <i>conntrack</i> module, widely used to implement a stateful firewall that protects servers against spoofed or unexpected packets, preventing them interfering with legitimate connections. This protection is possible because it understands TCP and the valid state of a connection. This capability means it’s perfectly positioned to implement NAT, too. In fact, all packet rewriting is implemented by conntrack.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HjxbjpRIJIPygV4zMo4XL/7ff4e11334e8e64826be1f29f5e5fb17/image2.png" alt="A diagram showing the steps taken by conntrack to validate and rewrite packets" class="kg-image" width="1360" height="726" loading="lazy">
+	</figure>
+	<p><sup>A diagram showing the steps taken by conntrack to validate and rewrite packets</sup></p>
+	<p>As a stateful firewall, the conntrack module maintains a table of all connections it has seen. If you know all of the active connections, you can rewrite a new connection to a port that is not in use.</p>
+	<p>In the “snat” rule above, Netfilter adds an entry to the rewrite table, but doesn’t change the packet yet. Only <a href="https://wiki.nftables.org/wiki-nftables/index.php/Mangling_packet_headers"><u>basic packet changes are permitted within nftables</u></a>. We must wait for packet processing to reach the conntrack module, which selects a port unused by any active connection, and only then rewrites the packet.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qT3d8JXiTYLwQWsVOCtcQ/ff8c8adcb209f2cdc2578dc1218923ca/image4.png" alt="" class="kg-image" width="1634" height="592" loading="lazy">
+	</figure>
+	<p><sup>A diagram showing the roles of netfilter and conntrack when applying NAT to traffic</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="marky-mark-and-the-firewall-bunch">Marky mark and the firewall bunch</h2>
+		<a href="https://blog.cloudflare.com/#marky-mark-and-the-firewall-bunch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Another mode of conntrack is to assign a persistent mark to packets belonging to a connection. The mark can be referenced in nftables rules to implement different firewall policies, or to control routing decisions.</p>
+	<p>Suppose you want to prevent specific addresses (e.g. from a guest network) from accessing certain services on your machine. You could add a firewall rule for each service denying access to those addresses. However, if you need to change the set of addresses to block, you have to update every rule accordingly.</p>
+	<p>Alternatively, you could use one rule to apply a mark to packets coming from the addresses you wish to block, and then reference the mark in all the service rules that implement the block. Now if you wish to change the addresses, you need only update a single rule to change the scope of that packet mark.</p>
+	<p>This is most beneficial to control routing behaviour, as routing rules cannot make decisions on as many attributes of the packet as Netfilter can. Using marks allows you to select packets based on powerful Netfilter rules.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33J5E9eds0JiGVNqOInJ0K/829d033b3ee255093ff1927c0b03f4fb/image3.png" alt="A diagram showing netfilter marking specific packets to apply special routing rules." class="kg-image" width="1808" height="488" loading="lazy">
+	</figure>
+	<p><sup>A diagram showing netfilter marking specific packets to apply special routing rules</sup></p>
+	<p>The code powering the WARP service was written by Cloudflare in Rust, a security-focused systems programming language. We took great care implementing <a href="https://github.com/cloudflare/boringtun"><u>boringtun</u></a> - our WireGuard implementation - and <a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>MASQUE</u></a>. But even if you think the front door is impenetrable, it is good security practice to employ defense-in-depth.</p>
+	<p>One example is distinguishing IP packets that come from clients vs. packets that originate elsewhere in our network. One common method is to allocate a unique IP space to WARP traffic and distinguish it based on IP address, but this can be fragile if we need to apply a configuration change to renumber our internal networks – remember IPv4’s limited address space! Instead we can do something simpler.</p>
+	<p>To bring IP packets from WARP clients into the Linux networking stack, WARP uses a <a href="https://blog.cloudflare.com/virtual-networking-101-understanding-tap"><u>TUN device</u></a> – Linux’s name for the virtual network device that programs can use to send and receive IP packets. A TUN device can be configured similarly to any other network device like Ethernet or Wi-Fi adapters, including firewall and routing.</p>
+	<p>Using nftables, we mark all packets output on WARP’s TUN device. We have to explicitly store the mark in conntrack’s state table on the outgoing path and retrieve it for the incoming packet, as netfilter can use packet marks independently of conntrack.</p>
+	<pre class="language-Rust"><code class="language-Rust">table ip mangle {
+    chain forward {
+        type filter hook forward priority mangle; policy accept;
+        oifname "fishtun" counter ct mark set 42
+    }
+    chain prerouting {
+        type filter hook prerouting priority mangle; policy accept;
+        counter meta mark set ct mark
+    }
+}</code></pre>
+	<p>We also need to add a routing rule to return marked packets to the TUN device:</p>
+	<p><code>ip rule add fwmark 42 table 100 priority 10
+			ip route add 0.0.0.0/0 proto static dev warp-tun table 100</code></p>
+	<p>Now we’re done. All connections from WARP are clearly identified and can be firewalled separately from locally-originated connections or other nodes on our network. Conntrack handles NAT for us, and the connection marks tell us which tracked connections were made by WARP clients.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-end">The end?</h2>
+		<a href="https://blog.cloudflare.com/#the-end" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In our first version of WARP, we enabled clients to access arbitrary Internet hosts by combining multiple components of Linux’s networking stack. Each of our edge servers had a single IP address from an allocation dedicated to WARP, and we were able to configure NAT, routing, and appropriate firewall rules using standard and well-documented methods.</p>
+	<p>Linux is flexible and easy to configure, but it would require one IPv4 address per machine. Due to IPv4 address exhaustion, this approach would not scale to Cloudflare’s large network. Assigning a dedicated IPv4 address for every machine that runs the WARP server results in an eye-watering address lease bill. To bring costs down, we would have to limit the number of servers running WARP, increasing the operational complexity of deploying it.</p>
+	<p>We had ideas, but we would have to give up the easy path Linux gave us. <a href="https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore"><u>IP sharing seemed to us the most promising solution</u></a>, but how much has to change if a single machine can only receive packets addressed to a narrow set of ports? We will reveal all in a follow-up blog post, but if you are the kind of curious problem-solving engineer who is already trying to imagine solutions to this problem, look at <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering"><u>our open positions</u></a> – we’d like to hear from you!</p>
+</div>
