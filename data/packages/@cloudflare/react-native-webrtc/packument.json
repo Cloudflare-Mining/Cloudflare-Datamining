@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/react-native-webrtc",
 	"dist-tags": {
-		"staging": "125.0.3-staging.1",
-		"latest": "125.0.2"
+		"latest": "125.0.3",
+		"staging": "125.0.3-staging.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -338,6 +338,32 @@
 			"name": "@cloudflare/react-native-webrtc",
 			"version": "125.0.3-staging.1",
 			"dependencies": {
+				"debug": "4.3.4",
+				"base64-js": "1.5.1",
+				"event-target-shim": "6.0.2",
+				"expo-build-properties": "0.11.0"
+			},
+			"peerDependencies": {
+				"react-native": ">=0.60.0"
+			},
+			"dist": {
+				"shasum": "61efe15b58ff4c145093426ab7f8db1b07a79362",
+				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-125.0.3-staging.1.tgz",
+				"fileCount": 277,
+				"integrity": "sha512-2R2B/tBJVzaZbQHwPQCvkeXq7AsRJKJLJGRivkTauFgdqsH9PBmQKa/lRiVOwZqSjA96Z/8bWJuv5KTjIv3CnA==",
+				"signatures": [
+					{
+						"sig": "MEQCIASxjDbB5VOd7i+bGh/vUHIZ17caT8bfZIbSOWyRZNFNAiAE+b6D6g2sFbwXxZWnJd0n5ctWaIe6ZqLYdqBO25GJlA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1013006
+			}
+		},
+		"125.0.3": {
+			"name": "@cloudflare/react-native-webrtc",
+			"version": "125.0.3",
+			"dependencies": {
 				"base64-js": "1.5.1",
 				"debug": "4.3.4",
 				"event-target-shim": "6.0.2",
@@ -347,15 +373,15 @@
 				"react-native": ">=0.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-2R2B/tBJVzaZbQHwPQCvkeXq7AsRJKJLJGRivkTauFgdqsH9PBmQKa/lRiVOwZqSjA96Z/8bWJuv5KTjIv3CnA==",
-				"shasum": "61efe15b58ff4c145093426ab7f8db1b07a79362",
-				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-125.0.3-staging.1.tgz",
+				"integrity": "sha512-F3A4K98F96ObtyhiDPwN6tGxeV/XVr/oM5ceuUuhAyDm29bm5EF+I5AxJeGCvyuhYXcPlNXZojMQlea4xZQ4ng==",
+				"shasum": "d831dd71fd155c2a4b3fe1a5472795545aab52e6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-125.0.3.tgz",
 				"fileCount": 277,
-				"unpackedSize": 1013006,
+				"unpackedSize": 1013023,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIASxjDbB5VOd7i+bGh/vUHIZ17caT8bfZIbSOWyRZNFNAiAE+b6D6g2sFbwXxZWnJd0n5ctWaIe6ZqLYdqBO25GJlA=="
+						"sig": "MEUCIQC1+fnSHvjQT+30B8MhuMoGN+mU8z5oY2kM+stfrKAxJwIgA2sNnkhecxhqP+WUAQwk/toMe5y+kg0zWxyu1rMbL/Q="
 					}
 				]
 			}
