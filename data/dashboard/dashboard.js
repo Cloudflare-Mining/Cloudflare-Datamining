@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "7be6b94b-2942-5cd5-88e1-a67c2149221d")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "2c32361f-c54a-507d-9103-c4494647fe24")
 	} catch (e) {}
 }();
 (self.webpackChunk = self.webpackChunk || []).push([
@@ -202,10 +202,10 @@
 				return x.q(e, t)
 			};
 			var O = n("../../../../node_modules/@sentry/tracing/esm/index.js");
-			let I = (0, n("../../../../node_modules/history/esm/history.js").lX)();
-			var k = n("../../../../node_modules/@sentry/utils/esm/worldwide.js"),
+			let k = (0, n("../../../../node_modules/history/esm/history.js").lX)();
+			var I = n("../../../../node_modules/@sentry/utils/esm/worldwide.js"),
 				A = n("../react/utils/url.ts");
-			let j = (0, k.Rf)();
+			let j = (0, I.Rf)();
 			var R = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
 				N = n.n(R),
 				P = n("../../../common/intl/intl-core/src/errors.ts"),
@@ -464,8 +464,8 @@
 				notifyAdd: en().func.isRequired
 			};
 			var eO = n("../react/app/redux/index.ts"),
-				eI = n("../react/common/selectors/entitlementsSelectors.ts"),
-				ek = n("../react/common/selectors/accountSelectors.ts");
+				ek = n("../react/common/selectors/entitlementsSelectors.ts"),
+				eI = n("../react/common/selectors/accountSelectors.ts");
 			let eA = ["is_ent", "is_free_account"];
 			var ej = n("../react/common/selectors/zoneSelectors.ts");
 			let eR = () => {
@@ -475,7 +475,7 @@
 					r({
 						userType: n
 					})
-				}, [n, r]), o = (0, F.f7)(), a = (0, K.useHistory)(), i = (0, A.uW)(a.location.pathname), l = (0, F.Yc)(), s = (0, F.O$)(), u = !(c = (0, eO.p4)(eI.u1)).isRequesting && !!c.data, d = (0, eO.p4)(eI.p1), p = (0, eO.p4)(ek.Xu), m = (0, eO.p4)(ek.uF), f = !p.isRequesting && !!p.data, (0, W.useEffect)(() => {
+				}, [n, r]), o = (0, F.f7)(), a = (0, K.useHistory)(), i = (0, A.uW)(a.location.pathname), l = (0, F.Yc)(), s = (0, F.O$)(), u = !(c = (0, eO.p4)(ek.u1)).isRequesting && !!c.data, d = (0, eO.p4)(ek.p1), p = (0, eO.p4)(eI.Xu), m = (0, eO.p4)(eI.uF), f = !p.isRequesting && !!p.data, (0, W.useEffect)(() => {
 					if (i && f && m && u && i === m.account.id) {
 						var e, t, n, r;
 						l({
@@ -507,7 +507,7 @@
 				ez = n("../react/common/constants/constants.ts"),
 				e$ = n("../react/utils/useDomainConnectRedirect.ts"),
 				eF = n("../react/utils/fragments.ts");
-			let eH = (0, W.lazy)(() => Promise.all([n.e(51436), n.e(11574), n.e(72056), n.e(98815), n.e(89564), n.e(1871), n.e(75758), n.e(47144), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+			let eH = (0, W.lazy)(() => Promise.all([n.e(18136), n.e(11574), n.e(72056), n.e(57356), n.e(89564), n.e(1871), n.e(75758), n.e(47144), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				eq = (0, W.lazy)(() => Promise.all([n.e(83741), n.e(65447), n.e(72056), n.e(86569), n.e(89564), n.e(69088), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var eZ = ({
 					userIsAuthed: e
@@ -673,7 +673,7 @@
 						stackSummary: o.join(" → ")
 					}
 				},
-				e5 = (0, W.lazy)(() => Promise.all([n.e(6368), n.e(51436), n.e(33970)]).then(n.bind(n, "../react/AuthOnlyProviders.tsx"))),
+				e5 = (0, W.lazy)(() => Promise.all([n.e(6368), n.e(18136), n.e(33970)]).then(n.bind(n, "../react/AuthOnlyProviders.tsx"))),
 				e3 = () => {
 					let e = (0, ed.$8)(),
 						[t, n] = (0, W.useState)(e ? e5 : W.Fragment),
@@ -712,7 +712,7 @@
 						children: (0, ep.jsx)(Q.Provider, {
 							store: (0, l.bh)(),
 							children: (0, ep.jsx)(K.Router, {
-								history: I,
+								history: k,
 								children: (0, ep.jsx)(t, {
 									children: (0, ep.jsx)(eh.Z, {
 										renderer: (({
@@ -891,10 +891,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "e895fd7a5ec73a8ca02c5ebacac59e0744b8637b",
-							dashVersion: "36854763",
+							commit: "bf1aca0ee7e6cd047161a807f0c5f039e32c2309",
+							dashVersion: "36881075",
 							env: "production",
-							builtAt: 0x19a2be5cd42,
+							builtAt: 0x19a316f96b9,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								node: "20.10.0",
@@ -918,7 +918,7 @@
 									integrations: e => {
 										var t, n;
 										return [...e.filter(e => "GlobalHandlers" !== e.name && "TryCatch" !== e.name), new B, new O.jK.BrowserTracing({
-											routingInstrumentation: (t = I, n = "react-router-v5", (e, o = !0, a = !0) => {
+											routingInstrumentation: (t = k, n = "react-router-v5", (e, o = !0, a = !0) => {
 												o && j && j.location && (r = e({
 													name: (0, A.Fl)(j.location.pathname),
 													op: "pageload",
@@ -1025,7 +1025,7 @@
 							tag: "utils/api"
 						}, {
 							fn: () => {
-								I.listen(e => (function(e) {
+								k.listen(e => (function(e) {
 									let t = e.substr(1);
 									if (t && s !== t) {
 										let e = document.getElementById(t);
@@ -1178,13 +1178,13 @@
 					return w
 				},
 				fu: function() {
-					return k
+					return I
 				},
 				gX: function() {
 					return v
 				},
 				hh: function() {
-					return I
+					return k
 				},
 				o1: function() {
 					return x
@@ -1288,14 +1288,14 @@
 						href: (0, a.cm)(n)
 					})
 				},
-				I = ({
+				k = ({
 					plan: e
 				}) => {
 					o().sendEvent(g, {
 						plan: e
 					})
 				},
-				k = () => {
+				I = () => {
 					o().sendEvent(b)
 				}
 		},
@@ -1574,9 +1574,9 @@
 						})]
 					})
 				},
-				I = n("../react/app/components/Persistence/index.tsx");
+				k = n("../react/app/components/Persistence/index.tsx");
 
-			function k(e) {
+			function I(e) {
 				for (var t = 1; t < arguments.length; t++) {
 					var n = null != arguments[t] ? Object(arguments[t]) : {},
 						r = Object.keys(n);
@@ -1609,7 +1609,7 @@
 			let A = (0, p.SU)(({
 					theme: e,
 					floatingStyles: t
-				}) => k({
+				}) => I({
 					padding: "24px",
 					backgroundColor: (0, b.Yc)() ? e.colors.blue[5] : e.colors.blue[4],
 					color: (0, b.Yc)() ? e.colors.gray[0] : e.colors.gray[9],
@@ -1669,7 +1669,7 @@
 					isLoading: M,
 					viewedChanges: B,
 					tasksToShowAgain: G
-				} = (0, I.yZ)(), {
+				} = (0, k.yZ)(), {
 					context: U,
 					refs: z,
 					floatingStyles: $
@@ -1702,7 +1702,7 @@
 					children: [f && "function" == typeof f ? f(z.setReference) : f, !M && !w && F && !Z && (0, C.jsx)(a.ll, {
 						children: (0, C.jsxs)(A, {
 							innerRef: z.setFloating,
-							floatingStyles: k({}, $, y, {
+							floatingStyles: I({}, $, y, {
 								zIndex: b.rS.zIndexModal
 							}),
 							children: [(0, C.jsxs)(c.ZC, {
@@ -1742,7 +1742,7 @@
 								"data-testid": "change-management-description",
 								children: [(0, C.jsx)(d.x, {
 									children: r
-								}), (null == E ? void 0 : E.step) && (0, C.jsx)(O, k({
+								}), (null == E ? void 0 : E.step) && (0, C.jsx)(O, I({
 									onClose: W
 								}, E))]
 							}), (0, C.jsx)(a.Y$, {
@@ -2746,8 +2746,8 @@
 					})
 				},
 				O = n("../react/common/hooks/useGroupedRoutes.ts"),
-				I = n("../react/common/hooks/useGate.ts"),
-				k = n("../react/app/components/FractusFragmentOutlet.tsx"),
+				k = n("../react/common/hooks/useGate.ts"),
+				I = n("../react/app/components/FractusFragmentOutlet.tsx"),
 				A = n("../react/utils/fragments.ts");
 			(0, i.SU)(() => ({
 				borderBottom: "1.5px solid transparent",
@@ -2859,7 +2859,7 @@
 			var D = () => {
 				let {
 					gate: e
-				} = (0, O.u)(), t = !!(0, I.Z)("fractus-footer"), n = (0, r.useRef)(null), i = [x.d.root.pattern].some(e => (0, o.matchPath)(location.pathname, {
+				} = (0, O.u)(), t = !!(0, k.Z)("fractus-footer"), n = (0, r.useRef)(null), i = [x.d.root.pattern].some(e => (0, o.matchPath)(location.pathname, {
 					path: e
 				}));
 				if ((0, d.PP)()) return (0, g.jsx)(S, {});
@@ -2890,7 +2890,7 @@
 						hasProductGroupingsGate: e,
 						children: t ? (0, g.jsxs)(g.Fragment, {
 							children: [(0, g.jsx)(L, {
-								children: (0, g.jsx)(k.p, {
+								children: (0, g.jsx)(I.p, {
 									fragmentId: A.av.FRACTUS_FOOTER,
 									ref: n
 								})
@@ -3552,13 +3552,13 @@
 						})
 					})
 				},
-				I = (0, c.SU)(() => ({
+				k = (0, c.SU)(() => ({
 					height: "100%",
 					position: "relative",
 					display: "flex",
 					alignItems: "center"
 				})),
-				k = (0, c.SU)(({
+				I = (0, c.SU)(({
 					isActive: e,
 					mode: t,
 					theme: n
@@ -3596,11 +3596,11 @@
 					} = (0, E.Y)(S.e.ADD), {
 						mode: n
 					} = (0, C.q)("addProduct");
-					return "hide" === n ? null : (0, b.jsx)(I, {
+					return "hide" === n ? null : (0, b.jsx)(k, {
 						role: "group",
 						"data-testid": "GLOBAL_ADD_DROPDOWN",
 						children: (0, b.jsx)(p.Lt, {
-							trigger: (0, b.jsxs)(k, {
+							trigger: (0, b.jsxs)(I, {
 								isActive: t,
 								mode: n,
 								children: [(0, b.jsx)(o.J, {
@@ -3994,7 +3994,7 @@
 				children: e,
 				onDarkModeChangeCb: t
 			}) => {
-				let [n, a] = (0, r.useState)(h), [E, S] = (0, r.useState)(y.isLoading), [x, C] = (0, r.useState)([]), [T, O] = (0, r.useState)(!1), I = (0, l.$8)(), k = (0, o.p4)(e => (0, s.wH)(e)), A = (0, p.t)(), j = !!(0, d.Z)("sidebar-nav-product-groupings"), R = !!(0, d.Z)("sidebar-nav-product-groupings-p3"), {
+				let [n, a] = (0, r.useState)(h), [E, S] = (0, r.useState)(y.isLoading), [x, C] = (0, r.useState)([]), [T, O] = (0, r.useState)(!1), k = (0, l.$8)(), I = (0, o.p4)(e => (0, s.wH)(e)), A = (0, p.t)(), j = !!(0, d.Z)("sidebar-nav-product-groupings"), R = !!(0, d.Z)("sidebar-nav-product-groupings-p3"), {
 					setSecurityNav: N,
 					setSecurityFlag: P
 				} = (() => {
@@ -4027,7 +4027,7 @@
 					}
 				})();
 				(0, r.useEffect)(() => {
-					I ? (0, c.yl)().then(e => {
+					k ? (0, c.yl)().then(e => {
 						if (e) {
 							let n = !!A;
 							!j || R || e.viewedChanges.includes(m.Uy) || e.flags.hasEnabledSidebarNavGroupings === n ? R && !e.viewedChanges.includes(m.IE) && !0 !== e.flags.hasEnabledSidebarNavGroupings && (e.flags.hasEnabledSidebarNavGroupings = !0, (0, c.Sp)({
@@ -4039,7 +4039,7 @@
 							}), a(e), N(e), t(e.darkMode)
 						}
 					}).finally(() => S(!1)) : S(!1)
-				}, [I]), (0, r.useEffect)(() => {
+				}, [k]), (0, r.useEffect)(() => {
 					A && (window.deleteUser = c.ZN)
 				}, []);
 				let L = (e, t) => !!n.favorites.find(n => "zone" === n.type && n.name === e && n.accountId === t),
@@ -4063,7 +4063,7 @@
 								i().sendEvent("click star zone", {
 									isStarring: r,
 									totalStarredZones: l.filter(e => e.accountId === t && "zone" === e.type).length,
-									totalZones: null == k || null == (n = k.paginationData) ? void 0 : n.info.total_count
+									totalZones: null == I || null == (n = I.paginationData) ? void 0 : n.info.total_count
 								}), a(e => _({}, e, {
 									favorites: l
 								}))
@@ -4695,7 +4695,7 @@
 					return S
 				},
 				Ni: function() {
-					return I
+					return k
 				},
 				Q3: function() {
 					return h
@@ -4740,7 +4740,7 @@
 					return d
 				},
 				sW: function() {
-					return k
+					return I
 				},
 				wS: function() {
 					return O
@@ -4762,7 +4762,7 @@
 				d = 16,
 				p = 400,
 				m = 600,
-				f = 63,
+				f = 56,
 				g = 60,
 				b = 500,
 				v = 500,
@@ -4813,8 +4813,8 @@
 						name: "common.legacy"
 					}
 				},
-				I = ((r = {}).BORDER_BOTTOM = "border-bottom", r.BORDER_TOP = "border-top", r.EXTERNAL_LINK = "external-link", r.ALPHA = "alpha", r.BETA = "beta", r.NEW = "new", r.UPDATE = "update", r.SEPARATOR = "separator", r.ABSOLUTE = "absolute", r.CUSTOM_LABEL = "custom_label", r),
-				k = /([\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55\u{1F004}\u{1F0CF}\u{1F18E}\u{1F191}-\u{1F19A}\u{1F1E6}-\u{1F1FF}\u{1F201}\u{1F21A}\u{1F22F}\u{1F232}-\u{1F236}\u{1F238}-\u{1F23A}\u{1F250}\u{1F251}\u{1F300}-\u{1F320}\u{1F32D}-\u{1F335}\u{1F337}-\u{1F37C}\u{1F37E}-\u{1F393}\u{1F3A0}-\u{1F3CA}\u{1F3CF}-\u{1F3D3}\u{1F3E0}-\u{1F3F0}\u{1F3F4}\u{1F3F8}-\u{1F43E}\u{1F440}\u{1F442}-\u{1F4FC}\u{1F4FF}-\u{1F53D}\u{1F54B}-\u{1F54E}\u{1F550}-\u{1F567}\u{1F57A}\u{1F595}\u{1F596}\u{1F5A4}\u{1F5FB}-\u{1F64F}\u{1F680}-\u{1F6C5}\u{1F6CC}\u{1F6D0}-\u{1F6D2}\u{1F6D5}-\u{1F6D7}\u{1F6DD}-\u{1F6DF}\u{1F6EB}\u{1F6EC}\u{1F6F4}-\u{1F6FC}\u{1F7E0}-\u{1F7EB}\u{1F7F0}\u{1F90C}-\u{1F93A}\u{1F93C}-\u{1F945}\u{1F947}-\u{1F9FF}\u{1FA70}-\u{1FA74}\u{1FA78}-\u{1FA7C}\u{1FA80}-\u{1FA86}\u{1FA90}-\u{1FAAC}\u{1FAB0}-\u{1FABA}\u{1FAC0}-\u{1FAC5}\u{1FAD0}-\u{1FAD9}\u{1FAE0}-\u{1FAE7}\u{1FAF0}-\u{1FAF6}]|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u2388\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2605\u2607-\u2612\u2614-\u2685\u2690-\u2705\u2708-\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763-\u2767\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299\u{1F000}-\u{1F0FF}\u{1F10D}-\u{1F10F}\u{1F12F}\u{1F16C}-\u{1F171}\u{1F17E}\u{1F17F}\u{1F18E}\u{1F191}-\u{1F19A}\u{1F1AD}-\u{1F1E5}\u{1F201}-\u{1F20F}\u{1F21A}\u{1F22F}\u{1F232}-\u{1F23A}\u{1F23C}-\u{1F23F}\u{1F249}-\u{1F3FA}\u{1F400}-\u{1F53D}\u{1F546}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{1F774}-\u{1F77F}\u{1F7D5}-\u{1F7FF}\u{1F80C}-\u{1F80F}\u{1F848}-\u{1F84F}\u{1F85A}-\u{1F85F}\u{1F888}-\u{1F88F}\u{1F8AE}-\u{1F8FF}\u{1F90C}-\u{1F93A}\u{1F93C}-\u{1F945}\u{1F947}-\u{1FAFF}\u{1FC00}-\u{1FFFD}]|[#\*0-9\u200D\u20E3\uFE0F\u{1F1E6}-\u{1F1FF}\u{1F3FB}-\u{1F3FF}\u{1F9B0}-\u{1F9B3}\u{E0020}-\u{E007F}])/gu
+				k = ((r = {}).BORDER_BOTTOM = "border-bottom", r.BORDER_TOP = "border-top", r.EXTERNAL_LINK = "external-link", r.ALPHA = "alpha", r.BETA = "beta", r.NEW = "new", r.UPDATE = "update", r.SEPARATOR = "separator", r.ABSOLUTE = "absolute", r.CUSTOM_LABEL = "custom_label", r),
+				I = /([\u231A\u231B\u23E9-\u23EC\u23F0\u23F3\u25FD\u25FE\u2614\u2615\u2648-\u2653\u267F\u2693\u26A1\u26AA\u26AB\u26BD\u26BE\u26C4\u26C5\u26CE\u26D4\u26EA\u26F2\u26F3\u26F5\u26FA\u26FD\u2705\u270A\u270B\u2728\u274C\u274E\u2753-\u2755\u2757\u2795-\u2797\u27B0\u27BF\u2B1B\u2B1C\u2B50\u2B55\u{1F004}\u{1F0CF}\u{1F18E}\u{1F191}-\u{1F19A}\u{1F1E6}-\u{1F1FF}\u{1F201}\u{1F21A}\u{1F22F}\u{1F232}-\u{1F236}\u{1F238}-\u{1F23A}\u{1F250}\u{1F251}\u{1F300}-\u{1F320}\u{1F32D}-\u{1F335}\u{1F337}-\u{1F37C}\u{1F37E}-\u{1F393}\u{1F3A0}-\u{1F3CA}\u{1F3CF}-\u{1F3D3}\u{1F3E0}-\u{1F3F0}\u{1F3F4}\u{1F3F8}-\u{1F43E}\u{1F440}\u{1F442}-\u{1F4FC}\u{1F4FF}-\u{1F53D}\u{1F54B}-\u{1F54E}\u{1F550}-\u{1F567}\u{1F57A}\u{1F595}\u{1F596}\u{1F5A4}\u{1F5FB}-\u{1F64F}\u{1F680}-\u{1F6C5}\u{1F6CC}\u{1F6D0}-\u{1F6D2}\u{1F6D5}-\u{1F6D7}\u{1F6DD}-\u{1F6DF}\u{1F6EB}\u{1F6EC}\u{1F6F4}-\u{1F6FC}\u{1F7E0}-\u{1F7EB}\u{1F7F0}\u{1F90C}-\u{1F93A}\u{1F93C}-\u{1F945}\u{1F947}-\u{1F9FF}\u{1FA70}-\u{1FA74}\u{1FA78}-\u{1FA7C}\u{1FA80}-\u{1FA86}\u{1FA90}-\u{1FAAC}\u{1FAB0}-\u{1FABA}\u{1FAC0}-\u{1FAC5}\u{1FAD0}-\u{1FAD9}\u{1FAE0}-\u{1FAE7}\u{1FAF0}-\u{1FAF6}]|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u2388\u23CF\u23E9-\u23F3\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB-\u25FE\u2600-\u2605\u2607-\u2612\u2614-\u2685\u2690-\u2705\u2708-\u2712\u2714\u2716\u271D\u2721\u2728\u2733\u2734\u2744\u2747\u274C\u274E\u2753-\u2755\u2757\u2763-\u2767\u2795-\u2797\u27A1\u27B0\u27BF\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B50\u2B55\u3030\u303D\u3297\u3299\u{1F000}-\u{1F0FF}\u{1F10D}-\u{1F10F}\u{1F12F}\u{1F16C}-\u{1F171}\u{1F17E}\u{1F17F}\u{1F18E}\u{1F191}-\u{1F19A}\u{1F1AD}-\u{1F1E5}\u{1F201}-\u{1F20F}\u{1F21A}\u{1F22F}\u{1F232}-\u{1F23A}\u{1F23C}-\u{1F23F}\u{1F249}-\u{1F3FA}\u{1F400}-\u{1F53D}\u{1F546}-\u{1F64F}\u{1F680}-\u{1F6FF}\u{1F774}-\u{1F77F}\u{1F7D5}-\u{1F7FF}\u{1F80C}-\u{1F80F}\u{1F848}-\u{1F84F}\u{1F85A}-\u{1F85F}\u{1F888}-\u{1F88F}\u{1F8AE}-\u{1F8FF}\u{1F90C}-\u{1F93A}\u{1F93C}-\u{1F945}\u{1F947}-\u{1FAFF}\u{1FC00}-\u{1FFFD}]|[#\*0-9\u200D\u20E3\uFE0F\u{1F1E6}-\u{1F1FF}\u{1F3FB}-\u{1F3FF}\u{1F9B0}-\u{1F9B3}\u{E0020}-\u{E007F}])/gu
 		},
 		"../react/app/components/SidebarNav/context/Layout.tsx": function(e, t, n) {
 			"use strict";
@@ -4911,7 +4911,7 @@
 						[E, S] = (0, r.useState)(p.isSideDrawerOpen),
 						[x, C] = (0, r.useState)(p.isDocumentationSideDrawerOpen),
 						[T, O] = (0, r.useState)(p.developerDocumentationProperties),
-						[I, k] = (0, r.useState)(p.isSidebarNavPeeking),
+						[k, I] = (0, r.useState)(p.isSidebarNavPeeking),
 						[A, j] = (0, r.useState)(p.isHeaderMenuOpen),
 						[R, N] = (0, r.useState)(p.subNavsOpen),
 						[P, L] = (0, r.useState)(p.activeNav),
@@ -4922,7 +4922,7 @@
 							o.Z.set(u.jv, !0 === e ? "open" : "closed")
 						},
 						B = (e = !0) => {
-							w(!1), k(!1), e && M(!1), D()
+							w(!1), I(!1), e && M(!1), D()
 						},
 						G = (e = !0) => {
 							w(!0), e && M(!0)
@@ -4950,14 +4950,14 @@
 							}), O(p.developerDocumentationProperties), C(!1)
 						},
 						H = A && !g,
-						q = y || I;
+						q = y || k;
 					return document.body.style.overflowY = A || t && y && !g ? "hidden" : "", (0, d.jsx)(f.Provider, {
 						value: {
 							type: b,
 							isAuthenticated: t,
 							sidebarNavOffsetWidth: t && !H ? q ? u.rV : g ? u.jK : 0 : 0,
 							isSidebarNavOpen: y,
-							isSidebarNavPeeking: I,
+							isSidebarNavPeeking: k,
 							isSidebarNavExpanded: q,
 							isSideDrawerOpen: E,
 							isDocumentationSideDrawerOpen: x,
@@ -5026,7 +5026,7 @@
 									!0 === e ? G(t) : B(t)
 								},
 								peekSidebarNav: e => {
-									k(e), !1 === e && D()
+									I(e), !1 === e && D()
 								},
 								triggerHeaderMenu: e => {
 									j(e)
@@ -5628,12 +5628,12 @@
 				}) => ({
 					fontSize: e.fontSizes[4]
 				})),
-				I = (0, c.LM)(({
+				k = (0, c.LM)(({
 					theme: e
 				}) => ({
 					fontSize: e.fontSizes[3]
 				})),
-				k = (0, c.LM)(({
+				I = (0, c.LM)(({
 					theme: e
 				}) => ({
 					width: "100%",
@@ -5704,7 +5704,7 @@
 										children: t.t("error.internal_issues")
 									}), (0, y.jsx)(O, {
 										children: t.t("error.help_us")
-									}), (0, y.jsx)(k, {
+									}), (0, y.jsx)(I, {
 										name: "comment",
 										value: this.state.textareaValue,
 										onChange: e => this.handleTextareaChange(e),
@@ -5715,7 +5715,7 @@
 											onClick: this.handleSubmit,
 											type: "primary",
 											children: t.t("common.submit")
-										}), this.state.submitted && (0, y.jsx)(I, {
+										}), this.state.submitted && (0, y.jsx)(k, {
 											children: t.t("error.feedback_sent")
 										})]
 									})]
@@ -9739,8 +9739,8 @@
 				C = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				T = n("../../../../node_modules/@cloudflare/util-responsive/es/index.js"),
 				O = n("../react/common/hooks/useGate.ts"),
-				I = n("../react/common/hooks/rulesets/templates/useRulesTemplate.ts"),
-				k = n("../react/pages/home/rulesets/account-ruleset-builder/ruleset-form/rule-form/PositionField.tsx"),
+				k = n("../react/common/hooks/rulesets/templates/useRulesTemplate.ts"),
+				I = n("../react/pages/home/rulesets/account-ruleset-builder/ruleset-form/rule-form/PositionField.tsx"),
 				A = n("../react/pages/page-rules/templates/templates.ts"),
 				j = n("../react/pages/page-rules/templates/TemplateCard.tsx"),
 				R = n("../react/pages/page-rules/constants.ts"),
@@ -10305,7 +10305,7 @@
 						[ey, ew] = (0, r.useState)(0),
 						{
 							template: eE
-						} = (0, I.i)(G),
+						} = (0, k.i)(G),
 						{
 							isDeploying: eS,
 							entrypoint: ex
@@ -10324,8 +10324,8 @@
 						} : {},
 						eT = V || (null == eg ? void 0 : eg.isSubmitting) || eS || Z,
 						eO = !!(null == eg || null == (J = eg.values) ? void 0 : J.id),
-						eI = null == F ? void 0 : F.find(e => e.value === C),
-						ek = null == eI ? void 0 : eI.renderActionComponent,
+						ek = null == F ? void 0 : F.find(e => e.value === C),
+						eI = null == ek ? void 0 : ek.renderActionComponent,
 						eA = (0, r.useMemo)(() => A.E1.filter(e => e.rulesetPhase === D && e_(e.plan, e.entitlements, null == e ? void 0 : e.gate)).slice(0, (0, T.tq)() ? 1 : 3), [D, ev.id]),
 						ej = eb && !eO && !(null == eE ? void 0 : eE.ruleName) && !!(null == eA ? void 0 : eA.length);
 					return (0, B.jsxs)(B.Fragment, {
@@ -10423,9 +10423,9 @@
 						}, `ai-apply-count-${ey}`), null == F ? void 0 : F.map(e => {
 							var t;
 							return C === e.value ? null == (t = e.renderFilterComponent) ? void 0 : t.call(e) : null
-						}), eI && ek ? ek(eg) : i && (0, B.jsx)(i, ep({
+						}), ek && eI ? eI(eg) : i && (0, B.jsx)(i, ep({
 							disabled: d
-						}, eg)), !!(null == ex || null == (ei = ex.rules) ? void 0 : ei.length) && (0, B.jsx)(k.Z, {
+						}, eg)), !!(null == ex || null == (ei = ex.rules) ? void 0 : ei.length) && (0, B.jsx)(I.Z, {
 							hasDivider: M,
 							rules: null == ex ? void 0 : ex.rules,
 							disabled: H || d
@@ -10553,7 +10553,7 @@
 					additionalFilters: C,
 					shouldValidateHostname: T,
 					handleSubmit: O,
-					validate: k,
+					validate: I,
 					ruleEditOverrideParser: A,
 					customSuccessPage: j
 				} = e, R = ew(e, ["baseUrl", "enableAllIncomingTraffic", "phase", "ruleId", "initialValuesTemplate", "additionalFilters", "shouldValidateHostname", "handleSubmit", "validate", "ruleEditOverrideParser", "customSuccessPage"]), N = (0, es.Z)(), {
@@ -10585,7 +10585,7 @@
 						{
 							initialValues: m,
 							template: f
-						} = (0, I.i)(e),
+						} = (0, k.i)(e),
 						{
 							entrypoint: g,
 							error: b,
@@ -10602,7 +10602,7 @@
 						[w, S] = (0, r.useState)(),
 						[x, C] = (0, r.useState)(),
 						[T, O] = (0, r.useState)(!!n || !!(!n && p)),
-						[k, A] = (0, r.useState)((0, E.b3)({
+						[I, A] = (0, r.useState)((0, E.b3)({
 							rule: y,
 							enableAllIncomingTraffic: a,
 							additionalFilters: i,
@@ -10644,7 +10644,7 @@
 					}, [null == g ? void 0 : g.id, null == m ? void 0 : m.expression, null == m ? void 0 : m.expressionType, null == m ? void 0 : m.description, null == m ? void 0 : m.action_parameters, h]), {
 						rule: y,
 						initialValues: w,
-						expressionType: k,
+						expressionType: I,
 						template: f,
 						loading: v || T || !w || n && (null == y ? void 0 : y.description) && (null == w ? void 0 : w.description) === void 0,
 						duplicatedRule: _,
@@ -10725,7 +10725,7 @@
 						validate: e => {
 							var t;
 							let n = {};
-							return (null == (t = e.description) ? void 0 : t.trim().length) || (n.description = P("account.custom_rulesets.form.error.name")), e.expression && (!e.expression || "" !== e.expression) || d && z !== E.IC || (n.expression = P("account.custom_rulesets.form.error.expression")), "function" == typeof k ? ey({}, n, k(e, z)) : n
+							return (null == (t = e.description) ? void 0 : t.trim().length) || (n.description = P("account.custom_rulesets.form.error.name")), e.expression && (!e.expression || "" !== e.expression) || d && z !== E.IC || (n.expression = P("account.custom_rulesets.form.error.expression")), "function" == typeof I ? ey({}, n, I(e, z)) : n
 						},
 						children: [(null == U ? void 0 : U.id) && (0, B.jsx)(h.F, {
 							type: "info",
@@ -10812,7 +10812,7 @@
 					patternPath: C,
 					hasPositionDivider: T,
 					initialValuesTemplate: O,
-					additionalFilters: k,
+					additionalFilters: I,
 					shouldValidateHostname: A,
 					ruleEditOverrideParser: j,
 					allowance: R,
@@ -10835,7 +10835,7 @@
 					return o
 				}(e, ["phase", "basePath", "documentationLink", "filterDefinitions", "handleSubmit", "validate", "readOnly", "RuleActionComponent", "FilterEditorComponent", "filterEditorComponentProps", "newRuleTitleKey", "editRuleTitleKey", "enableAllIncomingTraffic", "helper", "patternPath", "hasPositionDivider", "initialValuesTemplate", "additionalFilters", "shouldValidateHostname", "ruleEditOverrideParser", "allowance", "loading", "shouldDisplayAIRuleBuilder", "customSuccessPage"]), M = (0, o.p4)(c.nA), G = (0, a.useHistory)(), U = (0, a.useParams)(), {
 					template: z
-				} = (0, I.i)(), $ = null != i ? i : (0, a.generatePath)(null != C ? C : "", U), {
+				} = (0, k.i)(), $ = null != i ? i : (0, a.generatePath)(null != C ? C : "", U), {
 					deployRuleset: F,
 					entrypoint: H,
 					isDeploying: q
@@ -10906,7 +10906,7 @@
 							enableAllIncomingTraffic: S,
 							hasPositionDivider: T,
 							initialValuesTemplate: O,
-							additionalFilters: k,
+							additionalFilters: I,
 							ruleEditOverrideParser: j,
 							hasExceededAllowedRules: Z,
 							shouldValidateHostname: A,
@@ -10938,7 +10938,7 @@
 							editRuleTitleKey: E,
 							enableAllIncomingTraffic: S,
 							hasPositionDivider: T,
-							additionalFilters: k,
+							additionalFilters: I,
 							ruleEditOverrideParser: j,
 							hasExceededAllowedRules: Z,
 							shouldValidateHostname: A,
@@ -11004,15 +11004,15 @@
 				C = n("../react/pages/billing/subscriptions/utils.tsx"),
 				T = n("../../../../node_modules/@cloudflare/component-toast/es/index.js"),
 				O = n("../react/utils/tracking/billing.ts"),
-				I = n("../react/common/hooks/rulesets/resources/selectors.ts"),
-				k = n("../../../../node_modules/react/jsx-runtime.js");
+				k = n("../react/common/hooks/rulesets/resources/selectors.ts"),
+				I = n("../../../../node_modules/react/jsx-runtime.js");
 			let A = ({
 				onDismiss: e,
 				isExceeded: t,
 				maxCount: n
 			}) => {
 				var o, a;
-				let [l, s] = (0, r.useState)(!1), u = (0, y.p4)(w.nA), d = (0, C.W0)(u.plan.legacy_id), p = (0, y.p4)(w.RO), m = (0, y.p4)(I.tM), f = (0, y.p4)(e => (0, I.z)(e, m)), g = (0, r.useCallback)(() => {
+				let [l, s] = (0, r.useState)(!1), u = (0, y.p4)(w.nA), d = (0, C.W0)(u.plan.legacy_id), p = (0, y.p4)(w.RO), m = (0, y.p4)(k.tM), f = (0, y.p4)(e => (0, k.z)(e, m)), g = (0, r.useCallback)(() => {
 					e()
 				}, [e]), S = (0, r.useCallback)(() => {
 					s(e => !e)
@@ -11021,16 +11021,16 @@
 						textDecoration: "none"
 					}
 				}), v.Av);
-				return (0, k.jsxs)(k.Fragment, {
-					children: [(0, k.jsx)(i.ZC, {
+				return (0, I.jsxs)(I.Fragment, {
+					children: [(0, I.jsx)(i.ZC, {
 						display: "flex",
 						width: "100%",
 						mt: 3,
-						children: (0, k.jsx)(T.F, {
+						children: (0, I.jsx)(T.F, {
 							type: "warning",
 							gap: 3,
 							width: "100%",
-							children: (0, k.jsxs)(i.ZC, {
+							children: (0, I.jsxs)(i.ZC, {
 								display: "grid",
 								gridTemplateRows: "auto",
 								columnGap: 2,
@@ -11040,51 +11040,51 @@
                 "btn btn"`, `"message dismiss"
                 "btn btn"`, '"message message message btn btn  dismiss"'],
 								gridTemplateColumns: ["5fr 1fr", "5fr 1fr", "3fr 2fr 1fr"],
-								children: [(0, k.jsxs)(i.ZC, {
+								children: [(0, I.jsxs)(i.ZC, {
 									gridArea: "message",
 									display: "flex",
 									alignItems: "center",
 									gap: 1,
-									children: [(0, k.jsx)(i.ZC, {
+									children: [(0, I.jsx)(i.ZC, {
 										alignItems: "center",
 										display: "flex",
-										children: (0, k.jsx)(b.J, {
+										children: (0, I.jsx)(b.J, {
 											type: "warning",
 											size: 16
 										})
-									}), (0, k.jsxs)(i.ZC, {
+									}), (0, I.jsxs)(i.ZC, {
 										fontSize: 16,
-										children: [t && (0, k.jsx)(_.Trans, {
+										children: [t && (0, I.jsx)(_.Trans, {
 											id: p ? "filter_editor.rule_builder.allowance.prgExperiment.exceeded.ent.message" : "filter_editor.rule_builder.allowance.prgExperiment.exceeded.message",
 											smartCount: (null != (o = null == f || null == (a = f.rules) ? void 0 : a.length) ? o : 0) - n,
 											values: {
 												zonePlan: (0, c.ZP)(d)
 											}
-										}), !t && (0, k.jsx)(_.Trans, {
+										}), !t && (0, I.jsx)(_.Trans, {
 											id: p ? "filter_editor.rule_builder.allowance.prgExperiment.reached.ent.message" : "filter_editor.rule_builder.allowance.prgExperiment.reached.message",
 											values: {
 												zonePlan: (0, c.ZP)(d)
 											}
 										})]
 									})]
-								}), (0, k.jsx)(i.ZC, {
+								}), (0, I.jsx)(i.ZC, {
 									gridArea: "dismiss",
 									onClick: g,
 									display: "flex",
 									mt: [1, 1, 0],
 									alignItems: ["start", "start", "center"],
 									justifyContent: "end",
-									children: (0, k.jsx)(b.J, {
+									children: (0, I.jsx)(b.J, {
 										type: "remove",
 										size: 16
 									})
-								}), !p && (0, k.jsx)(i.ZC, {
+								}), !p && (0, I.jsx)(i.ZC, {
 									gridArea: "btn",
 									display: "flex",
 									justifyContent: "space-between",
 									alignItems: "center",
 									gap: 2,
-									children: (0, k.jsx)(A, {
+									children: (0, I.jsx)(A, {
 										onClick: () => {
 											s(!0), (0, O.hO)(), x().sendEvent("follow recommendation CTA", {
 												category: "security",
@@ -11092,14 +11092,14 @@
 											})
 										},
 										fontSize: 16,
-										children: (0, k.jsx)(_.Trans, {
+										children: (0, I.jsx)(_.Trans, {
 											id: "filter_editor.rule_builder.allowance.prgExperiment.upgrade"
 										})
 									})
 								})]
 							})
 						})
-					}), (0, k.jsx)(h.Z, {
+					}), (0, I.jsx)(h.Z, {
 						isOpen: l,
 						onClose: S,
 						zone: u
@@ -11163,7 +11163,7 @@
 					filterComponents: C,
 					TitlePill: T,
 					hasExceededAllowedRules: O = !1,
-					hasReachedNumberOfAllowedRules: I = !1,
+					hasReachedNumberOfAllowedRules: k = !1,
 					showBack: D = !0
 				}) => {
 					var U, z;
@@ -11196,27 +11196,27 @@
 							isCustomRules: n
 						}
 					})(o), Y = N.K[o];
-					return (0, k.jsxs)(k.Fragment, {
-						children: [e && (0, k.jsxs)(i.ZC, {
+					return (0, I.jsxs)(I.Fragment, {
+						children: [e && (0, I.jsxs)(i.ZC, {
 							display: "flex",
 							alignItems: "center",
 							mb: 2,
-							children: [(0, k.jsx)(d.X6, {
+							children: [(0, I.jsx)(d.X6, {
 								children: e
-							}), !!h && (0, k.jsx)(a._, {
+							}), !!h && (0, I.jsx)(a._, {
 								ml: 2,
 								hue: "orange",
-								children: (0, k.jsx)(c.cC, {
+								children: (0, I.jsx)(c.cC, {
 									id: "common.beta"
 								})
 							}), !!T && T]
-						}), D && (0, k.jsx)(g.K, {}), t && (0, k.jsx)(i.ZC, {
+						}), D && (0, I.jsx)(g.K, {}), t && (0, I.jsx)(i.ZC, {
 							mb: 4,
 							maxWidth: "40em",
 							children: t
-						}), "number" == typeof(null == x ? void 0 : x.max) && (0, k.jsxs)(i.ZC, {
+						}), "number" == typeof(null == x ? void 0 : x.max) && (0, I.jsxs)(i.ZC, {
 							mb: O ? 3 : 4,
-							children: [(0, k.jsx)(c.cC, {
+							children: [(0, I.jsx)(c.cC, {
 								id: Y ? "filter_editor.rule_builder.allowance" : "filter_editor.rule_builder.allowance_any",
 								values: L({
 									used: null != (U = null == Z || null == (z = Z.rules) ? void 0 : z.length) ? U : 0,
@@ -11231,23 +11231,23 @@
 								}, O ? {
 									color: "red.4"
 								} : {})]
-							}), O && !W && K ? (0, k.jsx)(A, {
+							}), O && !W && K ? (0, I.jsx)(A, {
 								onDismiss: V,
 								isExceeded: !0,
 								maxCount: x.max
-							}) : null, !O && I && !W && K && (0, k.jsx)(A, {
+							}) : null, !O && k && !W && K && (0, I.jsx)(A, {
 								onDismiss: V,
 								maxCount: x.max
 							})]
-						}), o === l.df.HttpRequestFirewallCustom && !q && (0, k.jsx)(i.ZC, {
+						}), o === l.df.HttpRequestFirewallCustom && !q && (0, I.jsx)(i.ZC, {
 							display: "flex",
 							justifyContent: "flex-end",
 							pb: 2,
-							children: (0, k.jsx)(P.Z, {})
-						}), q ? (0, k.jsx)(m.Z, {
+							children: (0, I.jsx)(P.Z, {})
+						}), q ? (0, I.jsx)(m.Z, {
 							errorMessage: "rulesets.rules_failed_to_load",
 							phase: o
-						}) : (0, k.jsx)(u.O, {
+						}) : (0, I.jsx)(u.O, {
 							allowance: x,
 							phase: o,
 							readOnly: E,
@@ -11269,7 +11269,7 @@
 			"use strict";
 			n.d(t, {
 				O: function() {
-					return k
+					return I
 				}
 			});
 			var r = n("../react/app/redux/index.ts"),
@@ -11306,8 +11306,8 @@
 						loading: _,
 						filterComponents: T,
 						additionalTableColumns: O = [],
-						hasExceededAllowedRules: I = !1,
-						allowance: k,
+						hasExceededAllowedRules: k = !1,
+						allowance: I,
 						onlyDisplayRules: A = !1,
 						showEnableToggle: j = !0,
 						isMultiTableView: R = !1,
@@ -11400,7 +11400,7 @@
 					return (0, C.jsx)(c.ZC, {
 						children: (0, C.jsxs)($, {
 							data: L,
-							onRowMove: I || A ? void 0 : Q,
+							onRowMove: k || A ? void 0 : Q,
 							loading: _,
 							emptyStates: N,
 							rowKeyProperty: (e, t) => `${t}`,
@@ -11410,7 +11410,7 @@
 										id: "filter_editor.rule_builder.titles.create_rule"
 									}),
 									onClick: G,
-									disabled: k && k.max && (null == (t = null != P ? P : []) ? void 0 : t.length) >= (null == k ? void 0 : k.max) || o
+									disabled: I && I.max && (null == (t = null != P ? P : []) ? void 0 : t.length) >= (null == I ? void 0 : I.max) || o
 								},
 								search: !A,
 								toolbarState: D,
@@ -11465,19 +11465,19 @@
 									alignContent: "center",
 									children: [(0, C.jsx)(s.cC, {
 										id: "common.enabled"
-									}), I && (0, C.jsx)(g.Z, {
+									}), k && (0, C.jsx)(g.Z, {
 										type: "exclamation-sign",
 										color: "red.4",
 										delayHide: 200,
 										message: (0, C.jsx)(S.Z, {
 											isTooltip: !0,
-											maxCount: null == k ? void 0 : k.max
+											maxCount: null == I ? void 0 : I.max
 										})
 									})]
 								}),
 								name: "enabled",
 								onChange: (e, t) => Y(t),
-								disabled: o || I,
+								disabled: o || k,
 								align: "center"
 							}), (0, C.jsx)(Z, {
 								label: "Settings",
@@ -11530,7 +11530,7 @@
 									label: (0, C.jsx)(s.cC, {
 										id: "common.duplicate"
 									}),
-									disabled: o || I,
+									disabled: o || k,
 									onClick: () => K(e, !0)
 								}, {
 									label: (0, C.jsx)(c.Dr, {
@@ -11577,7 +11577,7 @@
 				},
 				O = n("../react/common/hooks/rulesets/useLoadRuleset.tsx");
 
-			function I(e) {
+			function k(e) {
 				for (var t = 1; t < arguments.length; t++) {
 					var n = null != arguments[t] ? Object(arguments[t]) : {},
 						r = Object.keys(n);
@@ -11607,7 +11607,7 @@
 				}
 				return e
 			}
-			let k = ({
+			let I = ({
 				phase: e,
 				goTo: t,
 				showEnableToggle: n = !0,
@@ -11630,49 +11630,49 @@
 				var S;
 				let x = (0, r.UM)(),
 					{
-						entrypoint: k,
+						entrypoint: I,
 						deleteRuleInRuleset: A,
 						updateRuleInRuleset: j
 					} = (0, O.P)({
 						phase: e
 					}),
-					R = null != (S = null != w ? w : null == k ? void 0 : k.rules) ? S : [],
+					R = null != (S = null != w ? w : null == I ? void 0 : I.rules) ? S : [],
 					N = async e => {
-						(null == k ? void 0 : k.id) && await A(e)
+						(null == I ? void 0 : I.id) && await A(e)
 					}, P = async t => {
 						var n, r, s;
-						let c = null != (n = null == k || null == (r = k.rules) ? void 0 : r.findIndex(e => e.id === t)) ? n : -1;
-						if ((null == k ? void 0 : k.id) && c > -1) {
-							let n = null == (s = k.rules) ? void 0 : s[c],
-								r = I({}, n, {
+						let c = null != (n = null == I || null == (r = I.rules) ? void 0 : r.findIndex(e => e.id === t)) ? n : -1;
+						if ((null == I ? void 0 : I.id) && c > -1) {
+							let n = null == (s = I.rules) ? void 0 : s[c],
+								r = k({}, n, {
 									enabled: !(null == n ? void 0 : n.enabled)
 								}),
 								u = e === o.df.HttpResponseCompression ? (0, a.Im)(r) : r;
 							(null == u ? void 0 : u.label) && (null == u || delete u.label, null == u || delete u.hasMigrated);
 							try {
-								let e = (0, l.g4)(k, c, u);
-								x((0, i.w)(e)), await j(t, u, null == k ? void 0 : k.id)
+								let e = (0, l.g4)(I, c, u);
+								x((0, i.w)(e)), await j(t, u, null == I ? void 0 : I.id)
 							} catch (e) {
-								x((0, i.w)(k))
+								x((0, i.w)(I))
 							}
 						}
 					}, L = async (t, n, r) => {
 						let l = e === o.df.HttpResponseCompression ? t.map(a.Im) : t,
 							s = e === o.df.HttpResponseCompression ? (0, a.Im)(n) : n;
-						if (k) {
-							let e = I({}, k, {
+						if (I) {
+							let e = k({}, I, {
 								rules: l
 							});
 							x((0, i.w)(e));
 							try {
-								let e = I({}, s, {
+								let e = k({}, s, {
 									position: {
 										index: r + 1
 									}
 								});
-								(null == e ? void 0 : e.label) && (null == e || delete e.label, null == e || delete e.hasMigrated), await j(s.id, e, k.id)
+								(null == e ? void 0 : e.label) && (null == e || delete e.label, null == e || delete e.hasMigrated), await j(s.id, e, I.id)
 							} catch (e) {
-								x((0, i.w)(k))
+								x((0, i.w)(I))
 							}
 						}
 					};
@@ -12496,8 +12496,8 @@
 				C = n("../../../../node_modules/@cloudflare/util-routes/es/index.js"),
 				T = n("../react/pages/zoneless-workers/components/_ui/ConfirmationModal.tsx"),
 				O = n("../react/common/components/ExternalLink.tsx"),
-				I = n("../../../../node_modules/@cloudflare/component-input/es/index.js"),
-				k = n("../../../../node_modules/@cloudflare/component-select-2/es/index.js"),
+				k = n("../../../../node_modules/@cloudflare/component-input/es/index.js"),
+				I = n("../../../../node_modules/@cloudflare/component-select-2/es/index.js"),
 				A = n("../../../../node_modules/@cloudflare/style-container/es/index.js"),
 				j = n("../react/common/components/TooltipIcon.tsx"),
 				R = n("../react/pages/dns/dns-records/utils/parsers.tsx");
@@ -12580,7 +12580,7 @@
 									width: 150,
 									mr: 2,
 									mb: 2,
-									children: (0, v.jsx)(k.u, N({}, e, {
+									children: (0, v.jsx)(I.u, N({}, e, {
 										label: a("filter_editor.rule_builder.confirmation_modal.add.option.2.type.label"),
 										options: Object.values(h).map(e => ({
 											label: e,
@@ -12606,7 +12606,7 @@
 										children: (0, v.jsx)(g.Trans, {
 											id: "filter_editor.rule_builder.confirmation_modal.add.option.2.name.label"
 										})
-									}), (0, v.jsx)(I.I, N({}, e, {
+									}), (0, v.jsx)(k.I, N({}, e, {
 										mb: 0
 									}))]
 								})
@@ -12651,7 +12651,7 @@
 											})]
 										})
 									}), (0, v.jsxs)(w.ZC, {
-										children: [(0, v.jsx)(I.I, N({}, e, {
+										children: [(0, v.jsx)(k.I, N({}, e, {
 											mb: 0
 										})), n.target && r.target && (0, v.jsx)(w.ZC, {
 											fontSize: 1,
@@ -12740,8 +12740,8 @@
 							t: C
 						} = (0, g.useI18n)(),
 						{
-							dnsCommentMaxLength: I,
-							dnsMaxRecordTags: k
+							dnsCommentMaxLength: k,
+							dnsMaxRecordTags: I
 						} = (o = (0, D.Z)("authoritative_dns.max_record_comment_length"), s = (0, D.Z)("authoritative_dns.max_record_tags"), (0, a.useMemo)(() => ({
 							dnsCommentMaxLength: Number(o) || 0,
 							dnsMaxRecordTags: Number(s) || 0
@@ -12784,7 +12784,7 @@
 									target: t,
 									hostname: n
 								} = A.values, r = `Created during Cloudflare Rules deployment process for ${p}`;
-								r.length > I && (r = `${r.slice(0,I-3)}...`);
+								r.length > k && (r = `${r.slice(0,k-3)}...`);
 								let o = {
 									type: e,
 									name: n,
@@ -12793,7 +12793,7 @@
 									comment: r,
 									ttl: 1,
 									zone_id: null == y ? void 0 : y.id,
-									tags: k > 0 ? ["Rules"] : []
+									tags: I > 0 ? ["Rules"] : []
 								};
 								await N(o)
 							}
@@ -13528,13 +13528,13 @@
 			"use strict";
 			n.d(t, {
 				EV: function() {
-					return P
-				},
-				Kc: function() {
 					return L
 				},
-				yU: function() {
+				Kc: function() {
 					return D
+				},
+				yU: function() {
+					return M
 				}
 			});
 			var r = n("../../../../node_modules/lodash/isEqual.js"),
@@ -13562,25 +13562,26 @@
 				C = n("../react/common/components/print/PrintHidden.js"),
 				T = n("../react/common/components/print/PrintOnly.js"),
 				O = n("../react/common/components/print/PrintableCard.tsx"),
-				I = n("../react/common/components/ChartsDownloadButton/index.ts"),
-				k = n("../react/common/components/analytics/AnalyticsReport/PrintHeader.jsx"),
-				A = n("../react/common/components/analytics/AnalyticsReport/utils.ts"),
-				j = n("../../../../node_modules/react/jsx-runtime.js");
+				k = n("../react/common/components/ChartsDownloadButton/index.ts"),
+				I = n("../react/app/components/SidebarNav/constants.ts"),
+				A = n("../react/common/components/analytics/AnalyticsReport/PrintHeader.jsx"),
+				j = n("../react/common/components/analytics/AnalyticsReport/utils.ts"),
+				R = n("../../../../node_modules/react/jsx-runtime.js");
 
-			function R(e) {
+			function N(e) {
 				for (var t = 1; t < arguments.length; t++) {
 					var n = null != arguments[t] ? Object(arguments[t]) : {},
 						r = Object.keys(n);
 					"function" == typeof Object.getOwnPropertySymbols && r.push.apply(r, Object.getOwnPropertySymbols(n).filter(function(e) {
 						return Object.getOwnPropertyDescriptor(n, e).enumerable
 					})), r.forEach(function(t) {
-						N(e, t, n[t])
+						P(e, t, n[t])
 					})
 				}
 				return e
 			}
 
-			function N(e, t, n) {
+			function P(e, t, n) {
 				var r;
 				return (t = "symbol" == typeof(r = function(e, t) {
 					if ("object" != typeof e || null === e) return e;
@@ -13598,7 +13599,7 @@
 					writable: !0
 				}) : e[t] = n, e
 			}
-			let P = (e, t) => {
+			let L = (e, t) => {
 					if (t && Array.isArray(t) && e) {
 						var n, r;
 						if (e.relativeTimeRange) return null == (n = t.find(t => t.value === e.relativeTimeRange)) ? void 0 : n.label;
@@ -13606,7 +13607,7 @@
 						if (e.startDate && e.endDate && !e.timeWindow) return (0, S.ZP)("timerange.picker.custom_range")
 					}
 				},
-				L = (0, x.SU)(({
+				D = (0, x.SU)(({
 					theme: e
 				}) => ({
 					backgroundColor: e.colors.background,
@@ -13621,37 +13622,37 @@
 						display: "none"
 					}
 				})),
-				D = (0, d.createContext)("analyticsReport"),
-				M = D.Provider;
-			class B extends d.Component {
+				M = (0, d.createContext)("analyticsReport"),
+				B = M.Provider;
+			class G extends d.Component {
 				constructor(...e) {
-					super(...e), N(this, "state", {
+					super(...e), P(this, "state", {
 						prevFilters: this.props.filters,
 						prevSearch: null,
 						now: s()(),
 						autoRefresh: !1,
 						isPrinting: !1
-					}), N(this, "timer", null), N(this, "toggleAutoRefresh", e => {
+					}), P(this, "timer", null), P(this, "toggleAutoRefresh", e => {
 						e !== this.state.autoRefresh && (this.setState({
 							autoRefresh: e
 						}), e ? this.timer = setInterval(() => this.setState({
 							now: s()()
 						}), 1e3 * this.props.liveUpdateInterval) : clearInterval(this.timer))
-					}), N(this, "handleAddFilter", e => {
+					}), P(this, "handleAddFilter", e => {
 						let {
 							filters: t,
 							timeFilter: n
 						} = this.state, r = t.concat(e);
 						this.handleFiltersChange(r, n)
-					}), N(this, "handleRemoveFilter", e => {
+					}), P(this, "handleRemoveFilter", e => {
 						let {
 							filters: t,
 							timeFilter: n
 						} = this.state, r = [...t];
 						Array.isArray(e) ? e.forEach(e => {
-							r = (0, A.jc)(r, e)
-						}) : r = (0, A.jc)(r, e), this.handleFiltersChange(r, n)
-					}), N(this, "handleFiltersChange", (e, t) => {
+							r = (0, j.jc)(r, e)
+						}) : r = (0, j.jc)(r, e), this.handleFiltersChange(r, n)
+					}), P(this, "handleFiltersChange", (e, t) => {
 						let n = i()(e, o()),
 							{
 								timeOptions: r,
@@ -13665,7 +13666,7 @@
 								prevSearch: d
 							} = this.state;
 						"function" == typeof s && s(n);
-						let p = (0, A.UK)({
+						let p = (0, j.UK)({
 								filters: n,
 								timeFilter: t,
 								aggregation: u
@@ -13675,7 +13676,7 @@
 						(m || f) && a.push({
 							search: p
 						})
-					}), N(this, "handleAggregationChange", ({
+					}), P(this, "handleAggregationChange", ({
 						value: e
 					}) => {
 						let {
@@ -13688,13 +13689,13 @@
 							filters: i
 						} = this.state;
 						o.push({
-							search: (0, A.UK)({
+							search: (0, j.UK)({
 								filters: i,
 								timeFilter: a,
 								aggregation: e
 							}, t, n, r)
 						})
-					}), N(this, "handleDateTimeChange", ({
+					}), P(this, "handleDateTimeChange", ({
 						relativeTimeRange: e,
 						startDate: t,
 						endDate: n
@@ -13733,9 +13734,9 @@
 						filters: s,
 						timeFilter: c,
 						aggregation: u
-					} = (0, A.dD)(location.search, t, n, a, [], i);
+					} = (0, j.dD)(location.search, t, n, a, [], i);
 					this.props.liveUpdatingOptions.includes(c.timeWindow) ? this.toggleAutoRefresh(!0) : this.toggleAutoRefresh(!1);
-					let d = (0, A.UK)({
+					let d = (0, j.UK)({
 						filters: o && !s.length && e ? o : s,
 						timeFilter: c,
 						aggregation: u
@@ -13778,52 +13779,52 @@
 						downloadable: m,
 						renderActions: S,
 						isUtc: x,
-						hideFilterBar: N,
-						allowChatBubbleOverlay: M,
-						filterChildrenLeft: B
+						hideFilterBar: P,
+						allowChatBubbleOverlay: B,
+						filterChildrenLeft: G
 					} = this.props, {
-						timeFilter: G,
-						filters: U,
-						now: z,
-						isPrinting: $,
-						aggregation: F
-					} = this.state, H = this.getDateRange(G), q = (0, A.DP)(U, r), Z = !!G.timeWindow;
-					return (0, j.jsxs)(w.ZC, {
+						timeFilter: U,
+						filters: z,
+						now: $,
+						isPrinting: F,
+						aggregation: H
+					} = this.state, q = this.getDateRange(U), Z = (0, j.DP)(z, r), V = !!U.timeWindow;
+					return (0, R.jsxs)(w.ZC, {
 						position: "relative",
-						overflow: $ ? "hidden" : "visible",
-						children: [(0, j.jsx)(w.ZC, {
-							width: $ ? 1024 : "auto",
+						overflow: F ? "hidden" : "visible",
+						children: [(0, R.jsx)(w.ZC, {
+							width: F ? 1024 : "auto",
 							mx: "auto",
-							children: (0, j.jsxs)(O.Z, {
+							children: (0, R.jsxs)(O.Z, {
 								ref: e => this.printRef = e,
-								children: [(0, j.jsx)(b.uO, {
-									children: (0, j.jsxs)(b.aY, {
+								children: [(0, R.jsx)(b.uO, {
+									children: (0, R.jsxs)(b.aY, {
 										pb: [0, 0, 0],
-										children: [(0, j.jsx)(T.Z, {
-											children: (0, j.jsx)(k.Z, R({
+										children: [(0, R.jsx)(T.Z, {
+											children: (0, R.jsx)(A.Z, N({
 												title: n
-											}, H))
-										}), (0, j.jsx)(C.Z, {
-											children: (0, j.jsxs)(w.ZC, {
+											}, q))
+										}), (0, R.jsx)(C.Z, {
+											children: (0, R.jsxs)(w.ZC, {
 												display: ["block", "flex"],
-												children: [(0, j.jsx)(b.ll, {
+												children: [(0, R.jsx)(b.ll, {
 													display: "flex",
 													justifyContent: "space-between",
 													fontSize: 4,
 													children: n
-												}), (0, j.jsx)(w.ZC, {
+												}), (0, R.jsx)(w.ZC, {
 													ml: "auto",
 													display: "flex",
-													children: (m || p || "function" == typeof S) && (0, j.jsxs)(w.ZC, {
+													children: (m || p || "function" == typeof S) && (0, R.jsxs)(w.ZC, {
 														ml: "auto",
 														display: "flex",
 														fontSize: 2,
 														children: ["function" == typeof S && S({
-															filters: q
-														}), p && (0, j.jsx)(f(), {
-															trigger: () => (0, j.jsx)(g.W3, {
+															filters: Z
+														}), p && (0, R.jsx)(f(), {
+															trigger: () => (0, R.jsx)(g.W3, {
 																iconType: "printer",
-																children: (0, j.jsx)(E.Trans, {
+																children: (0, R.jsx)(E.Trans, {
 																	id: "analytics.report.print_report"
 																})
 															}),
@@ -13851,9 +13852,9 @@
                                     width: 1056px;
                                   }
                                 }`
-														}), m && !m.context && (0, j.jsx)(I.yS, {
-															context: D
-														}), m && m.context && (0, j.jsx)(I.yS, {
+														}), m && !m.context && (0, R.jsx)(k.yS, {
+															context: M
+														}), m && m.context && (0, R.jsx)(k.yS, {
 															context: m.context
 														})]
 													})
@@ -13861,14 +13862,14 @@
 											})
 										})]
 									})
-								}), (!N || e) && (0, j.jsxs)(w.ZC, {
+								}), (!P || e) && (0, R.jsxs)(w.ZC, {
 									position: "sticky",
-									top: "63px",
-									zIndex: M ? 100 : 1002,
-									children: [B && B, !N && (0, j.jsxs)(v.f8, {
+									top: `${I.aJ}px`,
+									zIndex: B ? 100 : 1002,
+									children: [G && G, !P && (0, R.jsxs)(v.f8, {
 										sticky: !1,
-										timeFilter: G,
-										filters: U,
+										timeFilter: U,
+										filters: z,
 										filterDefinitions: r,
 										formatLabel: o,
 										onAddFilter: a,
@@ -13876,38 +13877,38 @@
 										onRemoveFilter: l,
 										onFiltersChange: this.handleFiltersChange,
 										onDateTimeChange: this.handleDateTimeChange,
-										now: z,
-										getMaxTimeWindow: e => d || (0, A.jD)(e),
+										now: $,
+										getMaxTimeWindow: e => d || (0, j.jD)(e),
 										maxPickableWindow: u,
 										timeOptions: s,
-										getInitialDateValue: A.yy,
+										getInitialDateValue: j.yy,
 										isUtc: x,
-										children: [this.state.autoRefresh && (0, j.jsx)(w.ZC, {
+										children: [this.state.autoRefresh && (0, R.jsx)(w.ZC, {
 											mr: 3,
 											display: "flex",
 											alignItems: "center",
-											children: (0, j.jsx)(_._, {
+											children: (0, R.jsx)(_._, {
 												hue: "green",
 												pulse: !0,
-												children: (0, j.jsx)(E.Trans, {
+												children: (0, R.jsx)(E.Trans, {
 													id: "common.live"
 												})
 											})
-										}), c && c.length > 0 && (0, j.jsx)(y.Ri, {
+										}), c && c.length > 0 && (0, R.jsx)(y.Ri, {
 											hideLabel: !0,
-											value: F,
+											value: H,
 											options: c,
 											onChange: this.handleAggregationChange,
 											width: 154,
 											mr: 1
 										})]
-									}), null == e ? void 0 : e(R({
-										filters: q,
-										dateFilterLabel: P(G, s)
-									}, H, {
+									}), null == e ? void 0 : e(N({
+										filters: Z,
+										dateFilterLabel: L(U, s)
+									}, q, {
 										addFilter: e => this.handleAddFilter(e),
 										removeFilter: e => this.handleRemoveFilter(e),
-										changeFilters: e => this.handleFiltersChange(e, G),
+										changeFilters: e => this.handleFiltersChange(e, U),
 										onDateTimeChange: ({
 											startDate: e,
 											endDate: t,
@@ -13917,18 +13918,18 @@
 											startDate: e,
 											endDate: t
 										}),
-										aggregation: F,
-										timeWindowIsRelative: Z
+										aggregation: H,
+										timeWindowIsRelative: V
 									}))]
-								}), (0, j.jsx)(w.ZC, {
+								}), (0, R.jsx)(w.ZC, {
 									mx: "auto",
-									children: t(R({
-										filters: q,
-										dateFilterLabel: P(G, s)
-									}, H, {
+									children: t(N({
+										filters: Z,
+										dateFilterLabel: L(U, s)
+									}, q, {
 										addFilter: e => this.handleAddFilter(e),
 										removeFilter: e => this.handleRemoveFilter(e),
-										changeFilters: e => this.handleFiltersChange(e, G),
+										changeFilters: e => this.handleFiltersChange(e, U),
 										onDateTimeChange: ({
 											startDate: e,
 											endDate: t,
@@ -13938,18 +13939,18 @@
 											startDate: e,
 											endDate: t
 										}),
-										aggregation: F,
-										timeWindowIsRelative: Z
+										aggregation: H,
+										timeWindowIsRelative: V
 									}))
 								})]
 							})
-						}), $ && (0, j.jsx)(L, {
-							children: (0, j.jsx)(w.ZC, {
+						}), F && (0, R.jsx)(D, {
+							children: (0, R.jsx)(w.ZC, {
 								display: "flex",
 								justifyContent: "center",
 								alignItems: "center",
 								minHeight: 900,
-								children: (0, j.jsx)(h.g, {
+								children: (0, R.jsx)(h.g, {
 									size: "2x"
 								})
 							})
@@ -13957,14 +13958,14 @@
 					})
 				}
 			}
-			N(B, "getDerivedStateFromProps", (e, t) => {
+			P(G, "getDerivedStateFromProps", (e, t) => {
 				if (e.location.search !== t.prevSearch || !o()(t.prevFilters, e.filters)) {
 					let {
 						filters: n,
 						timeFilter: r,
 						aggregation: a
-					} = (0, A.dD)(e.location.search, e.timeOptions, e.filters, e.maxPickableWindow, e.aggregationOptions, e.maxDuration);
-					return R({
+					} = (0, j.dD)(e.location.search, e.timeOptions, e.filters, e.maxPickableWindow, e.aggregationOptions, e.maxDuration);
+					return N({
 						prevFilters: e.filters,
 						prevSearch: e.location.search,
 						filters: n,
@@ -13975,7 +13976,7 @@
 					})
 				}
 				return null
-			}), N(B, "propTypes", {
+			}), P(G, "propTypes", {
 				filters: u().shape({}).isRequired,
 				initialFilters: u().arrayOf(u().shape({
 					key: u().string,
@@ -14024,7 +14025,7 @@
 				liveUpdateInterval: u().number,
 				additionalFilterContent: u().func,
 				filterChildrenLeft: u().node
-			}), N(B, "defaultProps", {
+			}), P(G, "defaultProps", {
 				formatLabel: (e, t) => t,
 				onChangeTime: () => {},
 				onAddFilter: () => {},
@@ -14038,15 +14039,15 @@
 				liveUpdatingOptions: [],
 				liveUpdateInterval: 20
 			});
-			let G = (0, p.withRouter)(e => (0, j.jsx)(B, R({}, e)));
+			let U = (0, p.withRouter)(e => (0, R.jsx)(G, N({}, e)));
 			t.ZP = e => {
 				let [t, n] = (0, d.useState)([]);
-				return (0, j.jsx)(M, {
+				return (0, R.jsx)(B, {
 					value: {
 						charts: t,
 						setCharts: n
 					},
-					children: (0, j.jsx)(G, R({}, e))
+					children: (0, R.jsx)(U, N({}, e))
 				})
 			}
 		},
@@ -15115,7 +15116,7 @@
 					return O
 				},
 				ZP: function() {
-					return I
+					return k
 				}
 			});
 			var r = n("../react/common/components/billing/BillingSummary/components/BillingSummary.tsx"),
@@ -15774,7 +15775,7 @@
 					}
 				})), s.concat(u)
 			}
-			var I = r.Z
+			var k = r.Z
 		},
 		"../react/common/components/billing/CancellationReasons/index.tsx": function(e, t, n) {
 			"use strict";
@@ -16373,7 +16374,7 @@
 					return G
 				},
 				L8: function() {
-					return k
+					return I
 				},
 				Lk: function() {
 					return C
@@ -16382,7 +16383,7 @@
 					return x
 				},
 				Ru: function() {
-					return I
+					return k
 				},
 				TV: function() {
 					return P
@@ -16503,7 +16504,7 @@
 				return (0, r.useMemo)(() => !e && !t && !n, [e, t, n])
 			}
 
-			function I(e, t, n, o, a, i, l, s) {
+			function k(e, t, n, o, a, i, l, s) {
 				let c = (0, r.useMemo)(() => e ? e.reduce((e, t) => ((null == t ? void 0 : t.price) && (e += t.price), e), 0) : 0, [e]);
 				return (0, r.useMemo)(() => {
 					if (0 === a) return !1;
@@ -16512,7 +16513,7 @@
 				}, [c, l, i, t, n, o, s, a])
 			}
 
-			function k(e, t, n) {
+			function I(e, t, n) {
 				return (0, r.useMemo)(() => {
 					if (!t || !n || !e) return !1;
 					let r = n.legacy_id;
@@ -17149,7 +17150,7 @@
 				C = n("../react/common/components/billing/EnterpriseProductEnablement/items/web3_ethereum_ent_tryout/web3_ethereum_ent_tryout.ts"),
 				T = n("../react/common/components/billing/EnterpriseProductEnablement/items/web3_ipfs_ent_tryout/web3_ipfs_ent_tryout.ts"),
 				O = n("../react/common/components/billing/EnterpriseProductEnablement/items/ratelimiting_advanced_ent_tryout/ratelimiting_advanced_ent_tryout.ts");
-			let I = {
+			let k = {
 				load_balancing_ent_tryout: g.Z,
 				stream_ent_tryout: b.Z,
 				images_ent_tryout: _.Z,
@@ -17164,7 +17165,7 @@
 				web3_ipfs_ent_tryout: T.Z,
 				ratelimiting_advanced_ent_tryout: O.Z
 			};
-			var k = n("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http"),
+			var I = n("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http"),
 				A = n("../react/common/selectors/accountSelectors.ts"),
 				j = n("../react/common/actions/subscriptionActions.ts"),
 				R = n("../react/common/actions/entitlementActions.ts"),
@@ -17479,13 +17480,13 @@
 					{
 						t: y
 					} = (0, ea.useI18n)(),
-					w = I[t.toLowerCase()] || {},
+					w = k[t.toLowerCase()] || {},
 					E = (null == w || null == (l = w.rate_plan) ? void 0 : l.scope) === "zone",
 					[S, x] = (0, m.useState)(null),
 					C = (0, m.useCallback)(async () => {
 						var e;
 						if (g(!0), _ && (null == w ? void 0 : w.packageName) && (null == w || null == (e = w.rate_plan) ? void 0 : e.id)) {
-							let e = [...(await k.get(`/accounts/${_}/subscriptions`, {
+							let e = [...(await I.get(`/accounts/${_}/subscriptions`, {
 								parameters: {
 									state: "inactive",
 									package: w.packageName
@@ -17758,8 +17759,8 @@
 						accountId: C,
 						updateBillingProfile: T,
 						createBillingProfile: O,
-						hasInstallBaseCustomerFlag: I,
-						hasPartnersManagedEntitlement: k,
+						hasInstallBaseCustomerFlag: k,
+						hasPartnersManagedEntitlement: I,
 						billingProfile: A,
 						hideBillingSummary: j,
 						disclaimerStyles: R,
@@ -17784,14 +17785,14 @@
 							isEntSS: y,
 							buyingRatePlan: w,
 							priceIncreaseDate: L,
-							hasInstallBaseCustomerFlag: I,
-							isPartnersManaged: k,
+							hasInstallBaseCustomerFlag: k,
+							isPartnersManaged: I,
 							billingProfile: A,
 							accountId: C,
 							disclaimerStyles: R,
 							billingSummaryGridStyles: N
 						});
-						return k ? n : (0, x.jsx)(i.ZP, {
+						return I ? n : (0, x.jsx)(i.ZP, {
 							stripePk: "pk_live_51HQFCaCM3YxTUEmtsj6R3lS4D9CY2GvqhAabVYLXO3cngvrmFOr6FKjAnKgKGEylzDUGtQkcaaxD8xIRtjq4sFYx00MeP6pCx7",
 							usageEnv: "dash",
 							accountId: C,
@@ -17842,8 +17843,8 @@
 							isEntSS: y,
 							buyingRatePlan: w,
 							priceIncreaseDate: L,
-							hasInstallBaseCustomerFlag: I,
-							isPartnersManaged: k,
+							hasInstallBaseCustomerFlag: k,
+							isPartnersManaged: I,
 							billingProfile: A,
 							accountId: C,
 							disclaimerStyles: R,
@@ -17896,7 +17897,7 @@
 				C = n("../../../../node_modules/@cloudflare/component-toast/es/index.js"),
 				T = n("../react/utils/translator.tsx"),
 				O = n("../../../../node_modules/react/jsx-runtime.js");
-			let I = () => (0, O.jsx)(C.F, {
+			let k = () => (0, O.jsx)(C.F, {
 					type: "error",
 					mb: 0,
 					mt: 3,
@@ -17904,7 +17905,7 @@
 						id: "billing.plan_change.error"
 					})
 				}),
-				k = () => (0, O.jsx)(C.F, {
+				I = () => (0, O.jsx)(C.F, {
 					type: "error",
 					mb: 0,
 					mt: 3,
@@ -17977,7 +17978,7 @@
 							await e()
 						}, [e]),
 						b = null;
-					return (null == s ? void 0 : s.length) && (b = s.find(e => 1333 === e.code) ? (0, O.jsx)(A, {}) : t ? (0, O.jsx)(k, {}) : (0, O.jsx)(I, {})), (0, O.jsxs)(O.Fragment, {
+					return (null == s ? void 0 : s.length) && (b = s.find(e => 1333 === e.code) ? (0, O.jsx)(A, {}) : t ? (0, O.jsx)(I, {}) : (0, O.jsx)(k, {})), (0, O.jsxs)(O.Fragment, {
 						children: [(0, O.jsx)(h.Z, {
 							buyingRatePlan: m,
 							isEntSS: p,
@@ -18155,7 +18156,7 @@
 						} = t,
 						h = v * (m ? 12 : 1),
 						[y, x] = (0, r.useState)(!1),
-						I = (0, r.useCallback)(e => {
+						k = (0, r.useCallback)(e => {
 							void 0 !== g && void 0 !== _ && (A(e), x(!0), i({
 								name: ei,
 								value: e + g,
@@ -18163,13 +18164,13 @@
 								default: g
 							}))
 						}, [g, i, v, _]),
-						[k, A] = (0, r.useState)(0);
+						[I, A] = (0, r.useState)(0);
 					(0, r.useEffect)(() => {
 						var t;
 						let n;
 						void 0 !== e && void 0 !== g && A((n = (t = Math.max(e - g, 0)) % 5) ? t + 5 - n : t)
 					}, [e, g, a]);
-					let j = (null != _ ? _ : 0) > k + (null != g ? g : 0);
+					let j = (null != _ ? _ : 0) > I + (null != g ? g : 0);
 					(0, r.useEffect)(() => {
 						l(j)
 					}, [j, l]);
@@ -18228,10 +18229,10 @@
 						D = (0, r.useMemo)(() => y ? (0, O.jsx)(T.cC, {
 							id: m ? "common.subscriptions.components.pages_rules.purchase_as_addon.year" : "common.subscriptions.components.pages_rules.purchase_as_addon.month",
 							values: {
-								count: k.toLocaleString()
+								count: I.toLocaleString()
 							},
 							applyMarkdown: !0
-						}) : null, [m, y, k]),
+						}) : null, [m, y, I]),
 						M = (0, r.useMemo)(() => (0, O.jsx)(T.cC, {
 							id: "common.subscriptions.components.page_rules_additional"
 						}), []),
@@ -18241,10 +18242,10 @@
 							id: "common.subscriptions.components.page_rules.label.month"
 						}), [m]),
 						G = (0, r.useCallback)(e => {
-							I(e.value);
+							k(e.value);
 							let t = c ? N.lM.saveOfferView : N.lM.planSelectView;
 							N.WF(e.value, t)
-						}, [I, c]);
+						}, [k, c]);
 					return void 0 === _ ? null : (0, O.jsxs)(O.Fragment, {
 						children: [(0, O.jsx)(eo, function(e) {
 							for (var t = 1; t < arguments.length; t++) {
@@ -18281,14 +18282,14 @@
 							options: R,
 							plan: u,
 							unitPrice: h,
-							value: k
+							value: I
 						}, {
 							label: M,
 							includedMessage: P,
 							usageMessage: L,
 							addonSupplementMessage: D,
 							children: (0, O.jsx)(ea.u, {
-								value: k,
+								value: I,
 								options: R,
 								onChange: G,
 								menuPlacement: "top",
@@ -18583,8 +18584,8 @@
 				proQuota: E,
 				setOverPageRulesQuota: x,
 				initialNextPlan: C,
-				showAnnualPlans: I,
-				hasInstallBaseCustomerFlag: k,
+				showAnnualPlans: k,
+				hasInstallBaseCustomerFlag: I,
 				hideAnnualFrequencyToggle: A,
 				zone: j,
 				trialCancelWarningModal: P,
@@ -18615,7 +18616,7 @@
 				(0, r.useEffect)(() => {
 					setTimeout(() => eo(), 100)
 				}, [c, eo]);
-				let ea = (0, r.useMemo)(() => (0, K.PZ)(t, o, g, E, n, i, I), [t, o, g, E, n, i, I]),
+				let ea = (0, r.useMemo)(() => (0, K.PZ)(t, o, g, E, n, i, k), [t, o, g, E, n, i, k]),
 					ei = (0, r.useMemo)(() => (0, K.uN)(o, b, ea, u, c, C), [o, b, ea, c, u, C]);
 				if ((0, r.useEffect)(() => {
 						c && N.bo(ei)
@@ -18660,17 +18661,17 @@
 								zoneId: null == a || null == (U = a.zone) ? void 0 : U.id
 							}), !A && (0, O.jsx)(X.ZP, {
 								handleToggle: h,
-								checked: I,
-								labelIdYearly: k ? "billing.plan_change.toggle.frequency.yearly" : null
+								checked: k,
+								labelIdYearly: I ? "billing.plan_change.toggle.frequency.yearly" : null
 							})]
 						}), c ? (0, O.jsx)(ev.Z, {
 							plans: ei,
 							initialNextPlan: C
-						}) : k && (0, O.jsx)(eb.Z, {
+						}) : I && (0, O.jsx)(eb.Z, {
 							isNextPlanConfirmed: c
 						}), (0, O.jsx)(et.ZP, {
 							currentPlan: $,
-							showAnnualPlans: I,
+							showAnnualPlans: k,
 							currentSubscriptionIsAnnual: s,
 							nextPlan: F || null,
 							allPlans: ei,
@@ -18702,7 +18703,7 @@
 							pageRules: y,
 							currentPlan: $,
 							nextPlan: F,
-							isAnnualPlan: I,
+							isAnnualPlan: k,
 							onChange: v,
 							setOverPageRulesQuota: x,
 							zone: j,
@@ -18710,7 +18711,7 @@
 						}), !ec && (0, O.jsx)(ep, {
 							addonValue: es,
 							currentPlan: $,
-							isAnnualPlan: I,
+							isAnnualPlan: k,
 							nextPlan: F,
 							onChange: v
 						})]
@@ -18810,7 +18811,7 @@
 				}, []);
 				let g = o || (null == e || null == (a = e.rate_plan) ? void 0 : a.is_contract),
 					b = (0, O.jsxs)(O.Fragment, {
-						children: ["lite" !== t && "pro_plus" !== t ? (0, O.jsxs)(ek, {
+						children: ["lite" !== t && "pro_plus" !== t ? (0, O.jsxs)(eI, {
 							target: "_blank",
 							href: s,
 							children: [(0, O.jsx)(T.cC, {
@@ -18822,7 +18823,7 @@
 								type: "external-link",
 								color: "blue.4"
 							})]
-						}) : p ? (0, O.jsxs)(ek, {
+						}) : p ? (0, O.jsxs)(eI, {
 							target: "_blank",
 							href: d,
 							children: [(0, O.jsx)(T.cC, {
@@ -18831,7 +18832,7 @@
 								type: "external-link",
 								color: "blue.4"
 							})]
-						}) : null, "lite" !== n && "pro_plus" !== n ? (0, O.jsxs)(ek, {
+						}) : null, "lite" !== n && "pro_plus" !== n ? (0, O.jsxs)(eI, {
 							target: "_blank",
 							href: u,
 							children: [(0, O.jsx)(T.cC, {
@@ -18843,7 +18844,7 @@
 								type: "external-link",
 								color: "blue.4"
 							})]
-						}) : m ? (0, O.jsxs)(ek, {
+						}) : m ? (0, O.jsxs)(eI, {
 							target: "_blank",
 							href: d,
 							children: [(0, O.jsx)(T.cC, {
@@ -18866,7 +18867,7 @@
 						}) : (0, O.jsx)(T.cC, {
 							id: "billing.downgrade_confirm.title"
 						})
-					}), (0, O.jsx)(eI, {
+					}), (0, O.jsx)(ek, {
 						children: g ? (0, O.jsx)(T.cC, {
 							applyMarkdown: !0,
 							id: "billing.downgrade_confirm.header.immediate",
@@ -18884,7 +18885,7 @@
 					}), f, b]
 				})
 			};
-			let eI = (0, Q.SU)(({
+			let ek = (0, Q.SU)(({
 					theme: e
 				}) => ({
 					marginTop: "0.5rem",
@@ -18893,7 +18894,7 @@
 						color: e.colors.black
 					}
 				})),
-				ek = (0, Q.SU)(({}) => ({
+				eI = (0, Q.SU)(({}) => ({
 					display: "flex",
 					alignItems: "center",
 					lineHeight: "28px",
@@ -18941,8 +18942,8 @@
 						needsToContact: E,
 						needsPayment: x,
 						selectView: C,
-						paymentView: I,
-						paymentViewOnPurchase: k,
+						paymentView: k,
+						paymentViewOnPurchase: I,
 						selectViewCanContinue: A,
 						selectViewOnContinue: j,
 						zoneAccountId: Y,
@@ -18967,8 +18968,8 @@
 							[u, h] = (0, r.useState)(),
 							[y, w] = (0, r.useState)([]),
 							[E, x] = (0, r.useState)(!0),
-							[C, I] = (0, r.useState)(!1),
-							[k, A] = (0, r.useState)(!1),
+							[C, k] = (0, r.useState)(!1),
+							[I, A] = (0, r.useState)(!1),
 							[j, Y] = (0, r.useState)(!1),
 							[Q, J] = (0, r.useState)(),
 							[X, et] = (0, r.useState)(""),
@@ -19003,15 +19004,15 @@
 							eS = (0, l.p4)((0, eR.z1)(ej.x)),
 							ex = !!(eE && eS),
 							eT = !!(ey && eS),
-							eI = (0, ee.G6)(o),
+							ek = (0, ee.G6)(o),
 							{
-								id: ek,
+								id: eI,
 								name: eA,
 								account: {
 									id: eP
 								} = {}
-							} = eI || {},
-							eL = (0, ee.mU)(ek),
+							} = ek || {},
+							eL = (0, ee.mU)(eI),
 							eD = (0, l.p4)(e => (0, f.a9)(e, null == o ? void 0 : o.id)),
 							[eM, eB] = (0, r.useMemo)(() => [(0, d.OL)(null == eL ? void 0 : eL.rate_plan, eD), (0, d.x$)(eL)], [eL, eD]),
 							eG = (0, ee.Fi)({
@@ -19026,9 +19027,9 @@
 						let ez = (null == eL || null == (a = eL.component_values.find(e => e.name === m.g$)) ? void 0 : a.value) || 0,
 							e$ = eM.legacy_id,
 							eF = null == Q ? void 0 : Q.legacy_id,
-							eH = (0, ee.se)(e$, eF, ek),
-							eq = (0, ee.DG)(eM, eH, Q, ek, ez),
-							eZ = (0, ee.xn)(ek),
+							eH = (0, ee.se)(e$, eF, eI),
+							eq = (0, ee.DG)(eM, eH, Q, eI, ez),
+							eZ = (0, ee.xn)(eI),
 							eV = eF === p.PlanId.free,
 							{
 								proQuota: eW,
@@ -19055,7 +19056,7 @@
 								allPlans: eZ
 							}),
 							e4 = (0, ee.eY)(eZ, e5, Q, eM),
-							e6 = (0, ee.Lk)(eM, E, e1, e2, eB, k, e5, eo, Q),
+							e6 = (0, ee.Lk)(eM, E, e1, e2, eB, I, e5, eo, Q),
 							e9 = (0, r.useCallback)(() => {
 								el(!1)
 							}, [el]),
@@ -19063,7 +19064,7 @@
 								e && eB !== E ? J(null == eZ ? void 0 : eZ.find(e => e.legacy_id === e$)) : J(void 0)
 							}, [eZ, e$, E, eB]),
 							e7 = (0, r.useCallback)((e = !1) => {
-								c(void 0), h(void 0), w([]), I(!1), A(!1), Y(!1), et(""), ea(!1), er(null), e && (null == eZ ? void 0 : eZ.some(e => e.legacy_id === eF)) || (e8(), e9())
+								c(void 0), h(void 0), w([]), k(!1), A(!1), Y(!1), et(""), ea(!1), er(null), e && (null == eZ ? void 0 : eZ.some(e => e.legacy_id === eF)) || (e8(), e9())
 							}, [eZ, eF, e9, e8]),
 							te = (0, r.useCallback)(() => {
 								e7(), null == t || t()
@@ -19076,7 +19077,7 @@
 							tr = function(e, t, n, o, a, i, s, c, u, g, b, v, _, h, y, w, E) {
 								let {
 									t: S
-								} = (0, T.QT)(), x = (0, l.UM)(), C = (0, H.Z)("prg-free-trial"), O = !!(0, H.Z)("billing-on-session-payment"), [I, k] = (0, r.useState)(void 0), A = (0, l.p4)(f.Um), j = a && (0, d.a7)(null == s ? void 0 : s.legacy_id), R = async e => {
+								} = (0, T.QT)(), x = (0, l.UM)(), C = (0, H.Z)("prg-free-trial"), O = !!(0, H.Z)("billing-on-session-payment"), [k, I] = (0, r.useState)(void 0), A = (0, l.p4)(f.Um), j = a && (0, d.a7)(null == s ? void 0 : s.legacy_id), R = async e => {
 									await x((0, D.notifySuccess)(S("billing.subscription_change.success"))), s ? await N.I3(n, s, j, (null == e ? void 0 : e.next_rate_plan) || e) : await N.iJ(e, E, o)
 								}, P = async e => {
 									s && await N.$(n, s, j), v(t => {
@@ -19095,7 +19096,7 @@
 								}, {
 									setClientSecret: Y
 								} = (0, q.$)(A, async () => {
-									await R(I), await K()
+									await R(k), await K()
 								}, async () => {
 									await P({
 										body: {
@@ -19105,19 +19106,20 @@
 								});
 								return (0, r.useCallback)(async () => {
 									if (!_ || !h || !n || !(!s && (null == n ? void 0 : n.id) === p.PlanId.free || s || o) || i) return;
-									let r = !1;
+									let r = !1,
+										l = !1;
 									b(!0), s && await N.gS(n, s, j, e);
 									try {
-										var l, c;
+										var c, u;
 										if (o) {
-											let n, r = await (c = t || [], n = JSON.parse(JSON.stringify(o)), s ? (n.rate_plan = {
+											let n, r = await (u = t || [], n = JSON.parse(JSON.stringify(o)), s ? (n.rate_plan = {
 													id: s.legacy_id
-												}, n.frequency = j && (0, d.a7)(s.legacy_id) ? "yearly" : "monthly") : j && (n.frequency = "yearly"), e && (n.component_values = e), Array.isArray(c) && c.length > 0 && (n.reason_code = [...c], n.other = g || ""), n.user_is_on_session = O, (0, $.post)(`/accounts/${_}/subscriptions/${o.id}/action/append`, {
+												}, n.frequency = j && (0, d.a7)(s.legacy_id) ? "yearly" : "monthly") : j && (n.frequency = "yearly"), e && (n.component_values = e), Array.isArray(u) && u.length > 0 && (n.reason_code = [...u], n.other = g || ""), n.user_is_on_session = O, (0, $.post)(`/accounts/${_}/subscriptions/${o.id}/action/append`, {
 													body: n
 												})),
-												a = null == r || null == (l = r.body) ? void 0 : l.result;
-											if (O) {
-												await x((0, F.FF)(_)), k(a), Y(a.client_secrets);
+												a = null == r || null == (c = r.body) ? void 0 : c.result;
+											if (O && a.client_secrets) {
+												l = !0, await x((0, F.FF)(_)), I(a), Y(a.client_secrets);
 												return
 											}
 											await R(a)
@@ -19173,19 +19175,19 @@
 									} catch (e) {
 										await P(e), r = !0
 									} finally {
-										r || O || await K()
+										r || l || await K()
 									}
 								}, [e, t, n, o, x, a, i, s, c, u, g, b, v, w, S, _, h, y])
-							}(s, y, eM, eL, E, ev, Q, te, n, X, I, er, eP, ek, eA, tn, o),
+							}(s, y, eM, eL, E, ev, Q, te, n, X, k, er, eP, eI, eA, tn, o),
 							to = (0, ee.$p)({
 								isAddonDowngrade: e1,
-								isDowngradeConfirmed: k,
+								isDowngradeConfirmed: I,
 								isNextPlanDowngrade: e5
 							}),
 							ta = (0, ee.Ru)(s, eJ, e0, eV, tn.length, e_, eT, eL),
-							ti = (0, ee.BO)(e6, tr, ta, eJ, tt, el, to, k),
+							ti = (0, ee.BO)(e6, tr, ta, eJ, tt, el, to, I),
 							tl = e6 && !ev,
-							ts = function(e, t, n, o, a, i, s, c, u, g, b, v, _, h, y, w, E, S, x, C, T, I, k, A, j, R, P, L, D, M, B, G, U, z, $, F, H, q, Z, V, W, Y, Q) {
+							ts = function(e, t, n, o, a, i, s, c, u, g, b, v, _, h, y, w, E, S, x, C, T, k, I, A, j, R, P, L, D, M, B, G, U, z, $, F, H, q, Z, V, W, Y, Q) {
 								let [J, X] = (0, r.useState)({
 									show: !1,
 									product_name: void 0,
@@ -19227,13 +19229,13 @@
 										}
 										return e
 									}({}, t)), L(o);
-									let i = (0, K.mN)(I || [], o);
+									let i = (0, K.mN)(k || [], o);
 									D(i), et && i.upgraded.length > 0 && J.show_again && (X({
 										show: !0,
 										product_name: i.upgraded[0].name,
 										show_again: !1
 									}), en(eh.Dy.fetchFreeTrialActionsCancelWarningStart())), U(!!a.length), q(null)
-								}, [e, a.length, en, et, I, L, D, U, q, J.show_again]), eo = (0, r.useCallback)(async e => {
+								}, [e, a.length, en, et, k, L, D, U, q, J.show_again]), eo = (0, r.useCallback)(async e => {
 									if (!n) return;
 									let t = n.find(t => t.legacy_id === e);
 									if (t) {
@@ -19257,12 +19259,12 @@
 								}, [Q, z]);
 								let ec = (0, ee.Q6)(null == Q ? void 0 : Q.account.id),
 									eu = (0, r.useCallback)(() => {
-										en(eh.Dy.fetchFreeTrialActionsCancelWarningEnd()), D(void 0), L(I), X({
+										en(eh.Dy.fetchFreeTrialActionsCancelWarningEnd()), D(void 0), L(k), X({
 											show: !1,
 											product_name: void 0,
 											show_again: !1
 										})
-									}, [en, I, L, D]);
+									}, [en, k, L, D]);
 								return (0, r.useMemo)(() => (0, O.jsx)(eC, {
 									accountType: ec,
 									addons: e,
@@ -19281,7 +19283,7 @@
 									onSelectPlan: eo,
 									onToggleAnnualPlans: el,
 									pageRules: T,
-									planHasQuota: k,
+									planHasQuota: I,
 									proQuota: A,
 									setOverPageRulesQuota: H,
 									initialNextPlan: V,
@@ -19292,12 +19294,12 @@
 									trialCancelWarningModal: J,
 									setTrialCancelWarningModal: X,
 									onCancelAddons: eu
-								}), [_, s, ec, e, n, o, i, c, b, y, E, S, x, er, eo, el, T, k, A, H, V, u, W, Y, Q, J, eu])
-							}(s, 0, eZ, eK, y, eM, eL, eY, E, 0, eB, 0, ei, j, e5, ex, ev, e, Q, 0, eH, eq, eX, eW, 0, 0, 0, c, h, 0, x, I, A, Y, J, 0, ea, er, ec, es, eu, eU, eI),
+								}), [_, s, ec, e, n, o, i, c, b, y, E, S, x, er, eo, el, T, I, A, H, V, u, W, Y, Q, J, eu])
+							}(s, 0, eZ, eK, y, eM, eL, eY, E, 0, eB, 0, ei, j, e5, ex, ev, e, Q, 0, eH, eq, eX, eW, 0, 0, 0, c, h, 0, x, k, A, Y, J, 0, ea, er, ec, es, eu, eU, ek),
 							tc = (0, ee.xB)(tr, i),
 							tu = (0, r.useCallback)(e => {
 								i.current = () => {
-									I(!0), null == e || e()
+									k(!0), null == e || e()
 								}
 							}, []),
 							td = (0, r.useMemo)(() => (0, O.jsx)(P, {
@@ -19305,13 +19307,13 @@
 								hasSubscription: !!eL,
 								isChangingPlan: C,
 								nextPlan: Q,
-								setIsChangingPlan: I,
+								setIsChangingPlan: k,
 								setOnSubmit: tu,
 								planChangeErrors: en,
 								summaryItems: tn,
 								currentSub: eL,
 								hasInstallBaseCustomerFlag: eu
-							}), [tr, eL, C, Q, I, tu, en, tn, eu]),
+							}), [tr, eL, C, Q, k, tu, en, tn, eu]),
 							tp = (0, r.useMemo)(() => eF ? (0, O.jsx)(eO, {
 								currentSub: eL,
 								currentPlanId: e$,
@@ -19335,8 +19337,8 @@
 								})]
 							}), [w, et]);
 						(0, r.useEffect)(() => {
-							k || (w([]), et(""))
-						}, [k]), (0, r.useEffect)(() => {
+							I || (w([]), et(""))
+						}, [I]), (0, r.useEffect)(() => {
 							let e = e$ === p.PlanId.free;
 							x(eB || e && eG)
 						}, [eB, e$, eG]), (0, r.useEffect)(() => {
@@ -19366,13 +19368,13 @@
 							shouldShowSaveOffer: tt,
 							needsDowngradeConfirmation: to,
 							isOverPageRulesQuota: eo,
-							isDowngradeConfirmed: k,
+							isDowngradeConfirmed: I,
 							isNextPlanConfirmed: ei,
 							isNextPlanDowngradeAndBillingUpgrade: e3,
 							setHasSelectedAnnualFrequency: x,
 							hasSelectedAnnualFrequency: E,
 							setIsDowngradeConfirmed: A
-						}), [tm, eM, tp, E, e1, k, tf, ei, e5, e3, e4, eo, to, ta, eJ, Q, td, tc, e9, e8, e7, ts, tl, ti, tt, eP])
+						}), [tm, eM, tp, E, e1, I, tf, ei, e5, e3, e4, eo, to, ta, eJ, Q, td, tc, e9, e8, e7, ts, tl, ti, tt, eP])
 					}(t, a, n, e ? h : null), ep = (0, ee.TV)(null == et ? void 0 : et.legacy_id), em = (0, ee.TV)(null == X ? void 0 : X.legacy_id), [ef, eg] = (0, r.useState)(0), [eb, ev] = (0, r.useState)(0), e_ = (0, eP.P)(), {
 						isAuthzd: ey
 					} = (0, c.bk)((0, s.jX)(null, s.ZZ.read), (0, s.L8)(Y)), ew = (0, l.p4)(f.as), eE = (0, r.useCallback)(e => {
@@ -19434,7 +19436,7 @@
 						})), t.push({
 							content: (0, O.jsx)("div", {
 								"data-testid": p.w.PLAN_CHANGE_MODAL_PAYMENT_VIEW,
-								children: I
+								children: k
 							}),
 							hideBack: w,
 							hideCancel: w,
@@ -19443,9 +19445,9 @@
 							nextOnClick: async () => (i().sendEvent("purchase from plan change modal", {
 								previousPlan: null == et ? void 0 : et.legacy_id,
 								nextPlan: null == X ? void 0 : X.legacy_id
-							}), await k())
+							}), await I())
 						}), ev(t.length), eg(e), t
-					}, [C, E, x, A, eo, er, el, ec, j, w, eu, I, k, es, ed, ea, ei, null == X ? void 0 : X.legacy_id, null == et ? void 0 : et.legacy_id, ep, em]), eS = (0, r.useMemo)(() => eb >= 4 && ef <= 1 || 3 === eb && ef <= 1 || 0 === ef, [ef, eb]), ex = (0, r.useMemo)(() => {
+					}, [C, E, x, A, eo, er, el, ec, j, w, eu, k, I, es, ed, ea, ei, null == X ? void 0 : X.legacy_id, null == et ? void 0 : et.legacy_id, ep, em]), eS = (0, r.useMemo)(() => eb >= 4 && ef <= 1 || 3 === eb && ef <= 1 || 0 === ef, [ef, eb]), ex = (0, r.useMemo)(() => {
 						let e = eb >= 4 && ef <= 2;
 						return eS || e ? (0, O.jsx)(eL.Z, {
 							minPlan: t,
@@ -19458,7 +19460,7 @@
 							let e = null == X ? void 0 : X.legacy_id;
 							("lite" === e || "pro_plus" === e) && en(!0)
 						}
-					}, [J, null == X ? void 0 : X.legacy_id, en]), eI = (0, r.useCallback)(() => {
+					}, [J, null == X ? void 0 : X.legacy_id, en]), ek = (0, r.useCallback)(() => {
 						Q(), n()
 					}, [n, Q]);
 					return e ? e_ && !ey ? (0, O.jsx)(u.Z, {
@@ -19466,13 +19468,13 @@
 						description: y("zone_level_access.change_plan_modal.description"),
 						hideCancelButton: !0,
 						isOpen: !0,
-						onCancel: eI,
-						onConfirm: eI,
+						onCancel: ek,
+						onConfirm: ek,
 						title: y("zone_level_access.change_plan_modal.title"),
 						width: "narrow"
 					}) : (0, O.jsx)(o.qF, {
 						isOpen: !0,
-						onClose: eI,
+						onClose: ek,
 						onPrevStep: eT,
 						closeOnBackdropClick: !ew.cancelWarning,
 						renderSteps: eE,
@@ -19848,8 +19850,8 @@
 				C = n("../react/common/components/billing/PlanSelect/components/plansPageExperiment.ts"),
 				T = n("../react/pages/billing/subscriptions/utils.tsx"),
 				O = n("../react/common/hooks/useGate.ts"),
-				I = n("../react/common/components/billing/PlanSelect/utils.ts"),
-				k = n("../react/common/components/billing/PlanSelect/components/TooltipLink.tsx");
+				k = n("../react/common/components/billing/PlanSelect/utils.ts"),
+				I = n("../react/common/components/billing/PlanSelect/components/TooltipLink.tsx");
 			let A = ["free", "lite", "partners_free"];
 			var j = ({
 				type: e,
@@ -19898,7 +19900,7 @@
 						})]
 					}, e)), [$, Q]),
 					ee = (0, r.useMemo)(() => (0, d.tq)() ? "left" : "top", []),
-					et = (0, r.useMemo)(() => (0, I.n)(V), [V]),
+					et = (0, r.useMemo)(() => (0, k.n)(V), [V]),
 					en = (0, r.useCallback)(e => e.map(e => {
 						var t, n, r, o;
 						return (0, g.jsxs)(f.Io, {
@@ -19916,7 +19918,7 @@
 									onClick: e => e.stopPropagation(),
 									children: (0, g.jsx)(m.cC, {
 										id: e.tooltip,
-										Components: null != (t = null == e || null == (n = e.href) ? void 0 : n.map(e => e.internal ? k.O : k.T)) ? t : [],
+										Components: null != (t = null == e || null == (n = e.href) ? void 0 : n.map(e => e.internal ? I.O : I.T)) ? t : [],
 										componentProps: null != (r = null == e || null == (o = e.href) ? void 0 : o.map(e => ({
 											href: e.id
 										}))) ? r : []
@@ -20145,7 +20147,7 @@
 									onClick: e => e.stopPropagation(),
 									children: (0, g.jsx)(m.cC, {
 										id: C.Y3.id,
-										Components: C.Y3.external ? [k.T] : [k.O],
+										Components: C.Y3.external ? [I.T] : [I.O],
 										componentProps: [{
 											href: C.Y3.href
 										}]
@@ -20173,7 +20175,7 @@
 									onClick: e => e.stopPropagation(),
 									children: (0, g.jsx)(m.cC, {
 										id: C.y.id,
-										Components: C.y.external ? [k.T] : [k.O],
+										Components: C.y.external ? [I.T] : [I.O],
 										componentProps: [{
 											href: C.y.href
 										}]
@@ -21583,7 +21585,7 @@
 				};
 			t.Z = (e, t, n, r, o) => {
 				try {
-					let i = r ? r(e) : (0, a.parse)(e),
+					let i = r ? r(e) : (0, a.Qc)(e),
 						l = c(i);
 					return (o ? o(l, t, 0) : s(l, t, 0, n)) ? {
 						id: "root",
@@ -21739,7 +21741,7 @@
 					return A
 				},
 				KZ: function() {
-					return I
+					return k
 				},
 				Lf: function() {
 					return p
@@ -21784,7 +21786,7 @@
 					return x
 				},
 				lB: function() {
-					return k
+					return I
 				},
 				np: function() {
 					return f
@@ -21922,16 +21924,16 @@
 					(o ? S(e, r, "dataType", o) : S(e, r, "dataType")) === i.D.boolean ? (t.data.value = !l, t.not = !t.not) : o && (n || !o.startsWith("!")) && (t.data.operator = a.tt[o], t.not = !t.not)
 				},
 				O = (e, t) => !!e && Array.isArray(e.data) && e.data.some(e => "triplet" === e.type ? t(e) : O(e, t)),
-				I = (e, t) => {
-					Array.isArray(null == e ? void 0 : e.data) && (null == e || e.data.forEach(e => "triplet" === e.type ? t(e) : I(e, t)))
+				k = (e, t) => {
+					Array.isArray(null == e ? void 0 : e.data) && (null == e || e.data.forEach(e => "triplet" === e.type ? t(e) : k(e, t)))
 				},
-				k = (e, t, n, r, o, a = {}) => {
+				I = (e, t, n, r, o, a = {}) => {
 					if (e && "group" === e.type) {
 						let i = e.connector && !n.includes(e.connector) ? e.connector : void 0;
 						i && (a[e.id] = {
 							connectorError: i
 						}), e.data.forEach(e => {
-							k(e, t, n, r, o, a)
+							I(e, t, n, r, o, a)
 						})
 					} else if (e && "triplet" === e.type) {
 						let n, {
@@ -22859,7 +22861,7 @@
 					return A
 				},
 				contentScanNumMaliciousObj: function() {
-					return k
+					return I
 				},
 				contentScanNumObj: function() {
 					return C
@@ -22868,7 +22870,7 @@
 					return T
 				},
 				contentScanObjSizes: function() {
-					return I
+					return k
 				},
 				contentScanObjTypes: function() {
 					return O
@@ -23089,7 +23091,7 @@
 					example: "application/json",
 					urlParam: "scanned-content-types"
 				},
-				I = {
+				k = {
 					label: "analytics.http.filters.labels.contentScanObjSizes",
 					type: i.kE.string,
 					parse: _,
@@ -23097,7 +23099,7 @@
 					example: "1000",
 					urlParam: "scanned-content-sizes"
 				},
-				k = {
+				I = {
 					label: "analytics.http.filters.labels.contentScanNumMaliciousObj",
 					type: i.kE.string,
 					operators: h,
@@ -24267,15 +24269,15 @@
 						T = () => C(m),
 						{
 							toolbarState: O,
-							handleChangeToolbarState: I,
-							setToolbarState: k
+							handleChangeToolbarState: k,
+							setToolbarState: I
 						} = (0, a.Z)({
 							initialToolbarState: {
 								search: (null == v ? void 0 : v.autoFillInitialValues) && null != (t = S.search) ? t : f.search,
 								filterValues: f.filterValues
 							}
 						}),
-						A = () => I(f),
+						A = () => k(f),
 						{
 							sortState: j,
 							handleChangeSortState: R
@@ -24285,12 +24287,12 @@
 						}),
 						N = () => R(g);
 					return (0, r.useEffect)(() => {
-						(null == v ? void 0 : v.autoFillFilterValues) && Object.keys(E).length > 0 && (k(e => u({}, e, {
+						(null == v ? void 0 : v.autoFillFilterValues) && Object.keys(E).length > 0 && (I(e => u({}, e, {
 							filterValues: u({}, e.filterValues, E)
 						})), setTimeout(() => {
 							_.current && (_.current.setFilterValues(E), _.current.toggleFilters())
 						}, 0))
-					}, [null == v ? void 0 : v.autoFillFilterValues, k, E]), (0, r.useEffect)(() => {
+					}, [null == v ? void 0 : v.autoFillFilterValues, I, E]), (0, r.useEffect)(() => {
 						h && (null == v ? void 0 : v.queryParamStrategy) === "auto-clear" && y.replace({
 							pathname: y.location.pathname,
 							search: ""
@@ -24319,7 +24321,7 @@
 						handleChangePaginationState: C,
 						resetPagination: T,
 						toolbarState: O,
-						handleChangeToolbarState: I,
+						handleChangeToolbarState: k,
 						resetToolbar: A,
 						sortState: j,
 						handleChangeSortState: R,
@@ -25967,11 +25969,11 @@
 						var t;
 						return null == e || null == (t = e.body) ? void 0 : t.errors
 					}),
-					I = O.some(e => {
+					k = O.some(e => {
 						var t;
 						return null == e || null == (t = e.source) ? void 0 : t.pointer.includes("/rules/")
 					}),
-					k = b ? (0, s.ul)(v, b) : void 0,
+					I = b ? (0, s.ul)(v, b) : void 0,
 					A = async (t, n, r) => {
 						let o = r || (null == v ? void 0 : v.id);
 						if (!(null == g ? void 0 : g.id) || !o) return;
@@ -26008,7 +26010,7 @@
 					loading: C || L,
 					error: S,
 					errors: O,
-					hasFormErrors: I,
+					hasFormErrors: k,
 					hasFinishedAction: w.isSuccess || y.isSuccess || E.isSuccess,
 					ruleset: v,
 					entrypoint: v,
@@ -26018,7 +26020,7 @@
 					updateRulesetByPhase: R,
 					deployRuleset: P,
 					isDeploying: L,
-					duplicatedRule: k,
+					duplicatedRule: I,
 					refetchEntrypoint: _,
 					isFetching: C,
 					isFetched: T
@@ -26763,7 +26765,7 @@
 					return O
 				},
 				Le: function() {
-					return I
+					return k
 				},
 				O4: function() {
 					return W
@@ -26838,7 +26840,7 @@
 					return L
 				},
 				oI: function() {
-					return k
+					return I
 				},
 				oJ: function() {
 					return X
@@ -26885,11 +26887,11 @@
 				C = (0, c.P1)((0, m.P1)("memberships", x), g.U, (e, t) => t && e ? e.filter(e => t.includes(e.id)) : e),
 				T = e => e.accountFlags && e.accountFlags.data,
 				O = e => e.accountFlags,
-				I = (e, t, n) => {
+				k = (e, t, n) => {
 					let r = T(e);
 					return r && r[t] ? r[t][n] : null
 				},
-				k = (e, ...t) => i()(e, ["accountFlagsChanges", "data", ...t]),
+				I = (e, ...t) => i()(e, ["accountFlagsChanges", "data", ...t]),
 				A = e => e.accountFlagsChanges.isRequesting;
 			(0, c.P1)(T, O, (e, t) => ({
 				data: e,
@@ -26984,8 +26986,8 @@
 					let t, n;
 					return !!(t = (n = _(e)) && n.legacy_flags && n.legacy_flags.custom_pages) && !!t.enabled
 				},
-				H = e => !!e && !!I(e, "ConstellationAI", "v2_ui"),
-				q = e => !!e && !!I(e, "ConstellationAI", "ai-emergency-waitlist"),
+				H = e => !!e && !!k(e, "ConstellationAI", "v2_ui"),
+				q = e => !!e && !!k(e, "ConstellationAI", "ai-emergency-waitlist"),
 				Z = e => e.accountMembers,
 				V = (0, m.P1)("accountMembers", Z),
 				W = e => e.accountMember && e.accountMember.isRequesting,
@@ -27131,7 +27133,7 @@
 					return V
 				},
 				aU: function() {
-					return k
+					return I
 				},
 				as: function() {
 					return W
@@ -27173,7 +27175,7 @@
 					return s
 				},
 				uw: function() {
-					return I
+					return k
 				},
 				yY: function() {
 					return E
@@ -27215,8 +27217,8 @@
 				C = e => e.billingAccount,
 				T = (0, a.P1)("billingAccount", C),
 				O = e => e.billableUsageByAccount,
-				I = (0, a.P1)("billableUsageByAccount", O),
-				k = e => {
+				k = (0, a.P1)("billableUsageByAccount", O),
+				I = e => {
 					var t;
 					let n = T(e);
 					return !!(null == n || null == (t = n.flags) ? void 0 : t.pdf_invoices)
@@ -27431,7 +27433,7 @@
 					return h
 				},
 				Z: function() {
-					return I
+					return k
 				},
 				a: function() {
 					return y
@@ -27455,7 +27457,7 @@
 					return P
 				},
 				hL: function() {
-					return k
+					return I
 				},
 				i_: function() {
 					return z
@@ -27563,8 +27565,8 @@
 				},
 				T = e => u(e, "zone.advanced_certificate_manager") || b(e, "zone.advanced_certificate_manager"),
 				O = e => !1 === c(e, "authoritative_dns.proxy_record_allowed") || !1 === g(e, "authoritative_dns.proxy_record_allowed"),
-				I = e => !0 === b(e, "authoritative_dns.outgoing_zone_transfers_allowed"),
-				k = e => !0 === c(e, "authoritative_dns.outgoing_zone_transfers_allowed"),
+				k = e => !0 === b(e, "authoritative_dns.outgoing_zone_transfers_allowed"),
+				I = e => !0 === c(e, "authoritative_dns.outgoing_zone_transfers_allowed"),
 				A = e => {
 					let t = c(e, "authoritative_dns.min_record_ttl_allowed");
 					return "number" == typeof t && t > 1 ? t : 60
@@ -28032,7 +28034,7 @@
 					return z
 				},
 				jN: function() {
-					return I
+					return k
 				},
 				jg: function() {
 					return F
@@ -28071,7 +28073,7 @@
 					return ec
 				},
 				vM: function() {
-					return k
+					return I
 				},
 				wH: function() {
 					return h
@@ -28201,19 +28203,19 @@
 				return t ? t.type : null
 			}
 
-			function I(e) {
+			function k(e) {
 				return (null == e ? void 0 : e.plan_pending) ? null == e ? void 0 : e.plan_pending : null == e ? void 0 : e.plan
 			}
 
-			function k(e) {
+			function I(e) {
 				let t = p(e);
 				if (!t) return;
-				let n = I(t);
+				let n = k(t);
 				return n && n.legacy_id
 			}
 
 			function A(e, t) {
-				let n = I(e);
+				let n = k(e);
 				return !!n && c.Gs.indexOf(n.legacy_id) >= c.Gs.indexOf(t)
 			}
 
@@ -28231,7 +28233,7 @@
 
 			function P(e, t) {
 				if (!e) return !1;
-				let n = I(e);
+				let n = k(e);
 				return !!n && n.legacy_id === t
 			}
 
@@ -29586,10 +29588,10 @@
 					return A
 				},
 				yp: function() {
-					return I
+					return k
 				},
 				yx: function() {
-					return k
+					return I
 				}
 			});
 			var r = n("../react/pages/analytics/logpush/types.ts"),
@@ -29872,11 +29874,11 @@
 						height: "100px"
 					}
 				},
-				I = {
+				k = {
 					"log-api.newrelic.com/log/v1": r.t7.NEW_RELIC,
 					"log-api.eu.newrelic.com/log/v1": r.t7.NEW_RELIC
 				},
-				k = {
+				I = {
 					UNPARSABLE: "unparsable",
 					UNSUPPORTED_FIELDS: "unsupported fields"
 				},
@@ -29902,7 +29904,7 @@
 					return d
 				},
 				MN: function() {
-					return I
+					return k
 				},
 				Om: function() {
 					return u
@@ -30009,12 +30011,12 @@
 					var t, n;
 					return null == e || null == (t = e.analytics) || null == (n = t.logpush) ? void 0 : n.fieldsDefault
 				},
-				I = (0, o.P1)("logpushFieldsDefault", O),
-				k = e => {
+				k = (0, o.P1)("logpushFieldsDefault", O),
+				I = e => {
 					var t, n;
 					return null == e || null == (t = e.analytics) || null == (n = t.logpush) ? void 0 : n.jobCreationState
 				},
-				A = (0, r.P1)(k, e => null == e ? void 0 : e.datasetType),
+				A = (0, r.P1)(I, e => null == e ? void 0 : e.datasetType),
 				j = e => {
 					let t = (0, a.rV)(e, "logpush.http_requests.max_jobs_allowed"),
 						n = (0, a.rV)(e, "logpush.spectrum_events.max_jobs_allowed"),
@@ -30043,13 +30045,13 @@
 					let o = (0, a.rV)(e, `logpush.${r}.max_jobs_allowed`) || 0;
 					return "SPECTRUM" === n && (o = (0, i.ZB)(e, "spectrum", "enabled") ? o : 0), t[r] = o, t
 				}, {}), (e, t) => (0, s.y)(e, t)),
-				D = (0, r.P1)(k, e => null == e ? void 0 : e.selectedFields),
+				D = (0, r.P1)(I, e => null == e ? void 0 : e.selectedFields),
 				M = (0, r.P1)(T, A, (e, t) => e && t ? (0, c.N)(e, t) : null),
-				B = (0, r.P1)(k, e => null == e ? void 0 : e.logpullOptions),
-				G = (0, r.P1)(k, e => null == e ? void 0 : e.filterOptions),
-				U = (0, r.P1)(k, e => null == e ? void 0 : e.storageDestinationConfig),
-				z = (0, r.P1)(k, e => null == e ? void 0 : e.ownershipValidation),
-				$ = (0, r.P1)(k, e => null == e ? void 0 : e.jobCreationStatus)
+				B = (0, r.P1)(I, e => null == e ? void 0 : e.logpullOptions),
+				G = (0, r.P1)(I, e => null == e ? void 0 : e.filterOptions),
+				U = (0, r.P1)(I, e => null == e ? void 0 : e.storageDestinationConfig),
+				z = (0, r.P1)(I, e => null == e ? void 0 : e.ownershipValidation),
+				$ = (0, r.P1)(I, e => null == e ? void 0 : e.jobCreationStatus)
 		},
 		"../react/pages/analytics/logpush/types.ts": function(e, t, n) {
 			"use strict";
@@ -30620,7 +30622,7 @@
 					return R
 				},
 				Cp: function() {
-					return I
+					return k
 				},
 				EJ: function() {
 					return _
@@ -30647,7 +30649,7 @@
 					return S
 				},
 				XS: function() {
-					return k
+					return I
 				},
 				Zj: function() {
 					return g
@@ -30917,7 +30919,7 @@
 					} else r = e.rate_plan.public_name;
 					return r
 				},
-				I = (e, t, n) => {
+				k = (e, t, n) => {
 					if (!t) return "";
 					switch (e) {
 						case "advanced_certificate_manager":
@@ -30964,7 +30966,7 @@
 							return ""
 					}
 				},
-				k = e => {
+				I = e => {
 					let t = new Date(e);
 					return t.setDate(t.getDate() + 30), t.toISOString()
 				},
@@ -31435,7 +31437,7 @@
 					return C
 				},
 				Vp: function() {
-					return I
+					return k
 				},
 				bf: function() {
 					return y
@@ -31582,7 +31584,7 @@
 					return !!((0, s.q)(e) && n || t)
 				},
 				O = e => T(e) && (0, c.p1)(e),
-				I = e => {
+				k = e => {
 					let t = (0, u.nA)(e);
 					return T(e) && (0, u.tU)(t, "pro")
 				}
@@ -32271,9 +32273,9 @@
 				C = n("../react/pages/email/redux/actions.ts"),
 				T = n("../react/pages/email/redux/selectors.ts"),
 				O = n("../react/pages/email/types.ts"),
-				I = n("../../../../node_modules/react/jsx-runtime.js");
+				k = n("../../../../node_modules/react/jsx-runtime.js");
 
-			function k({
+			function I({
 				state: e,
 				parentUrl: t,
 				showFixRecords: n
@@ -32288,7 +32290,7 @@
 					await c((0, C.jn)()), p.push(`${t}/disable`)
 				}, x = async () => {
 					await c((0, C.jn)()), p.push(`${t}/enable`)
-				}, k = async () => {
+				}, I = async () => {
 					l(!0);
 					let t = await c((0, C.ty)(null == f ? void 0 : f.id));
 					if ((null == h ? void 0 : h.status) !== (null == t ? void 0 : t.status)) return void c(g.notifyInfo((0, _.ZP)("email.dns_records.notification.data_changed")));
@@ -32305,55 +32307,55 @@
 							await x()
 					}
 				};
-				return n ? (0, I.jsx)(I.Fragment, {
-					children: (0, I.jsx)(d.ZC, {
-						children: e === S.eU.MisconfiguredLocked ? (0, I.jsx)(o.zx, {
+				return n ? (0, k.jsx)(k.Fragment, {
+					children: (0, k.jsx)(d.ZC, {
+						children: e === S.eU.MisconfiguredLocked ? (0, k.jsx)(o.zx, {
 							onClick: x,
 							loading: a,
 							type: "primary",
-							children: (0, I.jsx)(_.cC, {
+							children: (0, k.jsx)(_.cC, {
 								id: "email.dns_records.card.button.fix_records"
 							})
-						}) : (0, I.jsx)(s.g, {})
+						}) : (0, k.jsx)(s.g, {})
 					})
-				}) : (0, I.jsxs)(I.Fragment, {
-					children: [(0, I.jsx)(d.ZC, {
-						children: e === S.eU.Locked || e === S.eU.MisconfiguredLocked ? (0, I.jsx)(o.zx, {
-							onClick: k,
+				}) : (0, k.jsxs)(k.Fragment, {
+					children: [(0, k.jsx)(d.ZC, {
+						children: e === S.eU.Locked || e === S.eU.MisconfiguredLocked ? (0, k.jsx)(o.zx, {
+							onClick: I,
 							loading: a,
 							type: "primary",
 							inverted: !0,
-							children: (0, I.jsx)(_.cC, {
+							children: (0, k.jsx)(_.cC, {
 								id: "email.dns_records.card.button.disable"
 							})
-						}) : e === S.eU.Unlocked ? (0, I.jsx)(o.zx, {
-							onClick: k,
+						}) : e === S.eU.Unlocked ? (0, k.jsx)(o.zx, {
+							onClick: I,
 							loading: a,
 							type: "primary",
 							disabled: null == h ? void 0 : h.is_idn,
-							children: (0, I.jsx)(_.cC, {
+							children: (0, k.jsx)(_.cC, {
 								id: "email.dns_records.card.button.lock"
 							})
-						}) : e === S.eU.Disabled || e === S.eU.Misconfigured ? (0, I.jsx)(o.zx, {
-							onClick: k,
+						}) : e === S.eU.Disabled || e === S.eU.Misconfigured ? (0, k.jsx)(o.zx, {
+							onClick: I,
 							loading: a,
 							type: "primary",
 							disabled: null == h ? void 0 : h.is_idn,
-							children: (0, I.jsx)(_.cC, {
+							children: (0, k.jsx)(_.cC, {
 								id: "email.dns_records.card.button.enable"
 							})
-						}) : (0, I.jsx)(s.g, {})
-					}), e === S.eU.Locked || e === S.eU.MisconfiguredLocked ? (0, I.jsx)(I.Fragment, {
-						children: (0, I.jsx)(d.ZC, {
+						}) : (0, k.jsx)(s.g, {})
+					}), e === S.eU.Locked || e === S.eU.MisconfiguredLocked ? (0, k.jsx)(k.Fragment, {
+						children: (0, k.jsx)(d.ZC, {
 							display: "flex",
 							alignItems: "center",
 							justifyContent: "center",
-							children: (0, I.jsx)(u.u, {
+							children: (0, k.jsx)(u.u, {
 								place: "bottom",
-								message: (0, I.jsx)(_.cC, {
+								message: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.card.locked.tooltip"
 								}),
-								children: (0, I.jsxs)(d.P, {
+								children: (0, k.jsxs)(d.P, {
 									fontSize: 1,
 									mt: 3,
 									display: "flex",
@@ -32361,17 +32363,17 @@
 									alignItems: "center",
 									justifyContent: "center",
 									columnGap: "4px",
-									children: [(0, I.jsx)(i.J, {
+									children: [(0, k.jsx)(i.J, {
 										type: "lock",
 										label: "tooltip"
-									}), (0, I.jsx)(_.cC, {
+									}), (0, k.jsx)(_.cC, {
 										id: "email.dns_records.card.locked"
 									})]
 								})
 							})
 						})
-					}) : (0, I.jsx)(I.Fragment, {
-						children: (0, I.jsxs)(d.P, {
+					}) : (0, k.jsx)(k.Fragment, {
+						children: (0, k.jsxs)(d.P, {
 							fontSize: 1,
 							mt: 3,
 							display: "flex",
@@ -32379,9 +32381,9 @@
 							alignItems: "center",
 							justifyContent: "center",
 							columnGap: "4px",
-							children: [(0, I.jsx)(i.J, {
+							children: [(0, k.jsx)(i.J, {
 								type: "unlock-outline"
-							}), (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(_.cC, {
 								id: "email.dns_records.card.unlocked"
 							})]
 						})
@@ -32393,14 +32395,14 @@
 				loading: e,
 				misconfigured: t
 			}) {
-				return e ? null : t ? (0, I.jsx)(l._, {
+				return e ? null : t ? (0, k.jsx)(l._, {
 					hue: "red",
-					children: (0, I.jsx)(_.cC, {
+					children: (0, k.jsx)(_.cC, {
 						id: "email.dns_records.card.label.misconfigured"
 					})
-				}) : (0, I.jsx)(l._, {
+				}) : (0, k.jsx)(l._, {
 					hue: "green",
-					children: (0, I.jsx)(_.cC, {
+					children: (0, k.jsx)(_.cC, {
 						id: "email.dns_records.card.label.enabled"
 					})
 				})
@@ -32417,69 +32419,69 @@
 				parentUrl: s,
 				showActions: c
 			}) {
-				return (0, I.jsxs)(a.uO, {
-					children: [(0, I.jsx)(a.aY, {
+				return (0, k.jsxs)(a.uO, {
+					children: [(0, k.jsx)(a.aY, {
 						p: 16,
-						children: (0, I.jsx)(d.ZC, {
+						children: (0, k.jsx)(d.ZC, {
 							id: e,
 							overflow: "auto",
-							children: t !== S.eU.Loading ? (0, I.jsxs)(I.Fragment, {
-								children: [!!o.length && (0, I.jsxs)(I.Fragment, {
-									children: [(0, I.jsx)(d.P, {
+							children: t !== S.eU.Loading ? (0, k.jsxs)(k.Fragment, {
+								children: [!!o.length && (0, k.jsxs)(k.Fragment, {
+									children: [(0, k.jsx)(d.P, {
 										fontSize: 4,
-										children: (0, I.jsx)(_.cC, {
+										children: (0, k.jsx)(_.cC, {
 											id: "email.dns_records.card.conflicting_multi_spf_records"
 										})
-									}), (0, I.jsx)(_.cC, {
+									}), (0, k.jsx)(_.cC, {
 										id: "email.dns_records.card.conflicting_multi_spf_records.description",
 										values: {
 											zone: l
 										}
-									}), (0, I.jsx)(D, {
+									}), (0, k.jsx)(D, {
 										records: o
 									})]
-								}), !!r.length && (0, I.jsxs)(I.Fragment, {
-									children: [(0, I.jsx)(d.P, {
+								}), !!r.length && (0, k.jsxs)(k.Fragment, {
+									children: [(0, k.jsx)(d.P, {
 										fontSize: 4,
-										children: (0, I.jsx)(_.cC, {
+										children: (0, k.jsx)(_.cC, {
 											id: "email.dns_records.card.conflicting_records"
 										})
-									}), (0, I.jsx)(_.cC, {
+									}), (0, k.jsx)(_.cC, {
 										id: "email.dns_records.card.conflicting_records.description",
 										values: {
 											zone: l
 										}
-									}), (0, I.jsx)(M, {
+									}), (0, k.jsx)(M, {
 										records: r,
 										showActions: c
 									})]
-								}), !!n.length && (0, I.jsxs)(I.Fragment, {
-									children: [!!r.length && (0, I.jsx)("br", {}), (0, I.jsx)(d.P, {
+								}), !!n.length && (0, k.jsxs)(k.Fragment, {
+									children: [!!r.length && (0, k.jsx)("br", {}), (0, k.jsx)(d.P, {
 										fontSize: 4,
-										children: (0, I.jsx)(_.cC, {
+										children: (0, k.jsx)(_.cC, {
 											id: "email.dns_records.card.expected_records"
 										})
-									}), (0, I.jsx)(_.cC, {
+									}), (0, k.jsx)(_.cC, {
 										id: "email.dns_records.card.expected_records.description",
 										values: {
 											zone: l
 										}
-									}), (0, I.jsx)(B, {
+									}), (0, k.jsx)(B, {
 										records: n
 									})]
-								}), !!r.length && (0, I.jsx)(d.P, {
-									children: (0, I.jsx)(_.cC, {
+								}), !!r.length && (0, k.jsx)(d.P, {
+									children: (0, k.jsx)(_.cC, {
 										id: "email.dns_records.card.how_add"
 									})
 								})]
-							}) : (0, I.jsx)(d.P, {
-								children: (0, I.jsx)(_.cC, {
+							}) : (0, k.jsx)(d.P, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.loading"
 								})
 							})
 						})
-					}), (0, I.jsx)(R, {
-						children: t == S.eU.MisconfiguredLocked && (0, I.jsx)(k, {
+					}), (0, k.jsx)(R, {
+						children: t == S.eU.MisconfiguredLocked && (0, k.jsx)(I, {
 							state: t,
 							parentUrl: s,
 							showFixRecords: !0
@@ -32514,11 +32516,11 @@
 				}, c.SC),
 				L = ({
 					record: e
-				}) => (0, I.jsxs)(I.Fragment, {
-					children: [(0, I.jsx)(c.pj, {
+				}) => (0, k.jsxs)(k.Fragment, {
+					children: [(0, k.jsx)(c.pj, {
 						children: e.type
-					}), (0, I.jsx)(c.pj, {
-						children: (0, I.jsx)(d.Dr, {
+					}), (0, k.jsx)(c.pj, {
+						children: (0, k.jsx)(d.Dr, {
 							style: {
 								display: "inline-block",
 								whiteSpace: "nowrap",
@@ -32529,11 +32531,11 @@
 							title: e.name,
 							children: e.name
 						})
-					}), (0, I.jsx)(c.pj, {
+					}), (0, k.jsx)(c.pj, {
 						children: e.priority
-					}), (0, I.jsx)(c.pj, {
+					}), (0, k.jsx)(c.pj, {
 						maxWidth: "200px",
-						children: (0, I.jsx)(d.Dr, {
+						children: (0, k.jsx)(d.Dr, {
 							style: {
 								display: "inline-block",
 								whiteSpace: "nowrap",
@@ -32562,41 +32564,41 @@
 							}
 						}))
 					};
-				return (0, I.jsxs)(c.iA, {
+				return (0, k.jsxs)(c.iA, {
 					bordered: !1,
 					fixedLayout: !1,
 					width: "fit-content",
 					my: 2,
-					children: [(0, I.jsx)(N, {
-						children: (0, I.jsxs)(P, {
-							children: [(0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+					children: [(0, k.jsx)(N, {
+						children: (0, k.jsxs)(P, {
+							children: [(0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.type"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.name"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.priority"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.content"
 								})
-							}), t && (0, I.jsx)(c.pj, {})]
+							}), t && (0, k.jsx)(c.pj, {})]
 						})
-					}), (0, I.jsx)(c.RM, {
-						children: e && e.map(e => (0, I.jsxs)(P, {
-							children: [(0, I.jsx)(L, {
+					}), (0, k.jsx)(c.RM, {
+						children: e && e.map(e => (0, k.jsxs)(P, {
+							children: [(0, k.jsx)(L, {
 								record: e
-							}), t && (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(E.G, {
+							}), t && (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(E.G, {
 									to: "#",
 									color: "red.4",
 									onClick: () => o(e.id),
-									children: (0, I.jsx)(_.cC, {
+									children: (0, k.jsx)(_.cC, {
 										id: "email.dns_records.table.columns.action.delete"
 									})
 								})
@@ -32621,41 +32623,41 @@
 							}
 						}))
 					};
-				return (0, I.jsxs)(c.iA, {
+				return (0, k.jsxs)(c.iA, {
 					bordered: !1,
 					fixedLayout: !1,
 					width: "fit-content",
 					my: 2,
-					children: [(0, I.jsx)(N, {
-						children: (0, I.jsxs)(P, {
-							children: [(0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+					children: [(0, k.jsx)(N, {
+						children: (0, k.jsxs)(P, {
+							children: [(0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.type"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.name"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.priority"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.content"
 								})
-							}), t && (0, I.jsx)(c.pj, {})]
+							}), t && (0, k.jsx)(c.pj, {})]
 						})
-					}), (0, I.jsx)(c.RM, {
-						children: e && e.map(e => (0, I.jsxs)(P, {
-							children: [(0, I.jsx)(L, {
+					}), (0, k.jsx)(c.RM, {
+						children: e && e.map(e => (0, k.jsxs)(P, {
+							children: [(0, k.jsx)(L, {
 								record: e
-							}), t && (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(E.G, {
+							}), t && (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(E.G, {
 									to: "#",
 									color: "red.4",
 									onClick: () => o(e.id),
-									children: (0, I.jsx)(_.cC, {
+									children: (0, k.jsx)(_.cC, {
 										id: "email.dns_records.table.columns.action.delete"
 									})
 								})
@@ -32669,46 +32671,46 @@
 				records: e,
 				withStatus: t = !0
 			}) {
-				return (0, I.jsxs)(c.iA, {
+				return (0, k.jsxs)(c.iA, {
 					bordered: !1,
 					fixedLayout: !1,
 					width: "fit-content",
 					my: 2,
-					children: [(0, I.jsx)(N, {
-						children: (0, I.jsxs)(P, {
-							children: [(0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+					children: [(0, k.jsx)(N, {
+						children: (0, k.jsxs)(P, {
+							children: [(0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.type"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.name"
 								})
-							}), (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.priority"
 								})
-							}), (0, I.jsx)(c.pj, {
+							}), (0, k.jsx)(c.pj, {
 								maxWidth: "200px",
-								children: (0, I.jsx)(_.cC, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.content"
 								})
-							}), t && (0, I.jsx)(c.pj, {
-								children: (0, I.jsx)(_.cC, {
+							}), t && (0, k.jsx)(c.pj, {
+								children: (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.status"
 								})
 							})]
 						})
-					}), (0, I.jsx)(c.RM, {
-						children: e && e.map((e, n) => (0, I.jsxs)(P, {
-							children: [(0, I.jsx)(L, {
+					}), (0, k.jsx)(c.RM, {
+						children: e && e.map((e, n) => (0, k.jsxs)(P, {
+							children: [(0, k.jsx)(L, {
 								record: e
-							}), t && (0, I.jsx)(c.pj, {
-								children: e.added ? (0, I.jsx)(_.cC, {
+							}), t && (0, k.jsx)(c.pj, {
+								children: e.added ? (0, k.jsx)(_.cC, {
 									id: "email.dns_records.table.columns.status.added"
-								}) : (0, I.jsx)(l._, {
+								}) : (0, k.jsx)(l._, {
 									hue: "red",
-									children: (0, I.jsx)(_.cC, {
+									children: (0, k.jsx)(_.cC, {
 										id: "email.dns_records.table.columns.status.missing"
 									})
 								})
@@ -33124,7 +33126,7 @@
 					return m
 				},
 				HP: function() {
-					return I
+					return k
 				},
 				HR: function() {
 					return u
@@ -33151,7 +33153,7 @@
 					return f
 				},
 				xo: function() {
-					return k
+					return I
 				},
 				y$: function() {
 					return E
@@ -33234,7 +33236,7 @@
 					})) : n === c.UZ.WORKERS_PAGE ? await r(d(c.UZ.WORKERS_PAGE, "success", "email.forwarding_rules.save_route_to_worker_success_toast")) : await r(d(c.UZ.RULES_CARD, "success", "email.forwarding_rules.save_success_toast"))
 				}, O = (e, t, n) => async (r, o) => {
 					await r(_(e, t.tag)), n === c.UZ.WORKERS_PAGE ? await r(d(c.UZ.WORKERS_PAGE, "success", "email.forwarding_rules.delete_route_to_worker_success_toast")) : await r(d(c.UZ.RULES_CARD, "success", "email.forwarding_rules.delete_success_toast"))
-				}, I = (e, t, n) => async (r, o) => {
+				}, k = (e, t, n) => async (r, o) => {
 					let a = o(),
 						i = await C(t, r, a);
 					return await r(v(e, t)), i ? await r(d(c.UZ.RULES_CARD, "success", "email.forwarding_rules.create_success_toast.confirmation_pending", {
@@ -33242,7 +33244,7 @@
 					})) : n === c.UZ.WORKERS_PAGE ? await r(d(c.UZ.WORKERS_PAGE, "success", "email.forwarding_rules.create_route_to_worker_success_toast")) : await r(d(c.UZ.RULES_CARD, "success", "email.forwarding_rules.create_success_toast")), {
 						addedAddress: i
 					}
-				}, k = (e, t) => async (n, r) => {
+				}, I = (e, t) => async (n, r) => {
 					let o = r();
 					await C(t, n, o), await n(h(e, t))
 				}
@@ -34464,7 +34466,7 @@
 					return O.cE
 				},
 				vV: function() {
-					return k
+					return I
 				},
 				JK: function() {
 					return o
@@ -34797,8 +34799,8 @@
 			n("../react/pages/home/domain-registration/utils/common/tlds/mx.ts");
 			var T = n("../react/pages/home/domain-registration/utils/common/tlds/uk.ts"),
 				O = n("../react/pages/home/domain-registration/utils/common/tlds/us.ts"),
-				I = n("../../../../node_modules/@cloudflare/util-regex/es/index.js");
-			let k = e => !!e.match(I.default.email);
+				k = n("../../../../node_modules/@cloudflare/util-regex/es/index.js");
+			let I = e => !!e.match(k.default.email);
 			var A = n("../../../common/util/types/src/api/domain.ts"),
 				j = n("../react/pages/home/domain-registration/registrar.translations.ts");
 
@@ -35003,8 +35005,8 @@
 				C = (0, o.BC)`${E}/domain/${"zoneName"}`,
 				T = (0, o.BC)`${C}/configuration`,
 				O = (0, o.BC)`${C}/contacts`,
-				I = (0, o.BC)`${E}/pricing`,
-				k = (0, o.BC)`${E}/protection`,
+				k = (0, o.BC)`${E}/pricing`,
+				I = (0, o.BC)`${E}/protection`,
 				A = (0, o.BC)`${E}/register`,
 				j = (0, o.BC)`${A}/checkout`,
 				R = (0, o.BC)`${A}/checkout/${"token"}`,
@@ -35039,8 +35041,8 @@
 					domainsDomain: C,
 					domainsDomainConfiguration: T,
 					domainsDomainContacts: O,
-					domainsPricing: I,
-					domainsProtection: k,
+					domainsPricing: k,
+					domainsProtection: I,
 					domainsRegister: A,
 					domainsRegisterCheckout: j,
 					domainsRegisterCheckoutToken: R,
@@ -35472,7 +35474,7 @@
 					return y
 				},
 				hr: function() {
-					return k
+					return I
 				},
 				jN: function() {
 					return v
@@ -35487,7 +35489,7 @@
 					return m
 				},
 				rI: function() {
-					return I
+					return k
 				},
 				tB: function() {
 					return g
@@ -35617,8 +35619,8 @@
 					let t = T(e.registrar);
 					return t in i.gM ? t : "unknown"
 				},
-				I = e => !!(null == e ? void 0 : e.includes(s.rj.AUTO_RENEW_PERIOD)),
-				k = e => e.map(e => e.name).map(e => (0, c.AA)(e)).filter((e, t, n) => !n.includes(e, t + 1))
+				k = e => !!(null == e ? void 0 : e.includes(s.rj.AUTO_RENEW_PERIOD)),
+				I = e => e.map(e => e.name).map(e => (0, c.AA)(e)).filter((e, t, n) => !n.includes(e, t + 1))
 		},
 		"../react/pages/home/members/sparrowEvents.ts": function(e, t, n) {
 			"use strict";
@@ -35796,13 +35798,13 @@
 					return T
 				},
 				fJ: function() {
-					return I
+					return k
 				},
 				g7: function() {
 					return j
 				},
 				gQ: function() {
-					return k
+					return I
 				},
 				iy: function() {
 					return O
@@ -35847,14 +35849,14 @@
 				C = (0, a.cZ)(i.Bp),
 				T = (0, a.cZ)(i.Bv),
 				O = (0, a.cZ)(i.q_),
-				I = (e, t) => {
+				k = (e, t) => {
 					let n = (0, d.nA)(e),
 						r = (0, p.D0)(e);
 					if (!(null == n ? void 0 : n.id) && (null == r ? void 0 : r.id) || t) return f(e);
 					let o = T(e);
 					return (0, s.z)(e, o)
 				},
-				k = e => A(C(e)),
+				I = e => A(C(e)),
 				A = e => {
 					var t;
 					return (null == e || null == (t = e.name) ? void 0 : t.toLowerCase()) === "cloudflare owasp core ruleset" && e.kind === o.qu.Managed
@@ -35900,19 +35902,19 @@
 						y = b(e),
 						S = (0, c.BF)(e, "rulesets.bypass_zone_plan_restrictions"),
 						O = w(e),
-						I = E(e),
-						k = T(e);
+						k = E(e),
+						I = T(e);
 					if (!t && i) {
 						let n = P(e),
 							s = S || t || n ? "true" : l.Ur,
 							c = f(e),
 							u = T(v = e) === o.df.HttpRequestFirewallManaged ? C(v) : v.accountFirewall.ruleset.data,
-							d = null == (p = (0, l.pn)(c, o.qu.Root, k || o.df.HttpRequestMain, null != (m = null == u ? void 0 : u.id) ? m : "", r, h, y || s, a, !0, O, I, _)) ? void 0 : p.rule;
+							d = null == (p = (0, l.pn)(c, o.qu.Root, I || o.df.HttpRequestMain, null != (m = null == u ? void 0 : u.id) ? m : "", r, h, y || s, a, !0, O, k, _)) ? void 0 : p.rule;
 						return (0, l.k_)("", d, null == c ? void 0 : c.id, null == r ? void 0 : r.id, i)
 					}
-					let A = (0, s.z)(e, k),
+					let A = (0, s.z)(e, I),
 						j = (0, s.OL)(e, n),
-						R = null == (u = (0, l.pn)(A, o.qu.Zone, (null == j ? void 0 : j.phase) || o.df.HttpRequestFirewallManaged, null != (d = null == j ? void 0 : j.id) ? d : "", r, h, y || "true", a, !0, O, I, _)) ? void 0 : u.rule;
+						R = null == (u = (0, l.pn)(A, o.qu.Zone, (null == j ? void 0 : j.phase) || o.df.HttpRequestFirewallManaged, null != (d = null == j ? void 0 : j.id) ? d : "", r, h, y || "true", a, !0, O, k, _)) ? void 0 : u.rule;
 					return (0, l.k_)(t, R, null == A ? void 0 : A.id, null == r ? void 0 : r.id)
 				}),
 				B = e => e.accountFirewall.accountRulesetsByPhase,
@@ -35961,7 +35963,7 @@
 					return N
 				},
 				LF: function() {
-					return k
+					return I
 				},
 				Mb: function() {
 					return y
@@ -35979,7 +35981,7 @@
 					return x
 				},
 				Wg: function() {
-					return I
+					return k
 				},
 				Yw: function() {
 					return H
@@ -36242,7 +36244,7 @@
 						r.set(e.category, b({}, t, e))
 					}), r
 				},
-				I = e => {
+				k = e => {
 					var t, n;
 					let r = new Map,
 						o = null == e || null == (t = e.action_parameters) || null == (n = t.overrides) ? void 0 : n.rules;
@@ -36251,7 +36253,7 @@
 						r.set(e.id, b({}, t, e))
 					}), r
 				},
-				k = e => {
+				I = e => {
 					var t;
 					let n = null == e || null == (t = e.action_parameters) ? void 0 : t.overrides,
 						r = null == n ? void 0 : n.action,
@@ -36545,7 +36547,7 @@
 					return v
 				},
 				pf: function() {
-					return I
+					return k
 				},
 				qg: function() {
 					return S
@@ -36686,7 +36688,7 @@
 					[10, 15, 20, 30, 40, 45, 60, 90, 120, 180, 240, 300, 480, 600, 900, 1200, 1800, 2400, 3600, 65535, 86400],
 					[10, 15, 20, 30, 40, 45, 60, 90, 120, 180, 240, 300, 480, 600, 900, 1200, 1800, 2400, 3600, 65535, 86400]
 				],
-				I = e => O[Math.min(e, O.length - 1)]
+				k = e => O[Math.min(e, O.length - 1)]
 		},
 		"../react/pages/home/rulesets/ddos/tracking.ts": function(e, t, n) {
 			"use strict";
@@ -36747,7 +36749,7 @@
 					return p
 				},
 				FV: function() {
-					return I
+					return k
 				},
 				Iu: function() {
 					return f
@@ -36789,7 +36791,7 @@
 					return B
 				},
 				dq: function() {
-					return k
+					return I
 				},
 				f0: function() {
 					return w
@@ -36906,8 +36908,8 @@
 						label: "common.zone"
 					})
 				},
-				I = /paranoia-level-(\d+)/,
-				k = "Cloudflare OWASP Core Ruleset",
+				k = /paranoia-level-(\d+)/,
+				I = "Cloudflare OWASP Core Ruleset",
 				A = "Cloudflare Managed Ruleset",
 				j = "Cloudflare Exposed Credentials Check Ruleset",
 				R = "Cloudflare Sensitive Data Detection",
@@ -37019,8 +37021,8 @@
 				m = (0, r.BC)`${p}/${"zoneId"}/settings`,
 				f = (0, r.BC)`${i}/analytics`,
 				g = (0, r.BC)`${a}`,
-				b = (0, r.BC)`${a}/image/view`,
-				v = (0, r.BC)`${a}/image/edit`,
+				b = (0, r.BC)`${a}/storage/view`,
+				v = (0, r.BC)`${a}/storage/edit`,
 				_ = (0, r.BC)`${a}/keys`,
 				h = (0, r.BC)`${a}/delivery`,
 				y = (0, r.BC)`${a}/delivery/variant/create`,
@@ -37070,6 +37072,14 @@
 				}, {
 					from: (0, r.BC)`${o}/transformations/zone/${"zoneId"}/setting`,
 					to: p,
+					exact: !0
+				}, {
+					from: (0, r.BC)`${o}/hosted/image/view`,
+					to: b,
+					exact: !0
+				}, {
+					from: (0, r.BC)`${o}/hosted/image/edit`,
+					to: v,
 					exact: !0
 				}],
 				C = {
@@ -37127,9 +37137,9 @@
 					externalRoutes: S
 				}),
 				O = (0, r.BC)`/accounts/${"accountId"}`,
-				I = (0, r.BC)`${O}/images/v2`,
-				k = (0, r.BC)`/zones/${"zoneId"}`,
-				A = (0, r.BC)`${I}/sourcingkit`,
+				k = (0, r.BC)`${O}/images/v2`,
+				I = (0, r.BC)`/zones/${"zoneId"}`,
+				A = (0, r.BC)`${k}/sourcingkit`,
 				j = (0, r.BC)`${A}/migrations`,
 				R = (0, r.BC)`${A}/migrations/${"migrationId"}`,
 				N = (0, r.BC)`${A}/migrations/${"migrationId"}/logs`,
@@ -37143,14 +37153,14 @@
 				z = (0, r.BC)`/zones?account.id=${"accountId"}`,
 				$ = (0, r.BC)`/billing/upgrade-subscription`,
 				F = (0, r.BC)`${O}/settings/transformations`,
-				H = (0, r.BC)`${k}/settings/transformations`,
-				q = (0, r.BC)`${k}/settings/transformations_allowed_origins`,
-				Z = (0, r.BC)`${k}/settings/transformations_c2pa`,
+				H = (0, r.BC)`${I}/settings/transformations`,
+				q = (0, r.BC)`${I}/settings/transformations_allowed_origins`,
+				Z = (0, r.BC)`${I}/settings/transformations_c2pa`,
 				V = (0, r.BC)`${O}/settings/ut-billing`,
-				W = (0, r.BC)`${k}`,
-				K = (0, r.BC)`${k}/entitlements`,
-				Y = (0, r.BC)`${k}/settings`,
-				Q = (0, r.BC)`${k}/flags`,
+				W = (0, r.BC)`${I}`,
+				K = (0, r.BC)`${I}/entitlements`,
+				Y = (0, r.BC)`${I}/settings`,
+				Q = (0, r.BC)`${I}/flags`,
 				J = {
 					sourcingKitEndpoints: {
 						migrationList: j,
@@ -37178,7 +37188,7 @@
 						zoneSettings: Y,
 						zoneEntitlements: K,
 						zoneFlags: Q,
-						zoneSubscription: (0, r.BC)`${k}/subscription`
+						zoneSubscription: (0, r.BC)`${I}/subscription`
 					}
 				}
 		},
@@ -37727,29 +37737,30 @@
 			"use strict";
 			n.d(t, {
 				Jg: function() {
-					return d
-				},
-				LO: function() {
 					return p
 				},
+				LO: function() {
+					return m
+				},
 				Lx: function() {
-					return c
+					return u
 				},
 				SF: function() {
-					return l
-				},
-				kb: function() {
 					return s
 				},
+				kb: function() {
+					return c
+				},
 				vL: function() {
-					return u
+					return d
 				}
 			});
 			var r = n("../react/common/selectors/accountSelectors.ts"),
 				o = n("../react/pages/magic/constants.ts"),
 				a = n("../react/common/selectors/entitlementsSelectors.ts"),
-				i = n("../../../../node_modules/@cloudflare/authorization/es/index.js");
-			let l = [{
+				i = n("../../../../node_modules/@cloudflare/authorization/es/index.js"),
+				l = n("../flags.ts");
+			let s = [{
 					title: "navigation.account.magic.configuration.tunnels",
 					url: `${o._j.quickSearchTunnels.toUrl({})}`,
 					isAvailable: (e, t) => {
@@ -37761,7 +37772,7 @@
 					url: `${o._j.quickSearchInterconnects.toUrl({})}`,
 					isAvailable: (e, t) => {
 						var n;
-						return null != (n = (0, i.Bs)(t).isAuthzd) && n && !!(0, r.Le)(e, "magic_transit", "mt_home") || !!(0, r.Le)(e, "magic_wan", "mw_home")
+						return null != (n = (0, i.Bs)(t).isAuthzd) && n && !(0, l.wz)() && !!(0, r.Le)(e, "magic_transit", "mt_home") || !!(0, r.Le)(e, "magic_wan", "mw_home")
 					}
 				}, {
 					title: "navigation.account.magic.configuration.static_routes",
@@ -37778,7 +37789,7 @@
 						return null != (n = (0, i.Bs)(t).isAuthzd) && n && !!(0, a.$f)(e, "magic_cloud.enabled")
 					}
 				}],
-				s = [{
+				c = [{
 					title: "navigation.account.magic.configuration.asn",
 					url: `${o._j.quickSearchAsn.toUrl({})}`,
 					isAvailable: (e, t) => {
@@ -37786,7 +37797,7 @@
 						return null != (n = (0, i.Bs)(t).isAuthzd) && n && (!!(0, r.Le)(e, "magic_transit", "mt_home") || !!(0, r.Le)(e, "magic_wan", "mw_home"))
 					}
 				}],
-				c = [{
+				u = [{
 					title: "navigation.account.magic.configuration.ip_prefixes",
 					url: `${o._j.quickSearchIpPrefixesUrl.toUrl({})}`,
 					isAvailable: (e, t) => {
@@ -37794,7 +37805,7 @@
 						return null != (n = (0, i.Bs)(t).isAuthzd) && n && !!(0, r.Le)(e, "magic_transit", "mt_home")
 					}
 				}],
-				u = [{
+				d = [{
 					title: "navigation.account.magic.configuration.connectors",
 					url: `${o._j.quickSearchConnectors.toUrl({})}`,
 					isAvailable: (e, t) => {
@@ -37802,7 +37813,7 @@
 						return null != (n = (0, i.Bs)(t).isAuthzd) && n && !!(0, r.Le)(e, "magic_wan", "mc_home")
 					}
 				}],
-				d = [{
+				p = [{
 					title: "navigation.account.magic.packet_captures.captures",
 					url: o._j.quickSearchCaptures
 				}, {
@@ -37810,7 +37821,7 @@
 					url: o._j.quickSearchBuckets
 				}];
 			o._j.quickSearchNetworkMonitoringRules, o._j.quickSearchNetworkMonitoringViewConfiguration;
-			let p = [{
+			let m = [{
 				title: "navigation.account.magic_connectors.sites.form.site",
 				url: o._j.quickSearchSitesTabSite
 			}, {
@@ -39072,8 +39083,8 @@
 					})
 				},
 				O = n("../react/common/selectors/zoneSelectors.ts"),
-				I = n("../react/common/components/filter-editor/utils.ts"),
-				k = n("../react/pages/security/waf/custom-rules/resources/selectors.ts"),
+				k = n("../react/common/components/filter-editor/utils.ts"),
+				I = n("../react/pages/security/waf/custom-rules/resources/selectors.ts"),
 				A = n("../react/pages/page-rules/hooks/useRouteRulesMatch.tsx"),
 				j = n("../react/utils/router.tsx"),
 				R = n("../react/pages/page-rules/routes.tsx");
@@ -39172,7 +39183,7 @@
 					}),
 					h = (0, a.p4)(O.RO),
 					y = (0, a.p4)(O.ID),
-					w = (0, k.$Z)((0, I.TB)({
+					w = (0, I.$Z)((0, k.TB)({
 						hasPermissions: h || y,
 						filterDefinitions: N({}, s.oE, f.Rw)
 					})),
@@ -39344,7 +39355,7 @@
 					return L
 				},
 				FS: function() {
-					return k
+					return I
 				},
 				Gp: function() {
 					return h
@@ -39365,7 +39376,7 @@
 					return f
 				},
 				T8: function() {
-					return I
+					return k
 				},
 				V_: function() {
 					return D
@@ -39498,7 +39509,7 @@
 				C = 30,
 				T = ((r = {}).CLOUDFLARE = "cloudflare", r.RFC = "rfc3986", r),
 				O = ((o = {}).NONE = "none", o.INCOMING = "incoming", o.BOTH = "both", o),
-				I = {
+				k = {
 					[c.fQ.BOT_HEADERS]: "managed_header_modifications.group.add_bot_protection_headers",
 					[c.fQ.IP_HEADERS]: "managed_header_modifications.group.remove_visitor_ip_headers",
 					[c.fQ.LOCATION_HEADERS]: "managed_header_modifications.group.add_visitor_location_headers",
@@ -39510,7 +39521,7 @@
 					[c.fQ.ADD_WAF_CREDENTIAL_CHECK_STATUS_HEADER]: "managed_header_modifications.group.add_waf_credential_check_status_header",
 					[c.fQ.ADD_WAF_CONTENT_SCAN_STATUS]: "managed_header_modifications.group.add_malicious_upload"
 				},
-				k = {
+				I = {
 					[c.fQ.BOT_HEADERS]: "managed_header_modifications.group.add_bot_protection_headers.description",
 					[c.fQ.IP_HEADERS]: "managed_header_modifications.group.remove_visitor_ip_headers.description",
 					[c.fQ.LOCATION_HEADERS]: "managed_header_modifications.group.add_visitor_location_headers.description",
@@ -39628,12 +39639,12 @@
 					var e, t, n, r, o, s, c, u, d, p, m, f, g, b, v, _, h, y, w, E, S, x, C, T;
 					let O = (0, i.Z)("rulesets.transform_max_rules"),
 						{
-							data: I
+							data: k
 						} = (0, l.Z)({
 							phase: a.df.HttpRequestTransform
 						}),
 						{
-							data: k
+							data: I
 						} = (0, l.Z)({
 							phase: a.df.HttpRequestLateTransform
 						}),
@@ -39644,17 +39655,17 @@
 						});
 					return {
 						max: O,
-						active: (null != (e = null == I || null == (t = I.rules) || null == (n = t.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : n.length) ? e : 0) + (null != (r = null == k || null == (o = k.rules) || null == (s = o.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : s.length) ? r : 0) + (null != (c = null == A || null == (u = A.rules) || null == (d = u.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : d.length) ? c : 0),
-						total: (null != (p = null == I || null == (m = I.rules) ? void 0 : m.length) ? p : 0) + (null != (f = null == k || null == (g = k.rules) ? void 0 : g.length) ? f : 0) + (null != (b = null == A || null == (v = A.rules) ? void 0 : v.length) ? b : 0),
+						active: (null != (e = null == k || null == (t = k.rules) || null == (n = t.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : n.length) ? e : 0) + (null != (r = null == I || null == (o = I.rules) || null == (s = o.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : s.length) ? r : 0) + (null != (c = null == A || null == (u = A.rules) || null == (d = u.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : d.length) ? c : 0),
+						total: (null != (p = null == k || null == (m = k.rules) ? void 0 : m.length) ? p : 0) + (null != (f = null == I || null == (g = I.rules) ? void 0 : g.length) ? f : 0) + (null != (b = null == A || null == (v = A.rules) ? void 0 : v.length) ? b : 0),
 						breakdowns: {
 							totalBreakdown: {
-								rewrite: null == I || null == (_ = I.rules) ? void 0 : _.length,
-								modifyRequest: null == k || null == (h = k.rules) ? void 0 : h.length,
+								rewrite: null == k || null == (_ = k.rules) ? void 0 : _.length,
+								modifyRequest: null == I || null == (h = I.rules) ? void 0 : h.length,
 								modifyResponse: null == A || null == (y = A.rules) ? void 0 : y.length
 							},
 							activeBreakdown: {
-								rewrite: null == I || null == (w = I.rules) || null == (E = w.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : E.length,
-								modifyRequest: null == k || null == (S = k.rules) || null == (x = S.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : x.length,
+								rewrite: null == k || null == (w = k.rules) || null == (E = w.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : E.length,
+								modifyRequest: null == I || null == (S = I.rules) || null == (x = S.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : x.length,
 								modifyResponse: null == A || null == (C = A.rules) || null == (T = C.filter(e => null == e ? void 0 : e.enabled)) ? void 0 : T.length
 							}
 						}
@@ -39759,19 +39770,19 @@
 							enabled: y
 						}),
 						O = (0, r.useCallback)(e => h && e ? h[p.D[e]] : 0, [h]),
-						I = null != (e = null == T ? void 0 : T.reduce((e, t) => (t.data && t.data.phase && (e[t.data.phase] = g({}, t.data, {
+						k = null != (e = null == T ? void 0 : T.reduce((e, t) => (t.data && t.data.phase && (e[t.data.phase] = g({}, t.data, {
 							max: O(t.data.phase)
 						})), e), {})) ? e : {},
-						k = null != (t = null == w ? void 0 : w.reduce((e, t) => {
+						I = null != (t = null == w ? void 0 : w.reduce((e, t) => {
 							var n;
 							return e + ((null == (n = t.rules) ? void 0 : n.filter(e => !0 === e.enabled).length) || 0)
 						}, 0)) ? t : 0,
 						A = null != (n = null == S || null == (m = S.filter(e => !!(null == e ? void 0 : e.enabled))) ? void 0 : m.length) ? n : 0;
-					return g({}, I, {
+					return g({}, k, {
 						[a.df.HttpRequestsSnippets]: {
 							max: E,
 							total: null != (f = null == w ? void 0 : w.length) ? f : 0,
-							active: k,
+							active: I,
 							rules: w
 						},
 						[i.b.PAGE_RULES]: g({}, C),
@@ -40818,8 +40829,8 @@ export default {
 					templateUrl: C,
 					transform_type: T,
 					templateKey: O,
-					rulesetPhase: I,
-					documentationUrl: k,
+					rulesetPhase: k,
+					documentationUrl: I,
 					descriptionProps: A,
 					parentUrl: j,
 					actionUrl: R,
@@ -40852,7 +40863,7 @@ export default {
 									to: {
 										pathname: (0, g.d9)({
 											zone: D,
-											templatePhase: I,
+											templatePhase: k,
 											templateRoute: C,
 											transformType: T,
 											hasAction: !1
@@ -40862,7 +40873,7 @@ export default {
 										}
 									},
 									children: (0, v.jsx)(a.cC, {
-										id: d.vd[I]
+										id: d.vd[k]
 									})
 								})
 							})]
@@ -40883,7 +40894,7 @@ export default {
 									to: {
 										pathname: (0, g.d9)({
 											zone: D,
-											templatePhase: I,
+											templatePhase: k,
 											templateRoute: C,
 											transformType: T,
 											hasAction: !0
@@ -40917,7 +40928,7 @@ export default {
 											to: {
 												pathname: (0, g.d9)({
 													zone: D,
-													templatePhase: I,
+													templatePhase: k,
 													templateRoute: C,
 													transformType: T,
 													hasAction: !1
@@ -40976,7 +40987,7 @@ export default {
 										to: {
 											pathname: (0, g.d9)({
 												zone: D,
-												templatePhase: I,
+												templatePhase: k,
 												templateRoute: C,
 												transformType: T,
 												hasAction: !1
@@ -40986,7 +40997,7 @@ export default {
 											}
 										},
 										children: (0, v.jsx)(a.cC, {
-											id: d.vd[I]
+											id: d.vd[k]
 										})
 									}), (0, v.jsx)(i.u, {
 										message: P("templates.card.tooltip"),
@@ -40995,7 +41006,7 @@ export default {
 											onClick: () => {
 												L.actions.toggleDocumentationSideDrawer({
 													documentationLabel: S,
-													documentationUrl: k
+													documentationUrl: I
 												})
 											},
 											children: (0, v.jsx)(c.J, {
@@ -41957,7 +41968,7 @@ export default {
 					return d
 				},
 				GF: function() {
-					return I
+					return k
 				},
 				HD: function() {
 					return w
@@ -42008,7 +42019,7 @@ export default {
 					return a
 				},
 				ff: function() {
-					return k
+					return I
 				},
 				iS: function() {
 					return y
@@ -42164,8 +42175,8 @@ export default {
 				C = 1e5,
 				T = 75e3,
 				O = 2e5,
-				I = 15e4,
-				k = 3e3,
+				k = 15e4,
+				I = 3e3,
 				A = 2250,
 				j = ((r = {})[r.REPO_NOT_AUTHORIZED_FOR_INSTALLATION = 8000004] = "REPO_NOT_AUTHORIZED_FOR_INSTALLATION", r[r.INSTALLATION_NOT_FOUND = 8000008] = "INSTALLATION_NOT_FOUND", r[r.INSTALLATION_UNAUTHORIZED = 8000010] = "INSTALLATION_UNAUTHORIZED", r[r.INSTALLATION_LINK_NOT_FOUND = 8000011] = "INSTALLATION_LINK_NOT_FOUND", r[r.REPO_NOT_FOUND = 8000012] = "REPO_NOT_FOUND", r[r.INSTALLATION_SUSPENDED = 8000084] = "INSTALLATION_SUSPENDED", r),
 				R = 1,
@@ -42738,7 +42749,7 @@ export default {
 					return v
 				},
 				LN: function() {
-					return I
+					return k
 				},
 				Nm: function() {
 					return C
@@ -42750,7 +42761,7 @@ export default {
 					return M
 				},
 				QF: function() {
-					return k
+					return I
 				},
 				RR: function() {
 					return R
@@ -42827,8 +42838,8 @@ export default {
 				C = ((a = {}).NAME = "name", a.COMMENT = "comment", a.TAGS = "tags", a.SERVICES = "services", a.STATUS = "status", a),
 				T = ((i = {}).PENDING = "pending", i.ACTIVE = "active", i.DELETED = "deleted", i),
 				O = ((l = {}).LIST_SECRETS_STORES = "listSecretsStores", l.LIST_SECRETS = "listSecrets", l.GET_SECRET = "getSecret", l.SECRETS_QUOTA = "secretsQuota", l),
-				I = ((s = {}).CREATE = "create", s.EDIT = "edit", s.DUPLICATE = "duplicate", s),
-				k = ((c = {}).WORKERS = "workers", c.AI_GATEWAY = "ai_gateway", c.DEX = "dex", c.ACCESS = "access", c.CONTAINERS = "containers", c),
+				k = ((s = {}).CREATE = "create", s.EDIT = "edit", s.DUPLICATE = "duplicate", s),
+				I = ((c = {}).WORKERS = "workers", c.AI_GATEWAY = "ai_gateway", c.DEX = "dex", c.ACCESS = "access", c.CONTAINERS = "containers", c),
 				A = "default_secrets_store",
 				j = ((u = {}).CREATE = "create", u.EDIT = "edit", u.DUPLICATE = "duplicate", u.VIEW = "view", u),
 				R = "delete_operation",
@@ -42838,13 +42849,13 @@ export default {
 						name: g.Z_().required(e("secrets_store.form.create.errors.name.required")).matches(N, e("secrets_store.form.create.errors.name.invalid_characters")).max(255, e("secrets_store.form.create.errors.name.max")),
 						value: g.Z_().test("required-if-creating", e("secrets_store.form.create.errors.value.required"), e => !t && !o || !!e).max(1024, e("secrets_store.form.create.errors.value.max")),
 						comment: g.Z_().nullable().max(1024, e("secrets_store.form.create.errors.comment.max")),
-						scopes: g.IX().of(g.Z_().oneOf(Object.values(k), e("secrets_store.form.create.errors.scopes.invalid"))).required()
+						scopes: g.IX().of(g.Z_().oneOf(Object.values(I), e("secrets_store.form.create.errors.scopes.invalid"))).required()
 					}))
 				}),
 				L = {
 					name: "",
 					value: "",
-					scopes: [k.WORKERS],
+					scopes: [I.WORKERS],
 					comment: ""
 				},
 				D = "secrets-store.store.secret",
@@ -42965,7 +42976,7 @@ export default {
 					return w
 				},
 				V9: function() {
-					return I
+					return k
 				},
 				Xo: function() {
 					return m
@@ -42995,7 +43006,7 @@ export default {
 					return N
 				},
 				qg: function() {
-					return k
+					return I
 				},
 				rK: function() {
 					return v
@@ -43076,67 +43087,67 @@ export default {
 					}
 				},
 				O = [d.Xl.Desktop, d.Xl.Tablet, d.Xl.Mobile],
-				I = ((l = {}).GOOD = "good", l.NEW = "new", l.DEPRECATED = "deprecated", l),
-				k = {
+				k = ((l = {}).GOOD = "good", l.NEW = "new", l.DEPRECATED = "deprecated", l),
+				I = {
 					"strict-transport-security": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security",
-						support: I.GOOD
+						support: k.GOOD
 					},
 					"x-frame-options": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
-						support: I.GOOD
+						support: k.GOOD
 					},
 					"x-content-type-options": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options",
-						support: I.GOOD
+						support: k.GOOD
 					},
 					"content-security-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP",
-						support: I.GOOD
+						support: k.GOOD
 					},
 					"referrer-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy",
-						support: I.GOOD
+						support: k.GOOD
 					},
 					"clear-site-data": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Clear-Site-Data",
-						support: I.GOOD
+						support: k.GOOD
 					},
 					"x-permitted-cross-domain-policies": {
 						info: "https://owasp.org/www-project-secure-headers/index.html#div-headers_x-permitted-cross-domain-policies",
-						support: I.GOOD
+						support: k.GOOD
 					},
 					"permissions-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy",
-						support: I.NEW
+						support: k.NEW
 					},
 					"cross-origin-embedder-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy",
-						support: I.NEW
+						support: k.NEW
 					},
 					"cross-origin-opener-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy",
-						support: I.NEW
+						support: k.NEW
 					},
 					"cross-origin-resource-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy",
-						support: I.NEW
+						support: k.NEW
 					},
 					"x-xss-protection": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection",
-						support: I.DEPRECATED
+						support: k.DEPRECATED
 					},
 					"feature-policy": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy",
-						support: I.DEPRECATED
+						support: k.DEPRECATED
 					},
 					"expect-ct": {
 						info: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT",
-						support: I.DEPRECATED
+						support: k.DEPRECATED
 					},
 					"public-key-pins": {
 						info: "https://owasp.org/www-project-secure-headers/index.html#div-headers_public-key-pins",
-						support: I.DEPRECATED
+						support: k.DEPRECATED
 					}
 				},
 				A = {
@@ -44078,7 +44089,7 @@ export default {
 					return C
 				},
 				cw: function() {
-					return I
+					return k
 				},
 				eR: function() {
 					return N
@@ -44087,7 +44098,7 @@ export default {
 					return U
 				},
 				hE: function() {
-					return k
+					return I
 				},
 				he: function() {
 					return R
@@ -44433,16 +44444,16 @@ export default {
 				C = e => (0, i.f)(e, "filters.wafml_lite_enabled") && (0, i.f)(e, "rulesets.wafml_score_lite_allowed") || (0, i.f)(e, "rulesets.wafml_score_allowed"),
 				T = e => (0, i.rV)(e, "rulesets.max_api_shields"),
 				O = ((r = {}).TRAFFIC_ANALYSIS = "traffic_analysis", r.ATTACK_ANALYSIS = "attack_analysis", r.BOT_ANALYSIS = "bot_analysis", r.RATE_LIMIT_ANALYSIS = "rate_limit_analysis", r.AI_ASSISTANT = "ai_assistant", r),
-				I = ((o = {}).ATTACK = "attack", o.LIKELY_ATTACK = "likely_attack", o.LIKELY_CLEAN = "likely_clean", o.CLEAN = "clean", o.NOT_SCORED = "not_scored", o),
-				k = e => {
+				k = ((o = {}).ATTACK = "attack", o.LIKELY_ATTACK = "likely_attack", o.LIKELY_CLEAN = "likely_clean", o.CLEAN = "clean", o.NOT_SCORED = "not_scored", o),
+				I = e => {
 					switch (e) {
-						case I.CLEAN:
+						case k.CLEAN:
 							return a.variables.colors.green[2];
-						case I.LIKELY_CLEAN:
+						case k.LIKELY_CLEAN:
 							return a.variables.colors.green[6];
-						case I.ATTACK:
+						case k.ATTACK:
 							return a.variables.colors.red[2];
-						case I.LIKELY_ATTACK:
+						case k.LIKELY_ATTACK:
 							return a.variables.colors.red[6];
 						case v.eH.VERIFIED_BOT:
 							return a.variables.colors.sequential[11];
@@ -44464,11 +44475,11 @@ export default {
 						case v.eH.LIKELY_AUTOMATED:
 						case v.eH.AUTOMATED:
 							return `security_analytics.timeseries.${e}`;
-						case I.ATTACK:
-						case I.LIKELY_ATTACK:
-						case I.LIKELY_CLEAN:
-						case I.CLEAN:
-						case I.NOT_SCORED:
+						case k.ATTACK:
+						case k.LIKELY_ATTACK:
+						case k.LIKELY_CLEAN:
+						case k.CLEAN:
+						case k.NOT_SCORED:
 							return `security_analytics.sidebar.shortcuts.${e}`;
 						default:
 							return "common.unknown"
@@ -44476,10 +44487,10 @@ export default {
 				},
 				R = e => {
 					switch (e) {
-						case I.ATTACK:
-						case I.LIKELY_ATTACK:
-						case I.LIKELY_CLEAN:
-						case I.CLEAN:
+						case k.ATTACK:
+						case k.LIKELY_ATTACK:
+						case k.LIKELY_CLEAN:
+						case k.CLEAN:
 							return {
 								key: `security_analytics.timeseries.${e}.tooltip`, urls: ["https://developers.cloudflare.com/waf/about/waf-attack-score/"]
 							};
@@ -44506,19 +44517,19 @@ export default {
 					return r[null != a ? a : 13]
 				},
 				P = {
-					[I.ATTACK]: {
+					[k.ATTACK]: {
 						wafAttackScore_geq: 1,
 						wafAttackScore_leq: 20
 					},
-					[I.LIKELY_ATTACK]: {
+					[k.LIKELY_ATTACK]: {
 						wafAttackScore_geq: 21,
 						wafAttackScore_leq: 50
 					},
-					[I.LIKELY_CLEAN]: {
+					[k.LIKELY_CLEAN]: {
 						wafAttackScore_geq: 51,
 						wafAttackScore_leq: 80
 					},
-					[I.CLEAN]: {
+					[k.CLEAN]: {
 						wafAttackScore_geq: 81,
 						wafAttackScore_leq: 99
 					}
@@ -44527,10 +44538,10 @@ export default {
 				D = (e, t = !1) => {
 					if (t) {
 						var n;
-						return null != (n = k(e)) ? n : "gray.6"
+						return null != (n = I(e)) ? n : "gray.6"
 					}
 					let r = L(e);
-					return r ? k(r) : "gray.6"
+					return r ? I(r) : "gray.6"
 				},
 				M = (e, t = !1) => {
 					if (t) return `security_analytics.sidebar.shortcuts.${e}`;
@@ -44556,7 +44567,7 @@ export default {
 				G = e => Object.keys(B).find(t => e === B[t].botScore || e >= B[t].botScore_geq && e <= B[t].botScore_leq),
 				U = e => {
 					let t = G(e);
-					return t ? k(t) : "gray.6"
+					return t ? I(t) : "gray.6"
 				},
 				z = e => {
 					let t = G(e);
@@ -44625,7 +44636,7 @@ export default {
 					return X
 				},
 				Bv: function() {
-					return eI
+					return ek
 				},
 				CV: function() {
 					return A
@@ -44715,7 +44726,7 @@ export default {
 					return ez
 				},
 				Y4: function() {
-					return ek
+					return eI
 				},
 				Y9: function() {
 					return eE
@@ -44855,9 +44866,9 @@ export default {
 				C = n("../react/pages/security/waf/resources/constants.ts"),
 				T = n("../react/common/components/filter-editor/constants/connectors.ts"),
 				O = n("../../../../node_modules/@cloudflare/component-responsive-table/es/index.js"),
-				I = n("../react/pages/security/api-shield/api-rules/resources/types/formRules.ts");
+				k = n("../react/pages/security/api-shield/api-rules/resources/types/formRules.ts");
 
-			function k(e) {
+			function I(e) {
 				for (var t = 1; t < arguments.length; t++) {
 					var n = null != arguments[t] ? Object(arguments[t]) : {},
 						r = Object.keys(n);
@@ -44979,11 +44990,11 @@ export default {
 					[H.TOKEN_SCHEMA]: []
 				},
 				ee = {
-					[I.C.DESCRIPTION]: "",
-					[I.C.HOSTNAMES]: [""],
-					[I.C.EXPRESSION]: "",
-					[I.C.ACTION]: Y.LOG,
-					[I.C.EXCLUDED_ENDPOINTS]: {
+					[k.C.DESCRIPTION]: "",
+					[k.C.HOSTNAMES]: [""],
+					[k.C.EXPRESSION]: "",
+					[k.C.ACTION]: Y.LOG,
+					[k.C.EXCLUDED_ENDPOINTS]: {
 						exclude: []
 					}
 				},
@@ -45003,11 +45014,11 @@ export default {
 					}
 				},
 				el = {
-					[Y.LOG]: k({}, ei[Y.LOG], {
+					[Y.LOG]: I({}, ei[Y.LOG], {
 						helper: "api_shield.jwt_validation.add_rules.action_log.description",
 						testId: "form-rules.action_log"
 					}),
-					[Y.BLOCK]: k({}, ei[Y.BLOCK], {
+					[Y.BLOCK]: I({}, ei[Y.BLOCK], {
 						helper: "api_shield.jwt_validation.add_rules.action_block.description",
 						testId: "form-rules.action_block"
 					})
@@ -45066,8 +45077,8 @@ export default {
 				},
 				eT = ((w = {}).LIST = "INVALIDATE_LIST", w.ID = "INVALIDATE_CONFIGURATION", w),
 				eO = "api_rules.jwt_validation.settings.back",
-				eI = "api_rules.jwt_validation.add_rules.back",
-				ek = "form-configuration.loading",
+				ek = "api_rules.jwt_validation.add_rules.back",
+				eI = "form-configuration.loading",
 				eA = "form-configuration.backlink",
 				ej = "form-configuration.heading",
 				eR = "form-configuration.button_submit",
@@ -46006,7 +46017,7 @@ SOFTWARE.`,
 					return Q
 				},
 				xB: function() {
-					return I
+					return k
 				},
 				xN: function() {
 					return H
@@ -46036,8 +46047,8 @@ SOFTWARE.`,
 					endpoint: "",
 					host: ""
 				},
-				I = ["GET", "POST", "PUT", "HEAD", "OPTIONS", "DELETE", "PATCH", "CONNECT", "TRACE"],
-				k = ((r = {}).METHOD = "method", r.HOST = "host", r.ENDPOINT = "endpoint", r),
+				k = ["GET", "POST", "PUT", "HEAD", "OPTIONS", "DELETE", "PATCH", "CONNECT", "TRACE"],
+				I = ((r = {}).METHOD = "method", r.HOST = "host", r.ENDPOINT = "endpoint", r),
 				A = ((o = {}).OPERATION = "operation", o.OPERATIONS = "operations", o.OPERATION_HOSTS = "operationHosts", o.ENDPOINTS_ANALYTICS = "endpointAnalytics", o.OVERVIEW_METRICS = "overviewMetric", o.SENSITIVE_DATA = "sensitiveData", o),
 				j = {
 					PATH: {
@@ -46084,7 +46095,7 @@ SOFTWARE.`,
 						perPage: G
 					},
 					initialSortState: {
-						name: k.ENDPOINT,
+						name: I.ENDPOINT,
 						direction: v.Sr.desc
 					},
 					initialToolbarState: {
@@ -46244,7 +46255,7 @@ SOFTWARE.`,
 					return M
 				},
 				H0: function() {
-					return k
+					return I
 				},
 				H8: function() {
 					return G
@@ -46283,7 +46294,7 @@ SOFTWARE.`,
 					return O
 				},
 				li: function() {
-					return I
+					return k
 				},
 				oW: function() {
 					return z
@@ -46412,11 +46423,11 @@ SOFTWARE.`,
 				}
 			}
 
-			function I(e, t, n) {
+			function k(e, t, n) {
 				return e + t + "-" + n
 			}
 
-			function k({
+			function I({
 				fromDate: e,
 				toDate: t,
 				datetimeDimension: n
@@ -46475,12 +46486,12 @@ SOFTWARE.`,
 					method: e,
 					endpoint: t,
 					host: n
-				}) => I(e, t, n)),
+				}) => k(e, t, n)),
 				P = (e, t, n) => {
 					let r = {},
 						o = [];
 					return e.forEach(e => {
-						let a = I(e.method, e.endpoint, e.host),
+						let a = k(e.method, e.endpoint, e.host),
 							i = n(t(a));
 						void 0 === i ? o.push(e) : r[a] = i
 					}), {
@@ -46494,7 +46505,7 @@ SOFTWARE.`,
 						endpoint: o,
 						host: a
 					}) => {
-						let i = I(e, o, a);
+						let i = k(e, o, a);
 						t[i] || r(null, n(i)), t[i] = t[i] || null
 					})
 				},
@@ -46646,7 +46657,7 @@ SOFTWARE.`,
 					return N
 				},
 				DN: function() {
-					return k
+					return I
 				},
 				Dc: function() {
 					return P
@@ -46685,7 +46696,7 @@ SOFTWARE.`,
 					return l
 				},
 				qK: function() {
-					return I
+					return k
 				},
 				qN: function() {
 					return d
@@ -46788,10 +46799,10 @@ SOFTWARE.`,
 				C = l[r.H.LEARNED_SCHEMAS],
 				T = () => (0, o.Z)(C.maxLearnedSchemasAllowed),
 				O = l[r.H.SCHEMA_VALIDATION],
-				I = () => (0, o.Z)(O.maxSchemaBytes),
-				k = l[r.H.CONFIGURATION],
-				A = () => (0, o.Z)(k.maxApiShields),
-				j = () => (0, o.Z)(k.apiRouting),
+				k = () => (0, o.Z)(O.maxSchemaBytes),
+				I = l[r.H.CONFIGURATION],
+				A = () => (0, o.Z)(I.maxApiShields),
+				j = () => (0, o.Z)(I.apiRouting),
 				R = () => !!(0, o.Z)(s.logAllowed),
 				N = () => !!(0, o.Z)(s.regexOperatorAllowed),
 				P = () => !!(0, o.Z)(s.dlpAllowed),
@@ -47401,8 +47412,8 @@ SOFTWARE.`,
 				C = n("../react/pages/security/api-shield/schema-validation-v2/resources/routes.ts"),
 				T = n("../react/utils/translator.tsx"),
 				O = n("../node_modules/@cloudflare/component-link/es/index.js"),
-				I = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
-				k = n("../react/common/svg/magnifying-glass.svg"),
+				k = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
+				I = n("../react/common/svg/magnifying-glass.svg"),
 				A = n("../react/common/hooks/responsiveTable/useResponsiveTableToolbar.tsx"),
 				j = n("../../../../node_modules/react/jsx-runtime.js");
 
@@ -47622,7 +47633,7 @@ SOFTWARE.`,
 					title: (0, j.jsx)(T.cC, {
 						id: "api_shield.schema_validation_v2.list.newTable.empty.title"
 					}),
-					description: (0, j.jsx)(I.ZC, {
+					description: (0, j.jsx)(k.ZC, {
 						pt: 2,
 						children: (0, j.jsx)(T.cC, {
 							id: "api_shield.schema_validation_v2.list.table.no_endpoints.added",
@@ -47634,13 +47645,13 @@ SOFTWARE.`,
 							}]
 						})
 					}),
-					image: () => (0, j.jsx)(I.ZC, {
+					image: () => (0, j.jsx)(k.ZC, {
 						width: 200,
 						height: 100,
 						display: "flex",
 						justifyContent: "center",
-						children: (0, j.jsx)(I.Ei, {
-							src: k
+						children: (0, j.jsx)(k.Ei, {
+							src: I
 						})
 					})
 				}),
@@ -47699,7 +47710,7 @@ SOFTWARE.`,
 					return y
 				},
 				VC: function() {
-					return I
+					return k
 				},
 				aM: function() {
 					return v
@@ -47720,7 +47731,7 @@ SOFTWARE.`,
 					return C
 				},
 				rz: function() {
-					return k
+					return I
 				},
 				sG: function() {
 					return b
@@ -47838,10 +47849,10 @@ SOFTWARE.`,
 					var t, n;
 					return !!(w(e) && (T(e) || !(null == e || null == (t = e.features) || null == (n = t.schema_info) ? void 0 : n.learned_available)))
 				},
-				I = (e, t) => {
+				k = (e, t) => {
 					u().sendEvent(e, t)
 				},
-				k = e => e.filter(e => {
+				I = e => e.filter(e => {
 					if (Array.isArray(e)) {
 						let [, {
 							value: t
@@ -48215,13 +48226,13 @@ SOFTWARE.`,
 					return R
 				},
 				KV: function() {
-					return I
+					return k
 				},
 				nH: function() {
 					return o
 				},
 				Qv: function() {
-					return k
+					return I
 				},
 				Y4: function() {
 					return F
@@ -48258,8 +48269,8 @@ SOFTWARE.`,
 					SEQUENCE_MITIGATION: "https://developers.cloudflare.com/api-shield/security/sequence-mitigation/"
 				},
 				O = ((l = {}).SEQUENCE_RULES = "sequenceRules", l.SEQUENCE_RULE_MAPPED_OPERATION = "sequenceRuleMappedOperation", l),
-				I = ((s = {}).RULE = "rule", s.HOSTNAME = "hostname", s.SEQUENCE = "sequence", s.NON_COMPLIANT = "nonCompliant", s.ACTION = "action", s.MENU = "menu", s),
-				k = {
+				k = ((s = {}).RULE = "rule", s.HOSTNAME = "hostname", s.SEQUENCE = "sequence", s.NON_COMPLIANT = "nonCompliant", s.ACTION = "action", s.MENU = "menu", s),
+				I = {
 					[r.ALLOW]: {
 						[o.LOG]: ["api_rules.sequences_rules.table.toolbar.action.sequence.allow", "api_rules.sequences_rules.table.toolbar.action.others.log"],
 						[o.BLOCK]: ["api_rules.sequences_rules.table.toolbar.action.sequence.allow", "api_rules.sequences_rules.table.toolbar.action.others.block"]
@@ -49388,7 +49399,7 @@ SOFTWARE.`,
 					return z
 				},
 				MX: function() {
-					return I
+					return k
 				},
 				Mu: function() {
 					return R
@@ -49492,10 +49503,10 @@ SOFTWARE.`,
 				O = {
 					clientIP_neq: "2a06:98c0:3600::103"
 				},
-				I = ((o = {}).BOT_MANAGEMENT_DECISION = "botManagementDecision", o.BOT_SCORE = "botScore", o.BOT_SCORE_BUCKET = "botScoreBucketBy10", o.BOT_SCORE_SOURCE = "botScoreSrcName", o.CLIENT_ASN = "clientAsn", o.CLIENT_COUNTRY_NAME = "clientCountryName", o.CLIENT_IP = "clientIP", o.CLIENT_HOST = "clientRequestHTTPHost", o.CLIENT_PATH = "clientRequestPath", o.JA3_HASH = "ja3Hash", o.JA4 = "ja4", o.USER_AGENT = "userAgent", o.BOT_DETECTION_TAGS = "botDetectionTags", o.BOT_DETECTION_IDS = "botDetectionIds", o);
+				k = ((o = {}).BOT_MANAGEMENT_DECISION = "botManagementDecision", o.BOT_SCORE = "botScore", o.BOT_SCORE_BUCKET = "botScoreBucketBy10", o.BOT_SCORE_SOURCE = "botScoreSrcName", o.CLIENT_ASN = "clientAsn", o.CLIENT_COUNTRY_NAME = "clientCountryName", o.CLIENT_IP = "clientIP", o.CLIENT_HOST = "clientRequestHTTPHost", o.CLIENT_PATH = "clientRequestPath", o.JA3_HASH = "ja3Hash", o.JA4 = "ja4", o.USER_AGENT = "userAgent", o.BOT_DETECTION_TAGS = "botDetectionTags", o.BOT_DETECTION_IDS = "botDetectionIds", o);
 			v.variables.colors.red[6], v.variables.colors.blue[6], v.variables.colors.green[6];
-			let k = {
-					[I.BOT_SCORE]: {
+			let I = {
+					[k.BOT_SCORE]: {
 						label: "firewall.analytics.filters.labels.botScore",
 						type: b.kE.string,
 						operators: [y.Gn.equals, y.Gn.notEquals, y.Gn.greaterThan, y.Gn.greaterThanOrEqual, y.Gn.lessThan, y.Gn.lessThanOrEqual],
@@ -49510,7 +49521,7 @@ SOFTWARE.`,
 					}
 				},
 				A = {
-					[I.JA3_HASH]: {
+					[k.JA3_HASH]: {
 						label: "firewall.analytics.filters.labels.ja3Hash",
 						type: b.kE.string,
 						operators: [y.Gn.equals, y.Gn.notEquals],
@@ -49518,7 +49529,7 @@ SOFTWARE.`,
 						validationMessage: "firewall.analytics.filters.errors.ja3Hash",
 						urlParam: "ja3-hash"
 					},
-					[I.JA4]: {
+					[k.JA4]: {
 						label: "firewall.analytics.filters.labels.ja4",
 						type: b.kE.string,
 						operators: [y.Gn.equals, y.Gn.notEquals],
@@ -49528,7 +49539,7 @@ SOFTWARE.`,
 					}
 				},
 				j = (e, t) => x({
-					[I.CLIENT_ASN]: {
+					[k.CLIENT_ASN]: {
 						label: "firewall.analytics.filters.labels.clientAsn",
 						type: b.kE.string,
 						operators: [y.Gn.equals, y.Gn.notEquals],
@@ -49537,21 +49548,21 @@ SOFTWARE.`,
 						validate: e => !isNaN(parseFloat(e)) && isFinite(parseFloat(e)),
 						urlParam: "asn"
 					}
-				}, e ? k : {}, {
-					[I.BOT_SCORE_SOURCE]: {
+				}, e ? I : {}, {
+					[k.BOT_SCORE_SOURCE]: {
 						label: "firewall.analytics.filters.labels.botScoreSrcName",
 						type: b.kE.select,
 						operators: [y.Gn.equals, y.Gn.notEquals],
 						options: S.Me.options,
 						urlParam: "botScoreSrcName"
 					},
-					[I.CLIENT_COUNTRY_NAME]: x({}, w.clientCountryName, {
+					[k.CLIENT_COUNTRY_NAME]: x({}, w.clientCountryName, {
 						label: "firewall.activity_log.details.labels.country"
 					}),
-					[I.CLIENT_HOST]: x({}, w.clientRequestHTTPHost, {
+					[k.CLIENT_HOST]: x({}, w.clientRequestHTTPHost, {
 						label: "firewall.activity_log.details.labels.host"
 					}),
-					[I.CLIENT_IP]: {
+					[k.CLIENT_IP]: {
 						label: "firewall.analytics.filters.labels.clientIP",
 						type: b.kE.string,
 						operators: [y.Gn.equals, y.Gn.notEquals],
@@ -49561,20 +49572,20 @@ SOFTWARE.`,
 						urlParam: "ip"
 					}
 				}, t ? A : {}, {
-					[I.CLIENT_PATH]: x({}, w.clientRequestPath, {
+					[k.CLIENT_PATH]: x({}, w.clientRequestPath, {
 						label: "firewall.activity_log.details.labels.path"
 					}),
-					[I.USER_AGENT]: {
+					[k.USER_AGENT]: {
 						label: "firewall.analytics.filters.labels.userAgent",
 						type: b.kE.string,
 						operators: [y.Gn.equals, y.Gn.notEquals, y.Gn.contains, y.Gn.notContains, y.Gn.startsWith, y.Gn.notStartsWith, y.Gn.endsWith, y.Gn.notEndsWith],
 						example: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)...",
 						urlParam: "user-agent"
 					},
-					[I.BOT_DETECTION_IDS]: x({}, E.S8, {
+					[k.BOT_DETECTION_IDS]: x({}, E.S8, {
 						label: "firewall.analytics.filters.labels.botDetectionIds"
 					}),
-					[I.BOT_DETECTION_TAGS]: x({}, E.Ny, {
+					[k.BOT_DETECTION_TAGS]: x({}, E.Ny, {
 						label: "firewall.analytics.filters.labels.botDetectionTags"
 					})
 				}),
@@ -50200,10 +50211,10 @@ SOFTWARE.`,
 			"use strict";
 			n.d(t, {
 				tI: function() {
-					return m
+					return b
 				},
 				xz: function() {
-					return g
+					return _
 				}
 			});
 			var r, o = n("../react/common/selectors/zoneSelectors.ts"),
@@ -50214,10 +50225,13 @@ SOFTWARE.`,
 				c = n("../../../../node_modules/@cloudflare/util-routes/es/index.js"),
 				u = n("../react/app/components/Persistence/index.tsx"),
 				d = n("../react/pages/security/components/SecurityTooltip.tsx"),
-				p = n("../../../../node_modules/react/jsx-runtime.js");
-			let m = ((r = {}).OVERVIEW = "overview", r.ANALYTICS = "analytics", r.WEB_ASSETS = "webAssetDiscovery", r.SECURITY_RULES = "securityRules", r.SETTINGS = "settings", r.VIDEO_PILL = "video", r.OVERVIEW_PILL = "overviewPill", r),
-				f = "secOptInNavSteps",
-				g = [`${f}.${m.OVERVIEW}`, `${f}.${m.ANALYTICS}`, `${f}.${m.WEB_ASSETS}`, `${f}.${m.SECURITY_RULES}`, `${f}.${m.SETTINGS}`, `${f}.${m.VIDEO_PILL}`, `${f}.${m.OVERVIEW_PILL}`];
+				p = n("../react/pages/security/resources/hooks/useUnificationEnabled.tsx"),
+				m = n("../react/app/components/DomainOverview/components/security-opt-in/useSecurityOptInModal.tsx"),
+				f = n("../react/app/components/DomainOverview/components/security-opt-in/useSecurityDefaultAllModal.tsx"),
+				g = n("../../../../node_modules/react/jsx-runtime.js");
+			let b = ((r = {}).OVERVIEW = "overview", r.ANALYTICS = "analytics", r.WEB_ASSETS = "webAssetDiscovery", r.SECURITY_RULES = "securityRules", r.SETTINGS = "settings", r.VIDEO_PILL = "video", r.OVERVIEW_PILL = "overviewPill", r),
+				v = "secOptInNavSteps",
+				_ = [`${v}.${b.OVERVIEW}`, `${v}.${b.ANALYTICS}`, `${v}.${b.WEB_ASSETS}`, `${v}.${b.SECURITY_RULES}`, `${v}.${b.SETTINGS}`, `${v}.${b.VIDEO_PILL}`, `${v}.${b.OVERVIEW_PILL}`];
 			t.ZP = ({
 				step: e,
 				placement: t = "left",
@@ -50225,11 +50239,14 @@ SOFTWARE.`,
 			}) => {
 				let r = (0, s.useHistory)(),
 					{
-						isInDefaultAllGate: b
+						isInDefaultAllGate: h
 					} = (0, l.D$)(),
-					v = (0, a.useSelector)(o.nA),
-					_ = (0, c.BC)`/${"accountId"}/${"zoneName"}/security/overview`,
-					h = () => (function(e) {
+					y = (0, a.useSelector)(o.nA),
+					w = (0, p.Z)(),
+					[E] = (0, m.Z)(),
+					[S] = (0, f.Z)(),
+					x = (0, c.BC)`/${"accountId"}/${"zoneName"}/security/overview`,
+					C = () => (function(e) {
 						for (var t = 1; t < arguments.length; t++) {
 							var n = null != arguments[t] ? Object(arguments[t]) : {},
 								r = Object.keys(n);
@@ -50259,79 +50276,80 @@ SOFTWARE.`,
 						}
 						return e
 					})({
-						[m.OVERVIEW]: {
+						[b.OVERVIEW]: {
 							title: "security.tooltip.page.overview.title",
 							description: "security.tooltip.page.overview.description",
 							docsLink: "https://developers.cloudflare.com/security/overview/"
 						},
-						[m.ANALYTICS]: {
+						[b.ANALYTICS]: {
 							title: "security.tooltip.page.analytics.title",
 							description: "security.tooltip.page.analytics.description",
 							docsLink: "https://developers.cloudflare.com/security/analytics/"
 						},
-						[m.WEB_ASSETS]: {
+						[b.WEB_ASSETS]: {
 							title: "security.tooltip.page.web_assets.title",
 							description: "security.tooltip.page.web_assets.description",
 							docsLink: "https://developers.cloudflare.com/security/web-assets/"
 						},
-						[m.SECURITY_RULES]: {
+						[b.SECURITY_RULES]: {
 							title: "security.tooltip.page.security_rules.title",
 							description: "security.tooltip.page.security_rules.description",
 							docsLink: "https://developers.cloudflare.com/security/rules/"
 						},
-						[m.SETTINGS]: {
+						[b.SETTINGS]: {
 							title: "security.tooltip.page.settings.title",
 							description: "security.tooltip.page.settings.description",
 							docsLink: "https://developers.cloudflare.com/security/settings/",
 							onNext: () => {
-								b && r.push(_.toUrl({
-									zoneName: v.name,
-									accountId: v.account.id
+								h && r.push(x.toUrl({
+									zoneName: y.name,
+									accountId: y.account.id
 								}), {
 									keepTooltips: !0
 								})
 							}
 						}
-					}, b ? {
-						[m.VIDEO_PILL]: {
+					}, h ? {
+						[b.VIDEO_PILL]: {
 							title: "security.tooltip.page.overview_video.title",
 							description: "security.tooltip.page.overview_video.description",
 							docsLink: "https://developers.cloudflare.com/security/"
 						},
-						[m.OVERVIEW_PILL]: {
+						[b.OVERVIEW_PILL]: {
 							title: "security.tooltip.page.overview_pill.title",
 							description: "security.tooltip.page.overview_pill.description",
 							docsLink: "https://developers.cloudflare.com/security/"
 						}
 					} : {}),
-					y = Object.keys(h()),
-					w = /^\/[^/]+\/[^/]+\/security(\/.*)?$/.test(r.location.pathname),
-					[E, S] = (0, i.Z)("NAV_STATE_SEC"),
+					T = Object.keys(C()),
+					O = /^\/[^/]+\/[^/]+\/security(\/.*)?$/.test(r.location.pathname),
+					[k, I] = (0, i.Z)("NAV_STATE_SEC"),
 					{
-						actions: x,
-						tasksToShowAgain: C
+						actions: A,
+						tasksToShowAgain: j
 					} = (0, u.yZ)(),
-					T = () => {
-						x.handleDeleteTasksToShowAgain(g)
+					R = () => {
+						A.handleDeleteTasksToShowAgain(_)
 					};
-				return (0, p.jsx)(d.l, {
-					savedStep: E,
+				return (0, g.jsx)(d.l, {
+					savedStep: k,
 					step: e,
-					steps: y,
-					tooltipMap: h(),
+					steps: T,
+					tooltipMap: C(),
 					onCloseAllTooltips: () => {
-						T()
+						R()
 					},
 					onResetStep: () => {
-						S(m.OVERVIEW)
+						I(b.OVERVIEW)
 					},
-					handleDeleteAllTooltips: T,
-					setStep: S,
+					handleDeleteAllTooltips: R,
+					setStep: I,
 					placement: t,
 					width: n,
-					tasksToShowAgain: C,
-					idPrefix: f,
-					isVisible: w
+					tasksToShowAgain: j,
+					idPrefix: v,
+					isModalOpen: E && S,
+					isVisible: O && w && !!(null == y ? void 0 : y.id)
 				})
 			}
 		},
@@ -50339,77 +50357,74 @@ SOFTWARE.`,
 			"use strict";
 			n.d(t, {
 				l: function() {
-					return f
+					return c
 				}
 			});
 			var r = n("webpack/sharing/consume/default/react/react"),
 				o = n("webpack/sharing/consume/default/@cloudflare/intl-react/@cloudflare/intl-react"),
 				a = n("../react/app/components/ChangeNotification/index.ts"),
-				i = n("../react/pages/security/resources/hooks/useUnificationEnabled.tsx"),
-				l = n("webpack/sharing/consume/default/react-redux/react-redux"),
-				s = n("../react/common/selectors/zoneSelectors.ts"),
-				c = n("../react/app/components/DomainOverview/components/security-opt-in/useSecurityOptInModal.tsx"),
-				u = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
-				d = n("../react/utils/bootstrap.ts"),
-				p = n("../react/app/components/DomainOverview/components/security-opt-in/useSecurityDefaultAllModal.tsx"),
-				m = n("../../../../node_modules/react/jsx-runtime.js");
-			let f = ({
+				i = n("webpack/sharing/consume/default/react-router-dom/react-router-dom"),
+				l = n("../react/utils/bootstrap.ts"),
+				s = n("../../../../node_modules/react/jsx-runtime.js");
+			let c = ({
 				step: e,
 				steps: t,
 				savedStep: n,
-				tooltipMap: f,
-				onCloseAllTooltips: g,
-				onResetStep: b,
-				setStep: v,
-				placement: _ = "left",
-				width: h = "0.1px",
-				idPrefix: y,
-				tasksToShowAgain: w,
-				handleDeleteAllTooltips: E,
-				isVisible: S
+				tooltipMap: c,
+				onCloseAllTooltips: u,
+				onResetStep: d,
+				setStep: p,
+				placement: m = "left",
+				width: f = "0.1px",
+				idPrefix: g,
+				tasksToShowAgain: b,
+				handleDeleteAllTooltips: v,
+				isVisible: _,
+				isModalOpen: h
 			}) => {
 				let {
-					keepTooltips: x
-				} = (0, u.useLocation)().state || {}, C = (0, i.Z)(), T = (0, l.useSelector)(s.nA), [O] = (0, c.Z)(), [I] = (0, p.Z)(), k = void 0 === n ? 0 : null == t ? void 0 : t.findIndex(e => e === n), A = f[e], j = `${y}.${e}`, R = null == t ? void 0 : t.findIndex(t => t === e), N = !(null == w ? void 0 : w.length) || w.some(e => e.includes(y)), P = {
-					createId: () => j,
+					keepTooltips: y
+				} = (0, i.useLocation)().state || {}, w = void 0 === n ? 0 : null == t ? void 0 : t.findIndex(e => e === n), E = c[e], S = `${g}.${e}`, x = null == t ? void 0 : t.findIndex(t => t === e), C = !b, T = null == b ? void 0 : b.some(e => e.includes(g)), O = {
+					createId: () => S,
 					step: e,
 					steps: t,
 					onPrevClick: () => {
-						k > 0 && v(t[k - 1])
+						w > 0 && p(t[w - 1])
 					},
 					onNextClick: () => {
-						if (k < t.length - 1) {
+						if (w < t.length - 1) {
 							var e;
-							v(t[k + 1]), null == A || null == (e = A.onNext) || e.call(A)
+							p(t[w + 1]), null == E || null == (e = E.onNext) || e.call(E)
 						}
 					},
 					totalSteps: t.length,
-					docsLink: A.docsLink
+					docsLink: E.docsLink
 				};
 				return ((0, r.useEffect)(() => {
-					x || (E(), b())
-				}, []), !C || !(null == T ? void 0 : T.name) || I || O || k !== R || "boolean" == typeof S && !S || !N || (0, d.gm)()) ? null : (0, m.jsx)(a.mM, {
-					id: j,
-					titleKey: j,
-					title: (0, m.jsx)(o.Trans, {
-						id: A.title
+					y || (v(), d())
+				}, []), h || w !== x || !_ || !T && !C || (0, l.gm)()) ? null : (0, s.jsx)(a.mM, {
+					id: S,
+					titleKey: S,
+					title: (0, s.jsx)(o.Trans, {
+						id: E.title
 					}),
-					description: (0, m.jsx)(o.Trans, {
-						id: A.description
+					description: (0, s.jsx)(o.Trans, {
+						id: E.description
 					}),
-					stepProps: P,
+					stepProps: O,
 					overrideStyle: {
 						zIndex: 1100
 					},
 					disablePill: !0,
-					placement: _,
+					placement: m,
 					onClose: () => {
-						N && b(), g()
+						var e;
+						null == E || null == (e = E.onClose) || e.call(E), T && d(), u()
 					},
 					clearAllItemsOnClose: !0,
-					children: e => (0, m.jsx)("div", {
+					children: e => (0, s.jsx)("div", {
 						style: {
-							width: h
+							width: f
 						},
 						ref: e
 					})
@@ -51966,7 +51981,7 @@ SOFTWARE.`,
 				s = n("../../../../node_modules/react/jsx-runtime.js"),
 				c = n("../react/pages/security/settings/hooks/index.ts"),
 				u = n("../react/pages/security/settings/resources/index.ts");
-			let d = (0, a.lazy)(() => Promise.all([n.e(87317), n.e(37800), n.e(51436), n.e(68204), n.e(2515), n.e(94149), n.e(30906), n.e(61303), n.e(75758), n.e(42185)]).then(n.bind(n, "../react/pages/security/settings/SettingsRoute.tsx")));
+			let d = (0, a.lazy)(() => Promise.all([n.e(87317), n.e(37800), n.e(18136), n.e(68204), n.e(2515), n.e(94149), n.e(30906), n.e(61303), n.e(75758), n.e(42185)]).then(n.bind(n, "../react/pages/security/settings/SettingsRoute.tsx")));
 			t.ZP = () => {
 				let {
 					t: e
@@ -52022,7 +52037,7 @@ SOFTWARE.`,
 					return j
 				},
 				aW: function() {
-					return I
+					return k
 				},
 				dC: function() {
 					return L
@@ -52037,7 +52052,7 @@ SOFTWARE.`,
 					return T
 				},
 				n5: function() {
-					return k
+					return I
 				},
 				om: function() {
 					return E
@@ -52086,8 +52101,8 @@ SOFTWARE.`,
 					SECURITY_LABEL: "https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/"
 				},
 				O = /^[A-Za-z0-9-]+$/,
-				I = /^cf-/,
-				k = ((d = {}).NAME = "name", d.DESCRIPTION = "description", d),
+				k = /^cf-/,
+				I = ((d = {}).NAME = "name", d.DESCRIPTION = "description", d),
 				A = ((p = {}).METHOD = "method", p.HOSTNAME = "hostname", p),
 				j = {
 					initialPaginationState: {
@@ -52468,7 +52483,7 @@ SOFTWARE.`,
 			"use strict";
 			n.d(t, {
 				Z: function() {
-					return k
+					return I
 				}
 			});
 			var r = n("webpack/sharing/consume/default/react/react"),
@@ -52532,10 +52547,10 @@ SOFTWARE.`,
 					(0, r.useEffect)(() => {
 						e && null === i && t && O()
 					}, [e, a, t]);
-					let I = (0, y.Z)(),
+					let k = (0, y.Z)(),
 						{
-							isUnifiedExperience: k
-						} = I,
+							isUnifiedExperience: I
+						} = k,
 						A = function(e, t) {
 							if (null == e) return {};
 							var n, r, o = function(e, t) {
@@ -52550,7 +52565,7 @@ SOFTWARE.`,
 								for (r = 0; r < a.length; r++) n = a[r], !(t.indexOf(n) >= 0) && Object.prototype.propertyIsEnumerable.call(e, n) && (o[n] = e[n])
 							}
 							return o
-						}(I, ["isUnifiedExperience"]),
+						}(k, ["isUnifiedExperience"]),
 						j = (0, w.p4)(E.nA),
 						R = t => {
 							let n = /'[0-9a-f]{32}'/gi,
@@ -52565,7 +52580,7 @@ SOFTWARE.`,
 												id: e
 											}) => e === u))) throw Error("No rule found from output");
 										return [t, (0, x.jsx)(s.Link, {
-											to: (k ? A[o.df.HttpRequestFirewallCustom].edit : C).toUrl({
+											to: (I ? A[o.df.HttpRequestFirewallCustom].edit : C).toUrl({
 												accountId: a,
 												zoneName: j.name,
 												id: u
@@ -52722,7 +52737,7 @@ SOFTWARE.`,
 					})
 				},
 				O = n("webpack/sharing/consume/default/react-dom/react-dom");
-			let I = ({
+			let k = ({
 				size: e = "m"
 			}) => {
 				var t, n;
@@ -52753,9 +52768,9 @@ SOFTWARE.`,
 					})
 				})
 			};
-			var k = ({
+			var I = ({
 				size: e
-			}) => (0, i.Z)("security-ai-agent") ? (0, x.jsx)(I, {
+			}) => (0, i.Z)("security-ai-agent") ? (0, x.jsx)(k, {
 				size: e
 			}) : null
 		},
@@ -53269,7 +53284,7 @@ SOFTWARE.`,
 					return er
 				},
 				J2: function() {
-					return I
+					return k
 				},
 				K$: function() {
 					return K
@@ -53326,7 +53341,7 @@ SOFTWARE.`,
 					return ei
 				},
 				jC: function() {
-					return k
+					return I
 				},
 				jW: function() {
 					return U
@@ -54192,7 +54207,7 @@ SOFTWARE.`,
 					value: "T1",
 					label: "Tor"
 				}],
-				I = [{
+				k = [{
 					value: "aae01",
 					label: "aae01"
 				}, {
@@ -56338,7 +56353,7 @@ SOFTWARE.`,
 					value: "zrh02",
 					label: "zrh02"
 				}],
-				k = [{
+				I = [{
 					value: "AAE",
 					label: "AAE"
 				}, {
@@ -58287,7 +58302,7 @@ SOFTWARE.`,
 					"cf.colo.name": w({}, c.ce.string, {
 						component: i.Z,
 						operators: [m.Gn.eq, m.Gn.ne, m.Gn.in, m.Gn["!in"]],
-						options: I,
+						options: k,
 						label: "filter_editor.fields.cf.colo.name"
 					}),
 					"cf.colo.region": w({}, c.ce.string, {
@@ -58699,7 +58714,7 @@ SOFTWARE.`,
 					return C
 				},
 				U_: function() {
-					return I
+					return k
 				},
 				Zi: function() {
 					return f
@@ -58853,12 +58868,12 @@ SOFTWARE.`,
 				},
 				T = (e, t) => !(null == t ? void 0 : t["filters.advanced_geoip_enabled"]) && e && A(e.rules),
 				O = (e, t) => !(null == t ? void 0 : t["filters.operator_regex"]) && e && R(e.rules),
-				I = e => !!e && !!e["fwrules.action_rewrite_allowed"],
-				k = e => {
+				k = e => !!e && !!e["fwrules.action_rewrite_allowed"],
+				I = e => {
 					var t;
 					return "triplet" === e.type && E.has(null == (t = e.data) ? void 0 : t.field)
 				},
-				A = e => (0, o.cC)(e, k),
+				A = e => (0, o.cC)(e, I),
 				j = e => {
 					var t;
 					return "triplet" === e.type && (null == (t = e.data) ? void 0 : t.operator) === a.MS.matches
@@ -58968,7 +58983,7 @@ SOFTWARE.`,
 					return y
 				},
 				_5: function() {
-					return I
+					return k
 				},
 				_y: function() {
 					return N
@@ -58977,7 +58992,7 @@ SOFTWARE.`,
 					return D
 				},
 				pk: function() {
-					return k
+					return I
 				},
 				xr: function() {
 					return L
@@ -59094,7 +59109,7 @@ SOFTWARE.`,
 					let a = T.reduce((t, n, r) => r <= e ? t.concat(n) : t, []);
 					return (null == t ? void 0 : t.hasBotManagement) && a.push(...E), (null == t ? void 0 : t.hasFraud) && a.push(...S), (null == t ? void 0 : t.hasBodyInspection) && a.push(...x), (null == t ? void 0 : t.hasWAFMLScores) && a.push(...C), (null == t ? void 0 : t.hasScoreClass) && a.push(i.Pu), (null == t ? void 0 : t.hasContentScanning) && a.push(...Object.keys(d.YT)), (null == t || null == (n = t.leakedCredentialCheckPermissions) ? void 0 : n.hasPasswordLeaked) && a.push(...Object.keys(d.v4)), (null == t ? void 0 : t.hasLLMEnabled) && a.push(...Object.keys(d.US)), (null == t ? void 0 : t.hasAttackSignatureDetection) && a.push(...Object.keys(d.q3)), (null == t || null == (r = t.leakedCredentialCheckPermissions) ? void 0 : r.hasUsernameAndPasswordLeaked) && a.push(...Object.keys(d.K$)), (null == t || null == (o = t.leakedCredentialCheckPermissions) ? void 0 : o.hasSimilarLeaked) && a.push(...Object.keys(d.Ws)), (null == t ? void 0 : t.isSecurityLevelDeprecated) || !(e >= 3) || a.push("cf.threat_score"), a
 				},
-				I = (e, t) => {
+				k = (e, t) => {
 					let n = w(O(e, t)),
 						r = e < 2 ? [...f.iY] : [];
 					return (0, g.$Z)((0, m.a$)({
@@ -59102,7 +59117,7 @@ SOFTWARE.`,
 						excludeOperators: r
 					}))
 				},
-				k = () => (0, g.$Z)(I(4, {
+				I = () => (0, g.$Z)(k(4, {
 					hasBotManagement: !0,
 					hasFraud: !0,
 					hasBodyInspection: !0,
@@ -59293,13 +59308,13 @@ SOFTWARE.`,
 					return O
 				},
 				_6: function() {
-					return k
+					return I
 				},
 				e: function() {
 					return N
 				},
 				ej: function() {
-					return I
+					return k
 				},
 				fj: function() {
 					return b
@@ -59387,8 +59402,8 @@ SOFTWARE.`,
 				C = "lookup_json_string",
 				T = "lookup_json_integer",
 				O = "http.request.body.raw",
-				I = "http.request.body.size",
-				k = "http.request.body.form",
+				k = "http.request.body.size",
+				I = "http.request.body.form",
 				A = "cf.waf.score.class",
 				j = "custom",
 				R = ((r = {}).EMAIL_CHECK_TEMPLATE = "waf-disposable-email-check-allowed", r),
@@ -59461,15 +59476,15 @@ SOFTWARE.`,
 					[O]: d({}, p, {
 						label: "filter_editor.fields.http.request.body.raw"
 					}),
-					[I]: d({}, l.ce.number, {
+					[k]: d({}, l.ce.number, {
 						hideValue: !0,
 						hideOperators: !0,
 						label: "filter_editor.fields.http.request.body.size"
 					}),
-					[k]: d({}, l.ce.string, {
+					[I]: d({}, l.ce.string, {
 						hideOperators: !0,
 						label: "rate-limiting.fields.form.body",
-						valueFormatter: e => `${k}["${m(e)}"]`
+						valueFormatter: e => `${I}["${m(e)}"]`
 					}),
 					[j]: d({}, l.ce.string, {
 						hideOperators: !0,
@@ -60062,53 +60077,56 @@ SOFTWARE.`,
 			"use strict";
 			n.d(t, {
 				Bt: function() {
-					return E
-				},
-				DM: function() {
 					return S
 				},
-				Eb: function() {
-					return C
-				},
-				El: function() {
+				DM: function() {
 					return x
 				},
-				LO: function() {
-					return _
-				},
-				PLAN_FEATURE_KEYS: function() {
-					return v
-				},
-				SMART_SHIELD_PLANS: function() {
-					return f
-				},
-				Uj: function() {
-					return m
-				},
-				Xu: function() {
-					return h
-				},
-				dg: function() {
-					return b
-				},
-				hq: function() {
-					return g
-				},
-				lS: function() {
+				Eb: function() {
 					return T
 				},
-				oK: function() {
+				El: function() {
+					return C
+				},
+				LO: function() {
+					return h
+				},
+				PLAN_FEATURE_KEYS: function() {
+					return _
+				},
+				SMART_SHIELD_PLANS: function() {
+					return g
+				},
+				Uj: function() {
+					return f
+				},
+				Xu: function() {
 					return y
 				},
+				dg: function() {
+					return v
+				},
+				hq: function() {
+					return b
+				},
+				lS: function() {
+					return O
+				},
+				oK: function() {
+					return w
+				},
 				pE: function() {
-					return p
+					return m
+				},
+				qJ: function() {
+					return k
 				},
 				xh: function() {
-					return w
+					return E
 				}
 			});
-			var r, o, a, i, l, s, c, u, d = n("../react/pages/speed/smart-shield/utils/types.ts");
-			let p = {
+			var r, o, a, i, l, s, c, u, d, p = n("../react/pages/speed/smart-shield/utils/types.ts");
+			let m = {
 					PRODUCT_DOCUMENTATION: "https://developers.cloudflare.com/smart-shield/",
 					SMART_TIERED_CACHE: "https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/",
 					REGIONAL_TIERED_CACHE: "https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/",
@@ -60119,13 +60137,13 @@ SOFTWARE.`,
 					ARGO_SMART_ROUTING: "https://developers.cloudflare.com/smart-shield/configuration/argo/",
 					CONNECTION_REUSE: "https://developers.cloudflare.com/smart-shield/concepts/connection-reuse/"
 				},
-				m = "smart-shield",
-				f = ((r = {}).BASIC = "basic", r.ARGO = "argo", r.ADVANCED = "advanced", r),
-				g = ((o = {}).CACHE_HITS = "cacheHits", o.REDUCE_COSTS = "reduceCosts", o.ENHANCE_SECURITY = "enhanceSecurity", o),
-				b = "1252px",
-				v = ((a = {}).SMART_TIERED_CACHE = "smartTieredCache", a.CONNECTION_REUSE = "connectionReuse", a.ARGO_SMART_ROUTING = "argoSmartRouting", a.HEALTH_CHECKS = "healthChecks", a.REGIONAL_TIERED_CACHE = "regionalTieredCache", a.CACHE_RESERVE = "cacheReserve", a),
-				_ = ((i = {}).ENABLE_SMART_SHIELD = "enable-smart-shield", i.ADDITIONAL_CACHING_PREFERENCES = "additional-caching-preferences", i.CONNECTION_REUSE = "connection-reuse", i.TRAFFIC_ROUTING = "traffic-routing", i.REVIEW_AND_FINISH = "review-and-finish", i),
-				h = {
+				f = "smart-shield",
+				g = ((r = {}).BASIC = "basic", r.ARGO = "argo", r.ADVANCED = "advanced", r),
+				b = ((o = {}).CACHE_HITS = "cacheHits", o.REDUCE_COSTS = "reduceCosts", o.ENHANCE_SECURITY = "enhanceSecurity", o),
+				v = "1252px",
+				_ = ((a = {}).SMART_TIERED_CACHE = "smartTieredCache", a.CONNECTION_REUSE = "connectionReuse", a.ARGO_SMART_ROUTING = "argoSmartRouting", a.HEALTH_CHECKS = "healthChecks", a.REGIONAL_TIERED_CACHE = "regionalTieredCache", a.CACHE_RESERVE = "cacheReserve", a),
+				h = ((i = {}).ENABLE_SMART_SHIELD = "enable-smart-shield", i.ADDITIONAL_CACHING_PREFERENCES = "additional-caching-preferences", i.CONNECTION_REUSE = "connection-reuse", i.TRAFFIC_ROUTING = "traffic-routing", i.REVIEW_AND_FINISH = "review-and-finish", i),
+				y = {
 					basic: {
 						smartTieredCache: !0,
 						connectionReuse: !0,
@@ -60151,35 +60169,36 @@ SOFTWARE.`,
 						cacheReserve: !0
 					}
 				},
-				y = ((l = {}).SMART_SHIELD_ARGO_PAYGO = "smart_shield_argo_zone_basic", l.SMART_SHIELD_ARGO_ENT = "smart_shield_argo_ent", l.ADVANCED = "smart_shield_advanced", l),
-				w = [{
-					id: _.ENABLE_SMART_SHIELD,
-					entitlements: [d.Mr.smartTieredCache]
+				w = ((l = {}).SMART_SHIELD_ARGO_PAYGO = "smart_shield_argo_zone_basic", l.SMART_SHIELD_ARGO_ENT = "smart_shield_argo_ent", l.ADVANCED = "smart_shield_advanced", l),
+				E = [{
+					id: h.ENABLE_SMART_SHIELD,
+					entitlements: [p.Mr.smartTieredCache]
 				}, {
-					id: _.ADDITIONAL_CACHING_PREFERENCES,
-					entitlements: [d.Mr.regionalTieredCache, d.Mr.cacheReserve]
+					id: h.ADDITIONAL_CACHING_PREFERENCES,
+					entitlements: [p.Mr.regionalTieredCache, p.Mr.cacheReserve]
 				}, {
-					id: _.TRAFFIC_ROUTING,
-					entitlements: [d.Mr.smartRouting, d.Mr.connectionReuse]
+					id: h.TRAFFIC_ROUTING,
+					entitlements: [p.Mr.smartRouting, p.Mr.connectionReuse]
 				}, {
-					id: _.REVIEW_AND_FINISH,
+					id: h.REVIEW_AND_FINISH,
 					entitlements: []
 				}],
-				E = ((s = {}).LANDING_PAGE_GET_STARTED = "smart shield click get started button on smart shield landing page", s.GET_STARTED_CONTINUE = "smart shield click smart shield get started card continue button", s.EXPLORE_OTHER_PACKAGES = "smart shield click explore other packages", s.ONBOARDING_CONTINUE = "smart shield click smart shield onboarding card continue button", s.ONBOARDING_HEALTH_CHECK = "smart shield click onboarding create origin health check get started button", s.ONBOARDING_MANAGE_SETTINGS = "smart shield click onboarding manage smart shield settings view all button", s.ONBOARDING_OBSERVATORY = "smart shield click onboarding go to observatory button", s.SETTINGS_TOGGLE = "smart shield settings toggle", s.SMART_TIERED_CACHE_TOGGLE = "smart shield smart tiered cache toggle", s.REGIONAL_TIERED_CACHE_TOGGLE = "smart shield regional tiered cache toggle", s.CACHE_RESERVE_TOGGLE = "smart shield cache reserve toggle", s.ARGO_SMART_ROUTING_TOGGLE = "smart shield argo smart routing toggle", s.SMART_TIERED_CACHE_VIEW_DETAILS = "smart shield smart tiered cache view details", s.CACHE_RESERVE_VIEW_DETAILS = "smart shield cache reserve view details", s.CACHE_RESERVE_DELETE_DATA = "smart shield cache reserve delete data", s.UPGRADE_BUTTON_CLICK = "smart shield upgrade button click", s.UPGRADE_MODAL_OPEN = "smart shield upgrade modal open", s.UPGRADE_MODAL_CLOSE = "smart shield upgrade modal close", s.UPGRADE_MODAL_CONTINUE = "smart shield upgrade modal continue", s.DOCUMENTATION_CLICK = "smart shield documentation click", s.HEALTH_CHECKS_MANAGE = "smart shield health checks manage", s.ARGO_DISABLE_CANCEL = "smart shield argo disable cancel", s.SMART_TIERED_CACHE_DISABLE_CONFIRM = "smart shield smart tiered cache disable confirm", s.SMART_TIERED_CACHE_DISABLE_CANCEL = "smart shield smart tiered cache disable cancel", s.TIERED_CACHE_ANALYTICS_LINK = "smart shield tiered cache analytics link", s.CACHE_RESERVE_ANALYTICS_LINK = "smart shield cache reserve analytics link", s.HEALTH_CHECKS_LINK = "smart shield health checks link", s),
-				S = ((c = {}).ONBOARDING_FLOW = "smart shield onboarding flow", c.SETTINGS_PAGE = "smart shield settings page", c.TIERED_CACHE = "caching tiered cache page", c.CACHE_RESERVE = "caching cache reserve page", c.ARGO_SMART_ROUTING = "caching argo smart routing page", c),
-				x = ((u = {}).LANDING_PAGE = "smart shield landing page", u.SETTINGS_PAGE = "smart shield settings page", u),
-				C = {
-					[_.ENABLE_SMART_SHIELD]: "enable smart shield step",
-					[_.ADDITIONAL_CACHING_PREFERENCES]: "additional caching preferences step",
-					[_.TRAFFIC_ROUTING]: "traffic routing step",
-					[_.REVIEW_AND_FINISH]: "review and finish step"
-				},
+				S = ((s = {}).LANDING_PAGE_GET_STARTED = "smart shield click get started button on smart shield landing page", s.GET_STARTED_CONTINUE = "smart shield click smart shield get started card continue button", s.EXPLORE_OTHER_PACKAGES = "smart shield click explore other packages", s.ONBOARDING_CONTINUE = "smart shield click smart shield onboarding card continue button", s.ONBOARDING_HEALTH_CHECK = "smart shield click onboarding create origin health check get started button", s.ONBOARDING_MANAGE_SETTINGS = "smart shield click onboarding manage smart shield settings view all button", s.ONBOARDING_OBSERVATORY = "smart shield click onboarding go to observatory button", s.SETTINGS_TOGGLE = "smart shield settings toggle", s.SMART_TIERED_CACHE_TOGGLE = "smart shield smart tiered cache toggle", s.REGIONAL_TIERED_CACHE_TOGGLE = "smart shield regional tiered cache toggle", s.CACHE_RESERVE_TOGGLE = "smart shield cache reserve toggle", s.ARGO_SMART_ROUTING_TOGGLE = "smart shield argo smart routing toggle", s.SMART_TIERED_CACHE_VIEW_DETAILS = "smart shield smart tiered cache view details", s.CACHE_RESERVE_VIEW_DETAILS = "smart shield cache reserve view details", s.CACHE_RESERVE_DELETE_DATA = "smart shield cache reserve delete data", s.UPGRADE_BUTTON_CLICK = "smart shield upgrade button click", s.UPGRADE_MODAL_OPEN = "smart shield upgrade modal open", s.UPGRADE_MODAL_CLOSE = "smart shield upgrade modal close", s.UPGRADE_MODAL_CONTINUE = "smart shield upgrade modal continue", s.DOCUMENTATION_CLICK = "smart shield documentation click", s.HEALTH_CHECKS_MANAGE = "smart shield health checks manage", s.ARGO_DISABLE_CANCEL = "smart shield argo disable cancel", s.SMART_TIERED_CACHE_DISABLE_CONFIRM = "smart shield smart tiered cache disable confirm", s.SMART_TIERED_CACHE_DISABLE_CANCEL = "smart shield smart tiered cache disable cancel", s.TIERED_CACHE_ANALYTICS_LINK = "smart shield tiered cache analytics link", s.CACHE_RESERVE_ANALYTICS_LINK = "smart shield cache reserve analytics link", s.HEALTH_CHECKS_LINK = "smart shield health checks link", s),
+				x = ((c = {}).ONBOARDING_FLOW = "smart shield onboarding flow", c.SETTINGS_PAGE = "smart shield settings page", c.TIERED_CACHE = "caching tiered cache page", c.CACHE_RESERVE = "caching cache reserve page", c.ARGO_SMART_ROUTING = "caching argo smart routing page", c),
+				C = ((u = {}).LANDING_PAGE = "smart shield landing page", u.SETTINGS_PAGE = "smart shield settings page", u),
 				T = {
-					[d._i.smartTieredCache]: E.SMART_TIERED_CACHE_TOGGLE,
-					[d._i.regionalTieredCache]: E.REGIONAL_TIERED_CACHE_TOGGLE,
-					[d._i.cacheReserve]: E.CACHE_RESERVE_TOGGLE,
-					[d._i.smartRouting]: E.ARGO_SMART_ROUTING_TOGGLE
-				}
+					[h.ENABLE_SMART_SHIELD]: "enable smart shield step",
+					[h.ADDITIONAL_CACHING_PREFERENCES]: "additional caching preferences step",
+					[h.TRAFFIC_ROUTING]: "traffic routing step",
+					[h.REVIEW_AND_FINISH]: "review and finish step"
+				},
+				O = {
+					[p._i.smartTieredCache]: S.SMART_TIERED_CACHE_TOGGLE,
+					[p._i.regionalTieredCache]: S.REGIONAL_TIERED_CACHE_TOGGLE,
+					[p._i.cacheReserve]: S.CACHE_RESERVE_TOGGLE,
+					[p._i.smartRouting]: S.ARGO_SMART_ROUTING_TOGGLE
+				},
+				k = ((d = {}).AUTO_OPEN = "openUpgradeModal", d.PACKAGE = "package", d)
 		},
 		"../react/pages/speed/smart-shield/utils/types.ts": function(e, t, n) {
 			"use strict";
@@ -60973,7 +60992,7 @@ SOFTWARE.`,
 					return l
 				},
 				VB: function() {
-					return k
+					return I
 				},
 				Vr: function() {
 					return x
@@ -60991,7 +61010,7 @@ SOFTWARE.`,
 					return o
 				},
 				cC: function() {
-					return I
+					return k
 				},
 				e5: function() {
 					return d
@@ -61171,8 +61190,8 @@ SOFTWARE.`,
 				C = "header",
 				T = "none",
 				O = "activePublicLb",
-				I = 0,
-				k = 65535
+				k = 0,
+				I = 65535
 		},
 		"../react/pages/traffic/load-balancing/resources/tracking.ts": function(e, t, n) {
 			"use strict";
@@ -62608,7 +62627,7 @@ SOFTWARE.`,
 					return O
 				},
 				H1: function() {
-					return k
+					return I
 				},
 				My: function() {
 					return w
@@ -62644,7 +62663,7 @@ SOFTWARE.`,
 					return x
 				},
 				lx: function() {
-					return I
+					return k
 				},
 				ri: function() {
 					return d
@@ -63160,7 +63179,7 @@ SOFTWARE.`,
   }
   }
 `,
-				I = e => a()`
+				k = e => a()`
   query getR2Storage(
     $accountTag: string
     $storageFilterStandard: AccountR2StorageAdaptiveGroupsFilter_InputObject
@@ -63250,7 +63269,7 @@ SOFTWARE.`,
     }
   }
 `,
-				k = e => a()`
+				I = e => a()`
   query getSippyOperationsTimeSeriesQuery(
     $accountTag: string
     $upstreamOps: AccountSippyOperationsAdaptiveGroupsFilter_InputObject
@@ -63299,7 +63318,7 @@ SOFTWARE.`,
 					return _
 				},
 				Gx: function() {
-					return I
+					return k
 				},
 				Hg: function() {
 					return f
@@ -63326,7 +63345,7 @@ SOFTWARE.`,
 					return x
 				},
 				YG: function() {
-					return k
+					return I
 				},
 				ei: function() {
 					return L
@@ -63466,7 +63485,7 @@ SOFTWARE.`,
 					6: "datetimeHour",
 					168: "date"
 				}, e),
-				I = (e, t, n) => (0, o.Z)(b, r => e.filter(e => "internalError" !== e.dimensions.status).map(e => {
+				k = (e, t, n) => (0, o.Z)(b, r => e.filter(e => "internalError" !== e.dimensions.status).map(e => {
 					var o;
 					let a;
 					return {
@@ -63476,7 +63495,7 @@ SOFTWARE.`,
 						dimension: e.dimensions[t]
 					}
 				})),
-				k = (e, t) => {
+				I = (e, t) => {
 					let n = e.findIndex(e => e.key === t),
 						r = e[n];
 					return r && (r.points = r.points.reduce((e, t) => {
@@ -63732,8 +63751,8 @@ SOFTWARE.`,
 				globs: ["**/*.py"]
 			}];
 			var O = n("../react/pages/zoneless-workers/utils/scriptContainsModules.ts"),
-				I = n("../react/pages/zoneless-workers/utils/useOriginWorkers.ts"),
-				k = n("../react/pages/zoneless-workers/utils/useServiceBindings.ts"),
+				k = n("../react/pages/zoneless-workers/utils/useOriginWorkers.ts"),
+				I = n("../react/pages/zoneless-workers/utils/useServiceBindings.ts"),
 				A = n("../react/pages/zoneless-workers/utils/useServices.ts"),
 				j = n("../react/pages/zoneless-workers/utils/useSubdomain.ts"),
 				R = n("../react/pages/zoneless-workers/utils/useWorkerPlans.ts");
@@ -63863,7 +63882,7 @@ SOFTWARE.`,
 			}
 
 			function V(e, t, n) {
-				var r, o, i, l, s, c, d, p, m, f, g, b, v, _, h, y, w, E, S, O, I, k, A, j, R, P, L;
+				var r, o, i, l, s, c, d, p, m, f, g, b, v, _, h, y, w, E, S, O, k, I, A, j, R, P, L;
 				let D = new FormData,
 					M = N({}, (null == e || null == (r = e.metadata) || null == (o = r.script) || null == (i = o.annotations) ? void 0 : i["workers/message"]) && {
 						annotations: {
@@ -63884,8 +63903,8 @@ SOFTWARE.`,
 					}, (null == e || null == (_ = e.metadata) || null == (h = _.script) ? void 0 : h.tail_consumers) !== null && {
 						tail_consumers: null == e || null == (y = e.metadata) || null == (w = y.script) ? void 0 : w.tail_consumers
 					}, (null == e || null == (E = e.metadata) || null == (S = E.script) ? void 0 : S.observability) !== void 0 && {
-						observability: null == e || null == (O = e.metadata) || null == (I = O.script) ? void 0 : I.observability
-					}, (null == e || null == (k = e.metadata) || null == (A = k.script) ? void 0 : A.limits) !== null && !t && {
+						observability: null == e || null == (O = e.metadata) || null == (k = O.script) ? void 0 : k.observability
+					}, (null == e || null == (I = e.metadata) || null == (A = I.script) ? void 0 : A.limits) !== null && !t && {
 						limits: null == e || null == (j = e.metadata) || null == (R = j.script) ? void 0 : R.limits
 					}, {
 						keep_assets: !0,
@@ -64191,7 +64210,7 @@ SOFTWARE.`,
 					{
 						bindings: M,
 						mutate: B
-					} = (0, k.lc)(e, t, n),
+					} = (0, I.lc)(e, t, n),
 					[G] = (0, A.rE)(e, t, n),
 					{
 						routePatterns: z
@@ -64253,7 +64272,7 @@ SOFTWARE.`,
 						} = (0, A.Hj)(e, t, n, !1), {
 							result: c,
 							isLoading: u
-						} = (0, I.e2)(e, t, n, "", 0), d = [...null != (a = null == l ? void 0 : l.map(e => e.pattern)) ? a : [], ...null != (i = null == c ? void 0 : c.map(e => `${e.hostname}/*`)) ? i : []], p = "";
+						} = (0, k.e2)(e, t, n, "", 0), d = [...null != (a = null == l ? void 0 : l.map(e => e.pattern)) ? a : [], ...null != (i = null == c ? void 0 : c.map(e => `${e.hostname}/*`)) ? i : []], p = "";
 						try {
 							p = new URL(r).hostname
 						} catch {}
@@ -65581,7 +65600,7 @@ SOFTWARE.`,
 					return es
 				},
 				L8: function() {
-					return I
+					return k
 				},
 				Pv: function() {
 					return J
@@ -65599,7 +65618,7 @@ SOFTWARE.`,
 					return R
 				},
 				UN: function() {
-					return k
+					return I
 				},
 				Ut: function() {
 					return ei
@@ -65875,7 +65894,7 @@ SOFTWARE.`,
 					body: t
 				})).body.result
 			}
-			async function I(e, t, n) {
+			async function k(e, t, n) {
 				return (await s.put(d.Hv.kvNamespace.toUrl({
 					accountId: e,
 					namespaceId: t
@@ -65883,7 +65902,7 @@ SOFTWARE.`,
 					body: n
 				})).body.result
 			}
-			async function k(e, t) {
+			async function I(e, t) {
 				return (await s.del(d.Hv.kvNamespace.toUrl({
 					accountId: e,
 					namespaceId: t
@@ -66717,7 +66736,7 @@ SOFTWARE.`,
 					return v
 				},
 				RD: function() {
-					return I
+					return k
 				},
 				Sv: function() {
 					return p
@@ -66741,7 +66760,7 @@ SOFTWARE.`,
 					return E
 				},
 				gS: function() {
-					return k
+					return I
 				},
 				gw: function() {
 					return g
@@ -66901,7 +66920,7 @@ SOFTWARE.`,
 					category: l.b.ONBOARDING,
 					subcategory: l.b.BILLING
 				} : {})),
-				I = (e, t = !1, n = !1) => f(p.selectZonePlan, s({
+				k = (e, t = !1, n = !1) => f(p.selectZonePlan, s({
 					category: c,
 					plan: e.legacy_id,
 					label: e.legacy_id,
@@ -66911,7 +66930,7 @@ SOFTWARE.`,
 					subcategory: l.b.BILLING
 				} : {}));
 
-			function k(e, t, n = !1, r) {
+			function I(e, t, n = !1, r) {
 				try {
 					return f(p.updatePlanConfirmation, M(e, t, n, r))
 				} catch (e) {
@@ -67217,7 +67236,7 @@ SOFTWARE.`,
 					return S
 				},
 				el: function() {
-					return k
+					return I
 				},
 				hW: function() {
 					return A
@@ -67226,7 +67245,7 @@ SOFTWARE.`,
 					return y
 				},
 				qR: function() {
-					return I
+					return k
 				},
 				td: function() {
 					return _
@@ -67284,14 +67303,14 @@ SOFTWARE.`,
 					})
 				}
 				return e
-			}({}, p().parse(e), t)), C = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/password-reset", "/forgot-email", "/login-help", "/profile", "/zones", "/organizations"], T = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, O = /^\/(\w{32,})(\/[^.]*)?/, I = e => !C.includes(e) && O.test(e), k = e => !C.includes(e) && T.test(e), A = e => {
-				if (k(e)) return e.split("/").filter(e => e.length > 0)[1]
+			}({}, p().parse(e), t)), C = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/password-reset", "/forgot-email", "/login-help", "/profile", "/zones", "/organizations"], T = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, O = /^\/(\w{32,})(\/[^.]*)?/, k = e => !C.includes(e) && O.test(e), I = e => !C.includes(e) && T.test(e), A = e => {
+				if (I(e)) return e.split("/").filter(e => e.length > 0)[1]
 			}, j = e => {
-				if (I(e)) {
+				if (k(e)) {
 					let t = O.exec(e);
 					if (t) return t[1]
 				}
-			}, R = e => I(e) && "register-domain" === e.split("/")[2] ? e.split("/") : null, N = e => {
+			}, R = e => k(e) && "register-domain" === e.split("/")[2] ? e.split("/") : null, N = e => {
 				let t = R(e);
 				if (t) return t[3]
 			}, P = [...Object.values(c.C), ...Object.values(i.KJ), ...Object.values(s._j), ...Object.values(u._j), ...Object.values(l._j), ...Object.values(a._)].sort((e, t) => {
@@ -67316,7 +67335,7 @@ SOFTWARE.`,
 					return `/:accountId/${e}/:domainName/${n.join("/")}`
 				}
 				if ((e => {
-						if (k(e)) {
+						if (I(e)) {
 							let [, , , t, n, r, o, a] = e.split("/");
 							return "traffic" === t && "load-balancing" === n && "pools" === r && "edit" === o && a
 						}
@@ -67525,8 +67544,8 @@ SOFTWARE.`,
 				C = n("../react/app/components/GlobalHeader/AddProductDropdown/index.tsx"),
 				T = n("../react/common/components/api-tokens/sparrowEvents.ts"),
 				O = n("../react/common/components/filter-editor/constants/userJourney.ts"),
-				I = n("../react/common/hooks/rulesets/resources/tracking.tsx"),
-				k = n("../react/common/middleware/sparrow/errors.ts"),
+				k = n("../react/common/hooks/rulesets/resources/tracking.tsx"),
+				I = n("../react/common/middleware/sparrow/errors.ts"),
 				A = n("../react/pages/abuse/constants.ts"),
 				j = n("../react/pages/blocked-content/constants.ts"),
 				R = n("../react/pages/caching/tracking.tsx"),
@@ -67579,8 +67598,8 @@ SOFTWARE.`,
 				eC = n("../react/pages/cloudforce-one/ThreatEvents/constants.tsx"),
 				eT = n("../react/app/components/Switchers/sparrowConstants.ts"),
 				eO = n("../react/pages/cloudforce-one/IncidentServices/resources/tracking.ts");
-			let eI = ((e, t, ...n) => p.eg.union([p.eg.literal(e), p.eg.literal(t), ...n.map(e => p.eg.literal(e))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "account name menu clicked", "account quick action click", "accounts table click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "added api shield schema", "Addon Purchase Success", "Advanced Certificate Manager click", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin domain registration flow", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel create database", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel switch ca totalTLS", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "change default action api shield sv", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "Continue adding domain", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click api shield upsell link", "click api shield enable product button", "click api shield feedback link", "click api shield route", "click API snippet drawer", "click back to all policies link", "click block ai bots", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click bot settings", "click cancel downgrade", "click cancel free trial", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create ai gateway", "click create load balancer", "click create project success resource", "click create project success next step", "Click Create Rule", "click create policy form link", "click create token from sidebar", "click create table button", "click database detail tab", "click deflect community TSF (3.0)", "click delete database button", "click delete table button", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click help drawer", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click Hide Support AI Page", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "show load balancing pre-activation video", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on apply rule ai assistant", "click on close rule ai assistant", "click on edit snippet", "click on content_scanning", "click on exposed_credentials", "click on firewall_ai", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on rule ai assistant", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click restore database button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click table insert data button", "click ticket submission form search result", "click ticket submission form suggestion", "click to create api shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click intent submenu back link", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", ...Object.values(e_.f), "click update table data row button", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click worker edit code", "click upload worker assets", "click deploy drag and drop worker", "click workers plan icon", "click wrangler cli guide link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "click start quick scan", "click plan upgrade from rules setting", "click on snippets promo page", "click on error pages promo page", "Click", "close chat window", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close add product dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "close profile dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "contentful banner dismissed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to review step", "continue to overview", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script url page shield", "copy snippet", "copy table cell", "Create Bulk Redirect Rule", "create clone", "create application click workers docs", "create application click pages docs", "create application click create with CLI", "create application select workers", "create application select pages", "create default environments", "create database", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create table", "create worker from playground", "create worker select filter", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Click on DNS Firewall feedback link", "Click on DNS Firewall add Cluster", "Hover on DNS Firewall feedback toast", "Click create DNS firewall cluster", "Click edit DNS firewall cluster", "Click on DNS Firewall edit Cluster button", "Dashboard search closed", "Dashboard search opened", "clicked header navigation", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete api shield route", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete database", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete multiple selected table data rows", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete table", "delete table data row", "delete variant", "deploy api shield portal", "deploy api shield route", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable notification", "disable page shield", "disable payload logging", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", ...eO.MQ, ...eO.Hw, "Enable automatic https rewrites click", "Enable Optimization", "enable or disable api shield sv", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "enable cache reserve storage sync", "enable notification", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "live training button clicked", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "execute console tab query", "exit onboarding guide", "expand account select dropdown", "expand directive", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "filter workers and pages", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Follow Trial Offer Link", "Free Long Wait", "get current bookmark id", "global nav shortcut clicked", "global nav shortcut pinned", "global nav shortcut unpinned", "global nav survey clicked", "global nav switch", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "insert table data row", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "manage_robots.txt learn more clicked", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "navigate to share feedback", "new page available refresh cta", "Next onboarding guide section", "next page", "next tooltip step", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "one-tap prompt shown", "one-tap prompt clicked", "open abort import modal", "open advanced waiting room sales link", "open add product dropdown", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open cancel free trial modal", "open configuration switcher sidemodal", "open create bucket page", "open create database page", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open hostname confirmation modal", "Open Trial Offer Modal", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open profile dropdown", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "previous tooltip step", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase domain transfer", "purchase from plan change modal", "purchase images subscription", "Purge cache click", "purge everything from cache", "quick actions basic features modal close", "quick actions basic features modal open", "quick actions basic features activate selections", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove all filters", "Remove insight", "remove zone switcher account filter", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "resend verification email", "restore database", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "route to custom error rules", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search d1 databases", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select d1 database", "select file", "Select hostname success", "select intent capture card", "select language", "select mp4 download checkbox", "select automatic deletion checkbox", "select notification type", "select onboarding bundle", "select page rules quantity", "select product", "select r2 plan", "select source", "select storage plan", "select table", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select workers template", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "selected schema api shield portal", "select payload logging", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set r2 bucket storage class", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show cache reserve potential savings", "show cache reserve disabled", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "showed api shield flyfishing page", "signed exchanges toggle", "Sign in to Area 1 button click", "Go to Zero Trust Email Security button click", "site configured", "skip onboarding guide section", "something wrong", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "sort workers and pages", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "Stream navigate away from videos page", "Stream Video Upload with link", "Stream video caption uploaded", "Stream video caption deleted", "Stream video caption downloaded", "Stream video caption generating", "Stream video caption regenerating", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit new support ai feedback", "submit order", "submit signup form", "sign up option clicked", "login option clicked", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle counting expression", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "transformations disabled for zone", "transformations enabled for zone", "Trial Offer Displayed", "Trial Started", "Trial Cancelled", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "Under attack mode enabled", "undo restore database", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "update table data row", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "use content signals learn more clicked", "use multiselect api shield sv", "use overflow api shield sv", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web vitals", "web analytics upgrade plan click", "web analytics option changed to enabled", "web analytics option changed to enabled with lite", "web analytics option changed to manual", "web analytics option changed to disabled", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "zones table click", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click application name", "click change compute setting", "click change subdomain", "click discover card call to action", "click discover card view products", "click welcome card call to action", "click welcome card view products", "skip to dash", "click create application", "click connect to git", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click setup AE", "click stripe beta select plan support link", "click stripe beta change plan support link", "click support ai issue solved feedback", "click support ai raise ticket", "click rule link", "click button to speed recommendation page", "click element", "click trace rule details", "click upload assets", "click worker detail tab", "click workers resource", "click workers manage account members", "click workers manage notifications and alerts", "view stripe beta opt out", "error notification shown", "fetch personalized content", "video show", "video play", "video pause", "video end", "video q1", "video q2", "video q3", "zone switcher filter by starred zones", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "disable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "enable rum lite from speed", "enable rum from zone", "enable rum lite from zone", "enable rum from observatory", "enable rum lite from observatory", "enable rum from account", "enable rum lite from account", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click registrar link", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "expand documentation side drawer", "collapse documentation side drawer", "dismiss message", "dismiss all messages", "click message inbox popover", "click message footer action", "toggle templates sidepanel", "redirect to account home", x.gX.SPARROW_PROJECTS_TABLE_CLICK, x.gX.SPARROW_EMPTY_STATE_CTA_CLICK, x.gX.SPARROW_PRODUCT_CARD_CLICK, x.gX.SPARROW_VIEW_ALL_PROJECTS_CLICK, x.gX.SPARROW_ZERO_TRUST_LINK_CARD_CLICK, x.gX.SPARROW_ZERO_TRUST_ONBOARDING_CARD_CLICK, x.gX.SPARROW_ZERO_TRUST_ANALYTICS_LINK_CLICK, x.gX.SPARROW_ZERO_TRUST_PRODUCT_CARD_CLICK, x.gX.SPARROW_ZERO_TRUST_PLAN_PILL_CLICK, x.gX.SPARROW_ZERO_TRUST_PLAN_FALLBACK_CLICK, ...Object.values(eE.A3), "clicked sidebar Discord link", "clicked sidebar Community Forum link", eb.QV.clickedDownloadAnalytics, eb.QV.clickedPrintAnalytics, eb.QV.toggledSmartPlacement, "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", eb.QV.addWCITriggerToExistingWorker, eb.QV.updateWCITrigger, eb.QV.deleteWCITrigger, eb.QV.addWCITriggerToNewWorker, eb.QV.createWCIBuildForNewWorker, eb.QV.completedWCIBuildForNewWorker, eb.QV.changedDefaultConfigurations, eb.QV.clickElement, Z.QV.toggledPagesSmartPlacement, Z.QV.downloadDemoProject, eb.QV.clickCreateWorkerFromRepoNextStep, eb.QV.clickCreateWorkerFromRepoPreviousStep, eb.QV.clickCreateNewSCMConnection, eb.QV.redirectFromSCMOAuth, eb.QV.clickSubmitError, eb.QV.selectTemplate, eb.QV.clickedListTemplates, eb.QV.clickedImportRepository, eb.QV.clickedClonePublicRepositoryFromUrl, eb.QV.templateStubWorkerCreated, eb.QV.templateStubWorkerCreationFailed, eb.QV.templateRepositoryCreated, eb.QV.templateRepositoryCreationFailed, eb.QV.copyTemplateC3Command, eb.QV.templateDeployClick, eb.QV.reauthenticateGithubModalShown, eb.QV.updateGithubPermissionsClicked, eb.QV.D2W_importRepository, eb.QV.D2W_stubWorkerCreated, eb.QV.D2W_stubWorkerCreationFailed, eb.QV.D2W_repositoryCreated, eb.QV.D2W_repositoryCreationFailed, eb.QV.D2W_resourcesProvisioned, eb.QV.D2W_resourceProvisioningFailed, eb.QV.D2W_githubAPIRateLimitReached, eb.QV.createResource, eb.QV.deleteResource, eb.QV.updateResource, "clicked R2 feedback link", "clicked R2 CLI guide", "clicked R2 footer link", "clicked Constellation feedback link", ee.N3.INITIAL_FETCH_SCORES, ee.N3.FETCH_CONFIGURATION, ee.N3.INITIAL_FETCH_TIME_SERIES, ee.N3.INITIAL_FETCH_ATTRIBUTES, ee.N3.UPDATE_SETTINGS, ee.N3.DELETE_RULE, ee.N3.UPDATE_RULE, ee.N3.FETCH_RULES, ee.N3.CONFIGURE_BOT_MANAGEMENT, ee.N3.WAF_RULES_REDIRECT, ey.PJ, ey.tP, ey.zf, eC.GA.ANALYZE_WITH_CLOUDY_BUTTON_CLICKED, U.F.TOGGLE_TCP_PROTECTION, U.F.GET_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIX, U.F.UPDATE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIXES, U.F.GET_TCP_PROTECTION_ALLOWLIST, U.F.CREATE_TCP_PROTECTION_ALLOWLIST, U.F.UPDATE_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_TCP_PROTECTION_ALLOWLIST, U.F.GET_SYN_PROTECTION_RULES, U.F.GET_SYN_PROTECTION_RULE, U.F.CREATE_SYN_PROTECTION_RULE, U.F.UPDATE_SYN_PROTECTION_RULE, U.F.DELETE_SYN_PROTECTION_RULE, U.F.GET_TCP_FLOW_PROTECTION_RULES, U.F.GET_TCP_FLOW_PROTECTION_RULE, U.F.CREATE_TCP_FLOW_PROTECTION_RULE, U.F.UPDATE_TCP_FLOW_PROTECTION_RULE, U.F.DELETE_TCP_FLOW_PROTECTION_RULE, U.F.GET_SYN_PROTECTION_FILTERS, U.F.GET_SYN_PROTECTION_FILTER, U.F.CREATE_SYN_PROTECTION_FILTER, U.F.UPDATE_SYN_PROTECTION_FILTER, U.F.DELETE_SYN_PROTECTION_FILTER, U.F.GET_TCP_FLOW_PROTECTION_FILTERS, U.F.GET_TCP_FLOW_PROTECTION_FILTER, U.F.CREATE_TCP_FLOW_PROTECTION_FILTER, U.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, U.F.DELETE_TCP_FLOW_PROTECTION_FILTER, U.F.GET_DNS_PROTECTION_RULES, U.F.GET_DNS_PROTECTION_RULE, U.F.CREATE_DNS_PROTECTION_RULE, U.F.UPDATE_DNS_PROTECTION_RULE, U.F.DELETE_DNS_PROTECTION_RULE, en.FV.MANAGE_PAGE_SHIELD_POLICY, en.FV.CONFIGURE_PAGE_SHIELD, en.FV.VIEW_DETECTED_CONNECTIONS, en.FV.VIEW_DETECTED_SCRIPTS, en.FV.VIEW_PAGE_SHIELD_POLICIES, en.FV.VIEW_PAGE_SHIELD_SETTINGS, en.FV.OPEN_MUTABLE_VERSION_TOOLTIP, en.FV.SHOW_MUTABLE_VERSION_TOOLTIP, M.y.CREATE_LIST, M.y.DELETE_LIST, M.y.ADD_LIST_ITEM, M.y.DELETE_LIST_ITEM, z.KO.PURCHASE_WORKERS_PAID, z.KO.LIST_CONFIGS, z.KO.SEARCH_CONFIGS, z.KO.CREATE_HYPERDRIVE_CONFIG, z.KO.VIEW_CONFIG_DETAILS, z.KO.UPDATE_CACHING_SETTINGS, z.KO.UPDATE_ORIGIN_CONN_LIM_SETTINGS, z.KO.DELETE_HYPERDRIVE_CONFIG, z.KO.CLICK_HYPERDRIVE_DOCUMENTATION, z.KO.CLICK_GET_STARTED_GUIDE, z.KO.CLICK_CONNECTIVITY_GUIDES, z.KO.CLICK_QUICK_LINK, z.KO.CLICK_DISCORD, z.KO.CLICK_COMMUNITY, z.KO.CLICK_PLANETSCALE, z.KO.PLANETSCALE_COMPLETED, ec.N.CNAME, ec.N.IP_ADDRESS, ec.N.LB, ec.N.UPDATE_CNAME, ec.N.UPDATE_IP_ADDRESS, ec.N.UPDATE_LB, ec.N.DISABLE, R.N.TIERED_CACHE, R.N.CACHE_PURGE, R.N.CACHE_ANALYTICS, ...(0, ef.P)(), ...(0, I.x4)(), ...(0, ei.m8)(), ...(0, G.SH)(), ...(0, eg.Ky)(), ...(0, T.Cf)(), em.N.CREATE, em.N.EVENTS, em.N.ANALYTICS, em.N.UPDATE, em.N.GENERATE_PREVIEW, Q.RY.INITIATE_URL_SCAN, Q.RY.LOAD_SCAN_INFO, Q.RY.GEOLOCATION_CHANGED, Q.Ev.LOAD_THREAT_EVENTS, Q.Ev.THREAT_EVENT_MORE_DETAILS_CLICK, Q.Ev.THREAT_EVENTS_FILTERS, Q.v9.EXPAND_INSIGHT_ROW, Q.v9.ONE_CLICK_RESOLVE_BUTTON, Q.v9.FOLLOW_RESOLVE_URL, Q.v9.MANAGE_INSIGHT, Q.v9.CLICK_SCAN_NOW, Q.v9.CLICK_EXPORT_INSIGHTS, Q.v9.BULK_ARCHIVE, Q.v9.CLICK_DETAILS_BUTTON, X.Fj[X.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, X.Fj[X.kq.ENDPOINT_MANAGEMENT].detailedMetrics, X.Fj[X.kq.ENDPOINT_MANAGEMENT].createEndpoint, X.Fj[X.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, X.Fj[X.kq.ENDPOINT_MANAGEMENT].deployRouting, X.Fj[X.kq.ENDPOINT_MANAGEMENT].deleteRouting, X.Fj[X.kq.API_DISCOVERY].viewDiscoveredEndpoints, X.Fj[X.kq.API_DISCOVERY].saveDiscoveredEndpoint, X.Fj[X.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, X.Fj[X.kq.SCHEMA_VALIDATION].viewSchemasList, X.Fj[X.kq.SCHEMA_VALIDATION].uploadSchema, X.Fj[X.kq.SCHEMA_VALIDATION].viewSchemaAdoption, X.Fj[X.kq.SCHEMA_VALIDATION].downloadSchema, X.Fj[X.kq.SCHEMA_VALIDATION].deleteSchema, X.Fj[X.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, X.Fj[X.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, X.Fj[X.kq.SEQUENCE_ANALYTICS].viewSequencesPage, X.Fj[X.kq.JWT_VALIDATION].viewJWTRules, X.Fj[X.kq.JWT_VALIDATION].addJWTRule, X.Fj[X.kq.JWT_VALIDATION].editJWTRule, X.Fj[X.kq.JWT_VALIDATION].deleteJWTRule, X.Fj[X.kq.JWT_VALIDATION].reprioritizeJWTRule, X.Fj[X.kq.JWT_VALIDATION].viewJWTConfigs, X.Fj[X.kq.JWT_VALIDATION].addJWTConfig, X.Fj[X.kq.JWT_VALIDATION].editJWTConfig, X.Fj[X.kq.JWT_VALIDATION].deleteJWTConfig, X.Fj[X.kq.SETTINGS].redirectToFirewallRulesTemplate, X.Fj[X.kq.SETTINGS].redirectToPages, X.Fj[X.kq.SETTINGS].listSessionIdentifiers, X.Fj[X.kq.SETTINGS].listRequestsContainingSessionIdentifiers, X.Fj[X.kq.SETTINGS].addOrRemoveSessionIdentifiers, X.Fj[X.kq.SETTINGS].redirectToCustomRules, X.Fj[X.kq.SETTINGS].listAllFallthroughSchemas, X.Fj[X.kq.SEQUENCE_RULES].listSequenceRules, X.Fj[X.kq.SEQUENCE_RULES].deleteSequenceRule, X.Fj[X.kq.SEQUENCE_RULES].reorderSequenceRule, X.Fj[X.kq.SEQUENCE_RULES].createSequenceRule, X.Fj[X.kq.SEQUENCE_RULES].editSequenceRule, L.Q.TOGGLE_V2, L.Q.FILTER, L.Q.FILTER_COUNTS, L.Q.FEEDBACK, L.Q.API_LATENCY, L.Q.CONTAINER_V2_RENDERED, L.Q.CONTAINER_RENDERED, ep.Z.ANALYTICS, ep.Z.CREATE_AND_DEPLOY, ep.Z.CREATE_MONITOR_LINK, ep.Z.CREATE_MONITOR, ep.Z.CREATE_POOL_LINK, ep.Z.CREATE_POOL, ep.Z.EDIT_MONITOR, ep.Z.EDIT_POOL, ep.Z.LOAD_BALANCING_TABLE, ep.Z.POOL_TABLE, ep.Z.EDIT_MONITOR_LINK, ep.Z.EDIT_POOL_LINK, ...ed.eT, P.y.SECONDARY_DNS_NOTIFICATION_CREATE, P.y.SECONDARY_DNS_NOTIFICATION_UPDATE, P.y.SECONDARY_DNS_NOTIFICATION_DELETE, N.U.ZONE_TRANSFER_SUCCESS, N.U.DNS_RECORD_CREATE, N.U.DNS_RECORD_UPDATE, N.U.DNS_RECORD_DELETE, D.Y.PEER_DNS_CREATE, D.Y.PEER_DNS_UPDATE, D.Y.PEER_DNS_DELETE, D.Y.ZONE_TRANSFER_ENABLE, D.Y.ZONE_TRANSFER_DISABLE, eu.V.ARGO_ENABLEMENT, eu.V.ARGO_GEO_ANALYTICS_FETCH, eu.V.ARGO_GLOBAL_ANALYTICS_FETCH, H.X.VIEW_BUCKETS_LIST, H.X.CREATE_BUCKET, H.X.VALIDATE_BUCKET, H.X.DELETE_BUCKET, H.X.VIEW_CAPTURES_LIST, H.X.CREATE_SIMPLE_CAPTURE, H.X.CREATE_FULL_CAPTURE, H.X.VIEW_FULL_CAPTURE, H.X.DOWNLOAD_SIMPLE_CAPTURE, $.bK.VIEW_RULES, $.bK.CREATE_RULE, $.bK.UPDATE_RULE, $.bK.DELETE_RULE, $.bK.VIEW_CONFIGURATION, $.bK.CREATE_CONFIGURATION, $.bK.UPDATE_CONFIGURATION, $.bK.DELETE_CONFIGURATION, F.r8.VIEW_ALERTS, F.r8.VIEW_ALERTS_HISTORY, F.r8.MAGIC_OVERVIEW_ANALYTICS, F.VZ.CREATE_SITE, F.VZ.CREATE_TUNNEL, F.VZ.CREATE_STATIC_ROUTE, J.DC.CLICK_ADAPTIVE_SAMPLING, J.DC.CLICK_TO_LOG_EXPLORER_BANNER, J.DC.CLICK_TO_LOG_EXPLORER_DESCRIPTION, J.DC.CLICK_SWITCH_TO_RAW_LOGS, J.DC.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback", eT.N.SPARROW_ZONE_OVERFLOW_MENU_CLICK_NAME, eT.N.SPARROW_ZONE_OVERFLOW_ACTION_CLICK_NAME, eT.N.SPARROW_SWITCHER_MENU_CLICK_NAME, eT.N.SPARROW_SWITCHER_MENU_OPEN, eT.N.SPARROW_GO_TO_ALL_ACCOUNTS_CLICK_NAME, eT.N.SPARROW_GO_TO_ALL_DOMAINS_CLICK_NAME, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_SEARCH_SUBMIT, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_PURCHASE, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_ERROR, B.REGISTRAR_TRACKING.TRANSFER_DOMAIN_CHANGE_STEP, B.REGISTRAR_TRACKING.RENEW_DOMAIN_COMPLETED, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_INIT, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_FAILURE, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_COMPLETED, B.REGISTRAR_TRACKING.DOMAIN_DELETE_INIT, B.REGISTRAR_TRACKING.DOMAIN_DELETE_COMPLETED, B.REGISTRAR_TRACKING.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS, B.REGISTRAR_TRACKING.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CONFIRM_DELETE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL, B.REGISTRAR_TRACKING.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL, B.REGISTRAR_TRACKING.DOMAIN_DELETE_WARNING_MODAL_CONTINUE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CLOSE_WARNING_MODAL, B.REGISTRAR_TRACKING.DOMAIN_MOVE_START_FLOW, B.REGISTRAR_TRACKING.DOMAIN_MOVE_OPEN_DOCS, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CLOSE_FLOW, B.REGISTRAR_TRACKING.DOMAIN_MOVE_PROGRESS_FLOW, B.REGISTRAR_TRACKING.DOMAIN_MOVE_SUBMIT, B.REGISTRAR_TRACKING.DOMAIN_MOVE_INITIATE_SUCCESS, B.REGISTRAR_TRACKING.DOMAIN_MOVE_INITIATE_ERROR, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CANCEL, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CANCEL_SUCCESS, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CANCEL_ERROR, B.REGISTRAR_TRACKING.ACTION_CENTER_NAVIGATE, B.REGISTRAR_TRACKING.ACTION_CENTER_DOMAIN_MOVE_DECISION, B.REGISTRAR_TRACKING.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS, B.REGISTRAR_TRACKING.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE, B.REGISTRAR_TRACKING.MANAGE_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE_SUCCESS, B.REGISTRAR_TRACKING.MANAGE_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE_ERROR, B.REGISTRAR_TRACKING.TRANSFER_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE, K.z3.CREATE_SECRET, K.z3.DELETE_SECRET, K.z3.BIND_SECRET, K.z3.DUPLICATE_SECRET, K.z3.EDIT_SECRET, V.KO.CLICK_GET_STARTED_GUIDE, V.KO.CLICK_PIPELINE_DOCUMENTATION, V.KO.CLICK_QUICK_LINK, V.KO.CREATE_PIPELINE, V.KO.DELETE_PIPELINE, V.KO.LIST_PIPELINES, V.KO.VIEW_PIPELINE, C.S.EXISTING_DOMAIN, C.S.NEW_DOMAIN, C.S.WAF_RULESET, C.S.WORKERS, C.S.PAGES, C.S.R2, C.S.ACCOUNT_MEMBERS, q._.TEMPLATE_PRODUCT_SELECTED, q._.TEMPLATE_SELECTED, q._.TEMPLATE_SAVE_DRAFT, q._.TEMPLATE_CANCEL, q._.TEMPLATE_DEPLOY, es.D.CLICK_GO_BACK_SHARE_MODAL, es.D.CLICK_MENU_ITEM_SHARE, es.D.CLICK_ON_CANCEL_SHARE_MODAL, es.D.CLICK_ON_CLOSE_SHARE_MODAL, es.D.CLICK_ON_CONFIGURE_SHARE_BUTTON, es.D.CLICK_ON_DELETE_RULESET, es.D.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL, es.D.CLICK_ON_EDIT_SHARE_PERMISSION, es.D.CLICK_ON_GO_TO_SOURCE_ACCOUNT, es.D.CLICK_ON_SHARE_BUTTON_SHARE_MODAL, es.D.CLICK_ON_SHARE_TABLE_ROW, er.pR.CLICK_GEOGRAPHICAL_TEMPLATE, er.pR.CLICK_IP_TEMPLATE, er.pR.CLICK_USER_AGENT_TEMPLATE, er.pR.CLICK_ZONE_LOCKDOWN_TEMPLATE, ei.vc.CREATED, ei.vc.ENABLED, ei.vc.DISABLED, ei.vc.DELETED, ei.vc.UPDATED, ei.vc.DOWNLOADED, j.Gk.REQUEST_REVIEW, j.Gk.COPY_URL, O.v.FIELD, O.v.OPERATOR, el.Vj.SHOW_LCC_MIGRATION_BANNER, el.Vj.CLICK_LCC_DOCUMENTATION, el.Vj.CLICK_LCC_UPGRADE_GUIDE, el.Vj.SHOW_LCC_MIGRATION_WARNING, eo.yf.CLICK_DISMISS_INELIGIBILITY, eo.yf.CLICK_NEXT_STEP, eo.yf.CLICK_OPT_IN, eo.yf.CLICK_OPT_IN_BUTTON, eo.yf.CLICK_OPT_OUT_BUTTON, eo.yf.DISPLAY_MODAL, eo.yf.DISPLAY_OPT_OUT_MODAL, eo.yf.DISPLAY_TOOLTIP_NOT_AVAILABLE, eo.yf.CLICK_EXTERNAL_LINK_TOOLTIP_NOT_AVAILABLE, eo.yf.DEFAULT_ALL_INIT, eo.yf.DEFAULT_ALL_OPT_OUT, eo.yf.DEFAULT_ALL_REENABLES, eo.yf.NEW_DASHBOARD_EXPERIENCE, eo.yf.NEW_DASHBOARD_VIDEO, eo.yf.DEFAULT_ALL_MODAL, eo.yf.DEFAULT_ALL_CONFIRM, eo.yf.DISPLAY_STEPS_BY_MODAL, eo.yf.REDIRECT_SETTINGS_BANNER, et.AZ.LOAD_INSIGHTS, et.AZ.OPEN_SIDE_MODAL_INSIGHT, et.AZ.CLOSE_SIDE_MODAL_INSIGHT, et.AZ.CLICK_ACTION_INSIGHT, et.AZ.LOAD_INSIGHTS_LIST, eS.j$.OPEN_SIDE_MODAL, eS.j$.REDIRECT_TO_OPERATION_DETAIL, eS.j$.REDIRECT_TO_OPERATIONS_LIST, ev.YC.CHANGE_SETTING, ev.YC.LOAD_SETTINGS, ev.YC.OPEN_SIDE_MODAL_SETTING, ev.YC.CLOSE_SIDE_MODAL_SETTING, ev.YC.FILTER_SETTING, Y.Bt.LANDING_PAGE_GET_STARTED, Y.Bt.GET_STARTED_CONTINUE, Y.Bt.EXPLORE_OTHER_PACKAGES, Y.Bt.ONBOARDING_CONTINUE, Y.Bt.ONBOARDING_HEALTH_CHECK, Y.Bt.ONBOARDING_MANAGE_SETTINGS, Y.Bt.ONBOARDING_OBSERVATORY, Y.Bt.SETTINGS_TOGGLE, Y.Bt.SMART_TIERED_CACHE_VIEW_DETAILS, Y.Bt.CACHE_RESERVE_VIEW_DETAILS, Y.Bt.CACHE_RESERVE_DELETE_DATA, Y.Bt.UPGRADE_BUTTON_CLICK, Y.Bt.UPGRADE_MODAL_OPEN, Y.Bt.UPGRADE_MODAL_CLOSE, Y.Bt.UPGRADE_MODAL_CONTINUE, Y.Bt.DOCUMENTATION_CLICK, Y.Bt.HEALTH_CHECKS_MANAGE, Y.Bt.ARGO_DISABLE_CANCEL, Y.Bt.SMART_TIERED_CACHE_DISABLE_CONFIRM, Y.Bt.SMART_TIERED_CACHE_DISABLE_CANCEL, Y.Bt.TIERED_CACHE_ANALYTICS_LINK, Y.Bt.CACHE_RESERVE_ANALYTICS_LINK, Y.Bt.HEALTH_CHECKS_LINK, Y.Bt.SMART_TIERED_CACHE_TOGGLE, Y.Bt.REGIONAL_TIERED_CACHE_TOGGLE, Y.Bt.CACHE_RESERVE_TOGGLE, Y.Bt.ARGO_SMART_ROUTING_TOGGLE, J.DC.ADD_SUSPICIOUS_ACTIVITY_FILTER, J.DC.REMOVE_SUSPICIOUS_ACTIVITY_FILTER, J.DC.OPEN_SIDE_DRAWER, J.DC.CLOSE_SIDE_DRAWER, ea.Xc, ea.Aq, W.QV[W.Xn].clickLoginFromMobileApp2fa, W.QV[W.Xn].clickTryOther2FAMethodOrBackupCode, W.QV[W.Xn].clickTryRecovery, W.QV[W.xq].clickRegenerateBackupCodes, A.Vq.APPEAL_MITIGATION_SUBMIT, A.Vq.APPEAL_MITIGATION_SUCCESS, A.Vq.APPEAL_MITIGATION_FAILURE, A.Vq.CLICK_ABUSE_REPORT_ID, A.Vq.CLICK_ABUSE_REPORT_MITIGATIONS_LINK, ex.X.SUBMIT_ABUSE_REPORT_FORM, ex.X.SUBMIT_ABUSE_REPORT_FORM_SUCCESS, ex.X.SUBMIT_ABUSE_REPORT_FORM_FAILURE, ex.X.OPEN_ABUSE_REPORT_FORM_SIDEMODAL, ex.X.CLOSE_ABUSE_REPORT_FORM_SIDEMODAL, ex.X.CHANGE_ABUSE_REPORT_FORM_TYPE, eh.N3.CLICK_GIVE_FEEDBACK, eh.N3.CLICK_NAVIGATION_TAB, eh.N3.CLICK_SEARCH_BY_ZONE_NAME, eh.N3.CLICK_SEARCH_BY_VIEW_NAME, eh.N3.CLICK_CREATE_AN_INTERNAL_ZONE, eh.N3.CLICK_CREATE_A_VIEW, eh.N3.CLICK_SAVE_ZONE, eh.N3.CLICK_SAVE_VIEW, eh.N3.CLICK_SEARCH_BY_RECORD_NAME, eh.N3.CLICK_ZONE_NAME, eh.N3.CLICK_ADD_A_RECORD, eh.N3.CLICK_ADD_RECORD_SAVE, eh.N3.CLICK_RECORD_EDIT, eh.N3.CLICK_EDIT_RECORD_SAVE, eh.N3.CLICK_IMPORT_RECORDS, eh.N3.CLICK_MANAGE_LINKED_VIEWS, eh.N3.CLICK_SAVE_MANAGE_LINKED_VIEWS, eh.N3.CLICK_VIEW_RECORD, ew.W1),
-				ek = p.eg.exactStrict(p.eg.object({
+			let ek = ((e, t, ...n) => p.eg.union([p.eg.literal(e), p.eg.literal(t), ...n.map(e => p.eg.literal(e))]))("abort import", "Access Click", "Access click", "Access Promo Banner Click", "account name menu clicked", "account quick action click", "accounts table click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add column", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add jwt credentials", "add jwt configuration location", "add kv key-value", "Add insight", "Add cache rule setting", "add payment method", "Add site click", "add workers route", "added api shield schema", "Addon Purchase Success", "Advanced Certificate Manager click", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "argo enabled", "argo click", "argo smart routing click", "argo tiered caching click", "argo cancel modal submit feedback clicked", "argo cancel modal open state", "argo cancel modal clicked cancel", "Attempt TOTP reconfigure", "begin deployment log stream", "begin domain registration flow", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel create database", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel resizing after bundle buy", "cancel snippet form", "cancel source deletion", "cancel switch ca totalTLS", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change api shield sequence rule config option", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change dataset", "change default action api shield sv", "change DNS file upload error visibility", "change DNS setup method", "Change limit", "change metadata boundary", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "Continue adding domain", "copy script url page shield", "copy trace json", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add settings", "click add sources", "click api shield upsell link", "click api shield enable product button", "click api shield feedback link", "click api shield route", "click API snippet drawer", "click back to all policies link", "click block ai bots", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click bot settings", "click cancel downgrade", "click cancel free trial", "click cache reserve purchase", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create ai gateway", "click create load balancer", "click create project success resource", "click create project success next step", "Click Create Rule", "click create policy form link", "click create token from sidebar", "click create table button", "click database detail tab", "click deflect community TSF (3.0)", "click delete database button", "click delete table button", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click help drawer", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click Hide Support AI Page", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "show load balancing pre-activation video", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on apply rule ai assistant", "click on close rule ai assistant", "click on edit snippet", "click on content_scanning", "click on exposed_credentials", "click on firewall_ai", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on rule ai assistant", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click restore database button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click table insert data button", "click ticket submission form search result", "click ticket submission form suggestion", "click to create api shield portal", "click to create rate limiting rule for endpoint", "click to Trace link", "click Top N investigate", "click intent submenu back link", "click investigate icon", "click trace feedback form", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "Click query logs", "Click use custom sql", "Click use basic editor", ...Object.values(e_.f), "click update table data row button", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "Click view details", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "click worker edit code", "click upload worker assets", "click deploy drag and drop worker", "click workers plan icon", "click wrangler cli guide link", "click full DNS setup docs link", "click partial DNS setup docs link", "click secondary DNS setup docs link", "click settings first deploy cta", "click custom domain first deploy cta", "click web analytics first deploy cta", "click start quick scan", "click plan upgrade from rules setting", "click on snippets promo page", "click on error pages promo page", "Click", "close chat window", "create migration", "create or update queue consumer", "create trace", "create queue", "create sink", "create trace", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close add product dropdown", "close bulk delete image modal", "close configuration switcher sidemodal", "close delete image modal", "close delete variant modal", "close domain switcher sidemodal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "close profile dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm api shield sequence rule config", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "contentful banner dismissed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to review step", "continue to overview", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script url page shield", "copy snippet", "copy table cell", "Create Bulk Redirect Rule", "create clone", "create application click workers docs", "create application click pages docs", "create application click create with CLI", "create application select workers", "create application select pages", "create default environments", "create database", "create environment", "create job", "create kv namespace", "create migration", "Create New Rule", "create new magic firewall rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "create regional hostname", "create rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create table", "create worker from playground", "create worker select filter", "cancel create worker from playground", "create sink", "create source", "create snippet", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Click on DNS Firewall feedback link", "Click on DNS Firewall add Cluster", "Hover on DNS Firewall feedback toast", "Click create DNS firewall cluster", "Click edit DNS firewall cluster", "Click on DNS Firewall edit Cluster button", "Dashboard search closed", "Dashboard search opened", "clicked header navigation", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete api shield route", "delete brand pattern", "Delete click", "Delete confirmation", "delete custom error pages", "delete database", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete multiple selected table data rows", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete snippet", "delete source", "delete table", "delete table data row", "delete variant", "deploy api shield portal", "deploy api shield route", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable notification", "disable page shield", "disable payload logging", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "download tax doc", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", ...eO.MQ, ...eO.Hw, "Enable automatic https rewrites click", "Enable Optimization", "enable or disable api shield sv", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "enable cache reserve storage sync", "enable notification", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "live training button clicked", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "execute console tab query", "exit onboarding guide", "expand account select dropdown", "expand directive", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand trace accordion", "expand zone select dropdown", "export instant logs", "export single image", "export trace results", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "filter trace results", "Filter used", "filter workers and pages", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Follow Trial Offer Link", "Free Long Wait", "get current bookmark id", "global nav shortcut clicked", "global nav shortcut pinned", "global nav shortcut unpinned", "global nav survey clicked", "global nav switch", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "insert table data row", "interact with api shield sequence rule main table", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "manage_robots.txt learn more clicked", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate quick link", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to images", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "Navigate to speed test", "navigate to source detail", "navigate to variant detail", "navigate to version management through configuration sidemodal", "navigate to version management docs through configuration sidemodal", "navigate to WAF Migration Review configuration view", "navigate topbar", "navigate to tax docs", "navigate to share feedback", "new page available refresh cta", "Next onboarding guide section", "next page", "next tooltip step", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "one-tap prompt shown", "one-tap prompt clicked", "open abort import modal", "open advanced waiting room sales link", "open add product dropdown", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open cancel downgrade modal", "open cancel free trial modal", "open configuration switcher sidemodal", "open create bucket page", "open create database page", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open domain switcher sidemodal", "open edit notification page", "open hostname confirmation modal", "Open Trial Offer Modal", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open profile dropdown", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center url categorization feedback", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "previous tooltip step", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase domain transfer", "purchase from plan change modal", "purchase images subscription", "Purge cache click", "purge everything from cache", "quick actions basic features modal close", "quick actions basic features modal open", "quick actions basic features activate selections", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove column", "Remove filter", "Remove all filters", "Remove insight", "remove zone switcher account filter", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "resend verification email", "restore database", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "route to custom error rules", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search d1 databases", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select d1 database", "select file", "Select hostname success", "select intent capture card", "select language", "select mp4 download checkbox", "select automatic deletion checkbox", "select notification type", "select onboarding bundle", "select page rules quantity", "select product", "select r2 plan", "select source", "select storage plan", "select table", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select workers template", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "selected schema api shield portal", "select payload logging", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set pages vectorize bindings", "set r2 bucket storage class", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show cache reserve potential savings", "show cache reserve disabled", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "showed api shield flyfishing page", "signed exchanges toggle", "Sign in to Area 1 button click", "Go to Zero Trust Email Security button click", "site configured", "skip onboarding guide section", "something wrong", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "sort workers and pages", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "start wizard", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Page Play", "Stream Video Upload Failure", "Stream Video Upload Success", "Stream navigate away from videos page", "Stream Video Upload with link", "Stream video caption uploaded", "Stream video caption deleted", "Stream video caption downloaded", "Stream video caption generating", "Stream video caption regenerating", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit new support ai feedback", "submit order", "submit signup form", "sign up option clicked", "login option clicked", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle counting expression", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "trace user jorney", "transfer DNS records", "transformations disabled for zone", "transformations enabled for zone", "Trial Offer Displayed", "Trial Started", "Trial Cancelled", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "Under attack mode enabled", "undo restore database", "update custom error pages", "update job", "update jwt configuration", "update jwt rule", "update magic firewall rule", "update pages project", "update rule", "update site", "update table data row", "upgrade unique transformations config", "upgrade stream subscription", "upgrade resizing to new stream subscription", "Upload custom click", "Upload custom confirmation", "upload custom error pages", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "update snippet", "upload r2 objects", "use content signals learn more clicked", "use multiselect api shield sv", "use overflow api shield sv", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify email", "view accounts", "view checkout complete purchase", "View click", "view custom error pages", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view snippet", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web vitals", "web analytics upgrade plan click", "web analytics option changed to enabled", "web analytics option changed to enabled with lite", "web analytics option changed to manual", "web analytics option changed to disabled", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "zones table click", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit recent", "visit blog announcements", "click application name", "click change compute setting", "click change subdomain", "click discover card call to action", "click discover card view products", "click welcome card call to action", "click welcome card view products", "skip to dash", "click create application", "click connect to git", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click setup AE", "click stripe beta select plan support link", "click stripe beta change plan support link", "click support ai issue solved feedback", "click support ai raise ticket", "click rule link", "click button to speed recommendation page", "click element", "click trace rule details", "click upload assets", "click worker detail tab", "click workers resource", "click workers manage account members", "click workers manage notifications and alerts", "view stripe beta opt out", "error notification shown", "fetch personalized content", "video show", "video play", "video pause", "video end", "video q1", "video q2", "video q3", "zone switcher filter by starred zones", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "disable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "enable rum lite from speed", "enable rum from zone", "enable rum lite from zone", "enable rum from observatory", "enable rum lite from observatory", "enable rum from account", "enable rum lite from account", "select rum map range", "select rum map metric", "has payment plan on file", "click DNS records link", "click disable DNSSEC link", "click migrate DNSSEC link", "click enable DNSSEC link", "click pending domains link", "change appearance", "click star zone", "click star zone filter", "click empty state link", "click view more", "visit system status item", "view system status item menu", "subscribe to system status item", "click registrar link", "click cloudflare logo", "dismiss change notification", "dismiss change notification modal", "set marketing preference ent ss purchase", "view change notification", "view change notification modal", "expand side drawer", "collapse side drawer", "expand documentation side drawer", "collapse documentation side drawer", "dismiss message", "dismiss all messages", "click message inbox popover", "click message footer action", "toggle templates sidepanel", "redirect to account home", x.gX.SPARROW_PROJECTS_TABLE_CLICK, x.gX.SPARROW_EMPTY_STATE_CTA_CLICK, x.gX.SPARROW_PRODUCT_CARD_CLICK, x.gX.SPARROW_VIEW_ALL_PROJECTS_CLICK, x.gX.SPARROW_ZERO_TRUST_LINK_CARD_CLICK, x.gX.SPARROW_ZERO_TRUST_ONBOARDING_CARD_CLICK, x.gX.SPARROW_ZERO_TRUST_ANALYTICS_LINK_CLICK, x.gX.SPARROW_ZERO_TRUST_PRODUCT_CARD_CLICK, x.gX.SPARROW_ZERO_TRUST_PLAN_PILL_CLICK, x.gX.SPARROW_ZERO_TRUST_PLAN_FALLBACK_CLICK, ...Object.values(eE.A3), "clicked sidebar Discord link", "clicked sidebar Community Forum link", eb.QV.clickedDownloadAnalytics, eb.QV.clickedPrintAnalytics, eb.QV.toggledSmartPlacement, "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", eb.QV.addWCITriggerToExistingWorker, eb.QV.updateWCITrigger, eb.QV.deleteWCITrigger, eb.QV.addWCITriggerToNewWorker, eb.QV.createWCIBuildForNewWorker, eb.QV.completedWCIBuildForNewWorker, eb.QV.changedDefaultConfigurations, eb.QV.clickElement, Z.QV.toggledPagesSmartPlacement, Z.QV.downloadDemoProject, eb.QV.clickCreateWorkerFromRepoNextStep, eb.QV.clickCreateWorkerFromRepoPreviousStep, eb.QV.clickCreateNewSCMConnection, eb.QV.redirectFromSCMOAuth, eb.QV.clickSubmitError, eb.QV.selectTemplate, eb.QV.clickedListTemplates, eb.QV.clickedImportRepository, eb.QV.clickedClonePublicRepositoryFromUrl, eb.QV.templateStubWorkerCreated, eb.QV.templateStubWorkerCreationFailed, eb.QV.templateRepositoryCreated, eb.QV.templateRepositoryCreationFailed, eb.QV.copyTemplateC3Command, eb.QV.templateDeployClick, eb.QV.reauthenticateGithubModalShown, eb.QV.updateGithubPermissionsClicked, eb.QV.D2W_importRepository, eb.QV.D2W_stubWorkerCreated, eb.QV.D2W_stubWorkerCreationFailed, eb.QV.D2W_repositoryCreated, eb.QV.D2W_repositoryCreationFailed, eb.QV.D2W_resourcesProvisioned, eb.QV.D2W_resourceProvisioningFailed, eb.QV.D2W_githubAPIRateLimitReached, eb.QV.createResource, eb.QV.deleteResource, eb.QV.updateResource, "clicked R2 feedback link", "clicked R2 CLI guide", "clicked R2 footer link", "clicked Constellation feedback link", ee.N3.INITIAL_FETCH_SCORES, ee.N3.FETCH_CONFIGURATION, ee.N3.INITIAL_FETCH_TIME_SERIES, ee.N3.INITIAL_FETCH_ATTRIBUTES, ee.N3.UPDATE_SETTINGS, ee.N3.DELETE_RULE, ee.N3.UPDATE_RULE, ee.N3.FETCH_RULES, ee.N3.CONFIGURE_BOT_MANAGEMENT, ee.N3.WAF_RULES_REDIRECT, ey.PJ, ey.tP, ey.zf, eC.GA.ANALYZE_WITH_CLOUDY_BUTTON_CLICKED, U.F.TOGGLE_TCP_PROTECTION, U.F.GET_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIXES, U.F.CREATE_TCP_PROTECTION_PREFIX, U.F.UPDATE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIX, U.F.DELETE_TCP_PROTECTION_PREFIXES, U.F.GET_TCP_PROTECTION_ALLOWLIST, U.F.CREATE_TCP_PROTECTION_ALLOWLIST, U.F.UPDATE_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_PREFIX_TCP_PROTECTION_ALLOWLIST, U.F.DELETE_TCP_PROTECTION_ALLOWLIST, U.F.GET_SYN_PROTECTION_RULES, U.F.GET_SYN_PROTECTION_RULE, U.F.CREATE_SYN_PROTECTION_RULE, U.F.UPDATE_SYN_PROTECTION_RULE, U.F.DELETE_SYN_PROTECTION_RULE, U.F.GET_TCP_FLOW_PROTECTION_RULES, U.F.GET_TCP_FLOW_PROTECTION_RULE, U.F.CREATE_TCP_FLOW_PROTECTION_RULE, U.F.UPDATE_TCP_FLOW_PROTECTION_RULE, U.F.DELETE_TCP_FLOW_PROTECTION_RULE, U.F.GET_SYN_PROTECTION_FILTERS, U.F.GET_SYN_PROTECTION_FILTER, U.F.CREATE_SYN_PROTECTION_FILTER, U.F.UPDATE_SYN_PROTECTION_FILTER, U.F.DELETE_SYN_PROTECTION_FILTER, U.F.GET_TCP_FLOW_PROTECTION_FILTERS, U.F.GET_TCP_FLOW_PROTECTION_FILTER, U.F.CREATE_TCP_FLOW_PROTECTION_FILTER, U.F.UPDATE_TCP_FLOW_PROTECTION_FILTER, U.F.DELETE_TCP_FLOW_PROTECTION_FILTER, U.F.GET_DNS_PROTECTION_RULES, U.F.GET_DNS_PROTECTION_RULE, U.F.CREATE_DNS_PROTECTION_RULE, U.F.UPDATE_DNS_PROTECTION_RULE, U.F.DELETE_DNS_PROTECTION_RULE, en.FV.MANAGE_PAGE_SHIELD_POLICY, en.FV.CONFIGURE_PAGE_SHIELD, en.FV.VIEW_DETECTED_CONNECTIONS, en.FV.VIEW_DETECTED_SCRIPTS, en.FV.VIEW_PAGE_SHIELD_POLICIES, en.FV.VIEW_PAGE_SHIELD_SETTINGS, en.FV.OPEN_MUTABLE_VERSION_TOOLTIP, en.FV.SHOW_MUTABLE_VERSION_TOOLTIP, M.y.CREATE_LIST, M.y.DELETE_LIST, M.y.ADD_LIST_ITEM, M.y.DELETE_LIST_ITEM, z.KO.PURCHASE_WORKERS_PAID, z.KO.LIST_CONFIGS, z.KO.SEARCH_CONFIGS, z.KO.CREATE_HYPERDRIVE_CONFIG, z.KO.VIEW_CONFIG_DETAILS, z.KO.UPDATE_CACHING_SETTINGS, z.KO.UPDATE_ORIGIN_CONN_LIM_SETTINGS, z.KO.DELETE_HYPERDRIVE_CONFIG, z.KO.CLICK_HYPERDRIVE_DOCUMENTATION, z.KO.CLICK_GET_STARTED_GUIDE, z.KO.CLICK_CONNECTIVITY_GUIDES, z.KO.CLICK_QUICK_LINK, z.KO.CLICK_DISCORD, z.KO.CLICK_COMMUNITY, z.KO.CLICK_PLANETSCALE, z.KO.PLANETSCALE_COMPLETED, ec.N.CNAME, ec.N.IP_ADDRESS, ec.N.LB, ec.N.UPDATE_CNAME, ec.N.UPDATE_IP_ADDRESS, ec.N.UPDATE_LB, ec.N.DISABLE, R.N.TIERED_CACHE, R.N.CACHE_PURGE, R.N.CACHE_ANALYTICS, ...(0, ef.P)(), ...(0, k.x4)(), ...(0, ei.m8)(), ...(0, G.SH)(), ...(0, eg.Ky)(), ...(0, T.Cf)(), em.N.CREATE, em.N.EVENTS, em.N.ANALYTICS, em.N.UPDATE, em.N.GENERATE_PREVIEW, Q.RY.INITIATE_URL_SCAN, Q.RY.LOAD_SCAN_INFO, Q.RY.GEOLOCATION_CHANGED, Q.Ev.LOAD_THREAT_EVENTS, Q.Ev.THREAT_EVENT_MORE_DETAILS_CLICK, Q.Ev.THREAT_EVENTS_FILTERS, Q.v9.EXPAND_INSIGHT_ROW, Q.v9.ONE_CLICK_RESOLVE_BUTTON, Q.v9.FOLLOW_RESOLVE_URL, Q.v9.MANAGE_INSIGHT, Q.v9.CLICK_SCAN_NOW, Q.v9.CLICK_EXPORT_INSIGHTS, Q.v9.BULK_ARCHIVE, Q.v9.CLICK_DETAILS_BUTTON, X.Fj[X.kq.ENDPOINT_MANAGEMENT].listOfEndpoints, X.Fj[X.kq.ENDPOINT_MANAGEMENT].detailedMetrics, X.Fj[X.kq.ENDPOINT_MANAGEMENT].createEndpoint, X.Fj[X.kq.ENDPOINT_MANAGEMENT].deleteEndpoint, X.Fj[X.kq.ENDPOINT_MANAGEMENT].deployRouting, X.Fj[X.kq.ENDPOINT_MANAGEMENT].deleteRouting, X.Fj[X.kq.API_DISCOVERY].viewDiscoveredEndpoints, X.Fj[X.kq.API_DISCOVERY].saveDiscoveredEndpoint, X.Fj[X.kq.API_DISCOVERY].ignoreOrUnignoreDiscoveredEndpoint, X.Fj[X.kq.SCHEMA_VALIDATION].viewSchemasList, X.Fj[X.kq.SCHEMA_VALIDATION].uploadSchema, X.Fj[X.kq.SCHEMA_VALIDATION].viewSchemaAdoption, X.Fj[X.kq.SCHEMA_VALIDATION].downloadSchema, X.Fj[X.kq.SCHEMA_VALIDATION].deleteSchema, X.Fj[X.kq.SCHEMA_VALIDATION].addLearnedSchemaByHostname, X.Fj[X.kq.SCHEMA_VALIDATION].addLearnedSchemaByEndpoint, X.Fj[X.kq.SEQUENCE_ANALYTICS].viewSequencesPage, X.Fj[X.kq.JWT_VALIDATION].viewJWTRules, X.Fj[X.kq.JWT_VALIDATION].addJWTRule, X.Fj[X.kq.JWT_VALIDATION].editJWTRule, X.Fj[X.kq.JWT_VALIDATION].deleteJWTRule, X.Fj[X.kq.JWT_VALIDATION].reprioritizeJWTRule, X.Fj[X.kq.JWT_VALIDATION].viewJWTConfigs, X.Fj[X.kq.JWT_VALIDATION].addJWTConfig, X.Fj[X.kq.JWT_VALIDATION].editJWTConfig, X.Fj[X.kq.JWT_VALIDATION].deleteJWTConfig, X.Fj[X.kq.SETTINGS].redirectToFirewallRulesTemplate, X.Fj[X.kq.SETTINGS].redirectToPages, X.Fj[X.kq.SETTINGS].listSessionIdentifiers, X.Fj[X.kq.SETTINGS].listRequestsContainingSessionIdentifiers, X.Fj[X.kq.SETTINGS].addOrRemoveSessionIdentifiers, X.Fj[X.kq.SETTINGS].redirectToCustomRules, X.Fj[X.kq.SETTINGS].listAllFallthroughSchemas, X.Fj[X.kq.SEQUENCE_RULES].listSequenceRules, X.Fj[X.kq.SEQUENCE_RULES].deleteSequenceRule, X.Fj[X.kq.SEQUENCE_RULES].reorderSequenceRule, X.Fj[X.kq.SEQUENCE_RULES].createSequenceRule, X.Fj[X.kq.SEQUENCE_RULES].editSequenceRule, L.Q.TOGGLE_V2, L.Q.FILTER, L.Q.FILTER_COUNTS, L.Q.FEEDBACK, L.Q.API_LATENCY, L.Q.CONTAINER_V2_RENDERED, L.Q.CONTAINER_RENDERED, ep.Z.ANALYTICS, ep.Z.CREATE_AND_DEPLOY, ep.Z.CREATE_MONITOR_LINK, ep.Z.CREATE_MONITOR, ep.Z.CREATE_POOL_LINK, ep.Z.CREATE_POOL, ep.Z.EDIT_MONITOR, ep.Z.EDIT_POOL, ep.Z.LOAD_BALANCING_TABLE, ep.Z.POOL_TABLE, ep.Z.EDIT_MONITOR_LINK, ep.Z.EDIT_POOL_LINK, ...ed.eT, P.y.SECONDARY_DNS_NOTIFICATION_CREATE, P.y.SECONDARY_DNS_NOTIFICATION_UPDATE, P.y.SECONDARY_DNS_NOTIFICATION_DELETE, N.U.ZONE_TRANSFER_SUCCESS, N.U.DNS_RECORD_CREATE, N.U.DNS_RECORD_UPDATE, N.U.DNS_RECORD_DELETE, D.Y.PEER_DNS_CREATE, D.Y.PEER_DNS_UPDATE, D.Y.PEER_DNS_DELETE, D.Y.ZONE_TRANSFER_ENABLE, D.Y.ZONE_TRANSFER_DISABLE, eu.V.ARGO_ENABLEMENT, eu.V.ARGO_GEO_ANALYTICS_FETCH, eu.V.ARGO_GLOBAL_ANALYTICS_FETCH, H.X.VIEW_BUCKETS_LIST, H.X.CREATE_BUCKET, H.X.VALIDATE_BUCKET, H.X.DELETE_BUCKET, H.X.VIEW_CAPTURES_LIST, H.X.CREATE_SIMPLE_CAPTURE, H.X.CREATE_FULL_CAPTURE, H.X.VIEW_FULL_CAPTURE, H.X.DOWNLOAD_SIMPLE_CAPTURE, $.bK.VIEW_RULES, $.bK.CREATE_RULE, $.bK.UPDATE_RULE, $.bK.DELETE_RULE, $.bK.VIEW_CONFIGURATION, $.bK.CREATE_CONFIGURATION, $.bK.UPDATE_CONFIGURATION, $.bK.DELETE_CONFIGURATION, F.r8.VIEW_ALERTS, F.r8.VIEW_ALERTS_HISTORY, F.r8.MAGIC_OVERVIEW_ANALYTICS, F.VZ.CREATE_SITE, F.VZ.CREATE_TUNNEL, F.VZ.CREATE_STATIC_ROUTE, J.DC.CLICK_ADAPTIVE_SAMPLING, J.DC.CLICK_TO_LOG_EXPLORER_BANNER, J.DC.CLICK_TO_LOG_EXPLORER_DESCRIPTION, J.DC.CLICK_SWITCH_TO_RAW_LOGS, J.DC.CLICK_SWITCH_TO_SAMPLED_LOGS, "send AI feedback", eT.N.SPARROW_ZONE_OVERFLOW_MENU_CLICK_NAME, eT.N.SPARROW_ZONE_OVERFLOW_ACTION_CLICK_NAME, eT.N.SPARROW_SWITCHER_MENU_CLICK_NAME, eT.N.SPARROW_SWITCHER_MENU_OPEN, eT.N.SPARROW_GO_TO_ALL_ACCOUNTS_CLICK_NAME, eT.N.SPARROW_GO_TO_ALL_DOMAINS_CLICK_NAME, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_SEARCH_SUBMIT, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_SEARCH_SELECT_DOMAIN, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_SELECT_PAYMENT_OPTION, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_PURCHASE, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_PURCHASE_ATTEMPT, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_PURCHASE_COMPLETED, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_BILLING_COUNTRY_SELECT, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_BILLING_VERIFY_ADDRESS, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_BILLING_SELECT_PAYMENT_METHOD, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_DOMAIN_HAS_CLAIMS, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_EXPAND_CLAIMS, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_DISAGREE, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_TMCH_AGREE, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_CHECKOUT_ERROR, B.REGISTRAR_TRACKING.TRANSFER_DOMAIN_CHANGE_STEP, B.REGISTRAR_TRACKING.RENEW_DOMAIN_COMPLETED, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_INIT, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_CLOSE_RESTORE_MODAL, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_OPEN_ADD_PAYMENT_METHOD_MODAL, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_CLOSE_ADD_PAYMENT_METHOD_MODAL, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_FAILURE, B.REGISTRAR_TRACKING.RESTORE_DOMAIN_COMPLETED, B.REGISTRAR_TRACKING.DOMAIN_DELETE_INIT, B.REGISTRAR_TRACKING.DOMAIN_DELETE_COMPLETED, B.REGISTRAR_TRACKING.DOMAIN_DELETE_FAILURE_NO_PERMISSIONS, B.REGISTRAR_TRACKING.DOMAIN_DELETE_FAILURE_INVALID_CONFIRMATION_CODE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_FAILURE_UNKNOWN_REASON, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CONFIRM_DELETE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CLOSE_CONFIRM_MODAL, B.REGISTRAR_TRACKING.DOMAIN_DELETE_RESEND_CONFIRMATION_CODE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CLOSE_VERIFICATION_MODAL, B.REGISTRAR_TRACKING.DOMAIN_DELETE_WARNING_MODAL_CONTINUE, B.REGISTRAR_TRACKING.DOMAIN_DELETE_CLOSE_WARNING_MODAL, B.REGISTRAR_TRACKING.DOMAIN_MOVE_START_FLOW, B.REGISTRAR_TRACKING.DOMAIN_MOVE_OPEN_DOCS, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CLOSE_FLOW, B.REGISTRAR_TRACKING.DOMAIN_MOVE_PROGRESS_FLOW, B.REGISTRAR_TRACKING.DOMAIN_MOVE_SUBMIT, B.REGISTRAR_TRACKING.DOMAIN_MOVE_INITIATE_SUCCESS, B.REGISTRAR_TRACKING.DOMAIN_MOVE_INITIATE_ERROR, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CANCEL, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CANCEL_SUCCESS, B.REGISTRAR_TRACKING.DOMAIN_MOVE_CANCEL_ERROR, B.REGISTRAR_TRACKING.ACTION_CENTER_NAVIGATE, B.REGISTRAR_TRACKING.ACTION_CENTER_DOMAIN_MOVE_DECISION, B.REGISTRAR_TRACKING.ACTION_CENTER_DOMAIN_MOVE_DECISION_SUCCESS, B.REGISTRAR_TRACKING.ACTION_CENTER_DOMAIN_MOVE_DECISION_ERROR, B.REGISTRAR_TRACKING.REGISTER_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE, B.REGISTRAR_TRACKING.MANAGE_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE_SUCCESS, B.REGISTRAR_TRACKING.MANAGE_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE_ERROR, B.REGISTRAR_TRACKING.TRANSFER_DOMAIN_UPDATE_CANADA_REGISTRANT_LEGAL_TYPE, K.z3.CREATE_SECRET, K.z3.DELETE_SECRET, K.z3.BIND_SECRET, K.z3.DUPLICATE_SECRET, K.z3.EDIT_SECRET, V.KO.CLICK_GET_STARTED_GUIDE, V.KO.CLICK_PIPELINE_DOCUMENTATION, V.KO.CLICK_QUICK_LINK, V.KO.CREATE_PIPELINE, V.KO.DELETE_PIPELINE, V.KO.LIST_PIPELINES, V.KO.VIEW_PIPELINE, C.S.EXISTING_DOMAIN, C.S.NEW_DOMAIN, C.S.WAF_RULESET, C.S.WORKERS, C.S.PAGES, C.S.R2, C.S.ACCOUNT_MEMBERS, q._.TEMPLATE_PRODUCT_SELECTED, q._.TEMPLATE_SELECTED, q._.TEMPLATE_SAVE_DRAFT, q._.TEMPLATE_CANCEL, q._.TEMPLATE_DEPLOY, es.D.CLICK_GO_BACK_SHARE_MODAL, es.D.CLICK_MENU_ITEM_SHARE, es.D.CLICK_ON_CANCEL_SHARE_MODAL, es.D.CLICK_ON_CLOSE_SHARE_MODAL, es.D.CLICK_ON_CONFIGURE_SHARE_BUTTON, es.D.CLICK_ON_DELETE_RULESET, es.D.CLICK_ON_DEPLOY_BUTTON_SHARE_MODAL, es.D.CLICK_ON_EDIT_SHARE_PERMISSION, es.D.CLICK_ON_GO_TO_SOURCE_ACCOUNT, es.D.CLICK_ON_SHARE_BUTTON_SHARE_MODAL, es.D.CLICK_ON_SHARE_TABLE_ROW, er.pR.CLICK_GEOGRAPHICAL_TEMPLATE, er.pR.CLICK_IP_TEMPLATE, er.pR.CLICK_USER_AGENT_TEMPLATE, er.pR.CLICK_ZONE_LOCKDOWN_TEMPLATE, ei.vc.CREATED, ei.vc.ENABLED, ei.vc.DISABLED, ei.vc.DELETED, ei.vc.UPDATED, ei.vc.DOWNLOADED, j.Gk.REQUEST_REVIEW, j.Gk.COPY_URL, O.v.FIELD, O.v.OPERATOR, el.Vj.SHOW_LCC_MIGRATION_BANNER, el.Vj.CLICK_LCC_DOCUMENTATION, el.Vj.CLICK_LCC_UPGRADE_GUIDE, el.Vj.SHOW_LCC_MIGRATION_WARNING, eo.yf.CLICK_DISMISS_INELIGIBILITY, eo.yf.CLICK_NEXT_STEP, eo.yf.CLICK_OPT_IN, eo.yf.CLICK_OPT_IN_BUTTON, eo.yf.CLICK_OPT_OUT_BUTTON, eo.yf.DISPLAY_MODAL, eo.yf.DISPLAY_OPT_OUT_MODAL, eo.yf.DISPLAY_TOOLTIP_NOT_AVAILABLE, eo.yf.CLICK_EXTERNAL_LINK_TOOLTIP_NOT_AVAILABLE, eo.yf.DEFAULT_ALL_INIT, eo.yf.DEFAULT_ALL_OPT_OUT, eo.yf.DEFAULT_ALL_REENABLES, eo.yf.NEW_DASHBOARD_EXPERIENCE, eo.yf.NEW_DASHBOARD_VIDEO, eo.yf.DEFAULT_ALL_MODAL, eo.yf.DEFAULT_ALL_CONFIRM, eo.yf.DISPLAY_STEPS_BY_MODAL, eo.yf.REDIRECT_SETTINGS_BANNER, et.AZ.LOAD_INSIGHTS, et.AZ.OPEN_SIDE_MODAL_INSIGHT, et.AZ.CLOSE_SIDE_MODAL_INSIGHT, et.AZ.CLICK_ACTION_INSIGHT, et.AZ.LOAD_INSIGHTS_LIST, eS.j$.OPEN_SIDE_MODAL, eS.j$.REDIRECT_TO_OPERATION_DETAIL, eS.j$.REDIRECT_TO_OPERATIONS_LIST, ev.YC.CHANGE_SETTING, ev.YC.LOAD_SETTINGS, ev.YC.OPEN_SIDE_MODAL_SETTING, ev.YC.CLOSE_SIDE_MODAL_SETTING, ev.YC.FILTER_SETTING, Y.Bt.LANDING_PAGE_GET_STARTED, Y.Bt.GET_STARTED_CONTINUE, Y.Bt.EXPLORE_OTHER_PACKAGES, Y.Bt.ONBOARDING_CONTINUE, Y.Bt.ONBOARDING_HEALTH_CHECK, Y.Bt.ONBOARDING_MANAGE_SETTINGS, Y.Bt.ONBOARDING_OBSERVATORY, Y.Bt.SETTINGS_TOGGLE, Y.Bt.SMART_TIERED_CACHE_VIEW_DETAILS, Y.Bt.CACHE_RESERVE_VIEW_DETAILS, Y.Bt.CACHE_RESERVE_DELETE_DATA, Y.Bt.UPGRADE_BUTTON_CLICK, Y.Bt.UPGRADE_MODAL_OPEN, Y.Bt.UPGRADE_MODAL_CLOSE, Y.Bt.UPGRADE_MODAL_CONTINUE, Y.Bt.DOCUMENTATION_CLICK, Y.Bt.HEALTH_CHECKS_MANAGE, Y.Bt.ARGO_DISABLE_CANCEL, Y.Bt.SMART_TIERED_CACHE_DISABLE_CONFIRM, Y.Bt.SMART_TIERED_CACHE_DISABLE_CANCEL, Y.Bt.TIERED_CACHE_ANALYTICS_LINK, Y.Bt.CACHE_RESERVE_ANALYTICS_LINK, Y.Bt.HEALTH_CHECKS_LINK, Y.Bt.SMART_TIERED_CACHE_TOGGLE, Y.Bt.REGIONAL_TIERED_CACHE_TOGGLE, Y.Bt.CACHE_RESERVE_TOGGLE, Y.Bt.ARGO_SMART_ROUTING_TOGGLE, J.DC.ADD_SUSPICIOUS_ACTIVITY_FILTER, J.DC.REMOVE_SUSPICIOUS_ACTIVITY_FILTER, J.DC.OPEN_SIDE_DRAWER, J.DC.CLOSE_SIDE_DRAWER, ea.Xc, ea.Aq, W.QV[W.Xn].clickLoginFromMobileApp2fa, W.QV[W.Xn].clickTryOther2FAMethodOrBackupCode, W.QV[W.Xn].clickTryRecovery, W.QV[W.xq].clickRegenerateBackupCodes, A.Vq.APPEAL_MITIGATION_SUBMIT, A.Vq.APPEAL_MITIGATION_SUCCESS, A.Vq.APPEAL_MITIGATION_FAILURE, A.Vq.CLICK_ABUSE_REPORT_ID, A.Vq.CLICK_ABUSE_REPORT_MITIGATIONS_LINK, ex.X.SUBMIT_ABUSE_REPORT_FORM, ex.X.SUBMIT_ABUSE_REPORT_FORM_SUCCESS, ex.X.SUBMIT_ABUSE_REPORT_FORM_FAILURE, ex.X.OPEN_ABUSE_REPORT_FORM_SIDEMODAL, ex.X.CLOSE_ABUSE_REPORT_FORM_SIDEMODAL, ex.X.CHANGE_ABUSE_REPORT_FORM_TYPE, eh.N3.CLICK_GIVE_FEEDBACK, eh.N3.CLICK_NAVIGATION_TAB, eh.N3.CLICK_SEARCH_BY_ZONE_NAME, eh.N3.CLICK_SEARCH_BY_VIEW_NAME, eh.N3.CLICK_CREATE_AN_INTERNAL_ZONE, eh.N3.CLICK_CREATE_A_VIEW, eh.N3.CLICK_SAVE_ZONE, eh.N3.CLICK_SAVE_VIEW, eh.N3.CLICK_SEARCH_BY_RECORD_NAME, eh.N3.CLICK_ZONE_NAME, eh.N3.CLICK_ADD_A_RECORD, eh.N3.CLICK_ADD_RECORD_SAVE, eh.N3.CLICK_RECORD_EDIT, eh.N3.CLICK_EDIT_RECORD_SAVE, eh.N3.CLICK_IMPORT_RECORDS, eh.N3.CLICK_MANAGE_LINKED_VIEWS, eh.N3.CLICK_SAVE_MANAGE_LINKED_VIEWS, eh.N3.CLICK_VIEW_RECORD, ew.W1),
+				eI = p.eg.exactStrict(p.eg.object({
 					".agency": p.eg.any.optional,
 					".auction": p.eg.any.optional,
 					".bet": p.eg.any.optional,
@@ -68105,7 +68124,7 @@ SOFTWARE.`,
 				ej = e => (t, n, r) => {
 					let [o, a, i] = ((e, t) => {
 						let n, r, [o, a] = (e => {
-							let t = ek.decode(e);
+							let t = eI.decode(e);
 							if ((0, p.nM)(t)) {
 								let n = t.left.map(({
 									context: e
@@ -68116,7 +68135,7 @@ SOFTWARE.`,
 							}
 							return [e, []]
 						})(t);
-						return (0, p.nM)(eI.decode(e)) && (n = new k.Uh(e)), a && a.length > 0 && (r = new k.oV(e, a)), [o, n, r]
+						return (0, p.nM)(ek.decode(e)) && (n = new I.Uh(e)), a && a.length > 0 && (r = new I.oV(e, a)), [o, n, r]
 					})(n, r);
 					if (a) throw a;
 					return i && console.error(i), e(t, n, o)
@@ -68861,7 +68880,7 @@ SOFTWARE.`,
 						marginRight: 0
 					}
 				}), "span"),
-				I = (0, i.SU)(({
+				k = (0, i.SU)(({
 					buttonStyle: e
 				}) => y({
 					display: "inline-flex",
@@ -68877,7 +68896,7 @@ SOFTWARE.`,
 						display: "none"
 					}
 				}, e), c.zx),
-				k = (0, i.SU)(() => ({
+				I = (0, i.SU)(() => ({
 					mr: 2,
 					fontSize: 2,
 					display: "none",
@@ -69164,7 +69183,7 @@ SOFTWARE.`,
 								children: [(0, h.jsxs)(m.ZC, {
 									display: "flex",
 									flexDirection: "row",
-									children: [(0, h.jsxs)(I, {
+									children: [(0, h.jsxs)(k, {
 										type: "primary",
 										onClick: this.addNewFilter,
 										"aria-expanded": c,
@@ -69184,7 +69203,7 @@ SOFTWARE.`,
 									}), !!a && (0, h.jsx)(m.ZC, {
 										children: a
 									})]
-								}), this.props.filters.length > 0 && (0, h.jsx)(k, {
+								}), this.props.filters.length > 0 && (0, h.jsx)(I, {
 									children: (0, h.jsx)(l.Trans, {
 										id: "analytics.report.filters.labels.filters",
 										_: "Filters:"
@@ -69300,7 +69319,8 @@ SOFTWARE.`,
 					getMaxTimeWindow: o,
 					maxPickableWindow: a,
 					getInitialDateValue: i,
-					isUtc: l
+					formatSelectedValue: l,
+					isUtc: d
 				}) => (0, c.jsx)(u, {
 					children: (0, c.jsx)(s.E, {
 						now: e,
@@ -69308,11 +69328,12 @@ SOFTWARE.`,
 						maxTimeRange: o(n),
 						maxPickableWindow: a,
 						endDate: t.endDate,
+						formatSelectedValue: l,
 						startDate: t.startDate,
 						relativeTimeRange: t.timeWindow,
 						defaultRelativeTimeRange: i(n),
 						relativeTimeRangeOptions: n,
-						isUtc: l
+						isUtc: d
 					})
 				});
 			d.propTypes = {
@@ -69330,6 +69351,7 @@ SOFTWARE.`,
 				maxPickableWindow: o().number.isRequired,
 				getMaxTimeWindow: o().func.isRequired,
 				getInitialDateValue: o().func.isRequired,
+				formatSelectedValue: o().func,
 				isUtc: o().bool
 			}, d.defaultProps = {
 				isUtc: !1
@@ -69859,13 +69881,13 @@ SOFTWARE.`,
 					"function" == typeof Object.getOwnPropertySymbols && r.push.apply(r, Object.getOwnPropertySymbols(n).filter(function(e) {
 						return Object.getOwnPropertyDescriptor(n, e).enumerable
 					})), r.forEach(function(t) {
-						I(e, t, n[t])
+						k(e, t, n[t])
 					})
 				}
 				return e
 			}
 
-			function I(e, t, n) {
+			function k(e, t, n) {
 				var r;
 				return (t = "symbol" == typeof(r = function(e, t) {
 					if ("object" != typeof e || null === e) return e;
@@ -69883,13 +69905,13 @@ SOFTWARE.`,
 					writable: !0
 				}) : e[t] = n, e
 			}
-			let k = c.map(e => ({
+			let I = c.map(e => ({
 				value: e.code,
 				label: e.name
 			}));
 			class A extends r.Component {
 				constructor(...e) {
-					super(...e), I(this, "state", {
+					super(...e), k(this, "state", {
 						errors: {
 							first_name: "",
 							last_name: "",
@@ -69904,12 +69926,12 @@ SOFTWARE.`,
 							account_type: "",
 							tax_id_type: ""
 						}
-					}), I(this, "validate", () => {
+					}), k(this, "validate", () => {
 						let e = (0, C.Z)(this.props.fields, this.props.translator, this.props.isCustomerAddressForm);
 						return this.setState({
 							errors: e
 						}), Object.values(e).every(e => "" === e)
-					}), I(this, "onCountryChange", e => {
+					}), k(this, "onCountryChange", e => {
 						let {
 							fields: t,
 							isCustomerAddressForm: n
@@ -69933,7 +69955,7 @@ SOFTWARE.`,
 								value: e.short
 							})
 						}
-					}), I(this, "hideError", e => "" !== this.state.errors[e] && this.setState(t => ({
+					}), k(this, "hideError", e => "" !== this.state.errors[e] && this.setState(t => ({
 						errors: O({}, t.errors, {
 							[e]: ""
 						})
@@ -70063,7 +70085,7 @@ SOFTWARE.`,
 										clearable: !0
 									}, e.country, {
 										onChange: this.onCountryChange,
-										options: k,
+										options: I,
 										onMenuOpen: () => this.hideError("country")
 									}))
 								}), (0, f.Op)(o.country)]
@@ -70238,7 +70260,7 @@ SOFTWARE.`,
 										clearable: !0
 									}, e.country, {
 										onChange: this.onCountryChange,
-										options: k,
+										options: I,
 										onMenuOpen: () => this.hideError("country")
 									}))
 								}), (0, f.Op)(o.country)]
@@ -70648,7 +70670,7 @@ SOFTWARE.`,
 						C = (0, Y.useElements)(),
 						T = (0, Q.useSelector)(e => (0, o.KX)(e, ee.customerAddress)),
 						O = (0, r.useRef)(et),
-						[I, k] = (0, r.useState)(""),
+						[k, I] = (0, r.useState)(""),
 						[A, D] = (0, r.useState)(!1),
 						G = (0, r.useRef)(null),
 						[$, H] = (0, r.useState)(0),
@@ -70682,7 +70704,7 @@ SOFTWARE.`,
 							confirmAddress: eE,
 							reset: eS
 						} = F({
-							onRequestError: eI,
+							onRequestError: ek,
 							onRequestFinished: s,
 							onRequestSuccess: eO,
 							onNeedsAddressUpdate: u,
@@ -70702,8 +70724,8 @@ SOFTWARE.`,
 						eA(), c && c()
 					}
 
-					function eI(e) {
-						H(e => e + 1), G && G.current && G.current.resetCaptcha(), k(""), ep(!1), er(null), eS(), i && i(e)
+					function ek(e) {
+						H(e => e + 1), G && G.current && G.current.resetCaptcha(), I(""), ep(!1), er(null), eS(), i && i(e)
 					}(0, r.useEffect)(() => {
 						eT()
 					}, [eT]), (0, r.useEffect)(() => (d && d(ej), () => {
@@ -70729,11 +70751,11 @@ SOFTWARE.`,
 							ef(e), eN(e)
 						}
 					}, [ew]), (0, r.useEffect)(() => {
-						!e_ && ey && ek()
+						!e_ && ey && eI()
 					}, [ey, e_]), (0, r.useEffect)(() => (S(X.te.paymentFormLoadFinished()), function() {
 						S(X.te.paymentFormLoadReset())
 					}), []);
-					let ek = () => {
+					let eI = () => {
 							let e = ee.customerAddress;
 							ey && M(ey).filter(e => !!ey[e] && "validation_code" !== e).forEach(t => S((0, o.Ji)(e.concat("zipcode" === t ? "zip" : t), ey[t])))
 						},
@@ -70743,7 +70765,7 @@ SOFTWARE.`,
 						ej = async e => {
 							if (e && e.preventDefault(), ep(!0), e_) return void eE();
 							let t = !0;
-							t = O.current(), A && t && (t = !!I), t ? (ea(!0), eR()) : i && i()
+							t = O.current(), A && t && (t = !!k), t ? (ea(!0), eR()) : i && i()
 						}, eR = async () => {
 							var n;
 							if (!e) return;
@@ -70778,7 +70800,7 @@ SOFTWARE.`,
 									account_type: T.account_type || "",
 									captcha_challenge_jwt: Z,
 									default: (null == y ? void 0 : y.default) || h,
-									cf_turnstile_response: I
+									cf_turnstile_response: k
 								};
 							r && (null == (n = ec.deviceDetails) ? void 0 : n.correlation_id) && (i.device_data = ec.deviceDetails), ef(i);
 							try {
@@ -70858,7 +70880,7 @@ SOFTWARE.`,
 									} else throw console.log("should redirect"), Error("Error processing card")
 								}(null == y ? void 0 : y.id) ? await i(e, y.id, r): await i(e, r), eO()
 							} catch (e) {
-								eC(!0), eI(), ea(!1)
+								eC(!0), ek(), ea(!1)
 							}
 						};
 					return (0, _.jsxs)("form", {
@@ -70964,13 +70986,13 @@ SOFTWARE.`,
 								onVerify: ({
 									token: e
 								}) => {
-									k(e)
+									I(e)
 								},
 								accountId: e,
 								retryCount: $,
 								onChallengeRequired: e => D(e),
 								ref: G,
-								error: ed && !I,
+								error: ed && !k,
 								apiBaseUrl: v,
 								translator: g,
 								isFed: w,
@@ -71067,8 +71089,8 @@ SOFTWARE.`,
 						x = (0, Q.useSelector)(e => (0, o.KX)(e, ea.billingAddress)),
 						C = (0, Q.useSelector)(e => (0, o.KX)(e, ea.customerAddress)),
 						T = (0, r.useRef)(ei),
-						[O, I] = (0, r.useState)(""),
-						[k, A] = (0, r.useState)(!1),
+						[O, k] = (0, r.useState)(""),
+						[I, A] = (0, r.useState)(!1),
 						D = (0, r.useRef)(null),
 						[G, z] = (0, r.useState)(0),
 						[$, H] = (0, r.useState)(""),
@@ -71101,7 +71123,7 @@ SOFTWARE.`,
 							confirmAddress: eE,
 							reset: eS
 						} = F({
-							onRequestError: eI,
+							onRequestError: ek,
 							onRequestFinished: n,
 							onRequestSuccess: eO,
 							onNeedsAddressUpdate: i,
@@ -71114,8 +71136,8 @@ SOFTWARE.`,
 						eA(), a && a()
 					}
 
-					function eI(e) {
-						z(e => e + 1), D && D.current && D.current.resetCaptcha(), I(""), ec(!1), V(null), eS(), t && t(e)
+					function ek(e) {
+						z(e => e + 1), D && D.current && D.current.resetCaptcha(), k(""), ec(!1), V(null), eS(), t && t(e)
 					}(0, r.useEffect)(() => (s && s(ej), () => {
 						s && s(null)
 					})), (0, r.useEffect)(() => {
@@ -71132,11 +71154,11 @@ SOFTWARE.`,
 							ed(e), eN(e)
 						}
 					}, [ew]), (0, r.useEffect)(() => {
-						!e_ && ey && ek()
+						!e_ && ey && eI()
 					}, [ey, e_]), (0, r.useEffect)(() => (y(X.te.paymentFormLoadFinished()), function() {
 						y(X.te.paymentFormLoadReset())
 					}), []);
-					let ek = () => {
+					let eI = () => {
 							let e = eT ? ea.billingAddress : ea.customerAddress;
 							ey && M(ey).filter(e => !!ey[e] && "validation_code" !== e).forEach(t => y((0, o.Ji)(e.concat("zipcode" === t ? "zip" : t), ey[t])))
 						},
@@ -71146,7 +71168,7 @@ SOFTWARE.`,
 						ej = async e => {
 							if (e && e.preventDefault(), ec(!0), e_) return void eE();
 							let n = !0;
-							if (n = T.current(), k && n && (n = !!O), n) {
+							if (n = T.current(), I && n && (n = !!O), n) {
 								try {
 									if ((0, er.tq)() && "cashapp" === ep) throw Error("Cash App is not supported on mobile");
 									if ("link" === ep && !(null == Z ? void 0 : Z.payment_method)) {
@@ -71170,7 +71192,7 @@ SOFTWARE.`,
 										else throw console.log("should redirect"), Error("Error processing card")
 									}
 								} catch (e) {
-									(null == e ? void 0 : e.message) !== "User cancelled" && eC(!0), eI();
+									(null == e ? void 0 : e.message) !== "User cancelled" && eC(!0), ek();
 									return
 								}
 								et(!0), eR()
@@ -71244,7 +71266,7 @@ SOFTWARE.`,
 								}
 								eT || await y(X.nD.createBillingProfile(e, t, d)), (null == f ? void 0 : f.id) ? (i.default = null == f ? void 0 : f.default, await y(X.Vh.updatePaymentMethods(e, f.id, i, d))) : (i.default = !!(!p && !f), await y(X.Vh.createPaymentMethods(e, i, d))), eO()
 							} catch (e) {
-								eC(!0), eI()
+								eC(!0), ek()
 							}
 						};
 					return (0, _.jsxs)("form", {
@@ -71348,7 +71370,7 @@ SOFTWARE.`,
 										onVerify: ({
 											token: e
 										}) => {
-											I(e)
+											k(e)
 										},
 										accountId: e,
 										retryCount: G,
@@ -71516,21 +71538,21 @@ SOFTWARE.`,
 					}, [O]), (0, r.useEffect)(() => {
 						l && g((0, eu.loadStripe)(l))
 					}, [l]);
-					let I = (0, r.useCallback)(async () => {
+					let k = (0, r.useCallback)(async () => {
 						c && a(X.fI.fetchNextBilling(c, i))
 					}, [c, i]);
 					(0, r.useEffect)(() => {
-						I()
-					}, [I]);
-					let k = (0, r.useCallback)(async () => {
+						k()
+					}, [k]);
+					let I = (0, r.useCallback)(async () => {
 							c && a(X.nD.fetchBillingProfile(c, i))
 						}, [c, i]),
 						A = (0, r.useCallback)(async () => {
 							c && a(X.Vh.fetchPaymentMethods(c, i))
 						}, [c, i]);
 					if ((0, r.useEffect)(() => {
-							k()
-						}, [k]), (0, r.useEffect)(() => {
+							I()
+						}, [I]), (0, r.useEffect)(() => {
 							A()
 						}, [A]), (0, r.useEffect)(() => {
 							b || "teams" !== s || v((0, es.Z)({
@@ -71861,7 +71883,7 @@ SOFTWARE.`,
 					return E
 				},
 				ex: function() {
-					return I
+					return k
 				},
 				qp: function() {
 					return f
@@ -72074,7 +72096,7 @@ SOFTWARE.`,
 						})
 					})
 				}),
-				I = l.eg.object({
+				k = l.eg.object({
 					result: d
 				})
 		},
@@ -72339,7 +72361,7 @@ SOFTWARE.`,
 			a.transform = r, a.insertInto = void 0, n("../../../../node_modules/style-loader/lib/addStyles.js")(o, a), o.locals && (e.exports = o.locals)
 		},
 		"../node_modules/css-loader/index.js!../react/common/out.css": function(e, t, n) {
-			(e.exports = n("../node_modules/css-loader/lib/css-base.js")(!1)).push([e.id, '/*! tailwindcss v4.1.16 | MIT License | https://tailwindcss.com */\n@layer properties;\n@layer theme, components, utilities;\n@layer theme {\n  :root, :host {\n    --font-sans: \'Inter Variable\', ui-sans-serif, system-ui, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\n    --font-mono: \'Paper Mono\', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \'Liberation Mono\', \'Courier New\', monospace;\n    --color-red-50: oklch(97.1% 0.013 17.38);\n    --color-red-100: oklch(93.6% 0.032 17.717);\n    --color-red-200: oklch(88.5% 0.062 18.334);\n    --color-red-300: oklch(80.8% 0.114 19.571);\n    --color-red-400: oklch(70.4% 0.191 22.216);\n    --color-red-500: oklch(63.7% 0.237 25.331);\n    --color-red-600: oklch(57.7% 0.245 27.325);\n    --color-red-700: oklch(50.5% 0.213 27.518);\n    --color-red-800: oklch(44.4% 0.177 26.899);\n    --color-red-900: oklch(39.6% 0.141 25.723);\n    --color-red-950: oklch(25.8% 0.092 26.042);\n    --color-orange-100: oklch(95.4% 0.038 75.164);\n    --color-orange-200: oklch(90.1% 0.076 70.697);\n    --color-orange-300: oklch(83.7% 0.128 66.29);\n    --color-orange-400: oklch(75% 0.183 55.934);\n    --color-orange-500: oklch(70.5% 0.213 47.604);\n    --color-orange-600: oklch(64.6% 0.222 41.116);\n    --color-orange-700: oklch(55.3% 0.195 38.402);\n    --color-orange-800: oklch(47% 0.157 37.304);\n    --color-orange-900: oklch(40.8% 0.123 38.172);\n    --color-orange-950: oklch(26.6% 0.079 36.259);\n    --color-amber-200: oklch(92.4% 0.12 95.746);\n    --color-amber-600: oklch(66.6% 0.179 58.318);\n    --color-yellow-50: oklch(98.7% 0.026 102.212);\n    --color-yellow-100: oklch(97.3% 0.071 103.193);\n    --color-yellow-200: oklch(94.5% 0.129 101.54);\n    --color-yellow-300: oklch(90.5% 0.182 98.111);\n    --color-yellow-400: oklch(85.2% 0.199 91.936);\n    --color-yellow-500: oklch(79.5% 0.184 86.047);\n    --color-yellow-600: oklch(68.1% 0.162 75.834);\n    --color-yellow-700: oklch(55.4% 0.135 66.442);\n    --color-yellow-800: oklch(47.6% 0.114 61.907);\n    --color-yellow-900: oklch(42.1% 0.095 57.708);\n    --color-green-50: oklch(98.2% 0.018 155.826);\n    --color-green-100: oklch(96.2% 0.044 156.743);\n    --color-green-200: oklch(92.5% 0.084 155.995);\n    --color-green-300: oklch(87.1% 0.15 154.449);\n    --color-green-400: oklch(79.2% 0.209 151.711);\n    --color-green-500: oklch(72.3% 0.219 149.579);\n    --color-green-600: oklch(62.7% 0.194 149.214);\n    --color-green-700: oklch(52.7% 0.154 150.069);\n    --color-green-800: oklch(44.8% 0.119 151.328);\n    --color-green-900: oklch(39.3% 0.095 152.535);\n    --color-emerald-500: oklch(69.6% 0.17 162.48);\n    --color-cyan-100: oklch(95.6% 0.045 203.388);\n    --color-cyan-800: oklch(45% 0.085 224.283);\n    --color-sky-500: oklch(68.5% 0.169 237.323);\n    --color-blue-50: oklch(97% 0.014 254.604);\n    --color-blue-100: oklch(93.2% 0.032 255.585);\n    --color-blue-200: oklch(88.2% 0.059 254.128);\n    --color-blue-300: oklch(80.9% 0.105 251.813);\n    --color-blue-400: oklch(0.707 0.165 254.624);\n    --color-blue-500: oklch(62.3% 0.214 259.815);\n    --color-blue-600: oklch(54.6% 0.245 262.881);\n    --color-blue-700: oklch(48.8% 0.243 264.376);\n    --color-blue-800: oklch(0.424 0.199 265.638);\n    --color-blue-900: oklch(37.9% 0.146 265.522);\n    --color-blue-950: oklch(28.2% 0.091 267.935);\n    --color-indigo-50: oklch(96.2% 0.018 272.314);\n    --color-indigo-100: oklch(93% 0.034 272.788);\n    --color-indigo-200: oklch(87% 0.065 274.039);\n    --color-indigo-500: oklch(58.5% 0.233 277.117);\n    --color-indigo-600: oklch(51.1% 0.262 276.966);\n    --color-indigo-700: oklch(45.7% 0.24 277.023);\n    --color-indigo-900: oklch(35.9% 0.144 278.697);\n    --color-purple-200: oklch(90.2% 0.063 306.703);\n    --color-purple-800: oklch(43.8% 0.218 303.724);\n    --color-fuchsia-500: oklch(66.7% 0.295 322.15);\n    --color-rose-500: oklch(64.5% 0.246 16.439);\n    --color-gray-50: oklch(98.5% 0.002 247.839);\n    --color-gray-100: oklch(96.7% 0.003 264.542);\n    --color-gray-200: oklch(92.8% 0.006 264.531);\n    --color-gray-300: oklch(87.2% 0.01 258.338);\n    --color-gray-400: oklch(70.7% 0.022 261.325);\n    --color-gray-500: oklch(55.1% 0.027 264.364);\n    --color-gray-600: oklch(44.6% 0.03 256.802);\n    --color-gray-700: oklch(37.3% 0.034 259.733);\n    --color-gray-800: oklch(27.8% 0.033 256.848);\n    --color-gray-900: oklch(21% 0.034 264.665);\n    --color-zinc-500: oklch(55.2% 0.016 285.938);\n    --color-neutral-50: oklch(0.985 0 0);\n    --color-neutral-100: oklch(0.97 0 0);\n    --color-neutral-200: oklch(0.922 0 0);\n    --color-neutral-300: oklch(0.87 0 0);\n    --color-neutral-400: oklch(0.708 0 0);\n    --color-neutral-500: oklch(0.556 0 0);\n    --color-neutral-600: oklch(0.439 0 0);\n    --color-neutral-700: oklch(0.371 0 0);\n    --color-neutral-800: oklch(0.269 0 0);\n    --color-neutral-900: oklch(0.205 0 0);\n    --color-neutral-950: oklch(0.145 0 0);\n    --color-black: #000;\n    --color-white: #fff;\n    --spacing: 0.25rem;\n    --container-xs: 20rem;\n    --container-sm: 24rem;\n    --container-md: 28rem;\n    --container-lg: 32rem;\n    --container-xl: 36rem;\n    --container-2xl: 42rem;\n    --container-3xl: 48rem;\n    --container-6xl: 72rem;\n    --text-xs: 12px;\n    --text-xs--line-height: calc(1 / 0.75);\n    --text-sm: 13px;\n    --text-sm--line-height: calc(1 / 0.85);\n    --text-base: 14px;\n    --text-base--line-height: calc(1.25 / 0.875);\n    --text-lg: 16px;\n    --text-lg--line-height: calc(1.25 / 1);\n    --text-xl: 1.25rem;\n    --text-xl--line-height: calc(1.75 / 1.25);\n    --text-2xl: 1.5rem;\n    --text-2xl--line-height: calc(2 / 1.5);\n    --text-3xl: 1.875rem;\n    --text-3xl--line-height: calc(2.25 / 1.875);\n    --font-weight-light: 300;\n    --font-weight-normal: 400;\n    --font-weight-medium: 500;\n    --font-weight-semibold: 600;\n    --font-weight-bold: 700;\n    --tracking-tight: -0.025em;\n    --tracking-normal: 0em;\n    --tracking-wide: 0.025em;\n    --tracking-widest: 0.1em;\n    --leading-tight: 1.25;\n    --leading-snug: 1.375;\n    --leading-normal: 1.5;\n    --leading-relaxed: 1.625;\n    --radius-xs: 0.125rem;\n    --radius-sm: 0.25rem;\n    --radius-md: 0.375rem;\n    --radius-lg: 0.5rem;\n    --radius-xl: 0.75rem;\n    --radius-2xl: 1rem;\n    --ease-in: cubic-bezier(0.4, 0, 1, 1);\n    --ease-out: cubic-bezier(0, 0, 0.2, 1);\n    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);\n    --animate-spin: spin 1s linear infinite;\n    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;\n    --blur-md: 12px;\n    --default-transition-duration: 100ms /* snappier than default 150ms */;\n    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    --color-surface: var(--kumo-surface);\n    --color-surface-secondary: var(--kumo-surface-secondary);\n    --color-surface-active: var(--kumo-surface-active);\n    --color-primary: var(--kumo-primary);\n    --color-secondary: var(--kumo-secondary);\n    --color-secondary-hover: var(--kumo-secondary-hover);\n    --color-accent: var(--kumo-accent);\n    --color-destructive: var(--kumo-destructive);\n    --color-muted: var(--kumo-muted);\n    --color-input: var(--kumo-input);\n    --color-active: var(--kumo-border-active);\n    --color-border-hover: var(--kumo-border-hover);\n    --color-color: var(--kumo-border);\n    --text-color-surface: var(--kumo-surface-foreground);\n    --text-color-primary: var(--kumo-primary-foreground);\n    --text-color-secondary: var(--kumo-secondary-foreground);\n    --text-color-destructive: var(--kumo-destructive-foreground);\n    --text-color-muted: var(--kumo-muted-foreground);\n    --text-color-error: var(--kumo-text-error);\n    --animate-refresh: refresh 0.5s ease-in-out infinite;\n    --animate-right: right 15s linear infinite;\n    --color-neutral-25: oklch(0.99 0 0);\n    --color-neutral-150: oklch(0.96 0 0) /*new */;\n    --color-neutral-250: oklch(0.9 0 0) /* new */;\n    --color-neutral-750: oklch(0.31 0 0) /* new */;\n    --color-neutral-850: oklch(0.23 0 0) /* new */;\n    --color-border: var(--cf-gray-8);\n    --color-bg-primary: var(--kumo-surface);\n    --color-bg-secondary: var(--kumo-surface-secondary);\n    --color-ob-base-1000: var(--color-neutral-900);\n    --text-color-ob-inverted: var(--color-white);\n    --color-cl1-white: var(--cf-white);\n    --color-cl1-black: var(--cf-black);\n    --color-cl1-red-1: var(--cf-red-1);\n    --color-cl1-red-2: var(--cf-red-2);\n    --color-cl1-red-3: var(--cf-red-3);\n    --color-cl1-red-4: var(--cf-red-4);\n    --color-cl1-red-5: var(--cf-red-5);\n    --color-cl1-red-6: var(--cf-red-6);\n    --color-cl1-red-7: var(--cf-red-7);\n    --color-cl1-red-9: var(--cf-red-9);\n    --color-cl1-gold-2: var(--cf-gold-2);\n    --color-cl1-gold-4: var(--cf-gold-4);\n    --color-cl1-gold-5: var(--cf-gold-5);\n    --color-cl1-gold-6: var(--cf-gold-6);\n    --color-cl1-gold-7: var(--cf-gold-7);\n    --color-cl1-gold-9: var(--cf-gold-9);\n    --color-cl1-green-2: var(--cf-green-2);\n    --color-cl1-green-3: var(--cf-green-3);\n    --color-cl1-green-4: var(--cf-green-4);\n    --color-cl1-green-5: var(--cf-green-5);\n    --color-cl1-green-6: var(--cf-green-6);\n    --color-cl1-blue-1: var(--cf-blue-1);\n    --color-cl1-blue-3: var(--cf-blue-3);\n    --color-cl1-blue-4: var(--cf-blue-4);\n    --color-cl1-blue-5: var(--cf-blue-5);\n    --color-cl1-blue-6: var(--cf-blue-6);\n    --color-cl1-blue-7: var(--cf-blue-7);\n    --color-cl1-blue-9: var(--cf-blue-9);\n    --color-cl1-gray-0: var(--cf-gray-0);\n    --color-cl1-gray-1: var(--cf-gray-1);\n    --color-cl1-gray-2: var(--cf-gray-2);\n    --color-cl1-gray-3: var(--cf-gray-3);\n    --color-cl1-gray-4: var(--cf-gray-4);\n    --color-cl1-gray-5: var(--cf-gray-5);\n    --color-cl1-gray-6: var(--cf-gray-6);\n    --color-cl1-gray-7: var(--cf-gray-7);\n    --color-cl1-gray-8: var(--cf-gray-8);\n    --color-cl1-gray-9: var(--cf-gray-9);\n  }\n}\n@layer utilities {\n  .\\@container {\n    container-type: inline-size;\n  }\n  .pointer-events-auto {\n    pointer-events: auto;\n  }\n  .pointer-events-none {\n    pointer-events: none;\n  }\n  .collapse {\n    visibility: collapse;\n  }\n  .invisible {\n    visibility: hidden;\n  }\n  .visible {\n    visibility: visible;\n  }\n  .visible\\! {\n    visibility: visible !important;\n  }\n  .sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip-path: inset(50%);\n    white-space: nowrap;\n    border-width: 0;\n  }\n  .absolute {\n    position: absolute;\n  }\n  .fixed {\n    position: fixed;\n  }\n  .relative {\n    position: relative;\n  }\n  .relative\\! {\n    position: relative !important;\n  }\n  .static {\n    position: static;\n  }\n  .sticky {\n    position: sticky;\n  }\n  .-inset-0\\.5 {\n    inset: calc(var(--spacing) * -0.5);\n  }\n  .inset-0 {\n    inset: calc(var(--spacing) * 0);\n  }\n  .inset-y-0 {\n    inset-block: calc(var(--spacing) * 0);\n  }\n  .-top-1 {\n    top: calc(var(--spacing) * -1);\n  }\n  .-top-10 {\n    top: calc(var(--spacing) * -10);\n  }\n  .top-0 {\n    top: calc(var(--spacing) * 0);\n  }\n  .top-0\\! {\n    top: calc(var(--spacing) * 0) !important;\n  }\n  .top-0\\.5 {\n    top: calc(var(--spacing) * 0.5);\n  }\n  .top-1 {\n    top: calc(var(--spacing) * 1);\n  }\n  .top-1\\/2 {\n    top: calc(1/2 * 100%);\n  }\n  .top-2 {\n    top: calc(var(--spacing) * 2);\n  }\n  .top-3 {\n    top: calc(var(--spacing) * 3);\n  }\n  .top-4 {\n    top: calc(var(--spacing) * 4);\n  }\n  .top-8 {\n    top: calc(var(--spacing) * 8);\n  }\n  .top-22 {\n    top: calc(var(--spacing) * 22);\n  }\n  .top-42 {\n    top: calc(var(--spacing) * 42);\n  }\n  .top-48 {\n    top: calc(var(--spacing) * 48);\n  }\n  .top-64 {\n    top: calc(var(--spacing) * 64);\n  }\n  .top-\\[1px\\] {\n    top: 1px;\n  }\n  .top-\\[30\\%\\] {\n    top: 30%;\n  }\n  .top-\\[63px\\] {\n    top: 63px;\n  }\n  .top-\\[78px\\] {\n    top: 78px;\n  }\n  .top-\\[136px\\] {\n    top: 136px;\n  }\n  .top-\\[160px\\] {\n    top: 160px;\n  }\n  .top-full {\n    top: 100%;\n  }\n  .top-px {\n    top: 1px;\n  }\n  .-right-1 {\n    right: calc(var(--spacing) * -1);\n  }\n  .right-0 {\n    right: calc(var(--spacing) * 0);\n  }\n  .right-0\\! {\n    right: calc(var(--spacing) * 0) !important;\n  }\n  .right-1 {\n    right: calc(var(--spacing) * 1);\n  }\n  .right-2 {\n    right: calc(var(--spacing) * 2);\n  }\n  .right-3 {\n    right: calc(var(--spacing) * 3);\n  }\n  .right-4 {\n    right: calc(var(--spacing) * 4);\n  }\n  .\\!bottom-20 {\n    bottom: calc(var(--spacing) * 20) !important;\n  }\n  .bottom-0 {\n    bottom: calc(var(--spacing) * 0);\n  }\n  .bottom-0\\.5 {\n    bottom: calc(var(--spacing) * 0.5);\n  }\n  .-left-1 {\n    left: calc(var(--spacing) * -1);\n  }\n  .left-0 {\n    left: calc(var(--spacing) * 0);\n  }\n  .left-1 {\n    left: calc(var(--spacing) * 1);\n  }\n  .left-1\\/2 {\n    left: calc(1/2 * 100%);\n  }\n  .left-2 {\n    left: calc(var(--spacing) * 2);\n  }\n  .left-3 {\n    left: calc(var(--spacing) * 3);\n  }\n  .left-5 {\n    left: calc(var(--spacing) * 5);\n  }\n  .left-full {\n    left: 100%;\n  }\n  .isolate {\n    isolation: isolate;\n  }\n  .\\!z-100 {\n    z-index: 100 !important;\n  }\n  .-z-10 {\n    z-index: calc(10 * -1);\n  }\n  .z-0 {\n    z-index: 0;\n  }\n  .z-10 {\n    z-index: 10;\n  }\n  .z-20 {\n    z-index: 20;\n  }\n  .z-30 {\n    z-index: 30;\n  }\n  .z-40 {\n    z-index: 40;\n  }\n  .z-50 {\n    z-index: 50;\n  }\n  .z-100 {\n    z-index: 100;\n  }\n  .z-\\[99\\] {\n    z-index: 99;\n  }\n  .z-\\[9999\\] {\n    z-index: 9999;\n  }\n  .z-\\[10001\\] {\n    z-index: 10001;\n  }\n  .z-\\[99999\\] {\n    z-index: 99999;\n  }\n  .-order-1 {\n    order: calc(1 * -1);\n  }\n  .col-span-1 {\n    grid-column: span 1 / span 1;\n  }\n  .col-span-2 {\n    grid-column: span 2 / span 2;\n  }\n  .col-span-3 {\n    grid-column: span 3 / span 3;\n  }\n  .col-span-4 {\n    grid-column: span 4 / span 4;\n  }\n  .col-start-1 {\n    grid-column-start: 1;\n  }\n  .row-start-1 {\n    grid-row-start: 1;\n  }\n  .row-start-5 {\n    grid-row-start: 5;\n  }\n  .float-right {\n    float: right;\n  }\n  .container {\n    width: 100%;\n    @media (width >= 40rem) {\n      max-width: 40rem;\n    }\n    @media (width >= 48rem) {\n      max-width: 48rem;\n    }\n    @media (width >= 64rem) {\n      max-width: 64rem;\n    }\n    @media (width >= 80rem) {\n      max-width: 80rem;\n    }\n    @media (width >= 96rem) {\n      max-width: 96rem;\n    }\n  }\n  .\\!m-0 {\n    margin: calc(var(--spacing) * 0) !important;\n  }\n  .-m-1 {\n    margin: calc(var(--spacing) * -1);\n  }\n  .-m-\\[1px\\] {\n    margin: calc(1px * -1);\n  }\n  .-m-px {\n    margin: -1px;\n  }\n  .m-0 {\n    margin: calc(var(--spacing) * 0);\n  }\n  .m-0\\! {\n    margin: calc(var(--spacing) * 0) !important;\n  }\n  .m-1 {\n    margin: calc(var(--spacing) * 1);\n  }\n  .m-2 {\n    margin: calc(var(--spacing) * 2);\n  }\n  .m-4 {\n    margin: calc(var(--spacing) * 4);\n  }\n  .m-8 {\n    margin: calc(var(--spacing) * 8);\n  }\n  .m-auto {\n    margin: auto;\n  }\n  .\\!mx-0 {\n    margin-inline: calc(var(--spacing) * 0) !important;\n  }\n  .-mx-0\\.5 {\n    margin-inline: calc(var(--spacing) * -0.5);\n  }\n  .-mx-1 {\n    margin-inline: calc(var(--spacing) * -1);\n  }\n  .-mx-2 {\n    margin-inline: calc(var(--spacing) * -2);\n  }\n  .-mx-5 {\n    margin-inline: calc(var(--spacing) * -5);\n  }\n  .-mx-6 {\n    margin-inline: calc(var(--spacing) * -6);\n  }\n  .-mx-px {\n    margin-inline: -1px;\n  }\n  .mx-1 {\n    margin-inline: calc(var(--spacing) * 1);\n  }\n  .mx-2 {\n    margin-inline: calc(var(--spacing) * 2);\n  }\n  .mx-4 {\n    margin-inline: calc(var(--spacing) * 4);\n  }\n  .mx-auto {\n    margin-inline: auto;\n  }\n  .\\!my-0 {\n    margin-block: calc(var(--spacing) * 0) !important;\n  }\n  .\\!my-4 {\n    margin-block: calc(var(--spacing) * 4) !important;\n  }\n  .my-0\\! {\n    margin-block: calc(var(--spacing) * 0) !important;\n  }\n  .my-0\\.5 {\n    margin-block: calc(var(--spacing) * 0.5);\n  }\n  .my-1 {\n    margin-block: calc(var(--spacing) * 1);\n  }\n  .my-2 {\n    margin-block: calc(var(--spacing) * 2);\n  }\n  .my-4 {\n    margin-block: calc(var(--spacing) * 4);\n  }\n  .my-5 {\n    margin-block: calc(var(--spacing) * 5);\n  }\n  .my-\\[1px\\] {\n    margin-block: 1px;\n  }\n  .my-px {\n    margin-block: 1px;\n  }\n  .\\!-mt-0\\.5 {\n    margin-top: calc(var(--spacing) * -0.5) !important;\n  }\n  .\\!mt-0 {\n    margin-top: calc(var(--spacing) * 0) !important;\n  }\n  .\\!mt-1 {\n    margin-top: calc(var(--spacing) * 1) !important;\n  }\n  .\\!mt-2 {\n    margin-top: calc(var(--spacing) * 2) !important;\n  }\n  .\\!mt-3 {\n    margin-top: calc(var(--spacing) * 3) !important;\n  }\n  .\\!mt-4 {\n    margin-top: calc(var(--spacing) * 4) !important;\n  }\n  .\\!mt-5 {\n    margin-top: calc(var(--spacing) * 5) !important;\n  }\n  .\\!mt-6 {\n    margin-top: calc(var(--spacing) * 6) !important;\n  }\n  .\\!mt-\\[1px\\] {\n    margin-top: 1px !important;\n  }\n  .-mt-1 {\n    margin-top: calc(var(--spacing) * -1);\n  }\n  .-mt-2 {\n    margin-top: calc(var(--spacing) * -2);\n  }\n  .-mt-3 {\n    margin-top: calc(var(--spacing) * -3);\n  }\n  .mt-0 {\n    margin-top: calc(var(--spacing) * 0);\n  }\n  .mt-0\\.5 {\n    margin-top: calc(var(--spacing) * 0.5);\n  }\n  .mt-0\\.5\\! {\n    margin-top: calc(var(--spacing) * 0.5) !important;\n  }\n  .mt-1 {\n    margin-top: calc(var(--spacing) * 1);\n  }\n  .mt-1\\.5 {\n    margin-top: calc(var(--spacing) * 1.5);\n  }\n  .mt-2 {\n    margin-top: calc(var(--spacing) * 2);\n  }\n  .mt-2\\.5 {\n    margin-top: calc(var(--spacing) * 2.5);\n  }\n  .mt-3 {\n    margin-top: calc(var(--spacing) * 3);\n  }\n  .mt-3\\.5 {\n    margin-top: calc(var(--spacing) * 3.5);\n  }\n  .mt-4 {\n    margin-top: calc(var(--spacing) * 4);\n  }\n  .mt-6 {\n    margin-top: calc(var(--spacing) * 6);\n  }\n  .mt-7 {\n    margin-top: calc(var(--spacing) * 7);\n  }\n  .mt-7\\.5 {\n    margin-top: calc(var(--spacing) * 7.5);\n  }\n  .mt-8 {\n    margin-top: calc(var(--spacing) * 8);\n  }\n  .mt-9 {\n    margin-top: calc(var(--spacing) * 9);\n  }\n  .mt-12 {\n    margin-top: calc(var(--spacing) * 12);\n  }\n  .mt-\\[1px\\] {\n    margin-top: 1px;\n  }\n  .mt-auto {\n    margin-top: auto;\n  }\n  .mt-px {\n    margin-top: 1px;\n  }\n  .\\!mr-1 {\n    margin-right: calc(var(--spacing) * 1) !important;\n  }\n  .\\!mr-\\[1px\\] {\n    margin-right: 1px !important;\n  }\n  .-mr-2 {\n    margin-right: calc(var(--spacing) * -2);\n  }\n  .mr-1 {\n    margin-right: calc(var(--spacing) * 1);\n  }\n  .mr-2 {\n    margin-right: calc(var(--spacing) * 2);\n  }\n  .mr-3 {\n    margin-right: calc(var(--spacing) * 3);\n  }\n  .mr-4 {\n    margin-right: calc(var(--spacing) * 4);\n  }\n  .mr-8 {\n    margin-right: calc(var(--spacing) * 8);\n  }\n  .mr-16 {\n    margin-right: calc(var(--spacing) * 16);\n  }\n  .mr-auto {\n    margin-right: auto;\n  }\n  .mr-px {\n    margin-right: 1px;\n  }\n  .\\!mb-0 {\n    margin-bottom: calc(var(--spacing) * 0) !important;\n  }\n  .\\!mb-1\\.5 {\n    margin-bottom: calc(var(--spacing) * 1.5) !important;\n  }\n  .\\!mb-2 {\n    margin-bottom: calc(var(--spacing) * 2) !important;\n  }\n  .\\!mb-2\\.5 {\n    margin-bottom: calc(var(--spacing) * 2.5) !important;\n  }\n  .\\!mb-3 {\n    margin-bottom: calc(var(--spacing) * 3) !important;\n  }\n  .\\!mb-4 {\n    margin-bottom: calc(var(--spacing) * 4) !important;\n  }\n  .-mb-1 {\n    margin-bottom: calc(var(--spacing) * -1);\n  }\n  .-mb-2 {\n    margin-bottom: calc(var(--spacing) * -2);\n  }\n  .-mb-5 {\n    margin-bottom: calc(var(--spacing) * -5);\n  }\n  .-mb-\\[1px\\] {\n    margin-bottom: calc(1px * -1);\n  }\n  .-mb-\\[48px\\] {\n    margin-bottom: calc(48px * -1);\n  }\n  .-mb-\\[68px\\] {\n    margin-bottom: calc(68px * -1);\n  }\n  .-mb-px {\n    margin-bottom: -1px;\n  }\n  .mb-0 {\n    margin-bottom: calc(var(--spacing) * 0);\n  }\n  .mb-0\\! {\n    margin-bottom: calc(var(--spacing) * 0) !important;\n  }\n  .mb-1 {\n    margin-bottom: calc(var(--spacing) * 1);\n  }\n  .mb-1\\.5 {\n    margin-bottom: calc(var(--spacing) * 1.5);\n  }\n  .mb-2 {\n    margin-bottom: calc(var(--spacing) * 2);\n  }\n  .mb-2\\.5 {\n    margin-bottom: calc(var(--spacing) * 2.5);\n  }\n  .mb-3 {\n    margin-bottom: calc(var(--spacing) * 3);\n  }\n  .mb-3\\! {\n    margin-bottom: calc(var(--spacing) * 3) !important;\n  }\n  .mb-4 {\n    margin-bottom: calc(var(--spacing) * 4);\n  }\n  .mb-6 {\n    margin-bottom: calc(var(--spacing) * 6);\n  }\n  .mb-8 {\n    margin-bottom: calc(var(--spacing) * 8);\n  }\n  .mb-8\\! {\n    margin-bottom: calc(var(--spacing) * 8) !important;\n  }\n  .mb-12 {\n    margin-bottom: calc(var(--spacing) * 12);\n  }\n  .mb-auto {\n    margin-bottom: auto;\n  }\n  .\\!-ml-1 {\n    margin-left: calc(var(--spacing) * -1) !important;\n  }\n  .\\!ml-0 {\n    margin-left: calc(var(--spacing) * 0) !important;\n  }\n  .\\!ml-0\\.5 {\n    margin-left: calc(var(--spacing) * 0.5) !important;\n  }\n  .-ml-0\\.5 {\n    margin-left: calc(var(--spacing) * -0.5);\n  }\n  .-ml-1 {\n    margin-left: calc(var(--spacing) * -1);\n  }\n  .-ml-2 {\n    margin-left: calc(var(--spacing) * -2);\n  }\n  .-ml-2\\.5 {\n    margin-left: calc(var(--spacing) * -2.5);\n  }\n  .-ml-3\\.5 {\n    margin-left: calc(var(--spacing) * -3.5);\n  }\n  .-ml-\\[1px\\] {\n    margin-left: calc(1px * -1);\n  }\n  .-ml-px {\n    margin-left: -1px;\n  }\n  .ml-0 {\n    margin-left: calc(var(--spacing) * 0);\n  }\n  .ml-0\\! {\n    margin-left: calc(var(--spacing) * 0) !important;\n  }\n  .ml-0\\.5 {\n    margin-left: calc(var(--spacing) * 0.5);\n  }\n  .ml-1 {\n    margin-left: calc(var(--spacing) * 1);\n  }\n  .ml-2 {\n    margin-left: calc(var(--spacing) * 2);\n  }\n  .ml-2\\! {\n    margin-left: calc(var(--spacing) * 2) !important;\n  }\n  .ml-3 {\n    margin-left: calc(var(--spacing) * 3);\n  }\n  .ml-4 {\n    margin-left: calc(var(--spacing) * 4);\n  }\n  .ml-6 {\n    margin-left: calc(var(--spacing) * 6);\n  }\n  .ml-7 {\n    margin-left: calc(var(--spacing) * 7);\n  }\n  .ml-11 {\n    margin-left: calc(var(--spacing) * 11);\n  }\n  .ml-auto {\n    margin-left: auto;\n  }\n  .box-border {\n    box-sizing: border-box;\n  }\n  .line-clamp-1 {\n    overflow: hidden;\n    display: -webkit-box;\n    -webkit-box-orient: vertical;\n    -webkit-line-clamp: 1;\n  }\n  .line-clamp-2 {\n    overflow: hidden;\n    display: -webkit-box;\n    -webkit-box-orient: vertical;\n    -webkit-line-clamp: 2;\n  }\n  .\\!flex {\n    display: flex !important;\n  }\n  .\\!inline-flex {\n    display: inline-flex !important;\n  }\n  .block {\n    display: block;\n  }\n  .contents {\n    display: contents;\n  }\n  .flex {\n    display: flex;\n  }\n  .grid {\n    display: grid;\n  }\n  .hidden {\n    display: none;\n  }\n  .inline {\n    display: inline;\n  }\n  .inline-block {\n    display: inline-block;\n  }\n  .inline-flex {\n    display: inline-flex;\n  }\n  .inline-grid {\n    display: inline-grid;\n  }\n  .list-item {\n    display: list-item;\n  }\n  .table {\n    display: table;\n  }\n  .table-cell {\n    display: table-cell;\n  }\n  .table-row {\n    display: table-row;\n  }\n  .aspect-square {\n    aspect-ratio: 1 / 1;\n  }\n  .size-1 {\n    width: calc(var(--spacing) * 1);\n    height: calc(var(--spacing) * 1);\n  }\n  .size-3\\.5 {\n    width: calc(var(--spacing) * 3.5);\n    height: calc(var(--spacing) * 3.5);\n  }\n  .size-4 {\n    width: calc(var(--spacing) * 4);\n    height: calc(var(--spacing) * 4);\n  }\n  .size-4\\.5 {\n    width: calc(var(--spacing) * 4.5);\n    height: calc(var(--spacing) * 4.5);\n  }\n  .size-5 {\n    width: calc(var(--spacing) * 5);\n    height: calc(var(--spacing) * 5);\n  }\n  .size-6\\.5 {\n    width: calc(var(--spacing) * 6.5);\n    height: calc(var(--spacing) * 6.5);\n  }\n  .size-7 {\n    width: calc(var(--spacing) * 7);\n    height: calc(var(--spacing) * 7);\n  }\n  .size-7\\.5 {\n    width: calc(var(--spacing) * 7.5);\n    height: calc(var(--spacing) * 7.5);\n  }\n  .size-8 {\n    width: calc(var(--spacing) * 8);\n    height: calc(var(--spacing) * 8);\n  }\n  .size-9 {\n    width: calc(var(--spacing) * 9);\n    height: calc(var(--spacing) * 9);\n  }\n  .size-10 {\n    width: calc(var(--spacing) * 10);\n    height: calc(var(--spacing) * 10);\n  }\n  .size-12 {\n    width: calc(var(--spacing) * 12);\n    height: calc(var(--spacing) * 12);\n  }\n  .size-15 {\n    width: calc(var(--spacing) * 15);\n    height: calc(var(--spacing) * 15);\n  }\n  .size-full {\n    width: 100%;\n    height: 100%;\n  }\n  .\\!h-3\\.5 {\n    height: calc(var(--spacing) * 3.5) !important;\n  }\n  .\\!h-8 {\n    height: calc(var(--spacing) * 8) !important;\n  }\n  .\\!h-\\[34px\\] {\n    height: 34px !important;\n  }\n  .\\!h-auto {\n    height: auto !important;\n  }\n  .\\!h-fit {\n    height: fit-content !important;\n  }\n  .\\!h-full {\n    height: 100% !important;\n  }\n  .h-0\\.5 {\n    height: calc(var(--spacing) * 0.5);\n  }\n  .h-1 {\n    height: calc(var(--spacing) * 1);\n  }\n  .h-1\\.5 {\n    height: calc(var(--spacing) * 1.5);\n  }\n  .h-2 {\n    height: calc(var(--spacing) * 2);\n  }\n  .h-2\\.5 {\n    height: calc(var(--spacing) * 2.5);\n  }\n  .h-3 {\n    height: calc(var(--spacing) * 3);\n  }\n  .h-3\\.5 {\n    height: calc(var(--spacing) * 3.5);\n  }\n  .h-4 {\n    height: calc(var(--spacing) * 4);\n  }\n  .h-5 {\n    height: calc(var(--spacing) * 5);\n  }\n  .h-5\\.5 {\n    height: calc(var(--spacing) * 5.5);\n  }\n  .h-6 {\n    height: calc(var(--spacing) * 6);\n  }\n  .h-6\\.5 {\n    height: calc(var(--spacing) * 6.5);\n  }\n  .h-7 {\n    height: calc(var(--spacing) * 7);\n  }\n  .h-7\\.5 {\n    height: calc(var(--spacing) * 7.5);\n  }\n  .h-8 {\n    height: calc(var(--spacing) * 8);\n  }\n  .h-8\\.5 {\n    height: calc(var(--spacing) * 8.5);\n  }\n  .h-8\\/10 {\n    height: calc(8/10 * 100%);\n  }\n  .h-9 {\n    height: calc(var(--spacing) * 9);\n  }\n  .h-10 {\n    height: calc(var(--spacing) * 10);\n  }\n  .h-12 {\n    height: calc(var(--spacing) * 12);\n  }\n  .h-14 {\n    height: calc(var(--spacing) * 14);\n  }\n  .h-16 {\n    height: calc(var(--spacing) * 16);\n  }\n  .h-20 {\n    height: calc(var(--spacing) * 20);\n  }\n  .h-32 {\n    height: calc(var(--spacing) * 32);\n  }\n  .h-64 {\n    height: calc(var(--spacing) * 64);\n  }\n  .h-76 {\n    height: calc(var(--spacing) * 76);\n  }\n  .h-80 {\n    height: calc(var(--spacing) * 80);\n  }\n  .h-96 {\n    height: calc(var(--spacing) * 96);\n  }\n  .h-\\[0\\.5px\\] {\n    height: 0.5px;\n  }\n  .h-\\[1lh\\] {\n    height: 1lh;\n  }\n  .h-\\[1px\\] {\n    height: 1px;\n  }\n  .h-\\[14px\\] {\n    height: 14px;\n  }\n  .h-\\[18px\\] {\n    height: 18px;\n  }\n  .h-\\[22px\\] {\n    height: 22px;\n  }\n  .h-\\[25px\\] {\n    height: 25px;\n  }\n  .h-\\[28px\\] {\n    height: 28px;\n  }\n  .h-\\[30px\\] {\n    height: 30px;\n  }\n  .h-\\[34px\\] {\n    height: 34px;\n  }\n  .h-\\[35px\\] {\n    height: 35px;\n  }\n  .h-\\[40px\\] {\n    height: 40px;\n  }\n  .h-\\[45px\\] {\n    height: 45px;\n  }\n  .h-\\[52px\\] {\n    height: 52px;\n  }\n  .h-\\[57px\\] {\n    height: 57px;\n  }\n  .h-\\[58px\\] {\n    height: 58px;\n  }\n  .h-\\[60px\\] {\n    height: 60px;\n  }\n  .h-\\[64px\\] {\n    height: 64px;\n  }\n  .h-\\[80px\\] {\n    height: 80px;\n  }\n  .h-\\[80vh\\] {\n    height: 80vh;\n  }\n  .h-\\[90vh\\] {\n    height: 90vh;\n  }\n  .h-\\[100\\%\\] {\n    height: 100%;\n  }\n  .h-\\[116px\\] {\n    height: 116px;\n  }\n  .h-\\[300px\\] {\n    height: 300px;\n  }\n  .h-\\[350px\\] {\n    height: 350px;\n  }\n  .h-\\[calc\\(75dvh\\)\\] {\n    height: calc(75dvh);\n  }\n  .h-\\[calc\\(100vh-58px\\)\\] {\n    height: calc(100vh - 58px);\n  }\n  .h-\\[calc\\(100vh-240px\\)\\] {\n    height: calc(100vh - 240px);\n  }\n  .h-auto {\n    height: auto;\n  }\n  .h-fit {\n    height: fit-content;\n  }\n  .h-full {\n    height: 100%;\n  }\n  .h-px {\n    height: 1px;\n  }\n  .h-screen {\n    height: 100vh;\n  }\n  .\\!max-h-\\[calc\\(100vh-350px\\)\\] {\n    max-height: calc(100vh - 350px) !important;\n  }\n  .max-h-8\\/10 {\n    max-height: calc(8/10 * 100%);\n  }\n  .max-h-60 {\n    max-height: calc(var(--spacing) * 60);\n  }\n  .max-h-96 {\n    max-height: calc(var(--spacing) * 96);\n  }\n  .max-h-\\[50vh\\] {\n    max-height: 50vh;\n  }\n  .max-h-\\[60vh\\] {\n    max-height: 60vh;\n  }\n  .max-h-\\[80vh\\] {\n    max-height: 80vh;\n  }\n  .max-h-\\[300px\\] {\n    max-height: 300px;\n  }\n  .max-h-\\[400px\\] {\n    max-height: 400px;\n  }\n  .max-h-\\[512px\\] {\n    max-height: 512px;\n  }\n  .max-h-\\[600px\\] {\n    max-height: 600px;\n  }\n  .max-h-\\[calc\\(75dvh\\)\\] {\n    max-height: calc(75dvh);\n  }\n  .max-h-\\[calc\\(100vh-64px\\)\\] {\n    max-height: calc(100vh - 64px);\n  }\n  .max-h-\\[calc\\(100vh-300px\\)\\] {\n    max-height: calc(100vh - 300px);\n  }\n  .max-h-\\[calc\\(var\\(--footer-max-height\\)-150px\\)\\] {\n    max-height: calc(var(--footer-max-height) - 150px);\n  }\n  .max-h-full {\n    max-height: 100%;\n  }\n  .max-h-screen {\n    max-height: 100vh;\n  }\n  .\\!min-h-10 {\n    min-height: calc(var(--spacing) * 10) !important;\n  }\n  .min-h-0 {\n    min-height: calc(var(--spacing) * 0);\n  }\n  .min-h-1 {\n    min-height: calc(var(--spacing) * 1);\n  }\n  .min-h-2 {\n    min-height: calc(var(--spacing) * 2);\n  }\n  .min-h-3 {\n    min-height: calc(var(--spacing) * 3);\n  }\n  .min-h-4\\.5 {\n    min-height: calc(var(--spacing) * 4.5);\n  }\n  .min-h-20 {\n    min-height: calc(var(--spacing) * 20);\n  }\n  .min-h-36 {\n    min-height: calc(var(--spacing) * 36);\n  }\n  .min-h-\\[20px\\] {\n    min-height: 20px;\n  }\n  .min-h-\\[32px\\] {\n    min-height: 32px;\n  }\n  .min-h-\\[47\\.5px\\] {\n    min-height: 47.5px;\n  }\n  .min-h-\\[350px\\] {\n    min-height: 350px;\n  }\n  .min-h-\\[calc\\(100vh-160px\\)\\] {\n    min-height: calc(100vh - 160px);\n  }\n  .min-h-screen {\n    min-height: 100vh;\n  }\n  .\\!w-1 {\n    width: calc(var(--spacing) * 1) !important;\n  }\n  .\\!w-3\\.5 {\n    width: calc(var(--spacing) * 3.5) !important;\n  }\n  .\\!w-3xl {\n    width: var(--container-3xl) !important;\n  }\n  .\\!w-auto {\n    width: auto !important;\n  }\n  .\\!w-full {\n    width: 100% !important;\n  }\n  .w-0 {\n    width: calc(var(--spacing) * 0);\n  }\n  .w-1 {\n    width: calc(var(--spacing) * 1);\n  }\n  .w-1\\.5 {\n    width: calc(var(--spacing) * 1.5);\n  }\n  .w-1\\/2 {\n    width: calc(1/2 * 100%);\n  }\n  .w-1\\/3 {\n    width: calc(1/3 * 100%);\n  }\n  .w-1\\/4 {\n    width: calc(1/4 * 100%);\n  }\n  .w-1\\/5 {\n    width: calc(1/5 * 100%);\n  }\n  .w-1\\/6 {\n    width: calc(1/6 * 100%);\n  }\n  .w-1\\/12 {\n    width: calc(1/12 * 100%);\n  }\n  .w-2 {\n    width: calc(var(--spacing) * 2);\n  }\n  .w-2\\.5 {\n    width: calc(var(--spacing) * 2.5);\n  }\n  .w-3 {\n    width: calc(var(--spacing) * 3);\n  }\n  .w-3\\.5 {\n    width: calc(var(--spacing) * 3.5);\n  }\n  .w-3xl {\n    width: var(--container-3xl);\n  }\n  .w-4 {\n    width: calc(var(--spacing) * 4);\n  }\n  .w-5 {\n    width: calc(var(--spacing) * 5);\n  }\n  .w-6 {\n    width: calc(var(--spacing) * 6);\n  }\n  .w-6xl {\n    width: var(--container-6xl);\n  }\n  .w-7 {\n    width: calc(var(--spacing) * 7);\n  }\n  .w-8 {\n    width: calc(var(--spacing) * 8);\n  }\n  .w-8\\.5 {\n    width: calc(var(--spacing) * 8.5);\n  }\n  .w-10 {\n    width: calc(var(--spacing) * 10);\n  }\n  .w-10\\.5 {\n    width: calc(var(--spacing) * 10.5);\n  }\n  .w-11 {\n    width: calc(var(--spacing) * 11);\n  }\n  .w-12 {\n    width: calc(var(--spacing) * 12);\n  }\n  .w-12\\.5 {\n    width: calc(var(--spacing) * 12.5);\n  }\n  .w-16 {\n    width: calc(var(--spacing) * 16);\n  }\n  .w-20 {\n    width: calc(var(--spacing) * 20);\n  }\n  .w-24 {\n    width: calc(var(--spacing) * 24);\n  }\n  .w-30 {\n    width: calc(var(--spacing) * 30);\n  }\n  .w-32 {\n    width: calc(var(--spacing) * 32);\n  }\n  .w-40 {\n    width: calc(var(--spacing) * 40);\n  }\n  .w-42 {\n    width: calc(var(--spacing) * 42);\n  }\n  .w-45 {\n    width: calc(var(--spacing) * 45);\n  }\n  .w-48 {\n    width: calc(var(--spacing) * 48);\n  }\n  .w-60 {\n    width: calc(var(--spacing) * 60);\n  }\n  .w-64 {\n    width: calc(var(--spacing) * 64);\n  }\n  .w-70 {\n    width: calc(var(--spacing) * 70);\n  }\n  .w-120 {\n    width: calc(var(--spacing) * 120);\n  }\n  .w-\\[10px\\] {\n    width: 10px;\n  }\n  .w-\\[15\\%\\] {\n    width: 15%;\n  }\n  .w-\\[20\\%\\] {\n    width: 20%;\n  }\n  .w-\\[30\\%\\] {\n    width: 30%;\n  }\n  .w-\\[30px\\] {\n    width: 30px;\n  }\n  .w-\\[80px\\] {\n    width: 80px;\n  }\n  .w-\\[230px\\] {\n    width: 230px;\n  }\n  .w-\\[400px\\] {\n    width: 400px;\n  }\n  .w-\\[426px\\] {\n    width: 426px;\n  }\n  .w-\\[446px\\] {\n    width: 446px;\n  }\n  .w-\\[800px\\] {\n    width: 800px;\n  }\n  .w-\\[calc\\(100\\%-14px\\)\\] {\n    width: calc(100% - 14px);\n  }\n  .w-\\[var\\(--anchor-width\\)\\] {\n    width: var(--anchor-width);\n  }\n  .w-\\[var\\(--width\\)\\] {\n    width: var(--width);\n  }\n  .w-auto {\n    width: auto;\n  }\n  .w-fit {\n    width: fit-content;\n  }\n  .w-full {\n    width: 100%;\n  }\n  .w-max {\n    width: max-content;\n  }\n  .w-min {\n    width: min-content;\n  }\n  .w-px {\n    width: 1px;\n  }\n  .w-xl {\n    width: var(--container-xl);\n  }\n  .\\!max-w-3xl {\n    max-width: var(--container-3xl) !important;\n  }\n  .max-w-2xl {\n    max-width: var(--container-2xl);\n  }\n  .max-w-3xl {\n    max-width: var(--container-3xl);\n  }\n  .max-w-6xl {\n    max-width: var(--container-6xl);\n  }\n  .max-w-8 {\n    max-width: calc(var(--spacing) * 8);\n  }\n  .max-w-8\\/10 {\n    max-width: calc(8/10 * 100%);\n  }\n  .max-w-9\\/10 {\n    max-width: calc(9/10 * 100%);\n  }\n  .max-w-28 {\n    max-width: calc(var(--spacing) * 28);\n  }\n  .max-w-32 {\n    max-width: calc(var(--spacing) * 32);\n  }\n  .max-w-50 {\n    max-width: calc(var(--spacing) * 50);\n  }\n  .max-w-56 {\n    max-width: calc(var(--spacing) * 56);\n  }\n  .max-w-80 {\n    max-width: calc(var(--spacing) * 80);\n  }\n  .max-w-140 {\n    max-width: calc(var(--spacing) * 140);\n  }\n  .max-w-\\[30ch\\] {\n    max-width: 30ch;\n  }\n  .max-w-\\[38rem\\] {\n    max-width: 38rem;\n  }\n  .max-w-\\[60ch\\] {\n    max-width: 60ch;\n  }\n  .max-w-\\[70ch\\] {\n    max-width: 70ch;\n  }\n  .max-w-\\[90vw\\] {\n    max-width: 90vw;\n  }\n  .max-w-\\[180px\\] {\n    max-width: 180px;\n  }\n  .max-w-\\[200ch\\] {\n    max-width: 200ch;\n  }\n  .max-w-\\[200px\\] {\n    max-width: 200px;\n  }\n  .max-w-\\[216px\\] {\n    max-width: 216px;\n  }\n  .max-w-\\[300px\\] {\n    max-width: 300px;\n  }\n  .max-w-\\[350px\\] {\n    max-width: 350px;\n  }\n  .max-w-\\[400px\\] {\n    max-width: 400px;\n  }\n  .max-w-\\[640px\\] {\n    max-width: 640px;\n  }\n  .max-w-\\[800px\\] {\n    max-width: 800px;\n  }\n  .max-w-\\[920px\\] {\n    max-width: 920px;\n  }\n  .max-w-\\[950px\\] {\n    max-width: 950px;\n  }\n  .max-w-\\[1000px\\] {\n    max-width: 1000px;\n  }\n  .max-w-\\[1200px\\] {\n    max-width: 1200px;\n  }\n  .max-w-\\[1300px\\] {\n    max-width: 1300px;\n  }\n  .max-w-\\[1348px\\] {\n    max-width: 1348px;\n  }\n  .max-w-\\[1400px\\] {\n    max-width: 1400px;\n  }\n  .max-w-\\[1800px\\] {\n    max-width: 1800px;\n  }\n  .max-w-\\[2000px\\] {\n    max-width: 2000px;\n  }\n  .max-w-\\[calc\\(100\\%-32px\\)\\] {\n    max-width: calc(100% - 32px);\n  }\n  .max-w-\\[calc\\(100vw-3rem\\)\\] {\n    max-width: calc(100vw - 3rem);\n  }\n  .max-w-full {\n    max-width: 100%;\n  }\n  .max-w-lg {\n    max-width: var(--container-lg);\n  }\n  .max-w-md {\n    max-width: var(--container-md);\n  }\n  .max-w-xl {\n    max-width: var(--container-xl);\n  }\n  .max-w-xs {\n    max-width: var(--container-xs);\n  }\n  .min-w-0 {\n    min-width: calc(var(--spacing) * 0);\n  }\n  .min-w-3 {\n    min-width: calc(var(--spacing) * 3);\n  }\n  .min-w-8 {\n    min-width: calc(var(--spacing) * 8);\n  }\n  .min-w-20 {\n    min-width: calc(var(--spacing) * 20);\n  }\n  .min-w-24 {\n    min-width: calc(var(--spacing) * 24);\n  }\n  .min-w-30 {\n    min-width: calc(var(--spacing) * 30);\n  }\n  .min-w-32 {\n    min-width: calc(var(--spacing) * 32);\n  }\n  .min-w-36 {\n    min-width: calc(var(--spacing) * 36);\n  }\n  .min-w-40 {\n    min-width: calc(var(--spacing) * 40);\n  }\n  .min-w-42 {\n    min-width: calc(var(--spacing) * 42);\n  }\n  .min-w-44 {\n    min-width: calc(var(--spacing) * 44);\n  }\n  .min-w-48 {\n    min-width: calc(var(--spacing) * 48);\n  }\n  .min-w-50 {\n    min-width: calc(var(--spacing) * 50);\n  }\n  .min-w-52 {\n    min-width: calc(var(--spacing) * 52);\n  }\n  .min-w-60 {\n    min-width: calc(var(--spacing) * 60);\n  }\n  .min-w-64 {\n    min-width: calc(var(--spacing) * 64);\n  }\n  .min-w-80 {\n    min-width: calc(var(--spacing) * 80);\n  }\n  .min-w-96 {\n    min-width: calc(var(--spacing) * 96);\n  }\n  .min-w-\\[8rem\\] {\n    min-width: 8rem;\n  }\n  .min-w-\\[9px\\] {\n    min-width: 9px;\n  }\n  .min-w-\\[9rem\\] {\n    min-width: 9rem;\n  }\n  .min-w-\\[60px\\] {\n    min-width: 60px;\n  }\n  .min-w-\\[80px\\] {\n    min-width: 80px;\n  }\n  .min-w-\\[150px\\] {\n    min-width: 150px;\n  }\n  .min-w-\\[170px\\] {\n    min-width: 170px;\n  }\n  .min-w-\\[200px\\] {\n    min-width: 200px;\n  }\n  .min-w-\\[250px\\] {\n    min-width: 250px;\n  }\n  .min-w-\\[280px\\] {\n    min-width: 280px;\n  }\n  .min-w-\\[800px\\] {\n    min-width: 800px;\n  }\n  .min-w-\\[var\\(--trigger-width\\)\\] {\n    min-width: var(--trigger-width);\n  }\n  .min-w-sm {\n    min-width: var(--container-sm);\n  }\n  .min-w-xl {\n    min-width: var(--container-xl);\n  }\n  .min-w-xs {\n    min-width: var(--container-xs);\n  }\n  .flex-0 {\n    flex: 0;\n  }\n  .flex-1 {\n    flex: 1;\n  }\n  .flex-2 {\n    flex: 2;\n  }\n  .flex-auto {\n    flex: auto;\n  }\n  .flex-none {\n    flex: none;\n  }\n  .flex-shrink {\n    flex-shrink: 1;\n  }\n  .flex-shrink-0 {\n    flex-shrink: 0;\n  }\n  .flex-shrink-\\[2\\] {\n    flex-shrink: 2;\n  }\n  .shrink {\n    flex-shrink: 1;\n  }\n  .shrink-0 {\n    flex-shrink: 0;\n  }\n  .flex-grow {\n    flex-grow: 1;\n  }\n  .grow {\n    flex-grow: 1;\n  }\n  .grow-0 {\n    flex-grow: 0;\n  }\n  .grow-1 {\n    flex-grow: 1;\n  }\n  .basis-0 {\n    flex-basis: calc(var(--spacing) * 0);\n  }\n  .border-collapse {\n    border-collapse: collapse;\n  }\n  .origin-center {\n    transform-origin: center;\n  }\n  .origin-left {\n    transform-origin: 0;\n  }\n  .-translate-x-1\\/2 {\n    --tw-translate-x: calc(calc(1/2 * 100%) * -1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-x-2 {\n    --tw-translate-x: calc(var(--spacing) * -2);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-x-4 {\n    --tw-translate-x: calc(var(--spacing) * -4);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-0 {\n    --tw-translate-x: calc(var(--spacing) * 0);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-4 {\n    --tw-translate-x: calc(var(--spacing) * 4);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-5 {\n    --tw-translate-x: calc(var(--spacing) * 5);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-16 {\n    --tw-translate-x: calc(var(--spacing) * 16);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-full {\n    --tw-translate-x: 100%;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-0\\.75 {\n    --tw-translate-y: calc(var(--spacing) * -0.75);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-1 {\n    --tw-translate-y: calc(var(--spacing) * -1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-1\\/2 {\n    --tw-translate-y: calc(calc(1/2 * 100%) * -1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-16 {\n    --tw-translate-y: calc(var(--spacing) * -16);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-px {\n    --tw-translate-y: -1px;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-0\\.5 {\n    --tw-translate-y: calc(var(--spacing) * 0.5);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-1 {\n    --tw-translate-y: calc(var(--spacing) * 1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-1\\.5 {\n    --tw-translate-y: calc(var(--spacing) * 1.5);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-\\[2px\\] {\n    --tw-translate-y: 2px;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-\\[calc\\(-50\\%-1px\\)\\] {\n    --tw-translate-y: calc(-50% - 1px);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-px {\n    --tw-translate-y: 1px;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .scale-80 {\n    --tw-scale-x: 80%;\n    --tw-scale-y: 80%;\n    --tw-scale-z: 80%;\n    scale: var(--tw-scale-x) var(--tw-scale-y);\n  }\n  .scale-x-0 {\n    --tw-scale-x: 0%;\n    scale: var(--tw-scale-x) var(--tw-scale-y);\n  }\n  .scale-x-100 {\n    --tw-scale-x: 100%;\n    scale: var(--tw-scale-x) var(--tw-scale-y);\n  }\n  .scale-\\[0\\.85\\] {\n    scale: 0.85;\n  }\n  .rotate-45 {\n    rotate: 45deg;\n  }\n  .rotate-90 {\n    rotate: 90deg;\n  }\n  .rotate-180 {\n    rotate: 180deg;\n  }\n  .transform {\n    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);\n  }\n  .transform-gpu {\n    transform: translateZ(0) var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);\n  }\n  .animate-pulse {\n    animation: var(--animate-pulse);\n  }\n  .animate-refresh {\n    animation: var(--animate-refresh);\n  }\n  .animate-right {\n    animation: var(--animate-right);\n  }\n  .animate-spin {\n    animation: var(--animate-spin);\n  }\n  .\\!cursor-not-allowed {\n    cursor: not-allowed !important;\n  }\n  .cursor-col-resize {\n    cursor: col-resize;\n  }\n  .cursor-default {\n    cursor: default;\n  }\n  .cursor-default\\! {\n    cursor: default !important;\n  }\n  .cursor-ew-resize {\n    cursor: ew-resize;\n  }\n  .cursor-grab {\n    cursor: grab;\n  }\n  .cursor-help {\n    cursor: help;\n  }\n  .cursor-not-allowed {\n    cursor: not-allowed;\n  }\n  .cursor-pointer {\n    cursor: pointer;\n  }\n  .cursor-wait {\n    cursor: wait;\n  }\n  .resize {\n    resize: both;\n  }\n  .resize-none {\n    resize: none;\n  }\n  .resize-y {\n    resize: vertical;\n  }\n  .snap-x {\n    scroll-snap-type: x var(--tw-scroll-snap-strictness);\n  }\n  .snap-mandatory {\n    --tw-scroll-snap-strictness: mandatory;\n  }\n  .snap-center {\n    scroll-snap-align: center;\n  }\n  .list-inside {\n    list-style-position: inside;\n  }\n  .\\!list-none {\n    list-style-type: none !important;\n  }\n  .list-disc {\n    list-style-type: disc;\n  }\n  .list-none {\n    list-style-type: none;\n  }\n  .appearance-none {\n    appearance: none;\n  }\n  .grid-cols-1 {\n    grid-template-columns: repeat(1, minmax(0, 1fr));\n  }\n  .grid-cols-2 {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n  .grid-cols-3 {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }\n  .grid-cols-4 {\n    grid-template-columns: repeat(4, minmax(0, 1fr));\n  }\n  .grid-cols-12 {\n    grid-template-columns: repeat(12, minmax(0, 1fr));\n  }\n  .grid-cols-\\[1fr\\] {\n    grid-template-columns: 1fr;\n  }\n  .grid-cols-\\[1fr_1fr_2fr\\] {\n    grid-template-columns: 1fr 1fr 2fr;\n  }\n  .grid-cols-\\[1fr_3fr\\] {\n    grid-template-columns: 1fr 3fr;\n  }\n  .grid-cols-\\[1fr_24px\\] {\n    grid-template-columns: 1fr 24px;\n  }\n  .grid-cols-\\[3fr_1fr\\] {\n    grid-template-columns: 3fr 1fr;\n  }\n  .grid-cols-\\[3fr_1fr_1fr\\] {\n    grid-template-columns: 3fr 1fr 1fr;\n  }\n  .grid-cols-\\[200px_1fr\\] {\n    grid-template-columns: 200px 1fr;\n  }\n  .grid-cols-\\[320px_1fr\\] {\n    grid-template-columns: 320px 1fr;\n  }\n  .grid-cols-\\[max-content_1fr\\] {\n    grid-template-columns: max-content 1fr;\n  }\n  .grid-rows-5 {\n    grid-template-rows: repeat(5, minmax(0, 1fr));\n  }\n  .\\!flex-row {\n    flex-direction: row !important;\n  }\n  .flex-col {\n    flex-direction: column;\n  }\n  .flex-col-reverse {\n    flex-direction: column-reverse;\n  }\n  .flex-row {\n    flex-direction: row;\n  }\n  .flex-row-reverse {\n    flex-direction: row-reverse;\n  }\n  .flex-wrap {\n    flex-wrap: wrap;\n  }\n  .place-content-center {\n    place-content: center;\n  }\n  .place-items-center {\n    place-items: center;\n  }\n  .content-center {\n    align-content: center;\n  }\n  .items-baseline {\n    align-items: baseline;\n  }\n  .items-center {\n    align-items: center;\n  }\n  .items-end {\n    align-items: flex-end;\n  }\n  .items-start {\n    align-items: flex-start;\n  }\n  .items-stretch {\n    align-items: stretch;\n  }\n  .justify-between {\n    justify-content: space-between;\n  }\n  .justify-center {\n    justify-content: center;\n  }\n  .justify-end {\n    justify-content: flex-end;\n  }\n  .justify-start {\n    justify-content: flex-start;\n  }\n  .justify-stretch {\n    justify-content: stretch;\n  }\n  .gap-0 {\n    gap: calc(var(--spacing) * 0);\n  }\n  .gap-0\\.5 {\n    gap: calc(var(--spacing) * 0.5);\n  }\n  .gap-1 {\n    gap: calc(var(--spacing) * 1);\n  }\n  .gap-1\\.5 {\n    gap: calc(var(--spacing) * 1.5);\n  }\n  .gap-2 {\n    gap: calc(var(--spacing) * 2);\n  }\n  .gap-2\\.5 {\n    gap: calc(var(--spacing) * 2.5);\n  }\n  .gap-3 {\n    gap: calc(var(--spacing) * 3);\n  }\n  .gap-4 {\n    gap: calc(var(--spacing) * 4);\n  }\n  .gap-5 {\n    gap: calc(var(--spacing) * 5);\n  }\n  .gap-6 {\n    gap: calc(var(--spacing) * 6);\n  }\n  .gap-7 {\n    gap: calc(var(--spacing) * 7);\n  }\n  .gap-8 {\n    gap: calc(var(--spacing) * 8);\n  }\n  .gap-12 {\n    gap: calc(var(--spacing) * 12);\n  }\n  .gap-\\[1ch\\] {\n    gap: 1ch;\n  }\n  .space-y-1 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-2 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-2\\.5 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-3 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-4 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-6 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-8 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-\\[var\\(--gap\\)\\] {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(var(--gap) * var(--tw-space-y-reverse));\n      margin-block-end: calc(var(--gap) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .gap-x-1\\.5 {\n    column-gap: calc(var(--spacing) * 1.5);\n  }\n  .gap-x-2 {\n    column-gap: calc(var(--spacing) * 2);\n  }\n  .space-x-1 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 1) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .space-x-2 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .space-x-3 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .space-x-4 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .gap-y-1 {\n    row-gap: calc(var(--spacing) * 1);\n  }\n  .divide-x {\n    :where(& > :not(:last-child)) {\n      --tw-divide-x-reverse: 0;\n      border-inline-style: var(--tw-border-style);\n      border-inline-start-width: calc(1px * var(--tw-divide-x-reverse));\n      border-inline-end-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));\n    }\n  }\n  .divide-y {\n    :where(& > :not(:last-child)) {\n      --tw-divide-y-reverse: 0;\n      border-bottom-style: var(--tw-border-style);\n      border-top-style: var(--tw-border-style);\n      border-top-width: calc(1px * var(--tw-divide-y-reverse));\n      border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n    }\n  }\n  .divide-accent {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-accent);\n    }\n  }\n  .divide-border {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-border);\n    }\n  }\n  .divide-gray-200 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-gray-200);\n    }\n  }\n  .divide-gray-300 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-gray-300);\n    }\n  }\n  .divide-neutral-100 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-100);\n    }\n  }\n  .divide-neutral-200 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-200);\n    }\n  }\n  .divide-neutral-250 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-250);\n    }\n  }\n  .divide-neutral-300 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-300);\n    }\n  }\n  .place-self-end {\n    place-self: end;\n  }\n  .self-center {\n    align-self: center;\n  }\n  .self-end {\n    align-self: flex-end;\n  }\n  .self-start {\n    align-self: flex-start;\n  }\n  .self-stretch {\n    align-self: stretch;\n  }\n  .truncate {\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n  }\n  .\\!overflow-visible {\n    overflow: visible !important;\n  }\n  .overflow-auto {\n    overflow: auto;\n  }\n  .overflow-clip {\n    overflow: clip;\n  }\n  .overflow-hidden {\n    overflow: hidden;\n  }\n  .overflow-scroll {\n    overflow: scroll;\n  }\n  .overflow-visible {\n    overflow: visible;\n  }\n  .overflow-visible\\! {\n    overflow: visible !important;\n  }\n  .overflow-x-auto {\n    overflow-x: auto;\n  }\n  .overflow-x-scroll {\n    overflow-x: scroll;\n  }\n  .\\!overflow-y-auto {\n    overflow-y: auto !important;\n  }\n  .overflow-y-auto {\n    overflow-y: auto;\n  }\n  .overflow-y-scroll {\n    overflow-y: scroll;\n  }\n  .overscroll-contain {\n    overscroll-behavior: contain;\n  }\n  .\\!rounded {\n    border-radius: 0.25rem !important;\n  }\n  .\\!rounded-lg {\n    border-radius: var(--radius-lg) !important;\n  }\n  .\\!rounded-none {\n    border-radius: 0 !important;\n  }\n  .rounded {\n    border-radius: 0.25rem;\n  }\n  .rounded-2xl {\n    border-radius: var(--radius-2xl);\n  }\n  .rounded-full {\n    border-radius: calc(infinity * 1px);\n  }\n  .rounded-lg {\n    border-radius: var(--radius-lg);\n  }\n  .rounded-md {\n    border-radius: var(--radius-md);\n  }\n  .rounded-none {\n    border-radius: 0;\n  }\n  .rounded-sm {\n    border-radius: var(--radius-sm);\n  }\n  .rounded-xl {\n    border-radius: var(--radius-xl);\n  }\n  .rounded-xl\\! {\n    border-radius: var(--radius-xl) !important;\n  }\n  .rounded-xs {\n    border-radius: var(--radius-xs);\n  }\n  .\\!rounded-t-none {\n    border-top-left-radius: 0 !important;\n    border-top-right-radius: 0 !important;\n  }\n  .rounded-t {\n    border-top-left-radius: 0.25rem;\n    border-top-right-radius: 0.25rem;\n  }\n  .rounded-t-\\[10px\\] {\n    border-top-left-radius: 10px;\n    border-top-right-radius: 10px;\n  }\n  .rounded-t-lg {\n    border-top-left-radius: var(--radius-lg);\n    border-top-right-radius: var(--radius-lg);\n  }\n  .rounded-l {\n    border-top-left-radius: 0.25rem;\n    border-bottom-left-radius: 0.25rem;\n  }\n  .rounded-l-none {\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0;\n  }\n  .rounded-l-sm {\n    border-top-left-radius: var(--radius-sm);\n    border-bottom-left-radius: var(--radius-sm);\n  }\n  .rounded-tl-lg {\n    border-top-left-radius: var(--radius-lg);\n  }\n  .rounded-tl-none {\n    border-top-left-radius: 0;\n  }\n  .rounded-r {\n    border-top-right-radius: 0.25rem;\n    border-bottom-right-radius: 0.25rem;\n  }\n  .rounded-r-md {\n    border-top-right-radius: var(--radius-md);\n    border-bottom-right-radius: var(--radius-md);\n  }\n  .rounded-r-none {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0;\n  }\n  .rounded-tr-lg {\n    border-top-right-radius: var(--radius-lg);\n  }\n  .rounded-tr-none {\n    border-top-right-radius: 0;\n  }\n  .rounded-b {\n    border-bottom-right-radius: 0.25rem;\n    border-bottom-left-radius: 0.25rem;\n  }\n  .rounded-b-lg {\n    border-bottom-right-radius: var(--radius-lg);\n    border-bottom-left-radius: var(--radius-lg);\n  }\n  .\\!rounded-br-none {\n    border-bottom-right-radius: 0 !important;\n  }\n  .rounded-br-lg {\n    border-bottom-right-radius: var(--radius-lg);\n  }\n  .rounded-bl-lg {\n    border-bottom-left-radius: var(--radius-lg);\n  }\n  .\\!border {\n    border-style: var(--tw-border-style) !important;\n    border-width: 1px !important;\n  }\n  .\\!border-0 {\n    border-style: var(--tw-border-style) !important;\n    border-width: 0px !important;\n  }\n  .border {\n    border-style: var(--tw-border-style);\n    border-width: 1px;\n  }\n  .border-0 {\n    border-style: var(--tw-border-style);\n    border-width: 0px;\n  }\n  .border-1 {\n    border-style: var(--tw-border-style);\n    border-width: 1px;\n  }\n  .border-2 {\n    border-style: var(--tw-border-style);\n    border-width: 2px;\n  }\n  .\\!border-y-0 {\n    border-block-style: var(--tw-border-style) !important;\n    border-block-width: 0px !important;\n  }\n  .border-y {\n    border-block-style: var(--tw-border-style);\n    border-block-width: 1px;\n  }\n  .border-t {\n    border-top-style: var(--tw-border-style);\n    border-top-width: 1px;\n  }\n  .border-t-0 {\n    border-top-style: var(--tw-border-style);\n    border-top-width: 0px;\n  }\n  .\\!border-r {\n    border-right-style: var(--tw-border-style) !important;\n    border-right-width: 1px !important;\n  }\n  .border-r {\n    border-right-style: var(--tw-border-style);\n    border-right-width: 1px;\n  }\n  .border-r-0 {\n    border-right-style: var(--tw-border-style);\n    border-right-width: 0px;\n  }\n  .border-b {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 1px;\n  }\n  .border-b-0 {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 0px;\n  }\n  .border-b-1 {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 1px;\n  }\n  .border-b-4 {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 4px;\n  }\n  .\\!border-l {\n    border-left-style: var(--tw-border-style) !important;\n    border-left-width: 1px !important;\n  }\n  .\\!border-l-0 {\n    border-left-style: var(--tw-border-style) !important;\n    border-left-width: 0px !important;\n  }\n  .border-l {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 1px;\n  }\n  .border-l-0 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 0px;\n  }\n  .border-l-1 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 1px;\n  }\n  .border-l-2 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 2px;\n  }\n  .border-l-4 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 4px;\n  }\n  .\\!border-none {\n    --tw-border-style: none !important;\n    border-style: none !important;\n  }\n  .border-dashed {\n    --tw-border-style: dashed;\n    border-style: dashed;\n  }\n  .border-dotted {\n    --tw-border-style: dotted;\n    border-style: dotted;\n  }\n  .border-none {\n    --tw-border-style: none;\n    border-style: none;\n  }\n  .\\!border-blue-500 {\n    border-color: var(--color-blue-500) !important;\n  }\n  .\\!border-blue-600 {\n    border-color: var(--color-blue-600) !important;\n  }\n  .\\!border-border {\n    border-color: var(--color-border) !important;\n  }\n  .\\!border-neutral-200 {\n    border-color: var(--color-neutral-200) !important;\n  }\n  .\\!border-neutral-300 {\n    border-color: var(--color-neutral-300) !important;\n  }\n  .border-\\[\\#B6B6B6\\] {\n    border-color: #B6B6B6;\n  }\n  .border-accent {\n    border-color: var(--color-accent);\n  }\n  .border-active {\n    border-color: var(--color-active);\n  }\n  .border-blue-100 {\n    border-color: var(--color-blue-100);\n  }\n  .border-blue-200 {\n    border-color: var(--color-blue-200);\n  }\n  .border-blue-300 {\n    border-color: var(--color-blue-300);\n  }\n  .border-blue-400 {\n    border-color: var(--color-blue-400);\n  }\n  .border-blue-500 {\n    border-color: var(--color-blue-500);\n  }\n  .border-blue-600 {\n    border-color: var(--color-blue-600);\n  }\n  .border-border {\n    border-color: var(--color-border);\n  }\n  .border-border\\/50 {\n    border-color: var(--color-border);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-border) 50%, transparent);\n    }\n  }\n  .border-border\\/60 {\n    border-color: var(--color-border);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-border) 60%, transparent);\n    }\n  }\n  .border-border\\/80 {\n    border-color: var(--color-border);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-border) 80%, transparent);\n    }\n  }\n  .border-cl1-gold-4 {\n    border-color: var(--color-cl1-gold-4);\n  }\n  .border-cl1-gold-7 {\n    border-color: var(--color-cl1-gold-7);\n  }\n  .border-cl1-gray-4 {\n    border-color: var(--color-cl1-gray-4);\n  }\n  .border-cl1-gray-7 {\n    border-color: var(--color-cl1-gray-7);\n  }\n  .border-cl1-gray-8 {\n    border-color: var(--color-cl1-gray-8);\n  }\n  .border-cl1-green-4 {\n    border-color: var(--color-cl1-green-4);\n  }\n  .border-cl1-red-4 {\n    border-color: var(--color-cl1-red-4);\n  }\n  .border-cl1-red-6 {\n    border-color: var(--color-cl1-red-6);\n  }\n  .border-cl1-red-7 {\n    border-color: var(--color-cl1-red-7);\n  }\n  .border-color {\n    border-color: var(--color-color);\n  }\n  .border-destructive {\n    border-color: var(--color-destructive);\n  }\n  .border-gray-200 {\n    border-color: var(--color-gray-200);\n  }\n  .border-gray-300 {\n    border-color: var(--color-gray-300);\n  }\n  .border-green-200 {\n    border-color: var(--color-green-200);\n  }\n  .border-green-300 {\n    border-color: var(--color-green-300);\n  }\n  .border-neutral-100 {\n    border-color: var(--color-neutral-100);\n  }\n  .border-neutral-100\\! {\n    border-color: var(--color-neutral-100) !important;\n  }\n  .border-neutral-150 {\n    border-color: var(--color-neutral-150);\n  }\n  .border-neutral-200 {\n    border-color: var(--color-neutral-200);\n  }\n  .border-neutral-200\\/60 {\n    border-color: color-mix(in srgb, oklch(0.922 0 0) 60%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-neutral-200) 60%, transparent);\n    }\n  }\n  .border-neutral-200\\/70 {\n    border-color: color-mix(in srgb, oklch(0.922 0 0) 70%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-neutral-200) 70%, transparent);\n    }\n  }\n  .border-neutral-250 {\n    border-color: var(--color-neutral-250);\n  }\n  .border-neutral-300 {\n    border-color: var(--color-neutral-300);\n  }\n  .border-neutral-400 {\n    border-color: var(--color-neutral-400);\n  }\n  .border-neutral-500 {\n    border-color: var(--color-neutral-500);\n  }\n  .border-neutral-600 {\n    border-color: var(--color-neutral-600);\n  }\n  .border-neutral-900 {\n    border-color: var(--color-neutral-900);\n  }\n  .border-orange-200 {\n    border-color: var(--color-orange-200);\n  }\n  .border-red-200 {\n    border-color: var(--color-red-200);\n  }\n  .border-red-300 {\n    border-color: var(--color-red-300);\n  }\n  .border-red-400 {\n    border-color: var(--color-red-400);\n  }\n  .border-transparent {\n    border-color: transparent;\n  }\n  .border-yellow-200 {\n    border-color: var(--color-yellow-200);\n  }\n  .border-yellow-300 {\n    border-color: var(--color-yellow-300);\n  }\n  .border-yellow-500 {\n    border-color: var(--color-yellow-500);\n  }\n  .border-zinc-500 {\n    border-color: var(--color-zinc-500);\n  }\n  .border-t-transparent {\n    border-top-color: transparent;\n  }\n  .border-r-neutral-900 {\n    border-right-color: var(--color-neutral-900);\n  }\n  .\\!border-b-primary\\/80 {\n    border-bottom-color: var(--color-primary) !important;\n    @supports (color: color-mix(in lab, red, red)) {\n      border-bottom-color: color-mix(in oklab, var(--color-primary) 80%, transparent) !important;\n    }\n  }\n  .border-b-neutral-200 {\n    border-bottom-color: var(--color-neutral-200);\n  }\n  .border-b-neutral-900 {\n    border-bottom-color: var(--color-neutral-900);\n  }\n  .border-b-transparent\\! {\n    border-bottom-color: transparent !important;\n  }\n  .border-l-cl1-gray-8 {\n    border-left-color: var(--color-cl1-gray-8);\n  }\n  .border-l-neutral-200 {\n    border-left-color: var(--color-neutral-200);\n  }\n  .border-l-orange-500 {\n    border-left-color: var(--color-orange-500);\n  }\n  .border-l-surface {\n    border-left-color: var(--color-surface);\n  }\n  .\\!bg-\\[\\#f6821f1a\\] {\n    background-color: #f6821f1a !important;\n  }\n  .\\!bg-blue-600 {\n    background-color: var(--color-blue-600) !important;\n  }\n  .\\!bg-neutral-50 {\n    background-color: var(--color-neutral-50) !important;\n  }\n  .\\!bg-neutral-100 {\n    background-color: var(--color-neutral-100) !important;\n  }\n  .\\!bg-neutral-300 {\n    background-color: var(--color-neutral-300) !important;\n  }\n  .\\!bg-surface {\n    background-color: var(--color-surface) !important;\n  }\n  .\\!bg-surface-secondary {\n    background-color: var(--color-surface-secondary) !important;\n  }\n  .\\!bg-transparent {\n    background-color: transparent !important;\n  }\n  .bg-\\[\\#F8F8F8\\] {\n    background-color: #F8F8F8;\n  }\n  .bg-\\[\\#f6821f\\] {\n    background-color: #f6821f;\n  }\n  .bg-\\[\\#ffe693\\] {\n    background-color: #ffe693;\n  }\n  .bg-\\[var\\(--color-accent\\)\\] {\n    background-color: var(--color-accent);\n  }\n  .bg-accent {\n    background-color: var(--color-accent);\n  }\n  .bg-accent\\/60 {\n    background-color: var(--color-accent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-accent) 60%, transparent);\n    }\n  }\n  .bg-amber-200 {\n    background-color: var(--color-amber-200);\n  }\n  .bg-bg-primary {\n    background-color: var(--color-bg-primary);\n  }\n  .bg-bg-secondary {\n    background-color: var(--color-bg-secondary);\n  }\n  .bg-black {\n    background-color: var(--color-black);\n  }\n  .bg-black\\/5 {\n    background-color: color-mix(in srgb, #000 5%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-black) 5%, transparent);\n    }\n  }\n  .bg-black\\/30 {\n    background-color: color-mix(in srgb, #000 30%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-black) 30%, transparent);\n    }\n  }\n  .bg-black\\/40 {\n    background-color: color-mix(in srgb, #000 40%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-black) 40%, transparent);\n    }\n  }\n  .bg-blue-50 {\n    background-color: var(--color-blue-50);\n  }\n  .bg-blue-100 {\n    background-color: var(--color-blue-100);\n  }\n  .bg-blue-200 {\n    background-color: var(--color-blue-200);\n  }\n  .bg-blue-300 {\n    background-color: var(--color-blue-300);\n  }\n  .bg-blue-400 {\n    background-color: var(--color-blue-400);\n  }\n  .bg-blue-500 {\n    background-color: var(--color-blue-500);\n  }\n  .bg-blue-600 {\n    background-color: var(--color-blue-600);\n  }\n  .bg-cl1-black {\n    background-color: var(--color-cl1-black);\n  }\n  .bg-cl1-blue-5 {\n    background-color: var(--color-cl1-blue-5);\n  }\n  .bg-cl1-blue-6 {\n    background-color: var(--color-cl1-blue-6);\n  }\n  .bg-cl1-blue-7 {\n    background-color: var(--color-cl1-blue-7);\n  }\n  .bg-cl1-blue-9 {\n    background-color: var(--color-cl1-blue-9);\n  }\n  .bg-cl1-blue-9\\/60 {\n    background-color: var(--color-cl1-blue-9);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-cl1-blue-9) 60%, transparent);\n    }\n  }\n  .bg-cl1-gold-5 {\n    background-color: var(--color-cl1-gold-5);\n  }\n  .bg-cl1-gold-6 {\n    background-color: var(--color-cl1-gold-6);\n  }\n  .bg-cl1-gold-9 {\n    background-color: var(--color-cl1-gold-9);\n  }\n  .bg-cl1-gray-5 {\n    background-color: var(--color-cl1-gray-5);\n  }\n  .bg-cl1-gray-6 {\n    background-color: var(--color-cl1-gray-6);\n  }\n  .bg-cl1-gray-7\\/10 {\n    background-color: var(--color-cl1-gray-7);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-cl1-gray-7) 10%, transparent);\n    }\n  }\n  .bg-cl1-gray-8 {\n    background-color: var(--color-cl1-gray-8);\n  }\n  .bg-cl1-gray-9 {\n    background-color: var(--color-cl1-gray-9);\n  }\n  .bg-cl1-green-5 {\n    background-color: var(--color-cl1-green-5);\n  }\n  .bg-cl1-green-6 {\n    background-color: var(--color-cl1-green-6);\n  }\n  .bg-cl1-red-5 {\n    background-color: var(--color-cl1-red-5);\n  }\n  .bg-cl1-red-6 {\n    background-color: var(--color-cl1-red-6);\n  }\n  .bg-cl1-red-7 {\n    background-color: var(--color-cl1-red-7);\n  }\n  .bg-cl1-red-7\\/40 {\n    background-color: var(--color-cl1-red-7);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-cl1-red-7) 40%, transparent);\n    }\n  }\n  .bg-cl1-red-9 {\n    background-color: var(--color-cl1-red-9);\n  }\n  .bg-cl1-white {\n    background-color: var(--color-cl1-white);\n  }\n  .bg-current {\n    background-color: currentcolor;\n  }\n  .bg-cyan-100 {\n    background-color: var(--color-cyan-100);\n  }\n  .bg-destructive {\n    background-color: var(--color-destructive);\n  }\n  .bg-gray-50 {\n    background-color: var(--color-gray-50);\n  }\n  .bg-gray-100 {\n    background-color: var(--color-gray-100);\n  }\n  .bg-gray-200 {\n    background-color: var(--color-gray-200);\n  }\n  .bg-gray-300 {\n    background-color: var(--color-gray-300);\n  }\n  .bg-gray-300\\/60 {\n    background-color: color-mix(in srgb, oklch(87.2% 0.01 258.338) 60%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-gray-300) 60%, transparent);\n    }\n  }\n  .bg-gray-500 {\n    background-color: var(--color-gray-500);\n  }\n  .bg-green-50 {\n    background-color: var(--color-green-50);\n  }\n  .bg-green-100 {\n    background-color: var(--color-green-100);\n  }\n  .bg-green-200 {\n    background-color: var(--color-green-200);\n  }\n  .bg-green-500 {\n    background-color: var(--color-green-500);\n  }\n  .bg-green-600 {\n    background-color: var(--color-green-600);\n  }\n  .bg-indigo-100 {\n    background-color: var(--color-indigo-100);\n  }\n  .bg-inherit {\n    background-color: inherit;\n  }\n  .bg-input {\n    background-color: var(--color-input);\n  }\n  .bg-muted {\n    background-color: var(--color-muted);\n  }\n  .bg-neutral-25 {\n    background-color: var(--color-neutral-25);\n  }\n  .bg-neutral-50 {\n    background-color: var(--color-neutral-50);\n  }\n  .bg-neutral-50\\! {\n    background-color: var(--color-neutral-50) !important;\n  }\n  .bg-neutral-100 {\n    background-color: var(--color-neutral-100);\n  }\n  .bg-neutral-150 {\n    background-color: var(--color-neutral-150);\n  }\n  .bg-neutral-200 {\n    background-color: var(--color-neutral-200);\n  }\n  .bg-neutral-200\\/30 {\n    background-color: color-mix(in srgb, oklch(0.922 0 0) 30%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-neutral-200) 30%, transparent);\n    }\n  }\n  .bg-neutral-250 {\n    background-color: var(--color-neutral-250);\n  }\n  .bg-neutral-300 {\n    background-color: var(--color-neutral-300);\n  }\n  .bg-neutral-600 {\n    background-color: var(--color-neutral-600);\n  }\n  .bg-neutral-900 {\n    background-color: var(--color-neutral-900);\n  }\n  .bg-ob-base-1000 {\n    background-color: var(--color-ob-base-1000);\n  }\n  .bg-orange-100 {\n    background-color: var(--color-orange-100);\n  }\n  .bg-orange-200 {\n    background-color: var(--color-orange-200);\n  }\n  .bg-primary {\n    background-color: var(--color-primary);\n  }\n  .bg-purple-200 {\n    background-color: var(--color-purple-200);\n  }\n  .bg-red-50 {\n    background-color: var(--color-red-50);\n  }\n  .bg-red-50\\! {\n    background-color: var(--color-red-50) !important;\n  }\n  .bg-red-100 {\n    background-color: var(--color-red-100);\n  }\n  .bg-red-200 {\n    background-color: var(--color-red-200);\n  }\n  .bg-red-400 {\n    background-color: var(--color-red-400);\n  }\n  .bg-red-500 {\n    background-color: var(--color-red-500);\n  }\n  .bg-secondary {\n    background-color: var(--color-secondary);\n  }\n  .bg-surface {\n    background-color: var(--color-surface);\n  }\n  .bg-surface-active {\n    background-color: var(--color-surface-active);\n  }\n  .bg-surface-secondary {\n    background-color: var(--color-surface-secondary);\n  }\n  .bg-transparent {\n    background-color: transparent;\n  }\n  .bg-white {\n    background-color: var(--color-white);\n  }\n  .bg-white\\/80 {\n    background-color: color-mix(in srgb, #fff 80%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-white) 80%, transparent);\n    }\n  }\n  .bg-yellow-50 {\n    background-color: var(--color-yellow-50);\n  }\n  .bg-yellow-200 {\n    background-color: var(--color-yellow-200);\n  }\n  .bg-yellow-300 {\n    background-color: var(--color-yellow-300);\n  }\n  .bg-yellow-500 {\n    background-color: var(--color-yellow-500);\n  }\n  .bg-yellow-500\\/20 {\n    background-color: color-mix(in srgb, oklch(79.5% 0.184 86.047) 20%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-yellow-500) 20%, transparent);\n    }\n  }\n  .bg-gradient-to-b {\n    --tw-gradient-position: to bottom in oklab;\n    background-image: linear-gradient(var(--tw-gradient-stops));\n  }\n  .bg-gradient-to-br {\n    --tw-gradient-position: to bottom right in oklab;\n    background-image: linear-gradient(var(--tw-gradient-stops));\n  }\n  .bg-gradient-to-r {\n    --tw-gradient-position: to right in oklab;\n    background-image: linear-gradient(var(--tw-gradient-stops));\n  }\n  .from-blue-50 {\n    --tw-gradient-from: var(--color-blue-50);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .from-neutral-50 {\n    --tw-gradient-from: var(--color-neutral-50);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .from-transparent {\n    --tw-gradient-from: transparent;\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-indigo-50 {\n    --tw-gradient-to: var(--color-indigo-50);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-neutral-100 {\n    --tw-gradient-to: var(--color-neutral-100);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-white {\n    --tw-gradient-to: var(--color-white);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-40\\% {\n    --tw-gradient-to-position: 40%;\n  }\n  .fill-ob-base-1000 {\n    fill: var(--color-ob-base-1000);\n  }\n  .stroke-border {\n    stroke: var(--color-border);\n  }\n  .stroke-red-500 {\n    stroke: var(--color-red-500);\n  }\n  .stroke-red-500\\! {\n    stroke: var(--color-red-500) !important;\n  }\n  .stroke-1 {\n    stroke-width: 1;\n  }\n  .object-cover {\n    object-fit: cover;\n  }\n  .object-fill {\n    object-fit: fill;\n  }\n  .\\!p-0 {\n    padding: calc(var(--spacing) * 0) !important;\n  }\n  .\\!p-1 {\n    padding: calc(var(--spacing) * 1) !important;\n  }\n  .\\!p-3 {\n    padding: calc(var(--spacing) * 3) !important;\n  }\n  .\\!p-4 {\n    padding: calc(var(--spacing) * 4) !important;\n  }\n  .\\!p-5 {\n    padding: calc(var(--spacing) * 5) !important;\n  }\n  .p-0 {\n    padding: calc(var(--spacing) * 0);\n  }\n  .p-0\\! {\n    padding: calc(var(--spacing) * 0) !important;\n  }\n  .p-0\\.5 {\n    padding: calc(var(--spacing) * 0.5);\n  }\n  .p-1 {\n    padding: calc(var(--spacing) * 1);\n  }\n  .p-1\\.5 {\n    padding: calc(var(--spacing) * 1.5);\n  }\n  .p-2 {\n    padding: calc(var(--spacing) * 2);\n  }\n  .p-2\\.5 {\n    padding: calc(var(--spacing) * 2.5);\n  }\n  .p-3 {\n    padding: calc(var(--spacing) * 3);\n  }\n  .p-4 {\n    padding: calc(var(--spacing) * 4);\n  }\n  .p-5 {\n    padding: calc(var(--spacing) * 5);\n  }\n  .p-6 {\n    padding: calc(var(--spacing) * 6);\n  }\n  .p-6\\.5 {\n    padding: calc(var(--spacing) * 6.5);\n  }\n  .p-8 {\n    padding: calc(var(--spacing) * 8);\n  }\n  .p-10 {\n    padding: calc(var(--spacing) * 10);\n  }\n  .p-12 {\n    padding: calc(var(--spacing) * 12);\n  }\n  .p-16 {\n    padding: calc(var(--spacing) * 16);\n  }\n  .p-px {\n    padding: 1px;\n  }\n  .\\!px-0 {\n    padding-inline: calc(var(--spacing) * 0) !important;\n  }\n  .\\!px-0\\.5 {\n    padding-inline: calc(var(--spacing) * 0.5) !important;\n  }\n  .\\!px-2 {\n    padding-inline: calc(var(--spacing) * 2) !important;\n  }\n  .\\!px-3 {\n    padding-inline: calc(var(--spacing) * 3) !important;\n  }\n  .\\!px-4 {\n    padding-inline: calc(var(--spacing) * 4) !important;\n  }\n  .\\!px-5 {\n    padding-inline: calc(var(--spacing) * 5) !important;\n  }\n  .px-0 {\n    padding-inline: calc(var(--spacing) * 0);\n  }\n  .px-0\\! {\n    padding-inline: calc(var(--spacing) * 0) !important;\n  }\n  .px-0\\.5 {\n    padding-inline: calc(var(--spacing) * 0.5);\n  }\n  .px-1 {\n    padding-inline: calc(var(--spacing) * 1);\n  }\n  .px-1\\.5 {\n    padding-inline: calc(var(--spacing) * 1.5);\n  }\n  .px-2 {\n    padding-inline: calc(var(--spacing) * 2);\n  }\n  .px-2\\! {\n    padding-inline: calc(var(--spacing) * 2) !important;\n  }\n  .px-2\\.5 {\n    padding-inline: calc(var(--spacing) * 2.5);\n  }\n  .px-3 {\n    padding-inline: calc(var(--spacing) * 3);\n  }\n  .px-3\\.5 {\n    padding-inline: calc(var(--spacing) * 3.5);\n  }\n  .px-4 {\n    padding-inline: calc(var(--spacing) * 4);\n  }\n  .px-4\\.5 {\n    padding-inline: calc(var(--spacing) * 4.5);\n  }\n  .px-5 {\n    padding-inline: calc(var(--spacing) * 5);\n  }\n  .px-6 {\n    padding-inline: calc(var(--spacing) * 6);\n  }\n  .px-8 {\n    padding-inline: calc(var(--spacing) * 8);\n  }\n  .px-10 {\n    padding-inline: calc(var(--spacing) * 10);\n  }\n  .px-\\[1px\\] {\n    padding-inline: 1px;\n  }\n  .px-\\[3px\\] {\n    padding-inline: 3px;\n  }\n  .px-\\[6px\\] {\n    padding-inline: 6px;\n  }\n  .\\!py-1 {\n    padding-block: calc(var(--spacing) * 1) !important;\n  }\n  .\\!py-1\\.5 {\n    padding-block: calc(var(--spacing) * 1.5) !important;\n  }\n  .\\!py-2 {\n    padding-block: calc(var(--spacing) * 2) !important;\n  }\n  .\\!py-3 {\n    padding-block: calc(var(--spacing) * 3) !important;\n  }\n  .\\!py-4 {\n    padding-block: calc(var(--spacing) * 4) !important;\n  }\n  .py-0 {\n    padding-block: calc(var(--spacing) * 0);\n  }\n  .py-0\\.5 {\n    padding-block: calc(var(--spacing) * 0.5);\n  }\n  .py-1 {\n    padding-block: calc(var(--spacing) * 1);\n  }\n  .py-1\\! {\n    padding-block: calc(var(--spacing) * 1) !important;\n  }\n  .py-1\\.5 {\n    padding-block: calc(var(--spacing) * 1.5);\n  }\n  .py-2 {\n    padding-block: calc(var(--spacing) * 2);\n  }\n  .py-2\\.5 {\n    padding-block: calc(var(--spacing) * 2.5);\n  }\n  .py-3 {\n    padding-block: calc(var(--spacing) * 3);\n  }\n  .py-3\\.5 {\n    padding-block: calc(var(--spacing) * 3.5);\n  }\n  .py-4 {\n    padding-block: calc(var(--spacing) * 4);\n  }\n  .py-4\\! {\n    padding-block: calc(var(--spacing) * 4) !important;\n  }\n  .py-5 {\n    padding-block: calc(var(--spacing) * 5);\n  }\n  .py-6 {\n    padding-block: calc(var(--spacing) * 6);\n  }\n  .py-8 {\n    padding-block: calc(var(--spacing) * 8);\n  }\n  .py-12 {\n    padding-block: calc(var(--spacing) * 12);\n  }\n  .py-16 {\n    padding-block: calc(var(--spacing) * 16);\n  }\n  .py-\\[1px\\] {\n    padding-block: 1px;\n  }\n  .py-\\[2px\\] {\n    padding-block: 2px;\n  }\n  .py-\\[11px\\] {\n    padding-block: 11px;\n  }\n  .\\!pt-2 {\n    padding-top: calc(var(--spacing) * 2) !important;\n  }\n  .pt-1 {\n    padding-top: calc(var(--spacing) * 1);\n  }\n  .pt-2 {\n    padding-top: calc(var(--spacing) * 2);\n  }\n  .pt-3 {\n    padding-top: calc(var(--spacing) * 3);\n  }\n  .pt-4 {\n    padding-top: calc(var(--spacing) * 4);\n  }\n  .pt-6 {\n    padding-top: calc(var(--spacing) * 6);\n  }\n  .pt-10 {\n    padding-top: calc(var(--spacing) * 10);\n  }\n  .pt-12 {\n    padding-top: calc(var(--spacing) * 12);\n  }\n  .\\!pr-1 {\n    padding-right: calc(var(--spacing) * 1) !important;\n  }\n  .\\!pr-2 {\n    padding-right: calc(var(--spacing) * 2) !important;\n  }\n  .pr-1 {\n    padding-right: calc(var(--spacing) * 1);\n  }\n  .pr-2 {\n    padding-right: calc(var(--spacing) * 2);\n  }\n  .pr-2\\.5 {\n    padding-right: calc(var(--spacing) * 2.5);\n  }\n  .pr-3 {\n    padding-right: calc(var(--spacing) * 3);\n  }\n  .pr-4 {\n    padding-right: calc(var(--spacing) * 4);\n  }\n  .pr-6 {\n    padding-right: calc(var(--spacing) * 6);\n  }\n  .pr-8 {\n    padding-right: calc(var(--spacing) * 8);\n  }\n  .pr-10 {\n    padding-right: calc(var(--spacing) * 10);\n  }\n  .pr-12 {\n    padding-right: calc(var(--spacing) * 12);\n  }\n  .pr-20 {\n    padding-right: calc(var(--spacing) * 20);\n  }\n  .pr-\\[14px\\] {\n    padding-right: 14px;\n  }\n  .\\!pb-1 {\n    padding-bottom: calc(var(--spacing) * 1) !important;\n  }\n  .\\!pb-2 {\n    padding-bottom: calc(var(--spacing) * 2) !important;\n  }\n  .\\!pb-3 {\n    padding-bottom: calc(var(--spacing) * 3) !important;\n  }\n  .pb-0 {\n    padding-bottom: calc(var(--spacing) * 0);\n  }\n  .pb-0\\.5 {\n    padding-bottom: calc(var(--spacing) * 0.5);\n  }\n  .pb-1 {\n    padding-bottom: calc(var(--spacing) * 1);\n  }\n  .pb-1\\! {\n    padding-bottom: calc(var(--spacing) * 1) !important;\n  }\n  .pb-1\\.5 {\n    padding-bottom: calc(var(--spacing) * 1.5);\n  }\n  .pb-2 {\n    padding-bottom: calc(var(--spacing) * 2);\n  }\n  .pb-3 {\n    padding-bottom: calc(var(--spacing) * 3);\n  }\n  .pb-4 {\n    padding-bottom: calc(var(--spacing) * 4);\n  }\n  .pb-8 {\n    padding-bottom: calc(var(--spacing) * 8);\n  }\n  .pb-10 {\n    padding-bottom: calc(var(--spacing) * 10);\n  }\n  .pb-20 {\n    padding-bottom: calc(var(--spacing) * 20);\n  }\n  .pb-48 {\n    padding-bottom: calc(var(--spacing) * 48);\n  }\n  .pb-\\[48px\\] {\n    padding-bottom: 48px;\n  }\n  .pb-\\[68px\\] {\n    padding-bottom: 68px;\n  }\n  .\\!pl-0 {\n    padding-left: calc(var(--spacing) * 0) !important;\n  }\n  .\\!pl-1 {\n    padding-left: calc(var(--spacing) * 1) !important;\n  }\n  .\\!pl-2 {\n    padding-left: calc(var(--spacing) * 2) !important;\n  }\n  .\\!pl-5 {\n    padding-left: calc(var(--spacing) * 5) !important;\n  }\n  .pl-0 {\n    padding-left: calc(var(--spacing) * 0);\n  }\n  .pl-1 {\n    padding-left: calc(var(--spacing) * 1);\n  }\n  .pl-1\\.5 {\n    padding-left: calc(var(--spacing) * 1.5);\n  }\n  .pl-2 {\n    padding-left: calc(var(--spacing) * 2);\n  }\n  .pl-2\\.5 {\n    padding-left: calc(var(--spacing) * 2.5);\n  }\n  .pl-3 {\n    padding-left: calc(var(--spacing) * 3);\n  }\n  .pl-4 {\n    padding-left: calc(var(--spacing) * 4);\n  }\n  .pl-4\\.5 {\n    padding-left: calc(var(--spacing) * 4.5);\n  }\n  .pl-5 {\n    padding-left: calc(var(--spacing) * 5);\n  }\n  .pl-6 {\n    padding-left: calc(var(--spacing) * 6);\n  }\n  .pl-8 {\n    padding-left: calc(var(--spacing) * 8);\n  }\n  .pl-10 {\n    padding-left: calc(var(--spacing) * 10);\n  }\n  .pl-\\[1px\\] {\n    padding-left: 1px;\n  }\n  .pl-\\[86px\\] {\n    padding-left: 86px;\n  }\n  .text-center {\n    text-align: center;\n  }\n  .text-left {\n    text-align: left;\n  }\n  .text-right {\n    text-align: right;\n  }\n  .align-middle {\n    vertical-align: middle;\n  }\n  .align-top {\n    vertical-align: top;\n  }\n  .\\!font-mono {\n    font-family: var(--font-mono) !important;\n  }\n  .\\!font-sans {\n    font-family: var(--font-sans) !important;\n  }\n  .font-mono {\n    font-family: var(--font-mono);\n  }\n  .font-mono\\! {\n    font-family: var(--font-mono) !important;\n  }\n  .font-sans {\n    font-family: var(--font-sans);\n  }\n  .\\!text-3xl {\n    font-size: var(--text-3xl) !important;\n    line-height: var(--tw-leading, var(--text-3xl--line-height)) !important;\n  }\n  .\\!text-base {\n    font-size: var(--text-base) !important;\n    line-height: var(--tw-leading, var(--text-base--line-height)) !important;\n  }\n  .\\!text-lg {\n    font-size: var(--text-lg) !important;\n    line-height: var(--tw-leading, var(--text-lg--line-height)) !important;\n  }\n  .\\!text-sm {\n    font-size: var(--text-sm) !important;\n    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;\n  }\n  .\\!text-xl {\n    font-size: var(--text-xl) !important;\n    line-height: var(--tw-leading, var(--text-xl--line-height)) !important;\n  }\n  .\\!text-xs {\n    font-size: var(--text-xs) !important;\n    line-height: var(--tw-leading, var(--text-xs--line-height)) !important;\n  }\n  .text-2xl {\n    font-size: var(--text-2xl);\n    line-height: var(--tw-leading, var(--text-2xl--line-height));\n  }\n  .text-3xl {\n    font-size: var(--text-3xl);\n    line-height: var(--tw-leading, var(--text-3xl--line-height));\n  }\n  .text-base {\n    font-size: var(--text-base);\n    line-height: var(--tw-leading, var(--text-base--line-height));\n  }\n  .text-base\\/tight {\n    font-size: var(--text-base);\n    line-height: var(--leading-tight);\n  }\n  .text-lg {\n    font-size: var(--text-lg);\n    line-height: var(--tw-leading, var(--text-lg--line-height));\n  }\n  .text-sm {\n    font-size: var(--text-sm);\n    line-height: var(--tw-leading, var(--text-sm--line-height));\n  }\n  .text-sm\\! {\n    font-size: var(--text-sm) !important;\n    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;\n  }\n  .text-sm\\/normal {\n    font-size: var(--text-sm);\n    line-height: var(--leading-normal);\n  }\n  .text-xl {\n    font-size: var(--text-xl);\n    line-height: var(--tw-leading, var(--text-xl--line-height));\n  }\n  .text-xl\\! {\n    font-size: var(--text-xl) !important;\n    line-height: var(--tw-leading, var(--text-xl--line-height)) !important;\n  }\n  .text-xs {\n    font-size: var(--text-xs);\n    line-height: var(--tw-leading, var(--text-xs--line-height));\n  }\n  .text-xs\\! {\n    font-size: var(--text-xs) !important;\n    line-height: var(--tw-leading, var(--text-xs--line-height)) !important;\n  }\n  .\\!text-\\[10px\\] {\n    font-size: 10px !important;\n  }\n  .\\!text-\\[14px\\] {\n    font-size: 14px !important;\n  }\n  .\\!text-\\[16px\\] {\n    font-size: 16px !important;\n  }\n  .\\!text-\\[19px\\] {\n    font-size: 19px !important;\n  }\n  .text-\\[0\\.85rem\\] {\n    font-size: 0.85rem;\n  }\n  .text-\\[8px\\] {\n    font-size: 8px;\n  }\n  .text-\\[10px\\] {\n    font-size: 10px;\n  }\n  .text-\\[11px\\] {\n    font-size: 11px;\n  }\n  .text-\\[12px\\] {\n    font-size: 12px;\n  }\n  .text-\\[14px\\] {\n    font-size: 14px;\n  }\n  .leading-0 {\n    --tw-leading: calc(var(--spacing) * 0);\n    line-height: calc(var(--spacing) * 0);\n  }\n  .leading-5 {\n    --tw-leading: calc(var(--spacing) * 5);\n    line-height: calc(var(--spacing) * 5);\n  }\n  .leading-8 {\n    --tw-leading: calc(var(--spacing) * 8);\n    line-height: calc(var(--spacing) * 8);\n  }\n  .leading-\\[1\\.4\\] {\n    --tw-leading: 1.4;\n    line-height: 1.4;\n  }\n  .leading-\\[20px\\] {\n    --tw-leading: 20px;\n    line-height: 20px;\n  }\n  .leading-\\[35px\\] {\n    --tw-leading: 35px;\n    line-height: 35px;\n  }\n  .leading-none {\n    --tw-leading: 1;\n    line-height: 1;\n  }\n  .leading-normal {\n    --tw-leading: var(--leading-normal);\n    line-height: var(--leading-normal);\n  }\n  .leading-relaxed {\n    --tw-leading: var(--leading-relaxed);\n    line-height: var(--leading-relaxed);\n  }\n  .leading-snug {\n    --tw-leading: var(--leading-snug);\n    line-height: var(--leading-snug);\n  }\n  .\\!font-bold {\n    --tw-font-weight: var(--font-weight-bold) !important;\n    font-weight: var(--font-weight-bold) !important;\n  }\n  .\\!font-medium {\n    --tw-font-weight: var(--font-weight-medium) !important;\n    font-weight: var(--font-weight-medium) !important;\n  }\n  .\\!font-semibold {\n    --tw-font-weight: var(--font-weight-semibold) !important;\n    font-weight: var(--font-weight-semibold) !important;\n  }\n  .font-\\[500\\] {\n    --tw-font-weight: 500;\n    font-weight: 500;\n  }\n  .font-bold {\n    --tw-font-weight: var(--font-weight-bold);\n    font-weight: var(--font-weight-bold);\n  }\n  .font-light {\n    --tw-font-weight: var(--font-weight-light);\n    font-weight: var(--font-weight-light);\n  }\n  .font-medium {\n    --tw-font-weight: var(--font-weight-medium);\n    font-weight: var(--font-weight-medium);\n  }\n  .font-normal {\n    --tw-font-weight: var(--font-weight-normal);\n    font-weight: var(--font-weight-normal);\n  }\n  .font-semibold {\n    --tw-font-weight: var(--font-weight-semibold);\n    font-weight: var(--font-weight-semibold);\n  }\n  .font-semibold\\! {\n    --tw-font-weight: var(--font-weight-semibold) !important;\n    font-weight: var(--font-weight-semibold) !important;\n  }\n  .tracking-normal {\n    --tw-tracking: var(--tracking-normal);\n    letter-spacing: var(--tracking-normal);\n  }\n  .tracking-tight {\n    --tw-tracking: var(--tracking-tight);\n    letter-spacing: var(--tracking-tight);\n  }\n  .tracking-wide {\n    --tw-tracking: var(--tracking-wide);\n    letter-spacing: var(--tracking-wide);\n  }\n  .tracking-widest {\n    --tw-tracking: var(--tracking-widest);\n    letter-spacing: var(--tracking-widest);\n  }\n  .text-nowrap {\n    text-wrap: nowrap;\n  }\n  .text-pretty {\n    text-wrap: pretty;\n  }\n  .text-wrap {\n    text-wrap: wrap;\n  }\n  .break-words {\n    overflow-wrap: break-word;\n  }\n  .break-all {\n    word-break: break-all;\n  }\n  .overflow-ellipsis {\n    text-overflow: ellipsis;\n  }\n  .text-ellipsis {\n    text-overflow: ellipsis;\n  }\n  .whitespace-nowrap {\n    white-space: nowrap;\n  }\n  .whitespace-pre {\n    white-space: pre;\n  }\n  .whitespace-pre-wrap {\n    white-space: pre-wrap;\n  }\n  .\\!text-black {\n    color: var(--color-black) !important;\n  }\n  .\\!text-blue-500 {\n    color: var(--color-blue-500) !important;\n  }\n  .\\!text-blue-600 {\n    color: var(--color-blue-600) !important;\n  }\n  .\\!text-error {\n    color: var(--text-color-error) !important;\n  }\n  .\\!text-inherit {\n    color: inherit !important;\n  }\n  .\\!text-muted {\n    color: var(--text-color-muted) !important;\n  }\n  .\\!text-neutral-500 {\n    color: var(--color-neutral-500) !important;\n  }\n  .\\!text-neutral-600 {\n    color: var(--color-neutral-600) !important;\n  }\n  .\\!text-neutral-800 {\n    color: var(--color-neutral-800) !important;\n  }\n  .\\!text-neutral-900 {\n    color: var(--color-neutral-900) !important;\n  }\n  .\\!text-orange-600 {\n    color: var(--color-orange-600) !important;\n  }\n  .\\!text-primary {\n    color: var(--text-color-primary) !important;\n  }\n  .\\!text-red-500 {\n    color: var(--color-red-500) !important;\n  }\n  .\\!text-red-600 {\n    color: var(--color-red-600) !important;\n  }\n  .\\!text-red-800 {\n    color: var(--color-red-800) !important;\n  }\n  .\\!text-secondary {\n    color: var(--text-color-secondary) !important;\n  }\n  .\\!text-surface {\n    color: var(--text-color-surface) !important;\n  }\n  .\\!text-white {\n    color: var(--color-white) !important;\n  }\n  .\\!text-yellow-600 {\n    color: var(--color-yellow-600) !important;\n  }\n  .text-\\[\\#f6821f\\] {\n    color: #f6821f;\n  }\n  .text-\\[var\\(--light\\)\\] {\n    color: var(--light);\n  }\n  .text-amber-600 {\n    color: var(--color-amber-600);\n  }\n  .text-black {\n    color: var(--color-black);\n  }\n  .text-blue-500 {\n    color: var(--color-blue-500);\n  }\n  .text-blue-600 {\n    color: var(--color-blue-600);\n  }\n  .text-blue-700 {\n    color: var(--color-blue-700);\n  }\n  .text-blue-800 {\n    color: var(--color-blue-800);\n  }\n  .text-blue-900 {\n    color: var(--color-blue-900);\n  }\n  .text-cl1-black {\n    color: var(--color-cl1-black);\n  }\n  .text-cl1-blue-1 {\n    color: var(--color-cl1-blue-1);\n  }\n  .text-cl1-blue-4 {\n    color: var(--color-cl1-blue-4);\n  }\n  .text-cl1-blue-9 {\n    color: var(--color-cl1-blue-9);\n  }\n  .text-cl1-gold-2 {\n    color: var(--color-cl1-gold-2);\n  }\n  .text-cl1-gold-6 {\n    color: var(--color-cl1-gold-6);\n  }\n  .text-cl1-gray-0 {\n    color: var(--color-cl1-gray-0);\n  }\n  .text-cl1-gray-1 {\n    color: var(--color-cl1-gray-1);\n  }\n  .text-cl1-gray-2 {\n    color: var(--color-cl1-gray-2);\n  }\n  .text-cl1-gray-3 {\n    color: var(--color-cl1-gray-3);\n  }\n  .text-cl1-gray-4 {\n    color: var(--color-cl1-gray-4);\n  }\n  .text-cl1-gray-5 {\n    color: var(--color-cl1-gray-5);\n  }\n  .text-cl1-gray-6 {\n    color: var(--color-cl1-gray-6);\n  }\n  .text-cl1-gray-9 {\n    color: var(--color-cl1-gray-9);\n  }\n  .text-cl1-green-2 {\n    color: var(--color-cl1-green-2);\n  }\n  .text-cl1-green-3 {\n    color: var(--color-cl1-green-3);\n  }\n  .text-cl1-red-1 {\n    color: var(--color-cl1-red-1);\n  }\n  .text-cl1-red-2 {\n    color: var(--color-cl1-red-2);\n  }\n  .text-cl1-red-3 {\n    color: var(--color-cl1-red-3);\n  }\n  .text-cl1-red-4 {\n    color: var(--color-cl1-red-4);\n  }\n  .text-cl1-red-5 {\n    color: var(--color-cl1-red-5);\n  }\n  .text-cl1-red-6 {\n    color: var(--color-cl1-red-6);\n  }\n  .text-cyan-800 {\n    color: var(--color-cyan-800);\n  }\n  .text-destructive {\n    color: var(--text-color-destructive);\n  }\n  .text-emerald-500 {\n    color: var(--color-emerald-500);\n  }\n  .text-error {\n    color: var(--text-color-error);\n  }\n  .text-fuchsia-500 {\n    color: var(--color-fuchsia-500);\n  }\n  .text-gray-400 {\n    color: var(--color-gray-400);\n  }\n  .text-gray-500 {\n    color: var(--color-gray-500);\n  }\n  .text-gray-600 {\n    color: var(--color-gray-600);\n  }\n  .text-gray-700 {\n    color: var(--color-gray-700);\n  }\n  .text-gray-800 {\n    color: var(--color-gray-800);\n  }\n  .text-gray-900 {\n    color: var(--color-gray-900);\n  }\n  .text-green-500 {\n    color: var(--color-green-500);\n  }\n  .text-green-600 {\n    color: var(--color-green-600);\n  }\n  .text-green-700 {\n    color: var(--color-green-700);\n  }\n  .text-green-800 {\n    color: var(--color-green-800);\n  }\n  .text-indigo-500 {\n    color: var(--color-indigo-500);\n  }\n  .text-indigo-600 {\n    color: var(--color-indigo-600);\n  }\n  .text-indigo-700 {\n    color: var(--color-indigo-700);\n  }\n  .text-inherit {\n    color: inherit;\n  }\n  .text-muted {\n    color: var(--text-color-muted);\n  }\n  .text-neutral-100 {\n    color: var(--color-neutral-100);\n  }\n  .text-neutral-200 {\n    color: var(--color-neutral-200);\n  }\n  .text-neutral-300 {\n    color: var(--color-neutral-300);\n  }\n  .text-neutral-400 {\n    color: var(--color-neutral-400);\n  }\n  .text-neutral-500 {\n    color: var(--color-neutral-500);\n  }\n  .text-neutral-500\\! {\n    color: var(--color-neutral-500) !important;\n  }\n  .text-neutral-600 {\n    color: var(--color-neutral-600);\n  }\n  .text-neutral-700 {\n    color: var(--color-neutral-700);\n  }\n  .text-neutral-800 {\n    color: var(--color-neutral-800);\n  }\n  .text-neutral-900 {\n    color: var(--color-neutral-900);\n  }\n  .text-neutral-900\\! {\n    color: var(--color-neutral-900) !important;\n  }\n  .text-neutral-950 {\n    color: var(--color-neutral-950);\n  }\n  .text-ob-inverted {\n    color: var(--text-color-ob-inverted);\n  }\n  .text-orange-500 {\n    color: var(--color-orange-500);\n  }\n  .text-orange-600 {\n    color: var(--color-orange-600);\n  }\n  .text-orange-800 {\n    color: var(--color-orange-800);\n  }\n  .text-purple-800 {\n    color: var(--color-purple-800);\n  }\n  .text-red-300 {\n    color: var(--color-red-300);\n  }\n  .text-red-400 {\n    color: var(--color-red-400);\n  }\n  .text-red-500 {\n    color: var(--color-red-500);\n  }\n  .text-red-600 {\n    color: var(--color-red-600);\n  }\n  .text-red-700 {\n    color: var(--color-red-700);\n  }\n  .text-red-800 {\n    color: var(--color-red-800);\n  }\n  .text-rose-500 {\n    color: var(--color-rose-500);\n  }\n  .text-secondary {\n    color: var(--text-color-secondary);\n  }\n  .text-sky-500 {\n    color: var(--color-sky-500);\n  }\n  .text-surface {\n    color: var(--text-color-surface);\n  }\n  .text-white {\n    color: var(--color-white);\n  }\n  .text-yellow-500 {\n    color: var(--color-yellow-500);\n  }\n  .text-yellow-600 {\n    color: var(--color-yellow-600);\n  }\n  .text-yellow-700 {\n    color: var(--color-yellow-700);\n  }\n  .text-yellow-800 {\n    color: var(--color-yellow-800);\n  }\n  .text-yellow-900 {\n    color: var(--color-yellow-900);\n  }\n  .capitalize {\n    text-transform: capitalize;\n  }\n  .lowercase {\n    text-transform: lowercase;\n  }\n  .uppercase {\n    text-transform: uppercase;\n  }\n  .italic {\n    font-style: italic;\n  }\n  .not-italic {\n    font-style: normal;\n  }\n  .tabular-nums {\n    --tw-numeric-spacing: tabular-nums;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .\\!no-underline {\n    text-decoration-line: none !important;\n  }\n  .\\!underline {\n    text-decoration-line: underline !important;\n  }\n  .line-through {\n    text-decoration-line: line-through;\n  }\n  .no-underline\\! {\n    text-decoration-line: none !important;\n  }\n  .underline {\n    text-decoration-line: underline;\n  }\n  .decoration-neutral-400 {\n    text-decoration-color: var(--color-neutral-400);\n  }\n  .decoration-dotted {\n    text-decoration-style: dotted;\n  }\n  .\\!decoration-\\[0\\.5px\\] {\n    text-decoration-thickness: 0.5px !important;\n  }\n  .\\!underline-offset-\\[3px\\] {\n    text-underline-offset: 3px !important;\n  }\n  .underline-offset-1 {\n    text-underline-offset: 1px;\n  }\n  .underline-offset-2 {\n    text-underline-offset: 2px;\n  }\n  .underline-offset-4 {\n    text-underline-offset: 4px;\n  }\n  .antialiased {\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n  .opacity-0 {\n    opacity: 0%;\n  }\n  .opacity-25 {\n    opacity: 25%;\n  }\n  .opacity-30 {\n    opacity: 30%;\n  }\n  .opacity-40 {\n    opacity: 40%;\n  }\n  .opacity-50 {\n    opacity: 50%;\n  }\n  .opacity-60 {\n    opacity: 60%;\n  }\n  .opacity-75 {\n    opacity: 75%;\n  }\n  .opacity-80 {\n    opacity: 80%;\n  }\n  .opacity-90 {\n    opacity: 90%;\n  }\n  .opacity-100 {\n    opacity: 100%;\n  }\n  .\\!shadow-none {\n    --tw-shadow: 0 0 #0000 !important;\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow) !important;\n  }\n  .shadow {\n    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-2xl {\n    --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-\\[0_0_0_1px_rgba\\(0\\,0\\,0\\,0\\.5\\)_inset\\] {\n    --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(0,0,0,0.5)) inset;\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-lg {\n    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-md {\n    --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-none {\n    --tw-shadow: 0 0 #0000;\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-sm {\n    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-xl {\n    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-xs {\n    --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring-0 {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring-1 {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring-2 {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-black\\/5 {\n    --tw-shadow-color: color-mix(in srgb, #000 5%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-black) 5%, transparent) var(--tw-shadow-alpha), transparent);\n    }\n  }\n  .\\!ring-neutral-400\\/50 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.708 0 0) 50%, transparent) !important;\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-400) 50%, transparent) !important;\n    }\n  }\n  .ring-black\\/10 {\n    --tw-ring-color: color-mix(in srgb, #000 10%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-black) 10%, transparent);\n    }\n  }\n  .ring-blue-200 {\n    --tw-ring-color: var(--color-blue-200);\n  }\n  .ring-blue-300 {\n    --tw-ring-color: var(--color-blue-300);\n  }\n  .ring-blue-500 {\n    --tw-ring-color: var(--color-blue-500);\n  }\n  .ring-green-300 {\n    --tw-ring-color: var(--color-green-300);\n  }\n  .ring-indigo-200 {\n    --tw-ring-color: var(--color-indigo-200);\n  }\n  .ring-neutral-200 {\n    --tw-ring-color: var(--color-neutral-200);\n  }\n  .ring-neutral-200\\/50 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.922 0 0) 50%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-200) 50%, transparent);\n    }\n  }\n  .ring-neutral-300 {\n    --tw-ring-color: var(--color-neutral-300);\n  }\n  .ring-neutral-950\\/10 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.145 0 0) 10%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-950) 10%, transparent);\n    }\n  }\n  .ring-neutral-950\\/15 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.145 0 0) 15%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-950) 15%, transparent);\n    }\n  }\n  .ring-orange-300 {\n    --tw-ring-color: var(--color-orange-300);\n  }\n  .ring-red-200 {\n    --tw-ring-color: var(--color-red-200);\n  }\n  .ring-red-300 {\n    --tw-ring-color: var(--color-red-300);\n  }\n  .ring-white\\/25 {\n    --tw-ring-color: color-mix(in srgb, #fff 25%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-white) 25%, transparent);\n    }\n  }\n  .ring-offset-0 {\n    --tw-ring-offset-width: 0px;\n    --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);\n  }\n  .ring-offset-2 {\n    --tw-ring-offset-width: 2px;\n    --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);\n  }\n  .ring-offset-black {\n    --tw-ring-offset-color: var(--color-black);\n  }\n  .outline-hidden {\n    --tw-outline-style: none;\n    outline-style: none;\n    @media (forced-colors: active) {\n      outline: 2px solid transparent;\n      outline-offset: 2px;\n    }\n  }\n  .outline {\n    outline-style: var(--tw-outline-style);\n    outline-width: 1px;\n  }\n  .outline-1 {\n    outline-style: var(--tw-outline-style);\n    outline-width: 1px;\n  }\n  .-outline-offset-1 {\n    outline-offset: calc(1px * -1);\n  }\n  .outline-color {\n    outline-color: var(--color-color);\n  }\n  .outline-neutral-300 {\n    outline-color: var(--color-neutral-300);\n  }\n  .blur {\n    --tw-blur: blur(8px);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .grayscale {\n    --tw-grayscale: grayscale(100%);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .invert {\n    --tw-invert: invert(100%);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .\\!filter {\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,) !important;\n  }\n  .filter {\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .backdrop-blur-\\[2px\\] {\n    --tw-backdrop-blur: blur(2px);\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .backdrop-blur-md {\n    --tw-backdrop-blur: blur(var(--blur-md));\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .\\!transition {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events !important;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)) !important;\n    transition-duration: var(--tw-duration, var(--default-transition-duration)) !important;\n  }\n  .\\!transition-all {\n    transition-property: all !important;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)) !important;\n    transition-duration: var(--tw-duration, var(--default-transition-duration)) !important;\n  }\n  .transition {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-all {\n    transition-property: all;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-colors {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-opacity {\n    transition-property: opacity;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-shadow {\n    transition-property: box-shadow;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-transform {\n    transition-property: transform, translate, scale, rotate;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .delay-200 {\n    transition-delay: 200ms;\n  }\n  .duration-150 {\n    --tw-duration: 150ms;\n    transition-duration: 150ms;\n  }\n  .duration-200 {\n    --tw-duration: 200ms;\n    transition-duration: 200ms;\n  }\n  .duration-300 {\n    --tw-duration: 300ms;\n    transition-duration: 300ms;\n  }\n  .duration-400 {\n    --tw-duration: 400ms;\n    transition-duration: 400ms;\n  }\n  .duration-500 {\n    --tw-duration: 500ms;\n    transition-duration: 500ms;\n  }\n  .duration-600 {\n    --tw-duration: 600ms;\n    transition-duration: 600ms;\n  }\n  .ease-in {\n    --tw-ease: var(--ease-in);\n    transition-timing-function: var(--ease-in);\n  }\n  .ease-in-out {\n    --tw-ease: var(--ease-in-out);\n    transition-timing-function: var(--ease-in-out);\n  }\n  .ease-linear {\n    --tw-ease: linear;\n    transition-timing-function: linear;\n  }\n  .ease-out {\n    --tw-ease: var(--ease-out);\n    transition-timing-function: var(--ease-out);\n  }\n  .will-change-transform {\n    will-change: transform;\n  }\n  .outline-none {\n    --tw-outline-style: none;\n    outline-style: none;\n  }\n  .select-all {\n    -webkit-user-select: all;\n    user-select: all;\n  }\n  .select-none {\n    -webkit-user-select: none;\n    user-select: none;\n  }\n  .select-text {\n    -webkit-user-select: text;\n    user-select: text;\n  }\n  .ring-inset {\n    --tw-ring-inset: inset;\n  }\n  .not-first\\:rounded-t-none {\n    &:not(*:first-child) {\n      border-top-left-radius: 0;\n      border-top-right-radius: 0;\n    }\n  }\n  .not-last\\:rounded-b-none {\n    &:not(*:last-child) {\n      border-bottom-right-radius: 0;\n      border-bottom-left-radius: 0;\n    }\n  }\n  .not-last\\:\\!border-r {\n    &:not(*:last-child) {\n      border-right-style: var(--tw-border-style) !important;\n      border-right-width: 1px !important;\n    }\n  }\n  .group-first\\:rounded-l-full {\n    &:is(:where(.group):first-child *) {\n      border-top-left-radius: calc(infinity * 1px);\n      border-bottom-left-radius: calc(infinity * 1px);\n    }\n  }\n  .group-last\\:rounded-r-full {\n    &:is(:where(.group):last-child *) {\n      border-top-right-radius: calc(infinity * 1px);\n      border-bottom-right-radius: calc(infinity * 1px);\n    }\n  }\n  .group-hover\\:block {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        display: block;\n      }\n    }\n  }\n  .group-hover\\:text-\\[\\#f6821f\\] {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        color: #f6821f;\n      }\n    }\n  }\n  .group-hover\\:underline {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        text-decoration-line: underline;\n      }\n    }\n  }\n  .group-hover\\:opacity-0 {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        opacity: 0%;\n      }\n    }\n  }\n  .group-hover\\:opacity-100 {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        opacity: 100%;\n      }\n    }\n  }\n  .group-hover\\/choice\\:translate-x-0 {\n    &:is(:where(.group\\/choice):hover *) {\n      @media (hover: hover) {\n        --tw-translate-x: calc(var(--spacing) * 0);\n        translate: var(--tw-translate-x) var(--tw-translate-y);\n      }\n    }\n  }\n  .group-hover\\/choice\\:text-neutral-950 {\n    &:is(:where(.group\\/choice):hover *) {\n      @media (hover: hover) {\n        color: var(--color-neutral-950);\n      }\n    }\n  }\n  .group-hover\\/choice\\:opacity-100 {\n    &:is(:where(.group\\/choice):hover *) {\n      @media (hover: hover) {\n        opacity: 100%;\n      }\n    }\n  }\n  .group-focus-visible\\/escape\\:ring-neutral-400 {\n    &:is(:where(.group\\/escape):focus-visible *) {\n      --tw-ring-color: var(--color-neutral-400);\n    }\n  }\n  .group-data-\\[focused\\]\\:bg-secondary-hover {\n    &:is(:where(.group)[data-focused] *) {\n      background-color: var(--color-secondary-hover);\n    }\n  }\n  .group-data-\\[invalid\\]\\:border-destructive {\n    &:is(:where(.group)[data-invalid] *) {\n      border-color: var(--color-destructive);\n    }\n  }\n  .group-data-\\[invalid\\]\\:ring-\\[var\\(--text-color-error\\)\\] {\n    &:is(:where(.group)[data-invalid] *) {\n      --tw-ring-color: var(--text-color-error);\n    }\n  }\n  .group-data-\\[selected\\]\\:opacity-100 {\n    &:is(:where(.group)[data-selected] *) {\n      opacity: 100%;\n    }\n  }\n  .group-\\[\\&\\:hover\\,\\&\\:focus\\]\\/escape\\:scale-100 {\n    &:is(:is(:where(.group\\/escape):hover,:where(.group\\/escape):focus) *) {\n      --tw-scale-x: 100%;\n      --tw-scale-y: 100%;\n      --tw-scale-z: 100%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .group-\\[\\&\\:hover\\,\\&\\:focus\\]\\/escape\\:opacity-100 {\n    &:is(:is(:where(.group\\/escape):hover,:where(.group\\/escape):focus) *) {\n      opacity: 100%;\n    }\n  }\n  .selection\\:bg-cl1-blue-7 {\n    & *::selection {\n      background-color: var(--color-cl1-blue-7);\n    }\n    &::selection {\n      background-color: var(--color-cl1-blue-7);\n    }\n  }\n  .selection\\:text-cl1-black {\n    & *::selection {\n      color: var(--color-cl1-black);\n    }\n    &::selection {\n      color: var(--color-cl1-black);\n    }\n  }\n  .placeholder\\:text-base {\n    &::placeholder {\n      font-size: var(--text-base);\n      line-height: var(--tw-leading, var(--text-base--line-height));\n    }\n  }\n  .placeholder\\:\\!text-neutral-400 {\n    &::placeholder {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .placeholder\\:text-muted {\n    &::placeholder {\n      color: var(--text-color-muted);\n    }\n  }\n  .placeholder\\:text-neutral-400 {\n    &::placeholder {\n      color: var(--color-neutral-400);\n    }\n  }\n  .before\\:mr-2 {\n    &::before {\n      content: var(--tw-content);\n      margin-right: calc(var(--spacing) * 2);\n    }\n  }\n  .before\\:text-cl1-gray-5 {\n    &::before {\n      content: var(--tw-content);\n      color: var(--color-cl1-gray-5);\n    }\n  }\n  .before\\:content-\\[\\\'•\\\'\\] {\n    &::before {\n      --tw-content: \'\\2022\';\n      content: var(--tw-content);\n    }\n  }\n  .after\\:pointer-events-none {\n    &::after {\n      content: var(--tw-content);\n      pointer-events: none;\n    }\n  }\n  .after\\:absolute {\n    &::after {\n      content: var(--tw-content);\n      position: absolute;\n    }\n  }\n  .after\\:inset-x-6 {\n    &::after {\n      content: var(--tw-content);\n      inset-inline: calc(var(--spacing) * 6);\n    }\n  }\n  .after\\:top-0 {\n    &::after {\n      content: var(--tw-content);\n      top: calc(var(--spacing) * 0);\n    }\n  }\n  .after\\:bottom-8 {\n    &::after {\n      content: var(--tw-content);\n      bottom: calc(var(--spacing) * 8);\n    }\n  }\n  .after\\:rounded-xl {\n    &::after {\n      content: var(--tw-content);\n      border-radius: var(--radius-xl);\n    }\n  }\n  .after\\:ring-1 {\n    &::after {\n      content: var(--tw-content);\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .after\\:ring-transparent {\n    &::after {\n      content: var(--tw-content);\n      --tw-ring-color: transparent;\n    }\n  }\n  .after\\:transition-all {\n    &::after {\n      content: var(--tw-content);\n      transition-property: all;\n      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n      transition-duration: var(--tw-duration, var(--default-transition-duration));\n    }\n  }\n  .first\\:mt-1 {\n    &:first-child {\n      margin-top: calc(var(--spacing) * 1);\n    }\n  }\n  .first\\:pl-2 {\n    &:first-child {\n      padding-left: calc(var(--spacing) * 2);\n    }\n  }\n  .first\\:pl-4 {\n    &:first-child {\n      padding-left: calc(var(--spacing) * 4);\n    }\n  }\n  .last\\:mb-1 {\n    &:last-child {\n      margin-bottom: calc(var(--spacing) * 1);\n    }\n  }\n  .last\\:\\!border-r-0 {\n    &:last-child {\n      border-right-style: var(--tw-border-style) !important;\n      border-right-width: 0px !important;\n    }\n  }\n  .last\\:border-b-0 {\n    &:last-child {\n      border-bottom-style: var(--tw-border-style);\n      border-bottom-width: 0px;\n    }\n  }\n  .last\\:pr-2 {\n    &:last-child {\n      padding-right: calc(var(--spacing) * 2);\n    }\n  }\n  .focus-within\\:border-active {\n    &:focus-within {\n      border-color: var(--color-active);\n    }\n  }\n  .focus-within\\:border-gray-400 {\n    &:focus-within {\n      border-color: var(--color-gray-400);\n    }\n  }\n  .focus-within\\:border-primary\\! {\n    &:focus-within {\n      border-color: var(--color-primary) !important;\n    }\n  }\n  .focus-within\\:shadow-sm {\n    &:focus-within {\n      --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-within\\:ring-2 {\n    &:focus-within {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-within\\:ring-active {\n    &:focus-within {\n      --tw-ring-color: var(--color-active);\n    }\n  }\n  .focus-within\\:ring-primary {\n    &:focus-within {\n      --tw-ring-color: var(--color-primary);\n    }\n  }\n  .focus-within\\:ring-offset-2 {\n    &:focus-within {\n      --tw-ring-offset-width: 2px;\n      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);\n    }\n  }\n  .focus-within\\:ring-offset-input {\n    &:focus-within {\n      --tw-ring-offset-color: var(--color-input);\n    }\n  }\n  .focus-within\\:outline-2 {\n    &:focus-within {\n      outline-style: var(--tw-outline-style);\n      outline-width: 2px;\n    }\n  }\n  .focus-within\\:-outline-offset-2 {\n    &:focus-within {\n      outline-offset: calc(2px * -1);\n    }\n  }\n  .focus-within\\:outline-blue-700 {\n    &:focus-within {\n      outline-color: var(--color-blue-700);\n    }\n  }\n  .focus-within\\:outline-indigo-600 {\n    &:focus-within {\n      outline-color: var(--color-indigo-600);\n    }\n  }\n  .hover\\:w-1 {\n    &:hover {\n      @media (hover: hover) {\n        width: calc(var(--spacing) * 1);\n      }\n    }\n  }\n  .hover\\:-translate-y-0\\.5 {\n    &:hover {\n      @media (hover: hover) {\n        --tw-translate-y: calc(var(--spacing) * -0.5);\n        translate: var(--tw-translate-x) var(--tw-translate-y);\n      }\n    }\n  }\n  .hover\\:cursor-pointer {\n    &:hover {\n      @media (hover: hover) {\n        cursor: pointer;\n      }\n    }\n  }\n  .hover\\:border-active {\n    &:hover {\n      @media (hover: hover) {\n        border-color: var(--color-active);\n      }\n    }\n  }\n  .hover\\:border-neutral-300 {\n    &:hover {\n      @media (hover: hover) {\n        border-color: var(--color-neutral-300);\n      }\n    }\n  }\n  .hover\\:border-neutral-300\\/80 {\n    &:hover {\n      @media (hover: hover) {\n        border-color: color-mix(in srgb, oklch(0.87 0 0) 80%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          border-color: color-mix(in oklab, var(--color-neutral-300) 80%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:\\!bg-blue-700 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-700) !important;\n      }\n    }\n  }\n  .hover\\:\\!bg-neutral-100 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-100) !important;\n      }\n    }\n  }\n  .hover\\:\\!bg-red-50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-red-50) !important;\n      }\n    }\n  }\n  .hover\\:bg-accent {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-accent);\n      }\n    }\n  }\n  .hover\\:bg-blue-100\\/50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: color-mix(in srgb, oklch(93.2% 0.032 255.585) 50%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-blue-100) 50%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-blue-300 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-300);\n      }\n    }\n  }\n  .hover\\:bg-blue-500 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-500);\n      }\n    }\n  }\n  .hover\\:bg-blue-700 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-700);\n      }\n    }\n  }\n  .hover\\:bg-cl1-blue-6 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-blue-6);\n      }\n    }\n  }\n  .hover\\:bg-cl1-gray-8 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-gray-8);\n      }\n    }\n  }\n  .hover\\:bg-cl1-gray-9 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-gray-9);\n      }\n    }\n  }\n  .hover\\:bg-cl1-red-6\\/40 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-red-6);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-cl1-red-6) 40%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-destructive\\/70 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-destructive);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-destructive) 70%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-gray-100 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-gray-100);\n      }\n    }\n  }\n  .hover\\:bg-gray-700\\/50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: color-mix(in srgb, oklch(37.3% 0.034 259.733) 50%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-gray-700) 50%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-neutral-50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-50);\n      }\n    }\n  }\n  .hover\\:bg-neutral-100 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-100);\n      }\n    }\n  }\n  .hover\\:bg-neutral-150 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-150);\n      }\n    }\n  }\n  .hover\\:bg-neutral-200 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-200);\n      }\n    }\n  }\n  .hover\\:bg-neutral-200\\/50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: color-mix(in srgb, oklch(0.922 0 0) 50%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-neutral-200) 50%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-neutral-300 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-300);\n      }\n    }\n  }\n  .hover\\:bg-primary {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-primary);\n      }\n    }\n  }\n  .hover\\:bg-primary\\/70 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-primary);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-primary) 70%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-secondary-hover {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-secondary-hover);\n      }\n    }\n  }\n  .hover\\:bg-surface-active {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-surface-active);\n      }\n    }\n  }\n  .hover\\:bg-surface-secondary {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-surface-secondary);\n      }\n    }\n  }\n  .hover\\:bg-transparent {\n    &:hover {\n      @media (hover: hover) {\n        background-color: transparent;\n      }\n    }\n  }\n  .hover\\:bg-white {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-white);\n      }\n    }\n  }\n  .hover\\:\\!text-inherit {\n    &:hover {\n      @media (hover: hover) {\n        color: inherit !important;\n      }\n    }\n  }\n  .hover\\:text-black {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-black);\n      }\n    }\n  }\n  .hover\\:text-blue-600 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-blue-600);\n      }\n    }\n  }\n  .hover\\:text-blue-800 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-blue-800);\n      }\n    }\n  }\n  .hover\\:text-cl1-gray-2 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-cl1-gray-2);\n      }\n    }\n  }\n  .hover\\:text-neutral-600 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-neutral-600);\n      }\n    }\n  }\n  .hover\\:text-neutral-800 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-neutral-800);\n      }\n    }\n  }\n  .hover\\:text-neutral-900 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-neutral-900);\n      }\n    }\n  }\n  .hover\\:text-red-500 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-red-500);\n      }\n    }\n  }\n  .hover\\:text-red-600 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-red-600);\n      }\n    }\n  }\n  .hover\\:text-surface {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--text-color-surface);\n      }\n    }\n  }\n  .hover\\:text-white\\! {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-white) !important;\n      }\n    }\n  }\n  .hover\\:\\!underline {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: underline !important;\n      }\n    }\n  }\n  .hover\\:no-underline {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: none;\n      }\n    }\n  }\n  .hover\\:underline {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: underline;\n      }\n    }\n  }\n  .hover\\:underline\\! {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: underline !important;\n      }\n    }\n  }\n  .hover\\:opacity-50 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 50%;\n      }\n    }\n  }\n  .hover\\:opacity-60 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 60%;\n      }\n    }\n  }\n  .hover\\:opacity-70 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 70%;\n      }\n    }\n  }\n  .hover\\:opacity-90 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 90%;\n      }\n    }\n  }\n  .hover\\:opacity-100 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 100%;\n      }\n    }\n  }\n  .hover\\:shadow-md {\n    &:hover {\n      @media (hover: hover) {\n        --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n      }\n    }\n  }\n  .hover\\:shadow-xs {\n    &:hover {\n      @media (hover: hover) {\n        --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));\n        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n      }\n    }\n  }\n  .hover\\:ring {\n    &:hover {\n      @media (hover: hover) {\n        --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n      }\n    }\n  }\n  .not-disabled\\:hover\\:border-border-hover\\! {\n    &:not(*:disabled) {\n      &:hover {\n        @media (hover: hover) {\n          border-color: var(--color-border-hover) !important;\n        }\n      }\n    }\n  }\n  .not-disabled\\:hover\\:bg-secondary-hover {\n    &:not(*:disabled) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-secondary-hover);\n        }\n      }\n    }\n  }\n  .hover\\:not-\\[\\:has\\(a\\:hover\\)\\]\\:bg-neutral-50 {\n    &:hover {\n      @media (hover: hover) {\n        &:not(*:is(:has(a:hover))) {\n          background-color: var(--color-neutral-50);\n        }\n      }\n    }\n  }\n  .focus\\:z-10 {\n    &:focus {\n      z-index: 10;\n    }\n  }\n  .focus\\:border-active {\n    &:focus {\n      border-color: var(--color-active);\n    }\n  }\n  .focus\\:border-color {\n    &:focus {\n      border-color: var(--color-color);\n    }\n  }\n  .focus\\:border-destructive {\n    &:focus {\n      border-color: var(--color-destructive);\n    }\n  }\n  .focus\\:bg-accent {\n    &:focus {\n      background-color: var(--color-accent);\n    }\n  }\n  .focus\\:text-secondary {\n    &:focus {\n      color: var(--text-color-secondary);\n    }\n  }\n  .focus\\:opacity-100 {\n    &:focus {\n      opacity: 100%;\n    }\n  }\n  .focus\\:ring-2 {\n    &:focus {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus\\:ring-blue-400 {\n    &:focus {\n      --tw-ring-color: var(--color-blue-400);\n    }\n  }\n  .focus\\:ring-blue-500 {\n    &:focus {\n      --tw-ring-color: var(--color-blue-500);\n    }\n  }\n  .focus\\:ring-neutral-400 {\n    &:focus {\n      --tw-ring-color: var(--color-neutral-400);\n    }\n  }\n  .focus\\:outline-none {\n    &:focus {\n      --tw-outline-style: none;\n      outline-style: none;\n    }\n  }\n  .focus-visible\\:z-10 {\n    &:focus-visible {\n      z-index: 10;\n    }\n  }\n  .focus-visible\\:bg-cl1-blue-9 {\n    &:focus-visible {\n      background-color: var(--color-cl1-blue-9);\n    }\n  }\n  .focus-visible\\:ring {\n    &:focus-visible {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-visible\\:ring-1 {\n    &:focus-visible {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-visible\\:ring-active {\n    &:focus-visible {\n      --tw-ring-color: var(--color-active);\n    }\n  }\n  .focus-visible\\:ring-neutral-400 {\n    &:focus-visible {\n      --tw-ring-color: var(--color-neutral-400);\n    }\n  }\n  .focus-visible\\:inset-ring-\\[0\\.5\\] {\n    &:focus-visible {\n      --tw-inset-ring-color: 0.5;\n    }\n  }\n  .focus-visible\\:outline-hidden {\n    &:focus-visible {\n      --tw-outline-style: none;\n      outline-style: none;\n      @media (forced-colors: active) {\n        outline: 2px solid transparent;\n        outline-offset: 2px;\n      }\n    }\n  }\n  .focus-visible\\:outline-none {\n    &:focus-visible {\n      --tw-outline-style: none;\n      outline-style: none;\n    }\n  }\n  .focus-visible\\:after\\:ring-neutral-400 {\n    &:focus-visible {\n      &::after {\n        content: var(--tw-content);\n        --tw-ring-color: var(--color-neutral-400);\n      }\n    }\n  }\n  .active\\:cursor-grabbing {\n    &:active {\n      cursor: grabbing;\n    }\n  }\n  .disabled\\:cursor-not-allowed {\n    &:disabled {\n      cursor: not-allowed;\n    }\n  }\n  .disabled\\:border-neutral-400 {\n    &:disabled {\n      border-color: var(--color-neutral-400);\n    }\n  }\n  .disabled\\:bg-neutral-100 {\n    &:disabled {\n      background-color: var(--color-neutral-100);\n    }\n  }\n  .disabled\\:bg-primary\\/50 {\n    &:disabled {\n      background-color: var(--color-primary);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-primary) 50%, transparent);\n      }\n    }\n  }\n  .disabled\\:bg-secondary\\/50 {\n    &:disabled {\n      background-color: var(--color-secondary);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-secondary) 50%, transparent);\n      }\n    }\n  }\n  .disabled\\:bg-surface-secondary {\n    &:disabled {\n      background-color: var(--color-surface-secondary);\n    }\n  }\n  .disabled\\:\\!text-neutral-400 {\n    &:disabled {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .disabled\\:\\!text-primary\\/70 {\n    &:disabled {\n      color: var(--text-color-primary) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, var(--text-color-primary) 70%, transparent) !important;\n      }\n    }\n  }\n  .disabled\\:\\!text-secondary\\/70 {\n    &:disabled {\n      color: var(--text-color-secondary) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, var(--text-color-secondary) 70%, transparent) !important;\n      }\n    }\n  }\n  .disabled\\:text-muted {\n    &:disabled {\n      color: var(--text-color-muted);\n    }\n  }\n  .disabled\\:opacity-50 {\n    &:disabled {\n      opacity: 50%;\n    }\n  }\n  .disabled\\:hover\\:bg-neutral-100 {\n    &:disabled {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-100);\n        }\n      }\n    }\n  }\n  .\\*\\:in-focus\\:opacity-100 {\n    :is(& > *) {\n      :where(*:focus) & {\n        opacity: 100%;\n      }\n    }\n  }\n  .data-disabled\\:pointer-events-none {\n    &[data-disabled] {\n      pointer-events: none;\n    }\n  }\n  .data-disabled\\:opacity-50 {\n    &[data-disabled] {\n      opacity: 50%;\n    }\n  }\n  .data-\\[clickable\\]\\:\\!no-underline {\n    &[data-clickable] {\n      text-decoration-line: none !important;\n    }\n  }\n  .data-\\[clickable\\]\\:hover\\:ring {\n    &[data-clickable] {\n      &:hover {\n        @media (hover: hover) {\n          --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n          box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n        }\n      }\n    }\n  }\n  .data-\\[ending-style\\]\\:scale-90 {\n    &[data-ending-style] {\n      --tw-scale-x: 90%;\n      --tw-scale-y: 90%;\n      --tw-scale-z: 90%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .data-\\[ending-style\\]\\:opacity-0 {\n    &[data-ending-style] {\n      opacity: 0%;\n    }\n  }\n  .data-\\[focused\\]\\:bg-secondary-hover {\n    &[data-focused] {\n      background-color: var(--color-secondary-hover);\n    }\n  }\n  .data-\\[highlighted\\]\\:bg-cl1-gray-8 {\n    &[data-highlighted] {\n      background-color: var(--color-cl1-gray-8);\n    }\n  }\n  .data-\\[highlighted\\]\\:bg-red-100 {\n    &[data-highlighted] {\n      background-color: var(--color-red-100);\n    }\n  }\n  .data-\\[highlighted\\]\\:text-error {\n    &[data-highlighted] {\n      color: var(--text-color-error);\n    }\n  }\n  .data-\\[starting-style\\]\\:scale-90 {\n    &[data-starting-style] {\n      --tw-scale-x: 90%;\n      --tw-scale-y: 90%;\n      --tw-scale-z: 90%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .data-\\[starting-style\\]\\:opacity-0 {\n    &[data-starting-style] {\n      opacity: 0%;\n    }\n  }\n  .data-\\[state\\=\\"open\\"\\]\\:bg-secondary-hover {\n    &[data-state="open"] {\n      background-color: var(--color-secondary-hover);\n    }\n  }\n  .data-\\[state\\=\\\'open\\\'\\]\\:bg-accent {\n    &[data-state=\'open\'] {\n      background-color: var(--color-accent);\n    }\n  }\n  .data-\\[state\\=\\\'open\\\'\\]\\:bg-surface-active {\n    &[data-state=\'open\'] {\n      background-color: var(--color-surface-active);\n    }\n  }\n  .data-\\[state\\=open\\]\\:bg-accent {\n    &[data-state="open"] {\n      background-color: var(--color-accent);\n    }\n  }\n  .sm\\:block {\n    @media (width >= 40rem) {\n      display: block;\n    }\n  }\n  .sm\\:flex {\n    @media (width >= 40rem) {\n      display: flex;\n    }\n  }\n  .sm\\:inline {\n    @media (width >= 40rem) {\n      display: inline;\n    }\n  }\n  .sm\\:h-\\[529px\\] {\n    @media (width >= 40rem) {\n      height: 529px;\n    }\n  }\n  .sm\\:w-auto {\n    @media (width >= 40rem) {\n      width: auto;\n    }\n  }\n  .sm\\:max-w-\\[280px\\] {\n    @media (width >= 40rem) {\n      max-width: 280px;\n    }\n  }\n  .sm\\:min-w-\\[100px\\] {\n    @media (width >= 40rem) {\n      min-width: 100px;\n    }\n  }\n  .sm\\:min-w-\\[120px\\] {\n    @media (width >= 40rem) {\n      min-width: 120px;\n    }\n  }\n  .sm\\:scale-90 {\n    @media (width >= 40rem) {\n      --tw-scale-x: 90%;\n      --tw-scale-y: 90%;\n      --tw-scale-z: 90%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .sm\\:grid-cols-4 {\n    @media (width >= 40rem) {\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n    }\n  }\n  .sm\\:flex-row {\n    @media (width >= 40rem) {\n      flex-direction: row;\n    }\n  }\n  .sm\\:justify-start {\n    @media (width >= 40rem) {\n      justify-content: flex-start;\n    }\n  }\n  .sm\\:gap-0 {\n    @media (width >= 40rem) {\n      gap: calc(var(--spacing) * 0);\n    }\n  }\n  .sm\\:gap-4\\! {\n    @media (width >= 40rem) {\n      gap: calc(var(--spacing) * 4) !important;\n    }\n  }\n  .sm\\:p-6 {\n    @media (width >= 40rem) {\n      padding: calc(var(--spacing) * 6);\n    }\n  }\n  .sm\\:px-3 {\n    @media (width >= 40rem) {\n      padding-inline: calc(var(--spacing) * 3);\n    }\n  }\n  .sm\\:px-6 {\n    @media (width >= 40rem) {\n      padding-inline: calc(var(--spacing) * 6);\n    }\n  }\n  .sm\\:py-1\\.5 {\n    @media (width >= 40rem) {\n      padding-block: calc(var(--spacing) * 1.5);\n    }\n  }\n  .sm\\:text-base {\n    @media (width >= 40rem) {\n      font-size: var(--text-base);\n      line-height: var(--tw-leading, var(--text-base--line-height));\n    }\n  }\n  .sm\\:text-sm {\n    @media (width >= 40rem) {\n      font-size: var(--text-sm);\n      line-height: var(--tw-leading, var(--text-sm--line-height));\n    }\n  }\n  .sm\\:text-sm\\/6 {\n    @media (width >= 40rem) {\n      font-size: var(--text-sm);\n      line-height: calc(var(--spacing) * 6);\n    }\n  }\n  .md\\:mx-4 {\n    @media (width >= 48rem) {\n      margin-inline: calc(var(--spacing) * 4);\n    }\n  }\n  .md\\:mr-2 {\n    @media (width >= 48rem) {\n      margin-right: calc(var(--spacing) * 2);\n    }\n  }\n  .md\\:\\!flex {\n    @media (width >= 48rem) {\n      display: flex !important;\n    }\n  }\n  .md\\:block {\n    @media (width >= 48rem) {\n      display: block;\n    }\n  }\n  .md\\:flex {\n    @media (width >= 48rem) {\n      display: flex;\n    }\n  }\n  .md\\:hidden {\n    @media (width >= 48rem) {\n      display: none;\n    }\n  }\n  .md\\:max-w-\\[70vw\\] {\n    @media (width >= 48rem) {\n      max-width: 70vw;\n    }\n  }\n  .md\\:max-w-xl {\n    @media (width >= 48rem) {\n      max-width: var(--container-xl);\n    }\n  }\n  .md\\:scale-100 {\n    @media (width >= 48rem) {\n      --tw-scale-x: 100%;\n      --tw-scale-y: 100%;\n      --tw-scale-z: 100%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .md\\:grid-cols-3 {\n    @media (width >= 48rem) {\n      grid-template-columns: repeat(3, minmax(0, 1fr));\n    }\n  }\n  .md\\:grid-cols-\\[3fr_1fr\\] {\n    @media (width >= 48rem) {\n      grid-template-columns: 3fr 1fr;\n    }\n  }\n  .md\\:justify-end {\n    @media (width >= 48rem) {\n      justify-content: flex-end;\n    }\n  }\n  .md\\:gap-4 {\n    @media (width >= 48rem) {\n      gap: calc(var(--spacing) * 4);\n    }\n  }\n  .md\\:space-y-4 {\n    @media (width >= 48rem) {\n      :where(& > :not(:last-child)) {\n        --tw-space-y-reverse: 0;\n        margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));\n        margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));\n      }\n    }\n  }\n  .md\\:space-y-8 {\n    @media (width >= 48rem) {\n      :where(& > :not(:last-child)) {\n        --tw-space-y-reverse: 0;\n        margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));\n        margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));\n      }\n    }\n  }\n  .md\\:border-r {\n    @media (width >= 48rem) {\n      border-right-style: var(--tw-border-style);\n      border-right-width: 1px;\n    }\n  }\n  .md\\:p-8 {\n    @media (width >= 48rem) {\n      padding: calc(var(--spacing) * 8);\n    }\n  }\n  .md\\:px-0 {\n    @media (width >= 48rem) {\n      padding-inline: calc(var(--spacing) * 0);\n    }\n  }\n  .md\\:pr-1\\.5 {\n    @media (width >= 48rem) {\n      padding-right: calc(var(--spacing) * 1.5);\n    }\n  }\n  .md\\:pr-4 {\n    @media (width >= 48rem) {\n      padding-right: calc(var(--spacing) * 4);\n    }\n  }\n  .md\\:text-2xl {\n    @media (width >= 48rem) {\n      font-size: var(--text-2xl);\n      line-height: var(--tw-leading, var(--text-2xl--line-height));\n    }\n  }\n  .lg\\:col-span-4 {\n    @media (width >= 64rem) {\n      grid-column: span 4 / span 4;\n    }\n  }\n  .lg\\:block {\n    @media (width >= 64rem) {\n      display: block;\n    }\n  }\n  .lg\\:flex {\n    @media (width >= 64rem) {\n      display: flex;\n    }\n  }\n  .lg\\:inline {\n    @media (width >= 64rem) {\n      display: inline;\n    }\n  }\n  .lg\\:max-w-2xl {\n    @media (width >= 64rem) {\n      max-width: var(--container-2xl);\n    }\n  }\n  .lg\\:max-w-\\[50vw\\] {\n    @media (width >= 64rem) {\n      max-width: 50vw;\n    }\n  }\n  .lg\\:max-w-\\[100\\%\\] {\n    @media (width >= 64rem) {\n      max-width: 100%;\n    }\n  }\n  .lg\\:snap-none {\n    @media (width >= 64rem) {\n      scroll-snap-type: none;\n    }\n  }\n  .lg\\:grid-cols-2 {\n    @media (width >= 64rem) {\n      grid-template-columns: repeat(2, minmax(0, 1fr));\n    }\n  }\n  .lg\\:grid-cols-\\[1fr_250px\\] {\n    @media (width >= 64rem) {\n      grid-template-columns: 1fr 250px;\n    }\n  }\n  .lg\\:flex-row {\n    @media (width >= 64rem) {\n      flex-direction: row;\n    }\n  }\n  .lg\\:rounded-xl {\n    @media (width >= 64rem) {\n      border-radius: var(--radius-xl);\n    }\n  }\n  .lg\\:px-10 {\n    @media (width >= 64rem) {\n      padding-inline: calc(var(--spacing) * 10);\n    }\n  }\n  .lg\\:py-9 {\n    @media (width >= 64rem) {\n      padding-block: calc(var(--spacing) * 9);\n    }\n  }\n  .lg\\:ring {\n    @media (width >= 64rem) {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .lg\\:ring-neutral-950\\/10 {\n    @media (width >= 64rem) {\n      --tw-ring-color: color-mix(in srgb, oklch(0.145 0 0) 10%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-ring-color: color-mix(in oklab, var(--color-neutral-950) 10%, transparent);\n      }\n    }\n  }\n  .xl\\:sticky {\n    @media (width >= 80rem) {\n      position: sticky;\n    }\n  }\n  .xl\\:col-span-6 {\n    @media (width >= 80rem) {\n      grid-column: span 6 / span 6;\n    }\n  }\n  .xl\\:block {\n    @media (width >= 80rem) {\n      display: block;\n    }\n  }\n  .xl\\:flex {\n    @media (width >= 80rem) {\n      display: flex;\n    }\n  }\n  .xl\\:hidden {\n    @media (width >= 80rem) {\n      display: none;\n    }\n  }\n  .xl\\:inline {\n    @media (width >= 80rem) {\n      display: inline;\n    }\n  }\n  .xl\\:\\!h-10 {\n    @media (width >= 80rem) {\n      height: calc(var(--spacing) * 10) !important;\n    }\n  }\n  .xl\\:w-\\[120px\\] {\n    @media (width >= 80rem) {\n      width: 120px;\n    }\n  }\n  .xl\\:w-\\[380px\\] {\n    @media (width >= 80rem) {\n      width: 380px;\n    }\n  }\n  .xl\\:grid-cols-1 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(1, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-2 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(2, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-3 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(3, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-10 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(10, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-\\[1fr_300px\\] {\n    @media (width >= 80rem) {\n      grid-template-columns: 1fr 300px;\n    }\n  }\n  .xl\\:grid-cols-\\[3fr_1fr\\] {\n    @media (width >= 80rem) {\n      grid-template-columns: 3fr 1fr;\n    }\n  }\n  .xl\\:flex-row {\n    @media (width >= 80rem) {\n      flex-direction: row;\n    }\n  }\n  .xl\\:justify-start {\n    @media (width >= 80rem) {\n      justify-content: flex-start;\n    }\n  }\n  .xl\\:\\!gap-2 {\n    @media (width >= 80rem) {\n      gap: calc(var(--spacing) * 2) !important;\n    }\n  }\n  .xl\\:gap-6 {\n    @media (width >= 80rem) {\n      gap: calc(var(--spacing) * 6);\n    }\n  }\n  .xl\\:gap-8 {\n    @media (width >= 80rem) {\n      gap: calc(var(--spacing) * 8);\n    }\n  }\n  .xl\\:\\!px-4 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 4) !important;\n    }\n  }\n  .xl\\:px-3 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 3);\n    }\n  }\n  .xl\\:px-10 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 10);\n    }\n  }\n  .xl\\:px-28 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 28);\n    }\n  }\n  .xl\\:px-30 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 30);\n    }\n  }\n  .\\32 xl\\:grid-cols-4 {\n    @media (width >= 96rem) {\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n    }\n  }\n  .\\32 xl\\:gap-x-12 {\n    @media (width >= 96rem) {\n      column-gap: calc(var(--spacing) * 12);\n    }\n  }\n  .\\@max-\\[300px\\]\\:max-w-\\[21ch\\] {\n    @container (width < 300px) {\n      max-width: 21ch;\n    }\n  }\n  .\\@max-\\[300px\\]\\:flex-col {\n    @container (width < 300px) {\n      flex-direction: column;\n    }\n  }\n  .\\@max-\\[200px\\]\\:max-w-\\[11ch\\] {\n    @container (width < 200px) {\n      max-width: 11ch;\n    }\n  }\n  .\\@\\[418px\\]\\:\\@max-\\[568px\\]\\:grid-cols-2\\! {\n    @container (width >= 418px) {\n      @container (width < 568px) {\n        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;\n      }\n    }\n  }\n  .\\@min-\\[1080px\\]\\:hidden {\n    @container (width >= 1080px) {\n      display: none;\n    }\n  }\n  .\\@xl\\:col-span-3 {\n    @container (width >= 36rem) {\n      grid-column: span 3 / span 3;\n    }\n  }\n  .\\@xl\\:col-span-4 {\n    @container (width >= 36rem) {\n      grid-column: span 4 / span 4;\n    }\n  }\n  .\\@xl\\:col-span-5 {\n    @container (width >= 36rem) {\n      grid-column: span 5 / span 5;\n    }\n  }\n  .\\@xl\\:row-start-\\[unset\\] {\n    @container (width >= 36rem) {\n      grid-row-start: unset;\n    }\n  }\n  .\\@xl\\:block {\n    @container (width >= 36rem) {\n      display: block;\n    }\n  }\n  .\\@xl\\:flex {\n    @container (width >= 36rem) {\n      display: flex;\n    }\n  }\n  .\\@xl\\:grid-cols-12 {\n    @container (width >= 36rem) {\n      grid-template-columns: repeat(12, minmax(0, 1fr));\n    }\n  }\n  .\\@xl\\:grid-rows-2 {\n    @container (width >= 36rem) {\n      grid-template-rows: repeat(2, minmax(0, 1fr));\n    }\n  }\n  .\\@2xl\\:flex {\n    @container (width >= 42rem) {\n      display: flex;\n    }\n  }\n  .\\@3xl\\:col-span-2 {\n    @container (width >= 48rem) {\n      grid-column: span 2 / span 2;\n    }\n  }\n  .\\@3xl\\:grid-cols-3 {\n    @container (width >= 48rem) {\n      grid-template-columns: repeat(3, minmax(0, 1fr));\n    }\n  }\n  .dark\\:block {\n    &:where(.dark-mode, .dark-mode *) {\n      display: block;\n    }\n  }\n  .dark\\:hidden {\n    &:where(.dark-mode, .dark-mode *) {\n      display: none;\n    }\n  }\n  .dark\\:divide-border {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-border);\n      }\n    }\n  }\n  .dark\\:divide-gray-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-gray-600);\n      }\n    }\n  }\n  .dark\\:divide-gray-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-gray-700);\n      }\n    }\n  }\n  .dark\\:divide-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-neutral-600);\n      }\n    }\n  }\n  .dark\\:divide-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-neutral-700);\n      }\n    }\n  }\n  .dark\\:divide-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .dark\\:border-1 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-style: var(--tw-border-style);\n      border-width: 1px;\n    }\n  }\n  .dark\\:\\!border-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-600) !important;\n    }\n  }\n  .dark\\:\\!border-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:border-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-blue-500);\n    }\n  }\n  .dark\\:border-blue-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-blue-800);\n    }\n  }\n  .dark\\:border-gray-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-gray-600);\n    }\n  }\n  .dark\\:border-gray-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-gray-700);\n    }\n  }\n  .dark\\:border-gray-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-gray-800);\n    }\n  }\n  .dark\\:border-green-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-green-500);\n    }\n  }\n  .dark\\:border-green-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(44.8% 0.119 151.328) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-green-800) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:border-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-400);\n    }\n  }\n  .dark\\:border-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-500);\n    }\n  }\n  .dark\\:border-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:border-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:border-neutral-700\\/40 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.371 0 0) 40%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-700) 40%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-700\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.371 0 0) 60%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-700) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:border-neutral-800\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:border-neutral-800\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.269 0 0) 60%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-800) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-800\\/80 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.269 0 0) 80%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-800) 80%, transparent);\n      }\n    }\n  }\n  .dark\\:border-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-red-500);\n    }\n  }\n  .dark\\:border-red-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-red-700);\n    }\n  }\n  .dark\\:border-red-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-red-800);\n    }\n  }\n  .dark\\:border-yellow-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-yellow-500);\n    }\n  }\n  .dark\\:border-yellow-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-yellow-700);\n    }\n  }\n  .dark\\:border-yellow-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(47.6% 0.114 61.907) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-yellow-800) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:border-r-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-right-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:border-b-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-bottom-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:border-b-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-bottom-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:border-b-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-bottom-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:border-l-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-left-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:\\!bg-black {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-black) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-700) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-900) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-900\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 50%, transparent) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 50%, transparent) !important;\n      }\n    }\n  }\n  .dark\\:\\!bg-neutral-900\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 60%, transparent) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 60%, transparent) !important;\n      }\n    }\n  }\n  .dark\\:\\!bg-neutral-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-950) !important;\n    }\n  }\n  .dark\\:bg-\\[\\#2C2C2C\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: #2C2C2C;\n    }\n  }\n  .dark\\:bg-\\[\\#916b20\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: #916b20;\n    }\n  }\n  .dark\\:bg-black {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-black);\n    }\n  }\n  .dark\\:bg-blue-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-600);\n    }\n  }\n  .dark\\:bg-blue-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-700);\n    }\n  }\n  .dark\\:bg-blue-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-800);\n    }\n  }\n  .dark\\:bg-blue-800\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.424 0.199 265.638) 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-blue-800) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-blue-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-900);\n    }\n  }\n  .dark\\:bg-blue-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(37.9% 0.146 265.522) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-blue-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-blue-900\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(37.9% 0.146 265.522) 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-blue-900) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-blue-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-950);\n    }\n  }\n  .dark\\:bg-cl1-blue-7\\/40 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-blue-7);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-cl1-blue-7) 40%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-cl1-gray-2 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-2);\n    }\n  }\n  .dark\\:bg-cl1-gray-7\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-7);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-cl1-gray-7) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-cl1-gray-8 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-8);\n    }\n  }\n  .dark\\:bg-cl1-gray-9 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-9);\n    }\n  }\n  .dark\\:bg-gray-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-gray-800);\n    }\n  }\n  .dark\\:bg-gray-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-gray-900);\n    }\n  }\n  .dark\\:bg-green-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-green-700);\n    }\n  }\n  .dark\\:bg-green-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-green-800);\n    }\n  }\n  .dark\\:bg-green-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-green-900);\n    }\n  }\n  .dark\\:bg-green-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(39.3% 0.095 152.535) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-green-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-50);\n    }\n  }\n  .dark\\:bg-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:bg-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-400);\n    }\n  }\n  .dark\\:bg-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:bg-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:bg-neutral-700\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.371 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-700) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-750 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-750);\n    }\n  }\n  .dark\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:bg-neutral-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.269 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-800) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-850 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-850);\n    }\n  }\n  .dark\\:bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-900);\n    }\n  }\n  .dark\\:bg-neutral-900\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-900) !important;\n    }\n  }\n  .dark\\:bg-neutral-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-900\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-900\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-900\\/80 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 80%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 80%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-950);\n    }\n  }\n  .dark\\:bg-orange-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-orange-900);\n    }\n  }\n  .dark\\:bg-orange-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-orange-950);\n    }\n  }\n  .dark\\:bg-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-500);\n    }\n  }\n  .dark\\:bg-red-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-600);\n    }\n  }\n  .dark\\:bg-red-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-800);\n    }\n  }\n  .dark\\:bg-red-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-900);\n    }\n  }\n  .dark\\:bg-red-900\\/10\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(39.6% 0.141 25.723) 10%, transparent) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-red-900) 10%, transparent) !important;\n      }\n    }\n  }\n  .dark\\:bg-red-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(39.6% 0.141 25.723) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-red-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-red-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-950);\n    }\n  }\n  .dark\\:bg-surface {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-surface);\n    }\n  }\n  .dark\\:bg-surface-secondary {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-surface-secondary);\n    }\n  }\n  .dark\\:bg-white {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-white);\n    }\n  }\n  .dark\\:bg-white\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, #fff 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-white) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-yellow-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-yellow-600);\n    }\n  }\n  .dark\\:bg-yellow-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-yellow-900);\n    }\n  }\n  .dark\\:bg-yellow-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(42.1% 0.095 57.708) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-yellow-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:from-blue-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-from: color-mix(in srgb, oklch(37.9% 0.146 265.522) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-gradient-from: color-mix(in oklab, var(--color-blue-900) 20%, transparent);\n      }\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:from-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-from: var(--color-neutral-800);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-indigo-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: color-mix(in srgb, oklch(35.9% 0.144 278.697) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-gradient-to: color-mix(in oklab, var(--color-indigo-900) 20%, transparent);\n      }\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: var(--color-neutral-700);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: var(--color-neutral-900);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-neutral-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: var(--color-neutral-950);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:\\!text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-50) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-100) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-200) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-300) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-500) !important;\n    }\n  }\n  .dark\\:\\!text-orange-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-500) !important;\n    }\n  }\n  .dark\\:\\!text-red-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-200) !important;\n    }\n  }\n  .dark\\:\\!text-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-500) !important;\n    }\n  }\n  .dark\\:\\!text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-white) !important;\n    }\n  }\n  .dark\\:text-\\[var\\(--dark\\)\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--dark);\n    }\n  }\n  .dark\\:text-black\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-black) !important;\n    }\n  }\n  .dark\\:text-blue-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-100);\n    }\n  }\n  .dark\\:text-blue-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-200);\n    }\n  }\n  .dark\\:text-blue-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-300);\n    }\n  }\n  .dark\\:text-blue-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-400);\n    }\n  }\n  .dark\\:text-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-500);\n    }\n  }\n  .dark\\:text-blue-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-700);\n    }\n  }\n  .dark\\:text-cl1-blue-3 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-blue-3);\n    }\n  }\n  .dark\\:text-cl1-gray-2 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-2);\n    }\n  }\n  .dark\\:text-cl1-gray-3 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-3);\n    }\n  }\n  .dark\\:text-cl1-gray-8 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-8);\n    }\n  }\n  .dark\\:text-gray-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-100);\n    }\n  }\n  .dark\\:text-gray-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-200);\n    }\n  }\n  .dark\\:text-gray-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-300);\n    }\n  }\n  .dark\\:text-gray-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-400);\n    }\n  }\n  .dark\\:text-gray-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-500);\n    }\n  }\n  .dark\\:text-green-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-200);\n    }\n  }\n  .dark\\:text-green-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-300);\n    }\n  }\n  .dark\\:text-green-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-400);\n    }\n  }\n  .dark\\:text-green-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-700);\n    }\n  }\n  .dark\\:text-green-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-800);\n    }\n  }\n  .dark\\:text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-50);\n    }\n  }\n  .dark\\:text-neutral-50\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-50) !important;\n    }\n  }\n  .dark\\:text-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:text-neutral-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-200);\n    }\n  }\n  .dark\\:text-neutral-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-300);\n    }\n  }\n  .dark\\:text-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-400);\n    }\n  }\n  .dark\\:text-neutral-400\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .dark\\:text-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-500);\n    }\n  }\n  .dark\\:text-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:text-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:text-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-900);\n    }\n  }\n  .dark\\:text-orange-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-200);\n    }\n  }\n  .dark\\:text-orange-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-400);\n    }\n  }\n  .dark\\:text-orange-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-500);\n    }\n  }\n  .dark\\:text-red-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-200);\n    }\n  }\n  .dark\\:text-red-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-300);\n    }\n  }\n  .dark\\:text-red-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-400);\n    }\n  }\n  .dark\\:text-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-500);\n    }\n  }\n  .dark\\:text-red-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-700);\n    }\n  }\n  .dark\\:text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-white);\n    }\n  }\n  .dark\\:text-white\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: color-mix(in srgb, #fff 60%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, var(--color-white) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:text-yellow-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-100);\n    }\n  }\n  .dark\\:text-yellow-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-200);\n    }\n  }\n  .dark\\:text-yellow-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-300);\n    }\n  }\n  .dark\\:text-yellow-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-400);\n    }\n  }\n  .dark\\:text-yellow-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-500);\n    }\n  }\n  .dark\\:shadow-\\[0_0_0_1px_rgba\\(255\\,255\\,255\\,0\\.5\\)_inset\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(255,255,255,0.5)) inset;\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .dark\\:\\!ring-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:ring-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-blue-500);\n    }\n  }\n  .dark\\:ring-blue-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-blue-800);\n    }\n  }\n  .dark\\:ring-border {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-border);\n    }\n  }\n  .dark\\:ring-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:ring-neutral-600\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: color-mix(in srgb, oklch(0.439 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-ring-color: color-mix(in oklab, var(--color-neutral-600) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:ring-neutral-700\\/90 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: color-mix(in srgb, oklch(0.371 0 0) 90%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-ring-color: color-mix(in oklab, var(--color-neutral-700) 90%, transparent);\n      }\n    }\n  }\n  .dark\\:ring-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:ring-orange-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-orange-700);\n    }\n  }\n  .dark\\:ring-red-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-red-700);\n    }\n  }\n  .dark\\:outline-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      outline-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:invert {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-invert: invert(100%);\n      filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n    }\n  }\n  .dark\\:invert-0 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-invert: invert(0%);\n      filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n    }\n  }\n  .dark\\:group-hover\\/choice\\:bg-neutral-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:is(:where(.group\\/choice):hover *) {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(0.269 0 0) 50%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-neutral-800) 50%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:group-hover\\/choice\\:text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      &:is(:where(.group\\/choice):hover *) {\n        @media (hover: hover) {\n          color: var(--color-white);\n        }\n      }\n    }\n  }\n  .focus-within\\:dark\\:border-neutral-600 {\n    &:focus-within {\n      &:where(.dark-mode, .dark-mode *) {\n        border-color: var(--color-neutral-600);\n      }\n    }\n  }\n  .dark\\:hover\\:border-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          border-color: var(--color-neutral-600);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:border-neutral-700\\/80 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          border-color: color-mix(in srgb, oklch(0.371 0 0) 80%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            border-color: color-mix(in oklab, var(--color-neutral-700) 80%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:\\!bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-800) !important;\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:\\!bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-900) !important;\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:\\!bg-red-950\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(25.8% 0.092 26.042) 50%, transparent) !important;\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-red-950) 50%, transparent) !important;\n          }\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-blue-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-blue-600);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-blue-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-blue-700);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-600);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-700);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-700\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(0.371 0 0) 50%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-neutral-700) 50%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-800);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-900);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-900\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(0.205 0 0) 50%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-neutral-900) 50%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .hover\\:dark\\:bg-neutral-800 {\n    &:hover {\n      @media (hover: hover) {\n        &:where(.dark-mode, .dark-mode *) {\n          background-color: var(--color-neutral-800);\n        }\n      }\n    }\n  }\n  .hover\\:dark\\:bg-neutral-900 {\n    &:hover {\n      @media (hover: hover) {\n        &:where(.dark-mode, .dark-mode *) {\n          background-color: var(--color-neutral-900);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-blue-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-blue-300);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-neutral-50);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-neutral-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-neutral-200);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-neutral-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-neutral-300);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-red-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-red-300);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-white);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:not-\\[\\:has\\(a\\:hover\\)\\]\\:bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          &:not(*:is(:has(a:hover))) {\n            background-color: var(--color-neutral-900);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:focus\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus {\n        background-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .dark\\:focus\\:ring-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus {\n        --tw-ring-color: var(--color-blue-500);\n      }\n    }\n  }\n  .dark\\:focus\\:ring-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus {\n        --tw-ring-color: var(--color-neutral-500);\n      }\n    }\n  }\n  .dark\\:focus-visible\\:ring-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus-visible {\n        --tw-ring-color: var(--color-neutral-600);\n      }\n    }\n  }\n  .dark\\:disabled\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:disabled {\n        background-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .dark\\:disabled\\:\\!text-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:disabled {\n        color: var(--color-neutral-500) !important;\n      }\n    }\n  }\n  .dark\\:disabled\\:hover\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:disabled {\n        &:hover {\n          @media (hover: hover) {\n            background-color: var(--color-neutral-800);\n          }\n        }\n      }\n    }\n  }\n  .data-\\[highlighted\\]\\:dark\\:bg-red-950 {\n    &[data-highlighted] {\n      &:where(.dark-mode, .dark-mode *) {\n        background-color: var(--color-red-950);\n      }\n    }\n  }\n  .lg\\:dark\\:ring-neutral-800 {\n    @media (width >= 64rem) {\n      &:where(.dark-mode, .dark-mode *) {\n        --tw-ring-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .hocus\\:text-neutral-700 {\n    &:hover, &:focus-visible {\n      color: var(--color-neutral-700);\n    }\n  }\n  .hocus\\:opacity-100 {\n    &:hover, &:focus-visible {\n      opacity: 100%;\n    }\n  }\n  .dark\\:hocus\\:text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover, &:focus-visible {\n        color: var(--color-neutral-50);\n      }\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\>_label\\)\\]\\:grid {\n    & [role=cell]:has(> label) {\n      display: grid;\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\>_label\\)\\]\\:place-content-center {\n    & [role=cell]:has(> label) {\n      place-content: center;\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\[aria-label\\=Actions\\]\\)\\]\\:grid {\n    & [role=cell]:has([aria-label=Actions]) {\n      display: grid;\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\[aria-label\\=Actions\\]\\)\\]\\:place-content-center {\n    & [role=cell]:has([aria-label=Actions]) {\n      place-content: center;\n    }\n  }\n  .\\[\\&_\\[role\\=menu\\]_div\\:last-of-type\\]\\:\\!mb-0 {\n    & [role=menu] div:last-of-type {\n      margin-bottom: calc(var(--spacing) * 0) !important;\n    }\n  }\n  .\\[\\&_\\[role\\=menu\\]_h2\\]\\:hidden {\n    & [role=menu] h2 {\n      display: none;\n    }\n  }\n  .\\[\\&_\\[role\\=rowgroup\\]\\:last-child_\\[role\\=row\\]\\:last-child_\\[role\\=cell\\]\\]\\:\\!border-b-0 {\n    & [role=rowgroup]:last-child [role=row]:last-child [role=cell] {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:mx-auto\\! {\n    & [role=table] {\n      margin-inline: auto !important;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:max-w-full {\n    & [role=table] {\n      max-width: 100%;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:rounded\\! {\n    & [role=table] {\n      border-radius: 0.25rem !important;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:p-0\\! {\n    & [role=table] {\n      padding: calc(var(--spacing) * 0) !important;\n    }\n  }\n  .\\[\\&_button\\]\\:pointer-events-none {\n    & button {\n      pointer-events: none;\n    }\n  }\n  .\\[\\&_div\\:first-child\\]\\:col-span-6 {\n    & div:first-child {\n      grid-column: span 6 / span 6;\n    }\n  }\n  .\\[\\&_div\\:last-child\\]\\:col-span-4 {\n    & div:last-child {\n      grid-column: span 4 / span 4;\n    }\n  }\n  .xl\\:\\[\\&_div\\:last-child\\]\\:justify-end {\n    @media (width >= 80rem) {\n      & div:last-child {\n        justify-content: flex-end;\n      }\n    }\n  }\n  .\\[\\&_span\\]\\:min-w-0 {\n    & span {\n      min-width: calc(var(--spacing) * 0);\n    }\n  }\n  .\\[\\&_span\\]\\:truncate {\n    & span {\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n    }\n  }\n  .\\[\\&_th\\]\\:rounded-t {\n    & th {\n      border-top-left-radius: 0.25rem;\n      border-top-right-radius: 0.25rem;\n    }\n  }\n  .\\[\\&_ul_li\\:last-child\\]\\:\\!border-b-0 {\n    & ul li:last-child {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&_ul_li\\:last-child_dl_dd\\:last-of-type\\]\\:\\!border-b-0 {\n    & ul li:last-child dl dd:last-of-type {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&_ul_li\\:last-child_dl_dt\\:last-of-type\\]\\:\\!border-b-0 {\n    & ul li:last-child dl dt:last-of-type {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&\\:has\\(\\:focus-within\\)\\]\\:border-active {\n    &:has(:focus-within) {\n      border-color: var(--color-active);\n    }\n  }\n  .\\[\\&\\>div\\:first-child\\]\\:\\!py-3 {\n    &>div:first-child {\n      padding-block: calc(var(--spacing) * 3) !important;\n    }\n  }\n  .\\[\\&\\>div\\:first-of-type\\]\\:flex {\n    &>div:first-of-type {\n      display: flex;\n    }\n  }\n  .\\[\\&\\>div\\:first-of-type\\]\\:items-center {\n    &>div:first-of-type {\n      align-items: center;\n    }\n  }\n  .\\[\\&\\>pre\\]\\:\\!p-2\\.5 {\n    &>pre {\n      padding: calc(var(--spacing) * 2.5) !important;\n    }\n  }\n  .\\[\\&\\>span\\]\\:inline-block {\n    &>span {\n      display: inline-block;\n    }\n  }\n  .\\[\\&\\>span\\]\\:w-full {\n    &>span {\n      width: 100%;\n    }\n  }\n  .\\[\\&\\>svg\\]\\:hidden {\n    &>svg {\n      display: none;\n    }\n  }\n  .\\[\\@media\\(min-width\\:755px\\)\\]\\:order-2 {\n    @media (min-width:755px) {\n      order: 2;\n    }\n  }\n}\n@layer base {\n  :root {\n    --kumo-surface: #fff;\n    --kumo-surface-foreground: #000;\n    --kumo-surface-secondary: var(--color-neutral-50);\n    --kumo-surface-active: var(--color-neutral-100);\n    --kumo-primary: #056dff;\n    --kumo-primary-foreground: var(--color-white);\n    --kumo-secondary: var(--color-white);\n    --kumo-secondary-foreground: var(--color-neutral-900);\n    --kumo-secondary-hover: var(--color-neutral-50);\n    --kumo-accent: var(--color-neutral-150);\n    --kumo-destructive: var(--color-red-600);\n    --kumo-destructive-foreground: var(--color-neutral-50);\n    --kumo-muted: var(--color-neutral-100);\n    --kumo-muted-foreground: var(--color-neutral-500);\n    --kumo-input: var(--color-neutral-50);\n    --kumo-border: var(--color-neutral-200);\n    --kumo-border-hover: var(--color-neutral-300);\n    --kumo-border-active: var(--color-neutral-400);\n    --kumo-text-error: var(--color-red-600);\n  }\n  .dark-mode {\n    --kumo-surface: var(--color-black);\n    --kumo-surface-foreground: var(--color-neutral-50);\n    --kumo-surface-secondary: var(--kumo-surface);\n    --kumo-surface-active: var(--color-neutral-800);\n    --kumo-primary: #056dff;\n    --kumo-primary-foreground: var(--color-white);\n    --kumo-secondary: var(--color-neutral-900);\n    --kumo-secondary-foreground: var(--color-neutral-50);\n    --kumo-secondary-hover: var(--color-neutral-800);\n    --kumo-accent: var(--color-neutral-850);\n    --kumo-destructive: var(--color-red-600);\n    --kumo-destructive-foreground: var(--color-neutral-50);\n    --kumo-muted: var(--color-neutral-500);\n    --kumo-muted-foreground: var(--color-neutral-50);\n    --kumo-input: var(--color-neutral-900);\n    --kumo-border: var(--color-neutral-800);\n    --kumo-border-hover: var(--color-neutral-750);\n    --kumo-border-active: var(--color-neutral-600);\n    --kumo-text-error: var(--color-red-600);\n  }\n}\n@layer utilities {\n  .no-scrollbar::-webkit-scrollbar {\n    display: none;\n  }\n  .no-scrollbar {\n    -ms-overflow-style: none;\n    scrollbar-width: none;\n  }\n  .no-input-spinner {\n    appearance: textfield;\n    ::-webkit-outer-spin-button, ::-webkit-inner-spin-button {\n      appearance: none;\n    }\n  }\n}\n.z-modal {\n  z-index: 9999;\n}\n@keyframes right {\n  to {\n    transform: translateX(100%);\n  }\n}\n.float {\n  animation: float 5s linear infinite alternate;\n}\n@keyframes float {\n  to {\n    transform: translate(5px, 15px);\n  }\n}\n@keyframes refresh {\n  to {\n    transform: rotate(360deg) scale(0.9);\n  }\n}\n@keyframes bounce-in {\n  0% {\n    transform: scale(0.6);\n    opacity: 0;\n  }\n  50% {\n    transform: scale(1.2);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1);\n  }\n}\n.animate-bounce-in {\n  animation: bounce-in 0.4s ease-out;\n}\n@keyframes shimmer {\n  0% {\n    transform: translateX(-100%);\n  }\n  100% {\n    transform: translateX(100%);\n  }\n}\n@keyframes text-shimmer {\n  0% {\n    background-position: -100% 0;\n  }\n  100% {\n    background-position: 100% 0;\n  }\n}\n.skeleton-line {\n  position: relative;\n  overflow: hidden;\n  border-radius: 2px;\n  height: var(--skeleton-height, 0.5rem);\n  width: var(--skeleton-width);\n  background-color: #f3f4f6;\n}\n.skeleton-line::after {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  animation: shimmer var(--shimmer-duration, 1.5s) var(--shimmer-delay, 0s) infinite ease-in-out;\n  content: \'\';\n  background: linear-gradient( 90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0) 100% );\n}\n.dark-mode .skeleton-line {\n  background-color: rgba(255, 255, 255, 0.06);\n}\n.dark-mode .skeleton-line::after {\n  background: linear-gradient( 90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100% );\n}\n.text-shimmer {\n  background-size: 200% 100%;\n  -webkit-background-clip: text;\n  background-clip: text;\n  -webkit-text-fill-color: transparent;\n  animation: text-shimmer 2s ease-in-out infinite;\n}\n@layer theme;\nhtml.dark-mode {\n  color-scheme: dark;\n}\n@font-face {\n  font-family: \'Inter Variable\';\n  font-weight: 100 900;\n  font-display: swap;\n  src: local(\'Inter Variable\'), url(\'/fonts/inter-variable.woff2\');\n  font-named-instance: \'Regular\';\n  font-style: normal;\n}\n@font-face {\n  font-family: \'Inter Variable\';\n  font-weight: 100 900;\n  font-display: swap;\n  src: local(\'Inter Variable\'), url(\'/fonts/inter-variable-italic.woff2\');\n  font-named-instance: \'Italic\';\n  font-style: italic;\n}\n@font-face {\n  font-family: \'Paper Mono\';\n  font-weight: 400;\n  font-display: swap;\n  font-style: normal;\n  font-named-instance: \'Regular\';\n  src: url(\'/fonts/paper-mono-regular.woff2\') format(\'woff2\');\n}\n@layer base {\n  html, button {\n    font-family: var(--font-sans);\n    --tw-leading: 1.5;\n    line-height: 1.5;\n    --tw-font-weight: var(--font-weight-normal);\n    font-weight: var(--font-weight-normal);\n    --tw-tracking: -.01em;\n    letter-spacing: -.01em;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    font-feature-settings: \'cv02\', \'cv03\', \'cv04\', \'calt\';\n  }\n  pre, code {\n    font-family: var(--font-mono);\n    --tw-leading: var(--leading-normal);\n    line-height: var(--leading-normal);\n    --tw-tracking: var(--tracking-normal);\n    letter-spacing: var(--tracking-normal);\n  }\n  .font-heading {\n    font-variation-settings: \'opsz\' 32;\n  }\n  .font-title {\n    font-variation-settings: \'opsz\' 24;\n  }\n  .font-mono {\n    --tw-tracking: var(--tracking-normal);\n    letter-spacing: var(--tracking-normal);\n  }\n}\nbutton.text-base {\n  font-size: var(--text-base);\n  line-height: var(--tw-leading, var(--text-base--line-height));\n}\nbutton.text-xs {\n  font-size: var(--text-xs);\n  line-height: var(--tw-leading, var(--text-xs--line-height));\n}\nbutton.text-lg {\n  font-size: var(--text-lg);\n  line-height: var(--tw-leading, var(--text-lg--line-height));\n}\nbutton.border {\n  border-style: var(--tw-border-style);\n  border-width: 1px;\n  border-color: var(--color-color);\n}\n#react-app {\n  isolation: isolate;\n}\n@property --tw-translate-x {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-translate-y {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-translate-z {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-scale-x {\n  syntax: "*";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-scale-y {\n  syntax: "*";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-scale-z {\n  syntax: "*";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-rotate-x {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-rotate-y {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-rotate-z {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-skew-x {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-skew-y {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-scroll-snap-strictness {\n  syntax: "*";\n  inherits: false;\n  initial-value: proximity;\n}\n@property --tw-space-y-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-space-x-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-divide-x-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-border-style {\n  syntax: "*";\n  inherits: false;\n  initial-value: solid;\n}\n@property --tw-divide-y-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-gradient-position {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-gradient-from {\n  syntax: "<color>";\n  inherits: false;\n  initial-value: #0000;\n}\n@property --tw-gradient-via {\n  syntax: "<color>";\n  inherits: false;\n  initial-value: #0000;\n}\n@property --tw-gradient-to {\n  syntax: "<color>";\n  inherits: false;\n  initial-value: #0000;\n}\n@property --tw-gradient-stops {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-gradient-via-stops {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-gradient-from-position {\n  syntax: "<length-percentage>";\n  inherits: false;\n  initial-value: 0%;\n}\n@property --tw-gradient-via-position {\n  syntax: "<length-percentage>";\n  inherits: false;\n  initial-value: 50%;\n}\n@property --tw-gradient-to-position {\n  syntax: "<length-percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-leading {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-font-weight {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-tracking {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ordinal {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-slashed-zero {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-numeric-figure {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-numeric-spacing {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-numeric-fraction {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-shadow-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-shadow-alpha {\n  syntax: "<percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-inset-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-inset-shadow-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-inset-shadow-alpha {\n  syntax: "<percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-ring-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ring-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-inset-ring-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-inset-ring-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-ring-inset {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ring-offset-width {\n  syntax: "<length>";\n  inherits: false;\n  initial-value: 0px;\n}\n@property --tw-ring-offset-color {\n  syntax: "*";\n  inherits: false;\n  initial-value: #fff;\n}\n@property --tw-ring-offset-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-outline-style {\n  syntax: "*";\n  inherits: false;\n  initial-value: solid;\n}\n@property --tw-blur {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-brightness {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-contrast {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-grayscale {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-hue-rotate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-invert {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-opacity {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-saturate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-sepia {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-drop-shadow {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-drop-shadow-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-drop-shadow-alpha {\n  syntax: "<percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-drop-shadow-size {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-blur {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-brightness {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-contrast {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-grayscale {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-hue-rotate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-invert {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-opacity {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-saturate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-sepia {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-duration {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ease {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-content {\n  syntax: "*";\n  initial-value: "";\n  inherits: false;\n}\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n@keyframes pulse {\n  50% {\n    opacity: 0.5;\n  }\n}\n@layer properties {\n  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {\n    *, ::before, ::after, ::backdrop {\n      --tw-translate-x: 0;\n      --tw-translate-y: 0;\n      --tw-translate-z: 0;\n      --tw-scale-x: 1;\n      --tw-scale-y: 1;\n      --tw-scale-z: 1;\n      --tw-rotate-x: initial;\n      --tw-rotate-y: initial;\n      --tw-rotate-z: initial;\n      --tw-skew-x: initial;\n      --tw-skew-y: initial;\n      --tw-scroll-snap-strictness: proximity;\n      --tw-space-y-reverse: 0;\n      --tw-space-x-reverse: 0;\n      --tw-divide-x-reverse: 0;\n      --tw-border-style: solid;\n      --tw-divide-y-reverse: 0;\n      --tw-gradient-position: initial;\n      --tw-gradient-from: #0000;\n      --tw-gradient-via: #0000;\n      --tw-gradient-to: #0000;\n      --tw-gradient-stops: initial;\n      --tw-gradient-via-stops: initial;\n      --tw-gradient-from-position: 0%;\n      --tw-gradient-via-position: 50%;\n      --tw-gradient-to-position: 100%;\n      --tw-leading: initial;\n      --tw-font-weight: initial;\n      --tw-tracking: initial;\n      --tw-ordinal: initial;\n      --tw-slashed-zero: initial;\n      --tw-numeric-figure: initial;\n      --tw-numeric-spacing: initial;\n      --tw-numeric-fraction: initial;\n      --tw-shadow: 0 0 #0000;\n      --tw-shadow-color: initial;\n      --tw-shadow-alpha: 100%;\n      --tw-inset-shadow: 0 0 #0000;\n      --tw-inset-shadow-color: initial;\n      --tw-inset-shadow-alpha: 100%;\n      --tw-ring-color: initial;\n      --tw-ring-shadow: 0 0 #0000;\n      --tw-inset-ring-color: initial;\n      --tw-inset-ring-shadow: 0 0 #0000;\n      --tw-ring-inset: initial;\n      --tw-ring-offset-width: 0px;\n      --tw-ring-offset-color: #fff;\n      --tw-ring-offset-shadow: 0 0 #0000;\n      --tw-outline-style: solid;\n      --tw-blur: initial;\n      --tw-brightness: initial;\n      --tw-contrast: initial;\n      --tw-grayscale: initial;\n      --tw-hue-rotate: initial;\n      --tw-invert: initial;\n      --tw-opacity: initial;\n      --tw-saturate: initial;\n      --tw-sepia: initial;\n      --tw-drop-shadow: initial;\n      --tw-drop-shadow-color: initial;\n      --tw-drop-shadow-alpha: 100%;\n      --tw-drop-shadow-size: initial;\n      --tw-backdrop-blur: initial;\n      --tw-backdrop-brightness: initial;\n      --tw-backdrop-contrast: initial;\n      --tw-backdrop-grayscale: initial;\n      --tw-backdrop-hue-rotate: initial;\n      --tw-backdrop-invert: initial;\n      --tw-backdrop-opacity: initial;\n      --tw-backdrop-saturate: initial;\n      --tw-backdrop-sepia: initial;\n      --tw-duration: initial;\n      --tw-ease: initial;\n      --tw-content: "";\n    }\n  }\n}\n', ""])
+			(e.exports = n("../node_modules/css-loader/lib/css-base.js")(!1)).push([e.id, '/*! tailwindcss v4.1.16 | MIT License | https://tailwindcss.com */\n@layer properties;\n@layer theme, components, utilities;\n@layer theme {\n  :root, :host {\n    --font-sans: \'Inter Variable\', ui-sans-serif, system-ui, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';\n    --font-mono: \'Paper Mono\', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \'Liberation Mono\', \'Courier New\', monospace;\n    --color-red-50: oklch(97.1% 0.013 17.38);\n    --color-red-100: oklch(93.6% 0.032 17.717);\n    --color-red-200: oklch(88.5% 0.062 18.334);\n    --color-red-300: oklch(80.8% 0.114 19.571);\n    --color-red-400: oklch(70.4% 0.191 22.216);\n    --color-red-500: oklch(63.7% 0.237 25.331);\n    --color-red-600: oklch(57.7% 0.245 27.325);\n    --color-red-700: oklch(50.5% 0.213 27.518);\n    --color-red-800: oklch(44.4% 0.177 26.899);\n    --color-red-900: oklch(39.6% 0.141 25.723);\n    --color-red-950: oklch(25.8% 0.092 26.042);\n    --color-orange-100: oklch(95.4% 0.038 75.164);\n    --color-orange-200: oklch(90.1% 0.076 70.697);\n    --color-orange-300: oklch(83.7% 0.128 66.29);\n    --color-orange-400: oklch(75% 0.183 55.934);\n    --color-orange-500: oklch(70.5% 0.213 47.604);\n    --color-orange-600: oklch(64.6% 0.222 41.116);\n    --color-orange-700: oklch(55.3% 0.195 38.402);\n    --color-orange-800: oklch(47% 0.157 37.304);\n    --color-orange-900: oklch(40.8% 0.123 38.172);\n    --color-orange-950: oklch(26.6% 0.079 36.259);\n    --color-amber-200: oklch(92.4% 0.12 95.746);\n    --color-amber-600: oklch(66.6% 0.179 58.318);\n    --color-yellow-50: oklch(98.7% 0.026 102.212);\n    --color-yellow-100: oklch(97.3% 0.071 103.193);\n    --color-yellow-200: oklch(94.5% 0.129 101.54);\n    --color-yellow-300: oklch(90.5% 0.182 98.111);\n    --color-yellow-400: oklch(85.2% 0.199 91.936);\n    --color-yellow-500: oklch(79.5% 0.184 86.047);\n    --color-yellow-600: oklch(68.1% 0.162 75.834);\n    --color-yellow-700: oklch(55.4% 0.135 66.442);\n    --color-yellow-800: oklch(47.6% 0.114 61.907);\n    --color-yellow-900: oklch(42.1% 0.095 57.708);\n    --color-green-50: oklch(98.2% 0.018 155.826);\n    --color-green-100: oklch(96.2% 0.044 156.743);\n    --color-green-200: oklch(92.5% 0.084 155.995);\n    --color-green-300: oklch(87.1% 0.15 154.449);\n    --color-green-400: oklch(79.2% 0.209 151.711);\n    --color-green-500: oklch(72.3% 0.219 149.579);\n    --color-green-600: oklch(62.7% 0.194 149.214);\n    --color-green-700: oklch(52.7% 0.154 150.069);\n    --color-green-800: oklch(44.8% 0.119 151.328);\n    --color-green-900: oklch(39.3% 0.095 152.535);\n    --color-emerald-500: oklch(69.6% 0.17 162.48);\n    --color-cyan-100: oklch(95.6% 0.045 203.388);\n    --color-cyan-800: oklch(45% 0.085 224.283);\n    --color-sky-500: oklch(68.5% 0.169 237.323);\n    --color-blue-50: oklch(97% 0.014 254.604);\n    --color-blue-100: oklch(93.2% 0.032 255.585);\n    --color-blue-200: oklch(88.2% 0.059 254.128);\n    --color-blue-300: oklch(80.9% 0.105 251.813);\n    --color-blue-400: oklch(0.707 0.165 254.624);\n    --color-blue-500: oklch(62.3% 0.214 259.815);\n    --color-blue-600: oklch(54.6% 0.245 262.881);\n    --color-blue-700: oklch(48.8% 0.243 264.376);\n    --color-blue-800: oklch(0.424 0.199 265.638);\n    --color-blue-900: oklch(37.9% 0.146 265.522);\n    --color-blue-950: oklch(28.2% 0.091 267.935);\n    --color-indigo-50: oklch(96.2% 0.018 272.314);\n    --color-indigo-100: oklch(93% 0.034 272.788);\n    --color-indigo-200: oklch(87% 0.065 274.039);\n    --color-indigo-500: oklch(58.5% 0.233 277.117);\n    --color-indigo-600: oklch(51.1% 0.262 276.966);\n    --color-indigo-700: oklch(45.7% 0.24 277.023);\n    --color-indigo-900: oklch(35.9% 0.144 278.697);\n    --color-purple-200: oklch(90.2% 0.063 306.703);\n    --color-purple-800: oklch(43.8% 0.218 303.724);\n    --color-fuchsia-500: oklch(66.7% 0.295 322.15);\n    --color-rose-500: oklch(64.5% 0.246 16.439);\n    --color-gray-50: oklch(98.5% 0.002 247.839);\n    --color-gray-100: oklch(96.7% 0.003 264.542);\n    --color-gray-200: oklch(92.8% 0.006 264.531);\n    --color-gray-300: oklch(87.2% 0.01 258.338);\n    --color-gray-400: oklch(70.7% 0.022 261.325);\n    --color-gray-500: oklch(55.1% 0.027 264.364);\n    --color-gray-600: oklch(44.6% 0.03 256.802);\n    --color-gray-700: oklch(37.3% 0.034 259.733);\n    --color-gray-800: oklch(27.8% 0.033 256.848);\n    --color-gray-900: oklch(21% 0.034 264.665);\n    --color-zinc-500: oklch(55.2% 0.016 285.938);\n    --color-neutral-50: oklch(0.985 0 0);\n    --color-neutral-100: oklch(0.97 0 0);\n    --color-neutral-200: oklch(0.922 0 0);\n    --color-neutral-300: oklch(0.87 0 0);\n    --color-neutral-400: oklch(0.708 0 0);\n    --color-neutral-500: oklch(0.556 0 0);\n    --color-neutral-600: oklch(0.439 0 0);\n    --color-neutral-700: oklch(0.371 0 0);\n    --color-neutral-800: oklch(0.269 0 0);\n    --color-neutral-900: oklch(0.205 0 0);\n    --color-neutral-950: oklch(0.145 0 0);\n    --color-black: #000;\n    --color-white: #fff;\n    --spacing: 0.25rem;\n    --container-xs: 20rem;\n    --container-sm: 24rem;\n    --container-md: 28rem;\n    --container-lg: 32rem;\n    --container-xl: 36rem;\n    --container-2xl: 42rem;\n    --container-3xl: 48rem;\n    --container-6xl: 72rem;\n    --text-xs: 12px;\n    --text-xs--line-height: calc(1 / 0.75);\n    --text-sm: 13px;\n    --text-sm--line-height: calc(1 / 0.85);\n    --text-base: 14px;\n    --text-base--line-height: calc(1.25 / 0.875);\n    --text-lg: 16px;\n    --text-lg--line-height: calc(1.25 / 1);\n    --text-xl: 1.25rem;\n    --text-xl--line-height: calc(1.75 / 1.25);\n    --text-2xl: 1.5rem;\n    --text-2xl--line-height: calc(2 / 1.5);\n    --text-3xl: 1.875rem;\n    --text-3xl--line-height: calc(2.25 / 1.875);\n    --font-weight-light: 300;\n    --font-weight-normal: 400;\n    --font-weight-medium: 500;\n    --font-weight-semibold: 600;\n    --font-weight-bold: 700;\n    --tracking-tight: -0.025em;\n    --tracking-normal: 0em;\n    --tracking-wide: 0.025em;\n    --tracking-widest: 0.1em;\n    --leading-tight: 1.25;\n    --leading-snug: 1.375;\n    --leading-normal: 1.5;\n    --leading-relaxed: 1.625;\n    --radius-xs: 0.125rem;\n    --radius-sm: 0.25rem;\n    --radius-md: 0.375rem;\n    --radius-lg: 0.5rem;\n    --radius-xl: 0.75rem;\n    --radius-2xl: 1rem;\n    --ease-in: cubic-bezier(0.4, 0, 1, 1);\n    --ease-out: cubic-bezier(0, 0, 0.2, 1);\n    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);\n    --animate-spin: spin 1s linear infinite;\n    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;\n    --blur-md: 12px;\n    --default-transition-duration: 100ms /* snappier than default 150ms */;\n    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    --color-surface: var(--kumo-surface);\n    --color-surface-secondary: var(--kumo-surface-secondary);\n    --color-surface-active: var(--kumo-surface-active);\n    --color-primary: var(--kumo-primary);\n    --color-secondary: var(--kumo-secondary);\n    --color-secondary-hover: var(--kumo-secondary-hover);\n    --color-accent: var(--kumo-accent);\n    --color-destructive: var(--kumo-destructive);\n    --color-muted: var(--kumo-muted);\n    --color-input: var(--kumo-input);\n    --color-active: var(--kumo-border-active);\n    --color-border-hover: var(--kumo-border-hover);\n    --color-color: var(--kumo-border);\n    --text-color-surface: var(--kumo-surface-foreground);\n    --text-color-primary: var(--kumo-primary-foreground);\n    --text-color-secondary: var(--kumo-secondary-foreground);\n    --text-color-destructive: var(--kumo-destructive-foreground);\n    --text-color-muted: var(--kumo-muted-foreground);\n    --text-color-error: var(--kumo-text-error);\n    --animate-refresh: refresh 0.5s ease-in-out infinite;\n    --animate-right: right 15s linear infinite;\n    --color-neutral-25: oklch(0.99 0 0);\n    --color-neutral-150: oklch(0.96 0 0) /*new */;\n    --color-neutral-250: oklch(0.9 0 0) /* new */;\n    --color-neutral-750: oklch(0.31 0 0) /* new */;\n    --color-neutral-850: oklch(0.23 0 0) /* new */;\n    --color-border: var(--cf-gray-8);\n    --color-bg-primary: var(--kumo-surface);\n    --color-bg-secondary: var(--kumo-surface-secondary);\n    --color-ob-base-1000: var(--color-neutral-900);\n    --text-color-ob-inverted: var(--color-white);\n    --color-cl1-white: var(--cf-white);\n    --color-cl1-black: var(--cf-black);\n    --color-cl1-red-1: var(--cf-red-1);\n    --color-cl1-red-2: var(--cf-red-2);\n    --color-cl1-red-3: var(--cf-red-3);\n    --color-cl1-red-4: var(--cf-red-4);\n    --color-cl1-red-5: var(--cf-red-5);\n    --color-cl1-red-6: var(--cf-red-6);\n    --color-cl1-red-7: var(--cf-red-7);\n    --color-cl1-red-9: var(--cf-red-9);\n    --color-cl1-gold-2: var(--cf-gold-2);\n    --color-cl1-gold-4: var(--cf-gold-4);\n    --color-cl1-gold-5: var(--cf-gold-5);\n    --color-cl1-gold-6: var(--cf-gold-6);\n    --color-cl1-gold-7: var(--cf-gold-7);\n    --color-cl1-gold-9: var(--cf-gold-9);\n    --color-cl1-green-2: var(--cf-green-2);\n    --color-cl1-green-3: var(--cf-green-3);\n    --color-cl1-green-4: var(--cf-green-4);\n    --color-cl1-green-5: var(--cf-green-5);\n    --color-cl1-green-6: var(--cf-green-6);\n    --color-cl1-blue-1: var(--cf-blue-1);\n    --color-cl1-blue-3: var(--cf-blue-3);\n    --color-cl1-blue-4: var(--cf-blue-4);\n    --color-cl1-blue-5: var(--cf-blue-5);\n    --color-cl1-blue-6: var(--cf-blue-6);\n    --color-cl1-blue-7: var(--cf-blue-7);\n    --color-cl1-blue-9: var(--cf-blue-9);\n    --color-cl1-gray-0: var(--cf-gray-0);\n    --color-cl1-gray-1: var(--cf-gray-1);\n    --color-cl1-gray-2: var(--cf-gray-2);\n    --color-cl1-gray-3: var(--cf-gray-3);\n    --color-cl1-gray-4: var(--cf-gray-4);\n    --color-cl1-gray-5: var(--cf-gray-5);\n    --color-cl1-gray-6: var(--cf-gray-6);\n    --color-cl1-gray-7: var(--cf-gray-7);\n    --color-cl1-gray-8: var(--cf-gray-8);\n    --color-cl1-gray-9: var(--cf-gray-9);\n  }\n}\n@layer utilities {\n  .\\@container {\n    container-type: inline-size;\n  }\n  .pointer-events-auto {\n    pointer-events: auto;\n  }\n  .pointer-events-none {\n    pointer-events: none;\n  }\n  .collapse {\n    visibility: collapse;\n  }\n  .invisible {\n    visibility: hidden;\n  }\n  .visible {\n    visibility: visible;\n  }\n  .visible\\! {\n    visibility: visible !important;\n  }\n  .sr-only {\n    position: absolute;\n    width: 1px;\n    height: 1px;\n    padding: 0;\n    margin: -1px;\n    overflow: hidden;\n    clip-path: inset(50%);\n    white-space: nowrap;\n    border-width: 0;\n  }\n  .absolute {\n    position: absolute;\n  }\n  .fixed {\n    position: fixed;\n  }\n  .relative {\n    position: relative;\n  }\n  .relative\\! {\n    position: relative !important;\n  }\n  .static {\n    position: static;\n  }\n  .sticky {\n    position: sticky;\n  }\n  .-inset-0\\.5 {\n    inset: calc(var(--spacing) * -0.5);\n  }\n  .inset-0 {\n    inset: calc(var(--spacing) * 0);\n  }\n  .inset-y-0 {\n    inset-block: calc(var(--spacing) * 0);\n  }\n  .-top-1 {\n    top: calc(var(--spacing) * -1);\n  }\n  .-top-10 {\n    top: calc(var(--spacing) * -10);\n  }\n  .top-0 {\n    top: calc(var(--spacing) * 0);\n  }\n  .top-0\\! {\n    top: calc(var(--spacing) * 0) !important;\n  }\n  .top-0\\.5 {\n    top: calc(var(--spacing) * 0.5);\n  }\n  .top-1 {\n    top: calc(var(--spacing) * 1);\n  }\n  .top-1\\/2 {\n    top: calc(1/2 * 100%);\n  }\n  .top-2 {\n    top: calc(var(--spacing) * 2);\n  }\n  .top-3 {\n    top: calc(var(--spacing) * 3);\n  }\n  .top-4 {\n    top: calc(var(--spacing) * 4);\n  }\n  .top-8 {\n    top: calc(var(--spacing) * 8);\n  }\n  .top-22 {\n    top: calc(var(--spacing) * 22);\n  }\n  .top-42 {\n    top: calc(var(--spacing) * 42);\n  }\n  .top-48 {\n    top: calc(var(--spacing) * 48);\n  }\n  .top-64 {\n    top: calc(var(--spacing) * 64);\n  }\n  .top-\\[1px\\] {\n    top: 1px;\n  }\n  .top-\\[30\\%\\] {\n    top: 30%;\n  }\n  .top-\\[78px\\] {\n    top: 78px;\n  }\n  .top-\\[136px\\] {\n    top: 136px;\n  }\n  .top-\\[160px\\] {\n    top: 160px;\n  }\n  .top-full {\n    top: 100%;\n  }\n  .top-px {\n    top: 1px;\n  }\n  .-right-1 {\n    right: calc(var(--spacing) * -1);\n  }\n  .right-0 {\n    right: calc(var(--spacing) * 0);\n  }\n  .right-0\\! {\n    right: calc(var(--spacing) * 0) !important;\n  }\n  .right-1 {\n    right: calc(var(--spacing) * 1);\n  }\n  .right-2 {\n    right: calc(var(--spacing) * 2);\n  }\n  .right-3 {\n    right: calc(var(--spacing) * 3);\n  }\n  .right-4 {\n    right: calc(var(--spacing) * 4);\n  }\n  .\\!bottom-20 {\n    bottom: calc(var(--spacing) * 20) !important;\n  }\n  .bottom-0 {\n    bottom: calc(var(--spacing) * 0);\n  }\n  .bottom-0\\.5 {\n    bottom: calc(var(--spacing) * 0.5);\n  }\n  .-left-1 {\n    left: calc(var(--spacing) * -1);\n  }\n  .left-0 {\n    left: calc(var(--spacing) * 0);\n  }\n  .left-1 {\n    left: calc(var(--spacing) * 1);\n  }\n  .left-1\\/2 {\n    left: calc(1/2 * 100%);\n  }\n  .left-2 {\n    left: calc(var(--spacing) * 2);\n  }\n  .left-3 {\n    left: calc(var(--spacing) * 3);\n  }\n  .left-5 {\n    left: calc(var(--spacing) * 5);\n  }\n  .left-full {\n    left: 100%;\n  }\n  .isolate {\n    isolation: isolate;\n  }\n  .\\!z-100 {\n    z-index: 100 !important;\n  }\n  .-z-10 {\n    z-index: calc(10 * -1);\n  }\n  .z-0 {\n    z-index: 0;\n  }\n  .z-10 {\n    z-index: 10;\n  }\n  .z-20 {\n    z-index: 20;\n  }\n  .z-30 {\n    z-index: 30;\n  }\n  .z-40 {\n    z-index: 40;\n  }\n  .z-50 {\n    z-index: 50;\n  }\n  .z-100 {\n    z-index: 100;\n  }\n  .z-\\[99\\] {\n    z-index: 99;\n  }\n  .z-\\[9999\\] {\n    z-index: 9999;\n  }\n  .z-\\[10001\\] {\n    z-index: 10001;\n  }\n  .z-\\[99999\\] {\n    z-index: 99999;\n  }\n  .-order-1 {\n    order: calc(1 * -1);\n  }\n  .col-span-1 {\n    grid-column: span 1 / span 1;\n  }\n  .col-span-2 {\n    grid-column: span 2 / span 2;\n  }\n  .col-span-3 {\n    grid-column: span 3 / span 3;\n  }\n  .col-span-4 {\n    grid-column: span 4 / span 4;\n  }\n  .col-start-1 {\n    grid-column-start: 1;\n  }\n  .row-start-1 {\n    grid-row-start: 1;\n  }\n  .row-start-5 {\n    grid-row-start: 5;\n  }\n  .float-right {\n    float: right;\n  }\n  .container {\n    width: 100%;\n    @media (width >= 40rem) {\n      max-width: 40rem;\n    }\n    @media (width >= 48rem) {\n      max-width: 48rem;\n    }\n    @media (width >= 64rem) {\n      max-width: 64rem;\n    }\n    @media (width >= 80rem) {\n      max-width: 80rem;\n    }\n    @media (width >= 96rem) {\n      max-width: 96rem;\n    }\n  }\n  .\\!m-0 {\n    margin: calc(var(--spacing) * 0) !important;\n  }\n  .-m-1 {\n    margin: calc(var(--spacing) * -1);\n  }\n  .-m-\\[1px\\] {\n    margin: calc(1px * -1);\n  }\n  .-m-px {\n    margin: -1px;\n  }\n  .m-0 {\n    margin: calc(var(--spacing) * 0);\n  }\n  .m-0\\! {\n    margin: calc(var(--spacing) * 0) !important;\n  }\n  .m-1 {\n    margin: calc(var(--spacing) * 1);\n  }\n  .m-2 {\n    margin: calc(var(--spacing) * 2);\n  }\n  .m-4 {\n    margin: calc(var(--spacing) * 4);\n  }\n  .m-8 {\n    margin: calc(var(--spacing) * 8);\n  }\n  .m-auto {\n    margin: auto;\n  }\n  .\\!mx-0 {\n    margin-inline: calc(var(--spacing) * 0) !important;\n  }\n  .-mx-0\\.5 {\n    margin-inline: calc(var(--spacing) * -0.5);\n  }\n  .-mx-1 {\n    margin-inline: calc(var(--spacing) * -1);\n  }\n  .-mx-2 {\n    margin-inline: calc(var(--spacing) * -2);\n  }\n  .-mx-4 {\n    margin-inline: calc(var(--spacing) * -4);\n  }\n  .-mx-5 {\n    margin-inline: calc(var(--spacing) * -5);\n  }\n  .-mx-6 {\n    margin-inline: calc(var(--spacing) * -6);\n  }\n  .-mx-px {\n    margin-inline: -1px;\n  }\n  .mx-1 {\n    margin-inline: calc(var(--spacing) * 1);\n  }\n  .mx-2 {\n    margin-inline: calc(var(--spacing) * 2);\n  }\n  .mx-4 {\n    margin-inline: calc(var(--spacing) * 4);\n  }\n  .mx-auto {\n    margin-inline: auto;\n  }\n  .\\!my-0 {\n    margin-block: calc(var(--spacing) * 0) !important;\n  }\n  .\\!my-4 {\n    margin-block: calc(var(--spacing) * 4) !important;\n  }\n  .my-0\\! {\n    margin-block: calc(var(--spacing) * 0) !important;\n  }\n  .my-0\\.5 {\n    margin-block: calc(var(--spacing) * 0.5);\n  }\n  .my-1 {\n    margin-block: calc(var(--spacing) * 1);\n  }\n  .my-2 {\n    margin-block: calc(var(--spacing) * 2);\n  }\n  .my-4 {\n    margin-block: calc(var(--spacing) * 4);\n  }\n  .my-5 {\n    margin-block: calc(var(--spacing) * 5);\n  }\n  .my-\\[1px\\] {\n    margin-block: 1px;\n  }\n  .my-px {\n    margin-block: 1px;\n  }\n  .\\!-mt-0\\.5 {\n    margin-top: calc(var(--spacing) * -0.5) !important;\n  }\n  .\\!mt-0 {\n    margin-top: calc(var(--spacing) * 0) !important;\n  }\n  .\\!mt-1 {\n    margin-top: calc(var(--spacing) * 1) !important;\n  }\n  .\\!mt-2 {\n    margin-top: calc(var(--spacing) * 2) !important;\n  }\n  .\\!mt-3 {\n    margin-top: calc(var(--spacing) * 3) !important;\n  }\n  .\\!mt-4 {\n    margin-top: calc(var(--spacing) * 4) !important;\n  }\n  .\\!mt-5 {\n    margin-top: calc(var(--spacing) * 5) !important;\n  }\n  .\\!mt-6 {\n    margin-top: calc(var(--spacing) * 6) !important;\n  }\n  .\\!mt-\\[1px\\] {\n    margin-top: 1px !important;\n  }\n  .-mt-1 {\n    margin-top: calc(var(--spacing) * -1);\n  }\n  .-mt-2 {\n    margin-top: calc(var(--spacing) * -2);\n  }\n  .-mt-3 {\n    margin-top: calc(var(--spacing) * -3);\n  }\n  .-mt-3\\.5 {\n    margin-top: calc(var(--spacing) * -3.5);\n  }\n  .mt-0 {\n    margin-top: calc(var(--spacing) * 0);\n  }\n  .mt-0\\.5 {\n    margin-top: calc(var(--spacing) * 0.5);\n  }\n  .mt-0\\.5\\! {\n    margin-top: calc(var(--spacing) * 0.5) !important;\n  }\n  .mt-1 {\n    margin-top: calc(var(--spacing) * 1);\n  }\n  .mt-1\\.5 {\n    margin-top: calc(var(--spacing) * 1.5);\n  }\n  .mt-2 {\n    margin-top: calc(var(--spacing) * 2);\n  }\n  .mt-2\\.5 {\n    margin-top: calc(var(--spacing) * 2.5);\n  }\n  .mt-3 {\n    margin-top: calc(var(--spacing) * 3);\n  }\n  .mt-3\\.5 {\n    margin-top: calc(var(--spacing) * 3.5);\n  }\n  .mt-4 {\n    margin-top: calc(var(--spacing) * 4);\n  }\n  .mt-6 {\n    margin-top: calc(var(--spacing) * 6);\n  }\n  .mt-7 {\n    margin-top: calc(var(--spacing) * 7);\n  }\n  .mt-7\\.5 {\n    margin-top: calc(var(--spacing) * 7.5);\n  }\n  .mt-8 {\n    margin-top: calc(var(--spacing) * 8);\n  }\n  .mt-9 {\n    margin-top: calc(var(--spacing) * 9);\n  }\n  .mt-12 {\n    margin-top: calc(var(--spacing) * 12);\n  }\n  .mt-\\[1px\\] {\n    margin-top: 1px;\n  }\n  .mt-auto {\n    margin-top: auto;\n  }\n  .mt-px {\n    margin-top: 1px;\n  }\n  .\\!mr-1 {\n    margin-right: calc(var(--spacing) * 1) !important;\n  }\n  .\\!mr-\\[1px\\] {\n    margin-right: 1px !important;\n  }\n  .-mr-2 {\n    margin-right: calc(var(--spacing) * -2);\n  }\n  .mr-1 {\n    margin-right: calc(var(--spacing) * 1);\n  }\n  .mr-2 {\n    margin-right: calc(var(--spacing) * 2);\n  }\n  .mr-3 {\n    margin-right: calc(var(--spacing) * 3);\n  }\n  .mr-4 {\n    margin-right: calc(var(--spacing) * 4);\n  }\n  .mr-8 {\n    margin-right: calc(var(--spacing) * 8);\n  }\n  .mr-16 {\n    margin-right: calc(var(--spacing) * 16);\n  }\n  .mr-auto {\n    margin-right: auto;\n  }\n  .mr-px {\n    margin-right: 1px;\n  }\n  .\\!mb-0 {\n    margin-bottom: calc(var(--spacing) * 0) !important;\n  }\n  .\\!mb-1\\.5 {\n    margin-bottom: calc(var(--spacing) * 1.5) !important;\n  }\n  .\\!mb-2 {\n    margin-bottom: calc(var(--spacing) * 2) !important;\n  }\n  .\\!mb-2\\.5 {\n    margin-bottom: calc(var(--spacing) * 2.5) !important;\n  }\n  .\\!mb-3 {\n    margin-bottom: calc(var(--spacing) * 3) !important;\n  }\n  .\\!mb-4 {\n    margin-bottom: calc(var(--spacing) * 4) !important;\n  }\n  .-mb-1 {\n    margin-bottom: calc(var(--spacing) * -1);\n  }\n  .-mb-2 {\n    margin-bottom: calc(var(--spacing) * -2);\n  }\n  .-mb-5 {\n    margin-bottom: calc(var(--spacing) * -5);\n  }\n  .-mb-\\[1px\\] {\n    margin-bottom: calc(1px * -1);\n  }\n  .-mb-\\[48px\\] {\n    margin-bottom: calc(48px * -1);\n  }\n  .-mb-\\[68px\\] {\n    margin-bottom: calc(68px * -1);\n  }\n  .-mb-px {\n    margin-bottom: -1px;\n  }\n  .mb-0 {\n    margin-bottom: calc(var(--spacing) * 0);\n  }\n  .mb-0\\! {\n    margin-bottom: calc(var(--spacing) * 0) !important;\n  }\n  .mb-1 {\n    margin-bottom: calc(var(--spacing) * 1);\n  }\n  .mb-1\\.5 {\n    margin-bottom: calc(var(--spacing) * 1.5);\n  }\n  .mb-2 {\n    margin-bottom: calc(var(--spacing) * 2);\n  }\n  .mb-2\\.5 {\n    margin-bottom: calc(var(--spacing) * 2.5);\n  }\n  .mb-3 {\n    margin-bottom: calc(var(--spacing) * 3);\n  }\n  .mb-3\\! {\n    margin-bottom: calc(var(--spacing) * 3) !important;\n  }\n  .mb-4 {\n    margin-bottom: calc(var(--spacing) * 4);\n  }\n  .mb-6 {\n    margin-bottom: calc(var(--spacing) * 6);\n  }\n  .mb-8 {\n    margin-bottom: calc(var(--spacing) * 8);\n  }\n  .mb-8\\! {\n    margin-bottom: calc(var(--spacing) * 8) !important;\n  }\n  .mb-12 {\n    margin-bottom: calc(var(--spacing) * 12);\n  }\n  .mb-auto {\n    margin-bottom: auto;\n  }\n  .\\!-ml-1 {\n    margin-left: calc(var(--spacing) * -1) !important;\n  }\n  .\\!ml-0 {\n    margin-left: calc(var(--spacing) * 0) !important;\n  }\n  .\\!ml-0\\.5 {\n    margin-left: calc(var(--spacing) * 0.5) !important;\n  }\n  .-ml-0\\.5 {\n    margin-left: calc(var(--spacing) * -0.5);\n  }\n  .-ml-1 {\n    margin-left: calc(var(--spacing) * -1);\n  }\n  .-ml-2 {\n    margin-left: calc(var(--spacing) * -2);\n  }\n  .-ml-2\\.5 {\n    margin-left: calc(var(--spacing) * -2.5);\n  }\n  .-ml-3\\.5 {\n    margin-left: calc(var(--spacing) * -3.5);\n  }\n  .-ml-\\[1px\\] {\n    margin-left: calc(1px * -1);\n  }\n  .-ml-px {\n    margin-left: -1px;\n  }\n  .ml-0 {\n    margin-left: calc(var(--spacing) * 0);\n  }\n  .ml-0\\! {\n    margin-left: calc(var(--spacing) * 0) !important;\n  }\n  .ml-0\\.5 {\n    margin-left: calc(var(--spacing) * 0.5);\n  }\n  .ml-1 {\n    margin-left: calc(var(--spacing) * 1);\n  }\n  .ml-2 {\n    margin-left: calc(var(--spacing) * 2);\n  }\n  .ml-2\\! {\n    margin-left: calc(var(--spacing) * 2) !important;\n  }\n  .ml-3 {\n    margin-left: calc(var(--spacing) * 3);\n  }\n  .ml-4 {\n    margin-left: calc(var(--spacing) * 4);\n  }\n  .ml-6 {\n    margin-left: calc(var(--spacing) * 6);\n  }\n  .ml-7 {\n    margin-left: calc(var(--spacing) * 7);\n  }\n  .ml-11 {\n    margin-left: calc(var(--spacing) * 11);\n  }\n  .ml-auto {\n    margin-left: auto;\n  }\n  .box-border {\n    box-sizing: border-box;\n  }\n  .line-clamp-1 {\n    overflow: hidden;\n    display: -webkit-box;\n    -webkit-box-orient: vertical;\n    -webkit-line-clamp: 1;\n  }\n  .line-clamp-2 {\n    overflow: hidden;\n    display: -webkit-box;\n    -webkit-box-orient: vertical;\n    -webkit-line-clamp: 2;\n  }\n  .\\!flex {\n    display: flex !important;\n  }\n  .\\!inline-flex {\n    display: inline-flex !important;\n  }\n  .block {\n    display: block;\n  }\n  .contents {\n    display: contents;\n  }\n  .flex {\n    display: flex;\n  }\n  .grid {\n    display: grid;\n  }\n  .hidden {\n    display: none;\n  }\n  .inline {\n    display: inline;\n  }\n  .inline-block {\n    display: inline-block;\n  }\n  .inline-flex {\n    display: inline-flex;\n  }\n  .inline-grid {\n    display: inline-grid;\n  }\n  .list-item {\n    display: list-item;\n  }\n  .table {\n    display: table;\n  }\n  .table-cell {\n    display: table-cell;\n  }\n  .table-row {\n    display: table-row;\n  }\n  .aspect-square {\n    aspect-ratio: 1 / 1;\n  }\n  .size-1 {\n    width: calc(var(--spacing) * 1);\n    height: calc(var(--spacing) * 1);\n  }\n  .size-3\\.5 {\n    width: calc(var(--spacing) * 3.5);\n    height: calc(var(--spacing) * 3.5);\n  }\n  .size-4 {\n    width: calc(var(--spacing) * 4);\n    height: calc(var(--spacing) * 4);\n  }\n  .size-4\\.5 {\n    width: calc(var(--spacing) * 4.5);\n    height: calc(var(--spacing) * 4.5);\n  }\n  .size-5 {\n    width: calc(var(--spacing) * 5);\n    height: calc(var(--spacing) * 5);\n  }\n  .size-6\\.5 {\n    width: calc(var(--spacing) * 6.5);\n    height: calc(var(--spacing) * 6.5);\n  }\n  .size-7 {\n    width: calc(var(--spacing) * 7);\n    height: calc(var(--spacing) * 7);\n  }\n  .size-7\\.5 {\n    width: calc(var(--spacing) * 7.5);\n    height: calc(var(--spacing) * 7.5);\n  }\n  .size-8 {\n    width: calc(var(--spacing) * 8);\n    height: calc(var(--spacing) * 8);\n  }\n  .size-9 {\n    width: calc(var(--spacing) * 9);\n    height: calc(var(--spacing) * 9);\n  }\n  .size-10 {\n    width: calc(var(--spacing) * 10);\n    height: calc(var(--spacing) * 10);\n  }\n  .size-12 {\n    width: calc(var(--spacing) * 12);\n    height: calc(var(--spacing) * 12);\n  }\n  .size-15 {\n    width: calc(var(--spacing) * 15);\n    height: calc(var(--spacing) * 15);\n  }\n  .size-full {\n    width: 100%;\n    height: 100%;\n  }\n  .\\!h-3\\.5 {\n    height: calc(var(--spacing) * 3.5) !important;\n  }\n  .\\!h-8 {\n    height: calc(var(--spacing) * 8) !important;\n  }\n  .\\!h-\\[34px\\] {\n    height: 34px !important;\n  }\n  .\\!h-auto {\n    height: auto !important;\n  }\n  .\\!h-fit {\n    height: fit-content !important;\n  }\n  .\\!h-full {\n    height: 100% !important;\n  }\n  .h-0\\.5 {\n    height: calc(var(--spacing) * 0.5);\n  }\n  .h-1 {\n    height: calc(var(--spacing) * 1);\n  }\n  .h-1\\.5 {\n    height: calc(var(--spacing) * 1.5);\n  }\n  .h-2 {\n    height: calc(var(--spacing) * 2);\n  }\n  .h-2\\.5 {\n    height: calc(var(--spacing) * 2.5);\n  }\n  .h-3 {\n    height: calc(var(--spacing) * 3);\n  }\n  .h-3\\.5 {\n    height: calc(var(--spacing) * 3.5);\n  }\n  .h-4 {\n    height: calc(var(--spacing) * 4);\n  }\n  .h-5 {\n    height: calc(var(--spacing) * 5);\n  }\n  .h-5\\.5 {\n    height: calc(var(--spacing) * 5.5);\n  }\n  .h-6 {\n    height: calc(var(--spacing) * 6);\n  }\n  .h-6\\.5 {\n    height: calc(var(--spacing) * 6.5);\n  }\n  .h-7 {\n    height: calc(var(--spacing) * 7);\n  }\n  .h-7\\.5 {\n    height: calc(var(--spacing) * 7.5);\n  }\n  .h-8 {\n    height: calc(var(--spacing) * 8);\n  }\n  .h-8\\.5 {\n    height: calc(var(--spacing) * 8.5);\n  }\n  .h-8\\/10 {\n    height: calc(8/10 * 100%);\n  }\n  .h-9 {\n    height: calc(var(--spacing) * 9);\n  }\n  .h-10 {\n    height: calc(var(--spacing) * 10);\n  }\n  .h-12 {\n    height: calc(var(--spacing) * 12);\n  }\n  .h-14 {\n    height: calc(var(--spacing) * 14);\n  }\n  .h-16 {\n    height: calc(var(--spacing) * 16);\n  }\n  .h-20 {\n    height: calc(var(--spacing) * 20);\n  }\n  .h-32 {\n    height: calc(var(--spacing) * 32);\n  }\n  .h-64 {\n    height: calc(var(--spacing) * 64);\n  }\n  .h-76 {\n    height: calc(var(--spacing) * 76);\n  }\n  .h-80 {\n    height: calc(var(--spacing) * 80);\n  }\n  .h-96 {\n    height: calc(var(--spacing) * 96);\n  }\n  .h-\\[0\\.5px\\] {\n    height: 0.5px;\n  }\n  .h-\\[1lh\\] {\n    height: 1lh;\n  }\n  .h-\\[1px\\] {\n    height: 1px;\n  }\n  .h-\\[14px\\] {\n    height: 14px;\n  }\n  .h-\\[18px\\] {\n    height: 18px;\n  }\n  .h-\\[22px\\] {\n    height: 22px;\n  }\n  .h-\\[25px\\] {\n    height: 25px;\n  }\n  .h-\\[28px\\] {\n    height: 28px;\n  }\n  .h-\\[30px\\] {\n    height: 30px;\n  }\n  .h-\\[34px\\] {\n    height: 34px;\n  }\n  .h-\\[35px\\] {\n    height: 35px;\n  }\n  .h-\\[40px\\] {\n    height: 40px;\n  }\n  .h-\\[45px\\] {\n    height: 45px;\n  }\n  .h-\\[52px\\] {\n    height: 52px;\n  }\n  .h-\\[57px\\] {\n    height: 57px;\n  }\n  .h-\\[58px\\] {\n    height: 58px;\n  }\n  .h-\\[60px\\] {\n    height: 60px;\n  }\n  .h-\\[64px\\] {\n    height: 64px;\n  }\n  .h-\\[80px\\] {\n    height: 80px;\n  }\n  .h-\\[80vh\\] {\n    height: 80vh;\n  }\n  .h-\\[90vh\\] {\n    height: 90vh;\n  }\n  .h-\\[100\\%\\] {\n    height: 100%;\n  }\n  .h-\\[116px\\] {\n    height: 116px;\n  }\n  .h-\\[125px\\] {\n    height: 125px;\n  }\n  .h-\\[300px\\] {\n    height: 300px;\n  }\n  .h-\\[350px\\] {\n    height: 350px;\n  }\n  .h-\\[calc\\(75dvh\\)\\] {\n    height: calc(75dvh);\n  }\n  .h-\\[calc\\(100vh-58px\\)\\] {\n    height: calc(100vh - 58px);\n  }\n  .h-\\[calc\\(100vh-240px\\)\\] {\n    height: calc(100vh - 240px);\n  }\n  .h-\\[min\\(50vh\\,600px\\)\\] {\n    height: min(50vh, 600px);\n  }\n  .h-auto {\n    height: auto;\n  }\n  .h-fit {\n    height: fit-content;\n  }\n  .h-full {\n    height: 100%;\n  }\n  .h-px {\n    height: 1px;\n  }\n  .h-screen {\n    height: 100vh;\n  }\n  .\\!max-h-\\[calc\\(100vh-350px\\)\\] {\n    max-height: calc(100vh - 350px) !important;\n  }\n  .max-h-8\\/10 {\n    max-height: calc(8/10 * 100%);\n  }\n  .max-h-60 {\n    max-height: calc(var(--spacing) * 60);\n  }\n  .max-h-96 {\n    max-height: calc(var(--spacing) * 96);\n  }\n  .max-h-\\[50vh\\] {\n    max-height: 50vh;\n  }\n  .max-h-\\[60vh\\] {\n    max-height: 60vh;\n  }\n  .max-h-\\[80vh\\] {\n    max-height: 80vh;\n  }\n  .max-h-\\[300px\\] {\n    max-height: 300px;\n  }\n  .max-h-\\[400px\\] {\n    max-height: 400px;\n  }\n  .max-h-\\[512px\\] {\n    max-height: 512px;\n  }\n  .max-h-\\[600px\\] {\n    max-height: 600px;\n  }\n  .max-h-\\[calc\\(75dvh\\)\\] {\n    max-height: calc(75dvh);\n  }\n  .max-h-\\[calc\\(100vh-64px\\)\\] {\n    max-height: calc(100vh - 64px);\n  }\n  .max-h-\\[calc\\(100vh-300px\\)\\] {\n    max-height: calc(100vh - 300px);\n  }\n  .max-h-\\[calc\\(var\\(--footer-max-height\\)-150px\\)\\] {\n    max-height: calc(var(--footer-max-height) - 150px);\n  }\n  .max-h-full {\n    max-height: 100%;\n  }\n  .max-h-screen {\n    max-height: 100vh;\n  }\n  .\\!min-h-10 {\n    min-height: calc(var(--spacing) * 10) !important;\n  }\n  .min-h-0 {\n    min-height: calc(var(--spacing) * 0);\n  }\n  .min-h-1 {\n    min-height: calc(var(--spacing) * 1);\n  }\n  .min-h-2 {\n    min-height: calc(var(--spacing) * 2);\n  }\n  .min-h-3 {\n    min-height: calc(var(--spacing) * 3);\n  }\n  .min-h-4\\.5 {\n    min-height: calc(var(--spacing) * 4.5);\n  }\n  .min-h-20 {\n    min-height: calc(var(--spacing) * 20);\n  }\n  .min-h-36 {\n    min-height: calc(var(--spacing) * 36);\n  }\n  .min-h-\\[20px\\] {\n    min-height: 20px;\n  }\n  .min-h-\\[32px\\] {\n    min-height: 32px;\n  }\n  .min-h-\\[47\\.5px\\] {\n    min-height: 47.5px;\n  }\n  .min-h-\\[350px\\] {\n    min-height: 350px;\n  }\n  .min-h-\\[calc\\(100vh-160px\\)\\] {\n    min-height: calc(100vh - 160px);\n  }\n  .min-h-screen {\n    min-height: 100vh;\n  }\n  .\\!w-1 {\n    width: calc(var(--spacing) * 1) !important;\n  }\n  .\\!w-3\\.5 {\n    width: calc(var(--spacing) * 3.5) !important;\n  }\n  .\\!w-3xl {\n    width: var(--container-3xl) !important;\n  }\n  .\\!w-auto {\n    width: auto !important;\n  }\n  .\\!w-full {\n    width: 100% !important;\n  }\n  .w-0 {\n    width: calc(var(--spacing) * 0);\n  }\n  .w-1 {\n    width: calc(var(--spacing) * 1);\n  }\n  .w-1\\.5 {\n    width: calc(var(--spacing) * 1.5);\n  }\n  .w-1\\/2 {\n    width: calc(1/2 * 100%);\n  }\n  .w-1\\/3 {\n    width: calc(1/3 * 100%);\n  }\n  .w-1\\/4 {\n    width: calc(1/4 * 100%);\n  }\n  .w-1\\/5 {\n    width: calc(1/5 * 100%);\n  }\n  .w-1\\/6 {\n    width: calc(1/6 * 100%);\n  }\n  .w-1\\/12 {\n    width: calc(1/12 * 100%);\n  }\n  .w-2 {\n    width: calc(var(--spacing) * 2);\n  }\n  .w-2\\.5 {\n    width: calc(var(--spacing) * 2.5);\n  }\n  .w-3 {\n    width: calc(var(--spacing) * 3);\n  }\n  .w-3\\.5 {\n    width: calc(var(--spacing) * 3.5);\n  }\n  .w-3xl {\n    width: var(--container-3xl);\n  }\n  .w-4 {\n    width: calc(var(--spacing) * 4);\n  }\n  .w-5 {\n    width: calc(var(--spacing) * 5);\n  }\n  .w-6 {\n    width: calc(var(--spacing) * 6);\n  }\n  .w-6xl {\n    width: var(--container-6xl);\n  }\n  .w-7 {\n    width: calc(var(--spacing) * 7);\n  }\n  .w-8 {\n    width: calc(var(--spacing) * 8);\n  }\n  .w-8\\.5 {\n    width: calc(var(--spacing) * 8.5);\n  }\n  .w-10 {\n    width: calc(var(--spacing) * 10);\n  }\n  .w-10\\.5 {\n    width: calc(var(--spacing) * 10.5);\n  }\n  .w-11 {\n    width: calc(var(--spacing) * 11);\n  }\n  .w-12 {\n    width: calc(var(--spacing) * 12);\n  }\n  .w-12\\.5 {\n    width: calc(var(--spacing) * 12.5);\n  }\n  .w-16 {\n    width: calc(var(--spacing) * 16);\n  }\n  .w-20 {\n    width: calc(var(--spacing) * 20);\n  }\n  .w-24 {\n    width: calc(var(--spacing) * 24);\n  }\n  .w-30 {\n    width: calc(var(--spacing) * 30);\n  }\n  .w-32 {\n    width: calc(var(--spacing) * 32);\n  }\n  .w-40 {\n    width: calc(var(--spacing) * 40);\n  }\n  .w-42 {\n    width: calc(var(--spacing) * 42);\n  }\n  .w-45 {\n    width: calc(var(--spacing) * 45);\n  }\n  .w-48 {\n    width: calc(var(--spacing) * 48);\n  }\n  .w-60 {\n    width: calc(var(--spacing) * 60);\n  }\n  .w-64 {\n    width: calc(var(--spacing) * 64);\n  }\n  .w-70 {\n    width: calc(var(--spacing) * 70);\n  }\n  .w-120 {\n    width: calc(var(--spacing) * 120);\n  }\n  .w-\\[10px\\] {\n    width: 10px;\n  }\n  .w-\\[15\\%\\] {\n    width: 15%;\n  }\n  .w-\\[20\\%\\] {\n    width: 20%;\n  }\n  .w-\\[30\\%\\] {\n    width: 30%;\n  }\n  .w-\\[30px\\] {\n    width: 30px;\n  }\n  .w-\\[60px\\] {\n    width: 60px;\n  }\n  .w-\\[80px\\] {\n    width: 80px;\n  }\n  .w-\\[230px\\] {\n    width: 230px;\n  }\n  .w-\\[400px\\] {\n    width: 400px;\n  }\n  .w-\\[426px\\] {\n    width: 426px;\n  }\n  .w-\\[446px\\] {\n    width: 446px;\n  }\n  .w-\\[800px\\] {\n    width: 800px;\n  }\n  .w-\\[calc\\(100\\%-14px\\)\\] {\n    width: calc(100% - 14px);\n  }\n  .w-\\[var\\(--anchor-width\\)\\] {\n    width: var(--anchor-width);\n  }\n  .w-\\[var\\(--width\\)\\] {\n    width: var(--width);\n  }\n  .w-auto {\n    width: auto;\n  }\n  .w-fit {\n    width: fit-content;\n  }\n  .w-full {\n    width: 100%;\n  }\n  .w-max {\n    width: max-content;\n  }\n  .w-min {\n    width: min-content;\n  }\n  .w-px {\n    width: 1px;\n  }\n  .w-xl {\n    width: var(--container-xl);\n  }\n  .\\!max-w-3xl {\n    max-width: var(--container-3xl) !important;\n  }\n  .max-w-2xl {\n    max-width: var(--container-2xl);\n  }\n  .max-w-3xl {\n    max-width: var(--container-3xl);\n  }\n  .max-w-6xl {\n    max-width: var(--container-6xl);\n  }\n  .max-w-8 {\n    max-width: calc(var(--spacing) * 8);\n  }\n  .max-w-8\\/10 {\n    max-width: calc(8/10 * 100%);\n  }\n  .max-w-9\\/10 {\n    max-width: calc(9/10 * 100%);\n  }\n  .max-w-28 {\n    max-width: calc(var(--spacing) * 28);\n  }\n  .max-w-32 {\n    max-width: calc(var(--spacing) * 32);\n  }\n  .max-w-50 {\n    max-width: calc(var(--spacing) * 50);\n  }\n  .max-w-56 {\n    max-width: calc(var(--spacing) * 56);\n  }\n  .max-w-80 {\n    max-width: calc(var(--spacing) * 80);\n  }\n  .max-w-140 {\n    max-width: calc(var(--spacing) * 140);\n  }\n  .max-w-\\[30ch\\] {\n    max-width: 30ch;\n  }\n  .max-w-\\[38rem\\] {\n    max-width: 38rem;\n  }\n  .max-w-\\[60ch\\] {\n    max-width: 60ch;\n  }\n  .max-w-\\[70ch\\] {\n    max-width: 70ch;\n  }\n  .max-w-\\[90vw\\] {\n    max-width: 90vw;\n  }\n  .max-w-\\[180px\\] {\n    max-width: 180px;\n  }\n  .max-w-\\[200ch\\] {\n    max-width: 200ch;\n  }\n  .max-w-\\[200px\\] {\n    max-width: 200px;\n  }\n  .max-w-\\[216px\\] {\n    max-width: 216px;\n  }\n  .max-w-\\[300px\\] {\n    max-width: 300px;\n  }\n  .max-w-\\[350px\\] {\n    max-width: 350px;\n  }\n  .max-w-\\[400px\\] {\n    max-width: 400px;\n  }\n  .max-w-\\[640px\\] {\n    max-width: 640px;\n  }\n  .max-w-\\[800px\\] {\n    max-width: 800px;\n  }\n  .max-w-\\[920px\\] {\n    max-width: 920px;\n  }\n  .max-w-\\[950px\\] {\n    max-width: 950px;\n  }\n  .max-w-\\[1000px\\] {\n    max-width: 1000px;\n  }\n  .max-w-\\[1200px\\] {\n    max-width: 1200px;\n  }\n  .max-w-\\[1300px\\] {\n    max-width: 1300px;\n  }\n  .max-w-\\[1348px\\] {\n    max-width: 1348px;\n  }\n  .max-w-\\[1400px\\] {\n    max-width: 1400px;\n  }\n  .max-w-\\[1800px\\] {\n    max-width: 1800px;\n  }\n  .max-w-\\[2000px\\] {\n    max-width: 2000px;\n  }\n  .max-w-\\[calc\\(100\\%-32px\\)\\] {\n    max-width: calc(100% - 32px);\n  }\n  .max-w-\\[calc\\(100vw-3rem\\)\\] {\n    max-width: calc(100vw - 3rem);\n  }\n  .max-w-full {\n    max-width: 100%;\n  }\n  .max-w-lg {\n    max-width: var(--container-lg);\n  }\n  .max-w-md {\n    max-width: var(--container-md);\n  }\n  .max-w-xl {\n    max-width: var(--container-xl);\n  }\n  .max-w-xs {\n    max-width: var(--container-xs);\n  }\n  .min-w-0 {\n    min-width: calc(var(--spacing) * 0);\n  }\n  .min-w-3 {\n    min-width: calc(var(--spacing) * 3);\n  }\n  .min-w-8 {\n    min-width: calc(var(--spacing) * 8);\n  }\n  .min-w-20 {\n    min-width: calc(var(--spacing) * 20);\n  }\n  .min-w-24 {\n    min-width: calc(var(--spacing) * 24);\n  }\n  .min-w-30 {\n    min-width: calc(var(--spacing) * 30);\n  }\n  .min-w-32 {\n    min-width: calc(var(--spacing) * 32);\n  }\n  .min-w-36 {\n    min-width: calc(var(--spacing) * 36);\n  }\n  .min-w-40 {\n    min-width: calc(var(--spacing) * 40);\n  }\n  .min-w-42 {\n    min-width: calc(var(--spacing) * 42);\n  }\n  .min-w-44 {\n    min-width: calc(var(--spacing) * 44);\n  }\n  .min-w-48 {\n    min-width: calc(var(--spacing) * 48);\n  }\n  .min-w-50 {\n    min-width: calc(var(--spacing) * 50);\n  }\n  .min-w-52 {\n    min-width: calc(var(--spacing) * 52);\n  }\n  .min-w-60 {\n    min-width: calc(var(--spacing) * 60);\n  }\n  .min-w-64 {\n    min-width: calc(var(--spacing) * 64);\n  }\n  .min-w-80 {\n    min-width: calc(var(--spacing) * 80);\n  }\n  .min-w-96 {\n    min-width: calc(var(--spacing) * 96);\n  }\n  .min-w-\\[8rem\\] {\n    min-width: 8rem;\n  }\n  .min-w-\\[9px\\] {\n    min-width: 9px;\n  }\n  .min-w-\\[9rem\\] {\n    min-width: 9rem;\n  }\n  .min-w-\\[60px\\] {\n    min-width: 60px;\n  }\n  .min-w-\\[80px\\] {\n    min-width: 80px;\n  }\n  .min-w-\\[150px\\] {\n    min-width: 150px;\n  }\n  .min-w-\\[170px\\] {\n    min-width: 170px;\n  }\n  .min-w-\\[200px\\] {\n    min-width: 200px;\n  }\n  .min-w-\\[250px\\] {\n    min-width: 250px;\n  }\n  .min-w-\\[280px\\] {\n    min-width: 280px;\n  }\n  .min-w-\\[720px\\] {\n    min-width: 720px;\n  }\n  .min-w-\\[800px\\] {\n    min-width: 800px;\n  }\n  .min-w-\\[var\\(--trigger-width\\)\\] {\n    min-width: var(--trigger-width);\n  }\n  .min-w-sm {\n    min-width: var(--container-sm);\n  }\n  .min-w-xl {\n    min-width: var(--container-xl);\n  }\n  .min-w-xs {\n    min-width: var(--container-xs);\n  }\n  .flex-0 {\n    flex: 0;\n  }\n  .flex-1 {\n    flex: 1;\n  }\n  .flex-2 {\n    flex: 2;\n  }\n  .flex-auto {\n    flex: auto;\n  }\n  .flex-none {\n    flex: none;\n  }\n  .flex-shrink {\n    flex-shrink: 1;\n  }\n  .flex-shrink-0 {\n    flex-shrink: 0;\n  }\n  .flex-shrink-\\[2\\] {\n    flex-shrink: 2;\n  }\n  .shrink {\n    flex-shrink: 1;\n  }\n  .shrink-0 {\n    flex-shrink: 0;\n  }\n  .flex-grow {\n    flex-grow: 1;\n  }\n  .grow {\n    flex-grow: 1;\n  }\n  .grow-0 {\n    flex-grow: 0;\n  }\n  .grow-1 {\n    flex-grow: 1;\n  }\n  .basis-0 {\n    flex-basis: calc(var(--spacing) * 0);\n  }\n  .border-collapse {\n    border-collapse: collapse;\n  }\n  .origin-center {\n    transform-origin: center;\n  }\n  .origin-left {\n    transform-origin: 0;\n  }\n  .-translate-x-1\\/2 {\n    --tw-translate-x: calc(calc(1/2 * 100%) * -1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-x-2 {\n    --tw-translate-x: calc(var(--spacing) * -2);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-x-4 {\n    --tw-translate-x: calc(var(--spacing) * -4);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-0 {\n    --tw-translate-x: calc(var(--spacing) * 0);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-4 {\n    --tw-translate-x: calc(var(--spacing) * 4);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-5 {\n    --tw-translate-x: calc(var(--spacing) * 5);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-16 {\n    --tw-translate-x: calc(var(--spacing) * 16);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-x-full {\n    --tw-translate-x: 100%;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-0\\.75 {\n    --tw-translate-y: calc(var(--spacing) * -0.75);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-1 {\n    --tw-translate-y: calc(var(--spacing) * -1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-1\\/2 {\n    --tw-translate-y: calc(calc(1/2 * 100%) * -1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-16 {\n    --tw-translate-y: calc(var(--spacing) * -16);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .-translate-y-px {\n    --tw-translate-y: -1px;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-0\\.5 {\n    --tw-translate-y: calc(var(--spacing) * 0.5);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-1 {\n    --tw-translate-y: calc(var(--spacing) * 1);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-1\\.5 {\n    --tw-translate-y: calc(var(--spacing) * 1.5);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-\\[2px\\] {\n    --tw-translate-y: 2px;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-\\[calc\\(-50\\%-1px\\)\\] {\n    --tw-translate-y: calc(-50% - 1px);\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .translate-y-px {\n    --tw-translate-y: 1px;\n    translate: var(--tw-translate-x) var(--tw-translate-y);\n  }\n  .scale-80 {\n    --tw-scale-x: 80%;\n    --tw-scale-y: 80%;\n    --tw-scale-z: 80%;\n    scale: var(--tw-scale-x) var(--tw-scale-y);\n  }\n  .scale-x-0 {\n    --tw-scale-x: 0%;\n    scale: var(--tw-scale-x) var(--tw-scale-y);\n  }\n  .scale-x-100 {\n    --tw-scale-x: 100%;\n    scale: var(--tw-scale-x) var(--tw-scale-y);\n  }\n  .scale-\\[0\\.85\\] {\n    scale: 0.85;\n  }\n  .rotate-45 {\n    rotate: 45deg;\n  }\n  .rotate-90 {\n    rotate: 90deg;\n  }\n  .rotate-180 {\n    rotate: 180deg;\n  }\n  .transform {\n    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);\n  }\n  .transform-gpu {\n    transform: translateZ(0) var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);\n  }\n  .animate-pulse {\n    animation: var(--animate-pulse);\n  }\n  .animate-refresh {\n    animation: var(--animate-refresh);\n  }\n  .animate-right {\n    animation: var(--animate-right);\n  }\n  .animate-spin {\n    animation: var(--animate-spin);\n  }\n  .\\!cursor-not-allowed {\n    cursor: not-allowed !important;\n  }\n  .cursor-col-resize {\n    cursor: col-resize;\n  }\n  .cursor-default {\n    cursor: default;\n  }\n  .cursor-default\\! {\n    cursor: default !important;\n  }\n  .cursor-ew-resize {\n    cursor: ew-resize;\n  }\n  .cursor-grab {\n    cursor: grab;\n  }\n  .cursor-help {\n    cursor: help;\n  }\n  .cursor-not-allowed {\n    cursor: not-allowed;\n  }\n  .cursor-pointer {\n    cursor: pointer;\n  }\n  .cursor-wait {\n    cursor: wait;\n  }\n  .resize {\n    resize: both;\n  }\n  .resize-none {\n    resize: none;\n  }\n  .resize-y {\n    resize: vertical;\n  }\n  .snap-x {\n    scroll-snap-type: x var(--tw-scroll-snap-strictness);\n  }\n  .snap-mandatory {\n    --tw-scroll-snap-strictness: mandatory;\n  }\n  .snap-center {\n    scroll-snap-align: center;\n  }\n  .list-inside {\n    list-style-position: inside;\n  }\n  .\\!list-none {\n    list-style-type: none !important;\n  }\n  .list-disc {\n    list-style-type: disc;\n  }\n  .list-none {\n    list-style-type: none;\n  }\n  .appearance-none {\n    appearance: none;\n  }\n  .grid-cols-1 {\n    grid-template-columns: repeat(1, minmax(0, 1fr));\n  }\n  .grid-cols-2 {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n  .grid-cols-3 {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n  }\n  .grid-cols-4 {\n    grid-template-columns: repeat(4, minmax(0, 1fr));\n  }\n  .grid-cols-12 {\n    grid-template-columns: repeat(12, minmax(0, 1fr));\n  }\n  .grid-cols-\\[1fr\\] {\n    grid-template-columns: 1fr;\n  }\n  .grid-cols-\\[1fr_1fr_2fr\\] {\n    grid-template-columns: 1fr 1fr 2fr;\n  }\n  .grid-cols-\\[1fr_3fr\\] {\n    grid-template-columns: 1fr 3fr;\n  }\n  .grid-cols-\\[1fr_24px\\] {\n    grid-template-columns: 1fr 24px;\n  }\n  .grid-cols-\\[3fr_1fr\\] {\n    grid-template-columns: 3fr 1fr;\n  }\n  .grid-cols-\\[3fr_1fr_1fr\\] {\n    grid-template-columns: 3fr 1fr 1fr;\n  }\n  .grid-cols-\\[200px_1fr\\] {\n    grid-template-columns: 200px 1fr;\n  }\n  .grid-cols-\\[320px_1fr\\] {\n    grid-template-columns: 320px 1fr;\n  }\n  .grid-cols-\\[max-content_1fr\\] {\n    grid-template-columns: max-content 1fr;\n  }\n  .grid-cols-\\[var\\(--cols\\)\\] {\n    grid-template-columns: var(--cols);\n  }\n  .grid-rows-5 {\n    grid-template-rows: repeat(5, minmax(0, 1fr));\n  }\n  .\\!flex-row {\n    flex-direction: row !important;\n  }\n  .flex-col {\n    flex-direction: column;\n  }\n  .flex-col-reverse {\n    flex-direction: column-reverse;\n  }\n  .flex-row {\n    flex-direction: row;\n  }\n  .flex-row-reverse {\n    flex-direction: row-reverse;\n  }\n  .flex-wrap {\n    flex-wrap: wrap;\n  }\n  .place-content-center {\n    place-content: center;\n  }\n  .place-items-center {\n    place-items: center;\n  }\n  .content-center {\n    align-content: center;\n  }\n  .items-baseline {\n    align-items: baseline;\n  }\n  .items-center {\n    align-items: center;\n  }\n  .items-end {\n    align-items: flex-end;\n  }\n  .items-start {\n    align-items: flex-start;\n  }\n  .items-stretch {\n    align-items: stretch;\n  }\n  .justify-between {\n    justify-content: space-between;\n  }\n  .justify-center {\n    justify-content: center;\n  }\n  .justify-end {\n    justify-content: flex-end;\n  }\n  .justify-start {\n    justify-content: flex-start;\n  }\n  .justify-stretch {\n    justify-content: stretch;\n  }\n  .gap-0 {\n    gap: calc(var(--spacing) * 0);\n  }\n  .gap-0\\.5 {\n    gap: calc(var(--spacing) * 0.5);\n  }\n  .gap-1 {\n    gap: calc(var(--spacing) * 1);\n  }\n  .gap-1\\.5 {\n    gap: calc(var(--spacing) * 1.5);\n  }\n  .gap-2 {\n    gap: calc(var(--spacing) * 2);\n  }\n  .gap-2\\.5 {\n    gap: calc(var(--spacing) * 2.5);\n  }\n  .gap-3 {\n    gap: calc(var(--spacing) * 3);\n  }\n  .gap-4 {\n    gap: calc(var(--spacing) * 4);\n  }\n  .gap-5 {\n    gap: calc(var(--spacing) * 5);\n  }\n  .gap-6 {\n    gap: calc(var(--spacing) * 6);\n  }\n  .gap-7 {\n    gap: calc(var(--spacing) * 7);\n  }\n  .gap-8 {\n    gap: calc(var(--spacing) * 8);\n  }\n  .gap-12 {\n    gap: calc(var(--spacing) * 12);\n  }\n  .gap-\\[1ch\\] {\n    gap: 1ch;\n  }\n  .gap-\\[7px\\] {\n    gap: 7px;\n  }\n  .space-y-1 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-2 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-2\\.5 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-3 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-4 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-6 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-8 {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));\n      margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .space-y-\\[var\\(--gap\\)\\] {\n    :where(& > :not(:last-child)) {\n      --tw-space-y-reverse: 0;\n      margin-block-start: calc(var(--gap) * var(--tw-space-y-reverse));\n      margin-block-end: calc(var(--gap) * calc(1 - var(--tw-space-y-reverse)));\n    }\n  }\n  .gap-x-1\\.5 {\n    column-gap: calc(var(--spacing) * 1.5);\n  }\n  .gap-x-2 {\n    column-gap: calc(var(--spacing) * 2);\n  }\n  .space-x-1 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 1) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .space-x-2 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .space-x-3 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .space-x-4 {\n    :where(& > :not(:last-child)) {\n      --tw-space-x-reverse: 0;\n      margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));\n      margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));\n    }\n  }\n  .gap-y-1 {\n    row-gap: calc(var(--spacing) * 1);\n  }\n  .divide-x {\n    :where(& > :not(:last-child)) {\n      --tw-divide-x-reverse: 0;\n      border-inline-style: var(--tw-border-style);\n      border-inline-start-width: calc(1px * var(--tw-divide-x-reverse));\n      border-inline-end-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));\n    }\n  }\n  .divide-y {\n    :where(& > :not(:last-child)) {\n      --tw-divide-y-reverse: 0;\n      border-bottom-style: var(--tw-border-style);\n      border-top-style: var(--tw-border-style);\n      border-top-width: calc(1px * var(--tw-divide-y-reverse));\n      border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));\n    }\n  }\n  .divide-accent {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-accent);\n    }\n  }\n  .divide-border {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-border);\n    }\n  }\n  .divide-gray-200 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-gray-200);\n    }\n  }\n  .divide-gray-300 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-gray-300);\n    }\n  }\n  .divide-neutral-100 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-100);\n    }\n  }\n  .divide-neutral-200 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-200);\n    }\n  }\n  .divide-neutral-250 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-250);\n    }\n  }\n  .divide-neutral-300 {\n    :where(& > :not(:last-child)) {\n      border-color: var(--color-neutral-300);\n    }\n  }\n  .place-self-end {\n    place-self: end;\n  }\n  .self-center {\n    align-self: center;\n  }\n  .self-end {\n    align-self: flex-end;\n  }\n  .self-start {\n    align-self: flex-start;\n  }\n  .self-stretch {\n    align-self: stretch;\n  }\n  .truncate {\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n  }\n  .\\!overflow-visible {\n    overflow: visible !important;\n  }\n  .overflow-auto {\n    overflow: auto;\n  }\n  .overflow-clip {\n    overflow: clip;\n  }\n  .overflow-hidden {\n    overflow: hidden;\n  }\n  .overflow-scroll {\n    overflow: scroll;\n  }\n  .overflow-visible {\n    overflow: visible;\n  }\n  .overflow-visible\\! {\n    overflow: visible !important;\n  }\n  .overflow-x-auto {\n    overflow-x: auto;\n  }\n  .overflow-x-scroll {\n    overflow-x: scroll;\n  }\n  .\\!overflow-y-auto {\n    overflow-y: auto !important;\n  }\n  .overflow-y-auto {\n    overflow-y: auto;\n  }\n  .overflow-y-scroll {\n    overflow-y: scroll;\n  }\n  .overscroll-contain {\n    overscroll-behavior: contain;\n  }\n  .\\!rounded {\n    border-radius: 0.25rem !important;\n  }\n  .\\!rounded-lg {\n    border-radius: var(--radius-lg) !important;\n  }\n  .\\!rounded-none {\n    border-radius: 0 !important;\n  }\n  .rounded {\n    border-radius: 0.25rem;\n  }\n  .rounded-2xl {\n    border-radius: var(--radius-2xl);\n  }\n  .rounded-full {\n    border-radius: calc(infinity * 1px);\n  }\n  .rounded-lg {\n    border-radius: var(--radius-lg);\n  }\n  .rounded-md {\n    border-radius: var(--radius-md);\n  }\n  .rounded-none {\n    border-radius: 0;\n  }\n  .rounded-sm {\n    border-radius: var(--radius-sm);\n  }\n  .rounded-xl {\n    border-radius: var(--radius-xl);\n  }\n  .rounded-xl\\! {\n    border-radius: var(--radius-xl) !important;\n  }\n  .rounded-xs {\n    border-radius: var(--radius-xs);\n  }\n  .\\!rounded-t-none {\n    border-top-left-radius: 0 !important;\n    border-top-right-radius: 0 !important;\n  }\n  .rounded-t {\n    border-top-left-radius: 0.25rem;\n    border-top-right-radius: 0.25rem;\n  }\n  .rounded-t-\\[10px\\] {\n    border-top-left-radius: 10px;\n    border-top-right-radius: 10px;\n  }\n  .rounded-t-lg {\n    border-top-left-radius: var(--radius-lg);\n    border-top-right-radius: var(--radius-lg);\n  }\n  .rounded-l {\n    border-top-left-radius: 0.25rem;\n    border-bottom-left-radius: 0.25rem;\n  }\n  .rounded-l-none {\n    border-top-left-radius: 0;\n    border-bottom-left-radius: 0;\n  }\n  .rounded-l-sm {\n    border-top-left-radius: var(--radius-sm);\n    border-bottom-left-radius: var(--radius-sm);\n  }\n  .rounded-tl-lg {\n    border-top-left-radius: var(--radius-lg);\n  }\n  .rounded-tl-none {\n    border-top-left-radius: 0;\n  }\n  .rounded-r {\n    border-top-right-radius: 0.25rem;\n    border-bottom-right-radius: 0.25rem;\n  }\n  .rounded-r-md {\n    border-top-right-radius: var(--radius-md);\n    border-bottom-right-radius: var(--radius-md);\n  }\n  .rounded-r-none {\n    border-top-right-radius: 0;\n    border-bottom-right-radius: 0;\n  }\n  .rounded-tr-lg {\n    border-top-right-radius: var(--radius-lg);\n  }\n  .rounded-tr-none {\n    border-top-right-radius: 0;\n  }\n  .rounded-b {\n    border-bottom-right-radius: 0.25rem;\n    border-bottom-left-radius: 0.25rem;\n  }\n  .rounded-b-lg {\n    border-bottom-right-radius: var(--radius-lg);\n    border-bottom-left-radius: var(--radius-lg);\n  }\n  .\\!rounded-br-none {\n    border-bottom-right-radius: 0 !important;\n  }\n  .rounded-br-lg {\n    border-bottom-right-radius: var(--radius-lg);\n  }\n  .rounded-bl-lg {\n    border-bottom-left-radius: var(--radius-lg);\n  }\n  .\\!border {\n    border-style: var(--tw-border-style) !important;\n    border-width: 1px !important;\n  }\n  .\\!border-0 {\n    border-style: var(--tw-border-style) !important;\n    border-width: 0px !important;\n  }\n  .border {\n    border-style: var(--tw-border-style);\n    border-width: 1px;\n  }\n  .border-0 {\n    border-style: var(--tw-border-style);\n    border-width: 0px;\n  }\n  .border-1 {\n    border-style: var(--tw-border-style);\n    border-width: 1px;\n  }\n  .border-2 {\n    border-style: var(--tw-border-style);\n    border-width: 2px;\n  }\n  .\\!border-y-0 {\n    border-block-style: var(--tw-border-style) !important;\n    border-block-width: 0px !important;\n  }\n  .border-y {\n    border-block-style: var(--tw-border-style);\n    border-block-width: 1px;\n  }\n  .border-t {\n    border-top-style: var(--tw-border-style);\n    border-top-width: 1px;\n  }\n  .border-t-0 {\n    border-top-style: var(--tw-border-style);\n    border-top-width: 0px;\n  }\n  .\\!border-r {\n    border-right-style: var(--tw-border-style) !important;\n    border-right-width: 1px !important;\n  }\n  .border-r {\n    border-right-style: var(--tw-border-style);\n    border-right-width: 1px;\n  }\n  .border-r-0 {\n    border-right-style: var(--tw-border-style);\n    border-right-width: 0px;\n  }\n  .border-b {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 1px;\n  }\n  .border-b-0 {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 0px;\n  }\n  .border-b-1 {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 1px;\n  }\n  .border-b-4 {\n    border-bottom-style: var(--tw-border-style);\n    border-bottom-width: 4px;\n  }\n  .\\!border-l {\n    border-left-style: var(--tw-border-style) !important;\n    border-left-width: 1px !important;\n  }\n  .\\!border-l-0 {\n    border-left-style: var(--tw-border-style) !important;\n    border-left-width: 0px !important;\n  }\n  .border-l {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 1px;\n  }\n  .border-l-0 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 0px;\n  }\n  .border-l-1 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 1px;\n  }\n  .border-l-2 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 2px;\n  }\n  .border-l-4 {\n    border-left-style: var(--tw-border-style);\n    border-left-width: 4px;\n  }\n  .\\!border-none {\n    --tw-border-style: none !important;\n    border-style: none !important;\n  }\n  .border-dashed {\n    --tw-border-style: dashed;\n    border-style: dashed;\n  }\n  .border-dotted {\n    --tw-border-style: dotted;\n    border-style: dotted;\n  }\n  .border-none {\n    --tw-border-style: none;\n    border-style: none;\n  }\n  .\\!border-blue-500 {\n    border-color: var(--color-blue-500) !important;\n  }\n  .\\!border-blue-600 {\n    border-color: var(--color-blue-600) !important;\n  }\n  .\\!border-border {\n    border-color: var(--color-border) !important;\n  }\n  .\\!border-neutral-200 {\n    border-color: var(--color-neutral-200) !important;\n  }\n  .\\!border-neutral-300 {\n    border-color: var(--color-neutral-300) !important;\n  }\n  .border-\\[\\#B6B6B6\\] {\n    border-color: #B6B6B6;\n  }\n  .border-accent {\n    border-color: var(--color-accent);\n  }\n  .border-active {\n    border-color: var(--color-active);\n  }\n  .border-blue-100 {\n    border-color: var(--color-blue-100);\n  }\n  .border-blue-200 {\n    border-color: var(--color-blue-200);\n  }\n  .border-blue-300 {\n    border-color: var(--color-blue-300);\n  }\n  .border-blue-400 {\n    border-color: var(--color-blue-400);\n  }\n  .border-blue-500 {\n    border-color: var(--color-blue-500);\n  }\n  .border-blue-600 {\n    border-color: var(--color-blue-600);\n  }\n  .border-border {\n    border-color: var(--color-border);\n  }\n  .border-border\\/50 {\n    border-color: var(--color-border);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-border) 50%, transparent);\n    }\n  }\n  .border-border\\/60 {\n    border-color: var(--color-border);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-border) 60%, transparent);\n    }\n  }\n  .border-border\\/80 {\n    border-color: var(--color-border);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-border) 80%, transparent);\n    }\n  }\n  .border-cl1-gold-4 {\n    border-color: var(--color-cl1-gold-4);\n  }\n  .border-cl1-gold-7 {\n    border-color: var(--color-cl1-gold-7);\n  }\n  .border-cl1-gray-4 {\n    border-color: var(--color-cl1-gray-4);\n  }\n  .border-cl1-gray-7 {\n    border-color: var(--color-cl1-gray-7);\n  }\n  .border-cl1-gray-8 {\n    border-color: var(--color-cl1-gray-8);\n  }\n  .border-cl1-green-4 {\n    border-color: var(--color-cl1-green-4);\n  }\n  .border-cl1-red-4 {\n    border-color: var(--color-cl1-red-4);\n  }\n  .border-cl1-red-6 {\n    border-color: var(--color-cl1-red-6);\n  }\n  .border-cl1-red-7 {\n    border-color: var(--color-cl1-red-7);\n  }\n  .border-color {\n    border-color: var(--color-color);\n  }\n  .border-destructive {\n    border-color: var(--color-destructive);\n  }\n  .border-gray-200 {\n    border-color: var(--color-gray-200);\n  }\n  .border-gray-300 {\n    border-color: var(--color-gray-300);\n  }\n  .border-green-200 {\n    border-color: var(--color-green-200);\n  }\n  .border-green-300 {\n    border-color: var(--color-green-300);\n  }\n  .border-neutral-100 {\n    border-color: var(--color-neutral-100);\n  }\n  .border-neutral-100\\! {\n    border-color: var(--color-neutral-100) !important;\n  }\n  .border-neutral-150 {\n    border-color: var(--color-neutral-150);\n  }\n  .border-neutral-200 {\n    border-color: var(--color-neutral-200);\n  }\n  .border-neutral-200\\/60 {\n    border-color: color-mix(in srgb, oklch(0.922 0 0) 60%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-neutral-200) 60%, transparent);\n    }\n  }\n  .border-neutral-200\\/70 {\n    border-color: color-mix(in srgb, oklch(0.922 0 0) 70%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      border-color: color-mix(in oklab, var(--color-neutral-200) 70%, transparent);\n    }\n  }\n  .border-neutral-250 {\n    border-color: var(--color-neutral-250);\n  }\n  .border-neutral-300 {\n    border-color: var(--color-neutral-300);\n  }\n  .border-neutral-400 {\n    border-color: var(--color-neutral-400);\n  }\n  .border-neutral-500 {\n    border-color: var(--color-neutral-500);\n  }\n  .border-neutral-600 {\n    border-color: var(--color-neutral-600);\n  }\n  .border-neutral-900 {\n    border-color: var(--color-neutral-900);\n  }\n  .border-orange-200 {\n    border-color: var(--color-orange-200);\n  }\n  .border-red-200 {\n    border-color: var(--color-red-200);\n  }\n  .border-red-300 {\n    border-color: var(--color-red-300);\n  }\n  .border-red-400 {\n    border-color: var(--color-red-400);\n  }\n  .border-transparent {\n    border-color: transparent;\n  }\n  .border-yellow-200 {\n    border-color: var(--color-yellow-200);\n  }\n  .border-yellow-300 {\n    border-color: var(--color-yellow-300);\n  }\n  .border-yellow-500 {\n    border-color: var(--color-yellow-500);\n  }\n  .border-zinc-500 {\n    border-color: var(--color-zinc-500);\n  }\n  .border-t-transparent {\n    border-top-color: transparent;\n  }\n  .border-r-neutral-900 {\n    border-right-color: var(--color-neutral-900);\n  }\n  .\\!border-b-primary\\/80 {\n    border-bottom-color: var(--color-primary) !important;\n    @supports (color: color-mix(in lab, red, red)) {\n      border-bottom-color: color-mix(in oklab, var(--color-primary) 80%, transparent) !important;\n    }\n  }\n  .border-b-neutral-200 {\n    border-bottom-color: var(--color-neutral-200);\n  }\n  .border-b-neutral-900 {\n    border-bottom-color: var(--color-neutral-900);\n  }\n  .border-b-transparent\\! {\n    border-bottom-color: transparent !important;\n  }\n  .border-l-cl1-gray-8 {\n    border-left-color: var(--color-cl1-gray-8);\n  }\n  .border-l-neutral-200 {\n    border-left-color: var(--color-neutral-200);\n  }\n  .border-l-orange-500 {\n    border-left-color: var(--color-orange-500);\n  }\n  .border-l-surface {\n    border-left-color: var(--color-surface);\n  }\n  .\\!bg-\\[\\#f6821f1a\\] {\n    background-color: #f6821f1a !important;\n  }\n  .\\!bg-blue-600 {\n    background-color: var(--color-blue-600) !important;\n  }\n  .\\!bg-neutral-50 {\n    background-color: var(--color-neutral-50) !important;\n  }\n  .\\!bg-neutral-100 {\n    background-color: var(--color-neutral-100) !important;\n  }\n  .\\!bg-neutral-300 {\n    background-color: var(--color-neutral-300) !important;\n  }\n  .\\!bg-surface {\n    background-color: var(--color-surface) !important;\n  }\n  .\\!bg-surface-secondary {\n    background-color: var(--color-surface-secondary) !important;\n  }\n  .\\!bg-transparent {\n    background-color: transparent !important;\n  }\n  .bg-\\[\\#F8F8F8\\] {\n    background-color: #F8F8F8;\n  }\n  .bg-\\[\\#f6821f\\] {\n    background-color: #f6821f;\n  }\n  .bg-\\[\\#ffe693\\] {\n    background-color: #ffe693;\n  }\n  .bg-\\[var\\(--color-accent\\)\\] {\n    background-color: var(--color-accent);\n  }\n  .bg-accent {\n    background-color: var(--color-accent);\n  }\n  .bg-accent\\/60 {\n    background-color: var(--color-accent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-accent) 60%, transparent);\n    }\n  }\n  .bg-amber-200 {\n    background-color: var(--color-amber-200);\n  }\n  .bg-bg-primary {\n    background-color: var(--color-bg-primary);\n  }\n  .bg-bg-secondary {\n    background-color: var(--color-bg-secondary);\n  }\n  .bg-black {\n    background-color: var(--color-black);\n  }\n  .bg-black\\/5 {\n    background-color: color-mix(in srgb, #000 5%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-black) 5%, transparent);\n    }\n  }\n  .bg-black\\/20 {\n    background-color: color-mix(in srgb, #000 20%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-black) 20%, transparent);\n    }\n  }\n  .bg-black\\/30 {\n    background-color: color-mix(in srgb, #000 30%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-black) 30%, transparent);\n    }\n  }\n  .bg-black\\/40 {\n    background-color: color-mix(in srgb, #000 40%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-black) 40%, transparent);\n    }\n  }\n  .bg-blue-50 {\n    background-color: var(--color-blue-50);\n  }\n  .bg-blue-100 {\n    background-color: var(--color-blue-100);\n  }\n  .bg-blue-200 {\n    background-color: var(--color-blue-200);\n  }\n  .bg-blue-300 {\n    background-color: var(--color-blue-300);\n  }\n  .bg-blue-400 {\n    background-color: var(--color-blue-400);\n  }\n  .bg-blue-500 {\n    background-color: var(--color-blue-500);\n  }\n  .bg-blue-600 {\n    background-color: var(--color-blue-600);\n  }\n  .bg-cl1-black {\n    background-color: var(--color-cl1-black);\n  }\n  .bg-cl1-blue-5 {\n    background-color: var(--color-cl1-blue-5);\n  }\n  .bg-cl1-blue-6 {\n    background-color: var(--color-cl1-blue-6);\n  }\n  .bg-cl1-blue-7 {\n    background-color: var(--color-cl1-blue-7);\n  }\n  .bg-cl1-blue-9 {\n    background-color: var(--color-cl1-blue-9);\n  }\n  .bg-cl1-blue-9\\/60 {\n    background-color: var(--color-cl1-blue-9);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-cl1-blue-9) 60%, transparent);\n    }\n  }\n  .bg-cl1-gold-5 {\n    background-color: var(--color-cl1-gold-5);\n  }\n  .bg-cl1-gold-6 {\n    background-color: var(--color-cl1-gold-6);\n  }\n  .bg-cl1-gold-9 {\n    background-color: var(--color-cl1-gold-9);\n  }\n  .bg-cl1-gray-5 {\n    background-color: var(--color-cl1-gray-5);\n  }\n  .bg-cl1-gray-6 {\n    background-color: var(--color-cl1-gray-6);\n  }\n  .bg-cl1-gray-7\\/10 {\n    background-color: var(--color-cl1-gray-7);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-cl1-gray-7) 10%, transparent);\n    }\n  }\n  .bg-cl1-gray-8 {\n    background-color: var(--color-cl1-gray-8);\n  }\n  .bg-cl1-gray-9 {\n    background-color: var(--color-cl1-gray-9);\n  }\n  .bg-cl1-gray-9\\/60 {\n    background-color: var(--color-cl1-gray-9);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-cl1-gray-9) 60%, transparent);\n    }\n  }\n  .bg-cl1-green-5 {\n    background-color: var(--color-cl1-green-5);\n  }\n  .bg-cl1-green-6 {\n    background-color: var(--color-cl1-green-6);\n  }\n  .bg-cl1-red-5 {\n    background-color: var(--color-cl1-red-5);\n  }\n  .bg-cl1-red-6 {\n    background-color: var(--color-cl1-red-6);\n  }\n  .bg-cl1-red-7 {\n    background-color: var(--color-cl1-red-7);\n  }\n  .bg-cl1-red-7\\/40 {\n    background-color: var(--color-cl1-red-7);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-cl1-red-7) 40%, transparent);\n    }\n  }\n  .bg-cl1-red-9 {\n    background-color: var(--color-cl1-red-9);\n  }\n  .bg-cl1-white {\n    background-color: var(--color-cl1-white);\n  }\n  .bg-current {\n    background-color: currentcolor;\n  }\n  .bg-cyan-100 {\n    background-color: var(--color-cyan-100);\n  }\n  .bg-destructive {\n    background-color: var(--color-destructive);\n  }\n  .bg-gray-50 {\n    background-color: var(--color-gray-50);\n  }\n  .bg-gray-100 {\n    background-color: var(--color-gray-100);\n  }\n  .bg-gray-200 {\n    background-color: var(--color-gray-200);\n  }\n  .bg-gray-300 {\n    background-color: var(--color-gray-300);\n  }\n  .bg-gray-300\\/60 {\n    background-color: color-mix(in srgb, oklch(87.2% 0.01 258.338) 60%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-gray-300) 60%, transparent);\n    }\n  }\n  .bg-gray-500 {\n    background-color: var(--color-gray-500);\n  }\n  .bg-green-50 {\n    background-color: var(--color-green-50);\n  }\n  .bg-green-100 {\n    background-color: var(--color-green-100);\n  }\n  .bg-green-200 {\n    background-color: var(--color-green-200);\n  }\n  .bg-green-500 {\n    background-color: var(--color-green-500);\n  }\n  .bg-green-600 {\n    background-color: var(--color-green-600);\n  }\n  .bg-indigo-100 {\n    background-color: var(--color-indigo-100);\n  }\n  .bg-inherit {\n    background-color: inherit;\n  }\n  .bg-input {\n    background-color: var(--color-input);\n  }\n  .bg-muted {\n    background-color: var(--color-muted);\n  }\n  .bg-neutral-25 {\n    background-color: var(--color-neutral-25);\n  }\n  .bg-neutral-50 {\n    background-color: var(--color-neutral-50);\n  }\n  .bg-neutral-50\\! {\n    background-color: var(--color-neutral-50) !important;\n  }\n  .bg-neutral-100 {\n    background-color: var(--color-neutral-100);\n  }\n  .bg-neutral-150 {\n    background-color: var(--color-neutral-150);\n  }\n  .bg-neutral-200 {\n    background-color: var(--color-neutral-200);\n  }\n  .bg-neutral-200\\/30 {\n    background-color: color-mix(in srgb, oklch(0.922 0 0) 30%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-neutral-200) 30%, transparent);\n    }\n  }\n  .bg-neutral-250 {\n    background-color: var(--color-neutral-250);\n  }\n  .bg-neutral-300 {\n    background-color: var(--color-neutral-300);\n  }\n  .bg-neutral-600 {\n    background-color: var(--color-neutral-600);\n  }\n  .bg-neutral-900 {\n    background-color: var(--color-neutral-900);\n  }\n  .bg-ob-base-1000 {\n    background-color: var(--color-ob-base-1000);\n  }\n  .bg-orange-100 {\n    background-color: var(--color-orange-100);\n  }\n  .bg-orange-200 {\n    background-color: var(--color-orange-200);\n  }\n  .bg-primary {\n    background-color: var(--color-primary);\n  }\n  .bg-purple-200 {\n    background-color: var(--color-purple-200);\n  }\n  .bg-red-50 {\n    background-color: var(--color-red-50);\n  }\n  .bg-red-50\\! {\n    background-color: var(--color-red-50) !important;\n  }\n  .bg-red-100 {\n    background-color: var(--color-red-100);\n  }\n  .bg-red-200 {\n    background-color: var(--color-red-200);\n  }\n  .bg-red-400 {\n    background-color: var(--color-red-400);\n  }\n  .bg-red-500 {\n    background-color: var(--color-red-500);\n  }\n  .bg-secondary {\n    background-color: var(--color-secondary);\n  }\n  .bg-surface {\n    background-color: var(--color-surface);\n  }\n  .bg-surface-active {\n    background-color: var(--color-surface-active);\n  }\n  .bg-surface-secondary {\n    background-color: var(--color-surface-secondary);\n  }\n  .bg-transparent {\n    background-color: transparent;\n  }\n  .bg-white {\n    background-color: var(--color-white);\n  }\n  .bg-white\\/80 {\n    background-color: color-mix(in srgb, #fff 80%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-white) 80%, transparent);\n    }\n  }\n  .bg-yellow-50 {\n    background-color: var(--color-yellow-50);\n  }\n  .bg-yellow-200 {\n    background-color: var(--color-yellow-200);\n  }\n  .bg-yellow-300 {\n    background-color: var(--color-yellow-300);\n  }\n  .bg-yellow-500 {\n    background-color: var(--color-yellow-500);\n  }\n  .bg-yellow-500\\/20 {\n    background-color: color-mix(in srgb, oklch(79.5% 0.184 86.047) 20%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      background-color: color-mix(in oklab, var(--color-yellow-500) 20%, transparent);\n    }\n  }\n  .bg-gradient-to-b {\n    --tw-gradient-position: to bottom in oklab;\n    background-image: linear-gradient(var(--tw-gradient-stops));\n  }\n  .bg-gradient-to-br {\n    --tw-gradient-position: to bottom right in oklab;\n    background-image: linear-gradient(var(--tw-gradient-stops));\n  }\n  .bg-gradient-to-r {\n    --tw-gradient-position: to right in oklab;\n    background-image: linear-gradient(var(--tw-gradient-stops));\n  }\n  .from-blue-50 {\n    --tw-gradient-from: var(--color-blue-50);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .from-neutral-50 {\n    --tw-gradient-from: var(--color-neutral-50);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .from-transparent {\n    --tw-gradient-from: transparent;\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-indigo-50 {\n    --tw-gradient-to: var(--color-indigo-50);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-neutral-100 {\n    --tw-gradient-to: var(--color-neutral-100);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-white {\n    --tw-gradient-to: var(--color-white);\n    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n  }\n  .to-40\\% {\n    --tw-gradient-to-position: 40%;\n  }\n  .fill-ob-base-1000 {\n    fill: var(--color-ob-base-1000);\n  }\n  .stroke-border {\n    stroke: var(--color-border);\n  }\n  .stroke-red-500 {\n    stroke: var(--color-red-500);\n  }\n  .stroke-red-500\\! {\n    stroke: var(--color-red-500) !important;\n  }\n  .stroke-1 {\n    stroke-width: 1;\n  }\n  .object-cover {\n    object-fit: cover;\n  }\n  .object-fill {\n    object-fit: fill;\n  }\n  .\\!p-0 {\n    padding: calc(var(--spacing) * 0) !important;\n  }\n  .\\!p-1 {\n    padding: calc(var(--spacing) * 1) !important;\n  }\n  .\\!p-3 {\n    padding: calc(var(--spacing) * 3) !important;\n  }\n  .\\!p-4 {\n    padding: calc(var(--spacing) * 4) !important;\n  }\n  .\\!p-5 {\n    padding: calc(var(--spacing) * 5) !important;\n  }\n  .p-0 {\n    padding: calc(var(--spacing) * 0);\n  }\n  .p-0\\! {\n    padding: calc(var(--spacing) * 0) !important;\n  }\n  .p-0\\.5 {\n    padding: calc(var(--spacing) * 0.5);\n  }\n  .p-1 {\n    padding: calc(var(--spacing) * 1);\n  }\n  .p-1\\.5 {\n    padding: calc(var(--spacing) * 1.5);\n  }\n  .p-2 {\n    padding: calc(var(--spacing) * 2);\n  }\n  .p-2\\.5 {\n    padding: calc(var(--spacing) * 2.5);\n  }\n  .p-3 {\n    padding: calc(var(--spacing) * 3);\n  }\n  .p-4 {\n    padding: calc(var(--spacing) * 4);\n  }\n  .p-5 {\n    padding: calc(var(--spacing) * 5);\n  }\n  .p-6 {\n    padding: calc(var(--spacing) * 6);\n  }\n  .p-6\\.5 {\n    padding: calc(var(--spacing) * 6.5);\n  }\n  .p-8 {\n    padding: calc(var(--spacing) * 8);\n  }\n  .p-10 {\n    padding: calc(var(--spacing) * 10);\n  }\n  .p-12 {\n    padding: calc(var(--spacing) * 12);\n  }\n  .p-16 {\n    padding: calc(var(--spacing) * 16);\n  }\n  .p-px {\n    padding: 1px;\n  }\n  .\\!px-0 {\n    padding-inline: calc(var(--spacing) * 0) !important;\n  }\n  .\\!px-0\\.5 {\n    padding-inline: calc(var(--spacing) * 0.5) !important;\n  }\n  .\\!px-2 {\n    padding-inline: calc(var(--spacing) * 2) !important;\n  }\n  .\\!px-3 {\n    padding-inline: calc(var(--spacing) * 3) !important;\n  }\n  .\\!px-4 {\n    padding-inline: calc(var(--spacing) * 4) !important;\n  }\n  .\\!px-5 {\n    padding-inline: calc(var(--spacing) * 5) !important;\n  }\n  .px-0 {\n    padding-inline: calc(var(--spacing) * 0);\n  }\n  .px-0\\! {\n    padding-inline: calc(var(--spacing) * 0) !important;\n  }\n  .px-0\\.5 {\n    padding-inline: calc(var(--spacing) * 0.5);\n  }\n  .px-1 {\n    padding-inline: calc(var(--spacing) * 1);\n  }\n  .px-1\\.5 {\n    padding-inline: calc(var(--spacing) * 1.5);\n  }\n  .px-2 {\n    padding-inline: calc(var(--spacing) * 2);\n  }\n  .px-2\\! {\n    padding-inline: calc(var(--spacing) * 2) !important;\n  }\n  .px-2\\.5 {\n    padding-inline: calc(var(--spacing) * 2.5);\n  }\n  .px-3 {\n    padding-inline: calc(var(--spacing) * 3);\n  }\n  .px-3\\.5 {\n    padding-inline: calc(var(--spacing) * 3.5);\n  }\n  .px-4 {\n    padding-inline: calc(var(--spacing) * 4);\n  }\n  .px-4\\.5 {\n    padding-inline: calc(var(--spacing) * 4.5);\n  }\n  .px-5 {\n    padding-inline: calc(var(--spacing) * 5);\n  }\n  .px-6 {\n    padding-inline: calc(var(--spacing) * 6);\n  }\n  .px-8 {\n    padding-inline: calc(var(--spacing) * 8);\n  }\n  .px-10 {\n    padding-inline: calc(var(--spacing) * 10);\n  }\n  .px-\\[1px\\] {\n    padding-inline: 1px;\n  }\n  .px-\\[3px\\] {\n    padding-inline: 3px;\n  }\n  .px-\\[6px\\] {\n    padding-inline: 6px;\n  }\n  .\\!py-1 {\n    padding-block: calc(var(--spacing) * 1) !important;\n  }\n  .\\!py-1\\.5 {\n    padding-block: calc(var(--spacing) * 1.5) !important;\n  }\n  .\\!py-2 {\n    padding-block: calc(var(--spacing) * 2) !important;\n  }\n  .\\!py-3 {\n    padding-block: calc(var(--spacing) * 3) !important;\n  }\n  .\\!py-4 {\n    padding-block: calc(var(--spacing) * 4) !important;\n  }\n  .py-0 {\n    padding-block: calc(var(--spacing) * 0);\n  }\n  .py-0\\.5 {\n    padding-block: calc(var(--spacing) * 0.5);\n  }\n  .py-1 {\n    padding-block: calc(var(--spacing) * 1);\n  }\n  .py-1\\! {\n    padding-block: calc(var(--spacing) * 1) !important;\n  }\n  .py-1\\.5 {\n    padding-block: calc(var(--spacing) * 1.5);\n  }\n  .py-2 {\n    padding-block: calc(var(--spacing) * 2);\n  }\n  .py-2\\.5 {\n    padding-block: calc(var(--spacing) * 2.5);\n  }\n  .py-3 {\n    padding-block: calc(var(--spacing) * 3);\n  }\n  .py-3\\.5 {\n    padding-block: calc(var(--spacing) * 3.5);\n  }\n  .py-4 {\n    padding-block: calc(var(--spacing) * 4);\n  }\n  .py-4\\! {\n    padding-block: calc(var(--spacing) * 4) !important;\n  }\n  .py-5 {\n    padding-block: calc(var(--spacing) * 5);\n  }\n  .py-6 {\n    padding-block: calc(var(--spacing) * 6);\n  }\n  .py-8 {\n    padding-block: calc(var(--spacing) * 8);\n  }\n  .py-12 {\n    padding-block: calc(var(--spacing) * 12);\n  }\n  .py-16 {\n    padding-block: calc(var(--spacing) * 16);\n  }\n  .py-\\[1px\\] {\n    padding-block: 1px;\n  }\n  .py-\\[2px\\] {\n    padding-block: 2px;\n  }\n  .py-\\[11px\\] {\n    padding-block: 11px;\n  }\n  .\\!pt-2 {\n    padding-top: calc(var(--spacing) * 2) !important;\n  }\n  .pt-1 {\n    padding-top: calc(var(--spacing) * 1);\n  }\n  .pt-2 {\n    padding-top: calc(var(--spacing) * 2);\n  }\n  .pt-3 {\n    padding-top: calc(var(--spacing) * 3);\n  }\n  .pt-3\\.5 {\n    padding-top: calc(var(--spacing) * 3.5);\n  }\n  .pt-4 {\n    padding-top: calc(var(--spacing) * 4);\n  }\n  .pt-6 {\n    padding-top: calc(var(--spacing) * 6);\n  }\n  .pt-10 {\n    padding-top: calc(var(--spacing) * 10);\n  }\n  .pt-12 {\n    padding-top: calc(var(--spacing) * 12);\n  }\n  .\\!pr-1 {\n    padding-right: calc(var(--spacing) * 1) !important;\n  }\n  .\\!pr-2 {\n    padding-right: calc(var(--spacing) * 2) !important;\n  }\n  .pr-1 {\n    padding-right: calc(var(--spacing) * 1);\n  }\n  .pr-2 {\n    padding-right: calc(var(--spacing) * 2);\n  }\n  .pr-2\\.5 {\n    padding-right: calc(var(--spacing) * 2.5);\n  }\n  .pr-3 {\n    padding-right: calc(var(--spacing) * 3);\n  }\n  .pr-4 {\n    padding-right: calc(var(--spacing) * 4);\n  }\n  .pr-6 {\n    padding-right: calc(var(--spacing) * 6);\n  }\n  .pr-8 {\n    padding-right: calc(var(--spacing) * 8);\n  }\n  .pr-10 {\n    padding-right: calc(var(--spacing) * 10);\n  }\n  .pr-12 {\n    padding-right: calc(var(--spacing) * 12);\n  }\n  .pr-20 {\n    padding-right: calc(var(--spacing) * 20);\n  }\n  .pr-\\[14px\\] {\n    padding-right: 14px;\n  }\n  .\\!pb-1 {\n    padding-bottom: calc(var(--spacing) * 1) !important;\n  }\n  .\\!pb-2 {\n    padding-bottom: calc(var(--spacing) * 2) !important;\n  }\n  .\\!pb-3 {\n    padding-bottom: calc(var(--spacing) * 3) !important;\n  }\n  .pb-0 {\n    padding-bottom: calc(var(--spacing) * 0);\n  }\n  .pb-0\\.5 {\n    padding-bottom: calc(var(--spacing) * 0.5);\n  }\n  .pb-1 {\n    padding-bottom: calc(var(--spacing) * 1);\n  }\n  .pb-1\\! {\n    padding-bottom: calc(var(--spacing) * 1) !important;\n  }\n  .pb-1\\.5 {\n    padding-bottom: calc(var(--spacing) * 1.5);\n  }\n  .pb-2 {\n    padding-bottom: calc(var(--spacing) * 2);\n  }\n  .pb-3 {\n    padding-bottom: calc(var(--spacing) * 3);\n  }\n  .pb-4 {\n    padding-bottom: calc(var(--spacing) * 4);\n  }\n  .pb-8 {\n    padding-bottom: calc(var(--spacing) * 8);\n  }\n  .pb-10 {\n    padding-bottom: calc(var(--spacing) * 10);\n  }\n  .pb-20 {\n    padding-bottom: calc(var(--spacing) * 20);\n  }\n  .pb-48 {\n    padding-bottom: calc(var(--spacing) * 48);\n  }\n  .pb-\\[48px\\] {\n    padding-bottom: 48px;\n  }\n  .pb-\\[68px\\] {\n    padding-bottom: 68px;\n  }\n  .\\!pl-0 {\n    padding-left: calc(var(--spacing) * 0) !important;\n  }\n  .\\!pl-1 {\n    padding-left: calc(var(--spacing) * 1) !important;\n  }\n  .\\!pl-2 {\n    padding-left: calc(var(--spacing) * 2) !important;\n  }\n  .\\!pl-5 {\n    padding-left: calc(var(--spacing) * 5) !important;\n  }\n  .pl-0 {\n    padding-left: calc(var(--spacing) * 0);\n  }\n  .pl-1 {\n    padding-left: calc(var(--spacing) * 1);\n  }\n  .pl-1\\.5 {\n    padding-left: calc(var(--spacing) * 1.5);\n  }\n  .pl-2 {\n    padding-left: calc(var(--spacing) * 2);\n  }\n  .pl-2\\.5 {\n    padding-left: calc(var(--spacing) * 2.5);\n  }\n  .pl-3 {\n    padding-left: calc(var(--spacing) * 3);\n  }\n  .pl-4 {\n    padding-left: calc(var(--spacing) * 4);\n  }\n  .pl-4\\.5 {\n    padding-left: calc(var(--spacing) * 4.5);\n  }\n  .pl-5 {\n    padding-left: calc(var(--spacing) * 5);\n  }\n  .pl-6 {\n    padding-left: calc(var(--spacing) * 6);\n  }\n  .pl-8 {\n    padding-left: calc(var(--spacing) * 8);\n  }\n  .pl-10 {\n    padding-left: calc(var(--spacing) * 10);\n  }\n  .pl-\\[1px\\] {\n    padding-left: 1px;\n  }\n  .pl-\\[86px\\] {\n    padding-left: 86px;\n  }\n  .text-center {\n    text-align: center;\n  }\n  .text-left {\n    text-align: left;\n  }\n  .text-right {\n    text-align: right;\n  }\n  .align-middle {\n    vertical-align: middle;\n  }\n  .align-top {\n    vertical-align: top;\n  }\n  .\\!font-mono {\n    font-family: var(--font-mono) !important;\n  }\n  .\\!font-sans {\n    font-family: var(--font-sans) !important;\n  }\n  .font-mono {\n    font-family: var(--font-mono);\n  }\n  .font-mono\\! {\n    font-family: var(--font-mono) !important;\n  }\n  .font-sans {\n    font-family: var(--font-sans);\n  }\n  .\\!text-3xl {\n    font-size: var(--text-3xl) !important;\n    line-height: var(--tw-leading, var(--text-3xl--line-height)) !important;\n  }\n  .\\!text-base {\n    font-size: var(--text-base) !important;\n    line-height: var(--tw-leading, var(--text-base--line-height)) !important;\n  }\n  .\\!text-lg {\n    font-size: var(--text-lg) !important;\n    line-height: var(--tw-leading, var(--text-lg--line-height)) !important;\n  }\n  .\\!text-sm {\n    font-size: var(--text-sm) !important;\n    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;\n  }\n  .\\!text-xl {\n    font-size: var(--text-xl) !important;\n    line-height: var(--tw-leading, var(--text-xl--line-height)) !important;\n  }\n  .\\!text-xs {\n    font-size: var(--text-xs) !important;\n    line-height: var(--tw-leading, var(--text-xs--line-height)) !important;\n  }\n  .text-2xl {\n    font-size: var(--text-2xl);\n    line-height: var(--tw-leading, var(--text-2xl--line-height));\n  }\n  .text-3xl {\n    font-size: var(--text-3xl);\n    line-height: var(--tw-leading, var(--text-3xl--line-height));\n  }\n  .text-base {\n    font-size: var(--text-base);\n    line-height: var(--tw-leading, var(--text-base--line-height));\n  }\n  .text-base\\/tight {\n    font-size: var(--text-base);\n    line-height: var(--leading-tight);\n  }\n  .text-lg {\n    font-size: var(--text-lg);\n    line-height: var(--tw-leading, var(--text-lg--line-height));\n  }\n  .text-sm {\n    font-size: var(--text-sm);\n    line-height: var(--tw-leading, var(--text-sm--line-height));\n  }\n  .text-sm\\! {\n    font-size: var(--text-sm) !important;\n    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;\n  }\n  .text-sm\\/normal {\n    font-size: var(--text-sm);\n    line-height: var(--leading-normal);\n  }\n  .text-xl {\n    font-size: var(--text-xl);\n    line-height: var(--tw-leading, var(--text-xl--line-height));\n  }\n  .text-xl\\! {\n    font-size: var(--text-xl) !important;\n    line-height: var(--tw-leading, var(--text-xl--line-height)) !important;\n  }\n  .text-xs {\n    font-size: var(--text-xs);\n    line-height: var(--tw-leading, var(--text-xs--line-height));\n  }\n  .text-xs\\! {\n    font-size: var(--text-xs) !important;\n    line-height: var(--tw-leading, var(--text-xs--line-height)) !important;\n  }\n  .\\!text-\\[10px\\] {\n    font-size: 10px !important;\n  }\n  .\\!text-\\[14px\\] {\n    font-size: 14px !important;\n  }\n  .\\!text-\\[16px\\] {\n    font-size: 16px !important;\n  }\n  .\\!text-\\[19px\\] {\n    font-size: 19px !important;\n  }\n  .text-\\[0\\.85rem\\] {\n    font-size: 0.85rem;\n  }\n  .text-\\[8px\\] {\n    font-size: 8px;\n  }\n  .text-\\[10px\\] {\n    font-size: 10px;\n  }\n  .text-\\[11px\\] {\n    font-size: 11px;\n  }\n  .text-\\[12px\\] {\n    font-size: 12px;\n  }\n  .text-\\[14px\\] {\n    font-size: 14px;\n  }\n  .leading-0 {\n    --tw-leading: calc(var(--spacing) * 0);\n    line-height: calc(var(--spacing) * 0);\n  }\n  .leading-5 {\n    --tw-leading: calc(var(--spacing) * 5);\n    line-height: calc(var(--spacing) * 5);\n  }\n  .leading-8 {\n    --tw-leading: calc(var(--spacing) * 8);\n    line-height: calc(var(--spacing) * 8);\n  }\n  .leading-\\[1\\.4\\] {\n    --tw-leading: 1.4;\n    line-height: 1.4;\n  }\n  .leading-\\[20px\\] {\n    --tw-leading: 20px;\n    line-height: 20px;\n  }\n  .leading-\\[35px\\] {\n    --tw-leading: 35px;\n    line-height: 35px;\n  }\n  .leading-none {\n    --tw-leading: 1;\n    line-height: 1;\n  }\n  .leading-normal {\n    --tw-leading: var(--leading-normal);\n    line-height: var(--leading-normal);\n  }\n  .leading-relaxed {\n    --tw-leading: var(--leading-relaxed);\n    line-height: var(--leading-relaxed);\n  }\n  .leading-snug {\n    --tw-leading: var(--leading-snug);\n    line-height: var(--leading-snug);\n  }\n  .\\!font-bold {\n    --tw-font-weight: var(--font-weight-bold) !important;\n    font-weight: var(--font-weight-bold) !important;\n  }\n  .\\!font-medium {\n    --tw-font-weight: var(--font-weight-medium) !important;\n    font-weight: var(--font-weight-medium) !important;\n  }\n  .\\!font-semibold {\n    --tw-font-weight: var(--font-weight-semibold) !important;\n    font-weight: var(--font-weight-semibold) !important;\n  }\n  .font-\\[500\\] {\n    --tw-font-weight: 500;\n    font-weight: 500;\n  }\n  .font-bold {\n    --tw-font-weight: var(--font-weight-bold);\n    font-weight: var(--font-weight-bold);\n  }\n  .font-light {\n    --tw-font-weight: var(--font-weight-light);\n    font-weight: var(--font-weight-light);\n  }\n  .font-medium {\n    --tw-font-weight: var(--font-weight-medium);\n    font-weight: var(--font-weight-medium);\n  }\n  .font-normal {\n    --tw-font-weight: var(--font-weight-normal);\n    font-weight: var(--font-weight-normal);\n  }\n  .font-semibold {\n    --tw-font-weight: var(--font-weight-semibold);\n    font-weight: var(--font-weight-semibold);\n  }\n  .font-semibold\\! {\n    --tw-font-weight: var(--font-weight-semibold) !important;\n    font-weight: var(--font-weight-semibold) !important;\n  }\n  .tracking-\\[0\\.25px\\] {\n    --tw-tracking: 0.25px;\n    letter-spacing: 0.25px;\n  }\n  .tracking-normal {\n    --tw-tracking: var(--tracking-normal);\n    letter-spacing: var(--tracking-normal);\n  }\n  .tracking-tight {\n    --tw-tracking: var(--tracking-tight);\n    letter-spacing: var(--tracking-tight);\n  }\n  .tracking-wide {\n    --tw-tracking: var(--tracking-wide);\n    letter-spacing: var(--tracking-wide);\n  }\n  .tracking-widest {\n    --tw-tracking: var(--tracking-widest);\n    letter-spacing: var(--tracking-widest);\n  }\n  .text-nowrap {\n    text-wrap: nowrap;\n  }\n  .text-pretty {\n    text-wrap: pretty;\n  }\n  .text-wrap {\n    text-wrap: wrap;\n  }\n  .break-words {\n    overflow-wrap: break-word;\n  }\n  .break-all {\n    word-break: break-all;\n  }\n  .overflow-ellipsis {\n    text-overflow: ellipsis;\n  }\n  .text-ellipsis {\n    text-overflow: ellipsis;\n  }\n  .whitespace-nowrap {\n    white-space: nowrap;\n  }\n  .whitespace-pre {\n    white-space: pre;\n  }\n  .whitespace-pre-wrap {\n    white-space: pre-wrap;\n  }\n  .\\!text-black {\n    color: var(--color-black) !important;\n  }\n  .\\!text-blue-500 {\n    color: var(--color-blue-500) !important;\n  }\n  .\\!text-blue-600 {\n    color: var(--color-blue-600) !important;\n  }\n  .\\!text-error {\n    color: var(--text-color-error) !important;\n  }\n  .\\!text-inherit {\n    color: inherit !important;\n  }\n  .\\!text-muted {\n    color: var(--text-color-muted) !important;\n  }\n  .\\!text-neutral-500 {\n    color: var(--color-neutral-500) !important;\n  }\n  .\\!text-neutral-600 {\n    color: var(--color-neutral-600) !important;\n  }\n  .\\!text-neutral-800 {\n    color: var(--color-neutral-800) !important;\n  }\n  .\\!text-neutral-900 {\n    color: var(--color-neutral-900) !important;\n  }\n  .\\!text-orange-600 {\n    color: var(--color-orange-600) !important;\n  }\n  .\\!text-primary {\n    color: var(--text-color-primary) !important;\n  }\n  .\\!text-red-500 {\n    color: var(--color-red-500) !important;\n  }\n  .\\!text-red-600 {\n    color: var(--color-red-600) !important;\n  }\n  .\\!text-red-800 {\n    color: var(--color-red-800) !important;\n  }\n  .\\!text-secondary {\n    color: var(--text-color-secondary) !important;\n  }\n  .\\!text-surface {\n    color: var(--text-color-surface) !important;\n  }\n  .\\!text-white {\n    color: var(--color-white) !important;\n  }\n  .\\!text-yellow-600 {\n    color: var(--color-yellow-600) !important;\n  }\n  .text-\\[\\#f6821f\\] {\n    color: #f6821f;\n  }\n  .text-\\[var\\(--light\\)\\] {\n    color: var(--light);\n  }\n  .text-amber-600 {\n    color: var(--color-amber-600);\n  }\n  .text-black {\n    color: var(--color-black);\n  }\n  .text-blue-500 {\n    color: var(--color-blue-500);\n  }\n  .text-blue-600 {\n    color: var(--color-blue-600);\n  }\n  .text-blue-700 {\n    color: var(--color-blue-700);\n  }\n  .text-blue-800 {\n    color: var(--color-blue-800);\n  }\n  .text-blue-900 {\n    color: var(--color-blue-900);\n  }\n  .text-cl1-black {\n    color: var(--color-cl1-black);\n  }\n  .text-cl1-blue-1 {\n    color: var(--color-cl1-blue-1);\n  }\n  .text-cl1-blue-4 {\n    color: var(--color-cl1-blue-4);\n  }\n  .text-cl1-blue-9 {\n    color: var(--color-cl1-blue-9);\n  }\n  .text-cl1-gold-2 {\n    color: var(--color-cl1-gold-2);\n  }\n  .text-cl1-gold-6 {\n    color: var(--color-cl1-gold-6);\n  }\n  .text-cl1-gray-0 {\n    color: var(--color-cl1-gray-0);\n  }\n  .text-cl1-gray-1 {\n    color: var(--color-cl1-gray-1);\n  }\n  .text-cl1-gray-1\\/70 {\n    color: var(--color-cl1-gray-1);\n    @supports (color: color-mix(in lab, red, red)) {\n      color: color-mix(in oklab, var(--color-cl1-gray-1) 70%, transparent);\n    }\n  }\n  .text-cl1-gray-2 {\n    color: var(--color-cl1-gray-2);\n  }\n  .text-cl1-gray-3 {\n    color: var(--color-cl1-gray-3);\n  }\n  .text-cl1-gray-4 {\n    color: var(--color-cl1-gray-4);\n  }\n  .text-cl1-gray-5 {\n    color: var(--color-cl1-gray-5);\n  }\n  .text-cl1-gray-6 {\n    color: var(--color-cl1-gray-6);\n  }\n  .text-cl1-gray-9 {\n    color: var(--color-cl1-gray-9);\n  }\n  .text-cl1-green-2 {\n    color: var(--color-cl1-green-2);\n  }\n  .text-cl1-green-3 {\n    color: var(--color-cl1-green-3);\n  }\n  .text-cl1-red-1 {\n    color: var(--color-cl1-red-1);\n  }\n  .text-cl1-red-2 {\n    color: var(--color-cl1-red-2);\n  }\n  .text-cl1-red-3 {\n    color: var(--color-cl1-red-3);\n  }\n  .text-cl1-red-4 {\n    color: var(--color-cl1-red-4);\n  }\n  .text-cl1-red-5 {\n    color: var(--color-cl1-red-5);\n  }\n  .text-cl1-red-6 {\n    color: var(--color-cl1-red-6);\n  }\n  .text-cyan-800 {\n    color: var(--color-cyan-800);\n  }\n  .text-destructive {\n    color: var(--text-color-destructive);\n  }\n  .text-emerald-500 {\n    color: var(--color-emerald-500);\n  }\n  .text-error {\n    color: var(--text-color-error);\n  }\n  .text-fuchsia-500 {\n    color: var(--color-fuchsia-500);\n  }\n  .text-gray-400 {\n    color: var(--color-gray-400);\n  }\n  .text-gray-500 {\n    color: var(--color-gray-500);\n  }\n  .text-gray-600 {\n    color: var(--color-gray-600);\n  }\n  .text-gray-700 {\n    color: var(--color-gray-700);\n  }\n  .text-gray-800 {\n    color: var(--color-gray-800);\n  }\n  .text-gray-900 {\n    color: var(--color-gray-900);\n  }\n  .text-green-500 {\n    color: var(--color-green-500);\n  }\n  .text-green-600 {\n    color: var(--color-green-600);\n  }\n  .text-green-700 {\n    color: var(--color-green-700);\n  }\n  .text-green-800 {\n    color: var(--color-green-800);\n  }\n  .text-indigo-500 {\n    color: var(--color-indigo-500);\n  }\n  .text-indigo-600 {\n    color: var(--color-indigo-600);\n  }\n  .text-indigo-700 {\n    color: var(--color-indigo-700);\n  }\n  .text-inherit {\n    color: inherit;\n  }\n  .text-muted {\n    color: var(--text-color-muted);\n  }\n  .text-neutral-100 {\n    color: var(--color-neutral-100);\n  }\n  .text-neutral-200 {\n    color: var(--color-neutral-200);\n  }\n  .text-neutral-300 {\n    color: var(--color-neutral-300);\n  }\n  .text-neutral-400 {\n    color: var(--color-neutral-400);\n  }\n  .text-neutral-500 {\n    color: var(--color-neutral-500);\n  }\n  .text-neutral-500\\! {\n    color: var(--color-neutral-500) !important;\n  }\n  .text-neutral-600 {\n    color: var(--color-neutral-600);\n  }\n  .text-neutral-700 {\n    color: var(--color-neutral-700);\n  }\n  .text-neutral-800 {\n    color: var(--color-neutral-800);\n  }\n  .text-neutral-900 {\n    color: var(--color-neutral-900);\n  }\n  .text-neutral-900\\! {\n    color: var(--color-neutral-900) !important;\n  }\n  .text-neutral-950 {\n    color: var(--color-neutral-950);\n  }\n  .text-ob-inverted {\n    color: var(--text-color-ob-inverted);\n  }\n  .text-orange-500 {\n    color: var(--color-orange-500);\n  }\n  .text-orange-600 {\n    color: var(--color-orange-600);\n  }\n  .text-orange-800 {\n    color: var(--color-orange-800);\n  }\n  .text-purple-800 {\n    color: var(--color-purple-800);\n  }\n  .text-red-300 {\n    color: var(--color-red-300);\n  }\n  .text-red-400 {\n    color: var(--color-red-400);\n  }\n  .text-red-500 {\n    color: var(--color-red-500);\n  }\n  .text-red-600 {\n    color: var(--color-red-600);\n  }\n  .text-red-700 {\n    color: var(--color-red-700);\n  }\n  .text-red-800 {\n    color: var(--color-red-800);\n  }\n  .text-rose-500 {\n    color: var(--color-rose-500);\n  }\n  .text-secondary {\n    color: var(--text-color-secondary);\n  }\n  .text-sky-500 {\n    color: var(--color-sky-500);\n  }\n  .text-surface {\n    color: var(--text-color-surface);\n  }\n  .text-white {\n    color: var(--color-white);\n  }\n  .text-yellow-500 {\n    color: var(--color-yellow-500);\n  }\n  .text-yellow-600 {\n    color: var(--color-yellow-600);\n  }\n  .text-yellow-700 {\n    color: var(--color-yellow-700);\n  }\n  .text-yellow-800 {\n    color: var(--color-yellow-800);\n  }\n  .text-yellow-900 {\n    color: var(--color-yellow-900);\n  }\n  .capitalize {\n    text-transform: capitalize;\n  }\n  .lowercase {\n    text-transform: lowercase;\n  }\n  .uppercase {\n    text-transform: uppercase;\n  }\n  .italic {\n    font-style: italic;\n  }\n  .not-italic {\n    font-style: normal;\n  }\n  .tabular-nums {\n    --tw-numeric-spacing: tabular-nums;\n    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);\n  }\n  .\\!no-underline {\n    text-decoration-line: none !important;\n  }\n  .\\!underline {\n    text-decoration-line: underline !important;\n  }\n  .line-through {\n    text-decoration-line: line-through;\n  }\n  .no-underline\\! {\n    text-decoration-line: none !important;\n  }\n  .underline {\n    text-decoration-line: underline;\n  }\n  .decoration-neutral-400 {\n    text-decoration-color: var(--color-neutral-400);\n  }\n  .decoration-dotted {\n    text-decoration-style: dotted;\n  }\n  .\\!decoration-\\[0\\.5px\\] {\n    text-decoration-thickness: 0.5px !important;\n  }\n  .\\!underline-offset-\\[3px\\] {\n    text-underline-offset: 3px !important;\n  }\n  .underline-offset-1 {\n    text-underline-offset: 1px;\n  }\n  .underline-offset-2 {\n    text-underline-offset: 2px;\n  }\n  .underline-offset-4 {\n    text-underline-offset: 4px;\n  }\n  .antialiased {\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n  .opacity-0 {\n    opacity: 0%;\n  }\n  .opacity-25 {\n    opacity: 25%;\n  }\n  .opacity-30 {\n    opacity: 30%;\n  }\n  .opacity-40 {\n    opacity: 40%;\n  }\n  .opacity-50 {\n    opacity: 50%;\n  }\n  .opacity-60 {\n    opacity: 60%;\n  }\n  .opacity-75 {\n    opacity: 75%;\n  }\n  .opacity-80 {\n    opacity: 80%;\n  }\n  .opacity-90 {\n    opacity: 90%;\n  }\n  .opacity-100 {\n    opacity: 100%;\n  }\n  .\\!shadow-none {\n    --tw-shadow: 0 0 #0000 !important;\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow) !important;\n  }\n  .shadow {\n    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-2xl {\n    --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-\\[0_0_0_1px_rgba\\(0\\,0\\,0\\,0\\.5\\)_inset\\] {\n    --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(0,0,0,0.5)) inset;\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-lg {\n    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-md {\n    --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-none {\n    --tw-shadow: 0 0 #0000;\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-sm {\n    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-xl {\n    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-xs {\n    --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring-0 {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring-1 {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .ring-2 {\n    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n  }\n  .shadow-black\\/5 {\n    --tw-shadow-color: color-mix(in srgb, #000 5%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-black) 5%, transparent) var(--tw-shadow-alpha), transparent);\n    }\n  }\n  .\\!ring-neutral-400\\/50 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.708 0 0) 50%, transparent) !important;\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-400) 50%, transparent) !important;\n    }\n  }\n  .ring-black\\/10 {\n    --tw-ring-color: color-mix(in srgb, #000 10%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-black) 10%, transparent);\n    }\n  }\n  .ring-blue-200 {\n    --tw-ring-color: var(--color-blue-200);\n  }\n  .ring-blue-300 {\n    --tw-ring-color: var(--color-blue-300);\n  }\n  .ring-blue-500 {\n    --tw-ring-color: var(--color-blue-500);\n  }\n  .ring-green-300 {\n    --tw-ring-color: var(--color-green-300);\n  }\n  .ring-indigo-200 {\n    --tw-ring-color: var(--color-indigo-200);\n  }\n  .ring-neutral-200 {\n    --tw-ring-color: var(--color-neutral-200);\n  }\n  .ring-neutral-200\\/50 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.922 0 0) 50%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-200) 50%, transparent);\n    }\n  }\n  .ring-neutral-300 {\n    --tw-ring-color: var(--color-neutral-300);\n  }\n  .ring-neutral-950\\/10 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.145 0 0) 10%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-950) 10%, transparent);\n    }\n  }\n  .ring-neutral-950\\/15 {\n    --tw-ring-color: color-mix(in srgb, oklch(0.145 0 0) 15%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-neutral-950) 15%, transparent);\n    }\n  }\n  .ring-orange-300 {\n    --tw-ring-color: var(--color-orange-300);\n  }\n  .ring-red-200 {\n    --tw-ring-color: var(--color-red-200);\n  }\n  .ring-red-300 {\n    --tw-ring-color: var(--color-red-300);\n  }\n  .ring-white\\/25 {\n    --tw-ring-color: color-mix(in srgb, #fff 25%, transparent);\n    @supports (color: color-mix(in lab, red, red)) {\n      --tw-ring-color: color-mix(in oklab, var(--color-white) 25%, transparent);\n    }\n  }\n  .ring-offset-0 {\n    --tw-ring-offset-width: 0px;\n    --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);\n  }\n  .ring-offset-2 {\n    --tw-ring-offset-width: 2px;\n    --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);\n  }\n  .ring-offset-black {\n    --tw-ring-offset-color: var(--color-black);\n  }\n  .outline-hidden {\n    --tw-outline-style: none;\n    outline-style: none;\n    @media (forced-colors: active) {\n      outline: 2px solid transparent;\n      outline-offset: 2px;\n    }\n  }\n  .outline {\n    outline-style: var(--tw-outline-style);\n    outline-width: 1px;\n  }\n  .outline-1 {\n    outline-style: var(--tw-outline-style);\n    outline-width: 1px;\n  }\n  .-outline-offset-1 {\n    outline-offset: calc(1px * -1);\n  }\n  .outline-color {\n    outline-color: var(--color-color);\n  }\n  .outline-neutral-300 {\n    outline-color: var(--color-neutral-300);\n  }\n  .blur {\n    --tw-blur: blur(8px);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .grayscale {\n    --tw-grayscale: grayscale(100%);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .invert {\n    --tw-invert: invert(100%);\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .\\!filter {\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,) !important;\n  }\n  .filter {\n    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n  }\n  .backdrop-blur-\\[1px\\] {\n    --tw-backdrop-blur: blur(1px);\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .backdrop-blur-\\[2px\\] {\n    --tw-backdrop-blur: blur(2px);\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .backdrop-blur-md {\n    --tw-backdrop-blur: blur(var(--blur-md));\n    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);\n  }\n  .\\!transition {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events !important;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)) !important;\n    transition-duration: var(--tw-duration, var(--default-transition-duration)) !important;\n  }\n  .\\!transition-all {\n    transition-property: all !important;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)) !important;\n    transition-duration: var(--tw-duration, var(--default-transition-duration)) !important;\n  }\n  .transition {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-all {\n    transition-property: all;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-colors {\n    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-opacity {\n    transition-property: opacity;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-shadow {\n    transition-property: box-shadow;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .transition-transform {\n    transition-property: transform, translate, scale, rotate;\n    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n    transition-duration: var(--tw-duration, var(--default-transition-duration));\n  }\n  .delay-200 {\n    transition-delay: 200ms;\n  }\n  .duration-150 {\n    --tw-duration: 150ms;\n    transition-duration: 150ms;\n  }\n  .duration-200 {\n    --tw-duration: 200ms;\n    transition-duration: 200ms;\n  }\n  .duration-300 {\n    --tw-duration: 300ms;\n    transition-duration: 300ms;\n  }\n  .duration-400 {\n    --tw-duration: 400ms;\n    transition-duration: 400ms;\n  }\n  .duration-500 {\n    --tw-duration: 500ms;\n    transition-duration: 500ms;\n  }\n  .duration-600 {\n    --tw-duration: 600ms;\n    transition-duration: 600ms;\n  }\n  .ease-in {\n    --tw-ease: var(--ease-in);\n    transition-timing-function: var(--ease-in);\n  }\n  .ease-in-out {\n    --tw-ease: var(--ease-in-out);\n    transition-timing-function: var(--ease-in-out);\n  }\n  .ease-linear {\n    --tw-ease: linear;\n    transition-timing-function: linear;\n  }\n  .ease-out {\n    --tw-ease: var(--ease-out);\n    transition-timing-function: var(--ease-out);\n  }\n  .will-change-transform {\n    will-change: transform;\n  }\n  .outline-none {\n    --tw-outline-style: none;\n    outline-style: none;\n  }\n  .select-all {\n    -webkit-user-select: all;\n    user-select: all;\n  }\n  .select-none {\n    -webkit-user-select: none;\n    user-select: none;\n  }\n  .select-text {\n    -webkit-user-select: text;\n    user-select: text;\n  }\n  .ring-inset {\n    --tw-ring-inset: inset;\n  }\n  .not-first\\:rounded-t-none {\n    &:not(*:first-child) {\n      border-top-left-radius: 0;\n      border-top-right-radius: 0;\n    }\n  }\n  .not-last\\:rounded-b-none {\n    &:not(*:last-child) {\n      border-bottom-right-radius: 0;\n      border-bottom-left-radius: 0;\n    }\n  }\n  .not-last\\:\\!border-r {\n    &:not(*:last-child) {\n      border-right-style: var(--tw-border-style) !important;\n      border-right-width: 1px !important;\n    }\n  }\n  .group-first\\:rounded-l-full {\n    &:is(:where(.group):first-child *) {\n      border-top-left-radius: calc(infinity * 1px);\n      border-bottom-left-radius: calc(infinity * 1px);\n    }\n  }\n  .group-last\\:rounded-r-full {\n    &:is(:where(.group):last-child *) {\n      border-top-right-radius: calc(infinity * 1px);\n      border-bottom-right-radius: calc(infinity * 1px);\n    }\n  }\n  .group-hover\\:block {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        display: block;\n      }\n    }\n  }\n  .group-hover\\:text-\\[\\#f6821f\\] {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        color: #f6821f;\n      }\n    }\n  }\n  .group-hover\\:underline {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        text-decoration-line: underline;\n      }\n    }\n  }\n  .group-hover\\:opacity-0 {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        opacity: 0%;\n      }\n    }\n  }\n  .group-hover\\:opacity-100 {\n    &:is(:where(.group):hover *) {\n      @media (hover: hover) {\n        opacity: 100%;\n      }\n    }\n  }\n  .group-hover\\/choice\\:translate-x-0 {\n    &:is(:where(.group\\/choice):hover *) {\n      @media (hover: hover) {\n        --tw-translate-x: calc(var(--spacing) * 0);\n        translate: var(--tw-translate-x) var(--tw-translate-y);\n      }\n    }\n  }\n  .group-hover\\/choice\\:text-neutral-950 {\n    &:is(:where(.group\\/choice):hover *) {\n      @media (hover: hover) {\n        color: var(--color-neutral-950);\n      }\n    }\n  }\n  .group-hover\\/choice\\:opacity-100 {\n    &:is(:where(.group\\/choice):hover *) {\n      @media (hover: hover) {\n        opacity: 100%;\n      }\n    }\n  }\n  .group-focus-visible\\/escape\\:ring-neutral-400 {\n    &:is(:where(.group\\/escape):focus-visible *) {\n      --tw-ring-color: var(--color-neutral-400);\n    }\n  }\n  .group-data-\\[focused\\]\\:bg-secondary-hover {\n    &:is(:where(.group)[data-focused] *) {\n      background-color: var(--color-secondary-hover);\n    }\n  }\n  .group-data-\\[invalid\\]\\:border-destructive {\n    &:is(:where(.group)[data-invalid] *) {\n      border-color: var(--color-destructive);\n    }\n  }\n  .group-data-\\[invalid\\]\\:ring-\\[var\\(--text-color-error\\)\\] {\n    &:is(:where(.group)[data-invalid] *) {\n      --tw-ring-color: var(--text-color-error);\n    }\n  }\n  .group-data-\\[selected\\]\\:opacity-100 {\n    &:is(:where(.group)[data-selected] *) {\n      opacity: 100%;\n    }\n  }\n  .group-\\[\\&\\:hover\\,\\&\\:focus\\]\\/escape\\:scale-100 {\n    &:is(:is(:where(.group\\/escape):hover,:where(.group\\/escape):focus) *) {\n      --tw-scale-x: 100%;\n      --tw-scale-y: 100%;\n      --tw-scale-z: 100%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .group-\\[\\&\\:hover\\,\\&\\:focus\\]\\/escape\\:opacity-100 {\n    &:is(:is(:where(.group\\/escape):hover,:where(.group\\/escape):focus) *) {\n      opacity: 100%;\n    }\n  }\n  .selection\\:bg-cl1-blue-7 {\n    & *::selection {\n      background-color: var(--color-cl1-blue-7);\n    }\n    &::selection {\n      background-color: var(--color-cl1-blue-7);\n    }\n  }\n  .selection\\:text-cl1-black {\n    & *::selection {\n      color: var(--color-cl1-black);\n    }\n    &::selection {\n      color: var(--color-cl1-black);\n    }\n  }\n  .placeholder\\:text-base {\n    &::placeholder {\n      font-size: var(--text-base);\n      line-height: var(--tw-leading, var(--text-base--line-height));\n    }\n  }\n  .placeholder\\:\\!text-cl1-gray-4 {\n    &::placeholder {\n      color: var(--color-cl1-gray-4) !important;\n    }\n  }\n  .placeholder\\:\\!text-neutral-400 {\n    &::placeholder {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .placeholder\\:text-muted {\n    &::placeholder {\n      color: var(--text-color-muted);\n    }\n  }\n  .placeholder\\:text-neutral-400 {\n    &::placeholder {\n      color: var(--color-neutral-400);\n    }\n  }\n  .before\\:mr-2 {\n    &::before {\n      content: var(--tw-content);\n      margin-right: calc(var(--spacing) * 2);\n    }\n  }\n  .before\\:text-cl1-gray-5 {\n    &::before {\n      content: var(--tw-content);\n      color: var(--color-cl1-gray-5);\n    }\n  }\n  .before\\:content-\\[\\\'•\\\'\\] {\n    &::before {\n      --tw-content: \'\\2022\';\n      content: var(--tw-content);\n    }\n  }\n  .after\\:pointer-events-none {\n    &::after {\n      content: var(--tw-content);\n      pointer-events: none;\n    }\n  }\n  .after\\:absolute {\n    &::after {\n      content: var(--tw-content);\n      position: absolute;\n    }\n  }\n  .after\\:inset-x-6 {\n    &::after {\n      content: var(--tw-content);\n      inset-inline: calc(var(--spacing) * 6);\n    }\n  }\n  .after\\:top-0 {\n    &::after {\n      content: var(--tw-content);\n      top: calc(var(--spacing) * 0);\n    }\n  }\n  .after\\:bottom-8 {\n    &::after {\n      content: var(--tw-content);\n      bottom: calc(var(--spacing) * 8);\n    }\n  }\n  .after\\:rounded-xl {\n    &::after {\n      content: var(--tw-content);\n      border-radius: var(--radius-xl);\n    }\n  }\n  .after\\:ring-1 {\n    &::after {\n      content: var(--tw-content);\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .after\\:ring-transparent {\n    &::after {\n      content: var(--tw-content);\n      --tw-ring-color: transparent;\n    }\n  }\n  .after\\:transition-all {\n    &::after {\n      content: var(--tw-content);\n      transition-property: all;\n      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));\n      transition-duration: var(--tw-duration, var(--default-transition-duration));\n    }\n  }\n  .first\\:mt-1 {\n    &:first-child {\n      margin-top: calc(var(--spacing) * 1);\n    }\n  }\n  .first\\:pl-2 {\n    &:first-child {\n      padding-left: calc(var(--spacing) * 2);\n    }\n  }\n  .first\\:pl-4 {\n    &:first-child {\n      padding-left: calc(var(--spacing) * 4);\n    }\n  }\n  .last\\:mb-1 {\n    &:last-child {\n      margin-bottom: calc(var(--spacing) * 1);\n    }\n  }\n  .last\\:\\!border-r-0 {\n    &:last-child {\n      border-right-style: var(--tw-border-style) !important;\n      border-right-width: 0px !important;\n    }\n  }\n  .last\\:border-b-0 {\n    &:last-child {\n      border-bottom-style: var(--tw-border-style);\n      border-bottom-width: 0px;\n    }\n  }\n  .last\\:pr-2 {\n    &:last-child {\n      padding-right: calc(var(--spacing) * 2);\n    }\n  }\n  .focus-within\\:border-active {\n    &:focus-within {\n      border-color: var(--color-active);\n    }\n  }\n  .focus-within\\:border-gray-400 {\n    &:focus-within {\n      border-color: var(--color-gray-400);\n    }\n  }\n  .focus-within\\:border-primary\\! {\n    &:focus-within {\n      border-color: var(--color-primary) !important;\n    }\n  }\n  .focus-within\\:shadow-sm {\n    &:focus-within {\n      --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-within\\:ring-2 {\n    &:focus-within {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-within\\:ring-active {\n    &:focus-within {\n      --tw-ring-color: var(--color-active);\n    }\n  }\n  .focus-within\\:ring-primary {\n    &:focus-within {\n      --tw-ring-color: var(--color-primary);\n    }\n  }\n  .focus-within\\:ring-offset-2 {\n    &:focus-within {\n      --tw-ring-offset-width: 2px;\n      --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);\n    }\n  }\n  .focus-within\\:ring-offset-input {\n    &:focus-within {\n      --tw-ring-offset-color: var(--color-input);\n    }\n  }\n  .focus-within\\:outline-2 {\n    &:focus-within {\n      outline-style: var(--tw-outline-style);\n      outline-width: 2px;\n    }\n  }\n  .focus-within\\:-outline-offset-2 {\n    &:focus-within {\n      outline-offset: calc(2px * -1);\n    }\n  }\n  .focus-within\\:outline-blue-700 {\n    &:focus-within {\n      outline-color: var(--color-blue-700);\n    }\n  }\n  .focus-within\\:outline-indigo-600 {\n    &:focus-within {\n      outline-color: var(--color-indigo-600);\n    }\n  }\n  .hover\\:w-1 {\n    &:hover {\n      @media (hover: hover) {\n        width: calc(var(--spacing) * 1);\n      }\n    }\n  }\n  .hover\\:-translate-y-0\\.5 {\n    &:hover {\n      @media (hover: hover) {\n        --tw-translate-y: calc(var(--spacing) * -0.5);\n        translate: var(--tw-translate-x) var(--tw-translate-y);\n      }\n    }\n  }\n  .hover\\:cursor-pointer {\n    &:hover {\n      @media (hover: hover) {\n        cursor: pointer;\n      }\n    }\n  }\n  .hover\\:border-active {\n    &:hover {\n      @media (hover: hover) {\n        border-color: var(--color-active);\n      }\n    }\n  }\n  .hover\\:border-neutral-300 {\n    &:hover {\n      @media (hover: hover) {\n        border-color: var(--color-neutral-300);\n      }\n    }\n  }\n  .hover\\:border-neutral-300\\/80 {\n    &:hover {\n      @media (hover: hover) {\n        border-color: color-mix(in srgb, oklch(0.87 0 0) 80%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          border-color: color-mix(in oklab, var(--color-neutral-300) 80%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:\\!bg-blue-700 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-700) !important;\n      }\n    }\n  }\n  .hover\\:\\!bg-neutral-100 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-100) !important;\n      }\n    }\n  }\n  .hover\\:\\!bg-red-50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-red-50) !important;\n      }\n    }\n  }\n  .hover\\:bg-accent {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-accent);\n      }\n    }\n  }\n  .hover\\:bg-blue-100\\/50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: color-mix(in srgb, oklch(93.2% 0.032 255.585) 50%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-blue-100) 50%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-blue-300 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-300);\n      }\n    }\n  }\n  .hover\\:bg-blue-500 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-500);\n      }\n    }\n  }\n  .hover\\:bg-blue-700 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-blue-700);\n      }\n    }\n  }\n  .hover\\:bg-cl1-blue-6 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-blue-6);\n      }\n    }\n  }\n  .hover\\:bg-cl1-gray-8 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-gray-8);\n      }\n    }\n  }\n  .hover\\:bg-cl1-gray-9 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-gray-9);\n      }\n    }\n  }\n  .hover\\:bg-cl1-red-6\\/40 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-cl1-red-6);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-cl1-red-6) 40%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-destructive\\/70 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-destructive);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-destructive) 70%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-gray-100 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-gray-100);\n      }\n    }\n  }\n  .hover\\:bg-gray-700\\/50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: color-mix(in srgb, oklch(37.3% 0.034 259.733) 50%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-gray-700) 50%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-neutral-50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-50);\n      }\n    }\n  }\n  .hover\\:bg-neutral-100 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-100);\n      }\n    }\n  }\n  .hover\\:bg-neutral-150 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-150);\n      }\n    }\n  }\n  .hover\\:bg-neutral-200 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-200);\n      }\n    }\n  }\n  .hover\\:bg-neutral-200\\/50 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: color-mix(in srgb, oklch(0.922 0 0) 50%, transparent);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-neutral-200) 50%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-neutral-300 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-neutral-300);\n      }\n    }\n  }\n  .hover\\:bg-primary {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-primary);\n      }\n    }\n  }\n  .hover\\:bg-primary\\/70 {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-primary);\n        @supports (color: color-mix(in lab, red, red)) {\n          background-color: color-mix(in oklab, var(--color-primary) 70%, transparent);\n        }\n      }\n    }\n  }\n  .hover\\:bg-secondary-hover {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-secondary-hover);\n      }\n    }\n  }\n  .hover\\:bg-surface-active {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-surface-active);\n      }\n    }\n  }\n  .hover\\:bg-surface-secondary {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-surface-secondary);\n      }\n    }\n  }\n  .hover\\:bg-transparent {\n    &:hover {\n      @media (hover: hover) {\n        background-color: transparent;\n      }\n    }\n  }\n  .hover\\:bg-white {\n    &:hover {\n      @media (hover: hover) {\n        background-color: var(--color-white);\n      }\n    }\n  }\n  .hover\\:\\!text-inherit {\n    &:hover {\n      @media (hover: hover) {\n        color: inherit !important;\n      }\n    }\n  }\n  .hover\\:text-black {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-black);\n      }\n    }\n  }\n  .hover\\:text-blue-600 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-blue-600);\n      }\n    }\n  }\n  .hover\\:text-blue-800 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-blue-800);\n      }\n    }\n  }\n  .hover\\:text-cl1-gray-2 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-cl1-gray-2);\n      }\n    }\n  }\n  .hover\\:text-neutral-600 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-neutral-600);\n      }\n    }\n  }\n  .hover\\:text-neutral-800 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-neutral-800);\n      }\n    }\n  }\n  .hover\\:text-neutral-900 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-neutral-900);\n      }\n    }\n  }\n  .hover\\:text-red-500 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-red-500);\n      }\n    }\n  }\n  .hover\\:text-red-600 {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-red-600);\n      }\n    }\n  }\n  .hover\\:text-surface {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--text-color-surface);\n      }\n    }\n  }\n  .hover\\:text-white\\! {\n    &:hover {\n      @media (hover: hover) {\n        color: var(--color-white) !important;\n      }\n    }\n  }\n  .hover\\:\\!underline {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: underline !important;\n      }\n    }\n  }\n  .hover\\:no-underline {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: none;\n      }\n    }\n  }\n  .hover\\:underline {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: underline;\n      }\n    }\n  }\n  .hover\\:underline\\! {\n    &:hover {\n      @media (hover: hover) {\n        text-decoration-line: underline !important;\n      }\n    }\n  }\n  .hover\\:opacity-50 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 50%;\n      }\n    }\n  }\n  .hover\\:opacity-60 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 60%;\n      }\n    }\n  }\n  .hover\\:opacity-70 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 70%;\n      }\n    }\n  }\n  .hover\\:opacity-90 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 90%;\n      }\n    }\n  }\n  .hover\\:opacity-100 {\n    &:hover {\n      @media (hover: hover) {\n        opacity: 100%;\n      }\n    }\n  }\n  .hover\\:shadow-md {\n    &:hover {\n      @media (hover: hover) {\n        --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));\n        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n      }\n    }\n  }\n  .hover\\:shadow-xs {\n    &:hover {\n      @media (hover: hover) {\n        --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));\n        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n      }\n    }\n  }\n  .hover\\:ring {\n    &:hover {\n      @media (hover: hover) {\n        --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n      }\n    }\n  }\n  .not-disabled\\:hover\\:border-border-hover\\! {\n    &:not(*:disabled) {\n      &:hover {\n        @media (hover: hover) {\n          border-color: var(--color-border-hover) !important;\n        }\n      }\n    }\n  }\n  .not-disabled\\:hover\\:bg-secondary-hover {\n    &:not(*:disabled) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-secondary-hover);\n        }\n      }\n    }\n  }\n  .hover\\:not-\\[\\:has\\(a\\:hover\\)\\]\\:bg-neutral-50 {\n    &:hover {\n      @media (hover: hover) {\n        &:not(*:is(:has(a:hover))) {\n          background-color: var(--color-neutral-50);\n        }\n      }\n    }\n  }\n  .focus\\:z-10 {\n    &:focus {\n      z-index: 10;\n    }\n  }\n  .focus\\:border-active {\n    &:focus {\n      border-color: var(--color-active);\n    }\n  }\n  .focus\\:border-color {\n    &:focus {\n      border-color: var(--color-color);\n    }\n  }\n  .focus\\:border-destructive {\n    &:focus {\n      border-color: var(--color-destructive);\n    }\n  }\n  .focus\\:bg-accent {\n    &:focus {\n      background-color: var(--color-accent);\n    }\n  }\n  .focus\\:text-secondary {\n    &:focus {\n      color: var(--text-color-secondary);\n    }\n  }\n  .focus\\:opacity-100 {\n    &:focus {\n      opacity: 100%;\n    }\n  }\n  .focus\\:ring-2 {\n    &:focus {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus\\:ring-blue-400 {\n    &:focus {\n      --tw-ring-color: var(--color-blue-400);\n    }\n  }\n  .focus\\:ring-blue-500 {\n    &:focus {\n      --tw-ring-color: var(--color-blue-500);\n    }\n  }\n  .focus\\:ring-neutral-400 {\n    &:focus {\n      --tw-ring-color: var(--color-neutral-400);\n    }\n  }\n  .focus\\:outline-none {\n    &:focus {\n      --tw-outline-style: none;\n      outline-style: none;\n    }\n  }\n  .focus-visible\\:z-10 {\n    &:focus-visible {\n      z-index: 10;\n    }\n  }\n  .focus-visible\\:bg-cl1-blue-9 {\n    &:focus-visible {\n      background-color: var(--color-cl1-blue-9);\n    }\n  }\n  .focus-visible\\:ring {\n    &:focus-visible {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-visible\\:ring-1 {\n    &:focus-visible {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .focus-visible\\:ring-active {\n    &:focus-visible {\n      --tw-ring-color: var(--color-active);\n    }\n  }\n  .focus-visible\\:ring-neutral-400 {\n    &:focus-visible {\n      --tw-ring-color: var(--color-neutral-400);\n    }\n  }\n  .focus-visible\\:inset-ring-\\[0\\.5\\] {\n    &:focus-visible {\n      --tw-inset-ring-color: 0.5;\n    }\n  }\n  .focus-visible\\:outline-hidden {\n    &:focus-visible {\n      --tw-outline-style: none;\n      outline-style: none;\n      @media (forced-colors: active) {\n        outline: 2px solid transparent;\n        outline-offset: 2px;\n      }\n    }\n  }\n  .focus-visible\\:outline-none {\n    &:focus-visible {\n      --tw-outline-style: none;\n      outline-style: none;\n    }\n  }\n  .focus-visible\\:after\\:ring-neutral-400 {\n    &:focus-visible {\n      &::after {\n        content: var(--tw-content);\n        --tw-ring-color: var(--color-neutral-400);\n      }\n    }\n  }\n  .active\\:cursor-grabbing {\n    &:active {\n      cursor: grabbing;\n    }\n  }\n  .disabled\\:cursor-not-allowed {\n    &:disabled {\n      cursor: not-allowed;\n    }\n  }\n  .disabled\\:border-neutral-400 {\n    &:disabled {\n      border-color: var(--color-neutral-400);\n    }\n  }\n  .disabled\\:bg-neutral-100 {\n    &:disabled {\n      background-color: var(--color-neutral-100);\n    }\n  }\n  .disabled\\:bg-primary\\/50 {\n    &:disabled {\n      background-color: var(--color-primary);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-primary) 50%, transparent);\n      }\n    }\n  }\n  .disabled\\:bg-secondary\\/50 {\n    &:disabled {\n      background-color: var(--color-secondary);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-secondary) 50%, transparent);\n      }\n    }\n  }\n  .disabled\\:bg-surface-secondary {\n    &:disabled {\n      background-color: var(--color-surface-secondary);\n    }\n  }\n  .disabled\\:\\!text-neutral-400 {\n    &:disabled {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .disabled\\:\\!text-primary\\/70 {\n    &:disabled {\n      color: var(--text-color-primary) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, var(--text-color-primary) 70%, transparent) !important;\n      }\n    }\n  }\n  .disabled\\:\\!text-secondary\\/70 {\n    &:disabled {\n      color: var(--text-color-secondary) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, var(--text-color-secondary) 70%, transparent) !important;\n      }\n    }\n  }\n  .disabled\\:text-muted {\n    &:disabled {\n      color: var(--text-color-muted);\n    }\n  }\n  .disabled\\:opacity-50 {\n    &:disabled {\n      opacity: 50%;\n    }\n  }\n  .disabled\\:hover\\:bg-neutral-100 {\n    &:disabled {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-100);\n        }\n      }\n    }\n  }\n  .\\*\\:in-focus\\:opacity-100 {\n    :is(& > *) {\n      :where(*:focus) & {\n        opacity: 100%;\n      }\n    }\n  }\n  .data-disabled\\:pointer-events-none {\n    &[data-disabled] {\n      pointer-events: none;\n    }\n  }\n  .data-disabled\\:opacity-50 {\n    &[data-disabled] {\n      opacity: 50%;\n    }\n  }\n  .data-\\[clickable\\]\\:\\!no-underline {\n    &[data-clickable] {\n      text-decoration-line: none !important;\n    }\n  }\n  .data-\\[clickable\\]\\:hover\\:ring {\n    &[data-clickable] {\n      &:hover {\n        @media (hover: hover) {\n          --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n          box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n        }\n      }\n    }\n  }\n  .data-\\[ending-style\\]\\:scale-90 {\n    &[data-ending-style] {\n      --tw-scale-x: 90%;\n      --tw-scale-y: 90%;\n      --tw-scale-z: 90%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .data-\\[ending-style\\]\\:opacity-0 {\n    &[data-ending-style] {\n      opacity: 0%;\n    }\n  }\n  .data-\\[focused\\]\\:bg-secondary-hover {\n    &[data-focused] {\n      background-color: var(--color-secondary-hover);\n    }\n  }\n  .data-\\[highlighted\\]\\:bg-cl1-gray-8 {\n    &[data-highlighted] {\n      background-color: var(--color-cl1-gray-8);\n    }\n  }\n  .data-\\[highlighted\\]\\:bg-red-100 {\n    &[data-highlighted] {\n      background-color: var(--color-red-100);\n    }\n  }\n  .data-\\[highlighted\\]\\:text-error {\n    &[data-highlighted] {\n      color: var(--text-color-error);\n    }\n  }\n  .data-\\[starting-style\\]\\:scale-90 {\n    &[data-starting-style] {\n      --tw-scale-x: 90%;\n      --tw-scale-y: 90%;\n      --tw-scale-z: 90%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .data-\\[starting-style\\]\\:opacity-0 {\n    &[data-starting-style] {\n      opacity: 0%;\n    }\n  }\n  .data-\\[state\\=\\"open\\"\\]\\:bg-secondary-hover {\n    &[data-state="open"] {\n      background-color: var(--color-secondary-hover);\n    }\n  }\n  .data-\\[state\\=\\\'open\\\'\\]\\:bg-accent {\n    &[data-state=\'open\'] {\n      background-color: var(--color-accent);\n    }\n  }\n  .data-\\[state\\=\\\'open\\\'\\]\\:bg-surface-active {\n    &[data-state=\'open\'] {\n      background-color: var(--color-surface-active);\n    }\n  }\n  .data-\\[state\\=open\\]\\:bg-accent {\n    &[data-state="open"] {\n      background-color: var(--color-accent);\n    }\n  }\n  .sm\\:block {\n    @media (width >= 40rem) {\n      display: block;\n    }\n  }\n  .sm\\:flex {\n    @media (width >= 40rem) {\n      display: flex;\n    }\n  }\n  .sm\\:inline {\n    @media (width >= 40rem) {\n      display: inline;\n    }\n  }\n  .sm\\:h-\\[529px\\] {\n    @media (width >= 40rem) {\n      height: 529px;\n    }\n  }\n  .sm\\:w-auto {\n    @media (width >= 40rem) {\n      width: auto;\n    }\n  }\n  .sm\\:max-w-\\[280px\\] {\n    @media (width >= 40rem) {\n      max-width: 280px;\n    }\n  }\n  .sm\\:min-w-\\[100px\\] {\n    @media (width >= 40rem) {\n      min-width: 100px;\n    }\n  }\n  .sm\\:min-w-\\[120px\\] {\n    @media (width >= 40rem) {\n      min-width: 120px;\n    }\n  }\n  .sm\\:scale-90 {\n    @media (width >= 40rem) {\n      --tw-scale-x: 90%;\n      --tw-scale-y: 90%;\n      --tw-scale-z: 90%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .sm\\:grid-cols-4 {\n    @media (width >= 40rem) {\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n    }\n  }\n  .sm\\:flex-row {\n    @media (width >= 40rem) {\n      flex-direction: row;\n    }\n  }\n  .sm\\:justify-start {\n    @media (width >= 40rem) {\n      justify-content: flex-start;\n    }\n  }\n  .sm\\:gap-0 {\n    @media (width >= 40rem) {\n      gap: calc(var(--spacing) * 0);\n    }\n  }\n  .sm\\:gap-4\\! {\n    @media (width >= 40rem) {\n      gap: calc(var(--spacing) * 4) !important;\n    }\n  }\n  .sm\\:p-6 {\n    @media (width >= 40rem) {\n      padding: calc(var(--spacing) * 6);\n    }\n  }\n  .sm\\:px-3 {\n    @media (width >= 40rem) {\n      padding-inline: calc(var(--spacing) * 3);\n    }\n  }\n  .sm\\:px-6 {\n    @media (width >= 40rem) {\n      padding-inline: calc(var(--spacing) * 6);\n    }\n  }\n  .sm\\:py-1\\.5 {\n    @media (width >= 40rem) {\n      padding-block: calc(var(--spacing) * 1.5);\n    }\n  }\n  .sm\\:text-base {\n    @media (width >= 40rem) {\n      font-size: var(--text-base);\n      line-height: var(--tw-leading, var(--text-base--line-height));\n    }\n  }\n  .sm\\:text-sm {\n    @media (width >= 40rem) {\n      font-size: var(--text-sm);\n      line-height: var(--tw-leading, var(--text-sm--line-height));\n    }\n  }\n  .sm\\:text-sm\\/6 {\n    @media (width >= 40rem) {\n      font-size: var(--text-sm);\n      line-height: calc(var(--spacing) * 6);\n    }\n  }\n  .md\\:mx-4 {\n    @media (width >= 48rem) {\n      margin-inline: calc(var(--spacing) * 4);\n    }\n  }\n  .md\\:mr-2 {\n    @media (width >= 48rem) {\n      margin-right: calc(var(--spacing) * 2);\n    }\n  }\n  .md\\:\\!flex {\n    @media (width >= 48rem) {\n      display: flex !important;\n    }\n  }\n  .md\\:block {\n    @media (width >= 48rem) {\n      display: block;\n    }\n  }\n  .md\\:flex {\n    @media (width >= 48rem) {\n      display: flex;\n    }\n  }\n  .md\\:hidden {\n    @media (width >= 48rem) {\n      display: none;\n    }\n  }\n  .md\\:max-w-\\[70vw\\] {\n    @media (width >= 48rem) {\n      max-width: 70vw;\n    }\n  }\n  .md\\:max-w-xl {\n    @media (width >= 48rem) {\n      max-width: var(--container-xl);\n    }\n  }\n  .md\\:scale-100 {\n    @media (width >= 48rem) {\n      --tw-scale-x: 100%;\n      --tw-scale-y: 100%;\n      --tw-scale-z: 100%;\n      scale: var(--tw-scale-x) var(--tw-scale-y);\n    }\n  }\n  .md\\:grid-cols-3 {\n    @media (width >= 48rem) {\n      grid-template-columns: repeat(3, minmax(0, 1fr));\n    }\n  }\n  .md\\:grid-cols-\\[3fr_1fr\\] {\n    @media (width >= 48rem) {\n      grid-template-columns: 3fr 1fr;\n    }\n  }\n  .md\\:justify-end {\n    @media (width >= 48rem) {\n      justify-content: flex-end;\n    }\n  }\n  .md\\:gap-4 {\n    @media (width >= 48rem) {\n      gap: calc(var(--spacing) * 4);\n    }\n  }\n  .md\\:space-y-4 {\n    @media (width >= 48rem) {\n      :where(& > :not(:last-child)) {\n        --tw-space-y-reverse: 0;\n        margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));\n        margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));\n      }\n    }\n  }\n  .md\\:space-y-8 {\n    @media (width >= 48rem) {\n      :where(& > :not(:last-child)) {\n        --tw-space-y-reverse: 0;\n        margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));\n        margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));\n      }\n    }\n  }\n  .md\\:border-r {\n    @media (width >= 48rem) {\n      border-right-style: var(--tw-border-style);\n      border-right-width: 1px;\n    }\n  }\n  .md\\:p-8 {\n    @media (width >= 48rem) {\n      padding: calc(var(--spacing) * 8);\n    }\n  }\n  .md\\:px-0 {\n    @media (width >= 48rem) {\n      padding-inline: calc(var(--spacing) * 0);\n    }\n  }\n  .md\\:pr-1\\.5 {\n    @media (width >= 48rem) {\n      padding-right: calc(var(--spacing) * 1.5);\n    }\n  }\n  .md\\:pr-4 {\n    @media (width >= 48rem) {\n      padding-right: calc(var(--spacing) * 4);\n    }\n  }\n  .md\\:text-2xl {\n    @media (width >= 48rem) {\n      font-size: var(--text-2xl);\n      line-height: var(--tw-leading, var(--text-2xl--line-height));\n    }\n  }\n  .lg\\:col-span-4 {\n    @media (width >= 64rem) {\n      grid-column: span 4 / span 4;\n    }\n  }\n  .lg\\:block {\n    @media (width >= 64rem) {\n      display: block;\n    }\n  }\n  .lg\\:flex {\n    @media (width >= 64rem) {\n      display: flex;\n    }\n  }\n  .lg\\:inline {\n    @media (width >= 64rem) {\n      display: inline;\n    }\n  }\n  .lg\\:max-w-2xl {\n    @media (width >= 64rem) {\n      max-width: var(--container-2xl);\n    }\n  }\n  .lg\\:max-w-\\[50vw\\] {\n    @media (width >= 64rem) {\n      max-width: 50vw;\n    }\n  }\n  .lg\\:max-w-\\[100\\%\\] {\n    @media (width >= 64rem) {\n      max-width: 100%;\n    }\n  }\n  .lg\\:snap-none {\n    @media (width >= 64rem) {\n      scroll-snap-type: none;\n    }\n  }\n  .lg\\:grid-cols-2 {\n    @media (width >= 64rem) {\n      grid-template-columns: repeat(2, minmax(0, 1fr));\n    }\n  }\n  .lg\\:grid-cols-\\[1fr_250px\\] {\n    @media (width >= 64rem) {\n      grid-template-columns: 1fr 250px;\n    }\n  }\n  .lg\\:flex-row {\n    @media (width >= 64rem) {\n      flex-direction: row;\n    }\n  }\n  .lg\\:rounded-xl {\n    @media (width >= 64rem) {\n      border-radius: var(--radius-xl);\n    }\n  }\n  .lg\\:px-10 {\n    @media (width >= 64rem) {\n      padding-inline: calc(var(--spacing) * 10);\n    }\n  }\n  .lg\\:py-9 {\n    @media (width >= 64rem) {\n      padding-block: calc(var(--spacing) * 9);\n    }\n  }\n  .lg\\:ring {\n    @media (width >= 64rem) {\n      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .lg\\:ring-neutral-950\\/10 {\n    @media (width >= 64rem) {\n      --tw-ring-color: color-mix(in srgb, oklch(0.145 0 0) 10%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-ring-color: color-mix(in oklab, var(--color-neutral-950) 10%, transparent);\n      }\n    }\n  }\n  .xl\\:sticky {\n    @media (width >= 80rem) {\n      position: sticky;\n    }\n  }\n  .xl\\:col-span-6 {\n    @media (width >= 80rem) {\n      grid-column: span 6 / span 6;\n    }\n  }\n  .xl\\:block {\n    @media (width >= 80rem) {\n      display: block;\n    }\n  }\n  .xl\\:flex {\n    @media (width >= 80rem) {\n      display: flex;\n    }\n  }\n  .xl\\:hidden {\n    @media (width >= 80rem) {\n      display: none;\n    }\n  }\n  .xl\\:inline {\n    @media (width >= 80rem) {\n      display: inline;\n    }\n  }\n  .xl\\:\\!h-10 {\n    @media (width >= 80rem) {\n      height: calc(var(--spacing) * 10) !important;\n    }\n  }\n  .xl\\:w-\\[120px\\] {\n    @media (width >= 80rem) {\n      width: 120px;\n    }\n  }\n  .xl\\:w-\\[380px\\] {\n    @media (width >= 80rem) {\n      width: 380px;\n    }\n  }\n  .xl\\:grid-cols-1 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(1, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-2 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(2, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-3 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(3, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-10 {\n    @media (width >= 80rem) {\n      grid-template-columns: repeat(10, minmax(0, 1fr));\n    }\n  }\n  .xl\\:grid-cols-\\[1fr_300px\\] {\n    @media (width >= 80rem) {\n      grid-template-columns: 1fr 300px;\n    }\n  }\n  .xl\\:grid-cols-\\[3fr_1fr\\] {\n    @media (width >= 80rem) {\n      grid-template-columns: 3fr 1fr;\n    }\n  }\n  .xl\\:flex-row {\n    @media (width >= 80rem) {\n      flex-direction: row;\n    }\n  }\n  .xl\\:justify-start {\n    @media (width >= 80rem) {\n      justify-content: flex-start;\n    }\n  }\n  .xl\\:\\!gap-2 {\n    @media (width >= 80rem) {\n      gap: calc(var(--spacing) * 2) !important;\n    }\n  }\n  .xl\\:gap-6 {\n    @media (width >= 80rem) {\n      gap: calc(var(--spacing) * 6);\n    }\n  }\n  .xl\\:gap-8 {\n    @media (width >= 80rem) {\n      gap: calc(var(--spacing) * 8);\n    }\n  }\n  .xl\\:\\!px-4 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 4) !important;\n    }\n  }\n  .xl\\:px-3 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 3);\n    }\n  }\n  .xl\\:px-10 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 10);\n    }\n  }\n  .xl\\:px-28 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 28);\n    }\n  }\n  .xl\\:px-30 {\n    @media (width >= 80rem) {\n      padding-inline: calc(var(--spacing) * 30);\n    }\n  }\n  .\\32 xl\\:grid-cols-4 {\n    @media (width >= 96rem) {\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n    }\n  }\n  .\\32 xl\\:gap-x-12 {\n    @media (width >= 96rem) {\n      column-gap: calc(var(--spacing) * 12);\n    }\n  }\n  .\\@max-\\[300px\\]\\:max-w-\\[21ch\\] {\n    @container (width < 300px) {\n      max-width: 21ch;\n    }\n  }\n  .\\@max-\\[300px\\]\\:flex-col {\n    @container (width < 300px) {\n      flex-direction: column;\n    }\n  }\n  .\\@max-\\[200px\\]\\:max-w-\\[11ch\\] {\n    @container (width < 200px) {\n      max-width: 11ch;\n    }\n  }\n  .\\@\\[418px\\]\\:\\@max-\\[568px\\]\\:grid-cols-2\\! {\n    @container (width >= 418px) {\n      @container (width < 568px) {\n        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;\n      }\n    }\n  }\n  .\\@min-\\[1080px\\]\\:hidden {\n    @container (width >= 1080px) {\n      display: none;\n    }\n  }\n  .\\@xl\\:col-span-3 {\n    @container (width >= 36rem) {\n      grid-column: span 3 / span 3;\n    }\n  }\n  .\\@xl\\:col-span-4 {\n    @container (width >= 36rem) {\n      grid-column: span 4 / span 4;\n    }\n  }\n  .\\@xl\\:col-span-5 {\n    @container (width >= 36rem) {\n      grid-column: span 5 / span 5;\n    }\n  }\n  .\\@xl\\:row-start-\\[unset\\] {\n    @container (width >= 36rem) {\n      grid-row-start: unset;\n    }\n  }\n  .\\@xl\\:block {\n    @container (width >= 36rem) {\n      display: block;\n    }\n  }\n  .\\@xl\\:flex {\n    @container (width >= 36rem) {\n      display: flex;\n    }\n  }\n  .\\@xl\\:grid-cols-12 {\n    @container (width >= 36rem) {\n      grid-template-columns: repeat(12, minmax(0, 1fr));\n    }\n  }\n  .\\@xl\\:grid-rows-2 {\n    @container (width >= 36rem) {\n      grid-template-rows: repeat(2, minmax(0, 1fr));\n    }\n  }\n  .\\@2xl\\:flex {\n    @container (width >= 42rem) {\n      display: flex;\n    }\n  }\n  .\\@3xl\\:col-span-2 {\n    @container (width >= 48rem) {\n      grid-column: span 2 / span 2;\n    }\n  }\n  .\\@3xl\\:grid-cols-3 {\n    @container (width >= 48rem) {\n      grid-template-columns: repeat(3, minmax(0, 1fr));\n    }\n  }\n  .dark\\:block {\n    &:where(.dark-mode, .dark-mode *) {\n      display: block;\n    }\n  }\n  .dark\\:hidden {\n    &:where(.dark-mode, .dark-mode *) {\n      display: none;\n    }\n  }\n  .dark\\:divide-border {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-border);\n      }\n    }\n  }\n  .dark\\:divide-gray-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-gray-600);\n      }\n    }\n  }\n  .dark\\:divide-gray-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-gray-700);\n      }\n    }\n  }\n  .dark\\:divide-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-neutral-600);\n      }\n    }\n  }\n  .dark\\:divide-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-neutral-700);\n      }\n    }\n  }\n  .dark\\:divide-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      :where(& > :not(:last-child)) {\n        border-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .dark\\:border-1 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-style: var(--tw-border-style);\n      border-width: 1px;\n    }\n  }\n  .dark\\:\\!border-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-600) !important;\n    }\n  }\n  .dark\\:\\!border-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:border-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-blue-500);\n    }\n  }\n  .dark\\:border-blue-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-blue-800);\n    }\n  }\n  .dark\\:border-cl1-gray-6 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-cl1-gray-6);\n    }\n  }\n  .dark\\:border-gray-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-gray-600);\n    }\n  }\n  .dark\\:border-gray-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-gray-700);\n    }\n  }\n  .dark\\:border-gray-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-gray-800);\n    }\n  }\n  .dark\\:border-green-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-green-500);\n    }\n  }\n  .dark\\:border-green-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(44.8% 0.119 151.328) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-green-800) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:border-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-400);\n    }\n  }\n  .dark\\:border-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-500);\n    }\n  }\n  .dark\\:border-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:border-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:border-neutral-700\\/40 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.371 0 0) 40%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-700) 40%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-700\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.371 0 0) 60%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-700) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:border-neutral-800\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:border-neutral-800\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.269 0 0) 60%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-800) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:border-neutral-800\\/80 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(0.269 0 0) 80%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-neutral-800) 80%, transparent);\n      }\n    }\n  }\n  .dark\\:border-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-red-500);\n    }\n  }\n  .dark\\:border-red-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-red-700);\n    }\n  }\n  .dark\\:border-red-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-red-800);\n    }\n  }\n  .dark\\:border-yellow-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-yellow-500);\n    }\n  }\n  .dark\\:border-yellow-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: var(--color-yellow-700);\n    }\n  }\n  .dark\\:border-yellow-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-color: color-mix(in srgb, oklch(47.6% 0.114 61.907) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        border-color: color-mix(in oklab, var(--color-yellow-800) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:border-r-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-right-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:border-b-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-bottom-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:border-b-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-bottom-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:border-b-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-bottom-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:border-l-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      border-left-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:\\!bg-black {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-black) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-700) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-900) !important;\n    }\n  }\n  .dark\\:\\!bg-neutral-900\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 50%, transparent) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 50%, transparent) !important;\n      }\n    }\n  }\n  .dark\\:\\!bg-neutral-900\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 60%, transparent) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 60%, transparent) !important;\n      }\n    }\n  }\n  .dark\\:\\!bg-neutral-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-950) !important;\n    }\n  }\n  .dark\\:bg-\\[\\#2C2C2C\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: #2C2C2C;\n    }\n  }\n  .dark\\:bg-\\[\\#916b20\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: #916b20;\n    }\n  }\n  .dark\\:bg-black {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-black);\n    }\n  }\n  .dark\\:bg-blue-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-600);\n    }\n  }\n  .dark\\:bg-blue-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-700);\n    }\n  }\n  .dark\\:bg-blue-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-800);\n    }\n  }\n  .dark\\:bg-blue-800\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.424 0.199 265.638) 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-blue-800) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-blue-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-900);\n    }\n  }\n  .dark\\:bg-blue-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(37.9% 0.146 265.522) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-blue-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-blue-900\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(37.9% 0.146 265.522) 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-blue-900) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-blue-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-blue-950);\n    }\n  }\n  .dark\\:bg-cl1-blue-7\\/40 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-blue-7);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-cl1-blue-7) 40%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-cl1-gray-2 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-2);\n    }\n  }\n  .dark\\:bg-cl1-gray-7 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-7);\n    }\n  }\n  .dark\\:bg-cl1-gray-7\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-7);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-cl1-gray-7) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-cl1-gray-7\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-7);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-cl1-gray-7) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-cl1-gray-8 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-8);\n    }\n  }\n  .dark\\:bg-cl1-gray-8\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-8);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-cl1-gray-8) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-cl1-gray-9 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-cl1-gray-9);\n    }\n  }\n  .dark\\:bg-gray-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-gray-800);\n    }\n  }\n  .dark\\:bg-gray-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-gray-900);\n    }\n  }\n  .dark\\:bg-green-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-green-700);\n    }\n  }\n  .dark\\:bg-green-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-green-800);\n    }\n  }\n  .dark\\:bg-green-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-green-900);\n    }\n  }\n  .dark\\:bg-green-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(39.3% 0.095 152.535) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-green-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-50);\n    }\n  }\n  .dark\\:bg-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:bg-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-400);\n    }\n  }\n  .dark\\:bg-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:bg-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:bg-neutral-700\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.371 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-700) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-750 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-750);\n    }\n  }\n  .dark\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:bg-neutral-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.269 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-800) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-850 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-850);\n    }\n  }\n  .dark\\:bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-900);\n    }\n  }\n  .dark\\:bg-neutral-900\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-900) !important;\n    }\n  }\n  .dark\\:bg-neutral-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-900\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-900\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-900\\/80 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(0.205 0 0) 80%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-neutral-900) 80%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-neutral-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-neutral-950);\n    }\n  }\n  .dark\\:bg-orange-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-orange-900);\n    }\n  }\n  .dark\\:bg-orange-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-orange-950);\n    }\n  }\n  .dark\\:bg-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-500);\n    }\n  }\n  .dark\\:bg-red-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-600);\n    }\n  }\n  .dark\\:bg-red-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-800);\n    }\n  }\n  .dark\\:bg-red-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-900);\n    }\n  }\n  .dark\\:bg-red-900\\/10\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(39.6% 0.141 25.723) 10%, transparent) !important;\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-red-900) 10%, transparent) !important;\n      }\n    }\n  }\n  .dark\\:bg-red-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(39.6% 0.141 25.723) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-red-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-red-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-red-950);\n    }\n  }\n  .dark\\:bg-surface {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-surface);\n    }\n  }\n  .dark\\:bg-surface-secondary {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-surface-secondary);\n    }\n  }\n  .dark\\:bg-white {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-white);\n    }\n  }\n  .dark\\:bg-white\\/5 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, #fff 5%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-white) 5%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-white\\/30 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, #fff 30%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-white) 30%, transparent);\n      }\n    }\n  }\n  .dark\\:bg-yellow-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-yellow-600);\n    }\n  }\n  .dark\\:bg-yellow-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: var(--color-yellow-900);\n    }\n  }\n  .dark\\:bg-yellow-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      background-color: color-mix(in srgb, oklch(42.1% 0.095 57.708) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        background-color: color-mix(in oklab, var(--color-yellow-900) 20%, transparent);\n      }\n    }\n  }\n  .dark\\:from-blue-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-from: color-mix(in srgb, oklch(37.9% 0.146 265.522) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-gradient-from: color-mix(in oklab, var(--color-blue-900) 20%, transparent);\n      }\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:from-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-from: var(--color-neutral-800);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-indigo-900\\/20 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: color-mix(in srgb, oklch(35.9% 0.144 278.697) 20%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-gradient-to: color-mix(in oklab, var(--color-indigo-900) 20%, transparent);\n      }\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: var(--color-neutral-700);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: var(--color-neutral-900);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:to-neutral-950 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-gradient-to: var(--color-neutral-950);\n      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));\n    }\n  }\n  .dark\\:\\!text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-50) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-100) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-200) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-300) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .dark\\:\\!text-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-500) !important;\n    }\n  }\n  .dark\\:\\!text-orange-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-500) !important;\n    }\n  }\n  .dark\\:\\!text-red-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-200) !important;\n    }\n  }\n  .dark\\:\\!text-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-500) !important;\n    }\n  }\n  .dark\\:\\!text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-white) !important;\n    }\n  }\n  .dark\\:text-\\[var\\(--dark\\)\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--dark);\n    }\n  }\n  .dark\\:text-black\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-black) !important;\n    }\n  }\n  .dark\\:text-blue-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-100);\n    }\n  }\n  .dark\\:text-blue-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-200);\n    }\n  }\n  .dark\\:text-blue-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-300);\n    }\n  }\n  .dark\\:text-blue-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-400);\n    }\n  }\n  .dark\\:text-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-500);\n    }\n  }\n  .dark\\:text-blue-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-blue-700);\n    }\n  }\n  .dark\\:text-cl1-blue-3 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-blue-3);\n    }\n  }\n  .dark\\:text-cl1-gray-0 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-0);\n    }\n  }\n  .dark\\:text-cl1-gray-0\\/70 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-0);\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, var(--color-cl1-gray-0) 70%, transparent);\n      }\n    }\n  }\n  .dark\\:text-cl1-gray-1 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-1);\n    }\n  }\n  .dark\\:text-cl1-gray-2 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-2);\n    }\n  }\n  .dark\\:text-cl1-gray-3 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-3);\n    }\n  }\n  .dark\\:text-cl1-gray-8 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-cl1-gray-8);\n    }\n  }\n  .dark\\:text-gray-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-100);\n    }\n  }\n  .dark\\:text-gray-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-200);\n    }\n  }\n  .dark\\:text-gray-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-300);\n    }\n  }\n  .dark\\:text-gray-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-400);\n    }\n  }\n  .dark\\:text-gray-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-gray-500);\n    }\n  }\n  .dark\\:text-green-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-200);\n    }\n  }\n  .dark\\:text-green-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-300);\n    }\n  }\n  .dark\\:text-green-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-400);\n    }\n  }\n  .dark\\:text-green-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-700);\n    }\n  }\n  .dark\\:text-green-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-green-800);\n    }\n  }\n  .dark\\:text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-50);\n    }\n  }\n  .dark\\:text-neutral-50\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-50) !important;\n    }\n  }\n  .dark\\:text-neutral-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-100);\n    }\n  }\n  .dark\\:text-neutral-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-200);\n    }\n  }\n  .dark\\:text-neutral-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-300);\n    }\n  }\n  .dark\\:text-neutral-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-400);\n    }\n  }\n  .dark\\:text-neutral-400\\! {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-400) !important;\n    }\n  }\n  .dark\\:text-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-500);\n    }\n  }\n  .dark\\:text-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:text-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:text-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-neutral-900);\n    }\n  }\n  .dark\\:text-orange-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-200);\n    }\n  }\n  .dark\\:text-orange-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-400);\n    }\n  }\n  .dark\\:text-orange-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-orange-500);\n    }\n  }\n  .dark\\:text-red-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-200);\n    }\n  }\n  .dark\\:text-red-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-300);\n    }\n  }\n  .dark\\:text-red-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-400);\n    }\n  }\n  .dark\\:text-red-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-500);\n    }\n  }\n  .dark\\:text-red-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-red-700);\n    }\n  }\n  .dark\\:text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-white);\n    }\n  }\n  .dark\\:text-white\\/60 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: color-mix(in srgb, #fff 60%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        color: color-mix(in oklab, var(--color-white) 60%, transparent);\n      }\n    }\n  }\n  .dark\\:text-yellow-100 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-100);\n    }\n  }\n  .dark\\:text-yellow-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-200);\n    }\n  }\n  .dark\\:text-yellow-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-300);\n    }\n  }\n  .dark\\:text-yellow-400 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-400);\n    }\n  }\n  .dark\\:text-yellow-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      color: var(--color-yellow-500);\n    }\n  }\n  .dark\\:shadow-\\[0_0_0_1px_rgba\\(255\\,255\\,255\\,0\\.5\\)_inset\\] {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-shadow: 0 0 0 1px var(--tw-shadow-color, rgba(255,255,255,0.5)) inset;\n      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);\n    }\n  }\n  .dark\\:\\!ring-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-neutral-800) !important;\n    }\n  }\n  .dark\\:ring-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-blue-500);\n    }\n  }\n  .dark\\:ring-blue-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-blue-800);\n    }\n  }\n  .dark\\:ring-border {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-border);\n    }\n  }\n  .dark\\:ring-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-neutral-600);\n    }\n  }\n  .dark\\:ring-neutral-600\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: color-mix(in srgb, oklch(0.439 0 0) 50%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-ring-color: color-mix(in oklab, var(--color-neutral-600) 50%, transparent);\n      }\n    }\n  }\n  .dark\\:ring-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:ring-neutral-700\\/90 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: color-mix(in srgb, oklch(0.371 0 0) 90%, transparent);\n      @supports (color: color-mix(in lab, red, red)) {\n        --tw-ring-color: color-mix(in oklab, var(--color-neutral-700) 90%, transparent);\n      }\n    }\n  }\n  .dark\\:ring-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-neutral-800);\n    }\n  }\n  .dark\\:ring-orange-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-orange-700);\n    }\n  }\n  .dark\\:ring-red-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-ring-color: var(--color-red-700);\n    }\n  }\n  .dark\\:outline-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      outline-color: var(--color-neutral-700);\n    }\n  }\n  .dark\\:invert {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-invert: invert(100%);\n      filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n    }\n  }\n  .dark\\:invert-0 {\n    &:where(.dark-mode, .dark-mode *) {\n      --tw-invert: invert(0%);\n      filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);\n    }\n  }\n  .dark\\:group-hover\\/choice\\:bg-neutral-800\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:is(:where(.group\\/choice):hover *) {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(0.269 0 0) 50%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-neutral-800) 50%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:group-hover\\/choice\\:text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      &:is(:where(.group\\/choice):hover *) {\n        @media (hover: hover) {\n          color: var(--color-white);\n        }\n      }\n    }\n  }\n  .dark\\:placeholder\\:\\!text-cl1-gray-2 {\n    &:where(.dark-mode, .dark-mode *) {\n      &::placeholder {\n        color: var(--color-cl1-gray-2) !important;\n      }\n    }\n  }\n  .focus-within\\:dark\\:border-neutral-600 {\n    &:focus-within {\n      &:where(.dark-mode, .dark-mode *) {\n        border-color: var(--color-neutral-600);\n      }\n    }\n  }\n  .dark\\:hover\\:border-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          border-color: var(--color-neutral-600);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:border-neutral-700\\/80 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          border-color: color-mix(in srgb, oklch(0.371 0 0) 80%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            border-color: color-mix(in oklab, var(--color-neutral-700) 80%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:\\!bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-800) !important;\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:\\!bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-900) !important;\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:\\!bg-red-950\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(25.8% 0.092 26.042) 50%, transparent) !important;\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-red-950) 50%, transparent) !important;\n          }\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-blue-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-blue-600);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-blue-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-blue-700);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-cl1-gray-7 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-cl1-gray-7);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-600);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-700 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-700);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-700\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(0.371 0 0) 50%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-neutral-700) 50%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-800);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: var(--color-neutral-900);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:bg-neutral-900\\/50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          background-color: color-mix(in srgb, oklch(0.205 0 0) 50%, transparent);\n          @supports (color: color-mix(in lab, red, red)) {\n            background-color: color-mix(in oklab, var(--color-neutral-900) 50%, transparent);\n          }\n        }\n      }\n    }\n  }\n  .hover\\:dark\\:bg-neutral-800 {\n    &:hover {\n      @media (hover: hover) {\n        &:where(.dark-mode, .dark-mode *) {\n          background-color: var(--color-neutral-800);\n        }\n      }\n    }\n  }\n  .hover\\:dark\\:bg-neutral-900 {\n    &:hover {\n      @media (hover: hover) {\n        &:where(.dark-mode, .dark-mode *) {\n          background-color: var(--color-neutral-900);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-blue-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-blue-300);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-neutral-50);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-neutral-200 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-neutral-200);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-neutral-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-neutral-300);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-red-300 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-red-300);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:text-white {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          color: var(--color-white);\n        }\n      }\n    }\n  }\n  .dark\\:hover\\:not-\\[\\:has\\(a\\:hover\\)\\]\\:bg-neutral-900 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover {\n        @media (hover: hover) {\n          &:not(*:is(:has(a:hover))) {\n            background-color: var(--color-neutral-900);\n          }\n        }\n      }\n    }\n  }\n  .dark\\:focus\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus {\n        background-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .dark\\:focus\\:ring-blue-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus {\n        --tw-ring-color: var(--color-blue-500);\n      }\n    }\n  }\n  .dark\\:focus\\:ring-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus {\n        --tw-ring-color: var(--color-neutral-500);\n      }\n    }\n  }\n  .dark\\:focus-visible\\:ring-neutral-600 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:focus-visible {\n        --tw-ring-color: var(--color-neutral-600);\n      }\n    }\n  }\n  .dark\\:disabled\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:disabled {\n        background-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .dark\\:disabled\\:\\!text-neutral-500 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:disabled {\n        color: var(--color-neutral-500) !important;\n      }\n    }\n  }\n  .dark\\:disabled\\:hover\\:bg-neutral-800 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:disabled {\n        &:hover {\n          @media (hover: hover) {\n            background-color: var(--color-neutral-800);\n          }\n        }\n      }\n    }\n  }\n  .data-\\[highlighted\\]\\:dark\\:bg-red-950 {\n    &[data-highlighted] {\n      &:where(.dark-mode, .dark-mode *) {\n        background-color: var(--color-red-950);\n      }\n    }\n  }\n  .lg\\:dark\\:ring-neutral-800 {\n    @media (width >= 64rem) {\n      &:where(.dark-mode, .dark-mode *) {\n        --tw-ring-color: var(--color-neutral-800);\n      }\n    }\n  }\n  .hocus\\:text-neutral-700 {\n    &:hover, &:focus-visible {\n      color: var(--color-neutral-700);\n    }\n  }\n  .hocus\\:opacity-100 {\n    &:hover, &:focus-visible {\n      opacity: 100%;\n    }\n  }\n  .dark\\:hocus\\:text-neutral-50 {\n    &:where(.dark-mode, .dark-mode *) {\n      &:hover, &:focus-visible {\n        color: var(--color-neutral-50);\n      }\n    }\n  }\n  .\\[\\&_\\.section-banner\\:first-of-type\\]\\:border-t-0 {\n    & .section-banner:first-of-type {\n      border-top-style: var(--tw-border-style);\n      border-top-width: 0px;\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\>_label\\)\\]\\:grid {\n    & [role=cell]:has(> label) {\n      display: grid;\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\>_label\\)\\]\\:place-content-center {\n    & [role=cell]:has(> label) {\n      place-content: center;\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\[aria-label\\=Actions\\]\\)\\]\\:grid {\n    & [role=cell]:has([aria-label=Actions]) {\n      display: grid;\n    }\n  }\n  .\\[\\&_\\[role\\=cell\\]\\:has\\(\\[aria-label\\=Actions\\]\\)\\]\\:place-content-center {\n    & [role=cell]:has([aria-label=Actions]) {\n      place-content: center;\n    }\n  }\n  .\\[\\&_\\[role\\=menu\\]_div\\:last-of-type\\]\\:\\!mb-0 {\n    & [role=menu] div:last-of-type {\n      margin-bottom: calc(var(--spacing) * 0) !important;\n    }\n  }\n  .\\[\\&_\\[role\\=menu\\]_h2\\]\\:hidden {\n    & [role=menu] h2 {\n      display: none;\n    }\n  }\n  .\\[\\&_\\[role\\=rowgroup\\]\\:last-child_\\[role\\=row\\]\\:last-child_\\[role\\=cell\\]\\]\\:\\!border-b-0 {\n    & [role=rowgroup]:last-child [role=row]:last-child [role=cell] {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:mx-auto\\! {\n    & [role=table] {\n      margin-inline: auto !important;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:max-w-full {\n    & [role=table] {\n      max-width: 100%;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:rounded\\! {\n    & [role=table] {\n      border-radius: 0.25rem !important;\n    }\n  }\n  .\\[\\&_\\[role\\=table\\]\\]\\:p-0\\! {\n    & [role=table] {\n      padding: calc(var(--spacing) * 0) !important;\n    }\n  }\n  .\\[\\&_button\\]\\:pointer-events-none {\n    & button {\n      pointer-events: none;\n    }\n  }\n  .\\[\\&_div\\:first-child\\]\\:col-span-6 {\n    & div:first-child {\n      grid-column: span 6 / span 6;\n    }\n  }\n  .\\[\\&_div\\:last-child\\]\\:col-span-4 {\n    & div:last-child {\n      grid-column: span 4 / span 4;\n    }\n  }\n  .xl\\:\\[\\&_div\\:last-child\\]\\:justify-end {\n    @media (width >= 80rem) {\n      & div:last-child {\n        justify-content: flex-end;\n      }\n    }\n  }\n  .\\[\\&_span\\]\\:min-w-0 {\n    & span {\n      min-width: calc(var(--spacing) * 0);\n    }\n  }\n  .\\[\\&_span\\]\\:truncate {\n    & span {\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n    }\n  }\n  .\\[\\&_th\\]\\:rounded-t {\n    & th {\n      border-top-left-radius: 0.25rem;\n      border-top-right-radius: 0.25rem;\n    }\n  }\n  .\\[\\&_ul_li\\:last-child\\]\\:\\!border-b-0 {\n    & ul li:last-child {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&_ul_li\\:last-child_dl_dd\\:last-of-type\\]\\:\\!border-b-0 {\n    & ul li:last-child dl dd:last-of-type {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&_ul_li\\:last-child_dl_dt\\:last-of-type\\]\\:\\!border-b-0 {\n    & ul li:last-child dl dt:last-of-type {\n      border-bottom-style: var(--tw-border-style) !important;\n      border-bottom-width: 0px !important;\n    }\n  }\n  .\\[\\&\\:has\\(\\:focus-within\\)\\]\\:border-active {\n    &:has(:focus-within) {\n      border-color: var(--color-active);\n    }\n  }\n  .\\[\\&\\>div\\:first-child\\]\\:\\!py-3 {\n    &>div:first-child {\n      padding-block: calc(var(--spacing) * 3) !important;\n    }\n  }\n  .\\[\\&\\>div\\:first-of-type\\]\\:flex {\n    &>div:first-of-type {\n      display: flex;\n    }\n  }\n  .\\[\\&\\>div\\:first-of-type\\]\\:items-center {\n    &>div:first-of-type {\n      align-items: center;\n    }\n  }\n  .\\[\\&\\>pre\\]\\:\\!p-2\\.5 {\n    &>pre {\n      padding: calc(var(--spacing) * 2.5) !important;\n    }\n  }\n  .\\[\\&\\>span\\]\\:inline-block {\n    &>span {\n      display: inline-block;\n    }\n  }\n  .\\[\\&\\>span\\]\\:w-full {\n    &>span {\n      width: 100%;\n    }\n  }\n  .\\[\\&\\>svg\\]\\:hidden {\n    &>svg {\n      display: none;\n    }\n  }\n  .\\[\\@media\\(min-width\\:755px\\)\\]\\:order-2 {\n    @media (min-width:755px) {\n      order: 2;\n    }\n  }\n}\n@layer base {\n  :root {\n    --kumo-surface: #fff;\n    --kumo-surface-foreground: #000;\n    --kumo-surface-secondary: var(--color-neutral-50);\n    --kumo-surface-active: var(--color-neutral-100);\n    --kumo-primary: #056dff;\n    --kumo-primary-foreground: var(--color-white);\n    --kumo-secondary: var(--color-white);\n    --kumo-secondary-foreground: var(--color-neutral-900);\n    --kumo-secondary-hover: var(--color-neutral-50);\n    --kumo-accent: var(--color-neutral-150);\n    --kumo-destructive: var(--color-red-600);\n    --kumo-destructive-foreground: var(--color-neutral-50);\n    --kumo-muted: var(--color-neutral-100);\n    --kumo-muted-foreground: var(--color-neutral-500);\n    --kumo-input: var(--color-neutral-50);\n    --kumo-border: var(--color-neutral-200);\n    --kumo-border-hover: var(--color-neutral-300);\n    --kumo-border-active: var(--color-neutral-400);\n    --kumo-text-error: var(--color-red-600);\n  }\n  .dark-mode {\n    --kumo-surface: var(--color-black);\n    --kumo-surface-foreground: var(--color-neutral-50);\n    --kumo-surface-secondary: var(--kumo-surface);\n    --kumo-surface-active: var(--color-neutral-800);\n    --kumo-primary: #056dff;\n    --kumo-primary-foreground: var(--color-white);\n    --kumo-secondary: var(--color-neutral-900);\n    --kumo-secondary-foreground: var(--color-neutral-50);\n    --kumo-secondary-hover: var(--color-neutral-800);\n    --kumo-accent: var(--color-neutral-850);\n    --kumo-destructive: var(--color-red-600);\n    --kumo-destructive-foreground: var(--color-neutral-50);\n    --kumo-muted: var(--color-neutral-500);\n    --kumo-muted-foreground: var(--color-neutral-50);\n    --kumo-input: var(--color-neutral-900);\n    --kumo-border: var(--color-neutral-800);\n    --kumo-border-hover: var(--color-neutral-750);\n    --kumo-border-active: var(--color-neutral-600);\n    --kumo-text-error: var(--color-red-600);\n  }\n}\n@layer utilities {\n  .no-scrollbar::-webkit-scrollbar {\n    display: none;\n  }\n  .no-scrollbar {\n    -ms-overflow-style: none;\n    scrollbar-width: none;\n  }\n  .no-input-spinner {\n    appearance: textfield;\n    ::-webkit-outer-spin-button, ::-webkit-inner-spin-button {\n      appearance: none;\n    }\n  }\n}\n.z-modal {\n  z-index: 9999;\n}\n@keyframes right {\n  to {\n    transform: translateX(100%);\n  }\n}\n.float {\n  animation: float 5s linear infinite alternate;\n}\n@keyframes float {\n  to {\n    transform: translate(5px, 15px);\n  }\n}\n@keyframes refresh {\n  to {\n    transform: rotate(360deg) scale(0.9);\n  }\n}\n@keyframes bounce-in {\n  0% {\n    transform: scale(0.6);\n    opacity: 0;\n  }\n  50% {\n    transform: scale(1.2);\n    opacity: 1;\n  }\n  100% {\n    transform: scale(1);\n  }\n}\n.animate-bounce-in {\n  animation: bounce-in 0.4s ease-out;\n}\n@keyframes shimmer {\n  0% {\n    transform: translateX(-100%);\n  }\n  100% {\n    transform: translateX(100%);\n  }\n}\n@keyframes text-shimmer {\n  0% {\n    background-position: -100% 0;\n  }\n  100% {\n    background-position: 100% 0;\n  }\n}\n.skeleton-line {\n  position: relative;\n  overflow: hidden;\n  border-radius: 2px;\n  height: var(--skeleton-height, 0.5rem);\n  width: var(--skeleton-width);\n  background-color: #f3f4f6;\n}\n.skeleton-line::after {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  animation: shimmer var(--shimmer-duration, 1.5s) var(--shimmer-delay, 0s) infinite ease-in-out;\n  content: \'\';\n  background: linear-gradient( 90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0) 100% );\n}\n.dark-mode .skeleton-line {\n  background-color: rgba(255, 255, 255, 0.06);\n}\n.dark-mode .skeleton-line::after {\n  background: linear-gradient( 90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 100% );\n}\n.text-shimmer {\n  background-size: 200% 100%;\n  -webkit-background-clip: text;\n  background-clip: text;\n  -webkit-text-fill-color: transparent;\n  animation: text-shimmer 2s ease-in-out infinite;\n}\n@layer theme;\nhtml.dark-mode {\n  color-scheme: dark;\n}\n@font-face {\n  font-family: \'Inter Variable\';\n  font-weight: 100 900;\n  font-display: swap;\n  src: local(\'Inter Variable\'), url(\'/fonts/inter-variable.woff2\');\n  font-named-instance: \'Regular\';\n  font-style: normal;\n}\n@font-face {\n  font-family: \'Inter Variable\';\n  font-weight: 100 900;\n  font-display: swap;\n  src: local(\'Inter Variable\'), url(\'/fonts/inter-variable-italic.woff2\');\n  font-named-instance: \'Italic\';\n  font-style: italic;\n}\n@font-face {\n  font-family: \'Paper Mono\';\n  font-weight: 400;\n  font-display: swap;\n  font-style: normal;\n  font-named-instance: \'Regular\';\n  src: url(\'/fonts/paper-mono-regular.woff2\') format(\'woff2\');\n}\n@layer base {\n  html, button {\n    font-family: var(--font-sans);\n    --tw-leading: 1.5;\n    line-height: 1.5;\n    --tw-font-weight: var(--font-weight-normal);\n    font-weight: var(--font-weight-normal);\n    --tw-tracking: -.01em;\n    letter-spacing: -.01em;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    font-feature-settings: \'cv02\', \'cv03\', \'cv04\', \'calt\';\n  }\n  pre, code {\n    font-family: var(--font-mono);\n    --tw-leading: var(--leading-normal);\n    line-height: var(--leading-normal);\n    --tw-tracking: var(--tracking-normal);\n    letter-spacing: var(--tracking-normal);\n  }\n  .font-heading {\n    font-variation-settings: \'opsz\' 32;\n  }\n  .font-title {\n    font-variation-settings: \'opsz\' 24;\n  }\n  .font-mono {\n    --tw-tracking: var(--tracking-normal);\n    letter-spacing: var(--tracking-normal);\n  }\n}\nbutton.text-base {\n  font-size: var(--text-base);\n  line-height: var(--tw-leading, var(--text-base--line-height));\n}\nbutton.text-xs {\n  font-size: var(--text-xs);\n  line-height: var(--tw-leading, var(--text-xs--line-height));\n}\nbutton.text-lg {\n  font-size: var(--text-lg);\n  line-height: var(--tw-leading, var(--text-lg--line-height));\n}\nbutton.border {\n  border-style: var(--tw-border-style);\n  border-width: 1px;\n  border-color: var(--color-color);\n}\n#react-app {\n  isolation: isolate;\n}\n@property --tw-translate-x {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-translate-y {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-translate-z {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-scale-x {\n  syntax: "*";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-scale-y {\n  syntax: "*";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-scale-z {\n  syntax: "*";\n  inherits: false;\n  initial-value: 1;\n}\n@property --tw-rotate-x {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-rotate-y {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-rotate-z {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-skew-x {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-skew-y {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-scroll-snap-strictness {\n  syntax: "*";\n  inherits: false;\n  initial-value: proximity;\n}\n@property --tw-space-y-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-space-x-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-divide-x-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-border-style {\n  syntax: "*";\n  inherits: false;\n  initial-value: solid;\n}\n@property --tw-divide-y-reverse {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0;\n}\n@property --tw-gradient-position {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-gradient-from {\n  syntax: "<color>";\n  inherits: false;\n  initial-value: #0000;\n}\n@property --tw-gradient-via {\n  syntax: "<color>";\n  inherits: false;\n  initial-value: #0000;\n}\n@property --tw-gradient-to {\n  syntax: "<color>";\n  inherits: false;\n  initial-value: #0000;\n}\n@property --tw-gradient-stops {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-gradient-via-stops {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-gradient-from-position {\n  syntax: "<length-percentage>";\n  inherits: false;\n  initial-value: 0%;\n}\n@property --tw-gradient-via-position {\n  syntax: "<length-percentage>";\n  inherits: false;\n  initial-value: 50%;\n}\n@property --tw-gradient-to-position {\n  syntax: "<length-percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-leading {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-font-weight {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-tracking {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ordinal {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-slashed-zero {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-numeric-figure {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-numeric-spacing {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-numeric-fraction {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-shadow-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-shadow-alpha {\n  syntax: "<percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-inset-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-inset-shadow-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-inset-shadow-alpha {\n  syntax: "<percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-ring-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ring-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-inset-ring-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-inset-ring-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-ring-inset {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ring-offset-width {\n  syntax: "<length>";\n  inherits: false;\n  initial-value: 0px;\n}\n@property --tw-ring-offset-color {\n  syntax: "*";\n  inherits: false;\n  initial-value: #fff;\n}\n@property --tw-ring-offset-shadow {\n  syntax: "*";\n  inherits: false;\n  initial-value: 0 0 #0000;\n}\n@property --tw-outline-style {\n  syntax: "*";\n  inherits: false;\n  initial-value: solid;\n}\n@property --tw-blur {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-brightness {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-contrast {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-grayscale {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-hue-rotate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-invert {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-opacity {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-saturate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-sepia {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-drop-shadow {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-drop-shadow-color {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-drop-shadow-alpha {\n  syntax: "<percentage>";\n  inherits: false;\n  initial-value: 100%;\n}\n@property --tw-drop-shadow-size {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-blur {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-brightness {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-contrast {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-grayscale {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-hue-rotate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-invert {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-opacity {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-saturate {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-backdrop-sepia {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-duration {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-ease {\n  syntax: "*";\n  inherits: false;\n}\n@property --tw-content {\n  syntax: "*";\n  initial-value: "";\n  inherits: false;\n}\n@keyframes spin {\n  to {\n    transform: rotate(360deg);\n  }\n}\n@keyframes pulse {\n  50% {\n    opacity: 0.5;\n  }\n}\n@layer properties {\n  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {\n    *, ::before, ::after, ::backdrop {\n      --tw-translate-x: 0;\n      --tw-translate-y: 0;\n      --tw-translate-z: 0;\n      --tw-scale-x: 1;\n      --tw-scale-y: 1;\n      --tw-scale-z: 1;\n      --tw-rotate-x: initial;\n      --tw-rotate-y: initial;\n      --tw-rotate-z: initial;\n      --tw-skew-x: initial;\n      --tw-skew-y: initial;\n      --tw-scroll-snap-strictness: proximity;\n      --tw-space-y-reverse: 0;\n      --tw-space-x-reverse: 0;\n      --tw-divide-x-reverse: 0;\n      --tw-border-style: solid;\n      --tw-divide-y-reverse: 0;\n      --tw-gradient-position: initial;\n      --tw-gradient-from: #0000;\n      --tw-gradient-via: #0000;\n      --tw-gradient-to: #0000;\n      --tw-gradient-stops: initial;\n      --tw-gradient-via-stops: initial;\n      --tw-gradient-from-position: 0%;\n      --tw-gradient-via-position: 50%;\n      --tw-gradient-to-position: 100%;\n      --tw-leading: initial;\n      --tw-font-weight: initial;\n      --tw-tracking: initial;\n      --tw-ordinal: initial;\n      --tw-slashed-zero: initial;\n      --tw-numeric-figure: initial;\n      --tw-numeric-spacing: initial;\n      --tw-numeric-fraction: initial;\n      --tw-shadow: 0 0 #0000;\n      --tw-shadow-color: initial;\n      --tw-shadow-alpha: 100%;\n      --tw-inset-shadow: 0 0 #0000;\n      --tw-inset-shadow-color: initial;\n      --tw-inset-shadow-alpha: 100%;\n      --tw-ring-color: initial;\n      --tw-ring-shadow: 0 0 #0000;\n      --tw-inset-ring-color: initial;\n      --tw-inset-ring-shadow: 0 0 #0000;\n      --tw-ring-inset: initial;\n      --tw-ring-offset-width: 0px;\n      --tw-ring-offset-color: #fff;\n      --tw-ring-offset-shadow: 0 0 #0000;\n      --tw-outline-style: solid;\n      --tw-blur: initial;\n      --tw-brightness: initial;\n      --tw-contrast: initial;\n      --tw-grayscale: initial;\n      --tw-hue-rotate: initial;\n      --tw-invert: initial;\n      --tw-opacity: initial;\n      --tw-saturate: initial;\n      --tw-sepia: initial;\n      --tw-drop-shadow: initial;\n      --tw-drop-shadow-color: initial;\n      --tw-drop-shadow-alpha: 100%;\n      --tw-drop-shadow-size: initial;\n      --tw-backdrop-blur: initial;\n      --tw-backdrop-brightness: initial;\n      --tw-backdrop-contrast: initial;\n      --tw-backdrop-grayscale: initial;\n      --tw-backdrop-hue-rotate: initial;\n      --tw-backdrop-invert: initial;\n      --tw-backdrop-opacity: initial;\n      --tw-backdrop-saturate: initial;\n      --tw-backdrop-sepia: initial;\n      --tw-duration: initial;\n      --tw-ease: initial;\n      --tw-content: "";\n    }\n  }\n}\n', ""])
 		},
 		"../react/app/assets lazy recursive ^\\.\\/favicon\\-.*\\.ico$": function(e, t, n) {
 			var r = {
@@ -72366,4 +72388,4 @@ SOFTWARE.`,
 		}
 	}
 ]);
-//# debugId=7be6b94b-2942-5cd5-88e1-a67c2149221d
+//# debugId=2c32361f-c54a-507d-9103-c4494647fe24
