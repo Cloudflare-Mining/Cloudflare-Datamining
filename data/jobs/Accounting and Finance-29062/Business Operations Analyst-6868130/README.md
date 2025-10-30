@@ -5,38 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations - </strong>Austin, Texas or major Texas cities who are willing to travel to Austin once a month for team meetings. If not in Texas, you must be willing to relocate.&nbsp;</p>
-<hr>
+<p><strong>Available locations: Mexico City&nbsp;</strong></p>
 <p><strong>About the Team</strong></p>
-<p>The Data Analytics &amp; Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
-<p><strong>Data Scientist Responsibilities</strong></p>
+<p>The Business Operations team sits under the CFO organization and is responsible for core company KPI reporting, incubating new analytics capabilities, leading and/or facilitating cross-functional projects to devise and operationalize high impact programs. We are looking for a strong data analyst to join Cloudflare to help develop analytics solutions and scale internal data processes. Success in this role comes from combining a strong technical foundation with sharp business acumen and a builder’s mindset — someone who’s energized by turning scrappy, manual workflows into streamlined, durable solutions to deliver strategic and compelling insights.&nbsp;</p>
+<p><strong>What you'll do&nbsp;</strong></p>
 <ul>
-	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>
-	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team to improve the data collection and quality.</li>
-	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
-	<li>Strong audience focused presentation and storytelling skills focused on key takeaways in a crisp and concise manner.</li>
-	<li>Define, implement, and train statistical, machine learning, deep learning and generative AI models.</li>
-	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
-	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
-	<li>Active role in hiring, growing, and mentoring the data scientist team in Austin.</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
-	<li>3+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)&nbsp;</li>
-	<li>Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in scientific computing using Python.</li>
-	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;&nbsp;</li>
-	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
-	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
-	<li>Proficiency in large language models and the frameworks necessary for implementing GenAI applications, such as chatbots and related use cases.</li>
-	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
-	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
-	<li>Experience in hiring data scientists and establishing team best practices is preferred.</li>
+	<li>Identify root causes of business or data challenges and conduct in-depth analyses to translate data into meaningful insights</li>
+	<li>Present findings clearly and concisely, tailoring takeaways and recommendations to the appropriate audience</li>
+	<li>Design, build, and support data or insight solutions that help incubate new data capabilities or programs. Example projects include: product adoption scoring, product performance reporting, variable billing forecasting, product costing and margin analysis, and automation of GTM metrics reporting</li>
+	<li>Determine the right technical approach for each project phase (e.g. exploratory analysis, prototyping, MVP/beta development)&nbsp;</li>
+	<li>Partner closely with the Business Intelligence team to improve data collection and quality, streamline reporting processes, and help scale solutions from early-stage incubation to long-term, high-performing programs</li>
+	<li>Work cross-functionally to keep projects on track and stakeholders informed</li>
+	<li>Provide ad-hoc analytical support to Finance &amp; Executive Leadership</li>
+	<li>This role might involve travel to the US on a bi-annual basis</li>
 </ul>
 <p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Bachelor’s or Master’s degree in Computer Science, Engineering, or a related field, or equivalent practical experience</li>
+	<li>4+ years of experience as a data analyst, including 1+ years in a large-scale environment (e.g., petabyte-scale data, globally distributed teams)</li>
+	<li>2+ years of experience at a fast-growing, technology-driven company preferred</li>
+	<li>Strong hands-on experience with Python, SQL, and tools such as Google BigQuery, Looker Studio, Tableau, or similar Big Data/Cloud-based analytics platforms</li>
+	<li>Proven ability to multitask and thrive in a high-growth environment — able to zoom in on the details without losing sight of the bigger picture</li>
+	<li>Strong business acumen with a demonstrated ability to align data initiatives with business needs and deliver high-quality outcomes</li>
+	<li>Track record of conducting impactful, result-oriented analysis that informs business strategy and drives change</li>
+	<li>Advanced proficiency in English (written and verbal)</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
