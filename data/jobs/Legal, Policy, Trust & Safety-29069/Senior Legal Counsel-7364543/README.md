@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX &amp; Washington, DC</strong></p>
+<p><strong>Available Locations: Austin, TX&nbsp;</strong></p>
 <p><strong>About the Department</strong></p>
 <p>Because of the scope, complexity, and diversity of the company’s work, we need a world-class legal team to help the company avoid distractions, and guide company leadership around obstacles.&nbsp; Our legal team is made up of very accomplished lawyers and staff who comprise a flexible, talented, and very cohesive team.&nbsp;</p>
 <p><strong>About the Role</strong></p>
@@ -39,11 +39,7 @@
 	<li>Experience using systems such Salesforce, DocuSign, Ironclad and JIRA.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For D.C. based hires: Estimated annual salary of $206,000 - $252,000</span></li>
-</ul>
+<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
