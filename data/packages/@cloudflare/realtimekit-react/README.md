@@ -8,7 +8,7 @@
   <p align="center">
     A real-time video and audio SDK for building custom, collaborative communication experiences.
     <br />
-    <a href="https://docs.realtime.cloudflare.com"><strong>Explore the docs »</strong></a>
+    <a href="https://developers.cloudflare.com/realtime/realtimekit/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://demo.realtime.cloudflare.com">View Demo</a>
@@ -76,7 +76,7 @@ The `meeting` object is used for all interaction with Cloudflare's servers. For 
 await meeting.join();
 ```
 
-_For more examples, please refer to the [Documentation](https://docs.realtime.cloudflare.com)._
+_For more examples, please refer to the [Documentation](https://developers.cloudflare.com/realtime/realtimekit/)._
 
 ## About
 

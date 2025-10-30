@@ -8,7 +8,7 @@
   <p align="center">
     A real-time video and audio SDK for building custom, collaborative communication experiences.
     <br />
-    <a href="https://docs.realtime.cloudflare.com"><strong>Explore the docs »</strong></a>
+    <a href="https://developers.cloudflare.com/realtime/realtimekit/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://demo.realtime.cloudflare.com">View Demo</a>
@@ -56,7 +56,7 @@ npm install @cloudflare/realtimekit
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-A `meeting` object can be created using the `RealtimeKit.init()` method.
+A `meeting` object can be created using the `RealtimeKitClient.init()` method.
 
 ```ts
 const meeting = await RealtimeKit.init({
@@ -76,11 +76,10 @@ The `meeting` object is used for all interaction with Cloudflare's servers. For 
 await meeting.join();
 ```
 
-_For more examples, please refer to the [Documentation](https://docs.realtime.cloudflare.com)._
+_For more examples, please refer to the [documentation](https://developers.cloudflare.com/realtime/realtimekit/)._
 
 ## About
 
 `@cloudflare/realtimekit` is created & maintained by Cloudflare, Inc.
 
 The names and logos are trademarks of Cloudflare, Inc.
-

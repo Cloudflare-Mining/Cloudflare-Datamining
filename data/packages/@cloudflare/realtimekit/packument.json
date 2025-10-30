@@ -2,8 +2,8 @@
 	"name": "@cloudflare/realtimekit",
 	"dist-tags": {
 		"agent": "1.1.7-agent.1",
-		"latest": "1.1.7",
-		"staging": "1.2.0-staging.23"
+		"staging": "1.2.1-staging.1",
+		"latest": "1.2.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -4097,6 +4097,80 @@
 			"name": "@cloudflare/realtimekit",
 			"version": "1.2.0-staging.23",
 			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {
+				"type-fest": "^2.12.1",
+				"@types/long": "4.0.0",
+				"@types/node": "^16.0.0",
+				"@types/uuid": "^8.3.4",
+				"@types/events": "^3.0.0",
+				"@types/lodash-es": "^4.17.6",
+				"@dyteinternals/utils": "3.4.0",
+				"@types/sdp-transform": "^2.4.5",
+				"@dyteinternals/callstats": "7.2.7",
+				"@dyteinternals/proto-entities": "2.110.5",
+				"@dyteinternals/sockrates-client": "1.8.5"
+			},
+			"dist": {
+				"shasum": "b52464f33041e46f6cc23de8a52225f63e9af08f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.2.0-staging.23.tgz",
+				"fileCount": 22,
+				"integrity": "sha512-EQjfuj7fVQaNnT1irz80qtvvInl7eFhvO8A1T5c31kF9CueNB76E+b1B5a/96Pp26bIytFSd2OV75w1NmkFSZQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD4LWv0XB2wbjE71DP2ioDRYZudK/TqZQ2QPomRPvNEfAIgYfMUan0b0B4B9dQB7gPnj7spfqYntNssAl/LlevwgyI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 5624333
+			}
+		},
+		"1.2.0": {
+			"name": "@cloudflare/realtimekit",
+			"version": "1.2.0",
+			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {
+				"type-fest": "^2.12.1",
+				"@types/long": "4.0.0",
+				"@types/node": "^16.0.0",
+				"@types/uuid": "^8.3.4",
+				"@types/events": "^3.0.0",
+				"@types/lodash-es": "^4.17.6",
+				"@dyteinternals/utils": "3.4.0",
+				"@types/sdp-transform": "^2.4.5",
+				"@dyteinternals/callstats": "7.2.7",
+				"@dyteinternals/proto-entities": "2.110.5",
+				"@dyteinternals/sockrates-client": "1.8.5"
+			},
+			"dist": {
+				"shasum": "959a914404cafa5221b59d123a66d8afe8fa32b8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.2.0.tgz",
+				"fileCount": 22,
+				"integrity": "sha512-y/fmonqXlTCGMpGNoxT3S11FJMV3/Cf4dyp7xMPnnIQ3g1Gi5o2Ey9FxBY/8HUJlJIGtghikPsBbPpcojkxUxw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFgkHDDUYV5I5UnnfU+3jjP6OeW2PzxxZoEcZcMiu/1/AiBUnvwhhYTffvSwyUFnpzq/QIFTsgwoOlh2yzPrIGcwwA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 5624305
+			}
+		},
+		"1.2.1-staging.1": {
+			"name": "@cloudflare/realtimekit",
+			"version": "1.2.1-staging.1",
+			"dependencies": {
 				"@protobuf-ts/runtime": "^2.7.0",
 				"bowser": "^2.11.0",
 				"sdp-transform": "^2.14.1",
@@ -4117,15 +4191,15 @@
 				"@dyteinternals/utils": "3.4.0"
 			},
 			"dist": {
-				"integrity": "sha512-EQjfuj7fVQaNnT1irz80qtvvInl7eFhvO8A1T5c31kF9CueNB76E+b1B5a/96Pp26bIytFSd2OV75w1NmkFSZQ==",
-				"shasum": "b52464f33041e46f6cc23de8a52225f63e9af08f",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.2.0-staging.23.tgz",
-				"fileCount": 22,
-				"unpackedSize": 5624333,
+				"integrity": "sha512-EYNClSxT2A1TxUJimJcIFwGpQGAEEAZUJHGkTsDNF6gGVNHoKzOlCKaQIR6n4666hFFY8l9ttwJsIFmUpUS2HA==",
+				"shasum": "beac36ccb13a2c4ebbde415e3ade2cadd665b756",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.2.1-staging.1.tgz",
+				"fileCount": 19,
+				"unpackedSize": 5621594,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQD4LWv0XB2wbjE71DP2ioDRYZudK/TqZQ2QPomRPvNEfAIgYfMUan0b0B4B9dQB7gPnj7spfqYntNssAl/LlevwgyI="
+						"sig": "MEQCIF33iy9xN5X1kKdd88Crfg5WgKdQPQnXaUjey5z0NlAcAiB0OvzvGuUD7BdWj+07VgFYLhYiT4DKM6W7rec6B46CvQ=="
 					}
 				]
 			}
