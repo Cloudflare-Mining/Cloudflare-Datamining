@@ -1,0 +1,844 @@
+<div class="mb2 gray5">21 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47hyta5R7SyBkQGy0jhFjH/b2509cf86400d6168130b7f981aaf9fb/image6.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>The way we interact with the Internet is changing. Not long ago, ordering a pizza meant visiting a website, clicking through menus, and entering your payment details. Soon, you might just <a href="https://www.cnet.com/tech/services-and-software/i-had-chatgpt-order-me-a-pizza-this-could-change-everything"><u>ask your phone</u></a> to order a pizza that matches your preferences. A program on your device or on a remote server, which we call an <a href="https://developers.cloudflare.com/agents/concepts/what-are-agents"><u>AI agent</u></a>, would visit the website and orchestrate the necessary steps on your behalf.</p>
+	<p>Of course, agents can do much more than order pizza. Soon we might use them to buy concert tickets, plan vacations, or even write, review, and merge pull requests. While some of these tasks will eventually run locally, for now, most are powered by massive AI models running in the biggest datacenters in the world. As agentic AI increases in popularity, we expect to see a large increase in traffic from these AI platforms and a corresponding drop in traffic from more conventional sources (like your phone).</p>
+	<p>This shift in traffic patterns has prompted us to assess how to keep our customers online and secure in the AI era. On one hand, the nature of requests are changing: Websites optimized for human visitors will have to cope with faster, and potentially greedier, agents. On the other hand, AI platforms may soon become a significant source of attacks, originating from malicious users of the platforms themselves.</p>
+	<p>Unfortunately, existing tools for managing such (mis)behavior are likely too coarse-grained to manage this transition. For example, <a href="https://blog.cloudflare.com/per-customer-bot-defenses"><u>when Cloudflare detects that a request is part of a known attack pattern</u></a>, the best course of action often is to block all subsequent requests from the same source. When the source is an AI agent platform, this could mean inadvertently blocking all users of the same platform, even honest ones who just want to order pizza. We started addressing this problem <a href="https://blog.cloudflare.com/web-bot-auth"><u>earlier this year</u></a>. But as agentic AI grows in popularity, we think the Internet will need more fine-grained mechanisms of managing agents without impacting honest users.</p>
+	<p>At the same time, we firmly believe that any such security mechanism must be designed with user privacy at its core. In this post, we'll describe how to use <b>anonymous credentials (AC)</b> to build these tools. Anonymous credentials help website operators to enforce a wide range of security policies, like rate-limiting users or blocking a specific malicious user, without ever having to identify any user or track them across requests.</p>
+	<p>Anonymous credentials are <a href="https://mailarchive.ietf.org/arch/msg/privacy-pass/--JXbGvkHnLq1iHQKJAnfn5eH9A"><u>under development at IETF</u></a> in order to provide a standard that can work across websites, browsers, platforms. It's still in its early stages, but we believe this work will play a critical role in keeping the Internet secure and private in the AI era. We will be contributing to this process as we work towards real-world deployment. This is still early days. If you work in this space, we hope you will follow along and contribute as well.</p>
+	<div class="flex anchor relative">
+		<h2 id="lets-build-a-small-agent">Let’s build a small agent</h2>
+		<a href="https://blog.cloudflare.com/#lets-build-a-small-agent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To help us discuss how AI agents are affecting web servers, let’s build an agent ourselves. Our goal is to have an agent that can order a pizza from a nearby pizzeria. Without an agent, you would open your browser, figure out which pizzeria is nearby, view the menu and make selections, add any extras (double pepperoni), and proceed to checkout with your credit card. With an agent, it’s the same flow —except the agent is opening and orchestrating the browser on your behalf.</p>
+	<p>In the traditional flow, there’s a human all along the way, and each step has a clear intent: list all pizzerias within 3 Km of my current location; pick a pizza from the menu; enter my credit card; and so on. An agent, on the other hand, has to infer each of these actions from the prompt "order me a pizza."</p>
+	<p>In this section, we’ll build a simple program that takes a prompt and can make outgoing requests. Here’s an example of a simple <a href="https://workers.cloudflare.com"><u>Worker</u></a> that takes a specific prompt and generates an answer accordingly. You can find the code on <a href="https://github.com/cloudflareresearch/mini-ai-agent-demo"><u>GitHub</u></a>:</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const out = await env.AI.run("@cf/meta/llama-3.1-8b-instruct-fp8", {
+           prompt: `I'd like to order a pepperoni pizza with extra cheese.
+                    Please deliver it to Cloudflare Austin office.
+                    Price should not be more than $20.`,
+       });
+
+
+       return new Response(out.response);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>In this context, the LLM provides its best answer. It gives us a plan and instruction, but does not perform the action on our behalf. You and I are able to take a list of instructions and act upon it because we have agency and can affect the world. To allow our agent to interact with more of the world, we’re going to give it control over a web browser.</p>
+	<p>Cloudflare offers a <a href="https://developers.cloudflare.com/browser-rendering"><u>Browser Rendering</u></a> service that can bind directly into our Worker. Let’s do that. The following code uses <a href="https://www.stagehand.dev"><u>Stagehand</u></a>, an automation framework that makes it simple to control the browser. We pass it an instance of Cloudflare remote browser, as well as a client for <a href="https://developers.cloudflare.com/workers-ai"><u>Workers AI</u></a>.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { Stagehand } from "@browserbasehq/stagehand";
+import { endpointURLString } from "@cloudflare/playwright";
+import { WorkersAIClient } from "./workersAIClient"; // wrapper to convert cloudflare AI
+
+
+export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const stagehand = new Stagehand({
+           env: "LOCAL",
+           localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+           llmClient: new WorkersAIClient(env.AI),
+           verbose: 1,
+       });
+       await stagehand.init();
+
+
+       const page = stagehand.page;
+       await page.goto("https://mini-ai-agent.cloudflareresearch.com/llm");
+
+
+       const { extraction } = await page.extract("what are the pizza available on the menu?");
+       return new Response(extraction);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>You can access that code for yourself on <a href="https://mini-ai-agent.cloudflareresearch.com/llm"><i><u>https://mini-ai-agent.cloudflareresearch.com/llm</u></i></a>. Here’s the response we got on October 10, 2025:</p>
+	<pre class="language-Rust"><code class="language-Rust">Margherita Classic: $12.99
+Pepperoni Supreme: $14.99
+Veggie Garden: $13.99
+Meat Lovers: $16.99
+Hawaiian Paradise: $15.49</code></pre>
+	<p>Using the screenshot API of browser rendering, we can also inspect what the agent is doing. Here's how the browser renders the page in the example above:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lXTePCTUORCyyOWNNcwZ8/5978abd1878f78107a2c9606c3a1ef51/image4.png" alt="" class="kg-image" width="1280" height="720" loading="lazy">
+	</figure>
+	<p>Stagehand allows us to identify components on the page, such as <code>page.act(“Click on pepperoni pizza”)</code> and <code>page.act(“Click on Pay now”)</code>. This eases interaction between the developer and the browser.</p>
+	<p>To go further, and instruct the agent to perform the whole flow autonomously, we have to use the appropriately named <a href="https://docs.stagehand.dev/basics/agent"><u>agent</u></a> mode of Stagehand. This feature is not yet supported by Cloudflare Workers, but is provided below for completeness.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { Stagehand } from "@browserbasehq/stagehand";
+import { endpointURLString } from "@cloudflare/playwright";
+import { WorkersAIClient } from "./workersAIClient";
+
+
+export default {
+   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+       const stagehand = new Stagehand({
+           env: "LOCAL",
+           localBrowserLaunchOptions: { cdpUrl: endpointURLString(env.BROWSER) },
+           llmClient: new WorkersAIClient(env.AI),
+           verbose: 1,
+       });
+       await stagehand.init();
+       
+       const agent = stagehand.agent();
+       const result = await agent.execute(`I'd like to order a pepperoni pizza with extra cheese.
+                                           Please deliver it to Cloudflare Austin office.
+                                           Price should not be more than $20.`);
+
+
+       return new Response(result.message);
+   },
+} satisfies ExportedHandler&lt;Env&gt;;</code></pre>
+	<p>We can see that instead of adding step-by-step instructions, the agent is provided control. To actually pay, it would need access to a payment method such as a <a href="https://en.wikipedia.org/wiki/Controlled_payment_number"><u>virtual credit card</u></a>.</p>
+	<p>The prompt had some subtlety in that we’ve scoped the location to Cloudflare’s Austin office. This is because while the agent responds to us, it needs to understand our context. In this case, the agent operates out of Cloudflare edge, a location remote to us. This implies we are unlikely to pick up a pizza from this <a href="https://www.cloudflare.com/learning/cdn/glossary/data-center"><u>data center</u></a> if it was ever delivered.</p>
+	<p>The more capabilities we provide to the agent, the more it has the ability to create some disruption. Instead of someone having to make 5 clicks at a slow rate of 1 request per 10 seconds, they’d have a program running in a data center possibly making all 5 requests in a second.</p>
+	<p>This agent is simple, but now imagine many thousands of these — some benign, some not — running at datacenter speeds. This is the challenge origins will face.</p>
+	<div class="flex anchor relative">
+		<h2 id="protecting-origins">Protecting origins</h2>
+		<a href="https://blog.cloudflare.com/#protecting-origins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For humans to interact with the online world, they need a web browser and some peripherals with which to direct the behavior of that browser. Agents are another way of directing a browser, so it may be tempting to think that not much is actually changing from the origin's point of view. Indeed, the most obvious change from the origin's point of view is merely where traffic comes from:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/304j2MNDUNwAaipqmH2Jbt/35beb792bda327a6cf0db3b642bbc4d6/unnamed-1.png" alt="" class="kg-image" width="1600" height="780" loading="lazy">
+	</figure>
+	<p>The reason this change is significant has to do with the tools the server has to manage traffic. Websites generally try to be as permissive as possible, but they also need to manage finite resources (bandwidth, CPU, memory, storage, and so on). There are a few basic ways to do this:</p>
+	<ol>
+		<li>
+			<p><b>Global security policy</b>: A server may opt to slow down, CAPTCHA, or even temporarily block requests from all users. This policy may be applied to an entire site, a specific resource, or to requests classified as being part of a known or likely attack pattern. Such mechanisms may be deployed in reaction to an observed spike in traffic, as in a DDoS attack, or in anticipation of a spike in legitimate traffic, as in <a href="https://developers.cloudflare.com/waiting-room"><u>Waiting Room</u></a>.</p>
+		</li>
+		<li>
+			<p><b>Incentives</b>: Servers sometimes try to incentivize users to use the site when more resources are available. For instance, a server price may be lower depending on the location or request time. This could be implemented with a <a href="https://developers.cloudflare.com/rules/snippets/when-to-use"><u>Cloudflare Snippet</u></a>.</p>
+		</li>
+	</ol>
+	<p>While both tools can be effective, they also sometimes cause significant collateral damage. For example, while rate limiting a website's login endpoint <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#protecting-against-credential-stuffing"><u>can help prevent credential stuffing attacks</u></a>, it also degrades the user experience for non-attackers. Before resorting to such measures, servers will first try to apply the security policy (whether a rate limit, a CAPTCHA, or an outright block) to individual users or groups of users.</p>
+	<p>However, in order to apply a security policy to individuals, the server needs some way of identifying them. Historically, this has been done via some combination of IP addresses, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent"><u>User-Agent</u></a>, an account tied to the user identity (if available), and other fingerprints. Like most cloud service providers, Cloudflare has a <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices"><u>dedicated offering</u></a> for per-user rate limits based on such heuristics.</p>
+	<p>Fingerprinting works for the most part. However, it's unequitably distributed. On mobile, users <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/#captchas-dont-work-in-mobile-environments-pats-remove-the-need-for-them"><u>have an especially difficult time solving CAPTCHA</u></a>s, when using a VPN they’re <a href="https://arstechnica.com/tech-policy/2023/07/meta-blocking-vpn-access-to-threads-in-eu"><u>more</u></a> <a href="https://help.netflix.com/en/node/277"><u>likely</u></a> <a href="https://www.theregister.com/2015/10/19/bbc_cuts_off_vpn_to_iplayer"><u>to</u></a> <a href="https://torrentfreak.com/hulu-blocks-vpn-users-over-piracy-concerns-140425"><u>be</u></a> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/troubleshooting/common-issues"><u>blocked</u></a>, and when using <a href="https://www.peteresnyder.com/static/papers/speedreader-www2019.pdf"><u>reading mode</u></a> they can mess up their fingerprint, preventing rendering of the page.</p>
+	<p>Likewise, agentic AI only exacerbates the limitations of fingerprinting. Not only will more traffic be concentrated on a smaller source IP range, the agents themselves will run the same software and hardware platform, making it harder to distinguish honest from malicious users.</p>
+	<p>Something that could help is <a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a>, which would allow agents to identify to the origin which platform they're operated by. However, we wouldn't want to extend this mechanism — intended for identifying the platform itself — to identifying individual users of the platforms, as this would create an unacceptable privacy risk for these users.</p>
+	<p>We need some way of implementing security controls for individual users without identifying them. But how? The Privacy Pass protocol provides <a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/#captchas-dont-work-in-mobile-environments-pats-remove-the-need-for-them"><u>a partial solution</u></a>.</p>
+	<div class="flex anchor relative">
+		<h2 id="privacy-pass-and-its-limitations">Privacy Pass and its limitations</h2>
+		<a href="https://blog.cloudflare.com/#privacy-pass-and-its-limitations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Today, one of the most prominent use cases for Privacy Pass is to <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting"><u>rate limit</u></a> requests from a user to an origin, as we have <a href="https://blog.cloudflare.com/privacy-pass-standard/#privacy-pass-protocol"><u>discussed before</u></a>. The protocol works roughly as follows. The client is <b>issued</b> a number of <b>tokens</b>. Each time it wants to make a request, it <b>redeems</b> one of its tokens to the origin; the origin allows the request through only if the token is <b>fresh</b>, i.e., has never been observed before by the origin.</p>
+	<p>In order to use Privacy Pass for per-user rate-limiting, it's necessary to limit the number of tokens issued to each user (e.g., 100 tokens per user per hour). To rate limit an AI agent, this role would be fulfilled by the AI platform. To obtain tokens, the user would log in with the platform, and said platform would allow the user to get tokens from the issuer. The AI platform fulfills the <b>attester</b> role in Privacy Pass <a href="https://datatracker.ietf.org/doc/html/rfc9576"><u>parlance</u></a>. The attester is the party guaranteeing the per-user property of the rate limit. The AI platform, as an attester, is incentivized to enforce this token distribution as it stakes its reputation: Should it allow for too many tokens to be issued, the issuer could distrust them.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62Rz5eS1UMm2pKorpowEGg/4949220bdf2fa3c39ccfa17d4df70fff/token__1_.png" alt="" class="kg-image" width="1200" height="400" loading="lazy">
+	</figure>
+	<p>The issuance and redemption protocols are designed to have two properties:</p>
+	<ul>
+		<li>
+			<p>Tokens are <b>unforgeable</b>: only the issuer can issue valid tokens.</p>
+		</li>
+		<li>
+			<p>Tokens are <b>unlinkable: </b>no party, including the issuer, attester, or origin, can tell which user a token was issued to. </p>
+		</li>
+	</ul>
+	<p>These properties can be achieved using a <a href="https://csrc.nist.gov/glossary/term/cryptographic_primitive"><u>cryptographic primitive</u></a> called a <a href="https://blog.cloudflare.com/privacy-pass-the-math"><u>blind signature</u></a><b> </b>scheme. In a conventional signature scheme, the signer uses its <b>private key</b> to produce a signature for a message. Later on, a verifier can use the signer’s <b>public key</b> to verify the signature. Blind signature schemes work in the same way, except that the message to be signed is blinded such that the signer doesn't know the message it's signing. The client “blinds” the message to be signed and sends it to the server, which then computes a blinded signature over the blinded message. The client obtains the final signature by unblinding the signature. </p>
+	<p>This is exactly how the standardised Privacy Pass issuance protocols are defined by <a href="https://www.rfc-editor.org/rfc/rfc9578"><u>RFC 9578</u></a>:</p>
+	<ul>
+		<li>
+			<strong>Issuance:</strong> The user generates a random message
+			<strong>$k$</strong>
+			which we call the
+			<strong>nullifier</strong>. Concretely, this is just a random, 32-byte string. It then blinds the nullifier and sends it to the issuer. The issuer replies with a blind signature. Finally, the user unblinds the signature to get
+			<strong>$\sigma$</strong>,
+			a signature for the nullifier
+			<strong>$k$</strong>. The token is the pair
+			<strong>$(k, \sigma)$</strong>.
+		</li>
+		<li>
+			<strong>Redemption:</strong> When the user presents
+			<strong>$(k, \sigma)$</strong>,
+			the origin checks that
+			<strong>$\sigma$</strong>
+			is a valid signature for the nullifier
+			<strong>$k$</strong>
+			and that
+			<strong>$k$</strong>
+			is fresh. If both conditions hold, then it accepts and lets the request through.
+		</li>
+	</ul>
+	<p>Blind signatures are simple, cheap, and perfectly suited for many applications. However, they have some limitations that make them unsuitable for our use case.</p>
+	<p>First, the communication cost of the issuance protocol is too high. For each token issued, the user sends a 256-byte, blinded nullifier and the issuer replies with a 256-byte blind signature (assuming RSA-2048 is used). That's 0.5KB of additional communication per request, or 500KB for every 1,000 requests. This is manageable as we’ve seen in a <a href="https://eprint.iacr.org/2023/414.pdf"><u>previous experiment</u></a> for Privacy Pass, but not ideal. Ideally, the bandwidth would be sublinear in the rate limit we want to enforce. An alternative to blind signatures with lower compute time are Oblivious Pseudorandom Functions (<a href="https://datatracker.ietf.org/doc/rfc9497"><u>VOPRF</u></a>), but the bandwidth is still asymptotically linear. We’ve <a href="https://blog.cloudflare.com/privacy-pass-the-math"><u>discussed them in the past</u></a>, as they served as the basis for early deployments of Privacy Pass.</p>
+	<p>Second, blind signatures can't be used to rate-limit on a per-origin basis. Ideally, when issuing $N$ tokens to the client, the client would be able to redeem at most $N$ tokens at any origin server that can verify the token's validity. However, the client can't safely redeem the same token at more than one server because it would be possible for the servers to link those redemptions to the same client. What's needed is some mechanism for what we'll call <b>late origin-binding</b>: transforming a token for redemption at a particular origin in a way that's unlinkable to other redemptions of the same token.</p>
+	<p>Third, once a token is issued, it can't be revoked: it remains valid as long as the issuer's public key is valid. This makes it impossible for an origin to block a specific user if it detects an attack, or if its tokens are compromised. The origin can block the offending request, but the user can continue to make requests using its remaining token budget.</p>
+	<div class="flex anchor relative">
+		<h2 id="anonymous-credentials-and-the-future-of-privacy-pass">Anonymous credentials and the future of Privacy Pass</h2>
+		<a href="https://blog.cloudflare.com/#anonymous-credentials-and-the-future-of-privacy-pass" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As noted by <a href="https://dl.acm.org/doi/pdf/10.1145/4372.4373"><u>Chaum</u></a> in 1985, an <b>anonymous credential</b> system allows users to obtain a credential from an issuer, and later prove possession of this credential, in an unlinkable way, without revealing any additional information. Also, it is possible to demonstrate that some attributes are attached to the credential.</p>
+	<p>One way to think of an anonymous credential is as a kind of blind signature with some additional capabilities: late-binding (link a token to an origin after issuance), multi-show (generate multiple tokens from a single issuer response), and expiration distinct from key rotation (token validity decoupled of the issuer cryptographic key validity). In the redemption flow for Privacy Pass, the client presents the unblinded message and signature to the server. To accept the redemption, the server needs to verify the signature. In an AC system, the client only presents a <b>part of the message</b>. In order for the server to accept the request, the client needs to prove to the server that it knows a valid signature for the entire message without revealing the whole thing.</p>
+	<p>The flow we described above would therefore include this additional <b>presentation</b> step. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pb3ZDoAHbDLEt0mxtf67T/b6be11710a7df7a4df7d1c89788285a7/credentials__2_.png" alt="" class="kg-image" width="1200" height="400" loading="lazy">
+	</figure>
+	<p>Note that the tokens generated through blind signatures or VOPRFs can only be used once, so they can be regarded as <i>single-use tokens</i>. However, there exists a type of anonymous credentials that allows tokens to be used multiple times. For this to work, the issuer grants a <i>credential</i> to the user, who can later derive at most <i>N</i> many single-use tokens for redemption. Therefore, the user can send multiple requests, at the expense of a single issuance session. </p>
+	<p>The table below describes how blind signatures and anonymous credentials provide features of interest to rate limiting.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Feature</b></p>
+				</td>
+				<td>
+					<p><b>Blind Signature</b></p>
+				</td>
+				<td>
+					<p><b>Anonymous Credential</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Issuing Cost</b></p>
+				</td>
+				<td>
+					<p>Linear complexity: issuing 10 signatures is 10x as expensive as issuing one signature</p>
+				</td>
+				<td>
+					<p>Sublinear complexity: signing 10 attributes is cheaper than 10 individual signatures</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Proof Capability</b></p>
+				</td>
+				<td>
+					<p>Only prove that a message has been signed</p>
+				</td>
+				<td>
+					<p>Allow efficient proving of partial statements (i.e., attributes)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>State Management</b></p>
+				</td>
+				<td>
+					<p>Stateless</p>
+				</td>
+				<td>
+					<p>Stateful</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Attributes</b></p>
+				</td>
+				<td>
+					<p>No attributes</p>
+				</td>
+				<td>
+					<p>Public (e.g. expiry time) and private state</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>
+		Let's see how a simple anonymous credential scheme works. The client's message consists of the pair
+		<strong>$(k, C)$</strong>,
+		where
+		<strong>$k$</strong>
+		is a
+		<strong>nullifier</strong> and
+		<strong>$C$</strong>
+		is a
+		<strong>counter</strong> representing the remaining number of times the client can access a resource. The value of the counter is controlled by the server: when the client redeems its credential, it presents both the nullifier and the counter. In response, the server checks that signature of the message is valid and that the nullifier is fresh, as before. Additionally, the server also
+	</p>
+	<ol>
+		<li>
+			<p>checks that the counter is greater than zero; and</p>
+		</li>
+		<li>
+			<p>decrements the counter issuing a new credential for the updated counter and a fresh nullifier.</p>
+		</li>
+	</ol>
+	<p>A blind signature could be used to meet this functionality. However, whereas the nullifier can be blinded as before, it would be necessary to handle the counter in plaintext so that the server can check that the counter is valid (Step 1) and update it (Step 2). This creates an obvious privacy risk since the server, which is in control of the counter, can use it to link multiple presentations by the same client. For example, when you reach out to buy a pepperoni pizza, the origin could assign you a special counter value, which eases fingerprinting when you present it a second time. Fortunately, there exist anonymous credentials designed to close this kind of privacy gap.</p>
+	<p>The scheme above is a simplified version of Anonymous Credit Tokens (<a href="https://datatracker.ietf.org/doc/draft-schlesinger-cfrg-act"><u>ACT</u></a>), one of the anonymous credential schemes being considered for adoption by the <a href="https://datatracker.ietf.org/wg/privacypass/about"><u>Privacy Pass working group</u></a> at IETF. The key feature of ACT is its <b>statefulness</b>: upon successful redemption, the server re-issues a new credential with updated nullifier and counter values. This creates a feedback loop between the client and server that can be used to express a variety of security policies.</p>
+	<p>By design, it's not possible to present ACT credentials multiple times simultaneously: the first presentation must be completed so that the re-issued credential can be presented in the next request. <b>Parallelism </b>is the key feature of Anonymous Rate-limited Credential (<a href="https://datatracker.ietf.org/doc/html/draft-yun-cfrg-arc-00"><u>ARC</u></a>), another scheme under discussion at the Privacy Pass working group. ARCs can be presented across multiple requests in parallel up to the presentation limit determined during issuance.</p>
+	<p>Another important feature of ARC is its support for late origin-binding: when a client is issued an ARC with presentation limit $N$, it can safely use its credential to present up to $N$ times to any origin that can verify the credential.</p>
+	<p>These are just examples of relevant features of some anonymous credentials. Some applications may benefit from a subset of them; others may need additional features. Fortunately, both ACT and ARC can be constructed from a small set of cryptographic primitives that can be easily adapted for other purposes.</p>
+	<div class="flex anchor relative">
+		<h2 id="building-blocks-for-anonymous-credentials">Building blocks for anonymous credentials</h2>
+		<a href="https://blog.cloudflare.com/#building-blocks-for-anonymous-credentials" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ARC and ACT share two primitives in common: <a href="https://eprint.iacr.org/2013/516.pdf"><b><u>algebraic MACs</u></b></a>, which provide for limited computations on the blinded message; and <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof"><b><u>zero-knowledge proofs (ZKP)</u></b></a> for proving validity of the part of the message not revealed to the server. Let's take a closer look at each.</p>
+	<div class="flex anchor relative">
+		<h3 id="algebraic-macs">Algebraic MACs</h3>
+		<a href="https://blog.cloudflare.com/#algebraic-macs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A Message Authenticated Code (MAC) is a cryptographic tag used to verify a message's authenticity (that it comes from the claimed sender) and integrity (that it has not been altered). Algebraic MACs are built from mathematical structures like <a href="https://en.wikipedia.org/wiki/Group_action"><u>group actions</u></a>. The algebraic structure gives them some additional functionality, one of them being a <i>homomorphism</i> that we can blind easily to conceal the actual value of the MAC. Adding a random value on an algebraic MAC blinds the value.</p>
+	<p>Unlike blind signatures, both ACT and ARC are only <i>privately</i> verifiable, meaning the issuer and the origin must both have the issuer's private key. Taking Cloudflare as an example, this means that a credential issued by Cloudflare can only be redeemed by an origin behind Cloudflare. Publicly verifiable variants of both are possible, but at an additional cost.</p>
+	<div class="flex anchor relative">
+		<h3 id="zero-knowledge-proofs-for-linear-relations">Zero-Knowledge Proofs for linear relations</h3>
+		<a href="https://blog.cloudflare.com/#zero-knowledge-proofs-for-linear-relations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Zero knowledge proofs (ZKP) allow us to prove a statement is true without revealing the exact value that makes the statement true. The ZKP is constructed by a prover in such a way that it can only be generated by someone who actually possesses the secret. The verifier can then run a quick mathematical check on this proof. If the check passes, the verifier is convinced that the prover's initial statement is valid. The crucial property is that the proof itself is just data that confirms the statement; it contains no other information that could be used to reconstruct the original secret.</p>
+	<p>For ARC and ACT, we want to prove <i>linear relations</i> of secrets. In ARC, a user needs to prove that different tokens are linked to the same original secret credential. For example, a user can generate a proof showing that a <i>request token</i> was derived from a valid <i>issued credential</i>. The system can verify this proof to confirm the tokens are legitimately connected, all without ever learning the underlying secret credential that ties them together. This allows the system to validate user actions while guaranteeing their privacy.</p>
+	<p>Proving simple linear relations can be extended to prove a number of powerful statements, for example that a number is in range. For example, this is useful to prove that you have a positive balance on your account. To prove your balance is positive, you prove that you can encode your balance in binary. Let’s say you can at most have 1024 credits in your account. To prove your balance is non-zero when it is, for example, 12, you prove two things simultaneously: first, that you have a set of binary bits, in this case 12=(1100)<sub>2</sub>, and second, that a linear equation using these bits (8*1 + 4*1 + 2*0 + 1*0) correctly adds up to your total committed balance. This convinces the verifier that the number is validly constructed without them learning the exact value. This is how it works for powers of two, but it can <a href="https://github.com/chris-wood/draft-arc/pull/38"><u>easily be extended to arbitrary ranges</u></a>.</p>
+	<p>The mathematical structure of algebraic MACs allows easy blinding and evaluation. The structure also allows for an easy proof that a MAC has been evaluated with the private key without revealing the MAC. In addition, ARC could use ZKPs to prove that a nonce has not been spent before. In contrast, ACT uses ZKPs to prove we have enough of a balance left on our token. The balance is subtracted homomorphically using more group structure.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-much-does-this-all-cost">How much does this all cost?</h2>
+		<a href="https://blog.cloudflare.com/#how-much-does-this-all-cost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Anonymous credentials allow for more flexibility, and have the potential to reduce the communication cost, compared to blind signatures in certain applications. To identify such applications, we need to measure the concrete communication cost of these new protocols. In addition, we need to understand how their CPU usage compares to blind signatures and oblivious pseudorandom functions.</p>
+	<p>We measure the time that each participant spends at each stage of some AC schemes. We also report the size of messages transmitted across the network. For ARC, ACT, and VOPRF, we'll use <a href="https://doi.org/10.17487/RFC9496"><u>ristretto255</u></a> as the prime group and SHAKE128 for hashing. For Blind RSA, we'll use a 2048-bit modulus and SHA-384 for hashing.</p>
+	<p>Each algorithm was implemented in Go, on top of the <a href="https://github.com/cloudflare/circl"><u>CIRCL</u></a> library. We plan to open source the code once the specifications of ARC and ACT begin to stabilize.</p>
+	<p>Let’s take a look at the most widely used deployment in Privacy Pass: Blind RSA. Redemption time is low, and most of the cost lies with the server at issuance time. Communication cost is mostly constant and in the order of 256 bytes.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm" colspan="2" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Blind RSA</span><br><a href="https://doi.org/10.17487/RFC9474"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">RFC9474</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(RSA-2048+SHA384)</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 Token</span></th>
+				</tr>
+				<tr>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Message Size</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax" rowspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Issuance</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Blind)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">63 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">256 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server (Evaluate)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.69 ms</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">256 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Finalize)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">256 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Redemption</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> –</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">300 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>When looking at VOPRF, verification time on the server is slightly higher than for Blind RSA, but communication cost and issuance are much faster. Evaluation time on the server is 10x faster for 1 token, and more than 25x faster when using <a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens"><u>amortized token issuance</u></a>. Communication cost per token is also more appealing, with a message size at least 3x lower.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm" colspan="2" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">VOPRF</span><br><a href="https://doi.org/10.17487/RFC9497"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">RFC9497</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Ristretto255+SHA512)</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1 Token</span></th>
+					<th class="tg-baqh" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1000 Amortized issuances</span></th>
+				</tr>
+				<tr>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Message Size</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(per token)</span></th>
+					<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Message Size </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(per token)</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax" rowspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Issuance</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Blind)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">54 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32 B</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">54 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server (Evaluate)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">260 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">96 B</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">99 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32.064 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Finalize)</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">376 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">64 B</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">173 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">64 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Redemption</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> –</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">96 B</span></td>
+					<td class="tg-baqh" colspan="2" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">57 µs</span></td>
+					<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>This makes VOPRF tokens appealing for applications requiring a lot of tokens that can accept a slightly higher redemption cost, and that don’t need private verifiability.</p>
+	<p>Now, let’s take a look at the figures for ARC and ACT anonymous credential schemes. For both schemes we measure the time to issue a credential that can be presented at most $N=1000$ times.</p>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-l4d4 {
+			background-color: #D9D2E9;
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-8mqg {
+			background-color: #FCE5CD;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-sd4m {
+			background-color: #CCC;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-har8 {
+			background-color: #8E7CC3;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-y4nt {
+			background-color: #E69138;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-7nm9 {
+			background-color: #D9D2E9;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dzqp {
+			background-color: #FCE5CD;
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dgl5 {
+			background-color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		@media screen and (max-width: 767px) {
+			.tg {
+				width: auto !important;
+			}
+
+			.tg col {
+				width: auto !important;
+			}
+
+			.tg-wrap {
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: auto 0px;
+			}
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-sd4m" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Issuance</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Credential Generation</span></th>
+					<th class="tg-har8" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ARC</span></th>
+					<th class="tg-y4nt" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ACT</span></th>
+				</tr>
+				<tr>
+					<th class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Message Size</span></th>
+					<th class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></th>
+					<th class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Message Size</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Request)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">323 µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">224 B</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">64 µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">141 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server (Response)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1349 µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">448 B</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">251 µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">176 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Finalize)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1293 µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">128 B</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">204 µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">176 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi" colspan="5"></td>
+				</tr>
+				<tr>
+					<td class="tg-dgl5" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Redemption</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Credential Presentation</span></td>
+					<td class="tg-har8" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ARC</span></td>
+					<td class="tg-y4nt" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ACT</span></td>
+				</tr>
+				<tr>
+					<td class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></td>
+					<td class="tg-7nm9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Message Size</span></td>
+					<td class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Time</span></td>
+					<td class="tg-8mqg"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Message Size</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Present)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">735 µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">288 B</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 1740 µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1867 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server (Verify/Refund)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">740 µs</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1785 µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">141 B</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client (Update)</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-l4d4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">–</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">508 µs</span></td>
+					<td class="tg-dzqp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">176 B</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<p>As we would hope, the communication cost and the server’s runtime is much lower than a batched issuance with either Blind RSA or VOPRF. For example, a VOPRF issuance of 1000 tokens takes 99 ms (99 µs per token) <i>vs</i> 1.35 ms for issuing one ARC credential that allows for 1000 presentations. This is about 70x faster. The trade-off is that presentation is more expensive, both for the client and server.</p>
+	<p>How about ACT? Like ARC, we would expect the communication cost of issuance grows much slower with respect to the credits issued. Our implementation bears this out. However, there are some interesting performance differences between ARC and ACT: issuance is much cheaper for ACT than it is for ARC, but redemption is the opposite.</p>
+	<p>What's going on? The answer has largely to do with what each party needs to prove with ZKPs at each step. For example, during ACT redemption, the client proves to the server (in zero-knowledge) that its counter $C$ is in the desired range, i.e., $0 \leq C \leq N$. The proof size is on the order of $\log_{2} N$, which accounts for the larger message size. In the current version, ARC redemption does not involve range proofs, but a range proof may be added in a <a href="http://mailarchive.ietf.org/arch/msg/privacy-pass/A3VHUdHqhslwBzYEQjcaXzYQAxQ"><u>future version</u></a>. Meanwhile, the statements the client and server need to prove during ARC issuance are a bit more complicated than for ARC presentation, which accounts for the difference in runtime there.</p>
+	<p>The advantage of anonymous credentials, as discussed in the previous sections, is that issuance only has to be performed once. When a server evaluates its cost, it takes into account the cost of all issuances and the cost of all verifications. At present, only accounting for credentials costs, it’s cheaper for a server to issue and verify tokens than verify an anonymous credential presentation.</p>
+	<p>The advantage of multiple-use anonymous credentials is that instead of the issuer generating $N$ tokens, the bulk of computation is offloaded to the clients. This is more scoped. Late origin binding allows them to work for multiple origins/namespace, range proof to decorrelate expiration from key rotation, and refund to provide a dynamic rate limit. Their current applications are dictated by the limitation of single-use token based schemes, more than by the added efficiency they provide. This seems to be an exciting area to explore, and see if closing the gap is possible.</p>
+	<div class="flex anchor relative">
+		<h2 id="managing-agents-with-anonymous-credentials">Managing agents with anonymous credentials</h2>
+		<a href="https://blog.cloudflare.com/#managing-agents-with-anonymous-credentials" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Managing agents will likely require features from both ARC and ACT.</p>
+	<p>ARC already has much of the functionality we need: it supports rate limiting, is communication-efficient, and it supports late origin-binding. Its main downside is that, once an ARC credential is issued, it can't be revoked. A malicious user can always make up to <i>N</i> requests to any origin it wants.</p>
+	<p>We can allow for a limited form of revocation by pairing ARC with blind signatures (or VOPRF). Each presentation of the ARC credential is accompanied by a Privacy Pass token: upon successful presentation, the client is issued another Privacy Pass token it can use during the next presentation. To revoke a credential, the server would simply not re-issue the token:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EiHmkbLef6kXsQU473fcX/d1d4018eaf2abd42b9690ae5d01494dc/image1.png" alt="" class="kg-image" width="1999" height="1767" loading="lazy">
+	</figure>
+	<p>This scheme is already quite useful. However, it has some important limitations:</p>
+	<ul>
+		<li>
+			<p>Parallel presentation across origins is not possible: the client must wait for the request to one origin to succeed before it can initiate a request to a second origin.</p>
+		</li>
+		<li>
+			<p>Revocation is <i>global</i> rather than per-origin, meaning the credential is not only revoked for the origin to whom it was presented, but for every origin it can be presented to. We suspect this will be undesirable in some cases. For example, an origin may want to revoke if a request violates its <code>robots.txt</code> policy; but the same request may have been accepted by other origins. </p>
+		</li>
+	</ul>
+	<p>A more fundamental limitation of this design is that the decision to revoke can only be made on the basis of a single request — the one in which the credential was presented. It may be risky to decide to block a user on the basis of a single request; in practice, attack patterns may only emerge across many requests. ACT's statefulness enables at least a rudimentary form of this kind of defense. Consider the following scheme:</p>
+	<ul>
+		<li>
+			<p><b>Issuance: </b>The client is issued an ARC with presentation limit $N=1$.</p>
+		</li>
+		<li>
+			<p><b>Presentation:</b></p>
+			<ul>
+				<li>
+					<p>When the client presents its ARC credential to an origin for the first time, the server issues an ACT credential with a valid initial state.</p>
+				</li>
+				<li>
+					<p>When the client presents an ACT with valid state (e.g., credit counter greater than 0), the origin either:</p>
+					<ul>
+						<li>
+							<p>refuses to issue a new ACT, thereby revoking the credential. It would only do so if it had high confidence that the request was part of an attack; or</p>
+						</li>
+						<li>
+							<p>issues a new ACT with state updated to reduce the ACT credit by the amount of resources consumed while processing the request.</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>Benign requests wouldn't change the state by much (if at all), but suspicious requests might impact the state in a way that gets the user closer to their rate limit much faster.</p>
+	<div class="flex anchor relative">
+		<h2 id="demo">Demo</h2>
+		<a href="https://blog.cloudflare.com/#demo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To see how this idea works in practice, let's look at a working example that uses the <a href="https://developers.cloudflare.com/agents/model-context-protocol"><u>Model Context Protocol</u></a>. The demo below is built using<a href="https://developers.cloudflare.com/agents/model-context-protocol/tools"> <u>MCP Tools</u></a>. <a href="https://modelcontextprotocol.info/tools"><u>Tools</u></a> are extensions the AI agent can call to extend its capabilities. They don't need to be integrated at release time within the MCP client. This provides a nice and easy prototyping avenue for anonymous credentials.</p>
+	<p>Tools are offered by the server via an MCP compatible interface. You can see details on how to build such MCP servers in a <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>previous blog</u></a>.</p>
+	<p>In our pizza context, this could look like a pizzeria that offers you a voucher. Each voucher gets you 3 pizza slices. Mocking a design, an integration within a chat application could look as follows:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WD5MYoSMYGyRW2biwe6j4/bde101967276a72d48d9e494a23db5fa/image5.png" alt="" class="kg-image" width="1104" height="627" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SEqaVpwFxS1D21oyjjbN8/80dde2484f43c15e206ecfda991c286a/image9.png" alt="" class="kg-image" width="1106" height="630" loading="lazy">
+	</figure>
+	<p>The first panel presents all tools exposed by the MCP server. The second one showcases an interaction performed by the agent calling these tools.</p>
+	<p>To look into how such a flow would be implemented, let’s write the MCP tools, offer them in an MCP server, and manually orchestrate the calls with the <a href="https://modelcontextprotocol.io/docs/tools/inspector"><u>MCP Inspector</u></a>.</p>
+	<p>The MCP server should provide two tools:</p>
+	<ul>
+		<li>
+			<p><code>act-issue </code>which issues an ACT credential valid for 3 requests. The code used here is an earlier version of the IETF draft which has some limitations.</p>
+		</li>
+		<li>
+			<p><code>act-redeem</code> makes a presentation of the local credential, and fetches our pizza menu.</p>
+		</li>
+	</ul>
+	<p>First, we run <code>act-issue</code>. At this stage, we could ask the agent to run an<a href="https://modelcontextprotocol.info/specification/draft/basic/authorization"> <u>OAuth flow</u></a>, fetch an internal authentication endpoint, or to compute a proof of work.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sLS7jMfTHPjVW5vMvsTWX/2d2b10fdb12c64f0e33fee89e09eab85/image10.png" alt="" class="kg-image" width="1013" height="474" loading="lazy">
+	</figure>
+	<p>This gives us 3 credits to spend against an origin. Then, we run <code>act-redeem</code></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YTc0Wohrsqw3hizAOmJjU/4534cccbc490ad0aa09522a3875693af/image8.png" alt="" class="kg-image" width="1006" height="460" loading="lazy">
+	</figure>
+	<p>Et voilà. If we run <code>act-redeem</code> once more, we see we have one fewer credit.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/a0zmBfl46hX33hWoXyGyX/86649d9f435562c95a85ec72fbf33022/image3.png" alt="" class="kg-image" width="1017" height="472" loading="lazy">
+	</figure>
+	<p>You can test it yourself, here are the <a href="https://github.com/cloudflareresearch/anonymous-credentials-agent-demo"><u>source codes</u></a> available. The MCP server is written in<a href="https://github.com/modelcontextprotocol/rust-sdk"> <u>Rust</u></a> to integrate with the <a href="https://github.com/SamuelSchlesinger/anonymous-credit-tokens/stargazers"><u>ACT rust</u></a> library. The <a href="https://act-client-demo.cloudflareresearch.com"><u>browser-based client</u></a> works similarly, check it out.</p>
+	<div class="flex anchor relative">
+		<h2 id="moving-further">Moving further</h2>
+		<a href="https://blog.cloudflare.com/#moving-further" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In this post, we’ve presented a concrete approach to rate limit agent traffic. It is in full control of the client, and is built to protect the user's privacy. It uses emerging standards for anonymous credentials, integrates with MCP, and can be readily deployed on Cloudflare Workers.</p>
+	<p>We're on the right track, but there are still questions that remain. As we touched on before, a notable limitation of both ARC and ACT is that they are only <i>privately verifiable</i>. This means that the issuer and origin need to share a private key, for issuing and verifying the credential respectively. There are likely to be deployment scenarios for which this isn't possible. Fortunately, there may be a path forward for these cases using<i> pairing-</i>based cryptography, as in the <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-bbs-signatures"><u>BBS signature specification</u></a> making its way through IETF. We’re also exploring post-quantum implications in a <a href="https://blog.cloudflare.com/pq-anonymous-credentials"><u>concurrent post</u></a>.</p>
+	<p>If you are an agent platform, an agent developer, or a browser, all our code is available on <a href="https://github.com/cloudflareresearch/anonymous-credentials-agent-demo"><u>GitHub</u></a> for you to experiment. Cloudflare is actively working on vetting this approach for real-world use cases.</p>
+	<p>The specification and discussion are happening within the IETF and W3C. This ensures the protocols are built in the open, and receive participation from experts. Improvements are still to be made to clarify the right performance-to-privacy tradeoff, or even the story to deploy on the open web.</p>
+	<p>If you’d like to help us, <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>we’re hiring 1,111 interns</u></a> over the course of next year, and have <a href="https://www.cloudflare.com/careers/early-talent"><u>open positions</u></a>.</p>
+</div>
