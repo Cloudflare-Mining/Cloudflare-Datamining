@@ -1877,7 +1877,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/move": {
-		"description": "Move an account within an organization hierarchy or an account outside an\norganization.",
+		"description": "Move an account within an organization hierarchy or an account outside an organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Accounts_moveAccounts",
 		"parameters": [
 			{

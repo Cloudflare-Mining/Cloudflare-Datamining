@@ -1,6 +1,6 @@
 {
 	"DELETE /organizations/{organization_id}/members/{member_id}": {
-		"description": "Delete a membership to a particular Organization.",
+		"description": "Delete a membership to a particular Organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_delete",
 		"parameters": [
 			{
@@ -126,7 +126,7 @@
 		]
 	},
 	"GET /organizations/{organization_id}/members": {
-		"description": "List memberships for an Organization.",
+		"description": "List memberships for an Organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_list",
 		"parameters": [
 			{
@@ -417,7 +417,7 @@
 		]
 	},
 	"GET /organizations/{organization_id}/members/{member_id}": {
-		"description": "Retrieve a single membership from an Organization.",
+		"description": "Retrieve a single membership from an Organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_retrieve",
 		"parameters": [
 			{
@@ -631,7 +631,7 @@
 		]
 	},
 	"POST /organizations/{organization_id}/members": {
-		"description": "Create a membership that grants access to a specific Organization.",
+		"description": "Create a membership that grants access to a specific Organization. (Currently in Closed Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
 		"operationId": "Members_create",
 		"parameters": [
 			{
