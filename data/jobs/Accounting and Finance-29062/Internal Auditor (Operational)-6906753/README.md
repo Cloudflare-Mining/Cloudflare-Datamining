@@ -34,7 +34,8 @@
 	<li>Bachelor's degree in accounting, finance, business, or related field.</li>
 	<li>CPA, CIA, or CISA certification (or progress toward) is a plus.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>The salary range for the Austin area is: $78,000 - $96,000</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

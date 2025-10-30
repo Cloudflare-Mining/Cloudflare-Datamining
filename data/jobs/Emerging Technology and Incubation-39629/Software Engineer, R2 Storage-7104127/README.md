@@ -5,54 +5,22 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Washington DC or Austin TX</strong></p>
-<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
-<p><strong>What you'll do</strong></p>
-<p>As a Software Engineer: Resiliency, you will be part of a Resiliency Organization responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. We are looking for engineers to join the <strong>Maintenance Optimizer</strong> team and shape the future of infrastructure reliability. We're building a cutting-edge Maintenance Coordination System in Typescript &amp; Go that will be pivotal in guaranteeing our service level capacity, dynamically allocating hardware resources, and supporting our critical capacity SLOs. This is a unique opportunity to work on complex, globally distributed systems which underpin core infrastructure and all Cloudflare products. We ensure the seamless operation of our global network. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
-<p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3><strong>Locations: Austin, TX | Seattle, WA | Lisbon, PT | London, UK</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the Team</strong></h3>
+<p>R2 is Cloudflare’s object storage platform, designed to offer developers a durable and reliable storage solution that integrates seamlessly with Cloudflare’s Developer Platform, including Workers and other compute products. The R2 team builds foundational infrastructure that operates at massive scale and powers critical workloads across Cloudflare’s global network–designing and maintaining distributed systems that handle high throughput, provide strong consistency and durability guarantees, and support a growing number of developer-facing features.</p>
+<p>You’ll be joining a highly motivated team that is building the next generation of object storage.</p>
+<h3><strong>What You’ll Do</strong></h3>
+<p>In this role, you will help us build out the next generation of our globally distributed object storage system. You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, implement a new feature, or fix a bug that's impacting our users. You can expect to interact with a variety of languages and technologies including Rust, Go, and TypeScript.</p>
+<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
 <ul>
-	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
-	<li>Experience building both backend systems and frontend widgets.</li>
-	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
-	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
-	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
-	<li>Strong verbal and written English language skills.</li>
-	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus.</li>
-	<li>Experience with data ingestion and analysis - pulling metrics from hundreds of edge data centers.</li>
-	<li>Experience with graph theory - building a health graph on one of the world's largest physical networks.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Strong programming skills with languages like Typescript, Rust, or Go</li>
+	<li>A solid understanding of distributed systems concepts such as consistency, consensus, data replication, and partition tolerance</li>
+	<li>Experience with distributed storage systems</li>
+	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
+	<li>Experience building and maintaining high-throughput, low-latency systems</li>
+	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

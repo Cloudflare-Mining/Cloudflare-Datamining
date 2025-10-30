@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
+<p><strong>Available Locations: Austin Texas - US, Mexico City - Mexico</strong></p>
 <p><strong>About The Role</strong></p>
 <p>Cloudflare is seeking an Enterprise Architect to drive impactful transformation for the IT Organization. This role is an exciting opportunity to shape the future of our systems and processes as we scale to operating at $5 billion in revenue. We are looking for a seasoned professional with deep expertise in building and designing systems at scale that serve the enterprise’s needs.&nbsp;</p>
 <p>In this position, you will be responsible for leading multiple complex workstreams and overseeing the technical delivery of solutions. You will be instrumental in transforming systems and processes to align with Cloudflare’s evolving business and operational needs. You will be responsible for driving strategic initiatives and identifying key gaps in our system capabilities while evangelizing possible solutions compatible with our systems landscape.</p>
