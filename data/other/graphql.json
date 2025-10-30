@@ -3104,7 +3104,7 @@
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"AccountHttpRequests1dGroupsDimensions": {
 		"__description": "",
@@ -3144,7 +3144,7 @@
 		"requests": "",
 		"responseStatusMap": "",
 		"threatPathingMap": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"AccountHttpRequests1dGroupsThreatPathingMapElem": {
 		"__description": "",
@@ -3194,7 +3194,7 @@
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"AccountHttpRequests1hGroupsDimensions": {
 		"__description": "",
@@ -3235,7 +3235,7 @@
 		"requests": "",
 		"responseStatusMap": "",
 		"threatPathingMap": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"AccountHttpRequests1hGroupsThreatPathingMapElem": {
 		"__description": "",
@@ -3285,7 +3285,7 @@
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"AccountHttpRequests1mGroupsDimensions": {
 		"__description": "",
@@ -3332,7 +3332,7 @@
 		"requests": "",
 		"responseStatusMap": "",
 		"threatPathingMap": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"AccountHttpRequests1mGroupsThreatPathingMapElem": {
 		"__description": "",
@@ -7083,6 +7083,7 @@
 		"workersOverviewDataAdaptiveGroups": "",
 		"workersOverviewRequestsAdaptiveGroups": "",
 		"workersSubrequestsAdaptiveGroups": "",
+		"workersVpcConnectionAdaptiveGroups": "",
 		"workflowsAdaptive": "",
 		"workflowsAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
@@ -8262,6 +8263,53 @@
 		"subrequests": "Confidence interval for the corresponding point estimate",
 		"timeToResponseDrainedUs": "Confidence interval for the corresponding point estimate",
 		"timeToResponseUs": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroups": {
+		"__description": "Workers VPC connections with adaptive sampling.",
+		"avg": "The average value for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of Workers VPC Connections",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroupsAvg": {
+		"__description": "",
+		"connectionLatency": "Average latency (in milliseconds) of retrieving a connection to the origin database",
+		"dnsLatency": "Average latency (in milliseconds) of resolving the hostname of the origin",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of Workers VPC Connections, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroupsDimensions": {
+		"__description": "",
+		"coloCode": "IATA airport code for the Cloudflare datacenter where the connection originated.",
+		"date": "Workers VPC Connection timestamp, truncated to start of a day",
+		"datetime": "Workers VPC Connection timestamp",
+		"datetimeHour": "Workers VPC Connection timestamp, truncated to start of hour",
+		"datetimeMinute": "Workers VPC Connection timestamp, truncated to start of minute",
+		"errorCode": "Set for error statuses, contains a user-facing error message.",
+		"status": "The result status of the connection: 'success' or 'error'. Error events may not have complete data.",
+		"targetId": "The ID of the Workers VPC Resource"
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroupsSum": {
+		"__description": "",
+		"connectionLatency": "Total latency (in milliseconds) of establishing a connection to the origin, including DNS resolution and TLS session establishment.",
+		"dnsLatency": "Total Latency (in milliseconds) of resolving the hostname of the origin"
+	},
+	"AccountWorkersVpcConnectionAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"connectionLatency": "Confidence interval for the corresponding point estimate",
+		"dnsLatency": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountWorkflowsAdaptive": {
 		"__description": "Workflows analytics",
@@ -9621,7 +9669,7 @@
 		"__description": "",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1dByColoGroupsDimensions": {
 		"__description": "",
@@ -9693,7 +9741,7 @@
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1dGroupsDimensions": {
 		"__description": "",
@@ -9733,7 +9781,7 @@
 		"requests": "",
 		"responseStatusMap": "",
 		"threatPathingMap": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1dGroupsThreatPathingMapElem": {
 		"__description": "",
@@ -9783,7 +9831,7 @@
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1hGroupsDimensions": {
 		"__description": "",
@@ -9824,7 +9872,7 @@
 		"requests": "",
 		"responseStatusMap": "",
 		"threatPathingMap": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1hGroupsThreatPathingMapElem": {
 		"__description": "",
@@ -9844,7 +9892,7 @@
 		"__description": "",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1mByColoGroupsDimensions": {
 		"__description": "",
@@ -9920,7 +9968,7 @@
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1mGroupsDimensions": {
 		"__description": "",
@@ -9967,7 +10015,7 @@
 		"requests": "",
 		"responseStatusMap": "",
 		"threatPathingMap": "",
-		"threats": "Requests classified as threats"
+		"threats": "<small>DEPRECATED (Replaced by more granular information in <code>firewallEventsAdaptive*</code> nodes):</small> Requests classified as threats"
 	},
 	"ZoneHttpRequests1mGroupsThreatPathingMapElem": {
 		"__description": "",
@@ -10607,6 +10655,7 @@
 		"logpushHealthAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
+		"userProfilesAdaptiveGroups": "",
 		"waitingRoomAnalyticsAdaptive": "",
 		"waitingRoomAnalyticsAdaptiveGroups": "",
 		"workersZoneInvocationsAdaptiveGroups": "",
@@ -10622,6 +10671,31 @@
 		"zarazFetchAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": ""
+	},
+	"ZoneUserProfilesAdaptiveGroups": {
+		"__description": "User ID profiles for login and sign up attempts",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"ZoneUserProfilesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Profile aggregates for a given date.",
+		"userId": "Unique identifier for a user. 128-bit hash."
+	},
+	"ZoneUserProfilesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneUserProfilesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneUserProfilesAdaptiveGroupsSum": {
+		"__description": "",
+		"topCountries": "Array of top 5 countries for a user id."
+	},
+	"ZoneUserProfilesAdaptiveGroupsUniq": {
+		"__description": "",
+		"ipCount": "Number of unique IPs for a user id."
 	},
 	"ZoneWaitingRoomAnalyticsAdaptive": {
 		"__description": "Raw Waiting Room analytics logs",
@@ -11448,6 +11522,7 @@
 		"workersOverviewDataAdaptiveGroups": "Beta. Workers account overview invocation data with adaptive sampling",
 		"workersOverviewRequestsAdaptiveGroups": "Beta. Workers account overview invocation count with adaptive sampling",
 		"workersSubrequestsAdaptiveGroups": "Beta. Workers subrequests with adaptive sampling",
+		"workersVpcConnectionAdaptiveGroups": "Workers VPC connections with adaptive sampling.",
 		"workflowsAdaptive": "Workflows analytics",
 		"workflowsAdaptiveGroups": "Workflows analytics",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
@@ -11545,6 +11620,7 @@
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"settings": "",
+		"userProfilesAdaptiveGroups": "User ID profiles for login and sign up attempts",
 		"waitingRoomAnalyticsAdaptive": "Raw Waiting Room analytics logs",
 		"waitingRoomAnalyticsAdaptiveGroups": "Aggregated Waiting Room analytics logs with adaptive sampling",
 		"workersZoneInvocationsAdaptiveGroups": "Workers invocations with adaptive sampling",
