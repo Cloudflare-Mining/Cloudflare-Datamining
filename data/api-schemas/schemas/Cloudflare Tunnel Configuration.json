@@ -207,6 +207,11 @@
 																				"example": 90,
 																				"type": "integer"
 																			},
+																			"matchSNItoHost": {
+																				"description": "Auto configure the Hostname on the origin server certificate.",
+																				"example": false,
+																				"type": "boolean"
+																			},
 																			"noHappyEyeballs": {
 																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
 																				"example": false,
@@ -317,6 +322,11 @@
 																	"description": "Timeout after which an idle keepalive connection can be discarded.",
 																	"example": 90,
 																	"type": "integer"
+																},
+																"matchSNItoHost": {
+																	"description": "Auto configure the Hostname on the origin server certificate.",
+																	"example": false,
+																	"type": "boolean"
 																},
 																"noHappyEyeballs": {
 																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
@@ -651,6 +661,11 @@
 															"example": 90,
 															"type": "integer"
 														},
+														"matchSNItoHost": {
+															"description": "Auto configure the Hostname on the origin server certificate.",
+															"example": false,
+															"type": "boolean"
+														},
 														"noHappyEyeballs": {
 															"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
 															"example": false,
@@ -761,6 +776,11 @@
 												"description": "Timeout after which an idle keepalive connection can be discarded.",
 												"example": 90,
 												"type": "integer"
+											},
+											"matchSNItoHost": {
+												"description": "Auto configure the Hostname on the origin server certificate.",
+												"example": false,
+												"type": "boolean"
 											},
 											"noHappyEyeballs": {
 												"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
@@ -994,6 +1014,11 @@
 																				"example": 90,
 																				"type": "integer"
 																			},
+																			"matchSNItoHost": {
+																				"description": "Auto configure the Hostname on the origin server certificate.",
+																				"example": false,
+																				"type": "boolean"
+																			},
 																			"noHappyEyeballs": {
 																				"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",
 																				"example": false,
@@ -1104,6 +1129,11 @@
 																	"description": "Timeout after which an idle keepalive connection can be discarded.",
 																	"example": 90,
 																	"type": "integer"
+																},
+																"matchSNItoHost": {
+																	"description": "Auto configure the Hostname on the origin server certificate.",
+																	"example": false,
+																	"type": "boolean"
 																},
 																"noHappyEyeballs": {
 																	"description": "Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.",

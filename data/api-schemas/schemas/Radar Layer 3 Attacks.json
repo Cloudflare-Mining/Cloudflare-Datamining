@@ -7482,8 +7482,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -7624,8 +7627,11 @@
 				"in": "query",
 				"name": "limitPerLocation",
 				"schema": {
+					"default": 10,
 					"description": "Limits the number of attacks per origin/target (refer to `limitDirection` parameter) location.",
 					"example": 10,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -7917,8 +7923,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -8293,8 +8302,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -8678,8 +8690,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -9064,8 +9079,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},

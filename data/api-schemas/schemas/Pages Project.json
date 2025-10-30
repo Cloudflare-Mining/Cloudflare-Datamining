@@ -682,6 +682,7 @@
 															"config": {
 																"properties": {
 																	"deployments_enabled": {
+																		"default": true,
 																		"deprecated": true,
 																		"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																		"type": "boolean",
@@ -715,6 +716,7 @@
 																		"type": "array"
 																	},
 																	"pr_comments_enabled": {
+																		"default": true,
 																		"description": "Whether to enable PR comments.",
 																		"type": "boolean",
 																		"x-auditable": true
@@ -757,6 +759,7 @@
 																		"x-auditable": true
 																	},
 																	"production_deployments_enabled": {
+																		"default": true,
 																		"description": "Whether to trigger a production deployment on commits to the production branch.",
 																		"type": "boolean",
 																		"x-auditable": true
@@ -1303,6 +1306,7 @@
 																	"config": {
 																		"properties": {
 																			"deployments_enabled": {
+																				"default": true,
 																				"deprecated": true,
 																				"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																				"type": "boolean",
@@ -1336,6 +1340,7 @@
 																				"type": "array"
 																			},
 																			"pr_comments_enabled": {
+																				"default": true,
 																				"description": "Whether to enable PR comments.",
 																				"type": "boolean",
 																				"x-auditable": true
@@ -1378,6 +1383,7 @@
 																				"x-auditable": true
 																			},
 																			"production_deployments_enabled": {
+																				"default": true,
 																				"description": "Whether to trigger a production deployment on commits to the production branch.",
 																				"type": "boolean",
 																				"x-auditable": true
@@ -2077,6 +2083,7 @@
 																		"config": {
 																			"properties": {
 																				"deployments_enabled": {
+																					"default": true,
 																					"deprecated": true,
 																					"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																					"type": "boolean",
@@ -2110,6 +2117,7 @@
 																					"type": "array"
 																				},
 																				"pr_comments_enabled": {
+																					"default": true,
 																					"description": "Whether to enable PR comments.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -2152,6 +2160,7 @@
 																					"x-auditable": true
 																				},
 																				"production_deployments_enabled": {
+																					"default": true,
 																					"description": "Whether to trigger a production deployment on commits to the production branch.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -3546,6 +3555,7 @@
 																		"config": {
 																			"properties": {
 																				"deployments_enabled": {
+																					"default": true,
 																					"deprecated": true,
 																					"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																					"type": "boolean",
@@ -3579,6 +3589,7 @@
 																					"type": "array"
 																				},
 																				"pr_comments_enabled": {
+																					"default": true,
 																					"description": "Whether to enable PR comments.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -3621,6 +3632,7 @@
 																					"x-auditable": true
 																				},
 																				"production_deployments_enabled": {
+																					"default": true,
 																					"description": "Whether to trigger a production deployment on commits to the production branch.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -3785,6 +3797,7 @@
 														"config": {
 															"properties": {
 																"deployments_enabled": {
+																	"default": true,
 																	"deprecated": true,
 																	"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																	"type": "boolean",
@@ -3818,6 +3831,7 @@
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
+																	"default": true,
 																	"description": "Whether to enable PR comments.",
 																	"type": "boolean",
 																	"x-auditable": true
@@ -3860,6 +3874,7 @@
 																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
+																	"default": true,
 																	"description": "Whether to trigger a production deployment on commits to the production branch.",
 																	"type": "boolean",
 																	"x-auditable": true
@@ -4349,6 +4364,7 @@
 																				"config": {
 																					"properties": {
 																						"deployments_enabled": {
+																							"default": true,
 																							"deprecated": true,
 																							"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																							"type": "boolean",
@@ -4382,6 +4398,7 @@
 																							"type": "array"
 																						},
 																						"pr_comments_enabled": {
+																							"default": true,
 																							"description": "Whether to enable PR comments.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -4424,6 +4441,7 @@
 																							"x-auditable": true
 																						},
 																						"production_deployments_enabled": {
+																							"default": true,
 																							"description": "Whether to trigger a production deployment on commits to the production branch.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -5818,6 +5836,7 @@
 																				"config": {
 																					"properties": {
 																						"deployments_enabled": {
+																							"default": true,
 																							"deprecated": true,
 																							"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																							"type": "boolean",
@@ -5851,6 +5870,7 @@
 																							"type": "array"
 																						},
 																						"pr_comments_enabled": {
+																							"default": true,
 																							"description": "Whether to enable PR comments.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -5893,6 +5913,7 @@
 																							"x-auditable": true
 																						},
 																						"production_deployments_enabled": {
+																							"default": true,
 																							"description": "Whether to trigger a production deployment on commits to the production branch.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -6057,6 +6078,7 @@
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
+																			"default": true,
 																			"deprecated": true,
 																			"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																			"type": "boolean",
@@ -6090,6 +6112,7 @@
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
+																			"default": true,
 																			"description": "Whether to enable PR comments.",
 																			"type": "boolean",
 																			"x-auditable": true
@@ -6132,6 +6155,7 @@
 																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
+																			"default": true,
 																			"description": "Whether to trigger a production deployment on commits to the production branch.",
 																			"type": "boolean",
 																			"x-auditable": true
@@ -6687,6 +6711,7 @@
 															"config": {
 																"properties": {
 																	"deployments_enabled": {
+																		"default": true,
 																		"deprecated": true,
 																		"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																		"type": "boolean",
@@ -6720,6 +6745,7 @@
 																		"type": "array"
 																	},
 																	"pr_comments_enabled": {
+																		"default": true,
 																		"description": "Whether to enable PR comments.",
 																		"type": "boolean",
 																		"x-auditable": true
@@ -6762,6 +6788,7 @@
 																		"x-auditable": true
 																	},
 																	"production_deployments_enabled": {
+																		"default": true,
 																		"description": "Whether to trigger a production deployment on commits to the production branch.",
 																		"type": "boolean",
 																		"x-auditable": true
@@ -8156,6 +8183,7 @@
 															"config": {
 																"properties": {
 																	"deployments_enabled": {
+																		"default": true,
 																		"deprecated": true,
 																		"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																		"type": "boolean",
@@ -8189,6 +8217,7 @@
 																		"type": "array"
 																	},
 																	"pr_comments_enabled": {
+																		"default": true,
 																		"description": "Whether to enable PR comments.",
 																		"type": "boolean",
 																		"x-auditable": true
@@ -8231,6 +8260,7 @@
 																		"x-auditable": true
 																	},
 																	"production_deployments_enabled": {
+																		"default": true,
 																		"description": "Whether to trigger a production deployment on commits to the production branch.",
 																		"type": "boolean",
 																		"x-auditable": true
@@ -8395,6 +8425,7 @@
 											"config": {
 												"properties": {
 													"deployments_enabled": {
+														"default": true,
 														"deprecated": true,
 														"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 														"type": "boolean",
@@ -8428,6 +8459,7 @@
 														"type": "array"
 													},
 													"pr_comments_enabled": {
+														"default": true,
 														"description": "Whether to enable PR comments.",
 														"type": "boolean",
 														"x-auditable": true
@@ -8470,6 +8502,7 @@
 														"x-auditable": true
 													},
 													"production_deployments_enabled": {
+														"default": true,
 														"description": "Whether to trigger a production deployment on commits to the production branch.",
 														"type": "boolean",
 														"x-auditable": true
@@ -8979,6 +9012,7 @@
 																		"config": {
 																			"properties": {
 																				"deployments_enabled": {
+																					"default": true,
 																					"deprecated": true,
 																					"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																					"type": "boolean",
@@ -9012,6 +9046,7 @@
 																					"type": "array"
 																				},
 																				"pr_comments_enabled": {
+																					"default": true,
 																					"description": "Whether to enable PR comments.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -9054,6 +9089,7 @@
 																					"x-auditable": true
 																				},
 																				"production_deployments_enabled": {
+																					"default": true,
 																					"description": "Whether to trigger a production deployment on commits to the production branch.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -10448,6 +10484,7 @@
 																		"config": {
 																			"properties": {
 																				"deployments_enabled": {
+																					"default": true,
 																					"deprecated": true,
 																					"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																					"type": "boolean",
@@ -10481,6 +10518,7 @@
 																					"type": "array"
 																				},
 																				"pr_comments_enabled": {
+																					"default": true,
 																					"description": "Whether to enable PR comments.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -10523,6 +10561,7 @@
 																					"x-auditable": true
 																				},
 																				"production_deployments_enabled": {
+																					"default": true,
 																					"description": "Whether to trigger a production deployment on commits to the production branch.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -10687,6 +10726,7 @@
 														"config": {
 															"properties": {
 																"deployments_enabled": {
+																	"default": true,
 																	"deprecated": true,
 																	"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																	"type": "boolean",
@@ -10720,6 +10760,7 @@
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
+																	"default": true,
 																	"description": "Whether to enable PR comments.",
 																	"type": "boolean",
 																	"x-auditable": true
@@ -10762,6 +10803,7 @@
 																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
+																	"default": true,
 																	"description": "Whether to trigger a production deployment on commits to the production branch.",
 																	"type": "boolean",
 																	"x-auditable": true
@@ -11251,6 +11293,7 @@
 																				"config": {
 																					"properties": {
 																						"deployments_enabled": {
+																							"default": true,
 																							"deprecated": true,
 																							"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																							"type": "boolean",
@@ -11284,6 +11327,7 @@
 																							"type": "array"
 																						},
 																						"pr_comments_enabled": {
+																							"default": true,
 																							"description": "Whether to enable PR comments.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -11326,6 +11370,7 @@
 																							"x-auditable": true
 																						},
 																						"production_deployments_enabled": {
+																							"default": true,
 																							"description": "Whether to trigger a production deployment on commits to the production branch.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -12720,6 +12765,7 @@
 																				"config": {
 																					"properties": {
 																						"deployments_enabled": {
+																							"default": true,
 																							"deprecated": true,
 																							"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																							"type": "boolean",
@@ -12753,6 +12799,7 @@
 																							"type": "array"
 																						},
 																						"pr_comments_enabled": {
+																							"default": true,
 																							"description": "Whether to enable PR comments.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -12795,6 +12842,7 @@
 																							"x-auditable": true
 																						},
 																						"production_deployments_enabled": {
+																							"default": true,
 																							"description": "Whether to trigger a production deployment on commits to the production branch.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -12959,6 +13007,7 @@
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
+																			"default": true,
 																			"deprecated": true,
 																			"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																			"type": "boolean",
@@ -12992,6 +13041,7 @@
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
+																			"default": true,
 																			"description": "Whether to enable PR comments.",
 																			"type": "boolean",
 																			"x-auditable": true
@@ -13034,6 +13084,7 @@
 																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
+																			"default": true,
 																			"description": "Whether to trigger a production deployment on commits to the production branch.",
 																			"type": "boolean",
 																			"x-auditable": true
@@ -13574,6 +13625,7 @@
 													"config": {
 														"properties": {
 															"deployments_enabled": {
+																"default": true,
 																"deprecated": true,
 																"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																"type": "boolean",
@@ -13607,6 +13659,7 @@
 																"type": "array"
 															},
 															"pr_comments_enabled": {
+																"default": true,
 																"description": "Whether to enable PR comments.",
 																"type": "boolean",
 																"x-auditable": true
@@ -13649,6 +13702,7 @@
 																"x-auditable": true
 															},
 															"production_deployments_enabled": {
+																"default": true,
 																"description": "Whether to trigger a production deployment on commits to the production branch.",
 																"type": "boolean",
 																"x-auditable": true
@@ -15043,6 +15097,7 @@
 													"config": {
 														"properties": {
 															"deployments_enabled": {
+																"default": true,
 																"deprecated": true,
 																"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																"type": "boolean",
@@ -15076,6 +15131,7 @@
 																"type": "array"
 															},
 															"pr_comments_enabled": {
+																"default": true,
 																"description": "Whether to enable PR comments.",
 																"type": "boolean",
 																"x-auditable": true
@@ -15118,6 +15174,7 @@
 																"x-auditable": true
 															},
 															"production_deployments_enabled": {
+																"default": true,
 																"description": "Whether to trigger a production deployment on commits to the production branch.",
 																"type": "boolean",
 																"x-auditable": true
@@ -15282,6 +15339,7 @@
 									"config": {
 										"properties": {
 											"deployments_enabled": {
+												"default": true,
 												"deprecated": true,
 												"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 												"type": "boolean",
@@ -15315,6 +15373,7 @@
 												"type": "array"
 											},
 											"pr_comments_enabled": {
+												"default": true,
 												"description": "Whether to enable PR comments.",
 												"type": "boolean",
 												"x-auditable": true
@@ -15357,6 +15416,7 @@
 												"x-auditable": true
 											},
 											"production_deployments_enabled": {
+												"default": true,
 												"description": "Whether to trigger a production deployment on commits to the production branch.",
 												"type": "boolean",
 												"x-auditable": true
@@ -15841,6 +15901,7 @@
 																		"config": {
 																			"properties": {
 																				"deployments_enabled": {
+																					"default": true,
 																					"deprecated": true,
 																					"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																					"type": "boolean",
@@ -15874,6 +15935,7 @@
 																					"type": "array"
 																				},
 																				"pr_comments_enabled": {
+																					"default": true,
 																					"description": "Whether to enable PR comments.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -15916,6 +15978,7 @@
 																					"x-auditable": true
 																				},
 																				"production_deployments_enabled": {
+																					"default": true,
 																					"description": "Whether to trigger a production deployment on commits to the production branch.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -17310,6 +17373,7 @@
 																		"config": {
 																			"properties": {
 																				"deployments_enabled": {
+																					"default": true,
 																					"deprecated": true,
 																					"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																					"type": "boolean",
@@ -17343,6 +17407,7 @@
 																					"type": "array"
 																				},
 																				"pr_comments_enabled": {
+																					"default": true,
 																					"description": "Whether to enable PR comments.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -17385,6 +17450,7 @@
 																					"x-auditable": true
 																				},
 																				"production_deployments_enabled": {
+																					"default": true,
 																					"description": "Whether to trigger a production deployment on commits to the production branch.",
 																					"type": "boolean",
 																					"x-auditable": true
@@ -17549,6 +17615,7 @@
 														"config": {
 															"properties": {
 																"deployments_enabled": {
+																	"default": true,
 																	"deprecated": true,
 																	"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																	"type": "boolean",
@@ -17582,6 +17649,7 @@
 																	"type": "array"
 																},
 																"pr_comments_enabled": {
+																	"default": true,
 																	"description": "Whether to enable PR comments.",
 																	"type": "boolean",
 																	"x-auditable": true
@@ -17624,6 +17692,7 @@
 																	"x-auditable": true
 																},
 																"production_deployments_enabled": {
+																	"default": true,
 																	"description": "Whether to trigger a production deployment on commits to the production branch.",
 																	"type": "boolean",
 																	"x-auditable": true
@@ -18113,6 +18182,7 @@
 																				"config": {
 																					"properties": {
 																						"deployments_enabled": {
+																							"default": true,
 																							"deprecated": true,
 																							"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																							"type": "boolean",
@@ -18146,6 +18216,7 @@
 																							"type": "array"
 																						},
 																						"pr_comments_enabled": {
+																							"default": true,
 																							"description": "Whether to enable PR comments.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -18188,6 +18259,7 @@
 																							"x-auditable": true
 																						},
 																						"production_deployments_enabled": {
+																							"default": true,
 																							"description": "Whether to trigger a production deployment on commits to the production branch.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -19582,6 +19654,7 @@
 																				"config": {
 																					"properties": {
 																						"deployments_enabled": {
+																							"default": true,
 																							"deprecated": true,
 																							"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																							"type": "boolean",
@@ -19615,6 +19688,7 @@
 																							"type": "array"
 																						},
 																						"pr_comments_enabled": {
+																							"default": true,
 																							"description": "Whether to enable PR comments.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -19657,6 +19731,7 @@
 																							"x-auditable": true
 																						},
 																						"production_deployments_enabled": {
+																							"default": true,
 																							"description": "Whether to trigger a production deployment on commits to the production branch.",
 																							"type": "boolean",
 																							"x-auditable": true
@@ -19821,6 +19896,7 @@
 																"config": {
 																	"properties": {
 																		"deployments_enabled": {
+																			"default": true,
 																			"deprecated": true,
 																			"description": "Whether to enable automatic deployments when pushing to the source repository.\nWhen disabled, no deployments (production or preview) will be triggered automatically.\n",
 																			"type": "boolean",
@@ -19854,6 +19930,7 @@
 																			"type": "array"
 																		},
 																		"pr_comments_enabled": {
+																			"default": true,
 																			"description": "Whether to enable PR comments.",
 																			"type": "boolean",
 																			"x-auditable": true
@@ -19896,6 +19973,7 @@
 																			"x-auditable": true
 																		},
 																		"production_deployments_enabled": {
+																			"default": true,
 																			"description": "Whether to trigger a production deployment on commits to the production branch.",
 																			"type": "boolean",
 																			"x-auditable": true

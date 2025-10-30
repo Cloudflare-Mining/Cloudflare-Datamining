@@ -415,6 +415,7 @@
 																"type": "string"
 															},
 															"maxItems": 10,
+															"nullable": true,
 															"type": "array",
 															"x-auditable": true,
 															"x-stainless-collection-type": "set"
@@ -844,6 +845,7 @@
 															"type": "string"
 														},
 														"maxItems": 10,
+														"nullable": true,
 														"type": "array",
 														"x-auditable": true,
 														"x-stainless-collection-type": "set"
@@ -1102,6 +1104,7 @@
 																"type": "string"
 															},
 															"maxItems": 10,
+															"nullable": true,
 															"type": "array",
 															"x-auditable": true,
 															"x-stainless-collection-type": "set"
@@ -1554,7 +1557,7 @@
 													"x-auditable": true
 												},
 												"id": {
-													"description": "The id of the script in the Workers system. Usually the script name.",
+													"description": "The name used to identify the script.",
 													"example": "my-workers-script",
 													"readOnly": true,
 													"type": "string",
@@ -1608,6 +1611,76 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"observability": {
+													"description": "Observability settings for the Worker.",
+													"properties": {
+														"enabled": {
+															"description": "Whether observability is enabled for the Worker.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"head_sampling_rate": {
+															"description": "The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+															"example": 0.1,
+															"nullable": true,
+															"type": "number",
+															"x-auditable": true
+														},
+														"logs": {
+															"description": "Log settings for the Worker.",
+															"nullable": true,
+															"properties": {
+																"destinations": {
+																	"description": "A list of destinations where logs will be exported to.",
+																	"example": [
+																		"cloudflare"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Whether logs are enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"head_sampling_rate": {
+																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.",
+																	"example": 0.1,
+																	"nullable": true,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"invocation_logs": {
+																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"persist": {
+																	"default": true,
+																	"description": "Whether log persistence is enabled for the Worker.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"invocation_logs"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
 												},
 												"placement": {
 													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -1676,6 +1749,30 @@
 														}
 													]
 												},
+												"tag": {
+													"description": "The immutable ID of the script.",
+													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
+													"readOnly": true,
+													"type": "string"
+												},
+												"tags": {
+													"description": "Tags associated with the Worker.",
+													"example": [
+														"my-team",
+														"my-public-api"
+													],
+													"items": {
+														"example": "my-tag",
+														"maxLength": 1024,
+														"pattern": "^[^,&]*$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"nullable": true,
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-collection-type": "set"
+												},
 												"tail_consumers": {
 													"description": "List of Workers that will consume logs from the attached Worker.",
 													"items": {
@@ -1705,6 +1802,7 @@
 														],
 														"type": "object"
 													},
+													"nullable": true,
 													"type": "array",
 													"x-stainless-collection-type": "set"
 												},

@@ -535,6 +535,7 @@
 														"x-auditable": true
 													},
 													"description": {
+														"default": "",
 														"description": "A human-readable description of the pool.",
 														"example": "Primary data center - Provider XYZ",
 														"type": "string",
@@ -653,6 +654,7 @@
 														"type": "array"
 													},
 													"notification_email": {
+														"default": "",
 														"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 														"example": "someone@example.com,sometwo@example.com",
 														"type": "string",
@@ -967,6 +969,7 @@
 																"x-auditable": true
 															},
 															"description": {
+																"default": "",
 																"description": "A human-readable description of the pool.",
 																"example": "Primary data center - Provider XYZ",
 																"type": "string",
@@ -1085,6 +1088,7 @@
 																"type": "array"
 															},
 															"notification_email": {
+																"default": "",
 																"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 																"example": "someone@example.com,sometwo@example.com",
 																"type": "string",
@@ -1507,6 +1511,7 @@
 													"x-auditable": true
 												},
 												"description": {
+													"default": "",
 													"description": "A human-readable description of the pool.",
 													"example": "Primary data center - Provider XYZ",
 													"type": "string",
@@ -1625,6 +1630,7 @@
 													"type": "array"
 												},
 												"notification_email": {
+													"default": "",
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 													"example": "someone@example.com,sometwo@example.com",
 													"type": "string",
@@ -1915,6 +1921,7 @@
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "A human-readable description of the pool.",
 															"example": "Primary data center - Provider XYZ",
 															"type": "string",
@@ -2033,6 +2040,7 @@
 															"type": "array"
 														},
 														"notification_email": {
+															"default": "",
 															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 															"example": "someone@example.com,sometwo@example.com",
 															"type": "string",
@@ -3351,6 +3359,7 @@
 														"x-auditable": true
 													},
 													"description": {
+														"default": "",
 														"description": "A human-readable description of the pool.",
 														"example": "Primary data center - Provider XYZ",
 														"type": "string",
@@ -3469,6 +3478,7 @@
 														"type": "array"
 													},
 													"notification_email": {
+														"default": "",
 														"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 														"example": "someone@example.com,sometwo@example.com",
 														"type": "string",
@@ -3783,6 +3793,7 @@
 																"x-auditable": true
 															},
 															"description": {
+																"default": "",
 																"description": "A human-readable description of the pool.",
 																"example": "Primary data center - Provider XYZ",
 																"type": "string",
@@ -3901,6 +3912,7 @@
 																"type": "array"
 															},
 															"notification_email": {
+																"default": "",
 																"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 																"example": "someone@example.com,sometwo@example.com",
 																"type": "string",
@@ -4227,6 +4239,7 @@
 								"type": "array"
 							},
 							"description": {
+								"default": "",
 								"description": "A human-readable description of the pool.",
 								"example": "Primary data center - Provider XYZ",
 								"type": "string",
@@ -4320,6 +4333,7 @@
 								"x-auditable": true
 							},
 							"notification_email": {
+								"default": "",
 								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 								"example": "someone@example.com,sometwo@example.com",
 								"type": "string",
@@ -4604,6 +4618,7 @@
 													"x-auditable": true
 												},
 												"description": {
+													"default": "",
 													"description": "A human-readable description of the pool.",
 													"example": "Primary data center - Provider XYZ",
 													"type": "string",
@@ -4722,6 +4737,7 @@
 													"type": "array"
 												},
 												"notification_email": {
+													"default": "",
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 													"example": "someone@example.com,sometwo@example.com",
 													"type": "string",
@@ -5012,6 +5028,7 @@
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "A human-readable description of the pool.",
 															"example": "Primary data center - Provider XYZ",
 															"type": "string",
@@ -5130,6 +5147,7 @@
 															"type": "array"
 														},
 														"notification_email": {
+															"default": "",
 															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 															"example": "someone@example.com,sometwo@example.com",
 															"type": "string",
@@ -5414,6 +5432,7 @@
 					"schema": {
 						"properties": {
 							"description": {
+								"default": "",
 								"description": "A human-readable description of the pool.",
 								"example": "Primary data center - Provider XYZ",
 								"type": "string",
@@ -5500,6 +5519,7 @@
 								"x-auditable": true
 							},
 							"notification_email": {
+								"default": "",
 								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 								"example": "someone@example.com,sometwo@example.com",
 								"type": "string",
@@ -5788,6 +5808,7 @@
 													"x-auditable": true
 												},
 												"description": {
+													"default": "",
 													"description": "A human-readable description of the pool.",
 													"example": "Primary data center - Provider XYZ",
 													"type": "string",
@@ -5906,6 +5927,7 @@
 													"type": "array"
 												},
 												"notification_email": {
+													"default": "",
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 													"example": "someone@example.com,sometwo@example.com",
 													"type": "string",
@@ -6196,6 +6218,7 @@
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "A human-readable description of the pool.",
 															"example": "Primary data center - Provider XYZ",
 															"type": "string",
@@ -6314,6 +6337,7 @@
 															"type": "array"
 														},
 														"notification_email": {
+															"default": "",
 															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 															"example": "someone@example.com,sometwo@example.com",
 															"type": "string",
@@ -7151,6 +7175,7 @@
 								"type": "array"
 							},
 							"description": {
+								"default": "",
 								"description": "A human-readable description of the pool.",
 								"example": "Primary data center - Provider XYZ",
 								"type": "string",
@@ -7244,6 +7269,7 @@
 								"x-auditable": true
 							},
 							"notification_email": {
+								"default": "",
 								"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 								"example": "someone@example.com,sometwo@example.com",
 								"type": "string",
@@ -7532,6 +7558,7 @@
 													"x-auditable": true
 												},
 												"description": {
+													"default": "",
 													"description": "A human-readable description of the pool.",
 													"example": "Primary data center - Provider XYZ",
 													"type": "string",
@@ -7650,6 +7677,7 @@
 													"type": "array"
 												},
 												"notification_email": {
+													"default": "",
 													"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 													"example": "someone@example.com,sometwo@example.com",
 													"type": "string",
@@ -7940,6 +7968,7 @@
 															"x-auditable": true
 														},
 														"description": {
+															"default": "",
 															"description": "A human-readable description of the pool.",
 															"example": "Primary data center - Provider XYZ",
 															"type": "string",
@@ -8058,6 +8087,7 @@
 															"type": "array"
 														},
 														"notification_email": {
+															"default": "",
 															"description": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.",
 															"example": "someone@example.com,sometwo@example.com",
 															"type": "string",

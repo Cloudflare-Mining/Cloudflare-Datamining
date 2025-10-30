@@ -770,65 +770,6 @@
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
-			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -1716,65 +1657,6 @@
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
-			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -2607,65 +2489,6 @@
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
-			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -3486,65 +3309,6 @@
 					}
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
-			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
 			},
 			"500": {
 				"content": {
@@ -4488,65 +4252,6 @@
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
-			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -5456,65 +5161,6 @@
 					}
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
-			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
 			},
 			"500": {
 				"content": {
@@ -6456,65 +6102,6 @@
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
 			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
-			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -7422,65 +7009,6 @@
 					}
 				},
 				"description": "Request failed due to site-related issues such as timeouts, SSL errors, or inaccessible content."
-			},
-			"429": {
-				"content": {
-					"application/json": {
-						"example": {
-							"errors": [
-								{
-									"code": 2001,
-									"message": "Rate limit exceeded"
-								}
-							],
-							"success": false
-						},
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"description": "Error code",
-												"type": "number"
-											},
-											"message": {
-												"description": "Error Message",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message",
-											"code"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"status": {
-									"description": "Response status",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"status"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Request failed due to rate limiting. The Retry-After header indicates when the client should retry the request.",
-				"headers": {
-					"Retry-After": {
-						"description": "Number of seconds to wait before retrying the request",
-						"required": true,
-						"schema": {
-							"description": "Number of seconds to wait before retrying the request",
-							"example": 60,
-							"type": "number"
-						}
-					}
-				}
 			},
 			"500": {
 				"content": {

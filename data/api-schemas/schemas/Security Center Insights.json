@@ -250,10 +250,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues": {
 		"deprecated": true,
@@ -310,7 +307,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -395,7 +393,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -604,12 +603,25 @@
 																			"email_security",
 																			"exposed_infrastructure",
 																			"insecure_configuration",
-																			"weak_authentication"
+																			"weak_authentication",
+																			"configuration_suggestion"
 																		],
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"payload": {
+																		"properties": {
+																			"detection_method": {
+																				"description": "Method used to detect insight",
+																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"zone_tag": {
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"resolve_link": {
@@ -801,7 +813,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/class": {
 		"deprecated": true,
@@ -858,7 +873,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -943,7 +959,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -1245,7 +1262,10 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": [
+			"Intel Write",
+			"Intel Read"
+		]
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/severity": {
 		"deprecated": true,
@@ -1302,7 +1322,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -1387,7 +1408,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -1689,10 +1711,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/intel/attack-surface-report/issues/type": {
 		"deprecated": true,
@@ -1749,7 +1768,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -1834,7 +1854,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -2136,10 +2157,7 @@
 		"tags": [
 			"Security Center Insights"
 		],
-		"x-api-token-group": [
-			"Intel Write",
-			"Intel Read"
-		]
+		"x-api-token-group": null
 	},
 	"GET /accounts/{account_id}/security-center/insights": {
 		"operationId": "get-security-center-insights",
@@ -2195,7 +2213,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -2280,7 +2299,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -2489,12 +2509,25 @@
 																			"email_security",
 																			"exposed_infrastructure",
 																			"insecure_configuration",
-																			"weak_authentication"
+																			"weak_authentication",
+																			"configuration_suggestion"
 																		],
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"payload": {
+																		"properties": {
+																			"detection_method": {
+																				"description": "Method used to detect insight",
+																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"zone_tag": {
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"resolve_link": {
@@ -2741,7 +2774,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -2826,7 +2860,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -3183,7 +3218,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -3268,7 +3304,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -3625,7 +3662,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -3710,7 +3748,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -4067,7 +4106,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -4152,7 +4192,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -4361,12 +4402,25 @@
 																			"email_security",
 																			"exposed_infrastructure",
 																			"insecure_configuration",
-																			"weak_authentication"
+																			"weak_authentication",
+																			"configuration_suggestion"
 																		],
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"payload": {
+																		"properties": {
+																			"detection_method": {
+																				"description": "Method used to detect insight",
+																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"zone_tag": {
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
 																		"type": "object"
 																	},
 																	"resolve_link": {
@@ -4617,7 +4671,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -4702,7 +4757,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -5063,7 +5119,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -5148,7 +5205,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -5509,7 +5567,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true
@@ -5594,7 +5653,8 @@
 							"email_security",
 							"exposed_infrastructure",
 							"insecure_configuration",
-							"weak_authentication"
+							"weak_authentication",
+							"configuration_suggestion"
 						],
 						"type": "string",
 						"x-auditable": true

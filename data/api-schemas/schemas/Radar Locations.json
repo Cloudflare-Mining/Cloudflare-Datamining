@@ -8,8 +8,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -19,6 +22,7 @@
 				"name": "offset",
 				"schema": {
 					"description": "Skips the specified number of objects before fetching the results.",
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -183,6 +187,8 @@
 				"schema": {
 					"description": "Location alpha-2 code.",
 					"example": "US",
+					"maxLength": 2,
+					"minLength": 2,
 					"type": "string"
 				}
 			},

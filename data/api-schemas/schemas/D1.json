@@ -1933,6 +1933,7 @@
 									"action",
 									"etag"
 								],
+								"title": "init",
 								"type": "object"
 							},
 							{
@@ -1961,6 +1962,7 @@
 									"etag",
 									"filename"
 								],
+								"title": "ingest",
 								"type": "object"
 							},
 							{
@@ -1983,6 +1985,7 @@
 									"action",
 									"current_bookmark"
 								],
+								"title": "poll",
 								"type": "object"
 							}
 						]
@@ -2463,27 +2466,61 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"params": {
-								"example": [
-									"firstParam",
-									"secondParam"
-								],
-								"items": {
-									"type": "string"
+						"description": "A single query object or an array of query objects.",
+						"oneOf": [
+							{
+								"description": "A single query with or without parameters",
+								"properties": {
+									"params": {
+										"example": [
+											"firstParam",
+											"secondParam"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"sql": {
+										"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
+										"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
+										"type": "string"
+									}
 								},
-								"type": "array"
+								"required": [
+									"sql"
+								],
+								"type": "object"
 							},
-							"sql": {
-								"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
-								"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
-								"type": "string"
+							{
+								"items": {
+									"description": "A single query with or without parameters",
+									"properties": {
+										"params": {
+											"example": [
+												"firstParam",
+												"secondParam"
+											],
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"sql": {
+											"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
+											"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
+											"type": "string"
+										}
+									},
+									"required": [
+										"sql"
+									],
+									"type": "object"
+								},
+								"title": "multiple queries",
+								"type": "array"
 							}
-						},
-						"required": [
-							"sql"
-						],
-						"type": "object"
+						]
 					}
 				}
 			},
@@ -2800,27 +2837,61 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"params": {
-								"example": [
-									"firstParam",
-									"secondParam"
-								],
-								"items": {
-									"type": "string"
+						"description": "A single query object or an array of query objects.",
+						"oneOf": [
+							{
+								"description": "A single query with or without parameters",
+								"properties": {
+									"params": {
+										"example": [
+											"firstParam",
+											"secondParam"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"sql": {
+										"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
+										"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
+										"type": "string"
+									}
 								},
-								"type": "array"
+								"required": [
+									"sql"
+								],
+								"type": "object"
 							},
-							"sql": {
-								"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
-								"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
-								"type": "string"
+							{
+								"items": {
+									"description": "A single query with or without parameters",
+									"properties": {
+										"params": {
+											"example": [
+												"firstParam",
+												"secondParam"
+											],
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"sql": {
+											"description": "Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch.",
+											"example": "SELECT * FROM myTable WHERE field = ? OR field = ?;",
+											"type": "string"
+										}
+									},
+									"required": [
+										"sql"
+									],
+									"type": "object"
+								},
+								"title": "multiple queries",
+								"type": "array"
 							}
-						},
-						"required": [
-							"sql"
-						],
-						"type": "object"
+						]
 					}
 				}
 			},

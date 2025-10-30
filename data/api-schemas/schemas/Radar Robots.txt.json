@@ -8,8 +8,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -307,8 +310,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -361,6 +367,7 @@
 					"description": "Filters results by domain category.",
 					"example": "News & Media",
 					"items": {
+						"maxLength": 100,
 						"type": "string"
 					},
 					"type": "array"

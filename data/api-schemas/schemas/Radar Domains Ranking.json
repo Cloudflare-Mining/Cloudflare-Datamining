@@ -20,8 +20,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -291,8 +294,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -346,7 +352,10 @@
 					"description": "Filters results by domain name. Specify a comma-separated list of domain names.",
 					"example": "google.com,facebook.com",
 					"items": {
-						"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,63}[a-zA-Z0-9-])?\\.)+[a-zA-Z0-9-]{2,63}$",
+						"example": "google.com",
+						"maxLength": 253,
+						"minLength": 1,
+						"pattern": "^(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)\\.)+(?:[A-Za-z]{2,63})$",
 						"type": "string"
 					},
 					"type": "array"
@@ -360,6 +369,7 @@
 					"description": "Filters results by domain category.",
 					"example": "News & Media",
 					"items": {
+						"maxLength": 100,
 						"type": "string"
 					},
 					"type": "array"
@@ -750,6 +760,7 @@
 					"description": "Filters results by domain category.",
 					"example": "News & Media",
 					"items": {
+						"maxLength": 100,
 						"type": "string"
 					},
 					"type": "array"

@@ -1843,9 +1843,9 @@
 																"type": "boolean"
 															},
 															"previews_enabled": {
-																"default": false,
 																"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"type": "object"
@@ -2601,9 +2601,9 @@
 															"type": "boolean"
 														},
 														"previews_enabled": {
-															"default": false,
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"type": "object"
@@ -3431,9 +3431,9 @@
 												"type": "boolean"
 											},
 											"previews_enabled": {
-												"default": false,
 												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -3843,9 +3843,9 @@
 															"type": "boolean"
 														},
 														"previews_enabled": {
-															"default": false,
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"type": "object"
@@ -5293,9 +5293,9 @@
 												"type": "boolean"
 											},
 											"previews_enabled": {
-												"default": false,
 												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -5708,9 +5708,9 @@
 															"type": "boolean"
 														},
 														"previews_enabled": {
-															"default": false,
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"type": "object"
@@ -7001,9 +7001,9 @@
 												"type": "boolean"
 											},
 											"previews_enabled": {
-												"default": false,
 												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
 										"type": "object"
@@ -7416,9 +7416,9 @@
 															"type": "boolean"
 														},
 														"previews_enabled": {
-															"default": false,
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"type": "object"

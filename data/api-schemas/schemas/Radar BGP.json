@@ -8,7 +8,10 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"default": 1,
 					"description": "Current page number, starting from 1.",
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -17,7 +20,10 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"default": 50,
 					"description": "Number of entries per page.",
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -67,11 +73,9 @@
 				}
 			},
 			{
-				"description": "Network prefix, IPv4 or IPv6.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Network prefix, IPv4 or IPv6.",
 					"example": "1.1.1.0/24",
 					"type": "string"
 				}
@@ -922,7 +926,10 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"default": 1,
 					"description": "Current page number, starting from 1.",
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -931,7 +938,10 @@
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"default": 50,
 					"description": "Number of entries per page.",
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -1267,6 +1277,8 @@
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
 					"example": "US",
+					"maxLength": 2,
+					"minLength": 2,
 					"type": "string"
 				}
 			},
@@ -1275,8 +1287,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -1518,11 +1533,9 @@
 				}
 			},
 			{
-				"description": "Network prefix, IPv4 or IPv6.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Network prefix, IPv4 or IPv6.",
 					"example": "1.1.1.0/24",
 					"type": "string"
 				}
@@ -1703,11 +1716,9 @@
 		"operationId": "radar-get-bgp-pfx2as",
 		"parameters": [
 			{
-				"description": "Network prefix, IPv4 or IPv6.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Network prefix, IPv4 or IPv6.",
 					"example": "1.1.1.0/24",
 					"type": "string"
 				}
@@ -1902,11 +1913,9 @@
 		"operationId": "radar-get-bgp-routes-realtime",
 		"parameters": [
 			{
-				"description": "Network prefix, IPv4 or IPv6.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
-					"description": "Network prefix, IPv4 or IPv6.",
 					"example": "1.1.1.0/24",
 					"type": "string"
 				}
@@ -2219,6 +2228,8 @@
 				"schema": {
 					"description": "Filters results by location. Specify an alpha-2 location code.",
 					"example": "US",
+					"maxLength": 2,
+					"minLength": 2,
 					"type": "string"
 				}
 			},
@@ -2510,8 +2521,6 @@
 					"description": "Filters results by BGP network prefix.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"description": "Network prefix, IPv4 or IPv6.",
-						"example": "1.1.1.0/24",
 						"type": "string"
 					},
 					"type": "array"
@@ -2794,8 +2803,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},
@@ -2876,8 +2888,6 @@
 					"description": "Filters results by BGP network prefix.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"description": "Network prefix, IPv4 or IPv6.",
-						"example": "1.1.1.0/24",
 						"type": "string"
 					},
 					"type": "array"
@@ -3229,8 +3239,11 @@
 				"in": "query",
 				"name": "limit",
 				"schema": {
+					"default": 5,
 					"description": "Limits the number of objects returned in the response.",
 					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
 					"type": "integer"
 				}
 			},

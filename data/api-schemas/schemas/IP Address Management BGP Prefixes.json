@@ -373,36 +373,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											},
-											"type": "object"
 										}
 									],
 									"type": "object"
@@ -414,7 +384,7 @@
 												"properties": {
 													"asn": {
 														"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-														"example": 209242,
+														"example": 13335,
 														"nullable": true,
 														"type": "integer",
 														"x-auditable": true
@@ -503,7 +473,7 @@
 																"x-auditable": true
 															},
 															"on_demand_locked": {
-																"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+																"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 																"example": false,
 																"type": "boolean",
 																"x-auditable": true
@@ -614,36 +584,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results.",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results.",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													},
-													"type": "object"
 												}
 											],
 											"type": "object"
@@ -655,7 +595,7 @@
 														"properties": {
 															"asn": {
 																"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-																"example": 209242,
+																"example": 13335,
 																"nullable": true,
 																"type": "integer",
 																"x-auditable": true
@@ -744,7 +684,7 @@
 																		"x-auditable": true
 																	},
 																	"on_demand_locked": {
-																		"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+																		"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 																		"example": false,
 																		"type": "boolean",
 																		"x-auditable": true
@@ -1033,7 +973,7 @@
 											"properties": {
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-													"example": 209242,
+													"example": 13335,
 													"nullable": true,
 													"type": "integer",
 													"x-auditable": true
@@ -1122,7 +1062,7 @@
 															"x-auditable": true
 														},
 														"on_demand_locked": {
-															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+															"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
@@ -1241,7 +1181,7 @@
 													"properties": {
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-															"example": 209242,
+															"example": 13335,
 															"nullable": true,
 															"type": "integer",
 															"x-auditable": true
@@ -1330,7 +1270,7 @@
 																	"x-auditable": true
 																},
 																"on_demand_locked": {
-																	"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+																	"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true
@@ -1653,7 +1593,7 @@
 											"properties": {
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-													"example": 209242,
+													"example": 13335,
 													"nullable": true,
 													"type": "integer",
 													"x-auditable": true
@@ -1742,7 +1682,7 @@
 															"x-auditable": true
 														},
 														"on_demand_locked": {
-															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+															"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
@@ -1861,7 +1801,7 @@
 													"properties": {
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-															"example": 209242,
+															"example": 13335,
 															"nullable": true,
 															"type": "integer",
 															"x-auditable": true
@@ -1950,7 +1890,7 @@
 																	"x-auditable": true
 																},
 																"on_demand_locked": {
-																	"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+																	"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true
@@ -2135,6 +2075,9 @@
 								"x-auditable": true
 							}
 						},
+						"required": [
+							"cidr"
+						],
 						"type": "object"
 					}
 				}
@@ -2240,7 +2183,7 @@
 											"properties": {
 												"asn": {
 													"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-													"example": 209242,
+													"example": 13335,
 													"nullable": true,
 													"type": "integer",
 													"x-auditable": true
@@ -2329,7 +2272,7 @@
 															"x-auditable": true
 														},
 														"on_demand_locked": {
-															"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+															"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 															"example": false,
 															"type": "boolean",
 															"x-auditable": true
@@ -2448,7 +2391,7 @@
 													"properties": {
 														"asn": {
 															"description": "Autonomous System Number (ASN) the prefix will be advertised under.",
-															"example": 209242,
+															"example": 13335,
 															"nullable": true,
 															"type": "integer",
 															"x-auditable": true
@@ -2537,7 +2480,7 @@
 																	"x-auditable": true
 																},
 																"on_demand_locked": {
-																	"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed.",
+																	"description": "Whether the advertisement status of the prefix is locked, meaning it cannot be changed.",
 																	"example": false,
 																	"type": "boolean",
 																	"x-auditable": true
