@@ -1628,6 +1628,22 @@
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"reactivate": {
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
