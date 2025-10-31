@@ -1,0 +1,132 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7riCaFcHkMwsVDyXVBYkGJ/11d1004e27ac6e22036e8e1114cdb527/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>As bots and agents start <a href="https://blog.cloudflare.com/web-bot-auth"><u>cryptographically signing their requests</u></a>, there is a growing need for website operators to learn public keys as they are setting up their service. I might be able to find the public key material for well-known fetchers and crawlers, but what about the next 1,000 or next 1,000,000? And how do I find their public key material in order to verify that they are who they say they are? This problem is called <i>discovery.</i></p>
+	<p>We share this problem with <a href="https://aws.amazon.com/bedrock/agentcore"><u>Amazon Bedrock AgentCore</u></a>, a comprehensive agentic platform to build, deploy and operate highly capable agents at scale, and their <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/browser-tool.html"><u>AgentCore Browser</u></a>, a fast, secure, cloud-based browser runtime to enable AI agents to interact with websites at scale. The AgentCore team wants to make it easy for each of their customers to sign <i>their own requests</i>, so that Cloudflare and other operators of CDN infrastructure see agent signatures from individual agents rather than AgentCore as a monolith. (Note: this method does not identify individual users.) In order to do this, Cloudflare needed a way to ingest and register the public keys of AgentCore’s customers at scale.&nbsp;</p>
+	<p>In this blog post, we propose a registry of bots and agents as a way to easily discover them on the Internet. We also outline how <a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a> can be expanded with a registry format. Similar to IP lists that can be authored by anyone and easily imported, the <a href="https://datatracker.ietf.org/doc/draft-meunier-webbotauth-registry"><u>registry format</u></a> is a list of URLs at which to retrieve agent keys and can be authored and imported easily.</p>
+	<p>We believe such registries should foster and strengthen an open ecosystem of curators that website operators can trust.</p>
+	<div class="flex anchor relative">
+		<h2 id="a-need-for-more-trustworthy-authentication">A need for more trustworthy authentication</h2>
+		<a href="https://blog.cloudflare.com/#a-need-for-more-trustworthy-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In May, we introduced a protocol proposal called <a href="https://blog.cloudflare.com/web-bot-auth"><u>Web Bot Auth</u></a>, which describes how bot and agent developers can cryptographically sign requests coming from their infrastructure.&nbsp;</p>
+	<p>There have now been multiple implementations of the proposed protocol, from <a href="https://vercel.com/changelog/vercels-bot-verification-now-supports-web-bot-auth"><u>Vercel</u></a> to <a href="https://changelog.shopify.com/posts/authorize-custom-crawlers-and-tools-with-new-crawler-access-keys"><u>Shopify</u></a> to <a href="https://www.cloudflare.com/press/press-releases/2025/cloudflare-collaborates-with-leading-payments-companies-to-secure-and-enable-agentic-commerce"><u>Visa</u></a>. It has been actively <a href="https://mailarchive.ietf.org/arch/browse/web-bot-auth"><u>discussed</u></a> and contributions have been made. Web Bot Auth marks a first step towards moving from brittle identification, like IPs and user agents, to more trustworthy cryptographic authentication. However, like IP addresses, cryptographic keys are a pseudonymous form of identity. If you operate a website without the scale and reach of large CDNs, how do you discover the public key of known crawlers?</p>
+	<p>The first protocol proposal suggested one approach: bot operators would provide a newly-defined HTTP header Signature-Agent that refers to an HTTP endpoint hosting their keys. Similar to IP addresses, the default is to allow all, but if a particular operator is making too many requests, you can start taking actions: increase their rate limit, contact the operator, etc.</p>
+	<p>Here’s an example from <a href="https://help.shopify.com/en/manual/promoting-marketing/seo/crawling-your-store"><u>Shopify's online store</u></a>:</p>
+	<pre class="language-Rust"><code class="language-Rust">Signature-Agent: "https://shopify.com"</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="a-registry-format">A registry format</h2>
+		<a href="https://blog.cloudflare.com/#a-registry-format" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>With all that in mind, we come to the following problem. How can Cloudflare ensure customers have control over the traffic they want to allow, with sensible defaults, while fostering an open curation ecosystem that doesn’t lock in customers or small origins?</p>
+	<p>Such an ecosystem exists for lists of IP addresses (e.g.<a href="https://github.com/antoinevastel/avastel-bot-ips-lists/blob/master/avastel-proxy-bot-ips-1day.txt"><u> avestel-bots-ip-lists</u></a>) and robots.txt (e.g.<a href="https://github.com/ai-robots-txt/ai.robots.txt"><u> ai-robots-txt</u></a>). For both, you can find canonical lists on the Internet to easily configure your website to allow or disallow traffic from those IPs. They provide direct configuration for your nginx or haproxy, and you can use it to configure your Cloudflare account. For instance, I could import the robots.txt below:</p>
+	<pre class="language-Python"><code class="language-Python">User-agent: MyBadBot
+Disallow: /</code></pre>
+	<p>This is where the registry format comes in, providing a list of URLs pointing to Signature Agent keys:</p>
+	<pre class="language-Rust"><code class="language-Rust"># AI Crawler
+https://chatgpt.com/.well-known/http-message-signatures-directory
+https://autorag.ai.cloudflare.com/.well-known/http-message-signatures-directory
+ 
+# Test signature agent card
+https://http-message-signatures-example.research.cloudflare.com/.well-known/http-message-signatures-directory</code></pre>
+	<p>And that's it. A registry could contain a list of all known signature agents, a curated list for academic research agents, for search agents, etc.</p>
+	<p>Anyone can maintain and host these lists. Similar to IP or robots.txt list, you can host such a registry on any public file system. This means you can have a repository on GitHub, put the file on Cloudflare R2, or send it as an email attachment. Cloudflare intends to provide one of the first instances of this registry, so that others can contribute to it or reference it when building their own.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="learn-more-about-an-incoming-request">Learn more about an incoming request</h2>
+		<a href="https://blog.cloudflare.com/#learn-more-about-an-incoming-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Knowing the Signature-Agent is great, but not sufficient. For instance, to be a verified bot, Cloudflare requires a contact method, in case requests from that infrastructure suddenly fail or change format in a way that causes unexpected errors upstream. In fact, there is a lot of information an origin might want to know: a name for the operator, a contact method, a logo, the expected crawl rate, etc.</p>
+	<p>Therefore, to complement the registry format, we have proposed a <a href="https://thibmeu.github.io/http-message-signatures-directory/draft-meunier-webbotauth-registry.html#name-signature-agent-card"><u>signature-agent card format</u> that </a>extends the JWKS directory (<a href="https://www.rfc-editor.org/rfc/rfc7517"><u>RFC 7517</u></a>) with additional metadata. Similar to an old-fashioned contact card, it includes all the important information someone might want to know about your agent or crawler.&nbsp;</p>
+	<p>We provide an example below for illustration. Note that the fields may change: introducing jwks-uri, logo being more descriptive, etc.</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "client_name": "Example Bot",
+  "client_uri": "https://example.com/bot/about.html",
+  "logo_uri": "https://example.com/",
+  "contacts": ["mailto:bot-support@example.com"],
+  "expected-user-agent": "Mozilla/5.0 ExampleBot",
+  "rfc9309-product-token": "ExampleBot",
+  "rfc9309-compliance": ["User-Agent", "Allow", "Disallow", "Content-Usage"],
+  "trigger": "fetcher",
+  "purpose": "tdm",
+  "targeted-content": "Cat pictures",
+  "rate-control": "429",
+  "rate-expectation": "avg=10rps;max=100rps",
+  "known-urls": ["/", "/robots.txt", "*.png"],
+  "keys": [{
+    "kty": "OKP",
+    "crv": "Ed25519",
+    "kid": "NFcWBst6DXG-N35nHdzMrioWntdzNZghQSkjHNMMSjw",
+    "x": "JrQLj5P_89iXES9-vFgrIy29clF9CC_oPPsw3c5D0bs",
+    "use": "sig",
+    "nbf": 1712793600,
+    "exp": 1715385600
+  }]
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="operating-a-registry">Operating a registry</h2>
+		<a href="https://blog.cloudflare.com/#operating-a-registry" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Amazon Bedrock AgentCore, an agentic platform for building and deploying AI agents at scale, adopted Web Bot Auth for its AgentCore Browser service (learn more in <a href="https://aws.amazon.com/blogs/machine-learning/reduce-captchas-for-ai-agents-browsing-the-web-with-web-bot-auth-preview-in-amazon-bedrock-agentcore-browser">their post)</a>. AgentCore Browser intends to transition from a service signing key that is currently available in their public preview, to customer-specific keys, once the protocol matures. Cloudflare and other operators of origin protection service will be able to see and validate signatures from individual AgentCore customers rather than AgentCore as a whole.</p>
+	<p>Cloudflare also offers a registry for bots and agents it trusts, provided through Radar. It uses the <a href="https://assets.radar.cloudflare.com/bots/signature-agent-registry.txt"><u>registry format</u></a> to allow for the consumption of bots trusted by Cloudflare on your server.</p>
+	<p>You can use these registries today – we’ve provided a demo in Go for <a href="https://caddyserver.com"><u>Caddy server</u></a> that would allow us to import keys from multiple registries. It’s on <a href="https://github.com/cloudflare/web-bot-auth/pull/52"><u>cloudflare/web-bot-auth</u></a>. The configuration looks like this:</p>
+	<pre class="language-Rust"><code class="language-Rust">:8080 {
+    route {
+        # httpsig middleware is used here
+        httpsig {
+            registry "http://localhost:8787/test-registry.txt"
+            # You can specify multiple registries. All tags will be checked independantly
+            registry "http://example.test/another-registry.txt"
+        }
+
+        # Responds if signature is valid
+        handle {
+            respond "Signature verification succeeded!" 200
+        }
+    }
+}</code></pre>
+	<p>There are several reasons why you might want to operate and curate a registry leveraging the <a href="https://www.ietf.org/archive/id/draft-meunier-webbotauth-registry-01.html#name-signature-agent-card"><u>Signature Agent Card format</u></a>:</p>
+	<ol>
+		<li>
+			<p><b>Monitor incoming </b><code><b>Signature-Agent</b></code><b>s.</b> This should allow you to collect signature-agent cards of agents reaching out to your domain.</p>
+		</li>
+		<li>
+			<p><b>Import them from existing registries, and categorize them yourself.</b> There could be a general registry constructed from the monitoring step above, but registries might be more useful with more categories.</p>
+		</li>
+		<li>
+			<p><b>Establish direct relationships with agents.</b> Cloudflare does this for its<a href="https://radar.cloudflare.com/bots#verified-bots"> <u>bot registry</u></a> for instance, or you might use a public GitHub repository where people can open issues.</p>
+		</li>
+		<li>
+			<p><b>Learn from your users.</b> If you offer a security service, allowing your customers to specify the registries/signature-agents they want to let through allows you to gain valuable insight.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="moving-forward">Moving forward</h2>
+		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As cryptographic authentication for bots and agents grows, the need for discovery increases.</p>
+	<p>With the introduction of a lightweight format and specification to attach metadata to Signature-Agent, and curate them in the form of registries, we begin to address this need. The HTTP Message Signature directory format is being expanded to include some self-certified metadata, and the registry maintains a curation ecosystem.</p>
+	<p>Down the line, we predict that clients and origins will choose the signature-agent they trust, use a common format to migrate their configuration between CDN providers, and rely on a third-party registry for curation. We are working towards integrating these capabilities into our bot management and rule engines.</p>
+	<p>If you’d like to experiment, our demo is on <a href="https://github.com/cloudflare/web-bot-auth/pull/52"><u>GitHub</u></a>. If you’d like to help us, <a href="https://blog.cloudflare.com/cloudflare-1111-intern-program"><u>we’re hiring 1,111 interns</u></a> over the course of next year, and have <a href="https://www.cloudflare.com/careers"><u>open positions</u></a>.</p>
+</div>
