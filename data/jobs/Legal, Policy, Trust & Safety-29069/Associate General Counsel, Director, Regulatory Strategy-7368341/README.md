@@ -5,44 +5,62 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru, London, Mexico</span></strong></p>
-<p><strong>About The Department</strong></p>
-<p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations: Washington D.C.</strong></p>
+<p><strong>The Role</strong></p>
+<p>Cloudflare is a leading connectivity cloud company that runs one of the world’s largest and most interconnected networks, powering and protecting millions of websites, remote teams, applications, and anything connected to the Internet. Our global network, fast-paced innovation, and commitment to helping build a better Internet puts us at the forefront of some of the most complex and important issues in technology and law. We are looking for an experienced lawyer to help navigate this constantly evolving regulatory landscape.</p>
+<p>Cloudflare is looking for a lawyer to help lead our response to Cloudflare's most complex regulatory issues, whether they arise from regulatory inquiries or enforcement actions, new legal requirements, or proposed new laws. This individual will handle critical regulatory issues around the globe and will work cross-functionally with subject-matter experts across our Legal, Policy, and Trust &amp; Safety Team, as well as across the broader company. The ideal candidate has the passion to keep pace with a fast-moving docket, the curiosity to dive deep into evolving technology and law, and the strategic vision to navigate novel legal issues with an eye towards protecting Cloudflare and its principles.</p>
+<p><strong>In this role you will:</strong></p>
 <ul>
-	<li>Hands-on experience working with threat detection and prevention product engineering teams, recognizing vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
-	<li>Apply a deep understanding of security vulnerabilities in web application and application security.&nbsp;</li>
-	<li>Reverse and research n-day exploits, proactively detect patterns of bot and fraud attacks, review false positive and false negative reports, and recommend security configurations.</li>
-	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences. Including writing public facing research blogs.</li>
-	<li>Authoring periodic report on trends on Internet traffic and security attack insights</li>
-	<li>Experience with modern cloud-based technologies used to deliver rapidly-changing products at scale.</li>
-	<li>Conduct penetration testing to identify security gaps and potential exploits across applications and services.</li>
-	<li>Develop, maintain, and enhance security dashboards to monitor and analyze attack trends, bot activity, and fraud detection metrics.</li>
-	<li>Leverage strong coding skills to build and automate security tools, improve system engineering workflows, and develop new security rules and heuristics.</li>
+	<li>Respond to high-stakes regulatory inquiries or enforcement actions;</li>
+	<li>Support the Policy Team in advocacy regarding proposed legislations or regulations related to the Internet and Cloudflare;</li>
+	<li>Evaluate newly enacted laws to determine applicability to Cloudflare’s services and guide our Cloudflare’s response;</li>
+	<li>Provide support to our Product Legal Team in evaluating regulatory implications arising from new products or services;</li>
+	<li>Support our Go to Market Function in addressing emerging regulatory questions posed by Cloudflare’s customers related to the use of our services;</li>
+	<li>Collaborate with legal team members to improve processes, provide training, and ensure business needs are met.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>You have:</strong></p>
 <ul>
-	<li>A degree in computer science, IT, systems engineering, or related qualification.</li>
-	<li>4 years of work experience with incident detection, incident response, forensics, reverse engineering, security research or similar.</li>
-	<li>Ability to work under pressure in a fast-paced environment.</li>
-	<li>Strong attention to detail with an analytical mind and outstanding problem-solving skills. Excellent organizational skills.</li>
-	<li>Great awareness of cybersecurity trends and hacking techniques.</li>
-	<li>Demonstrated results in identifying, tracking and resolving issues to resolution in the areas of cybersecurity.</li>
-	<li>Strong written and verbal communication skills.</li>
-	<li>Experience in OWASP, security standards and best practice</li>
-	<li>Strong SQL experience.</li>
-	<li>Proficiency in penetration testing methodologies, tools, and vulnerability assessment techniques.</li>
-	<li>Experience in building security dashboards using tools like Grafana or similar visualization platforms.</li>
-	<li>Strong programming experience with expertise in Python, Go, Rust, or JavaScript to develop security tools and automation.</li>
-	<li>Prior experience or interest in Web Security, HTTP protocols, Python, Jupyter Notebook, and JavaScript is a huge plus!</li>
-	<li>Knowledge and experience with machine learning, statistical inference, and AI in general is a huge plus</li>
+	<li>J.D. degree and admitted to practice law in a relevant jurisdiction.</li>
+	<li>10+ years of relevant legal experience, preferably at a top law firm, in-house at a technology company, or in a government regulatory or enforcement agency.</li>
+	<li>Deep expertise in navigating complex regulatory frameworks, responding to government inquiries, and advising on compliance with new and proposed laws.</li>
+	<li>Experience working on a global scale with a variety of international regulatory regimes.</li>
+	<li>Exceptional ability to work cross-functionally with lawyers and non-lawyers to find practical, effective, and principled solutions.</li>
+	<li>Strong communication skills, with the ability to explain complex regulatory concepts to business leaders and to advocate for the company's position externally.</li>
+	<li>An ambitious and strategic mindset that enables you to work independently and autonomously, but also to exercise good judgment and escalate issues when needed.</li>
+	<li>Flexibility to adapt and thrive in a fast-paced environment, leading with empathy and understanding while embracing diverse points of view.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Knowledge and experience with columnar database like Clickhouse</li>
-	<li>Familiarity writing and optimizing advanced SQL queries</li>
-	<li>Good Linux/UNIX systems knowledge</li>
-	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
+	<li><span data-sheets-root="1">For D.C. based hires: Estimated annual salary of $249,000 - $305,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
