@@ -31,11 +31,10 @@
 	<li>Knowledge of statistical programming languages, such as Python or R is a plus</li>
 	<li>Familiarity with analyzing data from CRM (e.g., Salesforce) and Marketing Automation (e.g., Marketo) platforms to create a full-funnel view</li>
 	<li>Proven expertise in creating impactful dashboards and data visualizations using tools like Tableau, Looker Studio, etc</li>
-	<li>Exceptional communication and storytelling skills, with the ability to translate analytical findings into clear, concise, and actionable recommendations&nbsp;</li>
-</ul>
-<ul>
+	<li>Exceptional communication and storytelling skills, with the ability to translate analytical findings into clear, concise, and actionable recommendations</li>
 	<li>Bachelor's degree in a quantitative field (e.g., Statistics, Economics, Computer Science, Mathematics) or equivalent practical experience is preferred</li>
 </ul>
+<p><strong>Reasonable overlap with US work hours expected during the week. Weekend work while not expected may arise occasionally for important or embargoed launches.</strong></p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
