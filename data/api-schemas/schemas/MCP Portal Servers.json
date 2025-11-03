@@ -44,9 +44,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -56,6 +58,7 @@
 											"type": "string"
 										},
 										"error": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"hostname": {
@@ -73,13 +76,16 @@
 										},
 										"last_synced": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -101,10 +107,12 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"tools": {
@@ -121,6 +129,7 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										}
 									},
@@ -276,9 +285,11 @@
 											},
 											"created_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"created_by": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"description": {
@@ -288,6 +299,7 @@
 												"type": "string"
 											},
 											"error": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"hostname": {
@@ -305,13 +317,16 @@
 											},
 											"last_synced": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"modified_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"modified_by": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"name": {
@@ -333,10 +348,12 @@
 													},
 													"type": "object"
 												},
+												"readOnly": true,
 												"type": "array"
 											},
 											"status": {
 												"default": "waiting",
+												"readOnly": true,
 												"type": "string"
 											},
 											"tools": {
@@ -353,6 +370,7 @@
 													},
 													"type": "object"
 												},
+												"readOnly": true,
 												"type": "array"
 											}
 										},
@@ -491,9 +509,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -503,6 +523,7 @@
 											"type": "string"
 										},
 										"error": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"hostname": {
@@ -520,13 +541,16 @@
 										},
 										"last_synced": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -548,10 +572,12 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"tools": {
@@ -568,6 +594,7 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										}
 									},
@@ -748,9 +775,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -760,6 +789,7 @@
 											"type": "string"
 										},
 										"error": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"hostname": {
@@ -777,13 +807,16 @@
 										},
 										"last_synced": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -805,10 +838,12 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"tools": {
@@ -825,6 +860,7 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										}
 									},
@@ -1115,9 +1151,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -1127,6 +1165,7 @@
 											"type": "string"
 										},
 										"error": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"hostname": {
@@ -1144,13 +1183,16 @@
 										},
 										"last_synced": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -1172,10 +1214,12 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"tools": {
@@ -1192,6 +1236,7 @@
 												},
 												"type": "object"
 											},
+											"readOnly": true,
 											"type": "array"
 										}
 									},

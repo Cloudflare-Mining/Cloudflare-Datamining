@@ -35,9 +35,11 @@
 									"properties": {
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -60,9 +62,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -195,7 +199,7 @@
 				"in": "query",
 				"name": "search",
 				"schema": {
-					"description": "Search by id, name",
+					"description": "Search by id, name, hostname",
 					"type": "string"
 				}
 			}
@@ -211,9 +215,11 @@
 										"properties": {
 											"created_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"created_by": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"description": {
@@ -236,9 +242,11 @@
 											},
 											"modified_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"modified_by": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"name": {
@@ -370,9 +378,11 @@
 									"properties": {
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -395,9 +405,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -419,9 +431,11 @@
 													},
 													"created_at": {
 														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"created_by": {
+														"readOnly": true,
 														"type": "string"
 													},
 													"default_disabled": {
@@ -435,6 +449,7 @@
 														"type": "string"
 													},
 													"error": {
+														"readOnly": true,
 														"type": "string"
 													},
 													"hostname": {
@@ -452,13 +467,16 @@
 													},
 													"last_synced": {
 														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"modified_at": {
 														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"modified_by": {
+														"readOnly": true,
 														"type": "string"
 													},
 													"name": {
@@ -484,10 +502,12 @@
 															},
 															"type": "object"
 														},
+														"readOnly": true,
 														"type": "array"
 													},
 													"status": {
 														"default": "waiting",
+														"readOnly": true,
 														"type": "string"
 													},
 													"tools": {
@@ -504,6 +524,7 @@
 															},
 															"type": "object"
 														},
+														"readOnly": true,
 														"type": "array"
 													},
 													"updated_prompts": {
@@ -774,9 +795,11 @@
 									"properties": {
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -799,9 +822,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -1037,9 +1062,11 @@
 									"properties": {
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"description": {
@@ -1062,9 +1089,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
