@@ -186,6 +186,14 @@
 		"name": "Workers Platform (Read-only)",
 		"description": "Can read all resources in the Workers Platform.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"dns_records": {
+				"read": true,
+				"edit": false
+			},
 			"organization": {
 				"read": true,
 				"edit": false
@@ -219,10 +227,6 @@
 				"edit": false
 			},
 			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
@@ -1580,6 +1584,14 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
 			"cf1_integration": {
 				"read": true,
 				"edit": true,
@@ -1656,10 +1668,6 @@
 				"read": true,
 				"edit": true
 			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
 			"cds_compute_account": {
 				"read": true,
 				"edit": true
@@ -1677,10 +1685,6 @@
 				"edit": true
 			},
 			"subscription": {
-				"read": true,
-				"edit": true
-			},
-			"dns_records": {
 				"read": true,
 				"edit": true
 			},
@@ -2051,6 +2055,14 @@
 		"name": "Workers Platform Admin",
 		"description": "Can create, read, update and delete all resources in the Workers Platform.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
 			"organization": {
 				"read": true,
 				"edit": true
@@ -2089,10 +2101,6 @@
 				"edit": true
 			},
 			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
@@ -2286,6 +2294,14 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"dns_records": {
+				"read": true,
+				"edit": false
+			},
 			"cf1_integration": {
 				"read": true,
 				"edit": false
@@ -2347,10 +2363,6 @@
 				"read": true,
 				"edit": false
 			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
 			"cds_compute_account": {
 				"read": true,
 				"edit": false
@@ -2368,10 +2380,6 @@
 				"edit": false
 			},
 			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"dns_records": {
 				"read": true,
 				"edit": false
 			},
@@ -2509,6 +2517,14 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
 			"cf1_integration": {
 				"read": true,
 				"edit": true,
@@ -2580,10 +2596,6 @@
 				"read": true,
 				"edit": false
 			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
 			"cds_compute_account": {
 				"read": true,
 				"edit": true
@@ -2601,10 +2613,6 @@
 				"edit": true
 			},
 			"subscription": {
-				"read": true,
-				"edit": true
-			},
-			"dns_records": {
 				"read": true,
 				"edit": true
 			},
