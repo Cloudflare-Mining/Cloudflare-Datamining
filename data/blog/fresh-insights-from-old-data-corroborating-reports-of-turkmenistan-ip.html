@@ -1,0 +1,106 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/67Ip8cliOI46I1ecsQpRV0/8828284d41175d52f6bfa3f9f6990c2f/BLOG_3069_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Here at Cloudflare, we frequently use and write about data in the present. But sometimes understanding the present begins with digging into the past.&nbsp;&nbsp;</p>
+	<p>We recently learned of a 2024 <a href="https://turkmen.news/internet-amnistiya-v-turkmenistane-razblokirovany-3-milliarda-ip-adresov-hostingi-i-cdn"><u>turkmen.news article</u></a> (available in Russian) that reports <a href="https://radar.cloudflare.com/tm"><u>Turkmenistan</u></a> experienced “an unprecedented easing in blocking,” causing over 3 billion previously-blocked IP addresses to become reachable. The same article reports that one of the reasons for unblocking IP addresses was that Turkmenistan may have been testing a new firewall. (The Turkmen government’s tight control over the country’s Internet access <a href="https://www.bbc.com/news/world-asia-16095369"><u>is well-documented</u></a>.)&nbsp;</p>
+	<p>Indeed, <a href="https://radar.cloudflare.com"><u>Cloudflare Radar</u></a> shows a surge of requests coming from Turkmenistan around the same time, as we’ll show below. But we had an additional question: Does the firewall activity show up on Radar, as well? Two years ago, we launched the <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>dashboard on Radar</u></a> to give a window into the TCP connections to Cloudflare that close due to resets and timeouts. These stand out because they are considered ungraceful mechanisms to close TCP connections, according to the TCP specification.&nbsp;</p>
+	<p>In this blog post, we go back in time to share what Cloudflare saw in connection resets and timeouts. We must remind our readers that, as passive observers, there are <a href="https://blog.cloudflare.com/connection-tampering/#limitations-of-our-data"><u>limitations on what we can glean from the data</u></a>. For example, our data can’t reveal attribution. Even so, the ability to observe our environment <a href="https://blog.cloudflare.com/tricky-internet-measurement"><u>can be insightful</u></a>. In a recent example, our visibility into resets and timeouts helped corroborate reports of large-scale <a href="https://blog.cloudflare.com/russian-internet-users-are-unable-to-access-the-open-internet"><u>blocking and traffic tampering by Russia</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="turkmenistan-requests-where-there-were-none-before">Turkmenistan requests where there were none before</h3>
+		<a href="https://blog.cloudflare.com/#turkmenistan-requests-where-there-were-none-before" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let’s look first at the number of requests, since those should increase if IP addresses are unblocked. In mid-June 2024 Cloudflare started receiving a noticeable increase in HTTP requests, consistent with <a href="https://turkmen.news/internet-amnistiya-v-turkmenistane-razblokirovany-3-milliarda-ip-adresov-hostingi-i-cdn"><u>reports</u></a> of Turkmenistan unblocking IPs.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Kqaxxjv9g52RVMWg92AYu/e57468cf523702cadd634c34775be033/BLOG_3069_2.png" alt="BLOG 3069 2" class="kg-image" width="1999" height="1125" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/traffic/tm?dateStart=2024-06-01&amp;dateEnd=2024-06-30"><sup>Cloudflare Radar</sup></a></p>
+	<div class="flex anchor relative">
+		<h3 id="overall-tcp-resets-and-timeouts">Overall TCP resets and timeouts</h3>
+		<a href="https://blog.cloudflare.com/#overall-tcp-resets-and-timeouts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Transmission Control Protocol (TCP) is a lower-layer mechanism used to create a connection between clients and servers, and also carries <a href="https://radar.cloudflare.com/adoption-and-usage#http1x-vs-http2-vs-http3"><u>70% of HTTP traffic</u></a> to Cloudflare. A TCP connection works <a href="https://blog.cloudflare.com/connection-tampering/#explaining-tampering-with-telephone-calls"><u>much like a telephone call</u></a> between humans, who follow graceful conventions to end a call—and who are acutely aware when conventions are broken if a call ends abruptly.&nbsp; </p>
+	<p>TCP also defines conventions to end the connection gracefully, and we developed <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>mechanisms to detect</u></a> when they don’t. An ungraceful end is triggered by a reset instruction or a timeout. Some are due to benign artifacts of software design or human user behaviours. However, sometimes they are exploited by <a href="https://blog.cloudflare.com/connection-tampering"><u>third parties to close connections</u></a> in everything from school and enterprise firewalls or software, to zero-rating on mobile plans, to nation-state filtering.</p>
+	<p>When we look at connections from Turkmenistan, we see that on June 13, 2024, the combined proportion of the four coloured regions increases; each coloured region represents ungraceful ends at a distinct stage of the connection lifetime. In addition to the combined increase, the relative proportions between stages (or colours) changes as well.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hNDpdNS9lDPKg3jFHigiL/ff3de33af7974c5d32ba421cbbc3c42e/BLOG_3069_3.png" alt="BLOG 3069 3" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/security/network-layer/tm?dateStart=2023-10-01&amp;dateEnd=2023-11-30#tcp-resets-and-timeouts"><sup>Cloudflare Radar</sup></a></p>
+	<p>Further changes appeared in the weeks that followed. Among them are an increase in Post-PSH (orange) anomalies starting around July 4; a reduction in Post-ACK (light blue) anomalies around July 13; and an increase in anomalies later in connections (green) starting July 22.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IavKOkF7tB02MtNqJPqqD/f08c78f65894e751b7c9fce9820dee85/BLOG_3069_4.png" alt="BLOG 3069 4" class="kg-image" width="1604" height="802" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/security/network-layer/tm?dateStart=2024-07-01&amp;dateEnd=2024-07-30#tcp-resets-and-timeouts"><sup>Cloudflare Radar</sup></a></p>
+	<p>The shifts above <i>could</i> be explained by a large firewall system. It’s important to keep in mind that data in each of the connection stages (captured by the four coloured regions in the graphs) can be explained by browser implementations or user actions. However, the scale of the data would need a great number of browsers or users doing the same thing to show up. Similarly, individual changes in behaviour would be lost unless they occur in large numbers at the same time.</p>
+	<div class="flex anchor relative">
+		<h3 id="digging-down-to-individual-networks">Digging down to individual networks</h3>
+		<a href="https://blog.cloudflare.com/#digging-down-to-individual-networks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve learned that it can be helpful to look at the data for individual networks to reveal common patterns between different networks in different regions <a href="https://blog.cloudflare.com/tcp-resets-timeouts/#zero-rating-in-mobile-networks"><u>operated by single entities</u></a>.&nbsp;</p>
+	<p>Looking at individual networks within Turkmenistan, trends and timelines appear more pronounced. July 22 in particular sees greater proportions of anomalies associated with the <a href="https://www.cloudflare.com/learning/ssl/what-is-sni"><u>Server Name Indication</u></a>, or domain name, rather than the IP address (dark blue), although the connection stage where the anomalies appear varies by individual network.</p>
+	<p>The general Turkmenistan trends are largely mirrored in connections from <a href="https://radar.cloudflare.com/as20661"><u>AS20661 (TurkmenTelecom)</u></a>, indicating that this <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u>autonomous system</u></a> (AS) accounts for <a href="https://radar.cloudflare.com/tm#autonomous-systems"><u>a large proportion of Turkmenistan’s traffic</u></a> to Cloudflare’s network. There is a notable reduction in Post-ACK (light blue) anomalies starting around July 26.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ukNOB1CYUAPW2s7ofdqMK/7d1dca367374db90627413e2c40a6ee3/BLOG_3069_5.png" alt="BLOG 3069 5" class="kg-image" width="1608" height="804" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/security/network-layer/tm?dateStart=2023-10-01&amp;dateEnd=2023-11-30#tcp-resets-and-timeouts"><sup>Cloudflare Radar</sup></a></p>
+	<p>A different picture emerges from <a href="https://radar.cloudflare.com/as51495"><u>AS51495 (Ashgabat City Telephone Network)</u></a>. Post-ACK anomalies almost completely disappear on July 12, corresponding with an increase in anomalies during the Post-PSH stage. An increase of anomalies in the Later (green) connection stage on July 22 is apparent for this AS as well.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7btBYWx2VVVg0MH10yY9ot/17e87bf94f97b1cd43139e432f189770/BLOG_3069_6.png" alt="BLOG 3069 6" class="kg-image" width="1602" height="806" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/security/network-layer/tm?dateStart=2023-10-01&amp;dateEnd=2023-11-30#tcp-resets-and-timeouts"><sup>Cloudflare Radar</sup></a></p>
+	<p>Finally, for <a href="https://radar.cloudflare.com/as59974"><u>AS59974 (Altyn Asyr)</u></a>, you can see below that there is a clear spike in Post-ACK anomalies starting July 22. This is the stage of the connection where a firewall could have seen the SNI, and chooses to drop the packets immediately, so they never reach Cloudflare’s servers.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pxUHjzkRwnbmaSsgkhiKd/b56fbc84e2fdcd8b889b6e8b3a68dc40/BLOG_3069_7.png" alt="BLOG 3069 7" class="kg-image" width="1602" height="804" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/security/network-layer/tm?dateStart=2023-10-01&amp;dateEnd=2023-11-30#tcp-resets-and-timeouts"><sup>Cloudflare Radar</sup></a></p>
+	<div class="flex anchor relative">
+		<h3 id="timeouts-and-resets-in-context-never-isolation">Timeouts and resets in context, never isolation</h3>
+		<a href="https://blog.cloudflare.com/#timeouts-and-resets-in-context-never-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve previously discussed <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>how to use the resets and timeouts</u></a> data because, while useful, it can also be misinterpreted. Radar’s data on resets and timeouts is unique among operators, but in isolation it’s incomplete and subject to human bias. </p>
+	<p>Take the figure above for AS59974 where Post-ACK (light blue) anomalies markedly increased on July 22. The Radar view is proportional, meaning that the increase in proportion could be explained by greater numbers of anomalies – but could also be explained, for example, by a smaller number of valid requests. Indeed, looking at the HTTP request levels for the same AS, there was a similarly pronounced drop starting on the same day, as shown below.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2PAYPpcFeInis6zo4lWrSx/f28a1f84fbe5b1c21659911b11331c30/BLOG_3069_8.png" alt="BLOG 3069 8" class="kg-image" width="1600" height="916" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/security/network-layer/tm?dateStart=2023-10-01&amp;dateEnd=2023-11-30#tcp-resets-and-timeouts"><sup>Cloudflare Radar</sup></a></p>
+	<p>If we look at the same two graphs before July 22, however, rates of reset and timeout anomalies do not appear to mirror the very large shifts up and down in HTTP requests.</p>
+	<div class="flex anchor relative">
+		<h3 id="looking-ahead-can-also-mean-looking-behind">Looking ahead can also mean looking behind</h3>
+		<a href="https://blog.cloudflare.com/#looking-ahead-can-also-mean-looking-behind" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>These charts from Radar above offer a way to analyze news events from a different angle, by looking at requests and TCP connection resets and timeouts. Does this data tell us definitively that new firewalls were being tested in Turkmenistan? No. But the trends in the data are consistent with what we could expect to see if that were the case.</p>
+	<p>If thinking about ways to use the resets and timeouts data going forward, we’d encourage also looking at the data in retrospect—or even further past to improve context.</p>
+	<p>A natural question might be, for example, “If Turkmenistan stopped blocking IPs in mid-2024, what did the data say beforehand?” The figure below captures October and November 2023. (The red-shaded region contains missing data due to the <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage"><u>Nov. 2 Cloudflare control plane and metrics outage</u></a>.) Signals about the Internet in Turkmenistan were evolving well before the <a href="https://turkmen.news/internet-amnistiya-v-turkmenistane-razblokirovany-3-milliarda-ip-adresov-hostingi-i-cdn"><u>news article</u></a> that prompted us to look.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2W4MfieKNV24PmvynAAIfO/af42a2328059eb15fba0619372973887/BLOG_3069_9.png" alt="BLOG 3069 9" class="kg-image" width="1600" height="878" loading="lazy">
+	</figure>
+	<p><sup>Source: </sup><a href="https://radar.cloudflare.com/security/network-layer/tm?dateStart=2023-10-01&amp;dateEnd=2023-11-30#tcp-resets-and-timeouts"><sup>Cloudflare Radar</sup></a></p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To learn more, see our guide about <a href="https://blog.cloudflare.com/tcp-resets-timeouts"><u>how to use the resets and timeouts data available on Radar</u></a>, as well as the technical details about our <a href="https://blog.cloudflare.com/connection-tampering"><u>third-party tampering measurement </u></a>and some perspectives by a former <a href="https://blog.cloudflare.com/experience-of-data-at-scale"><u>intern who helped drive</u></a> the study.&nbsp;</p>
+	<p>We’re proud to offer a unique view of TCP connection anomalies on Radar. It’s a testament to the long-lived benefits that emerge when approaching <a href="https://blog.cloudflare.com/tricky-internet-measurement"><u>Internet measurement as a science</u></a>. In keeping with the open spirit of science, we’ve also shared how we<a href="https://blog.cloudflare.com/tricky-internet-measurement"><u> detect and log resets and timeouts</u></a> so that others can reproduce the observability on their servers, whether by hobbyists or other large operators.</p>
+</div>
