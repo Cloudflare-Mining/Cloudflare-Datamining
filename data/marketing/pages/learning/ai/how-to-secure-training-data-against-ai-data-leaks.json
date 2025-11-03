@@ -1,0 +1,578 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ai/how-to-secure-training-data-against-ai-data-leaks/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "15gzEz2eNREsfCWFkymb3m",
+				"urlSlug": "ai/how-to-secure-training-data-against-ai-data-leaks",
+				"metaTags": {
+					"metaTitle": "How to secure training data against AI data leaks",
+					"metaDescription": "Generative AI (GenAI) training data security combines technologies, policies, and processes to prevent training data leakage while safeguarding models and applications.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "5JjQb2yV1d1T7WTVZQkNEW",
+					"learningCenterName": "artificialintelligence",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+							"displayText": "What is artificial intelligence (AI)?",
+							"url": "/learning/ai/what-is-artificial-intelligence/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "What is a large language model (LLM)?",
+							"url": "/learning/ai/what-is-large-language-model/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2WaoB1uAGPdfW9vr56U72B",
+							"name": "Glossary - AI subheader",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+									"displayText": "Model Context Protocol (MCP)",
+									"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+									"displayText": "AI for cybersecurity",
+									"url": "/learning/ai/ai-for-cybersecurity/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+									"displayText": "ChatGPT plugins",
+									"url": "/learning/ai/chatgpt-plugins/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4fHZ91razv1xm1g6m2sAcT",
+					"learningCenterName": "artificialintelligence",
+					"column1Title": "Artificial intelligence",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "504wIqF2RxToUI652YFAHo",
+						"name": "AI Footer - Artificial intelligence",
+						"displayText": "Artificial intelligence",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+								"displayText": "What is artificial intelligence (AI)?",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
+							}
+						]
+					},
+					"column2Title": "Machine learning",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4WbETih2OgXGNXGsvb7kMZ",
+						"name": "AI footer - Machine Learning",
+						"displayText": "Machine learning",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+								"displayText": "What is a large language model (LLM)?",
+								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
+							}
+						]
+					},
+					"column3Title": "Big data",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3q3KTRPkBi7rS3aDeQoMNn",
+						"name": "AI footer - Big Data",
+						"displayText": "Big data",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+								"displayText": "What are embeddings?",
+								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1UCfw4v8J5rpL4BsVNlgVC",
+						"name": "AI footer - Glossary",
+						"displayText": "AI glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+								"displayText": "Vector database",
+								"url": "/learning/ai/what-is-vector-database/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+								"displayText": "Predictive AI",
+								"url": "/learning/ai/what-is-predictive-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+								"displayText": "ChatGPT plugins",
+								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+								"displayText": "Model Context Protocol (MCP)",
+								"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+								"displayText": "AI for cybersecurity",
+								"url": "/learning/ai/ai-for-cybersecurity/"
+							}
+						]
+					},
+					"column5Title": "Learning Center",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5kj4ISBExxQfI9CaYifpU9",
+						"name": "AI Learning Center footer",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							}
+						]
+					}
+				},
+				"header": "How to secure training data against AI data leaks",
+				"blurbSubHeader": "Generative AI (GenAI) training data leakage results from attacks and accidents. Learn how to prevent data leakage and mitigate its effects.",
+				"objectivesHeader": "Secure AI training data ",
+				"objectivesList": [
+					"Understand common AI training data security risks",
+					"Identify best ways to safeguard generative AI training data",
+					"Apply key principles for protecting AI training data, models, applications, and workloads"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+						"displayText": "What is artificial intelligence (AI)?",
+						"url": "/learning/ai/what-is-artificial-intelligence/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+						"displayText": "What is generative AI?",
+						"url": "/learning/ai/what-is-generative-ai/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3gN1wRRmKbWagWGkgxTIuH",
+						"displayText": "What is AI security?",
+						"url": "https://www.cloudflare.com/learning/ai/what-is-ai-security/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5KGGCoBgenwdvUomxu9p34",
+						"displayText": "How to secure AI systems",
+						"url": "https://www.cloudflare.com/learning/ai/how-to-secure-ai-systems/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How to secure training data against AI data leaks</h2>\n\n<p><a href=\"/learning/ai/what-is-generative-ai/\">Generative AI (GenAI)</a> can help organizations be more productive, make better decisions, and move far faster — but only if the <a href=\"/learning/ai/what-is-large-language-model/\">large language models (LLMs)</a> that they use are trained on massive amounts of high-quality, relevant data. For most firms, that training data is some of their most precious intellectual property. Safely introducing that data to internal or external GenAI models requires a holistic approach to identifying and mitigating risk.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is generative AI training data?</h2>\n\n<p>GenAI uses <a href=\"/learning/ai/what-is-deep-learning/\">deep learning</a> models to produce content: primarily text, images, audio, video, or computer code. To do that, these models are trained on vast amounts of raw training data that usually takes the form of the data the model will output. In other words, text-generation models are trained on text, video generators on video, etc.</p>\n\n<p>Guided by algorithms, a model combs through training data, analyzing it for relevant concepts, images, or patterns. Over rounds of training and tuning, the model uses what it learns from that analysis to quickly respond to user prompts with new, relevant content.</p>\n\n<p>Music is a useful analogy: Melodic scales, chord formations, and existing songs or works are the training data. A musician (like a GenAI model) studies them to identify effective patterns and synthesize new solos, progressions, and songs (GenAI outputs).</p>\n\n<p>In enterprise IT, organizations often use their own training data to create GenAI models or fine-tune existing models to do specific jobs. Training data may come from:</p>\n\n<ul class=\"learning-list\">\n  <li>Internal documents (e.g., technical reports, design docs, user manuals)\n  <li>Customer correspondence, support logs, emails\n  <li>Publicly available text, code repositories, open datasets\n  <li>Proprietary knowledge bases, intellectual property archives\n  <li>External sources ingested via web crawling, APIs, or third-party datasets\n</ul>\n\n<p>Because generative models rely on scale, many organizations incorporate both internal and external data. But from a security perspective, that mix is risky. Internal data often gets better vetting. Mingling sensitive or proprietary information with external data can create new vectors for downstream leaks via modern inversion or prompt-based attacks.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is training data leakage?</h2>\n\n<p>Training data leakage happens when sensitive, private, or proprietary content from the model's training data is exposed — either directly or indirectly — via model outputs, inference queries, logs, or auxiliary artifacts (such as embeddings). \"Memorization leakage\" is a type of training data leakage that occurs when a model's outputs reproduce parts of its training data.</p>\n\n<p>Leakage can occur at several points along the GenAI lifecycle:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Training stage leakage:</strong> Sensitive content or protected information inadvertently enters the training dataset, and the model later reveals it.\n  <li><a href=\"/learning/ai/inference-vs-training/\"><strong>Inference stage</strong></a><strong> leakage:</strong> Attackers craft prompts to coax a model into revealing internal or private data.\n  <li><strong>Gradient or parameter leakage:</strong> In distributed training, when the training of a large model is split across several processors, parameter updates can inadvertently reveal training data.\n</ul>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is securing AI training data important?</h2>\n\n<p>There are several overlapping reasons why organizations — particularly ones handling sensitive or regulated data — must secure their AI pipelines with the same rigor as other IT assets.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Training data is valuable to organizations <em>and</em> attackers</strong></h3>\n\n<p>AI projects frequently rely on internal, proprietary, or regulated data: customer data, financial records, legal contracts, trade secrets, source code, and more. If the model leaks <a href=\"/learning/privacy/what-is-pii/\">personally identifiable information (PII)</a> or trade secrets, the damage can be severe. These leaks can lead to identity theft, competitive exposure, regulatory fines, reputational damage, and IP theft.</p>\n\n<p>Even if only fragments (e.g., names, addresses, small code snippets) escape, they can be aggregated or correlated with external data to mount a larger breach.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Privacy failures are costly</strong></h3>\n\n<p><a href=\"/learning/privacy/what-is-data-privacy/\">Data privacy</a> laws — including the <a href=\"/learning/privacy/what-is-the-gdpr/\">General Data Protection Regulation (GDPR)</a> in Europe, the California Consumer Privacy Act (CCPA), and industry-specific rules like the <a href=\"/learning/privacy/what-is-hipaa-compliance/\">Health Insurance Portability and Accountability Act (HIPAA)</a> in the US — impose strict obligations around <a href=\"/the-net/balancing-data-sovereignty-and-ai/\">personal data handling</a>, minimization, consent, and breach notification. A model that leaks PII or personal attributes could put the organization in breach of these laws — triggering fines, reporting requirements, audits, and class-action liability.</p>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the top training data security risks?</h2>\n\n<p>The top threats to model training data fall into three broad categories: malicious attacks, threats resulting from a lack of visibility into AI usage, and <a href=\"/learning/security/api/what-is-an-api/\">API</a> and endpoint vulnerabilities.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Attacks from malicious actors</strong></h3>\n\n<p><strong>Insider attacks:</strong> <a href=\"/learning/access-management/what-is-an-insider-threat/\">Insider threats</a> are a classic problem: A privileged developer, ML engineer, or data scientist might intentionally exfiltrate training data or inject sensitive samples into datasets. They may access training logs, parameter dumps, prompt logs, or intermediate artifacts to extract or reconstruct sensitive content. Because those team members often have legitimate access, detecting malicious behavior requires robust monitoring, logging, and segregation of duties.</p>\n\n<p><strong>Model inversion attacks:</strong> Model inversion (and membership inference) attacks seek to reconstruct or confirm whether certain data points were part of the training set. By crafting queries or probing the model's confidence distributions, attackers may reconstruct private pixel-level data (in vision models) or textual data (for LLMs) from the model itself.</p>\n\n<p>In other words, the \"black box\" model becomes a lens through which attackers can recover private data.</p>\n\n<p>Beyond inversion, adversarial query attacks, model extraction, or \"stealing\" a model by continuous querying are additional threats.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>AI risks and vulnerabilities</strong></h3>\n\n<p>These are risks that stem from how teams adopt and use generative AI tools — often in uncontrolled ways.</p>\n\n<p><strong>Shadow AI:</strong> \"Shadow AI\" is the use of AI tools without oversight, vetting, or integration with central controls. These AI tools may upload internal documents or data to third-party models (e.g., public LLMs), creating blind spots and exposure without the security team's awareness.</p>\n\n<p><strong>Inadequate access controls:</strong> If permissions to training data, embeddings, prompt logs, intermediate representations, or model weights are too broad, then users or systems that don't need full exposure may inadvertently see or leak sensitive content. Overprivileged roles or lax <a href=\"/learning/access-management/role-based-access-control-rbac/\">role-based access control (RBAC)</a> are common root causes.</p>\n\n<p><strong>Inadvertent exposure by GenAI inputs and outputs:</strong> Sometimes leakage happens <a href=\"/learning/ai/owasp-top-10-risks-for-llms/\">inadvertently</a> via model input or output channels. An internal prompt used for training might include sensitive text, or a user might inadvertently feed proprietary content into an interactive model. The model's output might echo back portions of that sensitive input in an attempt to \"help,\" thereby exposing it to downstream systems. Similarly, logs or archives of prompt / response sessions may become an inadvertent repository of private data.</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>API and endpoint vulnerabilities</strong></h3>\n\n<p>When models are exposed via APIs, they present additional risk to service infrastructure. If <a href=\"/learning/access-management/what-is-authentication/\">authentication</a>, <a href=\"/learning/bots/what-is-rate-limiting/\">rate limiting</a>, endpoint sanitization, or input filtering is weak, adversaries may launch:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Prompt injection attacks:</strong> Attackers trick an AI model into ignoring its instructions and producing harmful or unintended responses.\n  <li><strong>Chaining or probing attacks:</strong> Cybercriminals send a series of clever questions to slowly uncover the training data or other sensitive information about model behavior.\n  <li><strong>Parameter or model-stealing:</strong> Attackers repeatedly query the model to copy its underlying logic or training data without direct access.\n  <li><a href=\"https://www.cloudflare.com/learning/security/threats/on-path-attack/\"><strong>On-path attacks</strong></a><strong> or side-channel exploits:</strong> Cybercriminals intercept or eavesdrop on API traffic to steal data or manipulate results.\n  <li><strong>Breaks in the API perimeter:</strong> Any weak spot in an API's defenses can let sensitive data leak out or be misused.\n</ul>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to mitigate the risks of training data leaks</h2>\n\n<p>To reduce training data risks, organizations need to take a broad approach to security that weaves together technical, policy, and organizational solutions. Those solutions should deliver:</p>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Visibility into AI use (models, tools, and apps)</strong></h3>\n\n<p>Knowing what AI models, tools, and applications your teams use is the first step to reducing likelihood that one of them will expose training data.</p>\n\n<ul class=\"learning-list\">\n  <li><strong>AI inventory and discovery:</strong> Use scans, questionnaires, or agent-based monitoring to identify which teams, projects, or services are using AI tools (public or internal). Flag unsanctioned usage.\n  <li><strong>Shadow AI detection:</strong> Monitor SaaS usage, unusual outbound traffic, or domain connections associated with AI, to detect unapproved model uploads or <a href=\"/learning/security/api/what-is-api-call/\">API calls</a>.\n  <li><strong>Governance oversight:</strong> Bridge AI usage with <a href='/the-net/building-cyber-resilience/ai-data-governance/'>risk, compliance, and governance policies</a> for the workforce. Require that new model proposals or data pipelines be reviewed by security or privacy teams before deployment.\n</ul>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Comprehensive risk assessment of your AI environment</strong></h3>\n\n<p>Once you get a complete picture of what your teams use, analyze it for potential vulnerabilities and attack paths.</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Data classification and labeling:</strong> Rigorously tag training data by sensitivity (e.g., PII, restricted, public). Use those tags to enforce policies.\n  <li><strong>Data lineage and provenance tracking:</strong> Maintain full lineage of data ingestion, transformations, splits, augmentations, and filters. That way, you know exactly which upstream sources feed into which models.\n  <li><strong>Risk scoring:</strong> For each dataset or model, assess the severity and likelihood of leakage risk. Prioritize high-risk assets for deep protection.\n  <li><strong>Threat modeling:</strong> For each model or AI service, model potential attacker paths, leakage vectors, and consequences.\n</ul>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Airtight access control</strong></h3>\n\n<p>Ensure that only the right authorized users are accessing the right information at the right time.</p>\n\n<ul class=\"learning-list\">\n  <li><a href='\"/learning/access-management/principle-of-least-privilege/\"'><strong>Least-privilege</strong></a> <strong>role-based access control (RBAC):</strong> Grant access only to personnel or systems that need it. Don't give modelers carte blanche to inspect all raw data, prompt logs, or embeddings.\n  <li><strong>Segregation of duties:</strong> Separate roles (data ingestion, model training, prompt administration, inference deployment) so no one role holds all pieces.\n  <li><strong>Attribute-based access control (ABAC):</strong> Use fine-grained controls based on user attributes, context, time, or purpose.\n  <li><strong>Access request audits and just-in-time provisioning:</strong> Where possible, require temporary elevation or approvals for sensitive data access. Log all access.\n  <li><strong>Audit trails and monitoring:</strong> Capture and review logs of who queried models, which outputs were returned, and anomaly detection (e.g., unusual prompt patterns).\n  <li><strong>Red teaming and penetration testing:</strong> Regularly simulate adversarial attempts to access or extract data to test your controls.\n</ul>\n\n<h3 class=\"learning-content-h3\" itemprop=\"headline\"><strong>Best-practice data safety throughout your AI pipeline</strong></h3>\n\n<p>From training to validation to inference, layer safeguards throughout the AI development lifecycle to ensure the privacy and integrity of data.</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Data minimization and anonymization / pseudonymization:</strong> Only include data absolutely necessary for the training objective. Strip or tokenize PII, and use differential privacy techniques or synthetic data where possible.\n  <li><strong>Sanitization and filtering:</strong> Use pattern matching or heuristics to scan ingested data to detect and remove sensitive or unwanted content before training.\n  <li><strong>Noise injection:</strong> Introduce carefully tuned noise or obfuscation to reduce the model's ability to memorize extremely specific instances.\n  <li><strong>Encrypted learning:</strong> Train on encrypted or partitioned data so that no party sees raw data.</li>\n  <li><strong>Model output filtering and guardrails:</strong> Post-process model outputs through filters or policies that block or sanitize sensitive content.\n  <li><strong>Prompt sanitization and context control:</strong> Carefully structure prompts to minimize risk of reflecting private context. For <a href=\"/learning/ai/retrieval-augmented-generation-rag/\">retrieval-augmented generation (RAG)</a> systems, vet and sanitize the retrieved context before passing it into the model.\n</ul>\n\n<hr>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare can help</h2>\n\n<p>The most effective solutions to protect AI training data equip teams to embrace best practices without adding to the complexity of existing systems. <a href=\"/ai-security/\">Cloudflare AI Security Suite</a> provides visibility and security controls to help organizations standardize and simplify their approach to protecting generative and agentic AI. This unified platform unites connectivity, network security, app security, and developer tooling into a single solution that lets you confront AI security challenges with confidence.</p>\n\n<p>Learn more about securing AI systems with <a href=\"/ai-security/\">Cloudflare AI Security Suite</a>.</p>\n\n<h2>FAQs</h2>\n<h4>What is Generative AI (GenAI) training data?</h4>\n<p>GenAI models are trained on vast amounts of raw data, such as text, images, or video. This training data can come from internal documents, customer correspondence, proprietary knowledge bases, or external public sources.</p>\n<h4>How does training data leakage occur in a GenAI model?</h4>\n<p>Training data leakage occurs when sensitive, private, or proprietary content from the training data is exposed, either directly or indirectly, through model outputs, logs, inference queries, or auxiliary artifacts. Leakage can happen during the training stage, the inference stage, or through gradient or parameter leakage in distributed training.</p>\n<h4>Why is it critical for organizations to secure their AI training data?</h4>\n<p>Securing AI training data is vital because this data often includes valuable, proprietary, or regulated information, such as trade secrets, customer data, and financial records. Leaks of this data can result in severe damage, including identity theft, competitive exposure, regulatory fines (like under GDPR or HIPAA), reputational harm, and IP theft.</p>\n<h4>What are the three main categories of security risks for AI training data?</h4>\n<p>The top security risks for model training data fall into three broad categories: malicious attacks, threats resulting from a lack of visibility into AI usage, and API and endpoint vulnerabilities. Examples include insider attacks, \"shadow AI\" (uncontrolled use of AI tools), and prompt injection attacks targeting API-exposed models.</p>\n<h4>What is a \"model inversion attack\" and how does it compromise training data?</h4>\n<p>A model inversion attack attempts to reconstruct or confirm whether specific data points were included in the training set. Attackers do this by crafting queries or probing the model's confidence distributions, essentially using the \"black box\" model as a lens to recover private data, such as private textual or pixel-level information.</p>\n<h4>What is \"shadow AI\" and how does it create a risk of data leaks?</h4>\n<p>\"Shadow AI\" is the use of AI tools without central oversight, vetting, or integration with security controls. This creates blind spots for security teams because employees may upload internal documents or data to unauthorized third-party models, exposing sensitive or proprietary information.</p>\n<h4>What are the four key mitigation areas for reducing training data risks?</h4>\n<p>To mitigate training data risks, organizations should implement solutions that deliver: (1) visibility into AI use; (2) comprehensive risk assessment of the AI environment; (3) airtight access control; and (4) best-practice data safety throughout the AI pipeline.</p>\n<h4>What data safety techniques can be applied during the AI pipeline to protect data privacy?</h4>\n<p>Data safety best practices can be layered throughout the AI lifecycle and include: data minimization and anonymization, sanitization and filtering, noise injection, encrypted learning, and model output filtering to block or sanitize sensitive content.</p>\n\n---\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is Generative AI (GenAI) training data?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"GenAI models are trained on vast amounts of raw data, such as text, images, or video. This training data can come from internal documents, customer correspondence, proprietary knowledge bases, or external public sources.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does training data leakage occur in a GenAI model?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Training data leakage occurs when sensitive, private, or proprietary content from the training data is exposed, either directly or indirectly, through model outputs, logs, inference queries, or auxiliary artifacts. Leakage can happen during the training stage, the inference stage, or through gradient or parameter leakage in distributed training.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Why is it critical for organizations to secure their AI training data?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Securing AI training data is vital because this data often includes valuable, proprietary, or regulated information, such as trade secrets, customer data, and financial records. Leaks of this data can result in severe damage, including identity theft, competitive exposure, regulatory fines (like under GDPR or HIPAA), reputational harm, and IP theft.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the three main categories of security risks for AI training data?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"The top security risks for model training data fall into three broad categories: malicious attacks, threats resulting from a lack of visibility into AI usage, and API and endpoint vulnerabilities. Examples include insider attacks, \\\"shadow AI\\\" (uncontrolled use of AI tools), and prompt injection attacks targeting API-exposed models.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is a \\\"model inversion attack\\\" and how does it compromise training data?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"A model inversion attack attempts to reconstruct or confirm whether specific data points were included in the training set. Attackers do this by crafting queries or probing the model's confidence distributions, essentially using the \\\"black box\\\" model as a lens to recover private data, such as private textual or pixel-level information.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What is \\\"shadow AI\\\" and how does it create a risk of data leaks?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"\\\"Shadow AI\\\" is the use of AI tools without central oversight, vetting, or integration with security controls. This creates blind spots for security teams because employees may upload internal documents or data to unauthorized third-party models, exposing sensitive or proprietary information.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the four key mitigation areas for reducing training data risks?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"To mitigate training data risks, organizations should implement solutions that deliver: (1) visibility into AI use; (2) comprehensive risk assessment of the AI environment; (3) airtight access control; and (4) best-practice data safety throughout the AI pipeline.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What data safety techniques can be applied during the AI pipeline to protect data privacy?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Data safety best practices can be layered throughout the AI lifecycle and include: data minimization and anonymization, sanitization and filtering, noise injection, encrypted learning, and model output filtering to block or sanitize sensitive content.\"\n      }\n    }\n  ]\n}\n</script>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "15gzEz2eNREsfCWFkymb3m",
+			"pathname": "/learning/ai/how-to-secure-training-data-against-ai-data-leaks/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
