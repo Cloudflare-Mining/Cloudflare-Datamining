@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
+<p><strong>Available Locations: Austin Texas - US, London - UK&nbsp;</strong></p>
 <p><strong>About the team</strong></p>
 <p>Cloudflare’s mission is to help build a better internet and the Cloudforce One Platform Abuse Response (PLAB) team lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing threat landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop abuse at cloudflare ranging from phishing, cryptodrainers, and other breaches of Cloudflare’s Terms of Services</p>
 <p>At a high level, the Cloudforce One Platform Abuse Response team is part of the Cloudforce One team with a mission to identify, track, mitigate, and deter abuse on the Cloudflare platform. The team works in tandem with other Cloudforce One and Trust &amp; Safety teams to accomplish its mission in addition to the Cloudflare developers of the services that may be abused.</p>
