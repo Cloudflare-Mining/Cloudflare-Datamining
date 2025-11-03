@@ -603,11 +603,6 @@
 															}
 														]
 													},
-													"modified_by": {
-														"example": "example-user@example.com",
-														"readOnly": true,
-														"type": "string"
-													},
 													"selector": {
 														"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
 														"properties": {
@@ -1014,11 +1009,6 @@
 															"x-auditable": true
 														}
 													]
-												},
-												"modified_by": {
-													"example": "example-user@example.com",
-													"readOnly": true,
-													"type": "string"
 												},
 												"selector": {
 													"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
@@ -1603,11 +1593,6 @@
 														}
 													]
 												},
-												"modified_by": {
-													"example": "example-user@example.com",
-													"readOnly": true,
-													"type": "string"
-												},
 												"selector": {
 													"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",
 													"properties": {
@@ -2145,11 +2130,6 @@
 															"x-auditable": true
 														}
 													]
-												},
-												"modified_by": {
-													"example": "example-user@example.com",
-													"readOnly": true,
-													"type": "string"
 												},
 												"selector": {
 													"description": "Select operations covered by this rule.\n\nFor details on selectors, see the [Cloudflare Docs](https://developers.cloudflare.com/api-shield/security/jwt-validation/).\n",

@@ -98,7 +98,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"config_id": {
+												"id": {
 													"allOf": [
 														{
 															"minLength": 36,
@@ -441,6 +441,7 @@
 																	"description": "JSON representation of a JWKS key.",
 																	"example": {
 																		"alg": "ES256",
+																		"crv": "P-256",
 																		"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
 																		"kty": "EC",
 																		"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
@@ -450,65 +451,6 @@
 																		{
 																			"allOf": [
 																				{
-																					"description": "Common properties of a JWT key.",
-																					"properties": {
-																						"kid": {
-																							"description": "Key ID",
-																							"type": "string",
-																							"x-auditable": true
-																						}
-																					},
-																					"required": [
-																						"kid"
-																					],
-																					"type": "object"
-																				},
-																				{
-																					"properties": {
-																						"alg": {
-																							"description": "Algorithm",
-																							"enum": [
-																								"ES256",
-																								"ES384"
-																							],
-																							"type": "string",
-																							"x-auditable": true
-																						},
-																						"kty": {
-																							"description": "Key Type",
-																							"enum": [
-																								"EC"
-																							],
-																							"type": "string",
-																							"x-auditable": true
-																						},
-																						"x": {
-																							"description": "X EC coordinate",
-																							"type": "string",
-																							"x-auditable": false
-																						},
-																						"y": {
-																							"description": "Y EC coordinate",
-																							"type": "string",
-																							"x-auditable": false
-																						}
-																					},
-																					"required": [
-																						"kty",
-																						"alg",
-																						"x",
-																						"y"
-																					],
-																					"type": "object"
-																				}
-																			],
-																			"description": "JSON representation of an EC key.",
-																			"type": "object"
-																		},
-																		{
-																			"allOf": [
-																				{
-																					"description": "Common properties of a JWT key.",
 																					"properties": {
 																						"kid": {
 																							"description": "Key ID",
@@ -566,6 +508,150 @@
 																			],
 																			"description": "JSON representation of an RSA key.",
 																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"kid": {
+																							"description": "Key ID",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"kid"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"kty": {
+																							"description": "Key Type",
+																							"enum": [
+																								"EC"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"x": {
+																							"description": "X EC coordinate",
+																							"type": "string",
+																							"x-auditable": false
+																						},
+																						"y": {
+																							"description": "Y EC coordinate",
+																							"type": "string",
+																							"x-auditable": false
+																						}
+																					},
+																					"required": [
+																						"kty",
+																						"x",
+																						"y"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"alg": {
+																							"description": "Algorithm",
+																							"enum": [
+																								"ES256"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"crv": {
+																							"description": "Curve",
+																							"enum": [
+																								"P-256"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"alg",
+																						"crv"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"description": "JSON representation of an ES256 key",
+																			"type": "object"
+																		},
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"kid": {
+																							"description": "Key ID",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"kid"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"kty": {
+																							"description": "Key Type",
+																							"enum": [
+																								"EC"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"x": {
+																							"description": "X EC coordinate",
+																							"type": "string",
+																							"x-auditable": false
+																						},
+																						"y": {
+																							"description": "Y EC coordinate",
+																							"type": "string",
+																							"x-auditable": false
+																						}
+																					},
+																					"required": [
+																						"kty",
+																						"x",
+																						"y"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"alg": {
+																							"description": "Algorithm",
+																							"enum": [
+																								"ES384"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"crv": {
+																							"description": "Curve",
+																							"enum": [
+																								"P-384"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"alg",
+																						"crv"
+																					],
+																					"type": "object"
+																				}
+																			],
+																			"description": "JSON representation of an ES384 key",
+																			"type": "object"
 																		}
 																	],
 																	"type": "object"
@@ -575,6 +661,9 @@
 																"type": "array"
 															}
 														},
+														"required": [
+															"keys"
+														],
 														"type": "object"
 													},
 													"description": {
@@ -656,6 +745,16 @@
 														"x-auditable": true
 													}
 												},
+												"required": [
+													"id",
+													"title",
+													"description",
+													"token_sources",
+													"token_type",
+													"credentials",
+													"created_at",
+													"last_updated"
+												],
 												"type": "object"
 											},
 											"type": "array"
@@ -927,6 +1026,7 @@
 																"description": "JSON representation of a JWKS key.",
 																"example": {
 																	"alg": "ES256",
+																	"crv": "P-256",
 																	"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
 																	"kty": "EC",
 																	"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
@@ -936,65 +1036,6 @@
 																	{
 																		"allOf": [
 																			{
-																				"description": "Common properties of a JWT key.",
-																				"properties": {
-																					"kid": {
-																						"description": "Key ID",
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"required": [
-																					"kid"
-																				],
-																				"type": "object"
-																			},
-																			{
-																				"properties": {
-																					"alg": {
-																						"description": "Algorithm",
-																						"enum": [
-																							"ES256",
-																							"ES384"
-																						],
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"kty": {
-																						"description": "Key Type",
-																						"enum": [
-																							"EC"
-																						],
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"x": {
-																						"description": "X EC coordinate",
-																						"type": "string",
-																						"x-auditable": false
-																					},
-																					"y": {
-																						"description": "Y EC coordinate",
-																						"type": "string",
-																						"x-auditable": false
-																					}
-																				},
-																				"required": [
-																					"kty",
-																					"alg",
-																					"x",
-																					"y"
-																				],
-																				"type": "object"
-																			}
-																		],
-																		"description": "JSON representation of an EC key.",
-																		"type": "object"
-																	},
-																	{
-																		"allOf": [
-																			{
-																				"description": "Common properties of a JWT key.",
 																				"properties": {
 																					"kid": {
 																						"description": "Key ID",
@@ -1052,6 +1093,150 @@
 																		],
 																		"description": "JSON representation of an RSA key.",
 																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"EC"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"x": {
+																						"description": "X EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"y": {
+																						"description": "Y EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"x",
+																					"y"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"ES256"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"crv": {
+																						"description": "Curve",
+																						"enum": [
+																							"P-256"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"alg",
+																					"crv"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an ES256 key",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"EC"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"x": {
+																						"description": "X EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"y": {
+																						"description": "Y EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"x",
+																					"y"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"ES384"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"crv": {
+																						"description": "Curve",
+																						"enum": [
+																							"P-384"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"alg",
+																					"crv"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an ES384 key",
+																		"type": "object"
 																	}
 																],
 																"type": "object"
@@ -1061,6 +1246,9 @@
 															"type": "array"
 														}
 													},
+													"required": [
+														"keys"
+													],
 													"type": "object"
 												},
 												"description": {
@@ -1142,6 +1330,16 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id",
+												"title",
+												"description",
+												"token_sources",
+												"token_type",
+												"credentials",
+												"created_at",
+												"last_updated"
+											],
 											"type": "object"
 										}
 									},
@@ -1645,6 +1843,7 @@
 											"description": "JSON representation of a JWKS key.",
 											"example": {
 												"alg": "ES256",
+												"crv": "P-256",
 												"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
 												"kty": "EC",
 												"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
@@ -1654,65 +1853,6 @@
 												{
 													"allOf": [
 														{
-															"description": "Common properties of a JWT key.",
-															"properties": {
-																"kid": {
-																	"description": "Key ID",
-																	"type": "string",
-																	"x-auditable": true
-																}
-															},
-															"required": [
-																"kid"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"alg": {
-																	"description": "Algorithm",
-																	"enum": [
-																		"ES256",
-																		"ES384"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"kty": {
-																	"description": "Key Type",
-																	"enum": [
-																		"EC"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"x": {
-																	"description": "X EC coordinate",
-																	"type": "string",
-																	"x-auditable": false
-																},
-																"y": {
-																	"description": "Y EC coordinate",
-																	"type": "string",
-																	"x-auditable": false
-																}
-															},
-															"required": [
-																"kty",
-																"alg",
-																"x",
-																"y"
-															],
-															"type": "object"
-														}
-													],
-													"description": "JSON representation of an EC key.",
-													"type": "object"
-												},
-												{
-													"allOf": [
-														{
-															"description": "Common properties of a JWT key.",
 															"properties": {
 																"kid": {
 																	"description": "Key ID",
@@ -1770,6 +1910,150 @@
 													],
 													"description": "JSON representation of an RSA key.",
 													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"kid": {
+																	"description": "Key ID",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"kid"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"kty": {
+																	"description": "Key Type",
+																	"enum": [
+																		"EC"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"x": {
+																	"description": "X EC coordinate",
+																	"type": "string",
+																	"x-auditable": false
+																},
+																"y": {
+																	"description": "Y EC coordinate",
+																	"type": "string",
+																	"x-auditable": false
+																}
+															},
+															"required": [
+																"kty",
+																"x",
+																"y"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"alg": {
+																	"description": "Algorithm",
+																	"enum": [
+																		"ES256"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"crv": {
+																	"description": "Curve",
+																	"enum": [
+																		"P-256"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"alg",
+																"crv"
+															],
+															"type": "object"
+														}
+													],
+													"description": "JSON representation of an ES256 key",
+													"type": "object"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"kid": {
+																	"description": "Key ID",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"kid"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"kty": {
+																	"description": "Key Type",
+																	"enum": [
+																		"EC"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"x": {
+																	"description": "X EC coordinate",
+																	"type": "string",
+																	"x-auditable": false
+																},
+																"y": {
+																	"description": "Y EC coordinate",
+																	"type": "string",
+																	"x-auditable": false
+																}
+															},
+															"required": [
+																"kty",
+																"x",
+																"y"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"alg": {
+																	"description": "Algorithm",
+																	"enum": [
+																		"ES384"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"crv": {
+																	"description": "Curve",
+																	"enum": [
+																		"P-384"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"alg",
+																"crv"
+															],
+															"type": "object"
+														}
+													],
+													"description": "JSON representation of an ES384 key",
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -1779,6 +2063,9 @@
 										"type": "array"
 									}
 								},
+								"required": [
+									"keys"
+								],
 								"type": "object"
 							},
 							"description": {
@@ -1956,6 +2243,7 @@
 																"description": "JSON representation of a JWKS key.",
 																"example": {
 																	"alg": "ES256",
+																	"crv": "P-256",
 																	"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
 																	"kty": "EC",
 																	"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
@@ -1965,65 +2253,6 @@
 																	{
 																		"allOf": [
 																			{
-																				"description": "Common properties of a JWT key.",
-																				"properties": {
-																					"kid": {
-																						"description": "Key ID",
-																						"type": "string",
-																						"x-auditable": true
-																					}
-																				},
-																				"required": [
-																					"kid"
-																				],
-																				"type": "object"
-																			},
-																			{
-																				"properties": {
-																					"alg": {
-																						"description": "Algorithm",
-																						"enum": [
-																							"ES256",
-																							"ES384"
-																						],
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"kty": {
-																						"description": "Key Type",
-																						"enum": [
-																							"EC"
-																						],
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					"x": {
-																						"description": "X EC coordinate",
-																						"type": "string",
-																						"x-auditable": false
-																					},
-																					"y": {
-																						"description": "Y EC coordinate",
-																						"type": "string",
-																						"x-auditable": false
-																					}
-																				},
-																				"required": [
-																					"kty",
-																					"alg",
-																					"x",
-																					"y"
-																				],
-																				"type": "object"
-																			}
-																		],
-																		"description": "JSON representation of an EC key.",
-																		"type": "object"
-																	},
-																	{
-																		"allOf": [
-																			{
-																				"description": "Common properties of a JWT key.",
 																				"properties": {
 																					"kid": {
 																						"description": "Key ID",
@@ -2081,6 +2310,150 @@
 																		],
 																		"description": "JSON representation of an RSA key.",
 																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"EC"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"x": {
+																						"description": "X EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"y": {
+																						"description": "Y EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"x",
+																					"y"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"ES256"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"crv": {
+																						"description": "Curve",
+																						"enum": [
+																							"P-256"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"alg",
+																					"crv"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an ES256 key",
+																		"type": "object"
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"properties": {
+																					"kid": {
+																						"description": "Key ID",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"kid"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"kty": {
+																						"description": "Key Type",
+																						"enum": [
+																							"EC"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"x": {
+																						"description": "X EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					},
+																					"y": {
+																						"description": "Y EC coordinate",
+																						"type": "string",
+																						"x-auditable": false
+																					}
+																				},
+																				"required": [
+																					"kty",
+																					"x",
+																					"y"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"alg": {
+																						"description": "Algorithm",
+																						"enum": [
+																							"ES384"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"crv": {
+																						"description": "Curve",
+																						"enum": [
+																							"P-384"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"alg",
+																					"crv"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "JSON representation of an ES384 key",
+																		"type": "object"
 																	}
 																],
 																"type": "object"
@@ -2090,6 +2463,9 @@
 															"type": "array"
 														}
 													},
+													"required": [
+														"keys"
+													],
 													"type": "object"
 												},
 												"description": {
@@ -2171,6 +2547,16 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id",
+												"title",
+												"description",
+												"token_sources",
+												"token_type",
+												"credentials",
+												"created_at",
+												"last_updated"
+											],
 											"type": "object"
 										}
 									},
@@ -2334,6 +2720,7 @@
 									"description": "JSON representation of a JWKS key.",
 									"example": {
 										"alg": "ES256",
+										"crv": "P-256",
 										"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
 										"kty": "EC",
 										"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
@@ -2343,65 +2730,6 @@
 										{
 											"allOf": [
 												{
-													"description": "Common properties of a JWT key.",
-													"properties": {
-														"kid": {
-															"description": "Key ID",
-															"type": "string",
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"kid"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"alg": {
-															"description": "Algorithm",
-															"enum": [
-																"ES256",
-																"ES384"
-															],
-															"type": "string",
-															"x-auditable": true
-														},
-														"kty": {
-															"description": "Key Type",
-															"enum": [
-																"EC"
-															],
-															"type": "string",
-															"x-auditable": true
-														},
-														"x": {
-															"description": "X EC coordinate",
-															"type": "string",
-															"x-auditable": false
-														},
-														"y": {
-															"description": "Y EC coordinate",
-															"type": "string",
-															"x-auditable": false
-														}
-													},
-													"required": [
-														"kty",
-														"alg",
-														"x",
-														"y"
-													],
-													"type": "object"
-												}
-											],
-											"description": "JSON representation of an EC key.",
-											"type": "object"
-										},
-										{
-											"allOf": [
-												{
-													"description": "Common properties of a JWT key.",
 													"properties": {
 														"kid": {
 															"description": "Key ID",
@@ -2459,6 +2787,150 @@
 											],
 											"description": "JSON representation of an RSA key.",
 											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"EC"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"x": {
+															"description": "X EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														},
+														"y": {
+															"description": "Y EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														}
+													},
+													"required": [
+														"kty",
+														"x",
+														"y"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"ES256"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"crv": {
+															"description": "Curve",
+															"enum": [
+																"P-256"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"alg",
+														"crv"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of an ES256 key",
+											"type": "object"
+										},
+										{
+											"allOf": [
+												{
+													"properties": {
+														"kid": {
+															"description": "Key ID",
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"kid"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"kty": {
+															"description": "Key Type",
+															"enum": [
+																"EC"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"x": {
+															"description": "X EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														},
+														"y": {
+															"description": "Y EC coordinate",
+															"type": "string",
+															"x-auditable": false
+														}
+													},
+													"required": [
+														"kty",
+														"x",
+														"y"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"alg": {
+															"description": "Algorithm",
+															"enum": [
+																"ES384"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"crv": {
+															"description": "Curve",
+															"enum": [
+																"P-384"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"alg",
+														"crv"
+													],
+													"type": "object"
+												}
+											],
+											"description": "JSON representation of an ES384 key",
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -2468,6 +2940,9 @@
 								"type": "array"
 							}
 						},
+						"required": [
+							"keys"
+						],
 						"type": "object"
 					}
 				}
@@ -2569,6 +3044,7 @@
 												"description": "JSON representation of a JWKS key.",
 												"example": {
 													"alg": "ES256",
+													"crv": "P-256",
 													"kid": "38013f13-c266-4eec-a72a-92ec92779f21",
 													"kty": "EC",
 													"x": "KN53JRwN3wCjm2o39bvZUX2VdrsHzS8pxOAGjm8m7EQ",
@@ -2578,65 +3054,6 @@
 													{
 														"allOf": [
 															{
-																"description": "Common properties of a JWT key.",
-																"properties": {
-																	"kid": {
-																		"description": "Key ID",
-																		"type": "string",
-																		"x-auditable": true
-																	}
-																},
-																"required": [
-																	"kid"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"alg": {
-																		"description": "Algorithm",
-																		"enum": [
-																			"ES256",
-																			"ES384"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"kty": {
-																		"description": "Key Type",
-																		"enum": [
-																			"EC"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"x": {
-																		"description": "X EC coordinate",
-																		"type": "string",
-																		"x-auditable": false
-																	},
-																	"y": {
-																		"description": "Y EC coordinate",
-																		"type": "string",
-																		"x-auditable": false
-																	}
-																},
-																"required": [
-																	"kty",
-																	"alg",
-																	"x",
-																	"y"
-																],
-																"type": "object"
-															}
-														],
-														"description": "JSON representation of an EC key.",
-														"type": "object"
-													},
-													{
-														"allOf": [
-															{
-																"description": "Common properties of a JWT key.",
 																"properties": {
 																	"kid": {
 																		"description": "Key ID",
@@ -2694,6 +3111,150 @@
 														],
 														"description": "JSON representation of an RSA key.",
 														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"EC"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"x": {
+																		"description": "X EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	},
+																	"y": {
+																		"description": "Y EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	}
+																},
+																"required": [
+																	"kty",
+																	"x",
+																	"y"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"ES256"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"crv": {
+																		"description": "Curve",
+																		"enum": [
+																			"P-256"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"alg",
+																	"crv"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of an ES256 key",
+														"type": "object"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"kid": {
+																		"description": "Key ID",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kid"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"kty": {
+																		"description": "Key Type",
+																		"enum": [
+																			"EC"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"x": {
+																		"description": "X EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	},
+																	"y": {
+																		"description": "Y EC coordinate",
+																		"type": "string",
+																		"x-auditable": false
+																	}
+																},
+																"required": [
+																	"kty",
+																	"x",
+																	"y"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"alg": {
+																		"description": "Algorithm",
+																		"enum": [
+																			"ES384"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"crv": {
+																		"description": "Curve",
+																		"enum": [
+																			"P-384"
+																		],
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"alg",
+																	"crv"
+																],
+																"type": "object"
+															}
+														],
+														"description": "JSON representation of an ES384 key",
+														"type": "object"
 													}
 												],
 												"type": "object"
@@ -2703,6 +3264,9 @@
 											"type": "array"
 										}
 									},
+									"required": [
+										"keys"
+									],
 									"type": "object"
 								}
 							]
