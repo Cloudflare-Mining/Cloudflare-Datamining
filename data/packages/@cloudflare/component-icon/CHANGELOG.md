@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.11.0
+
+### Minor Changes
+
+- b3bda0b6bc: Adding yes-check-outline, warning-outline, warning-solid
+
 ## 13.10.0
 
 ### Minor Changes
