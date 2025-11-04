@@ -490,16 +490,7 @@
 													},
 													"prompts": {
 														"items": {
-															"additionalProperties": {
-																"anyOf": [
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
-															},
+															"additionalProperties": {},
 															"type": "object"
 														},
 														"readOnly": true,
@@ -512,16 +503,7 @@
 													},
 													"tools": {
 														"items": {
-															"additionalProperties": {
-																"anyOf": [
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
-															},
+															"additionalProperties": {},
 															"type": "object"
 														},
 														"readOnly": true,

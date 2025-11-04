@@ -176,7 +176,6 @@
 									"example": {
 										"count": 1,
 										"cursor": "ais86dftf.asdf7ba8",
-										"page": null,
 										"per_page": 10,
 										"total_count": null
 									},
@@ -593,7 +592,7 @@
 												"x-auditable": true
 											},
 											"os_version_extra": {
-												"description": "Additional operating system version data. For macOS or iOS, the Product Version Extra. For Linux, the kernel release version.",
+												"description": "Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.",
 												"nullable": true,
 												"type": "string",
 												"x-auditable": true
@@ -637,7 +636,6 @@
 									"example": {
 										"count": 1,
 										"cursor": "ais86dftf.asdf7ba8",
-										"page": null,
 										"per_page": 10,
 										"total_count": null
 									},
@@ -944,7 +942,7 @@
 											"x-auditable": true
 										},
 										"os_version_extra": {
-											"description": "Additional operating system version data. For macOS or iOS, the Product Version Extra. For Linux, the kernel release version.",
+											"description": "Additional operating system version details. For Windows, the UBR (Update Build Revision). For Mac or iOS, the Product Version Extra. For Linux, the distribution name and version.",
 											"nullable": true,
 											"type": "string",
 											"x-auditable": true
