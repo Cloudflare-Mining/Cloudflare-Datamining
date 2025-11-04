@@ -46,7 +46,6 @@
 <p><strong>Please note:</strong></p>
 <ul>
 	<li>We will be hiring interns through the fall and early spring on a rolling basis until all roles are filled.</li>
-	<li>Internship dates:&nbsp;<strong>January 12, 2026 - April 3, 2026</strong></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
