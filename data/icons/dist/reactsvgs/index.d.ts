@@ -217,6 +217,8 @@ declare const _default: {
     version: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'virtual-machine-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'waiting-room': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'warning-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'warning-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     warning: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     warp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'web-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -230,6 +232,7 @@ declare const _default: {
     'workers-unbound': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     wrangler: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     wrench: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'yes-check-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'yes-check-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     youtube: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     zaraz: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

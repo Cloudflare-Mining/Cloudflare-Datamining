@@ -215,6 +215,8 @@ import Vectorize from './Vectorize';
 import Version from './Version';
 import VirtualMachineOutline from './VirtualMachineOutline';
 import WaitingRoom from './WaitingRoom';
+import WarningOutline from './WarningOutline';
+import WarningSolid from './WarningSolid';
 import Warning from './Warning';
 import Warp from './Warp';
 import WebAnalyticsLogo from './WebAnalyticsLogo';
@@ -228,6 +230,7 @@ import WorkersPages from './WorkersPages';
 import WorkersUnbound from './WorkersUnbound';
 import Wrangler from './Wrangler';
 import Wrench from './Wrench';
+import YesCheckOutline from './YesCheckOutline';
 import YesCheckSolid from './YesCheckSolid';
 import Youtube from './Youtube';
 import Zaraz from './Zaraz';
@@ -452,6 +455,8 @@ export default {
   version: Version,
   'virtual-machine-outline': VirtualMachineOutline,
   'waiting-room': WaitingRoom,
+  'warning-outline': WarningOutline,
+  'warning-solid': WarningSolid,
   warning: Warning,
   warp: Warp,
   'web-analytics-logo': WebAnalyticsLogo,
@@ -465,6 +470,7 @@ export default {
   'workers-unbound': WorkersUnbound,
   wrangler: Wrangler,
   wrench: Wrench,
+  'yes-check-outline': YesCheckOutline,
   'yes-check-solid': YesCheckSolid,
   youtube: Youtube,
   zaraz: Zaraz,
