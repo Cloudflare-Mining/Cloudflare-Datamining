@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.0
+
+### Minor Changes
+
+- 94e54adce9: Add new functions, improve test and documentation
+
 ## 4.0.23
 
 ### Patch Changes
