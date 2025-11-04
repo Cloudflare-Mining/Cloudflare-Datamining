@@ -21,7 +21,7 @@
 	<li>Scripting Skills: Competent in writing scripts in Bash, Python, JavaScript, or other scripting languages.</li>
 	<li>Customer-Centric Communication: Comfortable communicating through various support channels, with a strong commitment to putting the customer first in every interaction.</li>
 </ul>
-<p><strong>Bonus<br></strong></p>
+<p><strong><strong>Bonus</strong><br></strong></p>
 <ul>
 	<li>You have a site actively using our platform</li>
 	<li>You are familiar with any of the following Cloudflare products: Cloudflare Workers, Stream, Pages, R2</li>
