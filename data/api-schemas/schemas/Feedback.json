@@ -1,0 +1,661 @@
+{
+	"GET /zones/{zone_id}/bot_management/feedback": {
+		"description": "Returns all feedback reports previously submitted for the specified zone. Feedback reports help improve detection by sharing samples of traffic that were misclassified as bots or humans.\n",
+		"operationId": "bot-management-zone-feedback-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"sample": {
+								"summary": "Example list response",
+								"value": [
+									{
+										"created_at": "2025-10-01T12:00:00Z",
+										"description": "Legitimate checkout traffic was blocked as bots",
+										"expression": "(http.host eq 'shop.example.com' and http.request.uri.path starts_with '/checkout') and cf.bot_management.score lt 5",
+										"first_request_seen_at": "2025-09-30T08:00:00Z",
+										"last_request_seen_at": "2025-09-30T09:00:00Z",
+										"requests": 1200,
+										"requests_by_attribute": {
+											"topIPs": [
+												{
+													"metric": "203.0.113.10",
+													"requests": 180
+												},
+												{
+													"metric": "203.0.113.11",
+													"requests": 150
+												}
+											],
+											"topPaths": [
+												{
+													"metric": "/checkout",
+													"requests": 1000
+												}
+											]
+										},
+										"requests_by_score": {
+											"1": 200,
+											"2": 300,
+											"3": 400,
+											"4": 300
+										},
+										"requests_by_score_src": {
+											"heuristics": 200,
+											"machine_learning": 1000
+										},
+										"subtype": "Spamming",
+										"type": "false_positive"
+									}
+								]
+							}
+						},
+						"schema": {
+							"items": {
+								"properties": {
+									"created_at": {
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"expression": {
+										"description": "Wirefilter expression describing the traffic being reported.",
+										"type": "string"
+									},
+									"first_request_seen_at": {
+										"format": "date-time",
+										"type": "string"
+									},
+									"last_request_seen_at": {
+										"format": "date-time",
+										"type": "string"
+									},
+									"requests": {
+										"format": "int64",
+										"type": "integer"
+									},
+									"requests_by_attribute": {
+										"additionalProperties": {
+											"items": {
+												"properties": {
+													"metric": {
+														"type": "string"
+													},
+													"requests": {
+														"format": "int64",
+														"type": "integer"
+													}
+												},
+												"required": [
+													"metric",
+													"requests"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
+										"type": "object"
+									},
+									"requests_by_score": {
+										"additionalProperties": {
+											"format": "int64",
+											"type": "integer"
+										},
+										"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
+										"type": "object"
+									},
+									"requests_by_score_src": {
+										"additionalProperties": {
+											"format": "int64",
+											"type": "integer"
+										},
+										"description": "Map of score source to request counts. Sum must equal `requests`.",
+										"type": "object"
+									},
+									"subtype": {
+										"type": "string"
+									},
+									"type": {
+										"description": "Type of feedback report.",
+										"enum": [
+											"false_positive",
+											"false_negative"
+										],
+										"example": "false_positive",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"description",
+									"expression",
+									"first_request_seen_at",
+									"last_request_seen_at",
+									"requests",
+									"requests_by_score",
+									"requests_by_score_src",
+									"requests_by_attribute"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "List of feedback reports"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Feedback list failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List zone feedback reports",
+		"tags": [
+			"Feedback"
+		],
+		"x-api-token-group": [
+			"Bot Management Feedback Report Write",
+			"Bot Management Feedback Report Read",
+			"Bot Management Write",
+			"Bot Management Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /zones/{zone_id}/bot_management/feedback": {
+		"description": "Submit a feedback report for the specified zone. Use `type` to indicate whether the report is a false positive (good traffic flagged as bot) or a false negative (bot traffic missed). Furthermore, you can also use `expression` as a wirefilter to identify the affected traffic sample.\n\nSee more accepted API fields and expression types at https://developers.cloudflare.com/bots/concepts/feedback-loop/#api-fields and https://developers.cloudflare.com/bots/concepts/feedback-loop/#expression-fields, respectively.\n",
+		"operationId": "bot-management-zone-feedback-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"false_negative_example": {
+							"summary": "False negative example",
+							"value": {
+								"description": "Automated scraping missed by detections",
+								"expression": "http.host eq 'www.example.com' and http.request.uri.path starts_with '/products' and cf.bot_management.score gt 25",
+								"first_request_seen_at": "2025-09-29T00:00:00Z",
+								"last_request_seen_at": "2025-09-29T06:00:00Z",
+								"requests": 2000,
+								"requests_by_attribute": {
+									"topIPs": [
+										{
+											"metric": "203.0.113.55",
+											"requests": 400
+										}
+									],
+									"topJA3Hashes": [
+										{
+											"metric": "ab12cd34ef56...",
+											"requests": 900
+										}
+									]
+								},
+								"requests_by_score": {
+									"30": 800,
+									"40": 700,
+									"50": 500
+								},
+								"requests_by_score_src": {
+									"heuristics": 200,
+									"ml": 1800
+								},
+								"subtype": "Scraping",
+								"type": "false_negative"
+							}
+						},
+						"false_positive_example": {
+							"summary": "False positive example",
+							"value": {
+								"description": "Legitimate users flagged as bots during login",
+								"expression": "http.host eq 'app.example.com' and http.request.uri.path starts_with '/login' and cf.bot_management.score lt 5",
+								"first_request_seen_at": "2025-09-30T10:00:00Z",
+								"last_request_seen_at": "2025-09-30T11:00:00Z",
+								"requests": 500,
+								"requests_by_attribute": {
+									"topIPs": [
+										{
+											"metric": "198.51.100.23",
+											"requests": 60
+										}
+									],
+									"topUserAgents": [
+										{
+											"metric": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+											"requests": 220
+										}
+									]
+								},
+								"requests_by_score": {
+									"1": 120,
+									"2": 150,
+									"3": 130,
+									"4": 100
+								},
+								"requests_by_score_src": {
+									"heuristics": 50,
+									"ml": 450
+								},
+								"subtype": "Login Abuse",
+								"type": "false_positive"
+							}
+						}
+					},
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"created_at": {
+										"format": "date-time",
+										"readOnly": true,
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									},
+									"expression": {
+										"description": "Wirefilter expression describing the traffic being reported.",
+										"type": "string"
+									},
+									"first_request_seen_at": {
+										"format": "date-time",
+										"type": "string"
+									},
+									"last_request_seen_at": {
+										"format": "date-time",
+										"type": "string"
+									},
+									"requests": {
+										"format": "int64",
+										"type": "integer"
+									},
+									"requests_by_attribute": {
+										"additionalProperties": {
+											"items": {
+												"properties": {
+													"metric": {
+														"type": "string"
+													},
+													"requests": {
+														"format": "int64",
+														"type": "integer"
+													}
+												},
+												"required": [
+													"metric",
+													"requests"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
+										"type": "object"
+									},
+									"requests_by_score": {
+										"additionalProperties": {
+											"format": "int64",
+											"type": "integer"
+										},
+										"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
+										"type": "object"
+									},
+									"requests_by_score_src": {
+										"additionalProperties": {
+											"format": "int64",
+											"type": "integer"
+										},
+										"description": "Map of score source to request counts. Sum must equal `requests`.",
+										"type": "object"
+									},
+									"subtype": {
+										"type": "string"
+									},
+									"type": {
+										"description": "Type of feedback report.",
+										"enum": [
+											"false_positive",
+											"false_negative"
+										],
+										"example": "false_positive",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"description",
+									"expression",
+									"first_request_seen_at",
+									"last_request_seen_at",
+									"requests",
+									"requests_by_score",
+									"requests_by_score_src",
+									"requests_by_attribute"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"created_at": {
+										"readOnly": true
+									}
+								},
+								"required": [
+									"type",
+									"description",
+									"expression",
+									"first_request_seen_at",
+									"last_request_seen_at",
+									"requests",
+									"requests_by_score",
+									"requests_by_score_src",
+									"requests_by_attribute"
+								],
+								"type": "object"
+							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"description": "Feedback report created"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Feedback creation failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Submit a feedback report",
+		"tags": [
+			"Feedback"
+		],
+		"x-api-token-group": [
+			"Bot Management Feedback Report Write",
+			"Bot Management Feedback Report Read",
+			"Bot Management Write",
+			"Bot Management Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}
