@@ -2183,16 +2183,22 @@
 								"x-auditable": true
 							},
 							"notes": {
-								"description": "An informative summary of the rule, typically used as a reminder or explanation.",
-								"example": "This rule is enabled because of an event that occurred on date X.",
-								"type": "string",
-								"x-auditable": true
+								"allOf": [
+									{
+										"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+										"example": "This rule is enabled because of an event that occurred on date X.",
+										"type": "string",
+										"x-auditable": true
+									},
+									{
+										"default": ""
+									}
+								]
 							}
 						},
 						"required": [
 							"mode",
-							"configuration",
-							"notes"
+							"configuration"
 						],
 						"type": "object"
 					}
