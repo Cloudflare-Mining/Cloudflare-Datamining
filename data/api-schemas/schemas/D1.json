@@ -1155,6 +1155,16 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"jurisdiction": {
+								"description": "Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.",
+								"enum": [
+									"eu",
+									"fedramp"
+								],
+								"example": "eu",
+								"type": "string",
+								"x-auditable": true
+							},
 							"name": {
 								"description": "D1 database name.",
 								"example": "my-database",
