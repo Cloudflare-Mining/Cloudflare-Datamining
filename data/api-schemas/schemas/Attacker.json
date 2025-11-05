@@ -11,6 +11,18 @@
 					"description": "Account ID.",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Array of dataset IDs to query attackers from. If not provided, returns all attackers from Event DO tables.",
+				"in": "query",
+				"name": "datasetIds",
+				"schema": {
+					"description": "Array of dataset IDs to query attackers from. If not provided, returns all attackers from Event DO tables.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
 			}
 		],
 		"responses": {
@@ -90,7 +102,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists attackers",
+		"summary": "Lists attackers across multiple datasets",
 		"tags": [
 			"Attacker"
 		],

@@ -108,6 +108,18 @@
 					"description": "Account ID.",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Array of dataset IDs to query categories from. If not provided, returns all categories from D1 database.",
+				"in": "query",
+				"name": "datasetIds",
+				"schema": {
+					"description": "Array of dataset IDs to query categories from. If not provided, returns all categories from D1 database.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
 			}
 		],
 		"responses": {
@@ -197,7 +209,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists categories",
+		"summary": "Lists categories across multiple datasets",
 		"tags": [
 			"Category"
 		],
@@ -316,6 +328,116 @@
 			}
 		],
 		"summary": "Reads a category",
+		"tags": [
+			"Category"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/categories/all": {
+		"operationId": "get_CategoryListComplete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"killChain": {
+										"type": "number"
+									},
+									"mitreAttack": {
+										"items": {
+											"example": "T1234",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"name": {
+										"example": "name",
+										"type": "string"
+									},
+									"shortname": {
+										"example": "shortname",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"uuid",
+									"name",
+									"killChain"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of categories."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists categories",
 		"tags": [
 			"Category"
 		],

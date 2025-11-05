@@ -107,7 +107,7 @@
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators": {
 		"description": "Retrieves a paginated list of indicators for the account.",
-		"operationId": "get_IndicatorList",
+		"operationId": "get_IndicatorListLegacy",
 		"parameters": [
 			{
 				"description": "Account ID.",
@@ -211,7 +211,18 @@
 											},
 											"tags": {
 												"items": {
-													"type": "string"
+													"properties": {
+														"categoryName": {
+															"type": "string"
+														},
+														"uuid": {
+															"type": "string"
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"type": "array"
 											},
@@ -361,7 +372,18 @@
 								},
 								"tags": {
 									"items": {
-										"type": "string"
+										"properties": {
+											"categoryName": {
+												"type": "string"
+											},
+											"uuid": {
+												"type": "string"
+											},
+											"value": {
+												"type": "string"
+											}
+										},
+										"type": "object"
 									},
 									"type": "array"
 								},
@@ -614,6 +636,606 @@
 			"Cloudforce One Read"
 		]
 	},
+	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
+		"description": "Retrieves a paginated list of indicators across specified datasets for the account.",
+		"operationId": "get_IndicatorList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Array of dataset IDs to query indicators from. If not provided, uses the default dataset for the environment.",
+				"in": "query",
+				"name": "datasetIds",
+				"schema": {
+					"description": "Array of dataset IDs to query indicators from. If not provided, uses the default dataset for the environment.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "indicatorType",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by related event IDs",
+				"in": "query",
+				"name": "relatedEvent",
+				"schema": {
+					"description": "Filter by related event IDs",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"properties": {
+									"properties": {
+										"indicators": {
+											"properties": {
+												"items": {
+													"properties": {
+														"createdAt": {
+															"example": "2022-04-01T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"indicatorType": {
+															"example": "domain",
+															"type": "string"
+														},
+														"relatedEvents": {
+															"items": {
+																"properties": {
+																	"datasetId": {
+																		"example": "dataset-uuid-123",
+																		"type": "string"
+																	},
+																	"eventId": {
+																		"example": "event-uuid-456",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"datasetId",
+																	"eventId"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"tags": {
+															"items": {
+																"properties": {
+																	"categoryName": {
+																		"type": "string"
+																	},
+																	"uuid": {
+																		"type": "string"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"updatedAt": {
+															"example": "2022-04-01T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"uuid": {
+															"example": "12345678-1234-1234-1234-1234567890ab",
+															"type": "string"
+														},
+														"value": {
+															"example": "malicious-domain.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"uuid",
+														"indicatorType",
+														"value",
+														"createdAt",
+														"updatedAt"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "array",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"items"
+											],
+											"type": "object"
+										},
+										"pagination": {
+											"properties": {
+												"properties": {
+													"properties": {
+														"page": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"pageSize": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"totalCount": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"totalPages": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"page",
+														"pageSize",
+														"totalCount",
+														"totalPages"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "object",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"properties"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"indicators",
+										"pagination"
+									],
+									"type": "object"
+								},
+								"type": {
+									"example": "object",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a paginated list of indicators."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists indicators across multiple datasets",
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/indicators/all": {
+		"description": "Retrieves a paginated list of indicators across all datasets for the account.",
+		"operationId": "get_IndicatorListAll",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "indicatorType",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by related event IDs",
+				"in": "query",
+				"name": "relatedEvent",
+				"schema": {
+					"description": "Filter by related event IDs",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"properties": {
+									"properties": {
+										"indicators": {
+											"properties": {
+												"items": {
+													"properties": {
+														"createdAt": {
+															"example": "2022-04-01T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"indicatorType": {
+															"example": "domain",
+															"type": "string"
+														},
+														"relatedEvents": {
+															"items": {
+																"properties": {
+																	"datasetId": {
+																		"example": "dataset-uuid-123",
+																		"type": "string"
+																	},
+																	"eventId": {
+																		"example": "event-uuid-456",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"datasetId",
+																	"eventId"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"tags": {
+															"items": {
+																"properties": {
+																	"categoryName": {
+																		"type": "string"
+																	},
+																	"uuid": {
+																		"type": "string"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"updatedAt": {
+															"example": "2022-04-01T00:00:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"uuid": {
+															"example": "12345678-1234-1234-1234-1234567890ab",
+															"type": "string"
+														},
+														"value": {
+															"example": "malicious-domain.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"uuid",
+														"indicatorType",
+														"value",
+														"createdAt",
+														"updatedAt"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "array",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"items"
+											],
+											"type": "object"
+										},
+										"pagination": {
+											"properties": {
+												"properties": {
+													"properties": {
+														"page": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"pageSize": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"totalCount": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"totalPages": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"page",
+														"pageSize",
+														"totalCount",
+														"totalPages"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "object",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"properties"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"indicators",
+										"pagination"
+									],
+									"type": "object"
+								},
+								"type": {
+									"example": "object",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a paginated list of indicators."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists indicators across all datasets",
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"description": "Updates an existing indicator's properties.",
 		"operationId": "patch_IndicatorUpdate",
@@ -680,7 +1302,25 @@
 							},
 							"tags": {
 								"items": {
-									"type": "string"
+									"anyOf": [
+										{
+											"type": "string"
+										},
+										{
+											"properties": {
+												"categoryName": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"value"
+											],
+											"type": "object"
+										}
+									]
 								},
 								"type": "array"
 							},
@@ -731,7 +1371,18 @@
 								},
 								"tags": {
 									"items": {
-										"type": "string"
+										"properties": {
+											"categoryName": {
+												"type": "string"
+											},
+											"uuid": {
+												"type": "string"
+											},
+											"value": {
+												"type": "string"
+											}
+										},
+										"type": "object"
 									},
 									"type": "array"
 								},
@@ -920,7 +1571,25 @@
 										},
 										"tags": {
 											"items": {
-												"type": "string"
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"properties": {
+															"categoryName": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"value"
+														],
+														"type": "object"
+													}
+												]
 											},
 											"type": "array"
 										},
@@ -1072,7 +1741,25 @@
 							},
 							"tags": {
 								"items": {
-									"type": "string"
+									"anyOf": [
+										{
+											"type": "string"
+										},
+										{
+											"properties": {
+												"categoryName": {
+													"type": "string"
+												},
+												"value": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"value"
+											],
+											"type": "object"
+										}
+									]
 								},
 								"type": "array"
 							},
@@ -1127,7 +1814,18 @@
 								},
 								"tags": {
 									"items": {
-										"type": "string"
+										"properties": {
+											"categoryName": {
+												"type": "string"
+											},
+											"uuid": {
+												"type": "string"
+											},
+											"value": {
+												"type": "string"
+											}
+										},
+										"type": "object"
 									},
 									"type": "array"
 								},

@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicatorTypes": {
+	"GET /accounts/{account_id}/cloudforce-one/events/indicator-types": {
 		"operationId": "get_IndicatorTypesList",
 		"parameters": [
 			{
@@ -13,13 +13,15 @@
 				}
 			},
 			{
-				"description": "Dataset ID.",
-				"in": "path",
-				"name": "dataset_id",
-				"required": true,
+				"description": "Array of dataset IDs to query indicator types from. If not provided, uses the default dataset for the environment.",
+				"in": "query",
+				"name": "datasetIds",
 				"schema": {
-					"description": "Dataset ID.",
-					"type": "string"
+					"description": "Array of dataset IDs to query indicator types from. If not provided, uses the default dataset for the environment.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			}
 		],
@@ -100,7 +102,107 @@
 				"api_token": []
 			}
 		],
-		"summary": "Lists all indicator types",
+		"summary": "Lists indicator types across multiple datasets",
+		"tags": [
+			"Indicator Types"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/indicator-types/all": {
+		"operationId": "get_IndicatorTypeListComplete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"items": {
+									"properties": {
+										"type": {
+											"example": "string",
+											"type": "string"
+										}
+									},
+									"required": [
+										"type"
+									],
+									"type": "object"
+								},
+								"type": {
+									"example": "array",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"items"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns all indicator types from Durable Objects across all datasets."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists all indicator types from Durable Objects across all datasets",
 		"tags": [
 			"Indicator Types"
 		],

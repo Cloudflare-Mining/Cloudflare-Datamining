@@ -1227,6 +1227,16 @@
 				}
 			},
 			{
+				"description": "Whether to include the starting event in the results. Defaults to true.",
+				"in": "query",
+				"name": "includeParent",
+				"schema": {
+					"default": true,
+					"description": "Whether to include the starting event in the results. Defaults to true.",
+					"type": "boolean"
+				}
+			},
+			{
 				"in": "query",
 				"name": "page",
 				"schema": {

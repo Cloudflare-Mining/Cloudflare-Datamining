@@ -243,7 +243,18 @@
 											},
 											"tags": {
 												"items": {
-													"type": "string"
+													"properties": {
+														"categoryName": {
+															"type": "string"
+														},
+														"uuid": {
+															"type": "string"
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"type": "array"
 											},

@@ -1,0 +1,639 @@
+{
+	"POST /accounts/{account_id}/cloudforce-one/events/datasets/populate": {
+		"operationId": "post_DatasetPopulate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"properties": {
+									"properties": {
+										"accountId": {
+											"properties": {
+												"type": {
+													"example": "string",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"datasets": {
+											"properties": {
+												"items": {
+													"properties": {
+														"properties": {
+															"properties": {
+																"attackers": {
+																	"properties": {
+																		"properties": {
+																			"properties": {
+																				"created": {
+																					"properties": {
+																						"type": {
+																							"example": "number",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"errors": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				},
+																				"found": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"found",
+																				"created",
+																				"errors"
+																			],
+																			"type": "object"
+																		},
+																		"type": {
+																			"example": "object",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																},
+																"categories": {
+																	"properties": {
+																		"properties": {
+																			"properties": {
+																				"created": {
+																					"properties": {
+																						"type": {
+																							"example": "number",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"errors": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				},
+																				"found": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"found",
+																				"created",
+																				"errors"
+																			],
+																			"type": "object"
+																		},
+																		"type": {
+																			"example": "object",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																},
+																"datasetId": {
+																	"properties": {
+																		"type": {
+																			"example": "string",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"indicatorTypes": {
+																	"properties": {
+																		"properties": {
+																			"properties": {
+																				"created": {
+																					"properties": {
+																						"type": {
+																							"example": "number",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"errors": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				},
+																				"found": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"found",
+																				"created",
+																				"errors"
+																			],
+																			"type": "object"
+																		},
+																		"type": {
+																			"example": "object",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																},
+																"processingTimeMs": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"targetIndustries": {
+																	"properties": {
+																		"properties": {
+																			"properties": {
+																				"created": {
+																					"properties": {
+																						"type": {
+																							"example": "number",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"errors": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				},
+																				"found": {
+																					"properties": {
+																						"items": {
+																							"properties": {
+																								"type": {
+																									"example": "string",
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						"type": {
+																							"example": "array",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"type",
+																						"items"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"found",
+																				"created",
+																				"errors"
+																			],
+																			"type": "object"
+																		},
+																		"type": {
+																			"example": "object",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"properties"
+																	],
+																	"type": "object"
+																},
+																"totalProcessed": {
+																	"properties": {
+																		"type": {
+																			"example": "number",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"datasetId",
+																"indicatorTypes",
+																"targetIndustries",
+																"categories",
+																"attackers",
+																"totalProcessed",
+																"processingTimeMs"
+															],
+															"type": "object"
+														},
+														"type": {
+															"example": "object",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"properties"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "array",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"items"
+											],
+											"type": "object"
+										},
+										"errors": {
+											"properties": {
+												"items": {
+													"properties": {
+														"type": {
+															"example": "string",
+															"type": "string"
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "array",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"items"
+											],
+											"type": "object"
+										},
+										"summary": {
+											"properties": {
+												"properties": {
+													"properties": {
+														"failedDatasets": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"successfulDatasets": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"totalDatasets": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"totalIndicatorTypes": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"totalProcessingTimeMs": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"totalDatasets",
+														"successfulDatasets",
+														"failedDatasets",
+														"totalIndicatorTypes",
+														"totalProcessingTimeMs"
+													],
+													"type": "object"
+												},
+												"type": {
+													"example": "object",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"properties"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"accountId",
+										"datasets",
+										"summary",
+										"errors"
+									],
+									"type": "object"
+								},
+								"type": {
+									"example": "object",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns population results with counts and any errors"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Populate dataset-specific lookup tables from existing Events data with batch processing",
+		"tags": [
+			"Datasets"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	}
+}
