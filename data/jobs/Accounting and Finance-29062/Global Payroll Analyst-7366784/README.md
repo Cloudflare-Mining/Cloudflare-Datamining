@@ -5,63 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Los Angeles or San Diego or Seattle</strong></p>
-<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
-<p><strong>Responsibilities</strong><strong>:</strong></p>
+<p><strong>Available Locations:</strong> Lisbon, Portugal&nbsp;</p>
+<p><strong>Role Summary</strong></p>
+<p>At Cloudflare, we’re committed to delivering seamless and accurate payroll experience to our&nbsp;global workforce. As our company grows, we are expanding our international payroll capabilities&nbsp;and are looking for a Global Payroll Analyst to join our team in India.&nbsp;This role will play a critical part in the end-to-end payroll process for employees across multiple&nbsp;international regions. You’ll work closely with HR, Finance, and external vendors to ensure&nbsp;timely, accurate, and compliant payroll processing while continuously seeking opportunities to&nbsp;improve processes and enhance employee experience.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Be part of a world class globally-distributed team.</li>
-	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information (subpoenas, court orders, etc) from law enforcement and government officials and in response to third-party civil matters.</li>
-	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
-	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
-	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Participate in a rotating weekend coverage duty.</li>
+	<li>Own and manage day-to-day international payroll operations across designated countries,</li>
+	<li>including base pay, bonuses, commissions, equity transactions, benefits, and statutory requirements.</li>
+	<li>Partner closely with HR to maintain accurate and up-to-date employee data for payroll processing.</li>
+	<li>Ensure timely and accurate execution of off-cycle payments, including manual payments and electronic bank transfers.</li>
+	<li>Perform regular audits and reconciliations of payroll data and records to ensure accuracy and compliance.</li>
+	<li>Prepare reports and provide formal and ad-hoc analysis related to payroll, headcount, benefits, and compensation.</li>
+	<li>Serve as a key point of contact for employee payroll inquiries and resolve issues with professionalism and confidentiality.</li>
+	<li>Collaborate with external payroll vendors and ensure compliance with local tax laws, labor regulations, and reporting requirements.</li>
 </ul>
-<p><strong>Requirements</strong><strong>:</strong></p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>5+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Trust &amp; Safety.</li>
-	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
-	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
-	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
-	<li>A great attitude and team player.&nbsp;</li>
+	<li>Bachelor's degree in Accounting, Finance, Business, or a related field—or equivalent practical experience.</li>
+	<li>1–3 years of experience in international payroll operations.</li>
+	<li>Strong understanding of payroll fundamentals, tax regulations, and compliance requirements.</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
-	<li>You’ve interacted with law enforcement officials and agencies.</li>
-	<li>Hands-on experience with Cloudflare’s products and services.&nbsp;</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Washington State and California (excluding Bay Area) based hires: $122,000 - $149,000.</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Prior experience with APAC payroll operations is highly desirable.</li>
+	<li>Familiarity with processing payroll involving equity transactions, benefits, commissions, and multiple statutory withholdings.</li>
+	<li>Experience with Workday and payroll vendor platforms.</li>
+	<li>Detail-oriented with strong analytical and problem-solving skills.</li>
+	<li>Demonstrated ability to support scalable and compliant payroll operations in a fast-paced environment.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

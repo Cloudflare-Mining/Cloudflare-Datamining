@@ -5,64 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Los Angeles or San Diego or Seattle</strong></p>
-<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
-<p><strong>Responsibilities</strong><strong>:</strong></p>
+<p><strong>Location -&nbsp;</strong>Austin, Texas</p>
+<p><strong>About the department</strong></p>
+<p>Cloudflare’s P2P department is housed within the Finance team, but our reach is global, supporting thousands of purchases across our global offices per quarter. We use an integrated platform for purchase-orders and approvals, and a contract management and collaboration tool for negotiated, signed contracts. We interact daily with stakeholders from Finance, Commercial Legal, Privacy, Security, and IT to get critical purchases over the line. The majority of our purchases involve technology and internet infrastructure, so we ensure we are familiar with industry trends and challenges faced by our internal customers. Our team is responsible for setting policies, defining new processes, reviewing &amp; negotiating vendor agreements to ensure that the Procurement function aligns to Cloudflare’s long-term strategic vision and goals. We are a small and growing team, presenting lots of opportunity for professional growth and visibility across multiple departments.</p>
+<p><strong>What you'll do</strong></p>
+<p>Cloudflare’s Contracts Negotiator will support the end-to-end contracting process including contract negotiations, contract management, contract administration, and supplier relationship management functions across all business segments within Cloudflare. Because we are growing, applicants should anticipate that this role may evolve over time. This person will be the internal point of contact for key all contracting related activity within the procurement function. They will work closely with the Sourcing and Commercial Legal team.&nbsp;</p>
+<p><strong>Who You Are:</strong></p>
+<p>We are looking for business-driven, experienced contracts professionals who love KPIs, are strong collaborators, can manage vendor contracts, draft a redline, and bring relentless attention to detail. We are seeking an experienced procurement professional who can support the end-to-end process from planning to signature through post-signature contract reviews and vendor performance management. The ideal candidate for this role is a proactive problem solver, fearless, approachable, and adaptable. You enjoy contracts, seek out metrics to maximize value, exercise judgment and operate independently.&nbsp; The negotiator handles legal tasks and ensures contract processing with high professionalism under pressure.</p>
+<p><strong>Key Functions:</strong></p>
 <ul>
-	<li>Be part of a world class globally-distributed team.</li>
-	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information (subpoenas, court orders, etc) from law enforcement and government officials and in response to third-party civil matters.</li>
-	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
-	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
-	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Participate in a rotating weekend coverage duty.</li>
+	<li><strong>Contract Negotiation &amp; Management</strong> – Draft, review, and negotiate a wide range of procurement agreements, including technology, security, and data privacy contracts, ensuring terms align with company policies and risk tolerance.</li>
+	<li><strong>Risk &amp; Legal Assessment</strong> – Identify and mitigate contractual, legal, and commercial risks through detailed review and collaboration with Legal, Privacy, and Security teams.</li>
+	<li><strong>Dispute Resolution</strong> – Partner with internal stakeholders and external vendors to resolve contract-related issues efficiently and maintain positive business relationships.</li>
+	<li><strong>Compliance &amp; Governance</strong> – Ensure adherence to corporate policies, ethical standards, and applicable regulatory requirements throughout the contracting process.</li>
+	<li><strong>Cross-Functional Collaboration</strong> – Work closely with Legal, Finance, Security, and business stakeholders to align contract strategies with organizational goals and operational needs.</li>
+	<li><strong>Contract Lifecycle Oversight</strong> – Manage agreements from intake through execution, leveraging contract management tools and systems to drive efficiency and visibility across the lifecycle.</li>
 </ul>
-<p><strong>Requirements</strong><strong>:</strong></p>
+<p>&nbsp;</p>
+<p><strong>Qualifications</strong></p>
+<p><strong>Required Knowledge, Skills, and Experience</strong></p>
 <ul>
-	<li>5+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Trust &amp; Safety.</li>
-	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
-	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
-	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
-	<li>A great attitude and team player.&nbsp;</li>
+	<li><strong>Experience:</strong> Minimum 2+ years of experience managing commercial contracts within Procurement, Sourcing, or a Commercial Legal environment.</li>
+	<li><strong>Education:</strong> Bachelor’s degree required; Juris Doctor (JD) or equivalent legal experience preferred.</li>
+	<li><strong>Industry Knowledge:</strong> Familiarity with SaaS, cybersecurity, internet infrastructure, OEM suppliers, and marketing technology solutions is highly desirable.</li>
+	<li><strong>Contracting Expertise:</strong> Demonstrated ability to draft, review, and negotiate complex commercial agreements with precision and attention to detail.</li>
+	<li><strong>Legal &amp; Regulatory Acumen:</strong> Strong understanding of commercial contract law, data security, and privacy regulations.</li>
+	<li><strong>Analytical &amp; Problem-Solving Skills:</strong> Ability to assess risk, identify creative solutions, and provide sound business recommendations.</li>
+	<li><strong>Collaboration &amp; Communication:</strong> Excellent written and verbal communication skills with the ability to build effective cross-functional relationships.</li>
+	<li><strong>Organization &amp; Adaptability:</strong> Highly organized, detail-oriented, and capable of managing multiple priorities in a fast-paced environment.</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
-<ul>
-	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
-	<li>You’ve interacted with law enforcement officials and agencies.</li>
-	<li>Hands-on experience with Cloudflare’s products and services.&nbsp;</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Washington State and California (excluding Bay Area) based hires: $122,000 - $149,000.</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><strong>Technology Proficiency:</strong> Experience with <strong>Ironclad</strong>, <strong>Zip</strong>, or similar CLM and intake management tools preferred.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
