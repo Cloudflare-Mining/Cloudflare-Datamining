@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7262995?gh_jid=7262995",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7370585?gh_jid=7370585",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3251270,
+	"internal_job_id": 3286481,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,15 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5150 - Field Sales",
+			"value": "4100 - Infrastructure Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"US"
+				"Lisbon, Portugal",
+				"London, UK"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,49 +34,40 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Sales"
+				"Infrastructure"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7262995,
-	"updated_at": "2025-10-31T12:13:18-04:00",
-	"requisition_id": "GTM_PIPELINE_AMER US MJRS E MIDA#19479",
-	"title": "Sr. Enterprise Account Executive - Charlotte, North Carolina",
+	"id": 7370585,
+	"updated_at": "2025-11-05T12:40:46-05:00",
+	"requisition_id": null,
+	"title": "Infrastructure Deployment Engineer",
 	"company_name": "Cloudflare",
-	"first_published": "2025-09-24T10:57:01-04:00",
+	"first_published": "2025-11-05T12:40:46-05:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 29066,
-			"name": "Sales",
-			"child_ids": [
-				227430,
-				70661,
-				71029,
-				90946,
-				90947,
-				90948,
-				70657,
-				70662,
-				70658,
-				70659,
-				70660,
-				74075,
-				70663,
-				70664,
-				144594
-			],
+			"id": 30604,
+			"name": "Infrastructure",
+			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 72999,
-			"name": "Charlotte, NC",
-			"location": null,
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
 			"child_ids": [],
-			"parent_id": 48752
+			"parent_id": 74843
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
 		}
 	]
 }
