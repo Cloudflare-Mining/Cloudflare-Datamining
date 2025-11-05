@@ -79,6 +79,8 @@
 				"schema": {
 					"description": "Specifies the public ID of the pipeline.",
 					"example": "043e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
 					"type": "string"
 				}
 			}
@@ -132,6 +134,8 @@
 				"schema": {
 					"description": "Specifies the publid ID of the sink.",
 					"example": "0223105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
 					"type": "string"
 				}
 			},
@@ -201,6 +205,8 @@
 				"schema": {
 					"description": "Specifies the public ID of the stream.",
 					"example": "033e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
 					"type": "string"
 				}
 			}
@@ -475,14 +481,7 @@
 																				"*"
 																			],
 																			"items": {
-																				"anyOf": [
-																					{
-																						"type": "string"
-																					},
-																					{
-																						"type": "string"
-																					}
-																				]
+																				"type": "string"
 																			},
 																			"maxItems": 5,
 																			"type": "array"
@@ -840,14 +839,7 @@
 																			"*"
 																		],
 																		"items": {
-																			"anyOf": [
-																				{
-																					"type": "string"
-																				},
-																				{
-																					"type": "string"
-																				}
-																			]
+																			"type": "string"
 																		},
 																		"maxItems": 5,
 																		"type": "array"
@@ -1182,6 +1174,8 @@
 				"schema": {
 					"description": "Specifies the public ID of the pipeline.",
 					"example": "043e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
 					"type": "string"
 				}
 			}
@@ -1220,6 +1214,53 @@
 										"status": {
 											"description": "Indicates the current status of the Pipeline.",
 											"type": "string"
+										},
+										"tables": {
+											"description": "List of streams and sinks used by this pipeline.",
+											"items": {
+												"properties": {
+													"id": {
+														"description": "Unique identifier for the connection (stream or sink).",
+														"example": "1c9200d5872c018bb34e93e2cd8a438e",
+														"type": "string"
+													},
+													"latest": {
+														"description": "Latest available version of the connection.",
+														"example": 5,
+														"type": "integer"
+													},
+													"name": {
+														"description": "Name of the connection.",
+														"example": "my_table",
+														"maxLength": 128,
+														"minLength": 1,
+														"type": "string"
+													},
+													"type": {
+														"description": "Type of the connection.",
+														"enum": [
+															"stream",
+															"sink"
+														],
+														"example": "stream",
+														"type": "string"
+													},
+													"version": {
+														"description": "Current version of the connection used by this pipeline.",
+														"example": 4,
+														"type": "integer"
+													}
+												},
+												"required": [
+													"id",
+													"version",
+													"latest",
+													"type",
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
@@ -1228,7 +1269,8 @@
 										"created_at",
 										"modified_at",
 										"sql",
-										"status"
+										"status",
+										"tables"
 									],
 									"type": "object"
 								},
@@ -1292,7 +1334,7 @@
 			},
 			{
 				"in": "query",
-				"name": "pipelineId",
+				"name": "pipeline_id",
 				"schema": {
 					"type": "string"
 				}
@@ -2104,6 +2146,8 @@
 				"schema": {
 					"description": "Specifies the publid ID of the sink.",
 					"example": "0223105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
 					"type": "string"
 				}
 			}
@@ -2859,8 +2903,12 @@
 			},
 			{
 				"in": "query",
-				"name": "pipelineId",
+				"name": "pipeline_id",
 				"schema": {
+					"description": "Specifies the public ID of the pipeline.",
+					"example": "043e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
 					"type": "string"
 				}
 			},
@@ -2991,6 +3039,8 @@
 											"http": {
 												"properties": {
 													"authentication": {
+														"description": "Indicates that authentication is required for the HTTP endpoint.",
+														"example": false,
 														"type": "boolean"
 													},
 													"cors": {
@@ -2999,14 +3049,7 @@
 														"properties": {
 															"origins": {
 																"items": {
-																	"anyOf": [
-																		{
-																			"type": "string"
-																		},
-																		{
-																			"type": "string"
-																		}
-																	]
+																	"type": "string"
 																},
 																"maxItems": 5,
 																"type": "array"
@@ -3015,6 +3058,8 @@
 														"type": "object"
 													},
 													"enabled": {
+														"description": "Indicates that the HTTP endpoint is enabled.",
+														"example": true,
 														"type": "boolean"
 													}
 												},
@@ -3401,6 +3446,8 @@
 											"worker_binding": {
 												"properties": {
 													"enabled": {
+														"description": "Indicates that the worker binding is enabled.",
+														"example": true,
 														"type": "boolean"
 													}
 												},
@@ -3416,7 +3463,6 @@
 											"version",
 											"created_at",
 											"modified_at",
-											"endpoint",
 											"http",
 											"worker_binding"
 										],
@@ -3521,6 +3567,8 @@
 				"schema": {
 					"description": "Specifies the public ID of the stream.",
 					"example": "033e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
 					"type": "string"
 				}
 			}
@@ -3635,6 +3683,8 @@
 										"http": {
 											"properties": {
 												"authentication": {
+													"description": "Indicates that authentication is required for the HTTP endpoint.",
+													"example": false,
 													"type": "boolean"
 												},
 												"cors": {
@@ -3643,14 +3693,7 @@
 													"properties": {
 														"origins": {
 															"items": {
-																"anyOf": [
-																	{
-																		"type": "string"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
+																"type": "string"
 															},
 															"maxItems": 5,
 															"type": "array"
@@ -3659,6 +3702,8 @@
 													"type": "object"
 												},
 												"enabled": {
+													"description": "Indicates that the HTTP endpoint is enabled.",
+													"example": true,
 													"type": "boolean"
 												}
 											},
@@ -4045,6 +4090,8 @@
 										"worker_binding": {
 											"properties": {
 												"enabled": {
+													"description": "Indicates that the worker binding is enabled.",
+													"example": true,
 													"type": "boolean"
 												}
 											},
@@ -4060,7 +4107,6 @@
 										"version",
 										"created_at",
 										"modified_at",
-										"endpoint",
 										"http",
 										"worker_binding"
 									],
@@ -4102,6 +4148,316 @@
 		"x-api-token-group": [
 			"Pipelines Write",
 			"Pipelines Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/pipelines/v1/streams/{stream_id}": {
+		"description": "Update a Stream.",
+		"operationId": "patchV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the account.",
+					"example": "0123105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "stream_id",
+				"required": true,
+				"schema": {
+					"description": "Specifies the public ID of the stream.",
+					"example": "033e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"http": {
+								"properties": {
+									"authentication": {
+										"description": "Indicates that authentication is required for the HTTP endpoint.",
+										"example": false,
+										"type": "boolean"
+									},
+									"cors": {
+										"description": "Specifies the CORS options for the HTTP endpoint.",
+										"example": {},
+										"properties": {
+											"origins": {
+												"items": {
+													"type": "string"
+												},
+												"maxItems": 5,
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"enabled": {
+										"description": "Indicates that the HTTP endpoint is enabled.",
+										"example": true,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"enabled",
+									"authentication"
+								],
+								"type": "object"
+							},
+							"worker_binding": {
+								"properties": {
+									"enabled": {
+										"description": "Indicates that the worker binding is enabled.",
+										"example": true,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"enabled"
+								],
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"endpoint": {
+											"description": "Indicates the endpoint URL of this stream.",
+											"example": "https://01234567890123457689012345678901.ingest.cloudflare.com/v1",
+											"format": "uri",
+											"type": "string"
+										},
+										"format": {
+											"discriminator": {
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"decimal_encoding": {
+																	"enum": [
+																		"number",
+																		"string",
+																		"bytes"
+																	],
+																	"type": "string"
+																},
+																"timestamp_format": {
+																	"enum": [
+																		"rfc3339",
+																		"unix_millis"
+																	],
+																	"type": "string"
+																},
+																"unstructured": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"json"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Json"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"compression": {
+																	"enum": [
+																		"uncompressed",
+																		"snappy",
+																		"gzip",
+																		"zstd",
+																		"lz4"
+																	],
+																	"type": "string"
+																},
+																"row_group_bytes": {
+																	"format": "int64",
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"parquet"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													],
+													"title": "Parquet"
+												}
+											]
+										},
+										"http": {
+											"properties": {
+												"authentication": {
+													"description": "Indicates that authentication is required for the HTTP endpoint.",
+													"example": false,
+													"type": "boolean"
+												},
+												"cors": {
+													"description": "Specifies the CORS options for the HTTP endpoint.",
+													"example": {},
+													"properties": {
+														"origins": {
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"enabled": {
+													"description": "Indicates that the HTTP endpoint is enabled.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"enabled",
+												"authentication"
+											],
+											"type": "object"
+										},
+										"id": {
+											"description": "Indicates a unique identifier for this stream.",
+											"example": "01234567890123457689012345678901",
+											"type": "string"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"name": {
+											"description": "Indicates the name of the Stream.",
+											"example": "my_stream",
+											"maxLength": 128,
+											"minLength": 1,
+											"type": "string"
+										},
+										"version": {
+											"description": "Indicates the current version of this stream.",
+											"example": 3,
+											"type": "integer"
+										},
+										"worker_binding": {
+											"properties": {
+												"enabled": {
+													"description": "Indicates that the worker binding is enabled.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"enabled"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"id",
+										"name",
+										"version",
+										"created_at",
+										"modified_at",
+										"http",
+										"worker_binding"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates a successfully updated Stream."
+			},
+			"4XX": {
+				"description": "Indicates an error in creating a Stream."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Stream",
+		"tags": [
+			"workers_pipelines_other"
 		],
 		"x-cfPlanAvailability": {
 			"business": true,
@@ -4297,14 +4653,7 @@
 																"*"
 															],
 															"items": {
-																"anyOf": [
-																	{
-																		"type": "string"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
+																"type": "string"
 															},
 															"maxItems": 5,
 															"type": "array"
@@ -4534,14 +4883,7 @@
 																			"*"
 																		],
 																		"items": {
-																			"anyOf": [
-																				{
-																					"type": "string"
-																				},
-																				{
-																					"type": "string"
-																				}
-																			]
+																			"type": "string"
 																		},
 																		"maxItems": 5,
 																		"type": "array"
@@ -6369,6 +6711,8 @@
 								},
 								"properties": {
 									"authentication": {
+										"description": "Indicates that authentication is required for the HTTP endpoint.",
+										"example": false,
 										"type": "boolean"
 									},
 									"cors": {
@@ -6377,14 +6721,7 @@
 										"properties": {
 											"origins": {
 												"items": {
-													"anyOf": [
-														{
-															"type": "string"
-														},
-														{
-															"type": "string"
-														}
-													]
+													"type": "string"
 												},
 												"maxItems": 5,
 												"type": "array"
@@ -6393,6 +6730,8 @@
 										"type": "object"
 									},
 									"enabled": {
+										"description": "Indicates that the HTTP endpoint is enabled.",
+										"example": true,
 										"type": "boolean"
 									}
 								},
@@ -6768,6 +7107,8 @@
 								},
 								"properties": {
 									"enabled": {
+										"description": "Indicates that the worker binding is enabled.",
+										"example": true,
 										"type": "boolean"
 									}
 								},
@@ -6895,6 +7236,8 @@
 										"http": {
 											"properties": {
 												"authentication": {
+													"description": "Indicates that authentication is required for the HTTP endpoint.",
+													"example": false,
 													"type": "boolean"
 												},
 												"cors": {
@@ -6903,14 +7246,7 @@
 													"properties": {
 														"origins": {
 															"items": {
-																"anyOf": [
-																	{
-																		"type": "string"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
+																"type": "string"
 															},
 															"maxItems": 5,
 															"type": "array"
@@ -6919,6 +7255,8 @@
 													"type": "object"
 												},
 												"enabled": {
+													"description": "Indicates that the HTTP endpoint is enabled.",
+													"example": true,
 													"type": "boolean"
 												}
 											},
@@ -7305,6 +7643,8 @@
 										"worker_binding": {
 											"properties": {
 												"enabled": {
+													"description": "Indicates that the worker binding is enabled.",
+													"example": true,
 													"type": "boolean"
 												}
 											},
@@ -7320,7 +7660,6 @@
 										"version",
 										"created_at",
 										"modified_at",
-										"endpoint",
 										"http",
 										"worker_binding"
 									],
@@ -7758,14 +8097,7 @@
 																"*"
 															],
 															"items": {
-																"anyOf": [
-																	{
-																		"type": "string"
-																	},
-																	{
-																		"type": "string"
-																	}
-																]
+																"type": "string"
 															},
 															"maxItems": 5,
 															"type": "array"
@@ -7995,14 +8327,7 @@
 																			"*"
 																		],
 																		"items": {
-																			"anyOf": [
-																				{
-																					"type": "string"
-																				},
-																				{
-																					"type": "string"
-																				}
-																			]
+																			"type": "string"
 																		},
 																		"maxItems": 5,
 																		"type": "array"
