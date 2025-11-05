@@ -203,7 +203,6 @@
 		"dmarc_enabled": false,
 		"dmarc_visible": true,
 		"dmarc_waitlist": false,
-		"email_sending_waitlist": false,
 		"max_addresses": 200,
 		"max_rules": 200,
 		"show_dmarc_management_banner": false,
@@ -211,6 +210,9 @@
 		"visible": false,
 		"workers_enabled": false,
 		"workers_waitlist": true
+	},
+	"email_service": {
+		"email_sending_waitlist": false
 	},
 	"firewall": {
 		"analytics_load_on_scroll": false,
