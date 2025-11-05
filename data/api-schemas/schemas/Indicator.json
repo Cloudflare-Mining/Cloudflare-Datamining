@@ -701,6 +701,26 @@
 					},
 					"type": "array"
 				}
+			},
+			{
+				"description": "Filter indicators created on or after this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+				"in": "query",
+				"name": "createdAfter",
+				"schema": {
+					"description": "Filter indicators created on or after this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter indicators created on or before this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+				"in": "query",
+				"name": "createdBefore",
+				"schema": {
+					"description": "Filter indicators created on or before this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+					"format": "date-time",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -994,6 +1014,26 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"description": "Filter indicators created on or after this date (ISO 8601 format).",
+				"in": "query",
+				"name": "createdAfter",
+				"schema": {
+					"description": "Filter indicators created on or after this date (ISO 8601 format).",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter indicators created on or before this date (ISO 8601 format).",
+				"in": "query",
+				"name": "createdBefore",
+				"schema": {
+					"description": "Filter indicators created on or before this date (ISO 8601 format).",
+					"format": "date-time",
+					"type": "string"
 				}
 			}
 		],
