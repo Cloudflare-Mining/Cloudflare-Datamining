@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/abuse-reports": {
+		"description": "List the abuse reports for a given account",
 		"operationId": "ListAbuseReports",
 		"parameters": [
 			{
@@ -341,7 +342,337 @@
 				"api_token": []
 			}
 		],
-		"summary": "List the abuse reports for a given account.",
+		"summary": "List abuse reports",
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
+		]
+	},
+	"GET /accounts/{account_id}/abuse-reports/{report_id}/mitigations": {
+		"description": "List mitigations done to remediate the abuse report.",
+		"operationId": "ListMitigations",
+		"parameters": [
+			{
+				"description": "Cloudflare Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Abuse Report ID",
+				"in": "path",
+				"name": "report_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Where in pagination to start listing abuse reports",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "How many abuse reports per page to list",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "A property to sort by, followed by the order",
+				"example": "type,desc",
+				"in": "query",
+				"name": "sort",
+				"schema": {
+					"enum": [
+						"type,asc",
+						"type,desc",
+						"effective_date,asc",
+						"effective_date,desc",
+						"status,asc",
+						"status,desc",
+						"entity_type,asc",
+						"entity_type,desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_block.",
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "The type of mitigation",
+					"enum": [
+						"legal_block",
+						"phishing_interstitial",
+						"network_block",
+						"rate_limit_cache",
+						"account_suspend",
+						"redirect_video_stream"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Returns mitigations that were dispatched before the given date",
+				"example": "2009-11-10T23:00:00Z",
+				"in": "query",
+				"name": "effective_before",
+				"schema": {
+					"description": "Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+					"example": "2009-11-10T23:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Returns mitigation that were dispatched after the given date",
+				"example": "2009-11-10T23:00:00Z",
+				"in": "query",
+				"name": "effective_after",
+				"schema": {
+					"description": "Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+					"example": "2009-11-10T23:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the status of the mitigation.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "The status of a mitigation",
+					"enum": [
+						"pending",
+						"active",
+						"in_review",
+						"cancelled",
+						"removed"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by the type of entity the mitigation impacts.",
+				"in": "query",
+				"name": "entity_type",
+				"schema": {
+					"enum": [
+						"url_pattern",
+						"account",
+						"zone"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"mitigations": {
+											"items": {
+												"properties": {
+													"effective_date": {
+														"description": "Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+														"example": "2009-11-10T23:00:00Z",
+														"type": "string"
+													},
+													"entity_id": {
+														"type": "string"
+													},
+													"entity_type": {
+														"enum": [
+															"url_pattern",
+															"account",
+															"zone"
+														],
+														"type": "string"
+													},
+													"id": {
+														"description": "ID of remediation.",
+														"type": "string"
+													},
+													"status": {
+														"description": "The status of a mitigation",
+														"enum": [
+															"pending",
+															"active",
+															"in_review",
+															"cancelled",
+															"removed"
+														],
+														"type": "string"
+													},
+													"type": {
+														"description": "The type of mitigation",
+														"enum": [
+															"legal_block",
+															"phishing_interstitial",
+															"network_block",
+															"rate_limit_cache",
+															"account_suspend",
+															"redirect_video_stream"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"type",
+													"effective_date",
+													"status",
+													"entity_type",
+													"entity_id"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"mitigations"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count",
+										"total_pages"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List abuse report mitigations successful"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to list abuse report mitigations"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List abuse report mitigations",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -351,6 +682,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_param}": {
+		"description": "Retrieve the details of an abuse report.",
 		"operationId": "GetAbuseReport",
 		"parameters": [
 			{
@@ -798,7 +1130,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Retrieve an abuse report.",
+		"summary": "Abuse Report Details",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		],
@@ -807,7 +1139,265 @@
 			"Trust and Safety Read"
 		]
 	},
+	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
+		"description": "Request a review for mitigations on an account.",
+		"operationId": "RequestReview",
+		"parameters": [
+			{
+				"description": "Cloudflare Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Abuse Report ID",
+				"in": "path",
+				"name": "report_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"appeals": {
+								"description": "List of mitigations to appeal.",
+								"items": {
+									"properties": {
+										"id": {
+											"description": "ID of the mitigation to appeal.",
+											"type": "string"
+										},
+										"reason": {
+											"description": "Reason why the customer is appealing.",
+											"enum": [
+												"removed",
+												"misclassified"
+											],
+											"example": "misclassified",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"reason"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"appeals"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"effective_date": {
+												"description": "Date when the mitigation will become active. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+												"example": "2009-11-10T23:00:00Z",
+												"type": "string"
+											},
+											"entity_id": {
+												"type": "string"
+											},
+											"entity_type": {
+												"enum": [
+													"url_pattern",
+													"account",
+													"zone"
+												],
+												"type": "string"
+											},
+											"id": {
+												"description": "ID of remediation.",
+												"type": "string"
+											},
+											"status": {
+												"description": "The status of a mitigation",
+												"enum": [
+													"pending",
+													"active",
+													"in_review",
+													"cancelled",
+													"removed"
+												],
+												"type": "string"
+											},
+											"type": {
+												"description": "The type of mitigation",
+												"enum": [
+													"legal_block",
+													"phishing_interstitial",
+													"network_block",
+													"rate_limit_cache",
+													"account_suspend",
+													"redirect_video_stream"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"type",
+											"effective_date",
+											"status",
+											"entity_type",
+											"entity_id"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count",
+										"total_pages"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Mitigation appeals received"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to request review on delayed action."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Request review on mitigations",
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		]
+	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
+		"description": "Submit the Abuse Report of a particular type",
 		"operationId": "SubmitAbuseReport",
 		"parameters": [
 			{
@@ -2204,7 +2794,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Submit the Abuse Report of a particular type",
+		"summary": "Submit an abuse report",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
 		]
