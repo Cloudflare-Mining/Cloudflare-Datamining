@@ -26,7 +26,7 @@
 <p><strong>Requirements&nbsp; </strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
 <ul>
 	<li>LL.B., B.A. or B.S. degree with strong academic credential; paralegal certification a plus but not required</li>
-	<li>3+ years relevant business or legal experience</li>
+	<li>7+ years relevant business or legal experience</li>
 	<li>Ability to meet the needs of a high-growth, fast-paced Internet company</li>
 	<li>Customer service oriented while maintaining acute attention to detail</li>
 	<li>Great organizational skills and ability to prioritize workloads</li>
