@@ -3408,6 +3408,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
+		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"rayName": "The RayId of the request",
 		"requestSource": "",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
@@ -3518,6 +3519,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP response status code returned by the origin",
+		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
@@ -8581,6 +8583,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP response status code returned by the origin",
+		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
@@ -10091,6 +10094,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
+		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"rayName": "The RayId of the request",
 		"requestSource": "",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
@@ -10200,6 +10204,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP response status code returned by the origin",
+		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
@@ -10656,6 +10661,7 @@
 		"nelReportsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
 		"userProfilesAdaptiveGroups": "",
+		"userProfilesRawEventsGroups": "",
 		"waitingRoomAnalyticsAdaptive": "",
 		"waitingRoomAnalyticsAdaptiveGroups": "",
 		"workersZoneInvocationsAdaptiveGroups": "",
@@ -10691,11 +10697,28 @@
 	},
 	"ZoneUserProfilesAdaptiveGroupsSum": {
 		"__description": "",
-		"topCountries": "Array of top 5 countries for a user id."
+		"topCountries": "Array of top 5 country codes (alpha2) for a user id."
 	},
 	"ZoneUserProfilesAdaptiveGroupsUniq": {
 		"__description": "",
 		"ipCount": "Number of unique IPs for a user id."
+	},
+	"ZoneUserProfilesRawEventsGroups": {
+		"__description": "Historical login and signup events per user.",
+		"bmDetectionTags": "Abuse detections.",
+		"clientCity": "City name.",
+		"clientCountry": "Country code (alpha2).",
+		"date": "Date of the event.",
+		"deviceBrowser": "Device browser name.",
+		"deviceOS": "Device OS name.",
+		"eventTimestamp": "When the event happened.",
+		"userId": "Unique identifier for a user."
+	},
+	"ZoneUserProfilesRawEventsGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneUserProfilesRawEventsGroupsOrderBy": {
+		"__description": ""
 	},
 	"ZoneWaitingRoomAnalyticsAdaptive": {
 		"__description": "Raw Waiting Room analytics logs",
@@ -11621,6 +11644,7 @@
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"settings": "",
 		"userProfilesAdaptiveGroups": "User ID profiles for login and sign up attempts",
+		"userProfilesRawEventsGroups": "Historical login and signup events per user.",
 		"waitingRoomAnalyticsAdaptive": "Raw Waiting Room analytics logs",
 		"waitingRoomAnalyticsAdaptiveGroups": "Aggregated Waiting Room analytics logs with adaptive sampling",
 		"workersZoneInvocationsAdaptiveGroups": "Workers invocations with adaptive sampling",
