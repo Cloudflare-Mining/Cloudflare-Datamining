@@ -2,7 +2,7 @@
 	"name": "@cloudflare/vite-plugin",
 	"dist-tags": {
 		"beta": "0.0.0-66edd2f3b",
-		"latest": "1.13.19"
+		"latest": "1.14.0"
 	},
 	"versions": {
 		"0.0.0-ce165ff11": {
@@ -33789,6 +33789,59 @@
 			"name": "@cloudflare/vite-plugin",
 			"version": "1.13.19",
 			"dependencies": {
+				"ws": "8.18.0",
+				"unenv": "2.0.0-rc.24",
+				"get-port": "^7.1.0",
+				"wrangler": "4.45.4",
+				"miniflare": "4.20251011.2",
+				"picocolors": "^1.1.1",
+				"tinyglobby": "^0.2.12",
+				"@cloudflare/unenv-preset": "2.7.9",
+				"@remix-run/node-fetch-server": "^0.8.0"
+			},
+			"devDependencies": {
+				"mlly": "^1.7.4",
+				"vite": "7.0.0",
+				"tsdown": "^0.15.4",
+				"vitest": "~3.2.0",
+				"@types/ws": "^8.5.13",
+				"typescript": "^5.8.3",
+				"@types/node": "^22.10.1",
+				"magic-string": "^0.30.12",
+				"@cloudflare/workers-types": "^4.20251011.0",
+				"@cloudflare/workers-shared": "0.18.8",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/containers-shared": "0.2.13",
+				"@cloudflare/mock-npm-registry": "0.0.0"
+			},
+			"peerDependencies": {
+				"vite": "^6.1.0 || ^7.0.0",
+				"wrangler": "^4.45.4"
+			},
+			"dist": {
+				"shasum": "f9c3e589d98d3136f0df9425ada028b232ebf3de",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-1.13.19.tgz",
+				"fileCount": 10,
+				"integrity": "sha512-3ndsoSHL9Ttjj7CaYfYg5dY6vy1tl/1+dXdK4Ilr78sQbKA+Ni/KXHgqi8vw9L5LeB8ZbdeJ7vQTKfMN9Qh+AA==",
+				"signatures": [
+					{
+						"sig": "MEQCIDyK10ztEKSXfNrX2sIMmQCCwUUMkILZQLO34RtGRHJTAiBzQKePPkcwH9g5Zzf0HxyNWTy0qMJ/EAZfNrcpuelb0w==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvite-plugin@1.13.19",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2210293
+			}
+		},
+		"1.14.0": {
+			"name": "@cloudflare/vite-plugin",
+			"version": "1.14.0",
+			"dependencies": {
 				"@remix-run/node-fetch-server": "^0.8.0",
 				"get-port": "^7.1.0",
 				"picocolors": "^1.1.1",
@@ -33796,11 +33849,11 @@
 				"unenv": "2.0.0-rc.24",
 				"ws": "8.18.0",
 				"@cloudflare/unenv-preset": "2.7.9",
-				"miniflare": "4.20251011.2",
-				"wrangler": "4.45.4"
+				"miniflare": "4.20251105.0",
+				"wrangler": "4.46.0"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20251011.0",
+				"@cloudflare/workers-types": "^4.20251014.0",
 				"@types/node": "^22.10.1",
 				"@types/ws": "^8.5.13",
 				"magic-string": "^0.30.12",
@@ -33809,23 +33862,23 @@
 				"typescript": "^5.8.3",
 				"vite": "7.0.0",
 				"vitest": "~3.2.0",
-				"@cloudflare/containers-shared": "0.2.13",
+				"@cloudflare/containers-shared": "0.3.0",
 				"@cloudflare/mock-npm-registry": "0.0.0",
-				"@cloudflare/workers-shared": "0.18.8",
-				"@cloudflare/workers-tsconfig": "0.0.0"
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workers-shared": "0.18.8"
 			},
 			"peerDependencies": {
 				"vite": "^6.1.0 || ^7.0.0",
-				"wrangler": "^4.45.4"
+				"wrangler": "^4.46.0"
 			},
 			"dist": {
-				"integrity": "sha512-3ndsoSHL9Ttjj7CaYfYg5dY6vy1tl/1+dXdK4Ilr78sQbKA+Ni/KXHgqi8vw9L5LeB8ZbdeJ7vQTKfMN9Qh+AA==",
-				"shasum": "f9c3e589d98d3136f0df9425ada028b232ebf3de",
-				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-1.13.19.tgz",
+				"integrity": "sha512-awsY1p9szhwo2LyIBWnnsWagd1hhwIaKeDyh49jA3108QvaOkXgp486vEIaqPkQhZdCQZbPfDlBNEhkBBV3tdQ==",
+				"shasum": "06ae83bd104e73d4470bf1139739f418cc12f6f9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-1.14.0.tgz",
 				"fileCount": 10,
-				"unpackedSize": 2210293,
+				"unpackedSize": 2213744,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvite-plugin@1.13.19",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvite-plugin@1.14.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -33833,7 +33886,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIDyK10ztEKSXfNrX2sIMmQCCwUUMkILZQLO34RtGRHJTAiBzQKePPkcwH9g5Zzf0HxyNWTy0qMJ/EAZfNrcpuelb0w=="
+						"sig": "MEUCIGseqYUOZsnbaLQOXopKC96U+q9G/i5tKWWdpfDzxaehAiEAvTSwi/DYTM0vHF23b2LUyDnYRa0/BL6r512/Ll/WPEY="
 					}
 				]
 			}
