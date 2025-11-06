@@ -124,11 +124,11 @@
 				}
 			},
 			{
-				"description": "Array of dataset IDs to query target industries from. If not provided, returns all target industries from D1 Event table.",
+				"description": "Array of dataset IDs to query target industries from. If not provided, returns all target industries from Event tables across all datasets.",
 				"in": "query",
 				"name": "datasetIds",
 				"schema": {
-					"description": "Array of dataset IDs to query target industries from. If not provided, returns all target industries from D1 Event table.",
+					"description": "Array of dataset IDs to query target industries from. If not provided, returns all target industries from Event tables across all datasets.",
 					"items": {
 						"type": "string"
 					},
