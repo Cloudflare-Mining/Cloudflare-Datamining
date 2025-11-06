@@ -1,0 +1,196 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Umt4dEGlo8qRckqLiYpE/f7e9916ea2b3db1fdba936024a9de7f6/BLOG-2990-hero.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>Cloudflare Stream loves video. But we know not every workflow needs the full picture, and the popularity of podcasts highlights how compelling stand-alone audio can be. For developers, processing a video just to access audio is slow, costly, and complex.&nbsp;</p>
+	<p>What makes video so expensive? A video file is a dense stack of high-resolution images, stitched together over time. As such, it is not just “one file” —&nbsp; it’s a container of high-dimensional data such as frames per second, resolution, codecs. Analyzing video means traversing time resolution frame rate.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-audio-extraction">Why audio extraction</h2>
+		<a href="https://blog.cloudflare.com/#why-audio-extraction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>By comparison, an audio file is far simpler. If an audio file consists of only one channel, it is defined as a single waveform. The technical characteristics of this waveform are defined by the sample rate (the number of audio samples taken per second), and the bit depth (the precision of each sample).</p>
+	<p>With the rise of computationally intensive AI inference pipelines, many of our customers want to perform downstream workflows that require only analyzing the audio. For example:</p>
+	<ul>
+		<li>
+			<p><b>Power AI and Machine Learning:</b> In addition to translation and transcription, you can feed the audio into Voice-to-Text models for speech recognition or analysis, or AI-powered summaries.</p>
+		</li>
+		<li>
+			<p><b>Improve content moderation:</b> Analyze the audio within your videos to ensure the content is safe and compliant.</p>
+		</li>
+	</ul>
+	<p>Using video data in such cases is expensive and unnecessary.&nbsp;</p>
+	<p>That’s why we’re introducing audio extraction. Through this feature, with just a single API call or click in the dashboard, you can now extract a lightweight M4A audio track from any video.</p>
+	<p>We’re introducing two flexible methods to extract audio from your videos.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="1-on-the-fly-audio-extraction-through-media-transformations">1. On-the-Fly audio extraction through Media Transformations</h3>
+		<a href="https://blog.cloudflare.com/#1-on-the-fly-audio-extraction-through-media-transformations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/stream/transform-videos"><u>Media Transformations</u></a> is perfect for processing and transforming short-form videos, like social media clips, that you store anywhere you'd like. It works by fetching your media directly from its source, optimizing it at our edge, and delivering it efficiently. </p>
+	<p>We extended this workflow to include audio. By simply adding <code>mode=audio</code> to the transformation URL, you can now extract audio on-the-fly from a video file stored anywhere.</p>
+	<p>Once <a href="https://developers.cloudflare.com/stream/transform-videos/#getting-started"><u>Media Transformations is enabled for your domain</u></a>, you can extract audio from any source video. You can even clip specific sections by specifying <code>time</code> and <code>duration</code>.</p>
+	<p>For example:</p>
+	<pre class="language-Rust"><code class="language-Rust">https://example.com/cdn-cgi/media/mode=audio,time=5s,duration=10s/&lt;SOURCE-VIDEO&gt;</code></pre>
+	<p>The above request generates a 10 second M4A audio clip from the source video, beginning at the 5-second mark. You can learn more about setup and other options in the <a href="https://developers.cloudflare.com/stream/transform-videos"><u>Media Transformations documentation</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="2-audio-downloads">2. Audio downloads</h3>
+		<a href="https://blog.cloudflare.com/#2-audio-downloads" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You can now download the audio track directly for any content that you manage within Stream. Alongside the ability to generate a downloadable MP4 for offline viewing, you can also now create and store a persistent M4A audio file.</p>
+	<div class="flex anchor relative">
+		<h2 id="workers-ai-demo">Workers AI demo</h2>
+		<a href="https://blog.cloudflare.com/#workers-ai-demo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Here, you can see a sample piece of code that demonstrates how to use Media Transformations with one of Cloudflare’s own products —&nbsp; Workers AI. The following code creates a two-step process: first transcribing the video’s audio to English, then translating it into Spanish.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
+ async fetch(request, env, ctx) {
+
+
+   // 1. Use Media Transformations to fetch only the audio track
+   const res = await fetch( "https://blog.cloudflare.com/cdn-cgi/media/mode=audio/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/announcing-audio-mode.mp4" );
+   const blob = await res.arrayBuffer();
+
+
+   // 2. Transcribe the audio to text using Whisper
+   const transcript_response = await env.AI.run(
+     "@cf/openai/whisper-large-v3-turbo",
+     {
+       audio: base64Encode(blob), // A base64 encoded string is required by @cf/openai/whisper-large-v3-turbo
+     }
+   );
+
+
+   // Check if transcription was successful and text exists
+   if (!transcript_response.text) {
+       return Response.json({ error: "Failed to transcribe audio." }, { status: 500 });
+   }
+
+
+   // 3. Translate the transcribed text using the M2M100 model
+   const translation_response = await env.AI.run(
+     '@cf/meta/m2m100-1.2b',
+     {
+       text: transcript_response.text,
+       source_lang: 'en', // The source language (English)
+       target_lang: 'es'  // The target language (Spanish)
+     }
+   );
+
+
+   // 4. Return both the original transcription and the translation
+    return Response.json({
+        transcription: transcript_response.text,
+        translation: translation_response.translated_text
+    });
+
+
+ }
+};
+
+
+export function base64Encode(buf) {
+ let string = '';
+ (new Uint8Array(buf)).forEach(
+   (byte) =&gt; { string += String.fromCharCode(byte) }
+ )
+ return btoa(string)
+}</code></pre>
+	<p>After running, the worker returns a clean JSON response. Shown below is a snippet of the transcribed and then translated response the worker returned.</p>
+	<p>Transcription:</p>
+	<pre class="language-JSON"><code class="language-JSON">{
+  "transcription": "I'm excited to announce that Media Transformations from Cloudflare has added audio-only mode. Now you can quickly extract and deliver just the audio from your short form video. And from there, you can transcribe it or summarize it on Worker's AI or run moderation or inference tasks easily.",
+  "translation": "Estoy encantado de anunciar que Media Transformations de Cloudflare ha añadido el modo solo de audio. Ahora puede extraer y entregar rápidamente sólo el audio de su vídeo de forma corta. Y desde allí, puede transcribirlo o resumirlo en la IA de Worker o ejecutar tareas de moderación o inferencia fácilmente."
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="technical-details">Technical details</h2>
+		<a href="https://blog.cloudflare.com/#technical-details" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As a summer intern on the Stream team, I worked on shipping this long-requested feature. My first step was to understand the complex architecture of Stream’s media pipelines.</p>
+	<p>When a video is processed by Stream, it can follow one of two paths. The first is our video-on-demand (VOD) pipeline, which handles videos directly uploaded to Stream. It generates and stores a set of encoded video segments for adaptive bitrate streaming that can be streamed via HLS/DASH. The other path is our on-the-fly-encoding (or OTFE) pipeline, that drives the Stream Live and Media Transformations service. Instead of pre-processing and storing files, OTFE fetches media from a customer’s own website and performs transformations at the edge.</p>
+	<p>My project involved extending both of these pipelines to support audio extraction.</p>
+	<div class="flex anchor relative">
+		<h3 id="otfe-pipeline">OTFE pipeline</h3>
+		<a href="https://blog.cloudflare.com/#otfe-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The OTFE pipeline is designed for real-time operations. The existing flow was engineered for visual tasks. When a customer with Media Transformations enabled makes a request on their own website, it’s routed to our edge servers, which acts as the entry point. The request is then validated, and per the user’s request, OTFE would fetch the video and generate a resized version or a still-frame thumbnail.</p>
+	<p>In order to support audio-only extraction, I built upon our existing workflow to add a new mode. This involved:</p>
+	<ol>
+		<li>
+			<p>Extending the validation logic: Specifically for audio, a crucial validation step was to verify that the source video contained an audio track before attempting extraction. This was in addition to pre-existing validation steps that ensure the requested URL was correctly formatted.&nbsp;</p>
+		</li>
+		<li>
+			<p>Building a new transformation handler: This was the core of my project. I built a new handler within the OTFE platform that specifically discarded the visual tracks in order to deliver a high-quality M4A file.
+			</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="vod-pipeline">VOD pipeline</h3>
+		<a href="https://blog.cloudflare.com/#vod-pipeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Similar to my work on OTFE, this project involved extending our current MP4 downloads workflow to audio-only, M4A downloads. This presented a series of interesting technical decisions.&nbsp;</p>
+	<p>The typical flow for creating a video download begins with a POST request to our main API layer, which handles authentication and validation, and creates a corresponding database record. Which then enqueues a job in our asynchronous queue where workers perform the processing task. To enable audio downloads for VOD, I introduced new, type-specific API endpoints (<code>POST /downloads/{type}</code>) while preserving the legacy <code>POST /downloads </code>route as an alias for creating downloads of the default, or video, download type. This ensured full backward compatibility.</p>
+	<p>The core work, of creating a download, is performed by our asynchronous queue. Which included:</p>
+	<ul>
+		<li>
+			<p>Adding logic to the consumer to detect the new audio download type</p>
+		</li>
+		<li>
+			<p>Pulling the ffmpeg template we define in our API layer to properly encode the audio stream into a high-quality M4A container</p>
+		</li>
+	</ul>
+	<p>By extending each component of this pipeline– from the API routes to the media processing commands– I was able to deliver a new, highly-requested feature that unlocks audio-centric workflows for our customers!
+	</p>
+	<div class="flex anchor relative">
+		<h2 id="dash-screenshots">Dash screenshots</h2>
+		<a href="https://blog.cloudflare.com/#dash-screenshots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’re excited to announce that this feature is also available in the Stream dashboard. Simply navigate to any of your videos, and you’ll find the option to download the video or just the audio.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DFBl200Npv24UfTbOBs5T/36229af550bb43305b0775a13e21e232/image5.png" alt="" class="kg-image" width="1999" height="1022" loading="lazy">
+	</figure>
+	<p>Once the download is ready, you will see the URL for the file, along with the option to disable it.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vyRvNfraFUHyZs0vz75uC/55471ea8700cec1b44932e81d89dd47d/image4.png" alt="" class="kg-image" width="1260" height="488" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="thats-a-wrap">That’s a wrap</h2>
+		<a href="https://blog.cloudflare.com/#thats-a-wrap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This project addressed a long-standing customer need, providing a simpler way to work with audio from video. I’m truly grateful for this entire journey, from understanding the problem to shipping the solution, and especially for the mentorship and guidance I received from my team along the way. We are excited to see how developers use this new capability to build more efficient and exciting applications on Cloudflare Stream.</p>
+	<p>You can try the audio extraction feature by <a href="https://dash.cloudflare.com"><u>uploading a video to Stream</u></a> or using the API! If you're interested in tackling these kinds of technical challenges yourself, explore our <a href="https://www.cloudflare.com/careers/early-talent/?cf_target_id=97C555BF0DA9E4427F470C0134F7E2C9"><u>internship and early talent programs</u></a> to start your own journey.</p>
+</div>

@@ -1,4 +1,5 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IsyCgrC1KNhZ9daQrYN2b/74e6bedea74f3a768d1ab3b71bea0f18/image9.png" alt="">
+<div class="mb2 gray5">9 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/going-bgp-zombie-hunting">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/going-bgp-zombie-hunting">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6IsyCgrC1KNhZ9daQrYN2b/74e6bedea74f3a768d1ab3b71bea0f18/image9.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Here at Cloudflare, we’ve been celebrating Halloween with some zombie hunting of our own. The zombies we’d like to remove are those that disrupt the core framework responsible for how the Internet routes traffic: <a href="https://cloudflare.com/learning/security/glossary/what-is-bgp"><u>BGP (Border Gateway Protocol)</u></a>.</p>
 	<p>A <a href="https://dl.acm.org/doi/10.1145/3472305.3472315"><u>BGP zombie</u></a> is a silly name for a route that has become stuck in the Internet’s <a href="https://en.wikipedia.org/wiki/Default-free_zone"><u>Default-Free Zone</u></a>, aka the DFZ: the collection of all internet routers that do not require a default route, potentially due to a missed or lost prefix withdrawal.</p>
