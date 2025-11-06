@@ -7,27 +7,25 @@
 </div>
 <h4><strong>Available Locations: Austin, TX; Lisbon, Portugal or London, UK</strong></h4>
 <h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Billing Engineering team builds and maintains all the internal/external billing services related to customer onboarding, subscription management, payments, provisioning, usage processing/analytics and back office integrations with financial systems. This is a vital team central to every product launch, campaign or initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>The Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
-<h4><strong>About the Role</strong></h4>
-<p>We are looking for experienced front-end engineers to join our FinTech Billing team; an energetic team focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live. The ideal candidates will have experience working with large-scale applications and a deep knowledge of system designs. You must care deeply not only about the quality of your and the team's code, but also the customer experience and developer experience. We have growing front-end needs, so we’re looking for highly motivated individuals that are excited to join a team and work with product owners and other software engineers to build high impact user experiences for our customer facing functions.</p>
-<p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access to Cloudflare Workers, these are all tools in our frontend engineer's tool belt.&nbsp;</p>
-<p>Technologies we use include React, Redux, TypeScript, ES6, Remix, Vite, Webpack, Cypress, Go, git, Bitbucket, Teamcity and many more..</p>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
+<p>Cloudflare’s Billing Engineering Team is at the heart of every product launch, campaign, and initiative that Cloudflare undertakes. We build and maintain critical systems for billing, payments, usage metering, aggregation, invoicing and revenue recognition — powering billions in revenue and serving millions of customers.</p>
+<p>Currently we're rebuilding our entire billing platform, designing a metering and aggregation layer that scales effortlessly while ensuring financial accuracy. This is high-impact, high-stakes work that touches all Cloudflare’s cutting-edge products like AI, Zero Trust, Edge Compute, Bot Management, DDoS Protection, etc.</p>
+<p>As a Senior Systems Engineer, you’ll lead a team of talented, collaborative engineers working across Cloudflare’s ecosystem. You’ll navigate multiple high-profile projects, foster a culture of proactive communication and continuous learning, and drive technical excellence.</p>
+<p>If you thrive on solving hard challenges at the intersection of financial infrastructure and distributed systems, this is your opportunity to make a massive impact while growing with us.</p>
+<p><strong>What you'll do </strong><br><br>We are looking for an energetic team-focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
+<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
+<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Desirable skills and knowledge</strong></p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent</li>
-	<li>Minimum of 5+ years experience building web applications</li>
-	<li>Strong knowledge of HTML, CSS, and JavaScript</li>
-	<li>Expertise with TypeScript</li>
-	<li>Knowledge of both software engineering and systems engineering</li>
-	<li>Deep understanding of internal workings of React.js applications</li>
-	<li>Extensive knowledge of the JavaScript ecosystem</li>
-	<li>Experience working with build pipelines, artifact management, error management</li>
-	<li>Ability to work in cross-functional teams and collaborate effectively with product and design teams</li>
-	<li>Strong analytical and debugging skills</li>
-	<li>Unit/integration testing experience</li>
-	<li>Experience working with and/or designing RESTful APIs</li>
-	<li>Working knowledge of internationalization, localization, and/or accessibility</li>
+	<li>BS+ in Computer Science or equivalent experience</li>
+	<li>7+ years professional experience as a developer/engineer</li>
+	<li>Knowledge of Golang or desire to learn it</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
 <p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
 <div class="content-conclusion">

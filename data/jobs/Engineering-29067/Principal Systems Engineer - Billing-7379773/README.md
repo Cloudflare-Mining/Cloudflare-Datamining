@@ -5,46 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
-<h3><strong>About the Role</strong></h3>
-<p>We’re looking for a passionate and detail-oriented <strong>UI Engineer with a deep commitment to accessibility</strong> to join our team. This role is central to ensuring our user interfaces are inclusive, compliant, and delightful for everyone. You’ll lead our accessibility efforts across the organization; from scheduling audits and driving remediation to building tooling that automates a11y best practices.</p>
-<p>You’ll lead our accessibility efforts and partner closely with engineering and design teams to ensure our products are usable and inclusive by default. In addition to driving audits, workshops, and best practices, you’ll also contribute directly to our UI codebase; applying the same standards you promote across the organization</p>
-<h3><strong>Key Responsibilities</strong></h3>
+<h4><strong>Available Locations: Austin, TX; Lisbon, Portugal or London, UK</strong></h4>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Billing Engineering Team is at the heart of every product launch, campaign, and initiative that Cloudflare undertakes. We build and maintain critical systems for billing, payments, usage metering, aggregation, invoicing and revenue recognition — powering billions in revenue and serving millions of customers.</p>
+<p>Currently we're rebuilding our entire billing platform, designing a metering and aggregation layer that scales effortlessly while ensuring financial accuracy. This is high-impact, high-stakes work that touches all Cloudflare’s cutting-edge products like AI, Zero Trust, Edge Compute, Bot Management, DDoS Protection, etc.</p>
+<p>As a Principal Systems Engineer, you’ll lead a team of talented, collaborative engineers working across Cloudflare’s ecosystem. You’ll navigate multiple high-profile projects, foster a culture of proactive communication and continuous learning, and drive technical excellence.</p>
+<p>If you thrive on solving hard challenges at the intersection of financial infrastructure and distributed systems, this is your opportunity to make a massive impact while growing with us.</p>
+<p><strong>What you'll do </strong><br><br>We are looking for an energetic team-focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
+<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
+<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Desirable skills and knowledge</strong></p>
 <ul>
-	<li><strong>Own and drive accessibility compliance</strong>: Schedule and lead accessibility audits, triage findings, and follow up with teams to ensure timely remediation.</li>
-	<li><strong>Build tooling and automations</strong>: Integrate accessibility linting, testing, and CI pipelines to catch issues early and reduce friction.</li>
-	<li><strong>Partner cross-functionally</strong>: Collaborate with designers, engineers, and PMs to embed accessibility from ideation through delivery.</li>
-	<li><strong>Empower teams through education</strong>: Host workshops, office hours, and async training to upskill teams on a11y best practices and practical implementation.</li>
-	<li><strong>Maintain living documentation</strong>: Own and update a centralized, shareable accessibility compliance report used by internal stakeholders (e.g., Sales, Marketing, Legal).</li>
-	<li><strong>Contribute to the UI codebase</strong>: Support general UI engineering needs when accessibility demands are light (if ever!).<br><br></li>
+	<li>BS+ in Computer Science or equivalent experience</li>
+	<li>7+ years professional experience as a developer/engineer</li>
+	<li>Knowledge of Golang or desire to learn it</li>
+	<li>Solid understanding of RESTful APIs and service security</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
+	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
+	<li>Familiarity with event driven architecture</li>
+	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
 </ul>
-<h3><strong>Technologies We Use</strong></h3>
-<p>React, TypeScript, JavaScript (ES6+), Storybook, LevelAccess, Chromatic, ESLint, Playwright, GitLab CI/CD, Lighthouse, Aria-Components, Webpack, Vite</p>
-<h3><strong>Qualifications</strong></h3>
-<ul>
-	<li>4+ years of experience building modern UI applications with a strong emphasis on accessibility.</li>
-	<li>Deep knowledge of WCAG guidelines (2.1/2.2), WAI-ARIA patterns, and common accessibility testing tools.</li>
-	<li>Hands-on experience integrating accessibility into developer workflows (e.g., linting, automated tests, CI).</li>
-	<li>Excellent communication skills, with the ability to advocate for and teach accessibility concepts across levels and disciplines.</li>
-	<li>Pragmatic mindset, capable of balancing compliance with usability and development velocity.</li>
-	<li>Strong organizational skills to manage cross-team follow-ups, reports, and documentation.<br><br></li>
-</ul>
-<h3><strong>Preferred Skills</strong></h3>
-<ul>
-	<li>Certified Professional in Accessibility Core Competencies (CPACC)</li>
-	<li>Experience with accessibility audit platforms (e.g., Deque Axe Monitor, LevelAccess, ARC Toolkit).</li>
-	<li>Familiarity with enterprise compliance needs (e.g., VPATs, accessibility statements).</li>
-	<li>Previous experience maintaining shared documentation or internal portals.</li>
-	<li>Contributions to UI design systems or component libraries with a11y in mind.<br><br></li>
-</ul>
-<h3><strong>Why Join Us?</strong></h3>
-<ul>
-	<li>Be the driving force for accessibility across a high-impact, widely used UI platform.</li>
-	<li>Champion inclusive design and engineering practices at scale.</li>
-	<li>Tackle meaningful challenges that improve the experience for millions of users.</li>
-	<li>Enjoy a flexible, supportive environment where accessibility is a first-class concern.</li>
-</ul>
-<p>&nbsp;</p>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
