@@ -720,6 +720,9 @@
 	"dev-dash-new-browser-rendering": {
 		"enabled": false
 	},
+	"dev-dash-new-worker-settings": {
+		"enabled": false
+	},
 	"dev-dash-new-workers-overview": {
 		"enabled": false
 	},
@@ -1676,6 +1679,14 @@
 			"experiment"
 		]
 	},
+	"prg-log-explorer-empty-state-optimizations": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a",
+			"variant-b"
+		]
+	},
 	"prg-login-cf-connect": {
 		"enabled": true,
 		"branches": [
@@ -2578,6 +2589,9 @@
 	},
 	"workers-observability-billing": {
 		"enabled": true
+	},
+	"workers-observability-v2": {
+		"enabled": false
 	},
 	"workers-preview-urls-enabled": {
 		"enabled": true
