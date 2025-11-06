@@ -98,7 +98,7 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"schema_id": {
+												"id": {
 													"description": "The ID of the schema that was just deleted",
 													"format": "uuid",
 													"type": "string",
@@ -106,7 +106,7 @@
 												}
 											},
 											"required": [
-												"schema_id"
+												"id"
 											],
 											"type": "object"
 										}

@@ -1501,6 +1501,29 @@
 			}
 		}
 	],
+	"PARAMETERS /zones/{zone_id}/token_validation/rules/bulk": [
+		{
+			"in": "path",
+			"name": "zone_id",
+			"required": true,
+			"schema": {
+				"allOf": [
+					{
+						"description": "Identifier.",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"type": "string",
+						"x-auditable": true
+					},
+					{
+						"readOnly": true,
+						"type": "string",
+						"x-auditable": true
+					}
+				]
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/token_validation/rules/preview": [
 		{
 			"in": "path",
