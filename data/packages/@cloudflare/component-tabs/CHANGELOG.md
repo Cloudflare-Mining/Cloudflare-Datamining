@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.0.33
+
+### Patch Changes
+
+- Updated dependencies [f149036d02]
+  - @cloudflare/util-responsive@4.2.0
+  - @cloudflare/component-forms@7.0.33
+
 ## 7.0.32
 
 ### Patch Changes

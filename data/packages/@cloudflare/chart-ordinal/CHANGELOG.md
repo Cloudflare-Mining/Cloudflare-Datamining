@@ -1,5 +1,12 @@
 # Change Log
 
+## 8.0.25
+
+### Patch Changes
+
+- Updated dependencies [f149036d02]
+  - @cloudflare/util-responsive@4.2.0
+
 ## 8.0.24
 
 ### Patch Changes

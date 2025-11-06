@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.2.0
+
+### Minor Changes
+
+- f149036d02: Publish types
+
 ## 4.1.0
 
 ### Minor Changes
