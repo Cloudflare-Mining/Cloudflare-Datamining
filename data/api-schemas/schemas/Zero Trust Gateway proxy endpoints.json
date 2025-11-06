@@ -393,6 +393,36 @@
 												"messages"
 											],
 											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Indicate the total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Indicate the current page within a paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Indicate the number of results per page.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Indicate the total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -400,49 +430,124 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
-													"type": "string",
-													"x-auditable": true
-												},
-												"ips": {
-													"description": "Specify the list of CIDRs to restrict ingress connections.",
-													"items": {
-														"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-														"example": "192.0.2.1/32",
-														"type": "string",
-														"x-auditable": true
+											"items": {
+												"discriminator": {
+													"mapping": {
+														"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+														"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
 													},
-													"type": "array"
+													"propertyName": "kind"
 												},
-												"name": {
-													"description": "Specify the name of the proxy endpoint.",
-													"example": "Devops team",
-													"type": "string",
-													"x-auditable": true
-												},
-												"subdomain": {
-													"description": "Specify the subdomain to use as the destination in the proxy client.",
-													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												}
+												"oneOf": [
+													{
+														"properties": {
+															"created_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"example": "ed35569b41ce4d1facfe683550f54086",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ips": {
+																"description": "Specify the list of CIDRs to restrict ingress connections.",
+																"items": {
+																	"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																	"example": "192.0.2.1/32",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"kind": {
+																"description": "The proxy endpoint kind",
+																"enum": [
+																	"ip"
+																],
+																"example": "ip",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Specify the name of the proxy endpoint.",
+																"example": "Devops team",
+																"type": "string",
+																"x-auditable": true
+															},
+															"subdomain": {
+																"description": "Specify the subdomain to use as the destination in the proxy client.",
+																"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"updated_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"ips"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"created_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"example": "ed35569b41ce4d1facfe683550f54086",
+																"type": "string",
+																"x-auditable": true
+															},
+															"kind": {
+																"description": "The proxy endpoint kind",
+																"enum": [
+																	"identity"
+																],
+																"example": "identity",
+																"type": "string",
+																"x-auditable": true
+															},
+															"name": {
+																"description": "Specify the name of the proxy endpoint.",
+																"example": "Devops team",
+																"type": "string",
+																"x-auditable": true
+															},
+															"subdomain": {
+																"description": "Specify the subdomain to use as the destination in the proxy client.",
+																"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"updated_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"kind",
+															"name"
+														],
+														"type": "object"
+													}
+												]
 											},
-											"type": "object"
+											"type": "array"
 										}
 									},
 									"type": "object"
@@ -522,6 +627,36 @@
 														"messages"
 													],
 													"type": "object"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Indicate the total number of results for the requested service.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Indicate the current page within a paginated list of results.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Indicate the number of results per page.",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Indicate the total results available without any search parameters.",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
@@ -529,49 +664,124 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
-															"type": "string",
-															"x-auditable": true
-														},
-														"ips": {
-															"description": "Specify the list of CIDRs to restrict ingress connections.",
-															"items": {
-																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-																"example": "192.0.2.1/32",
-																"type": "string",
-																"x-auditable": true
+													"items": {
+														"discriminator": {
+															"mapping": {
+																"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+																"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
 															},
-															"type": "array"
+															"propertyName": "kind"
 														},
-														"name": {
-															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
-															"type": "string",
-															"x-auditable": true
-														},
-														"subdomain": {
-															"description": "Specify the subdomain to use as the destination in the proxy client.",
-															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														}
+														"oneOf": [
+															{
+																"properties": {
+																	"created_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"example": "ed35569b41ce4d1facfe683550f54086",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"ips": {
+																		"description": "Specify the list of CIDRs to restrict ingress connections.",
+																		"items": {
+																			"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																			"example": "192.0.2.1/32",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	},
+																	"kind": {
+																		"description": "The proxy endpoint kind",
+																		"enum": [
+																			"ip"
+																		],
+																		"example": "ip",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Specify the name of the proxy endpoint.",
+																		"example": "Devops team",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"subdomain": {
+																		"description": "Specify the subdomain to use as the destination in the proxy client.",
+																		"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"updated_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"ips"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"created_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"example": "ed35569b41ce4d1facfe683550f54086",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"kind": {
+																		"description": "The proxy endpoint kind",
+																		"enum": [
+																			"identity"
+																		],
+																		"example": "identity",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"name": {
+																		"description": "Specify the name of the proxy endpoint.",
+																		"example": "Devops team",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"subdomain": {
+																		"description": "Specify the subdomain to use as the destination in the proxy client.",
+																		"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"updated_at": {
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"kind",
+																	"name"
+																],
+																"type": "object"
+															}
+														]
 													},
-													"type": "object"
+													"type": "array"
 												}
 											},
 											"type": "object"
@@ -781,36 +991,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Indicate the total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Indicate the current page within a paginated list of results.",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Indicate the number of results per page.",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Indicate the total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											},
-											"type": "object"
 										}
 									],
 									"type": "object"
@@ -818,52 +998,121 @@
 								{
 									"properties": {
 										"result": {
-											"items": {
-												"properties": {
-													"created_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
-													},
-													"id": {
-														"example": "ed35569b41ce4d1facfe683550f54086",
-														"type": "string",
-														"x-auditable": true
-													},
-													"ips": {
-														"description": "Specify the list of CIDRs to restrict ingress connections.",
-														"items": {
-															"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-															"example": "192.0.2.1/32",
+											"discriminator": {
+												"mapping": {
+													"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+													"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
+												},
+												"propertyName": "kind"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
 															"type": "string",
 															"x-auditable": true
 														},
-														"type": "array"
+														"ips": {
+															"description": "Specify the list of CIDRs to restrict ingress connections.",
+															"items": {
+																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																"example": "192.0.2.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"kind": {
+															"description": "The proxy endpoint kind",
+															"enum": [
+																"ip"
+															],
+															"example": "ip",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Specify the name of the proxy endpoint.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"subdomain": {
+															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
 													},
-													"name": {
-														"description": "Specify the name of the proxy endpoint.",
-														"example": "Devops team",
-														"type": "string",
-														"x-auditable": true
-													},
-													"subdomain": {
-														"description": "Specify the subdomain to use as the destination in the proxy client.",
-														"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-														"readOnly": true,
-														"type": "string",
-														"x-auditable": true
-													},
-													"updated_at": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
-													}
+													"required": [
+														"name",
+														"ips"
+													],
+													"type": "object"
 												},
-												"type": "object"
-											},
-											"type": "array"
+												{
+													"properties": {
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string",
+															"x-auditable": true
+														},
+														"kind": {
+															"description": "The proxy endpoint kind",
+															"enum": [
+																"identity"
+															],
+															"example": "identity",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Specify the name of the proxy endpoint.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"subdomain": {
+															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"kind",
+														"name"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"type": "object"
@@ -946,36 +1195,6 @@
 														"messages"
 													],
 													"type": "object"
-												},
-												{
-													"properties": {
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Indicate the total number of results for the requested service.",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Indicate the current page within a paginated list of results.",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Indicate the number of results per page.",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Indicate the total results available without any search parameters.",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													},
-													"type": "object"
 												}
 											],
 											"type": "object"
@@ -983,52 +1202,121 @@
 										{
 											"properties": {
 												"result": {
-													"items": {
-														"properties": {
-															"created_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"id": {
-																"example": "ed35569b41ce4d1facfe683550f54086",
-																"type": "string",
-																"x-auditable": true
-															},
-															"ips": {
-																"description": "Specify the list of CIDRs to restrict ingress connections.",
-																"items": {
-																	"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-																	"example": "192.0.2.1/32",
+													"discriminator": {
+														"mapping": {
+															"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+															"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
+														},
+														"propertyName": "kind"
+													},
+													"oneOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"example": "ed35569b41ce4d1facfe683550f54086",
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"ips": {
+																	"description": "Specify the list of CIDRs to restrict ingress connections.",
+																	"items": {
+																		"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																		"example": "192.0.2.1/32",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																},
+																"kind": {
+																	"description": "The proxy endpoint kind",
+																	"enum": [
+																		"ip"
+																	],
+																	"example": "ip",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Specify the name of the proxy endpoint.",
+																	"example": "Devops team",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"subdomain": {
+																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
 															},
-															"name": {
-																"description": "Specify the name of the proxy endpoint.",
-																"example": "Devops team",
-																"type": "string",
-																"x-auditable": true
-															},
-															"subdomain": {
-																"description": "Specify the subdomain to use as the destination in the proxy client.",
-																"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-																"readOnly": true,
-																"type": "string",
-																"x-auditable": true
-															},
-															"updated_at": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															}
+															"required": [
+																"name",
+																"ips"
+															],
+															"type": "object"
 														},
-														"type": "object"
-													},
-													"type": "array"
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"example": "ed35569b41ce4d1facfe683550f54086",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"kind": {
+																	"description": "The proxy endpoint kind",
+																	"enum": [
+																		"identity"
+																	],
+																	"example": "identity",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Specify the name of the proxy endpoint.",
+																	"example": "Devops team",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"subdomain": {
+																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"kind",
+																"name"
+															],
+															"type": "object"
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1273,49 +1561,121 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+											"discriminator": {
+												"mapping": {
+													"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+													"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
 												},
-												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
-													"type": "string",
-													"x-auditable": true
-												},
-												"ips": {
-													"description": "Specify the list of CIDRs to restrict ingress connections.",
-													"items": {
-														"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-														"example": "192.0.2.1/32",
-														"type": "string",
-														"x-auditable": true
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "Specify the name of the proxy endpoint.",
-													"example": "Devops team",
-													"type": "string",
-													"x-auditable": true
-												},
-												"subdomain": {
-													"description": "Specify the subdomain to use as the destination in the proxy client.",
-													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												}
+												"propertyName": "kind"
 											},
-											"type": "object"
+											"oneOf": [
+												{
+													"properties": {
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string",
+															"x-auditable": true
+														},
+														"ips": {
+															"description": "Specify the list of CIDRs to restrict ingress connections.",
+															"items": {
+																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																"example": "192.0.2.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"kind": {
+															"description": "The proxy endpoint kind",
+															"enum": [
+																"ip"
+															],
+															"example": "ip",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Specify the name of the proxy endpoint.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"subdomain": {
+															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"ips"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string",
+															"x-auditable": true
+														},
+														"kind": {
+															"description": "The proxy endpoint kind",
+															"enum": [
+																"identity"
+															],
+															"example": "identity",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Specify the name of the proxy endpoint.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"subdomain": {
+															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"kind",
+														"name"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"type": "object"
@@ -1402,49 +1762,121 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+													"discriminator": {
+														"mapping": {
+															"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+															"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
 														},
-														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
-															"type": "string",
-															"x-auditable": true
-														},
-														"ips": {
-															"description": "Specify the list of CIDRs to restrict ingress connections.",
-															"items": {
-																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-																"example": "192.0.2.1/32",
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"name": {
-															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
-															"type": "string",
-															"x-auditable": true
-														},
-														"subdomain": {
-															"description": "Specify the subdomain to use as the destination in the proxy client.",
-															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														}
+														"propertyName": "kind"
 													},
-													"type": "object"
+													"oneOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"example": "ed35569b41ce4d1facfe683550f54086",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ips": {
+																	"description": "Specify the list of CIDRs to restrict ingress connections.",
+																	"items": {
+																		"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																		"example": "192.0.2.1/32",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																},
+																"kind": {
+																	"description": "The proxy endpoint kind",
+																	"enum": [
+																		"ip"
+																	],
+																	"example": "ip",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Specify the name of the proxy endpoint.",
+																	"example": "Devops team",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"subdomain": {
+																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"ips"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"example": "ed35569b41ce4d1facfe683550f54086",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"kind": {
+																	"description": "The proxy endpoint kind",
+																	"enum": [
+																		"identity"
+																	],
+																	"example": "identity",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Specify the name of the proxy endpoint.",
+																	"example": "Devops team",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"subdomain": {
+																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"kind",
+																"name"
+															],
+															"type": "object"
+														}
+													]
 												}
 											},
 											"type": "object"
@@ -1580,29 +2012,74 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"ips": {
-								"description": "Specify the list of CIDRs to restrict ingress connections.",
-								"items": {
-									"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-									"example": "192.0.2.1/32",
-									"type": "string",
-									"x-auditable": true
-								},
-								"type": "array"
+						"discriminator": {
+							"mapping": {
+								"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity-create",
+								"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip-create"
 							},
-							"name": {
-								"description": "Specify the name of the proxy endpoint.",
-								"example": "Devops team",
-								"type": "string",
-								"x-auditable": true
-							}
+							"propertyName": "kind"
 						},
-						"required": [
-							"name",
-							"ips"
+						"oneOf": [
+							{
+								"properties": {
+									"kind": {
+										"description": "The proxy endpoint kind",
+										"enum": [
+											"ip"
+										],
+										"example": "ip",
+										"type": "string",
+										"x-auditable": true
+									},
+									"name": {
+										"description": "Specify the name of the proxy endpoint.",
+										"example": "Devops team",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"name",
+									"ips"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"kind": {
+										"description": "The proxy endpoint kind",
+										"enum": [
+											"identity"
+										],
+										"example": "identity",
+										"type": "string",
+										"x-auditable": true
+									},
+									"name": {
+										"description": "Specify the name of the proxy endpoint.",
+										"example": "Devops team",
+										"type": "string",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"kind",
+									"name"
+								],
+								"type": "object"
+							}
 						],
-						"type": "object"
+						"properties": {
+							"kind": {
+								"default": "ip",
+								"description": "The proxy endpoint kind.",
+								"enum": [
+									"ip",
+									"identity"
+								],
+								"type": "string"
+							}
+						}
 					}
 				}
 			},
@@ -1682,49 +2159,121 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+											"discriminator": {
+												"mapping": {
+													"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+													"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
 												},
-												"id": {
-													"example": "ed35569b41ce4d1facfe683550f54086",
-													"type": "string",
-													"x-auditable": true
-												},
-												"ips": {
-													"description": "Specify the list of CIDRs to restrict ingress connections.",
-													"items": {
-														"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-														"example": "192.0.2.1/32",
-														"type": "string",
-														"x-auditable": true
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "Specify the name of the proxy endpoint.",
-													"example": "Devops team",
-													"type": "string",
-													"x-auditable": true
-												},
-												"subdomain": {
-													"description": "Specify the subdomain to use as the destination in the proxy client.",
-													"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-													"readOnly": true,
-													"type": "string",
-													"x-auditable": true
-												},
-												"updated_at": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												}
+												"propertyName": "kind"
 											},
-											"type": "object"
+											"oneOf": [
+												{
+													"properties": {
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string",
+															"x-auditable": true
+														},
+														"ips": {
+															"description": "Specify the list of CIDRs to restrict ingress connections.",
+															"items": {
+																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																"example": "192.0.2.1/32",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"kind": {
+															"description": "The proxy endpoint kind",
+															"enum": [
+																"ip"
+															],
+															"example": "ip",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Specify the name of the proxy endpoint.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"subdomain": {
+															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"ips"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string",
+															"x-auditable": true
+														},
+														"kind": {
+															"description": "The proxy endpoint kind",
+															"enum": [
+																"identity"
+															],
+															"example": "identity",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Specify the name of the proxy endpoint.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"subdomain": {
+															"description": "Specify the subdomain to use as the destination in the proxy client.",
+															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"kind",
+														"name"
+													],
+													"type": "object"
+												}
+											]
 										}
 									},
 									"type": "object"
@@ -1811,49 +2360,121 @@
 										{
 											"properties": {
 												"result": {
-													"properties": {
-														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+													"discriminator": {
+														"mapping": {
+															"identity": "#/components/schemas/zero-trust-gateway_proxy-endpoint-identity",
+															"ip": "#/components/schemas/zero-trust-gateway_proxy-endpoint-ip"
 														},
-														"id": {
-															"example": "ed35569b41ce4d1facfe683550f54086",
-															"type": "string",
-															"x-auditable": true
-														},
-														"ips": {
-															"description": "Specify the list of CIDRs to restrict ingress connections.",
-															"items": {
-																"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
-																"example": "192.0.2.1/32",
-																"type": "string",
-																"x-auditable": true
-															},
-															"type": "array"
-														},
-														"name": {
-															"description": "Specify the name of the proxy endpoint.",
-															"example": "Devops team",
-															"type": "string",
-															"x-auditable": true
-														},
-														"subdomain": {
-															"description": "Specify the subdomain to use as the destination in the proxy client.",
-															"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
-														},
-														"updated_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														}
+														"propertyName": "kind"
 													},
-													"type": "object"
+													"oneOf": [
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"example": "ed35569b41ce4d1facfe683550f54086",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ips": {
+																	"description": "Specify the list of CIDRs to restrict ingress connections.",
+																	"items": {
+																		"description": "Specify an IPv4 or IPv6 CIDR. Limit IPv6 to a maximum of /109 and IPv4 to a maximum of /25.",
+																		"example": "192.0.2.1/32",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																},
+																"kind": {
+																	"description": "The proxy endpoint kind",
+																	"enum": [
+																		"ip"
+																	],
+																	"example": "ip",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Specify the name of the proxy endpoint.",
+																	"example": "Devops team",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"subdomain": {
+																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"ips"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"created_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"example": "ed35569b41ce4d1facfe683550f54086",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"kind": {
+																	"description": "The proxy endpoint kind",
+																	"enum": [
+																		"identity"
+																	],
+																	"example": "identity",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"name": {
+																	"description": "Specify the name of the proxy endpoint.",
+																	"example": "Devops team",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"subdomain": {
+																	"description": "Specify the subdomain to use as the destination in the proxy client.",
+																	"example": "oli3n9zkz5.proxy.cloudflare-gateway.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"updated_at": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"kind",
+																"name"
+															],
+															"type": "object"
+														}
+													]
 												}
 											},
 											"type": "object"

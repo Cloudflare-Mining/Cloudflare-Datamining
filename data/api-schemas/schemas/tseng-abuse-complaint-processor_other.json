@@ -1394,6 +1394,9 @@
 		"summary": "Request review on mitigations",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write"
 		]
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
