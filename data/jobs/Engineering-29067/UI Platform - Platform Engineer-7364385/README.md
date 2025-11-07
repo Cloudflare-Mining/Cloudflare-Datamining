@@ -5,25 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the role</strong></p>
-<p>The ideal candidate is a seasoned and career-driven Senior Executive Assistant or Executive Business Partner with a passion for supporting high-level executives in a fast-paced, growing organization. This individual has superior attention to detail, exceptional organizational skills, and the ability to manage multiple high-priority requests with efficiency and discretion. They thrive in dynamic environments, working seamlessly with team members at all levels, often under pressure, while maintaining a high level of integrity, professionalism, and a positive attitude.</p>
-<p>In this role, the Senior Executive Assistant will go beyond traditional administrative support by strategically enhancing the executive’s effectiveness. Key responsibilities include:</p>
+<p><span style="font-size: 12pt;"><strong>Available Locations: <span class="il">Bengaluru</span></strong></span></p>
+<p>We are seeking a skilled <strong>UI focused Platform Engineer</strong> to join our team. You'll be responsible for the core technology that drives the Cloudflare Dashboard. You'll be pioneering new techniques and tooling to move away from a traditional monolithic application and onto <a href="https://blog.cloudflare.com/fragment-piercing/">Cloudflare's innovative Web Fragments</a>. In this role, you will enhance UI infrastructure, streamline development workflows, and collaborate across teams to improve code quality and developer velocity. Your contributions will be pivotal in refining the developer experience, ensuring high-quality frontend delivery, and optimizing performance and reliability at scale. Our mission is to improve developer productivity and application performance.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li><strong>Strategic Relationship Management:</strong> Develop and implement tracking systems for the executive’s customer meetings, ensuring a structured approach to maintaining key relationships. This system will enable the executive to keep track of past interactions and plan future engagements effectively, particularly when traveling to various regions.</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner across all business functions to ensure the executive’s time is utilized to drive maximum impact. Proactively coordinate with stakeholders to align priorities, streamline workflows, and eliminate inefficiencies.</li>
-	<li><strong>Leadership &amp; Team Influence:</strong> Serve as a leader within the administrative team, setting a high standard for excellence and fostering a collaborative culture. This individual will need to balance gatekeeping responsibilities while ensuring accessibility to key stakeholders, facilitating productivity rather than creating roadblocks.</li>
-	<li><strong>Seamless Executive Office Coordination:</strong> Work closely with the Executive Assistants supporting the co-founders, other senior leaders, and board admins to ensure seamless operations within the executive office. This includes anticipating needs, synchronizing schedules, and proactively solving challenges to maintain smooth day-to-day operations.</li>
-	<li><strong>Problem-Solver:</strong> This role requires someone who is proactive, solutions-oriented, and deeply understands the importance of relationship-building. The ideal candidate is not just an administrative partner but a strategic force multiplier for the executive they support.</li>
+	<li>Design, implement and maintain scalable CI/CD pipelines ensuring fast and reliable delivery across multiple product teams.</li>
+	<li>Develop and manage shared infrastructure components (CDN integration, observability and experimentation tools) with a focus on performance, security and maintainability.</li>
+	<li>Support front-end teams by troubleshooting infrastructure-related issues and advising on best practices when integrating with the UI Platform ecosystem.</li>
+	<li>Drive innovation by proactively identifying opportunities to improve developer experience and velocity, challenging existing workflows, and proposing creative, forward-thinking solutions.</li>
+	<li>Build internal UI features and tools that enhance the front-end platform ecosystem empowering teams to more effectively utilize shared infrastructure and services.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Technologies We Use</strong></p>
+<p>GitLab CI, Sentry, Amplitude, PagerDuty, React, TypeScript, JavaScript (ES6+), Storybook, Playwright, Cypress, Vite, Webpack, Bazel, CI/CD tools, Go, RESTful APIs</p>
+<p><strong>Qualifications</strong></p>
 <ul>
-	<li><span style="font-weight: 400;">You have 7+ years experience as an Executive Assistant in a high growth environment, prior experience supporting the CEO&nbsp;</span></li>
-	<li><span style="font-weight: 400;">Excellent verbal and written communication skills</span></li>
-	<li><span style="font-weight: 400;">Working knowledge of Google Suite, Netsuite, and major airline carrier’s platforms</span></li>
-	<li><span style="font-weight: 400;">Exhibits a strong work ethic, professionalism, confidentiality and good judgment</span></li>
-	<li><span style="font-weight: 400;">Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</span></li>
+	<li>4+ years of experience in Frontend&nbsp; Server Side infrastructure , with a focus on supporting modern front-end ecosystems.</li>
+	<li>Strong background in front-end build systems, bundlers, and static asset optimization (e.g., Webpack, Vite, Bazel).</li>
+	<li>Expertise in CI/CD systems, automated testing integration (e.g., Playwright, Cypress), and front-end deployment workflows.</li>
+	<li>Passion for improving developer experience and enabling high-velocity front-end development through scalable tooling.</li>
+	<li>Proven ability to drive infrastructure projects independently (from problem discovery to solution delivery).</li>
+	<li>Collaborative mindset with the ability to support front-end teams in troubleshooting infrastructure-related issues.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Preferred Skills</strong>:</p>
+<ul>
+	<li>Experience with Webpack, Vite, Nx, or Bazel.</li>
+	<li>Strong grasp of front-end performance optimization.</li>
+	<li>Familiarity with CI/CD tools like GitLabCI, Jenkins or GitHub Actions.</li>
+	<li>Experience with integration testing and API mocking.</li>
+	<li>Understanding of frameworks like React, Aria-Components, or Remix.</li>
+	<li>Exposure to RESTful APIs and Microfrontends.</li>
+	<li>Experience building internal tools or developer portals.</li>
+</ul>
+<p><strong>Why Join Us?</strong></p>
+<ul>
+	<li>Be a driving force behind the transformation to a cutting-edge, scalable UI platform.</li>
+	<li>Champion best practices and lead meaningful, org-wide engineering change.</li>
+	<li>Tackle complex, high-impact challenges using modern technologies that shape the future of front-end infrastructure.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,30 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>Role Summary</strong></p>
-<p>We're looking for experienced engineers to help us build the next-generation proxy that powers a <strong>quarter of the Internet’s traffic</strong>. This role is for those who bring <strong>deep expertise in HTTP, transport protocols, or congestion control</strong>, and are excited to apply that knowledge to one of the most technically challenging infrastructure projects in the industry.</p>
-<p>This is your opportunity to lead technical direction in a team that doesn’t just use protocols — we help <strong>define them</strong>, working closely with the IETF and open-source communities on QUIC, MASQUE, and emerging standards like ECH.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: <span class="il">London, United Kingdom, Bengaluru India &amp; Singapore&nbsp;</span></strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>Cloudflare’s Application Security organization builds and operates the systems that detect, classify, and mitigate malicious or abusive HTTP traffic across one of the largest networks on the Internet. Our products - including the Web Application Firewall (WAF), Bot Management, and Fraud Detection - protect millions of Internet properties from attacks and abuse in real time.</p>
+<p>We combine large-scale data analytics, cutting-edge AI and ML models, and expert threat research to continuously evolve Cloudflare’s detection and protection capabilities. The team brings together security researchers, analysts, and engineers who collaborate to identify new attack vectors, create innovative mitigations, and deliver protection at Internet scale.</p>
+<h3><strong>What You’ll Do</strong></h3>
+<p>As a WAF Application Security Expert, you’ll focus on researching, designing, and improving detection logic and rules that protect customer applications from the latest web threats.</p>
 <ul>
-	<li>Design and build our next-gen Rust-based proxy architecture</li>
-	<li>Lead improvements in performance, reliability, and observability at global scale</li>
-	<li>Bring expertise in congestion control, transport behavior, or HTTP internals to influence product and architectural decisions</li>
-	<li>Shape protocol evolution and represent Cloudflare in the standards community</li>
-	<li>Mentor engineers and help grow deep protocol expertise across the team</li>
+	<li>Analyze web exploits and vulnerability patterns (RCE, SQLi, XSS, SSRF, deserialization, etc.) and build corresponding WAF mitigations.</li>
+	<li>Collaborate with product engineering and data teams to tune detection efficacy - reducing false positives/negatives across large-scale, high-volume traffic.</li>
+	<li>Develop, test, and deploy WAF managed rules and exploit signatures based on public CVEs, threat intelligence, and internal telemetry.</li>
+	<li>Perform targeted penetration testing and red-team style assessments to uncover gaps in Cloudflare’s WAF coverage and propose mitigations.</li>
+	<li>Leverage strong coding skills to automate rule validation, testing pipelines, and data analysis workflows.</li>
+	<li>Conduct research on attacker behaviors, evolving exploit chains, and web attack automation trends.</li>
+	<li>Produce internal and external research reports summarizing Internet-wide attack trends and WAF efficacy insights.</li>
+	<li>Collaborate closely with Bot Management, Fraud, and ML teams to design cross-signal detection frameworks that unify WAF and behavioral defenses.</li>
+	<li>Communicate complex technical findings clearly to both engineering and non-technical audiences.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<h3><strong>What You Bring</strong></h3>
 <ul>
-	<li>Proven strong ability and experience in systems or network programming (Rust, C, etc.)</li>
-	<li>Knowledge of web server implementations (such as NGINX)</li>
-	<li>Deep understanding of HTTP/2, HTTP/3, QUIC, congestion control and transport-layer protocols</li>
-	<li>Proven ability to scale systems under high throughput and low latency demands</li>
-	<li>Experience driving architecture or protocol-level change in production systems</li>
-	<li>Bonus: contributions to open standards or open source projects</li>
+	<li>Bachelor’s or Master’s degree in Computer Science, Information Security, or equivalent practical experience.</li>
+	<li>2+ years of experience in Web Application Security, WAF rule development, incident detection, or threat research.</li>
+	<li>Deep understanding of web protocols (HTTP/HTTPS), common web vulnerabilities, and exploitation techniques (OWASP Top 10).</li>
+	<li>Proven experience writing and optimizing WAF rules or custom detection logic.</li>
+	<li>Hands-on experience with vulnerability analysis, exploit reproduction, or reverse engineering.</li>
+	<li>Strong analytical mindset and comfort working with large data sets (SQL, ClickHouse, BigQuery, etc.).</li>
+	<li>Proficiency in at least one programming language such as Python, Go, or Rust for building automation tools or analysis scripts.</li>
+	<li>Familiarity with Grafana or equivalent visualization tools to track rule performance and attack trends.</li>
+	<li>Strong written and verbal communication skills - able to document, present, and collaborate effectively.</li>
+	<li>Experience working in fast-paced environments with production-scale systems.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Cryptography experience</li>
+	<li>Experience with columnar databases like ClickHouse and advanced SQL query optimization.</li>
+	<li>Familiarity with machine learning for security analytics (feature extraction, anomaly detection, model evaluation).</li>
+	<li>Solid understanding of Linux/UNIX systems, TCP/IP networking, and proxy architectures.</li>
+	<li>Prior publications or conference presentations (e.g., Black Hat, DEF CON, BSides).</li>
+	<li>Contributions to open-source WAF projects or web security tools.</li>
+	<li>Knowledge of WAF and bypassing WAF products with novel techniques.</li>
+	<li>Experience on bug bounty/CTF is plus.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
