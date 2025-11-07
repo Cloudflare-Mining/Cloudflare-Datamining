@@ -424,7 +424,7 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/livestreams": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/livestreams": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -436,9 +436,20 @@
 				"type": "string",
 				"x-auditable": true
 			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
+			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -449,6 +460,17 @@
 				"maxLength": 32,
 				"type": "string",
 				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
 			}
 		},
 		{
@@ -463,7 +485,7 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -474,6 +496,17 @@
 				"maxLength": 32,
 				"type": "string",
 				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
 			}
 		},
 		{
@@ -488,7 +521,7 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream/stop": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -499,6 +532,17 @@
 				"maxLength": 32,
 				"type": "string",
 				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
 			}
 		},
 		{
@@ -513,7 +557,7 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -524,6 +568,17 @@
 				"maxLength": 32,
 				"type": "string",
 				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
 			}
 		},
 		{
@@ -538,7 +593,7 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestream": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestream": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -549,6 +604,17 @@
 				"maxLength": 32,
 				"type": "string",
 				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
 			}
 		},
 		{
@@ -563,7 +629,7 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestreams": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -574,6 +640,17 @@
 				"maxLength": 32,
 				"type": "string",
 				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
 			}
 		},
 		{
@@ -588,7 +665,7 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants/{participant_id}": [
+	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": [
 		{
 			"in": "path",
 			"name": "account_id",
@@ -599,6 +676,17 @@
 				"maxLength": 32,
 				"type": "string",
 				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "app_id",
+			"required": true,
+			"schema": {
+				"description": "The app identifier tag.",
+				"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+				"maxLength": 32,
+				"type": "string"
 			}
 		},
 		{

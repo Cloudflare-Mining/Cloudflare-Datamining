@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+	"DELETE /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"description": "Removes a webhook for the given webhook ID.",
 		"operationId": "deleteWebhook",
 		"parameters": [
@@ -13,6 +13,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -190,10 +201,14 @@
 		"summary": "Delete a webhook",
 		"tags": [
 			"Webhooks"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/webhooks": {
-		"description": "Returns details of all webhooks for an organization.",
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
+		"description": "Returns details of all webhooks for an App.",
 		"operationId": "getAllWebhooks",
 		"parameters": [
 			{
@@ -206,6 +221,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			}
 		],
@@ -331,9 +357,13 @@
 		"summary": "Fetch all webhooks details",
 		"tags": [
 			"Webhooks"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"description": "Returns webhook details for the given webhook ID.",
 		"operationId": "getWebhook",
 		"parameters": [
@@ -347,6 +377,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -524,9 +565,13 @@
 		"summary": "Fetch details of a webhook",
 		"tags": [
 			"Webhooks"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"PATCH /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"description": "Edits the webhook details for the given webhook ID.",
 		"operationId": "editWebhook",
 		"parameters": [
@@ -540,6 +585,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -771,10 +827,14 @@
 		"summary": "Edit a webhook",
 		"tags": [
 			"Webhooks"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/webhooks": {
-		"description": "Adds a new webhook to an organization.",
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
+		"description": "Adds a new webhook to an App.",
 		"operationId": "addWebhook",
 		"parameters": [
 			{
@@ -787,6 +847,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			}
 		],
@@ -1017,9 +1088,13 @@
 		"summary": "Add a webhook",
 		"tags": [
 			"Webhooks"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"PUT /accounts/{account_id}/realtimekit/webhooks/{webhook_id}": {
+	"PUT /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"description": "Replace all details for the given webhook ID.",
 		"operationId": "replaceWebhook",
 		"parameters": [
@@ -1033,6 +1108,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -1282,6 +1368,10 @@
 		"summary": "Replace a webhook",
 		"tags": [
 			"Webhooks"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

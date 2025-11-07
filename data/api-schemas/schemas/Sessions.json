@@ -1,6 +1,6 @@
 {
-	"GET /accounts/{account_id}/realtimekit/sessions": {
-		"description": "Returns details of all sessions of an organization.",
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions": {
+		"description": "Returns details of all sessions of an App.",
 		"operationId": "GetSessions",
 		"parameters": [
 			{
@@ -13,6 +13,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -132,7 +143,7 @@
 														"type": "string"
 													},
 													"breakout_rooms": {
-														"items": "[Circular ~.GET /accounts/{account_id}/realtimekit/sessions.responses.200.content.application/json.schema.properties.data.properties.sessions.items]",
+														"items": "[Circular ~.GET /accounts/{account_id}/realtime/kit/{app_id}/sessions.responses.200.content.application/json.schema.properties.data.properties.sessions.items]",
 														"readOnly": true,
 														"type": "array"
 													},
@@ -170,7 +181,7 @@
 														"type": "number"
 													},
 													"organization_id": {
-														"description": "Organization id that hosted this session",
+														"description": "App id that hosted this session",
 														"type": "string"
 													},
 													"started_at": {
@@ -236,12 +247,16 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch all sessions of an organization",
+		"summary": "Fetch all sessions of an App",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}": {
 		"description": "Returns data of the given session ID including recording details.",
 		"operationId": "GetSessionDetails",
 		"parameters": [
@@ -255,6 +270,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -291,7 +317,7 @@
 													"type": "string"
 												},
 												"breakout_rooms": {
-													"items": "[Circular ~.GET /accounts/{account_id}/realtimekit/sessions/{session_id}.responses.200.content.application/json.schema.properties.data.properties.session]",
+													"items": "[Circular ~.GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}.responses.200.content.application/json.schema.properties.data.properties.session]",
 													"readOnly": true,
 													"type": "array"
 												},
@@ -329,7 +355,7 @@
 													"type": "number"
 												},
 												"organization_id": {
-													"description": "Organization id that hosted this session",
+													"description": "App id that hosted this session",
 													"type": "string"
 												},
 												"started_at": {
@@ -396,9 +422,13 @@
 		"summary": "Fetch details of a session",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/chat": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/chat": {
 		"description": "Returns a URL to download all chat messages of the session ID in CSV format.\n",
 		"operationId": "GetSessionChat",
 		"parameters": [
@@ -412,6 +442,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -466,9 +507,13 @@
 		"summary": "Fetch all chat messages of a session",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/participants": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants": {
 		"description": "Returns a list of participants for the given session ID.",
 		"operationId": "GetSessionParticipants",
 		"parameters": [
@@ -482,6 +527,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -756,9 +812,13 @@
 		"summary": "Fetch participants list of a session",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/participants/{participant_id}": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}": {
 		"description": "Returns details of the given participant ID along with call statistics for the given session ID.",
 		"operationId": "GetParticipantDetails",
 		"parameters": [
@@ -772,6 +832,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -1122,9 +1193,13 @@
 		"summary": "Fetch details of a participant",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/summary": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
 		"description": "Returns a Summary URL to download the Summary of Transcripts for the session ID as plain text.",
 		"operationId": "GetSessionSummary",
 		"parameters": [
@@ -1138,6 +1213,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -1196,9 +1282,13 @@
 		"summary": "Fetch summary of transcripts for a session",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/transcript": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript": {
 		"description": "Returns a URL to download the transcript for the session ID in CSV format.",
 		"operationId": "GetSessionTranscript",
 		"parameters": [
@@ -1212,6 +1302,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -1270,9 +1371,13 @@
 		"summary": "Fetch the complete transcript for a session",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/peer-report/{peer_id}": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}": {
 		"description": "Returns details of the given peer ID along with call statistics for the given session ID.",
 		"operationId": "GetParticipantDataFromPeerId",
 		"parameters": [
@@ -1286,6 +1391,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -2064,9 +2180,13 @@
 		"summary": "Fetch details of peer",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/sessions/{session_id}/summary": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary": {
 		"description": "Trigger Summary generation of Transcripts for the session ID.",
 		"operationId": "post-sessions-session_id-summary",
 		"parameters": [
@@ -2080,6 +2200,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -2127,6 +2258,10 @@
 		"summary": "Generate summary of Transcripts for the session",
 		"tags": [
 			"Sessions"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

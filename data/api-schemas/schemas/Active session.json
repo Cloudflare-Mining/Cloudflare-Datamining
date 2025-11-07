@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session": {
 		"description": "Returns details of an ongoing active session for the given meeting ID.",
 		"operationId": "GetActiveSession",
 		"parameters": [
@@ -47,7 +47,7 @@
 											"type": "string"
 										},
 										"breakout_rooms": {
-											"items": "[Circular ~.GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session.responses.200.content.application/json.schema.properties.data]",
+											"items": "[Circular ~.GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session.responses.200.content.application/json.schema.properties.data]",
 											"readOnly": true,
 											"type": "array"
 										},
@@ -85,7 +85,7 @@
 											"type": "number"
 										},
 										"organization_id": {
-											"description": "Organization id that hosted this session",
+											"description": "App id that hosted this session",
 											"type": "string"
 										},
 										"started_at": {
@@ -199,9 +199,13 @@
 		"summary": "Fetch details of an active session",
 		"tags": [
 			"Active session"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/kick": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick": {
 		"description": "Kicks one or more participants from an active session using user ID or custom participant ID.",
 		"operationId": "KickPartcipants",
 		"parameters": [
@@ -215,6 +219,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -370,9 +385,13 @@
 		"summary": "Kick participants from an active session",
 		"tags": [
 			"Active session"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/kick-all": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all": {
 		"description": "Kicks all participants from an active session for the given meeting ID.",
 		"operationId": "KickAllParticipants",
 		"parameters": [
@@ -386,6 +405,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -434,9 +464,13 @@
 		"summary": "Kick all participants",
 		"tags": [
 			"Active session"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/mute": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute": {
 		"description": "Mutes one or more participants from an active session using user ID or custom participant ID.",
 		"operationId": "MuteParticipants",
 		"parameters": [
@@ -450,6 +484,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -555,9 +600,13 @@
 		"summary": "Mute participants of an active session",
 		"tags": [
 			"Active session"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/mute-all": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/mute-all": {
 		"description": "Mutes all participants of an active session for the given meeting ID.",
 		"operationId": "MuteAllParticipants",
 		"parameters": [
@@ -571,6 +620,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -635,9 +695,13 @@
 		"summary": "Mute all participants",
 		"tags": [
 			"Active session"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-session/poll": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll": {
 		"description": "Creates a new poll in an active session for the given meeting ID.",
 		"operationId": "CreatePoll",
 		"parameters": [
@@ -651,6 +715,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -803,6 +878,10 @@
 		"summary": "Create a poll",
 		"tags": [
 			"Active session"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

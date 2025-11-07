@@ -1,6 +1,6 @@
 {
-	"GET /accounts/{account_id}/realtimekit/analytics/daywise": {
-		"description": "Returns day-wise session and recording analytics data of an organization for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date.",
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise": {
+		"description": "Returns day-wise session and recording analytics data of an App for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date.",
 		"operationId": "get-org-analytics",
 		"parameters": [
 			{
@@ -13,6 +13,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -53,7 +64,7 @@
 								"data": {
 									"properties": {
 										"recording_stats": {
-											"description": "Recording statistics of an organization during the range specified",
+											"description": "Recording statistics of an App during the range specified",
 											"properties": {
 												"day_stats": {
 													"description": "Day wise recording stats",
@@ -87,7 +98,7 @@
 											"type": "object"
 										},
 										"session_stats": {
-											"description": "Session statistics of an organization during the range specified",
+											"description": "Session statistics of an App during the range specified",
 											"properties": {
 												"day_stats": {
 													"description": "Day wise session stats",
@@ -139,10 +150,14 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch day-wise session and recording analytics data for an organization",
+		"summary": "Fetch day-wise session and recording analytics data for an App",
 		"tags": [
 			"Analytics",
 			"Organizations"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

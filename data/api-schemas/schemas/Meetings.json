@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants/{participant_id}": {
+	"DELETE /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
 		"description": "Deletes a participant for the given meeting and participant ID.",
 		"operationId": "delete_meeting_participant",
 		"parameters": [
@@ -135,10 +135,14 @@
 		"summary": "Delete a participant",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/meetings": {
-		"description": "Returns all meetings for the given organization ID.",
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings": {
+		"description": "Returns all meetings for the given App ID.",
 		"operationId": "get_all_meetings",
 		"parameters": [
 			{
@@ -151,6 +155,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -345,13 +360,17 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch all meetings for an organization",
+		"summary": "Fetch all meetings for an App",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}": {
-		"description": "Returns a meeting details in an organization for the given meeting ID.",
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
+		"description": "Returns a meeting details in an App for the given meeting ID.",
 		"operationId": "get_meeting",
 		"parameters": [
 			{
@@ -483,7 +502,7 @@
 												"data": {
 													"properties": {
 														"recording_config": {
-															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over organization level configs on the RealtimeKit developer portal.\n",
+															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal.\n",
 															"properties": {
 																"audio_config": {
 																	"description": "Object containing configuration regarding the audio that is being recorded.",
@@ -853,12 +872,16 @@
 				"api_token": []
 			}
 		],
-		"summary": "Fetch a meeting for an organization",
+		"summary": "Fetch a meeting for an App",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants": {
 		"description": "Returns all participants detail for the given meeting ID.",
 		"operationId": "get_meeting_participants",
 		"parameters": [
@@ -872,6 +895,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -1064,9 +1098,13 @@
 		"summary": "Fetch all participants of a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants/{participant_id}": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
 		"description": "Returns a participant details for the given meeting and participant ID.",
 		"operationId": "get_meeting_participant",
 		"parameters": [
@@ -1223,10 +1261,14 @@
 		"summary": "Fetch a participant's detail",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"PATCH /accounts/{account_id}/realtimekit/meetings/{meeting_id}": {
-		"description": "Updates a meeting in an organization for the given meeting ID.",
+	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
+		"description": "Updates a meeting in an App for the given meeting ID.",
 		"operationId": "update_meeting",
 		"parameters": [
 			{
@@ -1495,7 +1537,7 @@
 												"data": {
 													"properties": {
 														"recording_config": {
-															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over organization level configs on the RealtimeKit developer portal.\n",
+															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal.\n",
 															"properties": {
 																"audio_config": {
 																	"description": "Object containing configuration regarding the audio that is being recorded.",
@@ -1868,9 +1910,13 @@
 		"summary": "Update a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"PATCH /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants/{participant_id}": {
+	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}": {
 		"description": "Updates a participant's details for the given meeting and participant ID.",
 		"operationId": "edit_participant",
 		"parameters": [
@@ -2068,10 +2114,14 @@
 		"summary": "Edit a participant's detail",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings": {
-		"description": "Create a meeting for the given organization ID.",
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings": {
+		"description": "Create a meeting for the given App ID.",
 		"operationId": "create_meeting",
 		"parameters": [
 			{
@@ -2084,6 +2134,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			}
 		],
@@ -2204,7 +2265,7 @@
 								"type": "boolean"
 							},
 							"recording_config": {
-								"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over organization level configs on the RealtimeKit developer portal.\n",
+								"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal.\n",
 								"properties": {
 									"audio_config": {
 										"description": "Object containing configuration regarding the audio that is being recorded.",
@@ -2555,7 +2616,7 @@
 												"data": {
 													"properties": {
 														"recording_config": {
-															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over organization level configs on the RealtimeKit developer portal.\n",
+															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal.\n",
 															"properties": {
 																"audio_config": {
 																	"description": "Object containing configuration regarding the audio that is being recorded.",
@@ -2890,9 +2951,13 @@
 		"summary": "Create a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants": {
 		"description": "Adds a participant to the given meeting ID.",
 		"operationId": "add_participant",
 		"parameters": [
@@ -2906,6 +2971,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -3102,9 +3178,13 @@
 		"summary": "Add a participant",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/participants/{participant_id}/token": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token": {
 		"description": "Regenerates participant's authentication token for the given meeting and participant ID.",
 		"operationId": "regenerate_token",
 		"parameters": [
@@ -3118,6 +3198,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -3237,9 +3328,13 @@
 		"summary": "Refresh participant's authentication token",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"PUT /accounts/{account_id}/realtimekit/meetings/{meeting_id}": {
+	"PUT /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}": {
 		"description": "Replaces all the details for the given meeting ID.",
 		"operationId": "replace_meeting",
 		"parameters": [
@@ -3371,7 +3466,7 @@
 								"type": "boolean"
 							},
 							"recording_config": {
-								"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over organization level configs on the RealtimeKit developer portal.\n",
+								"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal.\n",
 								"properties": {
 									"audio_config": {
 										"description": "Object containing configuration regarding the audio that is being recorded.",
@@ -3722,7 +3817,7 @@
 												"data": {
 													"properties": {
 														"recording_config": {
-															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over organization level configs on the RealtimeKit developer portal.\n",
+															"description": "Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal.\n",
 															"properties": {
 																"audio_config": {
 																	"description": "Object containing configuration regarding the audio that is being recorded.",
@@ -4057,6 +4152,10 @@
 		"summary": "Replace a meeting",
 		"tags": [
 			"Meetings"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

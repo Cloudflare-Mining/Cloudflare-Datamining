@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_id}/realtimekit/analytics/livestreams/daywise": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/daywise": {
 		"description": "Returns day-wise livestream analytics data for the specified time range.",
 		"operationId": "get-livestream-analytics-daywise",
 		"parameters": [
@@ -13,6 +13,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -96,9 +107,13 @@
 		"tags": [
 			"Live streams",
 			"LivestreamAnalytics"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/analytics/livestreams/overall": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall": {
 		"description": "Returns livestream analytics for the specified time range.",
 		"operationId": "get-livestream-analytics-complete",
 		"parameters": [
@@ -112,6 +127,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -191,10 +217,14 @@
 		"tags": [
 			"Live streams",
 			"LivestreamAnalytics"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/livestreams": {
-		"description": "Returns details of livestreams associated with the given organization ID. It includes livestreams created by your organization and RealtimeKit meetings that are livestreamed by your organization. If you only want details of livestreams created by your organization and not RealtimeKit meetings, you can use the `exclude_meetings` query parameter.",
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
+		"description": "Returns details of livestreams associated with the given App ID. It includes livestreams created by your App and RealtimeKit meetings that are livestreamed by your App. If you only want details of livestreams created by your App and not RealtimeKit meetings, you can use the `exclude_meetings` query parameter.",
 		"operationId": "fetch_all_livestreams",
 		"parameters": [
 			{
@@ -396,9 +426,13 @@
 		"summary": "Fetch all livestreams",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/livestreams/{livestream_id}": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}": {
 		"description": "Returns details of a livestream with sessions for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
 		"operationId": "get-v2-livestream-session-livestream-id",
 		"parameters": [
@@ -412,6 +446,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -624,9 +669,13 @@
 		"summary": "Fetch livestream details using livestream ID",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/active-livestream-session": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session": {
 		"description": "Returns details of all active livestreams for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
 		"operationId": "get-v2-active-livestream-session-details",
 		"parameters": [
@@ -640,6 +689,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -812,9 +872,13 @@
 		"summary": "Fetch active livestream session details",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/livestreams/sessions/{livestream-session-id}": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream-session-id}": {
 		"description": "Returns livestream session details for the given livestream session ID. Retrieve the `livestream_session_id`using the `Fetch livestream session details using a session ID` API.",
 		"operationId": "get-v2-livestreams-livestream-session-id",
 		"parameters": [
@@ -828,6 +892,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -924,9 +999,13 @@
 		"summary": "Fetch livestream session details using livestream session ID",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream": {
 		"description": "Returns details of all active livestreams for the given meeting ID.",
 		"operationId": "get-v2-meetings-meetingId-active-livestream",
 		"parameters": [
@@ -1035,9 +1114,13 @@
 		"summary": "Fetch active livestreams for a meeting",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestream": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestream": {
 		"description": "Returns livestream session details for the given meeting ID. Retreive the meeting ID using the `Create a meeting` API.",
 		"operationId": "livestream-session-details",
 		"parameters": [
@@ -1257,10 +1340,14 @@
 		"summary": "Fetch livestream session details for a meeting",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/sessions/{session_id}/livestream-sessions": {
-		"description": "Returns livestream session details for the given session ID. Retreive the session ID using the `Fetch all sessions of an organization` API.",
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/livestream-sessions": {
+		"description": "Returns livestream session details for the given session ID. Retreive the session ID using the `Fetch all sessions of an App` API.",
 		"operationId": "get-v2-livestreamsession-session-meetingId-active-livestream",
 		"parameters": [
 			{
@@ -1273,6 +1360,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -1417,10 +1515,14 @@
 		"summary": "Fetch livestream session details using a session ID",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/livestreams": {
-		"description": "Creates a livestream for the given organization ID and returns ingest server, stream key, and playback URL. You can pass custom input to the ingest server and stream key, and freely distribute the content using the playback URL on any player that supports HLS/LHLS.",
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/livestreams": {
+		"description": "Creates a livestream for the given App ID and returns ingest server, stream key, and playback URL. You can pass custom input to the ingest server and stream key, and freely distribute the content using the playback URL on any player that supports HLS/LHLS.",
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -1528,9 +1630,13 @@
 		"summary": "Create an independent livestream",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/reset-stream-key": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/reset-stream-key": {
 		"description": "Resets the stream key for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
 		"operationId": "reset-stream-key",
 		"parameters": [
@@ -1544,6 +1650,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -1722,9 +1839,13 @@
 		"summary": "Reset a livestream's stream key",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/active-livestream/stop": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop": {
 		"description": "Stops the active livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API.",
 		"operationId": "stop_livestreaming",
 		"parameters": [
@@ -1785,9 +1906,13 @@
 		"summary": "Stop livestreaming a meeting",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"POST /accounts/{account_id}/realtimekit/meetings/{meeting_id}/livestreams": {
+	"POST /accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams": {
 		"description": "Starts livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API.",
 		"operationId": "start-livestreaming",
 		"parameters": [
@@ -1907,9 +2032,13 @@
 		"summary": "Start livestreaming a meeting",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"PUT /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/disable": {
+	"PUT /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/disable": {
 		"description": "Disables a livestream for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
 		"operationId": "disable-livestream",
 		"parameters": [
@@ -1923,6 +2052,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -2037,9 +2177,13 @@
 		"summary": "Disable a livestream",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"PUT /accounts/{account_id}/realtimekit/livestreams/{livestream_id}/enable": {
+	"PUT /accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/enable": {
 		"description": "Enables a livestream for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API.",
 		"operationId": "enable-livestream",
 		"parameters": [
@@ -2053,6 +2197,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -2147,6 +2302,10 @@
 		"summary": "Enable a livestream",
 		"tags": [
 			"Live streams"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }

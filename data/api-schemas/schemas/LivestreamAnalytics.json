@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_id}/realtimekit/analytics/livestreams/daywise": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/daywise": {
 		"description": "Returns day-wise livestream analytics data for the specified time range.",
 		"operationId": "get-livestream-analytics-daywise",
 		"parameters": [
@@ -13,6 +13,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -96,9 +107,13 @@
 		"tags": [
 			"Live streams",
 			"LivestreamAnalytics"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	},
-	"GET /accounts/{account_id}/realtimekit/analytics/livestreams/overall": {
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall": {
 		"description": "Returns livestream analytics for the specified time range.",
 		"operationId": "get-livestream-analytics-complete",
 		"parameters": [
@@ -112,6 +127,17 @@
 					"maxLength": 32,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
 				}
 			},
 			{
@@ -191,6 +217,10 @@
 		"tags": [
 			"Live streams",
 			"LivestreamAnalytics"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
 		]
 	}
 }
