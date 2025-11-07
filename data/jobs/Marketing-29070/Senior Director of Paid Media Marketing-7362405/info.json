@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7005157?gh_jid=7005157",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7362405?gh_jid=7362405",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3177478,
+	"internal_job_id": 3283330,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4300 - Systems Engineering",
+			"value": "5500 - Marketing",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"New York, US",
+				"San Francisco, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,22 +35,22 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering"
+				"Marketing"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7005157,
-	"updated_at": "2025-10-31T12:13:18-04:00",
+	"id": 7362405,
+	"updated_at": "2025-11-07T13:25:43-05:00",
 	"requisition_id": null,
-	"title": "Security Researcher & Analyst - Email Security",
+	"title": "Senior Director of Paid Media Marketing",
 	"company_name": "Cloudflare",
-	"first_published": "2025-06-25T17:07:10-04:00",
+	"first_published": "2025-11-07T13:25:24-05:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 29070,
+			"name": "Marketing",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -58,6 +60,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}

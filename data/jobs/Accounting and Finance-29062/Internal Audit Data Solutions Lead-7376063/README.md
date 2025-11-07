@@ -5,57 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available locations:<strong> Austin, TX<br><br></strong>Overview</h4>
-<p>Our research an analyst team will be focused on email threats that are directed at customers protected by the Cloudflare Email Security products. New email threats are constantly emerging as phishing remains the number one source of breaches. Evaluating new threats and the efficacy of our email detections will be part of the day-to-day in this role. This will involve how to stop new and novel techniques by threat actors and ensuring our detections are targeted and highly effective.</p>
-<p>As part of the larger Intel team the role will work to develop new AI and machine learning models to scale the system defenses as well as scale our ability to evaluate customer detection feedback.</p>
-<h3 id="Role:SecurityResearcher&amp;AnalystEmailThreats-KeyResponsibilities">Key Responsibilities</h3>
+<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
+<p>As we increase the use of date, technology and AI driven solutions across our various activities, we are committing to this becoming core to our organization by building a Data Engineering capability in our Bengaluru office.&nbsp; Our Data Engineers will be a critical role working closely with our global risk and audit team to build our data analytics, automation and continuous auditing strategy and program.&nbsp; Reporting into the Senior Director of Cybersecurity and Technology Audit, this role will build and implement advanced audit capabilities using data, code, AI and other available toolsets.&nbsp; The ideal candidate will have the energy and intellectual curiosity to continue to deepen technical capabilities and broaden subject matter expertise, asserting their mission in delivering data-driven, advanced audit capabilities to the core of our team across all areas of audit, compliance and risk management.</p>
+<p>&nbsp;</p>
+<p><strong>What you’ll do</strong></p>
 <ul>
-	<li>Experience with email analysis</li>
-	<li>Ability to understand the latest security trends as they relate to email-borne threats</li>
-	<li>Submit IOCs to data pipeline based on external reports</li>
-	<li>Define automations and software requirements for support tooling</li>
-	<li>Define processes and procedures to create 24x7 coverage of miscategorizations</li>
-	<li>Continually evaluate the quality of threat data feeds, work to maximize value from them, evaluate new potential sources of data</li>
-	<li>Research observed IoCs and network behavior patterns and label data</li>
-	<li>Work with data scientists to identify security threats and create machine learning models</li>
-	<li>Be a team SME and resource for data scientists building security models and application developers building security products</li>
-	<li>Become a subject matter expert for email threats and categorization data</li>
-	<li>Define and implement metrics for product efficacy
-		<ul>
-			<li>Research and plan potential software, data science or machine learning projects to improve false positive and false negative rates</li>
-			<li>Continually monitor data quality and bring data quality issues and proposed solutions to team leadership</li>
-		</ul>
-	</li>
-	<li>Write blog posts and communicate both internally and externally about Intel Team's work</li>
-	<li>Execute daily operational tasks and define automations to streamline operational tasks</li>
-	<li>Work with team to define technical requirements for security products
-		<ul>
-			<li>Research threats, exploits, and TTPs being defended against in products and work with engineers to create products that defend against them</li>
-		</ul>
-	</li>
+	<li>Applying an AI and data-driven mindset, serve on our growing Risk &amp; Controls Engineering program that will deliver advanced audit capabilities including automation, continuous auditing and data analytics&nbsp;</li>
+	<li>Develop and implement AI-driven solutions using available tools, supporting our audit teams and audit operations</li>
+	<li>As a data champion, will elevate awareness within the IA team on the appropriate and possible uses of data in performing our assurance and advisory work</li>
+	<li>Drive data science/analytics initiatives within Internal Audit, leveraging advanced analytical techniques to enhance audit procedures and identify risks</li>
+	<li>Design and execute on data-driven testing of key controls throughout in-scope processes, systems and programs, elevating levels of assurance and coverage</li>
+	<li>Build&nbsp; relationships with key data leaders and owners, enabling timely access to data necessary to perform audit and risk project work</li>
+	<li>Leverage existing data points and structures to provide a more quantitative measure to key control and risk considerations and conclusions</li>
+	<li>Develop our continuous auditing program and architect solutions that can deliver control and business insight on a more real-time basis, driving action for improvement in targeted areas</li>
+	<li>Drive automation across audit, SOX and risk projects, unlocking efficiencies in our testing&nbsp;</li>
+	<li>Evaluate and recommend data tools, technologies and methodologies to enhance our audit capabilities and stay abreast of industry trends</li>
 </ul>
-<h3 id="Role:SecurityResearcher&amp;AnalystEmailThreats-RequiredSkills&amp;Abilities">Required Skills &amp; Abilities</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience analyzing, tracking and defending against phishing attacks</li>
-	<li>Familiarity with regular expressions and their practical application in tracking malicious activity</li>
-	<li>Working knowledge of SQL and devising SQL queries</li>
-	<li>Experience with detection development using YARA</li>
-	<li>Working knowledge of email authentication protocols (SPF, DMARC, DKIM), and experience in email header analysis</li>
-	<li>Able to use git to create, edit, and review pull requests</li>
-	<li>Basic front-end or full-stack development skills preferred but not required</li>
-	<li>Knowledge of and passion for cybersecurity</li>
-	<li>Knowledge of cyber security industry terms and concepts
-		<ul>
-			<li>e.g. MITRE ATT&amp;CK Framework, Lockheed Killchain</li>
-			<li>Ability to learn about security threats and map them to the MITRE ATT&amp;CK framework and Lockheed Killchain</li>
-		</ul>
-	</li>
-	<li>Strong knowledge of networking and "how the Internet works"
-		<ul>
-			<li>DNS, HTTP, TCP/IP, TLS, public key encryption</li>
-		</ul>
-	</li>
-	<li>Ability to communicate to stakeholders and management when priorities change</li>
+	<li>6 + years of experience in applying data analytics techniques (i.e. including automation, data-driven control testing) and the use of AI within internal audit and enterprise risk projects</li>
+	<li>Bachelor’s Degree or equivalent in Computer Science, Data Science, or Management Information Systems&nbsp;</li>
+	<li>Proven track record in delivering audit solutions through application of data analytics, scripting and programming skills (Python, R, SQL) as well as any relevant tools</li>
+	<li>Appropriate certifications/trainings relevant to Internal Audit (i.e. CPA, CISA, CIA, CISSP) and/or data tools (i.e. AWS Certified Data Analyst, Google Cloud Certified, etc.)&nbsp;</li>
+	<li>Strong experience in working through the full data analytics lifecycle from data acquisition to cleansing to scripting/programming to analysis to reporting</li>
+	<li>Experience in working with visualization tools (i.e. Tableau) to aid in reporting and presenting observations at a thematic level to executives and program leaders</li>
+	<li>Experience in building continuous audit capabilities and dashboards that will provide reliable and timely performance metrics on focused control points at the right level of detail allowing for management actions and measurement</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

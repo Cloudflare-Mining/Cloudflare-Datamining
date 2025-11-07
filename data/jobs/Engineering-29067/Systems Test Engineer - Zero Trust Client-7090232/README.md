@@ -5,35 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Mexico City</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
 <h4><strong>Summary</strong></h4>
-<p>The Zero Trust team is looking for a<strong> Systems Test Engineer</strong> to test and exercise our Zero Trust products similar to our customers’ devices and infrastructure. You will start from the customer’s perspective using <strong>Cloudflare WARP</strong> and<strong> Cloudflare Tunnel</strong>, which are network and security-focused applications that enable secure communications between our customers’ devices and their private infrastructure. You will expand test coverage to additional Zero Trust products and services to close test gaps and increase coverage for full product validation</p>
+<p>The Zero Trust QA team is looking for a<strong> Systems Test Engineer</strong> to test and exercise our Zero Trust products similar to our customers’ devices and infrastructure. You will start from the customer’s perspective using <strong>Cloudflare WARP</strong> and<strong> Cloudflare Tunnel</strong>, which are network and security-focused applications that enable secure communications between our customers’ devices and their private infrastructure. You will expand test coverage to additional Zero Trust products and services to close test gaps and increase coverage for full product validation.</p>
 <p><strong>What you’ll do</strong></p>
 <p>As a Systems Test Engineer, you will own a variety of technical and product-focused responsibilities to ensure we deliver a high-quality security product.&nbsp;&nbsp;</p>
 <ul>
-	<li><strong>Collaborate closely with</strong> fellow Test Engineers to understand all features and define and execute in-depth product test strategies for new and existing features</li>
-	<li>Regularly assist development teams to <strong>quickly</strong> <strong>reproduce customer issues</strong>, test fixes and update tests to close coverage gaps&nbsp;&nbsp;</li>
-	<li><strong>Discover edge cases across Zero Trust products</strong> and partner with development and PM teams to find and validate solutions</li>
-	<li>Regularly set up,<strong> configure, test, debug, and troubleshoot network-related features</strong></li>
-	<li><strong>Create, maintain, and execute</strong> a suite of manual tests&nbsp;</li>
-	<li><strong>Author scripts and leverage the automation framework</strong> to efficiently exercise functionality, reduce manual test execution and get quicker feedback on code changes</li>
-	<li><strong>Maintain a collection of physical test devices and virtual test environments</strong>, efficiently set them up and configure them as needed to test various scenarios, and report quality status to all stakeholders</li>
+	<li><strong>Collaborate closely with</strong> fellow test engineers, PMs and development teams to understand all features</li>
+	<li>Define and execute in-depth product <strong>test strategies</strong> for new and existing features</li>
+	<li>Assist teams to <strong>quickly</strong> <strong>reproduce customer issues</strong>, test fixes and update tests to close coverage gaps&nbsp;&nbsp;</li>
+	<li><strong>Discover edge cases across Zero Trust products</strong> and partner with teams to find and validate solutions</li>
+	<li>Regularly set up,<strong> </strong>configure,<strong> test, debug, and troubleshoot </strong>network-related features</li>
+	<li>Create, maintain, and<strong> execute a suite of critical manual tests&nbsp;</strong></li>
+	<li><strong>Leverage the automation framework</strong> to efficiently exercise functionality for faster feedback</li>
+	<li>Provide methods to identify and&nbsp;<strong>reduce repetitive</strong> manual test runs while maintaining a high level of quality</li>
+	<li>Maintain a collection of <strong>physical devices and virtual environments</strong> for testing<strong> </strong>various scenarios</li>
+	<li>Regularly <strong>report quality status</strong> to all stakeholders on key features</li>
 </ul>
 <p><strong>What you’ll bring</strong></p>
-<p>We expect you to have hands-on experience with <strong>mobile and desktop device networking configurations across Windows, Linux, and macOS platforms</strong> and understand how data is routed to public and private cloud environments. Your passion and curiosity for understanding how our services work will be crucial in debugging issues at all levels. Additionally, you should be adept at distilling complex scenarios into actionable bug reports and working towards resolution with development, product, and QA team members. You are comfortable raising issues and can clearly articulate details in tests and bug reports, test environment documentation and team-wide updates.</p>
+<p>We expect you to have a background in QA and hands-on experience with <strong>mobile and desktop device networking configurations across Windows, Linux, and macOS platforms.&nbsp; </strong>You'll understand how data is managed on each device and routed across public and private cloud environments. You will be adept at reviewing functional specifications, participating in technical design reviews and designing test scenarios and setting up physical and virtual environments to properly exercise all features.&nbsp; Your passion and curiosity for understanding how our services work will be crucial in debugging issues at all levels. Additionally, you should be adept at distilling complex scenarios into actionable reports and working towards resolution with development, product, and QA team members. You are comfortable raising issues and can clearly articulate details in tests, bug reports, test environment documentation and team-wide updates.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Extremely <strong>curious to understand</strong> how a feature works, what edge cases may cause a poor customer experience and how to go beyond surface-level testing</li>
-	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
-	<li>Experience with manual <strong>E2E testing of network-based apps</strong>, especially VPNs (e.g. DNS, protocols, throttling, packet loss, etc.)</li>
-	<li>Strong knowledge of L3 to L7 networking technologies such as <strong>IP, TCP, UDP, DNS, QUIC, H/3, proxying, routing, switching </strong>(Major networking certifications are a plus)</li>
-	<li>Strong knowledge and understanding of <strong>macOS, Windows, Linux, and mobile client (iOS,</strong> <strong>Android)</strong> platforms and their internals.</li>
-	<li>Strong <strong>attention to detail</strong> for building test plans and <strong>analytical mindset</strong> when debugging issues</li>
-	<li>Proficiency with running <strong>traffic captures, gathering logs</strong>,<strong> </strong>and preparing test data for reporting</li>
-	<li>Experience setting up and maintaining physical and virtual <strong>device labs</strong></li>
-	<li>Experience using one or more <strong>Mobile Device Management platforms</strong> (MDMs)</li>
-	<li>Experience with Python to understand automated tests and framework capabilities and develop scripts to effectively and efficiently assist in testing</li>
-	<li>Experience with how devices manage switching networks (e.g. wired-to-wireless, cellular-to-wireless) and maintain connectivity</li>
+	<li>Experience with <strong>manual E2E testing of network-based apps</strong>, especially VPNs (e.g. DNS, protocols, throttling, packet loss, etc.)</li>
+	<li>Strong knowledge of <strong>L3 to L7 networking</strong> technologies&nbsp;(Major networking certifications are a plus)</li>
+	<li>Experience&nbsp;with <strong>IP, TCP, UDP, DNS, QUIC, H/3 </strong>and proxying, routing, switching concepts</li>
+	<li>Strong knowledge of <strong>macOS, Windows, Linux, and mobile client (iOS,</strong> <strong>Android)</strong> platforms&nbsp;</li>
+	<li>Experience with testing <strong>device connectivity</strong> across networks (wired-to-wireless, cellular-to-wireless)</li>
+	<li>Strong&nbsp;<strong>attention to detail</strong> for building test plans and <strong>analytical mindset</strong> when debugging issues</li>
+	<li>Experience setting up and maintaining physical and virtual&nbsp;<strong>device environments</strong></li>
+	<li>Adept at finding edge cases and go <strong>beyond surface-level testing</strong></li>
+	<li>Consistently think of scenarios which could cause a poor customer experience<strong> </strong></li>
+	<li>Proficient with running and interpreting <strong>traffic captures, gathering logs</strong>,<strong> </strong>and reporting test results</li>
+	<li>Experience using one or more&nbsp;<strong>Mobile Device Management platforms</strong> (MDMs)</li>
+	<li>Empathetic, proactive, and constructive&nbsp;<strong>communication skills</strong>, verbal and written</li>
+	<li>Experience with Python to <strong>understand automated tests</strong> and framework capabilities</li>
+	<li><strong>Develop scripts</strong> to assist in testing and convert tests from manual to automated</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
