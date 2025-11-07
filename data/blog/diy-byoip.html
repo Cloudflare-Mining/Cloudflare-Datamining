@@ -1,0 +1,168 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CtNeyMeaudw9VHiERQfn5/c62b1676ece46d7fde53d319c6be645d/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>When a customer wants to <a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip"><u>bring IP address space to</u></a> Cloudflare, they’ve always had to reach out to their account team to put in a request. This request would then be sent to various Cloudflare engineering teams such as addressing and network engineering — and then the team responsible for the particular service they wanted to use the prefix with (e.g., CDN, Magic Transit, Spectrum, Egress). In addition, they had to work with their own legal teams and potentially another organization if they did not have primary ownership of an IP prefix in order to get a <a href="https://developers.cloudflare.com/byoip/concepts/loa"><u>Letter of Agency (LOA)</u></a> issued through hoops of approvals. This process is complex, manual, and&nbsp; time-consuming for all parties involved — sometimes taking up to 4–6 weeks depending on various approvals.&nbsp;</p>
+	<p>Well, no longer! Today, we are pleased to announce the launch of our self-serve BYOIP API, which enables our customers to onboard and set up their BYOIP prefixes themselves.</p>
+	<p>With self-serve, we handle the bureaucracy for you. We have automated this process using the gold standard for routing security — the Resource Public Key Infrastructure, RPKI. All the while, we continue to ensure the best quality of service by generating LOAs on our customers’ behalf, based on the security guarantees of our new ownership validation process. This ensures that customer routes continue to be accepted in every corner of the Internet.</p>
+	<p>Cloudflare takes the security and stability of the whole Internet very seriously. RPKI is a cryptographically-strong authorization mechanism and is, we believe, substantially more reliable than common practice which relies upon human review of scanned documents. However, deployment and availability of some RPKI-signed artifacts like the AS Path Authorisation (ASPA) object remains limited, and for that reason we are limiting the initial scope of self-serve onboarding to BYOIP prefixes originated from Cloudflare's autonomous system number (ASN) AS 13335. By doing this, we only need to rely on the publication of Route Origin Authorisation (ROA) objects, which are widely available. This approach has the advantage of being safe for the Internet and also meeting the needs of most of our BYOIP customers.&nbsp;</p>
+	<p>Today, we take a major step forward in offering customers a more comprehensive IP address management (IPAM) platform. With the recent update to <a href="https://blog.cloudflare.com/your-ips-your-rules-enabling-more-efficient-address-space-usage"><u>enable multiple services on a single BYOIP prefix</u></a> and this latest advancement to enable self-serve onboarding via our API, we hope customers feel empowered to take control of their IPs on our network.</p>
+	<div class="flex anchor relative">
+		<h2 id="an-evolution-of-cloudflare-byoip">An evolution of Cloudflare BYOIP</h2>
+		<a href="https://blog.cloudflare.com/#an-evolution-of-cloudflare-byoip" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We want Cloudflare to feel like an extension of your infrastructure, which is why we <a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip"><u>originally launched Bring-Your-Own-IP (BYOIP) back in 2020</u></a>.&nbsp;</p>
+	<p>A quick refresher: Bring-your-own-IP is named for exactly what it does - it allows customers to bring their own IP space to Cloudflare. Customers choose BYOIP for a number of reasons, but the main reasons are control and configurability. An IP prefix is a range or block of IP addresses. Routers create a table of reachable prefixes, known as a routing table, to ensure that packets are delivered correctly across the Internet. When a customer's Cloudflare services are configured to use the customer's own addresses, onboarded to Cloudflare as BYOIP, a packet with a corresponding destination address will be routed across the Internet to Cloudflare's global edge network, where it will be received and processed. BYOIP can be used with our Layer 7 services, Spectrum, or Magic Transit.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="a-look-under-the-hood-how-it-works">A look under the hood: How it works</h2>
+		<a href="https://blog.cloudflare.com/#a-look-under-the-hood-how-it-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="todays-world-of-prefix-validation">Today’s world of prefix validation</h3>
+		<a href="https://blog.cloudflare.com/#todays-world-of-prefix-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let’s take a step back and take a look at the state of the BYOIP world right now. Let’s say a customer has authority over a range of IP addresses, and they’d like to bring them to Cloudflare. We require customers to provide us with a Letter of Authorization (LOA) and have an Internet Routing Registry (IRR) record matching their prefix and ASN. Once we have this, we require manual review by a Cloudflare engineer. There are a few issues with this process:</p>
+	<ul>
+		<li>
+			<p>Insecure: The LOA is just a document—a piece of paper. The security of this method rests entirely on the diligence of the engineer reviewing the document. If the review is not able to detect that a document is fraudulent or inaccurate, it is possible for a prefix or ASN to be hijacked.</p>
+		</li>
+		<li>
+			<p>Time-consuming: Generating a single LOA is not always sufficient. If you are leasing IP space, we will ask you to provide documentation confirming that relationship as well, so that we can see a clear chain of authorisation from the original assignment or allocation of addresses to you. Getting all the paper documents to verify this chain of ownership, combined with having to wait for manual review can result in weeks of waiting to deploy a prefix!</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="automating-trust-how-cloudflare-verifies-your-byoip-prefix-ownership-in-minutes">Automating trust: How Cloudflare verifies your BYOIP prefix ownership in minutes</h3>
+		<a href="https://blog.cloudflare.com/#automating-trust-how-cloudflare-verifies-your-byoip-prefix-ownership-in-minutes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Moving to a self-serve model allowed us to rethink the manner in which we conduct prefix ownership checks. We asked ourselves: How can we quickly, securely, and automatically prove you are authorized to use your IP prefix and intend to route it through Cloudflare?</p>
+	<p>We ended up killing two birds with one stone, thanks to our two-step process involving the creation of an RPKI ROA (verification of intent) and modification of IRR or rDNS records (verification of ownership). Self-serve unlocks the ability to not only onboard prefixes more quickly and without human intervention, but also exercises more rigorous ownership checks than a simple scanned document ever could. While not 100% foolproof, it is a significant improvement in the way we verify ownership.</p>
+	<div class="flex anchor relative">
+		<h3 id="tapping-into-the-authorities">Tapping into the authorities </h3>
+		<a href="https://blog.cloudflare.com/#tapping-into-the-authorities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Regional Internet Registries (RIRs) are the organizations responsible for distributing and managing Internet number resources like IP addresses. They are composed of 5 different entities operating in different regions of the world (<a href="https://developers.cloudflare.com/byoip/get-started/#:~:text=Your%20prefix%20must%20be%20registered%20under%20one%20of%20the%20Regional%20Internet%20Registries%20(RIRs)%3A"><u>RIRs</u></a>). Originally allocated address space from the Internet Assigned Numbers Authority (IANA), they in turn assign and allocate that IP space to Local Internet Registries (LIRs) like ISPs.</p>
+	<p>This process is based on RIR policies which generally look at things like legal documentation, existing database/registry records, technical contacts, and BGP information. End-users can obtain addresses from an LIR, or in some cases through an RIR directly. As IPv4 addresses have become more scarce, brokerage services have been launched to allow addresses to be leased for fixed periods from their original assignees.</p>
+	<p>The Internet Routing Registry (IRR) is a separate system that focuses on routing rather than address assignment. Many organisations operate IRR instances and allow routing information to be published, including all five RIRs. While most IRR instances impose few barriers to the publication of routing data, those that are operated by RIRs are capable of linking the ability to publish routing information with the organisations to which the corresponding addresses have been assigned. We believe that being able to modify an IRR record protected in this way provides a good signal that a user has the rights to use a prefix.</p>
+	<p>Example of a route object containing validation token (using the documentation-only address 192.0.2.0/24):</p>
+	<pre class="language-Rust"><code class="language-Rust">% whois -h rr.arin.net 192.0.2.0/24
+
+route:          192.0.2.0/24
+origin:         AS13335
+descr:          Example Company, Inc.
+                cf-validation: 9477b6c3-4344-4ceb-85c4-6463e7d2453f
+admin-c:        ADMIN2521-ARIN
+tech-c:         ADMIN2521-ARIN
+tech-c:         CLOUD146-ARIN
+mnt-by:         MNT-CLOUD14
+created:        2025-07-29T10:52:27Z
+last-modified:  2025-07-29T10:52:27Z
+source:         ARIN</code></pre>
+	<p>For those that don’t want to go through the process of IRR-based validation, reverse DNS (rDNS) is provided as another secure method of verification. To manage rDNS for a prefix — whether it's creating a PTR record or a security TXT record — you must be granted permission by the entity that allocated the IP block in the first place (usually your ISP or the RIR).</p>
+	<p>This permission is demonstrated in one of two ways:</p>
+	<ul>
+		<li>
+			<p>Directly through the IP owner’s authenticated customer portal (ISP/RIR).</p>
+		</li>
+		<li>
+			<p>By the IP owner delegating authority to your third-party DNS provider via an NS record for your reverse zone.</p>
+		</li>
+	</ul>
+	<p>Example of a reverse domain lookup using dig command (using the documentation-only address 192.0.2.0/24):</p>
+	<pre class="language-Rust"><code class="language-Rust">% dig cf-validation.2.0.192.in-addr.arpa TXT
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; cf-validation.2.0.192.in-addr.arpa TXT
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 16686
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;cf-validation.2.0.192.in-addr.arpa. IN TXT
+
+;; ANSWER SECTION:
+cf-validation.2.0.192.in-addr.arpa. 300 IN TXT "b2f8af96-d32d-4c46-a886-f97d925d7977"
+
+;; Query time: 35 msec
+;; SERVER: 127.0.2.2#53(127.0.2.2)
+;; WHEN: Fri Oct 24 10:43:52 EDT 2025
+;; MSG SIZE  rcvd: 150</code></pre>
+	<p>So how exactly is one supposed to modify these records? That’s where the validation token comes into play. Once you choose either the IRR or Reverse DNS method, we provide a unique, single-use validation token. You must add this token to the content of the relevant record, either in the IRR or in the DNS. Our system then looks for the presence of the token as evidence that the request is being made by someone with authorization to make the requested modification. If the token is found, verification is complete and your ownership is confirmed!</p>
+	<div class="flex anchor relative">
+		<h3 id="the-digital-passport">The digital passport 🛂</h3>
+		<a href="https://blog.cloudflare.com/#the-digital-passport" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Ownership is only half the battle; we also need to confirm your intention that you authorize Cloudflare to advertise your prefix. For this, we rely on the gold standard for routing security: the Resource Private Key Infrastructure (RPKI), and in particular Route Origin Authorization (ROA) objects.</p>
+	<p>A ROA is a cryptographically-signed document that specifies which Autonomous System Number (ASN) is authorized to originate your IP prefix. You can think of a ROA as the digital equivalent of a certified, signed, and notarised contract from the owner of the prefix.</p>
+	<p>Relying parties can validate the signatures in a ROA using the RPKI.You simply create a ROA that specifies Cloudflare's ASN (AS13335) as an authorized originator and arrange for it to be signed. Many of our customers used hosted RPKI systems available through RIR portals for this. When our systems detect this signed authorization, your routing intention is instantly confirmed.&nbsp;</p>
+	<p>Many other companies that support BYOIP require a complex workflow involving creating self-signed certificates and manually modifying RDAP (Registration Data Access Protocol) records—a heavy administrative lift. By embracing a choice of IRR object modification and Reverse DNS TXT records, combined with RPKI, we offer a verification process that is much more familiar and straightforward for existing network operators.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-global-reach-guarantee">The global reach guarantee</h3>
+		<a href="https://blog.cloudflare.com/#the-global-reach-guarantee" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While the new self-serve flow ditches the need for the "dinosaur relic" that is the LOA, many network operators around the world still rely on it as part of the process of accepting prefixes from other networks.</p>
+	<p>To help ensure your prefix is accepted by adjacent networks globally, Cloudflare automatically generates a document on your behalf to be distributed in place of a LOA. This document provides information about the checks that we have carried out to confirm that we are authorised to originate the customer prefix, and confirms the presence of valid ROAs to authorise our origination of it. In this way we are able to support the workflows of network operators we connect to who rely upon LOAs, without our customers having the burden of generating them.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1GimIe80gJn5PrRUGkEMpF/130d2590e45088d58ac62ab2240f4d5c/image1.png" alt="" class="kg-image" width="1999" height="1312" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="staying-away-from-black-holes">Staying away from black holes</h2>
+		<a href="https://blog.cloudflare.com/#staying-away-from-black-holes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One concern in designing the Self-Serve API is the trade-off between giving customers flexibility while implementing the necessary safeguards so that an IP prefix is never advertised without a matching service binding. If this were to happen, Cloudflare would be advertising a prefix with no idea on what to do with the traffic when we receive it! We call this “blackholing” traffic. To handle this, we introduced the requirement of a default service binding — i.e. a service binding that spans the entire range of the IP prefix onboarded.&nbsp;</p>
+	<p>A customer can later layer different service bindings on top of their default service binding via <a href="https://blog.cloudflare.com/your-ips-your-rules-enabling-more-efficient-address-space-usage"><u>multiple service bindings</u></a>, like putting CDN on top of a default Spectrum service binding. This way, a prefix can never be advertised without a service binding and blackhole our customers’ traffic.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/20QAM5GITJ5m5kYkNlh701/82812d202ffa7b9a4e46838aa6c04937/image2.png" alt="diagram showing (say) an IPv4 /24 IPv4 prefix with a default service binding, with a layer above showing (say) a /28 with a different service binding. Illustrate packets inbound from above, one hitting the /28 binding and being routed to the appropriate service, another hitting the /24 binding and being handled according to the default binding" class="kg-image" width="1999" height="1369" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="getting-started">Getting started</h2>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Check out our <a href="https://developers.cloudflare.com/byoip/get-started"><u>developer docs</u></a> on the most up-to-date documentation on how to onboard, advertise, and add services to your IP prefixes via our API. Remember that onboardings can be complex, and don’t hesitate to ask questions or reach out to our <a href="https://www.cloudflare.com/professional-services"><u>professional services</u></a> team if you’d like us to do it for you.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-future-of-network-control">The future of network control</h2>
+		<a href="https://blog.cloudflare.com/#the-future-of-network-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The ability to script and integrate BYOIP management into existing workflows is a game-changer for modern network operations, and we’re only just getting started. In the months ahead, look for self-serve BYOIP in the dashboard, as well as self-serve BYOIP offboarding to give customers even more control.</p>
+	<p>Cloudflare's self-serve BYOIP API onboarding empowers customers with unprecedented control and flexibility over their IP assets. This move to automate onboarding empowers a stronger security posture, moving away from manually-reviewed PDFs and driving <a href="https://rpki.cloudflare.com"><u>RPKI adoption</u></a>. By using these API calls, organizations can automate complex network tasks, streamline migrations, and build more resilient and agile network infrastructures.</p>
+</div>
