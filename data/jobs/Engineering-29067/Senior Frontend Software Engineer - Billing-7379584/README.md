@@ -5,32 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon or London - Hybrid</strong></p>
-<p><strong>About Product Experience (PX) team</strong></p>
-<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
-<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Sr Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Product Designers to lead by example and coach the team into doing their best work.</p>
-<p>If you're a systems-thinking Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
-<p><strong>What you'll do</strong></p>
+<h4><strong>Available Locations: Austin, TX; </strong>Lisbon, Portugal or London, UK</h4>
+<h4><strong>About the department</strong></h4>
+<p>Cloudflare’s Billing Engineering team builds and maintains all the internal/external billing services related to customer onboarding, subscription management, payments, provisioning, usage processing/analytics and back office integrations with financial systems. This is a vital team central to every product launch, campaign or initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
+<p>The Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
+<h4><strong>About the Role</strong></h4>
+<p>We are looking for experienced front-end engineers to join our FinTech Billing team; an energetic team focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live. The ideal candidates will have experience working with large-scale applications and a deep knowledge of system designs. You must care deeply not only about the quality of your and the team's code, but also the customer experience and developer experience. We have growing front-end needs, so we’re looking for highly motivated individuals that are excited to join a team and work with product owners and other software engineers to build high impact user experiences for our customer facing functions.</p>
+<p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access to Cloudflare Workers, these are all tools in our frontend engineer's tool belt.&nbsp;</p>
+<p>Technologies we use include React, Redux, TypeScript, ES6, Remix, Vite, Webpack, Cypress, Go, git, Bitbucket, Teamcity and many more..</p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>Demonstrate talent and passion for designing end-to-end user experiences.</li>
-	<li>Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</li>
-	<li>Creation of low and high fidelity user interface designs and prototypes using Figma.</li>
-	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</li>
-	<li>Partner with other designers to collaborate on shared patterns, product vision, and design goals.</li>
-	<li>Facilitate design reviews with cross-functional teams.</li>
-	<li>Influence and contribute to the internal design process and team culture</li>
-	<li>Make time to mentor other designers on the team and share your craft, learning as you teach.</li>
-	<li>Find ways to grow design's impact, spending time to share design decisions throughout the organisation.</li>
+	<li>BA/BS in Computer Science or equivalent</li>
+	<li>Minimum of 5+ years experience building web applications</li>
+	<li>Strong knowledge of HTML, CSS, and JavaScript</li>
+	<li>Expertise with TypeScript</li>
+	<li>Knowledge of both software engineering and systems engineering</li>
+	<li>Deep understanding of internal workings of React.js applications</li>
+	<li>Extensive knowledge of the JavaScript ecosystem</li>
+	<li>Experience working with build pipelines, artifact management, error management</li>
+	<li>Ability to work in cross-functional teams and collaborate effectively with product and design teams</li>
+	<li>Strong analytical and debugging skills</li>
+	<li>Unit/integration testing experience</li>
+	<li>Experience working with and/or designing RESTful APIs</li>
+	<li>Working knowledge of internationalization, localization, and/or accessibility</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
-<ul>
-	<li>Deep understanding of human-centered design.</li>
-	<li>8+ years working in professional UX or product design roles.</li>
-	<li>Effective visual, written, and verbal communication skills.</li>
-	<li>Technical expertise and an understanding of network services/developer tools are a plus.</li>
-	<li>If possible, please submit a 1-2 case studies or portfolio with your application</li>
-</ul>
-<p>&nbsp;</p>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

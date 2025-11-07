@@ -5,38 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations:</strong> Lisbon, Portugal</h3>
-<h3><strong>What You’ll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Available Locations: Lisbon, Portugal</strong></p>
+<p><strong>About the team</strong></p>
+<p>You will be part of the Radar team within Cloudflare’s ETI Engineering department. Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>We are looking for an experienced Data and Analytics Engineer to join our team to scale our data insights initiatives. You will work with a wide array of data sources about network traffic, performance, and reliability. You’ll be responsible for building data pipelines, doing ad-hoc analytics based on the data, and automating our analysis. Important projects include understanding Internet trends and insights based on data produced by Cloudflare’s broad product portfolio.</p>
+<p>A candidate will be successful in this role if they’re flexible and able to match the right solution to the right problem and work at multiple levels of the stack. Flexibility is key. Cloudflare is a fast-paced environment and requirements change frequently.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
-	<li>Fundamental understanding how the Internet works (OSI Model)</li>
-	<li>Advanced understanding of modern internet protocols like TCP and UDP</li>
-	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Packet capture analysis</li>
-	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>Experience in working as part of a team in a customer-facing role</li>
+	<li>Work closely with other product and engineering teams to ensure our products and services collect the right data for our analytics;</li>
+	<li>Extract, clean, and analyze complex datasets from various sources;</li>
+	<li>Design,implement and maintain data pipelines (ETL's) that take unprocessed data and make it usable for advanced analytics;</li>
+	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale;</li>
+	<li>Build tooling, automation, and visualizations around our analytics for consumption by other Cloudflare teams.</li>
 </ul>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
-	<li>Work with Engineering and Product teams to improve the products and tools</li>
+	<li>Strong Python and SQL skills;</li>
+	<li>Experience with Linux container environments (Docker, Kubernetes);</li>
+	<li>Understanding of modern software development lifecycles, including CI/CD;</li>
+	<li>High-level understanding of networking and most common Internet protocols;</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design (e.g. B.S. or M.S. in Computer Science, Engineering, Mathematics, or related fields);</li>
+	<li>Minimum 3 years of industry experience in software engineering, data engineering, data analysis, or related field;</li>
+	<li>Excellent data analysis skills, with a natural curiosity to query and manipulate data to answer challenging questions;</li>
+	<li>Strong communication and collaboration skills, with a proven ability to partner with cross-functional teams, navigate ambiguous business requirements, and articulate complex data insights to both technical and non-technical audiences with attention to detail.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>Prior knowledge or experience with large-scale analytics databases (e.g. Clickhouse);</li>
+	<li>Working experience with the Go programming language;</li>
+	<li>Experience with server-side JavaScript and/or TypeScript;</li>
+	<li>A keen interest in cybersecurity-related topics and global technology trends.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
