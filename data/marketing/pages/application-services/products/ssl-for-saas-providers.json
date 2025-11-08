@@ -246,6 +246,59 @@
 						"htmlId": null
 					},
 					{
+						"contentfulId": "5eX4wGhF87uegT2ogWEXlS",
+						"title": "Speed up your customer onboarding flow",
+						"copy": "Cloudflare manages the entire [SSL lifecycle](https://www.cloudflare.com/application-services/solutions/certificate-lifecycle-management/), from private key creation and protection through domain validation, issuance, renewal, and reissuance.\n\nWith SSL for SaaS, you can send a single API call as part of your onboarding — all your customer has to do is add the initial CNAME into your domain.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "37ed62b9-b66f-5979-9e6d-c97f36f04e54",
+							"altText": "Illustration of an app security award",
+							"title": "What is SSL",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sSwxF7eNrXTMRryc20XjG/20cf9f5c70f8b9fe5f63226abbce1e1e/What-is-ssl.svg"
+								},
+								"description": "What is ssl"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6AWOoa8TP7cvwtUnWPts17",
 						"title": "Learn how to deploy TLS in complex enterprise environments",
@@ -830,7 +883,17 @@
 								"heading": "Solution brief",
 								"description": "SaaS application performance, security, and encryption essentials",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7Mn63XmEW4IwmvuxPB2k2d",
+									"elementName": "SSL for SaaS Providers - Resouces cards carousel - SaaS application performance, security, and encryption essentials - Link",
+									"standardText": null,
+									"text": "Read the brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Y2wwkzRuKe3tjXhD6QyAk/6395ab9a9a106a0ffc2a8d8aaa4f0b4a/Two_Pager_SSL_for_SaaS_Letter_EN-US_200227.pdf",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
 									"altText": "Solution brief - thumbnail",
