@@ -156,6 +156,8 @@ declare const _default: {
     'podcast-microphone-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'podcast-microphone-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'preemptive-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'price-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'price-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     printer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     processing: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'product-security-center': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -169,6 +171,8 @@ declare const _default: {
     'registrar-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'reliability-dns': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'reliability-load-balancer': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'reliability-timer-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'reliability-timer-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     remove: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     reorder: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'replatform-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -181,6 +185,7 @@ declare const _default: {
     script: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     search: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-bots': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'security-fingerprint': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-waf-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-waf': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'server-origin': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

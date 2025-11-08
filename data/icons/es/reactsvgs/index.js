@@ -154,6 +154,8 @@ import Plus from './Plus';
 import PodcastMicrophoneOutline from './PodcastMicrophoneOutline';
 import PodcastMicrophoneSolid from './PodcastMicrophoneSolid';
 import PreemptiveOutline from './PreemptiveOutline';
+import PriceOutline from './PriceOutline';
+import PriceSolid from './PriceSolid';
 import Printer from './Printer';
 import Processing from './Processing';
 import ProductSecurityCenter from './ProductSecurityCenter';
@@ -167,6 +169,8 @@ import Refresh from './Refresh';
 import RegistrarLogo from './RegistrarLogo';
 import ReliabilityDns from './ReliabilityDns';
 import ReliabilityLoadBalancer from './ReliabilityLoadBalancer';
+import ReliabilityTimerOutline from './ReliabilityTimerOutline';
+import ReliabilityTimerSolid from './ReliabilityTimerSolid';
 import Remove from './Remove';
 import Reorder from './Reorder';
 import ReplatformOutline from './ReplatformOutline';
@@ -179,6 +183,7 @@ import Router from './Router';
 import Script from './Script';
 import Search from './Search';
 import SecurityBots from './SecurityBots';
+import SecurityFingerprint from './SecurityFingerprint';
 import SecurityWafSolid from './SecurityWafSolid';
 import SecurityWaf from './SecurityWaf';
 import ServerOrigin from './ServerOrigin';
@@ -394,6 +399,8 @@ export default {
   'podcast-microphone-outline': PodcastMicrophoneOutline,
   'podcast-microphone-solid': PodcastMicrophoneSolid,
   'preemptive-outline': PreemptiveOutline,
+  'price-outline': PriceOutline,
+  'price-solid': PriceSolid,
   printer: Printer,
   processing: Processing,
   'product-security-center': ProductSecurityCenter,
@@ -407,6 +414,8 @@ export default {
   'registrar-logo': RegistrarLogo,
   'reliability-dns': ReliabilityDns,
   'reliability-load-balancer': ReliabilityLoadBalancer,
+  'reliability-timer-outline': ReliabilityTimerOutline,
+  'reliability-timer-solid': ReliabilityTimerSolid,
   remove: Remove,
   reorder: Reorder,
   'replatform-outline': ReplatformOutline,
@@ -419,6 +428,7 @@ export default {
   script: Script,
   search: Search,
   'security-bots': SecurityBots,
+  'security-fingerprint': SecurityFingerprint,
   'security-waf-solid': SecurityWafSolid,
   'security-waf': SecurityWaf,
   'server-origin': ServerOrigin,
