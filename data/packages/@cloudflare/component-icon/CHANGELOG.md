@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.12.0
+
+### Minor Changes
+
+- c4b6518203: Add price-outline, price-solid, security-fingerprint, reliability-timer-outline, and reliability-timer-solid icons
+
 ## 13.11.0
 
 ### Minor Changes
