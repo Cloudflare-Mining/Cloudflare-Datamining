@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:04:51.462Z",
-					"updatedAt": "2025-11-05T00:03:38.290Z"
+					"updatedAt": "2025-11-08T04:31:24.269Z"
 				},
 				"contentfulId": "4Mb6r1yV8btTLSJZmmRKe3",
 				"contentTypeId": "page",
@@ -208,18 +208,6 @@
 										"navigationLinks": [
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "34u8d3IHcqCC0exZwWQzpk",
-												"locale": "en-US",
-												"title": "Protect & accelerate applications",
-												"description": "Combine security with performance for protecting without compromise",
-												"url": "/application-services",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": false
-											},
-											{
-												"contentTypeId": "elementNavLink",
 												"contentfulId": "1DBmgZE4aI6IN4AI70ODLZ",
 												"locale": "en-US",
 												"title": "Protect & accelerate networks",
@@ -338,18 +326,6 @@
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5m2hwZbpy3ZLnMs8RCC5T9",
-												"locale": "en-US",
-												"title": "Non-profit",
-												"description": "For philanthropic organizations",
-												"url": "https://www.cloudflare.com/galileo/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": true,
 												"isExternalUrl": null
 											},
 											{
@@ -2742,7 +2718,29 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "501e6cf8-4e5d-58af-9a64-497bd450add7",
+							"altText": "Hub and spoke network model: connection through central data center",
+							"title": "SASE - Hub and spoke network model",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kQzCzSutAZmZU7g2sqik/c34f748b57eeedf7606a23dbabd88fac/hub-and-spoke-network-model.svg"
+								},
+								"description": null
+							},
+							"brandfolderAsset": {
+								"size": 45557,
+								"height": 802,
+								"width": 1365,
+								"filename": "pre-SASE-network-infrastructure-diagram.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/pre-SASE-network-infrastructure-diagram.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -3122,6 +3120,28 @@
 								"description": "This in-depth research report from Enterprise Management Associates (EMA) reviews packaging, pricing, and security capabilities of nine SASE vendors, including Cloudflare. ",
 								"learnMoreUrl": "https://www.cloudflare.com/lp/ema-sase-report/",
 								"learnMoreText": "Get the report",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4QtSjM7KQKYtWTHgMMbIK6",
+								"title": "6 Considerations for Your SASE Setup",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Secure Access Service Edge (SASE) adoption may seem intimidating, but it doesn't have to be. Read this infographic to learn 6 initial steps you can take.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3r83tZ0bN0EpIVyDIcJPjI/14c9777a2b570b8b8989d348b8e0a9a1/BDES-1389_SASE-Infographic__1_.pdf",
+								"learnMoreText": "View Infographic",
 								"displayBorder": null,
 								"openLinkInNewTab": null,
 								"removeCardBorder": null,
