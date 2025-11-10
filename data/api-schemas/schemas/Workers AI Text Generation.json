@@ -14773,104 +14773,1398 @@
 						"oneOf": [
 							{
 								"properties": {
+									"background": {
+										"type": "boolean"
+									},
+									"conversation": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"properties": {
+													"id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"include": {
+										"anyOf": [
+											{
+												"items": {
+													"enum": [
+														"message.input_image.image_url",
+														"message.output_text.logprobs"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											}
+										]
+									},
 									"input": {
 										"anyOf": [
 											{
 												"type": "string"
 											},
 											{
-												"items": {},
+												"items": {
+													"anyOf": [
+														{
+															"properties": {
+																"content": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"items": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"text": {
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"text",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"detail": {
+																								"enum": [
+																									"low",
+																									"high",
+																									"auto"
+																								],
+																								"type": "string"
+																							},
+																							"image_url": {
+																								"description": "Base64 encoded image",
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"detail",
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		}
+																	]
+																},
+																"role": {
+																	"enum": [
+																		"user",
+																		"assistant",
+																		"system",
+																		"developer"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"content",
+																"role"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"content": {
+																	"items": {
+																		"anyOf": [
+																			{
+																				"properties": {
+																					"text": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"text",
+																					"type"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"detail": {
+																						"enum": [
+																							"low",
+																							"high",
+																							"auto"
+																						],
+																						"type": "string"
+																					},
+																					"image_url": {
+																						"description": "Base64 encoded image",
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"detail",
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"type": "array"
+																},
+																"role": {
+																	"enum": [
+																		"user",
+																		"system",
+																		"developer"
+																	],
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"content",
+																"role"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"content": {
+																	"items": {
+																		"anyOf": [
+																			{
+																				"properties": {
+																					"logprobs": {
+																						"items": {
+																							"properties": {
+																								"logprob": {
+																									"type": "number"
+																								},
+																								"token": {
+																									"type": "string"
+																								},
+																								"top_logprobs": {
+																									"items": {
+																										"properties": {
+																											"logprob": {
+																												"type": "number"
+																											},
+																											"token": {
+																												"type": "string"
+																											}
+																										},
+																										"type": "object"
+																									},
+																									"type": "array"
+																								}
+																							},
+																							"required": [
+																								"token",
+																								"logprob"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"text": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"text",
+																					"type"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"refusal": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"refusal",
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"role": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"content",
+																"role",
+																"status",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"arguments": {
+																	"type": "string"
+																},
+																"call_id": {
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"arguments",
+																"call_id",
+																"name",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"call_id": {
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"output": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"items": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"text": {
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"text",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"detail": {
+																								"enum": [
+																									"low",
+																									"high",
+																									"auto"
+																								],
+																								"type": "string"
+																							},
+																							"image_url": {
+																								"description": "Base64 encoded image",
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		}
+																	]
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"call_id",
+																"output",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"content": {
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"text",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"encrypted_content": {
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"summary": {
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"text",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"summary",
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												},
 												"type": "array"
 											}
-										],
-										"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
+										]
+									},
+									"instructions": {
+										"type": "string"
+									},
+									"max_output_tokens": {
+										"type": "number"
+									},
+									"parallel_tool_calls": {
+										"type": "boolean"
+									},
+									"previous_response_id": {
+										"type": "string"
+									},
+									"prompt_cache_key": {
+										"type": "string"
 									},
 									"reasoning": {
+										"anyOf": [
+											{
+												"properties": {
+													"effort": {
+														"anyOf": [
+															{
+																"enum": [
+																	"minimal",
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"type": "string"
+															}
+														]
+													},
+													"generate_summary": {
+														"enum": [
+															"auto",
+															"concise",
+															"detailed"
+														],
+														"type": "string"
+													},
+													"summary": {
+														"enum": [
+															"auto",
+															"concise",
+															"detailed"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										]
+									},
+									"safety_identifier": {
+										"type": "string"
+									},
+									"service_tier": {
+										"enum": [
+											"auto",
+											"default",
+											"flex",
+											"scale",
+											"priority"
+										],
+										"type": "string"
+									},
+									"stream": {
+										"type": "boolean"
+									},
+									"stream_options": {
+										"anyOf": [
+											{
+												"properties": {
+													"include_obfuscation": {
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										]
+									},
+									"temperature": {
+										"type": "number"
+									},
+									"text": {
 										"properties": {
-											"effort": {
-												"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+											"format": {
+												"anyOf": [
+													{
+														"properties": {
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"schema": {
+																"type": "object"
+															},
+															"strict": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"schema",
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"verbosity": {
 												"enum": [
 													"low",
 													"medium",
 													"high"
 												],
 												"type": "string"
-											},
-											"summary": {
-												"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
-												"enum": [
-													"auto",
-													"concise",
-													"detailed"
-												],
-												"type": "string"
 											}
 										},
 										"type": "object"
+									},
+									"tool_choice": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"type"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"tools": {
+										"items": {
+											"properties": {
+												"description": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"parameters": {
+													"anyOf": [
+														{
+															"type": "object"
+														}
+													]
+												},
+												"strict": {
+													"type": "boolean"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"parameters",
+												"strict",
+												"type"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_p": {
+										"type": "number"
+									},
+									"truncation": {
+										"enum": [
+											"auto",
+											"disabled"
+										],
+										"type": "string"
 									}
 								},
 								"required": [
 									"input"
-								],
-								"title": "GPT_OSS_120B_Responses",
-								"type": "object"
+								]
 							},
 							{
 								"properties": {
 									"requests": {
 										"items": {
 											"properties": {
+												"background": {
+													"type": "boolean"
+												},
+												"conversation": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"properties": {
+																"id": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"include": {
+													"anyOf": [
+														{
+															"items": {
+																"enum": [
+																	"message.input_image.image_url",
+																	"message.output_text.logprobs"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														}
+													]
+												},
 												"input": {
 													"anyOf": [
 														{
 															"type": "string"
 														},
 														{
-															"items": {},
+															"items": {
+																"anyOf": [
+																	{
+																		"properties": {
+																			"content": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"items": {
+																							"anyOf": [
+																								{
+																									"properties": {
+																										"text": {
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"text",
+																										"type"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"detail": {
+																											"enum": [
+																												"low",
+																												"high",
+																												"auto"
+																											],
+																											"type": "string"
+																										},
+																										"image_url": {
+																											"description": "Base64 encoded image",
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"detail",
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							]
+																						},
+																						"type": "array"
+																					}
+																				]
+																			},
+																			"role": {
+																				"enum": [
+																					"user",
+																					"assistant",
+																					"system",
+																					"developer"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"content",
+																			"role"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"content": {
+																				"items": {
+																					"anyOf": [
+																						{
+																							"properties": {
+																								"text": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"text",
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"properties": {
+																								"detail": {
+																									"enum": [
+																										"low",
+																										"high",
+																										"auto"
+																									],
+																									"type": "string"
+																								},
+																								"image_url": {
+																									"description": "Base64 encoded image",
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"detail",
+																								"type"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"type": "array"
+																			},
+																			"role": {
+																				"enum": [
+																					"user",
+																					"system",
+																					"developer"
+																				],
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"content",
+																			"role"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"content": {
+																				"items": {
+																					"anyOf": [
+																						{
+																							"properties": {
+																								"logprobs": {
+																									"items": {
+																										"properties": {
+																											"logprob": {
+																												"type": "number"
+																											},
+																											"token": {
+																												"type": "string"
+																											},
+																											"top_logprobs": {
+																												"items": {
+																													"properties": {
+																														"logprob": {
+																															"type": "number"
+																														},
+																														"token": {
+																															"type": "string"
+																														}
+																													},
+																													"type": "object"
+																												},
+																												"type": "array"
+																											}
+																										},
+																										"required": [
+																											"token",
+																											"logprob"
+																										],
+																										"type": "object"
+																									},
+																									"type": "array"
+																								},
+																								"text": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"text",
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"properties": {
+																								"refusal": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"refusal",
+																								"type"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"type": "array"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"role": {
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"content",
+																			"role",
+																			"status",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"arguments": {
+																				"type": "string"
+																			},
+																			"call_id": {
+																				"type": "string"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"arguments",
+																			"call_id",
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"call_id": {
+																				"type": "string"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"output": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"items": {
+																							"anyOf": [
+																								{
+																									"properties": {
+																										"text": {
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"text",
+																										"type"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"detail": {
+																											"enum": [
+																												"low",
+																												"high",
+																												"auto"
+																											],
+																											"type": "string"
+																										},
+																										"image_url": {
+																											"description": "Base64 encoded image",
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							]
+																						},
+																						"type": "array"
+																					}
+																				]
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"call_id",
+																			"output",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"content": {
+																				"items": {
+																					"properties": {
+																						"text": {
+																							"type": "string"
+																						},
+																						"type": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"text",
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"encrypted_content": {
+																				"type": "string"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"summary": {
+																				"items": {
+																					"properties": {
+																						"text": {
+																							"type": "string"
+																						},
+																						"type": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"text",
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"summary",
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
 															"type": "array"
 														}
-													],
-													"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
+													]
+												},
+												"instructions": {
+													"type": "string"
+												},
+												"max_output_tokens": {
+													"type": "number"
+												},
+												"parallel_tool_calls": {
+													"type": "boolean"
+												},
+												"previous_response_id": {
+													"type": "string"
+												},
+												"prompt_cache_key": {
+													"type": "string"
 												},
 												"reasoning": {
+													"anyOf": [
+														{
+															"properties": {
+																"effort": {
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"minimal",
+																				"low",
+																				"medium",
+																				"high"
+																			],
+																			"type": "string"
+																		}
+																	]
+																},
+																"generate_summary": {
+																	"enum": [
+																		"auto",
+																		"concise",
+																		"detailed"
+																	],
+																	"type": "string"
+																},
+																"summary": {
+																	"enum": [
+																		"auto",
+																		"concise",
+																		"detailed"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													]
+												},
+												"safety_identifier": {
+													"type": "string"
+												},
+												"service_tier": {
+													"enum": [
+														"auto",
+														"default",
+														"flex",
+														"scale",
+														"priority"
+													],
+													"type": "string"
+												},
+												"stream": {
+													"type": "boolean"
+												},
+												"stream_options": {
+													"anyOf": [
+														{
+															"properties": {
+																"include_obfuscation": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													]
+												},
+												"temperature": {
+													"type": "number"
+												},
+												"text": {
 													"properties": {
-														"effort": {
-															"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+														"format": {
+															"anyOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"description": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"schema": {
+																			"type": "object"
+																		},
+																		"strict": {
+																			"type": "boolean"
+																		},
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"schema",
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"verbosity": {
 															"enum": [
 																"low",
 																"medium",
 																"high"
 															],
 															"type": "string"
-														},
-														"summary": {
-															"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
-															"enum": [
-																"auto",
-																"concise",
-																"detailed"
-															],
-															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												"tool_choice": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"properties": {
+																"name": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"tools": {
+													"items": {
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"parameters": {
+																"anyOf": [
+																	{
+																		"type": "object"
+																	}
+																]
+															},
+															"strict": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"parameters",
+															"strict",
+															"type"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"top_p": {
+													"type": "number"
+												},
+												"truncation": {
+													"enum": [
+														"auto",
+														"disabled"
+													],
+													"type": "string"
 												}
 											},
 											"required": [
 												"input"
-											],
-											"type": "object"
+											]
 										},
 										"type": "array"
 									}
 								},
 								"required": [
 									"requests"
-								],
-								"title": "GPT_OSS_120B_Responses_Async",
-								"type": "object"
+								]
 							}
-						]
+						],
+						"type": "object"
 					}
 				}
 			}
@@ -14879,6 +16173,11 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
 						"schema": {
 							"type": "object"
 						}
@@ -14987,104 +16286,1398 @@
 						"oneOf": [
 							{
 								"properties": {
+									"background": {
+										"type": "boolean"
+									},
+									"conversation": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"properties": {
+													"id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"id"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"include": {
+										"anyOf": [
+											{
+												"items": {
+													"enum": [
+														"message.input_image.image_url",
+														"message.output_text.logprobs"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											}
+										]
+									},
 									"input": {
 										"anyOf": [
 											{
 												"type": "string"
 											},
 											{
-												"items": {},
+												"items": {
+													"anyOf": [
+														{
+															"properties": {
+																"content": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"items": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"text": {
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"text",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"detail": {
+																								"enum": [
+																									"low",
+																									"high",
+																									"auto"
+																								],
+																								"type": "string"
+																							},
+																							"image_url": {
+																								"description": "Base64 encoded image",
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"detail",
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		}
+																	]
+																},
+																"role": {
+																	"enum": [
+																		"user",
+																		"assistant",
+																		"system",
+																		"developer"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"content",
+																"role"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"content": {
+																	"items": {
+																		"anyOf": [
+																			{
+																				"properties": {
+																					"text": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"text",
+																					"type"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"detail": {
+																						"enum": [
+																							"low",
+																							"high",
+																							"auto"
+																						],
+																						"type": "string"
+																					},
+																					"image_url": {
+																						"description": "Base64 encoded image",
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"detail",
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"type": "array"
+																},
+																"role": {
+																	"enum": [
+																		"user",
+																		"system",
+																		"developer"
+																	],
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"content",
+																"role"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"content": {
+																	"items": {
+																		"anyOf": [
+																			{
+																				"properties": {
+																					"logprobs": {
+																						"items": {
+																							"properties": {
+																								"logprob": {
+																									"type": "number"
+																								},
+																								"token": {
+																									"type": "string"
+																								},
+																								"top_logprobs": {
+																									"items": {
+																										"properties": {
+																											"logprob": {
+																												"type": "number"
+																											},
+																											"token": {
+																												"type": "string"
+																											}
+																										},
+																										"type": "object"
+																									},
+																									"type": "array"
+																								}
+																							},
+																							"required": [
+																								"token",
+																								"logprob"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"text": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"text",
+																					"type"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"refusal": {
+																						"type": "string"
+																					},
+																					"type": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"refusal",
+																					"type"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"role": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"content",
+																"role",
+																"status",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"arguments": {
+																	"type": "string"
+																},
+																"call_id": {
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"arguments",
+																"call_id",
+																"name",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"call_id": {
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"output": {
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"items": {
+																				"anyOf": [
+																					{
+																						"properties": {
+																							"text": {
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"text",
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"detail": {
+																								"enum": [
+																									"low",
+																									"high",
+																									"auto"
+																								],
+																								"type": "string"
+																							},
+																							"image_url": {
+																								"description": "Base64 encoded image",
+																								"type": "string"
+																							},
+																							"type": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		}
+																	]
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"call_id",
+																"output",
+																"type"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"content": {
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"text",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"encrypted_content": {
+																	"type": "string"
+																},
+																"id": {
+																	"type": "string"
+																},
+																"status": {
+																	"enum": [
+																		"in_progress",
+																		"completed",
+																		"incomplete"
+																	],
+																	"type": "string"
+																},
+																"summary": {
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"text",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"summary",
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												},
 												"type": "array"
 											}
-										],
-										"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
+										]
+									},
+									"instructions": {
+										"type": "string"
+									},
+									"max_output_tokens": {
+										"type": "number"
+									},
+									"parallel_tool_calls": {
+										"type": "boolean"
+									},
+									"previous_response_id": {
+										"type": "string"
+									},
+									"prompt_cache_key": {
+										"type": "string"
 									},
 									"reasoning": {
+										"anyOf": [
+											{
+												"properties": {
+													"effort": {
+														"anyOf": [
+															{
+																"enum": [
+																	"minimal",
+																	"low",
+																	"medium",
+																	"high"
+																],
+																"type": "string"
+															}
+														]
+													},
+													"generate_summary": {
+														"enum": [
+															"auto",
+															"concise",
+															"detailed"
+														],
+														"type": "string"
+													},
+													"summary": {
+														"enum": [
+															"auto",
+															"concise",
+															"detailed"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										]
+									},
+									"safety_identifier": {
+										"type": "string"
+									},
+									"service_tier": {
+										"enum": [
+											"auto",
+											"default",
+											"flex",
+											"scale",
+											"priority"
+										],
+										"type": "string"
+									},
+									"stream": {
+										"type": "boolean"
+									},
+									"stream_options": {
+										"anyOf": [
+											{
+												"properties": {
+													"include_obfuscation": {
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										]
+									},
+									"temperature": {
+										"type": "number"
+									},
+									"text": {
 										"properties": {
-											"effort": {
-												"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+											"format": {
+												"anyOf": [
+													{
+														"properties": {
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"schema": {
+																"type": "object"
+															},
+															"strict": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"schema",
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"verbosity": {
 												"enum": [
 													"low",
 													"medium",
 													"high"
 												],
 												"type": "string"
-											},
-											"summary": {
-												"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
-												"enum": [
-													"auto",
-													"concise",
-													"detailed"
-												],
-												"type": "string"
 											}
 										},
 										"type": "object"
+									},
+									"tool_choice": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"type": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"type"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"tools": {
+										"items": {
+											"properties": {
+												"description": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"parameters": {
+													"anyOf": [
+														{
+															"type": "object"
+														}
+													]
+												},
+												"strict": {
+													"type": "boolean"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"parameters",
+												"strict",
+												"type"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"top_p": {
+										"type": "number"
+									},
+									"truncation": {
+										"enum": [
+											"auto",
+											"disabled"
+										],
+										"type": "string"
 									}
 								},
 								"required": [
 									"input"
-								],
-								"title": "GPT_OSS_20B_Responses",
-								"type": "object"
+								]
 							},
 							{
 								"properties": {
 									"requests": {
 										"items": {
 											"properties": {
+												"background": {
+													"type": "boolean"
+												},
+												"conversation": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"properties": {
+																"id": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"include": {
+													"anyOf": [
+														{
+															"items": {
+																"enum": [
+																	"message.input_image.image_url",
+																	"message.output_text.logprobs"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														}
+													]
+												},
 												"input": {
 													"anyOf": [
 														{
 															"type": "string"
 														},
 														{
-															"items": {},
+															"items": {
+																"anyOf": [
+																	{
+																		"properties": {
+																			"content": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"items": {
+																							"anyOf": [
+																								{
+																									"properties": {
+																										"text": {
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"text",
+																										"type"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"detail": {
+																											"enum": [
+																												"low",
+																												"high",
+																												"auto"
+																											],
+																											"type": "string"
+																										},
+																										"image_url": {
+																											"description": "Base64 encoded image",
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"detail",
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							]
+																						},
+																						"type": "array"
+																					}
+																				]
+																			},
+																			"role": {
+																				"enum": [
+																					"user",
+																					"assistant",
+																					"system",
+																					"developer"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"content",
+																			"role"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"content": {
+																				"items": {
+																					"anyOf": [
+																						{
+																							"properties": {
+																								"text": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"text",
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"properties": {
+																								"detail": {
+																									"enum": [
+																										"low",
+																										"high",
+																										"auto"
+																									],
+																									"type": "string"
+																								},
+																								"image_url": {
+																									"description": "Base64 encoded image",
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"detail",
+																								"type"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"type": "array"
+																			},
+																			"role": {
+																				"enum": [
+																					"user",
+																					"system",
+																					"developer"
+																				],
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"content",
+																			"role"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"content": {
+																				"items": {
+																					"anyOf": [
+																						{
+																							"properties": {
+																								"logprobs": {
+																									"items": {
+																										"properties": {
+																											"logprob": {
+																												"type": "number"
+																											},
+																											"token": {
+																												"type": "string"
+																											},
+																											"top_logprobs": {
+																												"items": {
+																													"properties": {
+																														"logprob": {
+																															"type": "number"
+																														},
+																														"token": {
+																															"type": "string"
+																														}
+																													},
+																													"type": "object"
+																												},
+																												"type": "array"
+																											}
+																										},
+																										"required": [
+																											"token",
+																											"logprob"
+																										],
+																										"type": "object"
+																									},
+																									"type": "array"
+																								},
+																								"text": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"text",
+																								"type"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"properties": {
+																								"refusal": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"refusal",
+																								"type"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"type": "array"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"role": {
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"content",
+																			"role",
+																			"status",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"arguments": {
+																				"type": "string"
+																			},
+																			"call_id": {
+																				"type": "string"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"arguments",
+																			"call_id",
+																			"name",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"call_id": {
+																				"type": "string"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"output": {
+																				"anyOf": [
+																					{
+																						"type": "string"
+																					},
+																					{
+																						"items": {
+																							"anyOf": [
+																								{
+																									"properties": {
+																										"text": {
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"text",
+																										"type"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"properties": {
+																										"detail": {
+																											"enum": [
+																												"low",
+																												"high",
+																												"auto"
+																											],
+																											"type": "string"
+																										},
+																										"image_url": {
+																											"description": "Base64 encoded image",
+																											"type": "string"
+																										},
+																										"type": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							]
+																						},
+																						"type": "array"
+																					}
+																				]
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"call_id",
+																			"output",
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"content": {
+																				"items": {
+																					"properties": {
+																						"text": {
+																							"type": "string"
+																						},
+																						"type": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"text",
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"encrypted_content": {
+																				"type": "string"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"status": {
+																				"enum": [
+																					"in_progress",
+																					"completed",
+																					"incomplete"
+																				],
+																				"type": "string"
+																			},
+																			"summary": {
+																				"items": {
+																					"properties": {
+																						"text": {
+																							"type": "string"
+																						},
+																						"type": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"text",
+																						"type"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"type": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"summary",
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
 															"type": "array"
 														}
-													],
-													"description": "Responses API Input messages. Refer to OpenAI Responses API docs to learn more about supported content types"
+													]
+												},
+												"instructions": {
+													"type": "string"
+												},
+												"max_output_tokens": {
+													"type": "number"
+												},
+												"parallel_tool_calls": {
+													"type": "boolean"
+												},
+												"previous_response_id": {
+													"type": "string"
+												},
+												"prompt_cache_key": {
+													"type": "string"
 												},
 												"reasoning": {
+													"anyOf": [
+														{
+															"properties": {
+																"effort": {
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"minimal",
+																				"low",
+																				"medium",
+																				"high"
+																			],
+																			"type": "string"
+																		}
+																	]
+																},
+																"generate_summary": {
+																	"enum": [
+																		"auto",
+																		"concise",
+																		"detailed"
+																	],
+																	"type": "string"
+																},
+																"summary": {
+																	"enum": [
+																		"auto",
+																		"concise",
+																		"detailed"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													]
+												},
+												"safety_identifier": {
+													"type": "string"
+												},
+												"service_tier": {
+													"enum": [
+														"auto",
+														"default",
+														"flex",
+														"scale",
+														"priority"
+													],
+													"type": "string"
+												},
+												"stream": {
+													"type": "boolean"
+												},
+												"stream_options": {
+													"anyOf": [
+														{
+															"properties": {
+																"include_obfuscation": {
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														}
+													]
+												},
+												"temperature": {
+													"type": "number"
+												},
+												"text": {
 													"properties": {
-														"effort": {
-															"description": "Constrains effort on reasoning for reasoning models. Currently supported values are low, medium, and high. Reducing reasoning effort can result in faster responses and fewer tokens used on reasoning in a response.",
+														"format": {
+															"anyOf": [
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"description": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"schema": {
+																			"type": "object"
+																		},
+																		"strict": {
+																			"type": "boolean"
+																		},
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"schema",
+																		"type"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"verbosity": {
 															"enum": [
 																"low",
 																"medium",
 																"high"
 															],
 															"type": "string"
-														},
-														"summary": {
-															"description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process. One of auto, concise, or detailed.",
-															"enum": [
-																"auto",
-																"concise",
-																"detailed"
-															],
-															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												"tool_choice": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"properties": {
+																"name": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"tools": {
+													"items": {
+														"properties": {
+															"description": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"parameters": {
+																"anyOf": [
+																	{
+																		"type": "object"
+																	}
+																]
+															},
+															"strict": {
+																"type": "boolean"
+															},
+															"type": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"parameters",
+															"strict",
+															"type"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"top_p": {
+													"type": "number"
+												},
+												"truncation": {
+													"enum": [
+														"auto",
+														"disabled"
+													],
+													"type": "string"
 												}
 											},
 											"required": [
 												"input"
-											],
-											"type": "object"
+											]
 										},
 										"type": "array"
 									}
 								},
 								"required": [
 									"requests"
-								],
-								"title": "GPT_OSS_20B_Responses_Async",
-								"type": "object"
+								]
 							}
-						]
+						],
+						"type": "object"
 					}
 				}
 			}
@@ -15093,6 +17686,11 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
 						"schema": {
 							"type": "object"
 						}
