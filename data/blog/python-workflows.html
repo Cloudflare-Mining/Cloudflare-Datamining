@@ -1,0 +1,171 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IZcX00fxskNhpBQTSfnaC/512aa8861ef7d00e14a477b044fce2be/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Developers can <a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers"><u>already</u></a> use Cloudflare Workflows to build long-running, multi-step applications on Workers. Now, Python Workflows are here, meaning you can use your language of choice to orchestrate multi-step applications.</p>
+	<p>With <a href="https://developers.cloudflare.com/workflows"><u>Workflows</u></a>, you can automate a sequence of idempotent steps in your application with built-in error handling and retry behavior. But Workflows were originally supported only in TypeScript. Since Python is the de facto language of choice for data pipelines, artificial intelligence/machine learning, and task automation – all of which heavily rely on orchestration – this created friction for many developers.</p>
+	<p>Over the years, we’ve been giving developers the tools to build these applications in Python, on Cloudflare. In 2020, we brought <a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support"><u>Python to Workers via Transcrypt</u></a> before directly integrating Python into <a href="https://github.com/cloudflare/workerd?cf_target_id=33101FA5C99A5BD54E7D452C9B282CD8"><u>workerd</u></a> in 2024. Earlier this year, we built support for <a href="https://developers.cloudflare.com/workers/languages/python/stdlib"><u>CPython</u></a> along with <a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html"><u>any packages built in Pyodide</u></a>, like matplotlib and pandas, in Workers. Now, Python Workflows are supported as well, so developers can create robust applications using the language they know best.</p>
+	<div class="flex anchor relative">
+		<h2 id="why-python-for-workflows">Why Python for Workflows?</h2>
+		<a href="https://blog.cloudflare.com/#why-python-for-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Imagine you’re training an <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>LLM</u></a>. You need to label the dataset, feed data, wait for the model to run, evaluate the loss, adjust the model, and repeat. Without automation, you’d need to start each step, monitor manually until completion, and then start the next one. Instead, you could use a workflow to orchestrate the training of the model, triggering each step pending the completion of its predecessor. For any manual adjustments needed, like evaluating the loss and adjusting the model accordingly, you can implement a step that notifies you and waits for the necessary input.</p>
+	<p>Consider data pipelines, which are a top Python use case for ingesting and processing data. By automating the data pipeline through a defined set of idempotent steps, developers can deploy a workflow that handles the entire data pipeline for them.</p>
+	<p>Take another example: building <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai"><u>AI agents</u></a>, such as an agent to manage your groceries. Each week, you input your list of recipes, and the agent (1) compiles the list of necessary ingredients, (2) checks what ingredients you have left over from previous weeks, and (3) orders the differential for pickup from your local grocery store. Using a Workflow, this could look like:</p>
+	<ol>
+		<li>
+			<p><code>await step.wait_for_event()</code> the user inputs the grocery list</p>
+		</li>
+		<li>
+			<p><code>step.do()</code> compile list of necessary ingredients</p>
+		</li>
+		<li>
+			<p><code>step.do()</code> check list of necessary ingredients against left over ingredients</p>
+		</li>
+		<li>
+			<p><code>step.do()</code> make an API call to place the order</p>
+		</li>
+		<li>
+			<p><code>step.do() </code>proceed with payment</p>
+		</li>
+	</ol>
+	<p>Using workflows as a tool to <a href="https://agents.cloudflare.com"><u>build agents on Cloudflare</u></a> can simplify agents’ architecture and improve their odds for reaching completion through individual step retries and state persistence. Support for Python Workflows means building agents with Python is easier than ever.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-python-workflows-work">How Python Workflows work</h3>
+		<a href="https://blog.cloudflare.com/#how-python-workflows-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workflows uses the underlying infrastructure that we created for durable execution, while providing an idiomatic way for Python users to write their workflows. In addition, we aimed for complete feature parity between the Javascript and the Python SDK. This is possible because Cloudflare Workers support Python directly in the runtime itself.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="creating-a-python-workflow">Creating a Python Workflow</h4>
+		<a href="https://blog.cloudflare.com/#creating-a-python-workflow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare Workflows are fully built on top of <a href="https://www.cloudflare.com/developer-platform/products/workers"><u>Workers</u></a> and <a href="https://www.cloudflare.com/developer-platform/products/durable-objects"><u>Durable Objects</u></a>. Each element plays a part in storing Workflow metadata, and instance level information. For more detail on how the Workflows platform works, <a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers"><u>check out this blog post</u></a>.</p>
+	<p>At the very bottom of the Workflows control plane sits the user Worker, which is the <code>WorkflowEntrypoint</code>. When the Workflow instance is ready to run, the Workflow engine will call into the <code>run</code> method of the user worker via RPC, which in this case will be a Python Worker.</p>
+	<p>This is an example skeleton for a Workflow declaration, provided by the official documentation:</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">export class MyWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
+  async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
+    // Steps here
+  }
+}</code></pre>
+	<p>The <code>run</code> method, as illustrated above, provides a <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowstep"><u>WorkflowStep</u></a> parameter that implements the durable execution APIs. This is what users rely on for at-most-once execution. These APIs are implemented in JavaScript and need to be accessed in the context of the Python Worker.</p>
+	<p>A <code>WorkflowStep</code> must cross the RPC barrier, meaning the engine (caller) exposes it as an <code>RpcTarget</code>. This setup allows the user's Workflow (callee) to substitute the parameter with a stub. This stub then enables the use of durable execution APIs for Workflows by RPCing back to the engine. To read more about RPC serialization and how functions can be passed from caller and callee, read the <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc"><u>Remote-Procedure call documentation</u></a>.</p>
+	<p>All of this is true for both Python and JavaScript Workflows, since we don’t really change how the user Worker is called from the Workflows side. However, in the Python case, there is another barrier – language bridging between Python and the JavaScript module. When an RPC request targets a Python Worker, there is a Javascript entrypoint module responsible for proxying the request to be handled by the Python script, and then returned to the caller. This process typically involves type translation before and after handling the request.</p>
+	<div class="flex anchor relative">
+		<h4 id="overcoming-the-language-barrier">Overcoming the language barrier</h4>
+		<a href="https://blog.cloudflare.com/#overcoming-the-language-barrier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Python workers rely on <a href="https://pyodide.org/en/stable"><u>Pyodide</u></a>, which is a port of CPython to WebAssembly. Pyodide provides a foreign function interface (FFI) to JavaScript which allows for calling into JavaScript methods from Python. This is the mechanism that allows other bindings and Python packages to work within the Workers platform. Therefore, we use this FFI layer not only to allow using the Workflow binding directly, but also to provide <code>WorkflowStep</code> methods in Python. In other words, by considering that <code>WorkflowEntrypoint</code> is a special class for the runtime, the run method is manually wrapped so that <code>WorkflowStep</code> is exposed as a <a href="https://pyodide.org/en/stable/usage/api/python-api/ffi.html?cf_target_id=B32B42023AAEDEF833BCC2D9FD6096A3#pyodide.ffi.JsProxy"><u>JsProxy</u></a> instead of being type translated like other JavaScript objects. Moreover, by wrapping the APIs from the perspective of the user Worker, we allow ourselves to make some adjustments to the overall development experience, instead of simply exposing a JavaScript SDK to a different language with different semantics.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="making-the-python-workflows-sdk-pythonic">Making the Python Workflows SDK Pythonic</h4>
+		<a href="https://blog.cloudflare.com/#making-the-python-workflows-sdk-pythonic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A big part of porting Workflows to Python includes exposing an interface that Python users will be familiar with and have no problems using, similarly to what happens with our JavaScript APIs. Let's take a step back and look at a snippet for a Workflow (written in Typescript) definition.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">import { WorkflowEntrypoint, WorkflowStep, WorkflowEvent} from 'cloudflare:workers';
+ 
+export class MyWorkflow extends WorkflowEntrypoint {
+    async run(event: WorkflowEvent&lt;YourEventType&gt;, step: WorkflowStep) {
+        let state = step.do("my first step", async () =&gt; {
+          // Access your properties via event.payload
+          let userEmail = event.payload.userEmail
+          let createdTimestamp = event.payload.createdTimestamp
+          return {"userEmail": userEmail, "createdTimestamp": createdTimestamp}
+	    })
+ 
+        step.sleep("my first sleep", "30 minutes");
+ 
+        await step.waitForEvent&lt;EventType&gt;("receive example event", { type: "simple-event", timeout: "1 hour" })
+ 
+   	 const developerWeek = Date.parse("22 Sept 2025 13:00:00 UTC");
+        await step.sleepUntil("sleep until X times out", developerWeek)
+    }
+}</code></pre>
+	<p>The Python implementation of the workflows API requires modification of the do method. Unlike other languages, Python does not easily support anonymous callbacks. This behavior is typically achieved through the use of <a href="https://www.w3schools.com/python/python_decorators.asp"><u>decorators</u></a>, which in this case allow us to intercept the method and expose it idiomatically. In other words, all parameters maintain their original order, with the decorated method serving as the callback.</p>
+	<p>The methods <code>waitForEvent</code>, <code>sleep</code>, and <code>sleepUntil</code> can retain their original signatures, as long as their names are converted to snake case.</p>
+	<p>Here’s the corresponding Python version for the same workflow, achieving similar behavior:</p>
+	<pre class="language-Python"><code class="language-Python">from workers import WorkflowEntrypoint
+ 
+class MyWorkflow(WorkflowEntrypoint):
+    async def run(self, event, step):
+        @step.do("my first step")
+        async def my_first_step():
+            user_email = event["payload"]["userEmail"]
+            created_timestamp = event["payload"]["createdTimestamp"]
+            return {
+                "userEmail": user_email,
+                "createdTimestamp": created_timestamp,
+            }
+ 
+        await my_first_step()
+ 
+        step.sleep("my first sleep", "30 minutes")
+ 
+         await step.wait_for_event(
+            "receive example event",
+            "simple-event",
+            timeout="1 hour",
+        )
+ 
+        developer_week = datetime(2024, 10, 24, 13, 0, 0, tzinfo=timezone.utc)
+        await step.sleep_until("sleep until X times out", developer_week)</code></pre>
+
+	<div class="flex anchor relative">
+		<h4 id="dag-workflows">DAG Workflows</h4>
+		<a href="https://blog.cloudflare.com/#dag-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When designing Workflows, we’re often managing dependencies between steps even when some of these tasks can be handled concurrently. Even though we’re not thinking about it, many Workflows have a directed acyclic graph (DAG) execution flow. Concurrency is achievable in the first iteration of Python Workflows (i.e.: minimal port to Python Workers) because Pyodide captures Javascript thenables and proxies them into Python awaitables. </p>
+	<p>Consequently, <code>asyncio.gather</code> works as a counterpart to <code>Promise.all</code>. Although this is perfectly fine and ready to be used in the SDK, we also support a declarative approach.</p>
+	<p>One of the advantages of decorating the do method is that we can essentially provide further abstractions on the original API, and have them work on the entrypoint wrapper. Here’s an example of a Python API making use of the DAG capabilities introduced:</p>
+	<pre class="language-Python"><code class="language-Python">from workers import Response, WorkflowEntrypoint
+
+class PythonWorkflowDAG(WorkflowEntrypoint):
+    async def run(self, event, step):
+
+        @step.do('dependency 1')
+        async def dep_1():
+            # does stuff
+            print('executing dep1')
+
+        @step.do('dependency 2')
+        async def dep_2():
+            # does stuff
+            print('executing dep2')
+
+        @step.do('demo do', depends=[dep_1, dep_2], concurrent=True)
+        async def final_step(res1=None, res2=None):
+            # does stuff
+            print('something')
+
+        await final_step()</code></pre>
+	<p>This kind of approach makes the Workflow declaration much cleaner, leaving state management to the Workflows engine data plane, as well as the Python workers Workflow wrapper. Note that even though multiple steps can run with the same name, the engine will slightly modify the name of each step to ensure uniqueness. In Python Workflows, a dependency is considered resolved once the initial step involving it has been successfully completed.</p>
+	<div class="flex anchor relative">
+		<h3 id="try-it-out">Try it out</h3>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Check out <a href="https://developers.cloudflare.com/workers/languages/python"><u>writing Workers in Python</u></a> and <a href="https://developers.cloudflare.com/workflows/python"><u>create your first Python Workflow</u></a> today! If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the <a href="https://discord.cloudflare.com"><u>Cloudflare Developers community on Discord</u></a>.</p>
+</div>
