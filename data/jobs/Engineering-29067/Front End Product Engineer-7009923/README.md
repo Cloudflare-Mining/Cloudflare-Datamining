@@ -5,29 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Lisbon, Portugal or London, UK</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Billing Engineering Team is at the heart of every product launch, campaign, and initiative that Cloudflare undertakes. We build and maintain critical systems for billing, payments, usage metering, aggregation, invoicing and revenue recognition — powering billions in revenue and serving millions of customers.</p>
-<p>Currently we're rebuilding our entire billing platform, designing a metering and aggregation layer that scales effortlessly while ensuring financial accuracy. This is high-impact, high-stakes work that touches all Cloudflare’s cutting-edge products like AI, Zero Trust, Edge Compute, Bot Management, DDoS Protection, etc.</p>
-<p>As a Principal Systems Engineer, you’ll lead a team of talented, collaborative engineers working across Cloudflare’s ecosystem. You’ll navigate multiple high-profile projects, foster a culture of proactive communication and continuous learning, and drive technical excellence.</p>
-<p>If you thrive on solving hard challenges at the intersection of financial infrastructure and distributed systems, this is your opportunity to make a massive impact while growing with us.</p>
-<p><strong>What you'll do </strong><br><br>We are looking for an energetic team-focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
-<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
-<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka, Kubernetes, Temporal and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
-<p><strong>Desirable skills and knowledge</strong></p>
+<p><strong>Available Locations:</strong> Lisbon, Portugal&nbsp;</p>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles about 10% of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</span></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">We’re looking to grow our front-end product team with highly motivated individuals who are excited to work with product owners, designers, and systems engineers to build new and, in some cases, rebuild existing products and features. You should have experience working with large-scale JavaScript applications and a track record of building great products. You must care deeply not only about the quality of your and the team's code, but also the product functionality and user experience.&nbsp;</span></p>
+<p><span style="font-weight: 400;">We believe that great design is at the heart of any successful product. You will work closely with our design/UX team and must be comfortable seeking feedback from non-technical sources. We work iteratively and deploy often (can be several times a day). We build and maintain the Cloudflare Dashboard, a large TypeScript / React application, maintain a suite of common components published on npm, and build/package with Webpack. Other technologies we use include Redux, Fela, GraphQL, Apollo, Jest, Enzyme, Cypress, D3 and more.&nbsp;</span></p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>BS+ in Computer Science or equivalent experience</li>
-	<li>7+ years professional experience as a developer/engineer</li>
-	<li>Knowledge of Golang or desire to learn it</li>
-	<li>Solid understanding of RESTful APIs and service security</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Experience with modern Unix/Linux development and runtime environment</li>
-	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
-	<li>Familiarity with event driven architecture</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum of 2 years experience building product</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of HTML, CSS, and TypeScript</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of React.js</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with JS frameworks and writing reusable/modular code</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of building great interfaces and being detail oriented</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work in cross-functional teams</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentoring other team members to help bring out their best work</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness to dive deep and understand product internals</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent debugging skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Unit/integration testing experience</span></li>
 </ul>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity building products with design systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working alongside user researchers to build products</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in interviewing engineering candidates</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">History of building products in complex systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of the networking stack (such as DNS, firewalls, etc.)</span></li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

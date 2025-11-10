@@ -5,26 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Lisbon, Portugal&nbsp;</strong></p>
-<p><strong>What you’ll do</strong></p>
-<p>In this role you’ll help us build Access, a Zero Trust platform that secures self-hosted and SaaS applications by aggregating sources of user identity and trust, and enforcing rules on every request or login. As an engineer on the Access team, you will focus on our high-performance global edge network services that build those identities and enforce those rules. You will also contribute to the control plane API’s that configure those edge services. You will be joining a global team of bright, hard-working, and supportive engineers who really care about their craft.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the role</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
+<p>The Internal Audit Data Science &amp; Analytics Lead will be a critical role in building our global data analytics, automation and continuous auditing strategy and program.&nbsp; Reporting directly to our Chief Audit Executive, this leader will identify and implement advanced audit capabilities using data, programming and other available toolsets.&nbsp; This role will be highly collaborative with leaders both within Internal Audit and across the business to develop and deliver data-driven audit and risk management solutions.&nbsp; This leader will have the energy and intellectual curiosity to continue to deepen technical capabilities and broaden subject matter expertise, asserting their mission in delivering data-driven, advance audit capabilities to the core of our team across all areas of audit, compliance and risk management.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Access core edge services are written in Typescript and Rust and are deployed globally to 200+ data centers&nbsp;</li>
-	<li>Our REST API is written in Go, runs on Kubernetes, and uses Postgres as a data store.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
-	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
+	<li>Applying a data-driven mindset, continue the build of our Internal Audit Data Solutions program that will deliver advanced audit capabilities including automation, continuous auditing and data analytics&nbsp;</li>
+	<li>Develop and implement AI-driven solutions using available tools, supporting our audit teams and audit operations</li>
+	<li>As a data champion, will elevate awareness within the IA team on the appropriate and possible uses of data in performing our assurance and advisory work</li>
+	<li>Lead and oversee data analytics initiatives within Internal Audit, leveraging advanced analytical techniques to enhance audit procedures and identify risks</li>
+	<li>Design and execute on data-driven testing of key controls throughout in-scope processes, systems and programs, elevating levels of assurance and coverage</li>
+	<li>Build&nbsp; relationships with key data leaders and owners, enabling timely access to data necessary to perform audit and risk project work</li>
+	<li>Leverage existing data points and structures to provide a more quantitative measure to key control and risk considerations and conclusions</li>
+	<li>Develop our continuous auditing program and architect solutions that can deliver control and business insight on a more real-time basis, driving action for improvement in targeted areas</li>
+	<li>Drive automation across audit, SOX and risk projects, unlocking efficiencies in our testing&nbsp;</li>
+	<li>Evaluate and recommend data tools, technologies and methodologies to enhance our audit capabilities and stay abreast of industry trends</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Programming experience in Go and Typescript/Javascript.&nbsp;</li>
-	<li>Basic understanding of software security and encryption</li>
-	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li>6 + years of experience in applying data analytics techniques (i.e. including automation, data-driven control testing) and the use of AI within internal audit and enterprise risk projects</li>
+	<li>Bachelor’s Degree or equivalent in Computer Science, Data Science, or Management Information Systems&nbsp;</li>
+	<li>Proven track record in delivering audit solutions through application of data analytics, scripting and programming skills (Python, R, SQL) as well as any relevant tools</li>
+	<li>Appropriate certifications/trainings relevant to Internal Audit (i.e. CPA, CISA, CIA, CISSP) and/or data tools (i.e. AWS Certified Data Analyst, Google Cloud Certified, etc.)&nbsp;</li>
+	<li>Strong experience in working through the full data analytics lifecycle from data acquisition to cleansing to scripting/programming to analysis to reporting</li>
+	<li>Experience in working with visualization tools (i.e. Tableau) to aid in reporting and presenting observations at a thematic level to executives and program leaders</li>
+	<li>Experience in building continuous audit capabilities and dashboards that will provide reliable and timely performance metrics on focused control points at the right level of detail allowing for management actions and measurement</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

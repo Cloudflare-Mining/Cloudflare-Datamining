@@ -5,37 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About the Role (or What you'll do)</strong></p>
-<p>As a member of the Network Operating System (NetOS) team you will be a key technical contributor to a cutting-edge network software infrastructure which is used to drive layer2 and layer3 devices on Cloudflare's network. The NetOS team is responsible for enabling, supporting, and growing SONiC within our Production Network.&nbsp;</p>
-<p>You will participate in all stages of the development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, building, managing, and monitoring production deployments. Take ownership of code pieces and features, deep involvement in the system architecture in which the features are implemented.&nbsp;</p>
-<p>Continuous Integration, Continuous Delivery, Observability, System Debuggability Tooling, and System Health Checks are fundamental to our approach to building a healthy and stable product.&nbsp;</p>
-<p>In this role you will work with a wide range of technologies and programming languages, including Go, Python, C++, Prometheus exporters, Redis, gNMI framework, and more. Helping to build, improve, and maintain a robust management interface/framework that operators will automate against. Also provide technical support to Network Engineers, directly in debugging and resolving network operating system issues.</p>
-<p>In addition to helping to maintain our Go based telemetry and management interface infrastructure, this role will help maintain the best security practices across the Network Organization. All aspects of security within the Networking field; from hardware to software to vulnerability analysis and remediation. Including NOS hardening and anomaly detection. We are looking for a security focused SRE/Engineer, with Go development skills.</p>
-<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p>Also, you will help build, integrate, maintain, and upstream, new SONiC features and bug fixes. Create and improve documentation, specifications, and SONiC high level design documents (HLD). In addition, work with hardware vendors and internal teams to integrate new platforms into SONiC.</p>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>Location: </strong>Lisbon, Portugal</p>
+<p><strong>Contract Type</strong></p>
+<p><strong><span style="text-decoration: underline;">This role is offered as a Fixed-Term Contract for one year</span></strong>.&nbsp;</p>
+<p><strong>Role:</strong></p>
+<p>We are looking for a dynamic and results-driven Capacity Planning Engineer to join our Infrastructure Capacity Engineering team.</p>
+<p>In this role, you will be responsible for aligning Cloudflare’s supply planning strategy with infrastructure capacity needs. You will ensure the right amount of compute, networking, and storage resources are available at the right time and in the right locations to support Cloudflare’s global infrastructure expansion. This is an excellent opportunity to contribute to the scaling of Cloudflare's infrastructure and services.</p>
+<p>You will collaborate cross-functionally with teams from Supply Chain, Network Engineering, Infrastructure Operations, Finance, and Procurement to drive operational excellence, reduce costs, and ensure that Cloudflare continues to deliver performance at scale.</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>BS/MS/PhD in Computer Science or equivalent experience</li>
-	<li>3 years of relevant System Engineering or SRE experience</li>
-	<li>Strong software development skills in Go, Python, and Rust||C||C++</li>
-	<li>Background in yang data modeling and gRPC/gNMI client/servers</li>
-	<li>Experience with SONiC, Cumulus, or Linux based open Network Operating Systems</li>
-	<li>Security tooling, Software Supply Chain analysis, Linux Vulnerability Remediation</li>
-	<li>Solid Linux systems administration experience</li>
+	<li>Manage supply plans to keep inventory optimized, shorten lead times, and make sure suppliers can support Cloudflare's growth.</li>
+	<li>Handle capacity planning to ensure hardware is deployed efficiently, meeting performance, cost, and time goals.</li>
+	<li>Work with procurement to develop sourcing strategies that lower supply chain risks and align with our business goals and budget.</li>
+	<li>Team up with Infrastructure Operations and Data Center teams to speed up deployment timelines and ensure critical infrastructure is delivered on time.</li>
+	<li>Build and maintain models to predict infrastructure needs based on business growth and traffic trends.</li>
+	<li>Help scale the team's capabilities by bringing in new tools and methods to improve the planning and deployment process.</li>
+	<li>Identify and solve risks related to supply chain issues or capacity shortages to ensure continuous scaling.</li>
+	<li>Provide clear, data-based insights and recommendations to senior members and leadership to improve planning and resource use.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Deep knowledge of BGP and other routing protocols</li>
-	<li>Experience in back-porting patches in SONiC and/or FRR</li>
-	<li>Experience with extending SONiC, in particular SWSS components</li>
-	<li>Deep understanding of SAI API and Ethernet vendor’s SDK</li>
-	<li>Experience with the Linux kernel and Linux/Debian software packaging</li>
-	<li>Static and dynamic analysis tooling</li>
-	<li>SBOM tooling and analysis</li>
-	<li>Experience with Linux boot process (Secure Boot) and provisioning</li>
-	<li>Understanding of Server Architecture (interaction between a processor, memory, PCI Express bus, Operating System, and software applications)</li>
+	<li>2+ years of experience in supply planning, capacity planning, demand planning, or a related field.</li>
+	<li>Strong analytical skills with experience in supply planning, optimizing supply chains, and running scenario models in complex settings.</li>
+	<li>Proficiency in data tools like Excel and SQL, and experience with planning software (e.g., SAP, Oracle, or similar).</li>
+	<li>Excellent teamwork and communication skills to work effectively with teams across different departments and global locations.</li>
+	<li>Ability to thrive in a fast-paced environment, manage multiple tasks, and constantly look for ways to improve processes.</li>
+	<li>Clear written and verbal communication skills to explain complex ideas simply to all levels of the organization.</li>
 </ul>
+<p><br><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

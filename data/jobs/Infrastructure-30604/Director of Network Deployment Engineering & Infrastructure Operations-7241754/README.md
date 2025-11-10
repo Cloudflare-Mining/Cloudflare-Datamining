@@ -5,37 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - Austin, Denver, Washington D.C., Seattle, Toronto&nbsp;</p>
-<h4><strong>Role Summary</strong></h4>
-<p>We are looking for an empathetic and technical Product Manager to own our <a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/">Remote Browser Isolation solution</a>. Working alongside sales, engineering, and other PM peers, you’ll grow a critical part of our SASE business, powering both SSE and Email Security pieces.</p>
-<h4><strong>Role Responsibilities</strong></h4>
-<p>You’ll truly be acting as the CEO of your product owning the Browser Isolation business inside Cloudflare One. Acting as the “CEO of the Product”, you’ll be responsible for ensuring success of the product end to end. This includes working alongside sales, support, design, engineering, solution engineering, technical writers, and all pieces of the sales cycle.&nbsp;</p>
-<p>We operate with small teams of highly motivated, technical, and experienced engineers. The ideal candidate will have experience working on Chromium based browsers, and a strong understanding of how the web works.&nbsp;</p>
-<p>Some of your responsibilities will include:</p>
+<p><strong>Available Locations: Austin TX, Atlanta GA, New York City, Denver CO, Seattle WA, Washington DC</strong></p>
+<h4><strong>About the role</strong></h4>
+<p>We are seeking an Engineering Director to lead a team of engineers within our network and data center infrastructure operations. This leadership role is part of the Infrastructure Operations organization, which is responsible for building, scaling, and running one of the world's largest and most important cloud networks. Cloudflare’s global network spans more than 330 cities, and is a key strategic asset that supports all of our customers and products. As a leader on this team, you will play a crucial role in ensuring the performance, availability, and security of our infrastructure.</p>
+<p>We operate in a fast-paced environment where you will be expected to drive both project delivery and operational excellence through continuous improvement, standardization, and optimization. This isn't just about day to day operations; it's about building a scalable, performant, secure, and resilient infrastructure that plays a critical role in us building a better Internet.</p>
+<p><strong>Who you are</strong></p>
+<p>You are an experienced engineering leader with a passion for building high-performing teams and a track record of driving operational excellence. You will set strategy, establish priorities, and mentor a group of top technical talent. This role is for a hands-on leader who can rapidly learn, adapt, and apply learnings to enable fast and sustainable growth. You thrive in a hyper-growth environment and have an outstanding ability to get things done under pressure while leading with optimism and grit.</p>
+<p>You have a proven track record of scaling teams, driving change, and being a well-respected technical leader and people manager. You are not just a manager, but a mentor who can grow and empower your team to ensure an energized, motivating, and inclusive work environment.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Write requirements documents and work with engineering and design to build, ship, and support enterprise class software</li>
-	<li>Join pre-sales and post-sales calls with customers, sales, support, etc., to assist with, and help understand all phases of the customer lifecycle</li>
-	<li>Support a global engineering, sales, support, customers and partners with a flexible schedule (expect normal North America working hours with occasional calls to support APJC and Europe)</li>
-	<li>Work in a fast paced, dynamic and interrupt driven environment</li>
+	<li>Lead a passionate team of network engineers, data center engineers, and SREs who are at the core of our global infrastructure.</li>
+	<li>Own the successful deployment of CAPEX investments, ensuring our infrastructure scales ahead of demand.</li>
+	<li>Collaborate strategically with cross-functional partners including Project Managers, Finance, and Security to deliver on ambitious group initiatives.</li>
+	<li>Ensure optimal team staffing by aligning the right talent with the right projects.</li>
+	<li>Manage key third-party vendors and contractors, holding them accountable for performance and service level agreements (SLAs).</li>
+	<li>Define, implement, and analyze operational KPIs and metrics to measure and improve our operational health and performance.</li>
+	<li>Drive a culture of continuous improvement by championing standardization, optimization, and automation.</li>
+	<li>Own incident response, root cause analysis (RCA), and executive-level communication during critical events.</li>
+	<li>Foster a best-in-class operations team by bringing fresh perspectives, leadership acumen, and a focus on employee engagement.</li>
+	<li>Influence infrastructure architecture and design by providing operational feedback to engineering and product teams.</li>
 </ul>
-<h4><strong>Role Requirements (Must-Have Skills)</strong></h4>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>2-5 years working as a product/program manager shipping software related to browsers or complex web applications</li>
-	<li>Experience working alongside engineering, design, and other parts of a traditional SaaS business to ship products to customers</li>
-	<li>Technical depth with DNS, Web technologies, building complex web applications</li>
-	<li>Excellent customer facing skills (empathy, problem solving, clear and succinct communicator)</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Familiarity with existing Browser Isolation based solutions</li>
-	<li>Experience with building, supporting, or deploying SASE or SSE solutions</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado-based hires: Estimated annual salary of $140<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span> - $172<span data-sheets-root="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:226000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">,000</span></li>
-	<li>For Washington DC-based hires: Estimated annual salary of $158,000-$193,000</li>
+	<li>Minimum of 8+ years of operational management and team leadership experience in a global data center and network infrastructure environment, preferably at a hyperscale or cloud company.</li>
+	<li>Deep technical foundation in network engineering (Layers 1-3), data center architecture, and infrastructure automation.</li>
+	<li>Proven expertise in deploying time-sensitive and CAPEX-intensive infrastructure projects, including power planning, rack design, and structured cabling.</li>
+	<li>Exceptional ability to plan, forecast, measure, and execute to meet ambitious goals.</li>
+	<li>Outstanding verbal, written communication, and presentation skills.</li>
+	<li>Demonstrated ability to attract, hire, coach, and retain top engineering talent in a highly competitive market.</li>
+	<li>Experience navigating ambiguous and rapidly changing environments with a bias for action and a high degree of autonomy.</li>
+	<li>A master at building strong relationships and influencing outcomes across a wide range of cross-functional stakeholders, including non-technical teams and executives.</li>
+	<li>Extensive experience with on-call rotations, incident management, RCA, and post-mortem analysis.</li>
+	<li>A reputation as a trusted, respected, and high-judgment leader known for fairness, empathy, and high ethical standards.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Austin, TX; Lisbon, Portugal or London, UK</strong></h4>
+<h4><strong>Available Locations: Lisbon, Portugal or London, UK</strong></h4>
 <h4><strong>About the department</strong></h4>
 <p>Cloudflare’s Billing Engineering Team is at the heart of every product launch, campaign, and initiative that Cloudflare undertakes. We build and maintain critical systems for billing, payments, usage metering, aggregation, invoicing and revenue recognition — powering billions in revenue and serving millions of customers.</p>
 <p>Currently we're rebuilding our entire billing platform, designing a metering and aggregation layer that scales effortlessly while ensuring financial accuracy. This is high-impact, high-stakes work that touches all Cloudflare’s cutting-edge products like AI, Zero Trust, Edge Compute, Bot Management, DDoS Protection, etc.</p>
