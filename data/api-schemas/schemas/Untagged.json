@@ -722,6 +722,14 @@
 					}
 				]
 			}
+		},
+		{
+			"description": "Ensures that the configuration is written or retrieved in normalized fashion",
+			"in": "query",
+			"name": "normalize",
+			"schema": {
+				"type": "boolean"
+			}
 		}
 	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/discovery": [
