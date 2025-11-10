@@ -502,8 +502,10 @@
 										"result": {
 											"properties": {
 												"auto_refresh_seconds": {
+													"default": 86400,
 													"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 													"example": 86400,
+													"minimum": 300,
 													"type": "number",
 													"x-auditable": true
 												},
@@ -670,8 +672,10 @@
 												"result": {
 													"properties": {
 														"auto_refresh_seconds": {
+															"default": 86400,
 															"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 															"example": 86400,
+															"minimum": 300,
 															"type": "number",
 															"x-auditable": true
 														},
@@ -1276,8 +1280,10 @@
 					"schema": {
 						"properties": {
 							"auto_refresh_seconds": {
+								"default": 86400,
 								"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 								"example": 86400,
+								"minimum": 300,
 								"type": "number",
 								"x-auditable": true
 							},
@@ -1419,8 +1425,10 @@
 										"result": {
 											"properties": {
 												"auto_refresh_seconds": {
+													"default": 86400,
 													"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 													"example": 86400,
+													"minimum": 300,
 													"type": "number",
 													"x-auditable": true
 												},
@@ -1587,8 +1595,10 @@
 												"result": {
 													"properties": {
 														"auto_refresh_seconds": {
+															"default": 86400,
 															"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 															"example": 86400,
+															"minimum": 300,
 															"type": "number",
 															"x-auditable": true
 														},
@@ -1812,8 +1822,10 @@
 					"schema": {
 						"properties": {
 							"auto_refresh_seconds": {
+								"default": 86400,
 								"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 								"example": 86400,
+								"minimum": 300,
 								"type": "number",
 								"x-auditable": true
 							},
@@ -1955,8 +1967,10 @@
 										"result": {
 											"properties": {
 												"auto_refresh_seconds": {
+													"default": 86400,
 													"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 													"example": 86400,
+													"minimum": 300,
 													"type": "number",
 													"x-auditable": true
 												},
@@ -2123,8 +2137,10 @@
 												"result": {
 													"properties": {
 														"auto_refresh_seconds": {
+															"default": 86400,
 															"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones.",
 															"example": 86400,
+															"minimum": 300,
 															"type": "number",
 															"x-auditable": true
 														},
