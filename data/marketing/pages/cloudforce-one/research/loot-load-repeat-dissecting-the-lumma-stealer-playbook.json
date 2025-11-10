@@ -160,19 +160,57 @@
 								"showIconOnly": false,
 								"hideOnChinaSite": false,
 								"overrideTheSalesPhoneNumber": false,
-								"navigationItems": [],
-								"mainLink": {
-									"contentTypeId": "elementNavLink",
-									"contentfulId": "6G4J0HINADEqdCJQPToyIK",
-									"locale": "en-US",
-									"title": "Services",
-									"description": null,
-									"url": "/cloudforce-one/services/threat-intelligence/",
-									"badges": null,
-									"specialLinkType": null,
-									"openInNewWindow": false,
-									"isExternalUrl": null
-								},
+								"navigationItems": [
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "35wlWuzNnfTxqJTvzorDwh",
+										"locale": "en-US",
+										"name": "Threat Intelligence",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "2B5zb7spo63Dfz421kxv1i",
+											"locale": "en-US",
+											"title": "Threat Intelligence",
+											"description": null,
+											"url": "/cloudforce-one/services/threat-intelligence/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "5t47TYqegBvD7FEp3EakPc",
+										"locale": "en-US",
+										"name": "Incident response and security advisory",
+										"description": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "5I38Ihnyb20inFzzdVVQ4N",
+											"locale": "en-US",
+											"title": "Incident response and security advisory",
+											"description": null,
+											"url": "/cloudforce-one/services/incident-response/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										"navigationLinks": [],
+										"navIcon": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": []
+									}
+								],
+								"mainLink": null,
 								"navigationLinks": []
 							}
 						]
