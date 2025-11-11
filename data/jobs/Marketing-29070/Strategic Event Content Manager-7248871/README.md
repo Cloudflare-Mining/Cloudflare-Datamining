@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: Austin</strong></p>
 <p><strong>Position Overview:</strong></p>
-<p>We are seeking a dynamic and experienced Strategic Event Content Manager to join our team. This individual will be responsible for managing and executing content strategies for a variety of high-profile events, including conferences, SKO, and partner events The ideal candidate will excel at project management, content creation, and cross-functional collaboration, ensuring that our events effectively communicate our brand message and drive engagement.</p>
+<p>We are seeking a dynamic and experienced Strategic Event Content Manager to join our team. This individual will be responsible for managing and executing content strategies for a variety of high-profile events, including conferences, and partner events The ideal candidate will excel at project management, content creation, and cross-functional collaboration, ensuring that our events effectively communicate our brand message and drive engagement.</p>
 <p><strong>Key Responsibilities:</strong></p>
 <ul>
 	<li>Develop and execute comprehensive content strategies for various events, ensuring alignment with overall marketing and business objectives.</li>
