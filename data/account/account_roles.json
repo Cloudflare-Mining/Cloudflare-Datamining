@@ -102,6 +102,51 @@
 		}
 	},
 	{
+		"id": "98a33bce907b575c9607725ec26ef20a",
+		"name": "Workers Editor",
+		"description": "Can use the workers editor.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "12fe3514ee0d7eeff51139ea4a91c612",
+		"name": "Connectivity Directory Bind",
+		"description": "Can read, list, and bind to Connectivity Directory services, as well as read and list Cloudflare Tunnels",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "bd1b70f416289b65c90d1aa91ac732e6",
+		"name": "Connectivity Directory Read",
+		"description": "Can view Connectivity Directory services and Cloudflare Tunnels",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "8e117fdd57cd531947dbdcfd82f7a1a1",
 		"name": "Email Security Policy Admin",
 		"description": "Write access to Email Security policies",
