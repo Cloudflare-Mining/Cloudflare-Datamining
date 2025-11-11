@@ -118,6 +118,21 @@
 	},
 	{
 		"id": "12fe3514ee0d7eeff51139ea4a91c612",
+		"name": "Connectivity Directory Admin",
+		"description": "Can view, edit, create, and delete Connectivity Directory Services, including the ability to create Services that bind to Cloudflare Tunnel",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "5adcc50087e86ef14cf4c4f8cb191726",
 		"name": "Connectivity Directory Bind",
 		"description": "Can read, list, and bind to Connectivity Directory services, as well as read and list Cloudflare Tunnels",
 		"permissions": {
