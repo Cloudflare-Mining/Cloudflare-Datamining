@@ -593,28 +593,28 @@
 																"description": "Resource Version.",
 																"type": "integer",
 																"x-auditable": true
+															},
+															"terminal": {
+																"description": "Whether the error is terminal or will be continually retried.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"required": [
 															"error",
+															"terminal",
 															"resource_id",
 															"resource_version"
 														]
 													},
 													"type": "array"
-												},
-												"status_message": {
-													"description": "Share Recipient status message.",
-													"example": "Cannot share to account that owns the resource",
-													"type": "string",
-													"x-auditable": true
 												}
 											},
 											"required": [
 												"id",
 												"account_id",
 												"association_status",
-												"status_message",
 												"created",
 												"modified"
 											]
@@ -2390,28 +2390,28 @@
 																	"description": "Resource Version.",
 																	"type": "integer",
 																	"x-auditable": true
+																},
+																"terminal": {
+																	"description": "Whether the error is terminal or will be continually retried.",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"required": [
 																"error",
+																"terminal",
 																"resource_id",
 																"resource_version"
 															]
 														},
 														"type": "array"
-													},
-													"status_message": {
-														"description": "Share Recipient status message.",
-														"example": "Cannot share to account that owns the resource",
-														"type": "string",
-														"x-auditable": true
 													}
 												},
 												"required": [
 													"id",
 													"account_id",
 													"association_status",
-													"status_message",
 													"created",
 													"modified"
 												]
@@ -2743,28 +2743,28 @@
 																"description": "Resource Version.",
 																"type": "integer",
 																"x-auditable": true
+															},
+															"terminal": {
+																"description": "Whether the error is terminal or will be continually retried.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"required": [
 															"error",
+															"terminal",
 															"resource_id",
 															"resource_version"
 														]
 													},
 													"type": "array"
-												},
-												"status_message": {
-													"description": "Share Recipient status message.",
-													"example": "Cannot share to account that owns the resource",
-													"type": "string",
-													"x-auditable": true
 												}
 											},
 											"required": [
 												"id",
 												"account_id",
 												"association_status",
-												"status_message",
 												"created",
 												"modified"
 											]
@@ -4958,28 +4958,28 @@
 																"description": "Resource Version.",
 																"type": "integer",
 																"x-auditable": true
+															},
+															"terminal": {
+																"description": "Whether the error is terminal or will be continually retried.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
 															}
 														},
 														"required": [
 															"error",
+															"terminal",
 															"resource_id",
 															"resource_version"
 														]
 													},
 													"type": "array"
-												},
-												"status_message": {
-													"description": "Share Recipient status message.",
-													"example": "Cannot share to account that owns the resource",
-													"type": "string",
-													"x-auditable": true
 												}
 											},
 											"required": [
 												"id",
 												"account_id",
 												"association_status",
-												"status_message",
 												"created",
 												"modified"
 											]
