@@ -80,5 +80,87 @@
 			"free": true,
 			"pro": true
 		}
+	},
+	"GET /accounts/{account_id}/ai/run/@cf/pipecat-ai/smart-turn-v3": {
+		"operationId": "workers-ai-post-websocket-run-cf-pipecat-ai-smart-turn-v3",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"101": {
+				"description": "Returns a websocket connection"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Open Websocket connection with @cf/pipecat-ai/smart-turn-v3 model.",
+		"tags": [
+			"Workers AI Dumb Pipe"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
 	}
 }
