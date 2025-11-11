@@ -3,6 +3,7 @@
 		"operationId": "autorag-config-files",
 		"parameters": [
 			{
+				"description": "rag id",
 				"in": "path",
 				"name": "id",
 				"required": true,
@@ -246,6 +247,7 @@
 		"operationId": "autorag-config-sync",
 		"parameters": [
 			{
+				"description": "rag id",
 				"in": "path",
 				"name": "id",
 				"required": true,

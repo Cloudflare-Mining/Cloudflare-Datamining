@@ -3,6 +3,7 @@
 		"operationId": "autorag-config-list-jobs",
 		"parameters": [
 			{
+				"description": "rag id",
 				"in": "path",
 				"name": "id",
 				"required": true,
@@ -240,6 +241,7 @@
 		"operationId": "autorag-config-get-job",
 		"parameters": [
 			{
+				"description": "rag id",
 				"in": "path",
 				"name": "id",
 				"required": true,
@@ -439,6 +441,7 @@
 		"operationId": "autorag-config-list-job-logs",
 		"parameters": [
 			{
+				"description": "rag id",
 				"in": "path",
 				"name": "id",
 				"required": true,

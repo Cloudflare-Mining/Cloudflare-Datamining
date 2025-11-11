@@ -3,6 +3,7 @@
 		"operationId": "autorag-config-ai-search",
 		"parameters": [
 			{
+				"description": "rag id",
 				"in": "path",
 				"name": "id",
 				"required": true,
@@ -137,7 +138,6 @@
 								"anyOf": [
 									{
 										"enum": [
-											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
 											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fp8",
@@ -395,6 +395,7 @@
 		"operationId": "autorag-config-search",
 		"parameters": [
 			{
+				"description": "rag id",
 				"in": "path",
 				"name": "id",
 				"required": true,
