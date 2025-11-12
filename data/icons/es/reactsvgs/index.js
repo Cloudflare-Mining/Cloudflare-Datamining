@@ -11,6 +11,8 @@ import AppleOutline from './AppleOutline';
 import Applications from './Applications';
 import ArrowDown from './ArrowDown';
 import ArrowExternalLink from './ArrowExternalLink';
+import AttentionOutline from './AttentionOutline';
+import AttentionSolid from './AttentionSolid';
 import AutoRagOutline from './AutoRagOutline';
 import Backward from './Backward';
 import BoltSolid from './BoltSolid';
@@ -107,8 +109,6 @@ import Hyperdrive from './Hyperdrive';
 import Image from './Image';
 import Inbox from './Inbox';
 import InfoSign from './InfoSign';
-import InnovationThinkingOutline from './InnovationThinkingOutline';
-import InnovationThinkingSolid from './InnovationThinkingSolid';
 import InternetBrowser from './InternetBrowser';
 import Key from './Key';
 import Leaf from './Leaf';
@@ -154,8 +154,6 @@ import Plus from './Plus';
 import PodcastMicrophoneOutline from './PodcastMicrophoneOutline';
 import PodcastMicrophoneSolid from './PodcastMicrophoneSolid';
 import PreemptiveOutline from './PreemptiveOutline';
-import PriceOutline from './PriceOutline';
-import PriceSolid from './PriceSolid';
 import Printer from './Printer';
 import Processing from './Processing';
 import ProductSecurityCenter from './ProductSecurityCenter';
@@ -169,8 +167,6 @@ import Refresh from './Refresh';
 import RegistrarLogo from './RegistrarLogo';
 import ReliabilityDns from './ReliabilityDns';
 import ReliabilityLoadBalancer from './ReliabilityLoadBalancer';
-import ReliabilityTimerOutline from './ReliabilityTimerOutline';
-import ReliabilityTimerSolid from './ReliabilityTimerSolid';
 import Remove from './Remove';
 import Reorder from './Reorder';
 import ReplatformOutline from './ReplatformOutline';
@@ -183,7 +179,6 @@ import Router from './Router';
 import Script from './Script';
 import Search from './Search';
 import SecurityBots from './SecurityBots';
-import SecurityFingerprint from './SecurityFingerprint';
 import SecurityWafSolid from './SecurityWafSolid';
 import SecurityWaf from './SecurityWaf';
 import ServerOrigin from './ServerOrigin';
@@ -242,6 +237,13 @@ import Zaraz from './Zaraz';
 import ZeroTrustRiskScoring from './ZeroTrustRiskScoring';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
+import InnovationThinkingOutline from './InnovationThinkingOutline';
+import InnovationThinkingSolid from './InnovationThinkingSolid';
+import PriceOutline from './PriceOutline';
+import PriceSolid from './PriceSolid';
+import ReliabilityTimerOutline from './ReliabilityTimerOutline';
+import ReliabilityTimerSolid from './ReliabilityTimerSolid';
+import SecurityFingerprint from './SecurityFingerprint';
 export default {
   dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
@@ -256,6 +258,8 @@ export default {
   applications: Applications,
   'arrow-down': ArrowDown,
   'arrow-external-link': ArrowExternalLink,
+  'attention-outline': AttentionOutline,
+  'attention-solid': AttentionSolid,
   'auto-rag-outline': AutoRagOutline,
   backward: Backward,
   'bolt-solid': BoltSolid,

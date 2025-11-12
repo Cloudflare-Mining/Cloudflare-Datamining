@@ -13,6 +13,8 @@ declare const _default: {
     applications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'arrow-down': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'arrow-external-link': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'attention-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'attention-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'auto-rag-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     backward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'bolt-solid': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
