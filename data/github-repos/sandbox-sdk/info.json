@@ -10,23 +10,27 @@
 	"homepage": "",
 	"archived": false,
 	"disabled": false,
-	"license": null,
+	"license": {
+		"key": "other",
+		"name": "Other",
+		"spdx_id": "NOASSERTION",
+		"url": null,
+		"node_id": "MDc6TGljZW5zZTA="
+	},
 	"allow_forking": true,
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
 		"add-keep-alive-to-DO-memory",
 		"changeset-release/main",
-		"claude/issue-139-20251023-1438",
 		"feat/bucket-mounting",
 		"feat/bucket-mounting-test-script",
 		"fix-env-vars",
 		"fix-extract-url-token",
 		"fix-types",
-		"go-wasm-compiler-example",
-		"hidden-files-fix",
 		"main",
 		"refactor-with-tests",
+		"typescript-validator-example",
 		"v03"
 	]
 }
