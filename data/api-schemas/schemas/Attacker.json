@@ -13,11 +13,11 @@
 				}
 			},
 			{
-				"description": "Array of dataset IDs to query attackers from. If not provided, returns all attackers from Event DO tables.",
+				"description": "Array of dataset IDs to query attackers from. If not provided, uses the default dataset.",
 				"in": "query",
 				"name": "datasetIds",
 				"schema": {
-					"description": "Array of dataset IDs to query attackers from. If not provided, returns all attackers from Event DO tables.",
+					"description": "Array of dataset IDs to query attackers from. If not provided, uses the default dataset.",
 					"items": {
 						"type": "string"
 					},
