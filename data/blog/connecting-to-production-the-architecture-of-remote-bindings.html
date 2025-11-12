@@ -1,0 +1,106 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7k95HiCzbJnpoKpclcERPx/20286896d457bbbbcb23b6a46ca8405c/image4.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Remote bindings are bindings that connect to a deployed resource on your Cloudflare account <i>instead </i>of a locally simulated resource – and recently, we announced that <a href="https://blog.cloudflare.com/cloudflare-developer-platform-keeps-getting-better-faster-and-more-powerful/#connect-to-production-services-and-resources-from-local-development-with-remote-bindings-now-ga"><u>remote bindings are now generally available</u></a>.&nbsp;</p>
+	<p>With this launch, you can now connect to deployed resources like <a href="https://developers.cloudflare.com/r2"><u>R2 buckets</u></a> and <a href="https://developers.cloudflare.com/d1"><u>D1 databases</u></a> while running Worker code on your local machine. This means you can test your local code changes against real data and services, without the overhead of deploying for each iteration.&nbsp;</p>
+	<p>In this blog post, we’ll dig into the technical details of how we built it, creating a seamless local development experience.</p>
+	<div class="flex anchor relative">
+		<h3 id="developing-on-the-workers-platform">Developing on the Workers platform</h3>
+		<a href="https://blog.cloudflare.com/#developing-on-the-workers-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A key part of the <a href="https://www.cloudflare.com/developer-platform/products/workers"><u>Cloudflare Workers platform</u></a> has been the ability to develop your code locally without having to deploy it every time you wanted to test something – though the way we’ve supported this has changed greatly over the years.&nbsp;</p>
+	<p>We started with <code>wrangler</code> dev running in remote mode. This works by deploying and connecting to a preview version of your Worker that runs on Cloudflare’s network every time you make a change to your code, allowing you to test things out as you develop. However, remote mode isn’t perfect — it’s complex and hard to maintain. And the developer experience leaves a lot to be desired: slow iteration speed, unstable debugging connections, and lack of support for multi-worker scenarios.&nbsp;</p>
+	<p>Those issues and others motivated a significant investment in a fully local development environment for Workers, which was released in mid-2023 and became the <a href="https://blog.cloudflare.com/wrangler3"><u>default experience for wrangler dev</u></a>. Since then, we've put a huge amount of work into the local dev experience with <a href="https://developers.cloudflare.com/workers/wrangler"><u>Wrangler</u></a>, the <a href="https://developers.cloudflare.com/workers/vite-plugin"><u>Cloudflare Vite plugin</u></a> (alongside <a href="https://developers.cloudflare.com/workers/testing/vitest-integration"><u>@cloudflare/vitest-pool-workers</u></a>) &amp; <a href="https://developers.cloudflare.com/workers/testing/miniflare"><u>Miniflare</u></a>.</p>
+	<p>Still, the original remote mode remained accessible via a flag: <code>wrangler dev --remote</code>. When using remote mode, all the DX benefits of a fully local experience and the improvements we’ve made over the last few years are bypassed. So why do people still use it? It enables one key unique feature: binding to remote resources while locally developing. When you use local mode to develop a Worker locally, all of your <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>bindings</u></a> are simulated locally using local (initially empty) data. This is fantastic for iterating on your app’s logic with test data – but sometimes that’s not enough, whether you want to share resources across your team, reproduce bugs tied to real data, or just be confident that your app will work in production with real resources.</p>
+	<p>Given this, we saw an opportunity: If we could bring the best parts of remote mode (i.e. access to remote resources) to <code>wrangler dev</code>, there’d be one single flow for developing Workers that would enable many use cases, while not locking people out of the advancements we’ve made to local development. And that’s what we did!&nbsp;</p>
+	<p>As of Wrangler v4.37.0 you can pick on a per-binding basis whether a binding should use remote or local resources, simply by specifying the <code>remote</code> option. It’s important to re-emphasise this—you only need to add <code>remote: true!</code> There’s no complex management of API keys and credentials involved, it all just works using Wrangler’s existing Oauth connection to the Cloudflare API.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">{
+  "name": "my-worker",
+  "compatibility_date": "2025-01-01",
+  "kv_namespaces": [{
+    "binding": "KV",
+    "id": "my-kv-id",
+  },{
+    "binding": "KV_2",
+    "id": "other-kv-id",
+    "remote": true
+  }],
+  "r2_buckets": [{
+    "bucket_name": "my-r2-name",
+    "binding": "R2"
+  }]
+}</code></pre>
+	<p>The eagle-eyed among you might have realised that some bindings already worked like this, accessing remote resources from local dev. Most prominently, the <a href="https://developers.cloudflare.com/workers-ai/configuration/bindings"><u>AI binding</u></a> was a trailblazer for what a general remote bindings solution could look like. From its introduction, the AI binding always connected to a remote resource, since a true local experience that supports all the different models you can use with Workers AI would be impractical and require a huge upfront download of AI models.&nbsp;</p>
+	<p>As we realised different products within Workers needed something similar to remote bindings (Images and Hyperdrive, for instance), we ended up with a bit of a patchwork of different solutions. We’ve now unified under a single remote bindings solution that works for all binding types.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-we-built-it">How we built it</h3>
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We wanted to make it really easy for developers to access remote resources without having to change their production Workers code, and so we landed on a solution that required us to fetch data from the remote resource at the point of use in your Worker.</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const value = await env.KV.get("some-key")</code></pre>
+	<p><sup><i>The above code snippet shows accessing the “some-key” value in the env.KV </i></sup><a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs"><sup><i><u>KV namespace</u></i></sup></a><sup><i>, which is not available locally and needs to be fetched over the network.</i></sup></p>
+	<p>So if that was our requirement, how would we get there? For instance, how would we get from a user calling <code>env.KV.put(“key”, “value”)</code> in their Worker to actually storing that in a remote KV store? The obvious solution was perhaps to use the <a href="https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/values/methods/update"><u>Cloudflare API</u></a>. We could have just replaced the entire env locally with stub objects that made API calls, transforming <code>env.KV.put()</code> into PUT <code>http:///accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}</code>.&nbsp;</p>
+	<p>This would’ve worked great for KV, R2, D1, and other bindings with mature HTTP APIs, but it would have been a pretty complex solution to implement and maintain. We would have had to replicate the entire bindings API surface and transform every possible operation on a binding to an equivalent API call. Additionally, some binding operations don’t have an equivalent API call, and wouldn’t be supportable using this strategy.</p>
+	<p>Instead, we realised that we already had a ready-made API waiting for us — the one we use in production!&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-bindings-work-under-the-hood-in-production">How bindings work under the hood in production</h3>
+		<a href="https://blog.cloudflare.com/#how-bindings-work-under-the-hood-in-production" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Most bindings on the Workers platform boil down to essentially a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings"><u>service binding</u></a>. A service binding is a link between two Workers that allows them to communicate over HTTP or <a href="https://blog.cloudflare.com/javascript-native-rpc"><u>JSRPC</u></a> (we’ll come back to JSRPC later).&nbsp;</p>
+	<p>For example, the KV binding is implemented as a service binding between your authored Worker and a platform Worker, speaking HTTP. The JS API for the KV binding is implemented in the Workers runtime, and translates calls like <code>env.KV.get()</code> to HTTP calls to the Worker that implements the KV service.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PwugWAyVPMq086BKt9cjh/cfea7dbb50b9b2983bd21fcb7b80334d/image2.png" alt="" class="kg-image" width="927" height="388" loading="lazy">
+	</figure>
+	<p><i><sup>Diagram showing a simplified model of how a KV binding works in production</sup></i></p>
+	<p>You may notice that there’s a natural async network boundary here — between the runtime translating the <code>env.KV.get()</code> call and the Worker that implements the KV service. We realised that we could use that natural network boundary to implement remote bindings. Instead of the <i>production</i> runtime translating <code>env.KV.get()</code> to an HTTP call, we could have the <i>local</i> runtime (<a href="https://github.com/cloudflare/workerd"><u>workerd</u></a>) translate <code>env.KV.get()</code> to an HTTP call, and then send it directly to the KV service, bypassing the production runtime. And so that’s what we did!</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7JNPZ2MM5IZ4TSXfN0qywV/804b7997d115405bc3f4d335cb21e626/image3.png" alt="" class="kg-image" width="974" height="402" loading="lazy">
+	</figure>
+	<p><sup><i>Diagram showing a locally run worker with a single KV binding, with a single remote proxy client that communicates to the remote proxy server, which in turn communicates with the remote KV</i></sup></p>
+	<p>The above diagram shows a local Worker running with a remote KV binding. Instead of being handled by the local KV simulation, it’s now being handled by a remote proxy client. This Worker then communicates with a remote proxy server connected to the real remote KV resource, ultimately allowing the local Worker to communicate with the remote KV data seamlessly.</p>
+	<p>Each binding can independently either be handled by a remote proxy client (all connected to the same remote proxy server) or by a local simulation, allowing for very dynamic workflows where some bindings are locally simulated while others connect to the real remote resource, as illustrated in the example below:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6yUYvFjpxGv7GcC12l7zr1/a7d46f33869448e1f3f13540d741ff40/image1.png" alt="" class="kg-image" width="707" height="360" loading="lazy">
+	</figure>
+	<p><sup><i>The above diagram and config shows a Worker (running on your computer) bound to 3 different resources—two local (KV &amp; R2), and one remote (KV_2)</i></sup></p>
+	<div class="flex anchor relative">
+		<h3 id="how-jsrpc-fits-in">How JSRPC fits in</h3>
+		<a href="https://blog.cloudflare.com/#how-jsrpc-fits-in" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The above section deals with bindings that are backed by HTTP connections (like KV and R2), but modern bindings use <a href="https://blog.cloudflare.com/javascript-native-rpc"><u>JSRPC</u></a>. That means we needed a way for the locally running <code>workerd </code>to speak JSRPC to a production runtime instance.&nbsp;</p>
+	<p>In a stroke of good luck, a parallel project was going on to make this possible, as detailed in the <a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library"><u>Cap’n Web blog</u></a>. We integrated that by making the connection between the local <code>workerd</code> instance and the remote runtime instance communicate over <a href="https://github.com/cloudflare/capnweb"><u>websockets using Cap’n Web</u></a>, enabling bindings backed by JSRPC to work. This includes newer bindings like <a href="https://developers.cloudflare.com/images/transform-images/transform-via-workers"><u>Images</u></a>, as well as JSRPC service bindings to your own Workers.</p>
+	<div class="flex anchor relative">
+		<h3 id="remote-bindings-with-vite-vitest-and-the-javascript-ecosystem">Remote bindings with Vite, Vitest and the JavaScript ecosystem</h3>
+		<a href="https://blog.cloudflare.com/#remote-bindings-with-vite-vitest-and-the-javascript-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We didn't want to limit this exciting new feature to only <code>wrangler dev</code>. We wanted to support it in our Cloudflare Vite Plugin and vitest-pool-workers packages, as well as allowing any other potential tools and use cases from the JavaScript ecosystem to also benefit from it.</p>
+	<p>In order to achieve this, the wrangler package now exports utilities such as <code>startRemoteProxySession</code> that allow tools not leveraging <code>wrangler dev</code> to also support remote bindings. You can find more details in the <a href="https://developers.cloudflare.com/workers/development-testing/#remote-bindings"><u>official remote bindings documentation</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-try-this-out">How do I try this out?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-try-this-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Just use <code>wrangler dev</code>! As of Wrangler v4.37.0 (<code>@cloudflare/vite-plugin</code> v1.13.0, <code>@cloudflare/vitest-pool-workers</code> v0.9.0), remote bindings are available in all projects, and can be turned on a per-binding basis by adding <code>remote: true</code> to the binding definition in your <a href="https://developers.cloudflare.com/workers/wrangler/configuration"><u>Wrangler config file</u></a>.</p>
+</div>
