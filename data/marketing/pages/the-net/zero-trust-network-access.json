@@ -1063,7 +1063,52 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "This article is part of a series on the latest trends and topics impacting today's technology decision-makers.",
+													"value": "This article is part of a ",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "series",
+															"marks": [
+																{
+																	"type": "italic"
+																},
+																{
+																	"type": "bold"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " on the latest trends and topics impacting today's technology decision-makers.",
 													"marks": [
 														{
 															"type": "italic"
@@ -1736,7 +1781,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Omdia explores the rise of Zero Trust Access as a response to shortcomings in VPNs, and the rapid expansion of remote work and cloud computing in the ",
+													"value": "Explore the rise of Zero Trust Access as a response to shortcomings in VPNs in the ",
 													"marks": [],
 													"content": null
 												},
@@ -1756,7 +1801,11 @@
 																"uri": null
 															},
 															"value": "Omdia Market Radar: Zero Trust Access",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1767,7 +1816,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".",
+													"value": " report.",
 													"marks": [],
 													"content": null
 												}
