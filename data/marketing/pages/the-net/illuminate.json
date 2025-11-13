@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - Illuminate: Perspectives from technology leaders Series - Page",
+				"pageName": "theNET - Illuminate: Perspectives from technology leaders - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -38,7 +38,7 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "theNET |  Illuminate: Perspectives from technology leaders",
+					"metaTitle": "theNET | Illuminate: Perspectives from technology leaders",
 					"metaDescription": "The Illuminate series features insights and strategic recommendations from global executives: Security and IT, digital experts, and other technical professionals from some of the world's leading companies. These short reads will provide you with new and enlightening approaches to tackling universal security and IT challenges.",
 					"twitterCustomImage": null,
 					"metaImage": {
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-03-06T22:50:27.862Z",
-					"updatedAt": "2025-11-07T04:12:32.281Z"
+					"updatedAt": "2025-11-13T21:02:29.370Z"
 				},
 				"contentfulId": "3rrwJQMer6iiLzD6y3TaGo",
 				"contentTypeId": "page",
@@ -376,7 +376,41 @@
 					},
 					"description": ""
 				},
-				"proactivePopup": null,
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
+				},
 				"template": null,
 				"relatedBlades": [
 					{
@@ -388,7 +422,7 @@
 					{
 						"contentTypeId": "bladeHalfWidthHero",
 						"contentfulId": "7yIigKjCtAqHlADQztRIAt",
-						"entityTitle": "theNET -  Illuminate: Perspectives from technology leaders - series - Hero",
+						"entityTitle": "theNET - Illuminate: Perspectives from technology leaders - Hero",
 						"leftHalf": {
 							"contentTypeId": "elementHalfWidthHeroContent",
 							"contentfulId": "4S1JuOiS2wHAcgcdWpzxRm",
@@ -444,6 +478,42 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1NCeGgbtuQWVRN6m8VU3oU",
+								"title": "Navigating large-scale technology implementations",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Five best practices for enterprise-wide tech projects that minimize operational disruption and avoid added cost — for any industry",
+								"learnMoreUrl": "https://www.cloudflare.com/the-net/illuminate/challenge-implement-new-tech",
+								"learnMoreText": "Read (7 min)",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "e0a8aca0-741b-501a-a981-79637b180d1a",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57apnawgAjJgUXlFYBV8vR/1a2f68105239be3bc6be786dac5e23f9/NavigatingÂ_large-scaleÂ_technologyÂ_implementations.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "3XtnPLAOuo0PRJqmPZg1Jk",
