@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.4.4
+
+### Patch Changes
+
+- dc1d00ff0b: Updating component-icon
+
 ## 9.4.3
 
 ## 9.4.2
