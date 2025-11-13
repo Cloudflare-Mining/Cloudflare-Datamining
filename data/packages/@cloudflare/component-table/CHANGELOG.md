@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.1.4
+
+### Patch Changes
+
+- @cloudflare/component-arrow-swivel@9.0.23
+
 ## 11.1.3
 
 ### Patch Changes
