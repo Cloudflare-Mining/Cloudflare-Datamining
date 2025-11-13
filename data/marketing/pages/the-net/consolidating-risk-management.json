@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-17T19:07:01.473Z",
-					"updatedAt": "2025-07-23T09:26:57.579Z"
+					"updatedAt": "2025-11-13T22:07:23.590Z"
 				},
 				"contentfulId": "19RC5QFPuhKbxKePfHb08C",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -563,7 +575,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Adapt to a new way of implementing cyber security",
+													"value": "Adapt to a new way of implementing cybersecurity",
 													"marks": [
 														{
 															"type": "bold"
@@ -619,7 +631,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", each addressing a specific need within the security stack. In a recent survey of cyber security professionals, respondents from large organizations reported using more than ",
+													"value": ", each addressing a specific need within the security stack. In a recent survey of cybersecurity professionals, respondents from large organizations reported using more than ",
 													"marks": [],
 													"content": null
 												},
@@ -1041,7 +1053,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Together, through this partnership between Cloudflare, Accenture, and CrowdStrike, organizations can achieve better visibility and log accuracy, enhance and enforce Zero Trust, and accelerate incident response:",
+													"value": "Together, through this partnership between Cloudflare, Accenture, and CrowdStrike, organizations can achieve better visibility and log accuracy, enhance and enforce zero trust, and accelerate incident response:",
 													"marks": [],
 													"content": null
 												}
@@ -1126,7 +1138,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Enhance and enforce Zero Trust:",
+																	"value": "Enhance and enforce zero trust:",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -1159,7 +1171,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Zero Trust Network Access (ZTNA)",
+																			"value": "zero trust network access (ZTNA)",
 																			"marks": [],
 																			"content": null
 																		}
@@ -1171,7 +1183,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " capabilities and use CrowdStrike Zero Trust Assessment (ZTA) scores to establish parameters and access thresholds that safeguard against threats. When devices or users exceed these established risk limits, requests are automatically denied. Organizations can automatically apply restrictive controls to lock down access and prevent unauthorized traffic. As a result, organizations can improve Zero Trust and edge ",
+																	"value": " capabilities and use CrowdStrike Zero Trust Assessment (ZTA) scores to establish parameters and access thresholds that safeguard against threats. When devices or users exceed these established risk limits, requests are automatically denied. Organizations can automatically apply restrictive controls to lock down access and prevent unauthorized traffic. As a result, organizations can improve zero trust and edge ",
 																	"marks": [],
 																	"content": null
 																},
@@ -1550,7 +1562,11 @@
 																"uri": null
 															},
 															"value": "Unify risk posture with Cloudflare and partners",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
