@@ -31,7 +31,7 @@
 	<li>Curiosity, empathy and ability to get things done.</li>
 	<li>Ability to commit to a minimum 12 week spring internship.</li>
 	<li>In office 3-4 days a week in Lisbon office.</li>
-	<li><strong>Bonus:</strong> demonstrated passion for software development, such as personal projects, open-source contributions, or experience with our developer platform <a href="https://workers.cloudflare.com/">Cloudflare Workers</a>.</li>
+	<li><strong>Bonus:</strong> Demonstrated passion for software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></li>
 </ul>
 <p><strong>Important dates:</strong></p>
 <ul>
