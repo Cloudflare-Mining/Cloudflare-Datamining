@@ -5,41 +5,68 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Position location - Sydney<br><br>About the Role</strong></p>
-<p>Cloudflare is redefining how enterprise IT operates, establishing its own category, with annual growth exceeding 40%.</p>
-<p>We are seeking a highly motivated and experienced Strategic Account-Based Marketing (ABM) Specialist to design and deliver innovative, full-funnel campaigns targeting our most strategic accounts across Australia and New Zealand. This role will report directly to the Senior Marketing Manager, ANZ and will work closely with the broader APAC Marketing team and the ANZ sales organisation.</p>
-<p>In this high-impact role, you’ll put your creativity and marketing expertise to work to develop, launch, manage, and measure ABM programs tailored to strategic accounts and industry verticals. These programs will help penetrate aligned target accounts with defined stakeholders in meaningful ways to increase engagement, drive pipeline, and contribute directly to revenue generation.</p>
-<p><strong>What the Job Involves</strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Cloudflare Technical Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company for better service and future product development.</p>
+<p><strong>What You’ll Do</strong></p>
+<p>Are you passionate about operational excellence and developing high-performing technical teams? Do you thrive in a fast-paced environment where you can balance hands-on technical depth with leadership impact? As a Technical Support Manager at Cloudflare, you will lead a team of talented engineers to deliver exceptional support experiences, meet and exceed KPIs, and ensure Cloudflare’s customers receive the highest level of service. You will:</p>
+<p>Drive Operational Excellence</p>
 <ul>
-	<li><strong>ABM Orchestration</strong>: Drive the orchestration of ABM initiatives by working closely with sales to create and refine target account lists, while coordinating sales and marketing activities to engage high-value accounts. Ensure messaging across channels is timely, personalised, and aligned with account-specific needs.&nbsp;</li>
-	<li><strong>Account-Based Marketing Strategy &amp; Execution:</strong> Partner with internal teams to create and activate a marketing plan targeting strategic ANZ accounts. Collaborating on landing pages, content development, direct mail, digital campaigns, vertical trade shows, and hosted C-level events.</li>
-	<li><strong>Innovation &amp; Personalisation</strong>: Continuously explore innovative ways to personalise the account-based experience, leveraging AI and machine learning to deliver highly relevant, scalable, personalised experiences.</li>
-	<li><strong>Measurement &amp; Reporting</strong>: Analyse, measure, and report the impact of ABM campaigns across key metrics (stakeholder reach, engagement, meetings booked, pipeline, and influenced revenue). Leverage Salesforce/Tableau to track ROI, manage budgets, and prioritise tactics/channels effectively.</li>
-	<li><strong>Internal Champion</strong>: Act as the champion of strategic ABM within Cloudflare, building a strong, data-backed narrative around its impact on penetrating large accounts. Collaborate on launches, manage timelines, and drive cross-functional orchestration with account teams while maintaining account audiences in ABM platforms like DemandBase.Additionally, champion the adoption of DemandBase across strategic AEs and BDRs, ensuring they maximise the platform’s potential. <br><br></li>
+	<li>Own and monitor daily operations, ensuring adherence to SLAs, KPIs, and performance metrics (response time, resolution time, customer satisfaction, backlog health, etc.).</li>
+	<li>Analyze support trends and data to identify process gaps, improve efficiency, and implement scalable solutions.</li>
+	<li>Ensure consistent global handover quality and follow-the-sun support across regions.</li>
+	<li>Maintain appropriate staffing levels through workforce management and shift coverage.</li>
 </ul>
-<p><strong>Key Responsibilities</strong></p>
+<p>Lead and Develop a High-Performing Team</p>
 <ul>
-	<li>Develop and execute account-focused ABM programs to drive engagement and revenue.</li>
-	<li>Build and run full-funnel campaigns using a mix of online/offline tactics, aligned with pipeline and revenue goals.</li>
-	<li>Partner with sales teams to accelerate deal cycles and influence revenue from enterprise accounts.</li>
-	<li>Create personalised account experiences tailored to technical and executive stakeholders.</li>
-	<li>Lead integrated campaign execution from strategy through to measurement.</li>
-	<li>Apply data-driven insights to refine campaigns and optimise ROI.</li>
-	<li>Stay current with digital marketing trends, ABM innovation, and AI-driven personalisation.<br><br></li>
+	<li>Manage, coach, and mentor Support Engineers to achieve their potential and elevate technical excellence.</li>
+	<li>Conduct regular 1:1s, performance reviews, and skill assessments; build individual development and training plans.</li>
+	<li>Foster a culture of curiosity, accountability, and customer-first thinking.</li>
+	<li>Lead by example in managing difficult situations, guiding technical investigations, and resolving escalations.</li>
 </ul>
-<p><strong>Who You Are</strong></p>
+<p>Handle and Prevent Escalations</p>
 <ul>
-	<li>10+ years of marketing experience, with 3- 5 years of experience in developing and executing ABM programs and/or vertical campaigns (ideally in enterprise SaaS, networking, or cybersecurity).</li>
-	<li>Proven track record in meeting/exceeding MQA, QBG, and pipeline influence targets.</li>
-	<li>Strong experience with ABM frameworks</li>
-	<li>Deep expertise in personalisation tactics, with campaigns built for both technical and executive stakeholders.</li>
-	<li>Highly creative, with a history of innovative, account-specific campaigns.</li>
-	<li>Proficient in Salesforce, DemandBase analytics/BI tools (Google Analytics, Tableau, etc).</li>
-	<li>Strong project management, communication, and presentation skills, with sharp attention to detail.</li>
-	<li>Analytical and insight driven, with a clear ability to translate data into actionable campaign improvements.</li>
-	<li>Collaborative, but also an independent self-starter comfortable in high-growth environments.</li>
-	<li>Knowledge of the cybersecurity market and technologies is a strong plus.</li>
+	<li>Act as the escalation point for critical incidents (P1/P2), ensuring prompt response, coordination, and resolution.</li>
+	<li>Partner closely with Engineering, Product, and Incident Response teams to drive root cause analysis and post-incident reviews.</li>
+	<li>Build repeatable playbooks and escalation frameworks that improve consistency and reduce time-to-resolution.</li>
+	<li>Contribute towards writing formal customer facing reports (CFRs), which are technical root cause deep dive documents.</li>
 </ul>
+<p>Elevate Technical Excellence</p>
+<ul>
+	<li>Be a hands-on technical leader capable of reviewing and advising on complex cases across networking, DNS, WAF, Zero Trust, and performance.</li>
+	<li>Support engineers through technical case reviews, troubleshooting guidance, and cross-training.</li>
+	<li>Contribute to internal knowledge articles, diagnostic scripts, and best practices.</li>
+</ul>
+<p>Collaborate Cross-Functionally</p>
+<ul>
+	<li>Partner with Engineering, Product Management, and Customer Success to surface recurring issues and influence product improvements.</li>
+	<li>Represent the voice of the customer in operational reviews and feedback loops.</li>
+	<li>Lead or contribute to support transformation projects that enhance our tools, automation, and customer experience.</li>
+	<li>Confidently communicate and narrate complex technical issues with different levels, such as C level execs, technical experts, etc.</li>
+</ul>
+<p><strong>What You’ll Bring</strong></p>
+<ul>
+	<li>5+ years of experience in technical support or operations within a SaaS, PaaS, or cloud-based enterprise environment.</li>
+	<li>3+ years of people management experience leading technical teams of 5+ engineers across multiple locations.</li>
+	<li>Proven record of meeting or exceeding operational KPIs and driving continuous improvement.</li>
+	<li>Strong technical foundation with deep understanding of:</li>
+	<ul>
+		<li>Internet technologies: DNS, SSL/TLS, HTTP/S, TCP/IP, networking layers (OSI model)</li>
+		<li>Troubleshooting tools: curl, dig, traceroute, nslookup, tcpdump, logs, and API diagnostics</li>
+		<li>Experience with Linux command line, scripting, or automation tools is a plus.</li>
+	</ul>
+	<li>Experience managing 24x7 global support operations and incident escalation frameworks.</li>
+	<li>Exceptional communication and stakeholder management skills; able to translate technical issues into business impact.</li>
+	<li>A data-driven mindset: confident using metrics to guide performance, planning, and process improvements.</li>
+	<li>Passion for developing people, scaling teams, and creating a culture of excellence.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience supporting security, CDN, Zero Trust, or performance optimization products.</li>
+	<li>Fluency in one of the following languages: Mandarin, Korean, Japanese</li>
+	<li>Prior experience in start-up or hyper-growth environments where agility and innovation are key.</li>
+</ul>
+<p><strong>Why Join Us</strong></p>
+<p>This is your opportunity to play a pivotal role in shaping the future of technical support at Cloudflare. You’ll be joining a global team that thrives on solving hard problems, driving measurable outcomes, and setting the gold standard for customer experience in the cloud industry.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

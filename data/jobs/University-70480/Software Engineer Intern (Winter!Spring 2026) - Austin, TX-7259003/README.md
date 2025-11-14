@@ -5,59 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the role:</strong></p>
-<p>We are seeking an experienced and strategic&nbsp;<strong>Business Application Testing Administrator</strong> to lead the testing function for our core enterprise applications, including ERP, CRM, and HR systems. The ideal candidate will have deep experience in managing end-to-end application testing processes and implementing test automation frameworks and tools. The role is a key team member of our Enterprise Applications Team responsible for ensuring the quality, performance, and reliability of critical business systems that support Accounting, Sales, People and Payroll, and Operations.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>Application Ownership:</p>
-<p>Test Management:</p>
+<p><strong>Available location(s): Austin, US</strong></p>
+<p><strong>About Cloudflare's Engineering Teams</strong></p>
+<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 330 cities in more than 125 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
+<p>Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: Typescript/Javascript, Go, Rust, C/C++ and Python.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal intern is passionate about making the Internet a better place. You will work alongside experienced engineers. You will push code during your internship that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious, proactive, and able to complete projects. This is a great opportunity for engineers who want to learn to develop at Internet scale.</p>
+<p>What would you do as a Cloudflare intern?</p>
 <ul>
-	<li>Lead the planning, coordination, and execution of testing for ERP, CRM, and HR application initiatives across projects, enhancements, and upgrades.</li>
-	<li>Perform the test lead role in large transformation programs such as an ERP rollout</li>
-	<li>&nbsp;Define and continuously improve the testing strategy, including test planning, test case development, execution, defect tracking, and reporting.</li>
-	<li>Establish and enforce quality assurance standards and testing best practices.</li>
-	<li>Manage resource planning and test coverage across simultaneous projects.</li>
-	<li>Collaborate with application managers,&nbsp; enterprise architects, functional analysts, our managed service provider and business system analysts and product managers to ensure testing is embedded in the SDLC.</li>
+	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Work closely with a mentor to guide you through the internship and help with career goals.</li>
+	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups.</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+	<li>Learn and develop skills through our professional development workshops.</li>
+	<li>Write for our <a href="https://blog.cloudflare.com/">Cloudflare blog</a> and be featured on <a href="http://cloudflare.tv/">Cloudflare.tv</a> sessions.&nbsp;</li>
 </ul>
-<p>Test Automation &amp; Tools:</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Develop and implement test automation frameworks for regression, integration, and performance testing.</li>
-	<li>Manage our current testing automation toolset while proposing and implementing new capabilities.</li>
-	<li>Promote a continuous deployment (CD) mindset and methodology.</li>
+	<li>Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
+	<li>Open to recent graduates within last 6 months.&nbsp;</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-4 days a week in Austin, TX.</li>
+	<li><strong>Bonus:</strong> demonstrated passion for software development, such as personal projects, open-source contributions, or experience with our developer platform <a href="https://workers.cloudflare.com/">Cloudflare Workers</a>.</li>
 </ul>
-<p>Stakeholder Engagement:</p>
+<p><strong>Important dates:</strong></p>
 <ul>
-	<li>Partner with business stakeholders, project managers, business system analysts and product managers&nbsp; to define testing scope, acceptance criteria, and sign-off requirements for enhancements and projects.</li>
-	<li>Partner with IT stakeholders to automate end-to-end testing and impact assessment for application vendor provided releases / upgrades</li>
-	<li>Communicate testing status, risks, and outcomes to technical and non-technical audiences.</li>
-	<li>Ensure user acceptance testing (UAT) is properly planned and supported.</li>
-</ul>
-<p>Governance and Compliance:</p>
-<ul>
-	<li>Ensure testing processes align with IT governance, audit, and compliance standards (e.g., SOX, GDPR).</li>
-	<li>Leverage standard testing best practices (e.g., maintain traceability from business requirements to test cases to defects and resolutions).</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<ul>
-	<li>Bachelor’s degree in information technology, computer science, business or related field.</li>
-	<li>6+ years of experience in a corporate or consulting environment.</li>
-	<li>3+ years of experience in application testing or quality assurance roles.</li>
-	<li>Proven expertise in testing ERP or CRM&nbsp; platforms.</li>
-	<li>Proven ability to lead project testing initiatives and drive testing process improvements.</li>
-	<li>Strong knowledge of software testing methodologies (Agile, DevOps, Waterfall).</li>
-	<li>Hands-on experience with test automation frameworks and tools.</li>
-	<li>Experience working in enterprise environments with complex system integrations.</li>
-	<li>Ability to communicate to stakeholders in a data-centric and KPI-driven manner.&nbsp;</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Examples of Other Desirable Skills, Knowledge and Experiences</strong></p>
-<ul>
-	<li>Testing experience with Salesforce, Oracle Fusion or Workday.</li>
-	<li>Understanding of the nuances associated with testing and release management of a SaaS-centric enterprise architecture.&nbsp;</li>
-	<li>Strong analytical and problem-solving abilities, with a data-driven approach to decision-making.</li>
-	<li>Ability to work in a fast-paced and dynamic environment, adapting to evolving business needs.</li>
-	<li>Experience using QMetry Testing Management for Jira.</li>
+	<li>Deadline to apply: November 21, 2026</li>
+	<li>Internship dates: January 12, 2026 - April 3, 2026 (12 week internship)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
