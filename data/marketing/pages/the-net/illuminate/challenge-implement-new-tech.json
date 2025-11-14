@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-07-23T01:38:24.247Z",
-					"updatedAt": "2025-11-07T04:42:04.324Z"
+					"updatedAt": "2025-11-14T18:20:42.498Z"
 				},
 				"contentfulId": "1zqvXbTDDR0ZkWsFmDAgJl",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -543,7 +555,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Western Health is one of the largest and fastest-growing healthcare providers in Australia — serving almost one million people in Melbourne's western suburbs. As the divisional director of digital services for the organization, one of my key responsibilities is leading high-impact technology projects. In the past few years, those projects have ranged from constructing a Zero Trust security architecture to amalgamating the IT services of other organizations to be part of Western Health.\n\nThese types of large-scale projects often include significant challenges. First and foremost, no matter what technology solution we are deploying, we always need to avoid disruptions to critical processes, which in our case includes clinical care. Western Health provides approximately 800,000 care encounters per year. We have to make sure that we can sustain outstanding quality of care regardless of our technology implementations.\n\nAt the same time, we need to maintain tight security and comply with ",
+													"value": "Western Health is one of the largest and fastest-growing healthcare providers in Australia — serving almost one million people in Melbourne's western suburbs. As the divisional director of digital services for the organization, one of my key responsibilities is leading high-impact technology projects. In the past few years, those projects have ranged from constructing a zero trust security architecture to amalgamating the IT services of other organizations to be part of Western Health.\n\nThese types of large-scale projects often include significant challenges. First and foremost, no matter what technology solution we are deploying, we always need to avoid disruptions to critical processes, which in our case includes clinical care. Western Health provides approximately 800,000 care encounters per year. We have to make sure that we can sustain outstanding quality of care regardless of our technology implementations.\n\nAt the same time, we need to maintain tight security and comply with ",
 													"marks": [],
 													"content": null
 												},
@@ -698,7 +710,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -1508,7 +1520,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}

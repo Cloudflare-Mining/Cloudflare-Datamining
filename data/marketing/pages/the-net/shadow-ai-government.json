@@ -38,7 +38,7 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Combat the risks of shadow AI with proper governance",
+					"metaTitle": "theNET | Combat the risks of shadow AI with proper governance",
 					"metaDescription": "Increased use of AI tools presents unique challenges to public sector organizations. Discover how to avoid shadow AI risks and comply with new regulations.",
 					"twitterCustomImage": null,
 					"metaImage": {
@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-06-26T21:09:45.893Z",
-					"updatedAt": "2025-07-23T09:37:01.078Z"
+					"updatedAt": "2025-11-14T17:57:57.599Z"
 				},
 				"contentfulId": "7vkkIYIOSYjG4doy3i4I89",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -1821,7 +1833,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust Network Access",
+															"value": "Zero trust network access",
 															"marks": [],
 															"content": null
 														}
@@ -2256,7 +2268,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -2418,7 +2430,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about how Zero Trust can reduce risk in the face of proliferating AI usage in the complete guide, \"",
+													"value": "Learn more about how zero trust can reduce risk in the face of proliferating AI usage in the ",
 													"marks": [],
 													"content": null
 												},
@@ -2437,8 +2449,12 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "A roadmap to Zero Trust architecture",
-															"marks": [],
+															"value": "A roadmap to zero trust architecture",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2449,7 +2465,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".\"\n",
+													"value": " guide.\n",
 													"marks": [],
 													"content": null
 												},
@@ -2471,7 +2487,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "2GTA10gyPqS1lTUQhtDRw8",
-																	"elementName": "theNet - Combating shadow AI - Dive deeper - CTA",
+																	"elementName": "theNET - Combating shadow AI - Dive deeper - Button",
 																	"standardText": null,
 																	"text": "Get the guide!",
 																	"url": "/lp/10-steps-sase-journey/",
@@ -2890,7 +2906,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Guide: A roadmap to Zero Trust architecture",
+																			"value": "A roadmap to zero trust architecture",
 																			"marks": [],
 																			"content": null
 																		}
