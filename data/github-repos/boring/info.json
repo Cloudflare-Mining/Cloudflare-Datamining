@@ -25,14 +25,11 @@
 		"cfg-debug",
 		"cjpatton/X25519MLKEM768-pq-client-preferred",
 		"cjpatton/do-not-merge-pq-patch-broken",
-		"cjpatton/drop-kx-features",
 		"cjpatton/drop-pq-experimental",
 		"cjpatton/drop-pq-experimental-2",
-		"cjpatton/drop-ssl-curve",
 		"cjpatton/fips-compat-decouple",
 		"clean-fips",
 		"copy-from",
-		"curve-name",
 		"ex_data-cleanup",
 		"fips-skip-clang-check",
 		"fix-frankenfips",
@@ -52,11 +49,13 @@
 		"release/4.4.0",
 		"release/4.5.0",
 		"release/4.15.0",
+		"release/4.20.0",
 		"release-v4.0.1-rc.2",
 		"rossl-update",
 		"rpk-feature",
 		"set-flags",
 		"tokio-builder",
-		"ubuntu-latest"
+		"ubuntu-latest",
+		"v4.x"
 	]
 }
