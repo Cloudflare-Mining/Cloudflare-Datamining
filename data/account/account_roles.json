@@ -246,15 +246,15 @@
 		"name": "Workers Platform (Read-only)",
 		"description": "Can read all resources in the Workers Platform.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
 			"dns_records": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
 				"read": true,
 				"edit": false
 			},
@@ -1644,15 +1644,15 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
 			},
 			"dns_records": {
-				"read": true,
-				"edit": true
-			},
-			"organization": {
 				"read": true,
 				"edit": true
 			},
@@ -2115,15 +2115,15 @@
 		"name": "Workers Platform Admin",
 		"description": "Can create, read, update and delete all resources in the Workers Platform.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
 			},
 			"dns_records": {
-				"read": true,
-				"edit": true
-			},
-			"organization": {
 				"read": true,
 				"edit": true
 			},
@@ -2354,15 +2354,15 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
 			"dns_records": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
 				"read": true,
 				"edit": false
 			},
@@ -2577,15 +2577,15 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
 			},
 			"dns_records": {
-				"read": true,
-				"edit": true
-			},
-			"organization": {
 				"read": true,
 				"edit": true
 			},
