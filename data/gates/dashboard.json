@@ -27,6 +27,9 @@
 	"account-logpush": {
 		"enabled": true
 	},
+	"account-overview": {
+		"enabled": false
+	},
 	"account-owned-api-tokens": {
 		"enabled": true
 	},
@@ -526,9 +529,6 @@
 	"dashboard-change-notifications-starred-zones": {
 		"enabled": true
 	},
-	"dashboard-search": {
-		"enabled": true
-	},
 	"dashboard-workers-onboarding-experiment-2": {
 		"enabled": true,
 		"branches": [
@@ -1009,6 +1009,9 @@
 		]
 	},
 	"dx-reduced-locale-selection": {
+		"enabled": true
+	},
+	"dx-search-2025-q4": {
 		"enabled": true
 	},
 	"dx-sign-up-workers-onboarding-path-test-1": {
