@@ -449,7 +449,21 @@
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "418c254e-48a6-5cdc-93f2-bd26f2346337",
+									"altText": "Zero trust risk scoring icon",
+									"title": "Zero trust risk scoring icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vvAAIipXArJjc16UV2PZ4/e04ce1b49a190f34ca1db25553de1040/arrow-twoway.svg"
+										},
+										"description": "arrow-twoway"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -973,6 +987,51 @@
 							}
 						],
 						"sectionPadding": "tile--no-top-padding"
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "3JBzwFWk6fbYBFCyQH36lT",
+						"title": "Explore how Cloudflare can help you manage risk posture",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2IJ99R4aSF9gMOQw863Jxt",
+							"elementName": "Request a consultation",
+							"standardText": null,
+							"text": "Request a consultation",
+							"url": "/plans/enterprise/contact/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "DHXupXIbS8OIg2wyOqD5G",
+							"elementName": "Register for webinar",
+							"standardText": null,
+							"text": "Register for webinar",
+							"url": "https://cfl.re/unified-risk-posture-webinar",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "7vS4orJZBubGlM3G62FC55",
