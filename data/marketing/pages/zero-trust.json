@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-05-04T18:26:59.158Z",
-					"updatedAt": "2025-11-15T06:27:49.694Z"
+					"updatedAt": "2025-11-15T09:00:04.221Z"
 				},
 				"contentfulId": "4yQgbWO9Ldinwbud6TohYm",
 				"contentTypeId": "page",
@@ -1130,6 +1130,56 @@
 										"navigationItems": [
 											{
 												"contentTypeId": "navNavigationItem",
+												"contentfulId": "6CTZhAmBxe8kCfSgx816gK",
+												"locale": "en-US",
+												"name": "Getting Started",
+												"description": null,
+												"mainLink": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "7dyyhm3ZJu05EeDdbj3QuV",
+														"locale": "en-US",
+														"title": "New to Cloudflare? Start here",
+														"description": null,
+														"url": "https://developers.cloudflare.com/learning-paths/get-started/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "6W3PfWQ8GUtaFv5tjuABUn",
+														"locale": "en-US",
+														"title": "Developer documentation hub",
+														"description": null,
+														"url": "https://developers.cloudflare.com/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "5u8VEPclIFoEmdHGJ7Odp7",
+														"locale": "en-US",
+														"title": "Architecture center",
+														"description": null,
+														"url": "/architecture",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": null
+													}
+												],
+												"navIcon": null,
+												"showIconOnly": false,
+												"hideOnChinaSite": false,
+												"navigationItems": []
+											},
+											{
+												"contentTypeId": "navNavigationItem",
 												"contentfulId": "17ARM5mMCSAKHWVp2uMMaA",
 												"locale": "en-US",
 												"name": "Application Security",
@@ -1725,18 +1775,6 @@
 												"title": "DNS",
 												"description": "Learn about DNS & how it works",
 												"url": "https://www.cloudflare.com/learning/dns/what-is-dns/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "3mCQdC3PVppDwAPvyLd66F",
-												"locale": "en-US",
-												"title": "Domain Names",
-												"description": "Learn about domain names and how to keep them secure",
-												"url": "https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -2646,12 +2684,6 @@
 										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
 									},
 									{
-										"contentfulId": "559PiQrQNL0cqxI3bsLn4V",
-										"linkText": "Analyst Reports",
-										"page": null,
-										"url": "/analysts/"
-									},
-									{
 										"contentfulId": "7ypbRBFxCGM7pgGyOKj72l",
 										"linkText": "Product tour",
 										"page": null,
@@ -2866,42 +2898,6 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3rxaZJxbVdvpoYthDzKFDa",
-								"title": "Reliable user experiences",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Ensure reliable and scalable network connectivity with consistent protection from any location. Deliver Zero Trust for your business using the same Cloudflare proxies that protect ~20% of the web.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
-									"altText": "User multi ",
-									"title": "User multi ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
-										},
-										"description": "User Multi - Orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "4CKlQgGc8ApfGAhip29NrN",
 								"title": "Reduced risk and cyber costs",
 								"makeTitleLink": false,
@@ -3089,298 +3085,6 @@
 										"columns": [
 											{
 												"contentTypeId": "elementRichText",
-												"contentfulId": "3deOZ8afeBHpxj2Pd19ILM",
-												"title": null,
-												"htmlId": null,
-												"elementPosition": null,
-												"column": {
-													"nodeType": "document",
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare's ",
-																	"marks": [
-																		{
-																			"type": "italic"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://www.cloudflare.com/connectivity-cloud/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "connectivity cloud",
-																			"marks": [
-																				{
-																					"type": "italic"
-																				}
-																			],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " delivers SSE services from a %{DataCenterCount}-city network that's close to users everywhere, letting you:",
-																	"marks": [
-																		{
-																			"type": "italic"
-																		}
-																	],
-																	"content": null
-																}
-															]
-														},
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [
-																		{
-																			"type": "italic"
-																		}
-																	],
-																	"content": null
-																}
-															]
-														},
-														{
-															"nodeType": "unordered-list",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Verify more types of identify context and more easily adapt policies",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Block more threats using our peerless threat intelligence",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Improve visibility into sensitive data, security compliance, and user experiences",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Expand your deployment with our flexible architecture and single-pass inspection",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://developers.cloudflare.com/reference-architecture/sase-reference-architecture/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Learn more in our SASE reference architecture",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											},
-											{
-												"contentTypeId": "elementRichText",
 												"contentfulId": "7frZmniZGX53Jxjxptr9J0",
 												"title": null,
 												"htmlId": null,
@@ -3471,198 +3175,6 @@
 										"sectionPadding": "tile--no-top-padding",
 										"columnLayout": "One Third & Two Thirds",
 										"columns": [
-											{
-												"contentTypeId": "elementRichText",
-												"contentfulId": "KeHiBSEM5sZm1ja2GdksN",
-												"title": "How Our SSE & SASE Works",
-												"htmlId": null,
-												"elementPosition": null,
-												"column": {
-													"nodeType": "document",
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare's connectivity cloud helps you supplement or replace MPLS and VPNs through:",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														},
-														{
-															"nodeType": "unordered-list",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Internet-native connectivity\r",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Built-in security that enforces stateful inspection rules and sends all traffic to our SSE and DDoS services\r",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Performance enhancements, thanks to our built-in smart routing, load balancing, and more",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://developers.cloudflare.com/reference-architecture/sase-reference-architecture/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Learn more in our SASE reference architecture",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											},
 											{
 												"contentTypeId": "elementRichText",
 												"contentfulId": "4yaDHCKCv8g3bJrAdagJqx",

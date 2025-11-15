@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-04-15T16:35:31.501Z",
-					"updatedAt": "2025-11-15T05:38:57.376Z"
+					"updatedAt": "2025-11-15T07:44:35.291Z"
 				},
 				"contentfulId": "6zRgQEBEAI1IqTxsXsASu",
 				"contentTypeId": "page",
@@ -287,32 +287,6 @@
 						"backgroundColor": null,
 						"sectionPadding": "default",
 						"navigationItems": [
-							{
-								"contentTypeId": "navNavigationItem",
-								"contentfulId": "44BUFM86f13WAMiCbKbFa1",
-								"locale": "en-US",
-								"name": " Sign up",
-								"description": null,
-								"navIcon": null,
-								"contentfulButton": null,
-								"showIconOnly": false,
-								"hideOnChinaSite": false,
-								"overrideTheSalesPhoneNumber": false,
-								"navigationItems": [],
-								"mainLink": {
-									"contentTypeId": "elementNavLink",
-									"contentfulId": "MeYV6pTTsYr3WmOgakIKC",
-									"locale": "en-US",
-									"title": "Sign up",
-									"description": null,
-									"url": "https://www.cloudflare.com/plans/",
-									"badges": null,
-									"specialLinkType": null,
-									"openInNewWindow": true,
-									"isExternalUrl": null
-								},
-								"navigationLinks": []
-							},
 							{
 								"contentTypeId": "navNavigationItem",
 								"contentfulId": "5RnQzIFsA7ZMHoX5ANOBPg",
@@ -2548,7 +2522,186 @@
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
-						"columns": []
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "14Joes1n4Vd32PIJbYEEd7",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Dive deeper into this topic.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "To learn more about how Cloudflare mitigates shadow IT, get the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/lp/zero-trust-for-saas/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Zero Trust visibility and control of every SaaS application solution brief",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4yQYz5VdLvknSGpVxyL8kg",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [
+														{
+															"buttonAssetFile": null,
+															"buttonTextLoggedIn": null,
+															"contentTypeId": "button",
+															"contentfulId": "4yQYz5VdLvknSGpVxyL8kg",
+															"elementName": "Insights - The growing cost of shadow IT - Dive Deeper - left - button",
+															"standardText": null,
+															"text": "Get the solution brief!",
+															"url": "https://www.cloudflare.com/lp/zero-trust-for-saas/",
+															"loggedInUrl": null,
+															"buttonModal": null,
+															"openInNewTab": true,
+															"locale": "en-US"
+														}
+													],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
