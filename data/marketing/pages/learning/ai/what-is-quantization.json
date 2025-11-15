@@ -1,0 +1,628 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ai/what-is-quantization/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "4ZQnJE14ttZQWaVlUXDl7X",
+				"urlSlug": "ai/what-is-quantization",
+				"metaTags": {
+					"metaTitle": "What is quantization in machine learning?",
+					"metaDescription": "In machine learning, quantization is a technique for making AI inference more efficient. Learn how AI quantization and LLM quantization works.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "5JjQb2yV1d1T7WTVZQkNEW",
+					"learningCenterName": "artificialintelligence",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+							"displayText": "What is artificial intelligence (AI)?",
+							"url": "/learning/ai/what-is-artificial-intelligence/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "What is a large language model (LLM)?",
+							"url": "/learning/ai/what-is-large-language-model/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
+							"name": "Machine learning",
+							"displayText": "Machine learning",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+									"displayText": "What is machine learning?",
+									"url": "/learning/ai/what-is-machine-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+									"displayText": "What is deep learning?",
+									"url": "/learning/ai/what-is-deep-learning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+									"displayText": "Neural networks",
+									"url": "/learning/ai/what-is-neural-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+									"displayText": "What is generative AI?",
+									"url": "/learning/ai/what-is-generative-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+									"displayText": "Predictive AI",
+									"url": "/learning/ai/what-is-predictive-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+									"displayText": "AI image generation",
+									"url": "/learning/ai/ai-image-generation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+									"displayText": "What is agentic AI?",
+									"url": "/learning/ai/what-is-agentic-ai/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2WaoB1uAGPdfW9vr56U72B",
+							"name": "Glossary - AI subheader",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+									"displayText": "Vector database",
+									"url": "/learning/ai/what-is-vector-database/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "12RjN72z2wlElvMBzyICp9",
+									"displayText": "AI inference vs. training",
+									"url": "/learning/ai/inference-vs-training/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+									"displayText": "Low-rank adaptation (LoRA)",
+									"url": "/learning/ai/what-is-lora/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+									"displayText": "AI hallucinations",
+									"url": "/learning/ai/what-are-ai-hallucinations/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+									"displayText": "AI quantization",
+									"url": "/learning/ai/what-is-quantization/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+									"displayText": "Retrieval augmented generation (RAG)",
+									"url": "/learning/ai/retrieval-augmented-generation-rag/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+									"displayText": "Model Context Protocol (MCP)",
+									"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+									"displayText": "History of AI",
+									"url": "/learning/ai/history-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+									"displayText": "What is vibe coding?",
+									"url": "/learning/ai/ai-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+									"displayText": "AI for cybersecurity",
+									"url": "/learning/ai/ai-for-cybersecurity/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+									"displayText": "ChatGPT plugins",
+									"url": "/learning/ai/chatgpt-plugins/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4fHZ91razv1xm1g6m2sAcT",
+					"learningCenterName": "artificialintelligence",
+					"column1Title": "Artificial intelligence",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "504wIqF2RxToUI652YFAHo",
+						"name": "AI Footer - Artificial intelligence",
+						"displayText": "Artificial intelligence",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+								"displayText": "What is artificial intelligence (AI)?",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "12RjN72z2wlElvMBzyICp9",
+								"displayText": "AI inference vs. training",
+								"url": "/learning/ai/inference-vs-training/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7kvDdMXof90koTqWiUdRX5",
+								"displayText": "History of AI",
+								"url": "/learning/ai/history-of-ai/"
+							}
+						]
+					},
+					"column2Title": "Machine learning",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4WbETih2OgXGNXGsvb7kMZ",
+						"name": "AI footer - Machine Learning",
+						"displayText": "Machine learning",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+								"displayText": "What is deep learning?",
+								"url": "/learning/ai/what-is-deep-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+								"displayText": "What is a large language model (LLM)?",
+								"url": "/learning/ai/what-is-large-language-model/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
+								"displayText": "Low-rank adaptation (LoRA)",
+								"url": "/learning/ai/what-is-lora/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+								"displayText": "AI image generation",
+								"url": "/learning/ai/ai-image-generation/"
+							}
+						]
+					},
+					"column3Title": "Big data",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3q3KTRPkBi7rS3aDeQoMNn",
+						"name": "AI footer - Big Data",
+						"displayText": "Big data",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+								"displayText": "What are embeddings?",
+								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1UCfw4v8J5rpL4BsVNlgVC",
+						"name": "AI footer - Glossary",
+						"displayText": "AI glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
+								"displayText": "Vector database",
+								"url": "/learning/ai/what-is-vector-database/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1O4EuQ4MK3qvTaXomAfNzQ",
+								"displayText": "Predictive AI",
+								"url": "/learning/ai/what-is-predictive-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
+								"displayText": "ChatGPT plugins",
+								"url": "/learning/ai/chatgpt-plugins/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uKuVMtEUTbsmkjOh86Dsl",
+								"displayText": "Neural networks",
+								"url": "/learning/ai/what-is-neural-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+								"displayText": "What is generative AI?",
+								"url": "/learning/ai/what-is-generative-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+								"displayText": "What is natural language processing (NLP)?",
+								"url": "/learning/ai/natural-language-processing-nlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+								"displayText": "AI hallucinations",
+								"url": "/learning/ai/what-are-ai-hallucinations/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xeYgczMnCqQ0wO8ORIbVY",
+								"displayText": "AI quantization",
+								"url": "/learning/ai/what-is-quantization/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+								"displayText": "OWASP Top 10 for LLMs",
+								"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+								"displayText": "AI data poisoning",
+								"url": "/learning/ai/data-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
+								"displayText": "Retrieval augmented generation (RAG)",
+								"url": "/learning/ai/retrieval-augmented-generation-rag/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
+								"displayText": "What is agentic AI?",
+								"url": "/learning/ai/what-is-agentic-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+								"displayText": "Third wave of AI",
+								"url": "/learning/ai/evolution-of-ai/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "pjgC00TeWrxtIOybBfUbh",
+								"displayText": "What is vibe coding?",
+								"url": "/learning/ai/ai-vibe-coding/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
+								"displayText": "Model Context Protocol (MCP)",
+								"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
+								"displayText": "AI for cybersecurity",
+								"url": "/learning/ai/ai-for-cybersecurity/"
+							}
+						]
+					},
+					"column5Title": "Learning Center",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5kj4ISBExxQfI9CaYifpU9",
+						"name": "AI Learning Center footer",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							}
+						]
+					}
+				},
+				"header": "What is quantization in machine learning?",
+				"blurbSubHeader": "Quantization enables machine learning models to use less memory and computing power for faster responses and reduce costs. However, it can make AI inference less precise.",
+				"objectivesHeader": "Quantization",
+				"objectivesList": [
+					"Define quantization",
+					"Describe how quantization results in more efficiency but less precision",
+					"Understand why and when quantization is used in AI"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+						"displayText": "What is machine learning?",
+						"url": "/learning/ai/what-is-machine-learning/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
+						"displayText": "What is artificial intelligence (AI)?",
+						"url": "/learning/ai/what-is-artificial-intelligence/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "12RjN72z2wlElvMBzyICp9",
+						"displayText": "AI inference vs. training",
+						"url": "/learning/ai/inference-vs-training/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+						"displayText": "What is a large language model (LLM)?",
+						"url": "/learning/ai/what-is-large-language-model/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4Hus7gX2HZjDAzrIDfhz7Y",
+						"displayText": "What is deep learning?",
+						"url": "/learning/ai/what-is-deep-learning/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is quantization in machine learning?</h2>\n\n<p>Quantization is a technique for lightening the load of executing <a href='/learning/ai/what-is-machine-learning/'>machine learning</a> and <a href='/learning/ai/what-is-artificial-intelligence/'>artificial intelligence (AI)</a> models. It aims to reduce the memory required for <a href='/learning/ai/inference-vs-training/'>AI inference</a>. Quantization is particularly useful for <a href='/learning/ai/what-is-large-language-model/'>large language models (LLMs)</a>.</p>\n\n<p>In general, quantization is a process of converting a digital signal from a highly precise format to a format that takes up less space and is somewhat less precise as a result. The goal is to make the signal smaller so that it can be processed faster. In machine learning and AI, quantization aims to make models run faster, use less computing power, or both.This ultimately allows users to run AI models on cheaper hardware while, ideally, minimally sacrificing accuracy.</p>\n\n<p>To visualize how this makes AI inference take up less memory, imagine a tube of a certain width, perhaps a couple of inches, and imagine someone needs to roll lots of marbles down the tube. If rolling large marbles, only two or three can pass through a point in the tube at once. If rolling small marbles, lots more can go through at once. Therefore the use of small marbles means more marbles can go through the tube more quickly.</p>\n\n<p>Quantization converts big marbles to small marbles. The information needed to calculate inferences takes up less room in memory, therefore more information can go through more quickly, and AI computation is made more efficient.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why use quantization?</h2>\n\n<p>The models used for machine learning — a type of AI — are extremely complex. They use huge amounts of memory and computational power. In fact, the rise in popularity of AI has led to power crunches: Servers running advanced machine learning models need huge amounts of electricity. In some cases, the publicly available electrical grid cannot supply it all. This has led to a number of creative solutions, from increased use of solar power to <a href='https://www.npr.org/2024/09/20/nx-s1-5120581/three-mile-island-nuclear-power-plant-microsoft-ai' target='_blank'>reactivating decommissioned nuclear power plants</a>.</p>\n\n<p>Quantization aims to reduce the computational load from the other side, so that the AI models themselves use less power. For developers and organizations running AI models, this can help make AI much more cost-effective, as not everyone can afford to reactivate old nuclear power plants.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does quantization affect precision?</h2>\n\n<p>To understand why quantization affects precision, imagine asking someone for directions. The person might provide a turn-by-turn list of streets, the names of each street, and the names of the streets before and after each street. Such a set of directions is highly precise but might be hard to remember. Conversely, someone might instead say something like \"second left, fourth right, first left.\" This is much easier to remember, albeit less precise.</p>\n\n<p>In AI, quantization works by reducing the number of bits used by data points. The loss of bits means some amount of precision may be lost. The result can be more errors in the output (just as a driver might misidentify the \"fourth left\" in the example above without the street name). However, there are different types of quantization, some of which are more precise than others.</p>\n\n<p>In practice, companies or users have use cases where the quantized AI model is \"good enough.\" The use case often does not need highly precise results. One example of such a use case is tracking social media trends and mentions without needing exact data points, focusing on overall sentiment and engagement.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is post-training quantization (PTQ)?</h2>\n\n<p>Post-training quantization (PTQ) is the application of quantization to preexisting models that have already been trained. PTQ can be applied relatively quickly to trained models. It contrasts with quantization-aware training (QAT), which takes place before a model is trained and takes quite a bit of computing power. PTQ works by converting floating-point numbers to fixed-point numbers.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is floating point representation?</h2>\n\n<p>Floating point representation is a highly precise method for representing numbers that is commonly used in machine learning and <a href='/learning/ai/what-is-deep-learning/'>deep learning</a>. Numbers stored via floating point representation take up a set amount of bits, either 16 or 32 (depending on the type of floating point representation used).</p>\n\n<p>Many types of quantization reduce this to 8 bits. The result is that quantized numbers take up half or a quarter as much space in memory. Of course, with fewer bits, quantized values are not as precise as floating point numbers — just like a number with fewer decimal places (e.g., 3.14) is less precise than a number with more decimal places (e.g., 3.141592654).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is activation-aware weight quantization (AWQ)?</h2>\n\n<p>Activation-aware weight quantization (AWQ) is a technique that aims to balance efficiency improvements with precision. AWQ protects the most important weights within a model from alteration. (Weights are values that measure the relationship between items within a data set.) Think back to the directions example above. Imagine instead of \"second left, fourth right, first left,\" the direction-giver says, \"second left, right on 12th Street, then first left.\" This has some more precise information but is still a relatively short (and easy to remember) list of directions. AWQ works similarly, keeping some integers of a model unchanged while altering others.</p>\n\n<p><a href='/developer-platform/products/workers-ai/'>Cloudflare Workers AI</a> supports several large language models (LLMs) that incorporate both floating point quantization and AWQ so that they are lighter on memory and use less computational power while retaining precision. To learn more, see <a href='https://developers.cloudflare.com/workers-ai/models/' target='_blank'>Cloudflare Workers AI documentation</a>.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4ZQnJE14ttZQWaVlUXDl7X",
+			"pathname": "/learning/ai/what-is-quantization/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

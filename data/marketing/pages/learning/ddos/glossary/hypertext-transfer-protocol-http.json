@@ -1,0 +1,886 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ddos/glossary/hypertext-transfer-protocol-http/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "cKz1Z2SJrqdn0ZFwOnDXx",
+				"urlSlug": "ddos/glossary/hypertext-transfer-protocol-http",
+				"metaTags": {
+					"metaTitle": "What is HTTP?",
+					"metaDescription": "Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load web pages using hypertext links. Learn more about HTTP.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/dyoDxOK6E2FMohWlBz5yG/ddfed013002607cae294417c23bcdf74/ddos-lc.png"
+						},
+						"description": "Learning Center DDOS OG Image"
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What is HTTP?",
+				"metaDescription": "Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load web pages using hypertext links. Learn more about HTTP.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "28LvlxvxleYGQ8oAcq8Gc2",
+					"learningCenterName": "ddos",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+							"displayText": "What is a DDoS attack?",
+							"url": "/learning/ddos/what-is-a-ddos-attack/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+							"displayText": "What is a DDoS botnet?",
+							"url": "/learning/ddos/what-is-a-ddos-botnet/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "488TK0iPJY2UOcQ4GaYOSM",
+							"name": "DDoS header: Common DDoS attacks ",
+							"displayText": "Common DDoS attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+									"displayText": "Application layer attack",
+									"url": "/learning/ddos/application-layer-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+									"displayText": "Cryptocurrency attacks",
+									"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+									"displayText": "DNS amplification attack",
+									"url": "/learning/ddos/dns-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+									"displayText": "Layer 3 attacks",
+									"url": "/learning/ddos/layer-3-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+									"displayText": "Low and slow attack",
+									"url": "/learning/ddos/ddos-low-and-slow-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+									"displayText": "Memcached DDoS attack",
+									"url": "/learning/ddos/memcached-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+									"displayText": "NTP amplification attack",
+									"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+									"displayText": "Ransom DDoS attack",
+									"url": "/learning/ddos/ransom-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+									"displayText": "SSDP attack",
+									"url": "/learning/ddos/ssdp-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+									"displayText": "Ping of death (historic)",
+									"url": "/learning/ddos/ping-of-death-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+									"displayText": "Smurf attack (historic)",
+									"url": "/learning/ddos/smurf-ddos-attack/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "Vo72dHHO8V2xTXLPaW61N",
+							"name": "DDoS header: Flood attacks",
+							"displayText": "Flood attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+									"displayText": "ACK flood attack",
+									"url": "/learning/ddos/what-is-an-ack-flood/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+									"displayText": "DNS flood attack",
+									"url": "/learning/ddos/dns-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+									"displayText": "HTTP flood attack",
+									"url": "/learning/ddos/http-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+									"displayText": "Ping (ICMP) flood attack",
+									"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+									"displayText": "QUIC flood attack",
+									"url": "/learning/ddos/what-is-a-quic-flood/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+									"displayText": "SYN flood attack",
+									"url": "/learning/ddos/syn-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+									"displayText": "UDP flood attack",
+									"url": "/learning/ddos/udp-flood-ddos-attack/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1TotuWDV6YSUcUEak4KGYM",
+							"name": "DDoS header: DDoS attack tools",
+							"displayText": "DDoS attack tools",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b2paLepZMkICu60yMqm6u",
+									"displayText": "How to DDoS | DoS and DDoS attack tools",
+									"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "rImA6gycScEyWcYUUAaUm",
+									"displayText": "DDoS booter/IP stresser",
+									"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+									"displayText": "High Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b8HHJH0rokU6gayiww26K",
+									"displayText": "Low Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+									"displayText": "IP spoofing",
+									"url": "/learning/ddos/glossary/ip-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+									"displayText": "Malware",
+									"url": "/learning/ddos/glossary/malware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+									"displayText": "Mirai botnet",
+									"url": "/learning/ddos/glossary/mirai-botnet/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "eUBWBDodk4i44IeaOquk0",
+									"displayText": "R U Dead Yet? (R.U.D.Y.)",
+									"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+									"displayText": "Slowloris attack",
+									"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1hw7BfQbL8qzPSokzSyXJU",
+							"name": "DDoS header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+									"displayText": "What is DDoS blackhole routing?",
+									"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+									"displayText": "DDoS mitigation",
+									"url": "/learning/ddos/ddos-mitigation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+									"displayText": "What is a denial-of-service (DoS) attack? ",
+									"url": "/learning/ddos/glossary/denial-of-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6d1quO1yzC88UKgMsmwY0s",
+									"displayText": "DNS",
+									"url": "/learning/dns/what-is-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+									"displayText": "Famous DDoS attacks",
+									"url": "/learning/ddos/famous-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2uV8XeA21knhO1nuSUEk3w",
+									"displayText": "What is Anonymous Sudan?",
+									"url": "/learning/ddos/glossary/anonymous-sudan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+									"displayText": "HTTP",
+									"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+									"displayText": "ICMP",
+									"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+									"displayText": "What is the Internet of Things (IoT)?",
+									"url": "/learning/ddos/glossary/internet-of-things-iot/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+									"displayText": "Layer 7",
+									"url": "/learning/ddos/what-is-layer-7/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "51BVc8hCzYkMcACSekOsag",
+									"displayText": "OSI Model",
+									"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6xtVT6OheomGscU244Gy4c",
+									"displayText": "TCP/IP",
+									"url": "/learning/ddos/glossary/tcp-ip/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7D0UJZyrqE0YO0yYMWK2Wi",
+									"displayText": "UDP",
+									"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "47hHJHZNSoQuio4QmgCo6w",
+									"displayText": "WAF",
+									"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3PPaSX6bTBBsXTk74WWyF6",
+									"displayText": "How to prevent DDoS attacks",
+									"url": "/learning/ddos/how-to-prevent-ddos-attacks/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "56DqGG2u4w6dn5uDStyvNA",
+							"name": "DDoS header: theNET",
+							"displayText": "theNET",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
+									"displayText": "The future of web application security",
+									"url": "https://www.cloudflare.com/insights-future-web-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37qx4iYUDgPdHJaxEAyIxH",
+									"displayText": "Ransomware attackers escalate extortion tactics",
+									"url": "https://www.cloudflare.com/learning/insights-ransomware-extortion/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Bngdc6ouSn7Q4HEyfH9tZ",
+									"displayText": "Using DDoS threats to extort organizations",
+									"url": "https://www.cloudflare.com/insights-ransom-ddos"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "BpfTCuIF5AqKwM4wsyQIq",
+					"learningCenterName": "ddos",
+					"column1Title": "About DDoS attacks",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "p6u7Eh6PwkA40yMS0mgMY",
+						"name": "DDoS footer: About DDoS attacks",
+						"displayText": "About DDoS attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+								"displayText": "What is a DDoS attack?",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+								"displayText": "What is a DDoS botnet?",
+								"url": "/learning/ddos/what-is-a-ddos-botnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+								"displayText": "Famous DDoS attacks",
+								"url": "/learning/ddos/famous-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+								"displayText": "DDoS mitigation",
+								"url": "/learning/ddos/ddos-mitigation/"
+							}
+						]
+					},
+					"column2Title": "DDoS attacks",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2TtoXvpi8UYPqpEVzWuntQ",
+						"name": "DDoS footer: DDoS attacks",
+						"displayText": "DDoS attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+								"displayText": "ACK flood attack",
+								"url": "/learning/ddos/what-is-an-ack-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+								"displayText": "Application layer attack",
+								"url": "/learning/ddos/application-layer-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+								"displayText": "Cryptocurrency attacks",
+								"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+								"displayText": "DNS amplification attack",
+								"url": "/learning/ddos/dns-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+								"displayText": "DNS flood attack",
+								"url": "/learning/ddos/dns-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+								"displayText": "HTTP flood attack",
+								"url": "/learning/ddos/http-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+								"displayText": "Layer 3 attacks",
+								"url": "/learning/ddos/layer-3-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+								"displayText": "Low and slow attack",
+								"url": "/learning/ddos/ddos-low-and-slow-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+								"displayText": "Memcached DDoS attack",
+								"url": "/learning/ddos/memcached-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+								"displayText": "NTP amplification attack",
+								"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+								"displayText": "Ping (ICMP) flood attack",
+								"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+								"displayText": "QUIC flood attack",
+								"url": "/learning/ddos/what-is-a-quic-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+								"displayText": "Ransom DDoS attack",
+								"url": "/learning/ddos/ransom-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+								"displayText": "SSDP attack",
+								"url": "/learning/ddos/ssdp-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+								"displayText": "SYN flood attack",
+								"url": "/learning/ddos/syn-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+								"displayText": "UDP flood attack",
+								"url": "/learning/ddos/udp-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+								"displayText": "Ping of death (historic)",
+								"url": "/learning/ddos/ping-of-death-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+								"displayText": "Smurf attack (historic)",
+								"url": "/learning/ddos/smurf-ddos-attack/"
+							}
+						]
+					},
+					"column3Title": "DDoS attack tools",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1EzjWEy67zC4i5hLIC8FpF",
+						"name": "DDoS footer: DDoS attack tools",
+						"displayText": "DDoS attack tools",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b2paLepZMkICu60yMqm6u",
+								"displayText": "How to DDoS | DoS and DDoS attack tools",
+								"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "rImA6gycScEyWcYUUAaUm",
+								"displayText": "DDoS booter/IP stresser",
+								"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+								"displayText": "High Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b8HHJH0rokU6gayiww26K",
+								"displayText": "Low Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+								"displayText": "IP spoofing",
+								"url": "/learning/ddos/glossary/ip-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+								"displayText": "Malware",
+								"url": "/learning/ddos/glossary/malware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+								"displayText": "Mirai botnet",
+								"url": "/learning/ddos/glossary/mirai-botnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "eUBWBDodk4i44IeaOquk0",
+								"displayText": "R U Dead Yet? (R.U.D.Y.)",
+								"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+								"displayText": "Slowloris attack",
+								"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+							}
+						]
+					},
+					"column4Title": "DDoS glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1xhHdBkjmcNOgkR8B2bgap",
+						"name": "DDoS footer: Glossary",
+						"displayText": "DDoS glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2uV8XeA21knhO1nuSUEk3w",
+								"displayText": "What is Anonymous Sudan?",
+								"url": "/learning/ddos/glossary/anonymous-sudan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+								"displayText": "What is DDoS blackhole routing?",
+								"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+								"displayText": "What is a denial-of-service (DoS) attack? ",
+								"url": "/learning/ddos/glossary/denial-of-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+								"displayText": "HTTP",
+								"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+								"displayText": "ICMP",
+								"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+								"displayText": "What is the Internet of Things (IoT)?",
+								"url": "/learning/ddos/glossary/internet-of-things-iot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+								"displayText": "Layer 7",
+								"url": "/learning/ddos/what-is-layer-7/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "51BVc8hCzYkMcACSekOsag",
+								"displayText": "OSI Model",
+								"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6xtVT6OheomGscU244Gy4c",
+								"displayText": "TCP/IP",
+								"url": "/learning/ddos/glossary/tcp-ip/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2JgJvIWgo72kFjaMf1xzWc",
+								"displayText": "User Datagram Protocol (UDP)",
+								"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3m3SoSRTz9H3QUP1Y3fLJ0",
+								"displayText": "Web application firewall (WAF)",
+								"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3PPaSX6bTBBsXTk74WWyF6",
+								"displayText": "How to prevent DDoS attacks",
+								"url": "/learning/ddos/how-to-prevent-ddos-attacks/"
+							}
+						]
+					},
+					"column5Title": "Learning Center navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3W1E40q164OhUFAC0XF03C",
+						"name": "DDoS footer: Learning Nav",
+						"displayText": "Learning Center navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7CoqFqlHQVmsyV0mxgXUs2",
+								"displayText": "AI Learning Center",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
+							}
+						]
+					}
+				},
+				"header": "What is HTTP?",
+				"blurbSubHeader": "The Hypertext Transfer Protocol is used to load pages on the Internet using hyperlinks.",
+				"objectivesHeader": "HTTP",
+				"objectivesList": [
+					"Define HTTP",
+					"Describe the anatomy of HTTP requests and responses",
+					"Understand how DDoS attacks can be launched over HTTP"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+						"displayText": "HTTP flood attack",
+						"url": "/learning/ddos/http-flood-ddos-attack/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6xtVT6OheomGscU244Gy4c",
+						"displayText": "TCP/IP",
+						"url": "/learning/ddos/glossary/tcp-ip/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2JgJvIWgo72kFjaMf1xzWc",
+						"displayText": "User Datagram Protocol (UDP)",
+						"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3m3SoSRTz9H3QUP1Y3fLJ0",
+						"displayText": "Web application firewall (WAF)",
+						"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+						"displayText": "Malware",
+						"url": "/learning/ddos/glossary/malware/"
+					}
+				],
+				"enablementBlade": null,
+				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTP?</h2>\n\n<p>The Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an <a href=\"/learning/ddos/application-layer-ddos-attack/\">application layer</a> protocol designed to transfer information between networked devices and runs on top of other layers of the network <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a> stack. A typical flow over HTTP involves a client machine making a request to a server, which then sends a response message.</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP request?</h2>\n\n<p>An HTTP request is the way Internet communications platforms such as web browsers ask for the information they need to load a website.</p>\n\n<p>Each HTTP request made across the Internet carries with it a series of encoded data that carries different types of information. A typical HTTP request contains:</p>\n\n <ol class=\"learning-list\">\n              <li>HTTP version type</li>\n              <li>a URL</li>\n              <li>an HTTP method</li>\n              <li>HTTP request headers</li>\n              <li>Optional HTTP body.</li>\n            </ol>\n\n <p>Let's explore in greater depth how these requests work, and how the contents of a request can be used to share information.</p>\n\n<div class=\"cards-banner-lcnew\">\n      <div class=\"card_content-banner-lcnew \">\n\n        <div class=\"card_title-banner-lcnew\"><span>Report</span></div>\n\n        <div class=\"card_text-banner-lcnew\">2025 Security Signals Report</div>\n      </div>\n        <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/signals-report-2025/\" data-tracking-action=\"click\" data-tracking-label=\"Get the report - /lp/signals-report-2025/\" data-tracking-category=\"card1-banner\">Get the report</a></div>\n\n    </div>\n    </div>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an HTTP method?</h2>\n\n<p>An HTTP method, sometimes referred to as an HTTP verb, indicates the action that the HTTP request expects from the queried server. For example, two of the most common HTTP methods are 'GET' and 'POST'; a 'GET' request expects information back in return (usually in the form of a website), while a 'POST' request typically indicates that the client is submitting information to the web server (such as form information, e.g. a submitted username and password).</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are HTTP request headers?</h2>\n\n<p>HTTP headers contain text information stored in key-value pairs, and they are included in every HTTP request (and response, more on that later). These headers communicate core information, such as what browser the client is using and what data is being requested.</p>\n\n<p>Example of HTTP request headers from Google Chrome's network tab:<p>\n\n            <img class=\"responsive-image\" title=\"HTTP request headers\" alt=\"HTTP request headers\" src=\"/img/learning/ddos/glossary/hypertext-transfer-protocol-http/http-request-headers.png\" itemprop=\"image\" />\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>DDoS Protection</span></div>\n        <div class=\"card_text-banner-lcnew\">Get DDoS protection with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card2\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n             <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP request body?</h2>\n\n<p>The body of a request is the part that contains the 'body' of information the request is transferring. The body of an HTTP request contains any information being submitted to the web server, such as a username and password, or any other data entered into a form.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP response?</h2>\n\n<p>An HTTP response is what web clients (often browsers) receive from an Internet server in answer to an HTTP request. These responses communicate valuable information based on what was asked for in the HTTP request.</p>\n\n<p>A typical HTTP response contains:</p>\n<ol class=\"learning-list\">\n              <li>an HTTP status code</li>\n              <li>HTTP response headers</li>\n              <li>optional HTTP body</li>\n          <p>Let's break these down:</p>\n   <h2 class=\"learning-content-h2\" itemprop=\"headline\">What's an HTTP status code?</h2>\n  <p>HTTP status codes are 3-digit codes most often used to indicate whether an HTTP request has been successfully completed. Status codes are broken into the following 5 blocks:</p>\n  <ol class=\"learning-list\">\n              <li>1xx Informational</li>\n              <li>2xx Success</li>\n              <li>3xx Redirection</li>\n              <li>4xx Client Error</li>\n              <li>5xx Server Error</li>\n            <p>The \"xx\" refers to different numbers between 00 and 99.</p>\n\n            <p>Status codes starting with the number '2' indicate a success. For example, after a client requests a webpage, the most commonly seen responses have a status code of '200 OK', indicating that the request was properly completed.</p>\n\n            <p>If the response starts with a '4' or a '5' that means there was an error and the webpage will not be displayed. A status code that begins with a '4' indicates a client-side error (it is very common to encounter a '404 NOT FOUND' status code when making a typo in a URL). A status code beginning in '5' means something went wrong on the server side. Status codes can also begin with a '1' or a '3', which indicate an informational response and a redirect, respectively.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are HTTP response headers?</h2>\n\n <p>Much like an HTTP request, an HTTP response comes with headers that convey important information such as the language and format of the data being sent in the response body.</p>\n\n <p>Example of HTTP response headers from Google Chrome's network tab:<p>\n\n <img class=\"responsive-image\" title=\"HTTP response headers\" alt=\"HTTP response headers\" src=\"/img/learning/ddos/glossary/hypertext-transfer-protocol-http/http-response-headers.png\" itemprop=\"image\" />\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP response body?</h2>\n\n <p>Successful HTTP responses to 'GET' requests generally have a body which contains the requested information. In most web requests, this is HTML data that a web browser will translate into a webpage.</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">Can DDoS attacks be launched over HTTP?</h2>\n\n <p>Keep in mind that HTTP is a \"stateless\" protocol, which means that each command runs independent of any other command. In the original spec, HTTP requests each created and closed a <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a> connection. In newer versions of the HTTP protocol (HTTP 1.1 and above), persistent connection allows for multiple HTTP requests to pass over a persistent TCP connection, improving resource consumption. In the context of <a href=\"/learning/ddos/glossary/denial-of-service/\">DoS</a> or <a href=\"/learning/ddos/what-is-a-ddos-attack/\">DDoS attacks</a>, HTTP requests in large quantities can be used to mount an attack on a target device, and are considered part of application layer attacks or <a href='/learning/ddos/what-is-layer-7/'>layer 7</a> attacks.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe  to theNET",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "cKz1Z2SJrqdn0ZFwOnDXx",
+			"pathname": "/learning/ddos/glossary/hypertext-transfer-protocol-http/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"es-LA",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}
