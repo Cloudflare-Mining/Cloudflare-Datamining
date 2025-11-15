@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-06-21T15:13:21.168Z",
-					"updatedAt": "2025-11-07T03:39:16.198Z"
+					"updatedAt": "2025-11-14T22:51:34.234Z"
 				},
 				"contentfulId": "3SXYwj2lyMsLyIemHbsDAs",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -1155,7 +1167,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "\n There's a perception that nonprofits are under-protected against cyberattacks. Attackers also see us as easier to target vs. large enterprises. It's imperative for non-profits to invest in cyber security to protect sensitive donor information despite often limited in-house cyber security resources.\n\nWe do everything we can to safeguard online donations, protect our data, and maintain the trust of our service users, volunteers, and donors. For example:\n",
+																	"value": "\n There's a perception that nonprofits are under-protected against cyberattacks. Attackers also see us as easier to target vs. large enterprises. It's imperative for non-profits to invest in cybersecurity to protect sensitive donor information despite often limited in-house cybersecurity resources.\n\nWe do everything we can to safeguard online donations, protect our data, and maintain the trust of our service users, volunteers, and donors. For example:\n",
 																	"marks": [],
 																	"content": null
 																}
@@ -1195,7 +1207,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Zero Trust Network Access",
+																			"value": "zero trust network access",
 																			"marks": [],
 																			"content": null
 																		}
@@ -1346,7 +1358,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": ", cyber security, and enterprise data management. We also nurture our relationships with cancer societies in Sweden, Norway, Iceland, and the UK.\n\nCollaboration and insight from our peers also helps us find the right-fit technology partners. So my advice is to find out what SaaS and cloud platforms other nonprofits in your area use, as that makes it easier to get local support. Look for an IT consulting partner that can help you manage your IT ecosystem long-term.",
+																	"value": ", cybersecurity, and enterprise data management. We also nurture our relationships with cancer societies in Sweden, Norway, Iceland, and the UK.\n\nCollaboration and insight from our peers also helps us find the right-fit technology partners. So my advice is to find out what SaaS and cloud platforms other nonprofits in your area use, as that makes it easier to get local support. Look for an IT consulting partner that can help you manage your IT ecosystem long-term.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1720,7 +1732,11 @@
 																"uri": null
 															},
 															"value": "The connectivity cloud: A way to take back IT and security control",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2313,7 +2329,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Series: Illuminate: Perspectives from technology leaders",
+																			"value": "Illuminate: Perspectives from technology leaders",
 																			"marks": [],
 																			"content": null
 																		}
