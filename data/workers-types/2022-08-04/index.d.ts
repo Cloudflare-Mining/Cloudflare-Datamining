@@ -525,17 +525,7 @@ interface StructuredSerializeOptions {
   transfer?: any[];
 }
 declare abstract class Navigator {
-  sendBeacon(
-    url: string,
-    body?:
-      | ReadableStream
-      | string
-      | (ArrayBuffer | ArrayBufferView)
-      | Blob
-      | FormData
-      | URLSearchParams
-      | URLSearchParams,
-  ): boolean;
+  sendBeacon(url: string, body?: BodyInit): boolean;
   readonly userAgent: string;
   readonly hardwareConcurrency: number;
 }
