@@ -1,4 +1,5 @@
-<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/714qZwpH4BDJ6T69EnoiHE/db1ae0a3666dbb1abec3c57b21d81fc5/image3.png" alt="">
+<div class="mb2 gray5">12 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/finding-the-grain-of-sand-in-a-heap-of-salt">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/finding-the-grain-of-sand-in-a-heap-of-salt">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/714qZwpH4BDJ6T69EnoiHE/db1ae0a3666dbb1abec3c57b21d81fc5/image3.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>How do you find the root cause of a configuration management failure when you have a peak of hundreds of changes in 15 minutes on thousands of servers?</p>
 	<p>That was the challenge we faced as we built the infrastructure to reduce release delays due to failures of Salt, a configuration management tool. (We eventually reduced such failures on the edge by over 5%, as we’ll explain below.) We’ll explore the fundamentals of Salt, and how it is used at Cloudflare. We then describe the common failure modes and how they delay our ability to release valuable changes to serve our customers.</p>
