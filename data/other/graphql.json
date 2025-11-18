@@ -2051,6 +2051,8 @@
 		"__description": "",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "Request datetime, truncated to start of a minute",
+		"datetimeFiveMinutes": "Request datetime, truncated to start of a minute",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of a minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
@@ -2120,6 +2122,8 @@
 	"AccountDurableObjectsPeriodicGroupsDimensions": {
 		"__description": "",
 		"date": "Datetime the metrics period started, truncated to start of a day",
+		"datetimeFifteenMinutes": "Datetime the metrics period started, truncated to start of a minute",
+		"datetimeFiveMinutes": "Datetime the metrics period started, truncated to start of a minute",
 		"datetimeHour": "Datetime the metrics period started, truncated to start of an hour",
 		"datetimeMinute": "Datetime the metrics period started, truncated to start of a minute",
 		"datetimeSixHours": "Datetime the metrics period started, truncated to start of six hour window",
