@@ -5,33 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal&nbsp;</p>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles about 10% of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</span></p>
-<p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">We’re looking to grow our front-end product team with highly motivated individuals who are excited to work with product owners, designers, and systems engineers to build new and, in some cases, rebuild existing products and features. You should have experience working with large-scale JavaScript applications and a track record of building great products. You must care deeply not only about the quality of your and the team's code, but also the product functionality and user experience.&nbsp;</span></p>
-<p><span style="font-weight: 400;">We believe that great design is at the heart of any successful product. You will work closely with our design/UX team and must be comfortable seeking feedback from non-technical sources. We work iteratively and deploy often (can be several times a day). We build and maintain the Cloudflare Dashboard, a large TypeScript / React application, maintain a suite of common components published on npm, and build/package with Webpack. Other technologies we use include Redux, Fela, GraphQL, Apollo, Jest, Enzyme, Cypress, D3 and more.&nbsp;</span></p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
+<h3><strong>Available Locations: Lisbon, Portugal | London, UK</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<h3><strong>What you'll do</strong></h3>
+<p>As a Systems Engineer focused on Cloudflare's Email Service, you will shape the future of industry-leading services that redefine what is possible for developers. We don't just copy what other cloud providers do; we work backward from developer needs, reimagining solutions by leveraging our unique global network.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might implement innovative solutions for deliverability, optimize time-to-inbox, or design an API for a new product feature. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust and Go</p>
+<h3><strong>Qualifications:</strong></h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum of 2 years experience building product</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of HTML, CSS, and TypeScript</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of React.js</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with JS frameworks and writing reusable/modular code</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of building great interfaces and being detail oriented</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work in cross-functional teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentoring other team members to help bring out their best work</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness to dive deep and understand product internals</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent debugging skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Unit/integration testing experience</span></li>
+	<li>Experience with transactional email infrastructure at scale</li>
+	<li>Strong knowledge of email deliverability / anti-spam standards (e.g. SPF, DKIM, DMARC, VERP)</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Rust, TypeScript, and Go.</li>
+	<li>Experience with Cloudflare Developer Platform</li>
+	<li>Proven ability to drive projects independently, from concept to implementation.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h3><strong>Bonus Points:</strong></h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity building products with design systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working alongside user researchers to build products</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in interviewing engineering candidates</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">History of building products in complex systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of the networking stack (such as DNS, firewalls, etc.)</span></li>
+	<li>Deep Linux / UNIX systems knowledge.</li>
+	<li>Technical writing skills</li>
+	<li>Experience building and scaling large-scale applications.</li>
 </ul>
+<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

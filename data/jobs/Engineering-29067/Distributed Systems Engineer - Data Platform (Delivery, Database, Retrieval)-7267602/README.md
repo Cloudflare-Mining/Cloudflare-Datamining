@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available: London (UK), Lisbon (Portugal),&nbsp; Austin (US), Denver (US), Atlanta (US)</strong></p>
+<p><strong>Locations Available: London (UK), Lisbon (Portugal),&nbsp; or Austin (US)</strong></p>
 <p><strong>About Role</strong></p>
 <p><span style="font-weight: 400;">We are looking for experienced and highly motivated engineers to join our DATA Org and help build the future of data at Cloudflare. Our organisation is responsible for the entire data lifecycle - from ingestion and processing to storage and retrieval - powering the critical logs and analytics that provide our customers with real-time visibility into the health and performance of their online properties.</span></p>
 <p><span style="font-weight: 400;">Our mission is to empower customers to leverage their data to drive better outcomes for their business. We build and maintain a suite of high-performance, scalable systems that handle more than a billion events in a second. As an engineer in our organisation, you will have the opportunity to work on complex distributed systems challenges across different parts of our data stack.</span></p>
