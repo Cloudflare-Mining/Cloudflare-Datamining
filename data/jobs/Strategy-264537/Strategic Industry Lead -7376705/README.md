@@ -5,36 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Strategic Industry Leads </strong><strong><br></strong><strong>Director / Senior Director</strong><strong><br></strong><strong>Location: Singapore or Sydney, Australia&nbsp;</strong></p>
+<p><strong>Location: Singapore or Sydney</strong></p>
 <p><strong>About Us</strong><strong><br></strong>At Cloudflare, we are on a mission to help build a better Internet. Today we run one of the world’s largest networks, powering millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code.</p>
 <p>We hire curious and empathetic individuals who are committed to developing themselves and learning new skills, and we support them throughout their time here. We cannot complete our mission without building a diverse and inclusive team.</p>
-<p>Cloudflare recently announced key partnerships across multiple industries, enabling some of the world’s largest organizations and their millions of customers to benefit from Cloudflare’s faster, more reliable, and more secure edge network and connectivity cloud. To further drive these initiatives, we are seeking a <strong>Director or Senior Director, Industry Lead</strong>. This role reports to the VP, Global Head of Industries.</p>
+<p>Cloudflare recently announced key partnerships across multiple industries, enabling some of the world’s largest organizations and their millions of customers to benefit from Cloudflare’s faster, more reliable, and more secure edge network and connectivity cloud. To further drive these initiatives, we are seeking a <strong>Strategic Industry Lead</strong>. This role reports to the VP, Global Head of Industries.</p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Spend 80% time with customers, prospects and partners to build Cloudflare footprint in specific industries and geographies, ensuring a deep understanding of their priorities, challenges, and opportunities<br><br></li>
-	<li>Scale, build, and lead a world-class, cross-functional industry team that sustains efficient, long-term growth and serves as a repeatable model for multiple industries.<br><br></li>
-	<li>Understand the market, develop internal and external partnerships, and act as an industry leader at the intersection of technology and targeted verticals (e.g. financial services, healthcare, media, retail, CPG).<br><br></li>
-	<li>Create and drive new strategic go-to-market plans in coordination with sales, product, marketing and customer success teams to meet growth and market share goals.<br><br></li>
+	<li>Spend 80% time with customers, prospects and partners to build Cloudflare footprint in specific industries and geographies, ensuring a deep understanding of their priorities, challenges, and opportunities</li>
+	<li>Scale, build, and lead a world-class, cross-functional industry team that sustains efficient, long-term growth and serves as a repeatable model for multiple industries.</li>
+	<li>Understand the market, develop internal and external partnerships, and act as an industry leader at the intersection of technology and targeted verticals (e.g. financial services, healthcare, media, retail, CPG).</li>
+	<li>Create and drive new strategic go-to-market plans in coordination with sales, product, marketing and customer success teams to meet growth and market share goals.</li>
 	<li>Lead industry thought leadership efforts through executive briefings, speaking engagements, and high impact content that strengthens Cloudflare’s brand presence in target markets.&nbsp;</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Assess sales methodologies and structure, implementing necessary adjustments to optimize performance and build the infrastructure for aggressive growth.<br><br></li>
-	<li>Maintain strong reporting and accountability against goals, exceeding quotas while developing motivating incentive tools.<br><br></li>
-	<li>Serve as a strategic advisor to the VP, Global Head of Industries and the broader Executive Team, influencing key business decisions. <br><br></li>
-	<li>Build and leverage strong industry and customer relationships to inform product direction, solution, and process improvements.<br><br></li>
-	<li>Develop a metrics-driven sales operations function with massive sales capacity and coverage.<br><br></li>
+	<li>Assess sales methodologies and structure, implementing necessary adjustments to optimize performance and build the infrastructure for aggressive growth.</li>
+	<li>Maintain strong reporting and accountability against goals, exceeding quotas while developing motivating incentive tools.</li>
+	<li>Serve as a strategic advisor to the VP, Global Head of Industries and the broader Executive Team, influencing key business decisions. </li>
+	<li>Build and leverage strong industry and customer relationships to inform product direction, solution, and process improvements.</li>
+	<li>Develop a metrics-driven sales operations function with massive sales capacity and coverage.</li>
 	<li>Recruit, inspire, lead, mentor, and instill operational rigor and accountability into the sales organization. <br><br></li>
 </ul>
 <p><strong>Key Experience &amp; Expertise</strong></p>
 <ul>
-	<li><strong>High Growth at Scale:</strong> Led organizations through rapid growth ($1B to $5B+), building processes and strategies for repeatability and scalability.<br><br></li>
-	<li><strong>Go-to-Market Expertise:</strong> Experience leading complex, multi-product sales into a multi-segment (SMB to Enterprise) customer base.<br><br></li>
-	<li><strong>Infrastructure SaaS:</strong> Background in cloud-native, technical infrastructure SaaS with predictable, recurring revenue models.<br><br></li>
-	<li><strong>Operational Rigor:</strong> Proven success implementing data-driven operational improvements in sales enablement, hiring, and productivity.<br><br></li>
-	<li><strong>Strategic Leadership:</strong> Execution-focused leader with the personal drive to navigate fast-growing, evolving markets.<br><br></li>
+	<li><strong>High Growth at Scale:</strong> Led organizations through rapid growth ($1B to $5B+), building processes and strategies for repeatability and scalability.</li>
+	<li><strong>Go-to-Market Expertise:</strong> Experience leading complex, multi-product sales into a multi-segment (SMB to Enterprise) customer base.</li>
+	<li><strong>Infrastructure SaaS:</strong> Background in cloud-native, technical infrastructure SaaS with predictable, recurring revenue models.</li>
+	<li><strong>Operational Rigor:</strong> Proven success implementing data-driven operational improvements in sales enablement, hiring, and productivity.</li>
+	<li><strong>Strategic Leadership:</strong> Execution-focused leader with the personal drive to navigate fast-growing, evolving markets.</li>
+	<li><strong>Technical Expertise:</strong> Proven technical expertise to operate in network, cybersecurity and AI infrastructure space</li>
 </ul>
-<p><strong>Technical Expertise:</strong> Proven technical expertise to operate in network, cybersecurity and AI infrastructure space</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
