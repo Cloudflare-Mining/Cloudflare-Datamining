@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-12-18T16:47:11.202Z",
-					"updatedAt": "2025-09-09T18:08:42.067Z"
+					"updatedAt": "2025-11-19T00:22:04.733Z"
 				},
 				"contentfulId": "38nwpVBrb6iaCERi1uxbwD",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -718,7 +730,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Some flaws in software are essentially benign. But some flaws, known as vulnerabilities, can give someone who exploits the flaws a foothold within the system, leading to compromise. A significant chunk of cyber security practice is devoted to identifying and patching these vulnerabilities.",
+													"value": "Some flaws in software are essentially benign. But some flaws, known as vulnerabilities, can give someone who exploits the flaws a foothold within the system, leading to compromise. A significant chunk of cybersecurity practice is devoted to identifying and patching these vulnerabilities.",
 													"marks": [],
 													"content": null
 												}
@@ -2169,7 +2181,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Future-proofing against vulnerability exploits with Zero Trust",
+													"value": "Future-proofing against vulnerability exploits with zero trust",
 													"marks": [
 														{
 															"type": "bold"
@@ -2328,7 +2340,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -2340,7 +2352,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ",\" and there are strong reasons for this philosophy's growing adoption. As AI tools enable escalating exploits, Zero Trust can help ensure that those exploits remain restricted to a small corner of the network, and that attackers never gain a big enough foothold to cause real damage.",
+													"value": ",\" and there are strong reasons for this philosophy's growing adoption. As AI tools enable escalating exploits, zero trust can help ensure that those exploits remain restricted to a small corner of the network, and that attackers never gain a big enough foothold to cause real damage.",
 													"marks": [],
 													"content": null
 												}
@@ -2361,7 +2373,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Vulnerability exploit discovery may accelerate, but Zero Trust offers the most hopeful path forward. And Cloudflare is the only vendor that consolidates Zero Trust technologies such as secure web gateways, DNS filtering, and data loss prevention (DLP) into a single platform with a unified dashboard — a platform with points of presence all over the world. The distributed nature of the Cloudflare network makes it possible to enforce granular, default-deny access controls across cloud and on-premises applications with no latency added to the user experience.",
+													"value": "Vulnerability exploit discovery may accelerate, but zero trust offers the most hopeful path forward. And Cloudflare is the only vendor that consolidates zero trust technologies such as secure web gateways, DNS filtering, and data loss prevention (DLP) into a single platform with a unified dashboard — a platform with points of presence all over the world. The distributed nature of the Cloudflare network makes it possible to enforce granular, default-deny access controls across cloud and on-premises applications with no latency added to the user experience.",
 													"marks": [],
 													"content": null
 												}
@@ -2401,7 +2413,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust approach",
+															"value": "zero trust approach",
 															"marks": [],
 															"content": null
 														}
@@ -2552,7 +2564,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about Zero Trust in the ",
+													"value": "Learn more about zero trust in the ",
 													"marks": [],
 													"content": null
 												},
@@ -2571,8 +2583,12 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "A Roadmap to Zero Trust Architecture",
-															"marks": [],
+															"value": "A roadmap to zero trust architecture",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2583,7 +2599,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " whitepaper.",
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "whitepaper.",
 													"marks": [],
 													"content": null
 												}
@@ -2626,7 +2656,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "6TRoRdiNut6bAK45fvp3tv",
-																	"elementName": "theNET - Can AI find vulnerabilities? - Dive deeper CTA",
+																	"elementName": "theNET - Can AI find vulnerabilities? - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the whitepaper!",
 																	"url": "https://www.cloudflare.com/lp/zero-trust-roadmap/",
@@ -2835,7 +2865,17 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How both sides of the security fight can ",
+																	"value": "How b",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "oth sides of the security fight can ",
 																	"marks": [],
 																	"content": null
 																},
@@ -3050,7 +3090,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "A Roadmap to Zero Trust Architecture",
+																			"value": "A roadmap to zero trust architecture",
 																			"marks": [],
 																			"content": null
 																		}

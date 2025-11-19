@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - Building resilient networks for AI applications - Page ",
+				"pageName": "theNET - Building resilient networks for AI applications - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-02T12:26:28.632Z",
-					"updatedAt": "2025-07-23T09:30:59.135Z"
+					"updatedAt": "2025-11-19T00:33:30.746Z"
 				},
 				"contentfulId": "1MLf8YR1b8aIiqVpNkY0ND",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -864,7 +876,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Controlling access to your AI models and applications is vital to security. A Zero Trust approach provides least-privilege access, deep visibility, and persistent monitoring, all reducing exploit opportunities for attackers. ",
+													"value": " Controlling access to your AI models and applications is vital to security. A zero trust approach provides least-privilege access, deep visibility, and persistent monitoring, all reducing exploit opportunities for attackers. ",
 													"marks": [],
 													"content": null
 												},
@@ -883,7 +895,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust principles",
+															"value": "Zero trust principles",
 															"marks": [],
 															"content": null
 														}
@@ -895,7 +907,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " are also effective against the inevitable AI-powered threats. Attackers are already using AI for password spraying and brute force attacks, as well as for more effective social engineering and phishing attacks. Context evaluation as part of your Zero Trust strategy can better detect stolen credential use.",
+													"value": " are also effective against the inevitable AI-powered threats. Attackers are already using AI for password spraying and brute force attacks, as well as for more effective social engineering and phishing attacks. Context evaluation as part of your zero trust strategy can better detect stolen credential use.",
 													"marks": [],
 													"content": null
 												}
@@ -1380,7 +1392,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "The Need for Network and Security Convergence",
+															"value": "The need for network and security convergence",
 															"marks": [
 																{
 																	"type": "italic"
@@ -1439,7 +1451,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "2YipUYnvhckBBclWqvp29",
-																	"elementName": "theNET - Building resilient networks for AI applications - Dive deeper - CTA",
+																	"elementName": "theNET - Building resilient networks for AI applications - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the whitepaper!",
 																	"url": "https://www.cloudflare.com/lp/network-security-convergence/",
@@ -1885,7 +1897,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "The Need for Network and Security Convergence",
+																			"value": "The need for network and security convergence",
 																			"marks": [],
 																			"content": null
 																		}
@@ -1948,7 +1960,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Preparing for the future of AI in cyber security",
+																			"value": "Preparing for the future of AI in cybersecurity",
 																			"marks": [],
 																			"content": null
 																		}

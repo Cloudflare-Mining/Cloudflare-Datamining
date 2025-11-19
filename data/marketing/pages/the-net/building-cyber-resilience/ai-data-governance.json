@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-18T23:04:26.478Z",
-					"updatedAt": "2025-10-28T02:59:42.595Z"
+					"updatedAt": "2025-11-19T00:05:15.229Z"
 				},
 				"contentfulId": "1UgLkIf5FcMRHv7BaL8VOa",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -1063,7 +1075,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Zero Trust model",
+																			"value": "zero trust model",
 																			"marks": [],
 																			"content": null
 																		}
@@ -1198,7 +1210,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "\nGranular access control capabilities can help ensure data integrity and protect sensitive information used for in-house models. Unlike traditional VPNs, Zero Trust capabilities can help make sure only the right individuals can access particular data. \n\nWhy is granular access so important? Let's return to the use of AI for HR: Maybe your company is using AI to streamline performance reviews and make compensation recommendations. You might want to let a manager see their own compensation information and the compensation information for their direct reports, but not anyone else's. The right Zero Trust capabilities can give you that level of control. \n",
+																	"value": "\nGranular access control capabilities can help ensure data integrity and protect sensitive information used for in-house models. Unlike traditional VPNs, zero trust capabilities can help make sure only the right individuals can access particular data. \n\nWhy is granular access so important? Let's return to the use of AI for HR: Maybe your company is using AI to streamline performance reviews and make compensation recommendations. You might want to let a manager see their own compensation information and the compensation information for their direct reports, but not anyone else's. The right zero trust capabilities can give you that level of control. \n",
 																	"marks": [],
 																	"content": null
 																}
@@ -1645,7 +1657,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "5eaiRrNMifkag7dxMtDvd7",
-																	"elementName": "theNET - AI governance starts with data governance - Dive deeper CTA",
+																	"elementName": "theNET - AI governance starts with data governance - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the guide!",
 																	"url": "https://www.cloudflare.com/lp/ciso-guide-scalable-ai-strategy/",
@@ -2155,69 +2167,6 @@
 																				"uri": null
 																			},
 																			"value": "Preparing for the future of AI",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://www.cloudflare.com/the-net/building-cyber-resilience/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "Series: Building cyber resilience",
 																			"marks": [],
 																			"content": null
 																		}
