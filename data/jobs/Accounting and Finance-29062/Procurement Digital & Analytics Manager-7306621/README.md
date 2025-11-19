@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, Dallas, San Antonio, Houston TX</strong></p>
 <p><strong>About the role</strong></p>
 <p>We are seeking a highly motivated and detail-oriented Procurement Digital &amp; Analytics Manager to be the engine of our Procurement Excellence function. As a foundational member of a growing team, you will partner directly with the Director to execute a high-impact portfolio of projects spanning system deployments, data analytics, change management, and governance.</p>
 <p>This role demands a proactive and operational mindset. The ideal candidate will possess a strong sense of urgency, a customer-centric focus, and concrete experience using coding or AI technologies to build robust automation. Your expertise will be directly applied to identifying and eliminating recurrent manual tasks and driving significant process improvements across our procurement landscape. As a builder and an operator, your work will directly protect annual savings, reduce manual reporting, and accelerate our digital transformation journey.</p>

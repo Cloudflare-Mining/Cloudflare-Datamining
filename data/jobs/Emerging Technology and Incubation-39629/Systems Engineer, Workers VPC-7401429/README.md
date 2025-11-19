@@ -5,36 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin or Lisbon or London (Hybrid)</p>
-<p><strong>About the Department</strong></p>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h4><strong>About The Team</strong></h4>
-<p>Workers AI is Cloudflare’s AI inference service, enabling customers to use a wide variety of AI models both within Cloudflare’s Workers developer platform and via API. The Workers AI team owns the whole stack that powers the product, from front-end development all the way to low-level inference code. Accordingly we’re a team with a diverse array of technical skills, but everyone on the team is curious and passionate about the possibilities of generative AI</p>
-<p><strong>What You’ll Do</strong></p>
-<p>The Workers AI platform team is responsible for scheduling models and routing requests to the best model instance to handle it. Our stack is built using Rust and Typescript and takes advantage of Cloudflare’s internal container platform. You will lead the team to use quantitative metrics to deliver improved flexibility and performance across the platform. This is a distributed systems role, and you will bring experience and expertise to the team in the areas of load balancing, scheduling, and resource sharing. This is a small team and the ideal candidate is capable of high-level technical contributions as well as team leadership.<br><br>This role is based in Austin, Texas and requires at least two days a week in-office.</p>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<h3><strong>Available Locations:&nbsp; Lisbon, Portugal</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<h3><strong>What you'll do</strong></h3>
+<p>As a Systems Engineer focused on Cloudflare's Workers Connectivity products, you will shape the future of industry-leading services that redefine what is possible for developers. We don't just copy what other cloud providers do; we work backward from developer needs, reimagining solutions by leveraging our unique global network. This network brings data closer to users for unparalleled performance, allows for granular control to meet data residency requirements, and provides a platform for truly innovative data products.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might be architecting a new connectivity route between Cloudflare products and customer networks, optimizing networking performance, or designing a novel API for a new connectivity product. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and Go.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Experience leading high performing teams</li>
-	<li>Strong communication skills</li>
-	<li>Comfortable with tight deadlines and short release cycles</li>
-	<li>Strong systems-level programming skills</li>
-	<li>Experience building large-scale distributed systems</li>
-	<li>Expert-level knowledge in a modern compiled language like Go, Rust or modern C++</li>
+	<li>Minimum 3 years of experience working with distributed systems.</li>
+	<li>Experience building and managing high volume software applications.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Rust, TypeScript, and Go.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in a large-scale distributed system.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<p>Medical/Rx InsuranceDental InsuranceVision InsuranceFlexible Spending AccountsCommuter Spending AccountsFertility &amp; Family Forming BenefitsOn-demand mental health support and Employee Assistance ProgramGlobal Travel Medical Insurance</p>
-<p><strong>Financial Benefits</strong></p>
-<p>Short and Long Term Disability InsuranceLife &amp; Accident Insurance401(k) Retirement Savings PlanEmployee Stock Participation Plan</p>
-<p><strong>Time Off</strong></p>
-<p>Flexible paid time off covering vacation and sick leaveLeave programs, including parental, pregnancy health, medical, and bereavement leave</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3><strong>Bonus Points:</strong></h3>
+<ul>
+	<li>Experience with software defined networking.</li>
+	<li>Technical background in Layer 3 and Layer 4 networking.</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
+	<li>Experience working in a non-garbage collected language such as Rust or C++.</li>
+	<li>Experience writing Javascript and Typescript.</li>
+	<li>Deep Linux / UNIX systems knowledge.</li>
+</ul>
+<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
