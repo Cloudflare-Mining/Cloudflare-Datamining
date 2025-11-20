@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-ui-addons",
 	"dist-tags": {
 		"latest": "0.0.4",
-		"staging": "0.0.5-staging.1"
+		"staging": "0.0.5-staging.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -113,6 +113,34 @@
 				"@cloudflare/realtimekit-virtual-background": "0.0.2"
 			},
 			"devDependencies": {
+				"vite": "^4.4.8",
+				"typescript": "^5.2.2"
+			},
+			"peerDependencies": {
+				"@cloudflare/realtimekit": ">=1.0.1",
+				"@cloudflare/realtimekit-ui": ">=1.0.1"
+			},
+			"dist": {
+				"shasum": "b646c0b1d839110413c6a4c04db26bb8822caed5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.5-staging.1.tgz",
+				"fileCount": 70,
+				"integrity": "sha512-kWzufXLTX2ONewjOLUlc6zGpbajZFXjsUS4Dlp/zZu/BFiHPJGWFyq43J6+L0ksFPntratzqba337KWwHphtQw==",
+				"signatures": [
+					{
+						"sig": "MEUCIGpf125Hh3j6+Igryj8Mb5efG/ko+ZxvwQYnZ7qTB1PXAiEAj9D1s/65CsSUdWSeJhaIZnAswJFQk1OSvUwPpbhxpU8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 369676
+			}
+		},
+		"0.0.5-staging.2": {
+			"name": "@cloudflare/realtimekit-ui-addons",
+			"version": "0.0.5-staging.2",
+			"dependencies": {
+				"@cloudflare/realtimekit-virtual-background": "0.0.2"
+			},
+			"devDependencies": {
 				"typescript": "^5.2.2",
 				"vite": "^4.4.8"
 			},
@@ -121,15 +149,15 @@
 				"@cloudflare/realtimekit": ">=1.0.1"
 			},
 			"dist": {
-				"integrity": "sha512-kWzufXLTX2ONewjOLUlc6zGpbajZFXjsUS4Dlp/zZu/BFiHPJGWFyq43J6+L0ksFPntratzqba337KWwHphtQw==",
-				"shasum": "b646c0b1d839110413c6a4c04db26bb8822caed5",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.5-staging.1.tgz",
+				"integrity": "sha512-TZc5McdTiSksa0SBVU/wJWH6A7eUn8QVHlP+6RQj00xgqWpjk+tDN1a464OhDRMoNHQ3bx/xXAy0JQ1ot+Zvig==",
+				"shasum": "29c43fede1cd1c52cbf418e561ee58fcd5dc8ed7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.5-staging.2.tgz",
 				"fileCount": 70,
-				"unpackedSize": 369676,
+				"unpackedSize": 369574,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGpf125Hh3j6+Igryj8Mb5efG/ko+ZxvwQYnZ7qTB1PXAiEAj9D1s/65CsSUdWSeJhaIZnAswJFQk1OSvUwPpbhxpU8="
+						"sig": "MEUCIQDZTCDSJ1Xg9zua119ttNCnRQfMWF5oJXtFAY66F1KAhQIgBZecJt84NV20sPIi9czHvWaOvBV6HWjzgCitjtnWgrg="
 					}
 				]
 			}
