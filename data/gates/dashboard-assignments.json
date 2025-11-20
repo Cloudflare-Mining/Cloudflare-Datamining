@@ -371,6 +371,9 @@
 	"email-services": {
 		"false": 100
 	},
+	"enable-skip-same-zone-validation": {
+		"false": 100
+	},
 	"enterprise-readiness-org-closed-beta": {
 		"false": 100
 	},
@@ -647,6 +650,10 @@
 	},
 	"prg-notification-banner-personalization": {
 		"true": 100
+	},
+	"prg-plan-cards-video-modal-test": {
+		"baseline": 99,
+		"experiment": 1
 	},
 	"prg-plan-ribbon-copy-experiment": {
 		"recommended": 20,

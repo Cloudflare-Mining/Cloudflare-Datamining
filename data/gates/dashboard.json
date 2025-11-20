@@ -1110,6 +1110,9 @@
 	"email-services": {
 		"enabled": true
 	},
+	"enable-skip-same-zone-validation": {
+		"enabled": true
+	},
 	"enterprise-readiness-org-closed-beta": {
 		"enabled": true
 	},
@@ -1763,7 +1766,7 @@
 		]
 	},
 	"prg-plan-cards-video-modal-test": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"experiment"
