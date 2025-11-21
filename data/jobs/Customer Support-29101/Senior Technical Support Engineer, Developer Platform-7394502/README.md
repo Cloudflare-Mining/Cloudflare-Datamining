@@ -5,49 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Location: Perth<br></strong></h3>
-<hr>
-<h3><strong>About the Department</strong></h3>
-<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>We are currently recruiting for a highly experienced Senior Named Account Executive to drive our presence in Western Australia (WA).&nbsp; The successful candidate will have the responsibility for leading the engagement with WA headquartered Enterprise and WA Government customers.&nbsp; The role as minimum would require you to:</p>
+<p><strong>Available Locations -&nbsp;</strong>Lisbon</p>
+<p><strong>What You'll Do:&nbsp;</strong></p>
+<p>As a Senior Technical Support Engineer for the Developer Platform, you will be on the front line supporting developers building on Cloudflare’s developer products (Workers, KV, R2, D1, Durable Objects, Vectorize, AI Gateway, etc.). You’ll help troubleshoot issues, guide customers in best practices, and ensure they are successfully building, deploying, and scaling applications on Cloudflare.</p>
+<p>This is a foundational role in a new and growing team, offering the chance to shape our support processes and culture.</p>
+<p>This is a hands-on, developer-focused role where you’ll combine your problem-solving skills with your understanding of modern developer tooling, coding practices, and cloud infrastructure. You’ll collaborate with internal engineering, product, and developer relations teams to make sure customer feedback is heard and that developers have an excellent experience with the platform.</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Build relationships within all layers of your allocated Enterprise customer segment leveraging your understanding of Enterprise IT, Cloud, Zero Trust Services and Developer Services.</li>
-	<li>Demonstrate your experience in actively creating new business opportunities and operating within a competitive market to drive large/complex transformational outcomes.</li>
-	<li>Creating and driving comprehensive account strategies and maintaining business operations discipline with respect to forecast, pipeline development and account planning.</li>
-	<li>Display leadership through sharing of knowledge/skills and act as a source of expertise for others.</li>
-	<li>Partnering effectively with internal and external parties to build solutions.</li>
+	<li>Act as the first point of contact for developer customers seeking support with Cloudflare’s developer platform.</li>
+	<li>Troubleshoot technical issues across compute, storage, and networking (e.g., debugging Workers scripts, diagnosing KV/D1 queries, resolving API errors).</li>
+	<li>Provide clear, actionable guidance to customers, translating complex technical concepts into understandable steps.</li>
+	<li>Triage customer issues and work closely with engineering to drive both short term resolution and long-term improvements.</li>
+	<li>Create and maintain support documentation, knowledge base articles, and sample code snippets.</li>
+	<li>Escalate recurring issues and surface developer insights to product and engineering teams to improve the platform.</li>
+	<li>Collaborate cross-functionally with Developer GTM and sales to ensure customers can move from experimentation to production smoothly.</li>
+	<li>Contribute to process improvements that make support more efficient and developer-friendly.</li>
 </ul>
-<h3><strong>Who You’ll Work With</strong></h3>
-<p>You will be part of the ANZ Cloudflare Enterprise Sales team supported by Solutions Engineers and an overlay team of sales and technical specialists.</p>
-<h3><strong>Who You Are</strong></h3>
+<p><strong>Skill Requirements</strong></p>
 <ul>
-	<li>8+ years account management experience&nbsp;</li>
-	<li>Must have experience handling multi-million-dollar quotas and operating in a team environment.</li>
-	<li>Ability to lead business development resources (BDRs) to meet agreed targets, develops sales plans for specific accounts in line with company strategy.</li>
-	<li>Strong selling skills in large accounts with a specific focus on WA HQ based accounts.</li>
-	<li>Must be a self-starter and strong closer, with multi-tasking ability.</li>
-	<li>Understanding of large business organizations and their buying cycles is mandatory.&nbsp;</li>
-	<li>Demonstrated experience with business value selling.</li>
-	<li>Multi-level customer engagement including Senior / CXO Level</li>
+	<li>3+ years experience in a customer-facing technical role (e.g., Technical Support, Solutions Engineer, or Software Engineer) at a cloud and/or SaaS provider.</li>
+	<li>Hands-on experience with web application development (professional or personal projects), ideally full-stack using modern JavaScript frameworks (React, Vue, Node.js, etc).</li>
+	<li>Excellent written and verbal communication skills with the ability to explain technical concepts clearly.</li>
+	<li>Customer-first mindset with patience, empathy, and strong problem-solving skills.</li>
+	<li>Familiarity with the major cloud providers (AWS, GCP, Azure) and common cloud services.</li>
+	<li>Strong understanding of developer workflows (version control, CI/CD, package managers, API integrations, and frameworks).</li>
+	<li>Comfort with debugging code, reviewing logs, and testing APIs.</li>
 </ul>
-<h3><strong>Attributes</strong></h3>
+<p><strong>Other Desirable Skills Include</strong></p>
 <ul>
-	<li>The ability to build natural momentum within incumbent accounts while succeeding in displacing competitors in historically non Cloudflare customers.</li>
-	<li>Growing an established Cloudflare install base.</li>
-	<li>Strong relationship management skills</li>
-	<li>Excellent communication/presentation/negotiation skills</li>
-	<li>Working knowledge of Application, Network and Zero Trust services</li>
-	<li>Superior oral presentation skills</li>
-	<li>Ability to work under pressure in a results-focused environment.</li>
-	<li>Able to relate technical principles in simple terms.</li>
-	<li>Ability to work &amp; relate with business &amp; people at all levels.</li>
-	<li>Requires practical experience using influence management to achieve goals.</li>
-	<li>Must exhibit the ability to think strategically and demonstrate initiative</li>
+	<li>Experience building or deploying applications on Cloudflare Workers.</li>
+	<li>Understanding of distributed systems and serverless architecture.</li>
+	<li>Familiarity with relational and non-relational databases.</li>
+	<li>Experience contributing to open source or engaging with developer communities.</li>
+	<li>Certifications such as AWS Solutions Architect or GCP Cloud Architect is a plus.</li>
+	<li>Auxiliary knowledge of developer tooling and relevant framework is a plus.</li>
 </ul>
-<h3><br><br></h3>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

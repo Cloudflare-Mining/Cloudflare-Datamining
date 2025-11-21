@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations -&nbsp;</strong>London&nbsp;</p>
 <p><strong>What You'll Do:&nbsp;</strong></p>
-<p>As a Technical Support Engineer for the Developer Platform, you will be on the front line supporting developers building on Cloudflare’s developer products (Workers, KV, R2, D1, Durable Objects, Vectorize, AI Gateway, etc.). You’ll help troubleshoot issues, guide customers in best practices, and ensure they are successfully building, deploying, and scaling applications on Cloudflare.</p>
+<p>As a Senior Technical Support Engineer for the Developer Platform, you will be on the front line supporting developers building on Cloudflare’s developer products (Workers, KV, R2, D1, Durable Objects, Vectorize, AI Gateway, etc.). You’ll help troubleshoot issues, guide customers in best practices, and ensure they are successfully building, deploying, and scaling applications on Cloudflare.</p>
 <p>This is a foundational role in a new and growing team, offering the chance to shape our support processes and culture.</p>
 <p>This is a hands-on, developer-focused role where you’ll combine your problem-solving skills with your understanding of modern developer tooling, coding practices, and cloud infrastructure. You’ll collaborate with internal engineering, product, and developer relations teams to make sure customer feedback is heard and that developers have an excellent experience with the platform.</p>
 <p><strong>Responsibilities:</strong></p>
