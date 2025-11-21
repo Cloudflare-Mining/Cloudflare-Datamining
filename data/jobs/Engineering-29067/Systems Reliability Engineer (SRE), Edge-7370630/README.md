@@ -5,29 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>London, Portugal&nbsp;</p>
-<p><strong>About the role</strong></p>
-<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies.&nbsp;</p>
-<h3>Examples of desirable skills, knowledge and experience</h3>
+<p><strong>Available Locations:</strong> London, UK</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for talented Systems Reliability Engineers to build and operate our Edge platform running in more than 320 cities in over 120 countries. Our SREs come from diverse technical backgrounds and have built up their knowledge working in different environments, but common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence. We support our services in a “follow the sun” model with offices in East Asia, Europe and North America.</p>
+<p>This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows. We live at the boundary between systems, network, and software, and love improving the glue that holds them together. Working with us, you will build tools to constantly improve service availability, performance, and operational velocity. You will nurture a passion for an “automate everything” approach that makes systems failure resistant and ready to scale.</p>
+<p>SREs focus on the immediate state and functionality of the Cloudflare platform around the world, leveraging an array of monitoring, alerting and diagnostics tools while developing and enhancing the Cloudflare platform and its capabilities. We own a wide portfolio of applications and services, running a tight feedback loop of developer and operator patterns. The ideal SRE candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of networking, Linux and TLS along with coding ability in Go or Python.</p>
+<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<p><strong>Requisite Skills</strong></p>
 <ul>
-	<li>You have previous experience working as part of a team in a customer-facing role</li>
-	<li>You have experience solving DNS and other networking-related problems</li>
-	<li>You understand how the Internet works</li>
-	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
-	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, etc).</li>
-	<li>You have experience configuring and troubleshooting VPNs</li>
-	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
-	<li>You are comfortable communicating through various support channels and always put the customer first</li>
-	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+	<li>Aptitude for identifying problems, owning them and working with others to solve them</li>
+	<li>Linux systems experience</li>
+	<li>3 years experience in an SRE role or a role with similar functions</li>
+	<li>Software development skills in some programming language such as Go or Python</li>
+	<li>Understanding of distributed software systems and large scale system design tradeoffs</li>
+	<li>Intermediate experience of common network protocols like DNS and HTTP</li>
+	<li>Understanding of routing protocols and concepts such as BGP and IP anycast&nbsp;</li>
 </ul>
-<h3>Bonus Points</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>You are fluent in German, Japanese, French, Spanish, Portuguese, or Mandarin</li>
-	<li>You are familiar with Cloudflare Zero Trust products (Zero Trust / Access / Gateway / Tunnel, WARP client) and have a site actively using our platform</li>
-	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
-	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
-	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+	<li>Experience with the Linux kernel and Linux software packaging</li>
+	<li>Performance analysis and debugging</li>
+	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
+	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Squid or Apache</li>
+	<li>SQL databases</li>
+	<li>Time series databases such as OpenTSDB, Graphite, Prometheus or Grafana</li>
+	<li>Key/Value stores</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience with continuous / rapid release engineering</li>
+	<li>Strong tooling and automation development experience</li>
+	<li>Experience working in a 24/7/365 service environment</li>
+	<li>Experience working with large scale production distributed systems</li>
+	<li>A history of contributing to Open Source Software</li>
+</ul>
+<p><strong>Some tools that we use</strong></p>
+<ul>
+	<li>Nginx</li>
+	<li>PostgreSQL</li>
+	<li>Docker</li>
+	<li>Prometheus</li>
+	<li>Grafana</li>
+	<li>Consul</li>
+	<li>Nomad</li>
+	<li>Salt</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

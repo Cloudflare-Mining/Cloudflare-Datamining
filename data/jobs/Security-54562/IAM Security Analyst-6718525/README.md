@@ -5,14 +5,15 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong>About the Department</strong></p>
+<p>Security at Cloudflare is a diverse, focused team committed to helping secure both Cloudflare and our customers.&nbsp; The Enterprise Identity &amp; Access Management team is a core pillar of our cybersecurity organization, securing our environment and enabling workforce productivity.&nbsp;&nbsp;&nbsp;</p>
 <p><strong>About The Role&nbsp;</strong></p>
 <p>As an Identity and Access Management (IAM) Security Analyst you will play a key role in efficiently managing user identities and access across the enterprise. You will be responsible for implementing technologies and designing processes to ensure users have authorized access to resources and systems.&nbsp;&nbsp;&nbsp;</p>
 <p><strong>What You’ll Do</strong></p>
 <ul>
 	<li>Establish and execute access governance programs and policies</li>
 	<li>Define and enforce access control policies, including role-based access control (RBAC), attribute based access control (ABAC), and policy based access controls (PBAC)</li>
-	<li>Ensure access adhere to the principle of least privilege and segregation of duties (SoD).</li>
+	<li>Ensure access adheres to the principle of least privilege and segregation of duties (SoD).</li>
 	<li>Develop and execute an access certification program and scale to all systems&nbsp;</li>
 	<li>Design, implement, and manage Identity Access &amp; Governance policies and procedures.</li>
 	<li>Define and enforce privileged access management (PAM) policies to secure sensitive systems and data.</li>
@@ -26,13 +27,14 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>5+ years of In-depth understanding of access governance&nbsp;</li>
+	<li>5+ Years of experience In-depth understanding of access governance&nbsp;</li>
 	<li>Experience in Identity Governance &amp; Administration (IGA) solutions</li>
 	<li>Performing policy enforcement, role management, and access certifications</li>
 	<li>Experience implementing privileged access management (PAM)</li>
 	<li>Experience developing IAM security standards and policies</li>
 	<li>Preferred background in scripting and/or application development to automate identity and access management processes.</li>
 </ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

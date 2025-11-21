@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: </strong>Austin, Lisbon</p>
 <h4><strong>About the Role</strong></h4>
-<p>Cloudflare is looking for technical writing interns to join the Product Content Experience (PCX) team and support product content creation this summer. As a tech writing intern, you will partner with engineers, product managers, customer-facing teams, and other PCX writers to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. <strong>Y</strong>ou will work alongside and learn from a team recently recognized for delivering the Best Unified Enterprise Dev Portal at the 2025 DevPortal Awards. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
+<p>Cloudflare is looking for technical writing interns to join the Product Content Experience (PCX) team and support product content creation. As a tech writing intern, you will partner with engineers, product managers, customer-facing teams, and other PCX writers to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. You will work alongside and learn from a team recently recognized for delivering the Best Unified Enterprise Dev Portal at the 2025 DevPortal Awards. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
 	<li>Create and edit product documentation according to company guidelines, varying from support content to product and developer documentation.</li>
@@ -33,35 +33,6 @@
 	<li>Experience with multimedia and graphic design</li>
 	<li>Familiarity with databases, HTML, Markdown, CSS, and JSON</li>
 	<li>Familiarity with JavaScript, Python, Git, Mercurial, or other modern programming languages and frameworks</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
