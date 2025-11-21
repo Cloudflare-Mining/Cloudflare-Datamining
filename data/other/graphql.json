@@ -7072,6 +7072,8 @@
 		"storageTraces": "",
 		"streamCMCDAdaptiveGroups": "",
 		"streamMinutesViewedAdaptiveGroups": "",
+		"toMarkdownConversionAdaptive": "",
+		"toMarkdownConversionAdaptiveGroups": "",
 		"turnstileAdaptiveGroups": "",
 		"vectorizeQueriesAdaptiveGroups": "",
 		"vectorizeStorageAdaptiveGroups": "",
@@ -7477,6 +7479,92 @@
 	"AccountStreamMinutesViewedAdaptiveGroupsSum": {
 		"__description": "",
 		"minutesViewed": ""
+	},
+	"AccountToMarkdownConversionAdaptive": {
+		"__description": "Markdown Conversion Metrics",
+		"conversionId": "The ID of this conversion, as a ULID",
+		"date": "The date when trigger was triggered",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"durationMs": "The duration in milliseconds it took to convert this file",
+		"errorReason": "The reason this conversion might have errored. Empty if the conversion is successful",
+		"fileName": "The name of the file under conversion",
+		"fileSize": "The size of the file being converted in bytes",
+		"mimeType": "The MIME Type of the file under conversion",
+		"options": "Conversion options used on the request that originated this conversion",
+		"outputSize": "The size of the markdown content after conversion, in bytes",
+		"parentConversion": "The original file conversion that originated this one. Empty if this is a 'root' conversion",
+		"requestId": "The ID of this request that originated this conversion, as a ULID",
+		"result": "Whether this conversion was successful or not. Values can be 'markdown' for success or 'error' for errors",
+		"service": "The service that originated this conversion request",
+		"source": "Whether this conversion request was done via the binding method or via an API request"
+	},
+	"AccountToMarkdownConversionAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountToMarkdownConversionAdaptiveGroups": {
+		"__description": "Markdown Conversion Metrics",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of conversions for an account",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension",
+		"min": "The min of values for a metric per dimension"
+	},
+	"AccountToMarkdownConversionAdaptiveGroupsAvg": {
+		"__description": "",
+		"completed": "Average of output size",
+		"durationMs": "Average of conversion duration",
+		"fileSize": "Average of file sizes"
+	},
+	"AccountToMarkdownConversionAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of conversions for an account, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountToMarkdownConversionAdaptiveGroupsDimensions": {
+		"__description": "",
+		"conversionId": "The ID of this conversion, as a ULID",
+		"date": "The date when trigger was triggered",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"durationMs": "The duration in milliseconds it took to convert this file",
+		"errorReason": "The reason this conversion might have errored. Empty if the conversion is successful",
+		"fileName": "The name of the file under conversion",
+		"fileSize": "The size of the file being converted in bytes",
+		"mimeType": "The MIME Type of the file under conversion",
+		"options": "Conversion options used on the request that originated this conversion",
+		"outputSize": "The size of the markdown content after conversion, in bytes",
+		"parentConversion": "The original file conversion that originated this one. Empty if this is a 'root' conversion",
+		"requestId": "The ID of this request that originated this conversion, as a ULID",
+		"result": "Whether this conversion was successful or not. Values can be 'markdown' for success or 'error' for errors",
+		"service": "The service that originated this conversion request",
+		"source": "Whether this conversion request was done via the binding method or via an API request"
+	},
+	"AccountToMarkdownConversionAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountToMarkdownConversionAdaptiveGroupsMax": {
+		"__description": "",
+		"completed": "Max of output size",
+		"durationMs": "Max of conversion duration",
+		"fileSize": "Max of file sizes"
+	},
+	"AccountToMarkdownConversionAdaptiveGroupsMin": {
+		"__description": "",
+		"completed": "Min of output size",
+		"durationMs": "Min of conversion duration",
+		"fileSize": "Min of file sizes"
+	},
+	"AccountToMarkdownConversionAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountToMarkdownConversionAdaptiveOrderBy": {
+		"__description": ""
 	},
 	"AccountTurnstileAdaptiveGroups": {
 		"__description": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
@@ -11532,6 +11620,8 @@
 		"storageTraces": "Storage Tracing Information",
 		"streamCMCDAdaptiveGroups": "Stream CMCD data",
 		"streamMinutesViewedAdaptiveGroups": "A high-level summary of Cloudflare Stream minutes viewed.",
+		"toMarkdownConversionAdaptive": "Markdown Conversion Metrics",
+		"toMarkdownConversionAdaptiveGroups": "Markdown Conversion Metrics",
 		"turnstileAdaptiveGroups": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
 		"vectorizeQueriesAdaptiveGroups": "Beta. Vectorize usage with adaptive sampling",
 		"vectorizeStorageAdaptiveGroups": "Beta. Vectorize storage with adaptive sampling",
