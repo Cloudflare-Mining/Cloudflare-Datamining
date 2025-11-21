@@ -5,42 +5,62 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Atlanta, US, Austin, US, Denver, US, New York, US, Seattle, US, Toronto, Canada, Washington DC, US, Lisbon, Portugal, London, UK</strong></p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is seeking a high-impact and experienced product manager to join our Platform Tools team. The Platform Tools team builds both the platform and the tools that enables Cloudflare employees to be as efficient and productive as possible when supporting and shipping the products and features that Cloudflare customers rely upon. Your users include customer-facing teams – such as customer support, customer success, and solution engineers – as well as other product teams offering their tools on the platform.</p>
-<p><strong>Problems you may face:</strong></p>
+<p><strong>Available Locations: </strong>Austin</p>
+<h4>About the Role</h4>
+<p>Cloudflare is seeking a highly autonomous and empathetic UX Content Strategy Intern to join our Product Content Experience (PCX) team. This is not a shadowing role—it is a launchpad designed for students ready to own their outcomes and drive a key part of our product experience.<br><br>You will be embedded within a team committed to excellence, partnering directly with design, engineering, and product managers to enhance the conversation between Cloudflare and our customers. Working as a UX content expert, you will lead research projects, enhance products, and drive content-focused improvements to our user-facing experiences. Your initiative and creativity are not just valued—they are rewarded with the trust to lead projects from initial concept through final implementation. This role offers you the unique chance to influence the user journey for millions and learn the mechanics of enterprise-level UX design and content strategy.</p>
+<h4>Responsibilities</h4>
 <ul>
-	<li>How do we empower Cloudflare employees to solve customer problems quickly, reducing the operational burden that comes with rapid feature releases?</li>
-	<li>How can we deliver a best-in-class, secure platform for internal tools that enables engineering teams to easily build, use, and support their own solutions?</li>
-	<li>What is the best way to balance building broad platform "constructs" versus specific tooling requests to maximize impact on employee productivity and customer satisfaction?&nbsp;</li>
+	<li><strong>User Conversation Improvement:</strong> Work directly in our products to improve the clarity, consistency, and effectiveness of in-product copy, interface labels, error messages, and navigation.</li>
+	<li><strong>Research &amp; Enhancement:</strong> Partner with senior strategists to design and lead content research projects to identify user pain points and inform product enhancements.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Collaborate with designers, engineers, and product managers to ensure user-facing experiences are intuitive and accurate.</li>
+	<li><strong>Strategic Alignment:</strong> Work with content strategy leads to ensure all in-product language aligns with the overall product voice and content style guides.</li>
+	<li><strong>Project Autonomy:</strong> Manage multiple simultaneous content projects, maintaining high quality and timely delivery while working independently.</li>
 </ul>
-<p>As the Senior Product Manager for Product Platform Tools, you will be responsible for defining and executing the product roadmap for the platform capabilities that empower our customer support, customer success, and solution engineering teams. This high-impact role requires a strategic thinker with a strong technical acumen and high empathy for both internal users and external customers.</p>
-<p><strong>Key Competencies</strong></p>
-<p>We are looking for someone who is curious, customer-centered, can learn quickly, think creatively, and work cross-functionally. Key responsibilities include:</p>
+<h4>Requirements</h4>
 <ul>
-	<li><strong>Business &amp; Product Vision and Strategy:</strong> Define and communicate the vision, strategic direction, and goals for the Platform Tools initiatives.</li>
-	<li><strong>Roadmap Prioritization:</strong> Develop and maintain a product roadmap that optimizes both short-term wins with long-term version with investments in platform capabilities and&nbsp; customer experience improvements.</li>
-	<li><strong>Champion of the customer:</strong> Develop a deep understanding of the marketing technology landscape, growth best practices, and the needs and behaviors of Cloudflare's internal users and external customers.&nbsp;</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Act as a central point of contact between various product, engineering, security, legal, and support teams throughout the product lifecycle to successfully execute the roadmap and impact for customers.</li>
-	<li><strong>Data-informed Decisions:</strong> Define key metrics, establish tracking mechanisms, and analyze product performance to identify areas for improvement.</li>
-	<li><strong>First-class Execution:</strong> Gets things done and has a track record of driving excellence, impact, and managing complex projects end-to-end.</li>
+	<li>Currently pursuing a degree in UX, Technical Communication, Journalism, English, Design, Engineering, Marketing, or a related field with a strong writing emphasis or technical communication.</li>
+	<li>A writing or design sample portfolio demonstrating experience in clear, user-focused content creation (course work is acceptable).</li>
+	<li>Exceptional written and verbal communication skills, with a proven ability to distill complex topics into simple, usable language.</li>
+	<li>High degree of organization and strong collaboration skills, with a demonstrated willingness to ask clarifying questions and interview/talk to a variety of stakeholders (users, engineers, product managers).</li>
+	<li>Proven proactive and responsible attitude with the willingness to partner in leading projects and owning outcomes from concept to completion.</li>
+	<li>Demonstrated capacity for self-management, and a positive response to feedback as a tool for rapid growth.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4>Bonus Points</h4>
 <ul>
-	<li>Proven track record of successfully defining and launching impactful platform products and driving impact</li>
-	<li>Excellent analytical and problem-solving skills, with the ability to interpret data and translate it into actionable insights.</li>
-	<li>Data-fluency – There is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>Engineering fluency – While it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
-	<li>Exceptional communication – Strong interpersonal skills with the ability to influence and build consensus across diverse teams.&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
+	<li>Familiarity with marketing concepts, positioning, and how brand messaging translates into a product interface.</li>
+	<li>Experience with user research methodologies (surveys, interviews) or basic data analysis/data science skills.</li>
+	<li>Interest in and familiarity with AI tools and prompt engineering to explore efficiencies in content drafting or testing.</li>
+	<li>Foundational understanding of code, web development, or experience with developer platforms.</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may vary based on location and level. This role is eligible to participate in Cloudflare's equity (RSU) program.&nbsp;</p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>New York, Seattle, &amp; Washington D.C. estimated salary: $192,000 - $234,000 (Senior Level)</li>
-	<li>Austin &amp; Colorado estimated salary: $170,000 - $208,000 (Senior Level)</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

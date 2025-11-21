@@ -5,37 +5,64 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas</strong></p>
-<h4>What you'll do</h4>
-<p>As a member of the Analytics and Reporting (ART) team within CF1 (Zero Trust), you will work alongside other engineers, designers, and product managers to develop and enhance Cloudflare's analytics and reporting capabilities. Your role will involve developing software applications that efficiently handle large-scale data analytics, deliver full-stack solutions that include data ingestion, storage, processing, and visualization layers, contribute to the architecture and continuous improvement of analytics platforms. You will see projects through from conception to deployment, delivering data-driven solutions that empower Cloudflare customers to harness the full potential of Zero Trust.&nbsp;</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Locations: </strong>Austin, Lisbon</p>
+<h4><strong>About the Role</strong></h4>
+<p>Cloudflare is looking for technical writing interns to join the Product Content Experience (PCX) team and support product content creation this summer. As a tech writing intern, you will partner with engineers, product managers, customer-facing teams, and other PCX writers to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. <strong>Y</strong>ou will work alongside and learn from a team recently recognized for delivering the Best Unified Enterprise Dev Portal at the 2025 DevPortal Awards. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>ART core backend and API services are written in Go.</li>
-	<li>We deploy our solutions in Kubernetes environments.</li>
-	<li>We utilize Postgres, Clickhouse, and a number of cloud native data store technologies.</li>
-	<li>We use HTML, CSS, JavaScript, TypeScript for front-end development.</li>
-	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Sentry, Elasticsearch and Kibana.</li>
+	<li>Create and edit product documentation according to company guidelines, varying from support content to product and developer documentation.</li>
+	<li>Collaborate with content experts and project managers to distill complex, broad concepts about products into usable and accurate documentation.&nbsp;</li>
+	<li>Work closely with a variety of product, engineering, and customer-facing teams to document how to use new product features to both technical and non-technical users.</li>
+	<li>Work independently and manage multiple simultaneous projects.</li>
+	<li>Own, create, and help manage all product and support content.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<li>3-5+ years of professional experience building and managing reliable and performant software systems at scale, preferably with some experience in our tech stack.</li>
-	<li>Experience in designing and architecting distributed systems.</li>
-	<li>Experience in designing and implementing REST APIs.</li>
-	<li>Experience in SQL, familiarity with common relational database concepts.</li>
-	<li>Familiarity with the web and technologies such as web browsers, HTTP, JavaScript.</li>
-	<li>Familiarity with Kubernetes, Kafka, Clickhouse.</li>
-	<li>Passion for making the digital world a more secure place.</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li>Strong verbal, written, and interpersonal communication skills - must provide samples of excellent writing skills</li>
+	<ul>
+		<li>Samples should be 500-1,000 words in length, and at least one sample should be a technical procedure</li>
+		<li>Coursework or original content is totally fine</li>
+	</ul>
+	<li>Interest in technical subject matter and a career in technical writing</li>
+	<li>Knack for conducting research, asking questions, and getting into the details</li>
+	<li>Pursuing a degree in English, Technical Communication, or another major with a writing-intensive component and/or a technology emphasis&nbsp;</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<h4><strong>Bonus Points</strong></h4>
 <ul>
-	<li>Previous experience with building enterprise analytics products.</li>
+	<li>Experience writing for technical or general audiences; for example, writing for a student newspaper or creating content for your school’s IT help desk</li>
+	<li>Experience with multimedia and graphic design</li>
+	<li>Familiarity with databases, HTML, Markdown, CSS, and JSON</li>
+	<li>Familiarity with JavaScript, Python, Git, Mercurial, or other modern programming languages and frameworks</li>
 </ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

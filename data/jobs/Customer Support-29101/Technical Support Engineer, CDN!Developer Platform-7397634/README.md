@@ -5,35 +5,65 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location:&nbsp;</strong>Austin, TX office - with the expectation of at least 2 days per week of in-office attendance.<strong><br><br>Role Summary</strong></p>
-<p>We are looking for an Engineering Manager to join the Argo Engineering team. The Argo team empowers Cloudflare's <a href="https://www.cloudflare.com/connectivity-cloud/">Connectivity Cloud</a> by giving our products fast, reliable, and easy connectivity from our massive global network. They develop and operate the network software infrastructure that makes up the <a href="https://developers.cloudflare.com/argo-smart-routing/">Argo Smart Routing</a>, <a href="https://developers.cloudflare.com/argo-smart-routing/argo-for-packets/">Argo for Packets</a>, and <a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/">Orpheus</a> products.</p>
-<p>As an Engineering Manager you will lead this distributed team of passionate and talented Software Engineers. You will play a key role in developing the team and shaping its culture and technical vision. You will work closely with Product Managers and other Engineering leaders to communicate the vision, prioritize the team's roadmap, and achieve cross-functional objectives.</p>
-<p>Because you and your team will be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: </strong>Austin, TX | Mexico City, Mexico</p>
+<h4><strong>About the Role</strong></h4>
+<p>As a Technical Support Engineer (Developer Platform), you will serve as the technical point of contact for Cloudflare’s Developer and Media Platform products — including Workers, Durable Objects, D1, R2, Pages, KV, Images, and Stream.</p>
+<p>You will focus on troubleshooting, diagnosing, and resolving technical issues while guiding customers on best practices for configuration, performance, and reliability. Your work ensures developers and businesses can effectively operate and scale their applications on Cloudflare’s edge network.</p>
+<p>You will collaborate closely with Engineering, Product, and Developer Relations to surface bugs, share product feedback, and contribute to internal knowledge resources.</p>
+<p>This position requires flexibility to support customers globally, including a 5-day schedule (Sunday–Thursday or Tuesday–Saturday) aligned with either Eastern Time (ET), Central Time (CT), or Pacific Time (PT) hours depending on business needs and occasional public holiday coverage.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Hire, mentor, and coach a distributed team of Software Engineers.</li>
-	<li>Work closely with Product and Engineering stakeholders to prioritize, plan, and execute work.</li>
-	<li>Make use of tools and processes to convey project status and resolve blockages.</li>
-	<li>Understand technical implications of work in order to influence scope, work across teams, and help unblock projects.</li>
-	<li>Take responsibility for production services by organizing on-call rotations, handling customer escalations, and overseeing incident response and follow-up.</li>
+	<li>Provide expert technical support for Cloudflare Developer Platform products: Workers, Durable Objects, D1, R2, Pages, KV, Images, and Stream.</li>
+	<li>Troubleshoot and resolve issues related to Cloudflare AI workloads (Workers AI, AI Gateway, Vectorize), including inference API errors, latency, and resource utilization.</li>
+	<li>Engage with customers through multiple support channels, including email, phone, chat, and customer calls/meetings.</li>
+	<li>Reproduce customer issues in test environments, isolate the root cause, and document clear steps to resolution.</li>
+	<li>Collaborate with Engineering teams on bug triage and product feedback, using internal JIRA and escalation processes.</li>
+	<li>Author and improve documentation, runbooks, and knowledge base articles to empower self-service for developers.</li>
+	<li>Contribute to internal training and mentor peers in areas like serverless computing, JavaScript runtime debugging, and edge storage architecture.</li>
+	<li>Maintain excellent communication and empathy when engaging with customers, from startup developers to enterprise engineering teams.</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<li>3+ years experience as an Engineering Manager for a team of Software Engineers.</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”.</li>
-	<li>Excel at planning and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Technical background in Layer 3 and Layer 4 networking.</li>
-	<li>Experience programming in systems languages such as Rust and Go.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
-	<li>Clarity in written and verbal communication.</li>
+	<li>Minimum 3 years of experience in a technical support or customer engineering role, preferably supporting developer or platform products.</li>
+	<li>Strong understanding of internet and web protocols — including HTTP/HTTPS, DNS, TCP/IP, and TLS — and experience using diagnostic tools (e.g., curl, dig, wrangler, DevTools, HAR files, etc.) for troubleshooting and analysis.</li>
+	<li>Experience with observability and tracing tools for performance troubleshooting and incident analysis (e.g., Cloudflare Analytics, New Relic, Datadog, Grafana, or equivalent).</li>
+	<li>Familiarity with AI-related services such as Workers AI, AI Gateway, or Vectorize, and a general understanding of how AI workloads (e.g., model or inference requests) differ from typical web or API traffic in terms of performance and resource usage.</li>
+	<li>Working knowledge of Terraform, Wrangler CLI, or similar automation tools.</li>
+	<li>Excellent verbal and written communication skills, with the ability to convey technical information clearly to both technical and non-technical audiences.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4><strong>Preferred Qualifications</strong></h4>
 <ul>
-	<li>Proven systems programming skills in Rust.</li>
-	<li>Experience managing teams and products responsible for critical infrastructure.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems.</li>
+	<li>Hands-on experience with Cloudflare products, especially Workers, R2, Images, Stream.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

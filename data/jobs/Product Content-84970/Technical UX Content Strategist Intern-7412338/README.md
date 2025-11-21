@@ -5,35 +5,63 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location:&nbsp;</strong>Austin, TX office - with the expectation of at least 2 days per week of in-office attendance. Relocation (if applicable) expected within ~6 months of start date.<strong><br><br>Role Summary</strong></p>
-<p>We are looking for an Engineering Manager to join the Argo Engineering team. The Argo team empowers Cloudflare's <a href="https://www.cloudflare.com/connectivity-cloud/">Connectivity Cloud</a> by giving our products fast, reliable, and easy connectivity from our massive global network. They develop and operate the network software infrastructure that makes up the <a href="https://developers.cloudflare.com/argo-smart-routing/">Argo Smart Routing</a>, <a href="https://developers.cloudflare.com/argo-smart-routing/argo-for-packets/">Argo for Packets</a>, and <a href="https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/">Orpheus</a> products.</p>
-<p>As an Engineering Manager you will lead this distributed team of passionate and talented Software Engineers. You will play a key role in developing the team and shaping its culture and technical vision. You will work closely with Product Managers and other Engineering leaders to communicate the vision, prioritize the team's roadmap, and achieve cross-functional objectives.</p>
-<p>Because you and your team will be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: </strong>Austin</p>
+<h4>About the Role</h4>
+<p>Cloudflare is seeking a highly analytical and technical UX Content Strategy Intern to join our Product Content Experience (PCX) team. This is a high-impact, autonomous role designed for a student ready to drive data-informed content decisions that directly improve the experience for millions of developers.<br><br>You will be embedded within the PCX team, partnering closely with technical writers, video producers, developers, and product managers to enhance our technical content ecosystem. This is a highly analytical role where you will utilize data to identify content gaps and drive major improvements across user-facing platforms (documentation, dashboards, and websites). You will learn to "vibe code" and embrace AI as a content partner to increase efficiency and support new, seamless user journeys. This opportunity provides the chance to step back, see the bigger picture of organizing complex technical content, and influence how developers learn and interact with our products.</p>
+<h4>Responsibilities</h4>
 <ul>
-	<li>Hire, mentor, and coach a distributed team of Software Engineers.</li>
-	<li>Work closely with Product and Engineering stakeholders to prioritize, plan, and execute work.</li>
-	<li>Make use of tools and processes to convey project status and resolve blockages.</li>
-	<li>Understand technical implications of work in order to influence scope, work across teams, and help unblock projects.</li>
-	<li>Take responsibility for production services by organizing on-call rotations, handling customer escalations, and overseeing incident response and follow-up.</li>
+	<li><strong>Content Ecosystem Analysis:</strong> Analyze performance data to identify inefficiencies, gaps, and content needs across various technical platforms and user flows (documentation, API references, product dashboards).</li>
+	<li><strong>UX Content Improvement:</strong> Work alongside technical writers and UX strategists to implement content-driven improvements, focusing on clarity, consistency, and organization of technical information for diverse developer audiences.</li>
+	<li><strong>User Journey Mapping:</strong> Focus on seeing the "bigger picture" by mapping out complex developer journeys and proposing structural or content changes to streamline new user onboarding and feature adoption.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Serve as the content connection point between Developer Experience teams, Technical Writing, and Product teams to ensure all content is accurate, usable, and strategically placed.</li>
+	<li><strong>AI &amp; Code Integration:</strong> Explore and implement the use of AI tools and technical content structures (e.g., "vibe coding" or YAML/Markdown organization) to improve content modularity and efficiency.</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
+<h4>Requirements</h4>
 <ul>
-	<li>3+ years experience as an Engineering Manager for a team of Software Engineers.</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”.</li>
-	<li>Excel at planning and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Technical background in Layer 3 and Layer 4 networking.</li>
-	<li>Experience programming in systems languages such as Rust and Go.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
-	<li>Clarity in written and verbal communication.</li>
+	<li>Currently pursuing a degree in a field requiring Journalism, Marketing, Technical Communication, Information Science, Computer Science, or UX/HCI.</li>
+	<li>A portfolio of writing samples or case studies demonstrating the ability to structure and explain technical concepts clearly.&nbsp;</li>
+	<li>Technical Comfortability: Demonstrated high comfort level with or a fierce eagerness to learn technical concepts, developer tools, and content platforms.</li>
+	<li>UX "Chops": Foundational understanding of user experience principles and how content impacts the user journey.</li>
+	<li>Strong organizational and collaborative skills, with the professionalism to work with technical experts and product leadership.</li>
+	<li>Proven proactive and responsible attitude with the willingness to partner in leading projects and owning outcomes from concept to completion.</li>
+	<li>Demonstrated capacity for self-management, and a positive response to feedback as a tool for rapid growth.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4>Bonus Points</h4>
 <ul>
-	<li>Proven systems programming skills in Rust.</li>
-	<li>Experience managing teams and products responsible for critical infrastructure.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems.</li>
+	<li>Experience or interest in coding, version control (Git), or actively editing/writing in platforms that require technical content structures (Markdown, YAML, etc.).</li>
+	<li>Familiarity with content analytics, A/B testing, or using data visualization tools to drive content decisions.</li>
+	<li>Practical experience leveraging generative AI and prompt engineering to improve content quality or team efficiency.</li>
+	<li>Experience with design tools (Figma) and understanding how content works within component-based design systems.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
