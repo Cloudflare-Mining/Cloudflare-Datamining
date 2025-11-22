@@ -1,8 +1,9 @@
 {
 	"name": "@cloudflare/ai-gateway",
 	"dist-tags": {
+		"beta": "0.0.1",
 		"latest": "0.0.2",
-		"beta": "0.0.1"
+		"bin": "0.0.1-bin"
 	},
 	"versions": {
 		"0.0.0": {
@@ -56,34 +57,82 @@
 			"name": "@cloudflare/ai-gateway",
 			"version": "0.0.2",
 			"dependencies": {
-				"events": "^3.3.0",
 				"zod": "^3.25.55",
+				"events": "^3.3.0",
 				"zod-to-json-schema": "file:./src/_vendor/zod-to-json/zod-to-json-schema/"
 			},
 			"devDependencies": {
-				"@biomejs/biome": "2.0.6",
-				"@cloudflare/workers-types": "^4.20251111.0",
-				"@types/node": "^22.17.0",
-				"@vitest/coverage-v8": "^3.2.4",
-				"downlevel-dts": "^0.11.0",
-				"rollup-plugin-license": "^3.6.0",
-				"semantic-release": "^24.2.6",
-				"typescript": "~5.8.3",
 				"vite": "^6.3.5",
-				"vitest": "^3.2.4"
+				"vitest": "^3.2.4",
+				"typescript": "~5.8.3",
+				"@types/node": "^22.17.0",
+				"downlevel-dts": "^0.11.0",
+				"@biomejs/biome": "2.0.6",
+				"semantic-release": "^24.2.6",
+				"@vitest/coverage-v8": "^3.2.4",
+				"rollup-plugin-license": "^3.6.0",
+				"@cloudflare/workers-types": "^4.20251111.0"
 			},
 			"dist": {
-				"integrity": "sha512-Rd3lIiofAoQ7+nTWFKQ+fihbfRCw78uu/agm3YboS1ZmW49briD1nbgaBMJtfIUtPUr8QwfjiaEAA7JgGhPHfg==",
 				"shasum": "04cb4b15d2dccb2d4f5ad994fd3d6b71200d84cf",
 				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.2.tgz",
 				"fileCount": 9,
-				"unpackedSize": 134628,
+				"integrity": "sha512-Rd3lIiofAoQ7+nTWFKQ+fihbfRCw78uu/agm3YboS1ZmW49briD1nbgaBMJtfIUtPUr8QwfjiaEAA7JgGhPHfg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD3fYf1KQQZerOAc07q7OZxVtd+Hj3O0lsmzDh7rBGwagIhAN36irxhzjg92zoZtePpFENkMxRUN8ndmDekqyL+IXuR",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 134628
+			}
+		},
+		"0.0.1-bin": {
+			"name": "@cloudflare/ai-gateway",
+			"version": "0.0.1-bin",
+			"dependencies": {
+				"@pppp606/ink-chart": "^0.1.1",
+				"fullscreen-ink": "^0.1.0",
+				"ink": "^6.0.0",
+				"ink-text-input": "^6.0.0",
+				"meow": "^13.0.0",
+				"react": "^19.0.0"
+			},
+			"devDependencies": {
+				"@sindresorhus/tsconfig": "^3.0.1",
+				"@types/node": "^24.10.1",
+				"@types/react": "^19.0.0",
+				"@vdemedes/prettier-config": "^2.0.1",
+				"ava": "^5.2.0",
+				"chalk": "^5.2.0",
+				"eslint-config-xo-react": "^0.27.0",
+				"eslint-plugin-react": "^7.32.2",
+				"eslint-plugin-react-hooks": "^4.6.0",
+				"ink-testing-library": "^4.0.0",
+				"prettier": "^2.8.7",
+				"ts-node": "^10.9.1",
+				"tsup": "^8.5.1",
+				"typescript": "^5.0.3",
+				"xo": "^0.53.1"
+			},
+			"bin": {
+				"ai-gateway": "dist/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-XYrJsnFZwM58KpO25FtlolrV56ACIwN3uvKW+9tpNo3qZ/46+2Idxfeed9I4l1A3DNHI8xbYLqjTX8S/PgbWvQ==",
+				"shasum": "399acd63d02829784b2ed21ec74d0578b59b1077",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.1-bin.tgz",
+				"fileCount": 3,
+				"unpackedSize": 58702,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQD3fYf1KQQZerOAc07q7OZxVtd+Hj3O0lsmzDh7rBGwagIhAN36irxhzjg92zoZtePpFENkMxRUN8ndmDekqyL+IXuR"
+						"sig": "MEUCIQCSkoLqijMxCYlvIOX10eaJ4BYtWlN08ljz/D1OrAJgAAIgTZo6uaqXmXG24G8604lDfsR9g0OkQBAA7m6vtJw+QdI="
 					}
 				]
+			},
+			"engines": {
+				"node": ">=20"
 			}
 		}
 	}
