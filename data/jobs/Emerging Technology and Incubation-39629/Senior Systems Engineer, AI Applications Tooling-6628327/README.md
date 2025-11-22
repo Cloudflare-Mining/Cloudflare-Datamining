@@ -5,42 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Preferred Location: Lisbon, Portugal&nbsp;</strong></h3>
-<h3><strong>Other Locations: Austin, TX | London, UK</strong></h3>
+<h3><strong>Preferred Location: Lisbon, Portugal | </strong><strong>London, UK</strong></h3>
+<h3><strong>Other Locations: Austin, TX</strong></h3>
 <h3><strong>About the Role</strong></h3>
-<p>We are building a new team of AI application experts to define and develop our AI solutions, from AI observability to autonomous intelligent agents. As an AI Engineer, you’ll help define Cloudflare’s AI strategy by working on projects such as LLM-powered code generation, AI observability, and edge-optimized model inference, bringing cutting-edge AI capabilities to our developer platform. You’ll collaborate with teams across Cloudflare to build high-performance, scalable AI applications that push the boundaries of what’s possible on the web.</p>
+<p>We are building a new, high-impact team of AI application experts to define, <strong>drive</strong>, and develop our AI solutions, from AI observability to autonomous intelligent agents. As a <strong>Senior AI Engineer</strong>, you will be instrumental in <strong>defining Cloudflare’s AI strategy</strong>, <strong>leading</strong> critical projects such as LLM-powered code generation, AI observability, and edge-optimized model inference. This role requires bringing cutting-edge AI capabilities to our developer platform and will involve <strong>setting the technical direction</strong> for high-performance, scalable AI applications that push the boundaries of what’s possible on the web.</p>
 <h3><strong>About the Department</strong></h3>
 <p>Our team is part of Cloudflare's Emerging Technology and Incubation (ETI) team where new, bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a successful business, ETI leverages our network to deliver entirely new tools and products to our customers. Our most successful endeavors include the Cloudflare development platform, which is composed of Cloudflare Workers, Durable Objects, R2, D1, and many other developer products.</p>
 <h3><strong>What you'll do</strong></h3>
-<p>As a member of the AI Applications team, you’ll help shape the future of AI-powered applications on our platform. You’ll work across Cloudflare’s stack, collaborating with teams to define, build, and optimize AI solutions that enhance developer experience, security, and performance. From AI observability to code generation and autonomous agents, your work will help drive our developer platform AI capabilities forward.</p>
+<p>As a <strong>Senior member</strong> of the AI Applications team, you will <strong>own and strategically shape</strong> the future of AI-powered applications on our platform. You will work across Cloudflare’s stack, collaborating with teams to define, build, and <strong>optimize mission-critical</strong> AI solutions that enhance developer experience, security, and performance.</p>
 <p>To this end, you will:</p>
 <ul>
-	<li>Develop AI-powered tools and integrations that enhance the developer experience, such as AI-assisted code generation and debugging.</li>
-	<li>Design and build AI observability solutions to improve model monitoring, explainability, and performance optimization.</li>
-	<li>Collaborate with internal teams to integrate AI into Cloudflare’s developer platform, ensuring scalability and efficiency.</li>
-	<li>Engage with the broader AI and developer community, contributing to open-source projects, technical documentation, and blog posts.</li>
-	<li>Work across Cloudflare’s ecosystem to identify new AI opportunities, influence technical direction, and drive adoption of AI technologies.</li>
+	<li><strong>Lead the development</strong> of high-impact AI-powered tools and integrations that enhance the developer experience, such as AI-assisted code generation and debugging.</li>
+	<li><strong>Design, architect, and implement</strong> AI observability solutions to improve model monitoring, explainability, and performance optimization at scale.</li>
+	<li><strong>Drive cross-functional efforts</strong> to integrate AI into Cloudflare’s developer platform, ensuring optimal scalability and efficiency.</li>
+	<li><strong>Mentor and champion</strong> best practices, engaging with the broader AI and developer community, contributing to open-source projects, technical documentation, and blog posts.</li>
+	<li>Work across Cloudflare’s ecosystem to <strong>identify and evaluate</strong> new AI opportunities, <strong>influence technical direction</strong>, and drive adoption of AI technologies.</li>
 	<li>If applicable to ongoing projects, you may also participate in an on-call rotation to support critical AI-powered services.</li>
+</ul>
+<h3><strong>Minimum Requirements</strong></h3>
+<ul>
+	<li><strong>5+ years</strong> of professional experience in software engineering, with <strong>significant focus</strong> on building and deploying AI applications in a production environment.</li>
+	<li>Proven experience in building and optimizing AI applications, with a <strong>deep understanding</strong> of LLMs, model inference, and AI-powered developer tools.</li>
+	<li>Expertise in tackling complex debugging challenges, optimizing AI workloads, and working with large-scale distributed systems.</li>
 </ul>
 <h3><strong>About you</strong></h3>
 <p>We want you to love it here! This role is a good fit for you if you are:</p>
 <ul>
-	<li>Excited by the idea of shaping Cloudflare’s AI strategy and bringing cutting-edge AI capabilities to developers.</li>
-	<li>Experienced in building and optimizing AI applications, with a strong understanding of LLMs, model inference, and AI-powered developer tools.</li>
-	<li>Familiar with AI observability, model monitoring, and the challenges of deploying AI in production at scale.</li>
-	<li>Passionate about integrating AI into developer workflows.</li>
-	<li>Comfortable working across Cloudflare’s stack, from backend services to edge computing, with a focus on scalability and efficiency.</li>
-	<li>Energized by tackling complex debugging challenges, optimizing AI workloads, and working with large-scale distributed systems.</li>
-	<li>Excited to own your work from early discussions to production, and to collaborate with teams across Cloudflare to make AI more accessible and effective.</li>
-	<li>Naturally curious and eager to learn new technologies, experiment with AI applications, and share your findings with the community.</li>
-	<li>Above all, a collaborator and effective communicator. You want to be part of a team that values support, open dialogue, and high standards while celebrating successes and learning from challenges.</li>
+	<li><strong>Excited by the idea of defining</strong> Cloudflare’s AI strategy and bringing cutting-edge AI capabilities to developers.</li>
+	<li>Comfortable <strong>leading complex initiatives</strong> and working across Cloudflare’s stack, from backend services to edge computing, with a focus on scalability and efficiency.</li>
+	<li><strong>Passionate about setting standards</strong> for integrating AI into developer workflows and improving model monitoring practices.</li>
+	<li><strong>A strong collaborator and mentor</strong>, who values support, open dialogue, and high standards while celebrating successes and learning from challenges.</li>
+	<li>Excited to own your work from early discussions to production, and to <strong>guide</strong> collaboration with teams across Cloudflare to make AI more accessible and effective.</li>
+	<li>Naturally curious and eager to learn new technologies, experiment with AI applications, and <strong>share your findings to elevate the team's knowledge</strong>.</li>
 </ul>
 <h3><strong>You’ll really feel at home if you have:</strong></h3>
 <ul>
-	<li>Experience building LLM-powered applications, developer tools, or agent frameworks.</li>
+	<li>Experience <strong>leading</strong> projects building LLM-powered applications, developer tools, or agent frameworks.</li>
 	<li>Familiarity with Cloudflare’s developer platform, edge computing, or AI inference.</li>
 	<li>Experience contributing to open-source LLM or developer tools projects.</li>
-	<li>Public speaking or developer advocacy experience in the AI or software engineering space</li>
+	<li>Public speaking or developer advocacy experience in the AI or software engineering space.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
