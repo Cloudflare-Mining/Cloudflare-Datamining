@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations:</strong> Lisbon, Portugal&nbsp;</p>
 <p><strong>Role Summary</strong></p>
-<p>At Cloudflare, we’re committed to delivering seamless and accurate payroll experience to our&nbsp;global workforce. As our company grows, we are expanding our international payroll capabilities&nbsp;and are looking for a Global Payroll Analyst to join our team in India.&nbsp;This role will play a critical part in the end-to-end payroll process for employees across multiple&nbsp;international regions. You’ll work closely with HR, Finance, and external vendors to ensure&nbsp;timely, accurate, and compliant payroll processing while continuously seeking opportunities to&nbsp;improve processes and enhance employee experience.</p>
+<p>At Cloudflare, we’re committed to delivering seamless and accurate payroll experience to our global workforce. As our company grows, we are expanding our international payroll capabilities and are looking for a Global Payroll Analyst to join our team in Lisbon. This role will play a critical part in the end-to-end payroll process for employees across multiple international regions. You’ll work closely with HR, Finance, and external vendors to ensure timely, accurate, and compliant payroll processing while continuously seeking opportunities to improve processes and enhance employee experience.</p>
 <p><strong>Role Responsibilities</strong></p>
 <ul>
 	<li>Own and manage day-to-day international payroll operations across designated countries,</li>
