@@ -221,6 +221,7 @@
 											"items": {
 												"properties": {
 													"environment": {
+														"deprecated": true,
 														"description": "Worker environment associated with the zone and hostname.",
 														"example": "production",
 														"type": "string",
@@ -365,6 +366,7 @@
 													"items": {
 														"properties": {
 															"environment": {
+																"deprecated": true,
 																"description": "Worker environment associated with the zone and hostname.",
 																"example": "production",
 																"type": "string",
@@ -661,6 +663,7 @@
 										"result": {
 											"properties": {
 												"environment": {
+													"deprecated": true,
 													"description": "Worker environment associated with the zone and hostname.",
 													"example": "production",
 													"type": "string",
@@ -802,6 +805,7 @@
 												"result": {
 													"properties": {
 														"environment": {
+															"deprecated": true,
 															"description": "Worker environment associated with the zone and hostname.",
 															"example": "production",
 															"type": "string",
@@ -998,6 +1002,7 @@
 					"schema": {
 						"properties": {
 							"environment": {
+								"deprecated": true,
 								"description": "Worker environment associated with the zone and hostname.",
 								"example": "production",
 								"type": "string",
@@ -1025,8 +1030,7 @@
 						"required": [
 							"zone_id",
 							"hostname",
-							"service",
-							"environment"
+							"service"
 						],
 						"type": "object"
 					}
@@ -1127,6 +1131,7 @@
 										"result": {
 											"properties": {
 												"environment": {
+													"deprecated": true,
 													"description": "Worker environment associated with the zone and hostname.",
 													"example": "production",
 													"type": "string",
@@ -1268,6 +1273,7 @@
 												"result": {
 													"properties": {
 														"environment": {
+															"deprecated": true,
 															"description": "Worker environment associated with the zone and hostname.",
 															"example": "production",
 															"type": "string",

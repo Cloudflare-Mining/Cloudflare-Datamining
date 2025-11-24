@@ -125,6 +125,26 @@
 													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 													"type": "number"
 												},
+												"external_emergency_signal_enabled": {
+													"description": "Controls whether the external emergency disconnect feature is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"external_emergency_signal_fingerprint": {
+													"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+													"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+													"type": "string"
+												},
+												"external_emergency_signal_interval": {
+													"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+													"example": "5m",
+													"type": "string"
+												},
+												"external_emergency_signal_url": {
+													"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+													"example": "https://192.0.2.1/signal",
+													"type": "string"
+												},
 												"gateway_proxy_enabled": {
 													"description": "Enable gateway proxy filtering on TCP.",
 													"example": true,
@@ -271,6 +291,26 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number"
+														},
+														"external_emergency_signal_enabled": {
+															"description": "Controls whether the external emergency disconnect feature is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"external_emergency_signal_fingerprint": {
+															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+															"type": "string"
+														},
+														"external_emergency_signal_interval": {
+															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+															"example": "5m",
+															"type": "string"
+														},
+														"external_emergency_signal_url": {
+															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+															"example": "https://192.0.2.1/signal",
+															"type": "string"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
@@ -533,6 +573,26 @@
 													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 													"type": "number"
 												},
+												"external_emergency_signal_enabled": {
+													"description": "Controls whether the external emergency disconnect feature is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"external_emergency_signal_fingerprint": {
+													"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+													"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+													"type": "string"
+												},
+												"external_emergency_signal_interval": {
+													"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+													"example": "5m",
+													"type": "string"
+												},
+												"external_emergency_signal_url": {
+													"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+													"example": "https://192.0.2.1/signal",
+													"type": "string"
+												},
 												"gateway_proxy_enabled": {
 													"description": "Enable gateway proxy filtering on TCP.",
 													"example": true,
@@ -679,6 +739,26 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number"
+														},
+														"external_emergency_signal_enabled": {
+															"description": "Controls whether the external emergency disconnect feature is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"external_emergency_signal_fingerprint": {
+															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+															"type": "string"
+														},
+														"external_emergency_signal_interval": {
+															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+															"example": "5m",
+															"type": "string"
+														},
+														"external_emergency_signal_url": {
+															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+															"example": "https://192.0.2.1/signal",
+															"type": "string"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
@@ -2311,10 +2391,6 @@
 		"summary": "Get Zero Trust account configuration",
 		"tags": [
 			"Zero Trust accounts"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/configuration/custom_certificate": {
@@ -2522,10 +2598,6 @@
 		"summary": "Get Zero Trust certificate configuration",
 		"tags": [
 			"Zero Trust accounts"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/logging": {
@@ -2986,10 +3058,6 @@
 		"summary": "Get logging settings for the Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/devices/settings": {
@@ -3013,6 +3081,26 @@
 							"disable_for_time": {
 								"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 								"type": "number"
+							},
+							"external_emergency_signal_enabled": {
+								"description": "Controls whether the external emergency disconnect feature is enabled.",
+								"example": true,
+								"type": "boolean"
+							},
+							"external_emergency_signal_fingerprint": {
+								"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+								"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+								"type": "string"
+							},
+							"external_emergency_signal_interval": {
+								"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+								"example": "5m",
+								"type": "string"
+							},
+							"external_emergency_signal_url": {
+								"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+								"example": "https://192.0.2.1/signal",
+								"type": "string"
 							},
 							"gateway_proxy_enabled": {
 								"description": "Enable gateway proxy filtering on TCP.",
@@ -3153,6 +3241,26 @@
 												"disable_for_time": {
 													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 													"type": "number"
+												},
+												"external_emergency_signal_enabled": {
+													"description": "Controls whether the external emergency disconnect feature is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"external_emergency_signal_fingerprint": {
+													"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+													"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+													"type": "string"
+												},
+												"external_emergency_signal_interval": {
+													"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+													"example": "5m",
+													"type": "string"
+												},
+												"external_emergency_signal_url": {
+													"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+													"example": "https://192.0.2.1/signal",
+													"type": "string"
 												},
 												"gateway_proxy_enabled": {
 													"description": "Enable gateway proxy filtering on TCP.",
@@ -3300,6 +3408,26 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number"
+														},
+														"external_emergency_signal_enabled": {
+															"description": "Controls whether the external emergency disconnect feature is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"external_emergency_signal_fingerprint": {
+															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+															"type": "string"
+														},
+														"external_emergency_signal_interval": {
+															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+															"example": "5m",
+															"type": "string"
+														},
+														"external_emergency_signal_url": {
+															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+															"example": "https://192.0.2.1/signal",
+															"type": "string"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
@@ -5030,9 +5158,6 @@
 		"summary": "Patch Zero Trust account configuration",
 		"tags": [
 			"Zero Trust accounts"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway": {
@@ -5389,6 +5514,26 @@
 								"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 								"type": "number"
 							},
+							"external_emergency_signal_enabled": {
+								"description": "Controls whether the external emergency disconnect feature is enabled.",
+								"example": true,
+								"type": "boolean"
+							},
+							"external_emergency_signal_fingerprint": {
+								"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+								"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+								"type": "string"
+							},
+							"external_emergency_signal_interval": {
+								"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+								"example": "5m",
+								"type": "string"
+							},
+							"external_emergency_signal_url": {
+								"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+								"example": "https://192.0.2.1/signal",
+								"type": "string"
+							},
 							"gateway_proxy_enabled": {
 								"description": "Enable gateway proxy filtering on TCP.",
 								"example": true,
@@ -5528,6 +5673,26 @@
 												"disable_for_time": {
 													"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 													"type": "number"
+												},
+												"external_emergency_signal_enabled": {
+													"description": "Controls whether the external emergency disconnect feature is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"external_emergency_signal_fingerprint": {
+													"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+													"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+													"type": "string"
+												},
+												"external_emergency_signal_interval": {
+													"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+													"example": "5m",
+													"type": "string"
+												},
+												"external_emergency_signal_url": {
+													"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+													"example": "https://192.0.2.1/signal",
+													"type": "string"
 												},
 												"gateway_proxy_enabled": {
 													"description": "Enable gateway proxy filtering on TCP.",
@@ -5675,6 +5840,26 @@
 														"disable_for_time": {
 															"description": "Sets the time limit, in seconds, that a user can use an override code to bypass WARP.",
 															"type": "number"
+														},
+														"external_emergency_signal_enabled": {
+															"description": "Controls whether the external emergency disconnect feature is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"external_emergency_signal_fingerprint": {
+															"description": "The SHA256 fingerprint (64 hexadecimal characters) of the HTTPS server certificate for the external_emergency_signal_url. If provided, the WARP client will use this value to verify the server's identity. The device will ignore any response if the server's certificate fingerprint does not exactly match this value.",
+															"example": "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
+															"type": "string"
+														},
+														"external_emergency_signal_interval": {
+															"description": "The interval at which the WARP client fetches the emergency disconnect signal, formatted as a duration string (e.g., \"5m\", \"2m30s\", \"1h\"). Minimum 30 seconds.",
+															"example": "5m",
+															"type": "string"
+														},
+														"external_emergency_signal_url": {
+															"description": "The HTTPS URL from which to fetch the emergency disconnect signal. Must use HTTPS and have an IPv4 or IPv6 address as the host.",
+															"example": "https://192.0.2.1/signal",
+															"type": "string"
 														},
 														"gateway_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on TCP.",
@@ -7405,9 +7590,6 @@
 		"summary": "Update Zero Trust account configuration",
 		"tags": [
 			"Zero Trust accounts"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/logging": {
@@ -7965,9 +8147,6 @@
 		"summary": "Update Zero Trust account logging settings",
 		"tags": [
 			"Zero Trust accounts"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

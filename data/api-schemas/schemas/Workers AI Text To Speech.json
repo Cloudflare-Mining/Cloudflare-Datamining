@@ -512,6 +512,14 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -683,6 +691,14 @@
 					"example": "true",
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
 				}
 			}
 		],
@@ -884,6 +900,14 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -1053,6 +1077,14 @@
 					"example": "true",
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
 				}
 			}
 		],

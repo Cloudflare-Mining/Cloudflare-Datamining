@@ -701,6 +701,71 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/realtime/kit/apps": [
+		{
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/destinations": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/destinations/{slug}": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/keys": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/query": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/telemetry/values": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/configuration": [
 		{
 			"in": "path",

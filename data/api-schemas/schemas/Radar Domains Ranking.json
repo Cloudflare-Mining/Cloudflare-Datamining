@@ -462,7 +462,34 @@
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
-																		"example": "ALL",
+																		"description": "Data source for annotations.",
+																		"enum": [
+																			"ALL",
+																			"AI_BOTS",
+																			"AI_GATEWAY",
+																			"BGP",
+																			"BOTS",
+																			"CONNECTION_ANOMALY",
+																			"CT",
+																			"DNS",
+																			"DNS_MAGNITUDE",
+																			"DNS_AS112",
+																			"DOS",
+																			"EMAIL_ROUTING",
+																			"EMAIL_SECURITY",
+																			"FW",
+																			"FW_PG",
+																			"HTTP",
+																			"HTTP_CONTROL",
+																			"HTTP_CRAWLER_REFERER",
+																			"HTTP_ORIGINS",
+																			"IQI",
+																			"LEAKED_CREDENTIALS",
+																			"NET",
+																			"ROBOTS_TXT",
+																			"SPEED",
+																			"WORKERS_AI"
+																		],
 																		"type": "string"
 																	},
 																	"description": {
@@ -474,7 +501,15 @@
 																		"type": "string"
 																	},
 																	"eventType": {
-																		"example": "OUTAGE",
+																		"description": "Event type for annotations.",
+																		"enum": [
+																			"EVENT",
+																			"GENERAL",
+																			"OUTAGE",
+																			"PARTIAL_PROJECTION",
+																			"PIPELINE",
+																			"TRAFFIC_ANOMALY"
+																		],
 																		"type": "string"
 																	},
 																	"isInstantaneous": {
@@ -829,7 +864,34 @@
 																"description": "Annotation associated with the result (e.g. outage or other type of event).",
 																"properties": {
 																	"dataSource": {
-																		"example": "ALL",
+																		"description": "Data source for annotations.",
+																		"enum": [
+																			"ALL",
+																			"AI_BOTS",
+																			"AI_GATEWAY",
+																			"BGP",
+																			"BOTS",
+																			"CONNECTION_ANOMALY",
+																			"CT",
+																			"DNS",
+																			"DNS_MAGNITUDE",
+																			"DNS_AS112",
+																			"DOS",
+																			"EMAIL_ROUTING",
+																			"EMAIL_SECURITY",
+																			"FW",
+																			"FW_PG",
+																			"HTTP",
+																			"HTTP_CONTROL",
+																			"HTTP_CRAWLER_REFERER",
+																			"HTTP_ORIGINS",
+																			"IQI",
+																			"LEAKED_CREDENTIALS",
+																			"NET",
+																			"ROBOTS_TXT",
+																			"SPEED",
+																			"WORKERS_AI"
+																		],
 																		"type": "string"
 																	},
 																	"description": {
@@ -841,7 +903,15 @@
 																		"type": "string"
 																	},
 																	"eventType": {
-																		"example": "OUTAGE",
+																		"description": "Event type for annotations.",
+																		"enum": [
+																			"EVENT",
+																			"GENERAL",
+																			"OUTAGE",
+																			"PARTIAL_PROJECTION",
+																			"PIPELINE",
+																			"TRAFFIC_ANOMALY"
+																		],
 																		"type": "string"
 																	},
 																	"isInstantaneous": {

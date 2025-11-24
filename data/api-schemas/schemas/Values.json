@@ -2,17 +2,6 @@
 	"POST /accounts/{account_id}/workers/observability/telemetry/values": {
 		"description": "List unique values found in your events",
 		"operationId": "telemetry.values.list",
-		"parameters": [
-			{
-				"description": "Your Cloudflare account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -112,15 +101,23 @@
 										"type": "boolean"
 									},
 									"value": {
-										"anyOf": [
+										"allOf": [
 											{
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											{
+												"maxLength": 1000,
 												"type": "string"
-											},
-											{
-												"type": "number"
-											},
-											{
-												"type": "boolean"
 											}
 										]
 									}

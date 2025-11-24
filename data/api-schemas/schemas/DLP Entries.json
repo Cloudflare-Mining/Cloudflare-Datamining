@@ -368,6 +368,9 @@
 									"properties": {
 										"result": {
 											"items": {
+												"discriminator": {
+													"propertyName": "type"
+												},
 												"oneOf": [
 													{
 														"allOf": [
@@ -1021,6 +1024,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -2133,6 +2139,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -3073,7 +3082,7 @@
 					}
 				}
 			},
-			"description": "settings to enable or disable predefined entry in owning profile",
+			"description": "Settings to enable or disable predefined entry in owning profile.",
 			"required": true
 		},
 		"responses": {

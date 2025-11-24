@@ -305,9 +305,6 @@
 		"summary": "Delete Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/lists": {
@@ -843,10 +840,6 @@
 		"summary": "List Zero Trust lists",
 		"tags": [
 			"Zero Trust lists"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}": {
@@ -1313,10 +1306,6 @@
 		"summary": "Get Zero Trust list details",
 		"tags": [
 			"Zero Trust lists"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}/items": {
@@ -1795,10 +1784,6 @@
 		"summary": "Get Zero Trust list items",
 		"tags": [
 			"Zero Trust lists"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"PATCH /accounts/{account_id}/gateway/lists/{list_id}": {
@@ -2309,9 +2294,6 @@
 		"summary": "Patch Zero Trust list.",
 		"tags": [
 			"Zero Trust lists"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/lists": {
@@ -2816,9 +2798,6 @@
 		"summary": "Create Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/lists/{list_id}": {
@@ -3335,9 +3314,6 @@
 		"summary": "Update Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

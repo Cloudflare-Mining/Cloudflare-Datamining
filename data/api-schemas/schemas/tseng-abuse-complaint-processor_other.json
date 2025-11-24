@@ -175,6 +175,10 @@
 														"description": "Public facing ID of abuse report, aka abuse_rand.",
 														"type": "string"
 													},
+													"justification": {
+														"description": "Justification for the report.",
+														"type": "string"
+													},
 													"mitigation_summary": {
 														"description": "A summary of the mitigations related to this report.",
 														"properties": {
@@ -208,6 +212,10 @@
 														],
 														"type": "object"
 													},
+													"original_work": {
+														"description": "Original work / Targeted brand in the alleged abuse.",
+														"type": "string"
+													},
 													"status": {
 														"description": "An enum value that represents the status of an abuse record",
 														"enum": [
@@ -215,6 +223,24 @@
 															"in_review"
 														],
 														"type": "string"
+													},
+													"submitter": {
+														"description": "Information about the submitter of the report.",
+														"properties": {
+															"company": {
+																"type": "string"
+															},
+															"email": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"telephone": {
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
 													"type": {
 														"description": "The abuse report type",
@@ -230,6 +256,12 @@
 															"NETWORK"
 														],
 														"type": "string"
+													},
+													"urls": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
 													}
 												},
 												"required": [
@@ -765,6 +797,10 @@
 											"description": "Public facing ID of abuse report, aka abuse_rand.",
 											"type": "string"
 										},
+										"justification": {
+											"description": "Justification for the report.",
+											"type": "string"
+										},
 										"mitigation_summary": {
 											"description": "A summary of the mitigations related to this report.",
 											"properties": {
@@ -798,6 +834,10 @@
 											],
 											"type": "object"
 										},
+										"original_work": {
+											"description": "Original work / Targeted brand in the alleged abuse.",
+											"type": "string"
+										},
 										"status": {
 											"description": "An enum value that represents the status of an abuse record",
 											"enum": [
@@ -805,6 +845,24 @@
 												"in_review"
 											],
 											"type": "string"
+										},
+										"submitter": {
+											"description": "Information about the submitter of the report.",
+											"properties": {
+												"company": {
+													"type": "string"
+												},
+												"email": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"telephone": {
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"type": {
 											"description": "The abuse report type",
@@ -820,6 +878,12 @@
 												"NETWORK"
 											],
 											"type": "string"
+										},
+										"urls": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
@@ -904,6 +968,10 @@
 											"description": "Public facing ID of abuse report, aka abuse_rand.",
 											"type": "string"
 										},
+										"justification": {
+											"description": "Justification for the report.",
+											"type": "string"
+										},
 										"mitigation_summary": {
 											"description": "A summary of the mitigations related to this report.",
 											"properties": {
@@ -937,6 +1005,10 @@
 											],
 											"type": "object"
 										},
+										"original_work": {
+											"description": "Original work / Targeted brand in the alleged abuse.",
+											"type": "string"
+										},
 										"status": {
 											"description": "An enum value that represents the status of an abuse record",
 											"enum": [
@@ -944,6 +1016,24 @@
 												"in_review"
 											],
 											"type": "string"
+										},
+										"submitter": {
+											"description": "Information about the submitter of the report.",
+											"properties": {
+												"company": {
+													"type": "string"
+												},
+												"email": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"telephone": {
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"type": {
 											"description": "The abuse report type",
@@ -959,6 +1049,12 @@
 												"NETWORK"
 											],
 											"type": "string"
+										},
+										"urls": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
@@ -1043,6 +1139,10 @@
 											"description": "Public facing ID of abuse report, aka abuse_rand.",
 											"type": "string"
 										},
+										"justification": {
+											"description": "Justification for the report.",
+											"type": "string"
+										},
 										"mitigation_summary": {
 											"description": "A summary of the mitigations related to this report.",
 											"properties": {
@@ -1076,6 +1176,10 @@
 											],
 											"type": "object"
 										},
+										"original_work": {
+											"description": "Original work / Targeted brand in the alleged abuse.",
+											"type": "string"
+										},
 										"status": {
 											"description": "An enum value that represents the status of an abuse record",
 											"enum": [
@@ -1083,6 +1187,24 @@
 												"in_review"
 											],
 											"type": "string"
+										},
+										"submitter": {
+											"description": "Information about the submitter of the report.",
+											"properties": {
+												"company": {
+													"type": "string"
+												},
+												"email": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												},
+												"telephone": {
+													"type": "string"
+												}
+											},
+											"type": "object"
 										},
 										"type": {
 											"description": "The abuse report type",
@@ -1098,6 +1220,12 @@
 												"NETWORK"
 											],
 											"type": "string"
+										},
+										"urls": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
 										}
 									},
 									"required": [

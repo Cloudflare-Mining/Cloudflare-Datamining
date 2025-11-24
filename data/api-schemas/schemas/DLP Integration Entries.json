@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/dlp/entries/integration/{entry_id}": {
-		"description": "This is a no-op as integration entires can't be deleted but is needed for our generated terraform API",
+		"description": "This is a no-op as integration entires can't be deleted but is needed for our generated terraform API.",
 		"operationId": "dlp-entries-delete-integration-entry",
 		"parameters": [
 			{
@@ -259,7 +259,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/entries/integration": {
-		"description": "Integration entries can't be created, this will update an existing integration entry\nThis is needed for our generated terraform API",
+		"description": "Integration entries can't be created, this will update an existing integration entry.\nThis is needed for our generated terraform API.",
 		"operationId": "dlp-entries-create-integration-entry",
 		"parameters": [
 			{
@@ -275,7 +275,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Struct for creating a new predefined or integration entry. Predefined or integration entries\ncan not be updated via the API so these fields will simply update the entry's settings",
+						"description": "Used to create a new predefined or integration entry.\n\nPredefined or integration entries can not be updated via the API so\nthese fields will update the entry's settings.",
 						"properties": {
 							"enabled": {
 								"type": "boolean"
@@ -285,7 +285,7 @@
 								"type": "string"
 							},
 							"profile_id": {
-								"description": "This field is not actually used as the owning profile for a predefined entry is already set\nto a predefined profile",
+								"description": "This field is not used as the owning profile.\nFor predefined entries it is already set to a predefined profile.",
 								"format": "uuid",
 								"nullable": true,
 								"type": "string"
@@ -299,7 +299,7 @@
 					}
 				}
 			},
-			"description": "This endpoint will update an existing integration entry. It is not possible to create new integration entries",
+			"description": "This endpoint will update an existing integration entry. It is not possible to create new integration entries.",
 			"required": true
 		},
 		"responses": {
@@ -416,8 +416,7 @@
 												"profile_id": {
 													"format": "uuid",
 													"nullable": true,
-													"type": "string",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"type": "string"
 												},
 												"updated_at": {
 													"format": "date-time",
@@ -609,7 +608,7 @@
 					}
 				}
 			},
-			"description": "enable or disable integration entry in owning profile",
+			"description": "Enable or disable integration entry in owning profile.",
 			"required": true
 		},
 		"responses": {
@@ -726,8 +725,7 @@
 												"profile_id": {
 													"format": "uuid",
 													"nullable": true,
-													"type": "string",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"type": "string"
 												},
 												"updated_at": {
 													"format": "date-time",

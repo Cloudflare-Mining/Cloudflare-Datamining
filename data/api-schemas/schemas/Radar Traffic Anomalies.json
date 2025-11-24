@@ -71,6 +71,24 @@
 				}
 			},
 			{
+				"description": "Filters results by entity type (LOCATION, AS, or ORIGIN).",
+				"in": "query",
+				"name": "type",
+				"schema": {
+					"description": "Filters results by entity type (LOCATION, AS, or ORIGIN).",
+					"example": "LOCATION",
+					"items": {
+						"enum": [
+							"LOCATION",
+							"AS",
+							"ORIGIN"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"in": "query",
 				"name": "asn",
@@ -89,6 +107,17 @@
 					"example": "US",
 					"maxLength": 2,
 					"minLength": 2,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by origin.",
+				"in": "query",
+				"name": "origin",
+				"schema": {
+					"description": "Filters results by origin.",
+					"example": "amazon-us-east-1",
+					"maxLength": 100,
 					"type": "string"
 				}
 			},
@@ -169,6 +198,23 @@
 														},
 														"required": [
 															"code",
+															"name"
+														],
+														"type": "object"
+													},
+													"originDetails": {
+														"properties": {
+															"name": {
+																"example": "us-east-1 Amazon Web Services",
+																"type": "string"
+															},
+															"origin": {
+																"example": "amazon-us-east-1",
+																"type": "string"
+															}
+														},
+														"required": [
+															"origin",
 															"name"
 														],
 														"type": "object"

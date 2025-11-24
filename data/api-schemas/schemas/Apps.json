@@ -1,0 +1,163 @@
+{
+	"GET /accounts/{account_id}/realtime/kit/apps": {
+		"description": "Fetch all apps for your account",
+		"operationId": "get_apps",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Example 1": {
+								"value": {
+									"data": [
+										{
+											"created_at": "2025-01-01T08:16:40.644Z",
+											"id": "my-app-id",
+											"name": "my-first-app"
+										}
+									],
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"type": "string"
+											},
+											"id": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all apps",
+		"tags": [
+			"Apps"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
+		]
+	},
+	"POST /accounts/{account_id}/realtime/kit/apps": {
+		"description": "Create new app for your account",
+		"operationId": "create_app",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Example 1": {
+								"value": {
+									"data": {
+										"app": {
+											"created_at": "2025-01-01T08:16:40.644Z",
+											"id": "my-app-id",
+											"name": "my-new-app"
+										}
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"data": {
+									"properties": {
+										"app": {
+											"properties": {
+												"created_at": {
+													"type": "string"
+												},
+												"id": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create App",
+		"tags": [
+			"Apps"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
+		]
+	}
+}

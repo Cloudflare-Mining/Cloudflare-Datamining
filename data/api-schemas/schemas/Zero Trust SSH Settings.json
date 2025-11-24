@@ -341,10 +341,6 @@
 		"summary": "Get Zero Trust SSH settings",
 		"tags": [
 			"Zero Trust SSH Settings"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"POST /accounts/{account_id}/gateway/audit_ssh_settings/rotate_seed": {
@@ -689,9 +685,6 @@
 		"summary": "Rotate Zero Trust SSH account seed",
 		"tags": [
 			"Zero Trust SSH Settings"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/audit_ssh_settings": {
@@ -1057,9 +1050,6 @@
 		"summary": "Update Zero Trust SSH settings",
 		"tags": [
 			"Zero Trust SSH Settings"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

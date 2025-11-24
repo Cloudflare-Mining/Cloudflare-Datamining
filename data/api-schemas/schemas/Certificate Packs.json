@@ -557,6 +557,290 @@
 									"properties": {
 										"result": {
 											"items": {
+												"description": "A certificate pack with all its properties.",
+												"properties": {
+													"certificate_authority": {
+														"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+														"enum": [
+															"google",
+															"lets_encrypt",
+															"ssl_com"
+														],
+														"example": "lets_encrypt",
+														"type": "string",
+														"x-auditable": true
+													},
+													"certificates": {
+														"description": "Array of certificates in this pack.",
+														"items": {
+															"description": "An individual certificate within a certificate pack.",
+															"properties": {
+																"bundle_method": {
+																	"description": "Certificate bundle method.",
+																	"example": "ubiquitous",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"expires_on": {
+																	"description": "When the certificate from the authority expires.",
+																	"example": "2024-01-01T00:00:00Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"geo_restrictions": {
+																	"description": "Specify the region where your private key can be held locally.",
+																	"properties": {
+																		"label": {
+																			"enum": [
+																				"us",
+																				"eu",
+																				"highest_security"
+																			],
+																			"example": "us",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"hosts": {
+																	"description": "Hostnames covered by this certificate.",
+																	"example": [
+																		"example.com",
+																		"*.example.com"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"id": {
+																	"description": "Certificate identifier.",
+																	"example": "7e7b8deba8538af625850b7b2530034c",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"issuer": {
+																	"description": "The certificate authority that issued the certificate.",
+																	"example": "Let's Encrypt",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"modified_on": {
+																	"description": "When the certificate was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"priority": {
+																	"description": "The order/priority in which the certificate will be used.",
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"signature": {
+																	"description": "The type of hash used for the certificate.",
+																	"example": "ECDSAWithSHA256",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "Certificate status.",
+																	"example": "active",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"uploaded_on": {
+																	"description": "When the certificate was uploaded to Cloudflare.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"zone_id": {
+																	"description": "Identifier.",
+																	"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																	"maxLength": 32,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"id",
+																"hosts",
+																"status"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"cloudflare_branding": {
+														"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
+														"example": false,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"hosts": {
+														"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+														"example": [
+															"example.com",
+															"*.example.com",
+															"www.example.com"
+														],
+														"items": {
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													},
+													"id": {
+														"description": "Identifier.",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
+														"type": "string",
+														"x-auditable": true
+													},
+													"primary_certificate": {
+														"description": "Identifier of the primary certificate in a pack.",
+														"example": "7e7b8deba8538af625850b7b2530034c",
+														"type": "string",
+														"x-auditable": true
+													},
+													"status": {
+														"description": "Status of certificate pack.",
+														"enum": [
+															"initializing",
+															"pending_validation",
+															"deleted",
+															"pending_issuance",
+															"pending_deployment",
+															"pending_deletion",
+															"pending_expiration",
+															"expired",
+															"active",
+															"initializing_timed_out",
+															"validation_timed_out",
+															"issuance_timed_out",
+															"deployment_timed_out",
+															"deletion_timed_out",
+															"pending_cleanup",
+															"staging_deployment",
+															"staging_active",
+															"deactivating",
+															"inactive",
+															"backup_issued",
+															"holding_deployment"
+														],
+														"example": "initializing",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": {
+														"description": "Type of certificate pack.",
+														"enum": [
+															"mh_custom",
+															"managed_hostname",
+															"sni_custom",
+															"universal",
+															"advanced",
+															"total_tls",
+															"keyless",
+															"legacy_custom"
+														],
+														"example": "universal",
+														"type": "string",
+														"x-auditable": true
+													},
+													"validation_errors": {
+														"description": "Domain validation errors that have been received by the certificate authority (CA).",
+														"items": {
+															"properties": {
+																"message": {
+																	"description": "A domain validation error.",
+																	"example": "SERVFAIL looking up CAA for app.example.com",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"validation_method": {
+														"description": "Validation Method selected for the order.",
+														"enum": [
+															"txt",
+															"http",
+															"email"
+														],
+														"example": "txt",
+														"type": "string",
+														"x-auditable": true
+													},
+													"validation_records": {
+														"description": "Certificates' validation records.",
+														"items": {
+															"description": "Certificate's required validation record.",
+															"properties": {
+																"emails": {
+																	"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																	"example": [
+																		"administrator@example.com",
+																		"webmaster@example.com"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																},
+																"http_body": {
+																	"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																	"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																	"type": "string"
+																},
+																"http_url": {
+																	"description": "The url that will be checked during domain validation.",
+																	"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																	"type": "string"
+																},
+																"txt_name": {
+																	"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																	"example": "_acme-challenge.app.example.com",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"txt_value": {
+																	"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																	"example": "810b7d5f01154524b961ba0cd578acc2",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"validity_days": {
+														"description": "Validity Days selected for the order.",
+														"enum": [
+															14,
+															30,
+															90,
+															365
+														],
+														"type": "integer",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id",
+													"type",
+													"hosts",
+													"certificates",
+													"status"
+												],
 												"type": "object"
 											},
 											"type": "array"
@@ -697,6 +981,290 @@
 											"properties": {
 												"result": {
 													"items": {
+														"description": "A certificate pack with all its properties.",
+														"properties": {
+															"certificate_authority": {
+																"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+																"enum": [
+																	"google",
+																	"lets_encrypt",
+																	"ssl_com"
+																],
+																"example": "lets_encrypt",
+																"type": "string",
+																"x-auditable": true
+															},
+															"certificates": {
+																"description": "Array of certificates in this pack.",
+																"items": {
+																	"description": "An individual certificate within a certificate pack.",
+																	"properties": {
+																		"bundle_method": {
+																			"description": "Certificate bundle method.",
+																			"example": "ubiquitous",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"expires_on": {
+																			"description": "When the certificate from the authority expires.",
+																			"example": "2024-01-01T00:00:00Z",
+																			"format": "date-time",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"geo_restrictions": {
+																			"description": "Specify the region where your private key can be held locally.",
+																			"properties": {
+																				"label": {
+																					"enum": [
+																						"us",
+																						"eu",
+																						"highest_security"
+																					],
+																					"example": "us",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"hosts": {
+																			"description": "Hostnames covered by this certificate.",
+																			"example": [
+																				"example.com",
+																				"*.example.com"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
+																		"id": {
+																			"description": "Certificate identifier.",
+																			"example": "7e7b8deba8538af625850b7b2530034c",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"issuer": {
+																			"description": "The certificate authority that issued the certificate.",
+																			"example": "Let's Encrypt",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"modified_on": {
+																			"description": "When the certificate was last modified.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"priority": {
+																			"description": "The order/priority in which the certificate will be used.",
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"signature": {
+																			"description": "The type of hash used for the certificate.",
+																			"example": "ECDSAWithSHA256",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"status": {
+																			"description": "Certificate status.",
+																			"example": "active",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"uploaded_on": {
+																			"description": "When the certificate was uploaded to Cloudflare.",
+																			"example": "2014-01-01T05:20:00Z",
+																			"format": "date-time",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"zone_id": {
+																			"description": "Identifier.",
+																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																			"maxLength": 32,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"hosts",
+																		"status"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"cloudflare_branding": {
+																"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
+																"example": false,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"hosts": {
+																"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+																"example": [
+																	"example.com",
+																	"*.example.com",
+																	"www.example.com"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															},
+															"primary_certificate": {
+																"description": "Identifier of the primary certificate in a pack.",
+																"example": "7e7b8deba8538af625850b7b2530034c",
+																"type": "string",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "Status of certificate pack.",
+																"enum": [
+																	"initializing",
+																	"pending_validation",
+																	"deleted",
+																	"pending_issuance",
+																	"pending_deployment",
+																	"pending_deletion",
+																	"pending_expiration",
+																	"expired",
+																	"active",
+																	"initializing_timed_out",
+																	"validation_timed_out",
+																	"issuance_timed_out",
+																	"deployment_timed_out",
+																	"deletion_timed_out",
+																	"pending_cleanup",
+																	"staging_deployment",
+																	"staging_active",
+																	"deactivating",
+																	"inactive",
+																	"backup_issued",
+																	"holding_deployment"
+																],
+																"example": "initializing",
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": {
+																"description": "Type of certificate pack.",
+																"enum": [
+																	"mh_custom",
+																	"managed_hostname",
+																	"sni_custom",
+																	"universal",
+																	"advanced",
+																	"total_tls",
+																	"keyless",
+																	"legacy_custom"
+																],
+																"example": "universal",
+																"type": "string",
+																"x-auditable": true
+															},
+															"validation_errors": {
+																"description": "Domain validation errors that have been received by the certificate authority (CA).",
+																"items": {
+																	"properties": {
+																		"message": {
+																			"description": "A domain validation error.",
+																			"example": "SERVFAIL looking up CAA for app.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"validation_method": {
+																"description": "Validation Method selected for the order.",
+																"enum": [
+																	"txt",
+																	"http",
+																	"email"
+																],
+																"example": "txt",
+																"type": "string",
+																"x-auditable": true
+															},
+															"validation_records": {
+																"description": "Certificates' validation records.",
+																"items": {
+																	"description": "Certificate's required validation record.",
+																	"properties": {
+																		"emails": {
+																			"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																			"example": [
+																				"administrator@example.com",
+																				"webmaster@example.com"
+																			],
+																			"items": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		},
+																		"http_body": {
+																			"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																			"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																			"type": "string"
+																		},
+																		"http_url": {
+																			"description": "The url that will be checked during domain validation.",
+																			"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																			"type": "string"
+																		},
+																		"txt_name": {
+																			"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																			"example": "_acme-challenge.app.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"txt_value": {
+																			"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																			"example": "810b7d5f01154524b961ba0cd578acc2",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"validity_days": {
+																"description": "Validity Days selected for the order.",
+																"enum": [
+																	14,
+																	30,
+																	90,
+																	365
+																],
+																"type": "integer",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"type",
+															"hosts",
+															"certificates",
+															"status"
+														],
 														"type": "object"
 													},
 													"type": "array"
@@ -969,6 +1537,290 @@
 								{
 									"properties": {
 										"result": {
+											"description": "A certificate pack with all its properties.",
+											"properties": {
+												"certificate_authority": {
+													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+													"enum": [
+														"google",
+														"lets_encrypt",
+														"ssl_com"
+													],
+													"example": "lets_encrypt",
+													"type": "string",
+													"x-auditable": true
+												},
+												"certificates": {
+													"description": "Array of certificates in this pack.",
+													"items": {
+														"description": "An individual certificate within a certificate pack.",
+														"properties": {
+															"bundle_method": {
+																"description": "Certificate bundle method.",
+																"example": "ubiquitous",
+																"type": "string",
+																"x-auditable": true
+															},
+															"expires_on": {
+																"description": "When the certificate from the authority expires.",
+																"example": "2024-01-01T00:00:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"geo_restrictions": {
+																"description": "Specify the region where your private key can be held locally.",
+																"properties": {
+																	"label": {
+																		"enum": [
+																			"us",
+																			"eu",
+																			"highest_security"
+																		],
+																		"example": "us",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"hosts": {
+																"description": "Hostnames covered by this certificate.",
+																"example": [
+																	"example.com",
+																	"*.example.com"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Certificate identifier.",
+																"example": "7e7b8deba8538af625850b7b2530034c",
+																"type": "string",
+																"x-auditable": true
+															},
+															"issuer": {
+																"description": "The certificate authority that issued the certificate.",
+																"example": "Let's Encrypt",
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_on": {
+																"description": "When the certificate was last modified.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"priority": {
+																"description": "The order/priority in which the certificate will be used.",
+																"type": "number",
+																"x-auditable": true
+															},
+															"signature": {
+																"description": "The type of hash used for the certificate.",
+																"example": "ECDSAWithSHA256",
+																"type": "string",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "Certificate status.",
+																"example": "active",
+																"type": "string",
+																"x-auditable": true
+															},
+															"uploaded_on": {
+																"description": "When the certificate was uploaded to Cloudflare.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"hosts",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"cloudflare_branding": {
+													"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"hosts": {
+													"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+													"example": [
+														"example.com",
+														"*.example.com",
+														"www.example.com"
+													],
+													"items": {
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "Identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"primary_certificate": {
+													"description": "Identifier of the primary certificate in a pack.",
+													"example": "7e7b8deba8538af625850b7b2530034c",
+													"type": "string",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "Status of certificate pack.",
+													"enum": [
+														"initializing",
+														"pending_validation",
+														"deleted",
+														"pending_issuance",
+														"pending_deployment",
+														"pending_deletion",
+														"pending_expiration",
+														"expired",
+														"active",
+														"initializing_timed_out",
+														"validation_timed_out",
+														"issuance_timed_out",
+														"deployment_timed_out",
+														"deletion_timed_out",
+														"pending_cleanup",
+														"staging_deployment",
+														"staging_active",
+														"deactivating",
+														"inactive",
+														"backup_issued",
+														"holding_deployment"
+													],
+													"example": "initializing",
+													"type": "string",
+													"x-auditable": true
+												},
+												"type": {
+													"description": "Type of certificate pack.",
+													"enum": [
+														"mh_custom",
+														"managed_hostname",
+														"sni_custom",
+														"universal",
+														"advanced",
+														"total_tls",
+														"keyless",
+														"legacy_custom"
+													],
+													"example": "universal",
+													"type": "string",
+													"x-auditable": true
+												},
+												"validation_errors": {
+													"description": "Domain validation errors that have been received by the certificate authority (CA).",
+													"items": {
+														"properties": {
+															"message": {
+																"description": "A domain validation error.",
+																"example": "SERVFAIL looking up CAA for app.example.com",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"validation_method": {
+													"description": "Validation Method selected for the order.",
+													"enum": [
+														"txt",
+														"http",
+														"email"
+													],
+													"example": "txt",
+													"type": "string",
+													"x-auditable": true
+												},
+												"validation_records": {
+													"description": "Certificates' validation records.",
+													"items": {
+														"description": "Certificate's required validation record.",
+														"properties": {
+															"emails": {
+																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																"example": [
+																	"administrator@example.com",
+																	"webmaster@example.com"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"http_body": {
+																"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																"type": "string"
+															},
+															"http_url": {
+																"description": "The url that will be checked during domain validation.",
+																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																"type": "string"
+															},
+															"txt_name": {
+																"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																"example": "_acme-challenge.app.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"txt_value": {
+																"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																"example": "810b7d5f01154524b961ba0cd578acc2",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"validity_days": {
+													"description": "Validity Days selected for the order.",
+													"enum": [
+														14,
+														30,
+														90,
+														365
+													],
+													"type": "integer",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id",
+												"type",
+												"hosts",
+												"certificates",
+												"status"
+											],
 											"type": "object"
 										}
 									},
@@ -1077,6 +1929,290 @@
 										{
 											"properties": {
 												"result": {
+													"description": "A certificate pack with all its properties.",
+													"properties": {
+														"certificate_authority": {
+															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+															"enum": [
+																"google",
+																"lets_encrypt",
+																"ssl_com"
+															],
+															"example": "lets_encrypt",
+															"type": "string",
+															"x-auditable": true
+														},
+														"certificates": {
+															"description": "Array of certificates in this pack.",
+															"items": {
+																"description": "An individual certificate within a certificate pack.",
+																"properties": {
+																	"bundle_method": {
+																		"description": "Certificate bundle method.",
+																		"example": "ubiquitous",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"expires_on": {
+																		"description": "When the certificate from the authority expires.",
+																		"example": "2024-01-01T00:00:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"geo_restrictions": {
+																		"description": "Specify the region where your private key can be held locally.",
+																		"properties": {
+																			"label": {
+																				"enum": [
+																					"us",
+																					"eu",
+																					"highest_security"
+																				],
+																				"example": "us",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"hosts": {
+																		"description": "Hostnames covered by this certificate.",
+																		"example": [
+																			"example.com",
+																			"*.example.com"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Certificate identifier.",
+																		"example": "7e7b8deba8538af625850b7b2530034c",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issuer": {
+																		"description": "The certificate authority that issued the certificate.",
+																		"example": "Let's Encrypt",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "When the certificate was last modified.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"priority": {
+																		"description": "The order/priority in which the certificate will be used.",
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"signature": {
+																		"description": "The type of hash used for the certificate.",
+																		"example": "ECDSAWithSHA256",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"status": {
+																		"description": "Certificate status.",
+																		"example": "active",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"uploaded_on": {
+																		"description": "When the certificate was uploaded to Cloudflare.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"zone_id": {
+																		"description": "Identifier.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"hosts",
+																	"status"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"cloudflare_branding": {
+															"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
+															"example": false,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"hosts": {
+															"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
+															"example": [
+																"example.com",
+																"*.example.com",
+																"www.example.com"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														},
+														"primary_certificate": {
+															"description": "Identifier of the primary certificate in a pack.",
+															"example": "7e7b8deba8538af625850b7b2530034c",
+															"type": "string",
+															"x-auditable": true
+														},
+														"status": {
+															"description": "Status of certificate pack.",
+															"enum": [
+																"initializing",
+																"pending_validation",
+																"deleted",
+																"pending_issuance",
+																"pending_deployment",
+																"pending_deletion",
+																"pending_expiration",
+																"expired",
+																"active",
+																"initializing_timed_out",
+																"validation_timed_out",
+																"issuance_timed_out",
+																"deployment_timed_out",
+																"deletion_timed_out",
+																"pending_cleanup",
+																"staging_deployment",
+																"staging_active",
+																"deactivating",
+																"inactive",
+																"backup_issued",
+																"holding_deployment"
+															],
+															"example": "initializing",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "Type of certificate pack.",
+															"enum": [
+																"mh_custom",
+																"managed_hostname",
+																"sni_custom",
+																"universal",
+																"advanced",
+																"total_tls",
+																"keyless",
+																"legacy_custom"
+															],
+															"example": "universal",
+															"type": "string",
+															"x-auditable": true
+														},
+														"validation_errors": {
+															"description": "Domain validation errors that have been received by the certificate authority (CA).",
+															"items": {
+																"properties": {
+																	"message": {
+																		"description": "A domain validation error.",
+																		"example": "SERVFAIL looking up CAA for app.example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"validation_method": {
+															"description": "Validation Method selected for the order.",
+															"enum": [
+																"txt",
+																"http",
+																"email"
+															],
+															"example": "txt",
+															"type": "string",
+															"x-auditable": true
+														},
+														"validation_records": {
+															"description": "Certificates' validation records.",
+															"items": {
+																"description": "Certificate's required validation record.",
+																"properties": {
+																	"emails": {
+																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																		"example": [
+																			"administrator@example.com",
+																			"webmaster@example.com"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	},
+																	"http_body": {
+																		"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																		"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																		"type": "string"
+																	},
+																	"http_url": {
+																		"description": "The url that will be checked during domain validation.",
+																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																		"type": "string"
+																	},
+																	"txt_name": {
+																		"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																		"example": "_acme-challenge.app.example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"txt_value": {
+																		"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																		"example": "810b7d5f01154524b961ba0cd578acc2",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"validity_days": {
+															"description": "Validity Days selected for the order.",
+															"enum": [
+																14,
+																30,
+																90,
+																365
+															],
+															"type": "integer",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"id",
+														"type",
+														"hosts",
+														"certificates",
+														"status"
+													],
 													"type": "object"
 												}
 											},
@@ -1767,6 +2903,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "A certificate pack with all its properties.",
 											"properties": {
 												"certificate_authority": {
 													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
@@ -1778,6 +2915,112 @@
 													"example": "lets_encrypt",
 													"type": "string",
 													"x-auditable": true
+												},
+												"certificates": {
+													"description": "Array of certificates in this pack.",
+													"items": {
+														"description": "An individual certificate within a certificate pack.",
+														"properties": {
+															"bundle_method": {
+																"description": "Certificate bundle method.",
+																"example": "ubiquitous",
+																"type": "string",
+																"x-auditable": true
+															},
+															"expires_on": {
+																"description": "When the certificate from the authority expires.",
+																"example": "2024-01-01T00:00:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"geo_restrictions": {
+																"description": "Specify the region where your private key can be held locally.",
+																"properties": {
+																	"label": {
+																		"enum": [
+																			"us",
+																			"eu",
+																			"highest_security"
+																		],
+																		"example": "us",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"hosts": {
+																"description": "Hostnames covered by this certificate.",
+																"example": [
+																	"example.com",
+																	"*.example.com"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Certificate identifier.",
+																"example": "7e7b8deba8538af625850b7b2530034c",
+																"type": "string",
+																"x-auditable": true
+															},
+															"issuer": {
+																"description": "The certificate authority that issued the certificate.",
+																"example": "Let's Encrypt",
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_on": {
+																"description": "When the certificate was last modified.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"priority": {
+																"description": "The order/priority in which the certificate will be used.",
+																"type": "number",
+																"x-auditable": true
+															},
+															"signature": {
+																"description": "The type of hash used for the certificate.",
+																"example": "ECDSAWithSHA256",
+																"type": "string",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "Certificate status.",
+																"example": "active",
+																"type": "string",
+																"x-auditable": true
+															},
+															"uploaded_on": {
+																"description": "When the certificate was uploaded to Cloudflare.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"hosts",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"cloudflare_branding": {
 													"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
@@ -1802,6 +3045,12 @@
 													"description": "Identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"primary_certificate": {
+													"description": "Identifier of the primary certificate in a pack.",
+													"example": "7e7b8deba8538af625850b7b2530034c",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -1877,7 +3126,7 @@
 													"x-auditable": true
 												},
 												"validation_records": {
-													"description": "Certificates' validation records. Only present when certificate pack is in \"pending_validation\" status",
+													"description": "Certificates' validation records.",
 													"items": {
 														"description": "Certificate's required validation record.",
 														"properties": {
@@ -1931,6 +3180,13 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id",
+												"type",
+												"hosts",
+												"certificates",
+												"status"
+											],
 											"type": "object"
 										}
 									},
@@ -2039,6 +3295,7 @@
 										{
 											"properties": {
 												"result": {
+													"description": "A certificate pack with all its properties.",
 													"properties": {
 														"certificate_authority": {
 															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
@@ -2050,6 +3307,112 @@
 															"example": "lets_encrypt",
 															"type": "string",
 															"x-auditable": true
+														},
+														"certificates": {
+															"description": "Array of certificates in this pack.",
+															"items": {
+																"description": "An individual certificate within a certificate pack.",
+																"properties": {
+																	"bundle_method": {
+																		"description": "Certificate bundle method.",
+																		"example": "ubiquitous",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"expires_on": {
+																		"description": "When the certificate from the authority expires.",
+																		"example": "2024-01-01T00:00:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"geo_restrictions": {
+																		"description": "Specify the region where your private key can be held locally.",
+																		"properties": {
+																			"label": {
+																				"enum": [
+																					"us",
+																					"eu",
+																					"highest_security"
+																				],
+																				"example": "us",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"hosts": {
+																		"description": "Hostnames covered by this certificate.",
+																		"example": [
+																			"example.com",
+																			"*.example.com"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Certificate identifier.",
+																		"example": "7e7b8deba8538af625850b7b2530034c",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issuer": {
+																		"description": "The certificate authority that issued the certificate.",
+																		"example": "Let's Encrypt",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "When the certificate was last modified.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"priority": {
+																		"description": "The order/priority in which the certificate will be used.",
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"signature": {
+																		"description": "The type of hash used for the certificate.",
+																		"example": "ECDSAWithSHA256",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"status": {
+																		"description": "Certificate status.",
+																		"example": "active",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"uploaded_on": {
+																		"description": "When the certificate was uploaded to Cloudflare.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"zone_id": {
+																		"description": "Identifier.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"hosts",
+																	"status"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														},
 														"cloudflare_branding": {
 															"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
@@ -2074,6 +3437,12 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														},
+														"primary_certificate": {
+															"description": "Identifier of the primary certificate in a pack.",
+															"example": "7e7b8deba8538af625850b7b2530034c",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -2149,7 +3518,7 @@
 															"x-auditable": true
 														},
 														"validation_records": {
-															"description": "Certificates' validation records. Only present when certificate pack is in \"pending_validation\" status",
+															"description": "Certificates' validation records.",
 															"items": {
 																"description": "Certificate's required validation record.",
 																"properties": {
@@ -2203,6 +3572,13 @@
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"id",
+														"type",
+														"hosts",
+														"certificates",
+														"status"
+													],
 													"type": "object"
 												}
 											},
@@ -2542,6 +3918,7 @@
 								{
 									"properties": {
 										"result": {
+											"description": "A certificate pack with all its properties.",
 											"properties": {
 												"certificate_authority": {
 													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
@@ -2553,6 +3930,112 @@
 													"example": "lets_encrypt",
 													"type": "string",
 													"x-auditable": true
+												},
+												"certificates": {
+													"description": "Array of certificates in this pack.",
+													"items": {
+														"description": "An individual certificate within a certificate pack.",
+														"properties": {
+															"bundle_method": {
+																"description": "Certificate bundle method.",
+																"example": "ubiquitous",
+																"type": "string",
+																"x-auditable": true
+															},
+															"expires_on": {
+																"description": "When the certificate from the authority expires.",
+																"example": "2024-01-01T00:00:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"geo_restrictions": {
+																"description": "Specify the region where your private key can be held locally.",
+																"properties": {
+																	"label": {
+																		"enum": [
+																			"us",
+																			"eu",
+																			"highest_security"
+																		],
+																		"example": "us",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object"
+															},
+															"hosts": {
+																"description": "Hostnames covered by this certificate.",
+																"example": [
+																	"example.com",
+																	"*.example.com"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Certificate identifier.",
+																"example": "7e7b8deba8538af625850b7b2530034c",
+																"type": "string",
+																"x-auditable": true
+															},
+															"issuer": {
+																"description": "The certificate authority that issued the certificate.",
+																"example": "Let's Encrypt",
+																"type": "string",
+																"x-auditable": true
+															},
+															"modified_on": {
+																"description": "When the certificate was last modified.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"priority": {
+																"description": "The order/priority in which the certificate will be used.",
+																"type": "number",
+																"x-auditable": true
+															},
+															"signature": {
+																"description": "The type of hash used for the certificate.",
+																"example": "ECDSAWithSHA256",
+																"type": "string",
+																"x-auditable": true
+															},
+															"status": {
+																"description": "Certificate status.",
+																"example": "active",
+																"type": "string",
+																"x-auditable": true
+															},
+															"uploaded_on": {
+																"description": "When the certificate was uploaded to Cloudflare.",
+																"example": "2014-01-01T05:20:00Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id",
+															"hosts",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"cloudflare_branding": {
 													"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
@@ -2577,6 +4060,12 @@
 													"description": "Identifier.",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												},
+												"primary_certificate": {
+													"description": "Identifier of the primary certificate in a pack.",
+													"example": "7e7b8deba8538af625850b7b2530034c",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -2652,7 +4141,7 @@
 													"x-auditable": true
 												},
 												"validation_records": {
-													"description": "Certificates' validation records. Only present when certificate pack is in \"pending_validation\" status",
+													"description": "Certificates' validation records.",
 													"items": {
 														"description": "Certificate's required validation record.",
 														"properties": {
@@ -2706,6 +4195,13 @@
 													"x-auditable": true
 												}
 											},
+											"required": [
+												"id",
+												"type",
+												"hosts",
+												"certificates",
+												"status"
+											],
 											"type": "object"
 										}
 									},
@@ -2814,6 +4310,7 @@
 										{
 											"properties": {
 												"result": {
+													"description": "A certificate pack with all its properties.",
 													"properties": {
 														"certificate_authority": {
 															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
@@ -2825,6 +4322,112 @@
 															"example": "lets_encrypt",
 															"type": "string",
 															"x-auditable": true
+														},
+														"certificates": {
+															"description": "Array of certificates in this pack.",
+															"items": {
+																"description": "An individual certificate within a certificate pack.",
+																"properties": {
+																	"bundle_method": {
+																		"description": "Certificate bundle method.",
+																		"example": "ubiquitous",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"expires_on": {
+																		"description": "When the certificate from the authority expires.",
+																		"example": "2024-01-01T00:00:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"geo_restrictions": {
+																		"description": "Specify the region where your private key can be held locally.",
+																		"properties": {
+																			"label": {
+																				"enum": [
+																					"us",
+																					"eu",
+																					"highest_security"
+																				],
+																				"example": "us",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"hosts": {
+																		"description": "Hostnames covered by this certificate.",
+																		"example": [
+																			"example.com",
+																			"*.example.com"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Certificate identifier.",
+																		"example": "7e7b8deba8538af625850b7b2530034c",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"issuer": {
+																		"description": "The certificate authority that issued the certificate.",
+																		"example": "Let's Encrypt",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"modified_on": {
+																		"description": "When the certificate was last modified.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"priority": {
+																		"description": "The order/priority in which the certificate will be used.",
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"signature": {
+																		"description": "The type of hash used for the certificate.",
+																		"example": "ECDSAWithSHA256",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"status": {
+																		"description": "Certificate status.",
+																		"example": "active",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"uploaded_on": {
+																		"description": "When the certificate was uploaded to Cloudflare.",
+																		"example": "2014-01-01T05:20:00Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"zone_id": {
+																		"description": "Identifier.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"id",
+																	"hosts",
+																	"status"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														},
 														"cloudflare_branding": {
 															"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
@@ -2849,6 +4452,12 @@
 															"description": "Identifier.",
 															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														},
+														"primary_certificate": {
+															"description": "Identifier of the primary certificate in a pack.",
+															"example": "7e7b8deba8538af625850b7b2530034c",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -2924,7 +4533,7 @@
 															"x-auditable": true
 														},
 														"validation_records": {
-															"description": "Certificates' validation records. Only present when certificate pack is in \"pending_validation\" status",
+															"description": "Certificates' validation records.",
 															"items": {
 																"description": "Certificate's required validation record.",
 																"properties": {
@@ -2978,6 +4587,13 @@
 															"x-auditable": true
 														}
 													},
+													"required": [
+														"id",
+														"type",
+														"hosts",
+														"certificates",
+														"status"
+													],
 													"type": "object"
 												}
 											},

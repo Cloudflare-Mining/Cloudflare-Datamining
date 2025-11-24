@@ -2,54 +2,53 @@
 	"POST /accounts/{account_id}/workers/observability/telemetry/query": {
 		"description": "Runs a temporary or saved query",
 		"operationId": "telemetry.query",
-		"parameters": [
-			{
-				"description": "Your Cloudflare account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
 		"requestBody": {
 			"content": {
 				"application/json": {
 					"schema": {
 						"properties": {
 							"chart": {
+								"description": "Whether to include timeseties data in the response",
 								"type": "boolean"
 							},
 							"compare": {
+								"description": "Whether to include comparison data with previous time periods",
 								"type": "boolean"
 							},
 							"dry": {
 								"default": false,
+								"description": "Whether to perform a dry run without saving the results of the query. Useful for validation",
 								"type": "boolean"
 							},
 							"granularity": {
+								"description": "Time granularity for aggregating results (in milliseconds). Controls the bucketing of time-series data",
 								"type": "number"
 							},
 							"ignoreSeries": {
 								"default": false,
+								"description": "Whether to ignore time-series data in the results and return only aggregated values",
 								"type": "boolean"
 							},
 							"limit": {
 								"default": 50,
-								"maximum": 100,
+								"description": "Maximum number of events to return.",
+								"maximum": 2000,
 								"type": "number"
 							},
 							"offset": {
+								"description": "Cursor for pagination to retrieve the next set of results",
 								"type": "string"
 							},
 							"offsetBy": {
+								"description": "Number of events to skip for pagination. Used in conjunction with offset",
 								"type": "number"
 							},
 							"offsetDirection": {
+								"description": "Direction for offset-based pagination (e.g., 'next', 'prev')",
 								"type": "string"
 							},
 							"parameters": {
+								"description": "Optional parameters to pass to the query execution",
 								"properties": {
 									"calculations": {
 										"description": "Create Calculations to compute as part of the query.",
@@ -266,7 +265,7 @@
 									},
 									"limit": {
 										"description": "Set a limit on the number of results / records returned by the query",
-										"maximum": 100,
+										"maximum": 2000,
 										"minimum": 0,
 										"type": "integer"
 									},
@@ -280,15 +279,23 @@
 												"type": "boolean"
 											},
 											"value": {
-												"anyOf": [
+												"allOf": [
 													{
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															},
+															{
+																"type": "boolean"
+															}
+														]
+													},
+													{
+														"maxLength": 1000,
 														"type": "string"
-													},
-													{
-														"type": "number"
-													},
-													{
-														"type": "boolean"
 													}
 												]
 											}
@@ -323,6 +330,7 @@
 								"type": "object"
 							},
 							"patternType": {
+								"description": "Type of pattern to search for when using pattern-based views",
 								"enum": [
 									"message",
 									"error"
@@ -330,14 +338,18 @@
 								"type": "string"
 							},
 							"queryId": {
+								"description": "Unique identifier for the query to execute",
 								"type": "string"
 							},
 							"timeframe": {
+								"description": "Time range for the query execution",
 								"properties": {
 									"from": {
+										"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
 										"type": "number"
 									},
 									"to": {
+										"description": "End timestamp for the query timeframe (Unix timestamp in milliseconds)",
 										"type": "number"
 									}
 								},
@@ -349,6 +361,7 @@
 							},
 							"view": {
 								"default": "calculations",
+								"description": "View type for presenting the query results.",
 								"enum": [
 									"traces",
 									"events",
@@ -720,6 +733,10 @@
 														"additionalProperties": false,
 														"description": "The data structure of a telemetry event",
 														"properties": {
+															"$containers": {
+																"description": "Cloudflare Containers event information enriches your logs so you can easily identify and debug issues.",
+																"type": "object"
+															},
 															"$metadata": {
 																"properties": {
 																	"account": {
@@ -815,6 +832,9 @@
 																	"traceId": {
 																		"type": "string"
 																	},
+																	"transactionName": {
+																		"type": "string"
+																	},
 																	"trigger": {
 																		"type": "string"
 																	},
@@ -834,6 +854,9 @@
 																"anyOf": [
 																	{
 																		"properties": {
+																			"durableObjectId": {
+																				"type": "string"
+																			},
 																			"entrypoint": {
 																				"type": "string"
 																			},
@@ -952,7 +975,6 @@
 																		},
 																		"required": [
 																			"scriptName",
-																			"outcome",
 																			"eventType",
 																			"requestId"
 																		],
@@ -986,6 +1008,9 @@
 																				"type": "array"
 																			},
 																			"dispatchNamespace": {
+																				"type": "string"
+																			},
+																			"durableObjectId": {
 																				"type": "string"
 																			},
 																			"entrypoint": {
@@ -1220,6 +1245,10 @@
 													"additionalProperties": false,
 													"description": "The data structure of a telemetry event",
 													"properties": {
+														"$containers": {
+															"description": "Cloudflare Containers event information enriches your logs so you can easily identify and debug issues.",
+															"type": "object"
+														},
 														"$metadata": {
 															"properties": {
 																"account": {
@@ -1315,6 +1344,9 @@
 																"traceId": {
 																	"type": "string"
 																},
+																"transactionName": {
+																	"type": "string"
+																},
 																"trigger": {
 																	"type": "string"
 																},
@@ -1334,6 +1366,9 @@
 															"anyOf": [
 																{
 																	"properties": {
+																		"durableObjectId": {
+																			"type": "string"
+																		},
 																		"entrypoint": {
 																			"type": "string"
 																		},
@@ -1452,7 +1487,6 @@
 																	},
 																	"required": [
 																		"scriptName",
-																		"outcome",
 																		"eventType",
 																		"requestId"
 																	],
@@ -1486,6 +1520,9 @@
 																			"type": "array"
 																		},
 																		"dispatchNamespace": {
+																			"type": "string"
+																		},
+																		"durableObjectId": {
 																			"type": "string"
 																		},
 																		"entrypoint": {
@@ -1967,7 +2004,7 @@
 																},
 																"limit": {
 																	"description": "Set a limit on the number of results / records returned by the query",
-																	"maximum": 100,
+																	"maximum": 2000,
 																	"minimum": 0,
 																	"type": "integer"
 																},
@@ -1981,15 +2018,23 @@
 																			"type": "boolean"
 																		},
 																		"value": {
-																			"anyOf": [
+																			"allOf": [
 																				{
+																					"anyOf": [
+																						{
+																							"type": "string"
+																						},
+																						{
+																							"type": "number"
+																						},
+																						{
+																							"type": "boolean"
+																						}
+																					]
+																				},
+																				{
+																					"maxLength": 1000,
 																					"type": "string"
-																				},
-																				{
-																					"type": "number"
-																				},
-																				{
-																					"type": "boolean"
 																				}
 																			]
 																		}
@@ -2055,6 +2100,10 @@
 												},
 												"statistics": {
 													"properties": {
+														"abr_level": {
+															"description": "The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1",
+															"type": "number"
+														},
 														"bytes_read": {
 															"description": "Number of uncompressed bytes read from the table.",
 															"type": "number"
@@ -2083,23 +2132,20 @@
 													"type": "string"
 												},
 												"timeframe": {
+													"description": "Time range for the query execution",
 													"properties": {
 														"from": {
-															"description": "Set the start time for your query using UNIX time in milliseconds.",
-															"exclusiveMinimum": true,
-															"minimum": 0,
+															"description": "Start timestamp for the query timeframe (Unix timestamp in milliseconds)",
 															"type": "number"
 														},
 														"to": {
-															"description": "Set the end time for your query using UNIX time in milliseconds.",
-															"exclusiveMinimum": true,
-															"minimum": 0,
+															"description": "End timestamp for the query timeframe (Unix timestamp in milliseconds)",
 															"type": "number"
 														}
 													},
 													"required": [
-														"from",
-														"to"
+														"to",
+														"from"
 													],
 													"type": "object"
 												},
@@ -2131,6 +2177,10 @@
 										"statistics": {
 											"description": "The statistics object contains information about query performance from the database, it does not include any network latency",
 											"properties": {
+												"abr_level": {
+													"description": "The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1",
+													"type": "number"
+												},
 												"bytes_read": {
 													"description": "Number of uncompressed bytes read from the table.",
 													"type": "number"
@@ -2150,6 +2200,57 @@
 												"bytes_read"
 											],
 											"type": "object"
+										},
+										"traces": {
+											"items": {
+												"properties": {
+													"errors": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"rootSpanName": {
+														"type": "string"
+													},
+													"rootTransactionName": {
+														"type": "string"
+													},
+													"service": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"spans": {
+														"type": "number"
+													},
+													"traceDurationMs": {
+														"type": "number"
+													},
+													"traceEndMs": {
+														"type": "number"
+													},
+													"traceId": {
+														"type": "string"
+													},
+													"traceStartMs": {
+														"type": "number"
+													}
+												},
+												"required": [
+													"traceId",
+													"spans",
+													"service",
+													"traceStartMs",
+													"traceEndMs",
+													"traceDurationMs",
+													"rootSpanName",
+													"rootTransactionName"
+												],
+												"type": "object"
+											},
+											"type": "array"
 										}
 									},
 									"required": [
@@ -2176,6 +2277,63 @@
 					}
 				},
 				"description": "Successful request"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Bad Request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
 			},
 			"401": {
 				"content": {

@@ -367,10 +367,6 @@
 		"summary": "List applications review statuses",
 		"tags": [
 			"Zero Trust applications review status"
-		],
-		"x-api-token-group": [
-			"Zero Trust Read",
-			"Zero Trust Write"
 		]
 	},
 	"PUT /accounts/{account_id}/gateway/apps/review_status": {
@@ -782,9 +778,6 @@
 		"summary": "Update applications review statuses",
 		"tags": [
 			"Zero Trust applications review status"
-		],
-		"x-api-token-group": [
-			"Zero Trust Write"
 		]
 	}
 }

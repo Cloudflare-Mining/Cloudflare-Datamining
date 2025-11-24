@@ -893,7 +893,7 @@
 			},
 			{
 				"in": "query",
-				"name": "audit_log_id",
+				"name": "id",
 				"schema": {
 					"description": "Finds a specific log by its ID.",
 					"items": {
@@ -1171,7 +1171,7 @@
 			},
 			{
 				"in": "query",
-				"name": "audit_log_id.not",
+				"name": "id.not",
 				"schema": {
 					"description": "Filters out audit logs by their IDs.",
 					"items": {

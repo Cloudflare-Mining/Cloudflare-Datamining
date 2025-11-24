@@ -149,6 +149,7 @@
 													"items": {
 														"properties": {
 															"id": {
+																"description": "Unique identifier for the version.",
 																"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																"readOnly": true,
 																"type": "string"
@@ -163,30 +164,36 @@
 																},
 																"properties": {
 																	"author_email": {
+																		"description": "Email of the user who created the version.",
 																		"example": "user@example.com",
 																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"author_id": {
+																		"description": "Identifier of the user who created the version.",
 																		"example": "408cbcdfd4dda4617efef40b04d168a1",
 																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"created_on": {
+																		"description": "When the version was created.",
 																		"example": "2022-11-08T17:19:29.176266Z",
 																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"hasPreview": {
+																		"description": "Whether the version can be previewed.",
 																		"readOnly": true,
 																		"type": "boolean"
 																	},
 																	"modified_on": {
+																		"description": "When the version was last modified.",
 																		"example": "2022-11-08T17:19:29.176266Z",
 																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"source": {
+																		"description": "The source of the version upload.",
 																		"enum": [
 																			"unknown",
 																			"api",
@@ -208,6 +215,7 @@
 																"type": "object"
 															},
 															"number": {
+																"description": "Sequential version number.",
 																"example": 1,
 																"readOnly": true,
 																"type": "number"
@@ -329,6 +337,7 @@
 															"items": {
 																"properties": {
 																	"id": {
+																		"description": "Unique identifier for the version.",
 																		"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																		"readOnly": true,
 																		"type": "string"
@@ -343,30 +352,36 @@
 																		},
 																		"properties": {
 																			"author_email": {
+																				"description": "Email of the user who created the version.",
 																				"example": "user@example.com",
 																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"author_id": {
+																				"description": "Identifier of the user who created the version.",
 																				"example": "408cbcdfd4dda4617efef40b04d168a1",
 																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"created_on": {
+																				"description": "When the version was created.",
 																				"example": "2022-11-08T17:19:29.176266Z",
 																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"hasPreview": {
+																				"description": "Whether the version can be previewed.",
 																				"readOnly": true,
 																				"type": "boolean"
 																			},
 																			"modified_on": {
+																				"description": "When the version was last modified.",
 																				"example": "2022-11-08T17:19:29.176266Z",
 																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"source": {
+																				"description": "The source of the version upload.",
 																				"enum": [
 																					"unknown",
 																					"api",
@@ -388,6 +403,7 @@
 																		"type": "object"
 																	},
 																	"number": {
+																		"description": "Sequential version number.",
 																		"example": 1,
 																		"readOnly": true,
 																		"type": "number"
@@ -673,6 +689,7 @@
 												{
 													"properties": {
 														"id": {
+															"description": "Unique identifier for the version.",
 															"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 															"readOnly": true,
 															"type": "string"
@@ -687,30 +704,36 @@
 															},
 															"properties": {
 																"author_email": {
+																	"description": "Email of the user who created the version.",
 																	"example": "user@example.com",
 																	"readOnly": true,
 																	"type": "string"
 																},
 																"author_id": {
+																	"description": "Identifier of the user who created the version.",
 																	"example": "408cbcdfd4dda4617efef40b04d168a1",
 																	"readOnly": true,
 																	"type": "string"
 																},
 																"created_on": {
+																	"description": "When the version was created.",
 																	"example": "2022-11-08T17:19:29.176266Z",
 																	"readOnly": true,
 																	"type": "string"
 																},
 																"hasPreview": {
+																	"description": "Whether the version can be previewed.",
 																	"readOnly": true,
 																	"type": "boolean"
 																},
 																"modified_on": {
+																	"description": "When the version was last modified.",
 																	"example": "2022-11-08T17:19:29.176266Z",
 																	"readOnly": true,
 																	"type": "string"
 																},
 																"source": {
+																	"description": "The source of the version upload.",
 																	"enum": [
 																		"unknown",
 																		"api",
@@ -732,6 +755,7 @@
 															"type": "object"
 														},
 														"number": {
+															"description": "Sequential version number.",
 															"example": 1,
 															"readOnly": true,
 															"type": "number"
@@ -1818,11 +1842,13 @@
 																	},
 																	"properties": {
 																		"etag": {
+																			"description": "Hashed script content",
 																			"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"handlers": {
+																			"description": "The names of handlers exported as part of the default export.",
 																			"example": [
 																				"fetch"
 																			],
@@ -1836,11 +1862,13 @@
 																			"x-stainless-collection-type": "set"
 																		},
 																		"last_deployed_from": {
+																			"description": "The client most recently used to deploy this Worker.",
 																			"example": "api",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"named_handlers": {
+																			"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
 																			"example": [
 																				{
 																					"handlers": [
@@ -1858,6 +1886,7 @@
 																				},
 																				"properties": {
 																					"handlers": {
+																						"description": "The names of handlers exported as part of the named export.",
 																						"example": [
 																							"fetch"
 																						],
@@ -1871,6 +1900,7 @@
 																						"x-stainless-collection-type": "set"
 																					},
 																					"name": {
+																						"description": "The name of the exported class or entrypoint.",
 																						"example": "MyClass",
 																						"readOnly": true,
 																						"type": "string"
@@ -1888,13 +1918,16 @@
 																	"type": "object"
 																},
 																"script_runtime": {
+																	"description": "Runtime configuration for the Worker.",
 																	"properties": {
 																		"compatibility_date": {
+																			"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																			"example": "2022-11-08",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"compatibility_flags": {
+																			"description": "Flags that enable or disable certain features in the Workers runtime.",
 																			"items": {
 																				"example": "x",
 																				"readOnly": true,
@@ -1905,11 +1938,13 @@
 																			"x-stainless-collection-type": "set"
 																		},
 																		"limits": {
+																			"description": "Resource limits for the Worker.",
 																			"example": {
 																				"cpu_ms": 50
 																			},
 																			"properties": {
 																				"cpu_ms": {
+																					"description": "The amount of CPU time this Worker can use in milliseconds.",
 																					"example": 50,
 																					"readOnly": true,
 																					"type": "integer"
@@ -1919,11 +1954,13 @@
 																			"type": "object"
 																		},
 																		"migration_tag": {
+																			"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																			"example": "v1",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"usage_model": {
+																			"description": "Usage model for the Worker invocations.",
 																			"enum": [
 																				"bundled",
 																				"unbound",
@@ -2057,6 +2094,7 @@
 														{
 															"properties": {
 																"id": {
+																	"description": "Unique identifier for the version.",
 																	"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																	"readOnly": true,
 																	"type": "string"
@@ -2071,30 +2109,36 @@
 																	},
 																	"properties": {
 																		"author_email": {
+																			"description": "Email of the user who created the version.",
 																			"example": "user@example.com",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"author_id": {
+																			"description": "Identifier of the user who created the version.",
 																			"example": "408cbcdfd4dda4617efef40b04d168a1",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"created_on": {
+																			"description": "When the version was created.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"hasPreview": {
+																			"description": "Whether the version can be previewed.",
 																			"readOnly": true,
 																			"type": "boolean"
 																		},
 																		"modified_on": {
+																			"description": "When the version was last modified.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"source": {
+																			"description": "The source of the version upload.",
 																			"enum": [
 																				"unknown",
 																				"api",
@@ -2116,6 +2160,7 @@
 																	"type": "object"
 																},
 																"number": {
+																	"description": "Sequential version number.",
 																	"example": 1,
 																	"readOnly": true,
 																	"type": "number"
@@ -3202,11 +3247,13 @@
 																			},
 																			"properties": {
 																				"etag": {
+																					"description": "Hashed script content",
 																					"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"handlers": {
+																					"description": "The names of handlers exported as part of the default export.",
 																					"example": [
 																						"fetch"
 																					],
@@ -3220,11 +3267,13 @@
 																					"x-stainless-collection-type": "set"
 																				},
 																				"last_deployed_from": {
+																					"description": "The client most recently used to deploy this Worker.",
 																					"example": "api",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"named_handlers": {
+																					"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
 																					"example": [
 																						{
 																							"handlers": [
@@ -3242,6 +3291,7 @@
 																						},
 																						"properties": {
 																							"handlers": {
+																								"description": "The names of handlers exported as part of the named export.",
 																								"example": [
 																									"fetch"
 																								],
@@ -3255,6 +3305,7 @@
 																								"x-stainless-collection-type": "set"
 																							},
 																							"name": {
+																								"description": "The name of the exported class or entrypoint.",
 																								"example": "MyClass",
 																								"readOnly": true,
 																								"type": "string"
@@ -3272,13 +3323,16 @@
 																			"type": "object"
 																		},
 																		"script_runtime": {
+																			"description": "Runtime configuration for the Worker.",
 																			"properties": {
 																				"compatibility_date": {
+																					"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																					"example": "2022-11-08",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"compatibility_flags": {
+																					"description": "Flags that enable or disable certain features in the Workers runtime.",
 																					"items": {
 																						"example": "x",
 																						"readOnly": true,
@@ -3289,11 +3343,13 @@
 																					"x-stainless-collection-type": "set"
 																				},
 																				"limits": {
+																					"description": "Resource limits for the Worker.",
 																					"example": {
 																						"cpu_ms": 50
 																					},
 																					"properties": {
 																						"cpu_ms": {
+																							"description": "The amount of CPU time this Worker can use in milliseconds.",
 																							"example": 50,
 																							"readOnly": true,
 																							"type": "integer"
@@ -3303,11 +3359,13 @@
 																					"type": "object"
 																				},
 																				"migration_tag": {
+																					"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																					"example": "v1",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"usage_model": {
+																					"description": "Usage model for the Worker invocations.",
 																					"enum": [
 																						"bundled",
 																						"unbound",
@@ -4739,6 +4797,7 @@
 														{
 															"properties": {
 																"id": {
+																	"description": "Unique identifier for the version.",
 																	"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																	"readOnly": true,
 																	"type": "string"
@@ -4753,30 +4812,36 @@
 																	},
 																	"properties": {
 																		"author_email": {
+																			"description": "Email of the user who created the version.",
 																			"example": "user@example.com",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"author_id": {
+																			"description": "Identifier of the user who created the version.",
 																			"example": "408cbcdfd4dda4617efef40b04d168a1",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"created_on": {
+																			"description": "When the version was created.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"hasPreview": {
+																			"description": "Whether the version can be previewed.",
 																			"readOnly": true,
 																			"type": "boolean"
 																		},
 																		"modified_on": {
+																			"description": "When the version was last modified.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"source": {
+																			"description": "The source of the version upload.",
 																			"enum": [
 																				"unknown",
 																				"api",
@@ -4798,6 +4863,7 @@
 																	"type": "object"
 																},
 																"number": {
+																	"description": "Sequential version number.",
 																	"example": 1,
 																	"readOnly": true,
 																	"type": "number"
@@ -5884,11 +5950,13 @@
 																			},
 																			"properties": {
 																				"etag": {
+																					"description": "Hashed script content",
 																					"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"handlers": {
+																					"description": "The names of handlers exported as part of the default export.",
 																					"example": [
 																						"fetch"
 																					],
@@ -5902,11 +5970,13 @@
 																					"x-stainless-collection-type": "set"
 																				},
 																				"last_deployed_from": {
+																					"description": "The client most recently used to deploy this Worker.",
 																					"example": "api",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"named_handlers": {
+																					"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
 																					"example": [
 																						{
 																							"handlers": [
@@ -5924,6 +5994,7 @@
 																						},
 																						"properties": {
 																							"handlers": {
+																								"description": "The names of handlers exported as part of the named export.",
 																								"example": [
 																									"fetch"
 																								],
@@ -5937,6 +6008,7 @@
 																								"x-stainless-collection-type": "set"
 																							},
 																							"name": {
+																								"description": "The name of the exported class or entrypoint.",
 																								"example": "MyClass",
 																								"readOnly": true,
 																								"type": "string"
@@ -5954,13 +6026,16 @@
 																			"type": "object"
 																		},
 																		"script_runtime": {
+																			"description": "Runtime configuration for the Worker.",
 																			"properties": {
 																				"compatibility_date": {
+																					"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																					"example": "2022-11-08",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"compatibility_flags": {
+																					"description": "Flags that enable or disable certain features in the Workers runtime.",
 																					"items": {
 																						"example": "x",
 																						"readOnly": true,
@@ -5971,11 +6046,13 @@
 																					"x-stainless-collection-type": "set"
 																				},
 																				"limits": {
+																					"description": "Resource limits for the Worker.",
 																					"example": {
 																						"cpu_ms": 50
 																					},
 																					"properties": {
 																						"cpu_ms": {
+																							"description": "The amount of CPU time this Worker can use in milliseconds.",
 																							"example": 50,
 																							"readOnly": true,
 																							"type": "integer"
@@ -5985,11 +6062,13 @@
 																					"type": "object"
 																				},
 																				"migration_tag": {
+																					"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																					"example": "v1",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"usage_model": {
+																					"description": "Usage model for the Worker invocations.",
 																					"enum": [
 																						"bundled",
 																						"unbound",
@@ -6018,6 +6097,7 @@
 												{
 													"properties": {
 														"startup_time_ms": {
+															"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
 															"example": 10,
 															"type": "integer"
 														}
@@ -6139,6 +6219,7 @@
 																{
 																	"properties": {
 																		"id": {
+																			"description": "Unique identifier for the version.",
 																			"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																			"readOnly": true,
 																			"type": "string"
@@ -6153,30 +6234,36 @@
 																			},
 																			"properties": {
 																				"author_email": {
+																					"description": "Email of the user who created the version.",
 																					"example": "user@example.com",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"author_id": {
+																					"description": "Identifier of the user who created the version.",
 																					"example": "408cbcdfd4dda4617efef40b04d168a1",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"created_on": {
+																					"description": "When the version was created.",
 																					"example": "2022-11-08T17:19:29.176266Z",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"hasPreview": {
+																					"description": "Whether the version can be previewed.",
 																					"readOnly": true,
 																					"type": "boolean"
 																				},
 																				"modified_on": {
+																					"description": "When the version was last modified.",
 																					"example": "2022-11-08T17:19:29.176266Z",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"source": {
+																					"description": "The source of the version upload.",
 																					"enum": [
 																						"unknown",
 																						"api",
@@ -6198,6 +6285,7 @@
 																			"type": "object"
 																		},
 																		"number": {
+																			"description": "Sequential version number.",
 																			"example": 1,
 																			"readOnly": true,
 																			"type": "number"
@@ -7284,11 +7372,13 @@
 																					},
 																					"properties": {
 																						"etag": {
+																							"description": "Hashed script content",
 																							"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																							"readOnly": true,
 																							"type": "string"
 																						},
 																						"handlers": {
+																							"description": "The names of handlers exported as part of the default export.",
 																							"example": [
 																								"fetch"
 																							],
@@ -7302,11 +7392,13 @@
 																							"x-stainless-collection-type": "set"
 																						},
 																						"last_deployed_from": {
+																							"description": "The client most recently used to deploy this Worker.",
 																							"example": "api",
 																							"readOnly": true,
 																							"type": "string"
 																						},
 																						"named_handlers": {
+																							"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
 																							"example": [
 																								{
 																									"handlers": [
@@ -7324,6 +7416,7 @@
 																								},
 																								"properties": {
 																									"handlers": {
+																										"description": "The names of handlers exported as part of the named export.",
 																										"example": [
 																											"fetch"
 																										],
@@ -7337,6 +7430,7 @@
 																										"x-stainless-collection-type": "set"
 																									},
 																									"name": {
+																										"description": "The name of the exported class or entrypoint.",
 																										"example": "MyClass",
 																										"readOnly": true,
 																										"type": "string"
@@ -7354,13 +7448,16 @@
 																					"type": "object"
 																				},
 																				"script_runtime": {
+																					"description": "Runtime configuration for the Worker.",
 																					"properties": {
 																						"compatibility_date": {
+																							"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																							"example": "2022-11-08",
 																							"readOnly": true,
 																							"type": "string"
 																						},
 																						"compatibility_flags": {
+																							"description": "Flags that enable or disable certain features in the Workers runtime.",
 																							"items": {
 																								"example": "x",
 																								"readOnly": true,
@@ -7371,11 +7468,13 @@
 																							"x-stainless-collection-type": "set"
 																						},
 																						"limits": {
+																							"description": "Resource limits for the Worker.",
 																							"example": {
 																								"cpu_ms": 50
 																							},
 																							"properties": {
 																								"cpu_ms": {
+																									"description": "The amount of CPU time this Worker can use in milliseconds.",
 																									"example": 50,
 																									"readOnly": true,
 																									"type": "integer"
@@ -7385,11 +7484,13 @@
 																							"type": "object"
 																						},
 																						"migration_tag": {
+																							"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																							"example": "v1",
 																							"readOnly": true,
 																							"type": "string"
 																						},
 																						"usage_model": {
+																							"description": "Usage model for the Worker invocations.",
 																							"enum": [
 																								"bundled",
 																								"unbound",
@@ -7418,6 +7519,7 @@
 														{
 															"properties": {
 																"startup_time_ms": {
+																	"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
 																	"example": 10,
 																	"type": "integer"
 																}

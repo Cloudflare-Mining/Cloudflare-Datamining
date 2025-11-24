@@ -397,118 +397,95 @@
 						}
 					},
 					"schema": {
-						"allOf": [
-							{
-								"properties": {
-									"created_at": {
-										"format": "date-time",
-										"readOnly": true,
-										"type": "string"
-									},
-									"description": {
-										"type": "string"
-									},
-									"expression": {
-										"description": "Wirefilter expression describing the traffic being reported.",
-										"type": "string"
-									},
-									"first_request_seen_at": {
-										"format": "date-time",
-										"type": "string"
-									},
-									"last_request_seen_at": {
-										"format": "date-time",
-										"type": "string"
-									},
-									"requests": {
-										"format": "int64",
-										"type": "integer"
-									},
-									"requests_by_attribute": {
-										"additionalProperties": {
-											"items": {
-												"properties": {
-													"metric": {
-														"type": "string"
-													},
-													"requests": {
-														"format": "int64",
-														"type": "integer"
-													}
-												},
-												"required": [
-													"metric",
-													"requests"
-												],
-												"type": "object"
+						"properties": {
+							"created_at": {
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							},
+							"expression": {
+								"description": "Wirefilter expression describing the traffic being reported.",
+								"type": "string"
+							},
+							"first_request_seen_at": {
+								"format": "date-time",
+								"type": "string"
+							},
+							"last_request_seen_at": {
+								"format": "date-time",
+								"type": "string"
+							},
+							"requests": {
+								"format": "int64",
+								"type": "integer"
+							},
+							"requests_by_attribute": {
+								"additionalProperties": {
+									"items": {
+										"properties": {
+											"metric": {
+												"type": "string"
 											},
-											"type": "array"
+											"requests": {
+												"format": "int64",
+												"type": "integer"
+											}
 										},
-										"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
-										"type": "object"
-									},
-									"requests_by_score": {
-										"additionalProperties": {
-											"format": "int64",
-											"type": "integer"
-										},
-										"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
-										"type": "object"
-									},
-									"requests_by_score_src": {
-										"additionalProperties": {
-											"format": "int64",
-											"type": "integer"
-										},
-										"description": "Map of score source to request counts. Sum must equal `requests`.",
-										"type": "object"
-									},
-									"subtype": {
-										"type": "string"
-									},
-									"type": {
-										"description": "Type of feedback report.",
-										"enum": [
-											"false_positive",
-											"false_negative"
+										"required": [
+											"metric",
+											"requests"
 										],
-										"example": "false_positive",
-										"type": "string"
-									}
+										"type": "object"
+									},
+									"type": "array"
 								},
-								"required": [
-									"type",
-									"description",
-									"expression",
-									"first_request_seen_at",
-									"last_request_seen_at",
-									"requests",
-									"requests_by_score",
-									"requests_by_score_src",
-									"requests_by_attribute"
-								],
+								"description": "Top attributes contributing to the feedback sample. Keys include topASNs, topCountries, topHosts, topIPs, topJA3Hashes, topJA4s, topPaths, topUserAgents.",
 								"type": "object"
 							},
-							{
-								"properties": {
-									"created_at": {
-										"readOnly": true
-									}
+							"requests_by_score": {
+								"additionalProperties": {
+									"format": "int64",
+									"type": "integer"
 								},
-								"required": [
-									"type",
-									"description",
-									"expression",
-									"first_request_seen_at",
-									"last_request_seen_at",
-									"requests",
-									"requests_by_score",
-									"requests_by_score_src",
-									"requests_by_attribute"
-								],
+								"description": "Map of bot scores (1-99) to request counts. Sum must equal `requests`.",
 								"type": "object"
+							},
+							"requests_by_score_src": {
+								"additionalProperties": {
+									"format": "int64",
+									"type": "integer"
+								},
+								"description": "Map of score source to request counts. Sum must equal `requests`.",
+								"type": "object"
+							},
+							"subtype": {
+								"type": "string"
+							},
+							"type": {
+								"description": "Type of feedback report.",
+								"enum": [
+									"false_positive",
+									"false_negative"
+								],
+								"example": "false_positive",
+								"type": "string"
 							}
-						]
+						},
+						"required": [
+							"type",
+							"description",
+							"expression",
+							"first_request_seen_at",
+							"last_request_seen_at",
+							"requests",
+							"requests_by_score",
+							"requests_by_score_src",
+							"requests_by_attribute"
+						],
+						"type": "object"
 					}
 				}
 			},

@@ -20,6 +20,14 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -217,6 +225,14 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -413,6 +429,14 @@
 					"example": "true",
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
 				}
 			}
 		],
@@ -674,6 +698,14 @@
 					"type": "string",
 					"x-auditable": true
 				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
@@ -850,6 +882,1094 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-base-en-v1.5": {
+		"operationId": "workers-ai-post-run-cf-baai-omni-bge-base-en-v1-5",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"pooling": {
+										"default": "mean",
+										"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+										"enum": [
+											"mean",
+											"cls"
+										],
+										"type": "string"
+									},
+									"text": {
+										"oneOf": [
+											{
+												"description": "The text to embed",
+												"minLength": 1,
+												"type": "string"
+											},
+											{
+												"description": "Batch of text values to embed",
+												"items": {
+													"description": "The text to embed",
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 100,
+												"type": "array"
+											}
+										]
+									}
+								},
+								"required": [
+									"text"
+								]
+							},
+							{
+								"properties": {
+									"requests": {
+										"description": "Batch of the embeddings requests to run using async-queue",
+										"items": {
+											"properties": {
+												"pooling": {
+													"default": "mean",
+													"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+													"enum": [
+														"mean",
+														"cls"
+													],
+													"type": "string"
+												},
+												"text": {
+													"oneOf": [
+														{
+															"description": "The text to embed",
+															"minLength": 1,
+															"type": "string"
+														},
+														{
+															"description": "Batch of text values to embed",
+															"items": {
+																"description": "The text to embed",
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 100,
+															"type": "array"
+														}
+													]
+												}
+											},
+											"required": [
+												"text"
+											]
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"requests"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/baai/omni-bge-base-en-v1.5 model.",
+		"tags": [
+			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-large-en-v1.5": {
+		"operationId": "workers-ai-post-run-cf-baai-omni-bge-large-en-v1-5",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"pooling": {
+										"default": "mean",
+										"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+										"enum": [
+											"mean",
+											"cls"
+										],
+										"type": "string"
+									},
+									"text": {
+										"oneOf": [
+											{
+												"description": "The text to embed",
+												"minLength": 1,
+												"type": "string"
+											},
+											{
+												"description": "Batch of text values to embed",
+												"items": {
+													"description": "The text to embed",
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 100,
+												"type": "array"
+											}
+										]
+									}
+								},
+								"required": [
+									"text"
+								]
+							},
+							{
+								"properties": {
+									"requests": {
+										"description": "Batch of the embeddings requests to run using async-queue",
+										"items": {
+											"properties": {
+												"pooling": {
+													"default": "mean",
+													"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+													"enum": [
+														"mean",
+														"cls"
+													],
+													"type": "string"
+												},
+												"text": {
+													"oneOf": [
+														{
+															"description": "The text to embed",
+															"minLength": 1,
+															"type": "string"
+														},
+														{
+															"description": "Batch of text values to embed",
+															"items": {
+																"description": "The text to embed",
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 100,
+															"type": "array"
+														}
+													]
+												}
+											},
+											"required": [
+												"text"
+											]
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"requests"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/baai/omni-bge-large-en-v1.5 model.",
+		"tags": [
+			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-m3": {
+		"operationId": "workers-ai-post-run-cf-baai-omni-bge-m3",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"contexts": {
+										"description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it.",
+										"items": {
+											"properties": {
+												"text": {
+													"description": "One of the provided context content",
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"query": {
+										"description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts",
+										"minLength": 1,
+										"type": "string"
+									},
+									"truncate_inputs": {
+										"default": false,
+										"description": "When provided with too long context should the model error out or truncate the context to fit?",
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"contexts"
+								],
+								"title": "BGE M3 Input Query and Contexts"
+							},
+							{
+								"properties": {
+									"text": {
+										"oneOf": [
+											{
+												"description": "The text to embed",
+												"minLength": 1,
+												"type": "string"
+											},
+											{
+												"description": "Batch of text values to embed",
+												"items": {
+													"description": "The text to embed",
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 100,
+												"type": "array"
+											}
+										]
+									},
+									"truncate_inputs": {
+										"default": false,
+										"description": "When provided with too long context should the model error out or truncate the context to fit?",
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"text"
+								],
+								"title": "BGE M3 Input Embedding"
+							},
+							{
+								"properties": {
+									"requests": {
+										"description": "Batch of the embeddings requests to run using async-queue",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"contexts": {
+															"description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "One of the provided context content",
+																		"minLength": 1,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"query": {
+															"description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts",
+															"minLength": 1,
+															"type": "string"
+														},
+														"truncate_inputs": {
+															"default": false,
+															"description": "When provided with too long context should the model error out or truncate the context to fit?",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"contexts"
+													],
+													"title": "BGE M3 Input Query and Contexts"
+												},
+												{
+													"properties": {
+														"text": {
+															"oneOf": [
+																{
+																	"description": "The text to embed",
+																	"minLength": 1,
+																	"type": "string"
+																},
+																{
+																	"description": "Batch of text values to embed",
+																	"items": {
+																		"description": "The text to embed",
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"maxItems": 100,
+																	"type": "array"
+																}
+															]
+														},
+														"truncate_inputs": {
+															"default": false,
+															"description": "When provided with too long context should the model error out or truncate the context to fit?",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"text"
+													],
+													"title": "BGE M3 Input Embedding"
+												}
+											],
+											"type": "object"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"requests"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/baai/omni-bge-m3 model.",
+		"tags": [
+			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-small-en-v1.5": {
+		"operationId": "workers-ai-post-run-cf-baai-omni-bge-small-en-v1-5",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"pooling": {
+										"default": "mean",
+										"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+										"enum": [
+											"mean",
+											"cls"
+										],
+										"type": "string"
+									},
+									"text": {
+										"oneOf": [
+											{
+												"description": "The text to embed",
+												"minLength": 1,
+												"type": "string"
+											},
+											{
+												"description": "Batch of text values to embed",
+												"items": {
+													"description": "The text to embed",
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 100,
+												"type": "array"
+											}
+										]
+									}
+								},
+								"required": [
+									"text"
+								]
+							},
+							{
+								"properties": {
+									"requests": {
+										"description": "Batch of the embeddings requests to run using async-queue",
+										"items": {
+											"properties": {
+												"pooling": {
+													"default": "mean",
+													"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+													"enum": [
+														"mean",
+														"cls"
+													],
+													"type": "string"
+												},
+												"text": {
+													"oneOf": [
+														{
+															"description": "The text to embed",
+															"minLength": 1,
+															"type": "string"
+														},
+														{
+															"description": "Batch of text values to embed",
+															"items": {
+																"description": "The text to embed",
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 100,
+															"type": "array"
+														}
+													]
+												}
+											},
+											"required": [
+												"text"
+											]
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"requests"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/baai/omni-bge-small-en-v1.5 model.",
+		"tags": [
+			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/baai/ray-bge-large-en-v1.5": {
+		"operationId": "workers-ai-post-run-cf-baai-ray-bge-large-en-v1-5",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"pooling": {
+										"default": "mean",
+										"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+										"enum": [
+											"mean",
+											"cls"
+										],
+										"type": "string"
+									},
+									"text": {
+										"oneOf": [
+											{
+												"description": "The text to embed",
+												"minLength": 1,
+												"type": "string"
+											},
+											{
+												"description": "Batch of text values to embed",
+												"items": {
+													"description": "The text to embed",
+													"minLength": 1,
+													"type": "string"
+												},
+												"maxItems": 100,
+												"type": "array"
+											}
+										]
+									}
+								},
+								"required": [
+									"text"
+								]
+							},
+							{
+								"properties": {
+									"requests": {
+										"description": "Batch of the embeddings requests to run using async-queue",
+										"items": {
+											"properties": {
+												"pooling": {
+													"default": "mean",
+													"description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy.",
+													"enum": [
+														"mean",
+														"cls"
+													],
+													"type": "string"
+												},
+												"text": {
+													"oneOf": [
+														{
+															"description": "The text to embed",
+															"minLength": 1,
+															"type": "string"
+														},
+														{
+															"description": "Batch of text values to embed",
+															"items": {
+																"description": "The text to embed",
+																"minLength": 1,
+																"type": "string"
+															},
+															"maxItems": 100,
+															"type": "array"
+														}
+													]
+												}
+											},
+											"required": [
+												"text"
+											]
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"requests"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/baai/ray-bge-large-en-v1.5 model.",
+		"tags": [
+			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/google/embeddinggemma-300m": {
 		"operationId": "workers-ai-post-run-cf-google-embeddinggemma-300m",
 		"parameters": [
@@ -870,6 +1990,14 @@
 					"example": "true",
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
 				}
 			}
 		],
@@ -988,6 +2116,147 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/google/omni-embeddinggemma-300m": {
+		"operationId": "workers-ai-post-run-cf-google-omni-embeddinggemma-300m",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"text": {
+								"description": "Input text to embed. Can be a single string or a list of strings.",
+								"oneOf": [
+									{
+										"type": "string"
+									},
+									{
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								]
+							}
+						},
+						"required": [
+							"text"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/google/omni-embeddinggemma-300m model.",
+		"tags": [
+			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/pfnet/plamo-embedding-1b": {
 		"operationId": "workers-ai-post-run-cf-pfnet-plamo-embedding-1b",
 		"parameters": [
@@ -1008,6 +2277,14 @@
 					"example": "true",
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
 				}
 			}
 		],
@@ -1102,6 +2379,189 @@
 			}
 		],
 		"summary": "Execute @cf/pfnet/plamo-embedding-1b model.",
+		"tags": [
+			"Workers AI Text Embeddings"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen3-embedding-0.6b": {
+		"operationId": "workers-ai-post-run-cf-qwen-qwen3-embedding-0-6b",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"documents": {
+								"oneOf": [
+									{
+										"description": "A single document string",
+										"minLength": 1,
+										"type": "string"
+									},
+									{
+										"description": "An array of document strings",
+										"items": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"maxItems": 32,
+										"type": "array"
+									}
+								]
+							},
+							"instruction": {
+								"default": "Given a web search query, retrieve relevant passages that answer the query",
+								"description": "Optional instruction for the task",
+								"type": "string"
+							},
+							"queries": {
+								"oneOf": [
+									{
+										"description": "A single query string",
+										"minLength": 1,
+										"type": "string"
+									},
+									{
+										"description": "An array of query strings",
+										"items": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"maxItems": 32,
+										"type": "array"
+									}
+								]
+							},
+							"text": {
+								"oneOf": [
+									{
+										"description": "Alias for documents: a single text string",
+										"minLength": 1,
+										"type": "string"
+									},
+									{
+										"description": "Alias for documents: an array of text strings",
+										"items": {
+											"minLength": 1,
+											"type": "string"
+										},
+										"maxItems": 32,
+										"type": "array"
+									}
+								]
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/qwen/qwen3-embedding-0.6b model.",
 		"tags": [
 			"Workers AI Text Embeddings"
 		],

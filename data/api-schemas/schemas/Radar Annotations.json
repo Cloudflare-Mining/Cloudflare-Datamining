@@ -60,6 +60,61 @@
 				}
 			},
 			{
+				"description": "Filters results by data source.",
+				"in": "query",
+				"name": "dataSource",
+				"schema": {
+					"description": "Filters results by data source.",
+					"enum": [
+						"ALL",
+						"AI_BOTS",
+						"AI_GATEWAY",
+						"BGP",
+						"BOTS",
+						"CONNECTION_ANOMALY",
+						"CT",
+						"DNS",
+						"DNS_MAGNITUDE",
+						"DNS_AS112",
+						"DOS",
+						"EMAIL_ROUTING",
+						"EMAIL_SECURITY",
+						"FW",
+						"FW_PG",
+						"HTTP",
+						"HTTP_CONTROL",
+						"HTTP_CRAWLER_REFERER",
+						"HTTP_ORIGINS",
+						"IQI",
+						"LEAKED_CREDENTIALS",
+						"NET",
+						"ROBOTS_TXT",
+						"SPEED",
+						"WORKERS_AI"
+					],
+					"example": "ALL",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by event type.",
+				"in": "query",
+				"name": "eventType",
+				"schema": {
+					"description": "Filters results by event type.",
+					"enum": [
+						"EVENT",
+						"GENERAL",
+						"OUTAGE",
+						"PARTIAL_PROJECTION",
+						"PIPELINE",
+						"TRAFFIC_ANOMALY"
+					],
+					"example": "OUTAGE",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Filters results by Autonomous System. Specify a single Autonomous System Number (ASN) as integer.",
 				"in": "query",
 				"name": "asn",
@@ -78,6 +133,17 @@
 					"example": "US",
 					"maxLength": 2,
 					"minLength": 2,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by origin.",
+				"in": "query",
+				"name": "origin",
+				"schema": {
+					"description": "Filters results by origin.",
+					"example": "amazon-us-east-1",
+					"maxLength": 100,
 					"type": "string"
 				}
 			},
@@ -202,6 +268,33 @@
 														},
 														"type": "array"
 													},
+													"origins": {
+														"items": {
+															"example": "amazon-us-east-1",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"originsDetails": {
+														"items": {
+															"properties": {
+																"name": {
+																	"example": "us-east-1 Amazon Web Services",
+																	"type": "string"
+																},
+																"origin": {
+																	"example": "amazon-us-east-1",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"origin",
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
 													"outage": {
 														"properties": {
 															"outageCause": {
@@ -236,6 +329,8 @@
 													"asnsDetails",
 													"locations",
 													"locationsDetails",
+													"origins",
+													"originsDetails",
 													"eventType",
 													"outage"
 												],
@@ -408,6 +503,17 @@
 				}
 			},
 			{
+				"description": "Filters results by origin.",
+				"in": "query",
+				"name": "origin",
+				"schema": {
+					"description": "Filters results by origin.",
+					"example": "amazon-us-east-1",
+					"maxLength": 100,
+					"type": "string"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -528,6 +634,33 @@
 														},
 														"type": "array"
 													},
+													"origins": {
+														"items": {
+															"example": "amazon-us-east-1",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"originsDetails": {
+														"items": {
+															"properties": {
+																"name": {
+																	"example": "us-east-1 Amazon Web Services",
+																	"type": "string"
+																},
+																"origin": {
+																	"example": "amazon-us-east-1",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"origin",
+																"name"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
 													"outage": {
 														"properties": {
 															"outageCause": {
@@ -562,6 +695,8 @@
 													"asnsDetails",
 													"locations",
 													"locationsDetails",
+													"origins",
+													"originsDetails",
 													"eventType",
 													"outage"
 												],

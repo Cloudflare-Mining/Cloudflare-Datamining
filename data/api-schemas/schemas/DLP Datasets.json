@@ -343,7 +343,7 @@
 														"type": "string"
 													},
 													"updated_at": {
-														"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+														"description": "Stores when the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
 														"format": "date-time",
 														"type": "string"
 													},
@@ -732,7 +732,7 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+													"description": "Stores when the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
 													"format": "date-time",
 													"type": "string"
 												},
@@ -1150,7 +1150,7 @@
 															"type": "string"
 														},
 														"updated_at": {
-															"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+															"description": "Stores when the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
 															"format": "date-time",
 															"type": "string"
 														},
@@ -1213,7 +1213,7 @@
 													"type": "integer"
 												},
 												"secret": {
-													"description": "The secret to use for Exact Data Match datasets. This is not present in\nCustom Wordlists.",
+													"description": "The secret to use for Exact Data Match datasets.\n\nThis is not present in Custom Wordlists.",
 													"format": "password",
 													"type": "string"
 												},
@@ -1909,7 +1909,7 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+													"description": "Stores when the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
 													"format": "date-time",
 													"type": "string"
 												},
@@ -3000,7 +3000,7 @@
 													"type": "string"
 												},
 												"updated_at": {
-													"description": "When the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
+													"description": "Stores when the dataset was last updated.\n\nThis includes name or description changes as well as uploads.",
 													"format": "date-time",
 													"type": "string"
 												},

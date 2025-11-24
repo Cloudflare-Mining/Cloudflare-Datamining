@@ -2,17 +2,6 @@
 	"POST /accounts/{account_id}/workers/observability/telemetry/keys": {
 		"description": "List all the keys in your telemetry events.",
 		"operationId": "telemetry.keys.list",
-		"parameters": [
-			{
-				"description": "Your Cloudflare account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"type": "string"
-				}
-			}
-		],
 		"requestBody": {
 			"content": {
 				"application/json": {
@@ -96,6 +85,9 @@
 								},
 								"type": "array"
 							},
+							"from": {
+								"type": "number"
+							},
 							"keyNeedle": {
 								"description": "Search for a specific substring in the keys.",
 								"properties": {
@@ -106,15 +98,23 @@
 										"type": "boolean"
 									},
 									"value": {
-										"anyOf": [
+										"allOf": [
 											{
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											{
+												"maxLength": 1000,
 												"type": "string"
-											},
-											{
-												"type": "number"
-											},
-											{
-												"type": "boolean"
 											}
 										]
 									}
@@ -128,7 +128,7 @@
 								"type": "number"
 							},
 							"needle": {
-								"description": "Search for a specific substring in the event.",
+								"description": "Search for a specific substring in any of the events",
 								"properties": {
 									"isRegex": {
 										"type": "boolean"
@@ -137,15 +137,23 @@
 										"type": "boolean"
 									},
 									"value": {
-										"anyOf": [
+										"allOf": [
 											{
+												"anyOf": [
+													{
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													}
+												]
+											},
+											{
+												"maxLength": 1000,
 												"type": "string"
-											},
-											{
-												"type": "number"
-											},
-											{
-												"type": "boolean"
 											}
 										]
 									}
@@ -155,20 +163,8 @@
 								],
 								"type": "object"
 							},
-							"timeframe": {
-								"properties": {
-									"from": {
-										"type": "number"
-									},
-									"to": {
-										"type": "number"
-									}
-								},
-								"required": [
-									"to",
-									"from"
-								],
-								"type": "object"
+							"to": {
+								"type": "number"
 							}
 						},
 						"type": "object"

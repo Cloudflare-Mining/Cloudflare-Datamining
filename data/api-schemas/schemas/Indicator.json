@@ -637,7 +637,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/indicators": {
-		"description": "Retrieves a paginated list of indicators across specified datasets for the account.",
+		"description": "Retrieves a paginated list of indicators across specified datasets. Use datasetIds=all or datasetIds=* to query all datasets for the account. If no datasetIds provided, uses the default dataset.",
 		"operationId": "get_IndicatorList",
 		"parameters": [
 			{
@@ -651,15 +651,12 @@
 				}
 			},
 			{
-				"description": "Array of dataset IDs to query indicators from. If not provided, queries all datasets for the account.",
+				"description": "Dataset IDs to query indicators from (comma-separated or array), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
 				"in": "query",
 				"name": "datasetIds",
 				"schema": {
-					"description": "Array of dataset IDs to query indicators from. If not provided, queries all datasets for the account.",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
+					"description": "Dataset IDs to query indicators from (comma-separated or array), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
+					"type": "string"
 				}
 			},
 			{
@@ -693,7 +690,7 @@
 			{
 				"description": "Filter by related event IDs",
 				"in": "query",
-				"name": "relatedEvent",
+				"name": "relatedEvents",
 				"schema": {
 					"description": "Filter by related event IDs",
 					"items": {
@@ -703,23 +700,45 @@
 				}
 			},
 			{
-				"description": "Filter indicators created on or after this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+				"description": "Filter by tag values or UUIDs. Indicators must have at least one of the specified tags (OR logic). Supports both tag UUID and tag value.",
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"description": "Filter by tag values or UUIDs. Indicators must have at least one of the specified tags (OR logic). Supports both tag UUID and tag value.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter indicators created on or after this date. Must use ISO 8601 format (e.g., '2024-01-15T00:00:00Z').",
 				"in": "query",
 				"name": "createdAfter",
 				"schema": {
-					"description": "Filter indicators created on or after this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+					"description": "Filter indicators created on or after this date. Must use ISO 8601 format (e.g., '2024-01-15T00:00:00Z').",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter indicators created on or before this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+				"description": "Filter indicators created on or before this date. Must use ISO 8601 format (e.g., '2024-12-31T23:59:59Z').",
 				"in": "query",
 				"name": "createdBefore",
 				"schema": {
-					"description": "Filter indicators created on or before this date. Accepts simple date (e.g., '2024-01-15') or ISO 8601 timestamp (e.g., '2024-01-15T10:30:00.000Z').",
+					"description": "Filter indicators created on or before this date. Must use ISO 8601 format (e.g., '2024-12-31T23:59:59Z').",
 					"format": "date-time",
 					"type": "string"
+				}
+			},
+			{
+				"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events.",
+				"in": "query",
+				"name": "relatedEventsLimit",
+				"schema": {
+					"description": "Limit the number of related events returned per indicator. Default: 2. Set to 0 for none, -1 for all events.",
+					"example": 2,
+					"type": "number"
 				}
 			}
 		],
@@ -819,6 +838,18 @@
 											"properties": {
 												"properties": {
 													"properties": {
+														"count": {
+															"properties": {
+																"type": {
+																	"example": "number",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
 														"page": {
 															"properties": {
 																"type": {
@@ -831,7 +862,7 @@
 															],
 															"type": "object"
 														},
-														"pageSize": {
+														"per_page": {
 															"properties": {
 																"type": {
 																	"example": "number",
@@ -843,19 +874,7 @@
 															],
 															"type": "object"
 														},
-														"totalCount": {
-															"properties": {
-																"type": {
-																	"example": "number",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"type"
-															],
-															"type": "object"
-														},
-														"totalPages": {
+														"total_count": {
 															"properties": {
 																"type": {
 																	"example": "number",
@@ -869,10 +888,10 @@
 														}
 													},
 													"required": [
+														"count",
 														"page",
-														"pageSize",
-														"totalCount",
-														"totalPages"
+														"per_page",
+														"total_count"
 													],
 													"type": "object"
 												},

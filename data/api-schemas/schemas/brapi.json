@@ -35,7 +35,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -604,7 +604,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -621,7 +621,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -667,10 +667,6 @@
 											"type": "string"
 										}
 									},
-									"required": [
-										"status",
-										"title"
-									],
 									"type": "object"
 								},
 								"result": {
@@ -931,7 +927,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -1562,7 +1558,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -1579,7 +1575,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -1877,7 +1873,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -2454,7 +2450,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -2471,7 +2467,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -2768,7 +2764,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -3337,7 +3333,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -3354,7 +3350,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -3648,7 +3644,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -4370,7 +4366,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -4387,7 +4383,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -4649,7 +4645,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -5233,7 +5229,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -5250,7 +5246,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -5618,7 +5614,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -6285,7 +6281,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -6302,7 +6298,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -6617,7 +6613,7 @@
 								"properties": {
 									"actionTimeout": {
 										"description": "The maximum duration allowed for the browser action to complete after the page has loaded (such as taking screenshots, extracting content, or generating PDFs). If this time limit is exceeded, the action stops and returns a timeout error.",
-										"maximum": 300000,
+										"maximum": 120000,
 										"type": "number"
 									},
 									"addScriptTag": {
@@ -7260,7 +7256,7 @@
 												"type": "string"
 											},
 											"timeout": {
-												"maximum": 60000,
+												"maximum": 120000,
 												"type": "number"
 											},
 											"visible": {
@@ -7277,7 +7273,7 @@
 									},
 									"waitForTimeout": {
 										"description": "Waits for a specified timeout before continuing.",
-										"maximum": 60000,
+										"maximum": 120000,
 										"type": "number"
 									}
 								},
@@ -7314,6 +7310,17 @@
 									},
 									"type": "array"
 								},
+								"meta": {
+									"properties": {
+										"status": {
+											"type": "number"
+										},
+										"title": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
 								"result": {
 									"properties": {
 										"content": {
@@ -7337,7 +7344,8 @@
 								}
 							},
 							"required": [
-								"status"
+								"status",
+								"meta"
 							],
 							"type": "object"
 						}

@@ -610,6 +610,9 @@
 										"example": "An attacker registered the domain domain.com",
 										"type": "string"
 									},
+									"hasChildren": {
+										"type": "boolean"
+									},
 									"indicator": {
 										"example": "domain.com",
 										"type": "string"
@@ -720,7 +723,8 @@
 									"killChain",
 									"mitreAttack",
 									"referencedIds",
-									"referencesIds"
+									"referencesIds",
+									"hasChildren"
 								],
 								"type": "object"
 							},
@@ -835,6 +839,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"hasChildren": {
+									"type": "boolean"
+								},
 								"indicator": {
 									"example": "domain.com",
 									"type": "string"
@@ -945,7 +952,8 @@
 								"killChain",
 								"mitreAttack",
 								"referencedIds",
-								"referencesIds"
+								"referencesIds",
+								"hasChildren"
 							],
 							"type": "object"
 						}
@@ -1278,6 +1286,9 @@
 										"example": "An attacker registered the domain domain.com",
 										"type": "string"
 									},
+									"hasChildren": {
+										"type": "boolean"
+									},
 									"indicator": {
 										"example": "domain.com",
 										"type": "string"
@@ -1388,7 +1399,8 @@
 									"killChain",
 									"mitreAttack",
 									"referencedIds",
-									"referencesIds"
+									"referencesIds",
+									"hasChildren"
 								],
 								"type": "object"
 							},
@@ -1715,6 +1727,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"hasChildren": {
+									"type": "boolean"
+								},
 								"indicator": {
 									"example": "domain.com",
 									"type": "string"
@@ -1825,7 +1840,8 @@
 								"killChain",
 								"mitreAttack",
 								"referencedIds",
-								"referencesIds"
+								"referencesIds",
+								"hasChildren"
 							],
 							"type": "object"
 						}
@@ -2142,6 +2158,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"hasChildren": {
+									"type": "boolean"
+								},
 								"indicator": {
 									"example": "domain.com",
 									"type": "string"
@@ -2252,7 +2271,8 @@
 								"killChain",
 								"mitreAttack",
 								"referencedIds",
-								"referencesIds"
+								"referencesIds",
+								"hasChildren"
 							],
 							"type": "object"
 						}
@@ -2569,6 +2589,9 @@
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
 								},
+								"hasChildren": {
+									"type": "boolean"
+								},
 								"indicator": {
 									"example": "domain.com",
 									"type": "string"
@@ -2679,7 +2702,8 @@
 								"killChain",
 								"mitreAttack",
 								"referencedIds",
-								"referencesIds"
+								"referencesIds",
+								"hasChildren"
 							],
 							"type": "object"
 						}
@@ -2931,6 +2955,29 @@
 								"example": "domain",
 								"type": "string"
 							},
+							"indicators": {
+								"description": "Array of indicators for this event. Supports multiple indicators per event for complex scenarios.",
+								"items": {
+									"properties": {
+										"indicatorType": {
+											"description": "The type of indicator (e.g., DOMAIN, IP, JA3, HASH)",
+											"example": "domain",
+											"type": "string"
+										},
+										"value": {
+											"description": "The indicator value (e.g., domain name, IP address, hash)",
+											"example": "malicious.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"value",
+										"indicatorType"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"insight": {
 								"example": "This domain was likely registered for phishing purposes",
 								"type": "string"
@@ -2979,7 +3026,6 @@
 						"required": [
 							"date",
 							"category",
-							"indicatorType",
 							"event",
 							"tlp",
 							"raw"
@@ -3014,6 +3060,9 @@
 								"event": {
 									"example": "An attacker registered the domain domain.com",
 									"type": "string"
+								},
+								"hasChildren": {
+									"type": "boolean"
 								},
 								"indicator": {
 									"example": "domain.com",
@@ -3125,7 +3174,8 @@
 								"killChain",
 								"mitreAttack",
 								"referencedIds",
-								"referencesIds"
+								"referencesIds",
+								"hasChildren"
 							],
 							"type": "object"
 						}
@@ -3247,6 +3297,29 @@
 											"example": "domain",
 											"type": "string"
 										},
+										"indicators": {
+											"description": "Array of indicators for this event. Supports multiple indicators per event for complex scenarios.",
+											"items": {
+												"properties": {
+													"indicatorType": {
+														"description": "The type of indicator (e.g., DOMAIN, IP, JA3, HASH)",
+														"example": "domain",
+														"type": "string"
+													},
+													"value": {
+														"description": "The indicator value (e.g., domain name, IP address, hash)",
+														"example": "malicious.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"value",
+													"indicatorType"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
 										"insight": {
 											"example": "This domain was likely registered for phishing purposes",
 											"type": "string"
@@ -3295,7 +3368,6 @@
 									"required": [
 										"date",
 										"category",
-										"indicatorType",
 										"event",
 										"tlp",
 										"raw"
@@ -3385,7 +3457,7 @@
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
 		"description": "Creates bulk DOS attack events along with their corresponding indicator events and establishes relationships between them. The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
-		"operationId": "post_EventCreateBulkWithRelationships",
+		"operationId": "post_DOSEventCreateBulkWithRelationships",
 		"parameters": [
 			{
 				"description": "Account ID.",
@@ -3444,6 +3516,29 @@
 											"example": "domain",
 											"type": "string"
 										},
+										"indicators": {
+											"description": "Array of indicators for this event. Supports multiple indicators per event for complex scenarios.",
+											"items": {
+												"properties": {
+													"indicatorType": {
+														"description": "The type of indicator (e.g., DOMAIN, IP, JA3, HASH)",
+														"example": "domain",
+														"type": "string"
+													},
+													"value": {
+														"description": "The indicator value (e.g., domain name, IP address, hash)",
+														"example": "malicious.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"value",
+													"indicatorType"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
 										"insight": {
 											"example": "This domain was likely registered for phishing purposes",
 											"type": "string"
@@ -3492,7 +3587,6 @@
 									"required": [
 										"date",
 										"category",
-										"indicatorType",
 										"event",
 										"tlp",
 										"raw"
@@ -4022,18 +4116,26 @@
 				"application/json": {
 					"schema": {
 						"properties": {
-							"childId": {
-								"format": "uuid",
-								"type": "string"
+							"childIds": {
+								"description": "Array of UUIDs for child events. Single child = 1:1 relationship, multiple = 1:many relationships",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"minItems": 1,
+								"type": "array"
 							},
 							"datasetId": {
+								"description": "Dataset identifier where the events are stored",
 								"type": "string"
 							},
 							"parentId": {
+								"description": "UUID of the parent event that will be the source of the relationship",
 								"format": "uuid",
 								"type": "string"
 							},
-							"type": {
+							"relationshipType": {
+								"description": "Type of relationship to create between parent and child events",
 								"enum": [
 									"related_to",
 									"caused_by",
@@ -4044,8 +4146,8 @@
 						},
 						"required": [
 							"parentId",
-							"childId",
-							"type",
+							"childIds",
+							"relationshipType",
 							"datasetId"
 						],
 						"type": "object"
@@ -4059,16 +4161,100 @@
 					"application/json": {
 						"schema": {
 							"properties": {
+								"childIds": {
+									"description": "Array of child event UUIDs that were processed",
+									"items": {
+										"format": "uuid",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"errors": {
+									"description": "Array of errors for relationships that failed to be created (only present if some relationships failed)",
+									"items": {
+										"properties": {
+											"childId": {
+												"description": "UUID of the child event that failed to create a relationship",
+												"format": "uuid",
+												"type": "string"
+											},
+											"error": {
+												"description": "Error message describing why the relationship creation failed",
+												"type": "string"
+											},
+											"errorType": {
+												"description": "Type/category of the error that occurred",
+												"type": "string"
+											}
+										},
+										"required": [
+											"childId",
+											"error"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
 								"message": {
+									"description": "Human-readable message describing the operation result",
 									"type": "string"
 								},
+								"relationships": {
+									"description": "Array of successfully created relationship objects",
+									"items": {
+										"properties": {
+											"childDatasetId": {
+												"description": "Dataset ID where the child event resides",
+												"type": "string"
+											},
+											"childId": {
+												"description": "UUID of the child event in the relationship",
+												"format": "uuid",
+												"type": "string"
+											},
+											"parentDatasetId": {
+												"description": "Dataset ID where the parent event resides",
+												"type": "string"
+											},
+											"parentId": {
+												"description": "UUID of the parent event in the relationship",
+												"format": "uuid",
+												"type": "string"
+											},
+											"relationshipType": {
+												"description": "Type of relationship between the events",
+												"enum": [
+													"related_to",
+													"caused_by",
+													"attributed_to"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"parentId",
+											"childId",
+											"relationshipType",
+											"parentDatasetId",
+											"childDatasetId"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"relationshipsCreated": {
+									"description": "Number of relationships that were successfully created",
+									"type": "number"
+								},
 								"success": {
+									"description": "Whether the relationship creation operation completed successfully",
 									"type": "boolean"
 								}
 							},
 							"required": [
 								"success",
-								"message"
+								"message",
+								"relationships"
 							],
 							"type": "object"
 						}

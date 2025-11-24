@@ -259,7 +259,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
-		"description": "This is a no-op as predefined profiles can't be deleted but is needed for our generated terraform API",
+		"description": "This is a no-op as predefined profiles can't be deleted but is needed for our generated terraform API.",
 		"operationId": "dlp-profiles-delete-predefined-profile",
 		"parameters": [
 			{
@@ -2358,6 +2358,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -4827,6 +4830,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -6548,6 +6554,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -9232,6 +9241,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -11042,6 +11054,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -13802,6 +13817,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [
@@ -15605,6 +15623,9 @@
 								{
 									"properties": {
 										"result": {
+											"discriminator": {
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"allOf": [

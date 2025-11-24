@@ -1012,6 +1012,17 @@
 															},
 															{
 																"properties": {
+																	"update_window_days": {
+																		"description": "Number of days that the antivirus should be updated within.",
+																		"example": 7,
+																		"type": "number"
+																	}
+																},
+																"title": "Antivirus",
+																"type": "object"
+															},
+															{
+																"properties": {
 																	"compliance_status": {
 																		"description": "Compliance Status.",
 																		"enum": [
@@ -1402,6 +1413,7 @@
 															"domain_joined",
 															"client_certificate",
 															"client_certificate_v2",
+															"antivirus",
 															"unique_client_id",
 															"kolide",
 															"tanium_s2s",
@@ -2040,6 +2052,17 @@
 																	},
 																	{
 																		"properties": {
+																			"update_window_days": {
+																				"description": "Number of days that the antivirus should be updated within.",
+																				"example": 7,
+																				"type": "number"
+																			}
+																		},
+																		"title": "Antivirus",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"compliance_status": {
 																				"description": "Compliance Status.",
 																				"enum": [
@@ -2430,6 +2453,7 @@
 																	"domain_joined",
 																	"client_certificate",
 																	"client_certificate_v2",
+																	"antivirus",
 																	"unique_client_id",
 																	"kolide",
 																	"tanium_s2s",
@@ -3170,6 +3194,17 @@
 														},
 														{
 															"properties": {
+																"update_window_days": {
+																	"description": "Number of days that the antivirus should be updated within.",
+																	"example": 7,
+																	"type": "number"
+																}
+															},
+															"title": "Antivirus",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status.",
 																	"enum": [
@@ -3560,6 +3595,7 @@
 														"domain_joined",
 														"client_certificate",
 														"client_certificate_v2",
+														"antivirus",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
@@ -4175,6 +4211,17 @@
 																},
 																{
 																	"properties": {
+																		"update_window_days": {
+																			"description": "Number of days that the antivirus should be updated within.",
+																			"example": 7,
+																			"type": "number"
+																		}
+																	},
+																	"title": "Antivirus",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status.",
 																			"enum": [
@@ -4565,6 +4612,7 @@
 																"domain_joined",
 																"client_certificate",
 																"client_certificate_v2",
+																"antivirus",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
@@ -5180,6 +5228,17 @@
 									},
 									{
 										"properties": {
+											"update_window_days": {
+												"description": "Number of days that the antivirus should be updated within.",
+												"example": 7,
+												"type": "number"
+											}
+										},
+										"title": "Antivirus",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"compliance_status": {
 												"description": "Compliance Status.",
 												"enum": [
@@ -5570,6 +5629,7 @@
 									"domain_joined",
 									"client_certificate",
 									"client_certificate_v2",
+									"antivirus",
 									"unique_client_id",
 									"kolide",
 									"tanium_s2s",
@@ -6183,6 +6243,17 @@
 														},
 														{
 															"properties": {
+																"update_window_days": {
+																	"description": "Number of days that the antivirus should be updated within.",
+																	"example": 7,
+																	"type": "number"
+																}
+															},
+															"title": "Antivirus",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status.",
 																	"enum": [
@@ -6573,6 +6644,7 @@
 														"domain_joined",
 														"client_certificate",
 														"client_certificate_v2",
+														"antivirus",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
@@ -7188,6 +7260,17 @@
 																},
 																{
 																	"properties": {
+																		"update_window_days": {
+																			"description": "Number of days that the antivirus should be updated within.",
+																			"example": 7,
+																			"type": "number"
+																		}
+																	},
+																	"title": "Antivirus",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status.",
 																			"enum": [
@@ -7578,6 +7661,7 @@
 																"domain_joined",
 																"client_certificate",
 																"client_certificate_v2",
+																"antivirus",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
@@ -8208,6 +8292,17 @@
 									},
 									{
 										"properties": {
+											"update_window_days": {
+												"description": "Number of days that the antivirus should be updated within.",
+												"example": 7,
+												"type": "number"
+											}
+										},
+										"title": "Antivirus",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"compliance_status": {
 												"description": "Compliance Status.",
 												"enum": [
@@ -8598,6 +8693,7 @@
 									"domain_joined",
 									"client_certificate",
 									"client_certificate_v2",
+									"antivirus",
 									"unique_client_id",
 									"kolide",
 									"tanium_s2s",
@@ -9211,6 +9307,17 @@
 														},
 														{
 															"properties": {
+																"update_window_days": {
+																	"description": "Number of days that the antivirus should be updated within.",
+																	"example": 7,
+																	"type": "number"
+																}
+															},
+															"title": "Antivirus",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status.",
 																	"enum": [
@@ -9601,6 +9708,7 @@
 														"domain_joined",
 														"client_certificate",
 														"client_certificate_v2",
+														"antivirus",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
@@ -10216,6 +10324,17 @@
 																},
 																{
 																	"properties": {
+																		"update_window_days": {
+																			"description": "Number of days that the antivirus should be updated within.",
+																			"example": 7,
+																			"type": "number"
+																		}
+																	},
+																	"title": "Antivirus",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status.",
 																			"enum": [
@@ -10606,6 +10725,7 @@
 																"domain_joined",
 																"client_certificate",
 																"client_certificate_v2",
+																"antivirus",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",

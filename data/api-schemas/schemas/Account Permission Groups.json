@@ -487,44 +487,141 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "A named group of permissions that map to a group of operations against resources.",
-							"properties": {
-								"id": {
-									"description": "Identifier of the permission group.",
-									"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-									"type": "string",
-									"x-auditable": true
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
 								},
-								"meta": {
-									"description": "Attributes associated to the permission group.",
-									"example": {
-										"label": "load_balancer_admin",
-										"scopes": "com.cloudflare.api.account"
-									},
+								{
 									"properties": {
-										"key": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"value": {
-											"type": "string",
-											"x-auditable": true
+										"result": {
+											"description": "A named group of permissions that map to a group of operations against resources.",
+											"properties": {
+												"id": {
+													"description": "Identifier of the permission group.",
+													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+													"type": "string",
+													"x-auditable": true
+												},
+												"meta": {
+													"description": "Attributes associated to the permission group.",
+													"example": {
+														"label": "load_balancer_admin",
+														"scopes": "com.cloudflare.api.account"
+													},
+													"properties": {
+														"key": {
+															"type": "string",
+															"x-auditable": true
+														},
+														"value": {
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												},
+												"name": {
+													"description": "Name of the permission group.",
+													"example": "Load Balancer",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
-								},
-								"name": {
-									"description": "Name of the permission group.",
-									"example": "Load Balancer",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
 								}
-							},
-							"required": [
-								"id"
 							],
-							"type": "object"
+							"title": "Response with Permission Groups"
 						}
 					}
 				},
