@@ -1,0 +1,206 @@
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22sUHPefT9pO4C6xggXTQH/fad62fabfa1b07cf755d1c0bfddf8086/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>As the surface area for attacks on the web increases, Cloudflare’s <a href="https://www.cloudflare.com/application-services/products/waf"><u>Web Application Firewall (WAF)</u></a>&nbsp; provides a myriad of solutions to mitigate these attacks. This is great for our customers, but the cardinality in the workloads of the millions of requests we service means that generating false positives is inevitable. This means that the default configuration we have for our customers has to be fine-tuned.&nbsp;</p>
+	<p>Fine-tuning isn’t an opaque process: customers have to get some data points and then decide what works for them. This post explains the technologies we offer to enable customers to see why the WAF takes certain actions — and the improvements that have been made to reduce noise and increase signal.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-log-action-is-great-can-we-do-more">The Log action is great — can we do more?</h2>
+		<a href="https://blog.cloudflare.com/#the-log-action-is-great-can-we-do-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare’s <a href="https://www.cloudflare.com/application-services/products/waf"><u>WAF</u></a> protects origin servers from different kinds of layer 7 attacks, which are attacks that <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack"><u>target the application layer</u></a>. Protection is provided with various tools like:</p>
+	<ul>
+		<li>
+			<p><a href="https://developers.cloudflare.com/waf/managed-rules"><u>Managed rules</u></a>, which security analysts at Cloudflare write to address <a href="https://www.cve.org"><u>common vulnerabilities and exposures (CVE)</u></a>, <a href="https://www.cloudflare.com/learning/security/threats/owasp-top-10"><u>OWASP security risks</u></a>, and vulnerabilities like Log4Shell.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/waf/custom-rules"><u>Custom rules</u></a>, where customers can write rules with the expressive <a href="https://developers.cloudflare.com/ruleset-engine/rules-language"><u>Rules language</u></a>.</p>
+		</li>
+		<li>
+			<p><a href="https://developers.cloudflare.com/waf/rate-limiting-rules"><u>Rate limiting rules</u></a>, <a href="https://developers.cloudflare.com/waf/detections/malicious-uploads"><u>malicious uploads detection</u></a>, <a href="https://developers.cloudflare.com/waf/detections/leaked-credentials"><u>leaked credentials detection</u></a>, etc.</p>
+		</li>
+	</ul>
+	<p>These tools are built on the <a href="https://developers.cloudflare.com/ruleset-engine"><u>Rulesets engine</u></a>. When there is a match on a <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/expressions"><u>Rule expression</u></a>, the engine executes an <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions"><u>action</u></a>.</p>
+	<p>The Log action is used to simulate the behaviour of rules. This action proves that a rule expression is matched by the engine and emits a log event which can be accessed via <a href="https://developers.cloudflare.com/waf/analytics/security-analytics"><u>Security Analytics</u></a>, <a href="https://developers.cloudflare.com/waf/analytics/security-events"><u>Security Events</u></a>, <a href="https://developers.cloudflare.com/logs/logpush"><u>Logpush</u></a> or <a href="https://developers.cloudflare.com/logs/logpush/logpush-job/edge-log-delivery"><u>Edge Log Delivery</u></a>.</p>
+	<p>Logs are great at validating a rule works as expected on the traffic it was expected to match, but showing that the rule matches isn’t sufficient, especially when a rule expression can take many code paths.
+
+		In pseudocode, an expression can look like:</p>
+	<p><code>If any of the http request headers contains an “authorization” key OR the lowercased representation of the http host header starts with “cloudflare” THEN log</code>
+
+		The rules language syntax will be:</p>
+	<pre class="language-Rust"><code class="language-Rust">any(http.request.headers[*] contains "authorization") or starts_with(lower(http.host), "cloudflare")</code></pre>
+	<p>Debugging this expression poses a couple of problems. Is it the left-hand side (LHS) or right-hand side (RHS) of the OR expression above that matches? Functions such as <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#decode_base64"><u>Base64 decoding</u></a>, <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#url_decode"><u>URL decoding</u></a>, and in this case <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower"><u>lowercasing</u></a> can apply transformations to the original representation of these fields, which leads to further ambiguity as to which characteristics of the request led to a match.</p>
+	<p>To further complicate this, many <a href="https://developers.cloudflare.com/ruleset-engine/about/rules"><u>rules</u></a> in a <a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets"><u>ruleset</u></a> can register matches. Rulesets like <a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset"><u>Cloudflare OWASP</u></a> use a cumulative score of different rules to trigger an action when the score crosses a <a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold"><u>set threshold</u></a>.&nbsp;</p>
+	<p>Additionally, the expressions of the Cloudflare Managed and OWASP rules are private. This increases our security posture – but it also means that customers can only guess what these rules do from their titles, tags and descriptions. For instance, one might be labeled “SonicWall SMA - Remote Code Execution - CVE:CVE-2025-32819.”</p>
+	<p>Which raises questions: What part of my request led to a match in the Rulesets engine? Are these false positives?&nbsp;</p>
+	<p>This is where payload logging shines. It can help us drill down to the specific fields and their respective values, post-transformation, in the rule that led to a match.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="payload-logging">Payload logging</h2>
+		<a href="https://blog.cloudflare.com/#payload-logging" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Payload logging is a feature that logs which fields in the request are associated with a rule that led to the WAF taking an action. This reduces ambiguity and provides useful information that can help spot check false positives, guarantee correctness, and aid in fine-tuning of these rules for better performance.</p>
+	<p>From the example above, a payload log entry will contain either the LHS or RHS of the expression, but not both.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-payload-logging-work">How does payload logging work ?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-payload-logging-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The payload logging and Rulesets engines are built on Wirefilter, which has been <a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust"><u>explained extensively</u></a>.</p>
+	<p>Fundamentally, these engines are objects written in Rust which implement a <a href="https://github.com/cloudflare/wirefilter/blob/72e3954622ff7f30c4171f45461c2274656ee1e3/engine/src/compiler.rs#L7"><u>compiler</u></a> trait. This trait drives the compilation of the abstract syntax trees (ASTs) derived from these expressions.</p>
+	<pre class="language-Rust"><code class="language-Rust">struct PayloadLoggingCompiler {
+     regex_cache HashMap&lt;String, Arc&lt;Regex&gt;&gt;
+}
+
+impl wirefilter::Compiler for PayloadLoggingCompiler {
+	type U = PayloadLoggingUserData
+	
+	fn compile_logical_expr(&amp;mut self, node: LogicalExpr) -&gt; CompiledExpr&lt;Self::U&gt; {
+		// ...
+		let regex = self.regex_cache.entry(regex_pattern)
+		.or_insert_with(|| Arc::new(regex))
+		// ...
+	}
+
+}</code></pre>
+	<p>The Rulesets Engine executes an expression and if it evaluates to true, the expression and its <a href="https://github.com/cloudflare/wirefilter/blob/72e3954622ff7f30c4171f45461c2274656ee1e3/engine/src/execution_context.rs#L38"><u>execution context</u></a> are sent to the payload logging compiler for re-evaluation. The execution context provides all the runtime values needed to evaluate the expression.</p>
+	<p>After re-evaluation is done, the fields involved in branches of the expression that evaluate to true are logged.</p>
+	<p>The structure of the log is a map of wirefilter fields and their values <code>Map&lt;Field, Value&gt;</code></p>
+	<pre class="language-Rust"><code class="language-Rust">{
+
+	“http.host”: “cloudflare.com”,
+	“http.method”: “get”,
+	“http.user_agent”: “mozilla”
+
+}</code></pre>
+	<p>Note: <a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke"><u>These logs are encrypted with the public key provided by the customer.</u></a>&nbsp;</p>
+	<p>These logs go through our logging pipeline and can be read in different ways. Customers can configure a Logpush job to write to a custom Worker we built that uses the customer’s private key to automatically decrypt these logs. The Payload logging <a href="https://github.com/cloudflare/matched-data-cli"><u>CLI tool</u></a>, <a href="https://github.com/cloudflare/matched-data-worker"><u>Worker</u></a>, or the Cloudflare dashboard can also be used for decryption.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jTk0nPsfA0yowEwHx5VUr/eed6cece439d238b1ec861a9e0760dd6/image5.png" alt="" class="kg-image" width="1999" height="737" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="what-improvements-have-been-shipped">What improvements have been shipped?</h3>
+		<a href="https://blog.cloudflare.com/#what-improvements-have-been-shipped" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In wirefilter, some fields are array types. The field <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.headers.names"><u>http.request.headers.names</u></a> is an array of all the header names in a request. For example:</p>
+	<pre class="language-Rust"><code class="language-Rust">[“content-type”, “content-length”, “authorization”, "host"]</code></pre>
+	<p>An expression that reads <code>any(http.request.headers.names[*] contains “c”)</code> will evaluate to true because at least one of the headers contains the letter “c”. With the previous version of the payload logging compiler, all the headers in the “http.request.headers.names” field will be logged since it's a part of the expression that evaluates to true.&nbsp;&nbsp;</p>
+	<p><b>Payload log (previous)</b></p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers.names[*] = [“content-type”, “content-length”, “authorization”, "host"]</code></pre>
+	<p>Now, we partially evaluate the array fields and log the indexes that match the expressions constraint. In this case, it’ll be just the headers that contain a “c”!</p>
+	<p><b>Payload log (new)</b></p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers.names[0,1] = [“content-type”, “content-length”]</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="operators">Operators</h3>
+		<a href="https://blog.cloudflare.com/#operators" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This brings us to operators in wirefilter. Some operators like “eq” result in exact matches, e.g. <code>http.host eq “a.com”</code>. There are other operators that result in “partial” matches – like “in”, “contains”, “matches” – that work alongside regexes.
+
+		The expression in this example: `<code>any(http.request.headers[*] contains “c”)`</code> uses a “contains” operator which produces a partial match. It also uses the “<code>any</code>” function which we can say produces a partial match, because if at least one of the headers contains a “c”, then we should log <i>that</i> header – not <i>all</i> the headers as we did in the previous version.</p>
+	<p>With the improvements to the payload logging compiler, when these expressions are evaluated, we log just the partial matches. In this case, the new payload logging compiler handles the “contains” operator similarly to <a href="https://doc.rust-lang.org/std/string/struct.String.html#method.find"><u>the “find” method for bytes in the Rust standard library</u></a>. This improves our payload log to:</p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers.names[0,1] = [“c”, “c”]</code></pre>
+	<p>This makes things a lot clearer. It also saves our logging pipeline from processing millions of bytes. For example, a field that is analyzed a lot is the request body — <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw"><u>http.request.body.raw </u></a>— which can be tens of kilobytes in size. Sometimes the expressions are checking for a regex pattern that should match three characters. In this case we’ll be logging 3 bytes instead of kilobytes!</p>
+	<div class="flex anchor relative">
+		<h3 id="context">Context</h3>
+		<a href="https://blog.cloudflare.com/#context" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>I know, I know, <code>[“c”, “c”]</code> doesn’t really mean much. Even if we’ve provided the exact reason for the match and are significantly saving on the volume of bytes written to our customers storage destinations, the key goal is to provide useful debugging information to the customer. As part of the payload logging improvements, the compiler now also logs a “before” and "after” (if applicable) for partial matches. The size for these buffers are currently 15 bytes each. This means our payload log now looks like:</p>
+	<pre class="language-Rust"><code class="language-Rust">http.request.headers[0,1] = [
+    {
+        before: null, // isnt included in the final log
+        content: “c”, 
+        after: “ontent-length”
+    },
+    {
+        before: null, // isnt included in the final log
+        content: “c”, 
+        after:”ontent-type”
+    }
+]</code></pre>
+	<p><b>Example of payload log (previous)</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yhJWnG9FiDnQRAuV82t6C/0dbef6ded6f48a7f74d6a69aaf7d52a5/image7.png" alt="" class="kg-image" width="1999" height="242" loading="lazy">
+	</figure>
+	<p><b>Example of payload log (new)</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6M1bQKaqNvalqtJo7nO6fM/8e87e1927ed404495273c082e258e6ee/image4.png" alt="" class="kg-image" width="964" height="262" loading="lazy">
+	</figure>
+	<p>In the previous log, we have all the header values. In the new log, we have the 8th index which is a malicious script in a HTTP header. The match is on the “&lt;script&gt;” tag and the rest is the context which is the text in gray.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="optimizations">Optimizations</h3>
+		<a href="https://blog.cloudflare.com/#optimizations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Managed rules rely heavily on regular expressions to fingerprint malicious requests. Parsing and compiling these expressions are CPU-intensive tasks. As managed rules are written once and deployed across millions of zones, we benefit from compiling these regexes and caching them in memory. This saves us CPU cycles as we don’t have to re-compile these until the process restarts.</p>
+	<p>The Payload logging compiler uses a lot of dynamically sized arrays or vectors to store the intermediate state for these logs. Crates like <a href="https://docs.rs/smallvec/latest/smallvec"><u>smallvec</u></a> are also used to reduce heap allocations.&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="the-infamous-truncated-value">The infamous “TRUNCATED” value</h3>
+		<a href="https://blog.cloudflare.com/#the-infamous-truncated-value" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Sometimes, customers see <a href="https://github.com/cloudflare/matched-data-cli/blob/master/src/main.rs#L124-L129"><u>“truncated”</u></a> in their payload logs. This is because every firewall event has a size limit in bytes. When this limit is exceeded, the payload log is truncated.&nbsp;</p>
+	<p><b>Payload log (previous)</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7234Ub1YB3xCMd6thJ5Gje/22b87bc0149f82a9315c258227764e58/image6.png" alt="" class="kg-image" width="1999" height="735" loading="lazy">
+	</figure>
+	<p><b>Payload log (new)</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3mBw8ElDalEbpjKmGoVTT3/f877a232df29c6e01889cc1941d1b69a/image1.png" alt="" class="kg-image" width="1999" height="834" loading="lazy">
+	</figure>
+	<p>We have seen the p50 byte size of the payload logs shrink from 1.5 Kilobytes to 500 bytes – a 67% reduction! That means way fewer truncated payload logs.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next?</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’re currently using a <a href="https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy"><u>lossy representation of utf-8 strings</u></a> to represent values. This means that non-valid utf-8 strings like multimedia are represented as <a href="https://doc.rust-lang.org/std/char/constant.REPLACEMENT_CHARACTER.html"><u>U+FFFD unicode replacement characters</u></a>. For rules that will work on binary data, the integrity of these values should be preserved with byte arrays or with a different serialization format.</p>
+	<p>The storage format for payload logging is JSON. We’ll be benchmarking this alongside other binary formats like <a href="https://cbor.io"><u>CBOR</u></a>, <a href="https://capnproto.org"><u>Cap'n Proto</u></a>, <a href="https://protobuf.dev"><u>Protobuf</u></a>, etc., to see how much processing time this saves our pipeline. This will help us deliver logs to our customers faster, with the added advantage that binary formats can also help with maintaining a defined schema that will be backward compatible.&nbsp;</p>
+	<p>Finally, payload logging only works with Managed rules. It will be rolled out to other Cloudflare WAF products like custom rules, WAF attack score, content scanning, <a href="https://developers.cloudflare.com/waf/detections/firewall-for-ai"><u>Firewall for AI</u></a>, and more.
+
+		<i>An example of payload logging showing prompts containing PII, detected by Firewall for AI: </i>
+	</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nq4rYROygGRVW7mTZ3nqz/3c49b85c54eee6f98aa0397dfce32fa5/image2.png" alt="" class="kg-image" width="1674" height="380" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="why-should-i-be-excited">Why should I be excited?</h2>
+		<a href="https://blog.cloudflare.com/#why-should-i-be-excited" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Visibility into the actions taken by the WAF will give customers assurance that their rules or configurations are doing exactly what they expect. Improvements to the specificity of payload logging is a step in this direction — and in the pipeline are further improvements to reliability, latency, and expansion to more WAF products.</p>
+	<p>As this was a breaking change to the JSON schema, we’ve rolled this out slowly to customers with <a href="https://developers.cloudflare.com/changelog/2025-05-08-improved-payload-logging"><u>adequate documentation</u></a>.</p>
+	<p>To get started and enable payload logging, <a href="https://developers.cloudflare.com/waf/managed-rules/payload-logging/#turn-on-payload-logging"><u>visit our developer documentation</u></a>. </p>
+</div>
