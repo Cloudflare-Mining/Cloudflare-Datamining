@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-ui-addons",
 	"dist-tags": {
-		"latest": "0.0.4",
-		"staging": "0.0.5-staging.2"
+		"latest": "0.1.0",
+		"staging": "0.0.5-staging.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -141,6 +141,90 @@
 				"@cloudflare/realtimekit-virtual-background": "0.0.2"
 			},
 			"devDependencies": {
+				"vite": "^4.4.8",
+				"typescript": "^5.2.2"
+			},
+			"peerDependencies": {
+				"@cloudflare/realtimekit": ">=1.0.1",
+				"@cloudflare/realtimekit-ui": ">=1.0.1"
+			},
+			"dist": {
+				"shasum": "29c43fede1cd1c52cbf418e561ee58fcd5dc8ed7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.5-staging.2.tgz",
+				"fileCount": 70,
+				"integrity": "sha512-TZc5McdTiSksa0SBVU/wJWH6A7eUn8QVHlP+6RQj00xgqWpjk+tDN1a464OhDRMoNHQ3bx/xXAy0JQ1ot+Zvig==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDZTCDSJ1Xg9zua119ttNCnRQfMWF5oJXtFAY66F1KAhQIgBZecJt84NV20sPIi9czHvWaOvBV6HWjzgCitjtnWgrg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 369574
+			}
+		},
+		"0.0.5-staging.3": {
+			"name": "@cloudflare/realtimekit-ui-addons",
+			"version": "0.0.5-staging.3",
+			"dependencies": {
+				"@cloudflare/realtimekit-virtual-background": "0.0.2"
+			},
+			"devDependencies": {
+				"vite": "^4.4.8",
+				"typescript": "^5.2.2"
+			},
+			"peerDependencies": {
+				"@cloudflare/realtimekit": ">=1.0.1",
+				"@cloudflare/realtimekit-ui": ">=1.0.1"
+			},
+			"dist": {
+				"shasum": "99250e60250509e5c3c93dfaddd2742dd80eb51f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.5-staging.3.tgz",
+				"fileCount": 70,
+				"integrity": "sha512-KwoSVyT+oTjMZST4MgRUfmzOGfdT4FAvcCqyGGQKIWl3Yf8b9k9+9DU1TyGz2TODjLwe5SHebFvEfVQb+Noqiw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCpS17jNMCQBKlgjixXngR5EsJ8S3bAunyIr8GSXNXYPAIgO9sgYrI95oCWJq+K8DJ/rOsyD5XuSqbRbg+EoaznFLo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 373733
+			}
+		},
+		"0.0.5-staging.4": {
+			"name": "@cloudflare/realtimekit-ui-addons",
+			"version": "0.0.5-staging.4",
+			"dependencies": {
+				"@cloudflare/realtimekit-virtual-background": "0.0.2"
+			},
+			"devDependencies": {
+				"vite": "^4.4.8",
+				"typescript": "^5.2.2"
+			},
+			"peerDependencies": {
+				"@cloudflare/realtimekit": ">=1.0.1",
+				"@cloudflare/realtimekit-ui": ">=1.0.1"
+			},
+			"dist": {
+				"shasum": "eb9b1a3a6e65e65c9956338dca81a103a2772dee",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.5-staging.4.tgz",
+				"fileCount": 70,
+				"integrity": "sha512-KOIFW8tEyHUxIBALWa6M6DVRJOxwHV8Ou840xOK0vGLWn0DqOVJH/Mh/HgTafBGmMsMnBtOvCHQ1Y3jPYmiHXA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCuegjMyjy2j/hFijKtSwsoZGhgr6YKj29AkSy9HNIhAwIhAJ7XpVMn2zQvQrbsffsqDcpIeUoqX5YPfms53AAnB53R",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 373733
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/realtimekit-ui-addons",
+			"version": "0.1.0",
+			"dependencies": {
+				"@cloudflare/realtimekit-virtual-background": "0.0.2"
+			},
+			"devDependencies": {
 				"typescript": "^5.2.2",
 				"vite": "^4.4.8"
 			},
@@ -149,15 +233,15 @@
 				"@cloudflare/realtimekit": ">=1.0.1"
 			},
 			"dist": {
-				"integrity": "sha512-TZc5McdTiSksa0SBVU/wJWH6A7eUn8QVHlP+6RQj00xgqWpjk+tDN1a464OhDRMoNHQ3bx/xXAy0JQ1ot+Zvig==",
-				"shasum": "29c43fede1cd1c52cbf418e561ee58fcd5dc8ed7",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.0.5-staging.2.tgz",
+				"integrity": "sha512-e7qi+1Z6P3Yb+oeZD573IZn9s55EI1tHOEIqVMuuo61uoKexbFdwYbrBxlkIk4gkZd4LZlXlT23nFeZNo4m7RA==",
+				"shasum": "e91b8662087b0d7f567239eedb2f644ec351e9f3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui-addons/-/realtimekit-ui-addons-0.1.0.tgz",
 				"fileCount": 70,
-				"unpackedSize": 369574,
+				"unpackedSize": 373725,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDZTCDSJ1Xg9zua119ttNCnRQfMWF5oJXtFAY66F1KAhQIgBZecJt84NV20sPIi9czHvWaOvBV6HWjzgCitjtnWgrg="
+						"sig": "MEUCIEK7/4BA1IZeCyq3RWqZ4jgi2cVmqydWphCrT+ox6W1+AiEA+V3VO8cPWDLatjiDi4ycRyGbRyxmos1SakCkqaZpS3A="
 					}
 				]
 			}
