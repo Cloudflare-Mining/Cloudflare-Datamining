@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: </strong>Austin, Lisbon</p>
 <h4><strong>About the Role</strong></h4>
-<p>Cloudflare is looking for technical writing interns to join the Product Content Experience (PCX) team and support product content creation. As a tech writing intern, you will partner with engineers, product managers, customer-facing teams, and other PCX writers to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. You will work alongside and learn from a team recently recognized for delivering the Best Unified Enterprise Dev Portal at the 2025 DevPortal Awards. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
+<p>Cloudflare is looking for technical writing interns currently pursuing a degree to join the Product Content Experience (PCX) team and support product content creation. As a tech writing intern, you will partner with engineers, product managers, customer-facing teams, and other PCX writers to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. You will work alongside and learn from a team recently recognized for delivering the Best Unified Enterprise Dev Portal at the 2025 DevPortal Awards. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
 	<li>Create and edit product documentation according to company guidelines, varying from support content to product and developer documentation.</li>
@@ -18,6 +18,7 @@
 </ul>
 <h4><strong>Requirements</strong></h4>
 <ul>
+	<li>Currently pursuing a degree in English, Technical Communication, or another major with a writing-intensive component and/or a technology emphasis&nbsp;</li>
 	<li>Strong verbal, written, and interpersonal communication skills - must provide samples of excellent writing skills</li>
 	<ul>
 		<li>Samples should be 500-1,000 words in length, and at least one sample should be a technical procedure</li>
@@ -25,7 +26,6 @@
 	</ul>
 	<li>Interest in technical subject matter and a career in technical writing</li>
 	<li>Knack for conducting research, asking questions, and getting into the details</li>
-	<li>Pursuing a degree in English, Technical Communication, or another major with a writing-intensive component and/or a technology emphasis&nbsp;</li>
 </ul>
 <h4><strong>Bonus Points</strong></h4>
 <ul>

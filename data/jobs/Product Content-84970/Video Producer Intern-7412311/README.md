@@ -26,7 +26,6 @@
 	<li>Proven proactive and responsible attitude with the willingness to partner in leading projects and owning outcomes from concept to completion.</li>
 	<li>Excellent ability to translate complex information clearly through both written and verbal communication.</li>
 	<li>Demonstrated capacity for self-management, organization, and a positive response to feedback as a tool for growth.</li>
-	<li>Available to be in Austin office 3-4 days/week.</li>
 </ul>
 <h4>Bonus Points</h4>
 <ul>
