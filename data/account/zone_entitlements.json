@@ -737,7 +737,7 @@
 			"feature_set": "dns",
 			"id": 723,
 			"key": "authoritative_dns.max_record_allowed",
-			"name": "Authoritative DNS - Record Quota"
+			"name": "Authoritative DNS - Record Quota (Zone Level, Overridden by Account Quota)"
 		},
 		"allocation": {
 			"value": 200,
@@ -753,7 +753,7 @@
 			"feature_set": "dns",
 			"id": 724,
 			"key": "authoritative_dns.proxy_record_allowed",
-			"name": "Authoritative DNS - Proxying Allowed"
+			"name": "DO NOT USE - Authoritative DNS - Proxying Allowed"
 		},
 		"allocation": {
 			"value": true,
