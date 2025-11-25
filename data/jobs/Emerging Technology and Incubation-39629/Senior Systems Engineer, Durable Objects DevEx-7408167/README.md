@@ -5,57 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<p><strong>Responsibilities</strong></p>
-<p>The Customer Advocacy Manager will be responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate should have previous experience in both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company with a mission to build a better internet.</p>
-<p>You will work cross functionally to build customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, Product, and PR/AR.&nbsp;</p>
-<p>The candidate is an individual contributor who will work closely with the global Customer Advocacy team, who are driving all Customer Marketing and Customer Advocacy programs. Success is measured by the ability to drive forward efficiently and at the speed of the business, focused on quantity and quality of content, deep engagement with top accounts, brand equity, and levels/titles of participating customers.</p>
-<p><strong>The main responsibilities are:</strong></p>
-<p><br><strong>Customer References:</strong></p>
+<h3><strong>Available Location: Austin, Lisbon, London</strong></h3>
+<h3><strong>Role Summary</strong></h3>
+<p>Cloudflare is building the future of the Internet, and the Workers platform is at the forefront of that mission. We’re looking for a Senior Software Engineer to join the team behind <a href="https://developers.cloudflare.com/durable-objects/">Durable Object</a>, our globally-distributed, strongly-consistent coordination and state primitive, focusing on the Developer Experience. You will be responsible for the entire developer journey, from their first line of code to their production deployment and debugging. You’ll work with the Workers engineering and product teams to build the APIs, Javscript SDKs, and observability features that make building stateful applications on the edge intuitive, reliable, and maybe even a little bit fun. We’re looking for a pragmatic, product-minded engineer who is obsessed with developer ergonomics and has felt the pain of deploying complex applications in the cloud.</p>
+<h3><strong>Role Responsibilities</strong></h3>
 <ul>
-	<ul>
-		<li>Support and fulfill sales 1:1 and RFP requests for customer references</li>
-		<li>Manage/track customer references requests via customer marketing tool</li>
-		<li>Support customer reference requests from key stakeholders across events, campaigns, product, analyst, and public relations teams&nbsp;</li>
-	</ul>
-	<li><strong>Customer Advocacy:&nbsp;</strong></li>
-	<ul>
-		<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships&nbsp;</li>
-		<li>Recruit, engage and nurture customers for participation in speaking engagements, webinars, press releases, blogs/articles, analysts reports and interviews, and other marketing activities</li>
-		<li>Lead the development and manage high quality, world-class customer story content, including case studies, story slides, and customer video content</li>
-	</ul>
+	<li>Design, build, and maintain the primary developer-facing surfaces for Durable Objects, including our command-line tooling (wrangler), APIs, SDKs, and dashboard.</li>
+	<li>Own the end-to-end developer workflow, from creating intuitive local testing and simulation environments to building powerful debugging and observability tools for a globally distributed system.</li>
+	<li>Act as a technical leader and mentor on the team, driving engineering quality through rigorous code and design reviews.</li>
+	<li>Innovate on solutions to the unique challenges of managing and migrating state at the edge, ensuring developers can deploy with confidence.</li>
+	<li>Collaborate closely with product managers, developer advocates, and support engineers to translate developer feedback into a concrete product roadmap.</li>
+	<li>Author high-quality technical documentation, tutorials, and example applications that inspire developers and accelerate their time-to-production.</li>
+	<li>Triage, investigate, and resolve complex bugs and performance issues reported by the large and growing community of developers building on Durable Objects.</li>
 </ul>
-<p><strong>Advisory Boards and Councils:&nbsp;</strong></p>
+<h3><strong>Role Requirements</strong></h3>
+<h3><strong>Must-Have Skills</strong></h3>
 <ul>
-	<ul>
-		<li>Recruit and engage with customers for participation in our customer advisory events</li>
-		<li>Coordinate across many teams and executives, pre/post event success&nbsp;&nbsp;</li>
-		<li>Develop documents and reporting pre/post event</li>
-		<li>Manage in-person, best-in-class executive customer experiences&nbsp;</li>
-	</ul>
+	<li>5+ years of professional software engineering experience, with a significant portion dedicated to building developer-facing tools, APIs, or cloud infrastructure.</li>
+	<li>Deep, hands-on experience building, deploying, and operating applications on at least one major cloud platform (e.g., AWS, GCP, Azure, or Cloudflare Workers).</li>
+	<li>Strong proficiency in TypeScript/JavaScript and an interest in C++/Rust.</li>
+	<li>A "product-first" mindset and a strong sense of empathy for developers; you get annoyed when tools are hard to use, and you're driven to fix them.</li>
+	<li>Excellent written and verbal communication skills, with the ability to articulate complex distributed systems concepts to a wide range of audiences.</li>
+	<li>A proven track record of taking ownership of complex projects and delivering them from inception to production in a distributed, asynchronous team environment.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h3><strong>Nice-to-Have Skills</strong></h3>
 <ul>
-	<li>Proven success in customer facing, executive facing, customer advocacy/marketing role(s).</li>
-	<li>Ability to identify and cultivate new relationships with customers across market segments and industries with particular focus on well known global brands</li>
-	<li>Professional and self-motivated team member, who can efficiently organize, manage, and deliver multiple projects across functions (especially with Marketing and Sales) and with multiple stakeholders and contributors</li>
-	<li>Experience developing and presenting presentations to executive audiences</li>
-	<li>Experience with managing successful in person customer facing events</li>
-	<li>Experience with Reference Management and/or Customer Advocacy/Marketing tools</li>
-	<li>Outgoing with dynamic interpersonal and top-notch verbal and written communication skills</li>
-</ul>
-<p><strong>Skills, knowledge and experience</strong></p>
-<ul>
-	<li>Bachelor’s Degree in Business/Marketing or Communications related field&nbsp;</li>
-	<li>5+ years of customer marketing/advocacy experience</li>
-	<li>Significant experience in B2B technology marketing with a keen understanding of the Internet ecosystem, security, network and IT technical audiences&nbsp;&nbsp;&nbsp;</li>
-	<li>Customer-first mentality</li>
-	<li>Collaborative, learner, team-oriented attitude</li>
-	<li>High emotional intelligence (EQ) and ability to effectively influence both internal and external stakeholders across all levels of the organization</li>
-	<li>Can activate quickly, with the ability to thrive in a fast-paced, deadline driven environment</li>
-</ul>
-<ul>
-	<li>A passion for Cloudflare’s mission and the success of our customers, partners, and community</li>
+	<li>Direct experience building applications with Cloudflare Workers and Durable Objects (we’d love to see what you’ve built!).</li>
+	<li>Experience with distributed systems concepts, particularly actor-based models (like Erlang/OTP or Akka), consensus algorithms, or distributed databases.</li>
+	<li>Active contributions to open-source developer tools or libraries.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
