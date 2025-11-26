@@ -5,41 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin Texas&nbsp;</strong></p>
-<p>Cloudflare is seeking a highly skilled and self-motivated Technical Program Manager to lead and manage various company-wide initiatives and projects spanning multiple quarters and teams within Infrastructure Engineering. Your main responsibility will be to work cross functionally across product, engineering, security, technical operations, and more to build and execute on the overall strategy.&nbsp;</p>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, managing stakeholder expectations, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple stakeholders and accommodating teams dispersed across multiple time zones.&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position will be based in Austin, TX. You will be reporting into the Infrastructure Engineering organization.</strong></p>
+<p><strong>Available Locations: Austin, Texas</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
+<p><strong>About the role:</strong></p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 300 cities spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operations, engineering and architecture of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
 <p>&nbsp;</p>
-<p><strong>Major areas of responsibilities:</strong></p>
-<p>We are looking for a Sr. TPM to drive the program to modernize the Infrastructure Lifecycle in conjunction with the Oracle ERP implementation. A key focus of this Infrastructure Lifecycle modernization will&nbsp; be on driving process and solution evolution both within the new ERP system and across existing or newly defined datacenter infrastructure tooling. This modernization program is a critical effort in delivering on Cloudflare’s scale aspirations. This position bridges the gap between technical engineering teams, business stakeholders, and Oracle services to ensure that the different phases of the project are completed.</p>
-<p><strong>Job summary:</strong></p>
-<p>The ERP datacenter infrastructure TPM is responsible for the end-to-end management of complex Infrastructure modernization programs related to Oracle ERP deployments, migrations, and upgrades. A key focus is aligning the infrastructure aspects—such as servers, networking, and storage—with business requirements for the Oracle application suite. This role requires deep technical knowledge of both datacenter infrastructure and Oracle ERP applications to drive program execution, mitigate risks, and communicate with both technical and non-technical stakeholders.&nbsp;</p>
-<p><strong>Core responsibilities:</strong></p>
+<p><strong>Requirements</strong>:</p>
 <ul>
-	<li>Program leadership: Define and lead large-scale, cross-functional programs for Infrastructure adoption of the Oracle ERP implementation and migration.</li>
-	<li>Project planning: Develop detailed project plans, roadmaps, and schedules that cover the full project lifecycle, from initial concept through deployment and handover.</li>
-	<li>Infrastructure management: Coordinate the build-out, provisioning, and optimization of datacenter infrastructure (servers, network, storage) required new or existing Infrastructure Lifecycle systems and their linkages to the Oracle ERP..</li>
-	<li>Cross-functional collaboration: Act as the central point of contact between engineering, operations, product teams, and business stakeholders, ensuring alignment and clear communication in the Infrastructure space.</li>
-	<li>Risk and issue management: Proactively identify and manage technical and business risks, track issues, and implement mitigation strategies to keep projects on track.</li>
-	<li>Performance and reporting: Monitor project progress against established KPIs and provide regular status updates and executive briefings to senior leadership and steering committees.</li>
-	<li>Process improvement: Identify opportunities to improve and streamline operational processes and practices for efficiency and effectiveness.</li>
-	<li>Change management: Lead change management activities to ensure smooth user adoption of new systems and processes.&nbsp;</li>
+	<li>Experience working in large scale network engineering environments</li>
+	<li>Experience working with automation frameworks such as SaltStack and/or Ansible</li>
+	<li>Experience solving problems through automation</li>
+	<li>Experience with BGP and anycast routing</li>
+	<li>Understanding of MPLS and Segment Routing&nbsp;</li>
+	<li>Optimize end user experience by architecting the network to lower latency, packet loss, and jitter while increasing scale</li>
+	<li>Proficient in multiple vendor operating systems</li>
+	<li>Experience writing network configuration and design documentation</li>
+	<li>Ability to prioritize when faced with high pressure scenarios</li>
 </ul>
-<p><strong>Qualifications and skills:</strong></p>
+<p><strong>Bonus Points but not required:</strong></p>
 <ul>
-	<li>Education: A bachelor's degree in Computer Science, Engineering, Information Technology, or a related technical field is typically required.</li>
-	<li>Experience: Extensive experience (e.g.,10+ years) in technical program management, with a track record of delivering large-scale infrastructure projects, ideally involving Oracle ERP.</li>
-	<li>Technical expertise:</li>
-	<ul>
-		<li>Deep understanding of datacenter design, construction, and operations needs of Cloudflare.</li>
-		<li>Experience with Oracle ERP applications</li>
-		<li>Familiarity with networking, storage, and server hardware.</li>
-	</ul>
+	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
+	<li>Professional level network certification(s) (JNCIP , CCNP , etc) or higher</li>
+	<li>Linux system administration</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.<em>&nbsp;</em></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -67,7 +56,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
