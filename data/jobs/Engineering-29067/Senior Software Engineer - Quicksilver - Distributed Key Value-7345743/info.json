@@ -27,8 +27,12 @@
 			"value": [
 				"Amsterdam, Netherlands",
 				"Austin, US",
+				"Germany",
 				"Lisbon, Portugal",
-				"London, UK"
+				"London, UK",
+				"New York, US",
+				"Toronto, Canada",
+				"US"
 			],
 			"value_type": "multi_select"
 		},
@@ -42,7 +46,7 @@
 		}
 	],
 	"id": 7345743,
-	"updated_at": "2025-11-07T09:41:56-05:00",
+	"updated_at": "2025-11-26T13:28:21-05:00",
 	"requisition_id": null,
 	"title": "Senior Software Engineer - Quicksilver - Distributed Key Value",
 	"company_name": "Cloudflare",
@@ -72,11 +76,32 @@
 			"parent_id": 74843
 		},
 		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 48350,
+			"name": "Munich, Germany",
+			"location": "München, Bayern, Germany",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
 			"child_ids": [],
 			"parent_id": 74843
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
 		},
 		{
 			"id": 77970,
