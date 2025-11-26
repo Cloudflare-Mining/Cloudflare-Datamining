@@ -37,10 +37,22 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Cybersecurity risk management",
+					"metaDescription": " ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2024-05-07T02:55:10.455Z",
-					"updatedAt": "2025-11-26T08:43:31.259Z"
+					"updatedAt": "2025-11-26T09:02:49.241Z"
 				},
 				"contentfulId": "4aAAwpqqzfZDu4MbERK3EP",
 				"contentTypeId": "page",
@@ -161,7 +173,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "6dd09988-baf7-539d-8180-34899782d9a7",
+							"altText": "Illustration of a risk posture problem",
+							"title": "Attack surfaces are growing",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/stAYgx8AVu067pze8EPdm/03c7550837a2f07de6c9affb9a0ee700/Risk_Posture_Problem.png"
+								},
+								"description": "Illustration of a risk posture problem"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "PROBLEM",
@@ -184,6 +210,42 @@
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7drpVC6DQftcFUjuylkDUp",
+								"title": "Growing attack surface",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Vulnerabilities multiply as businesses embrace hybrid work, build new digital apps and experiences, and pursue digital transformation.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "fff20bd5-578a-53e4-ace0-dbcd9836b7b3",
+									"altText": "Attention blue",
+									"title": "Attention blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5nRZeUMwzYafbEY28jf1Lc/86d60be9b7f76e45d0c03636c7899176/attention.svg"
+										},
+										"description": "Alert icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4xX3RCaXUgnHkMWDc6d22M",
@@ -300,7 +362,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "fe2b17ae-bef2-564b-8ef2-fb32aee0c1ee",
+							"altText": "Diagram Cloudflare for Unified Risk Posture",
+							"title": "Diagram Cloudflare for Unified Risk Posture",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5U8P8pt8zGtKmxX55Bk0JO/2ff2107f156521c464c0144ef7b238f6/Risk_Posture_Solution_C__1_.png"
+								},
+								"description": "Risk posture solution diagram"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "SOLUTION",
@@ -348,6 +424,42 @@
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7KnnAFqeVZWjLjBkpKgUPP/72a0651706cf55851db3d7a8aeed13b4/search__1_.svg"
 										},
 										"description": "Icon of a magnifying glass"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2n0IGPPITolvnAyg2Bk9Ii",
+								"title": "Exchange risk data with partners",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Ingest risk scores from EPP and IDP vendors. Share telemetry with SIEM and XDR platforms.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "418c254e-48a6-5cdc-93f2-bd26f2346337",
+									"altText": "Zero trust risk scoring icon",
+									"title": "Zero trust risk scoring icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/vvAAIipXArJjc16UV2PZ4/e04ce1b49a190f34ca1db25553de1040/arrow-twoway.svg"
+										},
+										"description": "arrow-twoway"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -493,6 +605,10 @@
 						"networkLocationImageAssetFile": null,
 						"networkLocationText": null,
 						"statsFeatures": [
+							{
+								"title": "75%",
+								"description": "improvement in response times to security and performance incidents\n"
+							},
 							{
 								"title": "48%",
 								"description": "reduction in total cost of ownership (TCO) of security and IT investments"
@@ -886,7 +1002,20 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2IJ99R4aSF9gMOQw863Jxt",
+							"elementName": "Request a consultation",
+							"standardText": null,
+							"text": "Request a consultation",
+							"url": "/plans/enterprise/contact/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
 						"buttonTwo": {
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
@@ -1125,6 +1254,278 @@
 						"htmlId": null
 					},
 					{
+						"contentfulId": "6UJlTzSt81NocinQajE9Jd",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Security case studies",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3MKmco9pZLe4By1rkUrsk",
+								"title": "Carrefour",
+								"makeTitleLink": false,
+								"titleUrl": "Carrefour",
+								"titleSize": "medium",
+								"description": "Cloudflare's unified security platform slashes Carrefour's incident resolution time by 75%, saving time and money while enhancing the customer experience.",
+								"learnMoreUrl": "case-studies/carrefour",
+								"learnMoreText": "Read case study",
+								"displayBorder": true,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4b86495a-f231-56ea-a3b6-05de9250f22b",
+									"altText": "Cloudflare - Carrefour case study",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25MoMFEOo8nNv4YMdvVB6h/dcf50a84c0dedc4f0be46ef8ede5d348/logo_carrefour_dark.svg"
+										},
+										"description": "Carrefour logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3djCWJsyf4M3LaMabZYNbx",
+								"title": "Japan Airlines",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Cloudflare helps Japan Airlines block ~22K malicious emails over one six-month period and streamlines security efficiency.",
+								"learnMoreUrl": "/case-studies/japan-airlines/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "45ffe1d2-f927-5251-a196-8bb5c8a10fc7",
+									"altText": "Japan Airlines",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ePIlYK55rI35Y6aTs0wBN/17846291460fb637286b4a5300b86ac9/japan_airlines_logo.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3QN4lMt3Emyey55Rng3U5a",
+								"title": "LendingTree",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Leveraging Cloudflare solutions for DDoS, Bot Management, and Rate Limiting, LendingTree was able to save $250,000 over five months by stopping API endpoint abuse.",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/lendingtree/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "57132979-04a7-5e58-9ac2-085ea5315886",
+									"altText": "Logo lending tree",
+									"title": "Logo lending tree",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/UYtRs2BhTgknmiXF8HzF3/2be30b3d45367845101614b0b427ba58/logo_lending-tree.svg"
+										},
+										"description": "SVG Lendingtree icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6Ilo8y1lCZNV62I2qv6miE",
+								"title": "The State of Arizona",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Cloudflare protects offices for 100+ U.S. civilian agencies with DNS filtering.",
+								"learnMoreUrl": "/case-studies/state-of-arizona/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "0aad4610-8bcc-5368-9949-8ed4d133fb72",
+									"altText": null,
+									"title": "State of Arizona logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3lgctK6jAlgyFqslTgugKl/3dfeb44e7b28728d6d518cdb59adc29b/Cybersecurity-state-of-arizona-logo.svg"
+										},
+										"description": "Cybersecurity state of arizona logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "46Ro4ZFHocL2EwAGUrhQpG",
+								"title": "GPC",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Cloudflare protects 900+ GPC websites, giving them complete visibility into threats across their entire digital footprint.",
+								"learnMoreUrl": "/case-studies/genuine-parts-company/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "1c88f75f-fcb9-5483-b3f4-d30596b48753",
+									"altText": "GPC logo",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6mkkQsoM0pOXcVPHkjfOET/2af3643b0494c3de3aa79aa3657ae985/gpc_logo.png"
+										},
+										"description": "GPC logo"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3ZtGBlTao1RzJbTVkRjKpQ",
+								"title": "Bouvet",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Cloudflare helps Bouvet modernize threat defense across employees and infrastructure.",
+								"learnMoreUrl": "/case-studies/bouvet/",
+								"learnMoreText": "Read case study",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "29bec303-f94e-50dc-aabf-182cd91dda1c",
+									"altText": "Bouvet",
+									"title": "Bouvet",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ZZQb3eTBt180P9prmA8Fj/cc51d63f48f03be755f2a66054c3bae3/bouvet_logo.png"
+										},
+										"description": "Bouvet"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentfulId": "7EM6xV6vCvmHJPV8Eftifj",
+						"contentTypeId": "bladeLeadGeneration",
+						"title": "See more case studies",
+						"description": "See more case studies",
+						"variant": "inline",
+						"htmlId": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundImage": {
+							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+							"altText": "Cloudflare Orange Background",
+							"title": "Cloudflare Orange Background",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/b05450aa05d6c40af93bf04309e1723c/Lead-generation-background-generic.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "gPmCNmYBcdE99hsO5JFNG",
+							"elementName": "Risk Posture - case studies CTA",
+							"standardText": null,
+							"text": "Case studies",
+							"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"secondaryCtaButton": null
+					},
+					{
 						"contentTypeId": "bladeCardMosaic",
 						"contentfulId": "3Uo2LzWhI1usXkUGCbCd4Q",
 						"entryTitle": "Unified risk posture - RESOURCES",
@@ -1248,7 +1649,21 @@
 									"openInNewTab": true,
 									"locale": "en-US"
 								},
-								"image": null
+								"image": {
+									"id": "d6f7292a-dfbe-5219-9f5f-3e9140c67dab",
+									"altText": "Risk posture evaluate",
+									"title": "Risk posture evaluate",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/722oBG51tVX9R7wfFlRYSH/a1155e6bf84ae6c9c3f562fa35ee3180/Risk-posture-evaluate.svg"
+										},
+										"description": "Risk posture evaluate"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
 							},
 							{
 								"contentTypeId": "elementResourceCard",

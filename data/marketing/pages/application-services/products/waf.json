@@ -117,7 +117,21 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "1c7b0e89-6c46-56b0-9f71-d245adfb774b",
+							"altText": "Cloudflare WAF",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UBO0aTW0zSLZi9GggrF9Y/041a1ea2965fc20a6d6f11dbfafce175/Group_48096479.png"
+								},
+								"description": "Cloudflare WAF"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentfulId": "wdc00eWMOMztKOfdlApwt",
@@ -275,6 +289,59 @@
 						],
 						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
+					},
+					{
+						"contentfulId": "7GXxSDGRDxCKmfNUsL5nsw",
+						"title": null,
+						"copy": "The Cloudflare WAF runs on the Cloudflare global network and sits in front of web applications to stop a wide range of real-time attacks using powerful rulesets, advanced rate limiting, exposed credential checks, uploaded content scanning, and other security measures.\n\nThe WAF integrates with our analyst-recognized, industry-leading application security portfolio for comprehensive protection.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "b5c9ad6c-aacf-519f-aa13-a4a5eb8d0832",
+							"altText": "WAF Content Scanning GA",
+							"title": "WAF Content Scanning GA",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xbcCS2VcxXolo5vLmF94d/29bdfd4074b989aac65406cc00dfd1a4/WAF_Content_Scanning.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "HOW IT WORKS",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
+						"togglesTo": []
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
@@ -593,6 +660,42 @@
 						"textLayout": "left",
 						"columnsLayout": "Three Columns",
 						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2tiFdbL29LlhPmm2vGvl2v",
+								"title": "Block common attacks like SQL injection and cross-site scripting",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare uses core [OWASP Top 10](https://www.cloudflare.com/learning/security/threats/owasp-top-10/) rules to block the most widespread layer 7 attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
+									"altText": "Traffic attack blue",
+									"title": "Traffic attack blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
+										},
+										"description": "Prevent financial and identity theft icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "BK1pkPWFBPaUDmgG98PNM",
