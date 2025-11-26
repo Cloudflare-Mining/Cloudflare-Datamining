@@ -5,32 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Lisbon, Mexico City</strong></p>
-<h4><strong>About the department</strong></h4>
-<p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves ~20% of the internet. We run growth marketing and product experimentation across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
-<h4><strong>Who you are</strong></h4>
-<p>Our Product Analytics team is responsible for generating data-driven insights to help make key decisions to improve our products and help our customers. You are excited to do this at tremendous scale across our product suite. You excel at immersing yourself in a lot of data and synthesizing that data into actionable insights. You love to move uncomfortably fast and thrive in ambiguity.&nbsp;</p>
-<p><strong>Responsibilities</strong></p>
-<ul>
-	<li>Help to build an insights engine.</li>
-	<li>Become an expert in our data and systems. You should be able to get the underlying data for all of our customers &amp; products.</li>
-	<li>Generate insights and recommendations for how we should drive growth across any of our products.</li>
-	<li>Understand key company and product team objectives. Use this understanding to prioritize the many programs being run by the teams we support.</li>
-	<li>In some cases you will be responsible for the execution of key programs. You will need to build strong relationships with our product and engineering leaders and drive those programs to completion.</li>
+<h3><strong>Position Location: Austin, TX&nbsp;</strong></h3>
+<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p class="diff-block-context">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p class="diff-block-context">The Workers Builds &amp; Automation team aims to provide the best in class experience for Workers users to move fast and quickly bring ideas to life.</p>
+<h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-Whatyouwilldo" class="diff-block-target"><strong><span id="changed-diff-5" class="diff-html-changed">What you will do</span></strong></h3>
+<p class="diff-block-context">As a member of the Workers team, you will collaborate with Engineers, Designers, and Product Managers to design, build and support large scale, customer facing systems that push the boundaries of what is possible at Cloudflare's edge computing platform. You will drive projects from idea to release, delivering solutions at all layers of the software stack to empower the Cloudflare customers. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript/JavaScript, Go, SQL and the Cloudflare Developer Platform.</p>
+<h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-RequisiteSkills" class="diff-block-target diff-block-context"><strong><span id="changed-diff-6" class="diff-html-changed">Requisite Skills</span></strong></h3>
+<ul class="diff-block-target diff-block-context">
+	<li><span id="removed-diff-0" class="diff-html-removed">2-5 years professional software engineering experience</span></li>
+	<li><span class="diff-html-removed">Experience using </span><span id="added-diff-0" class="diff-html-added">Cloudflare Workers or Pages</span></li>
+	<li>Must have strong experience with Javascript and Typescript</li>
+	<li>Experience working in frontend frameworks such as React</li>
+	<li>Experience with SQL and common relational database systems such as PostgreSQL</li>
+	<li>Experience with Kubernetes or similar deployment tools</li>
+	<li>Product mindset and comfortable talking to customers and partners</li>
+	<li>Experience delivering projects end-to-end – gathering requirements, writing technical specifications, implementing, testing, and releasing</li>
+	<li>Comfortable managing multiple projects simultaneously</li>
+	<li>Able to participate in on an on-call shift</li>
 </ul>
-<p><strong>Who you are</strong></p>
-<ul>
-	<li>Minimum of 10+ years of analytics, operations, and/or data science experience, ideally in PLG or B2C companies.</li>
-	<li>Strong analytical skills, especially with Excel and ideally including proficiency in SQL and Tableau</li>
-	<li>Willingness to roll up your sleeves, write queries, and work with large quantities of data.</li>
-	<li>Experience with and point of view on best practices for a PLG technology stack</li>
-	<li>Experience driving long term cross-functional projects and thriving as the “glue person”. This means you are exceptional at understanding complex problems and designing solutions.</li>
-	<li>Just as importantly, you are able to mobilize a cross-functional team to execute the solution.</li>
-	<li>You are highly motivated to make Cloudflare and your team successful.</li>
-	<li>Demonstrative executive presence and ability to influence at all levels of the organization.</li>
-	<li>Excellent verbal and written communication skills.</li>
-	<li>Customer facing experience is a plus!</li>
+<h3 id="Jobdescription:SoftwareEngineerWorkersOnboarding&amp;Integrations-BonusPoints" class="diff-block-target diff-block-context"><strong><span id="changed-diff-7" class="diff-html-changed">Bonus Points</span></strong></h3>
+<ul class="diff-block-target diff-block-context">
+	<li><span class="diff-html-added">Experience with Go</span></li>
+	<li>Experience with metrics and observability tools such as Prometheus, Grafana</li>
+	<li>Experience scaling systems to meet increasing performance and usability demands</li>
+	<li>Knowledge of OAuth and building integrations with third-parties</li>
 </ul>
+<p class="diff-block-context">&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
