@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-03-21T09:57:44.526Z",
-					"updatedAt": "2025-10-22T23:25:13.275Z"
+					"updatedAt": "2025-11-26T16:13:23.422Z"
 				},
 				"contentfulId": "5k2JLbkNM7k7rW0IFmBgkf",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -1064,7 +1076,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare Email Security's advanced machine learning and Artificial Intelligence technology uncovers new tactics used by malicious actors to bypass legacy solutions in real time. See more recent trends and recommendations for preventing successful phishing attacks in the ",
+													"value": "Cloudflare Email Security's advanced machine learning and Artificial Intelligence technology uncovers new tactics used by malicious actors to bypass legacy solutions in real time. See more recent trends and recommendations for preventing successful phishing attacks in the",
 													"marks": [],
 													"content": null
 												},
@@ -1083,7 +1095,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "2023 Phishing Threats Report",
+															"value": " Phishing Threats Report",
 															"marks": [],
 															"content": null
 														}
@@ -1178,16 +1190,6 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\n",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
 													"value": "This article is part of a ",
 													"marks": [
 														{
@@ -1257,6 +1259,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-2",
 											"data": {
 												"target": null,
@@ -1312,7 +1335,11 @@
 																"uri": null
 															},
 															"value": "Unified risk posture: A CISO's guide to reducing risk and complexity",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1347,7 +1374,7 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "6H2CPLo6ASMFfTbkbi69x6",
-															"elementName": "theNET - Impersonation is fooling the enterprise - Dive Deeper button",
+															"elementName": "theNET - Impersonation is fooling the enterprise - Dive Deeper - Button",
 															"standardText": null,
 															"text": "Get the guide!",
 															"url": "https://www.cloudflare.com/unified-risk-posture-executive-guide/",

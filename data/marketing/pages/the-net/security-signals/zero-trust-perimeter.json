@@ -38,8 +38,8 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "theNET | Replace perimeter security with Zero Trust",
-					"metaDescription": "Traditional perimeter-based security is no longer sufficient for enterprises. Learn why Zero Trust is the best alternative for replacing legacy solutions.",
+					"metaTitle": "theNET | Replace perimeter security with zero trust",
+					"metaDescription": "Traditional perimeter-based security is no longer sufficient for enterprises. Learn why zero trust is the best alternative for replacing legacy solutions.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-06-18T20:48:15.298Z",
-					"updatedAt": "2025-10-22T23:25:12.975Z"
+					"updatedAt": "2025-11-26T16:14:53.403Z"
 				},
 				"contentfulId": "306VOdjlGQwPmsvWiaWlP",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -528,7 +540,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Moving beyond traditional security with Zero Trust",
+													"value": "Moving beyond traditional security with zero trust",
 													"marks": [],
 													"content": null
 												}
@@ -580,7 +592,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", and a client's office all in one week. \n\nMost technology leaders recognize that Zero Trust security offers the best alternative to that legacy approach of protecting an enterprise. The identity-centric, continuous verification of ",
+													"value": ", and a client's office all in one week. \n\nMost technology leaders recognize that zero trust security offers the best alternative to that legacy approach of protecting an enterprise. The identity-centric, continuous verification of ",
 													"marks": [],
 													"content": null
 												},
@@ -599,7 +611,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust security",
+															"value": "zero trust security",
 															"marks": [],
 															"content": null
 														}
@@ -611,7 +623,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " enables organizations to protect resources no matter where users are located and what devices they are using. By transitioning to a Zero Trust model, organizations can address the essential limitations of perimeter security. \n\nStill, many companies are not there yet. In fact, many are not very far along in their Zero Trust journey. On a scale of one to ten? \"I would say four,\" said Menny Barzilay, CEO and co-founder of the cybersecurity platform Milestone, and a partner at Cytactic. Personally, I'd say a six at best. \n\nI recently spoke about the perimeter security problem with Menny Barzilay and Khalid Kark, Cloudflare's field CIO for the Americas. We touched on the vulnerabilities of legacy perimeter-based security highlighted in the ",
+													"value": " enables organizations to protect resources no matter where users are located and what devices they are using. By transitioning to a zero trust model, organizations can address the essential limitations of perimeter security. \n\nStill, many companies are not there yet. In fact, many are not very far along in their zero trust journey. On a scale of one to ten? \"I would say four,\" said Menny Barzilay, CEO and co-founder of the cybersecurity platform Milestone, and a partner at Cytactic. Personally, I'd say a six at best.\n\nI recently spoke about the perimeter security problem with Menny Barzilay and Khalid Kark, Cloudflare's field CIO for the Americas. We touched on the vulnerabilities of legacy perimeter-based security highlighted in the ",
 													"marks": [],
 													"content": null
 												},
@@ -630,7 +642,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "2025 Cloudflare Signals Report",
+															"value": "Cloudflare Signals Report",
 															"marks": [],
 															"content": null
 														}
@@ -642,7 +654,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", and we discussed how transitioning to a Zero Trust model can help address those issues. \n\nWe all agreed: Moving forward on a Zero Trust journey is critical for protecting organizations in today's threat environment. But doing so requires more than just buying a single solution. ",
+													"value": ", and we discussed how transitioning to a zero trust model can help address those issues.\n\nWe all agreed: Moving forward on a zero trust journey is critical for protecting organizations in today's threat environment. But doing so requires more than just buying a single solution.",
 													"marks": [],
 													"content": null
 												}
@@ -842,7 +854,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust security model",
+															"value": "zero trust security model",
 															"marks": [],
 															"content": null
 														}
@@ -854,7 +866,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". The central principle of that model is: never trust, always verify. Instead of trusting everyone who makes it across the \"moat\" surrounding your castle (and giving them access to all resources), Zero Trust assumes there are risks inside and outside your network. Zero Trust tools verify the user, context, and device before granting access to specific data and applications.",
+													"value": ". The central principle of that model is: never trust, always verify. Instead of trusting everyone who makes it across the \"moat\" surrounding your castle (and giving them access to all resources), zero trust assumes there are risks inside and outside your network. zero trust tools verify the user, context, and device before granting access to specific data and applications.",
 													"marks": [],
 													"content": null
 												}
@@ -875,7 +887,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As Khalid Kark pointed out in our recent discussion, Zero Trust is not a single, specific solution: \"This is actually a mindset.\" Menny Barzilay agrees: \"It's about understanding and acknowledging that you cannot 'trust by design' anything. You have to verify everything.\"",
+													"value": "As Khalid Kark pointed out in our recent discussion, zero trust is not a single, specific solution: \"This is actually a mindset.\" Menny Barzilay agrees: \"It's about understanding and acknowledging that you cannot 'trust by design' anything. You have to verify everything.\"",
 													"marks": [],
 													"content": null
 												}
@@ -896,7 +908,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "I also think of Zero Trust as a journey — and it almost doesn't matter where you start. But most organizations start by identifying their most problematic scenarios. ",
+													"value": "I also think of zero trust as a journey — and it almost doesn't matter where you start. But most organizations start by identifying their most problematic scenarios. ",
 													"marks": [],
 													"content": null
 												}
@@ -1025,7 +1037,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Find a key use case for Zero Trust",
+													"value": "Find a key use case for zero trust",
 													"marks": [
 														{
 															"type": "bold"
@@ -1050,7 +1062,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "A Zero Trust security model can help you address some of the most pressing threats created through the explosion of hybrid work and cloud-based resources. For example, you can replace outdated remote access solutions, control shadow IT, and simplify security for users. \n\n",
+													"value": "A zero trust security model can help you address some of the most pressing threats created through the explosion of hybrid work and cloud-based resources. For example, you can replace outdated remote access solutions, control shadow IT, and simplify security for users. \n\n",
 													"marks": [],
 													"content": null
 												},
@@ -1074,7 +1086,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\nAttackers know that if they can steal VPN credentials from a single user, they can gain broad access to an enterprise's network. Transitioning to identity-centric Zero Trust security can help solve this serious problem. With Zero Trust, you can enforce continuous verification of users and implement contextual authentication across cloud workloads and software-as-a-service (SaaS) apps. If attackers still manage to gain remote access to your network, ",
+													"value": "\nAttackers know that if they can steal VPN credentials from a single user, they can gain broad access to an enterprise's network. Transitioning to identity-centric zero trust security can help solve this serious problem. With zero trust, you can enforce continuous verification of users and implement contextual authentication across cloud workloads and software-as-a-service (SaaS) apps. If attackers still manage to gain remote access to your network, ",
 													"marks": [],
 													"content": null
 												},
@@ -1176,7 +1188,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Replacing a VPN with Zero Trust security",
+															"value": "Replacing a VPN with zero trust security",
 															"marks": [],
 															"content": null
 														}
@@ -1188,7 +1200,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " has added benefits: Users will enjoy a more seamless, lower-latency experience as they connect to resources. You can also scale the use of Zero Trust access more rapidly and cost-effectively than scaling a VPN solution. And your IT team can reduce the administrative complexity of managing remote and hybrid access.",
+													"value": " has added benefits: Users will enjoy a more seamless, lower-latency experience as they connect to resources. You can also scale the use of zero trust access more rapidly and cost-effectively than scaling a VPN solution. And your IT team can reduce the administrative complexity of managing remote and hybrid access.",
 													"marks": [],
 													"content": null
 												}
@@ -1306,7 +1318,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", AI-powered discovery tools, and automated policy enforcement as part of Zero Trust security can help you ",
+													"value": ", AI-powered discovery tools, and automated policy enforcement as part of zero trust security can help you ",
 													"marks": [],
 													"content": null
 												},
@@ -1667,7 +1679,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Implementing Zero Trust access controls",
+															"value": "Implementing zero trust access controls",
 															"marks": [],
 															"content": null
 														}
@@ -1731,7 +1743,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Identify your point of departure for the Zero Trust journey",
+													"value": "Identify your point of departure for the zero trust journey",
 													"marks": [
 														{
 															"type": "bold"
@@ -1756,7 +1768,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Once you've identified the right use case, you should inventory and audit your applications. The goal is to determine who already has access to each application — and who shouldn't have access. Many Zero Trust journeys fail because organizations miss these audits.   ",
+													"value": "Once you've identified the right use case, you should inventory and audit your applications. The goal is to determine who already has access to each application — and who shouldn't have access. Many zero trust journeys fail because organizations miss these audits.   ",
 													"marks": [],
 													"content": null
 												}
@@ -1777,7 +1789,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "At this point, you can choose a Zero Trust security solution. It's true, Zero Trust is more of a model or philosophy than a single solution. But selecting the right Zero Trust solution enables you to enforce the Zero Trust principles and policies you establish.\n\nWhile Zero Trust solutions are important, too many organizations start with buying the solution — and then their journey comes to a halt. Doing all of the preparation first — including picking a use case and conducting audits — can help make sure you are investing your time and energy in ways that will deliver the results you expect.",
+													"value": "At this point, you can choose a zero trust security solution. It's true, zero trust is more of a model or philosophy than a single solution. But selecting the right zero trust solution enables you to enforce the zero trust principles and policies you establish.\n\nWhile zero trust solutions are important, too many organizations start with buying the solution — and then their journey comes to a halt. Doing all of the preparation first — including picking a use case and conducting audits — can help make sure you are investing your time and energy in ways that will deliver the results you expect.",
 													"marks": [],
 													"content": null
 												}
@@ -1798,7 +1810,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The journey will be easier for some organizations than others. As Menny Barzilay noted, startups can implement Zero Trust security from day one and avoid the potential hurdles of replacing legacy solutions. But for other organizations, targeting a specific use case — such as securing remote access — will help you earn a relatively fast win that can propel your organization forward.\n\nUnfortunately, most companies are not yet very far along in their ",
+													"value": "The journey will be easier for some organizations than others. As Menny Barzilay noted, startups can implement zero trust security from day one and avoid the potential hurdles of replacing legacy solutions. But for other organizations, targeting a specific use case — such as securing remote access — will help you earn a relatively fast win that can propel your organization forward.\n\nUnfortunately, most companies are not yet very far along in their ",
 													"marks": [],
 													"content": null
 												},
@@ -1817,7 +1829,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust journey",
+															"value": "zero trust journey",
 															"marks": [],
 															"content": null
 														}
@@ -1881,7 +1893,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Nevertheless, Khalid Kark, Menny Barzilay, and I all agree that pushing forward with the Zero Trust journey is critical. Zero Trust helps address the shortcomings of perimeter-based solutions. And at the same time, it can help significantly reduce the complexity and costs of security. Instead of managing multiple tools, you can take a ",
+													"value": "Nevertheless, Khalid Kark, Menny Barzilay, and I all agree that pushing forward with the zero trust journey is critical. Zero trust helps address the shortcomings of perimeter-based solutions. And at the same time, it can help significantly reduce the complexity and costs of security. Instead of managing multiple tools, you can take a ",
 													"marks": [],
 													"content": null
 												},
@@ -1964,7 +1976,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Making the move to Zero Trust",
+													"value": "Making the move to zero trust",
 													"marks": [
 														{
 															"type": "bold"
@@ -2020,7 +2032,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " is a platform of cloud-native services that can streamline the transition from traditional perimeter-based security to a Zero Trust security model. With Cloudflare ",
+													"value": " is a platform of cloud-native services that can streamline the transition from traditional perimeter-based security to a zero trust security model. With Cloudflare ",
 													"marks": [],
 													"content": null
 												},
@@ -2113,7 +2125,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". Together these services enable you to progress on your Zero Trust journey and leave legacy perimeter security models behind.\n\n",
+													"value": ". Together these services enable you to progress on your zero trust journey and leave legacy perimeter security models behind.\n\n",
 													"marks": [],
 													"content": null
 												},
@@ -2252,7 +2264,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about how Zero Trust security can help you build a more resilient organization and discover additional critical security trends in the ",
+													"value": "Learn more about how zero trust security can help you build a more resilient organization and discover additional critical security trends in the ",
 													"marks": [],
 													"content": null
 												},
@@ -2344,7 +2356,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "4sBxBV7hyPgGz1VTuwbymB",
-																	"elementName": "theNET - Solving the perimeter problem - Dive Deeper button",
+																	"elementName": "theNET - Solving the perimeter problem - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the report!",
 																	"url": "https://www.cloudflare.com/lp/signals-report-2025/",
@@ -2574,7 +2586,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Zero Trust is the modern security imperative",
+																	"value": "zero trust is the modern security imperative",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -2624,7 +2636,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " your Zero Trust journey",
+																	"value": " your zero trust journey",
 																	"marks": [],
 																	"content": null
 																}
@@ -2738,7 +2750,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "2025 Cloudflare Signals Report: Resilience at Scale",
+																			"value": "Cloudflare Signals Report: Resilience at Scale",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2864,7 +2876,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "The rise of Zero Trust Network Access",
+																			"value": "The rise of zero trust network access",
 																			"marks": [],
 																			"content": null
 																		}

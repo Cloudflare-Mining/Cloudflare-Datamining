@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-02-22T14:59:30.525Z",
-					"updatedAt": "2025-11-21T06:07:16.880Z"
+					"updatedAt": "2025-11-26T16:38:28.405Z"
 				},
 				"contentfulId": "8fW7rnq0NPvNmwqSZ0njy",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "24o5tCgFBQnUcPBmqnylmj",
-					"headerText": "Leadership Perspectives: Tackling Digital Modernization",
-					"subHeadingText": "Learn how tech leaders are integrating AI into apps, securing complex networks, and more.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "3Fi3OccICJxA9kqPWnm9xz",
-						"elementName": "theNET - Tackling digital modernization: Leadership perspectives - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the quarterly magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/digital-modernization/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -1835,7 +1847,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "4. Improve your overall security posture with Zero Trust best practices  to mitigate  risks and damage.",
+													"value": "4. Improve your overall security posture with zero trust best practices  to mitigate  risks and damage.",
 													"marks": [
 														{
 															"type": "bold"
@@ -1879,7 +1891,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -1891,7 +1903,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " — can help reduce an organization's attack surface and mitigate risks of unpatched OSS vulnerabilities. In a Zero Trust architecture, no entity is inherently trusted by default and every request to every resource is verified based on identity and other contextual signals. This means that even if an attacker compromises a device or piece of infrastructure, it is very difficult for the attacker to move laterally or escalate privileges within an IT environment. Moreover, by extending the 'no trust by default' approach to web activity, organizations can isolate Internet browsing and insulate devices from potentially risky online code.\n",
+													"value": " — can help reduce an organization's attack surface and mitigate risks of unpatched OSS vulnerabilities. In a zero trust architecture, no entity is inherently trusted by default and every request to every resource is verified based on identity and other contextual signals. This means that even if an attacker compromises a device or piece of infrastructure, it is very difficult for the attacker to move laterally or escalate privileges within an IT environment. Moreover, by extending the 'no trust by default' approach to web activity, organizations can isolate Internet browsing and insulate devices from potentially risky online code.\n",
 													"marks": [],
 													"content": null
 												}
@@ -2385,7 +2397,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Ebook to learn how Cloudflare helps organizations protect their data against software vulnerabilities and exploits.\n",
+													"value": " ebook to learn how Cloudflare helps organizations protect their data against software vulnerabilities and exploits.\n",
 													"marks": [],
 													"content": null
 												}
@@ -2409,9 +2421,9 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "4VefamLu6pQqqUGendcoJr",
-															"elementName": "theNET - Are OSS attacks avoidable? -  Dive deeper - CTA",
+															"elementName": "theNET - Are OSS attacks avoidable? -  Dive Deeper - Button",
 															"standardText": null,
-															"text": "Get the Ebook!",
+															"text": "Get the ebook!",
 															"url": "https://www.cloudflare.com/lp/cloudflare-strengthens-security/",
 															"loggedInUrl": null,
 															"buttonModal": null,
@@ -2868,7 +2880,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "A step-by-step roadmap to Zero Trust architecture",
+																			"value": "A step-by-step roadmap to zero trust architecture",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2931,7 +2943,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Infographic: How modern coding, AI and cloud impact your data protection strategy",
+																			"value": "How modern coding, AI and cloud impact your data protection strategy",
 																			"marks": [],
 																			"content": null
 																		}

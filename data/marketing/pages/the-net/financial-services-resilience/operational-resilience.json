@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - How to avoid outages in financial services - Page ",
+				"pageName": "theNET - How to avoid outages in financial services - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-08-21T20:53:03.879Z",
-					"updatedAt": "2025-10-28T03:00:00.454Z"
+					"updatedAt": "2025-11-26T16:00:53.839Z"
 				},
 				"contentfulId": "ajIHtziFnMjl2UjQzbFt7",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -1807,7 +1819,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "2025 Cloudflare Signals Report: Resilience at Scale",
+															"value": "Cloudflare Signals Report: Resilience at Scale",
 															"marks": [
 																{
 																	"type": "italic"
@@ -1847,7 +1859,7 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "1N2AcAPiZ1YEvQCkqeafES",
-															"elementName": "theNET - Three paths to operational resilience for financial services - Dive Deeper",
+															"elementName": "theNET - How to avoid outages in financial services - Dive Deeper - Button",
 															"standardText": null,
 															"text": "Get the report!",
 															"url": "https://www.cloudflare.com/lp/signals-report-2025/",
@@ -1939,27 +1951,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Trey Guinn — ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "@treyguinn",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "\nField CTO, Cloudflare",
+													"value": "Trey Guinn — @treyguinn\nField CTO, Cloudflare",
 													"marks": [],
 													"content": null
 												}
@@ -2280,7 +2272,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "2025 Cloudflare Signals Report: Resilience at Scale",
+																			"value": "Cloudflare Signals Report: Resilience at Scale",
 																			"marks": [],
 																			"content": null
 																		}
