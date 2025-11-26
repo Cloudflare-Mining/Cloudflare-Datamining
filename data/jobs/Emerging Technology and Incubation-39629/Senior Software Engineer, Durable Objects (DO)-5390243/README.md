@@ -12,28 +12,28 @@
 <p>In this role, you will build <strong>Durable Objects</strong>, the <strong>Cloudflare Developer Platform's product for building stateful serverless applications</strong>. As a member of this top-notch systems engineering team, you will <strong>design and develop the low-level routing</strong> and <strong>storage systems</strong> that power Cloudflare’s customers' ability to build and scale. Your job is to drive the continual evolution of the system which improves reliability, performance, and provides new features. For a recent summary of these changes take a look at <a href="https://blog.cloudflare.com/sqlite-in-durable-objects/">this</a>.</p>
 <h3><strong>As a key engineer on this team, you will:</strong></h3>
 <ul>
-	<li><strong>Build the Durable Objects runtime</strong> which enables Cloudflare customers to build real-time chat applications, multiplayer games, and AI agents.&nbsp;</li>
-	<li><strong>Improve reliability, scalability, and performance</strong> by developing new system capabilities.</li>
-	<li><strong>Own your code end-to-end</strong> from design to production.</li>
-	<li><strong>Solve complex technical challenges</strong> with production distributed systems.</li>
-	<li>Develop software in <strong>JavaScript, TypeScript, Rust, and C++.</strong></li>
+	<li>Build the Durable Objects runtime which enables Cloudflare customers to build real-time chat applications, multiplayer games, and AI agents.&nbsp;</li>
+	<li>Improve reliability, scalability, and performance by developing new system capabilities.</li>
+	<li>Own your code end-to-end from design to production.</li>
+	<li>Solve complex technical challenges with production distributed systems.</li>
+	<li>Develop software in JavaScript, TypeScript, Rust, and C++.</li>
 </ul>
 <h3><strong>What We’re Looking For</strong></h3>
 <ul>
-	<li><strong>5+ years of experience</strong> writing systems software.</li>
-	<li><strong>Operational mindset</strong> – we don’t just write code, we <strong>own it in production</strong>.</li>
-	<li>Strong foundation in <strong>data structures, algorithms, and system design</strong>.</li>
-	<li><strong>Deep expertise</strong> in at least one <strong>systems programming language</strong> (e.g., C/C++ or Rust).</li>
-	<li>Experience <strong>designing and architecting large-scale distributed systems</strong>.</li>
-	<li>Familiarity with <strong>cloud platforms, particularly serverless architectures</strong>.</li>
-	<li>Experience as a <strong>technical leader or team lead</strong>, driving engineering decisions.</li>
+	<li>5+ years of experience writing systems software.</li>
+	<li>Operational mindset – we don’t just write code, we own it in production.</li>
+	<li>Strong foundation in data structures, algorithms, and system design.</li>
+	<li>Deep expertise in at least one systems programming language (e.g., C/C++ or Rust).</li>
+	<li>Experience designing and architecting large-scale distributed systems.</li>
+	<li>Familiarity with cloud platforms, particularly serverless architectures.</li>
+	<li>Experience as a technical leader or team lead, driving engineering decisions.</li>
 </ul>
 <h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Experience working on <strong>database internals</strong> (specifically SQLite).</li>
-	<li>Deep understanding of <strong>web technologies</strong> (browsers, HTTP, JavaScript, WebAssembly).</li>
-	<li>Background in <strong>low-latency, real-time environments</strong> (e.g., game streaming, high-frequency trading, payment systems).</li>
-	<li>Experience debugging, optimizing, and identifying failure modes in <strong>large-scale Linux-based distributed systems</strong>.</li>
+	<li>Experience working on database internals (specifically SQLite).</li>
+	<li>Deep understanding of web technologies (browsers, HTTP, JavaScript, WebAssembly).</li>
+	<li>Background in low-latency, real-time environments (e.g., game streaming, high-frequency trading, payment systems).</li>
+	<li>Experience debugging, optimizing, and identifying failure modes in large-scale Linux-based distributed systems.</li>
 </ul>
 <p>This is a <strong>high-impact role</strong> for engineers who thrive in <strong>fast-paced, distributed environments</strong> and want to <strong>shape the future of cloud computing</strong>. If that sounds like you, we’d love to hear from you!</p>
 <h3 id="SeniorSystemsEngineerDurableObjects(DO)andD1-AbouttheDepartment"></h3>
