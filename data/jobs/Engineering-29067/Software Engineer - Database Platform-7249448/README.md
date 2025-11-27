@@ -5,35 +5,70 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;<span class="il">Bengaluru, India&nbsp;</span></strong></p>
-<h4 id="MalwareReverseEngineer-AbouttheTeam"><strong>About the Team</strong></h4>
-<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday.&nbsp; To help fulfill this mission, we are seeking a talented Malware Reverse Engineer to join us in growing our Cloudforce One Organization, where you will be instrumental in building a proactive and threat intelligence-driven approach to protecting Cloudflare and its customers from sophisticated and ever-evolving global threat actors. This position requires an innovative, self-starting, and detail-oriented problem solver with a passion for analyzing, tracking, and triaging&nbsp;the malicious software used by&nbsp;sophisticated cyber threats.</p>
-<p>As a Cloudforce One Reverse Engineer, you will analyze malicious binaries with the goal of&nbsp;monitoring and disrupting&nbsp;cyber threat activity&nbsp;across multiple platforms, supporting both client requests and proactive internal research.&nbsp;You will serve an integral role in the&nbsp;discovery and analysis of cyber threat adversaries, working along side detection engineers&nbsp;to detect attacks&nbsp;and threat researchers to track them.&nbsp;The findings you uncover&nbsp;will help identify Tactics, Techniques, and Procedures (TTPs) of ongoing and ever-evolving cyber attacks to protect our global customer base. Lastly, you will help expand our malware lab environment&nbsp;so that we may modernized and scale our operations to streamline malware analysis within Cloudflare.</p>
-<p>Our ideal candidate will have 7+ years of previous experience reverse engineering malware samples and can write reliable code, preferably in Python or Golang. Top candidates will have extensive experience with hands on static and dynamic analysis of common file formats on Windows, macOS, or UNIX-based platforms. We also would like our candidates to have experience writing code to process malware samples and interacting with APIs. As a member of the team you will be responsible for contributing to and deploying team codebases to coalesce traits of an attack. Outstanding candidates will also posses excellent verbal and written communication skills to facilitate dialogue with the Threat Research Team for reporting on malware and malware families.&nbsp; You will also work both as a self-driven individual contributor and alongside a team to achieve a common goal.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations: Austin, TX and Washington DC</strong></p>
+<p><strong>About the department<br><br></strong>The Database Platform Team, a vital part of Cloudflare's Infrastructure Engineering organization, is dedicated to building and operating databases at scale. Our mission is to empower internal engineering teams, enabling them to deliver products quickly and reliably through a robust, automated, and scalable data infrastructure.<br><br>We achieve this by automating database infrastructure, strengthening resiliency, and allowing applications to scale effortlessly. This effectively removes the operational complexities of database management, letting product teams concentrate on innovation.<br><br>As the Database Platform Team enters an exciting period of growth and expansion, this role offers a key opportunity to develop new features, integrate with database tooling, and advance automation across our platform. Your contributions will be instrumental in shaping the future of our database platform</p>
+<h4><strong>What you'll do</strong></h4>
+<p>The ideal candidate will collaborate with database engineers, software developers, and infrastructure teams to evolve the database platform architecture, access control, and automation strategies. A key part of your role will be to enhance database infrastructure and improve its reliability, automation, and tooling.</p>
+<p>If you are passionate about <strong>Databases, automation, and tooling</strong>, we’d love to hear from you!</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Possess mid-level experience as a Malware Analyst able&nbsp;to reverse engineer various file formats and analyze complex malware samples.</li>
-	<li>Reverse engineering experience with APT malware with an understanding of common infection vectors.</li>
-	<li>Perform system analysis using best practice malware analytics methodologies on Windows, macOS, or UNIX/Linux platform.</li>
-	<li>Understanding of source code, hex, binary, regular expression, data correlation, and analysis such as network flow and system logs.</li>
-	<li>Practical malware analysis experience with static, dynamic, and automated malware analysis techniques.</li>
-	<li>Knowledgeable of current malware techniques to evade detection and obstruct analysis.</li>
-	<li>Experience with network protocol analysis and cryptography</li>
-	<li>Proficient in Python or Golang, capable of writing modular code that can be installed on a remote system</li>
-	<li>Capable of updating analysis VMs and contributing to an analysis framework</li>
-	<li>Contributions to&nbsp;enhancing collaborative malware analysis tools</li>
-	<li>Experience writing malware reports on unique and interesting aspects of malware</li>
-	<li>Experience with malware attribution</li>
-	<li>Proficient with Yara and writing rules to detect similar malware samples</li>
-	<li>Prior Government experience in malware tracking, analysis, and reporting</li>
+	<li>Design, build, and maintain critical database platform tools with a focus on reliability, scalability, and performance.</li>
+	<li>Orchestrate and containerize database platform components by creating Docker images for deployment in Kubernetes environments.</li>
+	<li>Automate build, test, and deployment workflows by developing CI/CD pipelines.</li>
+	<li>&nbsp;Develop and implement programmatic APIs and interfaces for the database platform, facilitating integration with other systems and tools.</li>
+	<li>Drive the adoption of self-service capabilities for database lifecycle management, empowering teams to perform routine tasks independently.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>&nbsp;</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Experience with tracking and identifying threats through Indicator of Compromising (IOCs) pivoting and infrastructure enumeration&nbsp;</li>
-	<li>A conceptual understanding of how attackers conduct operations in regards to the MITRE Cyber Kill Chain</li>
-	<li>Familiarity with bash command line executables to conduct static analysis and investigate IOCs.</li>
+	<li>Formal computer science background (BS/MS in Computer Science or equivalent)</li>
+	<li>Strong programming skills in Python, Go, or similar languages for building tools and APIs.</li>
+	<li>Proficiency in Docker for containerization, with practical experience in deploying workloads on Kubernetes.</li>
+	<li>Hands-on experience with CI/CD tools like Gitlab CI, ArgoCD or GitHub actions .</li>
+	<li>Direct experience in shipping, supporting, and managing automation tools, distributed systems while catering to various cross-functional teams.</li>
+	<li>Experience with alerting and monitoring tools such as Prometheus, Grafana, and Kibana.</li>
+	<li>Knowledge of a traditional relational database system, preferably PostgreSQL.</li>
+</ul>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li>Experience with configuration management software like SaltStack, Ansible, Terraform.</li>
+	<li>Experience with connection pooling solutions such as PgBouncer, HAProxy.</li>
+	<li>Expertise in database schema migrations and automation using tools like Flyway, Liquibase or goose.&nbsp;</li>
+	<li>Contributions to PostgreSQL or relevant open-source projects.</li>
+</ul>
+<p>Experience with web technologies such as HTML, CSS, JavaScript.</p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000.</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

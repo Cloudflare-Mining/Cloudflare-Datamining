@@ -5,36 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon</strong></p>
-<h4><strong>About the team</strong></h4>
-<p>The Data Intelligence &amp; Analytics team at Cloudflare is responsible for building a centralized analytics platform and cloud data lake that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Data Analyst to join our Lisbon team to scale our Product Analytics initiatives. You will work with a wide array of datasets to analyze and build interactive reports and self-serve dashboards which will influence our critical business initiatives and will provide actionable insights to Product Analytics and Operations teams.</p>
-<p>Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.</p>
-<p><strong>What you'll do</strong></p>
-<ul>
-	<li>Provide quantitative support, market understanding and a strategic perspective to our partners throughout the organization</li>
-	<li>Partner and align with data engineers, data analysts, data scientists, product managers, business stakeholders and internal teams to enable data driven solutions to key business problems</li>
-	<li>Take initiative and ask questions to iteratively define, build, and maintain new business metrics</li>
-	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale</li>
-	<li>Weave stories with data to help stakeholders understand analytic insights</li>
+<p><strong>About the Department:&nbsp;</strong></p>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>The Role:</strong></p>
+<p>We are seeking a highly motivated and technically proficient Product Manager to lead the strategy and execution for products being built under ETI, including AI Gateway, a critical developer-facing product that is designed to serve as an intelligent traffic layer for AI APIs, helping developer teams manage, monitor, and optimize their use of AI models at scale across the Cloudflare network.&nbsp;This is a unique opportunity to build at the intersection of cloud infrastructure, exceptional developer experience, and the rapidly evolving field of AI.&nbsp;</p>
+<p class="p3"><span class="s1">What you'll do:-</span></p>
+<ul class="ul1">
+	<li class="li4">Define and champion the product vision, strategy, and roadmap for AI Gateway and related infrastructure services.</li>
+	<li class="li4">Conduct market research, competitor analysis, and customer interviews to deeply understand the needs of developers managing production workloads.</li>
+	<li class="li4">Translate customer pain points into clear, actionable product requirements and collaborate closely with engineering and design to drive product development from concept to launch.</li>
+	<li class="li4">Own key product metrics, analyze performance data, and iterate quickly to achieve product-market fit and drive adoption.</li>
+	<li class="li5">Work with marketing, sales, and documentation teams to ensure successful go-to-market and adoption of new features.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Bachelors or Masters degree in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
-	<li>At least 2 years of professional, hands-on experience in Data Analytics, with a strong background in analyzing and interpreting large volumes of data.</li>
-	<li>Proven expertise in writing complex, advanced SQL queries</li>
-	<li>Experience with data visualization tools such as Tableau, Google Data Studio etc.&nbsp;</li>
-	<li>Experience with statistical analysis programming languages (Python, etc) and notebook environments like Jupyter</li>
-	<li>Experience in designing and analyzing A/B tests and other experimentation frameworks to drive product improvements, define key metrics and derive actionable insights from test results.</li>
-	<li>Experience in translating analysis results into business recommendations&nbsp;</li>
-	<li>Knowledge of data management, data modeling and data warehousing fundamentals</li>
-	<li>Experience in presenting analysis findings to business stakeholders</li>
-</ul>
-<p><strong>Bonus points</strong></p>
-<ul>
-	<li>Experience in front-end development, JavaScript, and/or other scripting languages is a plus</li>
-	<li>Experience with a fast-growing SaaS business based company preferred</li>
+<p class="p5">Key Qualifications:-</p>
+<ul class="ul1">
+	<li class="li4">4–6 years of product management experience leading technical products.</li>
+	<li class="li4">Proven experience working with developer tools, APIs, or infrastructure platforms (e.g., networking, observability, security).</li>
+	<li class="li4">A background as a developer or a demonstrable deep technical understanding that enables you to confidently work with engineers on complex architectural decisions.</li>
+	<li class="li4">Enthusiasm for shaping the next layer of AI infrastructure and a forward-looking perspective on how AI models will be managed and deployed.</li>
+	<li class="li5">Demonstrated ability to prioritise fast shipping, thoughtful scaling, and delivering high-quality user experiences.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
