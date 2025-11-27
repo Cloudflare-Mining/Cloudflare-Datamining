@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-linux-64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251126.0"
+		"latest": "1.20251127.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -6533,13 +6533,39 @@
 			"name": "@cloudflare/workerd-linux-64",
 			"version": "1.20251126.0",
 			"dist": {
-				"integrity": "sha512-UqLaKUVMv+DX2HibvcBq0Wk7YvaOibotpEKFgsoYpJoQlbUkRPbTrFTgfckAPltmq2EgmHiFo84l2hnE0V1XTg==",
 				"shasum": "400dd9f9bd87ccf4b96b0f36151b002cb90d954c",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20251126.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 116991101,
+				"integrity": "sha512-UqLaKUVMv+DX2HibvcBq0Wk7YvaOibotpEKFgsoYpJoQlbUkRPbTrFTgfckAPltmq2EgmHiFo84l2hnE0V1XTg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCBPLUFt9egKDIXpg8bEjsIoZ3yDx0yGvwZehuEXOhP5gIhAJQMgW366OGiBdVXDbV/4oUSqmFuiJTq+8GF1IApMp3o",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-64@1.20251126.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 116991101
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251127.0": {
+			"name": "@cloudflare/workerd-linux-64",
+			"version": "1.20251127.0",
+			"dist": {
+				"integrity": "sha512-BJwxegk7zIoci3Msr5Dqxz7SYchvKkcz3qXl/BEH4aQUSFw/JYKsffqfWlkc+K5s2uspcmXEsf7K7nxfLWo1CQ==",
+				"shasum": "d491ccb056440ec149a44505bbdc4c9b7bf1a6b3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-linux-64/-/workerd-linux-64-1.20251127.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 117008365,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-linux-64@1.20251127.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -6547,7 +6573,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCBPLUFt9egKDIXpg8bEjsIoZ3yDx0yGvwZehuEXOhP5gIhAJQMgW366OGiBdVXDbV/4oUSqmFuiJTq+8GF1IApMp3o"
+						"sig": "MEUCIQC7ISWsGMiJ/ubGSM/5rINhe00E/dMoJUMmcmkH6zTwpQIgV+rpc1+aDQDnB0d3dSkSJit6gcyAJKUUuXq9PTbrMd4="
 					}
 				]
 			},
