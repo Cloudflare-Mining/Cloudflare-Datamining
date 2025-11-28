@@ -2,7 +2,7 @@
 	"name": "@cloudflare/sandbox",
 	"dist-tags": {
 		"beta": "0.0.0-1558ec9",
-		"latest": "0.5.6"
+		"latest": "0.6.0"
 	},
 	"versions": {
 		"0.0.0-1c0902c": {
@@ -4243,6 +4243,33 @@
 				"@cloudflare/containers": "^0.0.30"
 			},
 			"devDependencies": {
+				"@repo/shared": "^0.0.0",
+				"@openai/agents": "^0.3.3"
+			},
+			"peerDependencies": {
+				"@openai/agents": "^0.3.3"
+			},
+			"dist": {
+				"shasum": "eae2927c1881805f6078ef9a2623311902025ec9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.5.6.tgz",
+				"fileCount": 67,
+				"integrity": "sha512-N4mdUY5lVWQHQcAZnTecJne95uSyf7KVPbJGMr3G6jS7oyphriw6Hxa5I/HlDUdMWjaTBgeOuDEb4m3wo2IyOg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCpnZNDg89dNvBC/ijRk+piEnXgL5Yq39NMWpJcGbrIhAIgLuDRzXbG5ig/blen28kcbwYBHszopiuNUyPMJ4oDRfI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 959513
+			}
+		},
+		"0.6.0": {
+			"name": "@cloudflare/sandbox",
+			"version": "0.6.0",
+			"dependencies": {
+				"@cloudflare/containers": "^0.0.30"
+			},
+			"devDependencies": {
 				"@openai/agents": "^0.3.3",
 				"@repo/shared": "^0.0.0"
 			},
@@ -4250,15 +4277,15 @@
 				"@openai/agents": "^0.3.3"
 			},
 			"dist": {
-				"integrity": "sha512-N4mdUY5lVWQHQcAZnTecJne95uSyf7KVPbJGMr3G6jS7oyphriw6Hxa5I/HlDUdMWjaTBgeOuDEb4m3wo2IyOg==",
-				"shasum": "eae2927c1881805f6078ef9a2623311902025ec9",
-				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.5.6.tgz",
-				"fileCount": 67,
-				"unpackedSize": 959513,
+				"integrity": "sha512-rx/opgDSrXszk5rGqvjahwM6vjHF04KGdjNv7emjO+9S8QeOuB3Z0rKHsYjblPUkDRCZxNc5JIO4mqFs+DQPEw==",
+				"shasum": "5e752e78ee83a87449c9c57a3a7592f6d21cf16a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.6.0.tgz",
+				"fileCount": 17,
+				"unpackedSize": 562894,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCpnZNDg89dNvBC/ijRk+piEnXgL5Yq39NMWpJcGbrIhAIgLuDRzXbG5ig/blen28kcbwYBHszopiuNUyPMJ4oDRfI="
+						"sig": "MEYCIQD/Ddav95Gtks29JKU+IMn7ttpODFikBd3mh0aoZuBJOAIhALBhgHKv6izdwTtrgYyZGVeP/O9Sc++H1yoUx58XRcrh"
 					}
 				]
 			}
