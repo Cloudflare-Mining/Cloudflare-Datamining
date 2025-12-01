@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London, Amsterdam, Lisbon, Austin, New York, Remote US, Toronto, Germany&nbsp;</strong></p>
+<p><strong>Available Locations: London or Remote UK, Amsterdam, Lisbon, Austin, New York, Remote US, Toronto, Remote Germany&nbsp;</strong></p>
 <p><strong>What you'll do/ responsibilities</strong>&nbsp;</p>
 <p>Quicksilver is Cloudflare’s globally distributed key-value store. It replicates our data all around the world, over tens of thousands of servers and over 500 data centers. It handles all kinds of network conditions and serves billions of keys per second.&nbsp;In this role, you can expect to see&nbsp;challenges like unexpected network issues, hardware failures, kernel bugs and still have to deliver the data to the edge in a fast and reliable way. Along with the rest of the team,&nbsp;you will own and support the whole stack: the code base, the unit and integration test, deployment and rollback plans, operations, monitoring, alerting, debugging and on-call.&nbsp;Quicksilver is written in Go and C.&nbsp;If working at this scale excites you and you are intrigued by very tricky bugs, rather than being scared by them, you might be a match for this role.</p>
 <p>&nbsp;</p>
