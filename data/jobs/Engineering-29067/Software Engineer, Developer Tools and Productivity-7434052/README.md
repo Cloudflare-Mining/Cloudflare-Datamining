@@ -5,25 +5,19 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About The Role&nbsp;</strong></p>
-<p>We are looking for a talented Distributed Systems Engineer to join the Data Localization team. The team is building technologies that allow our customers to harness Cloudflare's massive and performant network to meet their federal Data Sovereignty standards as well as their internal regionalization policies.</p>
-<p>You will work on a range of microservices written mainly in Rust and Go. Technologies we use include Go, PostgreSQL, Docker, Kubernetes, Clickhouse and the usual Unix/Linux tools and workflows. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale.</p>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<ul>
-	<li>8+ years of relevant professional experience with a technology company</li>
-	<li>Experience writing high-quality code in one or more system programming languages (Go, C/C++)</li>
-	<li>Experience building and operating distributed systems</li>
-	<li>Experience with modern Unix/Linux development and runtime environments</li>
-	<li>Excellent debugging skills and attention to details</li>
-	<li>Good understanding of TCP/IP and networking in general</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
-<ul>
-	<li>Experience working with Go and/or Rust</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL</li>
-	<li>Designing and building APIs</li>
-</ul>
+<h4><strong><em>Available locations:&nbsp; Lisbon or London</em></strong></h4>
+<h4><strong><em>About the Department</em></strong></h4>
+<p><em>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</em></p>
+<p><em>Many of Cloudflare’s critical internal services run on Kubernetes. These services include those responsible for Cloudflare’s control plane and APIs, data analytics and other internal tools used to manage our global network. These Kubernetes platforms are purpose-built from the ground up and run on bare metal Linux in different regions around the world. The scale we work at involves tens of thousands of containers and terabits per second of network traffic. The team takes pride in knowing this platform helps run parts of the global Internet.</em></p>
+<p><strong><em>About the team and the role</em></strong></p>
+<p><em>The Developer Tools organization delivers a fast, reliable, and secure developer experience by removing workflow friction and providing resilient infrastructure that our internal teams can trust at every stage of the software lifecycle. We build self-service, resilient, scalable platforms and tools using a combination of Open Source projects, intellectual property, and internal infrastructure. These tools and platforms are used by 100s of developers at Cloudflare to code, build, test, and deploy their software.</em></p>
+<p><em>The Developer Productivity team empowers engineers to deliver high-quality software faster via golden path workflows, flexible but powerful tools, living standards, and intelligent automation. The role includes both software engineering and DevOps operational responsibilities. The ideal candidate will care deeply about providing other engineers with an excellent development experience, and have a deep understanding of what engineers care about, how they accomplish their day-to-day work, and what world-class developer tooling looks like.&nbsp;</em></p>
+<h4><strong><em>What you'll do</em></strong></h4>
+<p><em>Embed with teams to improve their developer workflows by better usage and configurations of our tools, while implementing new features and improvements based on internal engineering feedback</em><em>Design and build scalable and resilient systems that can keep up with company growth</em><em>Design, build, and operate developer productivity tooling across coding, building, managing, testing, and deploying software</em><em>Harden the platform against security threats, bugs and other operational issues</em><em>Improve the efficiency of managing resources such as CPU, bandwidth and storage</em><em>Work with product teams to understand their challenges and help them choose the best way to architect their systems</em><em>Drive initiatives that make our engineers happier and more productive.</em><em>Help respond and prevent incidents impacting developer tools platforms</em></p>
+<h3><strong><em>Desirable skills, knowledge and experience</em></strong></h3>
+<p><em>Ability to work with codebases in TypeScript and Go</em><em>Excellent debugging skills in a Linux environment</em><em>Source control experience including branching, merging and rebasing</em><em>Experience managing and deploying onto production Kubernetes or similar orchestration platforms</em><em>The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem</em></p>
+<h3><strong><em>Bonus Points</em></strong></h3>
+<p><em>Worked in a platform engineering team/ engineering productivity team in the past.</em><em>Expertise in building and maintaining systems for specific developer tooling domains like build systems, CI/CD pipelines, source control, or automation tools.</em><em>Experience operating Kubernetes on-premise at scale in capacities including SRE, systems design or architecture</em><em>Experience building tools on top of LLMs, including MCP servers, RAG pipelines, or agentic workflows.</em></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
