@@ -651,12 +651,15 @@
 				}
 			},
 			{
-				"description": "Dataset IDs to query indicators from (comma-separated or array), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
+				"description": "Dataset IDs to query indicators from (array of UUIDs), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
 				"in": "query",
 				"name": "datasetIds",
 				"schema": {
-					"description": "Dataset IDs to query indicators from (comma-separated or array), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
-					"type": "string"
+					"description": "Dataset IDs to query indicators from (array of UUIDs), or special value 'all' or '*' to query all datasets. If not provided, uses the default dataset.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
 				}
 			},
 			{

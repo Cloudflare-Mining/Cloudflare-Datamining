@@ -3395,12 +3395,57 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "Number of created bulk events",
-							"type": "number"
+							"description": "Detailed result of bulk event creation with auto-tag management",
+							"properties": {
+								"createdEventsCount": {
+									"description": "Number of events created",
+									"type": "number"
+								},
+								"createdIndicatorsCount": {
+									"description": "Number of indicators created",
+									"type": "number"
+								},
+								"createdTagsCount": {
+									"description": "Number of tags created in SoT",
+									"type": "number"
+								},
+								"errorCount": {
+									"description": "Number of errors encountered",
+									"type": "number"
+								},
+								"errors": {
+									"description": "Array of error details",
+									"items": {
+										"properties": {
+											"error": {
+												"description": "Error message",
+												"type": "string"
+											},
+											"eventIndex": {
+												"description": "Index of the event that caused the error",
+												"type": "number"
+											}
+										},
+										"required": [
+											"eventIndex",
+											"error"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"createdEventsCount",
+								"createdIndicatorsCount",
+								"createdTagsCount",
+								"errorCount"
+							],
+							"type": "object"
 						}
 					}
 				},
-				"description": "Returns the number of created bulk events."
+				"description": "Returns detailed counts of created events, indicators, and tags."
 			},
 			"400": {
 				"content": {
@@ -3456,7 +3501,8 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/create/bulk/relationships": {
-		"description": "Creates bulk DOS attack events along with their corresponding indicator events and establishes relationships between them. The `datasetId` parameter must be defined. To list existing datasets (and their IDs) in your account, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"deprecated": true,
+		"description": "This method is deprecated. Please use `event_create_bulk` instead",
 		"operationId": "post_DOSEventCreateBulkWithRelationships",
 		"parameters": [
 			{
@@ -4313,6 +4359,97 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/events/graphql": {
+		"description": "Execute GraphQL aggregations over threat events. Supports multi-dimensional group-bys, optional date range filtering, and multi-dataset aggregation.",
+		"operationId": "post_EventGraphQL",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"nullable": true,
+									"type": "object"
+								},
+								"errors": {
+									"items": {
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "GraphQL response payload (data and errors)."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "GraphQL endpoint for event aggregation",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	}
 }
