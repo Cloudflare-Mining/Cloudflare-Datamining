@@ -1,0 +1,19 @@
+[
+	"/:accountId/:zoneName/security/web-assets/monitor/:monitorType",
+	"/:accountId/:zoneName/security/web-assets/monitor/:monitorType/:itemId",
+	"/:accountId/:zoneName/security/web-assets/monitor/:monitorType/view-all",
+	"/:accountId/:zoneName/security/web-assets/monitor/:monitorType/view-all/:itemId",
+	"/:accountId/:zoneName/security/web-assets/schema-validation",
+	"/:accountId/:zoneName/security/web-assets/upgrade",
+	"/[id]/[id]/security/web-assets",
+	"/[id]/[id]/security/web-assets/discovery",
+	"/[id]/[id]/security/web-assets/endpoints",
+	"/[id]/[id]/security/web-assets/endpoints/[id]/*",
+	"/[id]/[id]/security/web-assets/endpoints/add",
+	"/[id]/[id]/security/web-assets/endpoints/add/discovery",
+	"/[id]/[id]/security/web-assets/endpoints/add/upload",
+	"/[id]/[id]/security/web-assets/endpoints/routing",
+	"/[id]/[id]/security/web-assets/endpoints/routing/[id]/*",
+	"/[id]/[id]/security/web-assets/monitor",
+	"/[id]/[id]/security/web-assets/sequences"
+]

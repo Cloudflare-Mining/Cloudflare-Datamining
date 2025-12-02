@@ -1,3 +1,22 @@
 [
-	"/:account_id/:zoneName/security/api-shield"
+	"/[id]/[id]/security/api-shield",
+	"/[id]/[id]/security/api-shield/add-endpoints",
+	"/[id]/[id]/security/api-shield/add-endpoints/discovery",
+	"/[id]/[id]/security/api-shield/add-endpoints/upload",
+	"/[id]/[id]/security/api-shield/api-rules",
+	"/[id]/[id]/security/api-shield/developer-portal",
+	"/[id]/[id]/security/api-shield/discovery",
+	"/[id]/[id]/security/api-shield/discovery/session-identifiers",
+	"/[id]/[id]/security/api-shield/jwt-configuration",
+	"/[id]/[id]/security/api-shield/jwt-rules",
+	"/[id]/[id]/security/api-shield/jwt-rules/:ruleId",
+	"/[id]/[id]/security/api-shield/operation/[id]/*",
+	"/[id]/[id]/security/api-shield/routing",
+	"/[id]/[id]/security/api-shield/routing/[id]/*",
+	"/[id]/[id]/security/api-shield/schema-validation",
+	"/[id]/[id]/security/api-shield/sequence-rules",
+	"/[id]/[id]/security/api-shield/sequence-rules/:ruleId",
+	"/[id]/[id]/security/api-shield/sequences",
+	"/[id]/[id]/security/api-shield/settings",
+	"/[id]/[id]/security/api-shield/upgrade"
 ]

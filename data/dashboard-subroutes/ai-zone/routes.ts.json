@@ -1,3 +1,25 @@
 [
-	"/api/v4/zones/:zone_id/ai-audit/robots/bulk"
+	"/[id]/[id]/*",
+	"/ai",
+	"/api/v4/accounts/[id]/pay-per-crawl/[id]/stripe",
+	"/api/v4/accounts/[id]/pay-per-crawl/terms",
+	"/api/v4/accounts/[id]/pay-per-crawl/terms/signature",
+	"/api/v4/accounts/[id]/pay-per-crawl/zones_can_be_enabled",
+	"/api/v4/accounts/[id]/pay-per-crawl/zones_can_be_enabled/query",
+	"/api/v4/pay-per-crawl/crawlers",
+	"/api/v4/zones/[id]/ai-audit/robots/bulk",
+	"/api/v4/zones/[id]/pay-per-crawl/can_be_enabled",
+	"/api/v4/zones/[id]/pay-per-crawl/configuration",
+	"/bots",
+	"/dns/records",
+	"/metrics",
+	"/robots",
+	"/security",
+	"/security/analytics",
+	"/security/bots",
+	"/security/bots/configure",
+	"/security/settings?tabs=bot-traffic",
+	"/security/waf/custom-rules",
+	"/settings",
+	"/welcome"
 ]

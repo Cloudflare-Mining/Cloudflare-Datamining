@@ -1,0 +1,19 @@
+[
+	"/:accountId",
+	"/:accountId/:zoneName/traffic",
+	"/load-balancing",
+	"/load-balancing/:loadBalancingId",
+	"/load-balancing/:type/:loadBalancingId",
+	"/load-balancing/analytics",
+	"/load-balancing/create",
+	"/load-balancing/create/:type",
+	"/load-balancing/monitors",
+	"/load-balancing/monitors/create",
+	"/load-balancing/monitors/edit/:id",
+	"/load-balancing/pools",
+	"/load-balancing/pools/create",
+	"/load-balancing/pools/edit/:id",
+	"/load-balancing/review/:type/:loadBalancingId",
+	"/load-balancing/review/:type/:loadBalancingId/analytics",
+	"/load-balancing?zoneId=:zoneId"
+]

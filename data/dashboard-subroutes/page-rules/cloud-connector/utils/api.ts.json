@@ -1,3 +1,4 @@
 [
-	"/zones/:zone_id/cloud_connector/rules"
+	"/zones/[id]/cloud_connector/rules",
+	"/zones/[id]/cloud_connector/rules/[id]/*"
 ]

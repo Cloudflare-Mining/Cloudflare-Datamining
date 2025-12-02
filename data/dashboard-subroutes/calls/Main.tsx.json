@@ -1,0 +1,11 @@
+[
+	"\n  query CallsBandwidthUsage {\n    viewer {\n      accounts(filter: { accountTag: $accountTag }) {\n        callsTurnUsageAdaptiveGroups(\n          limit: 10000\n          filter: $filters\n        ) {\n          dimensions {\n            timescale: \n          }\n          sum {\n            egressBytes\n            ingressBytes\n          }\n        }\n      }\n    }\n  }\n",
+	"\n  query CallsBandwidthUsage {\n    viewer {\n      accounts(filter: { accountTag: $accountTag }) {\n        callsUsageAdaptiveGroups(\n          limit: 10000\n          filter: $filters\n        ) {\n          dimensions {\n            timescale: \n          }\n          sum {\n            egressBytes\n            ingressBytes\n          }\n        }\n      }\n    }\n  }\n",
+	"/api/v4/accounts/[id]/calls",
+	"/api/v4/accounts/[id]/realtime",
+	"/apps",
+	"/apps/[id]/*",
+	"/kit/apps",
+	"/turn_keys",
+	"/turn_keys/[id]/*"
+]

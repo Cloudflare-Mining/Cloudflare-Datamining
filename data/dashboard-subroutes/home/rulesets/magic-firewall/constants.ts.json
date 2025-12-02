@@ -1,3 +1,20 @@
 [
-	"/:account_id/network-security/magic_firewall"
+	"/[id]/network-security/magic_firewall",
+	"/[id]/network-security/magic_firewall/custom",
+	"/[id]/network-security/magic_firewall/custom/create/magic-firewall-rule",
+	"/[id]/network-security/magic_firewall/custom/edit",
+	"/[id]/network-security/magic_firewall/ids",
+	"/[id]/network-security/magic_firewall/managed",
+	"/[id]/network-security/magic_firewall/managed/deploy/[id]/*",
+	"/[id]/network-security/magic_firewall/managed/deploy/[id]/overrides",
+	"/[id]/network-security/magic_firewall/managed/entrypoint/[id]/*",
+	"/[id]/network-security/magic_firewall/managed/entrypoint/[id]/overrides",
+	"/[id]/network-security/magic_firewall/managed/select-ruleset",
+	"/[id]/network-security/magic_firewall/rate_limiting",
+	"/[id]/network-security/magic_firewall/rate_limiting/create",
+	"/[id]/network-security/magic_firewall/rate_limiting/edit",
+	"/custom",
+	"/ids",
+	"/managed",
+	"/rate_limiting"
 ]

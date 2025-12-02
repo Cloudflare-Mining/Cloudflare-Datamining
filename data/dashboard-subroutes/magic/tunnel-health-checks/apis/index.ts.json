@@ -1,0 +1,8 @@
+[
+	"\n  query (\n     $filter: AccountMagicTransitTunnelTrafficAdaptiveGroupsFilter_InputObject\n  ) {\n    viewer {\n      accounts(filter: { accountTag: $accountTag }) {\n        : magicTransitTunnelHealthChecksAdaptiveGroups(\n          filter: $queryFilter\n          limit: $limit\n          orderBy: $orderBy\n        ) {\n          count\n          dimensions {\n            \n          }\n          \n        }\n      }\n    }\n  }\n",
+	"\n  query tunnelsTrafficRates(\n    $accountTag: string\n    $filter: AccountMagicTransitTunnelTrafficAdaptiveGroupsFilter_InputObject\n  ) {\n    viewer {\n      accounts(filter: { accountTag: $accountTag }) {\n        popTraffic: magicTransitTunnelTrafficAdaptiveGroups(\n          filter: $filter\n          limit: 3\n          orderBy: [avg_bitRateHour_DESC]\n        ) {\n          dimensions {\n            egressTunnelName\n            ingressTunnelName\n          }\n        }\n      }\n    }\n  }\n",
+	"\n  query tunnelsTrafficRates(\n    $filter: AccountMagicTransitTunnelTrafficAdaptiveGroupsFilter_InputObject\n  ) {\n    viewer {\n      accounts(filter: { accountTag: $accountTag }) {\n        popTraffic: magicTransitTunnelTrafficAdaptiveGroups(\n          filter: $queryFilter\n          limit: $limit\n          orderBy: $orderBy\n        ){\n          dimensions {\n            \n          }\n          avg {\n            \n          }\n          sum {\n            bits\n          }\n        }\n      }\n    }\n  }\n",
+	"/accounts/[id]/magic/cf_interconnects",
+	"/accounts/[id]/magic/gre_tunnels",
+	"/accounts/[id]/magic/ipsec_tunnels"
+]

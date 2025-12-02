@@ -1,3 +1,19 @@
 [
-	"/accounts/:account_id/brand-protection/url-info?internal_use=t&url="
+	"/accounts/[id]/abuse-reports/[id]/*",
+	"/accounts/[id]/abuse-reports/actions",
+	"/accounts/[id]/abuse-reports/actions/review",
+	"/accounts/[id]/blocks",
+	"/accounts/[id]/blocks/domains",
+	"/accounts/[id]/blocks/review/request",
+	"/accounts/[id]/brand-protection/submit?internal_use=t&url=/*",
+	"/accounts/[id]/brand-protection/url-info?internal_use=t&url=/*",
+	"/accounts/[id]/urlscanner/limits",
+	"/accounts/[id]/urlscanner/scan",
+	"/accounts/[id]/urlscanner/scan/[id]/*",
+	"/accounts/[id]/urlscanner/scan/[id]/?full=true",
+	"/accounts/[id]/urlscanner/scan/[id]/dom",
+	"/accounts/[id]/urlscanner/scan/[id]/screenshot?resolution=/*",
+	"/accounts/[id]/urlscanner/scan?url=/*",
+	"/accounts/[id]/urlscanner/v2/result/[id]/*",
+	"/accounts/[id]/urlscanner/v2/scan "
 ]

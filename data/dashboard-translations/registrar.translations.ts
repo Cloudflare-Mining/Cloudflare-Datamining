@@ -2,36 +2,42 @@
 	common: {
 		create: "Create",
 		cancel: "Cancel",
+		confirm: "Confirm",
 		save: "Save",
-		refresh: "Refresh",
+		submit: "Submit",
 		done: "Done",
-		change: "Change",
 		close: "Close",
 		renew: "Renew",
 		retry: "Retry",
 		delete: "Delete",
-		addCard: "Add card",
 		invalid_email: "Invalid email",
-		back_to_zone: (0, e.d)`Back to ${"zoneName"}`,
-		email_notification: "Please <0>verify your email address</0> to register and transfer domains",
-		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
+		invalid_auth_code: "Invalid authorization code. Please try again or request a new one from current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed.",
 		error_message: "Something went wrong. Please try again or contact support for assistance.",
-		premium: "Premium"
+		premium: "Premium",
+		continue: "Continue"
 	},
 	form: {
-		field_validation_error: (0, e.d)`Invalid input for ${"field"}`,
+		field_validation_error: (0, r.p)(s(), "field"),
 		field_required_error: "This field is required",
-		field_name_required_error: (0, e.d)`${"field"} field is required`,
-		field_mismatch_error: (0, e.d)`${"fieldPlural"} do not match`,
-		field_min_length_error: (0, e.d)`This field must be at least ${"length"} ${"characters"} long`,
-		field_length_error: (0, e.d)`This field must be ${"length"} ${"characters"} long`,
+		field_name_required_error: (0, r.p)(d(), "field"),
+		field_mismatch_error: (0, r.p)(c(), "fieldPlural"),
+		field_min_length_error: (0, r.p)(l(), "length", "characters"),
+		field_length_error: (0, r.p)(_(), "length", "characters"),
 		field_must_contain_alpha_characters_error: "This field must contain more than one alphabetical character",
-		field_must_contain_at_least_multiple_alpha_characters_error: (0, e.d)`This field must contain at least ${"numAlphaCharacters"} alphabetical characters`,
+		field_must_contain_at_least_multiple_alpha_characters_error: (0, r.p)(u(), "numAlphaCharacters"),
 		field_must_contain_at_least_one_alpha_characters_error: "This field must contain at least one alphabetical character",
 		field_must_contain_ascii_characters_error: "This field must only include A-Z, a-z, 0-7, spaces, punctuation, and symbols",
 		field_invalid_email_error: "Invalid email address",
-		field_invalid_phone_number_error: "Invalid phone number"
+		field_invalid_phone_number_error: "Invalid phone number",
+		field_value_mismatch_error: (0, r.p)(m(), "field", "expectedValue"),
+		field_minimum_length_error: "This field must be at least one character long |||| This field must be at least %{smart_count} characters long",
+		field_minimum_alpha_chars_error: "This field must contain at least one letter |||| This field must contain at least %{smart_count} letters",
+		field_invalid_postal_code_error: "The postal code entered is not valid. Please check and enter a valid postal code for your region.",
+		field_invalid_postal_code_ca_error: "Canada postal code must be in format A1A 1A1",
+		field_invalid_postal_code_gb_error: "United Kingdom postal code must be in format AA1A 1AA",
+		field_invalid_postal_code_us_error: "United States postal code must be in format 12345 or 12345-6789",
+		field_must_be_canada_error: "Country must be Canada for .ca domains"
 	},
 	billing: {
 		customer_action: {
@@ -56,14 +62,18 @@
 			subheader_invoice: "This is required to calculate sales tax, and will be displayed on your invoice.",
 			verify_button: "Verify address",
 			verify_success: "We have suggested small edits to your address, to ensure accuracy. Please edit if incorrect.",
-			verify_error: "Please correct errors, above."
+			verify_error: "Please correct the errors highlighted above."
 		},
 		credit_card: {
 			header_new_card: "Card details",
 			header_replace_card: "New card details",
-			subheader_replace_card: `This will replace your primary card on file.
-By providing your card information, you allow Cloudflare, Inc. to charge your card for future payments in accordance with their terms.`,
-			subheader_new_card: "By providing your card information, you allow Cloudflare, Inc. to charge your card for future payments in accordance with their terms."
+			subheader_replace_card: "This will replace your primary card on file.\nBy providing your card information, you allow Cloudflare, Inc. to charge your card for future payments in accordance with their terms.",
+			subheader_new_card: "By providing your card information, you allow Cloudflare, Inc. to charge your card for future payments in accordance with their terms.",
+			expires_in: "Expires in"
+		},
+		paypal: {
+			pay_with: "Pay with",
+			existing: "Previously authorized"
 		},
 		captcha: {
 			label: "Let us know you're human",
@@ -75,33 +85,42 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		},
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
-		purchase_agreement: (0, e.d)`By completing this purchase, you agree to our <a href=\"https://www.cloudflare.com/terms/\" rel=\"noopener noreferrer\" target=\"_blank\">Terms</a> and <a href=\"https://www.cloudflare.com/privacypolicy/\" rel=\"noopener noreferrer\" target=\"_blank\">Privacy Policy</a>, and <a href=\"https://www.cloudflare.com/domain-registration-agreement/\" rel=\"noopener noreferrer\" target=\"_blank\">Domain Registration Agreement</a>.`,
-		purchase_agreement_with_icloud: (0, e.d)`Your new domain will be automatically set up to use iCloud email. By completing this purchase, you agree to our <a href=\"https://www.cloudflare.com/terms/\" rel=\"noopener noreferrer\" target=\"_blank\">Terms</a> and <a href=\"https://www.cloudflare.com/privacypolicy/\" rel=\"noopener noreferrer\" target=\"_blank\">Privacy Policy</a>, and <a href=\"https://www.cloudflare.com/domain-registration-agreement/\" rel=\"noopener noreferrer\" target=\"_blank\">Domain Registration Agreement</a>.`,
+		purchase_agreement: (0, r.p)(p()),
+		purchase_agreement_with_icloud: (0, r.p)(g()),
 		automatic_renewal_agreement: 'Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in <a href="/%{accountId}/billing/subscriptions" rel="noopener noreferrer" target="_blank">Billing Subscriptions</a>, or via the Domain Management page in your account for registrar, at least a day before each renewal date.',
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
 	global_banner: {
-		notification: "Domain fees will be changing soon. <0>Click here</0> for more info.",
 		notification_toggle_expand: "Click for more information",
-		notification_toggle_collapse: "Hide information",
-		notification_expanded_information: "The registry for .example domain will be unavailable from January 1st 01:00 UTC through 05:00 UTC due to routine maintenance. During this window registrations, transfers, renewals, and updates to .example domains may be unavailable."
+		notification_toggle_collapse: "Hide information"
 	},
 	error: {
 		title: "Error",
-		description_domain: (0, e.d)`There was an error fetching domain data for ${"domainName"}.`,
+		description_domain: (0, r.p)(f(), "domainName"),
 		description: "There was an error fetching data.",
 		button: "Retry"
 	},
 	domain_page: {
-		title: (0, e.d)`Manage ${"domainName"}`,
+		title: (0, r.p)(h(), "domainName"),
 		back: "Back to Manage Domains",
-		unverified_contacts: "You have unverified Contacts.",
-		view_contacts: "View Contacts",
 		registration: "Registration",
 		contacts: "Contacts",
 		configuration: "Configuration",
 		error: {
-			deletion_irredeemable: (0, e.d)`This domain expired on ${"paymentExpiresAt"} and can no longer be restored or renewed. Once the domain has been released by the Registry it may be re-registered again.`
+			deletion_irredeemable: (0, r.p)(y(), "paymentExpiresAt")
+		},
+		banners: {
+			unverified_contacts: {
+				text: "You have unverified Contacts.",
+				link_text: "View Contacts"
+			},
+			suspended_email_verification: {
+				text: (0, r.p)(b(), "registrantEmail"),
+				link_text: "Resend verifcation email"
+			},
+			suspended_trust_and_safety: {
+				text: 'This domain has been suspended for trust and safety reasons. For help, contact <a href="mailto:abuse@cloudflare.com">abuse@cloudflare.com</a>'
+			}
 		}
 	},
 	domains_page: {
@@ -111,13 +130,21 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	},
 	register_page: {
 		search: "Search for a domain name",
+		search_errors: {
+			missing: "Please enter a domain or keyword.",
+			short: "Domain or keyword must be at least 3 characters.",
+			long: "Domain or keyword must be less than than 64 characters.",
+			unsupported: "Domain or keyword must not contain special characters or internationalized domain names (IDN)."
+		},
+		billing_permissions_error_title: (0, r.p)(w(), "domainName"),
+		billing_permissions_error_message_link: "You need permission to manage billing in order to register a domain.<0></0> Please contact an account super-admin to request access.",
 		billing_permissions_error_message: "You need permission to manage billing in order to register a domain. Please reach out to a super-admin on the account for assistance."
 	},
 	onboarding: {
 		overview: {
 			transfer_in: {
 				title: "Complete your transfer",
-				subtitle: (0, e.d)`${"domainName"} is not yet active on Cloudflare`,
+				subtitle: (0, r.p)(v(), "domainName"),
 				body: "Complete the following tasks to finish your domain transfer and activate on Cloudflare.",
 				refresh: "Refresh transfer status"
 			},
@@ -134,29 +161,28 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		pending_foa: "Transfer is pending FOA. Please check your email.",
 		invalid_auth_code: "Invalid auth code",
 		auth_code: "Enter auth code",
-		payment: (0, e.d)`Payment - <0>1 year renewal ${"amount"}</0>`,
-		approve: (0, e.d)`Approve transfer at ${"registrar"}`,
+		payment: (0, r.p)(k(), "amount"),
+		approve: (0, r.p)(A(), "registrar"),
 		success: "Transfer successful"
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, e.d)`This domain expired on <0>${"expired_on"}</0>
-    and will be available for purchase by others on <1>${"purchaseable_on"}</1>.`,
+		pending_deletion: (0, r.p)(T(), "expired_on", "purchaseable_on"),
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Automatic renewal is on",
 		auto_renew_off: "Automatic renewal is off",
 		domain_protection: "Domain is under Domain Protection",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, e.d)`Your domain will expire on ${"expires_on"}`,
+		expires_on: (0, r.p)(D(), "expires_on"),
 		billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 		grace_period: {
 			title: "Domain expired",
-			details: (0, e.d)`This domain expired on ${"grace_period_start"}. You have a 40 day grace period during which you can renew this domain, which will end on <strong>${"grace_period_end"}</strong>.`
+			details: (0, r.p)(R(), "grace_period_start", "grace_period_end")
 		},
 		not_on_cloudflare: {
-			expiration: (0, e.d)`Your domain will expire on <0>${"expiration"}</0>`,
+			expiration: (0, r.p)(C(), "expiration"),
 			transfer_cta: "Transfer to Cloudflare",
-			transfer_cta_subext: (0, e.d)`Pay ${"price"} per year. 🎉`
+			transfer_cta_subext: (0, r.p)(N(), "price")
 		},
 		transfer_in_progress: {
 			title: "Transfer Progress",
@@ -167,16 +193,16 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		pending_deletion_contact_support: "This domain is currently pending deletion. Please contact support to determine if the domain may be restored.",
 		redemption_period: {
 			title: "Domain in Redemption Period",
-			description: (0, e.d)`The domain expired on ${"expiresOn"} and may no longer be renewed without first restoring it at the Registry. Cloudflare can attempt to restore your domain, however you will be charged a redemption fee of ${"redemptionFee"} in addition to the standard renewal fee. You will only be charged the redemption fee if the restore is successful.`,
-			description_domain_active: (0, e.d)`The domain is in the redemption period. At the conclusion of the redemption period the domain will be deleted and released by the Registry. Cloudflare can attempt to restore your domain which will also extend the term by 1 year. You will be charged a redemption fee of ${"redemptionFee"} plus the standard renewal fee. You will only be charged the redemption and renewal fees if the restore is successful.`,
-			description_common: '<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><br />Click <a href="https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires" rel="noopener noreferrer" target="_blank">here</a> to learn more about the restore process.',
+			description: (0, r.p)(I(), "expiresOn", "redemptionFee"),
+			description_domain_active: (0, r.p)(P(), "redemptionFee"),
+			description_common: "<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><0>Learn more about domain restoration</0>.",
 			restore_cta: "Restore",
 			billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
 			modal: {
 				title: "Confirm domain restore for %{domainName}",
 				domain_new_expiration_date: "Domain expiration date after successful restoration: %{expiration}.",
 				billing_line_item_1: "Redemption fee",
-				billing_line_item_2: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
+				billing_line_item_2: "%{smart_count} year .%{tld} renewal |||| %{smart_count} years .%{tld} renewal",
 				billing_line_item_3: "ICANN fee",
 				billing_total_due: "Total due now",
 				tax_disclaimer: "*Your invoice will include any final sales tax, including state and local taxes when applicable.",
@@ -185,8 +211,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 				}
 			},
 			messages: {
-				success: (0, e.d)`Domain restoration process initiated for ${"domainName"}`,
-				error: (0, e.d)`Failed to initiate domain restoration process for ${"domainName"}. Please try again or contact support for assistance`
+				success: (0, r.p)(S(), "domainName"),
+				error: (0, r.p)(x(), "domainName")
 			},
 			in_progress: {
 				title: "Domain Restoration",
@@ -211,13 +237,16 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	renew: {
 		toggle_view: "Renew/Extend Domain",
 		renew: "Renew for",
-		due: (0, e.d)`Due today: <0>${"amount"}</0>`,
+		years: "%{smart_count} year |||| %{smart_count} years",
+		due: (0, r.p)(E(), "amount"),
 		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance.",
 		notification_success_domain: "Successfully renewed %{domainName}!",
-		notification_success: "Domain successfully renewed"
+		notification_success: "Domain successfully renewed",
+		renew_dot_ai_notice: "Registry policy requires a minimum renewal period of 2 years for the .%{tld} extension.",
+		notification_failure: "Domain renewal failed. Please try again or contact support for assistance."
 	},
 	domainPageNotifications: {
-		expiration: ["This domain will expire in <0>%{smart_count}</0> day. See registration options below.", "This domain will expire in <1>%{smart_count}</1> days. See registration options below."].join("||||"),
+		expiration: "This domain will expire in <0>%{smart_count}</0> day. See registration options below.||||This domain will expire in <1>%{smart_count}</1> days. See registration options below.",
 		expired: "This domain has expired.",
 		renewalStatusError: "We were unable to process your payment. To keep your domain registration, <0>update your payment method</0>.",
 		transferInFoaCheckEmail: "Please check the Registrant contact's email to approve or deny this transfer."
@@ -233,18 +262,21 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		address1: "Address line 1",
 		address2: "Address line 2",
 		city: "City",
-		new_state: "State",
-		state: "State or province",
+		state: "State/Province",
 		zip: "Postal code",
 		country: "Country",
 		phone: "Phone",
-		extension: "Ext",
+		add_extension: "Add phone extension",
+		extension: "Extension",
 		number: "Number",
 		phone_help_text: "Must be ITU.E formatted. ex: +1.5551231234",
 		email: "Email",
+		account_type_business: "Business",
+		account_type_personal: "Personal",
 		nexus_category: "Nexus category",
 		application_purpose: "Application purpose",
-		is_required: "This field is required."
+		is_required: "This field is required.",
+		whois_visibility: "WHOIS visibility"
 	},
 	cor_header: "Registrant Contact Change Pending",
 	cor_subheader: "The following changes are pending approval:",
@@ -254,13 +286,13 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cor_resend_email: "Resend Email",
 	cor_cancel_error_message: "Unable to cancel a partially approved change of registrant request for %{domainName}",
 	renewal_info: {
-		expires_on: (0, e.d)`<0>Expires on</0><1>${"expiresOn"}</1>`,
-		renews_on: (0, e.d)`<0>Renews on</0><1>${"renewsOn"}</1>`,
+		expires_on: (0, r.p)(O(), "expiresOn"),
+		renews_on: (0, r.p)(q(), "renewsOn"),
 		price: "Price",
-		per_year: "/ year",
-		billing: (0, e.d)`You will be charged to the card ending in <0>${"last4"}</0>.`,
-		billing_paypal: (0, e.d)`You will be charged to your PayPal account <0>${"email"}</0>.`,
-		billing_cloud: (0, e.d)`You will be charged to the card ending in <0>${"last4"}</0><1>Your new domain will be automatically set up to use iCloud email. By completing this purchase you agree to Cloudflare's:</1>`,
+		price_per_year: "%{domainRenewalFee}/year",
+		billing: (0, r.p)(z(), "last4"),
+		billing_paypal: (0, r.p)(L(), "email"),
+		billing_cloud: (0, r.p)(Y(), "last4"),
 		fees: "Domain fees subject to change."
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
@@ -275,10 +307,70 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_page_sidebar_expiry: "Expiry date",
 	domain_page_sidebar_quick_actions: "Quick actions",
 	domain_page_sidebar_update_dns: "Update DNS configuration",
-	domain_page_sidebar_add_pages_site: "Add Pages site",
-	registered_on: (0, e.d)`Registered on ${"registration_date"}`,
+	domain_page_sidebar_add_workers_site: "Deploy an application",
+	domain_page_sidebar_move_account: "Move to another account",
+	domain_page_sidebar_move_account_cancel: "Cancel account move",
+	domain_page_sidebar_related_domains: "Related Domains",
+	domain_page_sidebar_no_related_domains: "No related domains found.",
+	domain_page_sidebar_buy: "Buy",
+	registered_on: (0, r.p)(U(), "registration_date"),
+	success_page: {
+		page_title: (0, r.p)(B(), "domainName"),
+		page_description: "Have an idea for a website or app? Use Cloudflare to launch it with optimal security and speed.",
+		workers: {
+			title: "Deploy an application",
+			description: "Build simple sites to full-stack applications with Cloudflare Workers and deploy instantly to the Cloudflare network.",
+			cta_text: "Start building"
+		},
+		bots: {
+			title: "Detect and block bots",
+			description: "Protect your site by detecting and mitigating automated traffic early.",
+			cta_text: "Prevent bots"
+		},
+		load_balancing: {
+			title: "Prevent site crashes",
+			description: "Deliver an uninterrupted experience by distributing traffic across servers.",
+			cta_text: "Enable load balancing"
+		},
+		quick_start: {
+			title: "Need help getting started?",
+			description: "Check out our quick start guide for step-by-step setup instructions.",
+			cta_text: "Quick start guide"
+		},
+		workers_templates: {
+			title: "Ready to bring your domain to life?",
+			description: "Select from ready-to-use templates and deploy instantly across our global network.",
+			cta_text: "Explore templates"
+		},
+		invite: {
+			title: "Add a teammate",
+			description: "Invite teammates to collaborate while maintaining control over who can access what.",
+			cta_text: "Send invite"
+		},
+		domains: {
+			title: "One domain is just the beginning",
+			description: "Secure .com, .org, .net, and other extensions to protect your brand and capture more traffic.",
+			cta_text: "Add domains"
+		},
+		security_performance: {
+			title: "Optimize security & performance",
+			description: "Cloudflare offers CDN, caching, DDoS protection, and more for free.",
+			cta_text: "Explore Plans"
+		},
+		whois_information: {
+			description: "The legal record of your domain registration sent to ICANN WHOIS. For your privacy, Cloudflare redacts WHOIS information from the public listing of your domain."
+		},
+		registrant: {
+			description: "For your domain's legal records and to contact you if there are problems with your registration.",
+			edit_contact_info: "Edit contact information"
+		},
+		auto_renewal: {
+			title: "Auto Renew",
+			description: (0, r.p)(F(), "date")
+		}
+	},
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
-	renewals_billing_line_item_1: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
+	renewals_billing_line_item_1: "%{smart_count} year .%{tld} renewal |||| %{smart_count} years .%{tld} renewal",
 	renewals_billing_line_item_1_meta: "Expires %{expiration}",
 	renewals_billing_line_item_2: "ICANN renewal fee",
 	status_active: "Active",
@@ -301,6 +393,9 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	status_redemption_period: "Pending Delete - Redemption Period",
 	status_pending_transfer: "Pending Transfer",
 	status_pending_renewal: "Pending Renewal",
+	status_pending_domain_move_in: "Pending Account Move In",
+	status_pending_domain_move_out: "Pending Account Move Out",
+	status_suspended: "Suspended",
 	status_unknown: "Unknown",
 	back_to_domains: "Back to domains",
 	back_to_registration: "Back to registration",
@@ -318,7 +413,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	onboarding_contact_redacted: "All contact details will be redacted for privacy by default for all domains transferred.",
 	onboarding_confirm_and_finalize: "Confirm and finalize transfer",
 	onboarding_success_header: "Thanks for transferring your domain to Cloudflare",
-	onboarding_success_body: "You\u2019re on your way to having your domain transferred to Cloudflare. This process can take up to 5 days to complete, but can be faster if you were to go to your registrar and confirm the transfer. [Learn more about domain transfer](https://developers.cloudflare.com/registrar/).",
+	onboarding_success_body: "You're on your way to having your domain transferred to Cloudflare. This process can take up to 5 days to complete, but can be faster if you were to go to your registrar and confirm the transfer. <0>Learn more about domain transfer</0>.",
 	onboarding_success_goto_account: "Go to my account",
 	onboarding_success_banner_header: "Domain transfer complete!",
 	onboarding_success_banner_body: "Your transfer is complete, however Cloudflare may still be ensuring your nameservers are correct. If you see nameserver instructions below, then you can safely ignore them.",
@@ -328,23 +423,33 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	onboarding_billing_line_item_1_meta: "New expiration date %{expiration}",
 	onboarding_billing_line_item_2: "ICANN - one time transfer fee",
 	transfer_table_domain_already_paid: "Already paid",
-	search_domain_supported_extensions: "<0>Review instructions</0> and <1>supported extensions</1>.",
-	search_domain_suggestions_purchase: "Purchase",
-	search_domain_suggestions_premium_tld: "<0>%{domainName}</0> is a premium domain, which Cloudflare Registrar does not currently support.",
+	search_domain_supported_extensions: "Review <0>domain registration documentation</0> and <1>supported TLDs</1>.",
+	search_domain_suggestions_confirm: "Confirm",
 	search_domain_unavailable: "<0>%{domainName}</0> is not available.",
 	search_domain_already_registered: "<0>%{domainName}</0> is unavailable because it is registered already. If you already own this domain and wish to transfer it to Cloudflare, please go to the <1>Transfer Domains</1> section of the dashboard.",
-	search_premium_tld: '<0>%{domainName}</0> is a premium domain not currently supported by Cloudflare Registrar. Please try searching for a different domain. Click <a href="https://developers.cloudflare.com/registrar" rel="noopener noreferrer" target="_blank">here</a> to learn more about premium domains.',
-	search_unsupported_tld: '<0>%{domainName}</0> cannot be registered as Cloudflare does not yet support the "%{tld}" extension.',
-	search_similar_domains: "Here are some similar domains that might be available.",
-	search_try_again: "Please try searching a different domain name.",
+	search_unsupported_tld: '<0>%{domainName}</0> cannot be registered as Cloudflare does not yet support the ".%{tld}" extension.',
 	search_domain_available: "<0>%{domainName}</0> is available",
 	search_domain_not_available: "<0>%{domainName}</0> is not available",
-	search_domain_registration_fee: "<0>%{domainRegistrationFee}</0>",
 	search_domain_renewal_fee: "Renews at %{domainRenewalFee}",
 	search_domain_purchase: "Purchase",
 	search_domain_suggestions: "Suggested domain names",
+	search_domain_suggestions_notice: "The following is a list of suggestions that may be available.",
+	search_domain_suggestions_notice_check: "The following is a list of suggestions that may also be available.",
 	search_domain_premium_domain_explanation: "Premium domains have non-standard pricing.",
 	search_domain_premium_domain_docs: "<0>What is a premium domain name?</0>",
+	search_domain_dot_ai_notice: "Registry policy requires a minimum registration period of 2 years for the .%{tld} extension.",
+	whois_privacy_card_title: "WHOIS privacy",
+	whois_privacy_card_enabled: "Data redaction is currently enabled for this domain.",
+	whois_privacy_card_disabled: "Data redaction is currently disabled for this domain.",
+	whois_privacy_card_unsupported: "Data redaction is not supported by the registry for this domain.",
+	whois_privacy_card_help: "Cloudflare Registrar provides personal data redaction on WHOIS information by default, if permitted by the registry.",
+	whois_privacy_card_help_link: "Learn more about <0>WHOIS data redaction</0>.",
+	whois_privacy_card_cta_enable: "Enable",
+	whois_privacy_card_cta_disable: "Disable",
+	whois_privacy_modal_title: "Confirm WHOIS privacy disable",
+	whois_privacy_modal_description_1: "Are you sure you want to disable WHOIS data redaction for %{domainName}?",
+	whois_privacy_modal_description_2: "Your domain contact information will be <u>publicly available</u>.",
+	whois_privacy_modal_error: "WHOIS data redaction could not be disabled. Please try again or contact support for assistance.",
 	transfer_out_panel_title: "Transfer to another registrar",
 	transfer_out_panel_text: "Unlocking this domain generates a unique transfer authorization code.",
 	transfer_out_uk_panel_text: "The domain tag has been updated. The transfer will complete once the new registrar has accepted the tag change. If the transfer is not accepted within 5 days the request will time out.",
@@ -386,67 +491,29 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_registration_out_transfer_request: "A request to transfer out of Cloudflare Registrar has been initiated.",
 	domain_registration_out_reject_transfer: "Reject Transfer",
 	domain_registration_out_accept_transfer: "Accept Transfer",
-	whois_disclaimer: "ICANN requires registrars to keep accurate contact information for your domain (WHOIS). We will apply the contact information below to all roles in your WHOIS record. You may modify this information after the transfer.",
-	whois_disclaimer_1: "Let's make sure your information is correct.",
-	whois_disclaimer_2: "Registrars are required to keep accurate WHOIS contact information for your domain. We will apply the contact information below to all roles in your WHOIS record. You may modify this information after the transfer.",
-	whois_disclaimer_3: "Note: failure to provide accurate information may result in your domain registration being suspended and/or deleted.",
-	whois_disclaimer_4: "ICANN requires registrars to keep accurate contact information for your domain (WHOIS). We will apply the contact information below to all roles in your WHOIS record. You may modify this information after the transfer.",
+	whois_disclaimer: "ICANN requires registrars to maintain up-to-date WHOIS contact information for all domains. Cloudflare will apply the contact details below to all roles in your WHOIS record. You can update this information after the transfer is complete.",
+	whois_disclaimer_note: "Note: Failure to provide accurate information may result in your domain registration being suspended or deleted.",
 	whois_disclaimer_uk: ".UK domains undergo a contact validation process to verify that the name and address is accurate. It is important that you provide accurate and complete information. When the domain transfers over, we will attempt to import the existing contact information assigned to the domain name. If that information can not be imported the information below will be used.",
-	whois_terms: `By clicking \u201CComplete Purchase\u201D, you agree to our <a href="https://www.cloudflare.com/terms" target="_blank">Terms</a>, <a href="https://www.cloudflare.com/privacypolicy" target="_blank">Privacy Policy</a>, and <a href="https://www.cloudflare.com/domain-registration-agreement" target="_blank">Domain Registration Agreement</a>.
-
-  Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in Billing Subscriptions, or via the Domain Management page in your account for registrar, at least a day before each renewal date.
-
-  For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare.`,
+	whois_terms: 'By clicking “Complete Purchase”, you agree to our <a href="https://www.cloudflare.com/terms" target="_blank">Terms</a>, <a href="https://www.cloudflare.com/privacypolicy" target="_blank">Privacy Policy</a>, and <a href="https://www.cloudflare.com/domain-registration-agreement" target="_blank">Domain Registration Agreement</a>.\n\n  Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in Billing Subscriptions, or via the Domain Management page in your account for registrar, at least a day before each renewal date.\n\n  For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare.',
 	whois_contact_display_registrant: "Registrant",
 	whois_contact_display_administrative: "Administrative",
 	whois_contact_display_technical: "Technical",
 	whois_contact_display_billing: "Billing",
 	primary_contact_modal_title: "Edit WHOIS Contacts",
-	contact_card_registrant: "Registrant Contact",
-	contact_card_administrator: "Administrator Contact",
-	contact_card_tecnical: "Technical Contact",
-	contact_card_billing: "Billing Contact",
+	contact_card_registrant: "Registrant contact",
+	contact_card_administrator: "Administrator contact",
+	contact_card_tecnical: "Technical contact",
+	contact_card_billing: "Billing contact",
+	contact_suspended_email_verification_notice: "This domain has been suspended pending registrant email verification. As a result, any email messages sent to an address using this domain name may not be received.<br />We recommend updating the email address to one that does not use this domain name. Once the domain has been verified, you may update the address again to use this domain.",
 	whois_card_title: "WHOIS",
 	whois_card_toggle_expand: "View more",
 	whois_card_toggle_collapse: "View less",
 	whois_card_no_info: "No WHOIS information is currently available.",
-	public_whois_acknowledgement: "I understand that <strong>.US</strong> Registry policy requires that the domain contact data will be made publicly accessible via a whois lookup.",
-	public_whois_acknowledgement_mixed_domains: "I understand that .US Registry policy requires that the domain contact data for .US domains will be made publicly accessible via a whois lookup. Contact details for other domains will be redacted.",
+	public_whois_acknowledgement: "I understand that, per Registry policy, the personal contact information provided in this section will be publicly visible in WHOIS domain record searches for %{tlds} domains",
+	public_whois_acknowledgement_mixed_domains: "I understand that, per Registry policy, contact information for %{tlds} domains will be publicly available through WHOIS domain record searches. Contact details for other domains will be redacted",
 	auth_code_section_title: "Authorization code required",
 	auth_code_section_description: "You may have entered the incorrect auth code for this domain.",
 	auth_code_section_submit: "Submit auth code",
-	unsupported_domains_show: "Show %{smart_count} domain unable to transfer |||| Show %{smart_count} domains unable to transfer",
-	unsupported_domains_hide: "Hide %{smart_count} domain unable to transfer |||| Hide %{smart_count} domains unable to transfer",
-	unsupported_domains_tab_on_cloudflare: "(%{num_domains}) Already on Cloudflare",
-	unsupported_domains_tab_off_cloudflare: "(%{num_domains}) Unable to transfer",
-	unsupported_domains_explanation: "Some domains cannot be transferred to Cloudflare Registrar. If you registered, transferred, or modified the contact information on a domain in the last 60 days, we cannot transfer yet. In other cases, we do not yet support the TLD. We're constantly working to improve that list, though. Check back soon.",
-	eligibility_unknown_domains_show: "Show %{smart_count} domain with unknown transfer eligibility* |||| Show %{smart_count} domains with unknown transfer eligibility*",
-	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
-	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment. Don't worry, we're attempting to determine the current state of each  domain. This process may take some time so please try back in 5 minutes. If we are still unable to make a determination please contact support for assistance.",
-	instructions_enom: _,
-	instructions_godaddy: r,
-	instructions_namecheap: d,
-	instructions_network_solutions: n,
-	instructions_one_and_one: o,
-	instructions_unknown: m,
-	instructions_uk: i,
-	instructions_restrictions: u,
-	instructions_restrictions_title: "Show restrictions",
-	instructions_known_title: "Transfer your domain from %{registrar}",
-	instructions_unknown_title: "Follow these instructions to transfer your domain",
-	instructions_uk_title: ".UK Domain Transfer Instructions",
-	instructions_no_auth_code_required: "No authorization code required.",
-	instructions_update_domain_tag: 'After checkout you must request that your current Registrar updates the domain tag to "CLOUDFLARE".',
-	instructions_transfer_rejection_notice: "Failure to complete transfer will result in an automatic rejection of the transfer.",
-	account_verification_title: "First, we need you to validate your email address",
-	account_verification_instructions: "ICANN rules require that registrants validate the email address on their account otherwise the registration can be frozen. Please use the link below to validate the email address on your account. Once you have confirmed the email address, you can start transferring your domains to the world's first at-cost registrar.",
-	account_verification_email: "Email address:",
-	account_verification_status_pending: "(pending verification)",
-	account_verification_status_unverified: "(not verified)",
-	account_verification_toast: "Your email address is not verified. Some Registrar features will be disabled.",
-	account_verification_toast_link: "Send verification Email",
-	account_verification_toast_result: "Verification Email Sent.",
-	account_verification_refresh_note: "Note: Please refresh this page, once the verification is complete.",
 	cancel_transfer_title: "Cancel",
 	cancel_transfer_body: "If you believe an issue has occurred during your transfer, you can cancel this request and restart the process. You will not be billed twice for the same domain.",
 	cancel_transfer_close: "Close",
@@ -457,10 +524,9 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_registration_disable: "Disable",
 	domain_registration_unknown: "Unknown",
 	domain_registration_title: "Domain Registration",
-	domain_registration_transfer_status: "Status:",
 	domain_registration_transfer_retry: "Retry",
-	domain_registration_registrar: "Registrar",
 	domain_registration_registrar_colon: "Registrar:",
+	domain_registration_registrar_reseller_colon: "Registrar/Reseller:",
 	domain_registration_expires: "Expires:",
 	domain_registration_transfer_cloudflare: "Transfer to Cloudflare",
 	domain_registration_check_transfer_progress: "Check transfer progress",
@@ -474,33 +540,37 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_registration_status_cancelling: "Pending Cancellation",
 	domain_registration_status_active: "Activated",
 	domain_registration_status_disabled: "Disabled",
-	domain_management_default_contact_card_title: "Default Contact",
-	domain_management_default_contact_card_create_title: "Create Default Contact",
+	domain_management_default_contact_card_title: "Default contact",
+	domain_management_default_contact_card_create_title: "Create default contact",
 	domain_management_default_contact_card_description: "Set the default contact information for new domain registrations and transfers. For your privacy, Cloudflare redacts WHOIS information from your domain by default.",
 	domain_management_default_contact_card_create_description: "Create the default contact information for new domain registrations and transfers.",
-	domain_management_default_contact_card_create_cta: "Create Default Contact",
+	domain_management_default_contact_card_create_cta: "Create default contact",
 	domain_management_default_contact_card_edit: "Edit",
+	prg_experiment: {
+		domain_management_default_contact_card_title: "Default contact information",
+		domain_management_default_contact_card_description: "New domain registrations and transfers will use this contact by default. For your privacy, Cloudflare redacts WHOIS information from your registrations."
+	},
 	domain_management_default_contact_card_not_verified: "This contact is not verified.",
-	domain_management_default_contact_card_resend_verification: "Resend Verification Email",
-	domain_management_default_contact_card_prefill: "Prefill from Default Contact",
+	domain_management_default_contact_card_resend_verification: "Resend verification email",
+	domain_management_default_contact_card_prefill: "Prefill from default contact",
 	domain_management_default_contact_card_requires_validation: "The following updated field(s) require a confirmation from the registrant contact:",
-	domain_management_default_contact_card_personal_information: "Personal Information",
-	domain_management_default_contact_card_address_information: "Address Information",
+	domain_management_default_contact_card_personal_information: "Personal information",
+	domain_management_default_contact_card_address_information: "Address information",
 	domain_management_default_contact_card_phone_format_error: "Invalid phone number",
 	domain_management_default_contact_card_toggle_expand: "Expand contact",
 	domain_management_default_contact_card_toggle_collapse: "Collapse contact",
-	domain_management_table_domain_name: "Search for a domain registered with Cloudflare...",
+	domain_management_table_domain_name: "Search your domains registered with Cloudflare...",
 	domain_management_table_domain: "Domain",
 	domain_management_table_status: "Status",
 	domain_management_table_auto_renew: "Auto-renew",
 	domain_management_table_expires: "Expires",
 	domain_management_table_manage: "Manage",
 	domain_management_table_invalid_date: "-",
-	domain_management_new_tld_banner_1: "**.TV** and **.CC** domains now available!",
-	domain_management_new_tld_banner_2: "**.US** domains now available!",
-	domain_management_auto_renew_no_payment_method: "No payment method in billing profile. Add one to enable automatic renewal.",
+	domain_management_auto_renew_no_payment_method: "No payment method in billing profile. Add a supported method to enable automatic renewal.",
 	domain_management_auto_renew_domain_protection: "As this domain is enrolled in domain protection, it is automatically renewed.",
-	domain_management_clear_filters_button: "Clear All",
+	domain_management_clear_filters_button: "Clear all",
+	domains_management_no_domains: "You currently have no domains in your account.",
+	domains_management_no_search_results: "No domains found for your search.",
 	default_parking_card_header_enabled: "Parking Page is enabled",
 	default_parking_card_header_disabled: "Parking Page is disabled",
 	default_parking_card_description: "A Parking Page can be displayed to a visitors of your domain when you don't have a website ready yet.",
@@ -528,135 +598,178 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	retry_transfer_body: "It appears that the transfer at your previous registrar was cancelled. To continue transferring to Cloudflare, enter a new auth code and click retry. You will not be billed twice.",
 	retry_transfer_retry: "Retry transfer",
 	retry_transfer_auth_code: "Auth code",
-	validation_registrar_cloudflare: "On Cloudflare",
-	validation_is_available: "Not registered",
-	validation_zone_inactive: "Not an active zone",
-	validation_transfer_waiting: "Registered in last 60 days",
-	validation_tld_blacklisted: "TLD not yet supported",
-	validation_tld_unsupported: "Unsupported TLD. Check back soon!",
-	validation_auth_code_required: "Auth code required",
-	validation_domain_locked: "Domain locked",
-	validation_privacy_enabled: "Privacy enabled",
-	validation_approval_pending: "Approval pending",
-	validation_prev_registrar_rejected: "Rejected at previous registrar",
-	validation_prev_registrar_pending: "Pending release from previous registrar",
-	validation_transfer_rejected: "Rejected",
-	validation_transfer_in_progress: "Transfer in progress",
-	validation_requires: "Requires",
-	validation_requires_full_zone: "Full DNS Setup",
+	wizard_step_indicator: (0, r.p)(W(), "currentStep", "totalSteps"),
 	wizard_auth_code_tooltip: "There was an error with the request. Please try again.",
-	wizard_auth_code_single: "domain to authorize",
-	wizard_auth_code_multiple: "domains to authorize",
-	wizard_disclaimer_restrictions_title: "Restrictions",
-	wizard_disclaimer_restrictions_body_intro: "Domains shown in the Cloudflare dashboard as available meet all transfer requirements.",
-	wizard_disclaimer_restrictions_body: "Otherwise, the following restrictions apply:",
-	wizard_disclaimer_restrictions_item_icann: "ICANN prohibits transferring a domain if in the last 60 days:",
-	wizard_disclaimer_restrictions_item_icann_transfer: "it has been transferred, or",
-	wizard_disclaimer_restrictions_item_icann_whois: "the WHOIS contact information has been modified or redacted.",
-	wizard_disclaimer_restrictions_item_expired: "You must renew any expired domains, and may need to pay a redemption fee.",
-	wizard_disclaimer_restrictions_item_premium: "Cloudflare does not support premium domains. Some registries designate certain higher-priced domains as",
-	wizard_disclaimer_restrictions_item_premium_em: "premium.",
-	wizard_disclaimer_forwarding_title: "Email Forwarding",
-	wizard_disclaimer_forwarding_body: "Cloudflare Registrar does not support email forwarding. To avoid disrupting email delivery, use a third-party forwarding service and update your Cloudflare DNS settings to include the corresponding MX record.",
-	wizard_error_no_payment_method: "You must add a payment method",
-	wizard_error_unverified_account: "You must verify your account",
-	wizard_error_no_domains: "No domains to transfer",
-	wizard_error_no_auth_key: "All auth codes must be valid to proceed",
-	wizard_error_no_websites: "You currently don't have any websites.",
-	wizard_error_no_websites_description: "Prior to transferring a domain, please add the domain you plan to transfer to Cloudflare. Once the domain is added, you will be able to proceed with the next steps in the transfer process. Review <0>supported extensions</0>.",
+	wizard_error_no_domains: "Select at least one domain to transfer",
+	wizard_error_no_auth_key: "All authorization codes must be valid to continue",
 	wizard_error_billing_permissions: "You need permission to manage billing in order to transfer a domain. Please reach out to a super-admin on the account for assistance.",
-	wizard_legal_body_one: 'By clicking "Confirm and Finalize Transfer" you agree to purchasing an annual subscription that renews automatically, unless you cancel your subscription(s) through your account dashboard before the next billing period begins. Early cancellation incurs charges for the entire subscription period. Your invoice will include any final sales tax, including state and local taxes when applicable. Visit',
-	wizard_legal_body_two: "for additional information about Cloudflare's billing, renewal, and cancellation policies.",
-	wizard_legal_body_uk: "If you elect to enable DNSSEC for any .uk domain, please note that Nominet, the .UK Registry, accepts no liability in relation to the operation or use of DNSSEC records. They will take reasonable steps to correct any error in the DNSSEC records, where such an error is as a result of a mistake on their part, but will otherwise accept no liability for the error. Registrants accept all risk in relation to the use of DNSSEC in relation to their domain names.",
-	wizard_one_title: "Select domains to transfer",
-	wizard_one_no_pmt_method: "In order to transfer domains, you must",
-	wizard_one_add_pmt_method: "add a payment method",
-	wizard_one_body_extends: "Most transfers result in one extra year added to the term of the domain. The following are exceptions to this:",
-	wizard_one_body_extends_point1: ".UK transfers do NOT add the additional year.",
-	wizard_one_body_extends_point2: "If the transfer completes within 45 days following the expiration date, the extra year MAY NOT be added. This policy is set by the Registry.",
-	wizard_one_body_extends_point3: "If the domain currently has more than 9 years left on the current term, a full year MAY NOT be added. This policy is set by the Registry.",
-	wizard_one_body_strong: "Your registration auto-renews by default.",
-	wizard_one_body_auto_renew: "After the transfer completes, you can turn off auto-renew in the Overview page.",
-	wizard_one_toast_save: "You could save up to",
-	wizard_one_toast_save_tail: "per year with Cloudflare Registrar.",
-	wizard_one_no_domains_to_transfer_title: "You currently have no domains available for transfer.",
-	wizard_one_no_domains_to_transfer_description: "Follow <0>these instructions</0> to initiate a transfer with the current registrar.",
-	wizard_one_eligibility_unknown_title: "The transfer eligibility of the following domain is unknown*: |||| The transfer eligibility of the following domains is unknown*:",
-	wizard_one_unsupported_title: "The following domain is unavailable for transfer, for the following reason: |||| None of your domains are available for transfer, for the following reasons:",
-	wizard_one_unsupported_body: "Some domains cannot be transferred to Cloudflare Registrar. If you registered, transferred, or modified the contact information on a domain in the last 60 days, we cannot transfer yet. In other cases, we do not yet support the TLD. We're constantly working to improve that list, though. Check back soon.",
-	wizard_one_footer_text: "Confirm Domains",
-	wizard_one_supported_extensions: "<0>Review instructions</0> and <1>supported extensions</1>.",
-	wizard_two_title: "First, let's transfer your domains from GoDaddy",
-	wizard_two_body: "You can use your GoDaddy credentials to transfer your domains automatically, or input the details manually.",
-	wizard_two_radio_yes: "Yes, I'd like to log into GoDaddy and transfer these domains automatically",
-	wizard_two_gd_username: "GoDaddy Username",
-	wizard_two_gd_pwd: "GoDaddy Password",
-	wizard_two_gd_login_error: "Unable to authenticate - Please check that your GoDaddy Username and Password are correct and try again.",
-	wizard_two_gd_login_disclaimer: "We promise to only use your GoDaddy account to transfer your domains.",
-	wizard_two_gd_login_disclaimer_tail: "We won't store this information anywhere.",
-	wizard_two_radio_no: "No, I'd like to follow a step-by-step guide to transfer them manually",
-	wizard_two_list_title: "2. Domains to transfer",
-	wizard_two_footer_text: "Transfer Domains",
-	wizard_three_total_cost: "Total transfer cost:",
-	wizard_three_nameservers_disclaimer: "<strong>Note:</strong> You cannot change the nameservers of a domain registered with Cloudflare.&nbsp;<0>Learn about transferring a domain.</0>",
-	wizard_three_footer_text: "Confirm and Proceed",
-	wizard_four_title: "Confirm contact information",
-	wizard_four_body_intro: "Let's make sure your information is correct.",
-	wizard_four_toast_info: "To protect your privacy, contact details for transferred domains will be redacted.",
-	wizard_four_nexus_information_title: "Additional Details",
-	wizard_four_footer_text: "Confirm and Finalize Transfer",
-	wizard_five_post_x: "Post",
-	wizard_five_post_x_text: "I just started transferring my domains to Cloudflare, the world's first no-markup registrar.",
-	wizard_five_transfers_failed: "Something went wrong...",
-	wizard_five_transfers_failed_details: "The following domains failed to transfer:",
-	wizard_five_transfers_some_failed_details: "Some domains failed to transfer. See below for details per domain.",
-	wizard_five_transfers_underway: "Your transfers are now underway!",
-	wizard_five_transfer_uk: 'Please request your current Registrar to update the IPS Tag to "CLOUDFLARE". ',
-	wizard_five_success_subheading: "Keep going while you wait",
-	wizard_five_keep_going: "While waiting for your domain transfer to finish, explore the following:",
-	wizard_five_deploy_app_title: "Deploy an application",
-	wizard_five_deploy_app_description: "Deploy full-stack applications to the Cloudflare network in just a few clicks.",
-	wizard_five_deploy_app_button_title: "Start building",
-	wizard_five_add_more_domains_title: "Add more domains",
-	wizard_five_add_more_domains_description: "Have more domains? Add them to your Cloudflare account to begin transfer to Cloudflare Registrar.",
-	wizard_five_add_more_domains_button_title: "Add site",
-	wizard_five_share_journey_title: "Share your journey",
-	wizard_five_thanks: "Thanks for transferring your domains to Cloudflare",
-	wizard_five_thanks_info: "Your current registrar\xA0can wait up to five days to\xA0transfer your domain to Cloudflare.\xA0However, you can request they release the domain earlier by responding to their confirmation email or approving the transfer in their dashboard.",
-	wizard_five_add_sites: "Want to stop overpaying for the rest of your domains? Add them to your Cloudflare account and you'll be able to transfer them to Cloudflare Registrar immediately.",
-	wizard_five_add_sites_link: "Add More Sites",
-	wizard_transfer_error_pmt_declined: "Your payment has been declined. Please check with your payment provider or try again with a different payment method.",
-	wizard_transfer_error_possible_pmt_declined: "Something went wrong. It may be that your payment has been declined. Please check with your payment provider or try again with a different payment method.",
-	wizard_transfer_error_no_profile: "We are unable to locate a billing profile for your account. Our team has been notified of the issue and will investigate.",
-	wizard_transfer_error_billing_quote: "An internal system error has occurred while trying to process the transaction. Please wait a few minutes and try again. If the issue persists please contact support for assistance.",
-	wizard_transfer_error_retry: "Please retry transferring this domain. You have not been charged.",
-	wizard_transfer_error_auth_code_fail: "Auth code entry failed. Retry in zone overview.",
-	wizard_transfer_error_auth_code_required: "Skipped - auth code required.",
-	wizard_transfer_error_skipped: "Skipped",
-	wizard_table_header_name: "Domain name",
-	wizard_table_header_cur_exp: "Current expiration",
-	wizard_table_header_new_exp: "New expiration",
-	wizard_table_header_cur_exp_with_separator: "Current expiration: ",
-	wizard_table_header_new_exp_with_separator: "New expiration: ",
-	wizard_table_header_cost: "Wholesale cost",
-	wizard_table_and_more: "and %{numRemaining} more",
-	wizard_table_collapse: "Collapse",
-	wizard_table_total_fee: "ICANN Fee:",
-	wizard_table_total: "Total:",
-	wizard_table_auto_renew_grace_period_warning: "Domain is within 45 days following the expiration date so an extra year will not be added.",
-	wizard_table_mobile_select_all: "Select all",
-	wizard_table_mobile_deselect_all: "Deselect all",
-	wizard_unsupported_reason_characters: "Unsupported characters",
-	wizard_unsupported_reason_cloudflare: "Already on Cloudflare",
-	wizard_unsupported_reason_premium: "Premium domains not yet supported",
-	wizard_unsupported_reason_auth_code_invalid: "Invalid auth code.",
-	wizard_unsupported_reason_auth_code_try_again: "Try Again",
-	wizard_unsupported_reason_transfer_rejected: "Transfer rejected.",
-	wizard_unsupported_reason_zone_overview: "Domain page",
-	wizard_unsupported_reason_transfer_waiting: "Domain registered in the last 60 days",
-	wizard_unsupported_reason_ambiguous: "Unsupported",
-	wizard_five_us_tld: "An email may be sent to the Registrant email address, if found in WHOIS. Please check your email for a confirmation request.",
+	wizard_error_required_fields: "Complete all required fields",
+	wizard_legal: 'By clicking "Confirm and Finalize Transfer" or "Pay with PayPal" you agree to purchasing an annual subscription that renews automatically, unless you cancel your subscription(s) through your account dashboard before the next billing period begins. Early cancellation incurs charges for the entire subscription period. Your invoice will include any final sales tax, including state and local taxes when applicable. Visit <0>Domain Registration Agreement</0> for additional information about Cloudflare\'s billing, renewal, and cancellation policies.<br /><br />If you elect to enable DNSSEC for any .uk domain, please note that Nominet, the .UK Registry, accepts no liability in relation to the operation or use of DNSSEC records. They will take reasonable steps to correct any error in the DNSSEC records, where such an error is as a result of a mistake on their part, but will otherwise accept no liability for the error. Registrants accept all risk in relation to the use of DNSSEC in relation to their domain names.',
+	validation_transfer_waiting: "Registered in last 60 days",
+	cannot_transfer: "%{domainName} cannot be transferred",
+	cannot_transfer_domain: "Domain",
+	cannot_transfer_default: "Unable to transfer domain",
+	cannot_transfer_zone_not_active: "Zone is not active",
+	cannot_transfer_zone_not_eligible: "Zone is not eligible",
+	cannot_transfer_domain_on_cf: "Domain is already on Cloudflare",
+	cannot_transfer_domain_available: "Domain must be registered",
+	cannot_transfer_domain_transfer_conditions: "Transfer conditions not met",
+	cannot_transfer_domain_transfer_in_progress: "Transfer is already in progress",
 	cancel: "Cancel",
+	wizard_one_title: "Select domains to transfer",
+	wizard_table_show_more: "Show %{smart_count} more domain |||| Show %{smart_count} more domains",
+	wizard_table_auto_renew_grace_period_warning: "Domain is within 45 days following the expiration date so an extra year will not be added.",
+	unsupported_domains_show: "Show %{smart_count} ineligible domain |||| Show %{smart_count} ineligible domains",
+	unsupported_domains_hide: "Hide %{smart_count} ineligible domain |||| Hide %{smart_count} ineligible domains",
+	unsupported_domains_modal_title: "Ineligible domains",
+	unsupported_domains_modal_title_tooltip: "To transfer a domain, it must first be fully onboarded to Cloudflare with active DNS.",
+	wizard_one: {
+		description: "Choose the domains you want to transfer to your account. You'll be able to review details and complete the transfer in the next steps.",
+		stats: {
+			domains_selected: "Domain selected |||| Domains selected",
+			premium: "Premium domain |||| Premium domains",
+			tlds: "Unique TLD |||| Unique TLDs",
+			total_domains: "Total domain |||| Total domains"
+		},
+		transfer_restrictions_description: "Canadian (.ca) domains cannot be transferred in the same process as other TLDs. Adjust your selection to only Canadian or only non-Canadian domains.",
+		transfer_bundle_restrictions_description: "Cloudflare Registrar doesn't currently support domains with special characters (IDNs). If you have a bundle of domains that includes an IDN, you won't be able to transfer any of the domains in that bundle, even if some of them contain no special characters.",
+		transfer_rules: {
+			main_description: "Domain transfers usually add one year to your registration, and auto-renew is enabled by default.",
+			learn_more_button: "Learn about domain transfer behavior and exceptions",
+			premium_domain_note: "The registry may change pricing for premium domains before you finish this process. We will confirm the latest price and get your approval before charging you.",
+			general_rules_title: "In most cases, transferring a domain adds one additional year to its registration term. However, the following exceptions apply:",
+			uk_domain_rule: "Transferring a .uk domain does not extend its registration by an additional year.",
+			forty_five_day_rule: "If the transfer is completed within 45 days of the domain's expiration, the extra year may not be added. This is determined by the domain's Registry.",
+			nine_year_rule: "If the domain already has more than 9 years remaining, a full year may not be added. This is also subject to Registry policy."
+		},
+		transfer_restrictions_notice: {
+			view_restrictions_button: "View restrictions",
+			hide_restrictions_button: "Hide restrictions",
+			title: "Transfers are not allowed if:",
+			sixty_day_rule: "The domain was transferred or WHOIS details changed within the last 60 days.",
+			expired_rule: "The domain is expired (Renewal or redemption fees may apply)."
+		},
+		domain_controls: {
+			search_placeholder: "Search by domain name",
+			select_all: "Select all",
+			deselect_all: "Deselect all"
+		},
+		domain_selector: {
+			no_results: "No domains match your search.",
+			separate_transfer: "Separate transfer required"
+		},
+		domains_table: {
+			name: "Name",
+			price: "Price",
+			select_all_domains: "Select all domains. Current state: %{checkboxState}",
+			press_to_toggle: "Press Enter or Space to toggle selection",
+			cannot_be_selected: "Cannot be selected",
+			checkbox_status: {
+				all_selected: "All selected",
+				some_selected: "Some selected",
+				none_selected: "None selected",
+				selected: "Selected",
+				not_selected: "Not selected"
+			}
+		},
+		empty_states: {
+			no_domains: {
+				title: "No domains found to transfer",
+				description: "To use Cloudflare Registrar, your domain must use Cloudflare for authoritative DNS.<br />We will guide you through importing DNS records and updating nameservers at your current registrar."
+			},
+			no_eligible_domains: {
+				title: "None of your domains are eligible to transfer",
+				description: "Start by unlocking a supported domain at the current registrar."
+			},
+			cta: "Onboard a domain"
+		},
+		supported_tlds_button: "View supported TLDs",
+		transfer_subtotal: "Subtotal <0>(Before tax)</0>"
+	},
+	wizard_unsupported_reason_characters: "Domain contains unsupported special characters",
+	wizard_unsupported_reason_cloudflare: "Domain is already on Cloudflare",
+	wizard_unsupported_reason_auth_code_invalid: "Invalid authorization code",
+	wizard_unsupported_reason_transfer_rejected: "Domain transfer was rejected",
+	wizard_unsupported_reason_transfer_waiting: "Domain was registered less than 60 days ago",
+	wizard_unsupported_reason_ambiguous: "Unsupported",
+	validation_is_available: "Domain is not registered or registration has expired",
+	validation_zone_inactive: "Domain is not using Cloudflare nameservers",
+	validation_tld_unsupported: "TLD is not supported",
+	validation_transfer_in_progress: "Domain transfer is in progress",
+	validation_requires_full_zone: "Full DNS Setup is required. Please point your domain to Cloudflare's nameservers.",
+	cannot_transfer_domain_year_limit_exceeded: "This domain cannot be transferred as it would exceed the %{yearLimit}-year maximum registration period for this TLD.",
+	cannot_transfer_domain_registry_status: {
+		clienthold: "A registry status (client hold) currently blocks transfer. Please contact your current registrar if this cannot be resolved.",
+		serverhold: "A registry status (server hold) currently blocks transfer. Please contact your current registrar if this cannot be resolved.",
+		servertransferprohibited: "A registry status (server transfer prohibited) currently blocks transfer. Please contact your current registrar if this cannot be resolved.",
+		pendingdelete: "A registry status (pending delete) currently blocks transfer. Please contact your current registrar if this cannot be resolved.",
+		pendingtransfer: "A registry status (pending transfer) currently blocks transfer. Please wait for the ongoing transfer to complete before trying again.",
+		clienttransferprohibited: "Domain is locked. Please unlock it at your current registrar, then try again."
+	},
+	wizard_two_title: "Enter authorization codes",
+	wizard_two_description: "Validate the transfer with an authorization code (also known as a transfer code) from your previous registrar.",
+	wizard_two_continue_button: "Continue to payment",
+	wizard_two_nameservers_notice: "You cannot change the nameservers of a domain registered with Cloudflare.",
+	wizard_two_ai_notice: "The .%{tld} registry policy requires that transfers add 2 years to the registration term.",
+	wizard_two_authorization_code_label: "Authorization code",
+	wizard_two_authorization_code_label_info_sign_label: "What is authorization code",
+	wizard_two_authorization_code_label_tooltip: "The authorization code, also known as auth code or transfer code, is provided by your current registrar to approve domain transfers.",
+	wizard_two_domain_remove_aria_label: "Remove %{domainName} from transfer list",
+	wizard_two_authorization_code_placeholder: "Enter authorization code",
+	wizard_two_renewal_fee: "Renews at %{domainRenewalFee}",
+	wizard_two_no_auth_code_required: "No authorization code required.",
+	wizard_four_title: "Enter contact and payment information",
+	wizard_three_description: "Make sure your contact information (also known as WHOIS) is up-to-date to avoid domain suspension or deletion by <0>ICANN</0>.",
+	wizard_four_continue_button: "Continue to transfer status",
+	wizard_four_body_intro: "Let's make sure your contact information is accurate.",
+	wizard_four_whois_redaction_notice: "Cloudflare provides free WHOIS redaction to safeguard your personal contact details from spam and potential threats. We cannot control if the top-level domain registry displays this information.",
+	wizard_four_nexus_information_title: ".us Nexus Requirements Policy",
+	wizard_four_us_tld: "An email may be sent to the Registrant email address, if found in WHOIS. Please check your email for a confirmation request.",
+	wizard_four_payment_title: "Payment",
+	wizard_four_total: "Total",
+	wizard_four_errors: {
+		validation_error_multiple: "Some fields are missing or contain errors. Please review and correct the highlighted fields.",
+		validation_error_ca: "To complete your .ca domain transfer, please select a registrant legal type.",
+		validation_error_public_whois: "You must agree with the acknowledgement at the top of this form in order to continue with your transfer of a %{tlds} domain(s).",
+		validation_error_self_certification: "You must answer both questions in the .us Nexus Requirements Policy section in order to continue with your transfer of a .us domain."
+	},
+	wizard_transfer_error_retry: "System error. Try again in a few minutes.",
+	wizard_transfer_error_auth_code_fail: "Auth code entry failed. Retry in zone overview.",
+	transfer_error_messages: {
+		[n.no.VALIDATION_ERROR_MISSING_CONTACT_EXTENSIONS]: "Required contact information is missing for this domain.",
+		[n.no.AUTHORIZATION_ERROR_FORBIDDEN]: "You don't have permission to transfer domains. Please contact your account admin for assistance.",
+		[n.no.VALIDATION_ERROR_INVALID_MIN_YEARS_FOR_DOMAIN]: "This domain cannot be transferred because it does not meet the minimum registration period for this TLD. Please contact support for assistance.",
+		[n.no.AUTHORIZATION_ERROR_INVALID_AUTH_CODE]: "Incorrect authorization code. Please enter the latest code from your previous registrar and try again.",
+		[n.no.VALIDATION_ERROR_INVALID_MAX_YEARS_FOR_DOMAIN]: "This domain cannot be transferred because it would exceed the %{yearLimit}-year maximum registration period for this TLD, as transferring automatically adds a year. Wait until the domain has %{maxCurrentYears} years or fewer remaining on its registration period.",
+		[n.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_DOMAIN_EXCEEDS_MAX_YEARS]: "This domain cannot be transferred because it would exceed the %{yearLimit}-year maximum registration period for this TLD, as transferring automatically adds a year. Wait until the domain has %{maxCurrentYears} years or fewer remaining on its registration period.",
+		[n.no.TRANSFER_ERROR_TRANSFER_LOCK_ERROR]: "Domain is locked. Please unlock it at your current registrar, then try again.",
+		[n.no.TRANSFER_ERROR_TRANSFER_IN_PROHIBITED]: "Domain transfer is prohibited until 60 days after the last transfer, update, or registration.",
+		[n.no.TRANSFER_ERROR_PAYMENT_FAILED]: "Payment failed. Please verify your payment information and try again.",
+		[n.no.VALIDATION_ERROR_INVALID_CONTACT]: "Registrant information is missing or incorrect. Please check for typos and try again.",
+		[n.no.SYSTEM_ERROR_REQUEST_TIMED_OUT]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_BILLING_ERROR]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_COULD_NOT_CREATE_TRANSFER]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_PREMIUM_DOMAIN]: "System error. Please try again in a few minutes."
+	},
+	wizard_four_post_x: "Post",
+	wizard_four_post_x_text: "I just started transferring my domains to Cloudflare, the world's first no-markup registrar.",
+	wizard_four_transfers_failed: "Something went wrong...",
+	wizard_four_transfers_failed_details: "The following domains failed to transfer:",
+	wizard_four_transfers_some_failed_details: "Some domains failed to transfer. See below for details per domain.",
+	wizard_four_transfers_underway: "Your transfers are now underway!",
+	wizard_four_transfer_uk: 'Please request your current Registrar to update the IPS Tag to "CLOUDFLARE".',
+	wizard_four_success_subheading: "Keep going while you wait",
+	wizard_four_keep_going: "While waiting for your domain transfer to finish, explore the following:",
+	wizard_four_deploy_app_title: "Deploy an application",
+	wizard_four_deploy_app_description: "Deploy full-stack applications to the Cloudflare network in just a few clicks.",
+	wizard_four_deploy_app_button_title: "Start building",
+	wizard_four_add_more_domains_title: "Add more domains",
+	wizard_four_add_more_domains_description: "Have more domains? Add them to your Cloudflare account to begin transfer to Cloudflare Registrar.",
+	wizard_four_share_journey_title: "Share your journey",
+	wizard_four_thanks: "Thanks for transferring your domains to Cloudflare.",
+	wizard_four_thanks_info: "Your current registrar can wait up to five days to transfer your domain to Cloudflare. However, you can request they release the domain earlier by responding to their confirmation email or approving the transfer in their dashboard.",
+	wizard_four_start_over: "Start new transfer",
+	wizard_four_view_status: "View transfer status",
 	registration_checkout_back: "Back to find a domain",
 	registration_checkout_title: "Complete your registration",
 	registration_checkout_domain_not_available: "%{domain_name} is not available for registration. Please try another domain.",
@@ -664,10 +777,10 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	registration_checkout_loading_2: "Confirming domain name availability...",
 	registration_checkout_loading_3: "Checking for trademark claims...",
 	registration_checkout_loading_4: "Loading checkout cart...",
-	registration_checkout_refund_disclaimer: (0, e.d)`You are about to register ${"domainName"}. Please double check that this is the domain you wish to register. All registrations are final and no refunds will be issued.`,
+	registration_checkout_refund_disclaimer: (0, r.p)(M(), "domainName"),
 	registration_checkout_error: {
 		title: "Unable to check domain availability",
-		subtitle: `We're currently unable to check the availability of <strong>%{domainName}</strong> at the registry. Please try again. If the issue persists, please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.`,
+		subtitle: 'We\'re currently unable to check the availability of <strong>%{domainName}</strong> at the registry. Please try again. If the issue persists, please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
 		button: "Try again"
 	},
 	registration_checkout_tmch_title: "Trademark claim for domain <strong>%{domainName}</strong>",
@@ -704,23 +817,43 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	registration_checkout_duration_legacy_total: "(%{price} USD)",
 	registration_checkout_duration_select_label: "Payment option",
 	registration_checkout_duration_select_description: "Your domain will be registered for %{duration} and will expire on <strong>%{date}</strong>.",
-	registration_checkout_renews_at_price: "Renews at %{price}.",
+	registration_checkout_renews_at_price: "Renews at %{price} per year.",
 	registration_checkout_registration_additional_years: "Additional years may be added after the registration has been completed.",
-	registration_checkout_payment_in_usd_disclaimer: 'Payment will be charged in US dollars. <a href="https://developers.cloudflare.com/registrar/account-options/icloud-domains/" rel="noopener noreferrer" target="_blank">Learn more.</a>',
-	registration_checkout_nameservers_disclaimer: "<strong>Note:</strong> You cannot change the nameservers of a domain registered with Cloudflare.&nbsp;<0>Learn about registering a domain.</0>",
-	registration_checkout_google_tlds_ssl_notice: '.%{tld} is a more secure domain, meaning that HTTPS is required for all websites. You can buy your domain name now, but in order for it to work properly in browsers you must first configure HTTPS serving. All domains registered through Cloudflare come with free SSL. For more information about configuring HTTPS, including resources to obtain an SSL certificate, refer to our <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl" rel="noopener noreferrer" target="_blank">SSL documentation</a>.',
-	registration_checkout_google_dot_new_tld_notice: '.new is exclusively for performing new actions online. Navigating to a .new domain must allow the user to generate action or create online content with at most one click. No other use cases are allowed. By registering a .new domain, you agree to follow the .new Registration Policy, including ensuring that your domain will be live and compliant within 100 days of the registration date. Registrations that do not comply with the Registration Policy may be locked or deleted without refund. Please visit <a href="https://whats.new" rel="noopener noreferrer" target="_blank">whats.new</a> for the full policy.',
-	registration_checkout_google_dot_channel_tld_notice: '.channel is exclusively for content creators and publishers to monetise their content. All .channel domains must present the user with a website where the creator can monetise their content or audience. No other use cases are allowed. By registering a .channel domain, you agree to follow the .channel Registration Policy. Please visit <a href="https://g.co/registry/channelRegistration" rel="noopener noreferrer" target="_blank">g.co/registry/channelRegistration</a> for the full policy.',
+	registration_checkout_payment_in_usd_disclaimer: "Payment will be charged in US dollars. <0>Learn more</0>.",
+	registration_checkout_nameservers_disclaimer: "You cannot change the nameservers of a domain registered with Cloudflare. <0>Learn about registering a domain</0>.",
+	registration_checkout_google_tlds_ssl_notice: ".%{tld} is a more secure domain, meaning that HTTPS is required for all websites. You can buy your domain name now, but in order for it to work properly in browsers you must first configure HTTPS serving. All domains registered through Cloudflare come with free SSL. For more information about configuring HTTPS, including resources to obtain an SSL certificate, refer to our <0>SSL documentation</0>.",
+	registration_checkout_google_dot_new_tld_notice: ".new is exclusively for performing new actions online. Navigating to a .new domain must allow the user to generate action or create online content with at most one click. No other use cases are allowed. By registering a .new domain, you agree to follow the .new Registration Policy, including ensuring that your domain will be live and compliant within 100 days of the registration date. Registrations that do not comply with the Registration Policy may be locked or deleted without refund. Please visit <0>.new Domain Registration Policy</0> for the full policy.",
+	registration_checkout_google_dot_channel_tld_notice: ".channel is exclusively for content creators and publishers to monetise their content. All .channel domains must present the user with a website where the creator can monetise their content or audience. No other use cases are allowed. By registering a .channel domain, you agree to follow the .channel Registration Policy. Please visit <0>.channel Domain Registration Policy</0> for the full policy.",
+	registration_checkout_dot_ai_tld_notice: "Registry policy requires a minimum registration period of 2 years for the .%{tld} extension.",
+	registration_checkout_dot_ai_renewal_period: "2 year renewal required.",
+	registration_checkout_ngo_ong_tld_notice: "This TLD is subject to a registration policy that is strictly enforced by the registry. Please review the <0>.ngo and .ong Registration Policy</0> and ensure you qualify before registering. Domains that do not meet these requirements may be suspended or deleted without refund.",
 	registration_checkout_contact_header: "Registrant information",
-	registration_checkout_contact_sub_header: "This is for your domain\u2019s legal record, and to contact you if there are problems with your registration.",
-	registration_checkout_contact_redaction_notice: "Cloudflare will redact all personal information sent to this domain's WHOIS record.",
-	registration_checkout_public_whois_ack: "I understand that my personal information in this section will be publicly displayed in domain-record searches, as required by the <strong>.us</strong> domains registry.",
-	registration_checkout_self_certification_header: "Self certification",
-	registration_checkout_self_certification_sub_header: 'In order to register a <strong>.us</strong> domain, the US Department of Commerce (USDC) requires folks to qualify their intentions for using a website behind a <strong>.us</strong> domain, and to self-certify their person or business as belonging to <a href="https://www.about.us/cdn/resources/ebooks/policies/usTLD_Nexus_Requirements_Policy.pdf" target="_blank">one of three Nexus Categories</a>.',
+	registration_checkout_contact_sub_header: "This information is required for domain ownership records and to ensure we can contact you regarding your registration.",
+	registration_checkout_contact_redaction_notice: "Cloudflare Registrar redacts registrant personal information from its <0>public WHOIS service</0>; however, it cannot control whether the registry redacts personal information from its own WHOIS service. In some cases, the registry may display personal information in their WHOIS service.",
+	registration_checkout_acknowledgements: {
+		default: {
+			acknowledgement: "I understand that, per .%{tld} Registry policy, the personal contact information provided in this section will be publicly visible in WHOIS domain record searches"
+		},
+		"['travel']": {
+			description: "Domain registrations in .travel are meant for all people or businesses engaged in all things travel related. If you are into travel products, goods, services or content, this domain name will help you to stand out.",
+			acknowledgement: "I acknowledge that I am engaged in or plan to engage in activities related to travel."
+		},
+		"['ong']": {
+			description: '.ong is a restricted extension. The registration policies are strictly enforced by the registry. Failure to fully comply will result in the domain being suspended and/or deleted. Please carefully review the registration policy found here <a href="https://pir.org/our-impact/ngo-ong-policy" rel="noopener noreferrer" target="_blank">.ONG Registration Policy</a> before proceeding with the registration.',
+			acknowledgement: "I acknowledge that I have read the .ong registration policy and agree to abide by the terms and conditions of the policy."
+		},
+		"['ngo']": {
+			description: '.ngo is a restricted extension. The registration policies are strictly enforced by the registry. Failure to fully comply will result in the domain being suspended and/or deleted. Please carefully review the registration policy found here <a href="https://pir.org/our-impact/ngo-ong-policy" rel="noopener noreferrer" target="_blank">.NGO Registration Policy</a> before proceeding with the registration.',
+			acknowledgement: "I acknowledge that I have read the .ngo registration policy and agree to abide by the terms and conditions of the policy."
+		}
+	},
+	registration_checkout_self_certification_header: ".us Nexus Requirements Policy",
+	registration_checkout_self_certification_sub_header: 'To register a .us domain, the US Department of Commerce (USDC) requires the registrant to meet specific Nexus requirements. This means confirming your relationship to the United States and the intended use of the domain. Please select the option below that best describes your Nexus category. For full details, see the <a href="https://www.about.us/doc/resources/ebooks/usTLD_Nexus_Requirements_Policy.pdf" rel="noopener noreferrer" target="_blank">usTLD Nexus Requirements Policy</a>.',
 	registration_checkout_validation_error_contact_fields: "Please complete required fields.",
-	registration_checkout_validation_error_public_whois: "You must check the box at the top of this form in order to continue with your purchase of a .us domain.",
-	registration_checkout_validation_error_self_certification: "You must answer both questions in the Self Certification section in order to continue with your purchase of a .us domain.",
-	registration_checkout_validation_error_multiple: "Please correct errors, above.",
+	registration_checkout_validation_error_acknowledgement: "You must agree with the acknowledgement at the top of this form in order to continue with your purchase of a .%{tld} domain.",
+	registration_checkout_validation_error_self_certification: "You must answer both questions in the .us Nexus Requirements Policy section in order to continue with your purchase of a .us domain.",
+	registration_checkout_validation_error_ca: "To complete your .ca domain registration, please select a registrant legal type.",
+	registration_checkout_validation_error_multiple: "Some fields are missing or contain errors. Please review and correct the highlighted fields.",
 	registration_checkout_payment_header: "Payment",
 	registration_checkout_auto_renew_header: "Automatic renewal",
 	registration_checkout_auto_renew_sub_header: "We can renew your domain for <strong>1 year</strong> before it expires on <strong>%{date}</strong>. You may return to update this setting at any time.",
@@ -730,26 +863,30 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	registration_checkout_total_header: "Total",
 	registration_checkout_total_usd: "(%{total} USD)",
 	registration_checkout_total_sub_header: "Your payment will include any sales tax required by your location.",
-	registration_checkout_total_sub_header_gala: `Your payment will include any sales tax required by your location.
-Payment will be charged in US dollars.`,
+	registration_checkout_total_sub_header_gala: "Your payment will include any sales tax required by your location.\nPayment will be charged in US dollars.",
 	registration_checkout_select_payment: "Select payment method",
 	registration_checkout_error_header: "We're sorry, something went wrong with that.",
-	registration_checkout_error_sub_header_default: 'Please review your purchase details and try again, or review the <a href="https://developers.cloudflare.com/fundamentals/subscriptions-and-billing/troubleshooting-failed-payments/" target="_blank">troubleshoot failed payments</a> guide for further guidance.',
+	registration_checkout_error_sub_header_default: "Please review your purchase details and try again, or review the <0>troubleshoot failed payments</0> guide for further guidance.",
 	registration_checkout_error_sub_header_banned_zone: 'The registration was not able to be completed. The domain you are attempting to register has been blocked for security reasons. Please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
 	registration_checkout_default_error_message: "Something went wrong. Please try again.",
 	registration_checkout_billing_quote_error_message: 'An internal system error has occurred while trying to process the transaction. Please wait a few minutes and try again. If the issue persists, please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
-	registration_checkout_trademark_notice_error_message: "The domain you're trying to register matches at least one trademark record. You must review the agreement and accept the terms of the trademark notice to proceed. Click <0>here</0> to review the claim.",
+	registration_checkout_domain_blocked_error_message: "This domain registration is temporarily blocked. Please wait a few minutes and try again.",
+	registration_checkout_trademark_notice_error_message: "The domain you're trying to register matches at least one trademark record. You must review the agreement and accept the terms of the trademark notice to proceed.",
+	registration_checkout_tld_acknowledgement_error_message: "You must review and acknowledge the terms for registering a .%{tld} domain in order to proceed.",
 	registration_checkout_customer_action_registrant: "Complete registrant information",
-	registration_checkout_customer_action_self_cert: "Complete self certification",
+	registration_checkout_customer_action_self_cert: "Complete self-certification",
 	registration_checkout_customer_action_payment_method: "Select payment method",
 	registration_checkout_customer_action_payment_info: "Complete payment information",
+	registration_organization_notice_optional: "If provided, the organization name will be considered the official domain holder",
+	registration_organization_notice_required: "Organization will be considered the official domain holder",
+	registration_organization_whois_visible: "Display organization in public domain registration records (WHOIS)",
 	registration_uk_notice: "Cloudflare and the .uk Registry will attempt to verify the registrant name, organization, and address. Failure to provide accurate information may result in the suspension of the domain. .UK contacts must only include A-Z, a-z, 0-7, spaces, punctuation, and symbols.",
 	registration_organization_uk_notice: "Organization should either be your first and last name or your company/organization name. This data will be verified by Cloudflare and/or the registry. Inaccurate information may lead to the domain being suspended.",
 	registration_success_title: "All done!",
-	registration_success_navigate_icloud_cta: "Return to <strong>iCloud</strong>",
+	registration_success_navigate_icloud_cta: "Complete Registration",
 	registration_success_navigate_icloud_description: "Cloudflare will pass your registry information back to Apple. Welcome to Cloudflare!",
 	registration_success_navigate_manage_cta: "Manage Domain",
-	registration_success_navigate_pages_cta: "Add Pages site",
+	registration_success_navigate_workers_cta: "Deploy an application",
 	registration_success_navigate_web_analytics_cta: "Set up Web Analytics",
 	registration_success_whois_header: "WHOIS information",
 	registration_success_whois_sub_header: "What Cloudflare has sent to WHOIS as the legal record of your domain registration.",
@@ -764,38 +901,20 @@ Payment will be charged in US dollars.`,
 	registration_success_product_list_header: "Do more with Cloudflare",
 	registration_success_product_list_plans_description: "Secure and accelerate your website with Cloudflare.",
 	registration_success_product_list_plans_link_cta: "See plans",
-	registration_success_product_list_pages_description: "Easily host your static website on Cloudflare Pages.",
-	registration_success_product_list_pages_link_cta: "Learn more",
+	registration_success_product_list_workers_description: "Deploy simple sites to full-stack applications with Cloudflare Workers.",
+	registration_success_product_list_workers_link_cta: "Start building",
 	registration_success_contact_preview_no_contact: "No contact information is currently available.",
 	registration_success_contact_preview_roles: "<0>For:</0> Domain owner, Administrative, Technical, Billing",
-	cannot_transfer: "%{domainName} cannot be transferred",
-	cannot_transfer_domain: "Domain",
-	cannot_transfer_default: "Unable to transfer domain",
-	cannot_transfer_zone_not_active: "Zone is not active",
-	cannot_transfer_zone_not_eligible: "Zone is not eligible",
-	cannot_transfer_domain_on_cf: "Domain is already on Cloudflare",
-	cannot_transfer_domain_available: "Domain must be registered",
-	cannot_transfer_domain_transfer_conditions: "Transfer conditions not met",
-	cannot_transfer_domain_premium: "Domain is premium",
-	cannot_transfer_domain_transfer_in_progress: "Transfer is already in progress",
-	cannot_transfer_domain_tld_not_supported: "TLD not supported",
-	cannot_transfer_domain_registry_status: {
-		clienthold: "Registry status: Client hold",
-		serverhold: "Registry status: Server hold",
-		servertransferprohibited: "Registry status: Server transfer prohibited",
-		pendingdelete: "Registry status: Pending delete",
-		pendingtransfer: "Registry status: Pending transfer",
-		clienttransferprohibited: "Registry status: Client transfer prohibited. Please unlock and allow a few hours to update."
-	},
 	domain_price_change_description: "Due to changes in the Registry pricing, our fees for the following TLDs will be changing. All transactions, including auto-renewals, that occur on or after the effective date will be billed at the new price. As a reminder, renewals can be submitted manually at any time.",
 	domain_price_change_table_header_tld: "Extension",
-	domain_price_change_table_header_current_fee: "Current fee (per year)",
-	domain_price_change_table_header_new_fee: "New fee (per year)",
+	domain_price_change_table_header_current_fee: "Old (per year)",
+	domain_price_change_table_header_new_fee: "New (per year)",
 	domain_price_change_table_header_date: "Effective from",
-	tld_page_title: "Supported Extensions",
-	tld_page_description: "These are the extensions Cloudflare Registrar currently supports. We are constantly working to support more extensions, so if you don't see what you're looking for, check back with us soon.",
-	tld_no_results: "No results found. Try a different extension.",
-	tld_generic_error: "There was an error while loading the extensions. Please try again.",
+	domain_price_change_table_cell_charge_us_dollars: "*Payment will be charged in US dollars.",
+	tld_page_title: "Supported TLDs",
+	tld_page_description: "These are the TLDs Cloudflare Registrar currently supports. We are constantly working to support more TLDs, so if you don't see what you're looking for, check back with us soon.",
+	tld_no_results: "No results found. Try a different TLD.",
+	tld_generic_error: "There was an error while loading the TLDs. Please try again.",
 	tld_form_label: "Search for a domain extension",
 	protection_enable_page_title: "Domain Protection",
 	protection_enable_page_description: "Cloudflare Registrar's Domain Protection is a security service designed to provide additional protection from unauthorized updates, transfers, or transfers of domain registrations.<br><br>With your Enterprise account plan, you are eligible to enable the service today.",
@@ -852,7 +971,7 @@ Payment will be charged in US dollars.`,
 	protection_domains_table_manage: "Manage",
 	protection_domains_table_error: "No domains available",
 	protection_unlock_modal_title_account: "Approval required",
-	protection_unlock_modal_title_domain: (0, e.d)`Approval required to unlock ${"domainName"}`,
+	protection_unlock_modal_title_domain: (0, r.p)(H(), "domainName"),
 	protection_unlock_modal_subtitle_domain: "You will need to select at least %{smart_count} approver to initiate the initiate the unlock of your domain. |||| You will need to select at least %{smart_count} approvers to initiate the unlock of your domain.",
 	protection_unlock_modal_subtitle_account: "You will need to select at least %{smart_count} approver to initiate an update to your domain protection configuration. |||| You will need to select at least %{smart_count} approvers to initiate an update your domain protection configuration.",
 	protection_unlock_modal_search_approvers: "Search approvers",
@@ -890,20 +1009,32 @@ Payment will be charged in US dollars.`,
 		offboarded: "Offboarded",
 		unknown: "Unknown"
 	},
+	prgExperiment: {
+		register: {
+			title: "Register a new domain",
+			subtitle: "Buy a new domain at cost.",
+			ctaText: "Search domains"
+		},
+		transfer: {
+			title: "Transfer a domain you own",
+			subtitle: "Transfer your domain registration to Cloudflare Registrar.",
+			ctaText: "Start a transfer"
+		}
+	},
 	cannot_delete_zone_cloudflare_registrar: "The zone cannot be deleted as the domain is currently registered through Cloudflare's registrar. If you wish to delete the domain registration please contact support for assistance.",
 	nexus_page_edit_title: "Edit Nexus Details",
 	nexus_page_save_button: "Save Details",
 	nexus_page_edit_button: "Edit Details",
 	nexus_edit_card_title: "Nexus Details",
-	nexus_information_description: "Registrants of .us domains are required to meet certain Nexus requirements. Please select from the options below that best describe your Nexus to the United States and the intended use of the domain name.",
+	nexus_information_description: 'As a registrant of a .us domain, you are required by the U.S. Department of Commerce (USDC) to meet specific Nexus requirements. This means confirming your relationship to the United States and the intended use of the domain. Please select the option below that best describes your Nexus category. For full details, see the <a href="https://www.about.us/doc/resources/ebooks/usTLD_Nexus_Requirements_Policy.pdf" rel="noopener noreferrer" target="_blank">usTLD Nexus Requirements Policy</a>.',
 	nexus_form_category_label: "Please identify your Nexus category:",
 	nexus_form_application_purpose_label: "Please indicate how you intend to use the domain name:",
 	nexus_form_placeholder: "Select a value",
 	delete_domain: {
 		card: {
-			title: (0, e.d)`Delete domain ${"domainName"}`,
+			title: (0, r.p)(V(), "domainName"),
 			description: "This domain registration is eligible for deletion.",
-			description_delete_not_available: 'Domain deletion is not available at this time, refer to our <a href="https://developers.cloudflare.com/registrar/account-options/domain-management/#delete-a-domain-registration" rel="noopener noreferrer" target="_blank">delete a domain documentation</a> if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following <a href="https://developers.cloudflare.com/registrar/faq/#domain-deletions" rel="noopener noreferrer" target="_blank">reasons</a>:',
+			description_delete_not_available: "Domain deletion is not available at this time, refer to our <1>delete a domain documentation</1> if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following <2>reasons</2>:",
 			description_delete_not_available_reason_1: "The status of the domain does not permit deletions",
 			description_delete_not_available_reason_2: "There is an administrative lock on the domain",
 			description_delete_not_available_reason_3: "You are not a Super Admin on the account",
@@ -915,15 +1046,16 @@ Payment will be charged in US dollars.`,
 		},
 		warning_modal: {
 			description: "Clicking Continue will send an email to all Super Admins in the account. The email will contain a confirmation code that must be provided to complete the deletion.<br /><br />Please be sure that you wish to permanently delete the registration. Once the deletion has been confirmed, the domain will no longer resolve and the domain may be immediately available for re-registration by any party.<br /><br />Please note that a refund will <strong>NOT</strong> be provided.",
+			ca_notice: "Please note, this action is irreversible. The domain restoration period does not apply for .ca domains.",
 			button: "Continue"
 		},
 		verification_modal: {
 			description: "We need to confirm that you really intend to delete the domain and an email has been sent with a confirmation code.<0></0>Enter the code below and click Verify Code.",
-			expiration_notice: (0, e.d)`The code will expire in ${"minutesLeft"} minutes and ${"secondsLeft"} seconds`,
-			new_code: (0, e.d)`Didn't get a code? <0>Send new code</0>`,
+			expiration_notice: (0, r.p)(G(), "minutesLeft", "secondsLeft"),
+			new_code: (0, r.p)(j()),
 			button: "Verify Code",
 			error: {
-				too_many_attempts: (0, e.d)`You are temporarily blocked because of too many attempts to get a confirmation code in a short period of time. Try again ${"date"}.`
+				too_many_attempts: (0, r.p)(K(), "date")
 			}
 		},
 		confirmation_modal: {
@@ -931,22 +1063,201 @@ Payment will be charged in US dollars.`,
 			button: "Delete Domain Permanently"
 		},
 		notifications: {
-			success: (0, e.d)`The domain ${"domainName"} has been sucessfully deleted.`
+			success: (0, r.p)(Z(), "domainName")
 		},
 		errors: {
 			title: "Error:",
 			invalid_confirmation_code: "The confirmation code entered is not valid.",
 			no_permission: "Your account does not have permission to delete this domain.",
-			generic: (0, e.d)`Something went wrong and we were unable to delete the domain ${"domainName"}. Please try again later or contact support for assistance.`
+			generic: (0, r.p)(X(), "domainName")
 		}
 	},
 	no_access: {
-		permissions: {
-			title: "Insufficient permissions",
-			subtitle: "Contact your account administrator for access to Cloudflare Registrar"
+		title: {
+			[n.KK.REGISTER]: "Domain registration unavailable",
+			[n.KK.TRANSFER]: "Domain transfer unavailable"
 		},
-		unverified_email: {
-			title: "Email not verified"
+		subtitle: {
+			[n.go.ACCOUNT_BLOCKED]: "Your account has been blocked from performing this action",
+			[n.go.FEATURE_DISABLED]: "This feature has been disabled for your account",
+			[n.go.EMAIL_UNVERIFIED]: "You need to verify your email before proceeding",
+			[n.go.DEFAULT]: "This feature is currently unavailable"
 		}
-	}
+	},
+	premium_domain_pricing_confirmation_modal_title: "Pricing confirmation",
+	premium_domain_pricing_confirmation_modal_description: "%{domainName} is a premium domain, which has non-standard pricing. The Registry has indicated that the price is different than what we had listed. The corrected price is shown below.",
+	premium_domain_pricing_confirmation_modal_old_price: "Old price",
+	premium_domain_pricing_confirmation_modal_new_price: "New price",
+	premium_domain_pricing_confirmation_modal_back_button: "Return to search",
+	premium_domain_pricing_confirmation_modal_continue_button: "Continue",
+	premium_domain_transfer_price_confirmation_modal_title: "Pricing confirmation",
+	premium_domain_transfer_price_confirmation_modal_description: "The following domains are premium, which have non-standard pricing. The Registry has indicated that the price is different than what we had listed. The corrected price is shown below.",
+	premium_domain_transfer_price_confirmation_modal_old_price: "Old price",
+	premium_domain_transfer_price_confirmation_modal_new_price: "New price",
+	premium_domain_transfer_price_confirmation_modal_back_button: "Return to select domains",
+	premium_domain_transfer_price_confirmation_modal_retry_button: "Continue",
+	transfer_account: {
+		card: {
+			title: "Move to another Cloudflare account",
+			description: "Learn more about <0>moving domains between Cloudflare accounts</0>.",
+			description_pending: "Domain is in a pending move state waiting for the new account to accept the move. If the move is not accepted by the new account within 5 days of submission, the request will be automatically cancelled.",
+			description_ineligible: "This domain is ineligible to move to another account for the following reasons:",
+			description_ineligible_nonspecific: "This domain is ineligible to move to another account.",
+			ineligibility_reasons: {
+				[n.BA.DOMAIN_REGISTRY_STATUS]: "Domain has blocking registry status",
+				[n.BA.DOMAIN_FROZEN]: "Domain is administratively locked",
+				[n.BA.DOMAIN_SECURE]: "Domain is secure",
+				[n.BA.DOMAIN_EXPIRED]: "Domain has expired",
+				[n.BA.DOMAIN_EXISTING_PENDING_REQUEST]: "Domain has pending account move request"
+			},
+			actions: {
+				start: "Start",
+				cancel: "Cancel"
+			}
+		},
+		modal: {
+			title: "Move domain %{domainName} to another Cloudflare account",
+			steps: {
+				instructions: {
+					description: "To move a domain you will need the account ID of the new account and the domain must be added as a website to the new account. <strong>Important: the zone settings will not be moved. A new zone is required to be configured in the new account.</strong>",
+					kb_link: "Please read the <0>instructions</0> carefully for a complete description of the requirements."
+				},
+				targetAccount: {
+					label_account_id: "Enter the account ID of the new account",
+					error_account_id: "Account ID is required",
+					label_confirm_account_id: "Re-enter the account ID",
+					error_confirm_account_id: "Confirm account ID is required",
+					error_match_confirm_account_id: "The account IDs are must match",
+					account_id_help_text: "If you need help finding the account ID, check out <0>documentation</0> page.",
+					label_acknowledgement_1: "I acknowledge and understand that upon completion of the move, the domain will no longer be managed by this account",
+					error_acknowledgement: "You must check the acknowledgements to move the domain",
+					label_acknowledgement_2: "I acknowledge and understand that the current zone and any services, plans, or configurations will not be moved to the new account"
+				},
+				error_result: {
+					description_error: "This domain cannot be moved for the following reasons. Please correct the issues below and re-submit the request."
+				},
+				success_result: {
+					title: "Domain move successfully initiated",
+					subtitle: "The gaining account now has <strong>five days</strong> to accept. You can cancel at any time <0>here</0>."
+				}
+			},
+			notifications: {
+				success: "The process of moving domain %{domainName} to account ID %{gainingAccountId} has been initiated.",
+				error: "The process of moving domain %{domainName} to account ID %{gainingAccountId} failed to initiate."
+			},
+			buttons: {
+				continue: "Continue"
+			}
+		},
+		cancel_modal: {
+			title: "Confirm cancel of pending domain move",
+			description: "Are you sure you want to cancel the pending move of %{domainName}?",
+			confirm_cta: "Confirm cancel",
+			error: "The domain move could not be cancelled. Please try again or contact support for assistance."
+		},
+		pending_card: {
+			title: "Domain move from another Cloudflare account",
+			description: "There is at least one domain pending a move into your account from another Cloudflare account. Approval is required to accept the domains.",
+			button: "View actions"
+		},
+		decision_notifications: {
+			success: {
+				[n.C8.APPROVED]: "Inter-account move of %{domainName} approved.",
+				[n.C8.REJECTED]: "Inter-account move of %{domainName} rejected.",
+				[n.C8.CANCELLED]: "Inter-account move of %{domainName} successfully cancelled."
+			},
+			error: {
+				[n.C8.APPROVED]: "Failed to approve the inter-account move of %{domainName}.",
+				[n.C8.REJECTED]: "Failed to reject the inter-account move of %{domainName}.",
+				[n.C8.CANCELLED]: "Failed to cancel the inter-account move of %{domainName}."
+			}
+		},
+		errors: {
+			nonspecific: "This domain could not be moved. Please try again or contact support for assistance.",
+			messages: {
+				[n.BA.DOMAIN_REGISTRY_STATUS]: "Domain has a registry status preventing an inter-account move.",
+				[n.BA.DOMAIN_FROZEN]: "Domain is administratively locked.",
+				[n.BA.DOMAIN_SECURE]: "Domain is protected from an inter-account move.",
+				[n.BA.DOMAIN_EXPIRED]: "Domain has expired.",
+				[n.BA.DOMAIN_PENDING_TRANSFER_RELATION]: "Domain has a pending transfer relation.",
+				[n.BA.DOMAIN_PARKED]: "Domain is parked.",
+				[n.BA.DOMAIN_EXISTING_PENDING_REQUEST]: "Domain has existing pending request.",
+				[n.BA.DOMAIN_SERVER_ERROR]: "Server error while determining domain eligibility.",
+				[n.BA.GAINING_ACCOUNT_NOT_IN_GOOD_STANDING]: "Gaining account is not in good standing.",
+				[n.BA.GAINING_ACCOUNT_EMAIL_UNVERIFIED]: "Gaining account email is unverified.",
+				[n.BA.GAINING_ACCOUNT_NO_ZONE]: "Gaining account must first add the domain as a website.",
+				[n.BA.GAINING_ACCOUNT_ZONE_INITIALIZING]: "Gaining account must first select a plan for the website.",
+				[n.BA.GAINING_ACCOUNT_SERVER_ERROR]: "Server error while determining gaining account eligibility.",
+				[n.BA.API_PAYLOAD_VALIDATION_FEATURE_FLAG_DISABLED]: "Feature is not currently available.",
+				[n.BA.API_PAYLOAD_VALIDATION_INVALID_DOMAIN]: "Domain is invalid.",
+				[n.BA.API_PAYLOAD_VALIDATION_DOMAIN_DOES_NOT_BELONG_TO_ACCOUNT]: "Domain does not belong to this account.",
+				[n.BA.API_PAYLOAD_VALIDATION_INVALID_DECISION]: "Decision applied is not valid.",
+				[n.BA.API_PAYLOAD_VALIDATION_INVALID_ACCOUNT_ID]: "Gaining account ID specified is invalid.",
+				[n.BA.API_PAYLOAD_VALIDATION_CANNOT_MOVE_DOMAIN_TO_EXISTING_ACCOUNT]: "Domain is already in target account.",
+				[n.BA.API_PAYLOAD_VALIDATION_EXISTING_PENDING_REQUEST]: "Pending move request for domain exists.",
+				[n.BA.API_PAYLOAD_VALIDATION_NO_PENDING_REQUEST]: "No pending move request for domain.",
+				[n.BA.API_PAYLOAD_VALIDATION_USER_IS_NOT_SUPER_ADMIN]: "Only super admins can move a domain."
+			}
+		}
+	},
+	action_center: {
+		title: "Action Center",
+		description: "Review, approve, or reject pending tasks related to your domains.",
+		no_pending_actions: "No pending actions at this time.",
+		pending_card: {
+			title: "Domain Registration moves from another account",
+			description: "The domains listed below are pending moves into your account. Approval is required to accept the domains.",
+			domain_description: "The request to move %{domainName} to this account was started at %{startDate} and an action can be taken until %{expireDate}.",
+			buttons: {
+				accept: "Accept",
+				reject: "Reject"
+			},
+			decided_block: {
+				accepted: {
+					title: "%{domainName} move accepted",
+					subtitle: 'You will be able to fully manage the domain once the nameservers update. This may take up to eight hours however you may be able to accelerate the process by clicking "Check nameservers now" <0>here</0>.'
+				},
+				rejected: {
+					title: "%{domainName} move rejected",
+					subtitle: "If this was a mistake, contact the owner of this domain to restart the move."
+				}
+			}
+		}
+	},
+	status_info: {
+		tooltip: "The registration status for the domain. Note that this can differ from the <0>zone status</0>."
+	},
+	canada_registrant_type: {
+		title: "Canadian Presence Requirements",
+		description: 'To comply with .ca domain registration requirements, you must demonstrate a connection to Canada and be eligible under the <a href="https://www.cira.ca/en/resources/documents/domains/canadian-presence-requirements-registrants" rel="noopener noreferrer" target="_blank">Canadian Presence Requirements (CPR)</a>.',
+		registrant_legal_type: "Registrant legal type",
+		ca_country_lock_notice: "A Canadian address is required for .ca domains.",
+		ca_organization_notice: "An organization name is required for non-individual .ca registrations.",
+		manage_domain: {
+			organization_required_error: "An organization name is required for this legal type. Please update the registrant contact information to include an organization before saving.",
+			update_notification_error: "We were unable to update the registrant legal type for %{domainName} at this time. Please try again or contact support for assistance.",
+			update_notification_success: "The registrant legal type for %{domainName} was successfully updated."
+		}
+	},
+	centralnic_reseller_notice: "This registration will be managed by Cloudflare Registrar but fulfilled by a trusted third party. In addition to communication from Cloudflare, you may receive a separate email to verify your email address with our trusted third party. It is imperative that you follow the steps in that email.",
+	missing_billing_email_error: {
+		manage_domain: "This account doesn't have a billing email. You won't be able to renew a domain until one is added. <0>Update your billing settings</0> to add a billing email.",
+		register_domains: "This account doesn't have a billing email. You won't be able to register a domain until one is added. <0>Update your billing settings</0> to add a billing email.",
+		transfer_domains: "This account doesn't have a billing email. You won't be able to transfer a domain until one is added. <0>Update your billing settings</0> to add a billing email."
+	},
+	documentation_title: "Cloudflare Registrar documentation",
+	documentation_whois_redaction_title: "WHOIS redaction",
+	documentation_transfer_domain_title: "Transfer domain",
+	documentation_tld_policies_title: "TLD policies",
+	documentation_domain_status_title: "Zone status",
+	documentation_inter_account_transfer_title: "Move a domain between Cloudflare accounts",
+	documentation_find_account_id_title: "Find account and zone IDs",
+	documentation_register_domain_title: "Register domain",
+	documentation_domain_expiration_title: "Domain restoration",
+	documentation_domain_transfer_title: "Transfer domain",
+	documentation_delete_domain_title: "Delete a domain",
+	documentation_domain_registration_agreement_title: "Domain Registration Agreement",
+	documentation_icloud_domains_title: "iCloud Custom Email Domains",
+	documentation_universal_ssl_title: "Universal SSL",
+	documentation_payment_failure_title: "Payment failure"
 }

@@ -1,3 +1,5 @@
 [
-	"/:account_id/abuse-reports"
+	"/[id]/abuse-reports",
+	"/[id]/abuse-reports/report/[id]/*",
+	"/[id]/abuse-reports/report/[id]/[id]/*"
 ]

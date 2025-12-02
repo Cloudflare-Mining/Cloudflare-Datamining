@@ -13,17 +13,9 @@
 	abort: "Abort",
 	item: "Item",
 	content: "Content",
+	unique_transformations: "Unique transformations",
 	agreement: {
-		description: `Use Cloudflare Images to store, resize and deliver images affordably.
-
-**Resizing: Free**
-You can create up to 20 variants.
-
-**Storage: $5.00 per 100,000 images (prepaid)**
-You only pay for the original image. If you have 10 original images with 5 configured variants, only the 10 original images count towards your storage limit.
-
-**Delivery: $1.00 per 100,000 images served (postpaid)**
-You will only be billed for number of images served.`
+		description: (0, i.p)(n(), "storagePrice", "servePrice")
 	},
 	current_usage: {
 		images_basic: "",
@@ -48,15 +40,11 @@ You will only be billed for number of images served.`
 		select_plan: "Select Plan",
 		bundle_modal_selection_description: "You can purchase Cloudflare Images on its own or bundle it with Cloudflare Stream.",
 		bundle_page_selection_description: "Use Cloudflare Images to store, optimize, and deliver your images. Purchase Cloudflare Images on its own or bundle it with Cloudflare Stream.",
-		bundle_page_existing_subsciption_description: `Use Cloudflare Images to store, optimize, and deliver your images.
-**You have an existing subscription to Cloudflare Stream. You can purchase Starter or Creator bundles only when your Cloudflare Stream subscription is canceled and has ended.**`,
+		bundle_page_existing_subsciption_description: "Use Cloudflare Images to store, optimize, and deliver your images.\n**You have an existing subscription to Cloudflare Stream. You can purchase Starter or Creator bundles only when your Cloudflare Stream subscription is canceled and has ended.**",
 		bundle_cloudflare_images_title: "Cloudflare Images",
 		bundle_basic_title: "Starter Bundle",
 		bundle_advanced_title: "Creator Bundle",
 		bundle_starting_at: "Starting at",
-		bundle_cloudflare_images_price: "$5 / month",
-		bundle_basic_price: "$10 / month",
-		bundle_advanced_price: "$50 / month",
 		bundle_cloudflare_images_description: "Store, resize, optimize and serve images at scale.",
 		bundle_basic_short_description: "Includes 1,000 minutes of video and 100,000 images",
 		bundle_basic_description: "Store up to 100,000 images and 1,000 minutes of video content. Deliver up to 500,000 images and 5,000 minutes of video content each month.",
@@ -64,9 +52,9 @@ You will only be billed for number of images served.`
 		bundle_advanced_short_description: "Includes 10,000 minutes of video and 500,000 images",
 		bundle_advanced_description: "Store up to 500,000 images and 10,000 minutes of video content. Deliver up to 1,000,000 images and 50,000 minutes of video content each month.",
 		bundle_advanced_additional_images_description: "The Creator Bundle includes 500,000 images.",
-		bundle_save_up_to: (0, e.d)`**$${"amount"} / month in savings**`,
+		bundle_save_up_to: (0, i.p)(s(), "amount"),
 		resizing_notice_title: "You're currently using the legacy plan for Image Resizing",
-		resizing_notice_description: "Image Resizing is now available as transformations under Cloudflare Images. You can continue to optimize and manipulate images that aren\u2019t stored in Cloudflare Images. When you purchase Images, then you will automatically switch to the new pricing plan, which costs $0.50 per 1,000 unique transformations. Each unique transformation is billed only once per 30 day period.",
+		resizing_notice_description: (0, i.p)(d(), "price"),
 		single_product_feature_1: "Up to 20 variants per image at no extra cost",
 		single_product_feature_2: "Automatic image optimization in formats including WebP and AVIF",
 		single_product_feature_3: "Direct Creator Uploads",
@@ -85,9 +73,6 @@ You will only be billed for number of images served.`
 			additional_title: "Additional Stream Storage Capacity"
 		},
 		recurring: "recurring monthly",
-		storage: {
-			rate: "$5 for every 1,000 minutes stored"
-		},
 		title: "Confirm Payment",
 		total: {
 			description: "Your estimated billing not including minutes viewed"
@@ -95,6 +80,121 @@ You will only be billed for number of images served.`
 		views: {
 			description: "This is charged based on usage",
 			rate: "per 1,000 minutes viewed"
+		},
+		prgExperiment: {
+			streamIconCopy: "Stream",
+			ImageIconCopy: "Images",
+			features: {
+				header: "Features"
+			},
+			bundle_page_main_header: "Plans",
+			bundle_page_header: "Images",
+			bundle_page_selection_description: "Cloudflare Images is an end-to-end solution designed to help you streamline your image infrastructure from a single API",
+			bundle_page_link: "Images documentation",
+			bundle_page_existing_subsciption_description: "Use Cloudflare Images to store, optimize, and deliver your images.\n**You have an existing subscription to Cloudflare Stream. You can purchase Starter or Creator bundles only when your Cloudflare Stream subscription is canceled and has ended.**",
+			bundle_pay_as_you_go: "Pay-as-you-go",
+			cloudflare_images: {
+				bundle_title: "Images",
+				bundle_subtitle: "Store, optimize, and deliver images at scale",
+				bundle_purchase: "Purchase Images",
+				bundle_price: "%{bundlePrice}/month",
+				featureCardCopy: {
+					included: {
+						transformations: "%{number} unique transformations per month"
+					},
+					pricing: {
+						optimize: "Stored in Images:",
+						header: "Pricing details",
+						imagesStored: "%{price} per %{number} images stored",
+						imagesDelivered: "%{price} per %{number} images delivered"
+					},
+					optimizeImages: {
+						header: "Stored outside of Images:",
+						pricing: "%{price} per %{number} additional unique transformations"
+					},
+					features: {
+						header: "Features",
+						storeImages: "Efficiently store images — no need to upload duplicate versions",
+						optimizeImages: "Optimize images stored anywhere on the Internet",
+						transformImages: "Dynamically transform and manipulate images on the fly with crop, resizing, and other visual effects"
+					}
+				}
+			},
+			basic: {
+				bundle_subtitle: "Save %{savings}/month on Images + Stream",
+				bundle_price: "%{price}/month",
+				bundle_purchase: "Purchase Starter Bundle",
+				featureCardCopy: {
+					included: {
+						images: {
+							stored: "%{number} images stored",
+							delivered: "%{number} images delivered per month"
+						},
+						stream: {
+							videoStored: "%{numberOfMinutes} minutes of video stored",
+							videoDelivered: "%{numberOfMinutes} minutes of video delivered per month"
+						}
+					}
+				}
+			},
+			advanced: {
+				bundle_subtitle: "Save %{savings}/month on Images + Stream",
+				bundle_price: "%{price}/month",
+				bundle_purchase: "Purchase Creator Bundle",
+				featureCardCopy: {
+					included: {
+						images: {
+							stored: "%{number} images stored",
+							delivered: "%{number} images delivered per month"
+						},
+						stream: {
+							videoStored: "%{numberOfMinutes} minutes of video stored",
+							videoDelivered: "%{numberOfMinutes} minutes of video delivered per month"
+						}
+					}
+				}
+			},
+			bundle_starts_at: "Starting at",
+			featureCardCopy: {
+				included: {
+					header: "Included",
+					images: {
+						header: "Images",
+						transformations: "%{number} unique transformations per month"
+					},
+					stream: {
+						header: "Stream"
+					}
+				},
+				pricingDetails: {
+					header: "Pricing details",
+					images: {
+						in: {
+							header: "Stored in Images:",
+							stored: "%{price} per %{number} additional images stored",
+							delivered: "%{price} per %{number} additional images delivered"
+						},
+						out: {
+							header: "Stored outside of Images:",
+							transformations: "%{price} per %{number} additional unique transformations"
+						}
+					},
+					stream: {
+						header: "Stream:",
+						stored: "%{price} per %{number} additional minutes of video stored",
+						delivered: "%{price} per %{number} additional minutes of video delivered"
+					}
+				},
+				features: {
+					header: "Everything in Images, plus Stream:",
+					images: "Images: Efficiently store, transform, and deliver images",
+					stream: "Stream: Store, encode, and deliver live and on-demand video",
+					mediaTransformations: "Media transformations: Dynamically optimize and transform images and video on-the-fly, regardless of where they are stored",
+					onDemand: "Seamless, all-in-one live and on-demand video streaming",
+					player: "Use our built-in player or bring your own",
+					encoding: "No added fees for encoding or bandwidth"
+				}
+			}
 		}
 	},
 	configuration: {
@@ -110,6 +210,16 @@ You will only be billed for number of images served.`
 		}
 	},
 	curl_command: "cURL command",
+	appearance: "Appearance",
+	variant_id: "Variant ID",
+	width_px: "Width (px)",
+	height_px: "Height (px)",
+	blur: "Blur",
+	background: "Background",
+	create_variant: "Create variant",
+	variant_description: "Variants are a predefined way to specify how a hosted image should be resized.",
+	create_variant_description: "Name your variant. The variant ID cannot be changed after it has been created",
+	create_variant_metadata: "Keep or remove metadata",
 	edit_image_custom_id_error: "Images with custom IDs cannot be set to private",
 	drop_here_or_browse: "Drop images here or click to browse",
 	image_url: "Image URL",
@@ -117,8 +227,45 @@ You will only be billed for number of images served.`
 	preview: "Preview",
 	customization_options: "Customization Options",
 	blurring: "Blurring",
+	opacity: "Opacity (%)",
+	scale: "Scale (%)",
+	rotation: "Rotation",
+	repeat: "Repeat",
 	resizing_options: "Resizing Options",
 	resizing_options_description: "IMAGESTODO",
+	watermark: {
+		title: "Watermark",
+		add_watermark: "Add Watermark",
+		add_lc: "Add watermark",
+		description: "Select an image to use as the watermark. You can enter a hosted image ID or a remote URL.",
+		documentation: "Documentation",
+		variant_documentation: "Create variants documentation",
+		image_selection_success: "Watermark uploaded successfully",
+		image_id: "Image ID",
+		image_url: "Image URL",
+		ref_requirement: "Image ID or URL is required",
+		image_id_hint: {
+			p1: "To upload a new image, go to the ",
+			p2: "Images Overview page",
+			p3: " to upload an image and view its image ID."
+		},
+		errors: {
+			url: "This URL is not a valid image or could not be loaded.",
+			id: "Image ID not recognised",
+			background: "Invalid CSS color code"
+		},
+		background_fill: "Background fill",
+		position: "Position",
+		position_description: "Use X and Y to set the distance of the watermark from the edges.",
+		edge: "Edge",
+		offset: "Offset (px)",
+		add: "Add",
+		cancel: "Cancel",
+		deletion_modal: {
+			title: "Delete watermark?",
+			description: "Are you sure you want to delete the watermark?"
+		}
+	},
 	w: "W",
 	public_access: "public access",
 	h: "H",
@@ -127,8 +274,10 @@ You will only be billed for number of images served.`
 	metadata: "Metadata",
 	metadata_description: "IMAGESTODO",
 	signed_urls: "Signed URLs",
-	signed_urls_description: `Checking \u201CAlways allow public access\u201D overrides image-level access control.
-If checked, images that require signed URLs can be accessed publicly.`,
+	always_public: "Always public",
+	always_public_tooltip: "This variant is always publicly accessible and overrides signed URL restrictions",
+	always_allow_public_access: "Always allow public access",
+	signed_urls_description: "Checking “Always allow public access” overrides image-level access control. If checked, images that require signed URLs can be accessed publicly.",
 	previous: "Previous",
 	next: "Next",
 	category_name: "Category Name",
@@ -138,19 +287,19 @@ If checked, images that require signed URLs can be accessed publicly.`,
 	video_id: "Video ID",
 	video_link: "Video Link",
 	storage: {
-		usage: (0, e.d)`You may not reduce your storage capacity below your current usage of **${"current"} images**.`,
+		usage: (0, i.p)(u(), "current"),
 		description_new_user: "With Cloudflare Images, you can configure a plan to meet your needs. Purchase storage to store your images in Cloudflare Images. Alternatively, you can use transformations to optimize images that are stored outside of Cloudflare Images. You can always purchase additional storage at any time.",
-		inadequateProposedPlan: (0, e.d)`At least ${"minumumRequired"} images are required for the ${"current"} images currently stored`,
+		inadequateProposedPlan: (0, i.p)(l(), "minumumRequired", "current"),
 		inputWholeNumber: "Please enter a whole number",
-		howToCancel: (0, e.d)`If you'd like to cancel your subscription, visit the [Subscriptions page](/${"accountId"}/billing/subscriptions)`,
-		description: "Storage is $5 per 100,000 images stored. You can change the storage amount.",
+		howToCancel: (0, i.p)(c(), "accountId"),
+		description: (0, i.p)(m(), "price"),
 		title: "**Select image storage capacity.**",
 		additional_title: "**Select additional storage capacity.**"
 	},
-	modal_add_storage_custom_calculation: (0, e.d)`x 100,000 images = ${"value"} images`,
-	modal_add_extra_storage_custom_calculation: (0, e.d)`x 100,000 images = ${"value"} images extra`,
-	modal_extra_minutes_of_video: (0, e.d)`${"value"} minutes of video extra`,
-	modal_total_storage: (0, e.d)`Total image storage capacity: ${"value"} images`,
+	modal_add_storage_custom_calculation: (0, i.p)(_(), "value"),
+	modal_add_extra_storage_custom_calculation: (0, i.p)(g(), "value"),
+	modal_extra_minutes_of_video: (0, i.p)(p(), "value"),
+	modal_total_storage: (0, i.p)(f(), "value"),
 	subscription: {
 		error: "There was an error enabling Images",
 		success: "Created Images subscription successfully",
@@ -178,11 +327,12 @@ If checked, images that require signed URLs can be accessed publicly.`,
 	errors: "Errors",
 	error_loading_keys_required_to_generate_preview: "Error loading keys required to generate preview.",
 	question_mark: "?",
-	banners_low_storage_capacity_contract_customer: (0, e.d)`Your account has ${"percentRemaining"}% of its storage capacity remaining. Please contact your Account Manager to increase your Images storage capacity.`,
-	banners_low_storage_capacity_payg: (0, e.d)`Your account has ${"percentRemaining"}% of its storage capacity remaining. Please <0>add storage capacity</0> to your account.`,
-	banners_no_remaining_capacity_contract_customer: (0, e.d)`Your account has no remaining storage capacity. Please contact your Account Manager to increase your Images storage capacity to continue uploading.`,
-	banners_no_remaining_capacity_payg: (0, e.d)`Your account has no remaining storage capacity. Please delete images or <0>add storage capacity</0> to your account to continue uploading.`,
+	banners_low_storage_capacity_contract_customer: (0, i.p)(h(), "percentRemaining"),
+	banners_low_storage_capacity_payg: (0, i.p)(y(), "percentRemaining"),
+	banners_no_remaining_capacity_contract_customer: (0, i.p)(b()),
+	banners_no_remaining_capacity_payg: (0, i.p)(v()),
 	embed: "Embed",
+	creator: "Creator",
 	require_signed_urls: "Require Signed URLs",
 	require_signed_urls_hint: "The image cannot be accessed without a token unless it is being requested for a variant that is set to always allow public access.",
 	public_image_hint: "The image is publicly accessible.",
@@ -195,9 +345,7 @@ If checked, images that require signed URLs can be accessed publicly.`,
 	toast_success: "Video saved successfully",
 	toast_error: "There was an error saving the video",
 	toast_info: "Saving video...",
-	upload_using_api_desc: `Try out the API by entering the fields then pasting the cURL command below into your terminal.
-
-To read the full docs, [click here](https://developers.cloudflare.com/images).`,
+	upload_using_api_desc: "Try out the API by entering the fields then pasting the cURL command below into your terminal.\n\nTo read the full docs, [click here](https://developers.cloudflare.com/images).",
 	upload_with_a_link: "Upload with a link",
 	upload_with_a_link_desc: "Link to a video and it will be uploaded and made available on Stream.",
 	uploading: "Uploading",
@@ -225,12 +373,12 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	video_card_get_embed_code: "Get Embed Code",
 	video_card_embed_code: "Embed Code",
 	image_card_delete_image_modal_title: "Delete Image?",
-	image_card_bulk_delete_image_modal_title: (0, e.d)`Delete ${"count"} Images?`,
+	image_card_bulk_delete_image_modal_title: (0, i.p)(w(), "count"),
 	image_card_delete_variant_modal_title: "Delete Variant?",
 	image_card_delete_image_modal_prompt: "Are you sure you want to permanently delete this image?",
 	image_card_bulk_delete_image_modal_prompt: "Are you sure you want to permanently delete all selected images?",
-	image_card_delete_variant_modal_prompt: "Are you sure you want to permanently delete this variant?",
-	x_of_y: (0, e.d)`${"x"} of ${"y"}`,
+	image_card_delete_variant_modal_prompt: "Are you sure you want to permanently delete this image? Deleting a variant is permanent and cannot be undone. Any images where this variant is applied will render an error.",
+	x_of_y: (0, i.p)(I(), "x", "y"),
 	video_card_views: "views",
 	video_card_watched: "watched",
 	queued: "Queued",
@@ -249,14 +397,14 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	json_body: "JSON Body",
 	json: "JSON",
 	return_to_editing: "Return",
-	storage_usage: (0, e.d)`You have ${"current"} image(s) stored`,
+	storage_usage: (0, i.p)(C(), "current"),
 	analytics_title: "Usage",
-	analytics_usage: (0, e.d)`You have ${"requests"} image(s) served month to date`,
-	storage_capacity: (0, e.d)`Your storage capacity is ${"allowed"} images (${"percentRemaining"}% remaining).`,
+	analytics_usage: (0, i.p)(S(), "requests"),
+	storage_capacity: (0, i.p)(k(), "allowed", "percentRemaining"),
 	storage_capacity_ent: "To modify your Images usage limits, please contact your Account Manager.",
 	unknown_error: "An unknown error has occurred",
 	output_confirm_delete_title: "Delete Output?",
-	output_confirm_delete_body: (0, e.d)`Are you sure you want to delete ${"outputUrl"}?`,
+	output_confirm_delete_body: (0, i.p)(A(), "outputUrl"),
 	refresh: "Refresh",
 	developer_resources: "Developer Resources",
 	get_help: "Get Help",
@@ -266,6 +414,17 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	faqs: "FAQs",
 	request_a_feature: "Request a feature",
 	docs: "Docs",
+	plans: "Plans",
+	view_plans: "View plans",
+	overview_without_subscription: {
+		delivery_zones_enable_cta: "Manage Transformations",
+		description: "Cloudflare Images is an end-to-end solution designed to help you streamline your image infrastructure from a single API.",
+		transformations1: "With transformations, you can optimize and manipulate images that are stored in remote sources.",
+		transformations2: (0, i.p)(z(), "freeTransformations"),
+		purchase_paid_plan: (0, i.p)(D(), "accountId"),
+		storage1: "To make the most of our storage and delivery features, upgrade your Images plan.",
+		storage2: "A subscription is required to add storage and unlock additional features."
+	},
 	image_loading_error: "An error occurred while loading the image.",
 	missing_image_id: "Your url is missing an image ID. Please return to the overview page and select an image.",
 	go_to_overview: "Go to overview",
@@ -274,12 +433,14 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	variant_loading_error: "An error occurred while loading the variant.",
 	variants_loading_error: "An error occurred while loading the variants.",
 	keys_loading_error: "An error occurred while loading the keys.",
+	create_variant_documentation: "Create variant documentation",
+	transformations_documentation: "Transformations documentation",
 	unsaved_changes_warning: "Are you sure? Unsaved changes will be lost.",
 	curl_example: "cURL example",
 	response_body: "Response body",
 	key: "Key",
 	url: "URL",
-	createdRelativeTimeAgo: (0, e.d)`Created ${"relativeTimeUnitsAgo"}`,
+	createdRelativeTimeAgo: (0, i.p)(P(), "relativeTimeUnitsAgo"),
 	keys: "Keys",
 	variants: "Variants",
 	search_variants: "Search variants",
@@ -296,16 +457,17 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 			request: "Join Waitlist"
 		}
 	},
+	size: "Size",
 	sourcing_kit_description: "Define a source to import your images.",
 	sourcing_kit_documentation_label: "Images sourcing kit documentation",
 	sources: "Sources",
 	start_import: "Import images",
 	ongoing_migration_hint: "Please wait for ongoing imports to complete before starting a new one.",
 	sources_description: "Creating a source allows you to import images easily from other platforms.",
-	sources_quota_info: (0, e.d)`You have used ${"consumed"} of the ${"allowed"} image upload quota included in your plan`,
+	sources_quota_info: (0, i.p)(x(), "consumed", "allowed"),
 	sourcing_kit_info: {
-		image_size: (0, e.d)`Images over ${"maxImageSize"} MB will not be imported`,
-		image_type: (0, e.d)`Only <0>supported image types</0> will be uploaded`
+		image_size: (0, i.p)(R(), "maxImageSize"),
+		image_type: (0, i.p)(U())
 	},
 	images_description: "Build a scalable image pipeline to store, resize, optimize, and deliver images in a fast and secure manner.",
 	images_documentation: "Images documentation",
@@ -323,7 +485,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	start_date: "Start date",
 	status: "Status",
 	last_updated: "Last updated",
-	no_search_results: (0, e.d)`No search results for '${"value"}'`,
+	no_search_results: (0, i.p)(T(), "value"),
 	sourcing_kit_wizard_title: "Import images",
 	source_credential_hint: "We were unable to validate the credentials of this source",
 	source_select_description: "Select or define a source to start importing photos from your external source.",
@@ -370,7 +532,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		define_rules: "Define rules",
 		advanced_rules: "Advanced rules",
 		exclude_image_files: "Exclude image files?",
-		exclude_image_files_decription: (0, e.d)`The selected image formats will <b>not</b> be imported`,
+		exclude_image_files_decription: (0, i.p)(q()),
 		source_created: "Source was created successfully.",
 		bucket_root_path: "Amazon S3 root path (optional)",
 		bucket_root_path_hint: "Specify the root path you want to import images from.",
@@ -407,8 +569,8 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		root_path: "Amazon S3 root path",
 		migrated_images: "Imported images",
 		error_log: "Migration log",
-		start_date_hint: (0, e.d)`Import started on ${"date"} at ${"time"}`,
-		end_date_hint: (0, e.d)`Import ended on ${"date"} at ${"time"}`,
+		start_date_hint: (0, i.p)(Y(), "date", "time"),
+		end_date_hint: (0, i.p)(E(), "date", "time"),
 		storage_exhaused_error: "The import was aborted due to a lack of storage space. To use the service, <0>upgrade your Images plan</0>.",
 		active_import_alert: "Your images are now being imported. You can check the progress below or come back later from the <0>Sourcing Kit main page</0>."
 	},
@@ -421,7 +583,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	review_import: "Review and import",
 	variants_description: "Variants can be configured to deliver the most optimal image for your use-cases.",
 	variants_documentation_label: "Flexible variants documentation",
-	variants_detail_count_hint: (0, e.d)`Total: ${"count"} variants`,
+	variants_detail_count_hint: (0, i.p)(V(), "count"),
 	variants_filter_select_options: {
 		by_name: "By name",
 		large_width: "From small to large (W)",
@@ -435,6 +597,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	learn_more: "Learn more",
 	keys_description: "Generate signature tokens required for accessing images marked as private.",
 	keys_documentation_label: "Images keys documentation",
+	keys_variants_documentation: "Variants documentation",
 	about_images: "About Images",
 	about_variants: "About Variants",
 	about_keys: "About Keys",
@@ -444,27 +607,34 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	add_variant: "Add Variant",
 	export_image: "Export Image",
 	add_new_variant: "Add New Variant",
-	variant_page_title: (0, e.d)`Variant: ${"variantName"}`,
+	variant_page_title: (0, i.p)(O(), "variantName"),
 	beta: "Beta",
 	guidance_and_feedback: "Guidance & Feedback",
-	guidance_description: "For <b>guidance</b> on Sourcing Kit\u2019s capabilities, refer to our developer documentation. For bug reporting or <b>feedback</b>, join the #images Discord channel, or use our Community board.",
+	guidance_description: "For <b>guidance</b> on Sourcing Kit’s capabilities, refer to our developer documentation. For bug reporting or <b>feedback</b>, join the #images Discord channel, or use our Community board.",
 	discord_channel: "Images Discord Channel",
 	join_discord_server: "Join Discord Server",
 	sourcing_kit_feedback_banner_description: "We added Images Sourcing Kit. <0>Tell us what you think.</0>",
 	delivery_zones_page_title: "Zone",
 	delivery_zones_page_description: "Enable transformations to optimize and manipulate images that are stored outside of Images. Transformed images are served from one of your zones on Cloudflare.",
+	delivery_zones_page_description_new: "Enable transformations to optimize and manipulate images and videos that are stored outside of Images and Stream. Transformed media is served from one of your zones on Cloudflare.",
+	delivery_zone_disable_title: "Disable transformations",
+	delivery_zone_disable_all_title: "Disable all transformations",
+	delivery_zone_confirm_disable: "Are you sure you want to disable transformations for %{zoneName}?",
+	delivery_zone_confirm_disable_all: "Are you sure you want to disable image and video transformations for %{zoneName}?",
 	disable_for_website: "Disable for zone",
-	cancel_resizing_after_bundle_error: (0, e.d)`You successfully purchased a Cloudflare Images bundle but we were not able to cancel your existing Image Resizing subscription. Your upgrade is incomplete. Please contact deannalam@cloudflare.com.</br></br><0>Navigate to images</0>`,
+	cancel_resizing_after_bundle_error: (0, i.p)(B()),
 	enable_for_website: "Enable for zone",
 	no_storage_card: {
-		title: "Your current Cloudflare Images plan doesn\u2019t include any storage.",
-		description: "To take advantage of storage and delivery features, purchase storage for your plan."
+		title: "Your current Cloudflare Images plan doesn’t include any storage.",
+		description: "To take advantage of storage and delivery features, purchase storage for your plan.",
+		storage1: "To make the most of our storage and delivery features, purchase storage for your plan.",
+		cta: "Add storage"
 	},
 	dynamic_transformation_card: {
-		description: "Adapt images to your site\u2019s layout and your visitor\u2019s screen sizes by automatically resizing, adjusting quality, and converting to WebP format on demand.",
+		description: "Adapt images to your site’s layout and your visitor’s screen sizes by automatically resizing, adjusting quality, and converting to WebP format on demand.",
 		docs_prompt: "Using transformations",
 		disabled_card_title: "Enable transformations for this zone.",
-		disabled_card_description: "Transformations let you optimize and manipulate images that are stored outside of Images. Every transformed variant is cached at the edge, so you store only the original image on your server.",
+		disabled_card_description: "Transformations let you optimize and manipulate images and videos that are stored outside of Images and Stream. Every transformed variant is cached at the edge, so you store only the original media on your server.",
 		disabled_card_expand_link: "Use the Cloudflare API to configure transformations",
 		disabled_card_get_resizing_setting: ""
 	},
@@ -479,8 +649,8 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	resize_any_origin_hint: "When disabled, Image Resizing only resizes images in the enabled zone and prevents third-parties from resizing any image at any origin",
 	upgrade_card: {
 		supertitle: "Using transformations requires you to update your plan.",
-		title: "Explore what\u2019s offerred.",
-		blog_post_description: "Read our blog post to learn more about what\u2019s new and how transformations differ from Image Resizing.",
+		title: "Explore what’s offered.",
+		blog_post_description: "Read our blog post to learn more about what’s new and how transformations differ from Image Resizing.",
 		documentation_description: "Read our documentation to learn more about functionality and how to use transformations.",
 		pay_as_you_go: "Pay as you go",
 		updated_plan_required: "Updated Images plan required",
@@ -491,6 +661,13 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	images_delivered_tooltip: "Your count of deliveries for images that are stored in Images, regardless of cache.",
 	image_transformations: "Images transformed",
 	image_transformations_tooltip: "Your count of unique transformations of images that are stored outside of Images.",
+	unique_transformations_counter: "Unique transformations",
+	unique_transformations_counter_tooltip: "This represents unique requests to transform images and videos that are stored outside of Images and Stream.",
+	no_zones: {
+		title: "Enable transformations",
+		description: "You don't have any zones on your account. Add a zone to enable transformations.",
+		add_zone: "Add a zone"
+	},
 	delivery_zones_table_notice: "Want to configure Images related features for a zone not listed? <0>Add a zone to your account</0>",
 	delivery_zones: "Delivery zones",
 	transformations: "Transformations",
@@ -498,11 +675,12 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	image_resize_card_api_title_patch: "Change transformations settings",
 	sidebar_manage_plan_enterprise_tooltip: "Contact your Account Manager to manage your Images plan.",
 	sidebar_title: "Account details",
+	sidebar_storage_not_applicable: "Not applicable in your plan",
 	manage_plan: "Manage plan",
 	images_usage_dashboard: {
 		images_stored: "Images stored (current)",
-		storage_warning_low: (0, e.d)`You are nearing your image storage capacity. <0>Add more storage</0> to your plan to increase your capacity.`,
-		storage_warning_high: (0, e.d)`You have reached your image storage capacity. <0>Add more storage</0> to your plan to increase your capacity.`,
+		storage_warning_low: (0, i.p)(L()),
+		storage_warning_high: (0, i.p)(N()),
 		storage_warning_low_enterprise: "You are nearing your image storage capacity. Contact your account manager to increase your capacity.",
 		storage_warning_high_enterprise: "You have reached your image storage capacity. Contact your account manager to increase your capacity."
 	},
@@ -510,21 +688,21 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		title: "Flexible variants",
 		enable_modal_title: "Enable flexible variants",
 		enable_modal_description: "Enabling flexible variants on your account effectively allows anyone to obtain untransformed, full-resolution images and their metadata by changing variant properties in the URL.",
-		disable_modal_title: "Disable flexible variants",
-		disable_modal_description: "Existing URLs using flexible variants will no longer work after this feature is disabled.",
+		disable_modal_title: "Disable flexible variants?",
+		disable_modal_description: "Are you sure you want to disable flexible variants? Existing URLs using flexible variants will no longer work after this feature is disabled.",
 		description: "Flexible variants allow you to create variants with dynamic resizing. Once activated, it is possible to use resizing parameters on any Cloudflare Image."
 	},
 	pay_as_you_go: "Pay-as-you-go",
 	payment_form: {
 		includes: "Includes",
-		variants: (0, e.d)`${"numberOfVariants"} variants per image`,
+		variants: (0, i.p)(M(), "numberOfVariants"),
 		prepaid: "Prepaid",
-		storage_title: (0, e.d)`Storage: ${"price"} for ${"amount"} images`,
+		storage_title: (0, i.p)(W(), "price", "amount"),
 		storage_description: "You only pay for the original image. If you have 10 original images with 5 configured variants, only the 10 original images count towards your storage limit.",
-		delivery_title: (0, e.d)`Delivery: ${"price"} per ${"amount"} images served`,
+		delivery_title: (0, i.p)(F(), "price", "amount"),
 		delivery_description: "You will only be billed for the number of images served.",
-		transformations_title: (0, e.d)`Images Transformations: ${"price"} per ${"amount"} images transformed <0/>`,
-		transformations_description: (0, e.d)`You will be billed only once per 30 days for every unique transformation.</br>- This feature must be activated on each zone`,
+		transformations_title: (0, i.p)(G(), "price", "amount"),
+		transformations_description: (0, i.p)(j()),
 		add_storage_anytime: "*You can add storage to your plan at any time"
 	},
 	plan_cards: {
@@ -534,7 +712,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		manage_current_plan: "Manage current plan",
 		includes_monthly_usage: "Includes monthly usage",
 		see_pricing_details: "See pricing details",
-		pricing_info: (0, e.d)`Starting at $${"price"}/month`,
+		pricing_info: (0, i.p)(K(), "price"),
 		images_features_1: "Use remote sources or store Images with Cloudflare",
 		images_features_2: "Dynamically transform your images on the fly",
 		images_features_3: "Optimize the delivery using modern formats",
@@ -542,7 +720,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		stream_feature_2: "Includes simulcasting, storage, encoding, delivery.",
 		stream_feature_3: "Utilize the Stream Player for content",
 		included_images_variants: "Up to 100 variants per image at no extra cost",
-		included_savings: (0, e.d)`$${"amount"} / month in savings`,
+		included_savings: (0, i.p)(H(), "amount"),
 		included_add_storage: "Add extra image and video storage capacity as you grow",
 		included_automatic_optimization: "Automatic image optimization in formats including WebP and AVIF",
 		included_direct_uploads: "Direct Creator Uploads",
@@ -563,5 +741,63 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 			subtitle: "Access all Cloudflare Images + Cloudflare Stream features",
 			purchase_btn_text: "Purchase Creator Bundle"
 		}
-	}
+	},
+	transformations_status: {
+		enabled: "Transformations enabled",
+		disabled: "Transformations disabled"
+	},
+	transformations_c2pa_title: "Preserve Content Credentials",
+	transformations_c2pa_description: "Content Credentials create a record to verify the authenticity and origin of media content. When this setting is enabled, C2PA metadata (Content Credentials) will be preserved during optimization and additional transformations will be added to the metadata.",
+	create_rule: "Create rule",
+	provider_rewrite: {
+		card: {
+			title: "Rewrite URLs",
+			description: "Migrate from another service without changing your existing URLs. When this rule is active, Cloudflare will map your existing URLs from a supported service to be compatible with Images."
+		},
+		drawer: {
+			title: "Configure rules",
+			description: "Rewrite your URLs from an existing service to be compatible with Images"
+		}
+	},
+	polish_c2pa_key: "Preserve content credentials",
+	variant_creation_success: "Variant created",
+	variant_creation_failure: "Failed to create variant",
+	change_success: "Changes saved",
+	change_failure: "Failed to save changes",
+	allowed_origins: {
+		restrict_transformations_header: "Restrict transformations to origin",
+		restrict_transformstions_details: "Resize images from specified origins for enhanced security and control, or from any origin for flexibility and wider access to resources.",
+		card_title: "Sources",
+		card_details: "Define the domains, subdomains, and paths for transforming remote images and videos on this zone.",
+		radio_any_origin_title: "Any origin",
+		radio_any_origin_details: "Allow source media from any origin. This may allow third parties to transform media using your zone.",
+		radio_allowed_origin_title: "Specified origins",
+		radio_allowed_origins_details: "Allow source media only from specified origins",
+		table_header_domain: "Domain",
+		table_header_path: "Path",
+		table_label_this_zone: "This zone",
+		button_add_origin: "+ Add origin",
+		confirm_unsaved_title: "Unsaved changes",
+		confirm_unsaved_description: "You have unsaved changes. Discarding them will result in losing your progress. Are you sure you want to continue?",
+		confirm_unsaved_system_alert: "You have unsaved changes. Discarding them will result in losing your progress. Are you sure you want to leave this page?",
+		confirm_unsaved_button: "Discard",
+		confirm_delete_origin_title: "Are you sure you want to delete this origin?",
+		confirm_delete_origin_description: "Deleting this origin will prevent images and videos from this domain from being transformed on your zone.",
+		confirm_any_origin_title: "Allow transformations from any origin?",
+		confirm_any_origin_description: "Are you sure you want to allow transformations from any origin? This will clear your list of accepted origins and may allow third parties to transform images using your zone.",
+		drawer_title: "Add origin",
+		drawer_description: "Allow source images and videos from this origin. If no path is specified, then all paths on this domain are accepted.",
+		drawer_label_domain: "Domain",
+		drawer_label_path: "Path (optional)",
+		drawer_button_add_path: "+ Add path",
+		drawer_text_1: "You can use wildcard to extend the origin to multiple subdomains.",
+		drawer_text_2: "example.com — No subdomains",
+		drawer_text_3: "*.example.com — With subdomains",
+		drawer_wildcard_docs: "Wildcard documentation",
+		drawer_validation_domain: "The origin domain you entered is not valid",
+		drawer_validation_path: "The origin path you entered is not valid",
+		drawer_duplicate_domain: "Duplicate domain"
+	},
+	hosted_images: "Hosted images",
+	no_analytics_available: "No analytics are currently available"
 }

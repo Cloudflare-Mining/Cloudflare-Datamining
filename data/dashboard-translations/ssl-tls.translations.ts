@@ -1,22 +1,15 @@
 {
 	always_use_https_description: 'Redirect all requests with scheme "http" to "https". This applies to all http requests to the zone.',
 	always_use_https_disabled: "**SSL** must be enabled in order to use this feature",
-	always_use_https_help: `#### Always use HTTPS
-Reply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule.`,
+	always_use_https_help: '#### Always use HTTPS\nReply to all requests for URLs that use "http" with a 301 redirect to the equivalent "https" URL. If you only want to redirect for a subset of requests, consider creating an "Always use HTTPS" page rule.',
 	always_use_https_title: "Always Use HTTPS",
 	automatic_https_rewrites_description: 'Automatic HTTPS Rewrites helps fix mixed content by changing "http" to "https" for all resources or links on your web site that can be served with HTTPS.',
-	automatic_https_rewrites_help: `#### Why Should I use Automatic HTTPS Rewrites?
-If your site contains links or references to HTTP URLs that are also available securely via HTTPS, Automatic HTTPS Rewrites can help. If you connect to your site over HTTPS and the lock icon is not present, or has a yellow warning triangle on it, your site may contain references to HTTP assets ("mixed content").
-
-Mixed content is often due to factors not under the website owner's control such as embedded third-party content or complex content management systems. By rewriting URLs from "http" to "https", Automatic HTTPS Rewrites simplifies the task of making your entire website available over HTTPS, helping to eliminate mixed content errors and ensuring that all data loaded by your website is protected from eavesdropping and tampering.
-
-#### Does Automatic HTTPS Rewrites fix all mixed content errors?
-No. Only URLs that are known to support HTTPS will be rewritten. We use data from EFF's HTTPS Everywhere and Chrome's HSTS preload list, among others, to identify which domains support HTTPS. If your zone is not on one of these lists, only active content will be rewritten. Passive content (such as images) will not be rewritten and will still cause mixed content errors.`,
+	automatic_https_rewrites_help: '#### Why Should I use Automatic HTTPS Rewrites?\nIf your site contains links or references to HTTP URLs that are also available securely via HTTPS, Automatic HTTPS Rewrites can help. If you connect to your site over HTTPS and the lock icon is not present, or has a yellow warning triangle on it, your site may contain references to HTTP assets ("mixed content").\n\nMixed content is often due to factors not under the website owner\'s control such as embedded third-party content or complex content management systems. By rewriting URLs from "http" to "https", Automatic HTTPS Rewrites simplifies the task of making your entire website available over HTTPS, helping to eliminate mixed content errors and ensuring that all data loaded by your website is protected from eavesdropping and tampering.\n\n#### Does Automatic HTTPS Rewrites fix all mixed content errors?\nNo. Only URLs that are known to support HTTPS will be rewritten. We use data from EFF\'s HTTPS Everywhere and Chrome\'s HSTS preload list, among others, to identify which domains support HTTPS. If your zone is not on one of these lists, only active content will be rewritten. Passive content (such as images) will not be rewritten and will still cause mixed content errors.',
 	automatic_https_rewrites_title: "Automatic HTTPS Rewrites",
 	automatic_https_rewrites_api_title_get: "Get Automatic HTTPS Rewrites setting",
 	automatic_https_rewrites_api_title_patch: "Change Automatic HTTPS Rewrites setting",
 	crypto_custom_hostnames_card_title: "Custom Hostnames",
-	crypto_custom_hostnames_card_description: "Extend the security and performance benefits of Cloudflare\u2019s network to your customers via their own custom or vanity domains.",
+	crypto_custom_hostnames_card_description: "Extend the security and performance benefits of Cloudflare’s network to your customers via their own custom or vanity domains.",
 	crypto_custom_hostnames_card_documentation_label: "Cloudflare for SaaS documentation",
 	crypto_custom_hostnames_contact_csup: "Contact your Account Manager to enable SSL for SaaS",
 	crypto_custom_hostnames_controls_add_button: "Add Custom Hostname",
@@ -36,17 +29,7 @@ No. Only URLs that are known to support HTTPS will be rewritten. We use data fro
 	crypto_custom_hostnames_table_empty: "No custom hostnames.",
 	custom_hostnames_card_body: "Manage the hostnames and SSL certificates for third-parties that CNAME to your domain.",
 	custom_hostnames_card_body_quota: "<0>You are currently using %{used} of %{allocated} of your Custom Hostnames.</0> If you require more, please contact your Account Manager.",
-	custom_hostnames_card_help_drawer: `#### What are Custom Hostnames?
-Custom hostnames are third party hostnames that CNAME to your domain in order to receive the performance and security benefits of Cloudflare. Before you can use this feature your account must be configured with assistance from Cloudflare. If you are not yet an Enterprise customer, please fill our the [Enterprise contact form](https://www.cloudflare.com/plans/enterprise/contact/) and someone will be in touch shortly. If you already are an Enterprise customer, please contact your Account Manager.
-
-#### How do I set up custom hostnames?
-For help setting up and validating custom hostnames, refer to [our SSL for SasS Documentation](https://developers.cloudflare.com/ssl/ssl-for-saas).
-
-#### What does the refresh button do?
-The refresh button can be used to request that Cloudflare check the status of the certificate issuance. Statuses transition automatically from Initializing to Pending Validation to Pending Issuance to Pending Deployment and then to Active. For uploaded certificates, statuses transition from Initializing to Pending Deployment and then to Active.
-
-#### What happens if I exceed my custom hostname quota?
-If you exceed your quota you will no longer be able to issue additional certificates. You will need to contact your Account Manager to have this quota increased.`,
+	custom_hostnames_card_help_drawer: "#### What are Custom Hostnames?\nCustom hostnames are third party hostnames that CNAME to your domain in order to receive the performance and security benefits of Cloudflare. Before you can use this feature your account must be configured with assistance from Cloudflare. If you are not yet an Enterprise customer, please fill our the [Enterprise contact form](https://www.cloudflare.com/plans/enterprise/contact/) and someone will be in touch shortly. If you already are an Enterprise customer, please contact your Account Manager.\n\n#### How do I set up custom hostnames?\nFor help setting up and validating custom hostnames, refer to [our SSL for SasS Documentation](https://developers.cloudflare.com/ssl/ssl-for-saas).\n\n#### What does the refresh button do?\nThe refresh button can be used to request that Cloudflare check the status of the certificate issuance. Statuses transition automatically from Initializing to Pending Validation to Pending Issuance to Pending Deployment and then to Active. For uploaded certificates, statuses transition from Initializing to Pending Deployment and then to Active.\n\n#### What happens if I exceed my custom hostname quota?\nIf you exceed your quota you will no longer be able to issue additional certificates. You will need to contact your Account Manager to have this quota increased.",
 	custom_hostnames_card_fallback_origin_label: "Fallback Origin",
 	custom_hostnames_card_fallback_origin_description: "Custom Hostnames will not complete verification until your Fallback Origin is active.",
 	custom_hostnames_card_fallback_origin_example: "Enter a hostname under your zone to act as the default origin server for your hostnames, e.g. fallback.%{zoneName} . The Fallback Origin needs to be a proxied DNS record in your zone.",
@@ -73,15 +56,7 @@ If you exceed your quota you will no longer be able to issue additional certific
 	custom_csr_card_title: "Certificate Signing Request (CSR)",
 	custom_csr_card_body: "Generate a CSR to obtain a certificate from the CA of your choice while maintaining control of the private key on Cloudflare.",
 	custom_csr_table_empty: 'You currently have no CSR generated. Please click on "Generate" to get started.',
-	custom_csr_card_help_drawer: `**What is a Certificate Signing Request (CSR)?**
-
- For those customers that prefer to acquire their own TLS certificate from a Certificate Authority (CA), Cloudflare can generate a Certificate Signing Request (CSR). A CSR contains information about your domain: your Organization Name and Address, as well as the Common Name (domain name) and SANs (Subject Alternative Names). The private key associated with the CSR will be generated by Cloudflare and will never leave our network.
-
-Once you\u2019ve generated the CSR, you will need to obtain a certificate from the CA of your choice. Then, come back to Cloudflare, upload the certificate, and indicate the associated CSR.
-
-**Account Level CSR:**
-Customers who have Advanced Certificate Manager (ACM) enabled on their account can generate a CSR that includes hostnames from other zones in the SANs field. Keep in mind that you will still be responsible for uploading certificates to each zone individually.
-`,
+	custom_csr_card_help_drawer: "**What is a Certificate Signing Request (CSR)?**\n\n For those customers that prefer to acquire their own TLS certificate from a Certificate Authority (CA), Cloudflare can generate a Certificate Signing Request (CSR). A CSR contains information about your domain: your Organization Name and Address, as well as the Common Name (domain name) and SANs (Subject Alternative Names). The private key associated with the CSR will be generated by Cloudflare and will never leave our network.\n\nOnce you’ve generated the CSR, you will need to obtain a certificate from the CA of your choice. Then, come back to Cloudflare, upload the certificate, and indicate the associated CSR.\n\n**Account Level CSR:**\nCustomers who have Advanced Certificate Manager (ACM) enabled on their account can generate a CSR that includes hostnames from other zones in the SANs field. Keep in mind that you will still be responsible for uploading certificates to each zone individually.\n",
 	custom_csr_card_generate_button: "Generate CSR",
 	custom_csr_table_name: "Name",
 	custom_csr_table_type: "Type",
@@ -149,16 +124,7 @@ Customers who have Advanced Certificate Manager (ACM) enabled on their account c
 	custom_hostnames_form_replace_certificate_placeholder: "Leaving both certificate and key field empty will keep the current state.",
 	custom_hostnames_form_replace_certificate_placeholder_min_tls_changed: "Changing minimum TLS version requires you to provide certificate and key.",
 	custom_hostnames_purchase_success: "Cloudflare for SaaS Enabled",
-	custom_hostnames_purchase_description: `Enable Cloudflare for SaaS to extend the benefits of the Cloudflare network to customers using your service!
-
-Cloudflare for SaaS gets your customers:
-- Vanity domain support
-- TLS certificate provisioned
-- Built-in DDoS Mitigation
-- Bot Management and Firewall Rules (add-ons)
-- And more!
-
-Get started today with 100 custom hostnames included at no-charge.`,
+	custom_hostnames_purchase_description: "Enable Cloudflare for SaaS to extend the benefits of the Cloudflare network to customers using your service!\n\nCloudflare for SaaS gets your customers:\n- Vanity domain support\n- TLS certificate provisioned\n- Built-in DDoS Mitigation\n- Bot Management and Firewall Rules (add-ons)\n- And more!\n\nGet started today with 100 custom hostnames included at no-charge.",
 	custom_hostnames_details_review: "Review the status of %{hostname}",
 	custom_hostnames_details_prevalidation_name: "Hostname pre-validation TXT name",
 	custom_hostnames_details_prevalidation_value: "Hostname pre-validation TXT value",
@@ -188,19 +154,8 @@ Get started today with 100 custom hostnames included at no-charge.`,
 	crypto_origin_certificates_csr_paste_from_file: "Paste from file",
 	crypto_origin_certificates_csr_placeholder: "Paste Certificate Signing Request",
 	crypto_origin_certificates_csr_tooltip: "",
-	crypto_origin_certificates_description: `Generate a free TLS certificate signed by Cloudflare to install on your origin server.
-
-Origin Certificates are only valid for encryption between Cloudflare and your origin server.`,
-	crypto_origin_certificates_help: `#### What are Origin Certificates?
-Cloudflare Origin Certificates are free TLS certificates issued by Cloudflare that can be installed on your origin server to facilitate end-to-end encryption for your visitors using HTTPS. Click \u201CCreate Certificate\u201D and follow the instructions provided to generate and install a certificate. If not already set, you can now optionally change the SSL setting about to use "Full (strict)" mode.
-#### Hostname/Wildcard Coverage
-Certificates may be generated with up to 100 individual Subject Alternative Names (SANs). A SAN can take the form of a fully-qualified domain name (www.example.com) or a wildcard (*.example.com); IP addresses are not permitted as SANs on Cloudflare Origin Certificates. Wildcards may only cover one level, but can be used multiple times on the same certificate for broader coverage (e.g., *.example.com and *.secure.example.com may co-exist).
-#### Expiration
-Note that by default, newly generated certificates are valid for 15 years. If you wish to generate shorter-lived certificates (e.g., as short as 7 days), you should use the API or CLI tools provided.
-#### Revocation
-If you misplace your key material or wish to indicate that a certificate should otherwise no longer be trusted, you can click the "x" icon to the far-right of the Origin Certificate and click "OK". This process cannot be undone.
-#### Automated Issuance
-If you wish to automate the issuance of Origin Certificates, click the CLI or API links to the right of the Help link to see additional instructions.`,
+	crypto_origin_certificates_description: "Generate a free TLS certificate signed by Cloudflare to install on your origin server.\n\nOrigin Certificates are only valid for encryption between Cloudflare and your origin server.",
+	crypto_origin_certificates_help: '#### What are Origin Certificates?\nCloudflare Origin Certificates are free TLS certificates issued by Cloudflare that can be installed on your origin server to facilitate end-to-end encryption for your visitors using HTTPS. Click “Create Certificate” and follow the instructions provided to generate and install a certificate. If not already set, you can now optionally change the SSL setting about to use "Full (strict)" mode.\n#### Hostname/Wildcard Coverage\nCertificates may be generated with up to 100 individual Subject Alternative Names (SANs). A SAN can take the form of a fully-qualified domain name (www.example.com) or a wildcard (*.example.com); IP addresses are not permitted as SANs on Cloudflare Origin Certificates. Wildcards may only cover one level, but can be used multiple times on the same certificate for broader coverage (e.g., *.example.com and *.secure.example.com may co-exist).\n#### Expiration\nNote that by default, newly generated certificates are valid for 15 years. If you wish to generate shorter-lived certificates (e.g., as short as 7 days), you should use the API or CLI tools provided.\n#### Revocation\nIf you misplace your key material or wish to indicate that a certificate should otherwise no longer be trusted, you can click the "x" icon to the far-right of the Origin Certificate and click "OK". This process cannot be undone.\n#### Automated Issuance\nIf you wish to automate the issuance of Origin Certificates, click the CLI or API links to the right of the Help link to see additional instructions.',
 	crypto_origin_certificates_hostnames_label: "Hostnames",
 	crypto_origin_certificates_hostnames_error_duplicate: "Error: Hostname '%{hostname}' is already listed.",
 	crypto_origin_certificates_hostnames_error_invalid: "Error: Invalid hostname",
@@ -243,9 +198,7 @@ If you wish to automate the issuance of Origin Certificates, click the CLI or AP
 	crypto_origin_certificates_request_types_tooltip: "",
 	crypto_origin_certificates_table_delete_button: "Revoke",
 	crypto_origin_certificates_table_delete_confirm_agreement: "I understand that revoking this certificate may cause requests to my origin to fail.",
-	crypto_origin_certificates_table_delete_confirm_description: `Revoking this certificate will instruct our edge to immediately (and irreversibly) stop trusting this certificate. Connections to your origin server will fail, and your users will see an error until the certificate is replaced.
-
-If you wish to proceed, please check the box below and click the "Revoke" button. Before doing so you are encouraged to either issue and install a new certificate on your origin, or downgrade from Strict Mode to Full or Flexible.`,
+	crypto_origin_certificates_table_delete_confirm_description: 'Revoking this certificate will instruct our edge to immediately (and irreversibly) stop trusting this certificate. Connections to your origin server will fail, and your users will see an error until the certificate is replaced.\n\nIf you wish to proceed, please check the box below and click the "Revoke" button. Before doing so you are encouraged to either issue and install a new certificate on your origin, or downgrade from Strict Mode to Full or Flexible.',
 	crypto_origin_certificates_table_delete_confirm_title: "Revoke Origin Certificate",
 	crypto_origin_certificates_table_download_button: "Download",
 	crypto_origin_certificates_table_empty: "No Certificates.",
@@ -268,39 +221,9 @@ If you wish to proceed, please check the box below and click the "Revoke" button
 	disable_ussl_disabled_notification: "Universal SSL has been disabled",
 	disable_ussl_enable_button: "Enable Universal SSL",
 	disable_ussl_enabled_notification: "Universal SSL has been enabled",
-	disable_ussl_help: `#### What is Universal SSL?
-
-[Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl) is the set of certificates that Cloudflare freely orders for all domains on Cloudflare so that visitors can access domains on Cloudflare safely and securely using the [latest technologies](https://blog.cloudflare.com/introducing-http2/). 
-
-#### Why would I disable Universal SSL?
-
-Some site owners may want to manage their own SSL certificates in order to be compliant with their own standard operating procedures or policies. Alternately, others may only want to trust specific Certificate Authorities (CA) outside the CAs Cloudflare currently partners with to issue Universal SSL certificates.
-
-#### What happens when I disable Universal SSL?
-
-Any Universal SSL certificates available will be removed from our edge and no longer available for the domain. No new Universal SSL certificates will be ordered for the domain until Universal SSL is re-enabled. 
-
-The following Cloudflare features, when enabled after disabling Universal SSL, may result in visitors being unable to visit your domain unless you have uploaded a custom certificate or purchased a dedicated certificate:
-
-* HSTS
-* Always Use HTTPS
-* Opportunistic Encryption
-* Any Page Rules redirecting traffic to HTTPS
-
-Similarly, any HTTP redirect to HTTPS at the origin while the Cloudflare proxy is enabled will result in users being unable to visit your site without a valid certificate at Cloudflare's edge. 
-
-If you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain. For more help, please check our [Universal SSL documentation](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl).`,
+	disable_ussl_help: "#### What is Universal SSL?\n\n[Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl) is the set of certificates that Cloudflare freely orders for all domains on Cloudflare so that visitors can access domains on Cloudflare safely and securely using the [latest technologies](https://blog.cloudflare.com/introducing-http2/). \n\n#### Why would I disable Universal SSL?\n\nSome site owners may want to manage their own SSL certificates in order to be compliant with their own standard operating procedures or policies. Alternately, others may only want to trust specific Certificate Authorities (CA) outside the CAs Cloudflare currently partners with to issue Universal SSL certificates.\n\n#### What happens when I disable Universal SSL?\n\nAny Universal SSL certificates available will be removed from our edge and no longer available for the domain. No new Universal SSL certificates will be ordered for the domain until Universal SSL is re-enabled. \n\nThe following Cloudflare features, when enabled after disabling Universal SSL, may result in visitors being unable to visit your domain unless you have uploaded a custom certificate or purchased a dedicated certificate:\n\n* HSTS\n* Always Use HTTPS\n* Opportunistic Encryption\n* Any Page Rules redirecting traffic to HTTPS\n\nSimilarly, any HTTP redirect to HTTPS at the origin while the Cloudflare proxy is enabled will result in users being unable to visit your site without a valid certificate at Cloudflare's edge. \n\nIf you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain. For more help, please check our [Universal SSL documentation](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl).",
 	disable_ussl_title: "Disable Universal SSL",
-	disable_ussl_modal_body: `By disabling Universal SSL, you understand that the following Cloudflare settings and preferences will result in visitors being unable to visit your domain unless you have uploaded a custom certificate or purchased a dedicated certificate.
-
-* HSTS
-* Always Use HTTPS
-* Opportunistic Encryption
-* Any Page Rules redirecting traffic to HTTPS
-
-Similarly, any HTTP redirect to HTTPS at the origin while the Cloudflare proxy is enabled will result in users being unable to visit your site without a valid certificate at Cloudflare's edge.
-
-If you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled, or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain.`,
+	disable_ussl_modal_body: "By disabling Universal SSL, you understand that the following Cloudflare settings and preferences will result in visitors being unable to visit your domain unless you have uploaded a custom certificate or purchased a dedicated certificate.\n\n* HSTS\n* Always Use HTTPS\n* Opportunistic Encryption\n* Any Page Rules redirecting traffic to HTTPS\n\nSimilarly, any HTTP redirect to HTTPS at the origin while the Cloudflare proxy is enabled will result in users being unable to visit your site without a valid certificate at Cloudflare's edge.\n\nIf you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled, or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain.",
 	disable_ussl_modal_body_managed_cname_error: "Managed CNAME and SSL for SaaS require Universal SSL to remain enabled. Contact Cloudflare Support for assistance.",
 	disable_ussl_modal_title_managed_cname_error: "Unable to disable Universal SSL",
 	dcv_delegation: {
@@ -310,52 +233,28 @@ If you do not have a valid custom or dedicated certificate at Cloudflare's edge 
 		card_hostname: "&#60;hostname&#62",
 		card_help_description: "#### What is DCV Delegation? \n\n ACME compliant CAs (like Let's Encrypt and Google) follow CNAME records when checking for the TXT challenge tokens required to issue a certificate. This allows the domain control validation (DCV) process to be delegated to Cloudflare with a partial zone setup. For each unproxied hostname or wildcard certificate order, place up a CNAME record that points to the hostname specific validation zone on Cloudflare. The UUID portion of the CNAME destination is unique for your zone and account. Note: Moving the domain to a different account will change the value of the UUID.\n\n#### How to use DCV Delegation?\n\nIf you want to be issued a certificate for `%{zone}` and `*.%{zone}` without needing to manually place TXT tokens every renewal period,\n\n* Create a CNAME record on `_acme-challenge.%{zone}` in your authoritative DNS and point it to `%{zone}.%{uuid}.dcv.cloudflare.com`. One such record takes care of both the apex hostname as well as the wildcard.\n\nRepeat this for other subdomains of `%{zone}` that you want to order Advanced certificates for.",
 		card_title_sslforsaas: "DCV Delegation for Custom Hostnames",
-		card_help_description_sslforsaas: `#### What is DCV Delegation? 
-
- ACME compliant CAs (like Let's Encrypt and Google) follow CNAME records when checking for the TXT challenge tokens required to issue a certificate. This allows the domain control validation (DCV) process to be delegated to Cloudflare with Custom Hostnames. For each unique wildcard-enabled hostname, the domain owner needs to place a CNAME record that points to the hostname specific validation zone on Cloudflare. The UUID portion of the CNAME destination is unique for your zone and account. Note: Moving the domain to a different account will change the value of the UUID.
-
-#### How to use DCV Delegation?
-
-If you want to be issued a certificate for \`example.com\` and \`*.example.com\` (a wildcard custom hostname) without needing to manually place TXT tokens every renewal period,
-
-* Create a CNAME record on \`_acme-challenge.example.com\` in the authoritative DNS and point it to \`example.com.%{uuid}.dcv.cloudflare.com\`. One such record takes care of both the apex hostname as well as the wildcard.
-
-`
+		card_help_description_sslforsaas: "#### What is DCV Delegation? \n\n ACME compliant CAs (like Let's Encrypt and Google) follow CNAME records when checking for the TXT challenge tokens required to issue a certificate. This allows the domain control validation (DCV) process to be delegated to Cloudflare with Custom Hostnames. For each unique wildcard-enabled hostname, the domain owner needs to place a CNAME record that points to the hostname specific validation zone on Cloudflare. The UUID portion of the CNAME destination is unique for your zone and account. Note: Moving the domain to a different account will change the value of the UUID.\n\n#### How to use DCV Delegation?\n\nIf you want to be issued a certificate for `example.com` and `*.example.com` (a wildcard custom hostname) without needing to manually place TXT tokens every renewal period,\n\n* Create a CNAME record on `_acme-challenge.example.com` in the authoritative DNS and point it to `example.com.%{uuid}.dcv.cloudflare.com`. One such record takes care of both the apex hostname as well as the wildcard.\n\n"
 	},
-	ech_description: "Enable the Encrypted ClientHello feature for the TLS 1.3 protocol for improved privacy.",
-	ech_help: `#### What is Encrypted ClientHello?
-Encrypted ClientHello ("ECH") improves the privacy of visitors to your website by obfuscating the Server Name Indication part of the TLS handshake.`,
+	ech_title: "Encrypted Client Hello",
+	ech_description: "Encrypted Client Hello (ECH) enhances the privacy of visitors to your website by encrypting the entire ClientHello message during the TLS handshake, including the Server Name Indication (SNI).",
+	ech_help: '<0>What is Encrypted Client Hello?</0>Encrypted Client Hello ("ECH") improves the privacy of visitors to your website by obfuscating the Server Name Indication part of the TLS handshake. Learn more in our <1>ECH documentation.</1>',
 	ech_join_beta: "Join the beta",
 	ech_beta_free: "ECH is currently disabled for all Cloudflare zones. We hope to re-enable soon. [Click here to read more.](https://community.cloudflare.com/t/early-hints-and-encrypted-client-hello-ech-are-currently-disabled-globally/567730)",
 	ech_beta_requested: "Thanks for your interest! You will be able to enable ECH support once you have been admitted to the beta.",
-	ech_title: "Encrypted ClientHello (ECH)",
 	ech_api_title_get: "Get Zone Enable ECH setting",
+	ech_api_title_put: "Update Zone ECH setting",
 	enable_acm: {
 		card_title: "Advanced Certificate Manager",
-		card_description: `Advanced Certificate Manager gives you more control and flexibility for your certificates and TLS settings. Benefits include:
-* Customize the hostnames on the certificate
-* Full TLS certificate coverage through Total TLS
-* Cipher suite selection
-* Per hostname TLS settings
-* and more!`,
+		card_description: "Advanced Certificate Manager gives you more control and flexibility for your certificates and TLS settings. Benefits include:\n* Customize the hostnames on the certificate\n* Full TLS certificate coverage through Total TLS\n* Cipher suite selection\n* Per hostname TLS settings\n* and more!",
 		card_button: "Purchase ACM"
 	},
 	ussl_ca_card_changed_notification: "Universal SSL Certificate Authority successfully changed.",
 	ussl_ca_card_title: "Universal SSL Certificate Authority",
 	ussl_ca_card_description: "Select the certificate authority (CA) that will be used for issuing your Universal SSL certificate.",
-	ussl_ca_card_help: `#### Notes about Changing Certificate Authorities
-
-When changing CAs, we will keep your old certificate active at the edge until the new certificate has been validated and issued.  Once available, the new certificate will be marked active and we will remove the certificate from the previous CA.
-
-If changing from a legacy CA, you will not be able to return to this CA once this change has completed. 
-
- #### Notes for partial zones 
-
- Changing the CA on a partial zone will only affect new certificate orders on a going forward basis.  This will not automatically change the CA for currently active certificates`,
+	ussl_ca_card_help: "#### Notes about Changing Certificate Authorities\n\nWhen changing CAs, we will keep your old certificate active at the edge until the new certificate has been validated and issued.  Once available, the new certificate will be marked active and we will remove the certificate from the previous CA.\n\nIf changing from a legacy CA, you will not be able to return to this CA once this change has completed. \n\n #### Notes for partial zones \n\n Changing the CA on a partial zone will only affect new certificate orders on a going forward basis.  This will not automatically change the CA for currently active certificates",
 	ussl_ca_modal_body_partial_zone: "This will switch your Universal SSL Certificate Authority from **%{current}** to **%{target}** and all certificates issued *going forward* will be issued with **%{target}**.",
 	ussl_ca_modal_body: "This will switch your Universal SSL Certificate Authority from **%{current}** to **%{target}** and immediately reissue your Universal SSL Certificate. Once the %{target} certificate is successfully ordered, it will replace your %{current} certificate.",
-	ussl_ca_modal_body_sni_caveat: `
- Note that by selecting %{target} you will no longer allow for non-SNI client support with Universal SSL.`,
+	ussl_ca_modal_body_sni_caveat: "\n Note that by selecting %{target} you will no longer allow for non-SNI client support with Universal SSL.",
 	hsts_button_edit: "Change HSTS Settings",
 	hsts_button_enable: "Enable HSTS",
 	hsts_configuration_display_enabled: "Status: %{status}",
@@ -364,8 +263,7 @@ If changing from a legacy CA, you will not be able to return to this CA once thi
 	hsts_configuration_display_preload: "Preload: %{status}",
 	hsts_configuration_enabled_description: "Serve HSTS headers with all HTTPS requests",
 	hsts_configuration_enabled_title: "Enable HSTS (Strict-Transport-Security)",
-	hsts_configuration_include_subdomains_description: `Every domain below this will inherit the same HSTS headers
- **Caution**: If any of your subdomains do not support HTTPS, they will become inaccessible.`,
+	hsts_configuration_include_subdomains_description: "Every domain below this will inherit the same HSTS headers\n **Caution**: If any of your subdomains do not support HTTPS, they will become inaccessible.",
 	hsts_configuration_include_subdomains_title: "Apply HSTS policy to subdomains (includeSubDomains)",
 	hsts_configuration_max_age_0: "0 (Disable)",
 	hsts_configuration_max_age_description: "Specify the duration HSTS headers are cached in browsers",
@@ -373,51 +271,14 @@ If changing from a legacy CA, you will not be able to return to this CA once thi
 	hsts_configuration_max_age_title: "Max Age Header (max-age)",
 	hsts_configuration_nosniff_description: 'Send the "X-Content-Type-Options: nosniff" header to prevent Internet Explorer and Google Chrome from MIME-sniffing away from the declared Content-Type.',
 	hsts_configuration_nosniff_title: "No-Sniff Header",
-	hsts_configuration_preload_description: `Permit browsers to preload HSTS configuration automatically
- **Caution**: Preload can make a website without HTTPS support completely inaccessible.`,
+	hsts_configuration_preload_description: "Permit browsers to preload HSTS configuration automatically\n **Caution**: Preload can make a website without HTTPS support completely inaccessible.",
 	hsts_configuration_preload_title: "Preload",
-	hsts_configuration_step1_description: `HTTP Strict Transport Security (HSTS) can substantially improve the security of your website. However, there are important considerations to keep in mind when enabling HSTS:
-
-**HTTPS (SSL) must be enabled in order to use HSTS.**
-
-- If you turn on HSTS and do not have HTTPS for your website, browsers will not accept the HSTS setting.
-- If you have HSTS enabled and leave Cloudflare, you need to continue to support HTTPS through a new service provider otherwise your site will become inaccessible to visitors until you support HTTPS again.
-- If you turn off Cloudflare\u2019s HTTPS while HSTS is enabled, and you don't have a valid SSL certificate on your origin server, your website will become inaccessible to visitors.
-
-**Note**: Disabling Cloudflare\u2019s HTTP can be done in several ways: Grey clouding a subdomain in your DNS records, \u201CPausing\u201D the Cloudflare service, or having a misconfigured custom SSL certificate through your Cloudflare dashboard (e.g., invalid SSL certificates, expired certificates, or mismatched host names).
-
-**If you need to disable HTTPS on your domain**, you must first disable HSTS in your Cloudflare dashboard and wait for the max-age to lapse to guarantee that every browser is aware of this change before you can disable HTTPS. The average max-age is six months (you can set the max-age in the next step). **If you remove HTTPS before disabling HSTS your website will become inaccessible to visitors for up to the max-age or until you support HTTPS again.** Because disabling HTTPS on an HSTS enabled website can have these consequences, we strongly suggest that you have a committed HTTPS service in place before enabling this feature.
-
-[More information about HSTS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security)`,
+	hsts_configuration_step1_description: "HTTP Strict Transport Security (HSTS) can substantially improve the security of your website. However, there are important considerations to keep in mind when enabling HSTS:\n\n**HTTPS (SSL) must be enabled in order to use HSTS.**\n\n- If you turn on HSTS and do not have HTTPS for your website, browsers will not accept the HSTS setting.\n- If you have HSTS enabled and leave Cloudflare, you need to continue to support HTTPS through a new service provider otherwise your site will become inaccessible to visitors until you support HTTPS again.\n- If you turn off Cloudflare’s HTTPS while HSTS is enabled, and you don't have a valid SSL certificate on your origin server, your website will become inaccessible to visitors.\n\n**Note**: Disabling Cloudflare’s HTTP can be done in several ways: Grey clouding a subdomain in your DNS records, “Pausing” the Cloudflare service, or having a misconfigured custom SSL certificate through your Cloudflare dashboard (e.g., invalid SSL certificates, expired certificates, or mismatched host names).\n\n**If you need to disable HTTPS on your domain**, you must first disable HSTS in your Cloudflare dashboard and wait for the max-age to lapse to guarantee that every browser is aware of this change before you can disable HTTPS. The average max-age is six months (you can set the max-age in the next step). **If you remove HTTPS before disabling HSTS your website will become inaccessible to visitors for up to the max-age or until you support HTTPS again.** Because disabling HTTPS on an HSTS enabled website can have these consequences, we strongly suggest that you have a committed HTTPS service in place before enabling this feature.\n\n[More information about HSTS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security)",
 	hsts_configuration_step1_title: "Acknowledgement",
 	hsts_configuration_step2_description: "**Caution**: If misconfigured, HTTP Strict Transport Security (HSTS) can make your website inaccessible to users for an extended period of time.",
 	hsts_configuration_step2_title: "Configure",
 	hsts_description: "Enforce web security policy for your website.",
-	hsts_help: `#### What is HTTP Strict Transport Security?
-HTTP Strict Transport Security (HSTS, RFC 6797) is a header which allows a website to specify and enforce security policy in client web browsers. This policy enforcement protects secure websites from downgrade attacks, SSL stripping, and cookie hijacking. It allows a web server to declare a policy that browsers will only connect using secure HTTPS connections, and ensures end users do not "click through" critical security warnings. HSTS is an important security mechanism for high security websites. HSTS headers are only respected when served over HTTPS connections, not HTTP.
-
-HSTS generally has the following behavior in user web browsers:
-
-- Insecure HTTP links become secure HTTPS links
-- SSL certificate warnings or other errors show an error message and cannot be bypassed by the user
-
-#### Considerations
-
-One critical consideration when using HSTS on Cloudflare is that once HSTS is turned on, your website must continue to have a valid HTTPS configuration conforming with the HSTS header to avoid making the website inaccessible to users. If SSL is disabled through other means ("grey clouding" a Flexible SSL website, or moving a website off Cloudflare), it is possible the website will be inaccessible to users for the duration of cached max-age headers, or until HTTPS is re-established and an HSTS header with value 0 is served. Consequently, HSTS configuration requires reading and acknowledging understanding of a warning message.
-
-#### Max-Age Header
-
-HSTS includes a "max-age" parameter which specifies the duration HSTS will continue to be cached and enforced by the web browser. This parameter generally is set at 6 months by default, however you must use a minimum of 12 months if you wish to be included in the HSTS Preload list (see below). The special value of "0" means HSTS is disabled and will no longer be cached by the client web browser. For the amount of time specified in the max-age header after a website is successfully accessed over HTTPS, the browser will enforce this HSTS policy, requiring HTTPS with correctly-configured certificates.
-
-#### Including Subdomains with HSTS
-
-Cloudflare supports the "includeSubDomains" parameter in HSTS headers. This parameter applies the HSTS policy from a parent domain (such as example.com) to subdomains (such as www.development.example.com or api.example.com). Caution is encouraged with this header, as if any subdomains do not work with HTTPS they will become inaccessible.
-
-#### HSTS Preload
-
-Cloudflare supports HSTS preload. This flag signals to web browsers that a website's HSTS configuration is eligible for preloading, that is, inclusion into the browser's core configuration. Without preload, HSTS is only set after an initial successful HTTPS request, and thus if an attacker can intercept and downgrade that first request, HSTS can be bypassed. With preload, this attack is prevented.
-
-Once HSTS is configured, you must visit each browser's preload submission URL manually. For Chrome, Firefox/Mozilla and Safari use the [Chrome preload list](https://hstspreload.appspot.com/). Microsoft IE HSTS support is being updated.`,
+	hsts_help: '#### What is HTTP Strict Transport Security?\nHTTP Strict Transport Security (HSTS, RFC 6797) is a header which allows a website to specify and enforce security policy in client web browsers. This policy enforcement protects secure websites from downgrade attacks, SSL stripping, and cookie hijacking. It allows a web server to declare a policy that browsers will only connect using secure HTTPS connections, and ensures end users do not "click through" critical security warnings. HSTS is an important security mechanism for high security websites. HSTS headers are only respected when served over HTTPS connections, not HTTP.\n\nHSTS generally has the following behavior in user web browsers:\n\n- Insecure HTTP links become secure HTTPS links\n- SSL certificate warnings or other errors show an error message and cannot be bypassed by the user\n\n#### Considerations\n\nOne critical consideration when using HSTS on Cloudflare is that once HSTS is turned on, your website must continue to have a valid HTTPS configuration conforming with the HSTS header to avoid making the website inaccessible to users. If SSL is disabled through other means ("grey clouding" a Flexible SSL website, or moving a website off Cloudflare), it is possible the website will be inaccessible to users for the duration of cached max-age headers, or until HTTPS is re-established and an HSTS header with value 0 is served. Consequently, HSTS configuration requires reading and acknowledging understanding of a warning message.\n\n#### Max-Age Header\n\nHSTS includes a "max-age" parameter which specifies the duration HSTS will continue to be cached and enforced by the web browser. This parameter generally is set at 6 months by default, however you must use a minimum of 12 months if you wish to be included in the HSTS Preload list (see below). The special value of "0" means HSTS is disabled and will no longer be cached by the client web browser. For the amount of time specified in the max-age header after a website is successfully accessed over HTTPS, the browser will enforce this HSTS policy, requiring HTTPS with correctly-configured certificates.\n\n#### Including Subdomains with HSTS\n\nCloudflare supports the "includeSubDomains" parameter in HSTS headers. This parameter applies the HSTS policy from a parent domain (such as example.com) to subdomains (such as www.development.example.com or api.example.com). Caution is encouraged with this header, as if any subdomains do not work with HTTPS they will become inaccessible.\n\n#### HSTS Preload\n\nCloudflare supports HSTS preload. This flag signals to web browsers that a website\'s HSTS configuration is eligible for preloading, that is, inclusion into the browser\'s core configuration. Without preload, HSTS is only set after an initial successful HTTPS request, and thus if an attacker can intercept and downgrade that first request, HSTS can be bypassed. With preload, this attack is prevented.\n\nOnce HSTS is configured, you must visit each browser\'s preload submission URL manually. For Chrome, Firefox/Mozilla and Safari use the [Chrome preload list](https://hstspreload.appspot.com/). Microsoft IE HSTS support is being updated.',
 	hsts_title: "HTTP Strict Transport Security (HSTS)",
 	hsts_api_title_get: "Get Security Header (HSTS) setting",
 	hsts_api_title_patch: "Change Security Header (HSTS) setting",
@@ -426,22 +287,75 @@ Once HSTS is configured, you must visit each browser's preload submission URL ma
 	min_tls_version_1_2: "TLS 1.2",
 	min_tls_version_1_3: "TLS 1.3",
 	min_tls_version_description: "Only allow HTTPS connections from visitors that support the selected TLS protocol version or newer.",
-	min_tls_version_help: `#### What is the Minimum TLS Version?
-
-The minimum TLS version setting specifies the earliest version of TLS a visitor must support in order to connect to your domain using TLS. For example, if TLS 1.1 is selected, visitors attempting to connect with TLS 1.0 will be rejected while visitors attempting to connect using TLS 1.1, 1.2, or 1.3 (if enabled) will be allowed to connect.
-
-#### Why would I specify a minimum TLS version?
-
-Some security standards, such as PCI DSS 3.2, enforce strong cryptographic standards where strong cryptography is defined as TLS 1.1 or newer. As an example, specifying TLS 1.1 can help your domain become compliant with PCI DSS 3.2`,
+	min_tls_version_help: "#### What is the Minimum TLS Version?\n\nThe minimum TLS version setting specifies the earliest version of TLS a visitor must support in order to connect to your domain using TLS. For example, if TLS 1.1 is selected, visitors attempting to connect with TLS 1.0 will be rejected while visitors attempting to connect using TLS 1.1, 1.2, or 1.3 (if enabled) will be allowed to connect.\n\n#### Why would I specify a minimum TLS version?\n\nSome security standards, such as PCI DSS 3.2, enforce strong cryptographic standards where strong cryptography is defined as TLS 1.1 or newer. As an example, specifying TLS 1.1 can help your domain become compliant with PCI DSS 3.2",
 	min_tls_version_title: "Minimum TLS Version",
 	min_tls_api_title_get: "Get Minimum TLS Version setting",
 	min_tls_api_title_patch: "Change Minimum TLS Version setting",
-	ciphers_api_title_get: "Get Cipher Suites Whitelist setting",
-	ciphers_api_title_patch: "Change Cipher Suites Whitelist setting",
-	cipher_suites_description: "To configure cipher suites, use the API. <0>Learn More about cipher suites</0>.",
+	ciphers_api_title_get: "Get Cipher Suites Allowlist setting",
+	ciphers_api_title_patch: "Change Cipher Suites Allowlist setting",
+	cipher_suites_title: "Cipher suites",
+	cipher_suites_description_card: "Customize the <0>cipher suites</0> used in the SSL/TLS handshake that establishes a secure connection between clients and the Cloudflare network.",
+	cipher_suites_description_card_current: "Current setting: <0>%{setting}</0>. <1>View current cipher suites</1>",
+	cipher_suites_description_card_disable: "Activate <0>Advanced Certificate Manager</0> to configure Cipher Suites.",
+	cipher_suites_description_card_settings_info: "After you update this setting, it may take a few minutes for the changes to propagate.",
+	cipher_suites_card_help: "#### What are Cipher Suites?\nCipher suites are a combination of ciphers used to negotiate security settings during the SSL/TLS handshake (and therefore separate from the SSL/TLS protocol).",
+	cipher_suites_description_card_button: "Configure",
+	cipher_suites_mode_legacy: "Legacy (default)",
+	cipher_suites_mode_modern: "Modern",
+	cipher_suites_mode_custom: "Custom",
+	cipher_suites_mode_fips: "FIPS-140-2",
+	cipher_suites_mode_pci: "PCI DSS",
+	cipher_suites_mode_compatible: "Compatible",
+	cipher_suites_current_modal_title: "Current Cipher Suites",
+	cipher_suites_current_modal_description: "The following cipher suites are currently assigned to %{zoneName}:",
+	cipher_suites_current_modal_table_header_cipher_suite: "Cipher Suite",
+	cipher_suites_current_modal_table_header_ssl: "BoringSSL",
+	cipher_suites_current_modal_table_header_tls: "Minimum TLS",
+	cipher_suites_current_modal_table_header_tls_disabled: "Automatically supported if you\xa0<0>enable TLS 1.3.</0> ",
+	cipher_suites_current_modal_table_header_type: "Algorithm",
+	cipher_suites_current_modal_table_configure: "Configure Cipher Suites",
+	cipher_suites_form_back_button: "Back to Edge Certificates",
+	cipher_suites_form_prompt: "Are you sure you want to cancel the current Cipher Suites configuration process?",
+	cipher_suites_form_title: "Configure Cipher Suites",
+	cipher_suites_form_description: "Customize the cipher suites used in the SSL/TLS handshake that establishes a secure connection between clients and the Cloudflare network.",
+	cipher_suites_form_pci_warning: "Your minimum TLS version is set to less than 1.2 or you have TLS 1.3 disabled. Please set your <0>minimum TLS version</0> to 1.2 and enable <1>TLS 1.3</1>.",
+	cipher_suites_form_minTLS1_warning: "Your minimum TLS version is set to 1.0. Please set your minimum TLS version to 1.2 or select cipher suites with a minimum of TLS 1.0 before saving.",
+	cipher_suites_form_RSA_warning: "If your edge certificates include certificates that are RSA-only, make sure you select at least one cipher suite with the RSA algorithm before saving.",
+	cipher_suites_form_ECDSA_warning: 'If your edge certificates include certificates that are ECDSA-only, make sure you select at least one cipher suite with the ECDSA algorithm before saving."',
+	cipher_suites_form_FIPS_info: "The cipher suites selected may be impacted by your TLS version settings. To ensure that your zone’s TLS settings meet full FIPS-140-2 compliance, please contact your account team.",
+	cipher_suites_form_documentation: "Cipher suites documentation",
+	cipher_suites_form_tab_mode: "Select mode",
+	cipher_suites_form_tab_select_ciphers: "Select cipher suites",
+	cipher_suites_form_tab_mode_title: "Select mode",
+	cipher_suites_form_tab_mode_description: "First, choose how you would like to select your cipher suites.",
+	cipher_suites_form_tab_mode_security_title: "By security Level",
+	cipher_suites_form_tab_mode_security_description: "Pick a group of cipher suites based on the balance between compatibility and security.",
+	cipher_suites_form_tab_mode_compliance_title: "By compliance",
+	cipher_suites_form_tab_mode_compliance_description: "Pick a group of cipher suites in compliance with PCI DSS or FIPS-140-2.",
+	cipher_suites_form_tab_mode_custom_title: "Custom",
+	cipher_suites_form_tab_mode_custom_description: "Individually select the cipher suites you would like to allowlist.",
+	cipher_suites_form_select_security_title: "Select cipher suites by security level",
+	cipher_suites_form_select_security_description: 'Pick a group of cipher suites based on the balance between compatibility and security. If you select "Compatible" or "Modern," set your <0>minimum TLS version to 1.2</0> and enable <1>TLS 1.3.</1>',
+	cipher_suites_form_select_security_modern: "Modern",
+	cipher_suites_form_select_security_modern_description: "Offers the best security and performance, limiting your range of clients to modern devices and browsers. Supports TLS 1.2-1.3 cipher suites. All suites are forward-secret and support authenticated encryption (AEAD).",
+	cipher_suites_form_select_card_show_ciphers: "Show cipher suites",
+	cipher_suites_form_select_card_hide_ciphers: "Hide cipher suites",
+	cipher_suites_form_select_security_compatible: "Compatible",
+	cipher_suites_form_select_security_compatible_description: "Provides broader compatibility with somewhat weaker security. Supports TLS 1.2-1.3 cipher suites. All suites are forward-secret.",
+	cipher_suites_form_select_security_legacy: "Legacy",
+	cipher_suites_form_select_security_legacy_description: "Includes all cipher suites that Cloudflare supports today. Broadest compatibility with the weakest security. Supports TLS 1.0-1.3 cipher suites.",
+	cipher_suites_form_select_security_pci: "PCI DSS",
+	cipher_suites_form_select_security_pci_description: "Recommended cipher suites for compliance with the <0>Payment Card Industry Data Security Standard (PCS DSS)</0> . Enhances payment card data security.",
+	cipher_suites_form_select_security_fips: "FIPS-140-2",
+	cipher_suites_form_select_security_fips_description: "Recommended cipher suites for compliance with the <0>Federal Information Processing Standard (FIPS-140-2)</0>. Used to approve cryptographic modules.",
+	cipher_suites_form_select_compliance_title: "Select cipher suites by compliance standard",
+	cipher_suites_form_select_compliance_description: 'Pick a group of cipher suites in compliance with PCI DSS or FIPS-140-2. If you select "PCI DSS," set your <0>minimum TLS version</0> to 1.2 and enable <1>TLS 1.3.</1>',
+	cipher_suites_form_select_custom_title: "Select custom cipher suites",
+	cipher_suites_form_select_custom_description: "Individually select the cipher suites you would like to use with %{zoneName}. Be sure to select at least one cipher suite that supports your minimum TLS setting and the certificate type of your edge certificates.",
+	cipher_suites_form_success_title: "Update pending",
+	cipher_suites_form_success_description: "Your configuration update is pending. This usually takes two to three minutes.",
 	opportunistic_encryption_description: 'Opportunistic Encryption allows browsers to benefit from the improved performance of HTTP/2 by letting them know that your site is available over an encrypted connection. Browsers will continue to show "http" in the address bar, not "https".',
-	opportunistic_encryption_help: `#### Is Opportunistic Encryption a replacement for HTTPS?
-No. HTTPS should still be used when both strong encryption and authentication are required. HTTP Opportunistic Encryption provides a means of enabling TLS when needed for other protocols such as HTTP/2. It does not provide the same indications of security as HTTPS (the green lock icon in most browser address bars).`,
+	opportunistic_encryption_help: "#### Is Opportunistic Encryption a replacement for HTTPS?\nNo. HTTPS should still be used when both strong encryption and authentication are required. HTTP Opportunistic Encryption provides a means of enabling TLS when needed for other protocols such as HTTP/2. It does not provide the same indications of security as HTTPS (the green lock icon in most browser address bars).",
 	opportunistic_encryption_title: "Opportunistic Encryption",
 	ssl_cert_signature: {
 		SM2: "SM2",
@@ -523,23 +437,7 @@ No. HTTPS should still be used when both strong encryption and authentication ar
 	ssl_certs_form_regions_description: "Specify the region below where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center.",
 	ssl_certs_cert_form_upload: "Paste certificate from file",
 	ssl_certs_key_form_upload: "Paste private key from file",
-	ssl_certs_help: `#### Certificates
-
-Cloudflare automatically provisions SSL (TLS) certificates for websites on all plans making HTTPS easy and automatic. Provisioned certificates on paid plans are [compatible with older browsers](https://developers.cloudflare.com/ssl/ssl-tls/browser-compatibility).
-
-Domains at the Business or Enterprise level of service can [upload custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates) for more advanced configurations. During upload of a custom certificate, the regions where the private key can be locally held may be specified using the 'Private Key Restriction' option. For optimal TLS performance, the default (distribution to all data centers) should be selected. HTTPS requests to any regions not permitted will use Keyless SSL technology to complete the handshake with the nearest allowed region.
-
-Multiple custom certificates with the same hostnames but different signature algorithms can be [uploaded to form a certificate pack](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates) to provide compatibility for older browsers. Enterprise customers can request the ability to upload multiple custom packs from their account managers.
-
-#### Terms
-
-* **Keyless SSL:** Keyless SSL is a Cloudflare-proprietary technology that allows customers to retain their SSL keys on-premise, never sharing custody of those private keys. To configure Keyless SSL, Enterprise customers should contact their account manager. Customers interested in upgrading for Keyless SSL should contact our [Enterprise sales team](https://www.cloudflare.com/enterprise-service-request).
-
-* **Hosts:** Hosts is the set of hostnames covered by the certificates in the certificate pack. For custom and Keyless certificate packs, the set of hostnames is determined by the hostnames present in the common name (CN) and subject alternative name (SAN) fields on the first certificate added to the pack.
-
-* **Type:** The type of a certificate pack indicates whether the pack contains Cloudflare-issued certificates, user-uploaded custom certificates, or Keyless SSL certificates.
-
-* **Certificates:** This column indicates how many certificates have been added to the pack. Mouse-over the info icon to reveal which certificates have been uploaded and when these certificates expire.`,
+	ssl_certs_help: "#### Certificates\n\nCloudflare automatically provisions SSL (TLS) certificates for websites on all plans making HTTPS easy and automatic. Provisioned certificates on paid plans are [compatible with older browsers](https://developers.cloudflare.com/ssl/ssl-tls/browser-compatibility).\n\nDomains at the Business or Enterprise level of service can [upload custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates) for more advanced configurations. During upload of a custom certificate, the regions where the private key can be locally held may be specified using the 'Private Key Restriction' option. For optimal TLS performance, the default (distribution to all data centers) should be selected. HTTPS requests to any regions not permitted will use Keyless SSL technology to complete the handshake with the nearest allowed region.\n\nMultiple custom certificates with the same hostnames but different signature algorithms can be [uploaded to form a certificate pack](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates) to provide compatibility for older browsers. Enterprise customers can request the ability to upload multiple custom packs from their account managers.\n\n#### Terms\n\n* **Keyless SSL:** Keyless SSL is a Cloudflare-proprietary technology that allows customers to retain their SSL keys on-premise, never sharing custody of those private keys. To configure Keyless SSL, Enterprise customers should contact their account manager. Customers interested in upgrading for Keyless SSL should contact our [Enterprise sales team](https://www.cloudflare.com/enterprise-service-request).\n\n* **Hosts:** Hosts is the set of hostnames covered by the certificates in the certificate pack. For custom and Keyless certificate packs, the set of hostnames is determined by the hostnames present in the common name (CN) and subject alternative name (SAN) fields on the first certificate added to the pack.\n\n* **Type:** The type of a certificate pack indicates whether the pack contains Cloudflare-issued certificates, user-uploaded custom certificates, or Keyless SSL certificates.\n\n* **Certificates:** This column indicates how many certificates have been added to the pack. Mouse-over the info icon to reveal which certificates have been uploaded and when these certificates expire.",
 	ssl_certs_keyless_name_keyless_server: "Key server label",
 	ssl_certs_modal_description: "You can upload multiple certificates for the hosts listed above and they will count as 1 of your certificate slots. Valid certificate types are listed below. Other certificate types can be uploaded in the primary SSL menu, but will not be included in this certificate package, and will count as one of your available SSL certificate slots.",
 	ssl_certs_modal_description_managed: "The certificates in the pack listed below are managed and auto-renewed by Cloudflare.",
@@ -550,10 +448,7 @@ Multiple custom certificates with the same hostnames but different signature alg
 	ssl_certs_table_empty_text: "No certificates.",
 	ssl_certs_table_type: "Type",
 	ssl_certs_select_custom_csr: "Generate a CSR to obtain a certificate from the CA of your choice while maintaining control of the private key on Cloudflare.",
-	ssl_edge_certs_biz_ent_description: `Your plan allows you to upload custom certificates, which you must renew and re-upload prior to expiration.
-You can upload %{legacy_custom}.
-You can upload %{sni_custom}.
-`,
+	ssl_edge_certs_biz_ent_description: "Your plan allows you to upload custom certificates, which you must renew and re-upload prior to expiration.\nYou can upload %{legacy_custom}.\nYou can upload %{sni_custom}.\n",
 	ssl_dedicated_certs_is_at_least_business_order: "You may also <0>order an auto-renewing certificate</0>.",
 	ssl_dedicated_certs_certificate_authority: "Certificate Authority",
 	ssl_dedicated_certs_certificates_quota_both: "You are currently using %{dedicated_in_use} of %{dedicated_quota} of your Dedicated SSL Certificates and %{custom_in_use} of %{custom_quota} of your Dedicated SSL Certificates with Custom Hostnames. ",
@@ -570,25 +465,18 @@ You can upload %{sni_custom}.
 	ssl_dedicated_certs_delete_modal_success_note: 'However, you still have an active subscription (which can be used to place another order). To cancel this subscription and cease monthly billing, please visit the <a href="%{base_url}/account/subscriptions" target="_blank">Subscriptions</a> page.',
 	ssl_dedicated_certs_delete_modal_success_subtitle: "Your certificate has been deleted and will no longer be served to visitors.",
 	ssl_dedicated_certs_delete_modal_title: "Delete Dedicated Certificate",
-	ssl_dedicated_certs_free_description_v2: `Manage and purchase SSL certificates that will be served to your web visitors.
-
-Your plan includes a shared Cloudflare Universal SSL certificate. To get a dedicated certificate with custom hostnames <0>place a certificate order</0>.
-
-Your plan does not allow you to upload any SSL certificates, but you may <1>order an auto-renewing certificate</1> or <2>upgrade</2> to the Business plan to enable this feature.`,
+	ssl_dedicated_certs_free_description_v2: "Manage and purchase SSL certificates that will be served to your web visitors.\n\nYour plan includes a shared Cloudflare Universal SSL certificate. To get a dedicated certificate with custom hostnames <0>place a certificate order</0>.\n\nYour plan does not allow you to upload any SSL certificates, but you may <1>order an auto-renewing certificate</1> or <2>upgrade</2> to the Business plan to enable this feature.",
 	ssl_dedicated_certs_free_description_upgrade_v2: "upgrade",
 	ssl_dedicated_certs_manage_modal_subtitle_view: "Review the certificates that comprise your certificate pack. If you would require custom hostnames please order a Dedicated Certificate with Custom Hostnames.",
 	ssl_dedicated_certs_manage_modal_subtitle_view_custom: "Review the certificates that comprise your certificate pack. If you need to add or remove hostnames, please delete the certificate and place another order. You will not be charged again as you have an active subscription.",
 	ssl_dedicated_certs_order_button: "Order SSL Certificate",
-	ssl_dedicated_certs_order_modal_confirm_custom_hostname_description: `Add hostnames or wildcards by typing them into the input box. The apex of your domain (%{zone_name}) and one-level of wildcard (*.%{zone_name}) have been added by default.
-
-You may enter up to %{max_hostnames} hostnames or wildcards (%{remaining_count} remaining):`,
+	ssl_dedicated_certs_order_modal_confirm_custom_hostname_description: "Add hostnames or wildcards by typing them into the input box. The apex of your domain (%{zone_name}) and one-level of wildcard (*.%{zone_name}) have been added by default.\n\nYou may enter up to %{max_hostnames} hostnames or wildcards (%{remaining_count} remaining):",
 	ssl_dedicated_certs_order_modal_confirm_custom_hostname_upgrade_v2: "To add up to 50 hostnames, order a Dedicated Certificate with Custom Hostnames.",
 	ssl_dedicated_certs_order_modal_confirm_header: "Certificate Hostnames",
 	ssl_dedicated_certs_order_modal_confirm_hostname_description: "The apex of your domain (%{zone_name}) and one-level of wildcard (*.%{zone_name}) have been added by default. The base wildcard can be removed when ordering a dedicated certificate with custom hostnames.",
 	ssl_dedicated_certs_order_modal_confirm_title: "Add Hostnames",
 	ssl_dedicated_certs_order_modal_validity_period_title: "Certificate Validity Period",
-	ssl_dedicated_certs_order_modal_validity_period_body: `Choose how long until your Dedicated Custom certificate expires.
-By default your certificate will be renewed after 1 year.`,
+	ssl_dedicated_certs_order_modal_validity_period_body: "Choose how long until your Dedicated Custom certificate expires.\nBy default your certificate will be renewed after 1 year.",
 	ssl_dedicated_certs_order_modal_finish_subscribing: "Creating subscription",
 	ssl_dedicated_certs_order_modal_finish_charging_error: "We attempted to charge your credit card but we were unable to complete the transaction successfully. Please retry the operation or [contact support](https://support.cloudflare.com) for assistance.",
 	ssl_dedicated_certs_order_modal_finish_ordering: "Ordering your certificate",
@@ -601,7 +489,7 @@ By default your certificate will be renewed after 1 year.`,
 	ssl_dedicated_certs_order_modal_validate_add_record: "Adding a validation record to your domain",
 	ssl_dedicated_certs_order_modal_validate_add_record_error: "Unable to add validation record to your domain. Please contact support.",
 	ssl_dedicated_certs_order_modal_validate_cname_error: "Unable to resolve %{token} to %{target}. Please check the record and try again.",
-	ssl_dedicated_certs_order_modal_validate_cname_instruction: `Add the following record to your DNS provider and then click the "I've added the CNAME to my DNS server" button below.`,
+	ssl_dedicated_certs_order_modal_validate_cname_instruction: 'Add the following record to your DNS provider and then click the "I\'ve added the CNAME to my DNS server" button below.',
 	ssl_dedicated_certs_order_modal_validate_cname_next_button: "I've added the CNAME to my DNS server",
 	ssl_dedicated_certs_order_modal_validate_cname_title: "Validate domain by adding DNS CNAME record",
 	ssl_dedicated_certs_order_modal_validate_confirm_validation: "Confirming validation record has propagated to the edge",
@@ -638,52 +526,26 @@ By default your certificate will be renewed after 1 year.`,
 	ssl_dedicated_certs_types_dedicated_certificates_custom_name: "Dedicated SSL with Custom Hostnames",
 	ssl_dedicated_certs_types_included: "Included in subscription",
 	ssl_dedicated_certs_types_universal_certificates_name_dedicated: "Universal SSL",
-	ssl_dedicated_certs_types_order_modal_price: `<0>%{price}</0>/ month
-`,
-	ssl_description_new_zone: `
-
-**Note:** SSL certificate issuance may take up to 24 hours.`,
+	ssl_dedicated_certs_types_order_modal_price: "<0>%{price}</0>/ month\n",
+	ssl_description_new_zone: "\n\n**Note:** SSL certificate issuance may take up to 24 hours.",
 	ssl_recommender_title: "SSL/TLS Recommender",
 	ssl_recommender_description: "Check if your domain can use a stronger SSL/TLS encryption mode. SSL/TLS Recommender runs a periodic origin scan and sends you an email if a more secure option is possible.",
 	ssl_recommender_help_header: "About SSL/TLS Recommender",
 	ssl_recommender_help_paragraph1: "After enabling the SSL/TLS Recommender, the zone owner will receive an email if a recommendation for a more secure SSL/TLS mode is available. If no email is received, the recommendation is to keep the current mode. You are not required to use the recommendation. The Recommender runs periodically and sends notifications if new recommendations become available. The recommendation is never lower than your current SSL/TLS mode.",
 	ssl_recommender_help_paragraph2: "The SSL/TLS Recommender is not intended to resolve issues with website or domain functionality. If your website is not functional at its current mode, no recommendation will be provided. <0>Learn more about SSL/TLS Recommender</0>.",
 	ssl_recommendation_badge: "Recommended by Cloudflare",
-	ssl_disable_https_warning: `Disabling SSL will also disable **Always use HTTPS**.
-Do you want to continue?`,
-	ssl_help: `#### Why isn't my site working over HTTPS?
-Certificate provisioning typically takes around 15 minutes for paid plans and up to 24 hours for Free plans. Contact support if you do not have a certificate after that time. If the certificate is already "active" under the Edge Certificates tab, but you still cannot access your site over HTTPS, refer to the [troubleshooting documentation](https://developers.cloudflare.com/ssl/troubleshooting/).
-
-#### What encryption mode should I use?
-Cloudflare strongly recommends using Full or Full (strict) modes to prevent malicious connections to your origin. For details on each available mode, refer to the [encryption modes documentation](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).
-`,
+	ssl_disable_https_warning: "Disabling SSL will also disable **Always use HTTPS**.\nDo you want to continue?",
+	ssl_help: '#### Why isn\'t my site working over HTTPS?\nCertificate provisioning typically takes around 15 minutes for paid plans and up to 24 hours for Free plans. Contact support if you do not have a certificate after that time. If the certificate is already "active" under the Edge Certificates tab, but you still cannot access your site over HTTPS, refer to the [troubleshooting documentation](https://developers.cloudflare.com/ssl/troubleshooting/).\n\n#### What encryption mode should I use?\nCloudflare strongly recommends using Full or Full (strict) modes to prevent malicious connections to your origin. For details on each available mode, refer to the [encryption modes documentation](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).\n',
 	ssl_ct_alerting_description: "Receive an email when a Certificate Authority issues a certificate for your domain.",
 	ssl_ct_alerting_title: "Certificate Transparency Monitoring",
-	ssl_ct_alerting_help: `#### What is Certificate Transparency Monitoring?
-Every day, millions of certificates are issued for domains. Each certificate is recorded in a set of public logs for transparency. With Certificate Transparency Monitoring, we crawl these logs and send you an email when we find a certificate for your domain. If you manage example.com, we\u2019ll catch *.example.com to help you spot malicious or unexpected certificates.
-
-#### Why should I enable Certificate Transparency Monitoring?
-
-In rare cases, attackers will obtain certificates for websites they do not own. If an attacker gets a certificate for your website, they can serve content on your behalf that looks legitimate but is actually malicious. Some customers also lose track of certificates and like to be notified when new ones are issued. We encourage all customers to enable monitoring and look for suspicious activity.
-
-#### Who will receive these email alerts?
-
-If you\u2019re on a Free or Pro account and have enabled this feature, we will send alerts to your Cloudflare account email address (and those with Shared Account Access). If you\u2019re on a Business or Enterprise account, we will only send alerts to the emails you specifically enroll above.
-
-#### What should I do if I find a malicious certificate?
-
-We have created a [detailed article around using Certificate Transparency Monitoring](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring).
-`,
+	ssl_ct_alerting_help: "#### What is Certificate Transparency Monitoring?\nEvery day, millions of certificates are issued for domains. Each certificate is recorded in a set of public logs for transparency. With Certificate Transparency Monitoring, we crawl these logs and send you an email when we find a certificate for your domain. If you manage example.com, we’ll catch *.example.com to help you spot malicious or unexpected certificates.\n\n#### Why should I enable Certificate Transparency Monitoring?\n\nIn rare cases, attackers will obtain certificates for websites they do not own. If an attacker gets a certificate for your website, they can serve content on your behalf that looks legitimate but is actually malicious. Some customers also lose track of certificates and like to be notified when new ones are issued. We encourage all customers to enable monitoring and look for suspicious activity.\n\n#### Who will receive these email alerts?\n\nIf you’re on a Free or Pro account and have enabled this feature, we will send alerts to your Cloudflare account email address (and those with Shared Account Access). If you’re on a Business or Enterprise account, we will only send alerts to the emails you specifically enroll above.\n\n#### What should I do if I find a malicious certificate?\n\nWe have created a [detailed article around using Certificate Transparency Monitoring](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring).\n",
 	ssl_ct_alerting_notification_email: "Notification email",
 	ssl_ct_alerting_no_emails: "You haven't enrolled any emails yet.",
 	ssl_ct_alerting_delete_header: "Delete %{email} from notification list?",
 	ssl_ct_alerting_too_many_emails: "You only add up to 10 emails.",
 	ssl_ct_alerting_add_email: "Add Email",
 	tls_analytics_title: "Traffic Served Over TLS",
-	tls_analytics_help: `#### About TLS Analytics
- Consider how many requests to your domain were encrypted (TLS v1.2 or TLS 1.3) and how many were not, in the last 24 hours. Since redirects from HTTP to HTTPS are counted as unencrypted requests, having a percentage of unencrypted traffic is normal.
-
-**Note:** To increase the amount of traffic served over HTTPS, [redirect all visitors to HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/).`,
+	tls_analytics_help: "#### About TLS Analytics\n Consider how many requests to your domain were encrypted (TLS v1.2 or TLS 1.3) and how many were not, in the last 24 hours. Since redirects from HTTP to HTTPS are counted as unencrypted requests, having a percentage of unencrypted traffic is normal.\n\n**Note:** To increase the amount of traffic served over HTTPS, [redirect all visitors to HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/).",
 	tls_analytics_no_requests: "No requests in the last 24 hours.",
 	tls_analytics_24hr: "Last 24 hours",
 	ssl_setting_off: "Off (not secure)",
@@ -694,9 +556,9 @@ We have created a [detailed article around using Certificate Transparency Monito
 	ssl_setting_full: "Full",
 	ssl_setting_full_description: "Enable encryption end-to-end. Use this mode when your origin server supports SSL certification but does not use a valid, publicly trusted certificate.",
 	ssl_setting_strict: "Full (strict)",
-	ssl_setting_strict_description: "(Recommended mode) Enable encryption end-to-end and enforce validation on origin certificates. Use Cloudflare\u2019s Origin CA to generate certificates for your origin.",
+	ssl_setting_strict_description: "(Recommended mode) Enable encryption end-to-end and enforce validation on origin certificates. Use Cloudflare’s Origin CA to generate certificates for your origin.",
 	ssl_setting_origin_pull: "Strict (SSL-Only Origin Pull)",
-	ssl_setting_origin_pull_description: "Enforce encryption between Cloudflare and your origin. Use this mode to guarantee connections to your origin will always be encrypted, regardless of your visitor\u2019s request.",
+	ssl_setting_origin_pull_description: "Enforce encryption between Cloudflare and your origin. Use this mode to guarantee connections to your origin will always be encrypted, regardless of your visitor’s request.",
 	ssl_setting_header_prefix: "Your SSL/TLS encryption mode is",
 	ssl_setting_change_encryption_mode_prefix: "You are switching your SSL mode from",
 	ssl_setting_change_encryption_mode: "Are you sure you want to make that change?",
@@ -710,21 +572,18 @@ We have created a [detailed article around using Certificate Transparency Monito
 	ssl_title: "SSL",
 	ssl_status: "Universal SSL Status",
 	tls_1_3_description: "Enable the latest version of the TLS protocol for improved security and performance.",
-	tls_1_3_help: `#### What is TLS 1.3?
-TLS 1.3 is the newest, fastest, and most secure version of the TLS protocol. SSL/TLS is the protocol that encrypts communication between users and your website. When web traffic is encrypted with TLS, users will see the green padlock in their browser window. By turning on the TLS 1.3 feature, traffic to and from your website will be served over the TLS 1.3 protocol when supported by clients.`,
+	tls_1_3_help: "#### What is TLS 1.3?\nTLS 1.3 is the newest, fastest, and most secure version of the TLS protocol. SSL/TLS is the protocol that encrypts communication between users and your website. When web traffic is encrypted with TLS, users will see the green padlock in their browser window. By turning on the TLS 1.3 feature, traffic to and from your website will be served over the TLS 1.3 protocol when supported by clients.",
 	tls_1_3_title: "TLS 1.3",
 	tls_1_3_api_title_get: "Get Zone Enable TLS 1.3 setting",
 	tls_client_auth_description: "TLS client certificate presented for authentication on origin pull.",
 	tls_client_auth_notification_link: "Configure expiration notification for your certificates <0>here</0>.",
-	tls_client_auth_help: `#### Authenticated Origin Pulls
-Authenticated Origin Pulls allow you to cryptographically verify that requests to your origin server have come from Cloudflare using a TLS client certificate. This prevents clients from sending requests directly to your origin, bypassing security measures provided by Cloudflare, such as IP and Web Application Firewalls, logging, and encryption.
-This feature requires additional configuration at your web server. Refer to our support guide on [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull).`,
+	tls_client_auth_help: "#### Authenticated Origin Pulls\nAuthenticated Origin Pulls allow you to cryptographically verify that requests to your origin server have come from Cloudflare using a TLS client certificate. This prevents clients from sending requests directly to your origin, bypassing security measures provided by Cloudflare, such as IP and Web Application Firewalls, logging, and encryption.\nThis feature requires additional configuration at your web server. Refer to our support guide on [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull).",
 	tls_client_auth_title: "Authenticated Origin Pulls",
 	total_tls: {
 		card_title: "Total TLS",
 		card_description: "Cloudflare will issue individual certificates for every proxied hostname. Once enabled, all hostnames in your domain will be covered by a TLS certificate.",
-		card_switch_ca_note: "Select your Certificate Authority preference to enable Total TLS. Once this feature is enabled, the Certificate Authority cannot be changed without disabling the feature.",
 		card_enabling_note: "Please allow some time for certificates to be provisioned for each of your DNS records. You can monitor the progress via the Edge Certificates table.",
+		default_ca_select_option: "Default CA (Recommended)",
 		disable_modal_title: "Disable Total TLS",
 		disable_modal_description: "Immediately after confirming the downgrade, your certificates will be deleted and no longer served to visitors.",
 		disable_modal_confirmation: "I understand that any hostnames not covered by my Universal SSL or uploaded certificates will no longer be reachable over HTTPS once I disable this feature.",
@@ -736,7 +595,10 @@ This feature requires additional configuration at your web server. Refer to our 
 			enabled: "Enabled",
 			disabled: "Disabled",
 			on_hold: "On Hold"
-		}
+		},
+		switch_ca_modal_title: "Switch Certificate Authority",
+		switch_ca_modal_description_body: "Cloudflare will re-issue your Total TLS certificates with the new certificate authority. Once the new certificates have been issued and deployed, the previously issued Total TLS certificates will be deleted.",
+		switch_ca_modal_description_footnote: "Note: We don't recommend switching your CA multiple times, as this could cause you to encounter rate limits, which will prevent new certificates from being issued."
 	},
 	general_checkbox_confirmation: "I understand",
 	general_acknowledgement_modal_title: "Acknowledgement",
@@ -772,6 +634,7 @@ This feature requires additional configuration at your web server. Refer to our 
 		null: "SSL Not Requested",
 		pending_deployment: "Pending Deployment",
 		holding_deployment: "Holding Deployment",
+		holding_validation: "Holding Validation",
 		pending_expiration: "Pending Expiration",
 		pending_issuance: "Pending Issuance",
 		pending_validation: "Pending Validation",
@@ -832,15 +695,7 @@ This feature requires additional configuration at your web server. Refer to our 
 	custom_origin_trust_store_upload: "Upload trust store",
 	custom_origin_trust_store_delete_modal_title: "Deleting custom certificate authority (CA) from trust store",
 	custom_origin_trust_store_delete_modal_description: "Are you sure you want to delete %{serial_number}?",
-	custom_origin_trust_store_drawer_help: `#### Custom Origin Trust Store
-#### What is an origin server trust store?
-By default, our edge maintains a set of common public certificate authorities as well as our own Origin CA which are considered trusted.  This means that when using Full(strict) encryption mode, Cloudflare will only trust origin server certificates issued by a CA in this trust store.
-#### Why use custom origin server trust store?
-If you prefer to use a privately trusted certificate authority or want to limit trust to specific public CAs, you may upload one or more CAs that you desire Cloudflare to deem as trusted when connecting to your origin server.
-#### What happens to the default trust store when I upload my private CA?
-When a CA has been uploaded to Custom Origin Server Trust Store, Cloudflare will ignore all default publicly trusted CAs and exclusively use the CA or CAs that have been uploaded to authenticate the origin server.
-#### What happens when my uploaded CA expires?
-If no alternative CAs are valid within the trust store, Cloudflare will not be able to properly authenticate connections to the origin server with Full(strict) encryption mode enabled.`,
+	custom_origin_trust_store_drawer_help: "#### Custom Origin Trust Store\n#### What is an origin server trust store?\nBy default, our edge maintains a set of common public certificate authorities as well as our own Origin CA which are considered trusted.  This means that when using Full(strict) encryption mode, Cloudflare will only trust origin server certificates issued by a CA in this trust store.\n#### Why use custom origin server trust store?\nIf you prefer to use a privately trusted certificate authority or want to limit trust to specific public CAs, you may upload one or more CAs that you desire Cloudflare to deem as trusted when connecting to your origin server.\n#### What happens to the default trust store when I upload my private CA?\nWhen a CA has been uploaded to Custom Origin Server Trust Store, Cloudflare will ignore all default publicly trusted CAs and exclusively use the CA or CAs that have been uploaded to authenticate the origin server.\n#### What happens when my uploaded CA expires?\nIf no alternative CAs are valid within the trust store, Cloudflare will not be able to properly authenticate connections to the origin server with Full(strict) encryption mode enabled.",
 	custom_origin_trust_store_drawer_api_get_list: "List custom origin trust stores",
 	custom_origin_trust_store_drawer_api_get: "Get custom origin trust store by id",
 	custom_origin_trust_store_drawer_api_delete: "Delete custom origin trust store by id",
@@ -855,19 +710,19 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 	sans: "Subject Alternative Names (SAN)s",
 	managed_annotation: "(Managed)",
 	managed_by_cloudflare_annotation: "(Managed by Cloudflare)",
-	invalid_ca_for_hostname: (0, t.d)`${"authority"} will not issue certificates for ${"hostname"}. Please select a different Certificate Authority`,
+	invalid_ca_for_hostname: (0, a.p)(r(), "authority", "hostname"),
 	error: "Error",
 	redeploying: "Redeploying",
 	acme_ca_90_day_validity: "All certificates from the chosen Certificate Authority have a fixed validity of 90 days.",
 	acme_ca_txt_only: "Only TXT validation is allowed for wildcard hostnames and chosen Certificate Authority.",
-	san_quota: (0, t.d)`You may enter up to ${"max_hostnames"} hostnames or wildcards (${"remaining_count"} remaining):`,
+	san_quota: (0, a.p)(n(), "max_hostnames", "remaining_count"),
 	common_name_too_long: "This certificate will have a Cloudflare Common Name value due since the SANs are longer than the 64 character limit.",
 	create_advanced: "Create an Advanced Certificate",
 	acm_delete_modal_title: "Delete Advanced Certificate",
-	per_month: (0, t.d)`${"price"} / month`,
+	per_month: (0, a.p)(c(), "price"),
 	resume_patch: "Resume",
 	timed_out_validation_message: "The validation of your certificate timed out. Cloudflare is not longer checking its validation records. You can *Resume* the validation process to move the status back to Pending Validation.",
-	prioritize_success: (0, t.d)`Successfully adjusted the priority of ${"count"} certificates`,
+	prioritize_success: (0, a.p)(l(), "count"),
 	validation_method: {
 		cname: "CNAME Validation",
 		email: "Email Validation",
@@ -893,17 +748,17 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		select_plan: "Select your plan",
 		free_description: "Basic certificate",
 		free_dedicated_to_domain: "Dedicated to your domain",
-		free_protected_hostnames: (0, t.d)`Only protects ${"zone_name"} and *.${"zone_name"}`,
+		free_protected_hostnames: (0, a.p)(_(), "zone_name", "zone_name"),
 		description: "Advanced Certificate Manager allows for more control and flexibility for your certificates and SSL/TLS settings.",
 		additional_certificates: "Create additional certificates",
-		common_name_of: (0, t.d)`Common name of ${"common_name"}`,
+		common_name_of: (0, a.p)(d(), "common_name"),
 		configurable_validity: "Configurable certificate validity",
 		configurable_sans: "Configurable SANs",
 		custom_ciphers: "Custom Cipher Suite settings",
 		custom_truststore: "Custom Trust Store",
 		on_purchase: "Advanced Certificate Manager is now a part of your plan.",
 		order_cta: "Order Advanced Certificate",
-		quota: (0, t.d)`You have used ${"used"} out of ${"allocated"} Advanced certificates.`,
+		quota: (0, a.p)(u(), "used", "allocated"),
 		order_success: "Your Advanced certificate has been created will be automatically deployed to our edge and served to your visitors once it has been validated",
 		order_success_autodcv: "Your Advanced certificate has been created will be automatically validated and deployed to our edge and served to your visitors.",
 		blocked_ent: "Please contact your Account Manager to purchase ACM.",
@@ -919,8 +774,7 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		status: "Status",
 		page_description: "Create client certificates using Cloudflare public key infrastructure (PKI).",
 		documentation_label: "Client certificates documentation",
-		description: `Secure and authenticate your APIs and web applications with client certificates.
-Block traffic from devices that do not have a valid client SSL/TLS certificate with mTLS rules.`,
+		description: "Secure and authenticate your APIs and web applications with client certificates.\nBlock traffic from devices that do not have a valid client SSL/TLS certificate with mTLS rules.",
 		create_cert: "Create Certificate",
 		create_client_cert_title: "Create client certificate",
 		create_client_cert_subtitle: "Private Key and Certificate Signing Request (CSR)",
@@ -961,7 +815,7 @@ Block traffic from devices that do not have a valid client SSL/TLS certificate w
 		table_certificate_pending_reactivation: "Pending reactivation",
 		table_certificate_pending_revocation: "Pending revocation",
 		table_delete_confirm_title: "Revoke Client Certificate",
-		table_delete_confirm_description: "You are about to revoke your origin certificate. If you wish to proceed, please check the box below and click the \u201CRevoke\u201D button.",
+		table_delete_confirm_description: "You are about to revoke your origin certificate. If you wish to proceed, please check the box below and click the “Revoke” button.",
 		table_delete_confirm_agreement: "I understand that I am revoking this certificate.",
 		expanded_table_review_header: "Review Client Certificate for %{subject}",
 		expanded_table_validity_period: "Validity Period",
@@ -992,8 +846,7 @@ Block traffic from devices that do not have a valid client SSL/TLS certificate w
 		upload_custom_button: "Upload Custom Staging Certificate",
 		edge_certificates_title: "Production Edge Certificates",
 		staging_certificates_title: "Staging Edge Certificates",
-		staging_certificates_description: `You can test your staging certificates by sending requests to staging IPs (162.159.133.39 or 162.159.134.39).
-Changes made in this table will not be reflected in production and will only be visible when testing on the staging IPs.`,
+		staging_certificates_description: "You can test your staging certificates by sending requests to staging IPs (162.159.133.39 or 162.159.134.39).\nChanges made in this table will not be reflected in production and will only be visible when testing on the staging IPs.",
 		deactivate_button: "Deactivate",
 		push_to_prod_button: "Push to Production",
 		push_to_staging_button: "Push to Staging",
@@ -1010,5 +863,45 @@ Changes made in this table will not be reflected in production and will only be 
 		deactivate_success: "Successfully deactivated the certificate."
 	},
 	acm_purchase_confirm: "Confirm Payment",
-	form_enter_hostname: "Enter a hostname"
+	form_enter_hostname: "Enter a hostname",
+	managed_ssl: {
+		encryption: "SSL/TLS encryption",
+		current_mode: "**Current encryption mode:** <0>%{currentMode}</0>",
+		changed: "The encryption mode was last changed %{relativeTimeUnitsAgo}.",
+		automatic_changed: "Automatic mode %{state} %{relativeTimeUnitsAgo}.",
+		analysis_setting: "%{zoneName} is using automatic <0>SSL/TLS</0>",
+		documentation: "Your encryption mode is set to <0>Cloudflare’s recommendation</0>. Override this by switching to custom.",
+		upgrader_toast_error: "The automatic SSL/TLS upgrader is failing. <0>Set your encryption mode</0> to custom to ensure your site is protected.",
+		browser: "**Browser**",
+		origin_server: "**Origin Server**",
+		configure: "Configure encryption mode",
+		select_encryption_mode: "**Select encryption mode**",
+		page_back: "Back to SSL/TLS Overview",
+		page_description: "Select the SSL/TLS encryption mode that works best for your needs.",
+		page_documentation: "Encryption modes documentation",
+		upgraded_ssl: "**Automatic SSL/TLS (default)**",
+		upgraded_ssl_description: "Cloudflare checks if your traffic needs a more secure encryption mode and updates your setting automatically.",
+		current_setting: "**Current applied mode: %{recommendation}**",
+		custom_ssl: "**Custom SSL/TLS**",
+		custom_ssl_description: "Select the encryption mode that Cloudflare uses to connect to your origin server",
+		custom_ssl_strict: "**Strict (SSL-Only Origin Pull)**",
+		custom_ssl_strict_description: "Enforce encryption between Cloudflare and your origin. Use this mode to guarantee connections to your origin will always be encrypted, regardless of your visitor’s request.",
+		custom_ssl_full_strict: "**Full (Strict)**",
+		custom_ssl_full_strict_description: "Enable encryption end-to-end and enforce validation on origin certificates. Use Cloudflare’s Origin CA to generate certificates for your origin.",
+		custom_ssl_full: "**Full**",
+		custom_ssl_full_description: "Enable encryption end-to-end. Use this mode when your origin server supports SSL certification but does not use a valid, publicly trusted certificate.",
+		custom_ssl_flexible: "**Flexible**",
+		custom_ssl_flexible_description: "Enable encryption only between your visitors and Cloudflare. This will avoid browser security warnings, but all connections between Cloudflare and your origin are made through HTTP.",
+		custom_ssl_off: "**Off (not secure)**",
+		custom_ssl_off_description: "No encryption applied. Turning off SSL disables HTTPS and causes browsers to show a warning that your website is not secure.",
+		recommended_mode: "Recommended mode",
+		toast_title: "**Upcoming SSL/TLS setting migration**",
+		toast_content: "<0>Encryption mode</0> and <1>SSL/TLS recommender</1> are merging. %{zoneName} will migrate to the new <2>automatic SSL/TLS</2> setting on %{date}. To opt out and use a custom setting, turn off the SSL/TLS Recommender now.",
+		toast_success_title: "Migration successful",
+		toast_success_content: "%{zone name} was migrated to the new SSL/TLS encryption setting that combines encryption mode <0>external link icon</0> and <1>SSL/TLS recommender</1>. No further action is necessary. If you have any questions, please <2>contact support.</2>",
+		next_scan: "Next automatic scan on: %{date}."
+	},
+	ssl_change_modal: {
+		dismiss_button: "Continue to SSL/TLS Overview"
+	}
 }

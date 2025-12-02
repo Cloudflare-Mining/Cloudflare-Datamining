@@ -1,7 +1,10 @@
 [
-	"/accounts/:account_id/custom_ns",
-	"/accounts/:account_id/dns_settings",
-	"/zones/:zone_id/custom_ns",
-	"/zones/:zone_id/dns_records",
-	"/zones/:zone_id/dns_settings"
+	"/accounts/[id]/custom_ns",
+	"/accounts/[id]/custom_ns/[id]/*",
+	"/accounts/[id]/dns_settings",
+	"/zones/[id]/*",
+	"/zones/[id]/custom_ns",
+	"/zones/[id]/dns_records",
+	"/zones/[id]/dns_records/batch",
+	"/zones/[id]/dns_settings"
 ]

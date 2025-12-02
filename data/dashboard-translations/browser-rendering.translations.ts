@@ -1,18 +1,19 @@
 {
-	banner: (0, o.d)`
-      <b>No logs?</b> <0>Get started</0> with your first browser rendering worker.<br/><small>* If you have a browser rendering worker but no logs are showing, please re-deploy.</small>`,
+	banner: (0, s.p)(a()),
 	common: {
 		title: "Browser Rendering",
 		description: "The Workers Browser Rendering API allows developers to programmatically control and interact with a headless browser instance and create automation flows for their applications and products. ",
-		documentation: (0, o.d)`Workers AI will start billing on April 1st, 2024, learn more about plans and pricing <0>here</0>`,
+		documentation: (0, s.p)(i()),
 		labels: {
 			beta: "Beta",
 			documentation: "Browser Rendering documentation"
 		},
 		errors: {
 			something_went_wrong: "Something went wrong.",
-			no_sessions: "No Sessions"
+			no_sessions: "No Sessions",
+			no_usage: "No Usage"
 		},
+		chart_note: "* This graph includes both billable and unbillable sessions",
 		today: "Today",
 		browser: "browser",
 		browsers: "browsers"
@@ -28,7 +29,7 @@
 		normal_closure: "Normal closure",
 		browser_idle: "Browser idle",
 		client_closed_early: "Client closed early",
-		chromium_chrashed: "Chromium chrashed",
+		chromium_chrashed: "Chromium crashed",
 		client_abnormal_closure: "Client abnormal closure",
 		server_abnormal_closure: "Server abnormal closure",
 		client_error: "Client error",
@@ -47,13 +48,20 @@
 	sidebar: {
 		usage: {
 			title: "Account Usage",
-			num_browsers: "Total sessions"
+			num_browsers: "Total sessions",
+			avg_concurrent_sessions: "Average number of concurrent sessions",
+			avg_concurrent_sessions_short: "Avg Concurrent Sessions",
+			num_hours: "Total browser hours",
+			num_api_requests: "Total REST API requests",
+			browser_sessions: "Browser sessions",
+			browser_hours: "Browser hours",
+			api_requests: "REST API requests"
 		},
 		link: {
 			title: "Quick links",
 			docs: "Docs",
 			discord: "Discord",
-			comunity: "Comunity"
+			community: "Community"
 		}
 	},
 	tables: {
@@ -72,6 +80,23 @@
 				connection_id: "Connection ID",
 				event: "event"
 			}
+		}
+	},
+	onboarding: {
+		title: "Cloudflare Browser Rendering",
+		description: "The Workers Browser Rendering allows developers to programmatically control and interact with a headless browser instance and create automation flows for applications and products.",
+		documentation: "Browser Rendering Documentation",
+		keyPoints: {
+			one: "Take screenshots of pages.",
+			oneDescription: "Capture visual snapshots of web pages to document their appearance, structure, or specific content.",
+			two: "Convert a page to a PDF.",
+			twoDescription: "Convert a webpage into a PDF, preserving its layout and content.",
+			three: "Test web applications.",
+			threeDescription: "Assess the functionality and performance of a web application through simulated user interactions.",
+			four: "Gather page load performance metrics.",
+			fourDescription: "Collect and analyze data on how quickly a webpage loads and performs.",
+			five: "Crawl web pages for information retrieval.",
+			fiveDescription: " Automatically browse and extract information from multiple web pages for analysis or indexing."
 		}
 	}
 }

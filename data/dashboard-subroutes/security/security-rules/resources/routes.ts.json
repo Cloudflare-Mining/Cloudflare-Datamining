@@ -1,0 +1,10 @@
+[
+	"/:accountId/:zoneName/security/security-rules",
+	"/:accountId/:zoneName/security/security-rules/:type",
+	"/:accountId/:zoneName/security/security-rules/:type/:id",
+	"/:accountId/:zoneName/security/security-rules/ddos-protection",
+	"/:accountId/:zoneName/security/security-rules/ddos-protection/deploy/:id",
+	"/:accountId/:zoneName/security/security-rules/ddos-protection/entrypoint/:ruleId/ruleset/:id",
+	"/:accountId/:zoneName/security/security-rules/managed-rules/create-exception",
+	"/:accountId/:zoneName/security/security-rules/managed-rules/rule/:id"
+]

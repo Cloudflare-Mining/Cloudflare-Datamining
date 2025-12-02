@@ -18,35 +18,130 @@
 		images_stream_bundle_advanced_short: "You are currently subscribed to the Creator Bundle."
 	},
 	agreement: {
-		description: `Cloudflare Stream is the most affordable and easy-to-use streaming platform.
-
-**Processing: Free**
-You get multi-bit rate encoding at no cost.
-
-**Player: Free**
-You get a reliable and fully customizable player with your own branding at no cost.
-
-**Storage: $5.00 per 1,000 minutes (prepaid)**
-You only pay for the length of your original video. Example: Even if your 10-minute video is encoded into 6 different bit rates, you will only pay for 10 minutes (instead of 60 minutes).
-
-**Streaming: $1.00 per 1,000 minutes (postpaid)**
-You will only be billed each month based on how many minutes you stream. If you plan to stream more than 1M minutes per month, please [contact](https://www.cloudflare.com/plans/enterprise/contact/) our Enterprise Team for discounted pricing.`
+		description: "Cloudflare Stream is the most affordable and easy-to-use streaming platform.\n\n**Processing: Free**\nYou get multi-bit rate encoding at no cost.\n\n**Player: Free**\nYou get a reliable and fully customizable player with your own branding at no cost.\n\n**Storage: $5.00 per 1,000 minutes (prepaid)**\nYou only pay for the length of your original video. Example: Even if your 10-minute video is encoded into 6 different bit rates, you will only pay for 10 minutes (instead of 60 minutes).\n\n**Streaming: $1.00 per 1,000 minutes (postpaid)**\nYou will only be billed each month based on how many minutes you stream. If you plan to stream more than 1M minutes per month, please [contact](https://www.cloudflare.com/plans/enterprise/contact/) our Enterprise Team for discounted pricing."
 	},
 	allow_embedding_everywhere: "Allow embedding everywhere",
 	api_key: "API Key",
 	api_token: "API token",
-	allowed_origins_limit: "You may only specify up to 10 allowed origin domains.",
+	allowed_origins_limit: "You may only specify up to 50 allowed origin domains.",
 	billing: {
 		select_plan: "Select Plan",
 		bundle_modal_selection_description: "You can purchase Cloudflare Images on its own or bundle it with Cloudflare Stream.",
 		bundle_page_selection_description: "Cloudflare Stream is the most affordable and easy-to-use streaming platform. Purchase Cloudflare Stream on its own or bundle it with Cloudflare Images.",
-		bundle_page_existing_subsciption_description: `Cloudflare Stream is the most affordable and easy-to-use streaming platform.
-**You have an existing subscription to Cloudflare Images. You can purchase Starter or Creator bundles only when your Cloudflare Images subscription is canceled and has ended.**`,
+		bundle_page_existing_subsciption_description: "Cloudflare Stream is the most affordable and easy-to-use streaming platform.\n**You have an existing subscription to Cloudflare Images. You can purchase Starter or Creator bundles only when your Cloudflare Images subscription is canceled and has ended.**",
 		bundle_cloudflare_stream_title: "Cloudflare Stream",
+		bundle_cloudflare_stream_price: "$5 / month",
+		prgExperiment: {
+			bundle_page_header: "",
+			bundle_pay_as_you_go: "Pay-as-you-go",
+			streamIconCopy: "Stream",
+			ImageIconCopy: "Images",
+			bundle_page_link: "Stream documentation",
+			bundle_page_main_header: "Stream",
+			bundle_page_selection_description: "Cloudflare Stream lets you or your end users upload, store, encode, and deliver live and on-demand video from a single API.",
+			bundle_page_existing_subsciption_description: "Cloudflare Stream is the most affordable and easy-to-use streaming platform.\n**You have an existing subscription to Cloudflare Images. You can purchase Starter or Creator bundles only when your Cloudflare Images subscription is canceled and has ended.**",
+			bundle_price_experiment: "%{bundlePrice}/month + additional usage",
+			cloudflare_stream: {
+				bundle_title: "Stream",
+				bundle_subtitle: "Stream live and on-demand video",
+				bundle_purchase: "Purchase Stream",
+				bundle_price: "%{bundlePrice}/month",
+				featureCardCopy: {
+					included: {
+						video: "%{numberOfMinutes} minutes of video stored"
+					},
+					pricing: {
+						header: "Pricing details",
+						videoStored: "%{price} per %{numberOfMinutes} additional minutes of video stored",
+						videoDelivered: "%{price} per %{numberOfMinutes} minutes of video delivered"
+					},
+					features: {
+						header: "Features",
+						streaming: "Seamless, all-in-one live and on-demand video streaming",
+						player: "Use our built-in player or bring your own",
+						fees: "No added fees for encoding or bandwidth"
+					}
+				}
+			},
+			basic: {
+				bundle_subtitle: "Save %{savings}/month on Images + Stream",
+				bundle_price: "%{bundlePrice}/month",
+				bundle_purchase: "Purchase Starter Bundle",
+				featureCardCopy: {
+					included: {
+						images: {
+							stored: "%{number} images stored",
+							delivered: "%{number} images delivered per month"
+						},
+						stream: {
+							videoStored: "%{numberOfMinutes} minutes of video stored",
+							videoDelivered: "%{numberOfMinutes} minutes of video delivered per month"
+						}
+					}
+				}
+			},
+			advanced: {
+				bundle_subtitle: "Save %{savings}/month on Images + Stream",
+				bundle_price: "%{bundlePrice}/month",
+				bundle_purchase: "Purchase Creator Bundle",
+				featureCardCopy: {
+					included: {
+						images: {
+							stored: "%{number} images stored",
+							delivered: "%{number} images delivered per month"
+						},
+						stream: {
+							videoStored: "%{numberOfMinutes} minutes of video stored",
+							videoDelivered: "%{numberOfMinutes} minutes of video delivered per month"
+						}
+					}
+				}
+			},
+			bundle_starts_at: "Starting at",
+			bundle_purchase: "Purchase Images and Stream",
+			featureCardCopy: {
+				included: {
+					images: {
+						header: "Images",
+						transformations: "%{number} unique transformations per month"
+					},
+					stream: {
+						header: "Stream"
+					}
+				},
+				pricingDetails: {
+					header: "Pricing details",
+					images: {
+						in: {
+							header: "Stored in Images:",
+							stored: "%{price} per %{number} additional images stored",
+							delivered: "%{price} per %{number} additional images delivered"
+						},
+						out: {
+							header: "Stored outside of Images:",
+							transformations: "%{price} per %{number} additional unique transformations"
+						}
+					},
+					stream: {
+						header: "Stream:",
+						stored: "%{price} per %{number} additional minutes of video stored",
+						delivered: "%{price} per %{number} additional minutes of video delivered"
+					}
+				},
+				features: {
+					header: "Everything in Stream, plus Images:",
+					images: "Images: Efficiently store, transform, and deliver images",
+					stream: "Stream: Store, encode, and deliver live and on-demand video",
+					mediaTransformation: "Media transformations: Dynamically optimize and transform images and video on-the-fly, regardless of where they are stored",
+					onDemand: "Efficiently store images — no need to upload duplicate versions",
+					builtinPlayer: "Optimize images stored anywhere on the internet",
+					fees: "Dynamically transfrom and manipulate images on the fly with crop, resizing, and other visual effects"
+				}
+			}
+		},
 		bundle_basic_title: "Starter Bundle",
 		bundle_advanced_title: "Creator Bundle",
 		bundle_starting_at: "Starting at",
-		bundle_cloudflare_stream_price: "$5 / month",
 		bundle_basic_price: "$10 / month",
 		bundle_advanced_price: "$50 / month",
 		bundle_cloudflare_stream_description: "Live and on-demand video streaming in minutes. Includes simulcasting, storage, encoding, delivery and the Stream Player.",
@@ -56,7 +151,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 		bundle_advanced_short_description: "Includes 10,000 minutes of video and 500,000 images",
 		bundle_advanced_description: "Store up to 500,000 images and 10,000 minutes of video content. Deliver up to 1,000,000 images and 50,000 minutes of video content each month.",
 		bundle_advanced_additional_stream_description: "The Creator Bundle includes 10,000 minutes of video.",
-		bundle_save_up_to: (0, e.d)`**$${"amount"} / month in savings**`,
+		bundle_save_up_to: (0, i.p)(s(), "amount"),
 		single_product_feature_1: "Live streaming, simulcasting and on-demand streaming",
 		single_product_feature_2: "Video Player with support for VAST Ad Tags",
 		single_product_feature_3: "Multi-bitrate Encoding",
@@ -92,8 +187,8 @@ You will only be billed each month based on how many minutes you stream. If you 
 			title: "Images Storage Capacity",
 			additional_title: "Additional Images Storage Capacity",
 			resizing_notice_title: "You're currently using the legacy plan for Image Resizing",
-			resizing_notice_description: "Image Resizing is now available as transformations under Cloudflare Images. You can continue to optimize and manipulate images that aren\u2019t stored in Cloudflare Images. When you purchase Images, then you will automatically switch to the new pricing plan, which costs $0.50 per 1,000 unique transformations. Each unique transformation is billed only once per 30 day period.",
-			cancel_resizing_after_bundle_error: (0, e.d)`You successfully purchased a Cloudflare Images bundle but we were not able to cancel your existing Image Resizing subscription. Your upgrade is incomplete. Please contact deannalam@cloudflare.com.</br></br><0>Navigate to images</0>`
+			resizing_notice_description: "Image Resizing is now available as transformations under Cloudflare Images. You can continue to optimize and manipulate images that aren’t stored in Cloudflare Images. When you purchase Images, then you will automatically switch to the new pricing plan, which costs $0.50 per 1,000 unique transformations. Each unique transformation is billed only once per 30 day period.",
+			cancel_resizing_after_bundle_error: (0, i.p)(d())
 		},
 		stream: {
 			title: "Stream Storage Capacity",
@@ -128,21 +223,22 @@ You will only be billed each month based on how many minutes you stream. If you 
 	country: "Country",
 	video_link: "Video Link",
 	storage: {
-		usage: (0, e.d)`You may not reduce your storage capacity below your current usage of **${"currentMins"} minutes** of Stream storage.`,
-		video_count: (0, e.d)`You have %{smart_count} video in your Stream library. |||| You have %{smart_count} videos in your Stream library.`,
-		inadequateProposedPlan: (0, e.d)`At least ${"minumumRequired"} minutes are required for the ${"currentMinutes"} minutes currently stored`,
+		used: (0, i.p)(u()),
+		usage: (0, i.p)(l(), "currentMins"),
+		video_count: (0, i.p)(c()),
+		inadequateProposedPlan: (0, i.p)(_(), "minumumRequired", "currentMinutes"),
 		inputGreaterThanZero: "Please enter a number greater than zero",
 		inputWholeNumber: "Please enter a whole number",
-		howToCancel: (0, e.d)`If you'd like to cancel your subscription, visit the [Subscriptions page](/${"accountId"}/billing/subscriptions)`,
+		howToCancel: (0, i.p)(m(), "accountId"),
 		description: "Storage is $5 per 1,000 minutes of video stored. This can be changed later.",
 		plan_title: "Price per minutes watched",
 		title: "**Select storage capacity.**",
 		additional_title: "**Select additional storage capacity.**"
 	},
-	modal_add_storage_custom_calculation: (0, e.d)`x 1,000 minutes ≈ ${"value"} hours`,
-	modal_add_extra_storage_custom_calculation: (0, e.d)`x 100,000 images = ${"value"} images extra`,
-	modal_extra_images: (0, e.d)`${"value"} x 100,000 images extra`,
-	modal_total_storage: (0, e.d)`Total stream storage capacity: ${"value"} minutes of video`,
+	modal_add_storage_custom_calculation: (0, i.p)(p(), "value"),
+	modal_add_extra_storage_custom_calculation: (0, i.p)(g(), "value"),
+	modal_extra_images: (0, i.p)(h(), "value"),
+	modal_total_storage: (0, i.p)(v(), "value"),
 	subscription: {
 		error: "There was an error enabling Stream",
 		success: "Created Stream subscription successfully",
@@ -154,6 +250,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 	stream_documentation: "Stream documentation",
 	page_title: "Stream",
 	analytics: "Analytics",
+	analytics_description: "View the analytics of the live input",
 	analytics_title: "Stream Analytics",
 	minutes_delivered: "Minutes Delivered",
 	top_videos: "Top Video IDs",
@@ -185,9 +282,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 	onboarding_ga_enterprise_title: "Welcome!",
 	onboarding_ga_enterprise_description: "Stream is a video platform for developers. Upload a video and Cloudflare will deliver it quickly on all browsers and devices. Contact your Account Manager to get started.",
 	onboarding_ga_self_serve_title: "Stream",
-	onboarding_ga_self_serve_description: `Stream is a video platform for developers. Upload a video and Cloudflare will encode, process and deliver it on all browsers and devices.
-Every 1,000 minutes viewed costs $1 per month. Each 1,000 minutes of video stored costs $5 per month. Change storage capacity at any time to fit your needs.
-After enabling Stream, upload videos to get an embed code in minutes. View [developer documentation](https://developers.cloudflare.com/stream/) to learn more.`,
+	onboarding_ga_self_serve_description: "Stream is a video platform for developers. Upload a video and Cloudflare will encode, process and deliver it on all browsers and devices.\nEvery 1,000 minutes viewed costs $1 per month. Each 1,000 minutes of video stored costs $5 per month. Change storage capacity at any time to fit your needs.\nAfter enabling Stream, upload videos to get an embed code in minutes. View [developer documentation](https://developers.cloudflare.com/stream/) to learn more.",
 	onboarding_ga_enable_btn: "Enable Stream",
 	onboarding_ga_help: "Help",
 	quick_upload: "Quick Upload",
@@ -200,41 +295,52 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	question_mark: "?",
 	banners_beta_end_ent: "Stream beta has ended. Thank you for using Stream during the beta period! Please contact your Success Manager for continued upload service.",
 	banners_beta_end: "Stream Beta has ended. Thank you for using Stream during the beta period!",
-	banners_low_storage_capacity_contract_customer: (0, e.d)`Your account has ${"percentRemaining"}% of its storage capacity remaining. Please contact your Account Manager to increase your Stream storage capacity.`,
-	banners_low_storage_capacity_payg: (0, e.d)`Your account has ${"percentRemaining"}% of its storage capacity remaining. Please <0>add storage capacity</0> to your account.`,
-	banners_no_remaining_capacity_contract_customer: (0, e.d)`Your account has met or exceeded its storage quota. Please contact your Account Manager to increase your quota.`,
-	banners_no_remaining_capacity_payg: (0, e.d)`Your account has no remaining storage capacity. Please delete videos or <0>add storage capacity</0> to your account to continue uploading.`,
+	banners_low_storage_capacity_contract_customer: (0, i.p)(f(), "percentRemaining"),
+	banners_low_storage_capacity_payg: (0, i.p)(y(), "percentRemaining"),
+	banners_no_remaining_capacity_contract_customer: (0, i.p)(b()),
+	banners_no_remaining_capacity_payg: (0, i.p)(w()),
 	embed: "Embed",
+	embed_code: "Embed Code",
 	public_details: "Public Details",
 	embed_restrictions_tooltip: "Enter allowed origins for embedding video. Leave blank to allow embedding everywhere.",
 	embed_restrictions_placeholder: "Allow embedding everywhere",
 	embed_restrictions_textarea_label: "Allowed Origins",
 	embed_restrictions_textarea_helper: "Restrict video embedding to selected origins only. If you are adding multiple origins, use a comma (,) to seperate them.  Leave blank to allow all origins. Cloudflare's dashboard is always allowed.",
 	require_signed_urls: "Require Signed URLs",
-	enable_mp4_downloads: "Enable MP4 Downloads",
-	creating_download: (0, e.d)`Creating download... ${"percentComplete"}%`,
-	error_creating_download: (0, e.d)`Error creating download mp4.`,
+	downloads: "Downloads",
+	downloads_description: "Generate an MP4 or audio-only (M4A) download of your video.",
+	mp4_file: "Video file (MP4)",
+	audio_only_file: "Audio-only file (M4A)",
+	loading_download_status: "Loading download status...",
+	download_file: "Download file",
+	download_ready: "Ready to download",
+	creating_download: (0, i.p)(S(), "percentComplete"),
+	creating_download_simple: "Creating download...",
+	error_creating_download: (0, i.p)(C()),
+	disable_download: "Disable Download",
+	disable_download_confirmation_title: "Remove download?",
+	disable_download_confirmation_description: "Are you sure you want to remove the download file? The download file will be deleted and the URL will no longer work.",
+	generate_download: "Generate Download",
 	get_tokens_here: "(Get an API token)",
 	name: "Name",
 	no_captions_added: "No captions added",
 	remove_caption: "Remove Caption",
 	captions: "Captions",
-	generatedCaption: (0, e.d)`${"language"} (auto-generated)`,
+	generatedCaption: (0, i.p)(k(), "language"),
 	captions_not_yet_available: "Captions unavailable while encoding",
 	method: "Method",
-	caption_generated: (0, e.d)`Generated`,
-	caption_uploaded: (0, e.d)`Uploaded`,
+	caption_generated: (0, i.p)(T()),
+	caption_uploaded: (0, i.p)(I()),
 	captions_generation_time_notice: "It may take a few minutes before captions are available.",
 	captions_tooltip: "Changes to captions may take a few minutes to appear in the video player",
 	add_captions: "Add Captions",
 	add_video_captions: "Add video captions",
-	add_video_captions_description: "Select a language and upload a WebVTT file",
-	add_video_captions_description_with_ai: "Select a language and upload a WebVTT file or use AI to automatically generate captions (English only)",
+	add_video_captions_description_with_ai: "Select a language and upload a WebVTT file or use AI to automatically generate captions. When generating captions, select the language that is spoken in the video.",
 	add_captions_description: "Add captions to your video by uploading .vtt files",
-	add_captions_description_with_ai: "Add captions to your video by uploading .vtt files or generating with AI",
+	add_captions_description_with_ai: "Add captions to your video by uploading .vtt files or generating with AI.",
 	language: "Language",
 	select_a_method: "Select a method",
-	upload_a_web_vtt_file: "Upload a webVTT file",
+	upload_a_web_vtt_file: "Upload a WebVTT file",
 	generate_captions_with_ai: "Generate captions with AI",
 	upload_file_label: "Drag & drop or <0>choose a file</0> to upload",
 	upload_file_limitation: "VTT up to 10MB",
@@ -242,8 +348,8 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	caption_file_too_large: "File is too large. Must be below 10MB",
 	caption_file_required: "A .vtt file is required.",
 	caption_replacement_warning: "The existing caption file for this language will be deleted.",
-	delete_caption_modal_title: (0, e.d)`Delete "${"language"}" Caption?`,
-	delete_caption_modal_body: "Deleting captions permanently deletes associated Webvtt file and cannot be undone.",
+	delete_caption_modal_title: (0, i.p)(R(), "language"),
+	delete_caption_modal_body: "Deleting captions permanently deletes associated WebVTT file and cannot be undone.",
 	caption_status: {
 		ready: "Ready",
 		error: "Error",
@@ -370,7 +476,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 		ng: "Ndonga",
 		ne: "Nepali",
 		nn: "Norwegian, Nynorsk",
-		nb: "Norwegian Bokm\xE5l",
+		nb: "Norwegian Bokm\xe5l",
 		no: "Norwegian",
 		ny: "Chichewa / Chewa / Nyanja",
 		oc: "Occitan",
@@ -432,7 +538,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 		uz: "Uzbek",
 		ve: "Venda",
 		vi: "Vietnamese",
-		vo: "Volap\xFCk",
+		vo: "Volap\xfck",
 		cy: "Welsh",
 		wa: "Walloon",
 		wo: "Wolof",
@@ -454,23 +560,33 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 		10069: "Multi-audio is not supported.",
 		10016: "You have hit the threshold for in-progress generated captions. Wait a few minutes and try again."
 	},
-	uploading_caption: (0, e.d)`Uploading ${"language"} captions (${"percentProgress"}%)`,
+	uploading_caption: (0, i.p)(A(), "language", "percentProgress"),
 	error_fetching_captions: "There was an error fetching captions",
-	caption_upload_success: (0, e.d)`${"language"} captions uploaded.`,
+	caption_upload_success: (0, i.p)(P(), "language"),
 	caption_upload_another: "Upload another",
 	caption_upload_error: "Invalid .vtt file",
 	paused: "Paused",
 	paused_uploads_clear: "You have paused uploads, re-upload file to resume or <0>clear all</0>",
 	require_signed_urls_tooltip: "Click to see help for setting up signed URLs",
 	resume_card_paused: "Paused upload",
+	transformations: {
+		description: "Enable transformations to optimize and manipulate images and videos that are stored outside of Images and Stream. Transformed media is served from one of your zones on Cloudflare.",
+		title: "Transformations",
+		zone_not_listed: "Want to configure Video Transformation related features for a zone not listed?",
+		delivery_zones_page_description_label: "Using Media Transformations for zones",
+		no_zones: {
+			title: "Enable transformations",
+			description: "You don't have any zones on your account. Add a zone to enable transformations.",
+			add_zone: "Add a zone"
+		},
+		delivery_zones_table_notice: "Want to enable video transformations for a zone not listed? <0>Add a zone to your account</0>"
+	},
 	total_minutes_watched: "Total Minutes Watched:",
 	toast_success: "Video saved successfully",
 	toast_error: "There was an error saving the video",
 	toast_info: "Saving video...",
 	total_views: "Total Views:",
-	upload_using_api_desc: `There are multiple ways to get your file onto Stream. The simplest way is to pass the URL to your video file. Try it out by entering the fields then pasting the cURL command below into your terminal.
-
-[Read the full documentation](https://developers.cloudflare.com/stream/).`,
+	upload_using_api_desc: "There are multiple ways to get your file onto Stream. The simplest way is to pass the URL to your video file. Try it out by entering the fields then pasting the cURL command below into your terminal.\n\n[Read the full documentation](https://developers.cloudflare.com/stream/).",
 	upload_with_a_link: "Upload with a link",
 	upload_with_a_link_desc: "Link to a video and it will be uploaded and made available on Stream.",
 	uploading: "Uploading",
@@ -518,25 +634,30 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	json_body: "JSON Body",
 	json: "JSON",
 	return_to_editing: "Return",
-	storage_usage: (0, e.d)`You have ${"currentMins"} minutes of video content in your Stream library.`,
-	storage_capacity: (0, e.d)`Your storage capacity is ${"limitMins"} minutes (${"percentRemaining"}% remaining).`,
+	storage_usage: (0, i.p)(L(), "currentMins"),
+	storage_capacity: (0, i.p)(D(), "limitMins", "percentRemaining"),
 	storage_capacity_ent: "To modify your Stream usage limits, please contact your Account Manager.",
 	stream_4371_banner: "You have access to a trial of Stream. Once you begin using Stream, your Account Manager will follow up to discuss adding Stream to your existing contract.",
 	connect_page_title: "Inputs",
 	connect_subtitle: "Route live video across services",
 	live_input: "Live Input",
+	delete_live_input: "Delete Live Input",
+	delete_live_input_description: "Deleting a Live Input\xa0is permanent and cannot be undone. Any applications where this Live Input is currently embedded will render an error.",
+	delete_live_input_modal_title: "Delete Live Input?",
+	delete_live_input_modal_description: (0, i.p)(M(), "name"),
+	live_input_details: "Live Input details",
 	live_input_settings: "Live Input Settings",
 	live_video_inputs: "Live Inputs",
 	live_video_input_id: "Live Input ID",
 	custom_input_domains: "Custom Input Domains",
-	custom_input_domains_description: (0, e.d)`Stream live video to your own custom domain with two steps:
-  1. Add the domain here.
-  2. Create a CNAME record in your DNS provider pointing to \`live.cloudflare.com\`.`,
+	custom_input_domains_empty_title: "Broadcast video to a custom domain",
+	custom_input_domains_empty_description: "With custom ingest domains, you can configure your RTMPS feeds to use an ingest URL that you specify instead of using `live.cloudflare.com`.",
+	custom_input_domains_description: (0, i.p)(E()),
 	cname_not_found_yet: "CNAME record not found yet. If you've already created the record it may take some time for DNS caches to expire.",
 	domain_required: "Domain is required",
 	invalid_domain: "Invalid domain",
-	custom_input_domains_limit_reached: (0, e.d)`You may only configure up to ${"limit"} custom domains.`,
-	error_fetching_custom_input_domains: "An error occured while fetching Custom Domains",
+	custom_input_domains_limit_reached: (0, i.p)(q(), "limit"),
+	error_fetching_custom_input_domains: "An error occurred while fetching Custom Domains",
 	add_domain: "Add domain",
 	delete_domain_confirmation_title: "Delete Custom Live Input Domain?",
 	delete_domain_confirmation_description: "Are you sure you want to permanently delete this Custom Live Input Domain?",
@@ -554,12 +675,13 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	rtmps: "RTMPS",
 	srt: "SRT",
 	webrtc_input: "WebRTC (WHIP)",
+	webrtc_whip_whep: "WebRTC (WHIP/WHEP)",
 	output_url: "Output URL",
 	stream_key: "Stream Key",
 	stream_key_required: "Stream Key is required.",
 	create_output: "Create Output",
 	output_confirm_delete_title: "Delete Output?",
-	output_confirm_delete_body: (0, e.d)`Are you sure you want to delete ${"outputUrl"}?`,
+	output_confirm_delete_body: (0, i.p)(U(), "outputUrl"),
 	url_required: "URL is required.",
 	output_url_required: "Output URL is required.",
 	output_url_invalid_protocol: "Output URL must use rtmp:// or rtmps:// protocol.",
@@ -582,7 +704,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	faqs: "FAQs",
 	request_a_feature: "Request a feature",
 	docs: "Docs",
-	stream_live_docs: "Stream live video documentation",
+	stream_live_docs: "Stream Live documentation",
 	create_input_info_1: "You can customize the API request this page will make. Creating a Live Video Input doesn't require many options yet, but you can specify the <0>meta</0> property, which allows you to tag the Live Video Input with an arbitrary key-value pair. This could be useful if you're using the API to manage a large number of Live Video Inputs or just want to add additional information.",
 	create_input_show_example: "Show Example",
 	create_input_hide_example: "Hide Example",
@@ -590,7 +712,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	create_input_curl_preview: "cURL Preview",
 	create_input_api_response: "API Response",
 	create_input_show_input: "Show Input",
-	create_input_api_error: "An unknown error occured while creating the input.",
+	create_input_api_error: "An unknown error occurred while creating the input.",
 	input: "Input",
 	error_retrieving_input: "An error occurred while retrieving the input",
 	srt_url: "SRT URL",
@@ -599,13 +721,14 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	rtmps_url: "RTMPS URL",
 	rtmps_key: "RTMPS Key",
 	rtmps_playback_key: "RTMPS Playback Key",
+	webrtc_whip: "WebRTC (WHIP)",
 	webrtc_url: "WebRTC (WHIP) URL",
 	webrtc_playback: "WebRTC (WHEP) Playback URL",
 	srt_passphrase: "SRT Passphrase",
 	live_input_connection_information_title: "Connection Information",
 	live_input_connection_information_description_rtmp: "Use this information to send video to your input. You can use any software that supports RTMPS such as OBS, FFmpeg, Wirecast and XSplit.",
 	live_input_connection_information_description_srt: "Use this information to send video to your input. You can use any software that supports SRT.",
-	live_input_connection_information_description_webrtc: "Use this information to send video to your input. You can use any software that supports WebRTC.",
+	live_input_connection_information_description_webrtc: "Use this information to send video to your input. You can use any software that supports WHIP.",
 	live_input_id: "Input ID",
 	live_input_create_output: "Create Output",
 	live_input_outputs_title: "Outputs",
@@ -635,13 +758,13 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	reveal_output_key: "Reveal output key",
 	reveal: "Reveal",
 	url: "URL",
-	videoErrorReasons: a.$,
-	createdRelativeTimeAgo: (0, e.d)`Created ${"relativeTimeUnitsAgo"}`,
-	scheduledForDeletion: (0, e.d)`Scheduled for deletion on ${"date"}`,
+	videoErrorReasons: n.t,
+	createdRelativeTimeAgo: (0, i.p)(N(), "relativeTimeUnitsAgo"),
+	scheduledForDeletion: (0, i.p)(O(), "date"),
 	name_required: "Name is required.",
 	key_required: "Key is required",
 	automatically_delete_video: "Automatically Delete Video",
-	scheduled_deletion_helper: (0, e.d)`No earlier than ${"minimumDate"} ${"minimumTime"}`,
+	scheduled_deletion_helper: (0, i.p)(V(), "minimumDate", "minimumTime"),
 	scheduled_deletion_aria_label: "Specify a date and time to automatiicaly delete the video",
 	scheduled_deletion_invalid: "Invalid date or time",
 	timeout_seconds: "Timeout Seconds",
@@ -656,18 +779,18 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	live_playback_and_recording: "Live Playback and Recording",
 	live_playback_and_recording_tooltip: "Watch the live stream using the Stream Player or any player that supports HLS/DASH. Instantly replay the recording when the live stream ends.",
 	live_require_signed_urls: "Require Signed URLs",
-	live_require_signed_urls_tooltip: "Restrict access to certain users by requiring a signed URL token to watch the live stream.",
+	live_require_signed_urls_tooltip: "Restrict access to certain users by requiring a signed URL token to watch the live stream. Once enabled, you must implement logic into your application to generate signed URLs. Learn more from our documentation on how to generate signed tokens.",
 	live_recording_deletion: "Automatically Delete Recordings",
 	live_recording_deletion_tooltip: "Manage storage by automatically deleting recordings after a specified number of days.",
-	live_recording_deletion_textbox: "Deletion Period (days)",
-	live_recording_deletion_minimum: "Minimum 30 days",
+	live_recording_deletion_textbox: "Retention Period (days)",
+	live_recording_deletion_minimum: (0, i.p)(z()),
 	remove_field: "Remove field",
 	name_reserved_key: 'Use the "Name" field above for this key',
 	value: "Value",
 	key_is_not_unique: "This key is not unique",
 	add_meta_field: "Add Meta Field",
 	videos_created_by_input: "Videos created by live input",
-	started_streaming: (0, e.d)`Started streaming ${"dateTime"}`,
+	started_streaming: (0, i.p)(x(), "dateTime"),
 	failed_to_fetch_live_input_videos: "Failed to fetch Live Input videos",
 	input_is_offline: "Input is not connected. Connect to start streaming to HLS/DASH.",
 	video_has_no_name: "Video has no name",
@@ -688,20 +811,14 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	gop: "GOP",
 	gop_frames_unit: "Frames",
 	gop_duration_unit: "Seconds",
-	experiencing_issues_with_stream_live: "Experiencing issues with Stream Live? <0>Report a bug</0>",
+	experiencing_issues_with_stream_live: "Experiencing issues with Stream Live?<0></0><1>Report a bug</1>",
 	email_verification_required: "You must <0>verify your email address</0> before you can enable Cloudflare Stream.",
-	video_minutes_viewed_in_last_thirty_days: (0, e.d)`${"minutesViewed"} minutes delivered in the last 30 days.`,
+	video_minutes_viewed_in_last_thirty_days: (0, i.p)(Y(), "minutesViewed"),
 	domain_notice: "Cloudflare is investigating reports of `videodelivery.net` being inaccessible from certain local ISPs. While we investigate these reports, we recommend switching to the backup domain `cloudflarestream.com`:\n  - If you are using the Stream Player: `https://iframe.cloudflarestream.com/$VIDEOID`\n  - If you are using your own player: `https://cloudflarestream.com/$VIDEOID/manifest/manifest.m3u8`",
-	custom_subdomain_notice: (0, e.d)`**New**: Unique subdomain for your Stream Account\n
-  URLs in the Stream Dashboard and Stream API now use a subdomain specific to your Cloudflare Account: \`${"customer_subdomain"}\`\n
-  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.\n
-  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`,
+	custom_subdomain_notice: (0, i.p)(B(), "customer_subdomain"),
 	create_cname_record_title: "Automatically create CNAME record?",
-	coming_in_aug_15_notice: (0, e.d)`**Coming Aug 15, 2022**: Unique subdomain for your Stream Account\n
-  Starting August 15, 2022, URLs in the Stream Dashboard and Stream API will use a subdomain specific to your Cloudflare Account: \`${"customer_subdomain"}\`\n
-  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.\n
-  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`,
-	create_cname_record_description: (0, e.d)`Would you like us to create the CNAME record \`${"cname"}\` on \`${"zone"}\` pointing to \`live.cloudflare.com\` for you? You can remove it from the DNS page later.`,
+	coming_in_aug_15_notice: (0, i.p)(W(), "customer_subdomain"),
+	create_cname_record_description: (0, i.p)(K(), "cname", "zone"),
 	create_cname_record: "Create CNAME Record",
 	create_cname_record_decline: "No, thanks",
 	create_cname_record_already_exists: "An A, AAAA, or CNAME record with that host already exists.",
@@ -735,5 +852,72 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 			placeholder: "This link is added as a share url to the share button",
 			tooltip: "(Optional) This link is added as a share url to the share button"
 		}
-	}
+	},
+	recordings: "Recordings",
+	recordings_description: "Videos created by live input",
+	connection_info: "Connection Info",
+	no_recordings_yet: "Start broadcasting with recording enabled and your recordings will appear here!",
+	logs: "Logs",
+	logs_description: "Live input event logs",
+	tables: {
+		logs: {
+			event_code: "Event Code",
+			event_description: "Event Description",
+			date: "Date"
+		}
+	},
+	no_logs_description: "No Logs",
+	metrics: "Metrics",
+	metrics_description: "Live input observability metrics",
+	total_events: "Total number of input events",
+	total_error_events: "Total number of input errors",
+	all_events: "All events",
+	no_events: "No events found",
+	metric_cards: {
+		bitrate: {
+			title: "Bitrate",
+			tooltip: "Average combined bitrate of the live input"
+		},
+		duration: {
+			title: "Keyframe Interval",
+			tooltip: "Keyframe intervals larger than 4 seconds can lead to unhealthy streams."
+		},
+		upload_duration_ratio: {
+			title: "Upload-to-Duration Ratio",
+			tooltip: "Uploading must be faster than the duration of the content, otherwise your stream will be unhealthy. Note that this ratio can be higher than usual at the beginning of a stream."
+		}
+	},
+	banners: {
+		metrics: "Metrics can take up to 2 minutes to update in the dashboard",
+		logs: "Logs can take up to 2 minutes to appear in the dashboard",
+		cmcd_metrics: (0, i.p)(F())
+	},
+	cmcd_metrics: "Player Metrics",
+	cmcd_metrics_description: "Player-side metrics from CMCD data",
+	input_metrics: "Input Metrics",
+	input_metrics_description: "Broadcast-side observability metrics",
+	total_viewers: "Total Viewers",
+	total_viewers_desc: "Includes only playback sessions reporting CMCD data.",
+	avg_buffer_length: "Average Buffer Length",
+	avg_buffer_length_desc: "Average buffer length of the media player rounded to seconds.",
+	avg_buffer_starvation: "Average Buffer Starvation",
+	avg_initial_buffer_starvation: "Average Initial Buffer Starvation",
+	avg_bitrate: "Average Bitrate",
+	avg_throughput: "Average Throughput",
+	avg_watch_time: "Average Watch Time",
+	resolutions_delivered: "Resolutions Delivered",
+	viewers: "viewers",
+	viewer_sessions: "Viewer Sessions",
+	buffer_starvations: "Buffer Starvations",
+	buffer_starvations_ratio: "Buffer Starvations Ratio",
+	buffer_starvations_ratio_desc: "Percentage of viewer buffer starvation events to total events. A higher percentage means more viewers are buffering.",
+	encoded_bitrate: "Encoded Bitrate",
+	view_time: "View Time",
+	view_time_desc: "Total view time measured in seconds over time.",
+	viewers_by_country: "Viewers By Country",
+	live_inputs_empty_title: "Stream live video",
+	live_inputs_empty_description: "Create your first live input to start streaming live video",
+	minutesStored: "Minutes stored (current)",
+	videosStored: "Videos stored (current)",
+	managePlan: "Manage plan"
 }

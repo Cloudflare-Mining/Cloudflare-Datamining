@@ -1,3 +1,19 @@
 [
-	"/:account_id/:zoneName/speed"
+	"/[id]/[id]/speed",
+	"/[id]/[id]/speed/insights",
+	"/[id]/[id]/speed/optimization",
+	"/[id]/[id]/speed/optimization/[id]/*",
+	"/[id]/[id]/speed/overview",
+	"/[id]/[id]/speed/rum",
+	"/[id]/[id]/speed/smart-shield?highlight=/*",
+	"/[id]/[id]/speed/test",
+	"/[id]/[id]/speed/test/[id]/history/[id]/[id]/*",
+	"/[id]/[id]/speed/test/[id]/tests/[id]/[id]/*",
+	"/[id]/[id]/speed/test/[id]/tests/[id]/[id]/[id]/*",
+	"/[id]/[id]/speed/test/browser",
+	"/[id]/[id]/speed/test/network",
+	"/[id]/[id]/speed/test/network-comparison",
+	"/[id]/[id]/speed/test/network/[id]../*",
+	"/[id]/[id]/speed/test/network/[id]/*",
+	"/[id]/[id]/speed/test/schedule/[id]/*"
 ]

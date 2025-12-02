@@ -4,28 +4,43 @@
 	api_tokens: "API Tokens",
 	api_spec: "API Spec",
 	api_spec_description: "Review the Workers AI API spec to build your application using the REST API",
-	beta_banner: (0, e.d)`Workers AI is now generally available! Learn more about our plans and pricing <0>here</0>`,
-	build_your_first_ai_application: "Build your first AI application",
+	beta_banner: (0, r.p)(a()),
+	build_your_first_ai_application: "Build your AI application",
 	browse_model_catalog: "Browse Model Catalog",
+	authors: "Authors",
+	task_types: "Task Types",
+	capabilities: "Capabilites",
+	clear_all: "Clear All",
+	search_not_found: "No models match your search criteria. Try adjusting your filters.",
 	browse_model_catalog_description: "Browse all models available through Workers AI via Workers, Pages or REST API ",
 	charts: {
 		units: {
 			cost: "Cost",
-			neurons: "Neurons"
+			neurons: "Neurons",
+			constMetrics: "Cost Metrics"
 		},
 		chart_title: {
 			cost: "All Models",
 			neuros: "All Models"
 		},
-		period: (0, e.d)`Last <0>${"days"}</0> days: <1>${"iniDate"}</1> - Today`
+		period: (0, r.p)(s(), "days", "iniDate"),
+		daily_usage: (0, r.p)(l(), "neuronsUsed"),
+		daily_usage_with_limit: (0, r.p)(c(), "neuronsUsed", "neuronsDailyLimit"),
+		usage_message: "Daily usage (resets at 00:00 UTC)",
+		neurons_summary: (0, r.p)(u(), "neuronsTotal")
 	},
 	models: {
 		labels: {
 			beta: "Beta",
 			lora: "LoRA",
 			function_calling: "Function calling",
-			deprecating: (0, e.d)`Deprecating ${"date"}`
-		}
+			deprecating: (0, r.p)(d(), "date"),
+			max_content: "max context",
+			async_queue: "Batch"
+		},
+		date_added: (0, r.p)(_(), "date"),
+		created_at: (0, r.p)(p(), "date"),
+		pricing: (0, r.p)(m())
 	},
 	sidebar: {
 		cost_summary: {
@@ -57,11 +72,14 @@
 		},
 		neurons_card: {
 			title: "Estimated Daily Neurons",
-			neurons_tooltip: "Neurons is a metric that aggregates model usage and is subject to change. Workers Free and Paid plans will both have access to 10K free daily neurons. Workers Paid customers can use more than 10K daily neurons at a rate of $0.011 / 1k Neurons after their free allocation.",
-			note: (0, e.d)`Workers AI will start billing for neuron usage on April 1st. <0>Learn more</0>`
+			neurons_tooltip: (0, r.p)(f(), "neurons_daily_total", "neurons_daily_total", "neurons_coefficient", "neurons_daily_total"),
+			note: (0, r.p)(g())
 		},
 		neurons: "Neurons",
 		today: "Today"
+	},
+	banner: {
+		daily_neuron_exceeded: (0, r.p)(h(), "neuronLimit")
 	},
 	pagination: {
 		models: {
@@ -112,9 +130,9 @@
 	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
-	using_workers_ai_rest_api_description: (0, e.d)`Call Workers AI from anywhere using our API. <0>Workers AI REST API documentation</0>`,
+	using_workers_ai_rest_api_description: (0, r.p)(k()),
 	product_title: "Workers AI",
-	provided_by: (0, e.d)`Provided by <0>${"provider"}</0>`,
+	provided_by: (0, r.p)(A(), "provider"),
 	request_access: "Request access",
 	reserve_a_full_access_seat: "Reserve spot on waitlist",
 	reserve_a_full_access_seat_description: "Join the waitlist for access to production scale Workers AI ",
@@ -144,6 +162,10 @@
 		text_to_image: {
 			title: "Text to Image",
 			description: "Generate image based on text prompt."
+		},
+		llm_app: {
+			title: "LLM App",
+			description: "Get started with everything you need to run a Llama 3 model from a Worker."
 		}
 	},
 	terms: "Terms",
@@ -158,9 +180,11 @@
 	workers_ai_examples_description: "Get inspired by projects build by the Cloudflare developer community ",
 	workers_ai_workers_templates: "Create from a Worker Template",
 	workers_ai_workers_templates_description: "Select from a set of model or task specific templates to deploy a Workers AI Worker",
-	use_rest_api: "Use REST API",
-	using_templates: "Build and deploy a Llama 2 Worker",
-	using_templates_description: "Get started with everything you need to run a Llama 2 model from a Worker.",
+	use_rest_api: "{ } REST API",
+	using_templates: "Build and deploy a Llama 3 Worker",
+	using_templates_description: "Get started with everything you need to run a Llama 3 model from a Worker.",
+	workers_ai_pricing_default: (0, r.p)(y(), "neurons_coefficient", "neurons_daily_total"),
+	learn_more: "Learn More",
 	modelTasks: {
 		"Feature Extraction": "Feature Extraction",
 		"Text-to-Image": "Text-to-Image",
@@ -198,6 +222,24 @@
 		"Tabular Regression": "Tabular Regression",
 		"Reinforcement Learning": "Reinforcement Learning",
 		Robotics: "Robotics",
-		"Text Embeddings": "Text Embeddings"
+		"Text Embeddings": "Text Embeddings",
+		Other: "Other"
+	},
+	cost_metrics: {
+		audio_seconds: "Audio Seconds",
+		inference_steps: "Inference Steps",
+		input_audio_s: "Input Audio Seconds",
+		input_tiles: "Input Tiles",
+		input_tokens: "Input Tokens",
+		output_audio_s: "Output Audio Seconds",
+		output_tokens: "Output Tokens",
+		processed_pixels: "Processed Pixels",
+		processed_tiles: "Processed Tiles"
+	},
+	footer: {
+		templates: "Workers AI Templates",
+		binding_to_worker: "Binding to a Worker",
+		use_wrangler: "Use Wrangler CLI",
+		join_discord: "Join Discord Server"
 	}
 }

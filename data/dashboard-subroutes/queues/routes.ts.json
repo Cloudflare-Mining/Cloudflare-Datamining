@@ -1,0 +1,21 @@
+[
+	"/[id]/r2/default/buckets/[id]/*",
+	"/[id]/workers/queues",
+	"/[id]/workers/queues/[id]/*",
+	"/[id]/workers/queues/[id]/messages",
+	"/[id]/workers/queues/[id]/metrics",
+	"/[id]/workers/queues/[id]/settings",
+	"/[id]/workers/queues/purchase",
+	"/[id]/workers/queues/verify-email",
+	"/[id]/workers/services/view/[id]/[id]/*",
+	"/accounts/[id]/queues",
+	"/accounts/[id]/queues/[id]/*",
+	"/accounts/[id]/queues/[id]/consumers",
+	"/accounts/[id]/queues/[id]/consumers/[id]/*",
+	"/accounts/[id]/queues/[id]/messages",
+	"/accounts/[id]/queues/[id]/messages/preview",
+	"/accounts/[id]/queues/[id]/messages/preview/ack",
+	"/accounts/[id]/queues/[id]/purge",
+	"/accounts/[id]/queues?name=/*",
+	"/accounts/[id]/workers/scripts/[id]/queue-consumers"
+]

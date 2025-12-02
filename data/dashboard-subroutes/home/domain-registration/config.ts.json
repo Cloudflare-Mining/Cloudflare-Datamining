@@ -1,3 +1,24 @@
 [
-	"/accounts/:account_id/registrar/domains/:domainName"
+	"/[id]/*",
+	"/accounts/[id]/registrar/domains/[id]/*",
+	"/action-center",
+	"/add-site",
+	"/checkout",
+	"/checkout/[id]/*",
+	"/configuration",
+	"/contacts",
+	"/domain/[id]/*",
+	"/domains",
+	"/pricing",
+	"/protection",
+	"/register",
+	"/registrar",
+	"/registrar/accounts/verify_email",
+	"/registrar/domains/verify_email",
+	"/sign-up/registrar",
+	"/success",
+	"/tlds",
+	"/transfer",
+	"/transfer/[id]/*",
+	"/verify-email"
 ]

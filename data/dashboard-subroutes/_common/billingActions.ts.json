@@ -1,0 +1,21 @@
+[
+	"/accounts/[id]/billing/accounts",
+	"/accounts/[id]/billing/accounts/invoices",
+	"/accounts/[id]/billing/accounts/quotes",
+	"/accounts/[id]/billing/bad-debt",
+	"/accounts/[id]/billing/free-trials",
+	"/accounts/[id]/billing/free-trials/[id]/*",
+	"/accounts/[id]/billing/free-trials/[id]/opt-in",
+	"/accounts/[id]/billing/history",
+	"/accounts/[id]/billing/history?status=OPEN",
+	"/accounts/[id]/billing/next-billing",
+	"/accounts/[id]/billing/profile",
+	"/accounts/[id]/billing/unpaid-invoice",
+	"/accounts/[id]/contract/self-serve-eligibility",
+	"/accounts/[id]/pay-invoice",
+	"/accounts/[id]/payment-methods",
+	"/accounts/[id]/payment-methods/[id]/*",
+	"/accounts/[id]/payment-methods/[id]/set-as-default",
+	"/accounts/[id]/payments",
+	"/zones/[id]/available_plans"
+]

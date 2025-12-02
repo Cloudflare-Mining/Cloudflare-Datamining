@@ -1,0 +1,18 @@
+[
+	"/[id]/r2/default/buckets/[id]/*",
+	"/[id]/workers/plans",
+	"/[id]/workers/queues",
+	"/[id]/workers/queues/[id]/*",
+	"/[id]/workers/queues/[id]/messages",
+	"/[id]/workers/queues/[id]/messages#list",
+	"/[id]/workers/queues/[id]/messages#pause",
+	"/[id]/workers/queues/[id]/messages#purge",
+	"/[id]/workers/queues/[id]/messages#send",
+	"/[id]/workers/queues/[id]/metrics",
+	"/[id]/workers/queues/[id]/settings",
+	"/[id]/workers/queues/[id]/subscriptions",
+	"/[id]/workers/queues/by-name/[id]/*",
+	"/[id]/workers/queues/create",
+	"/[id]/workers/queues/subscriptions/create",
+	"/[id]/workers/services/view/[id]/[id]/settings#bindings"
+]

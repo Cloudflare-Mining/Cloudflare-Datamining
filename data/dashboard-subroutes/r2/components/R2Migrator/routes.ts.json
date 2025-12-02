@@ -1,0 +1,21 @@
+[
+	"/accounts/[id]/slurper",
+	"/jobs",
+	"/jobs/[id]/*",
+	"/jobs/[id]/abort",
+	"/jobs/[id]/logs",
+	"/jobs/[id]/pause",
+	"/jobs/[id]/progress",
+	"/jobs/[id]/resume",
+	"/jobs/[id]/source/connectivity",
+	"/jobs/[id]/target/connectivity",
+	"/migration/[id]/status",
+	"/migration/[id]/summary",
+	"/migrations",
+	"/secrets",
+	"/secrets/[id]/delete",
+	"/secrets/[id]/update",
+	"/source/connectivity-precheck",
+	"/target/connectivity-precheck",
+	"/wizard"
+]

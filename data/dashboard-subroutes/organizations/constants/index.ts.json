@@ -1,3 +1,11 @@
 [
-	"/organizations"
+	"/organizations",
+	"/organizations/[id]/*",
+	"/organizations/[id]/accounts",
+	"/organizations/[id]/analytics-and-insights",
+	"/organizations/[id]/manage",
+	"/organizations/[id]/new",
+	"/organizations/[id]/shared-configurations",
+	"/organizations/[id]/sub-organizations",
+	"/organizations/new"
 ]

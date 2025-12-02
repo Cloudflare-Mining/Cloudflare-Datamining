@@ -1,0 +1,12 @@
+[
+	"/accounts/[id]/subscriptions",
+	"/accounts/[id]/subscriptions/[id]/*",
+	"/accounts/[id]/subscriptions/[id]/action/append",
+	"/accounts/[id]/subscriptions/cancel-downgrade",
+	"/accounts/[id]/subscriptions?package=prod_load_balancing",
+	"/accounts/[id]/subscriptions?package=prod_rate_limiting",
+	"/accounts/[id]/subscriptions?package=prod_stream",
+	"/accounts/[id]/subscriptions?product=load_balancing",
+	"/zones/[id]/subscription",
+	"/zones/[id]/subscriptions"
+]

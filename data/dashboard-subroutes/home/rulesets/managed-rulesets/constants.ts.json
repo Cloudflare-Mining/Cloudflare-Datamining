@@ -1,3 +1,16 @@
 [
-	"managed"
+	"managed",
+	"managed/deploy/[id]/*",
+	"managed/deploy/[id]/overrides",
+	"managed/deploy/[id]/scope",
+	"managed/entrypoint/[id]/*",
+	"managed/entrypoint/[id]/overrides",
+	"managed/entrypoint/[id]/scope",
+	"managed/exception/[id]/*",
+	"managed/exception/[id]/select-rule/[id]/*",
+	"managed/exception/[id]/select-ruleset",
+	"managed/exception/create",
+	"managed/exception/create/select-rule/[id]/*",
+	"managed/exception/create/select-ruleset",
+	"managed/select-ruleset"
 ]
