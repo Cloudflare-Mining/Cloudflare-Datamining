@@ -1402,14 +1402,14 @@
 		"name": "Cloudflare Gateway",
 		"description": "Can edit Cloudflare Gateway and read Access.",
 		"permissions": {
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
 			"teams": {
 				"read": true,
 				"edit": true,
 				"report": true
+			},
+			"teams_device": {
+				"read": true,
+				"edit": false
 			},
 			"access": {
 				"read": true,
@@ -1438,6 +1438,11 @@
 		"name": "Cloudflare Zero Trust Reporting",
 		"description": "Can access Cloudflare for Zero Trust reporting data.",
 		"permissions": {
+			"teams": {
+				"read": false,
+				"edit": false,
+				"report": true
+			},
 			"teams_device": {
 				"read": true,
 				"edit": false
@@ -1453,11 +1458,6 @@
 			"access": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": false,
-				"edit": false,
-				"report": true
 			},
 			"zone": {
 				"read": true,
@@ -1478,6 +1478,11 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
 			"cf1_integration": {
 				"read": true,
 				"edit": false
@@ -1485,11 +1490,6 @@
 			"teams_device": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
 			},
 			"cds": {
 				"read": true,
@@ -1534,6 +1534,11 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"cf1_integration": {
 				"read": true,
 				"edit": true,
@@ -1543,11 +1548,6 @@
 			"teams_device": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"ces_policies": {
 				"read": true,
@@ -1644,6 +1644,12 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true,
+				"pii": true
+			},
 			"waf": {
 				"read": true,
 				"edit": true
@@ -1681,12 +1687,6 @@
 			"r2_bucket_warehouse_sql": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"pii": true,
-				"report": true
 			},
 			"lb": {
 				"read": true,
@@ -2202,14 +2202,14 @@
 		"name": "Cloudflare Access",
 		"description": "Can edit Cloudflare Access.",
 		"permissions": {
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
 			"teams": {
 				"read": true,
 				"edit": false,
 				"report": true
+			},
+			"teams_device": {
+				"read": true,
+				"edit": false
 			},
 			"access": {
 				"read": true,
@@ -2354,6 +2354,11 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
 			"waf": {
 				"read": true,
 				"edit": false
@@ -2385,11 +2390,6 @@
 			"r2_bucket_warehouse_sql": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
 			},
 			"lb": {
 				"read": true,
@@ -2577,6 +2577,11 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
 			"waf": {
 				"read": true,
 				"edit": true
@@ -2610,11 +2615,6 @@
 			"r2_bucket_warehouse_sql": {
 				"read": true,
 				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
 			},
 			"lb": {
 				"read": true,
