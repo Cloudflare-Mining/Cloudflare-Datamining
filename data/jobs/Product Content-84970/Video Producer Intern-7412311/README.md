@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin</p>
+<p><strong>Available Locations:&nbsp;</strong>Lisbon</p>
 <h4>About the Role</h4>
 <p>Cloudflare is seeking highly skilled, autonomous, and detail-oriented Video Producer Interns to join our Product Content Experience (PCX) team. This is not a shadowing role—it is a launchpad designed for students ready to own their outcomes and drive the visual excellence of our developer experience.<br><br>You will be embedded within a team committed to excellence, partnering directly with world-class engineers, product managers, and scriptwriters to solve the fundamental challenge of translating complex cloud and security technology into visually dynamic and accessible educational videos. Your expertise in cutting, visual pacing, and designing custom motion graphics is central to this role. Your initiative and creativity are not just valued—they are rewarded with the trust to lead projects from raw footage to polished final delivery. This role offers you the unique chance to learn the mechanics of enterprise-level content strategy while simultaneously building a public-facing portfolio of visually compelling work that helps millions of developers around the globe.</p>
 <h4>Responsibilities</h4>

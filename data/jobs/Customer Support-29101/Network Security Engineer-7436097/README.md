@@ -5,47 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Lisbon or London</strong></p>
-<p><strong>About the Department</strong><strong><br></strong>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>About the Team</strong><strong><br></strong>Our team builds on top of the Cloudflare development platform, pushing its limits to deliver tooling ranging from open source dev-tooling contributions to bespoke Enterprise-grade product solutions for massive-traffic volumes and bespoke customer demands.&nbsp;</p>
-<p>What started with Cloudflare Zaraz - a solution that made third-party tooling safer, faster, and more privacy-conscious - has grown into a broader mandate. Today, our scope has broadened to include stewardship of CDNJS, the open source Managed Components project, and a range of strategic initiatives focused on empowering developers with more control over data privacy and analytics.</p>
-<p>At our core, we’re building new ways to help web application owners streamline development and accelerate growth on the Internet.</p>
-<p>We are a tight-knit team, communicating &amp; collaborating regularly. We like to celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard.</p>
-<p><strong>What you'll do</strong><strong><br></strong>In this role, you will join world-class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of existing offerings - ensuring continual reliability, best-in-class performance, and the implementation of new features and functionality.</p>
-<p>You will be encouraged to bring your ideas forward and own your code from inception to release, delivering solutions at every layer of the software stack to empower Cloudflare customers. On any given day, you might:</p>
+<h3><strong>Available Locations: Singapore, Sydney (Australia), or Tokyo (Japan)</strong></h3>
+<h3><strong>About the Team</strong></h3>
+<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
+<h3><strong>What You'll Do</strong></h3>
+<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Network Security Engineer</strong> to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
 <ul>
-	<li>Write a design document outlining your strategy to tackle a specific challenge.</li>
-	<li>Ship a new feature that integrates multiple technologies.</li>
-	<li>Fix a bug affecting how our user experience renders.</li>
+	<li>Serve as a trusted technical advisor for our enterprise customers, responding to and resolving inquiries and incidents related to network security and performance, while delivering timely, high-quality and personalized assistance.</li>
+	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
+	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
 </ul>
-<p>You can expect to work with a variety of languages and technologies including, but not limited to, TypeScript, Go, and Rust. We use Cloudflare Workers heavily and creatively. If applicable to ongoing projects, you will also help maintain the health and availability of services by participating in an on-call rotation.</p>
-<p><strong>About you</strong><strong><br></strong>We want you to love it here! This role is a great fit for you if:</p>
+<h3><strong>What We're Looking For</strong></h3>
 <ul>
-	<li>You have a passion for meeting business needs while building technically innovative solutions, and you excel at balancing big-picture goals with technical detail.</li>
-	<li>You are bold and persistent in your efforts to get your work across the finish line.</li>
-	<li>You are excited to collaborate and communicate with engineers across Cloudflare, contributing across many layers of the stack.</li>
-	<li>You take pride in shipping effective, reliable code.</li>
-	<li>You are energized by learning new skills, tackling challenging debugging sessions, and sharing your knowledge with others.</li>
-	<li>You believe that thorough documentation is just as important as delivering code.</li>
-	<li>You want to join a team that upholds a culture of support, open and honest communication, and collaborative problem-solving.</li>
+	<li>You have a minimum of 4 years experience working as a Network Security Engineer / Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
+	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
+	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
+	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
+	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
+	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
+	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
+	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent.</li>
 </ul>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
-<ul>
-	<li>2+ years of experience working with high-volume software applications, with a strong focus on the TypeScript programming language.</li>
-	<li>Ability to scope, work on, and independently deliver initiatives.</li>
-	<li>Knowledge of at least one modern, strongly-typed programming language such as Go, Rust, or C++.</li>
-	<li>Strong written communication skills for contributing to both internal and public-facing technical documentation, as well as authoring blog posts.</li>
-	<li>Strong understanding of how web pages load and operate, including the role of cookies, browser rendering, and client-side execution models</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Familiarity with the ecosystem of third-party scripts (e.g., marketing pixels, analytics tags, consent managers) and their impact on performance, privacy, and user experience</li>
-	<li>Experience building reliable, high-performance distributed systems or working on cloud platforms.</li>
-	<li>Familiarity with the Cloudflare Workers development platform.</li>
-	<li>Experience contributing to or maintaining open source software projects.</li>
-</ul>
-<p><strong>Locations:</strong> Lisbon</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

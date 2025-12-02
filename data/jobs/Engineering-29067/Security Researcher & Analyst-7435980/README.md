@@ -5,46 +5,66 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Lisbon or London</strong></p>
-<p><strong>About the Department</strong><strong><br></strong>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a hugely successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>About the Team</strong><strong><br></strong>Our team builds on top of the Cloudflare development platform, pushing its limits to deliver tooling ranging from open source dev-tooling contributions to bespoke Enterprise-grade product solutions for massive-traffic volumes and bespoke customer demands.&nbsp;</p>
-<p>What started with Cloudflare Zaraz - a solution that made third-party tooling safer, faster, and more privacy-conscious - has grown into a broader mandate. Today, our scope has broadened to include stewardship of CDNJS, the open source Managed Components project, and a range of strategic initiatives focused on empowering developers with more control over data privacy and analytics.</p>
-<p>At our core, we’re building new ways to help web application owners streamline development and accelerate growth on the Internet.</p>
-<p>We are a tight-knit team, communicating &amp; collaborating regularly. We like to celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard.</p>
-<p><strong>What you'll do</strong><strong><br></strong>In this role, you will join world-class engineers in shaping new products built entirely on Cloudflare’s global network, while continuing to nurture the growing impact of existing offerings - ensuring continual reliability, best-in-class performance, and the implementation of new features and functionality.</p>
-<p>You will be encouraged to bring your ideas forward and own your code from inception to release, delivering solutions at every layer of the software stack to empower Cloudflare customers. On any given day, you might:</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<h1 id="Role:SecurityResearcher&amp;AnalystIDATeamAnalyst-Overview">Overview</h1>
+<p>Initially this is a very tactical role, focused on supporting Intel Team's day-to-day operations.</p>
+<p>Intel team consumes approximately 35 different threat data feeds, runs 5 different machine learning models, and has data integrated into six different products in the Cloudflare portfolio.&nbsp;</p>
+<h1 id="Role:SecurityResearcher&amp;AnalystIDATeamAnalyst-KeyResponsibilities">Key Responsibilities</h1>
 <ul>
-	<li>Write a design document outlining your strategy to tackle a specific challenge.</li>
-	<li>Ship a new feature that integrates multiple technologies.</li>
-	<li>Fix a bug affecting how our user experience renders.</li>
+	<li>Review domain miscategorizations</li>
+	<li>Maintain Application classifications</li>
+	<li>Review email miscategorizations</li>
+	<li>Submit IOCs to data pipeline based on external reports</li>
+	<li>Define automations and software requirements for support tooling</li>
+	<li>Define processes and procedures to create 24x7 coverage of miscategorizations</li>
+	<li>Continually evaluate the quality of threat data feeds, work to maximize value from them, evaluate new potential sources of data</li>
+	<li>Research observed IoCs and network behavior patterns and label data</li>
+	<li>Work with data scientists to identify security threats and create machine learning models</li>
+	<li>Be a team SME and resource for data scientists building security models and application developers building security products</li>
+	<li>Become a subject matter expert for internal teams consuming Intel team security and categorization data</li>
+	<li>Become the owner for Intel Team's strategy for false positive controls
+		<ul>
+			<li>Learn and understand current processes</li>
+			<li>Identify gaps and risk areas</li>
+			<li>Work the data scientists to test remediation strategies</li>
+			<li>Work the engineering teams to implement remediation strategies</li>
+		</ul>
+	</li>
+	<li>Define and implement metrics for product efficacy
+		<ul>
+			<li>Research and plan potential software, data science or machine learning projects to improve false positive and false negative rates</li>
+			<li>Continually monitor data quality and bring data quality issues and proposed solutions to team leadership</li>
+		</ul>
+	</li>
+	<li>Identify topical areas in cybersecurity where Cloudflare's unique network can be leveraged to improve user security</li>
+	<li>Write blog posts and communicate both internally and externally about Intel Team's work</li>
+	<li>Execute daily operational tasks and define automations to streamline operational tasks</li>
+	<li>Work with team to define technical requirements for security products
+		<ul>
+			<li>Research threats, exploits, and TTPs being defended against in products and work with engineers to create products that defend against them</li>
+		</ul>
+	</li>
 </ul>
-<p>You can expect to work with a variety of languages and technologies including, but not limited to, TypeScript, Go, and Rust. We use Cloudflare Workers heavily and creatively. If applicable to ongoing projects, you will also help maintain the health and availability of services by participating in an on-call rotation.</p>
-<p><strong>About you</strong><strong><br></strong>We want you to love it here! This role is a great fit for you if:</p>
+<h1 id="Role:SecurityResearcher&amp;AnalystIDATeamAnalyst-RequiredSkills&amp;Abilities">Required Skills &amp; Abilities</h1>
 <ul>
-	<li>You have a passion for meeting business needs while building technically innovative solutions, and you excel at balancing big-picture goals with technical detail.</li>
-	<li>You are bold and persistent in your efforts to get your work across the finish line.</li>
-	<li>You are excited to collaborate and communicate with engineers across Cloudflare, contributing across many layers of the stack.</li>
-	<li>You take pride in shipping effective, reliable code.</li>
-	<li>You are energized by learning new skills, tackling challenging debugging sessions, and sharing your knowledge with others.</li>
-	<li>You believe that thorough documentation is just as important as delivering code.</li>
-	<li>You want to join a team that upholds a culture of support, open and honest communication, and collaborative problem-solving.</li>
+	<li>Scripting in Python and Node/Javascript</li>
+	<li>Able to use git to create, edit, and review pull requests</li>
+	<li>Basic front-end or full-stack development skills preferred but not required</li>
+	<li>Knowledge of and passion for cybersecurity</li>
+	<li>Knowledge of cyber security industry terms and concepts
+		<ul>
+			<li>e.g. MITRE ATT&amp;CK Framework, Lockheed Killchain</li>
+			<li>Ability to learn about security threats and map them to the MITRE ATT&amp;CK framework and Lockheed Killchain</li>
+		</ul>
+	</li>
+	<li>Strong knowledge of networking and "how the Internet works"
+		<ul>
+			<li>DNS, HTTP, TCP/IP, TLS, public key encryption</li>
+		</ul>
+	</li>
+	<li>Ability to reliably execute several hours a day of operational support tasks</li>
+	<li>Ability to communicate to stakeholders and management when priorities change</li>
 </ul>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
-<ul>
-	<li>2+ years of experience working with high-volume software applications, with a strong focus on the TypeScript programming language.</li>
-	<li>Ability to scope, work on, and independently deliver initiatives.</li>
-	<li>Knowledge of at least one modern, strongly-typed programming language such as Go, Rust, or C++.</li>
-	<li>Strong written communication skills for contributing to both internal and public-facing technical documentation, as well as authoring blog posts.</li>
-	<li>Strong understanding of how web pages load and operate, including the role of cookies, browser rendering, and client-side execution models</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Familiarity with the ecosystem of third-party scripts (e.g., marketing pixels, analytics tags, consent managers) and their impact on performance, privacy, and user experience</li>
-	<li>Experience building reliable, high-performance distributed systems or working on cloud platforms.</li>
-	<li>Familiarity with the Cloudflare Workers development platform.</li>
-	<li>Experience contributing to or maintaining open source software projects.</li>
-</ul>
-<p><strong>Locations:</strong> Lisbon</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
