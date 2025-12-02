@@ -429,6 +429,10 @@
 																"title": "postfix_id",
 																"type": "string"
 															},
+															"postfix_id_outbound": {
+																"nullable": true,
+																"type": "string"
+															},
 															"properties": {
 																"properties": {
 																	"allowlisted_pattern": {
@@ -635,6 +639,7 @@
 													"is_quarantined": false,
 													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
 													"postfix_id": "47JJcT1w6GztQV7",
+													"postfix_id_outbound": null,
 													"properties": {},
 													"replyto": "email@example.com",
 													"sent_date": "2019-11-21T00:22:01",
@@ -1075,6 +1080,10 @@
 															"title": "postfix_id",
 															"type": "string"
 														},
+														"postfix_id_outbound": {
+															"nullable": true,
+															"type": "string"
+														},
 														"properties": {
 															"properties": {
 																"allowlisted_pattern": {
@@ -1281,6 +1290,7 @@
 												"is_quarantined": false,
 												"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
 												"postfix_id": "47JJcT1w6GztQV7",
+												"postfix_id_outbound": null,
 												"properties": {},
 												"replyto": "email@example.com",
 												"sent_date": "2019-11-21T00:22:01",
@@ -2564,6 +2574,304 @@
 			}
 		],
 		"summary": "Get email trace",
+		"tags": [
+			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		]
+	},
+	"GET /accounts/{account_id}/email-security/phishguard/reports": {
+		"operationId": "email_security_get_phishguard_reports",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"readOnly": true,
+					"title": "account_id",
+					"type": "string"
+				}
+			},
+			{
+				"example": "2020-08-01",
+				"in": "query",
+				"name": "from_date",
+				"required": true,
+				"schema": {
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"example": "2020-09-01",
+				"in": "query",
+				"name": "to_date",
+				"required": true,
+				"schema": {
+					"format": "date",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"content": {
+														"type": "string"
+													},
+													"disposition": {
+														"enum": [
+															"MALICIOUS",
+															"MALICIOUS-BEC",
+															"SUSPICIOUS",
+															"SPOOF",
+															"SPAM",
+															"BULK",
+															"ENCRYPTED",
+															"EXTERNAL",
+															"UNKNOWN",
+															"NONE"
+														],
+														"type": "string"
+													},
+													"fields": {
+														"properties": {
+															"from": {
+																"nullable": true,
+																"type": "string"
+															},
+															"postfix_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"to": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"ts": {
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"to",
+															"ts"
+														],
+														"type": "object"
+													},
+													"id": {
+														"format": "int32",
+														"type": "integer"
+													},
+													"priority": {
+														"type": "string"
+													},
+													"tags": {
+														"items": {
+															"properties": {
+																"category": {
+																	"type": "string"
+																},
+																"value": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"category",
+																"value"
+															],
+															"type": "object"
+														},
+														"nullable": true,
+														"type": "array"
+													},
+													"title": {
+														"type": "string"
+													},
+													"ts": {
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"ts",
+													"title",
+													"content",
+													"fields",
+													"priority",
+													"disposition"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Contains a list of PhishGuard reports."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"format": "int32",
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get `PhishGuard` reports",
 		"tags": [
 			"Email Security"
 		],
