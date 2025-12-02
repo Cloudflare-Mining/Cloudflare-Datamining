@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '20 */2 * * *'
+    - cron: "20 */2 * * *"
   workflow_dispatch: {}
 
 name: Mine CF Jobs
@@ -21,7 +21,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - name: Mine Jobs
         run: |
           git config user.name "GitHub Actions Bot"

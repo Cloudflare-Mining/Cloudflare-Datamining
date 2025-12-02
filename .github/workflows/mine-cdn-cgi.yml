@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '*/15 * * * *'
+    - cron: "*/15 * * * *"
   workflow_dispatch: {}
 
 name: Mine CF CDN CGI
@@ -21,7 +21,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - name: Mine CDN CGI
         run: |
           git config user.name "GitHub Actions Bot"

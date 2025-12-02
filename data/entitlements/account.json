@@ -204,6 +204,18 @@
 		}
 	},
 	{
+		"id": "access.max_reusable_policies",
+		"feature": {
+			"feature_set": "access",
+			"id": 1687,
+			"key": "access.max_reusable_policies",
+			"name": "Access - Maximum number of reusable policies allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "access.max_rules_per_app",
 		"feature": {
 			"feature_set": "access",
@@ -300,6 +312,78 @@
 		}
 	},
 	{
+		"id": "addressing.byoip_allowed",
+		"feature": {
+			"feature_set": "addressing",
+			"id": 648,
+			"key": "addressing.byoip_allowed",
+			"name": "BYOIP Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "addressing.byoip_prefixes",
+		"feature": {
+			"feature_set": "addressing",
+			"id": 969,
+			"key": "addressing.byoip_prefixes",
+			"name": "BYOIP Prefixes"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ai_gateway.enabled",
+		"feature": {
+			"feature_set": "ai_gateway",
+			"id": 1813,
+			"key": "ai_gateway.enabled",
+			"name": "AI Gateway - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ai_gateway.is_paid",
+		"feature": {
+			"feature_set": "ai_gateway",
+			"id": 1614,
+			"key": "ai_gateway.is_paid",
+			"name": "AI Gateway - Is Paid (this allows the account to store more logs)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ai_gateway.max_datasets_per_gateway",
+		"feature": {
+			"feature_set": "ai_gateway",
+			"id": 1616,
+			"key": "ai_gateway.max_datasets_per_gateway",
+			"name": "AI Gateway - Datasets per Gateway Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ai_gateway.max_gateways",
+		"feature": {
+			"feature_set": "ai_gateway",
+			"id": 1615,
+			"key": "ai_gateway.max_gateways",
+			"name": "AI Gateway - Gateways per Account Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "analytics_engine.max_writes",
 		"feature": {
 			"feature_set": "analytics_engine",
@@ -360,6 +444,18 @@
 		}
 	},
 	{
+		"id": "authoritative_dns.account_custom_nameservers_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1717,
+			"key": "authoritative_dns.account_custom_nameservers_allowed",
+			"name": "Authoritative DNS - Account Custom Nameservers Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "authoritative_dns.custom_ns_ttl_allowed",
 		"feature": {
 			"feature_set": "dns",
@@ -396,6 +492,18 @@
 		}
 	},
 	{
+		"id": "authoritative_dns.ipvx_only_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1620,
+			"key": "authoritative_dns.ipvx_only_allowed",
+			"name": "Authoritative DNS - IPvX Only Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "authoritative_dns.multi_provider_allowed",
 		"feature": {
 			"feature_set": "dns",
@@ -417,6 +525,54 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "authoritative_dns.random_nameservers_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1719,
+			"key": "authoritative_dns.random_nameservers_allowed",
+			"name": "Authoritative DNS - Random Nameservers Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "authoritative_dns.zone_custom_nameservers_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1718,
+			"key": "authoritative_dns.zone_custom_nameservers_allowed",
+			"name": "Authoritative DNS - Zone Custom Nameservers Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "autorag.is_paid",
+		"feature": {
+			"feature_set": "autorag",
+			"id": 1786,
+			"key": "autorag.is_paid",
+			"name": "AutoRAG - Is Paid"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "autorag.max_rags",
+		"feature": {
+			"feature_set": "autorag",
+			"id": 1787,
+			"key": "autorag.max_rags",
+			"name": "AutoRAG - Rags per Account Limit"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -504,12 +660,360 @@
 		}
 	},
 	{
+		"id": "ces.api_config_settings",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1579,
+			"key": "ces.api_config_settings",
+			"name": "CES Public-facing API"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.api_disposition_actions",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1581,
+			"key": "ces.api_disposition_actions",
+			"name": "CES Disposition Actions"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.api_indicators",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1582,
+			"key": "ces.api_indicators",
+			"name": "CES Indicators (IP, URLS)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.api_mode",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1565,
+			"key": "ces.api_mode",
+			"name": "CES API Deployment"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.api_retractions",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1566,
+			"key": "ces.api_retractions",
+			"name": "CES API Retractions"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.api_submissions",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1580,
+			"key": "ces.api_submissions",
+			"name": "CES API Submissions"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.bcc_journaling_mode",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1563,
+			"key": "ces.bcc_journaling_mode",
+			"name": "CES BCC, Journaling Deployment"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.disposition_actions",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1570,
+			"key": "ces.disposition_actions",
+			"name": "CES Anti-Spam & Anti-Malware/Virus"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.eli",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1568,
+			"key": "ces.eli",
+			"name": "CES Email Link Isolation (Adaptive URL Rewriting) & BISO"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.enabled",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1558,
+			"key": "ces.enabled",
+			"name": "CES Generally Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.impersonation_registry",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1571,
+			"key": "ces.impersonation_registry",
+			"name": "CES Impersonation Registry (BEC List)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.inline_mode",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1564,
+			"key": "ces.inline_mode",
+			"name": "CES Inline, MX Deployment"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.integrations",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1569,
+			"key": "ces.integrations",
+			"name": "CES Active User Awareness Integration/Autonomous SOC/M-SOAR Integrations"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.logpush_detections",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1577,
+			"key": "ces.logpush_detections",
+			"name": "CES Logpush for Detections"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.max_allow_policy_count",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1559,
+			"key": "ces.max_allow_policy_count",
+			"name": "CES Max Number of Allow Policies Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ces.max_blocked_sender_count",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1561,
+			"key": "ces.max_blocked_sender_count",
+			"name": "CES Max Number of Blocked Senders Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ces.max_domain_count",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1562,
+			"key": "ces.max_domain_count",
+			"name": "CES Max Number of Domains Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ces.max_impersonation_registration_count",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1583,
+			"key": "ces.max_impersonation_registration_count",
+			"name": "CES Max Number of Impersonation Registry (BEC) Entries"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ces.max_trusted_domain_count",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1560,
+			"key": "ces.max_trusted_domain_count",
+			"name": "CES Max Number of Trusted Domains Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ces.pdr",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1574,
+			"key": "ces.pdr",
+			"name": "CES Automated and Targeted Retractions (Post-Delivery Retraction)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.phishguard",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1578,
+			"key": "ces.phishguard",
+			"name": "CES PhishGuard"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.pra_report",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1789,
+			"key": "ces.pra_report",
+			"name": "Email Security (CES) On-demand Security Report (PRA)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.psr",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1575,
+			"key": "ces.psr",
+			"name": "CES Phish Submission Response (PSR)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.retention",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1573,
+			"key": "ces.retention",
+			"name": "CES Retention Period"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ces.security_center",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1790,
+			"key": "ces.security_center",
+			"name": "Email Security (CES) Open links with Security Center"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.submission_transparency",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1576,
+			"key": "ces.submission_transparency",
+			"name": "CES Triage and Response - Teams"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ces.submissions",
+		"feature": {
+			"feature_set": "ces",
+			"id": 1572,
+			"key": "ces.submissions",
+			"name": "CES False Positive/Negative Reporting and Metrics/User Submissions (PhishNet)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "cf1.enterprise_shared_egress",
+		"feature": {
+			"feature_set": "access",
+			"id": 1889,
+			"key": "cf1.enterprise_shared_egress",
+			"name": "CF1 - Enterprise Shared Egress"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "cfone.briefings_enabled",
 		"feature": {
 			"feature_set": "cfone",
 			"id": 1100,
 			"key": "cfone.briefings_enabled",
 			"name": "CFOne - Briefings Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "cfone.react",
+		"feature": {
+			"feature_set": "cfone",
+			"id": 1890,
+			"key": "cfone.react",
+			"name": "CFOne - REACT"
 		},
 		"allocation": {
 			"type": "bool"
@@ -564,6 +1068,18 @@
 		}
 	},
 	{
+		"id": "challenge_widgets.ephemeral_id",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1617,
+			"key": "challenge_widgets.ephemeral_id",
+			"name": "Challenge widgets Ephemeral Id Support (Device ID, Fraud)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "challenge_widgets.hostnames",
 		"feature": {
 			"feature_set": "challenge_widgets",
@@ -600,12 +1116,36 @@
 		}
 	},
 	{
+		"id": "challenge_widgets.sitekey_ratelimiting",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1708,
+			"key": "challenge_widgets.sitekey_ratelimiting",
+			"name": "Turnstile Challenge widgets custom Ratelimiting Rules by Ephemeral ID/Device ID"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "constellation.enabled",
 		"feature": {
 			"feature_set": "constellation",
 			"id": 1183,
 			"key": "constellation.enabled",
 			"name": "Constellation AI - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "containers.enabled",
+		"feature": {
+			"feature_set": "containers",
+			"id": 1804,
+			"key": "containers.enabled",
+			"name": "Containers - Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -732,6 +1272,18 @@
 		}
 	},
 	{
+		"id": "ctm.monitor_groups",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 1794,
+			"key": "ctm.monitor_groups",
+			"name": "CTM Monitor Groups Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ctm.monitor_interval",
 		"feature": {
 			"feature_set": "ctm",
@@ -750,6 +1302,18 @@
 			"id": 9,
 			"key": "ctm.monitors",
 			"name": "CTM Monitors"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.monitors_per_monitor_group",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 1795,
+			"key": "ctm.monitors_per_monitor_group",
+			"name": "CTM Monitors Per Monitor Group"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -972,6 +1536,18 @@
 		}
 	},
 	{
+		"id": "data_localization_suite.regional_services_cf_internal_only_allow_all_regions",
+		"feature": {
+			"feature_set": "data_localization_suite",
+			"id": 1523,
+			"key": "data_localization_suite.regional_services_cf_internal_only_allow_all_regions",
+			"name": "Data Localization Suite - CF INTERNAL ONLY Allow All Regions"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ddos.botnet_feed_allowed",
 		"feature": {
 			"feature_set": "ddos",
@@ -1044,6 +1620,18 @@
 		}
 	},
 	{
+		"id": "ddos.programmable_flow_protection_allowed",
+		"feature": {
+			"feature_set": "ddos",
+			"id": 1809,
+			"key": "ddos.programmable_flow_protection_allowed",
+			"name": "Programmable Flow Protection"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "dex.enabled",
 		"feature": {
 			"feature_set": "access",
@@ -1068,12 +1656,36 @@
 		}
 	},
 	{
+		"id": "dex.max_remote_commands",
+		"feature": {
+			"feature_set": "access",
+			"id": 1604,
+			"key": "dex.max_remote_commands",
+			"name": "DEX - Maximum number of Remote Commands"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "diagnostics.traceroute_allowed",
 		"feature": {
 			"feature_set": "diagnostics",
 			"id": 765,
 			"key": "diagnostics.traceroute_allowed",
 			"name": "Diagnostics - Traceroute Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "dlp.ai_context_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 1784,
+			"key": "dlp.ai_context_enabled",
+			"name": "DLP - AI Context Analysis Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1344,6 +1956,18 @@
 		}
 	},
 	{
+		"id": "graphql_api_v2.enabled_network_analytics_magic_ratelimit",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 1605,
+			"key": "graphql_api_v2.enabled_network_analytics_magic_ratelimit",
+			"name": "Access to network_analytics_magic_ratelimit node in GraphQL analytics API"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "graphql_api_v2.enabled_network_analytics_magic_transit",
 		"feature": {
 			"feature_set": "graphqlv2",
@@ -1461,6 +2085,30 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "infrastructure.enabled",
+		"feature": {
+			"feature_set": "infrastructure",
+			"id": 1689,
+			"key": "infrastructure.enabled",
+			"name": "TDS Generally Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "infrastructure.max_allowed_targets",
+		"feature": {
+			"feature_set": "infrastructure",
+			"id": 1690,
+			"key": "infrastructure.max_allowed_targets",
+			"name": "Max Number of Infrastructure Access Targets Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -1596,6 +2244,42 @@
 		}
 	},
 	{
+		"id": "log_explorer.dashboards",
+		"feature": {
+			"feature_set": "log_explorer",
+			"id": 1807,
+			"key": "log_explorer.dashboards",
+			"name": "Log Explorer - Custom Dashboards"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "log_explorer.enabled",
+		"feature": {
+			"feature_set": "log_explorer",
+			"id": 1806,
+			"key": "log_explorer.enabled",
+			"name": "Log Explorer - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "log_explorer.max_retention_days",
+		"feature": {
+			"feature_set": "log_explorer",
+			"id": 1814,
+			"key": "log_explorer.max_retention_days",
+			"name": "Log Explorer - Maximum Retention Days"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logpull.rayid_lookup.enabled",
 		"feature": {
 			"feature_set": "logpull",
@@ -1614,6 +2298,18 @@
 			"id": 850,
 			"key": "logpush.access_requests.max_jobs_allowed",
 			"name": "Logpush - Access Requests - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.ai_gateway_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1555,
+			"key": "logpush.ai_gateway_events.max_jobs_allowed",
+			"name": "Logpush - AI Gateway Events - Max Jobs"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1656,6 +2352,18 @@
 		}
 	},
 	{
+		"id": "logpush.cloudchamber_logs.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1525,
+			"key": "logpush.cloudchamber_logs.max_jobs_allowed",
+			"name": "Logpush - Cloudchamber Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logpush.device_posture_results.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
@@ -1668,12 +2376,72 @@
 		}
 	},
 	{
+		"id": "logpush.dex_application_tests.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1853,
+			"key": "logpush.dex_application_tests.max_jobs_allowed",
+			"name": "Logpush - DEX Application Tests - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.dex_device_state_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1854,
+			"key": "logpush.dex_device_state_events.max_jobs_allowed",
+			"name": "Logpush - DEX Device State Events - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.dlp_email_scanner_rule_matches.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1606,
+			"key": "logpush.dlp_email_scanner_rule_matches.max_jobs_allowed",
+			"name": "Logpush - DLP Email Scanner Rule Matches - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.dlp_forensic_copies.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1607,
+			"key": "logpush.dlp_forensic_copies.max_jobs_allowed",
+			"name": "Logpush - DLP Forensic Copies - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logpush.dns_firewall_logs.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
 			"id": 1114,
 			"key": "logpush.dns_firewall_logs.max_jobs_allowed",
 			"name": "Logpush - DNS Firewall Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.email_security_alerts.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1621,
+			"key": "logpush.email_security_alerts.max_jobs_allowed",
+			"name": "Logpush - Email Security Alerts - Max Jobs"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1716,6 +2484,18 @@
 		}
 	},
 	{
+		"id": "logpush.ipsec_logs.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1709,
+			"key": "logpush.ipsec_logs.max_jobs_allowed",
+			"name": "Logpush - IPSec Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logpush.magic_ids_detections.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
@@ -1734,6 +2514,66 @@
 			"id": 1013,
 			"key": "logpush.network_analytics_logs.max_jobs_allowed",
 			"name": "Logpush - Network Analytics Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.opentelemetry_logs.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1815,
+			"key": "logpush.opentelemetry_logs.max_jobs_allowed",
+			"name": "Logpush - OpenTelemetry Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.opentelemetry_traces.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1816,
+			"key": "logpush.opentelemetry_traces.max_jobs_allowed",
+			"name": "Logpush - OpenTelemetry Traces - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.ssh_logs.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1695,
+			"key": "logpush.ssh_logs.max_jobs_allowed",
+			"name": "Logpush - SSH Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.warp_config_changes.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1891,
+			"key": "logpush.warp_config_changes.max_jobs_allowed",
+			"name": "Logpush - WARP Config Changes - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.warp_toggle_changes.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1892,
+			"key": "logpush.warp_toggle_changes.max_jobs_allowed",
+			"name": "Logpush - WARP Toggle Changes - Max Jobs"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1794,6 +2634,18 @@
 			"id": 968,
 			"key": "magic_firewall.pcaps_allowed",
 			"name": "Magic Firewall Pcaps Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "magic_network_monitoring.enterprise",
+		"feature": {
+			"feature_set": "magic_network_monitoring",
+			"id": 1619,
+			"key": "magic_network_monitoring.enterprise",
+			"name": "Magic Network Monitoring Enterprise"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2052,6 +2904,78 @@
 		}
 	},
 	{
+		"id": "radar.url_scanner_api_dom_enabled",
+		"feature": {
+			"feature_set": "radar",
+			"id": 1348,
+			"key": "radar.url_scanner_api_dom_enabled",
+			"name": "URL Scanner - Access to raw HTML of scanned URL"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "radar.url_scanner_api_max_months_search",
+		"feature": {
+			"feature_set": "radar",
+			"id": 1351,
+			"key": "radar.url_scanner_api_max_months_search",
+			"name": "URL Scanner - unlimited search and history"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "radar.url_scanner_api_max_public_scans",
+		"feature": {
+			"feature_set": "radar",
+			"id": 1350,
+			"key": "radar.url_scanner_api_max_public_scans",
+			"name": "URL Scanner - max number of public scans"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "radar.url_scanner_api_max_unlisted_scans",
+		"feature": {
+			"feature_set": "radar",
+			"id": 1349,
+			"key": "radar.url_scanner_api_max_unlisted_scans",
+			"name": "URL Scanner - max number of unlisted scans"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "radar.url_scanner_api_rate_limit_max_per_sampling_period",
+		"feature": {
+			"feature_set": "radar",
+			"id": 1353,
+			"key": "radar.url_scanner_api_rate_limit_max_per_sampling_period",
+			"name": "URL Scanner - rate limit max per sampling period"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "radar.url_scanner_api_rate_limit_sampling_period_secs",
+		"feature": {
+			"feature_set": "radar",
+			"id": 1352,
+			"key": "radar.url_scanner_api_rate_limit_sampling_period_secs",
+			"name": "URL Scanner - rate limit sampling period in seconds"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rate_limiting.enabled",
 		"feature": {
 			"feature_set": "rate_limiting",
@@ -2082,6 +3006,18 @@
 			"id": 239,
 			"key": "rate_limiting.nat_enabled",
 			"name": "Rate Limiting - NAT enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "reports.application_security_report.enterprise",
+		"feature": {
+			"feature_set": "reports",
+			"id": 1792,
+			"key": "reports.application_security_report.enterprise",
+			"name": "Reports - Application Security Report - Enterprise"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2340,6 +3276,18 @@
 		}
 	},
 	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_suspicious_hints_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1897,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_suspicious_hints_allowed",
+			"name": "Rulesets - Execute Global Cloudflare Suspicious Hints Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.fw_global_rulesets_execute_magic_transit_ids_managed_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -2406,6 +3354,18 @@
 			"id": 1063,
 			"key": "rulesets.magic_transit_cf_lists_allowed",
 			"name": "Ruleset - Magic Transit CF Defined Lists Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.magic_transit_mark_three_dataplane",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1808,
+			"key": "rulesets.magic_transit_mark_three_dataplane",
+			"name": "Rulesets - Magic Firewall Using Mark Three Dataplane"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2634,6 +3594,18 @@
 			"id": 900,
 			"key": "rulesets.select_configuration_phase_allowed",
 			"name": "Rulesets - Select Configuration Phase Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.wafml_score_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1010,
+			"key": "rulesets.wafml_score_allowed",
+			"name": "Rulesets - WAF ML Score Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -3180,6 +4152,18 @@
 		}
 	},
 	{
+		"id": "swg.malicious_file_scan_max_size",
+		"feature": {
+			"feature_set": "access",
+			"id": 1694,
+			"key": "swg.malicious_file_scan_max_size",
+			"name": "Secure Web Gateway - Maximum Size For Anti-virus Scanning (MB)"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "swg.max_list_size",
 		"feature": {
 			"feature_set": "access",
@@ -3249,6 +4233,30 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "ts.abuse_submitter",
+		"feature": {
+			"feature_set": "abuse",
+			"id": 1691,
+			"key": "ts.abuse_submitter",
+			"name": "TS Abuse Submitter"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ts.brand_abuse_submitter",
+		"feature": {
+			"feature_set": "abuse",
+			"id": 1692,
+			"key": "ts.brand_abuse_submitter",
+			"name": "TS Brand Abuse Submitter"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -3372,6 +4380,90 @@
 		}
 	},
 	{
+		"id": "workers_builds.build_cache_retention_limit_days",
+		"feature": {
+			"feature_set": "workers_builds",
+			"id": 1716,
+			"key": "workers_builds.build_cache_retention_limit_days",
+			"name": "Workers Builds - Build Cache Retention Limit Days"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers_builds.build_cache_storage_limit_mb",
+		"feature": {
+			"feature_set": "workers_builds",
+			"id": 1715,
+			"key": "workers_builds.build_cache_storage_limit_mb",
+			"name": "Workers Builds - Build Cache Storage Limit MB"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers_builds.concurrent_builds",
+		"feature": {
+			"feature_set": "workers_builds",
+			"id": 1710,
+			"key": "workers_builds.concurrent_builds",
+			"name": "Workers Builds - Concurrent Builds"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers_builds.cpu",
+		"feature": {
+			"feature_set": "workers_builds",
+			"id": 1711,
+			"key": "workers_builds.cpu",
+			"name": "Workers Builds - CPU"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers_builds.disk_mb",
+		"feature": {
+			"feature_set": "workers_builds",
+			"id": 1714,
+			"key": "workers_builds.disk_mb",
+			"name": "Workers Builds - Disk Size"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers_builds.memory_mb",
+		"feature": {
+			"feature_set": "workers_builds",
+			"id": 1712,
+			"key": "workers_builds.memory_mb",
+			"name": "Workers Builds - Memory MB"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers_builds.timeout_mins",
+		"feature": {
+			"feature_set": "workers_builds",
+			"id": 1713,
+			"key": "workers_builds.timeout_mins",
+			"name": "Workers Builds - Timeout"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "workers.enabled",
 		"feature": {
 			"feature_set": "workers",
@@ -3408,6 +4500,30 @@
 		}
 	},
 	{
+		"id": "workers.static_assets.asset_limit_bytes",
+		"feature": {
+			"feature_set": "workers",
+			"id": 1594,
+			"key": "workers.static_assets.asset_limit_bytes",
+			"name": "Workers Asset Size Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers.static_assets.manifest_limit_file_count",
+		"feature": {
+			"feature_set": "workers",
+			"id": 1593,
+			"key": "workers.static_assets.manifest_limit_file_count",
+			"name": "Workers Asset Manifest File Count Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "workers.unbound_allowed",
 		"feature": {
 			"feature_set": "workers",
@@ -3417,6 +4533,42 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "workflows.max_concurrent_instances",
+		"feature": {
+			"feature_set": "workflows",
+			"id": 1623,
+			"key": "workflows.max_concurrent_instances",
+			"name": "Workflows - Max concurrent_instances per account"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workflows.max_persisted_state_per_instance",
+		"feature": {
+			"feature_set": "workflows",
+			"id": 1624,
+			"key": "workflows.max_persisted_state_per_instance",
+			"name": "Workflows - Max persisted state per Workflow instance (in MB)"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workflows.max_step_count",
+		"feature": {
+			"feature_set": "workflows",
+			"id": 1622,
+			"key": "workflows.max_step_count",
+			"name": "Workflows - Max step count per workflow instance"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{

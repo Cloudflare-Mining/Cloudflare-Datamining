@@ -25,8 +25,10 @@ import {
 const allVersions = await fs.readJson(path.resolve('../data/dashboard/versions.json'));
 
 const appScript = /((cf-)?app\.[\da-z]+\.js)/;
-const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
-const chunks = /{(?:"?[\de]+"?:"[\da-f]+",)+"?[\de]+"?:"[\da-f]+"}/;
+const runtimeScript = /(runtime\.[\da-z]+\.js)/;
+const fragmentsScript = /(cf-fragments\.[\da-z]+\.js)/;
+// Match chunk mapping objects like {1007:"abc123",1008:"def456"}
+const chunks = /{(?:\d+:"[\da-f]+",?)+}/g;
 const dashVersion = /dashVersion: ?"([\da-f]+)",/;
 const likelyFiles = /\.(png|ico|svg)$/; // static assets that we want to extract properly
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
@@ -62,6 +64,7 @@ async function findWantedChunks(chunks) {
 				if (!res.ok && res.status !== 404) {
 					console.error('Received non-200 response:', res.status);
 					// retry once
+					// eslint-disable-next-line require-atomic-updates
 					res = await fetch(url, { agent });
 					if (!res.ok && res.status !== 404) {
 						throw new Error(`Failed to fetch chunk ${chunk}: ${res.status} ${res.statusText}`);
@@ -104,8 +107,16 @@ async function findWantedChunks(chunks) {
 				};
 			}
 
-			// other generic chunks
-			if (text.startsWith('(self.webpackChunk=self.webpackChunk||[])') || text.startsWith('"use strict";(self.webpackChunk=self.webpackChunk||[])')) {
+			// other generic chunks - detect webpack/rspack chunk patterns
+			// rspack uses same webpackChunk pattern as webpack
+			if (
+				text.startsWith('(self.webpackChunk=self.webpackChunk||[])')
+				|| text.startsWith('"use strict";(self.webpackChunk=self.webpackChunk||[])')
+				|| text.startsWith('(self.webpackChunk_cloudflare_app_dash=self.webpackChunk_cloudflare_app_dash||[])')
+				|| text.startsWith('"use strict";(self.webpackChunk_cloudflare_app_dash=self.webpackChunk_cloudflare_app_dash||[])')
+				|| text.includes('self.webpackChunk_cloudflare_app_dash')
+				|| text.includes('self.webpackChunk')
+			) {
 				results.chunks.push({
 					code: text,
 					chunk,
@@ -130,47 +141,141 @@ async function getChunks() {
 	const response = await fetch(staticDashURL, { agent });
 	const text = await response.text();
 
-	// Find `app.js` bundle
-	const match = appScript.exec(text);
-	if (match === null || match.length < 2) {
-		return;
+	// Find all potential entry point scripts from HTML
+	const scriptsToFetch = [];
+
+	// Find `app.js` bundle (cf-app.xxx.js or app.xxx.js)
+	const appMatch = appScript.exec(text);
+	if (appMatch && appMatch.length >= 2) {
+		scriptsToFetch.push({ name: 'app', file: appMatch[1] });
 	}
 
-	const appFile = match[1];
+	// Find runtime.js bundle (contains chunk mappings in rspack builds)
+	const runtimeMatch = runtimeScript.exec(text);
+	if (runtimeMatch && runtimeMatch.length >= 2) {
+		scriptsToFetch.push({ name: 'runtime', file: runtimeMatch[1] });
+	}
 
-	const appRes = await fetch(`${staticDashURL}${appFile}`, { agent });
-	const appJs = await appRes.text();
+	// Find fragments.js bundle
+	const fragmentsMatch = fragmentsScript.exec(text);
+	if (fragmentsMatch && fragmentsMatch.length >= 2) {
+		scriptsToFetch.push({ name: 'fragments', file: fragmentsMatch[1] });
+	}
 
-	// Trim this down to only the part we need right now
-	const idSection = appJs.slice(0, Math.max(0, appJs.indexOf('../init.ts')));
-
-	const scriptChunkIds = [];
-
-	let scriptChunkMatch;
-	while ((scriptChunkMatch = chunkIds.exec(idSection)) !== null) {
-		if (scriptChunkMatch.length >= 2) {
-			scriptChunkIds.push(scriptChunkMatch[1]);
+	// Also look for any other JS files that might contain chunks
+	const allScripts = text.matchAll(/src="\/([^"]+\.js)"/g);
+	for (const scriptMatch of allScripts) {
+		const file = scriptMatch[1];
+		if (!scriptsToFetch.some(script => script.file === file) && !file.includes('beacon') && !file.includes('onetrust')) {
+			scriptsToFetch.push({ name: file.replace('.js', ''), file });
 		}
 	}
 
-	// Find the chunks from the IDs
-	const chunkMatch = chunks.exec(appJs);
-	if (chunkMatch === null || chunkMatch.length === 0) {
+	if (scriptsToFetch.length === 0) {
+		console.error('No entry point scripts found in HTML');
 		return;
 	}
 
-	let chunksObj = {};
-	try {
-		chunksObj = JSON.parse(chunkMatch[0]);
-	} catch (err) {
-		console.warn('Failed to parse chunk list', err);
-		console.log('Trying to eval');
-		// try to eval it
-		// eslint-disable-next-line no-eval
-		chunksObj = eval('(function(){return ' + chunkMatch[0] + '})()');
+	console.log('Found entry scripts:', scriptsToFetch.map(script => script.file));
+
+	// Fetch all entry scripts and look for chunk mappings in each
+	const allChunkHashes = new Set();
+
+	for (const script of scriptsToFetch) {
+		console.log(`Fetching ${staticDashURL}${script.file}`);
+		try {
+			const res = await fetch(`${staticDashURL}${script.file}`, { agent });
+			if (!res.ok) {
+				console.warn(`Failed to fetch ${script.file}: ${res.status}`);
+				continue;
+			}
+			const jsContent = await res.text();
+
+			// Look for chunk mappings using multiple strategies
+			const hexHashPattern = /^[\da-f]{16}$/;
+
+			// Strategy 1: Find objects that start with numeric keys and hex string values
+			// Pattern: {1234:"abcdef123456789",5678:"..."}
+			const chunkStartPattern = /{(\d+):"([\da-f]{16})"/g;
+			let startMatch;
+			while ((startMatch = chunkStartPattern.exec(jsContent)) !== null) {
+				// Found a potential chunk mapping start, extract the full object
+				let braceCount = 1;
+				let idx = startMatch.index + 1;
+				while (idx < jsContent.length && braceCount > 0) {
+					if (jsContent[idx] === '{') {
+						braceCount++;
+					} else if (jsContent[idx] === '}') {
+						braceCount--;
+					}
+					idx++;
+				}
+				const objStr = jsContent.slice(startMatch.index, idx);
+
+				// Only process if it's a substantial object (chunk mappings have hundreds of entries)
+				if (objStr.length > 1000) {
+					try {
+						// Use eval since keys are unquoted numbers (valid JS but not JSON)
+						// eslint-disable-next-line no-eval
+						const parsed = eval('(function(){return ' + objStr + '})()');
+						const values = Object.values(parsed);
+						// Verify these look like chunk hashes (16 char hex strings)
+						if (values.length > 50 && values.every(val => typeof val === 'string' && hexHashPattern.test(val))) {
+							console.log(`Found ${values.length} chunk hashes in ${script.file}`);
+							for (const hash of values) {
+								allChunkHashes.add(hash);
+							}
+						}
+					} catch {
+						// Ignore parse errors
+					}
+				}
+			}
+
+			// Strategy 2: Also try the original regex-based approach for backwards compatibility
+			chunks.lastIndex = 0;
+			let chunkMatch;
+			while ((chunkMatch = chunks.exec(jsContent)) !== null) {
+				const matchStr = chunkMatch[0];
+				if (matchStr.length > 50) {
+					try {
+						const parsed = JSON.parse(matchStr);
+						const values = Object.values(parsed);
+						if (values.length > 10 && values.every(val => typeof val === 'string' && hexHashPattern.test(val))) {
+							console.log(`Found ${values.length} chunk hashes in ${script.file} (JSON)`);
+							for (const hash of values) {
+								allChunkHashes.add(hash);
+							}
+						}
+					} catch {
+						try {
+							// eslint-disable-next-line no-eval
+							const parsed = eval('(function(){return ' + matchStr + '})()');
+							const values = Object.values(parsed);
+							if (values.length > 10 && values.every(val => typeof val === 'string' && hexHashPattern.test(val))) {
+								console.log(`Found ${values.length} chunk hashes in ${script.file} (eval)`);
+								for (const hash of values) {
+									allChunkHashes.add(hash);
+								}
+							}
+						} catch {
+							// Ignore
+						}
+					}
+				}
+			}
+		} catch (err) {
+			console.warn(`Error fetching ${script.file}:`, err.message);
+		}
 	}
 
-	return Object.values(chunksObj);
+	if (allChunkHashes.size === 0) {
+		console.error('No chunk hashes found in any entry scripts');
+		return;
+	}
+
+	console.log(`Total unique chunk hashes found: ${allChunkHashes.size}`);
+	return [...allChunkHashes];
 }
 
 const dashStructure = ['src', 'apps', 'dash'];
@@ -507,9 +612,11 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 			ecmaVersion: 2025,
 		});
 		const recursiveImports = []; // sometimes things are imported recursively
-		// find webpack chunks
+		// find webpack/rspack chunks
 		fullAncestor(ast, (node, ancestors) => {
 			// first find the webpack chunk assignment
+			// rspack uses webpackChunk_cloudflare_app_dash instead of webpackChunk
+			const propertyName = node?.callee?.object?.left?.property?.name;
 			if (
 				node.type === 'CallExpression' &&
 				node?.callee?.type === 'MemberExpression' &&
@@ -518,7 +625,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 				node?.callee?.object?.left?.object?.type === 'Identifier' &&
 				node?.callee?.object?.left?.object?.name === 'self' &&
 				node?.callee?.object?.left?.property?.type === 'Identifier' &&
-				node?.callee?.object?.left?.property?.name === 'webpackChunk'
+				(propertyName === 'webpackChunk' || propertyName === 'webpackChunk_cloudflare_app_dash')
 			) {
 				// then get the files and their contents from the webpack chunk
 				const buildFiles = node?.arguments?.[0]?.elements?.[1]?.properties ?? [];

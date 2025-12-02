@@ -1,79 +1,79 @@
 on:
-  schedule:
-    - cron:  '0 * * * *'
-  workflow_dispatch: {}
+    schedule:
+        - cron: "0 * * * *"
+    workflow_dispatch: {}
 
 name: Mine CF Data
 jobs:
-  runner:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - name: Restore NPM cache
-        uses: actions/cache@v4
-        continue-on-error: true
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('scripts/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Mine lots of data
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-          cd scripts
-          npm ci
-          npm run mine
-        env:
-          DISCORD_URL: ${{ secrets.DISCORD_URL }}
-          DISCORD_WEBHOOK_ACCOUNT: ${{ secrets.DISCORD_WEBHOOK_ACCOUNT }}
-          DISCORD_WEBHOOK_API: ${{ secrets.DISCORD_WEBHOOK_API }}
-          DISCORD_WEBHOOK_BLOG: ${{ secrets.DISCORD_WEBHOOK_BLOG }}
-          DISCORD_WEBHOOK_CDNCGI: ${{ secrets.DISCORD_WEBHOOK_CDNCGI }}
-          DISCORD_WEBHOOK_CDNCGI_DEV: ${{ secrets.DISCORD_WEBHOOK_CDNCGI_DEV }}
-          DISCORD_WEBHOOK_COVEO: ${{ secrets.DISCORD_WEBHOOK_COVEO }}
-          DISCORD_WEBHOOK_DASHBOARD: ${{ secrets.DISCORD_WEBHOOK_DASHBOARD }}
-          DISCORD_WEBHOOK_DOMAINS: ${{ secrets.DISCORD_WEBHOOK_DOMAINS }}
-          DISCORD_WEBHOOK_GATES: ${{ secrets.DISCORD_WEBHOOK_GATES }}
-          DISCORD_WEBHOOK_GITHUB: ${{ secrets.DISCORD_WEBHOOK_GITHUB }}
-          DISCORD_WEBHOOK_INVESTORS: ${{ secrets.DISCORD_WEBHOOK_INVESTORS }}
-          DISCORD_WEBHOOK_JOBS: ${{ secrets.DISCORD_WEBHOOK_JOBS }}
-          DISCORD_WEBHOOK_MARKETING: ${{ secrets.DISCORD_WEBHOOK_MARKETING }}
-          DISCORD_WEBHOOK_NPM: ${{ secrets.DISCORD_WEBHOOK_NPM }}
-          DISCORD_WEBHOOK_PRODUCT_AI: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_AI }}
-          DISCORD_WEBHOOK_PRODUCT_ALERTING: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_ALERTING }}
-          DISCORD_WEBHOOK_PRODUCT_ANALYTICS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_ANALYTICS }}
-          DISCORD_WEBHOOK_PRODUCT_GATEWAY: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_GATEWAY }}
-          DISCORD_WEBHOOK_PRODUCT_INTEGRATIONS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_INTEGRATIONS }}
-          DISCORD_WEBHOOK_PRODUCT_LOGPUSH: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_LOGPUSH }}
-          DISCORD_WEBHOOK_PRODUCT_PAGES: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_PAGES }}
-          DISCORD_WEBHOOK_PRODUCT_R2: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_R2 }}
-          DISCORD_WEBHOOK_PRODUCT_REGISTRAR: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_REGISTRAR }}
-          DISCORD_WEBHOOK_PRODUCT_RULES: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_RULES }}
-          DISCORD_WEBHOOK_PRODUCT_RULESETS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_RULESETS }}
-          DISCORD_WEBHOOK_PRODUCT_TURNSTILE: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_TURNSTILE }}
-          DISCORD_WEBHOOK_PRODUCT_WORKERS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_WORKERS }}
-          DISCORD_WEBHOOK_PRODUCT_ZONES: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_ZONES }}
-          DISCORD_WEBHOOK_SUPPORT: ${{ secrets.DISCORD_WEBHOOK_SUPPORT }}
-          DISCORD_WEBHOOK_ZEROTRUST: ${{ secrets.DISCORD_WEBHOOK_ZEROTRUST }}
-          COVEO_KEY: ${{ secrets.COVEO_KEY }}
-          COVEO_ORGID: ${{ secrets.COVEO_ORGID }}
-          GATES_API_KEY: ${{ secrets.GATES_API_KEY }}
-          GATES_ZT_API_KEY: ${{ secrets.GATES_ZT_API_KEY }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_GLOBAL_KEY: ${{ secrets.CLOUDFLARE_GLOBAL_KEY }}
-          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
-          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-          PAGES_DISPATCH_WORKER: ${{ secrets.PAGES_DISPATCH_WORKER }}
-          GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
-          FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
-          FETCH_CANARY_URL: ${{ secrets.FETCH_CANARY_URL }}
-          FETCH_UK_URL: ${{ secrets.FETCH_UK_URL }}
-          FETCH_FR_SG_URL: ${{ secrets.FETCH_FR_SG_URL }}
-          FETCH_TX_URL: ${{ secrets.FETCH_TX_URL }}
-          FETCH_SG_URL: ${{ secrets.FETCH_SG_URL }}
+    runner:
+        runs-on: ubuntu-latest
+        timeout-minutes: 30
+        steps:
+            - uses: actions/checkout@v4
+            - name: Restore NPM cache
+              uses: actions/cache@v4
+              continue-on-error: true
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('scripts/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24
+            - name: Mine lots of data
+              run: |
+                  git config user.name "GitHub Actions Bot"
+                  git config user.email "<>"
+                  cd scripts
+                  npm ci
+                  npm run mine
+              env:
+                  DISCORD_URL: ${{ secrets.DISCORD_URL }}
+                  DISCORD_WEBHOOK_ACCOUNT: ${{ secrets.DISCORD_WEBHOOK_ACCOUNT }}
+                  DISCORD_WEBHOOK_API: ${{ secrets.DISCORD_WEBHOOK_API }}
+                  DISCORD_WEBHOOK_BLOG: ${{ secrets.DISCORD_WEBHOOK_BLOG }}
+                  DISCORD_WEBHOOK_CDNCGI: ${{ secrets.DISCORD_WEBHOOK_CDNCGI }}
+                  DISCORD_WEBHOOK_CDNCGI_DEV: ${{ secrets.DISCORD_WEBHOOK_CDNCGI_DEV }}
+                  DISCORD_WEBHOOK_COVEO: ${{ secrets.DISCORD_WEBHOOK_COVEO }}
+                  DISCORD_WEBHOOK_DASHBOARD: ${{ secrets.DISCORD_WEBHOOK_DASHBOARD }}
+                  DISCORD_WEBHOOK_DOMAINS: ${{ secrets.DISCORD_WEBHOOK_DOMAINS }}
+                  DISCORD_WEBHOOK_GATES: ${{ secrets.DISCORD_WEBHOOK_GATES }}
+                  DISCORD_WEBHOOK_GITHUB: ${{ secrets.DISCORD_WEBHOOK_GITHUB }}
+                  DISCORD_WEBHOOK_INVESTORS: ${{ secrets.DISCORD_WEBHOOK_INVESTORS }}
+                  DISCORD_WEBHOOK_JOBS: ${{ secrets.DISCORD_WEBHOOK_JOBS }}
+                  DISCORD_WEBHOOK_MARKETING: ${{ secrets.DISCORD_WEBHOOK_MARKETING }}
+                  DISCORD_WEBHOOK_NPM: ${{ secrets.DISCORD_WEBHOOK_NPM }}
+                  DISCORD_WEBHOOK_PRODUCT_AI: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_AI }}
+                  DISCORD_WEBHOOK_PRODUCT_ALERTING: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_ALERTING }}
+                  DISCORD_WEBHOOK_PRODUCT_ANALYTICS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_ANALYTICS }}
+                  DISCORD_WEBHOOK_PRODUCT_GATEWAY: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_GATEWAY }}
+                  DISCORD_WEBHOOK_PRODUCT_INTEGRATIONS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_INTEGRATIONS }}
+                  DISCORD_WEBHOOK_PRODUCT_LOGPUSH: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_LOGPUSH }}
+                  DISCORD_WEBHOOK_PRODUCT_PAGES: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_PAGES }}
+                  DISCORD_WEBHOOK_PRODUCT_R2: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_R2 }}
+                  DISCORD_WEBHOOK_PRODUCT_REGISTRAR: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_REGISTRAR }}
+                  DISCORD_WEBHOOK_PRODUCT_RULES: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_RULES }}
+                  DISCORD_WEBHOOK_PRODUCT_RULESETS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_RULESETS }}
+                  DISCORD_WEBHOOK_PRODUCT_TURNSTILE: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_TURNSTILE }}
+                  DISCORD_WEBHOOK_PRODUCT_WORKERS: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_WORKERS }}
+                  DISCORD_WEBHOOK_PRODUCT_ZONES: ${{ secrets.DISCORD_WEBHOOK_PRODUCT_ZONES }}
+                  DISCORD_WEBHOOK_SUPPORT: ${{ secrets.DISCORD_WEBHOOK_SUPPORT }}
+                  DISCORD_WEBHOOK_ZEROTRUST: ${{ secrets.DISCORD_WEBHOOK_ZEROTRUST }}
+                  COVEO_KEY: ${{ secrets.COVEO_KEY }}
+                  COVEO_ORGID: ${{ secrets.COVEO_ORGID }}
+                  GATES_API_KEY: ${{ secrets.GATES_API_KEY }}
+                  GATES_ZT_API_KEY: ${{ secrets.GATES_ZT_API_KEY }}
+                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+                  CLOUDFLARE_GLOBAL_KEY: ${{ secrets.CLOUDFLARE_GLOBAL_KEY }}
+                  CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+                  CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+                  PAGES_DISPATCH_WORKER: ${{ secrets.PAGES_DISPATCH_WORKER }}
+                  GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
+                  FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
+                  FETCH_CANARY_URL: ${{ secrets.FETCH_CANARY_URL }}
+                  FETCH_UK_URL: ${{ secrets.FETCH_UK_URL }}
+                  FETCH_FR_SG_URL: ${{ secrets.FETCH_FR_SG_URL }}
+                  FETCH_TX_URL: ${{ secrets.FETCH_TX_URL }}
+                  FETCH_SG_URL: ${{ secrets.FETCH_SG_URL }}

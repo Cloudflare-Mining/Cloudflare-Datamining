@@ -60,6 +60,18 @@
 		}
 	},
 	{
+		"id": "authoritative_dns.cname_flattening_allowed",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1610,
+			"key": "authoritative_dns.cname_flattening_allowed",
+			"name": "Authoritative DNS - CNAME Flattening Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "authoritative_dns.max_record_allowed",
 		"feature": {
 			"feature_set": "dns",
@@ -180,6 +192,18 @@
 		}
 	},
 	{
+		"id": "cache.regional_middle_tier",
+		"feature": {
+			"feature_set": "cache",
+			"id": 1852,
+			"key": "cache.regional_middle_tier",
+			"name": "Cache - Regional Middle Tier"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "central_endpoint_list.allowed",
 		"feature": {
 			"feature_set": "central_endpoint_list",
@@ -201,6 +225,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "central_endpoint_list.endpoint_labels_allowed",
+		"feature": {
+			"feature_set": "central_endpoint_list",
+			"id": 1618,
+			"key": "central_endpoint_list.endpoint_labels_allowed",
+			"name": "Central Endpoint List - Endpoint Labels Allowed"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -288,6 +324,18 @@
 		}
 	},
 	{
+		"id": "cloud_connector.rule_max",
+		"feature": {
+			"feature_set": "cloud_connector",
+			"id": 1584,
+			"key": "cloud_connector.rule_max",
+			"name": "Cloud Connector - Rule Allowed Max"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "custom_pages.enabled",
 		"feature": {
 			"feature_set": "custom_pages",
@@ -300,6 +348,18 @@
 		}
 	},
 	{
+		"id": "custom_pages.max_assets",
+		"feature": {
+			"feature_set": "custom_pages",
+			"id": 1489,
+			"key": "custom_pages.max_assets",
+			"name": "Custom assets - Allowed assets"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "dns_records_api.bypass_anti_abuse_logic",
 		"feature": {
 			"feature_set": "dns",
@@ -309,6 +369,18 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "dns_records_api.max_batch_size",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1596,
+			"key": "dns_records_api.max_batch_size",
+			"name": "DNS API - Max Batch Size"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -345,6 +417,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "endpoint_abuse_detection.session_identifier_allowed",
+		"feature": {
+			"feature_set": "endpoint_abuse_detection",
+			"id": 1608,
+			"key": "endpoint_abuse_detection.session_identifier_allowed",
+			"name": "Endpoint Abuse Detection - Session Identifier Allowed"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -462,6 +546,18 @@
 			"id": 972,
 			"key": "filters.wafml_enabled",
 			"name": "Filters - WAFML Fields Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "filters.wafml_lite_enabled",
+		"feature": {
+			"feature_set": "filters",
+			"id": 1174,
+			"key": "filters.wafml_lite_enabled",
+			"name": "Filters - WAFML Lite Fields Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -852,6 +948,30 @@
 		}
 	},
 	{
+		"id": "log_explorer.firewall_events.enabled",
+		"feature": {
+			"feature_set": "log_explorer",
+			"id": 1224,
+			"key": "log_explorer.firewall_events.enabled",
+			"name": "Log Explorer - Firewall Events - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "log_explorer.http_requests.enabled",
+		"feature": {
+			"feature_set": "log_explorer",
+			"id": 1223,
+			"key": "log_explorer.http_requests.enabled",
+			"name": "Log Explorer - HTTP Requests - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "logpush.bot_management.enabled",
 		"feature": {
 			"feature_set": "logpush",
@@ -948,6 +1068,18 @@
 		}
 	},
 	{
+		"id": "logpush.zaraz_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1654,
+			"key": "logpush.zaraz_events.max_jobs_allowed",
+			"name": "Logpush - Zaraz Events - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logshare.bot_management.enabled",
 		"feature": {
 			"feature_set": "logshare",
@@ -1038,6 +1170,30 @@
 			"id": 1170,
 			"key": "page_shield.resource_inventory_export_allowed",
 			"name": "Page Shield - Resource inventory export allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "page_shield.zone_advanced",
+		"feature": {
+			"feature_set": "page_shield",
+			"id": 1557,
+			"key": "page_shield.zone_advanced",
+			"name": "Page Shield - Zone Advanced"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "page_shield.zone_standard",
+		"feature": {
+			"feature_set": "page_shield",
+			"id": 1556,
+			"key": "page_shield.zone_standard",
+			"name": "Page Shield - Zone Standard"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1296,6 +1452,18 @@
 		}
 	},
 	{
+		"id": "rulesets.attack_signature_detection_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1788,
+			"key": "rulesets.attack_signature_detection_allowed",
+			"name": "Rulesets - Attack Signature Detection Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.block_customized_response_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1488,12 +1656,36 @@
 		}
 	},
 	{
+		"id": "rulesets.firewall_custom_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1721,
+			"key": "rulesets.firewall_custom_max_rules",
+			"name": "Rulesets - Firewall Custom Max Rules"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.firewall_custom_max_rules_per_ruleset",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 884,
 			"key": "rulesets.firewall_custom_max_rules_per_ruleset",
 			"name": "Rulesets - Firewall Custom Max Rules Per Ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.firewall_custom_max_rulesets",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1720,
+			"key": "rulesets.firewall_custom_max_rulesets",
+			"name": "Rulesets -  Firewall Custom Max Rulesets"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1518,6 +1710,18 @@
 			"id": 901,
 			"key": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
 			"name": "Rulesets - Execute Global Cloudflare DDoS L7 Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1590,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_all",
+			"name": "Rulesets - Execute Global Bot Management Rules for all plans"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1560,6 +1764,18 @@
 		}
 	},
 	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_cffai_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1888,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_cffai_allowed",
+			"name": "Rulesets - Execute Global Cloudflare Firewall for AI Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_cmr_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1590,6 +1806,18 @@
 			"id": 889,
 			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed",
 			"name": "Rulesets - Execute Global Cloudflare Response Analysis Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1244,
+			"key": "rulesets.fw_global_rulesets_execute_leaked_credential_checks_allowed",
+			"name": "Rulesets - Executing Leaked Credential Checks managed ruleset allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1644,12 +1872,48 @@
 		}
 	},
 	{
+		"id": "rulesets.jwt_claims_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1421,
+			"key": "rulesets.jwt_claims_allowed",
+			"name": "Rulesets - JWT Claims Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.labelled_releases_allowed",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 857,
 			"key": "rulesets.labelled_releases_allowed",
 			"name": "Rulesets - Labelled Releases Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.leaked_credential_checks_exact_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1612,
+			"key": "rulesets.leaked_credential_checks_exact_allowed",
+			"name": "Rulesets - Leaked Credential Checks Exact Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.leaked_credential_checks_similar_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1613,
+			"key": "rulesets.leaked_credential_checks_similar_allowed",
+			"name": "Rulesets - Leaked Credential Checks Similar Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1740,12 +2004,36 @@
 		}
 	},
 	{
+		"id": "rulesets.max_leaked_credential_checks_custom_detections",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1235,
+			"key": "rulesets.max_leaked_credential_checks_custom_detections",
+			"name": "Rulesets - Max Allowed Custom Detections for Leaked Credential Checks"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.max_page_shield_rules_per_ruleset",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 1162,
 			"key": "rulesets.max_page_shield_rules_per_ruleset",
 			"name": "Rulesets - Page Shield Max Rules Per Rulesets"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_policy_value_length_per_page_shield_rule",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1696,
+			"key": "rulesets.max_policy_value_length_per_page_shield_rule",
+			"name": "Rulesets - Max policy value length per Page Shield rule"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1782,6 +2070,18 @@
 			"id": 1005,
 			"key": "rulesets.origin_rule_host_header_allowed",
 			"name": "Rulesets - Origin Rule Host Header Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.origin_rule_host_override_to_internal_hostnames_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1611,
+			"key": "rulesets.origin_rule_host_override_to_internal_hostnames_allowed",
+			"name": "Rulesets - Origin Rule Host Override to Internal Hostnames Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1884,6 +2184,18 @@
 		}
 	},
 	{
+		"id": "rulesets.response_cache_settings_rule_max",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1928,
+			"key": "rulesets.response_cache_settings_rule_max",
+			"name": "Rulesets - Response Cache Settings Rule Max"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.response_compression_max_rules",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1974,6 +2286,18 @@
 			"id": 1010,
 			"key": "rulesets.wafml_score_allowed",
 			"name": "Rulesets - WAF ML Score Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.wafml_score_lite_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1177,
+			"key": "rulesets.wafml_score_lite_allowed",
+			"name": "Rulesets - WAF ML Score Lite Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2088,6 +2412,18 @@
 		}
 	},
 	{
+		"id": "snippets.snippets_enabled",
+		"feature": {
+			"feature_set": "snippets",
+			"id": 1207,
+			"key": "snippets.snippets_enabled",
+			"name": "Snippets - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "token_validation.allowed",
 		"feature": {
 			"feature_set": "token_validation",
@@ -2106,6 +2442,18 @@
 			"id": 1159,
 			"key": "token_validation.max_configs_per_zone",
 			"name": "Token Validation - Max Allowed Configurations per Zone"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "token_validation.max_rules_per_zone",
+		"feature": {
+			"feature_set": "token_validation",
+			"id": 1422,
+			"key": "token_validation.max_rules_per_zone",
+			"name": "Token Validation - Max Allowed Rules per Zone"
 		},
 		"allocation": {
 			"type": "max_count"
