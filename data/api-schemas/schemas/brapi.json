@@ -1698,6 +1698,10 @@
 									},
 									"type": "array"
 								},
+								"rawAiResponse": {
+									"description": "Raw AI response will be returned, if it couldn't be parsed into valid JSON.",
+									"type": "string"
+								},
 								"status": {
 									"description": "Response status",
 									"type": "boolean"
