@@ -2,7 +2,10 @@
 	"footerBlurb": "Cloudflare's connectivity cloud protects <a target='_blank' href='https://www.cloudflare.com/network-services/' rel='noreferrer'>entire corporate networks</a>, helps customers build <a target='_blank' href='https://workers.cloudflare.com/' rel='noreferrer'>Internet-scale applications efficiently</a>, accelerates any <a target='_blank' href='https://www.cloudflare.com/performance/accelerate-internet-applications/' rel='noreferrer'>website or Internet application</a>, <a target='_blank' href='https://www.cloudflare.com/ddos/' rel='noreferrer'>wards off DDoS attacks</a>, keeps <a target='_blank' href='https://www.cloudflare.com/application-security/' rel='noreferrer'>hackers at bay</a>, and can help you on <a target='_blank' href='https://www.cloudflare.com/products/zero-trust/' rel='noreferrer'>your journey to Zero Trust</a>.<br/><br/>Visit <a target='_blank' href='https://one.one.one.one/' rel='noreferrer'>1.1.1.1</a> from any device to get started with our free app that makes your Internet faster and safer.<br/><br/>To learn more about our mission to help build a better Internet, <a target='_blank' href='https://www.cloudflare.com/learning/what-is-cloudflare/' rel='noreferrer'>start here</a>. If you&apos;re looking for a new career direction, check out <a target='_blank' href='http://www.cloudflare.com/careers' rel='noreferrer'>our open positions</a>.",
 	"initialReadingTime": "2",
 	"locale": "en-us",
-	"localesAvailable": [],
+	"localesAvailable": [
+		"ja-jp",
+		"ko-kr"
+	],
 	"post": {
 		"authors": [
 			{
@@ -25,7 +28,7 @@
 		"html": "<p></p><p></p><p>We&#39;re happy to announce that as of today Replicate is officially part of Cloudflare.</p><p>When we started Replicate in 2019, OpenAI had just open sourced GPT-2, and few people outside of the machine learning community paid much attention to AI. But for those of us in the field, it felt like something big was about to happen. Remarkable models were being created in academic labs, but you needed a metaphorical lab coat to be able to run them.</p><p>We made it our mission to get research models out of the lab into the hands of developers. We wanted programmers to creatively bend and twist these models into products that the researchers would never have thought of.</p><p>We approached this as a tooling problem. Just like tools like Heroku made it possible to run websites without managing web servers, we wanted to build tools for running models without having to understand backpropagation or deal with CUDA errors.</p><p>The first tool we built was <a href=\"https://github.com/replicate/cog\"><u>Cog</u></a>: a standard packaging format for machine learning models. Then we built <a href=\"https://replicate.com/\"><u>Replicate</u></a> as the platform to run Cog models as API endpoints in the cloud. We abstracted away both the low-level machine learning, and the complicated GPU cluster management you need to run inference at scale.</p><p>It turns out the timing was just right. When <a href=\"https://replicate.com/stability-ai/stable-diffusion\"><u>Stable Diffusion</u></a> was released in 2022 we had mature infrastructure that could handle the massive developer interest in running these models. A ton of fantastic apps and products were built on Replicate, apps that often ran a single model packaged in a slick UI to solve a particular use case.</p><p>Since then, <a href=\"https://www.latent.space/p/ai-engineer\"><i><u>AI Engineering</u></i></a> has matured into a serious craft. AI apps are no longer just about running models. The modern AI stack has model inference, but also microservices, content delivery, object storage, caching, databases, telemetry, etc. We see many of our customers building complex heterogenous stacks where the Replicate models are one part of a higher-order system across several platforms.</p><p><i>This is why we’re joining Cloudflare</i>. Replicate has the tools and primitives for running models. Cloudflare has the best network, Workers, R2, Durable Objects, and all the other primitives you need to build a full AI stack.</p><p>The AI stack lives entirely on the network. Models run on data center GPUs and are glued together by small cloud functions that call out to vector databases, fetch objects from blob storage, call MCP servers, etc. “<a href=\"https://blog.cloudflare.com/the-network-is-the-computer/\"><u>The network is the computer</u></a>” has never been more true.</p><p>At Cloudflare, we’ll now be able to build the AI infrastructure layer we have dreamed of since we started. We’ll be able to do things like run fast models on the edge, run model pipelines on instantly-booting Workers, stream model inputs and outputs with WebRTC, etc.</p><p>We’re proud of what we’ve built at Replicate. We were the first generative AI serving platform, and we defined the abstractions and design patterns that most of our peers have adopted. We’ve grown a wonderful community of builders and researchers around our product.</p>",
 		"id": "3KkAemgmCHkd0D9QW5qTnz",
 		"localeList": {
-			"name": "blog-english-only",
+			"name": "LOC: Why Replicate is joining Cloudflare",
 			"enUS": "English for Locale",
 			"zhCN": "No Page for Locale",
 			"zhHansCN": "No Page for Locale",
@@ -33,8 +36,8 @@
 			"frFR": "No Page for Locale",
 			"deDE": "No Page for Locale",
 			"itIT": "No Page for Locale",
-			"jaJP": "No Page for Locale",
-			"koKR": "No Page for Locale",
+			"jaJP": "Translated for Locale",
+			"koKR": "Translated for Locale",
 			"ptBR": "No Page for Locale",
 			"esLA": "No Page for Locale",
 			"esES": "No Page for Locale",
@@ -89,7 +92,7 @@
 			}
 		],
 		"title": "Why Replicate is joining Cloudflare",
-		"updated_at": "2025-12-02T01:55:11.627Z",
+		"updated_at": "2025-12-02T03:49:10.413Z",
 		"url": "https://blog.cloudflare.com/why-replicate-joining-cloudflare"
 	},
 	"translations": {
