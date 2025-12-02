@@ -1,0 +1,3809 @@
+{
+	"DELETE /accounts/{account_id}/ai-search/instances/{id}": {
+		"operationId": "ai-search-delete-instances",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
+										"ai_gateway_id": {
+											"type": "string"
+										},
+										"ai_search_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"cache": {
+											"default": true,
+											"type": "boolean"
+										},
+										"cache_threshold": {
+											"default": "close_enough",
+											"enum": [
+												"super_strict_match",
+												"close_enough",
+												"flexible_friend",
+												"anything_goes"
+											],
+											"type": "string"
+										},
+										"chunk": {
+											"default": true,
+											"type": "boolean"
+										},
+										"chunk_overlap": {
+											"default": 10,
+											"maximum": 30,
+											"minimum": 0,
+											"type": "integer"
+										},
+										"chunk_size": {
+											"default": 256,
+											"minimum": 64,
+											"type": "integer"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"embedding_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-m3",
+														"@cf/baai/bge-large-en-v1.5",
+														"@cf/google/embeddinggemma-300m",
+														"@cf/qwen/qwen3-embedding-0.6b",
+														"google-ai-studio/gemini-embedding-001",
+														"openai/text-embedding-3-small",
+														"openai/text-embedding-3-large"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"enable": {
+											"default": true,
+											"type": "boolean"
+										},
+										"engine_version": {
+											"default": 1,
+											"type": "number"
+										},
+										"id": {
+											"description": "Use your AI Search ID.",
+											"example": "my-ai-search",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"last_activity": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"max_num_results": {
+											"default": 10,
+											"maximum": 50,
+											"minimum": 1,
+											"type": "integer"
+										},
+										"metadata": {
+											"properties": {
+												"created_from_aisearch_wizard": {
+													"type": "boolean"
+												},
+												"worker_domain": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"paused": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-reranker-base"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_query": {
+											"default": false,
+											"type": "boolean"
+										},
+										"score_threshold": {
+											"default": 0.4,
+											"maximum": 1,
+											"minimum": 0,
+											"type": "number"
+										},
+										"source": {
+											"type": "string"
+										},
+										"source_params": {
+											"default": {
+												"r2_jurisdiction": "default"
+											},
+											"properties": {
+												"prefix": {
+													"type": "string"
+												},
+												"r2_jurisdiction": {
+													"default": "default",
+													"type": "string"
+												},
+												"web_crawler": {
+													"default": {
+														"parse_type": "sitemap"
+													},
+													"properties": {
+														"parse_options": {
+															"properties": {
+																"exclude_regex": {
+																	"type": "string"
+																},
+																"include_headers": {
+																	"additionalProperties": {
+																		"maxLength": 8192,
+																		"type": "string"
+																	},
+																	"type": "object"
+																},
+																"include_images": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_regex": {
+																	"type": "string"
+																},
+																"use_browser_rendering": {
+																	"default": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"parse_type": {
+															"default": "sitemap",
+															"enum": [
+																"sitemap",
+																"feed-rss"
+															],
+															"type": "string"
+														},
+														"store_options": {
+															"properties": {
+																"r2_jurisdiction": {
+																	"default": "default",
+																	"type": "string"
+																},
+																"storage_id": {
+																	"type": "string"
+																},
+																"storage_type": {
+																	"default": "r2",
+																	"enum": [
+																		"r2"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"storage_id"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"summarization": {
+											"default": false,
+											"type": "boolean"
+										},
+										"summarization_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"system_prompt_ai_search": {
+											"type": "string"
+										},
+										"system_prompt_index_summarization": {
+											"type": "string"
+										},
+										"system_prompt_rewrite_query": {
+											"type": "string"
+										},
+										"token_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"type": {
+											"enum": [
+												"r2",
+												"web-crawler"
+											],
+											"type": "string"
+										},
+										"vectorize_active_namespace": {
+											"type": "string"
+										},
+										"vectorize_name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
+										"type",
+										"source",
+										"vectorize_name",
+										"token_id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the Object if it was successfully deleted"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete instances.",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-search/instances": {
+		"operationId": "ai-search-list-instances",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Search by id",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Search by id",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"account_id": {
+												"type": "string"
+											},
+											"account_tag": {
+												"type": "string"
+											},
+											"ai_gateway_id": {
+												"type": "string"
+											},
+											"ai_search_model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fp8",
+															"@cf/meta/llama-4-scout-17b-16e-instruct",
+															"@cf/qwen/qwen3-30b-a3b-fp8",
+															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+															"@cf/moonshotai/kimi-k2-instruct",
+															"anthropic/claude-3-7-sonnet",
+															"anthropic/claude-sonnet-4",
+															"anthropic/claude-opus-4",
+															"anthropic/claude-3-5-haiku",
+															"cerebras/qwen-3-235b-a22b-instruct",
+															"cerebras/qwen-3-235b-a22b-thinking",
+															"cerebras/llama-3.3-70b",
+															"cerebras/llama-4-maverick-17b-128e-instruct",
+															"cerebras/llama-4-scout-17b-16e-instruct",
+															"cerebras/gpt-oss-120b",
+															"google-ai-studio/gemini-2.5-flash",
+															"google-ai-studio/gemini-2.5-pro",
+															"grok/grok-4",
+															"groq/llama-3.3-70b-versatile",
+															"groq/llama-3.1-8b-instant",
+															"openai/gpt-5",
+															"openai/gpt-5-mini",
+															"openai/gpt-5-nano"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											},
+											"cache": {
+												"default": true,
+												"type": "boolean"
+											},
+											"cache_threshold": {
+												"default": "close_enough",
+												"enum": [
+													"super_strict_match",
+													"close_enough",
+													"flexible_friend",
+													"anything_goes"
+												],
+												"type": "string"
+											},
+											"chunk": {
+												"default": true,
+												"type": "boolean"
+											},
+											"chunk_overlap": {
+												"default": 10,
+												"maximum": 30,
+												"minimum": 0,
+												"type": "integer"
+											},
+											"chunk_size": {
+												"default": 256,
+												"minimum": 64,
+												"type": "integer"
+											},
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"created_by": {
+												"type": "string"
+											},
+											"embedding_model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/baai/bge-m3",
+															"@cf/baai/bge-large-en-v1.5",
+															"@cf/google/embeddinggemma-300m",
+															"@cf/qwen/qwen3-embedding-0.6b",
+															"google-ai-studio/gemini-embedding-001",
+															"openai/text-embedding-3-small",
+															"openai/text-embedding-3-large"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											},
+											"enable": {
+												"default": true,
+												"type": "boolean"
+											},
+											"engine_version": {
+												"default": 1,
+												"type": "number"
+											},
+											"id": {
+												"description": "Use your AI Search ID.",
+												"example": "my-ai-search",
+												"maxLength": 32,
+												"minLength": 1,
+												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+												"type": "string"
+											},
+											"internal_id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"last_activity": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"max_num_results": {
+												"default": 10,
+												"maximum": 50,
+												"minimum": 1,
+												"type": "integer"
+											},
+											"metadata": {
+												"properties": {
+													"created_from_aisearch_wizard": {
+														"type": "boolean"
+													},
+													"worker_domain": {
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"modified_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"modified_by": {
+												"type": "string"
+											},
+											"paused": {
+												"default": false,
+												"type": "boolean"
+											},
+											"reranking": {
+												"default": false,
+												"type": "boolean"
+											},
+											"reranking_model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/baai/bge-reranker-base"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											},
+											"rewrite_model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fp8",
+															"@cf/meta/llama-4-scout-17b-16e-instruct",
+															"@cf/qwen/qwen3-30b-a3b-fp8",
+															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+															"@cf/moonshotai/kimi-k2-instruct",
+															"anthropic/claude-3-7-sonnet",
+															"anthropic/claude-sonnet-4",
+															"anthropic/claude-opus-4",
+															"anthropic/claude-3-5-haiku",
+															"cerebras/qwen-3-235b-a22b-instruct",
+															"cerebras/qwen-3-235b-a22b-thinking",
+															"cerebras/llama-3.3-70b",
+															"cerebras/llama-4-maverick-17b-128e-instruct",
+															"cerebras/llama-4-scout-17b-16e-instruct",
+															"cerebras/gpt-oss-120b",
+															"google-ai-studio/gemini-2.5-flash",
+															"google-ai-studio/gemini-2.5-pro",
+															"grok/grok-4",
+															"groq/llama-3.3-70b-versatile",
+															"groq/llama-3.1-8b-instant",
+															"openai/gpt-5",
+															"openai/gpt-5-mini",
+															"openai/gpt-5-nano"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											},
+											"rewrite_query": {
+												"default": false,
+												"type": "boolean"
+											},
+											"score_threshold": {
+												"default": 0.4,
+												"maximum": 1,
+												"minimum": 0,
+												"type": "number"
+											},
+											"source": {
+												"type": "string"
+											},
+											"source_params": {
+												"default": {
+													"r2_jurisdiction": "default"
+												},
+												"properties": {
+													"prefix": {
+														"type": "string"
+													},
+													"r2_jurisdiction": {
+														"default": "default",
+														"type": "string"
+													},
+													"web_crawler": {
+														"default": {
+															"parse_type": "sitemap"
+														},
+														"properties": {
+															"parse_options": {
+																"properties": {
+																	"exclude_regex": {
+																		"type": "string"
+																	},
+																	"include_headers": {
+																		"additionalProperties": {
+																			"maxLength": 8192,
+																			"type": "string"
+																		},
+																		"type": "object"
+																	},
+																	"include_images": {
+																		"default": false,
+																		"type": "boolean"
+																	},
+																	"include_regex": {
+																		"type": "string"
+																	},
+																	"use_browser_rendering": {
+																		"default": false,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															"parse_type": {
+																"default": "sitemap",
+																"enum": [
+																	"sitemap",
+																	"feed-rss"
+																],
+																"type": "string"
+															},
+															"store_options": {
+																"properties": {
+																	"r2_jurisdiction": {
+																		"default": "default",
+																		"type": "string"
+																	},
+																	"storage_id": {
+																		"type": "string"
+																	},
+																	"storage_type": {
+																		"default": "r2",
+																		"enum": [
+																			"r2"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"storage_id"
+																],
+																"type": "object"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
+											"status": {
+												"default": "waiting",
+												"type": "string"
+											},
+											"summarization": {
+												"default": false,
+												"type": "boolean"
+											},
+											"summarization_model": {
+												"anyOf": [
+													{
+														"enum": [
+															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fast",
+															"@cf/meta/llama-3.1-8b-instruct-fp8",
+															"@cf/meta/llama-4-scout-17b-16e-instruct",
+															"@cf/qwen/qwen3-30b-a3b-fp8",
+															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+															"@cf/moonshotai/kimi-k2-instruct",
+															"anthropic/claude-3-7-sonnet",
+															"anthropic/claude-sonnet-4",
+															"anthropic/claude-opus-4",
+															"anthropic/claude-3-5-haiku",
+															"cerebras/qwen-3-235b-a22b-instruct",
+															"cerebras/qwen-3-235b-a22b-thinking",
+															"cerebras/llama-3.3-70b",
+															"cerebras/llama-4-maverick-17b-128e-instruct",
+															"cerebras/llama-4-scout-17b-16e-instruct",
+															"cerebras/gpt-oss-120b",
+															"google-ai-studio/gemini-2.5-flash",
+															"google-ai-studio/gemini-2.5-pro",
+															"grok/grok-4",
+															"groq/llama-3.3-70b-versatile",
+															"groq/llama-3.1-8b-instant",
+															"openai/gpt-5",
+															"openai/gpt-5-mini",
+															"openai/gpt-5-nano"
+														],
+														"type": "string"
+													},
+													{
+														"enum": [
+															""
+														],
+														"type": "string"
+													}
+												]
+											},
+											"system_prompt_ai_search": {
+												"type": "string"
+											},
+											"system_prompt_index_summarization": {
+												"type": "string"
+											},
+											"system_prompt_rewrite_query": {
+												"type": "string"
+											},
+											"token_id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"type": {
+												"enum": [
+													"r2",
+													"web-crawler"
+												],
+												"type": "string"
+											},
+											"vectorize_active_namespace": {
+												"type": "string"
+											},
+											"vectorize_name": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"internal_id",
+											"account_id",
+											"account_tag",
+											"type",
+											"source",
+											"vectorize_name",
+											"token_id",
+											"created_at",
+											"modified_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List objects"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List instances.",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-search/instances/{id}": {
+		"operationId": "ai-search-fetch-instances",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
+										"ai_gateway_id": {
+											"type": "string"
+										},
+										"ai_search_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"cache": {
+											"default": true,
+											"type": "boolean"
+										},
+										"cache_threshold": {
+											"default": "close_enough",
+											"enum": [
+												"super_strict_match",
+												"close_enough",
+												"flexible_friend",
+												"anything_goes"
+											],
+											"type": "string"
+										},
+										"chunk": {
+											"default": true,
+											"type": "boolean"
+										},
+										"chunk_overlap": {
+											"default": 10,
+											"maximum": 30,
+											"minimum": 0,
+											"type": "integer"
+										},
+										"chunk_size": {
+											"default": 256,
+											"minimum": 64,
+											"type": "integer"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"embedding_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-m3",
+														"@cf/baai/bge-large-en-v1.5",
+														"@cf/google/embeddinggemma-300m",
+														"@cf/qwen/qwen3-embedding-0.6b",
+														"google-ai-studio/gemini-embedding-001",
+														"openai/text-embedding-3-small",
+														"openai/text-embedding-3-large"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"enable": {
+											"default": true,
+											"type": "boolean"
+										},
+										"engine_version": {
+											"default": 1,
+											"type": "number"
+										},
+										"id": {
+											"description": "Use your AI Search ID.",
+											"example": "my-ai-search",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"last_activity": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"max_num_results": {
+											"default": 10,
+											"maximum": 50,
+											"minimum": 1,
+											"type": "integer"
+										},
+										"metadata": {
+											"properties": {
+												"created_from_aisearch_wizard": {
+													"type": "boolean"
+												},
+												"worker_domain": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"paused": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-reranker-base"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_query": {
+											"default": false,
+											"type": "boolean"
+										},
+										"score_threshold": {
+											"default": 0.4,
+											"maximum": 1,
+											"minimum": 0,
+											"type": "number"
+										},
+										"source": {
+											"type": "string"
+										},
+										"source_params": {
+											"default": {
+												"r2_jurisdiction": "default"
+											},
+											"properties": {
+												"prefix": {
+													"type": "string"
+												},
+												"r2_jurisdiction": {
+													"default": "default",
+													"type": "string"
+												},
+												"web_crawler": {
+													"default": {
+														"parse_type": "sitemap"
+													},
+													"properties": {
+														"parse_options": {
+															"properties": {
+																"exclude_regex": {
+																	"type": "string"
+																},
+																"include_headers": {
+																	"additionalProperties": {
+																		"maxLength": 8192,
+																		"type": "string"
+																	},
+																	"type": "object"
+																},
+																"include_images": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_regex": {
+																	"type": "string"
+																},
+																"use_browser_rendering": {
+																	"default": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"parse_type": {
+															"default": "sitemap",
+															"enum": [
+																"sitemap",
+																"feed-rss"
+															],
+															"type": "string"
+														},
+														"store_options": {
+															"properties": {
+																"r2_jurisdiction": {
+																	"default": "default",
+																	"type": "string"
+																},
+																"storage_id": {
+																	"type": "string"
+																},
+																"storage_type": {
+																	"default": "r2",
+																	"enum": [
+																		"r2"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"storage_id"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"summarization": {
+											"default": false,
+											"type": "boolean"
+										},
+										"summarization_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"system_prompt_ai_search": {
+											"type": "string"
+										},
+										"system_prompt_index_summarization": {
+											"type": "string"
+										},
+										"system_prompt_rewrite_query": {
+											"type": "string"
+										},
+										"token_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"type": {
+											"enum": [
+												"r2",
+												"web-crawler"
+											],
+											"type": "string"
+										},
+										"vectorize_active_namespace": {
+											"type": "string"
+										},
+										"vectorize_name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
+										"type",
+										"source",
+										"vectorize_name",
+										"token_id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a single object if found"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Read instances.",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-search/instances/{id}/files": {
+		"operationId": "ai-search-instance-files",
+		"parameters": [
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"completed",
+						"queued",
+						"running",
+						"error"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"items": {
+										"properties": {
+											"error": {
+												"type": "string"
+											},
+											"key": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"key",
+											"error"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "integer"
+										},
+										"page": {
+											"type": "integer"
+										},
+										"per_page": {
+											"default": 20,
+											"maximum": 50,
+											"minimum": 5,
+											"type": "integer"
+										},
+										"total_count": {
+											"type": "integer"
+										}
+									},
+									"required": [
+										"count",
+										"page",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the AI Search files."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7000,
+												"type": "number"
+											},
+											"message": {
+												"example": "Internal Error",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Files",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/ai-search/instances/{id}/stats": {
+		"operationId": "ai-search-stats",
+		"parameters": [
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"completed": {
+											"type": "integer"
+										},
+										"error": {
+											"type": "integer"
+										},
+										"file_embed_errors": {
+											"additionalProperties": true,
+											"type": "object"
+										},
+										"index_source_errors": {
+											"additionalProperties": true,
+											"type": "object"
+										},
+										"last_activity": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"queued": {
+											"type": "integer"
+										},
+										"running": {
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the AI Search stats."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Stats",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/ai-search/instances/{id}/sync": {
+		"operationId": "ai-search-sync",
+		"parameters": [
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"job_id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"job_id"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the autorag sync status."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7000,
+												"type": "number"
+											},
+											"message": {
+												"example": "Internal Error",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Sync",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai-search/instances": {
+		"operationId": "ai-search-create-instances",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"ai_gateway_id": {
+								"type": "string"
+							},
+							"ai_search_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fp8",
+											"@cf/meta/llama-4-scout-17b-16e-instruct",
+											"@cf/qwen/qwen3-30b-a3b-fp8",
+											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+											"@cf/moonshotai/kimi-k2-instruct",
+											"anthropic/claude-3-7-sonnet",
+											"anthropic/claude-sonnet-4",
+											"anthropic/claude-opus-4",
+											"anthropic/claude-3-5-haiku",
+											"cerebras/qwen-3-235b-a22b-instruct",
+											"cerebras/qwen-3-235b-a22b-thinking",
+											"cerebras/llama-3.3-70b",
+											"cerebras/llama-4-maverick-17b-128e-instruct",
+											"cerebras/llama-4-scout-17b-16e-instruct",
+											"cerebras/gpt-oss-120b",
+											"google-ai-studio/gemini-2.5-flash",
+											"google-ai-studio/gemini-2.5-pro",
+											"grok/grok-4",
+											"groq/llama-3.3-70b-versatile",
+											"groq/llama-3.1-8b-instant",
+											"openai/gpt-5",
+											"openai/gpt-5-mini",
+											"openai/gpt-5-nano"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"chunk": {
+								"default": true,
+								"type": "boolean"
+							},
+							"chunk_overlap": {
+								"default": 10,
+								"maximum": 30,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"chunk_size": {
+								"default": 256,
+								"minimum": 64,
+								"type": "integer"
+							},
+							"embedding_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/baai/bge-m3",
+											"@cf/baai/bge-large-en-v1.5",
+											"@cf/google/embeddinggemma-300m",
+											"@cf/qwen/qwen3-embedding-0.6b",
+											"google-ai-studio/gemini-embedding-001",
+											"openai/text-embedding-3-small",
+											"openai/text-embedding-3-large"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"id": {
+								"description": "Use your AI Search ID.",
+								"example": "my-ai-search",
+								"maxLength": 32,
+								"minLength": 1,
+								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+								"type": "string"
+							},
+							"max_num_results": {
+								"default": 10,
+								"maximum": 50,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"metadata": {
+								"properties": {
+									"created_from_aisearch_wizard": {
+										"type": "boolean"
+									},
+									"worker_domain": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"reranking": {
+								"default": false,
+								"type": "boolean"
+							},
+							"reranking_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/baai/bge-reranker-base"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"rewrite_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fp8",
+											"@cf/meta/llama-4-scout-17b-16e-instruct",
+											"@cf/qwen/qwen3-30b-a3b-fp8",
+											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+											"@cf/moonshotai/kimi-k2-instruct",
+											"anthropic/claude-3-7-sonnet",
+											"anthropic/claude-sonnet-4",
+											"anthropic/claude-opus-4",
+											"anthropic/claude-3-5-haiku",
+											"cerebras/qwen-3-235b-a22b-instruct",
+											"cerebras/qwen-3-235b-a22b-thinking",
+											"cerebras/llama-3.3-70b",
+											"cerebras/llama-4-maverick-17b-128e-instruct",
+											"cerebras/llama-4-scout-17b-16e-instruct",
+											"cerebras/gpt-oss-120b",
+											"google-ai-studio/gemini-2.5-flash",
+											"google-ai-studio/gemini-2.5-pro",
+											"grok/grok-4",
+											"groq/llama-3.3-70b-versatile",
+											"groq/llama-3.1-8b-instant",
+											"openai/gpt-5",
+											"openai/gpt-5-mini",
+											"openai/gpt-5-nano"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"rewrite_query": {
+								"default": false,
+								"type": "boolean"
+							},
+							"score_threshold": {
+								"default": 0.4,
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
+							},
+							"source": {
+								"type": "string"
+							},
+							"source_params": {
+								"default": {
+									"r2_jurisdiction": "default"
+								},
+								"properties": {
+									"prefix": {
+										"type": "string"
+									},
+									"r2_jurisdiction": {
+										"default": "default",
+										"type": "string"
+									},
+									"web_crawler": {
+										"default": {
+											"parse_type": "sitemap"
+										},
+										"properties": {
+											"parse_options": {
+												"properties": {
+													"exclude_regex": {
+														"type": "string"
+													},
+													"include_headers": {
+														"additionalProperties": {
+															"maxLength": 8192,
+															"type": "string"
+														},
+														"type": "object"
+													},
+													"include_images": {
+														"default": false,
+														"type": "boolean"
+													},
+													"include_regex": {
+														"type": "string"
+													},
+													"use_browser_rendering": {
+														"default": false,
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"parse_type": {
+												"default": "sitemap",
+												"enum": [
+													"sitemap",
+													"feed-rss"
+												],
+												"type": "string"
+											},
+											"store_options": {
+												"properties": {
+													"r2_jurisdiction": {
+														"default": "default",
+														"type": "string"
+													},
+													"storage_id": {
+														"type": "string"
+													},
+													"storage_type": {
+														"default": "r2",
+														"enum": [
+															"r2"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"storage_id"
+												],
+												"type": "object"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"token_id": {
+								"format": "uuid",
+								"type": "string"
+							},
+							"type": {
+								"enum": [
+									"r2",
+									"web-crawler"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"id",
+							"type",
+							"source",
+							"token_id"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
+										"ai_gateway_id": {
+											"type": "string"
+										},
+										"ai_search_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"cache": {
+											"default": true,
+											"type": "boolean"
+										},
+										"cache_threshold": {
+											"default": "close_enough",
+											"enum": [
+												"super_strict_match",
+												"close_enough",
+												"flexible_friend",
+												"anything_goes"
+											],
+											"type": "string"
+										},
+										"chunk": {
+											"default": true,
+											"type": "boolean"
+										},
+										"chunk_overlap": {
+											"default": 10,
+											"maximum": 30,
+											"minimum": 0,
+											"type": "integer"
+										},
+										"chunk_size": {
+											"default": 256,
+											"minimum": 64,
+											"type": "integer"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"embedding_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-m3",
+														"@cf/baai/bge-large-en-v1.5",
+														"@cf/google/embeddinggemma-300m",
+														"@cf/qwen/qwen3-embedding-0.6b",
+														"google-ai-studio/gemini-embedding-001",
+														"openai/text-embedding-3-small",
+														"openai/text-embedding-3-large"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"enable": {
+											"default": true,
+											"type": "boolean"
+										},
+										"engine_version": {
+											"default": 1,
+											"type": "number"
+										},
+										"id": {
+											"description": "Use your AI Search ID.",
+											"example": "my-ai-search",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"last_activity": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"max_num_results": {
+											"default": 10,
+											"maximum": 50,
+											"minimum": 1,
+											"type": "integer"
+										},
+										"metadata": {
+											"properties": {
+												"created_from_aisearch_wizard": {
+													"type": "boolean"
+												},
+												"worker_domain": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"paused": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-reranker-base"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_query": {
+											"default": false,
+											"type": "boolean"
+										},
+										"score_threshold": {
+											"default": 0.4,
+											"maximum": 1,
+											"minimum": 0,
+											"type": "number"
+										},
+										"source": {
+											"type": "string"
+										},
+										"source_params": {
+											"default": {
+												"r2_jurisdiction": "default"
+											},
+											"properties": {
+												"prefix": {
+													"type": "string"
+												},
+												"r2_jurisdiction": {
+													"default": "default",
+													"type": "string"
+												},
+												"web_crawler": {
+													"default": {
+														"parse_type": "sitemap"
+													},
+													"properties": {
+														"parse_options": {
+															"properties": {
+																"exclude_regex": {
+																	"type": "string"
+																},
+																"include_headers": {
+																	"additionalProperties": {
+																		"maxLength": 8192,
+																		"type": "string"
+																	},
+																	"type": "object"
+																},
+																"include_images": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_regex": {
+																	"type": "string"
+																},
+																"use_browser_rendering": {
+																	"default": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"parse_type": {
+															"default": "sitemap",
+															"enum": [
+																"sitemap",
+																"feed-rss"
+															],
+															"type": "string"
+														},
+														"store_options": {
+															"properties": {
+																"r2_jurisdiction": {
+																	"default": "default",
+																	"type": "string"
+																},
+																"storage_id": {
+																	"type": "string"
+																},
+																"storage_type": {
+																	"default": "r2",
+																	"enum": [
+																		"r2"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"storage_id"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"summarization": {
+											"default": false,
+											"type": "boolean"
+										},
+										"summarization_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"system_prompt_ai_search": {
+											"type": "string"
+										},
+										"system_prompt_index_summarization": {
+											"type": "string"
+										},
+										"system_prompt_rewrite_query": {
+											"type": "string"
+										},
+										"token_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"type": {
+											"enum": [
+												"r2",
+												"web-crawler"
+											],
+											"type": "string"
+										},
+										"vectorize_active_namespace": {
+											"type": "string"
+										},
+										"vectorize_name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
+										"type",
+										"source",
+										"vectorize_name",
+										"token_id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create new instances.",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
+		"operationId": "ai-search-update-instances",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"ai_gateway_id": {
+								"type": "string"
+							},
+							"ai_search_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fp8",
+											"@cf/meta/llama-4-scout-17b-16e-instruct",
+											"@cf/qwen/qwen3-30b-a3b-fp8",
+											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+											"@cf/moonshotai/kimi-k2-instruct",
+											"anthropic/claude-3-7-sonnet",
+											"anthropic/claude-sonnet-4",
+											"anthropic/claude-opus-4",
+											"anthropic/claude-3-5-haiku",
+											"cerebras/qwen-3-235b-a22b-instruct",
+											"cerebras/qwen-3-235b-a22b-thinking",
+											"cerebras/llama-3.3-70b",
+											"cerebras/llama-4-maverick-17b-128e-instruct",
+											"cerebras/llama-4-scout-17b-16e-instruct",
+											"cerebras/gpt-oss-120b",
+											"google-ai-studio/gemini-2.5-flash",
+											"google-ai-studio/gemini-2.5-pro",
+											"grok/grok-4",
+											"groq/llama-3.3-70b-versatile",
+											"groq/llama-3.1-8b-instant",
+											"openai/gpt-5",
+											"openai/gpt-5-mini",
+											"openai/gpt-5-nano"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"cache": {
+								"default": true,
+								"type": "boolean"
+							},
+							"cache_threshold": {
+								"default": "close_enough",
+								"enum": [
+									"super_strict_match",
+									"close_enough",
+									"flexible_friend",
+									"anything_goes"
+								],
+								"type": "string"
+							},
+							"chunk": {
+								"default": true,
+								"type": "boolean"
+							},
+							"chunk_overlap": {
+								"default": 10,
+								"maximum": 30,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"chunk_size": {
+								"default": 256,
+								"minimum": 64,
+								"type": "integer"
+							},
+							"embedding_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/baai/bge-m3",
+											"@cf/baai/bge-large-en-v1.5",
+											"@cf/google/embeddinggemma-300m",
+											"@cf/qwen/qwen3-embedding-0.6b",
+											"google-ai-studio/gemini-embedding-001",
+											"openai/text-embedding-3-small",
+											"openai/text-embedding-3-large"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"max_num_results": {
+								"default": 10,
+								"maximum": 50,
+								"minimum": 1,
+								"type": "integer"
+							},
+							"metadata": {
+								"properties": {
+									"created_from_aisearch_wizard": {
+										"type": "boolean"
+									},
+									"worker_domain": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"paused": {
+								"default": false,
+								"type": "boolean"
+							},
+							"reranking": {
+								"default": false,
+								"type": "boolean"
+							},
+							"reranking_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/baai/bge-reranker-base"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"rewrite_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fp8",
+											"@cf/meta/llama-4-scout-17b-16e-instruct",
+											"@cf/qwen/qwen3-30b-a3b-fp8",
+											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+											"@cf/moonshotai/kimi-k2-instruct",
+											"anthropic/claude-3-7-sonnet",
+											"anthropic/claude-sonnet-4",
+											"anthropic/claude-opus-4",
+											"anthropic/claude-3-5-haiku",
+											"cerebras/qwen-3-235b-a22b-instruct",
+											"cerebras/qwen-3-235b-a22b-thinking",
+											"cerebras/llama-3.3-70b",
+											"cerebras/llama-4-maverick-17b-128e-instruct",
+											"cerebras/llama-4-scout-17b-16e-instruct",
+											"cerebras/gpt-oss-120b",
+											"google-ai-studio/gemini-2.5-flash",
+											"google-ai-studio/gemini-2.5-pro",
+											"grok/grok-4",
+											"groq/llama-3.3-70b-versatile",
+											"groq/llama-3.1-8b-instant",
+											"openai/gpt-5",
+											"openai/gpt-5-mini",
+											"openai/gpt-5-nano"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"rewrite_query": {
+								"default": false,
+								"type": "boolean"
+							},
+							"score_threshold": {
+								"default": 0.4,
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
+							},
+							"source_params": {
+								"default": {
+									"r2_jurisdiction": "default"
+								},
+								"properties": {
+									"prefix": {
+										"type": "string"
+									},
+									"r2_jurisdiction": {
+										"default": "default",
+										"type": "string"
+									},
+									"web_crawler": {
+										"default": {
+											"parse_type": "sitemap"
+										},
+										"properties": {
+											"parse_options": {
+												"properties": {
+													"exclude_regex": {
+														"type": "string"
+													},
+													"include_headers": {
+														"additionalProperties": {
+															"maxLength": 8192,
+															"type": "string"
+														},
+														"type": "object"
+													},
+													"include_images": {
+														"default": false,
+														"type": "boolean"
+													},
+													"include_regex": {
+														"type": "string"
+													},
+													"use_browser_rendering": {
+														"default": false,
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
+											"parse_type": {
+												"default": "sitemap",
+												"enum": [
+													"sitemap",
+													"feed-rss"
+												],
+												"type": "string"
+											},
+											"store_options": {
+												"properties": {
+													"r2_jurisdiction": {
+														"default": "default",
+														"type": "string"
+													},
+													"storage_id": {
+														"type": "string"
+													},
+													"storage_type": {
+														"default": "r2",
+														"enum": [
+															"r2"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"storage_id"
+												],
+												"type": "object"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"summarization": {
+								"default": false,
+								"type": "boolean"
+							},
+							"summarization_model": {
+								"anyOf": [
+									{
+										"enum": [
+											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fast",
+											"@cf/meta/llama-3.1-8b-instruct-fp8",
+											"@cf/meta/llama-4-scout-17b-16e-instruct",
+											"@cf/qwen/qwen3-30b-a3b-fp8",
+											"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+											"@cf/moonshotai/kimi-k2-instruct",
+											"anthropic/claude-3-7-sonnet",
+											"anthropic/claude-sonnet-4",
+											"anthropic/claude-opus-4",
+											"anthropic/claude-3-5-haiku",
+											"cerebras/qwen-3-235b-a22b-instruct",
+											"cerebras/qwen-3-235b-a22b-thinking",
+											"cerebras/llama-3.3-70b",
+											"cerebras/llama-4-maverick-17b-128e-instruct",
+											"cerebras/llama-4-scout-17b-16e-instruct",
+											"cerebras/gpt-oss-120b",
+											"google-ai-studio/gemini-2.5-flash",
+											"google-ai-studio/gemini-2.5-pro",
+											"grok/grok-4",
+											"groq/llama-3.3-70b-versatile",
+											"groq/llama-3.1-8b-instant",
+											"openai/gpt-5",
+											"openai/gpt-5-mini",
+											"openai/gpt-5-nano"
+										],
+										"type": "string"
+									},
+									{
+										"enum": [
+											""
+										],
+										"type": "string"
+									}
+								]
+							},
+							"system_prompt_ai_search": {
+								"type": "string"
+							},
+							"system_prompt_index_summarization": {
+								"type": "string"
+							},
+							"system_prompt_rewrite_query": {
+								"type": "string"
+							},
+							"token_id": {
+								"format": "uuid",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"account_id": {
+											"type": "string"
+										},
+										"account_tag": {
+											"type": "string"
+										},
+										"ai_gateway_id": {
+											"type": "string"
+										},
+										"ai_search_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"cache": {
+											"default": true,
+											"type": "boolean"
+										},
+										"cache_threshold": {
+											"default": "close_enough",
+											"enum": [
+												"super_strict_match",
+												"close_enough",
+												"flexible_friend",
+												"anything_goes"
+											],
+											"type": "string"
+										},
+										"chunk": {
+											"default": true,
+											"type": "boolean"
+										},
+										"chunk_overlap": {
+											"default": 10,
+											"maximum": 30,
+											"minimum": 0,
+											"type": "integer"
+										},
+										"chunk_size": {
+											"default": 256,
+											"minimum": 64,
+											"type": "integer"
+										},
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"created_by": {
+											"type": "string"
+										},
+										"embedding_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-m3",
+														"@cf/baai/bge-large-en-v1.5",
+														"@cf/google/embeddinggemma-300m",
+														"@cf/qwen/qwen3-embedding-0.6b",
+														"google-ai-studio/gemini-embedding-001",
+														"openai/text-embedding-3-small",
+														"openai/text-embedding-3-large"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"enable": {
+											"default": true,
+											"type": "boolean"
+										},
+										"engine_version": {
+											"default": 1,
+											"type": "number"
+										},
+										"id": {
+											"description": "Use your AI Search ID.",
+											"example": "my-ai-search",
+											"maxLength": 32,
+											"minLength": 1,
+											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"internal_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"last_activity": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"max_num_results": {
+											"default": 10,
+											"maximum": 50,
+											"minimum": 1,
+											"type": "integer"
+										},
+										"metadata": {
+											"properties": {
+												"created_from_aisearch_wizard": {
+													"type": "boolean"
+												},
+												"worker_domain": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"modified_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"modified_by": {
+											"type": "string"
+										},
+										"paused": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking": {
+											"default": false,
+											"type": "boolean"
+										},
+										"reranking_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/baai/bge-reranker-base"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"rewrite_query": {
+											"default": false,
+											"type": "boolean"
+										},
+										"score_threshold": {
+											"default": 0.4,
+											"maximum": 1,
+											"minimum": 0,
+											"type": "number"
+										},
+										"source": {
+											"type": "string"
+										},
+										"source_params": {
+											"default": {
+												"r2_jurisdiction": "default"
+											},
+											"properties": {
+												"prefix": {
+													"type": "string"
+												},
+												"r2_jurisdiction": {
+													"default": "default",
+													"type": "string"
+												},
+												"web_crawler": {
+													"default": {
+														"parse_type": "sitemap"
+													},
+													"properties": {
+														"parse_options": {
+															"properties": {
+																"exclude_regex": {
+																	"type": "string"
+																},
+																"include_headers": {
+																	"additionalProperties": {
+																		"maxLength": 8192,
+																		"type": "string"
+																	},
+																	"type": "object"
+																},
+																"include_images": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_regex": {
+																	"type": "string"
+																},
+																"use_browser_rendering": {
+																	"default": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"parse_type": {
+															"default": "sitemap",
+															"enum": [
+																"sitemap",
+																"feed-rss"
+															],
+															"type": "string"
+														},
+														"store_options": {
+															"properties": {
+																"r2_jurisdiction": {
+																	"default": "default",
+																	"type": "string"
+																},
+																"storage_id": {
+																	"type": "string"
+																},
+																"storage_type": {
+																	"default": "r2",
+																	"enum": [
+																		"r2"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"storage_id"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
+										"status": {
+											"default": "waiting",
+											"type": "string"
+										},
+										"summarization": {
+											"default": false,
+											"type": "boolean"
+										},
+										"summarization_model": {
+											"anyOf": [
+												{
+													"enum": [
+														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fast",
+														"@cf/meta/llama-3.1-8b-instruct-fp8",
+														"@cf/meta/llama-4-scout-17b-16e-instruct",
+														"@cf/qwen/qwen3-30b-a3b-fp8",
+														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+														"@cf/moonshotai/kimi-k2-instruct",
+														"anthropic/claude-3-7-sonnet",
+														"anthropic/claude-sonnet-4",
+														"anthropic/claude-opus-4",
+														"anthropic/claude-3-5-haiku",
+														"cerebras/qwen-3-235b-a22b-instruct",
+														"cerebras/qwen-3-235b-a22b-thinking",
+														"cerebras/llama-3.3-70b",
+														"cerebras/llama-4-maverick-17b-128e-instruct",
+														"cerebras/llama-4-scout-17b-16e-instruct",
+														"cerebras/gpt-oss-120b",
+														"google-ai-studio/gemini-2.5-flash",
+														"google-ai-studio/gemini-2.5-pro",
+														"grok/grok-4",
+														"groq/llama-3.3-70b-versatile",
+														"groq/llama-3.1-8b-instant",
+														"openai/gpt-5",
+														"openai/gpt-5-mini",
+														"openai/gpt-5-nano"
+													],
+													"type": "string"
+												},
+												{
+													"enum": [
+														""
+													],
+													"type": "string"
+												}
+											]
+										},
+										"system_prompt_ai_search": {
+											"type": "string"
+										},
+										"system_prompt_index_summarization": {
+											"type": "string"
+										},
+										"system_prompt_rewrite_query": {
+											"type": "string"
+										},
+										"token_id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"type": {
+											"enum": [
+												"r2",
+												"web-crawler"
+											],
+											"type": "string"
+										},
+										"vectorize_active_namespace": {
+											"type": "string"
+										},
+										"vectorize_name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"internal_id",
+										"account_id",
+										"account_tag",
+										"type",
+										"source",
+										"vectorize_name",
+										"token_id",
+										"created_at",
+										"modified_at"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated Object"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7001,
+												"type": "number"
+											},
+											"message": {
+												"example": "Input Validation Error",
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"example": "body",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7002,
+												"type": "number"
+											},
+											"message": {
+												"example": "Not Found",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not Found"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update instances.",
+		"tags": [
+			"AI Search Instances"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
