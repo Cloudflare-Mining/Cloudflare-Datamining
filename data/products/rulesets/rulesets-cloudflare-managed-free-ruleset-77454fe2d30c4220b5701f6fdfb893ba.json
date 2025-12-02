@@ -2,7 +2,7 @@
 	"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 	"id": "77454fe2d30c4220b5701f6fdfb893ba",
 	"kind": "managed",
-	"last_updated": "2025-04-27T02:00:29.148875Z",
+	"last_updated": "2025-12-02T19:56:42.929391Z",
 	"name": "Cloudflare Managed Free Ruleset",
 	"phase": "http_request_firewall_managed",
 	"rules": [
@@ -63,6 +63,18 @@
 			"last_updated": "2025-04-27T02:00:29.148875Z",
 			"ref": "3861aedd3c0241a792fb50b02eca0312",
 			"version": "60"
+		},
+		{
+			"action": "block",
+			"categories": [
+				"rce"
+			],
+			"description": "RCE Generic framework",
+			"enabled": true,
+			"id": "2b5d06e34a814a889bee9a0699702280",
+			"last_updated": "2025-12-02T19:56:42.929391Z",
+			"ref": "05253e585770c8f62cc649ddbfa9997a",
+			"version": "1"
 		},
 		{
 			"action": "block",
@@ -345,5 +357,5 @@
 		}
 	],
 	"source": "firewall_managed",
-	"version": "61"
+	"version": "62"
 }
