@@ -1389,6 +1389,11 @@
 								"x-auditable": true
 							}
 						},
+						"required": [
+							"hostnames",
+							"request_type",
+							"csr"
+						],
 						"type": "object"
 					}
 				}

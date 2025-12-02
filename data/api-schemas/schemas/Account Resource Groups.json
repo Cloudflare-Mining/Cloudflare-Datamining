@@ -370,125 +370,90 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
 														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
+															"pointer": {
 																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
 															}
 														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+														"type": "object"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
 										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "object"
-												}
-											}
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
 								{
 									"properties": {
 										"result": {
-											"description": "A list of resource groups that the policy applies to.",
 											"items": {
 												"description": "A group of scoped resources.",
 												"properties": {
@@ -573,7 +538,7 @@
 									"type": "object"
 								}
 							],
-							"title": "List of Resource groups"
+							"title": "List of resource groups in the account."
 						}
 					}
 				},
@@ -771,82 +736,178 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "A group of scoped resources.",
-							"properties": {
-								"id": {
-									"description": "Identifier of the resource group.",
-									"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
 								},
-								"meta": {
-									"description": "Attributes associated to the resource group.",
-									"example": {
-										"editable": "false"
-									},
+								{
 									"properties": {
-										"key": {
-											"type": "string"
-										},
-										"value": {
-											"type": "string"
+										"result": {
+											"description": "A group of scoped resources.",
+											"properties": {
+												"id": {
+													"description": "Identifier of the resource group.",
+													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"meta": {
+													"description": "Attributes associated to the resource group.",
+													"example": {
+														"editable": "false"
+													},
+													"properties": {
+														"key": {
+															"type": "string"
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"name": {
+													"description": "Name of the resource group.",
+													"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"scope": {
+													"description": "The scope associated to the resource group",
+													"items": {
+														"description": "A scope is a combination of scope objects which provides additional context.",
+														"properties": {
+															"key": {
+																"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"objects": {
+																"description": "A list of scope objects for additional context.",
+																"items": {
+																	"description": "A scope object represents any resource that can have actions applied against invite.",
+																	"properties": {
+																		"key": {
+																			"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																			"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"key"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"key",
+															"objects"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"scope"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
-								},
-								"name": {
-									"description": "Name of the resource group.",
-									"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
-								},
-								"scope": {
-									"description": "The scope associated to the resource group",
-									"items": {
-										"description": "A scope is a combination of scope objects which provides additional context.",
-										"properties": {
-											"key": {
-												"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-												"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-												"readOnly": true,
-												"x-auditable": true
-											},
-											"objects": {
-												"description": "A list of scope objects for additional context.",
-												"items": {
-													"description": "A scope object represents any resource that can have actions applied against invite.",
-													"properties": {
-														"key": {
-															"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-															"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-															"readOnly": true,
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"key"
-													],
-													"type": "object"
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"key",
-											"objects"
-										],
-										"type": "object"
-									},
-									"type": "array"
 								}
-							},
-							"required": [
-								"id",
-								"scope"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1078,55 +1139,178 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "A group of scoped resources.",
-							"properties": {
-								"id": {
-									"description": "Identifier of the group.",
-									"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
-								},
-								"meta": {
-									"description": "Attributes associated to the resource group.",
-									"example": {
-										"editable": "false"
-									},
-									"type": "object"
-								},
-								"scope": {
-									"description": "A scope is a combination of scope objects which provides additional context.",
-									"properties": {
-										"key": {
-											"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-											"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4"
-										},
-										"objects": {
-											"description": "A list of scope objects for additional context. The number of Scope objects should not be zero.",
-											"items": {
-												"description": "A scope object represents any resource that can have actions applied against invite.",
-												"properties": {
-													"key": {
-														"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-														"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5"
-													}
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
 												},
-												"required": [
-													"key"
-												],
-												"type": "object"
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"type": "array"
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
 										}
-									},
-									"required": [
-										"key",
-										"objects"
 									],
 									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A group of scoped resources.",
+											"properties": {
+												"id": {
+													"description": "Identifier of the resource group.",
+													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"meta": {
+													"description": "Attributes associated to the resource group.",
+													"example": {
+														"editable": "false"
+													},
+													"properties": {
+														"key": {
+															"type": "string"
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"name": {
+													"description": "Name of the resource group.",
+													"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"scope": {
+													"description": "The scope associated to the resource group",
+													"items": {
+														"description": "A scope is a combination of scope objects which provides additional context.",
+														"properties": {
+															"key": {
+																"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"objects": {
+																"description": "A list of scope objects for additional context.",
+																"items": {
+																	"description": "A scope object represents any resource that can have actions applied against invite.",
+																	"properties": {
+																		"key": {
+																			"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																			"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"key"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"key",
+															"objects"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"scope"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
 								}
-							},
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -1372,82 +1556,178 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"description": "A group of scoped resources.",
-							"properties": {
-								"id": {
-									"description": "Identifier of the resource group.",
-									"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
 								},
-								"meta": {
-									"description": "Attributes associated to the resource group.",
-									"example": {
-										"editable": "false"
-									},
+								{
 									"properties": {
-										"key": {
-											"type": "string"
-										},
-										"value": {
-											"type": "string"
+										"result": {
+											"description": "A group of scoped resources.",
+											"properties": {
+												"id": {
+													"description": "Identifier of the resource group.",
+													"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"meta": {
+													"description": "Attributes associated to the resource group.",
+													"example": {
+														"editable": "false"
+													},
+													"properties": {
+														"key": {
+															"type": "string"
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"name": {
+													"description": "Name of the resource group.",
+													"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"scope": {
+													"description": "The scope associated to the resource group",
+													"items": {
+														"description": "A scope is a combination of scope objects which provides additional context.",
+														"properties": {
+															"key": {
+																"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
+																"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
+																"readOnly": true,
+																"x-auditable": true
+															},
+															"objects": {
+																"description": "A list of scope objects for additional context.",
+																"items": {
+																	"description": "A scope object represents any resource that can have actions applied against invite.",
+																	"properties": {
+																		"key": {
+																			"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
+																			"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
+																			"readOnly": true,
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"key"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"key",
+															"objects"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"scope"
+											],
+											"type": "object"
 										}
 									},
 									"type": "object"
-								},
-								"name": {
-									"description": "Name of the resource group.",
-									"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-									"readOnly": true,
-									"type": "string",
-									"x-auditable": true
-								},
-								"scope": {
-									"description": "The scope associated to the resource group",
-									"items": {
-										"description": "A scope is a combination of scope objects which provides additional context.",
-										"properties": {
-											"key": {
-												"description": "This is a combination of pre-defined resource name and identifier (like Account ID etc.)",
-												"example": "com.cloudflare.api.account.eb78d65290b24279ba6f44721b3ea3c4",
-												"readOnly": true,
-												"x-auditable": true
-											},
-											"objects": {
-												"description": "A list of scope objects for additional context.",
-												"items": {
-													"description": "A scope object represents any resource that can have actions applied against invite.",
-													"properties": {
-														"key": {
-															"description": "This is a combination of pre-defined resource name and identifier (like Zone ID etc.)",
-															"example": "com.cloudflare.api.account.zone.23f8d65290b24279ba6f44721b3eaad5",
-															"readOnly": true,
-															"x-auditable": true
-														}
-													},
-													"required": [
-														"key"
-													],
-													"type": "object"
-												},
-												"type": "array"
-											}
-										},
-										"required": [
-											"key",
-											"objects"
-										],
-										"type": "object"
-									},
-									"type": "array"
 								}
-							},
-							"required": [
-								"id",
-								"scope"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
