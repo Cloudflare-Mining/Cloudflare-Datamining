@@ -2,8 +2,8 @@
 	"name": "@cloudflare/ai-gateway",
 	"dist-tags": {
 		"beta": "0.0.1",
-		"latest": "0.0.3",
-		"bin": "0.0.3-bin"
+		"bin": "0.0.3-bin",
+		"latest": "0.0.5"
 	},
 	"versions": {
 		"0.0.0": {
@@ -237,6 +237,74 @@
 			"name": "@cloudflare/ai-gateway",
 			"version": "0.0.3",
 			"dependencies": {
+				"zod": "^3.25.55",
+				"events": "^3.3.0",
+				"zod-to-json-schema": "file:./src/_vendor/zod-to-json/zod-to-json-schema/"
+			},
+			"devDependencies": {
+				"vite": "^6.3.5",
+				"vitest": "^3.2.4",
+				"typescript": "~5.8.3",
+				"@types/node": "^22.17.0",
+				"downlevel-dts": "^0.11.0",
+				"@biomejs/biome": "2.0.6",
+				"semantic-release": "^24.2.6",
+				"@vitest/coverage-v8": "^3.2.4",
+				"rollup-plugin-license": "^3.6.0",
+				"@cloudflare/workers-types": "^4.20251111.0"
+			},
+			"dist": {
+				"shasum": "357b59f91ba667b0c097e8a0c315db672a7fc0ca",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.3.tgz",
+				"fileCount": 9,
+				"integrity": "sha512-fGu7G7JZ+Et9RuQ2xohXvw15V4+aG06WjFgtndv7YI7c9yGn7v4nyzb5qtWk1FnDJfMpaPl8VOL9ZpilHSQwdA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCapLsf3op2YC8oo6QVNmYVPqFYX8VhgsiyHJ9Ojqd4IQIgFd2ZWwpDYv3Dx9KpS3asnX1YLDgOb99b7e6RtPGQJqM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 135523
+			}
+		},
+		"0.0.4": {
+			"name": "@cloudflare/ai-gateway",
+			"version": "0.0.4",
+			"dependencies": {
+				"zod": "^3.25.55",
+				"events": "^3.3.0",
+				"zod-to-json-schema": "file:./src/_vendor/zod-to-json/zod-to-json-schema/"
+			},
+			"devDependencies": {
+				"vite": "^6.3.5",
+				"vitest": "^3.2.4",
+				"typescript": "~5.8.3",
+				"@types/node": "^22.17.0",
+				"downlevel-dts": "^0.11.0",
+				"@biomejs/biome": "2.0.6",
+				"semantic-release": "^24.2.6",
+				"@vitest/coverage-v8": "^3.2.4",
+				"rollup-plugin-license": "^3.6.0",
+				"@cloudflare/workers-types": "^4.20251111.0"
+			},
+			"dist": {
+				"shasum": "5dc9fefb459d42d277d2a296a3df1aa621f8a09e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.4.tgz",
+				"fileCount": 33,
+				"integrity": "sha512-YSUy/DddioHtgG7wQd1DaWCrHLcANXQXCEGW2nB0ZYFfXzdGUlrD56vTDlzP2bGP4FFS0ixH9KOcQBk+zw8b1A==",
+				"signatures": [
+					{
+						"sig": "MEUCIHfW3ot5y9WRcpKWQbhNBzzrOQFvnGI6ptnNa6LOw2smAiEAouH1wudBSkApaX3JE5RJplSjatpAy6FsYO+PfI8edNg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 134799
+			}
+		},
+		"0.0.5": {
+			"name": "@cloudflare/ai-gateway",
+			"version": "0.0.5",
+			"dependencies": {
 				"events": "^3.3.0",
 				"zod": "^3.25.55",
 				"zod-to-json-schema": "file:./src/_vendor/zod-to-json/zod-to-json-schema/"
@@ -254,15 +322,15 @@
 				"vitest": "^3.2.4"
 			},
 			"dist": {
-				"integrity": "sha512-fGu7G7JZ+Et9RuQ2xohXvw15V4+aG06WjFgtndv7YI7c9yGn7v4nyzb5qtWk1FnDJfMpaPl8VOL9ZpilHSQwdA==",
-				"shasum": "357b59f91ba667b0c097e8a0c315db672a7fc0ca",
-				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.3.tgz",
-				"fileCount": 9,
-				"unpackedSize": 135523,
+				"integrity": "sha512-FyoiudtjDDWfoRvTBRK0h9vee2yCbqnP6nxdCvMDNOgbwSynyYxkcV+v3xCgxZEoACb9bI1muMbWEbLhh2ku5A==",
+				"shasum": "d71ac0f2b80f2dd46ba0ef0e2a38511fc04f7c77",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-gateway/-/ai-gateway-0.0.5.tgz",
+				"fileCount": 33,
+				"unpackedSize": 134876,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCapLsf3op2YC8oo6QVNmYVPqFYX8VhgsiyHJ9Ojqd4IQIgFd2ZWwpDYv3Dx9KpS3asnX1YLDgOb99b7e6RtPGQJqM="
+						"sig": "MEYCIQCnj/C2Cuquh2YQVXvA9k7jRhTabstGqUMUVszwnE0quAIhAIDnk3iWZKxVc4IcGyDeVDYn1IsFvoroLOrQVO5fw5Rb"
 					}
 				]
 			}
