@@ -1,4 +1,9 @@
 {
+	overview_page: {
+		operators_card: {
+			title: "Operators"
+		}
+	},
 	bots_page: {
 		block_all: {
 			title: "Block AI Crawlers",
@@ -206,7 +211,7 @@
 		violations: "Violations",
 		visits: "Visits"
 	},
-	description: "Analyze and block known AI crawlers from scraping your website.",
+	description: "Analyze and control how AI Crawlers access your content.",
 	documentation: "AI Crawl Control documentation",
 	metrics_page: {
 		upsell: {
@@ -432,6 +437,7 @@
 		}
 	},
 	tabs: {
+		overview: "Overview",
 		bots: "Crawlers",
 		metrics: "Metrics",
 		robots: "Robots.txt",

@@ -1,7 +1,7 @@
 {
 	header: {
 		title: "Quick start guide",
-		description: (0, o.p)(s(), "zoneName")
+		description: (0, i.p)(s(), "zoneName")
 	},
 	buttons: {
 		hide: "Hide",
@@ -9,23 +9,23 @@
 	},
 	sections: {
 		plan: {
-			header: (0, o.p)(a(), "planName"),
+			header: (0, i.p)(a(), "planName"),
 			description: "Several features are on by default, including CDN/caching, DDoS protection, SSL/TLS, and WAF. Explore other features included in your plan below and in the menu.",
-			information: (0, o.p)(l()),
+			information: (0, i.p)(l()),
 			tabs: {
 				security: {
 					header: "Security",
-					description: (0, o.p)(c())
+					description: (0, i.p)(c())
 				},
 				performance: {
 					header: "Performance",
-					description: (0, o.p)(d())
+					description: (0, i.p)(d())
 				}
 			}
 		},
 		messages: {
-			max_rules_exceeded: (0, o.p)(u(), "zonePlan"),
-			rule_deployed: (0, o.p)(p())
+			max_rules_exceeded: (0, i.p)(u(), "zonePlan"),
+			rule_deployed: (0, i.p)(p())
 		},
 		configurations: {
 			header: "Feature",
@@ -72,7 +72,7 @@
 			always_online: {
 				title: "Always Online™",
 				description: "Allow visitors to access your domain even when your origin server is unavailable by serving limited copies of pages from the Internet Archive's Wayback Machine.",
-				supplementalDetails: (0, o.p)(m())
+				supplementalDetails: (0, i.p)(m())
 			},
 			speed_optimization: {
 				title: "Speed optimizations",
@@ -85,7 +85,7 @@
 			how_cloudflare_interact: {
 				header: "Learn",
 				title: "How Cloudflare products interact with your HTTP traffic",
-				description: (0, o.p)(h(), "zoneName"),
+				description: (0, i.p)(f(), "zoneName"),
 				traffic_sequence: "Traffic Sequence"
 			},
 			rules: {

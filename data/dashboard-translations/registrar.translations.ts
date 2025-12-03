@@ -86,7 +86,7 @@
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
 		purchase_agreement: (0, r.p)(p()),
-		purchase_agreement_with_icloud: (0, r.p)(g()),
+		purchase_agreement_with_icloud: (0, r.p)(f()),
 		automatic_renewal_agreement: 'Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in <a href="/%{accountId}/billing/subscriptions" rel="noopener noreferrer" target="_blank">Billing Subscriptions</a>, or via the Domain Management page in your account for registrar, at least a day before each renewal date.',
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
@@ -96,7 +96,7 @@
 	},
 	error: {
 		title: "Error",
-		description_domain: (0, r.p)(f(), "domainName"),
+		description_domain: (0, r.p)(g(), "domainName"),
 		description: "There was an error fetching data.",
 		button: "Retry"
 	},
@@ -156,14 +156,18 @@
 	},
 	transfer_list: {
 		unlock: "Unlock domain",
-		disable_privacy: "Disable Privacy",
-		provide_foa: "Provide FOA",
-		pending_foa: "Transfer is pending FOA. Please check your email.",
+		disable_privacy: "Disable WHOIS privacy",
+		completed_foa: "Completed Form of Authorization (FOA)",
+		pending_foa: "Waiting for a Form of Authorization (FOA)",
+		pending_foa_description: (0, r.p)(k(), "days"),
 		invalid_auth_code: "Invalid auth code",
-		auth_code: "Enter auth code",
-		payment: (0, r.p)(k(), "amount"),
-		approve: (0, r.p)(A(), "registrar"),
-		success: "Transfer successful"
+		auth_code: "Enter authorization code",
+		payment: "Payment - %{amount} for %{smart_count} year |||| Payment - %{amount} for %{smart_count} years",
+		approve: "Waiting for your previous registrar to release the domain",
+		approve_description: (0, r.p)(A(), "days"),
+		success: "Domain transfer completed",
+		uk_ips_tag: "Waiting for an updated IPS tag",
+		uk_ips_tag_description: 'Request your current registrar to update the Internet Provider Security (IPS) tag for this domain to "CLOUDFLARE" and follow any additional instructions provided by your registrar to finish the transfer.'
 	},
 	registration_card: {
 		title: "Registration",
@@ -287,10 +291,10 @@
 	cor_cancel_error_message: "Unable to cancel a partially approved change of registrant request for %{domainName}",
 	renewal_info: {
 		expires_on: (0, r.p)(O(), "expiresOn"),
-		renews_on: (0, r.p)(q(), "renewsOn"),
+		renews_on: (0, r.p)(z(), "renewsOn"),
 		price: "Price",
 		price_per_year: "%{domainRenewalFee}/year",
-		billing: (0, r.p)(z(), "last4"),
+		billing: (0, r.p)(q(), "last4"),
 		billing_paypal: (0, r.p)(L(), "email"),
 		billing_cloud: (0, r.p)(Y(), "last4"),
 		fees: "Domain fees subject to change."
@@ -315,7 +319,7 @@
 	domain_page_sidebar_buy: "Buy",
 	registered_on: (0, r.p)(U(), "registration_date"),
 	success_page: {
-		page_title: (0, r.p)(B(), "domainName"),
+		page_title: (0, r.p)(W(), "domainName"),
 		page_description: "Have an idea for a website or app? Use Cloudflare to launch it with optimal security and speed.",
 		workers: {
 			title: "Deploy an application",
@@ -366,7 +370,7 @@
 		},
 		auto_renewal: {
 			title: "Auto Renew",
-			description: (0, r.p)(F(), "date")
+			description: (0, r.p)(B(), "date")
 		}
 	},
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
@@ -413,7 +417,7 @@
 	onboarding_contact_redacted: "All contact details will be redacted for privacy by default for all domains transferred.",
 	onboarding_confirm_and_finalize: "Confirm and finalize transfer",
 	onboarding_success_header: "Thanks for transferring your domain to Cloudflare",
-	onboarding_success_body: "You're on your way to having your domain transferred to Cloudflare. This process can take up to 5 days to complete, but can be faster if you were to go to your registrar and confirm the transfer. <0>Learn more about domain transfer</0>.",
+	onboarding_success_body: "You're on your way to having your domain transferred to Cloudflare. This process can take up to %{days} days to complete, but can be faster if you were to go to your registrar and confirm the transfer. <0>Learn more about domain transfer</0>.",
 	onboarding_success_goto_account: "Go to my account",
 	onboarding_success_banner_header: "Domain transfer complete!",
 	onboarding_success_banner_body: "Your transfer is complete, however Cloudflare may still be ensuring your nameservers are correct. If you see nameserver instructions below, then you can safely ignore them.",
@@ -514,7 +518,7 @@
 	auth_code_section_title: "Authorization code required",
 	auth_code_section_description: "You may have entered the incorrect auth code for this domain.",
 	auth_code_section_submit: "Submit auth code",
-	cancel_transfer_title: "Cancel",
+	cancel_transfer_title: "Cancel domain transfer",
 	cancel_transfer_body: "If you believe an issue has occurred during your transfer, you can cancel this request and restart the process. You will not be billed twice for the same domain.",
 	cancel_transfer_close: "Close",
 	cancel_transfer_cancel: "Cancel transfer",
@@ -598,13 +602,13 @@
 	retry_transfer_body: "It appears that the transfer at your previous registrar was cancelled. To continue transferring to Cloudflare, enter a new auth code and click retry. You will not be billed twice.",
 	retry_transfer_retry: "Retry transfer",
 	retry_transfer_auth_code: "Auth code",
-	wizard_step_indicator: (0, r.p)(W(), "currentStep", "totalSteps"),
+	wizard_step_indicator: (0, r.p)(F(), "currentStep", "totalSteps"),
 	wizard_auth_code_tooltip: "There was an error with the request. Please try again.",
 	wizard_error_no_domains: "Select at least one domain to transfer",
 	wizard_error_no_auth_key: "All authorization codes must be valid to continue",
 	wizard_error_billing_permissions: "You need permission to manage billing in order to transfer a domain. Please reach out to a super-admin on the account for assistance.",
 	wizard_error_required_fields: "Complete all required fields",
-	wizard_legal: 'By clicking "Confirm and Finalize Transfer" or "Pay with PayPal" you agree to purchasing an annual subscription that renews automatically, unless you cancel your subscription(s) through your account dashboard before the next billing period begins. Early cancellation incurs charges for the entire subscription period. Your invoice will include any final sales tax, including state and local taxes when applicable. Visit <0>Domain Registration Agreement</0> for additional information about Cloudflare\'s billing, renewal, and cancellation policies.<br /><br />If you elect to enable DNSSEC for any .uk domain, please note that Nominet, the .UK Registry, accepts no liability in relation to the operation or use of DNSSEC records. They will take reasonable steps to correct any error in the DNSSEC records, where such an error is as a result of a mistake on their part, but will otherwise accept no liability for the error. Registrants accept all risk in relation to the use of DNSSEC in relation to their domain names.',
+	wizard_legal: 'By clicking "Confirm transfer" or "Pay with PayPal" you agree to purchasing an annual subscription that renews automatically, unless you cancel your subscription(s) through your account dashboard before the next billing period begins. Early cancellation incurs charges for the entire subscription period. Your invoice will include any final sales tax, including state and local taxes when applicable. Visit <0>Domain Registration Agreement</0> for additional information about Cloudflare\'s billing, renewal, and cancellation policies.<br /><br />If you elect to enable DNSSEC for any .uk domain, please note that Nominet, the .UK Registry, accepts no liability in relation to the operation or use of DNSSEC records. They will take reasonable steps to correct any error in the DNSSEC records, where such an error is as a result of a mistake on their part, but will otherwise accept no liability for the error. Registrants accept all risk in relation to the use of DNSSEC in relation to their domain names.',
 	validation_transfer_waiting: "Registered in last 60 days",
 	cannot_transfer: "%{domainName} cannot be transferred",
 	cannot_transfer_domain: "Domain",
@@ -720,11 +724,11 @@
 	wizard_two_no_auth_code_required: "No authorization code required.",
 	wizard_four_title: "Enter contact and payment information",
 	wizard_three_description: "Make sure your contact information (also known as WHOIS) is up-to-date to avoid domain suspension or deletion by <0>ICANN</0>.",
-	wizard_four_continue_button: "Continue to transfer status",
+	wizard_four_continue_button: "Confirm transfer",
 	wizard_four_body_intro: "Let's make sure your contact information is accurate.",
 	wizard_four_whois_redaction_notice: "Cloudflare provides free WHOIS redaction to safeguard your personal contact details from spam and potential threats. We cannot control if the top-level domain registry displays this information.",
 	wizard_four_nexus_information_title: ".us Nexus Requirements Policy",
-	wizard_four_us_tld: "An email may be sent to the Registrant email address, if found in WHOIS. Please check your email for a confirmation request.",
+	wizard_four_us_tld: "An email may be sent to the address listed in your domain's WHOIS record. Check your email for a confirmation request to approve the transfer.",
 	wizard_four_payment_title: "Payment",
 	wizard_four_total: "Total",
 	wizard_four_errors: {
@@ -755,19 +759,27 @@
 	wizard_four_post_x_text: "I just started transferring my domains to Cloudflare, the world's first no-markup registrar.",
 	wizard_four_transfers_failed: "Something went wrong...",
 	wizard_four_transfers_failed_details: "The following domains failed to transfer:",
-	wizard_four_transfers_some_failed_details: "Some domains failed to transfer. See below for details per domain.",
-	wizard_four_transfers_underway: "Your transfers are now underway!",
+	wizard_four_transfers_some_failed_details: "Some domains couldn't be transferred. See the details below for each domain.",
+	wizard_four_transfers_underway: "Waiting for your previous registrar to release the domain",
 	wizard_four_transfer_uk: 'Please request your current Registrar to update the IPS Tag to "CLOUDFLARE".',
-	wizard_four_success_subheading: "Keep going while you wait",
+	wizard_four_success_subheading: "While you wait",
 	wizard_four_keep_going: "While waiting for your domain transfer to finish, explore the following:",
-	wizard_four_deploy_app_title: "Deploy an application",
-	wizard_four_deploy_app_description: "Deploy full-stack applications to the Cloudflare network in just a few clicks.",
-	wizard_four_deploy_app_button_title: "Start building",
-	wizard_four_add_more_domains_title: "Add more domains",
-	wizard_four_add_more_domains_description: "Have more domains? Add them to your Cloudflare account to begin transfer to Cloudflare Registrar.",
+	wizard_four_optimize_traffic_title: "See how we optimize your web traffic",
+	wizard_four_optimize_traffic_description: "By using Cloudflare, any websites, apps, and services on your domain are automatically faster and protected from attacks.",
+	wizard_four_optimize_traffic_button_security: "Manage security",
+	wizard_four_optimize_traffic_button_performance: "Manage performance",
+	wizard_four_deploy_workers_title: "Deploy a website or app on your domain",
+	wizard_four_deploy_workers_description: "Build anything from a simple website to a full-stack application with integrated compute, AI, storage, and media services.",
+	wizard_four_deploy_workers_button_import_repository: "Import a repository",
+	wizard_four_deploy_workers_button_start_template: "Start from a template",
+	wizard_four_transfer_another_domain_title: "Transfer another domain",
+	wizard_four_transfer_another_domain_description: "Manage all of your domains in one place and save on renewal costs.",
+	wizard_four_transfer_another_domain_button_onboard: "Onboard a domain",
+	wizard_four_transfer_another_domain_button_register: "Register a new domain",
 	wizard_four_share_journey_title: "Share your journey",
 	wizard_four_thanks: "Thanks for transferring your domains to Cloudflare.",
-	wizard_four_thanks_info: "Your current registrar can wait up to five days to transfer your domain to Cloudflare. However, you can request they release the domain earlier by responding to their confirmation email or approving the transfer in their dashboard.",
+	wizard_four_thanks_info: "You can speed things up by approving the transfer through your previous registrar's email or dashboard. Otherwise, it may take up to 7 days.",
+	wizard_four_thanks_info_mx: "Please note that .mx domains may take up to 10 days.",
 	wizard_four_start_over: "Start new transfer",
 	wizard_four_view_status: "View transfer status",
 	registration_checkout_back: "Back to find a domain",
@@ -1055,7 +1067,7 @@
 			new_code: (0, r.p)(j()),
 			button: "Verify Code",
 			error: {
-				too_many_attempts: (0, r.p)(K(), "date")
+				too_many_attempts: (0, r.p)(Z(), "date")
 			}
 		},
 		confirmation_modal: {
@@ -1063,7 +1075,7 @@
 			button: "Delete Domain Permanently"
 		},
 		notifications: {
-			success: (0, r.p)(Z(), "domainName")
+			success: (0, r.p)(K(), "domainName")
 		},
 		errors: {
 			title: "Error:",
