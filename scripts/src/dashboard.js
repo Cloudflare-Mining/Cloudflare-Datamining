@@ -180,6 +180,10 @@ async function getChunks() {
 
 	// Fetch all entry scripts and look for chunk mappings in each
 	const allChunkHashes = new Set();
+	let bundlerVersion = null;
+
+	// Pattern to extract bundler version: bundler=rspack@1.5.8
+	const bundlerPattern = /bundler=([\w-]+@[\d.]+)/;
 
 	for (const script of scriptsToFetch) {
 		console.log(`Fetching ${staticDashURL}${script.file}`);
@@ -190,6 +194,15 @@ async function getChunks() {
 				continue;
 			}
 			const jsContent = await res.text();
+
+			// Extract bundler version if present (typically in runtime.js)
+			if (!bundlerVersion) {
+				const bundlerMatch = bundlerPattern.exec(jsContent);
+				if (bundlerMatch) {
+					bundlerVersion = bundlerMatch[1];
+					console.log(`Found bundler version: ${bundlerVersion}`);
+				}
+			}
 
 			// Look for chunk mappings using multiple strategies
 			const hexHashPattern = /^[\da-f]{16}$/;
@@ -275,7 +288,10 @@ async function getChunks() {
 	}
 
 	console.log(`Total unique chunk hashes found: ${allChunkHashes.size}`);
-	return [...allChunkHashes];
+	return {
+		chunks: [...allChunkHashes],
+		bundlerVersion,
+	};
 }
 
 const dashStructure = ['src', 'apps', 'dash'];
@@ -922,10 +938,19 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 
 async function run() {
 	console.log('Fetching main chunk...');
-	const chunks = await getChunks();
+	const chunkData = await getChunks();
+	if (!chunkData) {
+		console.error('Failed to get chunks!');
+		return;
+	}
+	const { chunks, bundlerVersion } = chunkData;
 
 	console.log('Fetching and analysing additional chunks...');
 	const wantedChunks = await findWantedChunks(chunks);
+	// Attach bundler version to wantedChunks for later use
+	if (wantedChunks) {
+		wantedChunks.bundlerVersion = bundlerVersion;
+	}
 
 	if (!wantedChunks || wantedChunks.dashboard === null) {
 		console.error('Failed to find main chunk!');
@@ -1069,6 +1094,12 @@ async function run() {
 		const rawDashInfo = wantedChunks.dashboard.code.slice(dashInfo.start, dashInfo.end);
 		// eslint-disable-next-line no-eval
 		const realDashInfo = eval('(function run(){return ' + rawDashInfo + '})()');
+
+		// Add bundler version if available (e.g., rspack@1.5.8)
+		if (wantedChunks.bundlerVersion) {
+			realDashInfo.bundler = wantedChunks.bundlerVersion;
+		}
+
 		// write serialised version
 		const file = path.resolve('../data/dashboard/info.json');
 		fs.ensureDir(path.dirname(file));
