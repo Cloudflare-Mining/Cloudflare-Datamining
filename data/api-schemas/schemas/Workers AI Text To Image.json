@@ -220,6 +220,144 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/black-forest-labs/flux-2-dev": {
+		"operationId": "workers-ai-post-run-cf-black-forest-labs-flux-2-dev",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"multipart": {
+								"properties": {
+									"body": {
+										"type": "object"
+									},
+									"contentType": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"multipart"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/black-forest-labs/flux-2-dev model.",
+		"tags": [
+			"Workers AI Text To Image"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@cf/bytedance/stable-diffusion-xl-lightning": {
 		"operationId": "workers-ai-post-run-cf-bytedance-stable-diffusion-xl-lightning",
 		"parameters": [

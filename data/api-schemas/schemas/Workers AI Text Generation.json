@@ -3342,7 +3342,7 @@
 								"required": [
 									"prompt"
 								],
-								"title": "Google_Gemma_3_12B_It_Prompt"
+								"title": "Prompt"
 							},
 							{
 								"properties": {
@@ -3617,7 +3617,7 @@
 								"required": [
 									"messages"
 								],
-								"title": "Google_Gemma_3_12B_It_Messages"
+								"title": "Messages"
 							}
 						],
 						"type": "object"
@@ -10581,7 +10581,7 @@
 								"required": [
 									"prompt"
 								],
-								"title": "Meta_Llama_3_3_70B_Instruct_Fp8_Fast_Prompt"
+								"title": "Prompt"
 							},
 							{
 								"properties": {
@@ -10841,7 +10841,7 @@
 								"required": [
 									"messages"
 								],
-								"title": "Meta_Llama_3_3_70B_Instruct_Fp8_Fast_Messages"
+								"title": "Messages"
 							},
 							{
 								"properties": {
@@ -11143,7 +11143,7 @@
 								"required": [
 									"prompt"
 								],
-								"title": "Ai_Cf_Meta_Llama_4_Prompt"
+								"title": "Prompt"
 							},
 							{
 								"properties": {
@@ -11459,7 +11459,7 @@
 								"required": [
 									"messages"
 								],
-								"title": "Ai_Cf_Meta_Llama_4_Messages"
+								"title": "Messages"
 							},
 							{
 								"properties": {
@@ -11553,7 +11553,7 @@
 													"required": [
 														"prompt"
 													],
-													"title": "Ai_Cf_Meta_Llama_4_Prompt_Inner"
+													"title": "Prompt_Inner"
 												},
 												{
 													"properties": {
@@ -11869,7 +11869,7 @@
 													"required": [
 														"messages"
 													],
-													"title": "Ai_Cf_Meta_Llama_4_Messages_Inner"
+													"title": "Messages_Inner"
 												}
 											],
 											"type": "object"
@@ -11880,7 +11880,7 @@
 								"required": [
 									"requests"
 								],
-								"title": "Ai_Cf_Meta_Llama_4_Async_Batch",
+								"title": "Async_Batch",
 								"type": "object"
 							}
 						],
@@ -13692,7 +13692,7 @@
 								"required": [
 									"prompt"
 								],
-								"title": "Mistral_Small_3_1_24B_Instruct_Prompt"
+								"title": "Prompt"
 							},
 							{
 								"properties": {
@@ -13994,7 +13994,7 @@
 								"required": [
 									"messages"
 								],
-								"title": "Mistral_Small_3_1_24B_Instruct_Messages"
+								"title": "Messages"
 							}
 						],
 						"type": "object"
@@ -14166,7 +14166,7 @@
 								"required": [
 									"input"
 								],
-								"title": "GPT_OSS_120B_Responses",
+								"title": "Responses",
 								"type": "object"
 							},
 							{
@@ -14221,7 +14221,7 @@
 								"required": [
 									"requests"
 								],
-								"title": "GPT_OSS_120B_Responses_Async",
+								"title": "Async Request",
 								"type": "object"
 							}
 						]
@@ -14388,7 +14388,7 @@
 								"required": [
 									"input"
 								],
-								"title": "GPT_OSS_20B_Responses",
+								"title": "Responses",
 								"type": "object"
 							},
 							{
@@ -14443,7 +14443,7 @@
 								"required": [
 									"requests"
 								],
-								"title": "GPT_OSS_20B_Responses_Async",
+								"title": "Responses_Async",
 								"type": "object"
 							}
 						]
@@ -17046,7 +17046,7 @@
 								"required": [
 									"prompt"
 								],
-								"title": "Qwen2_5_Coder_32B_Instruct_Prompt"
+								"title": "Prompt"
 							},
 							{
 								"properties": {
@@ -17306,7 +17306,7 @@
 								"required": [
 									"messages"
 								],
-								"title": "Qwen2_5_Coder_32B_Instruct_Messages"
+								"title": "Messages"
 							}
 						],
 						"type": "object"
@@ -18354,7 +18354,7 @@
 								"required": [
 									"prompt"
 								],
-								"title": "Qwen_Qwq_32B_Prompt"
+								"title": "Prompt"
 							},
 							{
 								"properties": {
@@ -18656,7 +18656,7 @@
 								"required": [
 									"messages"
 								],
-								"title": "Qwen_Qwq_32B_Messages"
+								"title": "Messages"
 							}
 						],
 						"type": "object"
