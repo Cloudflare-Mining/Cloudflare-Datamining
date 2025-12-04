@@ -1748,7 +1748,7 @@
 		]
 	},
 	"prg-log-explorer-empty-state-optimizations": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"baseline",
 			"variant-a",
@@ -1871,6 +1871,9 @@
 			"baseline",
 			"experiment"
 		]
+	},
+	"prg-smart-shield-personalized-messaging": {
+		"enabled": false
 	},
 	"prg-streaming-checkout-consolidation-experiment": {
 		"enabled": true,
