@@ -39,13 +39,13 @@
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "theNET | Balancing privacy and business risk",
-					"metaDescription": "While the ROI of security investment can be difficult to calculate, the risks and benefits are clear. Weak cyber security practices mean a company will almost certainly experience a data breach sooner rather than later, and then the only question is the order of magnitude of dollars lost, reputational damage, and downstream harms to the individuals who trusted the company with their personal data.",
+					"metaDescription": "While the ROI of security investment can be difficult to calculate, the risks and benefits are clear. Weak cybersecurity practices mean a company will almost certainly experience a data breach sooner rather than later, and then the only question is the order of magnitude of dollars lost, reputational damage, and downstream harms to the individuals who trusted the company with their personal data.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1p2Q67hR6QqprQx4RY2pO0/10931018f8d6efecdd2ea2859e67d360/Pursuing-privacy.png"
 						},
-						"description": "Balancing privacy and business risk - image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": [
@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-05-14T19:16:03.806Z",
-					"updatedAt": "2025-07-23T09:33:05.953Z"
+					"updatedAt": "2025-12-04T18:51:21.766Z"
 				},
 				"contentfulId": "15iBq3gOraEwzlSjzcisKZ",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -466,7 +478,7 @@
 														{
 															"contentfulId": "1p2Q67hR6QqprQx4RY2pO0",
 															"locale": "en-US",
-															"title": "Balancing privacy and business risk - image",
+															"title": "theNET - Balancing privacy and business risk - Meta - Image",
 															"file": {
 																"name": "Pursuing-privacy.png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1p2Q67hR6QqprQx4RY2pO0/10931018f8d6efecdd2ea2859e67d360/Pursuing-privacy.png",
@@ -570,7 +582,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Keeping personal data private and company resources safe are two of the primary goals of a corporate cyber security program. In a ",
+													"value": "Keeping personal data private and company resources safe are two of the primary goals of a corporate cybersecurity program. In a ",
 													"marks": [],
 													"content": null
 												},
@@ -963,7 +975,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Corporate cyber security solutions are designed to address a variety of different threats to an organization. For example, one common threat is the potential for data breaches, which had an ",
+													"value": "Corporate cybersecurity solutions are designed to address a variety of different threats to an organization. For example, one common threat is the potential for data breaches, which had an ",
 													"marks": [],
 													"content": null
 												},
@@ -1098,7 +1110,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "While this is only a rough estimate, it demonstrates that the potential annual cost to an under-protected company is likely in the tens of millions, if not more. Additionally, the potential impacts of cyber security incidents on an organization's customers are incalculable. Diving into the details of major data breaches, you'll quickly find that most were made possible by a number of fundamental security issues. Weak passwords expired certificates, and other failures of basic security hygiene are often the root cause of major security incidents. Cyber security solutions that help to mitigate these risks and protect against the most common types of security breaches — such as ",
+													"value": "While this is only a rough estimate, it demonstrates that the potential annual cost to an under-protected company is likely in the tens of millions, if not more. Additionally, the potential impacts of cybersecurity incidents on an organization's customers are incalculable. Diving into the details of major data breaches, you'll quickly find that most were made possible by a number of fundamental security issues. Weak passwords expired certificates, and other failures of basic security hygiene are often the root cause of major security incidents. Cybersecurity solutions that help to mitigate these risks and protect against the most common types of security breaches — such as ",
 													"marks": [],
 													"content": null
 												},
@@ -1179,7 +1191,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -1289,7 +1301,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In many cases, the benefits of a new security solution are clear: It provides a certain reduction in the risk of a cyberattack. Preventing even a single cyberattack can provide significant cost savings for the organization. By the numbers, if the annual cost of a cyber security solution is less than the anticipated savings, then it's a worthwhile investment. ",
+													"value": "In many cases, the benefits of a new security solution are clear: It provides a certain reduction in the risk of a cyberattack. Preventing even a single cyberattack can provide significant cost savings for the organization. By the numbers, if the annual cost of a cybersecurity solution is less than the anticipated savings, then it's a worthwhile investment. ",
 													"marks": [],
 													"content": null
 												}
@@ -1329,7 +1341,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "security vendors have been victims of cyber security attacks",
+															"value": "security vendors have been victims of cybersecurity attacks",
 															"marks": [],
 															"content": null
 														}
@@ -1485,7 +1497,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust access management",
+															"value": "zero trust access management",
 															"marks": [],
 															"content": null
 														}
@@ -1574,7 +1586,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "While the ROI of security investment can be difficult to calculate, the risks and benefits are clear. Weak cyber security practices mean a company will almost certainly experience a data breach sooner rather than later, and then the only question is the order of magnitude of dollars lost, reputational damage, and downstream harms to the individuals who trusted the company with their personal data. ",
+													"value": "While the ROI of security investment can be difficult to calculate, the risks and benefits are clear. Weak cybersecurity practices mean a company will almost certainly experience a data breach sooner rather than later, and then the only question is the order of magnitude of dollars lost, reputational damage, and downstream harms to the individuals who trusted the company with their personal data. ",
 													"marks": [],
 													"content": null
 												}
@@ -1858,7 +1870,11 @@
 																"uri": null
 															},
 															"value": "Unified protection for data everywhere",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1869,7 +1885,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "  brief. \n\n",
+													"value": " brief. \n\n",
 													"marks": [],
 													"content": null
 												},
@@ -1891,7 +1907,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "3sOwZ8OjU503xlqgKD98lv",
-																	"elementName": "Balancing privacy and business risk - Dive deeper CTA - /lp/unified-protection-cloudflare-one/",
+																	"elementName": "theNET - Balancing privacy and business risk - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the brief!",
 																	"url": "/lp/unified-protection-cloudflare-one/",
@@ -2465,7 +2481,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Series: Pursuing privacy-first security",
+																			"value": "Pursuing privacy-first security",
 																			"marks": [],
 																			"content": null
 																		}

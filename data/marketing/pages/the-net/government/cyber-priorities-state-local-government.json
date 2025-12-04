@@ -45,7 +45,7 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ofDCCT0vxWvn9cVqRvx67/06575aa575de269c04afcee998f24823/BDES-7196_Create_theNET_series_banner-_Dan_Kent_BDES-7196_2__3_.png"
 						},
-						"description": "theNET - Top cyber security priorities for state and local government - Meta Image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
@@ -451,7 +451,7 @@
 														{
 															"contentfulId": "6ofDCCT0vxWvn9cVqRvx67",
 															"locale": "en-US",
-															"title": "theNET - Top cyber security priorities for state and local government - Meta Image",
+															"title": "theNET - Top cybersecurity priorities for state and local government - Meta - Image",
 															"file": {
 																"name": "BDES-7196_Create theNET series banner- Dan Kent_BDES-7196_2 (3).png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ofDCCT0vxWvn9cVqRvx67/06575aa575de269c04afcee998f24823/BDES-7196_Create_theNET_series_banner-_Dan_Kent_BDES-7196_2__3_.png",
@@ -3654,27 +3654,6 @@
 											]
 										},
 										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "This article was originally produced for Government Technology.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
 											"nodeType": "hr",
 											"data": {
 												"target": null,
@@ -4388,8 +4367,22 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about how Cloudflare can help your state or local government agency address cybersecurity challenges with the ",
+													"value": "Learn more about how Cloudflare can help your state or local government agency address cybersecurity challenges with the",
 													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"content": null
 												},
 												{
@@ -4408,7 +4401,11 @@
 																"uri": null
 															},
 															"value": "Cloudflare for State & Local government",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -4419,7 +4416,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " brief.",
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "brief.",
 													"marks": [],
 													"content": null
 												}
@@ -4443,7 +4454,7 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "4dO3613CAMN08hBaZKu7rJ",
-															"elementName": "theNET - Top cybersecurity priorities for state and local government - Dive deeper - Content - Button",
+															"elementName": "theNET - Top cybersecurity priorities for state and local government - Dive Deeper - Button",
 															"standardText": null,
 															"text": "Get the brief!",
 															"url": "lp/cloudflare-for-state-and-local-government/",

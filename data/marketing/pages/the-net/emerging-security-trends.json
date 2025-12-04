@@ -45,14 +45,14 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76m4sLyjs0AxUXz3siNugK/2beaa8fddb5227b45646a650216db55f/threeemergingthreats.png"
 						},
-						"description": "Three emerging threats - image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-05-09T16:38:32.585Z",
-					"updatedAt": "2025-04-24T08:58:11.566Z"
+					"updatedAt": "2025-12-04T19:28:40.665Z"
 				},
 				"contentfulId": "5sHscywyZduCmq3PArEH3r",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -481,7 +493,7 @@
 														{
 															"contentfulId": "76m4sLyjs0AxUXz3siNugK",
 															"locale": "en-US",
-															"title": "Three emerging threats - image",
+															"title": "theNET - Three emerging security trends - Meta - Image",
 															"file": {
 																"name": "threeemergingthreats.png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76m4sLyjs0AxUXz3siNugK/2beaa8fddb5227b45646a650216db55f/threeemergingthreats.png",
@@ -779,7 +791,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust principles",
+															"value": "zero trust principles",
 															"marks": [],
 															"content": null
 														}
@@ -1436,7 +1448,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust Network Access",
+															"value": "Zero trust network access",
 															"marks": [],
 															"content": null
 														}
@@ -1469,7 +1481,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "ZTNA is a common starting point for organizations adopting Zero Trust. According to an ESG study* of 200 cyber security and IT professionals, the two highest ranked ",
+													"value": "ZTNA is a common starting point for organizations adopting zero trust. According to an ESG study* of 200 cybersecurity and IT professionals, the two highest ranked ",
 													"marks": [],
 													"content": null
 												},
@@ -1500,7 +1512,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " for initial Zero Trust implementation are enforcing Zero Trust Application Access (ZTAA) policies for SaaS applications and deploying Zero Trust Network Access (",
+													"value": " for initial zero trust implementation are enforcing zero trust application access (ZTAA) policies for SaaS applications and deploying ",
 													"marks": [],
 													"content": null
 												},
@@ -1531,7 +1543,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ") for private applications. And in fact, 75% of cyber security and IT professionals currently using ZTNA report that they have replaced or plan to move away from VPNs for all employees.",
+													"value": " for private applications. And in fact, 75% of cybersecurity and IT professionals currently using ZTNA report that they have replaced or plan to move away from VPNs for all employees.",
 													"marks": [],
 													"content": null
 												}
@@ -1596,7 +1608,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "roadmap for Zero Trust adoption",
+															"value": "roadmap for zero trust adoption",
 															"marks": [],
 															"content": null
 														}
@@ -1953,7 +1965,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about the latest security trends by reading Cloudflare's new report: ",
+													"value": "Learn more about the latest security trends in the ",
 													"marks": [],
 													"content": null
 												},
@@ -1972,7 +1984,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Security Brief: Threats against people, apps, and infrastructure",
+															"value": "Threats against people, apps, and infrastructure",
 															"marks": [
 																{
 																	"type": "italic"
@@ -1988,7 +2000,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".",
+													"value": " brief.",
 													"marks": [],
 													"content": null
 												}
@@ -2009,7 +2021,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
+													"value": " ",
 													"marks": [],
 													"content": null
 												},
@@ -2031,7 +2043,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "1SGIHAIcMUkxK13YkMH4nz",
-																	"elementName": "Three emerging security trends - Dive deeper - CTA",
+																	"elementName": "theNET - Three emerging security trends - Dive deeper - Button",
 																	"standardText": null,
 																	"text": "Get the brief!",
 																	"url": "/lp/2024-global-security-brief/",
@@ -2163,7 +2175,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How Security is ",
+																	"value": "How security is ",
 																	"marks": [],
 																	"content": null
 																},
@@ -2452,7 +2464,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Security Brief: Threats against people, apps, and infrastructure",
+																			"value": "Threats against people, apps, and infrastructure",
 																			"marks": [],
 																			"content": null
 																		}

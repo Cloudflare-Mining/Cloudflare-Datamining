@@ -45,7 +45,7 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41KXw0DHzg1UkzDQt8lwD3/cdafbf270b1be6240f4b562759639dc9/pursuingpprivacy.png"
 						},
-						"description": "Pursuing privacy"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": [
@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-02-15T14:39:06.311Z",
-					"updatedAt": "2025-11-22T10:42:32.767Z"
+					"updatedAt": "2025-12-04T19:46:31.193Z"
 				},
 				"contentfulId": "5E6jDxTFpYIomF4ULT8TQ4",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "24o5tCgFBQnUcPBmqnylmj",
-					"headerText": "Leadership Perspectives: Tackling Digital Modernization",
-					"subHeadingText": "Learn how tech leaders are integrating AI into apps, securing complex networks, and more.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "3Fi3OccICJxA9kqPWnm9xz",
-						"elementName": "theNET - Tackling digital modernization: Leadership perspectives - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the quarterly magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/digital-modernization/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -726,7 +738,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "For example, consider the case of network traffic analysis. Packet inspection is an invaluable tool for a corporate cyber security program. ",
+													"value": "For example, consider the case of network traffic analysis. Packet inspection is an invaluable tool for a corporate cybersecurity program. ",
 													"marks": [],
 													"content": null
 												},
@@ -1294,7 +1306,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust product suite",
+															"value": "zero trust product suite",
 															"marks": [],
 															"content": null
 														}
@@ -1978,8 +1990,22 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about Cloudflare's approach to privacy-led security in the ",
+													"value": "Learn more about Cloudflare's approach to privacy-led security in the",
 													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
 													"content": null
 												},
 												{
@@ -1998,7 +2024,11 @@
 																"uri": null
 															},
 															"value": "Cloudflare One for Data Protection",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2009,7 +2039,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " solution brief.",
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "solution brief.",
 													"marks": [],
 													"content": null
 												}
@@ -2052,7 +2096,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "79pbqzjQjF7gYriX6xetCk",
-																	"elementName": "Pursuing privacy-first security -  Dive deeper - CTA",
+																	"elementName": "theNET - Pursuing privacy-first security - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the brief!",
 																	"url": "https://www.cloudflare.com/lp/unified-protection-cloudflare-one/",
@@ -2508,7 +2552,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Cloudflare One for Data Protection - Solution Brief",
+																			"value": "Cloudflare One for Data Protection",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2571,7 +2615,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Series: Pursuing privacy-first security",
+																			"value": "Pursuing privacy-first security",
 																			"marks": [],
 																			"content": null
 																		}
