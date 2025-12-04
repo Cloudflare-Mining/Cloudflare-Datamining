@@ -295,6 +295,10 @@
 			gitlab: {
 				degraded: "GitLab is having an incident and push events to Cloudflare are operating in a degraded state. Check their <0>status page</0> for more details.",
 				down: "GitLab is having an incident and push events to Cloudflare are down. Check their <0>status page</0> for more details."
+			},
+			gitlab_internal: {
+				degraded: "Internal GitLab is having an incident and push events to Cloudflare are operating in a degraded state. Check their <0>status page</0> for more details.",
+				down: "Internal GitLab is having an incident and push events to Cloudflare are down. Check their <0>status page</0> for more details."
 			}
 		},
 		new_git_connections_unsupported: ("\n      Adding new git connections is not currently supported.\n      Please add the connection in Pages first or wait for\n      Christian's PR to land.\n    ").split(" ").map(e => e.trim()).join(" "),

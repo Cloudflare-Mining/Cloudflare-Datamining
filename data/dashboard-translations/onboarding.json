@@ -344,7 +344,7 @@
 	"onboarding.nameserver_directions.step_three.replace_nameservers": "Replace your current nameservers with Cloudflare nameservers",
 	"onboarding.nameserver_directions.step_three.description": "This is unlikely to cause downtime, but you may skip this and check your <0>DNS records</0> first.",
 	"onboarding.nameserver_directions.step_three.find_nameservers": "Find the nameservers section",
-	"onboarding.nameserver_directions.step_three.add_nameservers": "Add both of your assigned Cloudflare nameservers:",
+	"onboarding.nameserver_directions.step_three.add_nameservers": "Add each of your assigned Cloudflare nameservers:",
 	"onboarding.nameserver_directions.step_three.delete_your_nameservers": "Delete your other nameservers:",
 	"onboarding.nameserver_directions.step_three.delete_any_other_nameservers": "Delete any other nameservers",
 	"onboarding.nameserver_directions.step_three.save_changes": "Save your changes",
@@ -547,5 +547,9 @@
 	"zero_trust.path_picker.heading": "Cloudflare Zero Trust",
 	"zero_trust.path_picker.subheading": "Replace legacy security perimeters with Cloudflare’s global edge, making the Internet faster and safer for both teams and home networks.",
 	"zero_trust.pick_task.heading": "What do you want to do first?",
-	"zero_trust.pick_task.subheading": "We’ll quickly guide you through set-up and how to get started."
+	"zero_trust.pick_task.subheading": "We’ll quickly guide you through set-up and how to get started.",
+	"onboarding.proxy_warning.modal.title": "%{zoneName} is not fully protected",
+	"onboarding.proxy_warning.modal.description": "All of your DNS records are set to a proxy status of <0>DNS only</0>. Update one or more records to <1>proxied</1> to benefit from DDoS protection, security rules, caching, and more.",
+	"onboarding.proxy_warning.modal.later": "I'll do this later",
+	"onboarding.proxy_warning.modal.go_back": "Go back"
 }

@@ -107,7 +107,8 @@
 			all_authors: "All Authors",
 			all_types: "All Types",
 			all_models: "All Models",
-			all_active_models: "Active Models (Last 30 days)"
+			all_active_models: "Active Models (Last 30 days)",
+			all_tags: "All Tags"
 		}
 	},
 	create_ai_worker: "Create an AI Model Worker",

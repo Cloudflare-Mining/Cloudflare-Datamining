@@ -134,6 +134,14 @@
 			viewTrace: "View trace"
 		}
 	},
+	table: {
+		actions: {
+			filterEquals: "Filter: equals",
+			filterNotEquals: "Filter: not equals",
+			filterGreaterThan: "Filter: greater than",
+			filterLessThan: "Filter: less than"
+		}
+	},
 	invocation: {
 		invocationId: "Invocation ID: %{requestId}"
 	},

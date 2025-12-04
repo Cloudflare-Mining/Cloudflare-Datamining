@@ -47,7 +47,8 @@
 			super_bot_fight_mode: {
 				title: "Super Bot Fight Mode",
 				business_description: "Block AI bots and challenge complex bots using machine learning and prevent threats like content scraping using the standard configuration of Super Bot Fight Mode.",
-				pro_description: "Block AI bots and challenge bots from any source that may carry out attacks like content scraping and credential stuffing using the standard configuration of Super Bot Fight Mode."
+				pro_description: "Block AI bots and challenge bots from any source that may carry out attacks like content scraping and credential stuffing using the standard configuration of Super Bot Fight Mode.",
+				footer: (0, i.p)(m())
 			},
 			page_shield: {
 				title: "Page Shield",
@@ -58,8 +59,8 @@
 				description: "Minimize security risk from new attack types as they are identified by deploying the constantly updated, Cloudflare Managed Ruleset."
 			},
 			leaked_credentials: {
-				title: "Leaked credentials detection",
-				description: "Deploy a rate limiting rule to meter the number of requests from IP addresses attempting to use leaked or stolen passwords for 10 seconds."
+				title: "Leaked credentials mitigation",
+				description: "Turn on leaked credentials detection and deploy a rate limiting rule to meter the number of requests from IP addresses attempting to use leaked or stolen passwords for 10 seconds."
 			},
 			owasp_managed_rules: {
 				title: "OWASP Core Ruleset for WAF",
@@ -72,7 +73,7 @@
 			always_online: {
 				title: "Always Online™",
 				description: "Allow visitors to access your domain even when your origin server is unavailable by serving limited copies of pages from the Internet Archive's Wayback Machine.",
-				supplementalDetails: (0, i.p)(m())
+				supplementalDetails: (0, i.p)(f())
 			},
 			speed_optimization: {
 				title: "Speed optimizations",
@@ -85,7 +86,7 @@
 			how_cloudflare_interact: {
 				header: "Learn",
 				title: "How Cloudflare products interact with your HTTP traffic",
-				description: (0, i.p)(f(), "zoneName"),
+				description: (0, i.p)(h(), "zoneName"),
 				traffic_sequence: "Traffic Sequence"
 			},
 			rules: {

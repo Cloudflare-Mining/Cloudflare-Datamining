@@ -747,5 +747,7 @@
 	"dns.analytics.timeseries.datetime.hour": "Queries (per hour)",
 	"dns.analytics.timeseries.datetime.day": "Queries (per day)",
 	"dns.records.survey": "Have feedback on batched record changes and the overall DNS experience? <0>Take our survey.</0>",
-	"dns.records.region.tooltip": "Define <0>which data centers</0> will decrypt and service HTTPS traffic. This value will be applied to all DNS records on the same hostname."
+	"dns.records.region.tooltip": "Define <0>which data centers</0> will decrypt and service HTTPS traffic. This value will be applied to all DNS records on the same hostname.",
+	"dns.proxy_warning.alert.title": "Proxying is required for most security and performance features",
+	"dns.proxy_warning.alert.subtitle": "Set your DNS records to <0>proxied</0> by clicking \"Edit\" in the table below, to benefit from DDoS protection, security rules, caching, and more."
 }

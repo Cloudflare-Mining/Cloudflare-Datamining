@@ -39,6 +39,8 @@
 	"/accounts/[id]/access/apps/[id]/policies",
 	"/accounts/[id]/access/identity_providers",
 	"/accounts/[id]/access/organizations",
+	"/accounts/[id]/access/policies",
+	"/accounts/[id]/access/policies/[id]/*",
 	"/accounts/[id]/members?per_page=50&page=&direction=desc",
 	"/accounts/[id]/pages/account-settings",
 	"/accounts/[id]/pages/connections",
