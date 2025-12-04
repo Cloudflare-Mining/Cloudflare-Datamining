@@ -83,16 +83,6 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -107,7 +97,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare operates a global network spanning ",
+													"value": "Cloudflare AS13335 operates a global anycast network, spanning over ",
 													"marks": [],
 													"content": null
 												},
@@ -138,7 +128,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". Cloudflare (AS13335) has an open peering policy, and will peer with networks that have a presence on mutual ",
+													"value": ", in more than 125 countries. We have an open peering policy, and will peer with networks that have a presence in ",
 													"marks": [],
 													"content": null
 												},
@@ -146,7 +136,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://as13335.peeringdb.com/"
+														"uri": "https://www.peeringdb.com/asn/13335"
 													},
 													"value": null,
 													"marks": null,
@@ -157,7 +147,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "exchange points",
+															"value": "mutual locations",
 															"marks": [],
 															"content": null
 														}
@@ -169,7 +159,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " in accordance with the policies described below.",
+													"value": ", in accordance with the policies described below. Exceptions to these policies may be granted.",
 													"marks": [],
 													"content": null
 												}
@@ -190,38 +180,411 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare's Peering Portal allows peering partners to see traffic statistics (growth over time, and the relative traffic for each location), peering session statistics (how many sessions are established in various locations), prefix data (IP routes), relative traffic weighting by POP (data flows in and out of connections to Cloudflare from your ASN), plus much more. If you operate a peering network, you can sign up at the ",
+													"value": "",
 													"marks": [],
 													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/partners/peering-portal"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Cloudflare Peering Portal",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": " or contact us at ",
+													"value": "General Requirements",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "These requirements apply to all peers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "All peers must maintain a complete and updated PeeringDB entry. We use this for automated provisioning and network notifications. Please ensure your record includes accurate peering locations, IPv4 and IPv6 prefix limits, and contact information.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Peers must operate a 24x7 Network Operations Center (NOC) that is responsive to peering related issues.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Peers are expected to adhere to industry best practices to secure BGP sessions. This includes BCP-38 and robust route filtering using a well-defined route-set or AS-SET.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Peers are highly recommended to perform RPKI validation, and generate RPKI ROAs for their own routes.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Private Network Interconnection (PNI)",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Our PNI requirements are focused on maintaining high-capacity, low-latency interconnections.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Networks that exchange more than 10 Gbps of peak traffic with Cloudflare in a single location may request a PNI.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "We currently support Nx100G LR4 interconnections. We typically do not allow new 10G connections. 100G LR1 and 400G are not supported at this time.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "To ensure a congestion free experience, both parties are expected to upgrade port capacity in a timely manner.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Cloudflare will supply an LOA (letter of authorization) and point-to-point (P2P) addresses to the requesting party for completing the cross connect.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "To request a PNI, please contact ",
 													"marks": [],
 													"content": null
 												},
@@ -252,21 +615,11 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
+													"value": ". Include your ASN, desired interconnection location(s), and traffic estimates.",
 													"marks": [],
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -304,7 +657,187 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Requirements",
+													"value": "Public Peering (Internet Exchanges)",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Public peering is automated through the ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://peering.cloudflare.com/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Cloudflare Peering Portal",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ". We recommend establishing sessions in all mutual locations. Use PeeringDB OIDC to authenticate.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "If we have multiple IP addresses at a single IX, we highly recommend configuring BGP sessions with all available addresses.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "We recommend establishing bilateral BGP sessions for optimal traffic delivery, as we advertise a limited number of prefixes over route servers.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Embedded Caches",
 													"marks": [],
 													"content": null
 												}
@@ -325,7 +858,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare uses ",
+													"value": "Networks that exchange at least 10 Gbps of traffic with Cloudflare may also be eligible for our embedded cache program. For more information, please email ",
 													"marks": [],
 													"content": null
 												},
@@ -333,7 +866,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.peeringdb.com/asn/13335"
+														"uri": "mailto:epp@cloudflare.com"
 													},
 													"value": null,
 													"marks": null,
@@ -344,7 +877,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "PeeringDB",
+															"value": "epp@cloudflare.com",
 															"marks": [],
 															"content": null
 														}
@@ -356,7 +889,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " as a single authoritative source of truth. This means peering partners must have an up-to-date PeeringDB entry before a bilateral peering session can be established.",
+													"value": ". We can sometimes accommodate smaller networks.",
 													"marks": [],
 													"content": null
 												}
@@ -377,70 +910,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare will use industry standards to secure the peering sessions. This includes industry standard practices and best common practices, including but not limited to BCP-38 and route filtering. Both parties should have a well set-up route-set or AS-SET as well as up-to date prefix maximums defined in PeeringDB. Cloudflare will use this data to filter routes received from the network's BGP sessions.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Both parties must have an up-to-date NOC contact email, which is responsive to raised issues and concerns.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Private Interconnection (PNI) Requirements",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "If the network exchanges more than 1Gbps of traffic in a specific (shared) location, either party can request a PNI. We accept single or multiples of 10G or 100G connections. Upgrades to this capacity must happen in a timely manner to ensure congestion-free exchange of traffic.",
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -482,7 +952,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "To ensure quality of operations, we reserve the following rights under our Peering Policy:",
+													"value": "To ensure the quality and stability of our network, we reserve the following rights:",
 													"marks": [],
 													"content": null
 												}
@@ -521,7 +991,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "To alter our peering policy and peering requirements at any time.",
+																	"value": "To alter our peering policy and requirements at any time.",
 																	"marks": [],
 																	"content": null
 																}
@@ -553,7 +1023,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "To accept or decline a peering request at any time for any reason.",
+																	"value": "To accept or decline a peering request at any time, for any reason.",
 																	"marks": [],
 																	"content": null
 																}
@@ -585,7 +1055,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "To suspend, without notice, peering connectivity in the event of a severe quality of service issue such as high latency, packet loss, or jitter pattern is detected and to take appropriate traffic engineering steps to maintain service quality.",
+																	"value": "To suspend, without notice, any peering connection experiencing severe quality of service issues.",
 																	"marks": [],
 																	"content": null
 																}
@@ -617,39 +1087,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "To selectively withdraw prefixes from public IXP fabrics as needed to protect service quality.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "To terminate any peering connection at any time without notice.",
+																	"value": "To terminate any peering connection at any time.",
 																	"marks": [],
 																	"content": null
 																}
@@ -674,7 +1112,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "More details on PeeringDB at ",
+													"value": "For a full list of peering locations, please see our PeeringDB record: ",
 													"marks": [],
 													"content": null
 												},
@@ -693,7 +1131,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "https://www.peeringdb.com/asn/13335",
+															"value": "https://www.peeringdb.com/asn/13335.",
 															"marks": [],
 															"content": null
 														}
@@ -705,7 +1143,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".",
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -790,17 +1228,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Contact the team\n",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "1 (888) 99 FLARE ",
+													"value": "Contact the team\n1 (888) 99 FLARE ",
 													"marks": [],
 													"content": null
 												}
@@ -1057,7 +1485,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "March 3, 2016 ",
+													"value": "December 1, 2025",
 													"marks": [],
 													"content": null
 												}
