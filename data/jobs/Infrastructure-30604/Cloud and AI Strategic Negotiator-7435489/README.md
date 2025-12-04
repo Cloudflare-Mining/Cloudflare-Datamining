@@ -5,51 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="collapsed-field-text">Austin, US</span></strong></p>
-<p><strong>About The Department</strong></p>
-<p>Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, develop, test, and deploy new equipment enabling 20% of the world’s internet traffic to be served smoothly. Deployed across 330 cities in 120+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</p>
-<p><strong>About The Role</strong></p>
-<p>We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers and components, as well as PDUs and network hardware. As a Hardware Systems Engineer, you will work with colleagues on the Engineering teams, Product and Performance Optimization teams, and Hardware Sourcing teams to design, qualify and maintain Cloudflare’s worldwide fleet of servers</p>
-<p><strong>What You'll Do</strong></p>
+<p>Cloud &amp; AI Strategic Negotiator (North America based).&nbsp;</p>
+<p>Locations: Austin, TX preferred&nbsp;</p>
+<p>Do you like negotiating and executing large, strategic cloud, software and AI relationships? We are seeking a new Strategic Negotiation team member to manage relationships and growth across our AI and cloud spend, and help us understand where on the map Cloudflare’s infrastructure needs to go next. You utilize a broad set of relationships across the SaaS and cloud industry and are able to navigate the emergent set of neocloud and AI IaaS providers.&nbsp; You understand contract structures, clauses, order forms, and SLAs and keep ahead of unique market dynamics and insights that help us negotiate.&nbsp; We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and can implement and refine commercial best practices in a high growth environment. Getting stuff done is a must!</p>
+<p><strong>What you get to do in this role:</strong></p>
 <ul>
-	<li>Work with product teams at Cloudfare to gather product requirements for next generation of servers, and work with silicon vendors to assess performance and select the components (CPU, memory, disk, NIC, GPUs etc)&nbsp;</li>
-	<li>Work with ODM partners to specify, design and determine the key performance indicators of Cloudflare’s next generation of servers for the fleet</li>
-	<li>Qualify the server hardware across EVT/DVT/PVT phases and deploy in Cloudflare production environment</li>
-	<li>Collaborate with the Site Reliability Engineering team to onboard and integrate the next generation of servers into provisioning tools and fleet management tools.</li>
-	<li>Collaborate with performance team and software teams to optimize software performance on the hardware</li>
-	<li>Work with cross-functional teams to deploy firmware updates, triage hardware problem reports, resolve hardware issues, maintain automation tools.&nbsp;</li>
-	<li>Communicate your results and updates through blog posts and internal talks</li>
+	<li>Drive negotiations involving new and existing AI and cloud partners including planning, RFP, commercial negotiation, execution and SLAs - often with minimal advance notice</li>
+	<li>Work cross-functionally with legal, capacity planning, network strategy, product and technical teams to understand requirements and project timelines</li>
+	<li>Establish and conduct scheduled QBR and other vendor management activities with top category partners, represent Cloudflare credibly to external partners&nbsp;</li>
+	<li>Contribute information to annual infrastructure budget and forecast</li>
+	<li>Review spend &amp; approve invoices; work with data team to create stakeholder update materials</li>
+	<li>Other duties as assigned</li>
 </ul>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p><strong>Skills/Experience:</strong></p>
 <ul>
-	<li>Bachelor’s degree in Computer Engineering, Electrical Engineering, or Computer Science</li>
-	<li>Extensive experience with compute design engineering, validation, performance benchmarking, debugging, and deployment used in the data center</li>
-	<li>Knowledge of CPU architectures, preferably both x86 and ARM</li>
-	<li>Knowledge and experience with server hardware including motherboard designs, CPU architecture, memory &amp; storage technology</li>
-	<li>Knowledge of performance benchmarking ; Previous experience in testing, measuring, and/or simulating hardware performance and an understanding of no-stone-left-unturned experimentation</li>
-	<li>Knowledge of bash, python and basic Linux task automation</li>
-	<li>Knowledge of Redfish, IPMI and server remote management protocols, and experience with firmware updates</li>
-	<li>Curiosity and desire to learn about the Cloudflare hardware and products used by 20% of all web sites</li>
-	<li>Desire to learn how a diverse server fleet is managed at scale with tools such as traffic management, capacity planning and failover mechanisms</li>
-	<li>Desire to learn the tools Cloudflare uses to maintain and monitor our hardware</li>
-</ul>
-<p><strong>&nbsp;</strong><strong>Bonus Points</strong></p>
-<ul>
-	<li>Master’s degree in Computer Engineering, Electrical Engineering, or Compute Science</li>
-	<li>Experience of performance optimization based on hardware / software codesign</li>
-	<li>Experience of kernel development, compiler optimization, or driver development.</li>
-	<li>Experience of working with external vendors on server hardware qualification.</li>
-	<li>Experience of observability and monitoring tools such as Prometheus and Grafana, as well as the ability to observe trends over time</li>
-	<li>Experience with software development tools and processes such as Git, TeamCity and Jira</li>
-	<li>Experience in a hyperscale cloud infrastructure role also valuable</li>
-	<li>Knowledge of debugging server hardware faults and the ability to engage with our sourcing team and vendors to improve quality</li>
-	<li>Knowledge of XPU/accelerator architectures is a plus</li>
+	<li>5-10 years in sourcing software, cloud, data center or network within a fast moving technology organization</li>
+	<li>Ability to multi-task and manage complex projects across multiple teams and geographies within set deadlines</li>
+	<li>Ability to navigate, solve problems and answer questions</li>
+	<li>Relationship management experience and excellent communication skills</li>
+	<li>Experience in budget planning, financial analysis, or other analytical role a plus</li>
+	<li>Bachelor's degree or equivalent experience required</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.<em> (Hiring at multiple levels: Junior P2, Mid P3, or Senior P4)</em></p>
-<ul>
-	<li><span data-sheets-root="1">For San Francisco based hires: Estimated annual salary of $162,000 - $180,000. (Mid Level)</span></li>
-</ul>
+<p>Compensation may be adjusted depending on work location.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
