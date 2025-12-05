@@ -5,63 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Resiliency Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Resiliency Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
-<p>The Infrastructure Tooling Team within the Resiliency Engineering organization is responsible for defining, building and supporting the tools that can be leveraged by the rest of the Infrastructure Engineering team to manage our infrastructure at scale.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>In this role you’ll have an opportunity to work on our internal infra-control plan application "Zinc". On the Zinc team, you'll be building a critical component of the overall Cloudflare stack. Zinc is a Rust based application that is used to manage our global fleet of servers and network devices. Zinc must be high performance, highly available, and have few shared dependencies since nearly everything else has a dependency on Zinc.<br><br>If you like thinking about optimizing and scaling globally distributed systems, this may be the team for you!<br>More about Zinc in the Cloudflare blog:</p>
-<p><a href="https://blog.cloudflare.com/redefining-fleet-management-at-cloudflare/">https://blog.cloudflare.com/redefining-fleet-management-at-cloudflare/</a></p>
-<p>Because you’ll be solving problems of great significance, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
+<p><strong>Available Locations: Austin, TX&nbsp;</strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Technology team works closely with the teams responsible for running and maintaining our global infrastructure and enterprise. Our mission is to secure the foundations of all Cloudflare production and enterprise systems.</p>
+<p>&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for an experienced security practitioner to help us in our mission to help build a better internet. As part of our team, you will be expected to:</p>
+<p>&nbsp;</p>
+<ul>
+	<li>Work with our engineering, IT, and infrastructure teams to secure the entire Cloudflare global network and enterprise</li>
+	<li>Deploy and manage security tools that help address security risk at a global scale</li>
+	<li>Collaborate with the Compliance team to ensure adherence to standards</li>
+	<li>Ensure our global infrastructure is secure from all attacks, ranging from “script kiddies” to nation states</li>
+</ul>
+<p>&nbsp;</p>
+<p>This role does currently require 1 day in-office a week.</p>
+<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
-<p>A rough list of the skills we would love to see you bring:</p>
 <ul>
-	<li>Working in an infrastructure composed of emergent, planned, and adapted services.</li>
-	<li>Programming experience in Rust, Go, Python or similar language. You are either an expert in Rust or are willing to become one.</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases.</li>
-	<li>Experience with Distributed Systems at scale is a plus</li>
-	<li>Designing and building APIs, CLIs, and web applications which are used constantly by critical infrastructure teams.</li>
-	<li>Great oral and written communications skills.</li>
-	<li>Strong desire to learn and improve.</li>
-	<li>Ready to participate in oncall rotations.</li>
-	<li>CS degree or equivalent experience.</li>
-	<li>Passion for solving unique problems and learning to understand complex systems.</li>
+	<li>Bachelor's degree in Computer Science, Information Systems, Cybersecurity, related technical field, or equivalent practical experience</li>
+	<li>7+ years of previous experience in cyber security</li>
+	<li>Strong relationship building with cross functional teams</li>
+	<li>Experience working with corporate Information Technology platforms and systems</li>
+	<li>Advanced security practices for Linux, MacOS, Windows systems</li>
+	<li>Deep understanding of securing server infrastructure</li>
+	<li>Strong experience with public cloud security best practices (GCP, Azure, etc.)</li>
+	<li>Previous experience in deploying and continuous improvement of Cloud Security Posture Management (CSPM) tooling</li>
+	<li>Previous experience in leading Proof of Concepts (PoC) for new security tooling</li>
+	<li>Builds and nurtures robust working relationships with technical and non-technical stakeholders at all levels</li>
+	<li>Translates complex, ambiguous security situations into clear, actionable requirements to drive alignment and decision making</li>
+	<li>Strong background in deploying and supporting infrastructure and security technologies.&nbsp;</li>
+	<li>Knowledge of scripting and automation tools (e.g., Python, Terraform, Ansible)</li>
+	<li>Advanced programming experience (Python, Golang, Bash, etc.)</li>
+	<li>Experience with risk review and evaluations of configurations</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $154,000 - $188,000</span></li>
+	<li>Strong Linux system experience from user-space to kernel-space</li>
+	<li>Experience with securing Google Workspace</li>
+	<li>Securing the software supply chain from workstation to deployment</li>
+	<li>Networking fundamentals such as TCP/IP, secure design and segmentation</li>
+	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
+	<li>Deep understanding of Endpoint Detection and Response (EDR) functionalities</li>
+	<li>Experience in using SIEM technologies</li>
+	<li>Background in System Administration (SysAdmin)</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
