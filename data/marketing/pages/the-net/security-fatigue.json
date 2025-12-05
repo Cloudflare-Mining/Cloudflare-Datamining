@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-15T23:05:02.054Z",
-					"updatedAt": "2025-05-12T07:46:45.370Z"
+					"updatedAt": "2025-12-05T20:03:13.842Z"
 				},
 				"contentfulId": "5ymCbecFMV9BXsQLkUC49k",
 				"contentTypeId": "page",
@@ -2231,7 +2231,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Roadmap to Zero Trust Security",
+																			"value": "Roadmap to zero trust security",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2420,7 +2420,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Attack Surface Management with Cloudflare",
+																			"value": "Attack Surface Management",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2589,7 +2589,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\nDeduplicating alerts and monitoring are an important aspect of Zero Trust security. To understand how they fit into broader Zero Trust transformation — get the ",
+													"value": "\nDeduplicating alerts and monitoring are an important aspect of zero trust security. To understand how they fit into broader zero trust transformation — get the ",
 													"marks": [],
 													"content": null
 												},
@@ -2608,8 +2608,12 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Roadmap to Zero Trust Security",
-															"marks": [],
+															"value": "Roadmap to zero trust security",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2620,7 +2624,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " white paper.",
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "whitepaper.",
 													"marks": [],
 													"content": null
 												}
@@ -2644,9 +2662,9 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "6FpCvEmoeAEqmlolFAooG0",
-															"elementName": "Insights - Security monitoring fatigue puts organizations at risk - Button",
+															"elementName": "theNET - Security monitoring fatigue puts organizations at risk - Dive Deeper - Button",
 															"standardText": null,
-															"text": "Get the white paper!",
+															"text": "Get the whitepaper!",
 															"url": "https://www.cloudflare.com/lp/zero-trust-roadmap/",
 															"loggedInUrl": null,
 															"buttonModal": null,
