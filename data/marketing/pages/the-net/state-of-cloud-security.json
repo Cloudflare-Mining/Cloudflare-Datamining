@@ -45,7 +45,7 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1md59VyVb00InsB2mr4ZKT/8a5c688910b4caca91d2ef8f8e3e7382/State-of-cloud-security.png"
 						},
-						"description": "State of cloud security - image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": [
@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-05-21T14:12:26.578Z",
-					"updatedAt": "2025-04-23T08:48:56.059Z"
+					"updatedAt": "2025-12-05T23:03:12.075Z"
 				},
 				"contentfulId": "7BJaf6TDu8WhULU5pkXutO",
 				"contentTypeId": "page",
@@ -499,7 +499,7 @@
 														{
 															"contentfulId": "1md59VyVb00InsB2mr4ZKT",
 															"locale": "en-US",
-															"title": "State of cloud security - image",
+															"title": "theNET - The state of cloud security - Image",
 															"file": {
 																"name": "State-of-cloud-security.png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1md59VyVb00InsB2mr4ZKT/8a5c688910b4caca91d2ef8f8e3e7382/State-of-cloud-security.png",
@@ -761,7 +761,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -1361,7 +1361,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust",
+															"value": "zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -1373,7 +1373,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " architecture is a critical cyber security strategy, ensuring strict identity authentication for every user and device attempting to access cloud resources, regardless of the network architecture in place.",
+													"value": " architecture is a critical cybersecurity strategy, ensuring strict identity authentication for every user and device attempting to access cloud resources, regardless of the network architecture in place.",
 													"marks": [],
 													"content": null
 												}
@@ -1651,7 +1651,11 @@
 																"uri": null
 															},
 															"value": "The connectivity cloud: A way to take back IT and security control",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1684,7 +1688,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "3zgXk5elObg0exSo93IKJn",
-																	"elementName": "State of cloud security - Dive deeper - CTA",
+																	"elementName": "theNET - The state of cloud security - Dive deeper - Button",
 																	"standardText": null,
 																	"text": "Get the ebook!",
 																	"url": "/lp/take-back-it-control-ebook/ ",
@@ -1816,27 +1820,6 @@
 															"type": "bold"
 														}
 													],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "This article was originally produced for CloudWorks",
-													"marks": [],
 													"content": null
 												}
 											]

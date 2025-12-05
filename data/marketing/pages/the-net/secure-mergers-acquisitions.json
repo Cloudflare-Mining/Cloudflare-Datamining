@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-07-18T13:17:45.767Z",
-					"updatedAt": "2025-04-23T09:07:28.558Z"
+					"updatedAt": "2025-12-05T22:45:26.998Z"
 				},
 				"contentfulId": "6PDKJWXG61ck2ztyDRlXrx",
 				"contentTypeId": "page",
@@ -376,7 +376,41 @@
 					},
 					"description": ""
 				},
-				"proactivePopup": null,
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
+				},
 				"template": null,
 				"relatedBlades": [
 					{
@@ -577,7 +611,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "However, companies undertaking M&As can face significant cybersecurity risks throughout the deal cycle. Integrations using traditional network merge can lead to ineffective, redundant systems — and put resources and data at risk. Alternatively, a modern M&A IT integration that applies Zero Trust principles can be a force multiplier to: ",
+													"value": "However, companies undertaking M&As can face significant cybersecurity risks throughout the deal cycle. Integrations using traditional network merge can lead to ineffective, redundant systems — and put resources and data at risk. Alternatively, a modern M&A IT integration that applies zero trust principles can be a force multiplier to: ",
 													"marks": [],
 													"content": null
 												}
@@ -2578,7 +2612,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Read ",
+													"value": "Get ",
 													"marks": [],
 													"content": null
 												},
@@ -2598,7 +2632,11 @@
 																"uri": null
 															},
 															"value": "The path to VPN replacement",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2652,7 +2690,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "737xgLeD0cCfuZ8n2JNZZs",
-																	"elementName": "theNet - Simplify and secure M&A - Dive Deeper - Button",
+																	"elementName": "theNET - Simplify and secure M&A - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the whitepaper!",
 																	"url": "https://www.cloudflare.com/lp/vpn-replacement-guide/",
@@ -2886,7 +2924,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "benefits of applying Zero Trust",
+																	"value": "benefits of applying zero trust",
 																	"marks": [
 																		{
 																			"type": "bold"
