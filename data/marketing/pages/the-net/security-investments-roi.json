@@ -39,20 +39,20 @@
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "theNET | Calculating the ROI of security investments",
-					"metaDescription": "Measuring the ROI of cyber security investments should align with broader business priorities. Choose the right cyber security platform to drive higher ROI.",
+					"metaDescription": "Measuring the ROI of cybersecurity investments should align with broader business priorities. Choose the right cybersecurity platform to drive higher ROI.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdWqZe4SMbcOR5E3VUQ6o/9a1aafadc7d0c685c3af2876285045eb/ROIofsecurityinvestments.jpg"
 						},
-						"description": "ROI of security investments illustration"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-11-26T20:03:49.610Z",
-					"updatedAt": "2025-10-22T22:59:46.087Z"
+					"updatedAt": "2025-12-04T23:43:04.950Z"
 				},
 				"contentfulId": "4E5BKwEkucLjegPaSZCKUx",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -481,7 +493,7 @@
 														{
 															"contentfulId": "6CdWqZe4SMbcOR5E3VUQ6o",
 															"locale": "en-US",
-															"title": "The net - ROI of security investments",
+															"title": " theNET - Calculating the ROI of security investments - Meta - Image",
 															"file": {
 																"name": "ROIofsecurityinvestments.jpg",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdWqZe4SMbcOR5E3VUQ6o/9a1aafadc7d0c685c3af2876285045eb/ROIofsecurityinvestments.jpg",
@@ -543,7 +555,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Despite recent momentum, cyber security's rise to the top of the corporate priority list is far from complete.",
+													"value": "Despite recent momentum, cybersecurity's rise to the top of the corporate priority list is far from complete.",
 													"marks": [],
 													"content": null
 												}
@@ -2515,7 +2527,11 @@
 																"uri": null
 															},
 															"value": "Total Economic Impact of Cloudflare's connectivity cloud",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2526,7 +2542,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " report. ",
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "report. ",
 													"marks": [],
 													"content": null
 												}
@@ -2569,7 +2599,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "19dktkFHQ5ncx9aLVz4uAv",
-																	"elementName": " theNET - Calculating the ROI of security investments -  Dive Deeper CTA",
+																	"elementName": " theNET - Calculating the ROI of security investments - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the report!",
 																	"url": "https://www.cloudflare.com/lp/forrester-tei-study-2024/",
@@ -2973,7 +3003,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Transform cyber security in the boardroom",
+																			"value": "Transform cybersecurity in the boardroom",
 																			"marks": [],
 																			"content": null
 																		}
@@ -3036,7 +3066,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Connecting cyber security to strategic business value",
+																			"value": "Connecting cybersecurity to strategic business value",
 																			"marks": [],
 																			"content": null
 																		}

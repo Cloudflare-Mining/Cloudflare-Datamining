@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-05-02T16:15:38.462Z",
-					"updatedAt": "2025-04-23T09:13:46.104Z"
+					"updatedAt": "2025-12-05T01:01:26.237Z"
 				},
 				"contentfulId": "Zf3BBXFrHvxQ4u2fPrIaa",
 				"contentTypeId": "page",
@@ -1687,7 +1687,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust Network Access (ZTNA)",
+															"value": "zero trust network access (ZTNA)",
 															"marks": [],
 															"content": null
 														}
@@ -2276,7 +2276,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Whitepaper: A Roadmap to Zero Trust Architecture",
+																			"value": "A roadmap to zero trust architecture",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2444,7 +2444,11 @@
 																"uri": null
 															},
 															"value": "Reference Architecture for Internet-Native Transformation",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2455,7 +2459,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " whitepaper.",
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "whitepaper.",
 													"marks": [],
 													"content": null
 												}
@@ -2498,7 +2516,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "28XdICk9Vrtc264Xa6KZ8t",
-																	"elementName": "theNET - Risk grows as multi-vector attacks become the norm - Get the whitepaper! Button",
+																	"elementName": "theNET - Risk grows as multi-vector attacks become the norm - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the whitepaper!",
 																	"url": "https://www.cloudflare.com/lp/internet-native-transformation-wp",

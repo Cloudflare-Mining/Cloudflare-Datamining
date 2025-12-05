@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-05-23T19:37:51.527Z",
-					"updatedAt": "2025-12-04T20:02:27.934Z"
+					"updatedAt": "2025-12-05T00:01:12.384Z"
 				},
 				"contentfulId": "2iQVxbc0AqjSD9iVmtG12x",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -481,7 +493,7 @@
 														{
 															"contentfulId": "4d4M1nBhsL2gua8duJrNA9",
 															"locale": "en-US",
-															"title": "New requirements for protecting your customers",
+															"title": "theNET - Client-side attacks are mounting - Meta - Image",
 															"file": {
 																"name": "iStock-1252459214.jpg",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4d4M1nBhsL2gua8duJrNA9/2904f18dc734f52c0aa98d4f7b4cd5fa/iStock-1252459214.jpg",
@@ -1749,7 +1761,7 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "5IiKirqz73NUzMS1dZivbx",
-															"elementName": "theNET - New requirements for protecting your customers - Button",
+															"elementName": "theNET - Client-side attacks are mounting - Dive Deeper - Button",
 															"standardText": null,
 															"text": "Get the whitepaper!",
 															"url": "https://www.cloudflare.com/lp/pci-dss-4/",

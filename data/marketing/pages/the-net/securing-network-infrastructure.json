@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - A new model for securing public-facing network infrastructure - Page ",
+				"pageName": "theNET - A new model for securing public-facing network infrastructure - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -45,14 +45,14 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/68wr9KED1T2GkoaeUkztcq/53878597cf37e45022c702daaecac87d/Anewmodelforsecuringpublicfacingnetwork_infrastructure.jpg"
 						},
-						"description": "A new model for securing public facing network infrastructure - image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-10-16T18:18:26.426Z",
-					"updatedAt": "2025-07-23T09:35:49.692Z"
+					"updatedAt": "2025-12-04T23:50:45.575Z"
 				},
 				"contentfulId": "6VRZhkakuhzM6SfPuSd0FL",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -502,7 +514,7 @@
 														{
 															"contentfulId": "68wr9KED1T2GkoaeUkztcq",
 															"locale": "en-US",
-															"title": "A new model for securing public facing network infrastructure - image",
+															"title": "theNET - A new model for securing public-facing network infrastructure - Meta - Image",
 															"file": {
 																"name": "Anewmodelforsecuringpublicfacingnetwork infrastructure.jpg",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/68wr9KED1T2GkoaeUkztcq/53878597cf37e45022c702daaecac87d/Anewmodelforsecuringpublicfacingnetwork_infrastructure.jpg",
@@ -1134,7 +1146,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", with many exceeding 2 billion packets per second and 3 terabits per second (Tbps). The largest attack peaked at 3.8 Tbps.\n\nA connectivity cloud can also offer additional security services, available at the edge, to build up that defense in depth. Firewalls and DDoS filtering protect against known and emerging threats, including volumetric attacks. App security services safeguard apps and APIs from DDoS attacks, exploits, supply chain attacks, bots, and fraud. \n\nThe composability of connectivity cloud services provides much-needed agility and flexibility. Organizations can add or adjust security services as necessary to defend against new threats and expand a Zero Trust strategy.\n",
+													"value": ", with many exceeding 2 billion packets per second and 3 terabits per second (Tbps). The largest attack peaked at 3.8 Tbps.\n\nA connectivity cloud can also offer additional security services, available at the edge, to build up that defense in depth. Firewalls and DDoS filtering protect against known and emerging threats, including volumetric attacks. App security services safeguard apps and APIs from DDoS attacks, exploits, supply chain attacks, bots, and fraud. \n\nThe composability of connectivity cloud services provides much-needed agility and flexibility. Organizations can add or adjust security services as necessary to defend against new threats and expand a zero trust strategy.\n",
 													"marks": [],
 													"content": null
 												}
@@ -1553,7 +1565,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "5BOLSh3RTGNGR1vOzePZ5V",
-																	"elementName": "theNET - A new model for securing public-facing network infrastructure - Dive deeper CTA",
+																	"elementName": "theNET - A new model for securing public-facing network infrastructure - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the whitepaper!",
 																	"url": "/lp/cloud-delivered-network-protection/",

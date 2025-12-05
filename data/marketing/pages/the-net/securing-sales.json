@@ -39,20 +39,20 @@
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": " theNET | Securing the sales organization",
-					"metaDescription": "As a CISO, I know that Sales is often the most challenging business division to support and secure. And because Sales often represents a large percentage of the workforce, these challenges can be significant. ",
+					"metaDescription": "As a CISO, I know that sales is often the most challenging business division to support and secure. And because sales often represents a large percentage of the workforce, these challenges can be significant. ",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7phYLc4VwZBpD5ARhqLZ3R/fec06f7af52917a8153b8de209482a1f/securingthesalesorganization.png"
 						},
-						"description": "Securing the sales organization image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-03-26T22:57:17.917Z",
-					"updatedAt": "2025-12-04T22:53:49.850Z"
+					"updatedAt": "2025-12-05T02:43:39.077Z"
 				},
 				"contentfulId": "7f0t77hy15j3JEYI7roxEq",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "24o5tCgFBQnUcPBmqnylmj",
-					"headerText": "Leadership Perspectives: Tackling Digital Modernization",
-					"subHeadingText": "Learn how tech leaders are integrating AI into apps, securing complex networks, and more.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "3Fi3OccICJxA9kqPWnm9xz",
-						"elementName": "theNET - Tackling digital modernization: Leadership perspectives - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the quarterly magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/digital-modernization/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -502,7 +514,7 @@
 														{
 															"contentfulId": "7phYLc4VwZBpD5ARhqLZ3R",
 															"locale": "en-US",
-															"title": "Securing the sales organization image",
+															"title": "theNET - Securing the sales organization - Meta - Image",
 															"file": {
 																"name": "securingthesalesorganization.png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7phYLc4VwZBpD5ARhqLZ3R/fec06f7af52917a8153b8de209482a1f/securingthesalesorganization.png",
@@ -564,7 +576,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Empowering the sales team is vital to the success of most businesses. Sales is, after all, the primary engine for driving revenue. But, Sales is often the most challenging business division to support and secure. And because Sales often represents a large percentage of the workforce, addressing these challenges can require a significant investment in time and effort.",
+													"value": "Empowering the sales team is vital to the success of most businesses. Sales is, after all, the primary engine for driving revenue. But, sales is often the most challenging business division to support and secure. And because sales often represents a large percentage of the workforce, addressing these challenges can require a significant investment in time and effort.",
 													"marks": [],
 													"content": null
 												}
@@ -585,7 +597,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Why is it so challenging to support Sales? First, salespeople can be very demanding of internal resources. For example, when they are working to close deals, salespeople often want to bring their own executives to meetings so they can give prospects the confidence that they have the full support of the company. And of course, when salespeople schedule a customer meeting, the request for executives is always urgent. Executives understand how important these meetings are, so they accept as many invitations as they can. It's not unusual for an executive to participate in multiple sales calls every week.",
+													"value": "Why is it so challenging to support sales? First, salespeople can be very demanding of internal resources. For example, when they are working to close deals, salespeople often want to bring their own executives to meetings so they can give prospects the confidence that they have the full support of the company. And of course, when salespeople schedule a customer meeting, the request for executives is always urgent. Executives understand how important these meetings are, so they accept as many invitations as they can. It's not unusual for an executive to participate in multiple sales calls every week.",
 													"marks": [],
 													"content": null
 												}
@@ -658,7 +670,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Salespeople are more frequently on the move than other remote workers, accessing valuable data using multiple devices and various (possibly vulnerable) network connections. As a result, they are often more vulnerable to cyber attacks. The Security team has to enable the sales team to access resources and information with agility while also reducing the risk from a wide range of threats.",
+													"value": "Salespeople are more frequently on the move than other remote workers, accessing valuable data using multiple devices and various (possibly vulnerable) network connections. As a result, they are often more vulnerable to cyber attacks. The security team has to enable the sales team to access resources and information with agility while also reducing the risk from a wide range of threats.",
 													"marks": [],
 													"content": null
 												}
@@ -679,7 +691,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "How can you balance the potentially conflicting needs of Sales and Security? First, you have to understand what salespeople truly need from IT — what data, apps, and other resources, and from what locations. That information will help you identify the types of cyber threats sales teams face, uncover the limitations of existing security solutions, calculate the risks, and put the appropriate security controls in place. To support Sales without putting the ",
+													"value": "How can you balance the potentially conflicting needs of sales and security? First, you have to understand what salespeople truly need from IT — what data, apps, and other resources, and from what locations. That information will help you identify the types of cyber threats sales teams face, uncover the limitations of existing security solutions, calculate the risks, and put the appropriate security controls in place. To support sales without putting the ",
 													"marks": [],
 													"content": null
 												},
@@ -762,7 +774,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Supporting Sales is hard work. But if you succeed, you can create an effective blueprint for supporting the rest of your organization.",
+													"value": "Supporting sales is hard work. But if you succeed, you can create an effective blueprint for supporting the rest of your organization.",
 													"marks": [],
 													"content": null
 												}
@@ -835,7 +847,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "What does Sales need from IT?",
+													"value": "What does sales need from IT?",
 													"marks": [
 														{
 															"type": "bold"
@@ -1037,7 +1049,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Meeting this expectation for anywhere access to sensitive information creates challenges for IT and Security, because this remote, highly mobile salesforce is vulnerable to multiple cyber security threats.",
+													"value": "Meeting this expectation for anywhere access to sensitive information creates challenges for IT and security, because this remote, highly mobile salesforce is vulnerable to multiple cybersecurity threats.",
 													"marks": [],
 													"content": null
 												}
@@ -1110,7 +1122,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "What threats does Sales face?",
+													"value": "What threats does sales face?",
 													"marks": [
 														{
 															"type": "bold"
@@ -1428,7 +1440,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " without telling IT or Security. For example, a sales engineer might spin up a new demo environment in the cloud without properly safeguarding that environment, leaving corporate IP vulnerable. Or, a salesperson might try to craft an engaging email by inputting customer information or corporate IP into a generative AI tool, not realizing that the tool doesn't guarantee privacy.",
+																	"value": " without telling IT or security. For example, a sales engineer might spin up a new demo environment in the cloud without properly safeguarding that environment, leaving corporate IP vulnerable. Or, a salesperson might try to craft an engaging email by inputting customer information or corporate IP into a generative AI tool, not realizing that the tool doesn't guarantee privacy.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1551,7 +1563,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "When salespeople leave a company, they might attempt to take customer information with them. They might try to expand their own personal, digital Rolodex — and assist a future employer — by copying customer contact information, contracts, or other customer data, even if that is strictly forbidden by the company they are leaving. A salesperson could even take information about what software tools customers are using. Especially in the cyber security industry, employers must prevent that information from leaving with employees by using appropriate ",
+																	"value": "When salespeople leave a company, they might attempt to take customer information with them. They might try to expand their own personal, digital Rolodex — and assist a future employer — by copying customer contact information, contracts, or other customer data, even if that is strictly forbidden by the company they are leaving. A salesperson could even take information about what software tools customers are using. Especially in the cybersecurity industry, employers must prevent that information from leaving with employees by using appropriate ",
 																	"marks": [],
 																	"content": null
 																},
@@ -1684,7 +1696,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In the recent past, remote and mobile workers were generally required to use VPNs to connect to the corporate network. But the experience for many users was terrible: network performance was slow, and mobile users had to reconnect whenever they moved to new locations. The experience was worse when using video conferencing apps, which demand high bandwidth and consistent network performance. The rapid adoption of video conferencing over the last few years has put pressure on IT and Security to find an alternative to VPNs for protecting network traffic. ",
+													"value": "In the recent past, remote and mobile workers were generally required to use VPNs to connect to the corporate network. But the experience for many users was terrible: network performance was slow, and mobile users had to reconnect whenever they moved to new locations. The experience was worse when using video conferencing apps, which demand high bandwidth and consistent network performance. The rapid adoption of video conferencing over the last few years has put pressure on IT and security to find an alternative to VPNs for protecting network traffic. ",
 													"marks": [],
 													"content": null
 												}
@@ -1705,7 +1717,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Still, some companies doubled down on VPNs as their remote workforce expanded. As Sales ramped up the use of chat and collaboration tools, IT and Security had to find a way to protect the documents and other data that was shared through those tools. Some ",
+													"value": " Still, some companies doubled down on VPNs as their remote workforce expanded. As sales ramped up the use of chat and collaboration tools, IT and security had to find a way to protect the documents and other data that was shared through those tools. Some ",
 													"marks": [],
 													"content": null
 												},
@@ -1853,7 +1865,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "strong business case for a Zero Trust",
+															"value": "strong business case for a zero trust",
 															"marks": [],
 															"content": null
 														}
@@ -1865,7 +1877,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " approach to securing salespeople and other remote workers. Zero Trust can simplify access for users while providing robust security that addresses many of the weaknesses of VPNs, including performance and scalability issues. ",
+													"value": " approach to securing salespeople and other remote workers. Zero trust can simplify access for users while providing robust security that addresses many of the weaknesses of VPNs, including performance and scalability issues. ",
 													"marks": [],
 													"content": null
 												}
@@ -1886,7 +1898,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "But of course, not all Zero Trust solutions are the same. Some organizations have learned that lesson the hard way. They might have selected a vendor with only 20 to 25 points of connection around the world. So their salespeople and other remote users still faced problems with speed and performance. As employees work from more remote locations, organizations need a solution that enables all users to connect to nearby network locations, wherever users are around the globe. ",
+													"value": "But of course, not all zero trust solutions are the same. Some organizations have learned that lesson the hard way. They might have selected a vendor with only 20 to 25 points of connection around the world. So their salespeople and other remote users still faced problems with speed and performance. As employees work from more remote locations, organizations need a solution that enables all users to connect to nearby network locations, wherever users are around the globe. ",
 													"marks": [],
 													"content": null
 												}
@@ -1926,7 +1938,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "implementing a Zero Trust approach",
+															"value": "implementing a zero trust approach",
 															"marks": [],
 															"content": null
 														}
@@ -2052,7 +2064,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "to replace MPLS. The right WAN solution will use a cloud-based network to simplify deployment and reduce costs while offering built-in Zero Trust functionality.",
+													"value": "to replace MPLS. The right WAN solution will use a cloud-based network to simplify deployment and reduce costs while offering built-in zero trust functionality.",
 													"marks": [],
 													"content": null
 												}
@@ -2150,7 +2162,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Sales will always be a remote, mobile workforce. Empowering that workforce is critical to most businesses, because Sales drives revenue. But empowering Sales will continue to be challenging if IT and Security rely on VPNs and other legacy security tools.",
+													"value": "Sales will always be a remote, mobile workforce. Empowering that workforce is critical to most businesses, because sales drives revenue. But empowering sales will continue to be challenging if IT and security rely on VPNs and other legacy security tools.",
 													"marks": [],
 													"content": null
 												}
@@ -2171,7 +2183,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Fortunately, there is a way to balance the needs of Sales and Security: Moving to a Zero Trust approach with a modern platform can provide salespeople with fast, simple, and seamless access to key resources while protecting corporate networks and sensitive customer information. IT and Security can enable salespeople to work from anywhere while maintaining the same level of control as they have with workers in corporate offices. Once that model is in place for Sales, IT and Security will have a blueprint for supporting a growing number of remote workers and building a much more flexible, agile organization.",
+													"value": "Fortunately, there is a way to balance the needs of sales and security: Moving to a zero trust approach with a modern platform can provide salespeople with fast, simple, and seamless access to key resources while protecting corporate networks and sensitive customer information. IT and security can enable salespeople to work from anywhere while maintaining the same level of control as they have with workers in corporate offices. Once that model is in place for sales, IT and security will have a blueprint for supporting a growing number of remote workers and building a much more flexible, agile organization.",
 													"marks": [],
 													"content": null
 												}
@@ -2352,7 +2364,11 @@
 																"uri": null
 															},
 															"value": "Strengthen security everywhere you do business",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2363,7 +2379,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " ebook!",
+													"value": " ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "ebook!",
 													"marks": [],
 													"content": null
 												}
@@ -2406,7 +2436,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "5yUyGsqtQg9KCVpqUBsdyc",
-																	"elementName": "theNet - Securing the sales organization - Dive deeper CTA",
+																	"elementName": "theNET - Securing the sales organization - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the ebook!",
 																	"url": "https://www.cloudflare.com/lp/cloudflare-strengthens-security/",
@@ -2640,7 +2670,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "agility of Zero Trust",
+																	"value": "agility of zero trust",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -2905,7 +2935,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "The business case for Zero Trust",
+																			"value": "The business case for zero trust",
 																			"marks": [],
 																			"content": null
 																		}

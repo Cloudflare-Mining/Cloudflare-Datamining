@@ -45,7 +45,7 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oxpKqvl3YBnYD6uVRB7EJ/489175bef343922ec3c2d1d5be007650/Pursuing-privacy-image.png"
 						},
-						"description": "Pursuing privacy - image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": [
@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-11T18:44:10.130Z",
-					"updatedAt": "2025-07-23T09:56:22.517Z"
+					"updatedAt": "2025-12-05T00:36:58.073Z"
 				},
 				"contentfulId": "4iUManRDAh9cVqbiihbhsH",
 				"contentTypeId": "page",
@@ -384,26 +384,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -445,7 +457,7 @@
 														{
 															"contentfulId": "6oxpKqvl3YBnYD6uVRB7EJ",
 															"locale": "en-US",
-															"title": "Pursuing privacy - image",
+															"title": "theNET - Pursuing privacy-first security - Meta - Image",
 															"file": {
 																"name": "Pursuing-privacy-image.png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oxpKqvl3YBnYD6uVRB7EJ/489175bef343922ec3c2d1d5be007650/Pursuing-privacy-image.png",
@@ -785,7 +797,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The idea behind data localization — that data should be stored and processed in the same place it's generated — is appealingly simple. If the data of a country's citizens stays on servers inside the country – the thinking goes – then the country can keep that data safe and ensure the data will be handled in accordance with local laws. In practice, however, it creates a more fragmented Internet where actual privacy and safety are harder to achieve. By creating artificial geographic silos, data localization actually diminishes our ability to identify and proactively act on vulnerabilities. When data on bot trends in India can't be shared with cyber security experts in Indiana, for example, the Internet gets more perilous for everyone. And keeping data local can have dangerous impacts on a country's national security too, ",
+													"value": "The idea behind data localization — that data should be stored and processed in the same place it's generated — is appealingly simple. If the data of a country's citizens stays on servers inside the country – the thinking goes – then the country can keep that data safe and ensure the data will be handled in accordance with local laws. In practice, however, it creates a more fragmented Internet where actual privacy and safety are harder to achieve. By creating artificial geographic silos, data localization actually diminishes our ability to identify and proactively act on vulnerabilities. When data on bot trends in India can't be shared with cybersecurity experts in Indiana, for example, the Internet gets more perilous for everyone. And keeping data local can have dangerous impacts on a country's national security too, ",
 													"marks": [],
 													"content": null
 												},
@@ -1485,7 +1497,7 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "4eqEgk0UZ7GfxsnFREQU8h",
-															"elementName": "theNET - Navigating data localization and compliance - Button",
+															"elementName": "theNET - Navigating data localization and compliance - Dive Deeper - Button",
 															"standardText": null,
 															"text": "Get the ebook!",
 															"url": "https://www.cloudflare.com/the-net/lp/overcoming-3-security-tool-challenges/",
@@ -2087,7 +2099,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Series: Pursuing privacy-first security ",
+																			"value": "Pursuing privacy-first security ",
 																			"marks": [],
 																			"content": null
 																		}

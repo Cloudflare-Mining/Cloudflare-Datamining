@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-03-21T14:49:44.778Z",
-					"updatedAt": "2025-10-28T02:59:23.774Z"
+					"updatedAt": "2025-12-05T01:00:43.244Z"
 				},
 				"contentfulId": "5SeYvzZxeWLmkRvlfWOmsz",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "24o5tCgFBQnUcPBmqnylmj",
-					"headerText": "Leadership Perspectives: Tackling Digital Modernization",
-					"subHeadingText": "Learn how tech leaders are integrating AI into apps, securing complex networks, and more.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "3Fi3OccICJxA9kqPWnm9xz",
-						"elementName": "theNET - Tackling digital modernization: Leadership perspectives - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the quarterly magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/digital-modernization/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -502,7 +514,7 @@
 														{
 															"contentfulId": "45zUapiAkKIud43BxTYFv1",
 															"locale": "en-US",
-															"title": "Reducing the cost of consolidation - image",
+															"title": "theNET -  Reducing the cost of consolidation - Meta - Image",
 															"file": {
 																"name": "reducingthecostofconsolidation.png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/45zUapiAkKIud43BxTYFv1/b63d32b0411c11ca88154ebba647954f/reducingthecostofconsolidation.png",
@@ -2695,8 +2707,12 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Connectivity Cloud Explained",
-															"marks": [],
+															"value": "Connectivity cloud explained",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2750,7 +2766,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "2uiwGsBSp1vgOHY2EbrF46",
-																	"elementName": "theNET -  Reducing the cost of consolidation - Dive deeper - CTA",
+																	"elementName": "theNET - Reducing the cost of consolidation - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the guide!",
 																	"url": "https://stg.mrk.cfdata.org/lp/executive-guide-connectivity-cloud/",
@@ -3171,7 +3187,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Connectivity Cloud Explained: A new model for connecting, protecting, and accelerating business",
+																			"value": "Connectivity cloud explained: A new model for connecting, protecting, and accelerating business",
 																			"marks": [],
 																			"content": null
 																		}
