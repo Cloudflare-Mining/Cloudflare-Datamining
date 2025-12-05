@@ -22,7 +22,7 @@
 	<p>This first change was being rolled out using our gradual deployment system. During rollout, we noticed that our internal WAF testing tool did not support the increased buffer size. As this internal test tool was not needed at that time and had no effect on customer traffic, we made a second change to turn it off.</p>
 	<p>This second change of turning off our WAF testing tool was implemented using our global configuration system. This system does not perform gradual rollouts, but rather propagates changes within seconds to the entire fleet of servers in our network and is under review <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>following the outage we experienced on November 18</u></a>.&nbsp;</p>
 	<p>Unfortunately, in our FL1 version of our proxy, under certain circumstances, the second change of turning off our WAF rule testing tool caused an error state that resulted in 500 HTTP error codes to be served from our network.</p>
-	<p>As soon as the change propagated to our network, code execution in our FL1 proxy reached a bug in our rules module which led to the following LUA exception:</p>
+	<p>As soon as the change propagated to our network, code execution in our FL1 proxy reached a bug in our rules module which led to the following Lua exception: </p>
 	<pre class="language-Rust"><code class="language-Rust">[lua] Failed to run module rulesets callback late_routing: /usr/local/nginx-fl/lua/modules/init.lua:314: attempt to index field 'execute' (a nil value)</code></pre>
 	<p>resulting in HTTP code 500 errors being issued.</p>
 	<p>The issue was identified shortly after the change was applied, and was reverted at 09:12, after which all traffic was served correctly.</p>
