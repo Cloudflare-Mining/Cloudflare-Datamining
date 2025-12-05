@@ -3804,7 +3804,7 @@ export interface WorkerStubEntrypointOptions {
 }
 export interface WorkerLoader {
   get(
-    name: string,
+    name: string | null,
     getCode: () => WorkerLoaderWorkerCode | Promise<WorkerLoaderWorkerCode>,
   ): WorkerStub;
 }
@@ -9301,7 +9301,7 @@ export type AiOptions = {
    * Maximum 5 tags are allowed each request.
    * Duplicate tags will removed.
    */
-  tags: string[];
+  tags?: string[];
   gateway?: GatewayOptions;
   returnRawResponse?: boolean;
   prefix?: string;
