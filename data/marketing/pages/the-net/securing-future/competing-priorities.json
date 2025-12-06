@@ -39,20 +39,20 @@
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "theNET | Chapter 8: Competing priorities in advancing preparedness",
-					"metaDescription": "Many CISOs face competing security priorities. They know that data encryption, endpoint protection, multi-factor authentication (MFA), Zero Trust network access, browser isolation, and other capabilities are all important. Still, budget and staffing challenges mean that less than half of leaders have a mature or even partial implementation of these capabilities.",
+					"metaDescription": "Many CISOs face competing security priorities. They know that data encryption, endpoint protection, multi-factor authentication (MFA), zero trust network access, browser isolation, and other capabilities are all important. Still, budget and staffing challenges mean that less than half of leaders have a mature or even partial implementation of these capabilities.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qM46LU3A5SvXEtcTH7s7X/89050b94318779e2b19b96376523eaf3/thenet-chapter8-meta.png"
 						},
-						"description": "theNET chapter8 meta"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-06-20T15:45:02.998Z",
-					"updatedAt": "2025-07-23T09:33:23.010Z"
+					"updatedAt": "2025-12-05T23:38:01.307Z"
 				},
 				"contentfulId": "4AhIY2FLErTCCS725jhHow",
 				"contentTypeId": "page",
@@ -376,7 +376,41 @@
 					},
 					"description": ""
 				},
-				"proactivePopup": null,
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
+				},
 				"template": null,
 				"relatedBlades": [
 					{
@@ -419,7 +453,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Securing the future: Cyber security readiness report",
+													"value": "Securing the future: Cybersecurity readiness report",
 													"marks": [],
 													"content": null
 												}
@@ -484,7 +518,7 @@
 														{
 															"contentfulId": "7qM46LU3A5SvXEtcTH7s7X",
 															"locale": "en-US",
-															"title": "theNET chapter8 meta",
+															"title": "theNET - Chapter 8: Competing priorities in advancing preparedness - Image",
 															"file": {
 																"name": "thenet-chapter8-meta.png",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7qM46LU3A5SvXEtcTH7s7X/89050b94318779e2b19b96376523eaf3/thenet-chapter8-meta.png",
@@ -546,7 +580,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Security leaders are committed to improving preparedness for cyber security incidents. They know that attacks are on the rise and that they need to act. However, ",
+													"value": "Security leaders are committed to improving preparedness for cybersecurity incidents. They know that attacks are on the rise and that they need to act. However, ",
 													"marks": [],
 													"content": null
 												},
@@ -679,7 +713,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Zero Trust network access",
+															"value": "zero trust network access",
 															"marks": [],
 															"content": null
 														}
@@ -965,7 +999,7 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "3qcg78c3HrHmEqjzg6uWES",
-															"elementName": "theNET - Chapter 8: Competing priorities in advancing preparedness - Button",
+															"elementName": "theNET - Chapter 8: Competing priorities in advancing preparedness - Dive Deeper - Button",
 															"standardText": null,
 															"text": "Continue to Chapter 9: Improving security culture",
 															"url": "https://www.cloudflare.com/the-net/securing-future/security-culture/",
@@ -1168,7 +1202,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "4,000 cyber security professionals",
+																	"value": "4,000 cybersecurity professionals",
 																	"marks": [
 																		{
 																			"type": "bold"

@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - Your first line of defense in cybersecurity - Page ",
+				"pageName": "theNET - Your first line of defense in cybersecurity - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-10-28T20:11:04.716Z",
-					"updatedAt": "2025-10-22T23:07:17.282Z"
+					"updatedAt": "2025-12-05T23:17:49.147Z"
 				},
 				"contentfulId": "2rTJwkd2febwaKgw4d3tGK",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -481,7 +493,7 @@
 														{
 															"contentfulId": "6HpR5XkSwFVgD2s1SRcjZj",
 															"locale": "en-US",
-															"title": "theNET - Your first line of defense in cyber security - Image",
+															"title": "theNET - Your first line of defense in cybersecurity - Image",
 															"file": {
 																"name": "yourfirstlineofdefenseincybersecurity.jpg",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HpR5XkSwFVgD2s1SRcjZj/1d0ab6f61321e222e305c47f385045ad/yourfirstlineofdefenseincybersecurity.jpg",
@@ -2059,7 +2071,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "State of Application Security",
+																			"value": "State of application security",
 																			"marks": [],
 																			"content": null
 																		}
