@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About the Role</strong></p>
-<p>As an <strong>IT Operations Specialist I (P2)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite at our Bengaluru Office, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
+<p>As an <strong>IT Operations Specialist II (P3)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite at our Bengaluru Office, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
 <p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
 <p><strong>Responsibilities</strong></p>
 <p><strong>Onsite IT Operations &amp; Office Support</strong></p>
@@ -37,7 +37,7 @@
 <p><strong>Qualifications &amp; Skills</strong></p>
 <p><strong>Required:</strong></p>
 <ul>
-	<li>1–2 years of IT support or helpdesk experience in a corporate environment.</li>
+	<li>5+ years of IT support or helpdesk experience in a corporate environment.</li>
 	<li>Strong troubleshooting skills for common hardware, software, and connectivity issues.</li>
 	<li>Familiarity with video conferencing platforms (Zoom, Google Meet).</li>
 	<li>Knowledge of IT asset management practices.</li>
