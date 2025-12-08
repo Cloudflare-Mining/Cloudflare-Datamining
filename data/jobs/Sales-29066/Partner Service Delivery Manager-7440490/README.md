@@ -5,40 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Location: Dubai<br></strong></h3>
-<hr>
-<p><strong>About the Department:</strong></p>
-<p>Account Executives, Business Development Representatives, Solution Engineers, and Customer Success - all working together to help our customers adopt Cloudflare and build great Internet-enabled experiences. The sales team at Cloudflare helps customers take on real, technical problems while building the revenue streams that help the company provide free service to millions in our community.</p>
-<p><strong>About the Role:</strong></p>
-<p>Based out of the Dubai office, you will drive sales into a territory of mid-market accounts in the Levant region.</p>
-<p>The ideal candidate will possess both a strong new business sales experience combined with a solid technical understanding that enables them to drive engagement at all levels with technical and non-technical buyers. Background preferably in a related field such as SASE, ZT, FAAS, CASB, WAF, SWG, RBI, DDOS.</p>
-<p>As a Senior Territory Account Executive, you'll be responsible for developing new customer acquisition and executing against a comprehensive account/territory plan as well as driving sales in a defined territory and/or account list to achieve revenue targets. The person in this role will also assist in creating and articulating compelling value propositions for Cloudflare services.</p>
-<p><strong>Additional Responsibilities:</strong></p>
+<p>This position is open to candidates based in either Austin, TX, Atlanta, GA or Washington DC locations</p>
+<p><strong>About the Role</strong></p>
+<p>In this specialized role, you'll focus on service delivery success for partnerships with key GSI partners in the Americas. There is nothing more important to us than our customers' success, which is why we aim to provide them with a white-glove experience in implementing and deploying our solutions. Our service delivery partners—consultancy partners, regional system integrators, global system integrators, and managed service providers—are a crucial part of this success. Our team's role is to collaborate with the best partners worldwide, who are experts in delivering, implementing, migrating, and managing our solutions. Partner Service Delivery Managers play a key role in onboarding service partners, ensuring they are successful and receive necessary support, as well as hand holding them through launching new service offerings in the market.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Manage sales cycles and contract negotiations in a matrix organization</li>
-	<li>Maintain a High level of out-bound new account activities</li>
-	<li>Develop and Maintain a robust sales pipeline</li>
-	<li>Develop long term strategic relationships with key accounts</li>
-	<li>Work with the channel and alliances relevant to the accounts whenever appropriate</li>
+	<li>Strategic Alignment: Collaborate with service delivery partners to develop and execute joint business/technical plans that align with Cloudflare's strategic objectives.</li>
+	<li>Onboarding and Enablement: Lead the onboarding process for new service partners and provide continual support to ensure their proficiency with Cloudflare solutions.</li>
+	<li>Executive Engagement: Regularly engage in strategic and roadmap planning discussions with key stakeholders at partners..</li>
+	<li>Cross-Functional Collaboration: Consistently engage with internal departments such as partner enablement, product team, field sales, partner solutions engineers, Cloudflare professional services team, and others to ensure both partner and customer success..</li>
+	<li>Performance Metrics: Develop, manage, and track key performance indicators to measure and improve the effectiveness of partnerships.</li>
+	<li>Global Oversight: Provide governance and oversight on global projects, ensuring that deliverables are met on time and within scope.</li>
+	<li>Technical Engagement: While not expected to be hands-on for post-sales, engage daily with partner technical teams, including technical delivery teams. Possess enough technical understanding and experience to lead those conversations effectively.</li>
+	<li>Service Delivery Ecosystem Ownership: Own the service delivery partner ecosystem in the region, including building partner capabilities in alignment with regional leaders.</li>
+	<li>Quality Assurance: Monitor and ensure the quality of service delivery by partners, addressing any issues and facilitating improvements as needed.</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge and Experience:</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Minimum 5 years of experience selling Cloud Security and/or Network security solutions to the enterprises in the Levant marketplace.</li>
-	<li>Fluent in both English and Arabic (French is a plus)</li>
-	<li>Proven direct touch selling experience with relevant decision makers across the assigned territory&nbsp;&nbsp;&nbsp;</li>
-	<li>8+ years of related technology selling experience with at least 5 years of selling to similar accounts</li>
-	<li>Manage all milestones of a sales cycle, uncovering the opportunities, qualifying, developing and closing</li>
-	<li>5 years direct experience selling similar technologies such as SASE, ZT, FAAS, CASB, WAF, SWG, RBI, DDOS is required (preferably cloud based)</li>
-	<li>Understanding of computer networking and “how the internet works”</li>
-	<li>Computer engineering or computer science or equivalent background with ability to sell highly technical solutions, ability to scale up with evolving technologies and an always learn aptitude for new technical concepts &amp; solutions&nbsp;</li>
-	<li>Strong interpersonal communication (verbal and written) and organizational skills</li>
-	<li>Self-motivated; entrepreneurial spirit</li>
-	<li>Comfortable working in a fast-paced dynamic environment</li>
-	<li>Experience working with Salesforce, knowledge of accurate reporting and forecasting and importance of pipeline generation</li>
-	<li>Understanding of the competition landscape, market trends and ability to do competitive displacement selling within the assigned territory</li>
+	<li>Consulting Background: Significant experience in a consulting environment, ideally within a GSI, is required.</li>
+	<li>Enterprise IT Expertise: Must possess a deep understanding of enterprise IT architectures and how they integrate with broader business processes.</li>
+	<li>Project Management: A proven track record of managing complex projects with multiple stakeholders is essential.</li>
+	<li>Regulatory Awareness: Must have an understanding of global compliance and data protection regulations.</li>
+	<li>Technical Knowledge: Familiarity with multi-cloud and hybrid cloud environments.</li>
+	<li>Experience with Service Delivery Partners: Demonstrated experience working with consultancy partners, regional system integrators, global system integrators, and/or managed service providers.</li>
+	<li>Customer Success Focus: Strong focus on customer success, ensuring service delivery partners can provide high-quality implementations and support to customers.</li>
+	<li>Stakeholder Engagement: Ability to engage effectively with C-suite executives and technical teams at partner organizations.</li>
+	<li>Analytical Skills: Strong analytical skills to develop, manage, and track key performance indicators.</li>
+	<li>Communication Skills: Excellent communication and interpersonal skills, with the ability to lead strategic discussions and presentations.</li>
+	<li>Ownership and Accountability: Strong sense of ownership and accountability for the service delivery partner ecosystem in the region.</li>
 </ul>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

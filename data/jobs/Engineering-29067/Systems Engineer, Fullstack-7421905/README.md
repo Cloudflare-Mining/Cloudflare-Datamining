@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
-<p>systems that comprise our marketing website, marketing preferences, and bespoke, in-house applications. You will build Cloudflare Workers deployed on our edge network,Node.js and Golang services to Kubernetes (experience with Cloudflare product equivalents is a plus). You’ll bring industry best practices for standing up and maintaining backend services plus a solid understanding of modern website development.</p>
+<p>Systems that comprise our marketing website, marketing preferences, and bespoke, in-house applications. You will build Cloudflare Workers deployed on our edge network,Node.js and Golang services to Kubernetes (experience with Cloudflare product equivalents is a plus). You’ll bring industry best practices for standing up and maintaining backend services plus a solid understanding of modern website development.</p>
 <ul>
 	<li>Build tools, frameworks, and libraries to help the engineering/DevOps team build and maintain a better www.cloudflare.com</li>
 	<li>Optimize our TypeScript/Astro build system</li>
