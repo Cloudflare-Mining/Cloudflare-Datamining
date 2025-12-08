@@ -1,0 +1,275 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Wu87IZkO6g7IBGyjMqYcQ/4658c65f65a28d9636ee0f2bdd3a433c/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Last year we announced <a href="https://blog.cloudflare.com/python-workers"><u>basic support for Python Workers</u></a>, allowing Python developers to ship Python to region: Earth in a single command and take advantage of the <a href="https://workers.cloudflare.com"><u>Workers platform</u></a>.</p>
+	<p>Since then, we’ve been hard at work making the <a href="https://developers.cloudflare.com/workers/languages/python"><u>Python experience on Workers</u></a> feel great. We’ve focused on bringing package support to the platform, a reality that’s now here — with exceptionally fast cold starts and a Python-native developer experience.</p>
+	<p>This means a change in how packages are incorporated into a Python Worker. Instead of offering a limited set of built-in packages, we now support any <a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html"><u>package supported by Pyodide</u></a>, the WebAssembly runtime powering Python Workers. This includes all pure Python packages, as well as many packages that rely on dynamic libraries. We also built tooling around <a href="https://docs.astral.sh/uv"><u>uv</u></a> to make package installation easy.</p>
+	<p>We’ve also implemented dedicated memory snapshots to reduce cold start times. These snapshots result in serious speed improvements over other serverless Python vendors. In cold start tests using common packages, Cloudflare Workers start over <b>2.4x faster than AWS Lambda</b> and <b>3x faster than Google Cloud Run</b>.</p>
+	<p>In this blog post, we’ll explain what makes Python Workers unique and share some of the technical details of how we’ve achieved the wins described above. But first, for those who may not be familiar with Workers or serverless platforms – and especially those coming from a Python background — let us share why you might want to use Workers at all.</p>
+	<div class="flex anchor relative">
+		<h3 id="deploying-python-globally-in-2-minutes">Deploying Python globally in 2 minutes</h3>
+		<a href="https://blog.cloudflare.com/#deploying-python-globally-in-2-minutes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Part of the magic of Workers is simple code and easy global deployments. Let's start by showing how you can deploy a FastAPI app across the world with fast cold starts in less than two minutes.</p>
+	<p>A simple Worker using FastAPI can be implemented in a handful of lines:</p>
+	<pre class="language-Rust"><code class="language-Rust">from fastapi import FastAPI
+from workers import WorkerEntrypoint
+import asgi
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+   return {"message": "This is FastAPI on Workers"}
+
+class Default(WorkerEntrypoint):
+   async def fetch(self, request):
+       return await asgi.fetch(app, request.js_object, self.env)</code></pre>
+	<p>To deploy something similar, just make sure you have <code>uv</code> and <code>npm</code> installed, then run the following:</p>
+	<pre class="language-Shell"><code class="language-Shell">$ uv tool install workers-py
+$ pywrangler init --template \
+    https://github.com/cloudflare/python-workers-examples/03-fastapi
+$ pywrangler deploy</code></pre>
+	<p>With just a little code and a <code>pywrangler deploy</code>, you’ve now deployed your application across Cloudflare’s edge network that extends to <a href="https://www.cloudflare.com/network"><u>330 locations across 125 countries</u></a>. No worrying about infrastructure or scaling.</p>
+	<p>And for many use cases, Python Workers are completely free. Our free tier offers 100,000 requests per day and 10ms CPU time per invocation. For more information, check out the <a href="https://developers.cloudflare.com/workers/platform/pricing"><u>pricing page in our documentation</u></a>.</p>
+	<p>For more examples, <a href="https://github.com/cloudflare/python-workers-examples"><u>check out the repo in GitHub</u></a>. And read on to find out more about Python Workers.</p>
+	<div class="flex anchor relative">
+		<h3 id="so-what-can-you-do-with-python-workers">So what can you do with Python Workers?</h3>
+		<a href="https://blog.cloudflare.com/#so-what-can-you-do-with-python-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Now that you’ve got a Worker, just about anything is possible. You write the code, so you get to decide. Your Python Worker receives HTTP requests and can make requests to any server on the public Internet.</p>
+	<p>You can set up cron triggers, so your Worker runs on a regular schedule. Plus, if you have more complex requirements, you can make use of <a href="https://blog.cloudflare.com/python-workflows"><u>Workflows for Python Workers</u></a>, or even long-running WebSocket servers and clients <a href="https://developers.cloudflare.com/durable-objects/get-started"><u>using Durable Objects</u></a>.</p>
+	<p>Here are more examples of the sorts of things you can do using Python Workers:</p>
+	<ul>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/03-fastapi"><u>Render HTML templates on the edge, with a library like Jinja, while fetching dynamic content directly from your server</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/11-opengraph"><u>Modify the response from your server — for example, you can inject opengraph tags into your HTML dynamically, based on the content requested</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/15-chatroom"><u>Build a chat room using Durable Objects and WebSockets</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/14-websocket-stream-consumer"><u>Consume data from WebSocket connections, like the Bluesky firehose</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/12-image-gen"><u>Generate images using the Pillow Python package</u></a></p>
+		</li>
+		<li>
+			<p><a href="https://github.com/cloudflare/python-workers-examples/tree/main/13-js-api-pygments"><u>Write a small Python Worker that exposes the API of a Python package, and then access it from your JavaScript Worker using RPC</u></a></p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="faster-package-cold-starts-than-lambda-and-cloud-run">Faster package cold starts than Lambda and Cloud Run</h3>
+		<a href="https://blog.cloudflare.com/#faster-package-cold-starts-than-lambda-and-cloud-run" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Serverless platforms like Workers save you money by only running your code when it’s necessary to do so. This means that if your Worker isn’t receiving requests, it may be shut down and will need to be restarted once a new request comes in. This typically incurs a resource overhead we refer to as the “cold start.” It’s important to keep these as short as possible to minimize latency for end users.</p>
+	<p>In standard Python, booting the runtime is expensive, and our initial implementation of Python Workers focused on making the <i>runtime</i> boot fast. However, we quickly realized that this wasn’t enough. Even if the Python runtime boots quickly, in real-world scenarios the initial startup usually includes loading modules from packages, and unfortunately, in Python many popular packages can take several seconds to load.</p>
+	<p>We set out to make cold starts fast, regardless of whether packages were loaded.</p>
+	<p>To measure realistic cold start performance, we set up a benchmark that imports common packages, as well as a benchmark running a “hello world” using a bare Python runtime. While Lambda is able to <a href="https://cold.edgeworker.net/#bare"><u>start just the runtime</u></a> quickly, once you need to import packages, the cold start times shoot up.</p>
+	<p>Here are the average cold start times when loading three common packages (<a href="https://www.python-httpx.org"><u>httpx</u></a>, <a href="https://fastapi.tiangolo.com"><u>fastapi</u></a> and <a href="https://docs.pydantic.dev/latest"><u>pydantic</u></a>):</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Platform</b></p>
+				</td>
+				<td>
+					<p><b>Mean Cold Start (secs)</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Cloudflare Python Workers</p>
+				</td>
+				<td>
+					<p>1.027</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>AWS Lambda</p>
+				</td>
+				<td>
+					<p>2.502</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Google Cloud Run</p>
+				</td>
+				<td>
+					<p>3.069</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>In this case, <b>Cloudflare Python Workers have 2.4x faster cold starts than AWS Lambda and 3x faster cold starts than Google Cloud Run</b>. We achieved these low cold start numbers by using memory snapshots, and in a later section we explain how we did so.</p>
+	<p>We are regularly running these benchmarks. Go <a href="https://cold.edgeworker.net"><u>here</u></a> for up-to-date data and more info on our testing methodology.</p>
+	<p>We’re architecturally different from these other platforms — namely, <a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>Workers is isolate-based</u></a>. Because of that, our aims are high, and we are planning for a zero cold start future.</p>
+	<div class="flex anchor relative">
+		<h3 id="package-tooling-integrated-with-uv">Package tooling integrated with uv</h3>
+		<a href="https://blog.cloudflare.com/#package-tooling-integrated-with-uv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The diverse package ecosystem is a large part of what makes Python so amazing. That’s why we’ve been hard at work ensuring that using packages in Workers is as easy as possible.</p>
+	<p>We realised that working with the existing Python tooling is the best path towards a great development experience. So we picked the <code>uv</code> package and project manager, as it’s fast, mature, and gaining momentum in the Python ecosystem.</p>
+	<p>We built our own tooling around <code>uv</code> called <a href="https://github.com/cloudflare/workers-py#pywrangler"><u>pywrangler</u></a>. This tool essentially performs the following actions:</p>
+	<ul>
+		<li>
+			<p>Reads your Worker’s pyproject.toml file to determine the dependencies specified in it</p>
+		</li>
+		<li>
+			<p>Includes your dependencies in a <code>python_modules</code> folder that lives in your Worker</p>
+		</li>
+	</ul>
+	<p>Pywrangler calls out to <code>uv</code> to install the dependencies in a way that is compatible with Python Workers, and calls out to <code>wrangler</code> when developing locally or deploying Workers.&nbsp;</p>
+	<p>Effectively this means that you just need to run <code>pywrangler dev</code> and <code>pywrangler</code> <code>deploy</code> to test your Worker locally and deploy it.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="type-hints">Type hints</h3>
+		<a href="https://blog.cloudflare.com/#type-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You can generate type hints for all of the <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings"><u>bindings</u></a> defined in your wrangler config using <code>pywrangler types</code>. These type hints will work with <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance"><u>Pylance</u></a> or with recent versions of <a href="https://mypy-lang.org"><u>mypy</u></a>.</p>
+	<p>To generate the types, we use <a href="https://developers.cloudflare.com/workers/wrangler/commands/#types"><u>wrangler types</u></a> to create typescript type hints, then we use the typescript compiler to generate an abstract syntax tree for the types. Finally, we use the TypeScript hints — such as whether a JS object has an iterator field — to generate <code>mypy</code> type hints that work with the Pyodide foreign function interface.</p>
+	<div class="flex anchor relative">
+		<h3 id="decreasing-cold-start-duration-using-snapshots">Decreasing cold start duration using snapshots</h3>
+		<a href="https://blog.cloudflare.com/#decreasing-cold-start-duration-using-snapshots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Python startup is generally quite slow and importing a Python module can trigger a large amount of work. We avoid running Python startup during a cold start using memory snapshots.</p>
+	<p>When a Worker is deployed, we execute the Worker’s top-level scope and then take a memory snapshot and store it alongside your Worker. Whenever we are starting a new isolate for the Worker, we restore the memory snapshot and the Worker is ready to handle requests, with no need to execute any Python code in preparation. This improves cold start times considerably. For instance, starting a Worker that imports <code>fastapi</code>, <code>httpx</code> and <code>pydantic</code> without snapshots takes around 10 seconds. With snapshots, it takes 1 second.</p>
+	<p>The fact that Pyodide is built on WebAssembly enables this. We can easily capture the full linear memory of the runtime and restore it.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h4 id="memory-snapshots-and-entropy">Memory snapshots and Entropy</h4>
+		<a href="https://blog.cloudflare.com/#memory-snapshots-and-entropy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>WebAssembly runtimes do not require features like address space layout randomization for security, so most of the difficulties with memory snapshots on a modern operating system do not arise. Just like with native memory snapshots, we still have to carefully handle entropy at startup to avoid using the <a href="https://xkcd.com/221"><u>XKCD random number generator</u></a> (we’re <a href="https://www.cloudflare.com/learning/ssl/lava-lamp-encryption"><u>very into actual randomness</u></a>).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Q2LYb3LZhfC2q3vQCFr1R/ff8f229715a0d37484585664c61908dc/image1.png" alt="" class="kg-image" width="400" height="144" loading="lazy">
+	</figure>
+	<p>By snapshotting memory, we might inadvertently lock in a seed value for randomness. In this case, future calls for “random” numbers would consistently return the same sequence of values across many requests.</p>
+	<p>Avoiding this is particularly challenging because Python uses a lot of entropy at startup. These include the libc functions <code>getentropy()</code> and <code>getrandom()</code> and also reading from <code>/dev/random</code> and <code>/dev/urandom</code>. All of these functions share the same implementation in terms of the JavaScript <code>crypto.getRandomValues()</code> function.</p>
+	<p>In Cloudflare Workers, <code>crypto.getRandomValues()</code> has always been disabled at startup in order to allow us to switch to using memory snapshots in the future. Unfortunately, the Python interpreter cannot bootstrap without calling this function. And many packages also require entropy at startup time. There are essentially two purposes for this entropy:</p>
+	<ul>
+		<li>
+			<p>Hash seeds for hash randomization</p>
+		</li>
+		<li>
+			<p>Seeds for pseudorandom number generators</p>
+		</li>
+	</ul>
+	<p>Hash randomization we do at startup time and accept the cost that each specific Worker has a fixed hash seed. Python has no mechanism to allow replacing the hash seed after startup.</p>
+	<p>For pseudorandom number generators (PRNG), we take the following approach:</p>
+	<p>At deploy time:</p>
+	<ol>
+		<li>
+			<p>Seed the PRNG with a fixed “poison seed”, then record the PRNG state.</p>
+		</li>
+		<li>
+			<p>Replace all APIs that call into the PRNG with an overlay that fails the deployment with a user error.</p>
+		</li>
+		<li>
+			<p>Execute the top level scope of user code.</p>
+		</li>
+		<li>
+			<p>Capture the snapshot.</p>
+		</li>
+	</ol>
+	<p>At run time:</p>
+	<ol>
+		<li>
+			<p>Assert that the PRNG state is unchanged. If it changed, we forgot the overlay for some method. Fail the deployment with an internal error.</p>
+		</li>
+		<li>
+			<p>After restoring the snapshot, reseed the random number generator before executing any handlers.</p>
+		</li>
+	</ol>
+	<p>With this, we can ensure that PRNGs can be used while the Worker is running, but stop Workers from using them during initialization and pre-snapshot.</p>
+	<div class="flex anchor relative">
+		<h4 id="memory-snapshots-and-webassembly-state">Memory snapshots and WebAssembly state</h4>
+		<a href="https://blog.cloudflare.com/#memory-snapshots-and-webassembly-state" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>An additional difficulty arises when creating memory snapshots on WebAssembly: The memory snapshot we are saving consists only of the WebAssembly linear memory, but the full state of the Pyodide WebAssembly instance is not contained in the linear memory.&nbsp;</p>
+	<p>There are two tables outside of this memory.</p>
+	<p>One table holds the values of function pointers. Traditional computers use a “Von Neumann” architecture, which means that code exists in the same memory space as data, so that calling a function pointer is a jump to some memory address. WebAssembly has a “Harvard architecture” where code lives in a separate address space. This is key to most of the security guarantees of WebAssembly and in particular why WebAssembly does not need address space layout randomization. A function pointer in WebAssembly is an index into the function pointer table.</p>
+	<p>A second table holds all JavaScript objects referenced from Python. JavaScript objects cannot be directly stored into memory because the JavaScript virtual machine forbids directly obtaining a pointer to a JavaScript object. Instead, they are stored into a table and represented in WebAssembly as an index into the table.</p>
+	<p>We need to ensure that both of these tables are in exactly the same state after we restore a snapshot as they were when we captured the snapshot.</p>
+	<p>The function pointer table is always in the same state when the WebAssembly instance is initialized and is updated by the dynamic loader when we load dynamic libraries — native Python packages like numpy.&nbsp;</p>
+	<p>To handle dynamic loading:</p>
+	<ol>
+		<li>
+			<p>When taking the snapshot, we patch the loader to record the load order of dynamic libraries, the address in memory where the metadata for each library is allocated, and the function pointer table base address for relocations.&nbsp;</p>
+		</li>
+		<li>
+			<p>When restoring the snapshot, we reload the dynamic libraries in the same order, and we use a patched memory allocator to place the metadata in the same locations. We assert that the current size of the function pointer table matches the function pointer table base we recorded for the dynamic library.</p>
+		</li>
+	</ol>
+	<p>All of this ensures that each function pointer has the same meaning after we’ve restored the snapshot as it had when we took the snapshot.</p>
+	<p>To handle the JavaScript references, we implemented a fairly limited system. If a JavaScript object is accessible from globalThis by a series of property accesses, we record those property accesses and replay them when restoring the snapshot. If any reference exists to a JavaScript object that is not accessible in this way, we fail deployment of the Worker. This is good enough to deal with all the existing Python packages with Pyodide support, which do top level imports like:</p>
+	<pre class="language-Python"><code class="language-Python">from js import fetch</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="reducing-cold-start-frequency-using-sharding">Reducing cold start frequency using sharding</h3>
+		<a href="https://blog.cloudflare.com/#reducing-cold-start-frequency-using-sharding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Another important characteristic of our performance strategy for Python Workers is sharding. There is a very detailed description of what went into its implementation <a href="https://blog.cloudflare.com/eliminating-cold-starts-2-shard-and-conquer"><u>here</u></a>. In short, we now route requests to existing Worker instances, whereas before we might have chosen to start a new instance.</p>
+	<p>Sharding was actually enabled for Python Workers first and proved to be a great test bed for it. A cold start is far more expensive in Python than in JavaScript, so ensuring requests are routed to an already-running isolate is especially important.</p>
+	<div class="flex anchor relative">
+		<h3 id="where-do-we-go-from-here">Where do we go from here?</h3>
+		<a href="https://blog.cloudflare.com/#where-do-we-go-from-here" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This is just the start. We have many plans to make Python Workers better:</p>
+	<ul>
+		<li>
+			<p>More developer-friendly tooling</p>
+		</li>
+		<li>
+			<p>Even faster cold starts by utilising our isolate architecture</p>
+		</li>
+		<li>
+			<p>Support for more packages</p>
+		</li>
+		<li>
+			<p>Support for native TCP sockets, native WebSockets, and more bindings</p>
+		</li>
+	</ul>
+	<p>To learn more about Python Workers, check out the documentation available <a href="https://developers.cloudflare.com/workers/languages/python"><u>here</u></a>. To get help, be sure to join our <a href="https://discord.cloudflare.com"><u>Discord</u></a>.</p>
+</div>
