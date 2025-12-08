@@ -380,18 +380,6 @@
 																		"description": "Specifies if Chat within a meeting should persist for a week.",
 																		"type": "boolean"
 																	},
-																	"preferred_region": {
-																		"description": "The region in which this meeting should be created.",
-																		"enum": [
-																			"ap-south-1",
-																			"ap-southeast-1",
-																			"us-east-1",
-																			"eu-central-1",
-																			null
-																		],
-																		"nullable": true,
-																		"type": "string"
-																	},
 																	"record_on_start": {
 																		"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
 																		"type": "boolean"
@@ -1342,7 +1330,8 @@
 						"type": "object"
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -1818,13 +1807,15 @@
 							}
 						},
 						"required": [
+							"meeting_id",
 							"layers"
 						],
 						"type": "object"
 					}
 				}
 			},
-			"description": "For now only \"default\" layer key is supported."
+			"description": "For now only \"default\" layer key is supported.",
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -1904,7 +1895,8 @@
 						"type": "object"
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {

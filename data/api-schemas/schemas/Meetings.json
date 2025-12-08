@@ -290,18 +290,6 @@
 														"description": "Specifies if Chat within a meeting should persist for a week.",
 														"type": "boolean"
 													},
-													"preferred_region": {
-														"description": "The region in which this meeting should be created.",
-														"enum": [
-															"ap-south-1",
-															"ap-southeast-1",
-															"us-east-1",
-															"eu-central-1",
-															null
-														],
-														"nullable": true,
-														"type": "string"
-													},
 													"record_on_start": {
 														"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
 														"type": "boolean"
@@ -440,18 +428,6 @@
 														"persist_chat": {
 															"description": "Specifies if Chat within a meeting should persist for a week.",
 															"type": "boolean"
-														},
-														"preferred_region": {
-															"description": "The region in which this meeting should be created.",
-															"enum": [
-																"ap-south-1",
-																"ap-southeast-1",
-																"us-east-1",
-																"eu-central-1",
-																null
-															],
-															"nullable": true,
-															"type": "string"
 														},
 														"record_on_start": {
 															"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
@@ -1379,16 +1355,6 @@
 								"description": "If a meeting is updated to persist_chat, meeting chat would remain for a week within the meeting space.",
 								"type": "boolean"
 							},
-							"preferred_region": {
-								"description": "The region in which this meeting should be created.",
-								"enum": [
-									"ap-south-1",
-									"ap-southeast-1",
-									"us-east-1",
-									"eu-central-1"
-								],
-								"type": "string"
-							},
 							"record_on_start": {
 								"default": false,
 								"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
@@ -1424,7 +1390,8 @@
 					}
 				}
 			},
-			"description": "Create meeting body"
+			"description": "Create meeting body",
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -1475,18 +1442,6 @@
 														"persist_chat": {
 															"description": "Specifies if Chat within a meeting should persist for a week.",
 															"type": "boolean"
-														},
-														"preferred_region": {
-															"description": "The region in which this meeting should be created.",
-															"enum": [
-																"ap-south-1",
-																"ap-southeast-1",
-																"us-east-1",
-																"eu-central-1",
-																null
-															],
-															"nullable": true,
-															"type": "string"
 														},
 														"record_on_start": {
 															"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
@@ -1966,7 +1921,8 @@
 						"type": "object"
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -2246,18 +2202,6 @@
 								"description": "If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space.",
 								"type": "boolean"
 							},
-							"preferred_region": {
-								"description": "The region in which this meeting should be created.",
-								"enum": [
-									"ap-south-1",
-									"ap-southeast-1",
-									"us-east-1",
-									"eu-central-1",
-									null
-								],
-								"nullable": true,
-								"type": "string"
-							},
 							"record_on_start": {
 								"default": false,
 								"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
@@ -2503,7 +2447,8 @@
 					}
 				}
 			},
-			"description": "Create meeting body"
+			"description": "Create meeting body",
+			"required": true
 		},
 		"responses": {
 			"201": {
@@ -2554,18 +2499,6 @@
 														"persist_chat": {
 															"description": "Specifies if Chat within a meeting should persist for a week.",
 															"type": "boolean"
-														},
-														"preferred_region": {
-															"description": "The region in which this meeting should be created.",
-															"enum": [
-																"ap-south-1",
-																"ap-southeast-1",
-																"us-east-1",
-																"eu-central-1",
-																null
-															],
-															"nullable": true,
-															"type": "string"
 														},
 														"record_on_start": {
 															"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
@@ -3030,7 +2963,8 @@
 						"type": "object"
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"201": {
@@ -3447,18 +3381,6 @@
 								"description": "If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space.",
 								"type": "boolean"
 							},
-							"preferred_region": {
-								"description": "The region in which this meeting should be created.",
-								"enum": [
-									"ap-south-1",
-									"ap-southeast-1",
-									"us-east-1",
-									"eu-central-1",
-									null
-								],
-								"nullable": true,
-								"type": "string"
-							},
 							"record_on_start": {
 								"default": false,
 								"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",
@@ -3704,7 +3626,8 @@
 					}
 				}
 			},
-			"description": "Create meeting body"
+			"description": "Create meeting body",
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -3755,18 +3678,6 @@
 														"persist_chat": {
 															"description": "Specifies if Chat within a meeting should persist for a week.",
 															"type": "boolean"
-														},
-														"preferred_region": {
-															"description": "The region in which this meeting should be created.",
-															"enum": [
-																"ap-south-1",
-																"ap-southeast-1",
-																"us-east-1",
-																"eu-central-1",
-																null
-															],
-															"nullable": true,
-															"type": "string"
 														},
 														"record_on_start": {
 															"description": "Specifies if the meeting should start getting recorded as soon as someone joins the meeting.",

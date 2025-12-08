@@ -1865,6 +1865,12 @@
 														"readOnly": true,
 														"type": "string"
 													},
+													"startup_time_ms": {
+														"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
+														"example": 10,
+														"readOnly": true,
+														"type": "integer"
+													},
 													"usage_model": {
 														"default": "standard",
 														"deprecated": true,
@@ -3608,6 +3614,12 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"startup_time_ms": {
+													"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
+													"example": 10,
+													"readOnly": true,
+													"type": "integer"
+												},
 												"usage_model": {
 													"default": "standard",
 													"deprecated": true,
@@ -5250,6 +5262,12 @@
 								"readOnly": true,
 								"type": "string"
 							},
+							"startup_time_ms": {
+								"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
+								"example": 10,
+								"readOnly": true,
+								"type": "integer"
+							},
 							"usage_model": {
 								"default": "standard",
 								"deprecated": true,
@@ -6804,6 +6822,12 @@
 													"example": "wrangler",
 													"readOnly": true,
 													"type": "string"
+												},
+												"startup_time_ms": {
+													"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
+													"example": 10,
+													"readOnly": true,
+													"type": "integer"
 												},
 												"usage_model": {
 													"default": "standard",

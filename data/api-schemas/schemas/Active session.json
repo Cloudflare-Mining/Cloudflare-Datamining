@@ -260,11 +260,16 @@
 								"type": "array"
 							}
 						},
+						"required": [
+							"participant_ids",
+							"custom_participant_ids"
+						],
 						"type": "object"
 					}
 				}
 			},
-			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required."
+			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required.",
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -525,11 +530,16 @@
 								"type": "array"
 							}
 						},
+						"required": [
+							"participant_ids",
+							"custom_participant_ids"
+						],
 						"type": "object"
 					}
 				}
 			},
-			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required."
+			"description": "Request body for kicking participants from an active session. Only one of `participant_id` or `custom_participant_id` is required.",
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -653,11 +663,15 @@
 								"type": "boolean"
 							}
 						},
+						"required": [
+							"allow_unmute"
+						],
 						"type": "object"
 					}
 				}
 			},
-			"description": "Request body for muting all participants in an active session."
+			"description": "Request body for muting all participants in an active session.",
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -763,11 +777,16 @@
 								"type": "string"
 							}
 						},
+						"required": [
+							"question",
+							"options"
+						],
 						"type": "object"
 					}
 				}
 			},
-			"description": "Request body for creating a new poll"
+			"description": "Request body for creating a new poll",
+			"required": true
 		},
 		"responses": {
 			"201": {

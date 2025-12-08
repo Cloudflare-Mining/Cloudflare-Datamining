@@ -893,6 +893,19 @@
 			},
 			{
 				"in": "query",
+				"name": "audit_log_id",
+				"schema": {
+					"deprecated": true,
+					"description": "Finds a specific log by its ID.",
+					"items": {
+						"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "id",
 				"schema": {
 					"description": "Finds a specific log by its ID.",
@@ -1164,6 +1177,19 @@
 							"user"
 						],
 						"example": "account",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "audit_log_id.not",
+				"schema": {
+					"deprecated": true,
+					"description": "Filters out audit logs by their IDs.",
+					"items": {
+						"example": "f174be97-19b1-40d6-954d-70cd5fbd52db",
 						"type": "string"
 					},
 					"type": "array"

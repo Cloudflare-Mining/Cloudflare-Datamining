@@ -270,6 +270,10 @@
 											],
 											"type": "object",
 											"x-auditable": true
+										},
+										"zdr": {
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -654,6 +658,10 @@
 													"usage_events"
 												],
 												"type": "object",
+												"x-auditable": true
+											},
+											"zdr": {
+												"type": "boolean",
 												"x-auditable": true
 											}
 										},
@@ -1155,6 +1163,10 @@
 											],
 											"type": "object",
 											"x-auditable": true
+										},
+										"zdr": {
+											"type": "boolean",
+											"x-auditable": true
 										}
 									},
 									"required": [
@@ -1346,6 +1358,10 @@
 									"sliding"
 								],
 								"type": "string",
+								"x-auditable": true
+							},
+							"zdr": {
+								"type": "boolean",
 								"x-auditable": true
 							}
 						},
@@ -1606,6 +1622,10 @@
 												"usage_events"
 											],
 											"type": "object",
+											"x-auditable": true
+										},
+										"zdr": {
+											"type": "boolean",
 											"x-auditable": true
 										}
 									},
@@ -1956,6 +1976,10 @@
 								],
 								"type": "object",
 								"x-auditable": true
+							},
+							"zdr": {
+								"type": "boolean",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -2214,6 +2238,10 @@
 												"usage_events"
 											],
 											"type": "object",
+											"x-auditable": true
+										},
+										"zdr": {
+											"type": "boolean",
 											"x-auditable": true
 										}
 									},

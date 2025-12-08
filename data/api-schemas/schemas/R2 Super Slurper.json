@@ -111,6 +111,13 @@
 																		"nullable": true,
 																		"type": "string"
 																	},
+																	"keys": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
+																	},
 																	"pathPrefix": {
 																		"nullable": true,
 																		"type": "string"
@@ -129,6 +136,13 @@
 																"properties": {
 																	"bucket": {
 																		"type": "string"
+																	},
+																	"keys": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
 																	},
 																	"pathPrefix": {
 																		"nullable": true,
@@ -156,6 +170,13 @@
 																			"fedramp"
 																		],
 																		"type": "string"
+																	},
+																	"keys": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
 																	},
 																	"pathPrefix": {
 																		"nullable": true,
@@ -395,6 +416,13 @@
 																	"nullable": true,
 																	"type": "string"
 																},
+																"keys": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"nullable": true,
+																	"type": "array"
+																},
 																"pathPrefix": {
 																	"nullable": true,
 																	"type": "string"
@@ -413,6 +441,13 @@
 															"properties": {
 																"bucket": {
 																	"type": "string"
+																},
+																"keys": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"nullable": true,
+																	"type": "array"
 																},
 																"pathPrefix": {
 																	"nullable": true,
@@ -440,6 +475,13 @@
 																		"fedramp"
 																	],
 																	"type": "string"
+																},
+																"keys": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"nullable": true,
+																	"type": "array"
 																},
 																"pathPrefix": {
 																	"nullable": true,

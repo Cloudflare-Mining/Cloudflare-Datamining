@@ -650,5 +650,189 @@
 			"free": true,
 			"pro": true
 		}
+	},
+	"POST /accounts/{account_id}/ai-search/instances/{id}/jobs": {
+		"operationId": "ai-search-instance-create-job",
+		"parameters": [
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"end_reason": {
+											"type": "string"
+										},
+										"ended_at": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"last_seen_at": {
+											"type": "string"
+										},
+										"source": {
+											"enum": [
+												"user",
+												"schedule"
+											],
+											"type": "string"
+										},
+										"started_at": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"source"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the AI Search job id."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7000,
+												"type": "number"
+											},
+											"message": {
+												"example": "Internal Error",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create new job",
+		"tags": [
+			"AI Search Instances Jobs"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.rag"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
 	}
 }
