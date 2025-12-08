@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Mexico City or Lisbon</strong></p>
+<p><strong>Available Locations: Austin, TX, Mexico City or Lisbon</strong></p>
 <p><strong>About the role</strong></p>
 <p>The Web Strategy team is the digital front door to Cloudflare. We are looking for a curious, self-motivated superstar to be the analytical engine that fuels our most critical website initiatives.</p>
 <p>This is not a typical analyst role. We're looking for a unique blend of web analyst and data scientist—a true artisan of data who can go beyond simple reporting. You will be a strategic partner, responsible for diving deep into complex datasets, stitching together disparate sources, and surfacing the "why" behind the "what." Your insights will directly inform our roadmap for needle-moving personalization and experimentation, helping us understand user journeys, identify friction points, and uncover hidden opportunities. If you are passionate about transforming raw data into compelling stories and actionable strategies, we want to hear from you.</p>
