@@ -1,0 +1,229 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aBSroAN3aUVoof86nnIWN/79cbeb53b1b32e97e682ddf72b523c32/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>The Cloudflare platform is a critical system for Cloudflare itself. We are our own Customer Zero – using our products to secure and optimize our own services.&nbsp;</p>
+	<p>Within our security division, a dedicated Customer Zero team uses its unique position to provide a constant, high-fidelity feedback loop to product and engineering that drives continuous improvement of our products<b>. </b>And we do this at a global scale — where a single misconfiguration can propagate across our edge in seconds and lead to unintended consequences. If you've ever hesitated before pushing a change to production, sweating because you know one small mistake could lock every employee out of critical application or take down a production service, you know the feeling. The risk of unintended consequences is real, and it keeps us up at night.</p>
+	<p>This presents an interesting challenge: How do we ensure hundreds of internal production Cloudflare accounts are secured consistently while minimizing human error?</p>
+	<p>While the Cloudflare dashboard is excellent for observability and analytics, manually clicking through hundreds of accounts to ensure security settings are identical is a recipe for mistakes. To keep our sanity and our security intact, we stopped treating our configurations as manual point-and-click tasks and started treating them like code. We adopted “shift left” principles to move security checks to the earliest stages of development.&nbsp;</p>
+	<p>This wasn't an abstract corporate goal for us. It was a survival mechanism to catch errors before they caused an incident, and it required a fundamental change in our governance architecture.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-shift-left-means-to-us">What Shift Left means to us</h2>
+		<a href="https://blog.cloudflare.com/#what-shift-left-means-to-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>"Shifting left" refers to moving validation steps earlier in the software development lifecycle (SDLC). In practice, this means integrating testing, security audits, and policy compliance checks directly into the continuous integration and continuous deployment (CI/CD) pipeline. By catching issues or misconfigurations at the merge request stage, we identify issues when the cost of remediation is lowest, rather than discovering them after deployment.</p>
+	<p>When we think about applying shift left principles at Cloudflare, four key principles stand out:</p>
+	<ul>
+		<li>
+			<p><b>Consistency</b>: Configurations must be easily copied and reused across accounts.</p>
+		</li>
+		<li>
+			<p><b>Scalability</b>: Large changes can be applied rapidly across multiple accounts.</p>
+		</li>
+		<li>
+			<p><b>Observability</b>: Configurations must be auditable by anyone for current state, accuracy, and security.</p>
+		</li>
+		<li>
+			<p><b>Governance</b>: Guardrails must be proactive — enforced before deployment to avoid incidents.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="a-production-iac-operating-model">A production IaC operating model</h2>
+		<a href="https://blog.cloudflare.com/#a-production-iac-operating-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To support this model, we transitioned all production accounts to being managed with Infrastructure as Code (IaC). Every modification is tracked, tied to a user, commit, and an internal ticket. Teams still use the dashboard for analytics and insights, but critical production changes are all done in code.</p>
+	<p>This model ensures every change is peer-reviewed, and policies, though set by the security team, are implemented by the owning engineering teams themselves.</p>
+	<p>This setup is grounded in two major technologies: <a href="https://developer.hashicorp.com/terraform"><u>Terraform</u></a> and a custom CI/CD pipeline.</p>
+	<div class="flex anchor relative">
+		<h2 id="our-enterprise-iac-stack">Our enterprise IaC stack</h2>
+		<a href="https://blog.cloudflare.com/#our-enterprise-iac-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We chose Terraform for its mature open-source ecosystem, strong community support, and deep integration with Policy as Code tooling. Furthermore, using the <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs"><u>Cloudflare Terraform Provider</u></a> internally allows us to actively <a href="https://blog.cloudflare.com/tag/dogfooding"><u>dogfood</u></a> the experience and improve it for our customers.</p>
+	<p>To manage the scale of hundreds of accounts and around 30 merge requests per day, our CI/CD pipeline runs on <a href="https://www.runatlantis.io"><u>Atlantis</u></a>, integrated with <a href="https://about.gitlab.com"><u>GitLab</u></a>. We also use a custom go program, tfstate-butler, that acts as a broker to securely store state files.</p>
+	<p>tfstate-butler operates as an HTTP backend for Terraform. The primary design driver was security: It ensures unique encryption keys per state file to limit the blast radius of any potential compromise.&nbsp;</p>
+	<p>All internal account configurations are defined in a centralized <a href="https://developers.cloudflare.com/pages/configuration/monorepos"><u>monorepo</u></a>. Individual teams own and deploy their specific configurations and are the designated code owners for their sections of this centralized repository, ensuring accountability. To read more about this configuration, check out <a href="https://blog.cloudflare.com/terraforming-cloudflare-at-cloudflare"><u>How Cloudflare uses Terraform to manage Cloudflare</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17DDCeUrkEeWqtqpIPZoV4/114b63e0b8c408843b14c447ed27ed97/image1.png" alt="" class="kg-image" width="1374" height="746" loading="lazy">
+	</figure>
+	<p><sup>Infrastructure as Code Data Flow Diagram</sup></p>
+	<div class="flex anchor relative">
+		<h2 id="baselines-and-policy-as-code">Baselines and Policy as Code</h2>
+		<a href="https://blog.cloudflare.com/#baselines-and-policy-as-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The entire shift left strategy hinges on establishing a strong security baseline for all internal production Cloudflare accounts. The baseline is a collection of security policies that are defined in code (Policy as Code). This baseline is not merely a set of guidelines but rather a required security configuration we enforce across the platform — e.g., maximum session length, required logs, specific WAF configurations, etc.&nbsp;</p>
+	<p>This setup is where policy enforcement shifts from manual audits to automated gates. We use the <a href="https://www.openpolicyagent.org"><u>Open Policy Agent (OPA)</u></a> framework and its policy language, <a href="https://www.openpolicyagent.org/docs/policy-language#what-is-rego"><u>Rego</u></a>, via the Atlantis Conftest Policy Checking feature.</p>
+	<div class="flex anchor relative">
+		<h2 id="defining-policies-as-code">Defining policies as code</h2>
+		<a href="https://blog.cloudflare.com/#defining-policies-as-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rego policies define the specific security requirements that make up the baseline for all Cloudflare provider resources. We currently maintain approximately 50 policies.</p>
+	<p>For example, here is a Rego policy that validates only @cloudflare.com emails are allowed to be used in an access policy:&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust"># validate no use of non-cloudflare email
+warn contains reason if {
+    r := tfplan.resource_changes[_]
+    r.mode == "managed"
+    r.type == "cloudflare_access_policy"
+
+    include := r.change.after.include[_]
+    email_address := include.email[_]
+    not endswith(email_address, "@cloudflare.com")
+
+    reason := sprintf("%-40s :: only @cloudflare.com emails are allowed", [r.address])
+}
+warn contains reason if {
+    r := tfplan.resource_changes[_]
+    r.mode == "managed"
+    r.type == "cloudflare_access_policy"
+
+    require := r.change.after.require[_]
+    email_address := require.email[_]
+    not endswith(email_address, "@cloudflare.com")
+
+    reason := sprintf("%-40s :: only @cloudflare.com emails are allowed", [r.address])
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="enforcing-the-baseline">Enforcing the baseline</h2>
+		<a href="https://blog.cloudflare.com/#enforcing-the-baseline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The policy check runs on every merge request (MR), ensuring configurations are compliant <i>before</i> deployment. Policy check output is shown directly in the GitLab MR comment thread.&nbsp;</p>
+	<p>Policy enforcement operates in two modes:</p>
+	<ol>
+		<li>
+			<p><b>Warning:</b> Leaves a comment on the MR, but allows the merge.</p>
+		</li>
+		<li>
+			<p><b>Deny:</b> Blocks the deployment outright.</p>
+		</li>
+	</ol>
+	<p>If the policy check determines the configuration being applied in the MR deviates from the baseline, the output will return which resources are out of compliance.</p>
+	<p>The example below shows an output from a policy check identifying 3 discrepancies in a merge request:</p>
+	<pre class="language-Rust"><code class="language-Rust">WARN - cloudflare_zero_trust_access_application.app_saas_xxx :: "session_duration" must be less than or equal to 10h
+
+WARN - cloudflare_zero_trust_access_application.app_saas_xxx_pay_per_crawl :: "session_duration" must be less than or equal to 10h
+
+WARN - cloudflare_zero_trust_access_application.app_saas_ms :: you must have at least one require statement of auth_method = "swk"
+
+41 tests, 38 passed, 3 warnings, 0 failures, 0 exception</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="handling-policy-exceptions">Handling policy exceptions</h2>
+		<a href="https://blog.cloudflare.com/#handling-policy-exceptions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We understand that exceptions are necessary, but they must be managed with the same rigor as the policy itself. When a team requires an exception, they submit a request via Jira.</p>
+	<p>Once approved by the Customer Zero team, the exception is formalized by submitting a pull request to the central exceptions.rego repository. Exceptions can be made at various levels:</p>
+	<ul>
+		<li>
+			<p><b>Account:</b> Exclude account_x from policy_y.</p>
+		</li>
+		<li>
+			<p><b>Resource Category</b>: Exclude all resource_a’s in account_x from policy_y.</p>
+		</li>
+		<li>
+			<p><b>Specific Resource: </b>Exclude resource_a_1 in account_x from policy_y.</p>
+		</li>
+	</ul>
+	<p>This example shows a session length exception for five specific applications under two separate Cloudflare accounts:&nbsp;</p>
+	<pre class="language-Rust"><code class="language-Rust">{  
+    "exception_type": "session_length",
+    "exceptions": [
+        {
+            "account_id": "1xxxx",
+              "tf_addresses": [
+                "cloudflare_access_application.app_identity_access_denied",
+                "cloudflare_access_application.enforcing_ext_auth_worker_bypass",
+                "cloudflare_access_application.enforcing_ext_auth_worker_bypass_dev",
+            ],
+        },
+        {
+            "account_id": "2xxxx",
+              "tf_addresses": [
+                "cloudflare_access_application.extra_wildcard_application",
+                "cloudflare_access_application.wildcard",
+            ],
+        },
+    ],
+}</code></pre>
+
+	<div class="flex anchor relative">
+		<h2 id="challenges-and-lessons-learned">Challenges and lessons learned</h2>
+		<a href="https://blog.cloudflare.com/#challenges-and-lessons-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our journey wasn't without obstacles. We had years of clickops (manual changes made directly in the dashboard) scattered across hundreds of accounts. Trying to import the existing chaos into a strict infrastructure as code system felt like trying to change the tires on a moving car. To this day, importing resources continues to be an ongoing process.</p>
+	<p>We also ran into limitations of our own tools. We found edge cases in the Cloudflare Terraform provider that only appear when you try to manage infrastructure at this scale. These weren't just minor speed bumps. They were hard lessons on the necessity of eating our own dogfood, so we could build even better solutions.</p>
+	<p>That friction clarified exactly what we were up against, leading us to three hard-earned lessons.</p>
+	<div class="flex anchor relative">
+		<h2 id="lesson-1-high-barriers-to-entry-stall-adoption">Lesson 1: high barriers to entry stall adoption&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#lesson-1-high-barriers-to-entry-stall-adoption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The first hurdle for any large-scale IaC rollout is onboarding existing, manually configured resources. We gave teams two options: manually creating Terraform resources and import blocks, or using <a href="https://github.com/cloudflare/cf-terraforming"><u>cf-terraforming</u></a>.</p>
+	<p>We quickly discovered that Terraform fluency varies across teams, and the learning curve for manually importing existing resources proved to be much steeper than we anticipated.</p>
+	<p>Luckily the cf-terraforming command-line utility uses the Cloudflare API to automatically generate the necessary Terraform code and import statements, significantly accelerating the migration process.&nbsp;</p>
+	<p>We also formed an internal community where experienced engineers could guide teams through the nuances of the provider and help unblock complex imports.</p>
+	<div class="flex anchor relative">
+		<h2 id="lesson-2-drift-happens">Lesson 2: drift happens&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#lesson-2-drift-happens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We also had to tackle configuration drift, which occurs when the IaC process is bypassed to expedite urgent changes. While making edits directly in the dashboard is faster during an incident, it leaves the Terraform state out of sync with reality.</p>
+	<p>We implemented a custom drift detection service that constantly compares the state defined by Terraform with the actual deployed state via the Cloudflare API. When drift is detected, an automated system creates an internal ticket and assigns it to the owning team with varying Service Level Agreements (SLAs) for remediation.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="lesson-3-automation-is-key">Lesson 3: automation is key</h2>
+		<a href="https://blog.cloudflare.com/#lesson-3-automation-is-key" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare innovates quickly, so our set of products and APIs is ever-growing. Unfortunately, that meant that our Terraform provider was often behind in terms of feature parity with the product.&nbsp;</p>
+	<p>We solved that issue with the release of our <a href="https://blog.cloudflare.com/automatically-generating-cloudflares-terraform-provider"><u>v5 provider</u></a>, which automatically generates the Terraform provider based on the OpenAPI specification. This transition wasn’t without bumps as we hardened our approach to code generation, but this approach ensures that the API and Terraform stay in sync, reducing the chance of capability drift.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="the-core-lesson-proactive-reactive">The core lesson: proactive &gt; reactive</h2>
+		<a href="https://blog.cloudflare.com/#the-core-lesson-proactive-reactive" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>By centralizing our security baselines, mandating peer reviews, and enforcing policies before any change hits production, we minimize the possibility of configuration errors, accidental deletions, or policy violations. The architecture not only helps to prevent manual mistakes, but actually increases engineering velocity because teams are confident their changes are compliant.&nbsp;</p>
+	<p>The key lesson from our work with Customer Zero is this: While the Cloudflare dashboard is excellent for day-to-day operations, achieving enterprise-level scale and consistent governance requires a different approach. When you treat your Cloudflare configurations as living code, you can scale securely and confidently.&nbsp;</p>
+	<p>Have thoughts on Infrastructure as Code? Keep the conversation going and share your experiences over at <a href="https://community.cloudflare.com"><u>community.cloudflare.com</u></a>.</p>
+</div>
