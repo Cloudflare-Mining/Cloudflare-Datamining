@@ -693,7 +693,9 @@
 															"type": "string",
 															"x-auditable": true
 														},
-														"type": "array"
+														"type": "array",
+														"x-stainless-collection-type": "set",
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"id": {
 														"description": "Identifier.",
@@ -1117,7 +1119,9 @@
 																	"type": "string",
 																	"x-auditable": true
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-collection-type": "set",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"id": {
 																"description": "Identifier.",
@@ -1673,7 +1677,9 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Identifier.",
@@ -2065,7 +2071,9 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "Identifier.",
@@ -3039,7 +3047,9 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Identifier.",
@@ -3431,7 +3441,9 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "Identifier.",
@@ -3775,7 +3787,9 @@
 									"type": "string",
 									"x-auditable": true
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"type": {
 								"description": "Type of certificate pack.",
@@ -4054,7 +4068,9 @@
 														"type": "string",
 														"x-auditable": true
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"id": {
 													"description": "Identifier.",
@@ -4446,7 +4462,9 @@
 																"type": "string",
 																"x-auditable": true
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"id": {
 															"description": "Identifier.",
