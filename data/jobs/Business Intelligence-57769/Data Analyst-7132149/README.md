@@ -5,29 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal</p>
-<p><strong>About the Department</strong></p>
-<p>Cloudflare's Network Engineering Team builds and runs the infrastructure that runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world's largest networks with data centers in 190 cities worldwide and a couple of large specialized data centers for internal needs.</p>
-<p><strong>About the Position</strong></p>
-<p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network automation engineers who are building software solutions to improve network resilience and reduce engineering operational toil.</p>
-<p>You will work on a range of tools, infrastructure and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable and scalable solutions.</p>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p><strong>Available Locations: Lisbon, London</strong></p>
+<p>&nbsp;</p>
+<p><strong>About the Team</strong></p>
+<p>The Data Intelligence &amp; Analytics (DIA) team at Cloudflare has built a unified Data &amp; ML platform to provide our internal Business Partners with actionable analytics, insights, and recommendations.</p>
+<p>Our goals are to:</p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Solid foundation on configuration management frameworks: Ansible, Chef, Saltstack.</li>
-	<li>Knowledge of programming languages like Python or Golang.</li>
-	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
-	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>
-	<li>Experience in systems Observability</li>
+	<li>Democratize data &amp; intelligence</li>
+	<li>Support Cloudflare’s critical business needs</li>
+	<li>Provide self-service data &amp; AI applications to fuel business critical initiatives</li>
 </ul>
-<p><strong>Bonus Points but not required:</strong></p>
+<p>As a central data analytics team, we work across all business functions, offering broad exposure to Cloudflare's entire business.</p>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for an experienced Data Analyst or Senior Data Analyst in London or Lisbon to scale our product analytics initiatives. You will be a trusted data advisor to our product organization, analyzing a wide array of datasets to inform product team data requests, ranging from reporting and ad-hoc analysis to strategic product roadmap-influencing projects.</p>
+<p>Success in this role relies on marrying a strong analytics background with product and business acumen to deliver highly strategic and compelling insights that accelerate growth and influence product decisions. This role requires a deep understanding of data infrastructure and a passion for operationalizing insights, not just generating them.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Professional experience as a Site Reliability Engineer (SRE)</li>
-	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
-	<li>Experience building and maintaining large distributed systems</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
-	<li>Knowledge of Javascript (React and other frontend frameworks)</li>
+	<li>Provide analytics support, product understanding, and a strategic perspective to our product partners</li>
+	<li>Partner with data engineers, product managers, and stakeholders to enable data-driven answers to key business problems</li>
+	<li>Take initiative to define, build, and maintain business metrics and reports</li>
+	<li>Develop and automate data pipelines and reports to enable insights at scale</li>
+	<li>Weave stories with data to help stakeholders understand analytical insights</li>
 </ul>
+<p><strong>Role Requirements</strong></p>
+<ul>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>4+ years of experience in a centralized data analytics team, ideally with close working partnerships with business stakeholders</li>
+	<li>Expert-level proficiency in writing and optimizing complex SQL queries is mandatory, with a proven ability to performance-tune complex queries and manage analysis workflows against large, petabyte-scale datasets (Candidates will be assessed on advanced SQL skills including window functions, common table expressions (CTEs))</li>
+	<li>4+ years experience using Tableau to build and communicate data stories to technical and non-technical stakeholders</li>
+	<li>2+ years experience working in a version control environment using platforms such as Gitlab or Github</li>
+	<li>Experience with data ingestion and transformation frameworks (e.g., dbt, Fivetran, or custom/in-house developed platforms)</li>
+	<li>Initiative, curiosity, and strong stakeholder engagement and empathy</li>
+	<li>Experience translating business questions into analysis frameworks, converting results into business recommendations, and presenting those to stakeholders</li>
+</ul>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li>Experience and/or a keen interest in internet security</li>
+	<li>Proven analytics experience in a fast-growing technology, SaaS, or subscription-based business</li>
+	<li>Experience with statistical analysis programming languages (Python, R etc.)</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
