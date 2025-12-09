@@ -1,9 +1,10 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Wu87IZkO6g7IBGyjMqYcQ/4658c65f65a28d9636ee0f2bdd3a433c/image3.png" alt="">
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Wu87IZkO6g7IBGyjMqYcQ/4658c65f65a28d9636ee0f2bdd3a433c/image3.png" alt="">
 <div class="post-content lh-copy gray1">
+	<p><sup><i>Note: This post was updated with additional details regarding AWS Lambda.</i></sup></p>
 	<p>Last year we announced <a href="https://blog.cloudflare.com/python-workers"><u>basic support for Python Workers</u></a>, allowing Python developers to ship Python to region: Earth in a single command and take advantage of the <a href="https://workers.cloudflare.com"><u>Workers platform</u></a>.</p>
 	<p>Since then, we’ve been hard at work making the <a href="https://developers.cloudflare.com/workers/languages/python"><u>Python experience on Workers</u></a> feel great. We’ve focused on bringing package support to the platform, a reality that’s now here — with exceptionally fast cold starts and a Python-native developer experience.</p>
 	<p>This means a change in how packages are incorporated into a Python Worker. Instead of offering a limited set of built-in packages, we now support any <a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html"><u>package supported by Pyodide</u></a>, the WebAssembly runtime powering Python Workers. This includes all pure Python packages, as well as many packages that rely on dynamic libraries. We also built tooling around <a href="https://docs.astral.sh/uv"><u>uv</u></a> to make package installation easy.</p>
-	<p>We’ve also implemented dedicated memory snapshots to reduce cold start times. These snapshots result in serious speed improvements over other serverless Python vendors. In cold start tests using common packages, Cloudflare Workers start over <b>2.4x faster than AWS Lambda</b> and <b>3x faster than Google Cloud Run</b>.</p>
+	<p>We’ve also implemented dedicated memory snapshots to reduce cold start times. These snapshots result in serious speed improvements over other serverless Python vendors. In cold start tests using common packages, Cloudflare Workers start over <b>2.4x faster than AWS Lambda</b> <b>without SnapStart </b>and <b>3x faster than Google Cloud Run</b>.</p>
 	<p>In this blog post, we’ll explain what makes Python Workers unique and share some of the technical details of how we’ve achieved the wins described above. But first, for those who may not be familiar with Workers or serverless platforms – and especially those coming from a Python background — let us share why you might want to use Workers at all.</p>
 	<div class="flex anchor relative">
 		<h3 id="deploying-python-globally-in-2-minutes">Deploying Python globally in 2 minutes</h3>
@@ -68,8 +69,8 @@ $ pywrangler deploy</code></pre>
 		</li>
 	</ul>
 	<div class="flex anchor relative">
-		<h3 id="faster-package-cold-starts-than-lambda-and-cloud-run">Faster package cold starts than Lambda and Cloud Run</h3>
-		<a href="https://blog.cloudflare.com/#faster-package-cold-starts-than-lambda-and-cloud-run" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="faster-package-cold-starts">Faster package cold starts</h3>
+		<a href="https://blog.cloudflare.com/#faster-package-cold-starts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -78,7 +79,7 @@ $ pywrangler deploy</code></pre>
 	<p>Serverless platforms like Workers save you money by only running your code when it’s necessary to do so. This means that if your Worker isn’t receiving requests, it may be shut down and will need to be restarted once a new request comes in. This typically incurs a resource overhead we refer to as the “cold start.” It’s important to keep these as short as possible to minimize latency for end users.</p>
 	<p>In standard Python, booting the runtime is expensive, and our initial implementation of Python Workers focused on making the <i>runtime</i> boot fast. However, we quickly realized that this wasn’t enough. Even if the Python runtime boots quickly, in real-world scenarios the initial startup usually includes loading modules from packages, and unfortunately, in Python many popular packages can take several seconds to load.</p>
 	<p>We set out to make cold starts fast, regardless of whether packages were loaded.</p>
-	<p>To measure realistic cold start performance, we set up a benchmark that imports common packages, as well as a benchmark running a “hello world” using a bare Python runtime. While Lambda is able to <a href="https://cold.edgeworker.net/#bare"><u>start just the runtime</u></a> quickly, once you need to import packages, the cold start times shoot up.</p>
+	<p>To measure realistic cold start performance, we set up a benchmark that imports common packages, as well as a benchmark running a “hello world” using a bare Python runtime. Standard Lambda is able to <a href="https://cold.edgeworker.net/#bare"><u>start just the runtime</u></a> quickly, but once you need to import packages, the cold start times shoot up. In order to optimize for faster cold starts with packages, you can use SnapStart on Lambda (which we will be adding to the linked benchmarks shortly). This incurs a cost to store the snapshot and an additional cost on every restore. Python Workers will automatically apply memory snapshots for free for every Python Worker.</p>
 	<p>Here are the average cold start times when loading three common packages (<a href="https://www.python-httpx.org"><u>httpx</u></a>, <a href="https://fastapi.tiangolo.com"><u>fastapi</u></a> and <a href="https://docs.pydantic.dev/latest"><u>pydantic</u></a>):</p>
 	<table>
 		<tbody>
@@ -100,7 +101,7 @@ $ pywrangler deploy</code></pre>
 			</tr>
 			<tr>
 				<td>
-					<p>AWS Lambda</p>
+					<p>AWS Lambda (without SnapStart)</p>
 				</td>
 				<td>
 					<p>2.502</p>
@@ -116,7 +117,7 @@ $ pywrangler deploy</code></pre>
 			</tr>
 		</tbody>
 	</table>
-	<p>In this case, <b>Cloudflare Python Workers have 2.4x faster cold starts than AWS Lambda and 3x faster cold starts than Google Cloud Run</b>. We achieved these low cold start numbers by using memory snapshots, and in a later section we explain how we did so.</p>
+	<p>In this case, <b>Cloudflare Python Workers have 2.4x faster cold starts than AWS Lambda without SnapStart and 3x faster cold starts than Google Cloud Run</b>. We achieved these low cold start numbers by using memory snapshots, and in a later section we explain how we did so.</p>
 	<p>We are regularly running these benchmarks. Go <a href="https://cold.edgeworker.net"><u>here</u></a> for up-to-date data and more info on our testing methodology.</p>
 	<p>We’re architecturally different from these other platforms — namely, <a href="https://developers.cloudflare.com/workers/reference/how-workers-works"><u>Workers is isolate-based</u></a>. Because of that, our aims are high, and we are planning for a zero cold start future.</p>
 	<div class="flex anchor relative">
