@@ -303,7 +303,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>It’s easy to overlook monitoring when designing a new system. We have learned however that a system is only as good as our ability to both know how well it is working, and our ability to debug issues as they arise. Quicksilver is as mission-critical as anything possibly can be at Cloudflare, it is worth the effort to ensure we can keep it running.</p>
+	<p>It’s easy to overlook monitoring when designing a new system. We have learned however that a system is only as good as our ability to both <a href="https://www.cloudflare.com/learning/performance/what-is-observability">know how well it is working</a>, and our ability to debug issues as they arise. Quicksilver is as mission-critical as anything possibly can be at Cloudflare, it is worth the effort to ensure we can keep it running.</p>
 	<p>We use Prometheus for collecting our metrics and we use Grafana to monitor Quicksilver. Our SRE team uses a global dashboard, one dashboard for each datacenter, and one dashboard per server, to <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">monitor its performance and availability</a>. Our primary alerting is also driven by Prometheus and distributed using PagerDuty.</p>
 	<p>We have learned that detecting availability is rather easy, if Quicksilver isn’t available countless alerts will fire in many systems throughout Cloudflare. Detecting replication lag is more tricky, as systems will appear to continue working until it is discovered that changes aren’t taking effect. We monitor our replication lag by writing a heartbeat at the top of the replication tree and computing the time difference on each server.</p>
 	<div class="flex anchor relative">

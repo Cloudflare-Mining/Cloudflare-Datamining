@@ -114,7 +114,7 @@
 			<p>State is <i>durably</i> persisted between steps: each step can emit state, and Workflows will automatically persist that so that any underlying failures, uncaught exceptions or network retries can resume execution from the last successful step.</p>
 		</li>
 		<li>
-			<p>Every call to step() automatically emits metrics associated with the unique Workflow run, making it easier to debug within each step and/or break down your application into its smallest units of execution, without having to worry about observability.</p>
+			<p>Every call to step() automatically emits metrics associated with the unique Workflow run, making it easier to debug within each step and/or break down your application into its smallest units of execution, without having to worry about <a href="https://www.cloudflare.com/learning/performance/what-is-observability">observability</a>.</p>
 		</li>
 	</ul>
 	<p>Step-by-step, it looks like this:</p>

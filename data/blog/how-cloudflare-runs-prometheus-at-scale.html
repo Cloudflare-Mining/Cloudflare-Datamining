@@ -116,7 +116,7 @@ mugs_of_beverage_total{content="tea", temperature="hot"} 1</code></pre>
 	</div>
 	<p>Each time series will cost us resources since it needs to be kept in memory, so the more time series we have, the more resources metrics will consume. This is true both for client libraries and Prometheus server, but it’s more of an issue for Prometheus itself, since a single Prometheus server usually collects metrics from many applications, while an application only keeps its own metrics.</p>
 	<p>Since we know that the more labels we have the more time series we end up with, you can see when this can become a problem. Simply adding a label with two distinct values to all our metrics might double the number of time series we have to deal with. Which in turn will double the memory usage of our Prometheus server. If we let Prometheus consume more memory than it can physically use then it will crash.</p>
-	<p>This scenario is often described as “cardinality explosion” - some metric suddenly adds a huge number of distinct label values, creates a huge number of time series, causes Prometheus to run out of memory and you lose all observability as a result.</p>
+	<p>This scenario is often described as “cardinality explosion” - some metric suddenly adds a huge number of distinct label values, creates a huge number of time series, causes Prometheus to run out of memory and you lose all <a href="https://www.cloudflare.com/learning/performance/what-is-observability">observability</a> as a result.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-is-prometheus-using-memory">How is Prometheus using memory?</h2>
 		<a href="https://blog.cloudflare.com/#how-is-prometheus-using-memory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
