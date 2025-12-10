@@ -2,7 +2,7 @@
 	"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 	"id": "77454fe2d30c4220b5701f6fdfb893ba",
 	"kind": "managed",
-	"last_updated": "2025-12-10T08:01:17.297774Z",
+	"last_updated": "2025-12-10T18:49:00.38365Z",
 	"name": "Cloudflare Managed Free Ruleset",
 	"phase": "http_request_firewall_managed",
 	"rules": [
@@ -37,6 +37,18 @@
 		{
 			"action": "block",
 			"categories": [
+				"information-disclosure"
+			],
+			"description": "Generic - Server Function Source Code Exposure",
+			"enabled": true,
+			"id": "3114709a3c3b4e3685052c7b251e86aa",
+			"last_updated": "2025-12-10T18:49:00.38365Z",
+			"ref": "d9bc06690e9fbba2c93c6a71dd17cf00",
+			"version": "1"
+		},
+		{
+			"action": "block",
+			"categories": [
 				"cve-2021-44832",
 				"cve-2021-45105",
 				"log4j",
@@ -67,20 +79,6 @@
 		{
 			"action": "block",
 			"categories": [
-				"leaking-server-function",
-				"react",
-				"cve-2025-55183"
-			],
-			"description": "React - Leaking Server Functions - CVE:CVE-2025-55183",
-			"enabled": true,
-			"id": "b3a52fd1264a45b0ad58b49efafde037",
-			"last_updated": "2025-12-10T08:01:17.297774Z",
-			"ref": "d9bc06690e9fbba2c93c6a71dd17cfeb",
-			"version": "1"
-		},
-		{
-			"action": "block",
-			"categories": [
 				"rce",
 				"react",
 				"cve-2025-55182"
@@ -101,9 +99,9 @@
 			],
 			"description": "React - Remote Code Execution - CVE:CVE-2025-55182 - 2",
 			"enabled": true,
-			"id": "fa884363381143b19f12737d393f4426",
-			"last_updated": "2025-12-10T08:01:17.297774Z",
-			"ref": "c0e4f6a8d3b5179c4e6a8b0d2f4a6c8e",
+			"id": "cbdd3f48396e4b7389d6efd174746aff",
+			"last_updated": "2025-12-10T18:49:00.38365Z",
+			"ref": "c0e4f6a8d3b5179c4e6a8b0d2f4a6c00",
 			"version": "1"
 		},
 		{
@@ -387,5 +385,5 @@
 		}
 	],
 	"source": "firewall_managed",
-	"version": "64"
+	"version": "65"
 }
