@@ -5,41 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Kuala Lumpur, Malaysia</strong></p>
-<p><strong>About the Department</strong></p>
-<p>Because of the scope, complexity, and diversity of the company’s work, we need a world-class legal team to help the company avoid distractions, and guide company leadership around obstacles.&nbsp; Our legal team is made up of very accomplished lawyers and staff who comprise a flexible, talented, and very cohesive team.&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>In this role, you’ll be a valued member of Cloudflare’s commercial legal team and the third member of our APAC commercial legal team.&nbsp; You will also collaborate and work cross-functionally with other internal groups, across the sales, customer success, finance, and partnerships teams.&nbsp; The position is based in Kuala Lumpur, Malaysia and frequent communication with our other offices will be required.</p>
-<p><strong>What You’ll Be Doing</strong></p>
+<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
+<p>The web team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of customer communication: our website, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</p>
+<p>As a Frontend Engineer on the Marketing Engineering team, you will be responsible for building and maintaining the layouts which comprise our marketing website, marketing automation, and more. You will build CMS content models and contribute to redesign projects. You’ll bring industry best practices for standing up web apps, along with a solid understanding of modern frontend development.</p>
 <ul>
-	<li>Assist with the intake management of all contracts via internal systems and conduct correspondence with all stakeholders regarding the status of contract requests</li>
-	<li>Manage busy contract queue and prioritize urgent requests as necessary prior to legal counsel review</li>
-	<li>Conduct initial review of contracts in relation to risks stemming from contract language, internal legal thresholds, and other criteria</li>
-	<li>Assist with commercial negotiations, including NDAs, and MSAs, and any other general commercial terms and conditions</li>
-	<li>Serve as first point of contact to internal business units to answer contract-related inquiries and escalate as appropriate to senior legal colleagues</li>
-	<li>Manage contract lifecycles from providing forms through contract execution and maintenance</li>
-	<li>Assist with legal department analytics by pulling key performance indicators from various tools including SFDC and Ironclad</li>
-	<li>Maintain a library of form documents, contract clauses, templates, and historical documents, and add or revise material as needed</li>
-	<li>Provide input into the formulation, development, and/or revision of operating policies, procedures, and strategies for the commercial legal function, as appropriate&nbsp;</li>
-	<li>Occasional travel to our Singapore office</li>
+	<li>Use tools, frameworks, and libraries to help the front-end team build a better www.cloudflare.com</li>
+	<li>We have adopted Astro JS as our current framework</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle</li>
+	<li>Support fellow team members through constructive code reviews and pair programming to help bring out their best work</li>
+	<li>Represent the team within the company and externally through blogging and tech talks</li>
 </ul>
-<p><strong>Requirements&nbsp; </strong>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>LL.B., B.A. or B.S. degree with strong academic credential; paralegal certification a plus but not required</li>
-	<li>7+ years relevant business or legal experience</li>
-	<li>Ability to meet the needs of a high-growth, fast-paced Internet company</li>
-	<li>Customer service oriented while maintaining acute attention to detail</li>
-	<li>Great organizational skills and ability to prioritize workloads</li>
-	<li>Possess excellent problem-solving capabilities, judgment, negotiation, communication (written and verbal) and interpersonal skills</li>
-	<li>Proven ability to manage high-volume workloads, multiple stakeholder demands and ever-shifting priorities all while instilling confidence</li>
-	<li>Ability to operate autonomously while being a team player who brings a positive attitude to the workplace.</li>
+	<li>More than 2 years of experience building and managing high volume web applications; React, Typescript, and Astro are a plus</li>
+	<li>Experience building, deploying and operating services</li>
+	<li>You enjoy getting things done and have a bias for action: you're a builder and a creator and have contributed teams that deliver results</li>
+	<li>Understanding of core web vitals and client-side problem solving</li>
+	<li>Deep knowledge of scaling mobile-first design plans</li>
+	<li>Experience contributing to build systems for large JavaScript projects&nbsp;</li>
+	<li>Strong interpersonal and communication skills. Curiosity and empathy are coveted traits here!</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience in a legal setting (law firm or in-house)</li>
-	<li>Experience using administrative management systems such Salesforce, DocuSign, Ironclad and/or JIRA</li>
-</ul>
-<p>&nbsp;</p>
+<p>BONUS QUALIFICATIONS: Contributed to open-source JavaScript tools and frameworks, knowledge of A/B testing and personalization platforms, such as Adobe Target and Analytics</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
