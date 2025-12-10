@@ -5,46 +5,56 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">London, United Kingdom, Bengaluru India, Singapore &amp; Austin, USA</span></strong></p>
+<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
 <h3><strong>About the Department</strong></h3>
-<p>Cloudflare’s Application Security organization builds and operates the systems that detect, classify, and mitigate malicious or abusive HTTP traffic across one of the largest networks on the Internet. Our products - including the Web Application Firewall (WAF), Bot Management, and Fraud Detection - protect millions of Internet properties from attacks and abuse in real time.</p>
-<p>We combine large-scale data analytics, cutting-edge AI and ML models, and expert threat research to continuously evolve Cloudflare’s detection and protection capabilities. The team brings together security researchers, analysts, and engineers who collaborate to identify new attack vectors, create innovative mitigations, and deliver protection at Internet scale.</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>As a WAF Application Security Expert, you’ll focus on researching, designing, and improving detection logic and rules that protect customer applications from the latest web threats.</p>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the Role</strong></h3>
+<p>As a Design Engineer you’ll sit at the intersection of <strong>design, front-end engineering, and data visualization </strong>roles, working closely with product managers, engineers and also designers to craft fast, elegant, and reliable interfaces that make complex Internet trends and metrics easy to explore.<br><br>You’ll be part of a growing engineering team tasked to help build and evolve projects at ETI such as <strong>Cloudflare Radar</strong>, our public data-intelligence platform, <strong>Radar Display</strong>, our large-format visualization experience optimized for big screens and live event environments, Year in Review,&nbsp; and other tools which are part of our ecosystem where you will be able to enrich their user experience as well.<br><br></p>
+<h3><strong>What you’ll do</strong></h3>
+<p>We are looking for an experienced and empathetic <strong>Design Engineer</strong> who will help build and scale the platform that empowers millions of users to be successful with Cloudflare. In this role, you’ll use your skills to ensure we have a world-class user interface that gives customers relevant and up-to-date content whenever they need it. This is a cross-functional role where you’ll work collaboratively across the product, engineering and design teams.</p>
+<p>&nbsp;</p>
 <ul>
-	<li>Analyze web exploits and vulnerability patterns (RCE, SQLi, XSS, SSRF, deserialization, etc.) and build corresponding WAF mitigations.</li>
-	<li>Collaborate with product engineering and data teams to tune detection efficacy - reducing false positives/negatives across large-scale, high-volume traffic.</li>
-	<li>Develop, test, and deploy WAF managed rules and exploit signatures based on public CVEs, threat intelligence, and internal telemetry.</li>
-	<li>Perform targeted penetration testing and red-team style assessments to uncover gaps in Cloudflare’s WAF coverage and propose mitigations.</li>
-	<li>Leverage strong coding skills to automate rule validation, testing pipelines, and data analysis workflows.</li>
-	<li>Conduct research on attacker behaviors, evolving exploit chains, and web attack automation trends.</li>
-	<li>Produce internal and external research reports summarizing Internet-wide attack trends and WAF efficacy insights.</li>
-	<li>Collaborate closely with Bot Management, Fraud, and ML teams to design cross-signal detection frameworks that unify WAF and behavioral defenses.</li>
-	<li>Communicate complex technical findings clearly to both engineering and non-technical audiences.</li>
+	<li><strong>Design User experiences and UI components</strong> that scale across ETI ensuring performance on desktop, mobile, and large-format displays.<br><br></li>
+	<li><strong>Build interactive visualizations</strong> (maps, charts, dashboards) that bring global Internet data to life.<br><br></li>
+	<li><strong>Prototype high-fidelity UI/UX concepts</strong> and iterate rapidly based on user feedback and real-world data.<br><br></li>
+	<li><strong>Translate product specs into clear UI/UX design </strong>using modern design tooling (e.g., Figma, Miro).<br><br></li>
+	<li>Champion <strong>design system consistency</strong>, contributing to new and reusable components to keep Radar cohesive and scalable in several distinct platforms.<br><br></li>
+	<li>Ensure our products and tools meet high standards for <strong>performance, accessibility, internationalization, and responsiveness</strong>.</li>
 </ul>
-<h3><strong>What You Bring</strong></h3>
+<p>&nbsp;</p>
 <ul>
-	<li>Bachelor’s or Master’s degree in Computer Science, Information Security, or equivalent practical experience.</li>
-	<li>2+ years of experience in Web Application Security, WAF rule development, incident detection, or threat research.</li>
-	<li>Deep understanding of web protocols (HTTP/HTTPS), common web vulnerabilities, and exploitation techniques (OWASP Top 10).</li>
-	<li>Proven experience writing and optimizing WAF rules or custom detection logic.</li>
-	<li>Hands-on experience with vulnerability analysis, exploit reproduction, or reverse engineering.</li>
-	<li>Strong analytical mindset and comfort working with large data sets (SQL, ClickHouse, BigQuery, etc.).</li>
-	<li>Proficiency in at least one programming language such as Python, Go, or Rust for building automation tools or analysis scripts.</li>
-	<li>Familiarity with Grafana or equivalent visualization tools to track rule performance and attack trends.</li>
-	<li>Strong written and verbal communication skills - able to document, present, and collaborate effectively.</li>
-	<li>Experience working in fast-paced environments with production-scale systems.</li>
+	<li><strong>Maintain UX/UI high quality </strong>by performing rapidly fixes and small enhancements, polishing items, and bugs reported by customers and internal teams.<br><br></li>
+	<li>Support the creation and <strong>optimization of tools like the Radar Display</strong> layouts tailored for big screens (wallboards, NOCs, conferences, lobbies) and customized for diverse events.<br><br></li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Technologies We Use</strong></p>
 <ul>
-	<li>Experience with columnar databases like ClickHouse and advanced SQL query optimization.</li>
-	<li>Familiarity with machine learning for security analytics (feature extraction, anomaly detection, model evaluation).</li>
-	<li>Solid understanding of Linux/UNIX systems, TCP/IP networking, and proxy architectures.</li>
-	<li>Prior publications or conference presentations (e.g., Black Hat, DEF CON, BSides).</li>
-	<li>Contributions to open-source WAF projects or web security tools.</li>
-	<li>Knowledge of WAF and bypassing WAF products with novel techniques.</li>
-	<li>Experience on bug bounty/CTF is plus.</li>
+	<li>Figma, Miro</li>
+	<li>React, Tailwind, Storybook, TypeScript</li>
+	<li>Git, GitLab CI/CD</li>
 </ul>
+<p><strong>Qualifications</strong></p>
+<ul>
+	<li>3+ years of experience in a hybrid Design Engineer, UI Engineer, or Frontend Engineer role with a strong design focus.</li>
+	<li>Expertise in building modern, scalable, and responsive UI applications using React, TypeScript, and advanced CSS.</li>
+	<li>A strong portfolio showcasing your ability to translate complex design concepts (Figma, Miro, etc.) into high-quality, pixel-perfect code.</li>
+	<li>Hands-on experience building, maintaining, or contributing to a component library or design system (e.g., using Storybook).</li>
+	<li>Excellent communication and collaboration skills, with a proven ability to work effectively with designers and product managers to scope work and find scalable solutions.</li>
+	<li>A pragmatic and product-oriented mindset, capable of balancing technical debt, design intent, and development velocity.</li>
+</ul>
+<p><strong>Preferred Skills</strong></p>
+<ul>
+	<li>Experience with UX prototyping and iterating in both high-fidelity (Figma) and code-based tools.</li>
+	<li>Experience with web accessibility (WCAG) and building inclusive interfaces.</li>
+	<li>Experience working on large-scale products used by multiple teams.</li>
+</ul>
+<p><br><strong>Why Join Us?</strong></p>
+<ul>
+	<li>Bridge the gap between design and engineering on a high-visibility, high-impact Radar team solving real problems.</li>
+	<li>Directly address and solve customer pain points, improving the experience for millions of users.</li>
+	<li>Shape the future of the Cloudflare UI by building its foundational patterns and exploring ambitious "North Star" concepts.</li>
+	<li>Join a collaborative, fast-moving team that values high-quality, scalable design and rapid iteration.</li>
+</ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
