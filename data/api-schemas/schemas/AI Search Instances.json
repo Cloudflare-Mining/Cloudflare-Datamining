@@ -271,6 +271,34 @@
 												"r2_jurisdiction": "default"
 											},
 											"properties": {
+												"exclude_items": {
+													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"example": [
+														"/admin/*",
+														"/private/**",
+														"*\\temp\\*"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
+												"include_items": {
+													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"example": [
+														"/blog/*",
+														"/docs/**/*.html",
+														"*\\blog\\*.html"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
 												"prefix": {
 													"type": "string"
 												},
@@ -285,9 +313,6 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
-																"exclude_regex": {
-																	"type": "string"
-																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -298,9 +323,6 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
-																},
-																"include_regex": {
-																	"type": "string"
 																},
 																"use_browser_rendering": {
 																	"default": false,
@@ -803,6 +825,34 @@
 													"r2_jurisdiction": "default"
 												},
 												"properties": {
+													"exclude_items": {
+														"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+														"example": [
+															"/admin/*",
+															"/private/**",
+															"*\\temp\\*"
+														],
+														"items": {
+															"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+															"type": "string"
+														},
+														"maxItems": 10,
+														"type": "array"
+													},
+													"include_items": {
+														"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+														"example": [
+															"/blog/*",
+															"/docs/**/*.html",
+															"*\\blog\\*.html"
+														],
+														"items": {
+															"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+															"type": "string"
+														},
+														"maxItems": 10,
+														"type": "array"
+													},
 													"prefix": {
 														"type": "string"
 													},
@@ -817,9 +867,6 @@
 														"properties": {
 															"parse_options": {
 																"properties": {
-																	"exclude_regex": {
-																		"type": "string"
-																	},
 																	"include_headers": {
 																		"additionalProperties": {
 																			"maxLength": 8192,
@@ -830,9 +877,6 @@
 																	"include_images": {
 																		"default": false,
 																		"type": "boolean"
-																	},
-																	"include_regex": {
-																		"type": "string"
 																	},
 																	"use_browser_rendering": {
 																		"default": false,
@@ -1318,6 +1362,34 @@
 												"r2_jurisdiction": "default"
 											},
 											"properties": {
+												"exclude_items": {
+													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"example": [
+														"/admin/*",
+														"/private/**",
+														"*\\temp\\*"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
+												"include_items": {
+													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"example": [
+														"/blog/*",
+														"/docs/**/*.html",
+														"*\\blog\\*.html"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
 												"prefix": {
 													"type": "string"
 												},
@@ -1332,9 +1404,6 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
-																"exclude_regex": {
-																	"type": "string"
-																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -1345,9 +1414,6 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
-																},
-																"include_regex": {
-																	"type": "string"
 																},
 																"use_browser_rendering": {
 																	"default": false,
@@ -1620,6 +1686,9 @@
 											"type": "integer"
 										},
 										"running": {
+											"type": "integer"
+										},
+										"skipped": {
 											"type": "integer"
 										}
 									},
@@ -1908,6 +1977,34 @@
 									"r2_jurisdiction": "default"
 								},
 								"properties": {
+									"exclude_items": {
+										"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+										"example": [
+											"/admin/*",
+											"/private/**",
+											"*\\temp\\*"
+										],
+										"items": {
+											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"type": "string"
+										},
+										"maxItems": 10,
+										"type": "array"
+									},
+									"include_items": {
+										"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+										"example": [
+											"/blog/*",
+											"/docs/**/*.html",
+											"*\\blog\\*.html"
+										],
+										"items": {
+											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"type": "string"
+										},
+										"maxItems": 10,
+										"type": "array"
+									},
 									"prefix": {
 										"type": "string"
 									},
@@ -1922,9 +2019,6 @@
 										"properties": {
 											"parse_options": {
 												"properties": {
-													"exclude_regex": {
-														"type": "string"
-													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
@@ -1935,9 +2029,6 @@
 													"include_images": {
 														"default": false,
 														"type": "boolean"
-													},
-													"include_regex": {
-														"type": "string"
 													},
 													"use_browser_rendering": {
 														"default": false,
@@ -2250,6 +2341,34 @@
 												"r2_jurisdiction": "default"
 											},
 											"properties": {
+												"exclude_items": {
+													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"example": [
+														"/admin/*",
+														"/private/**",
+														"*\\temp\\*"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
+												"include_items": {
+													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"example": [
+														"/blog/*",
+														"/docs/**/*.html",
+														"*\\blog\\*.html"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
 												"prefix": {
 													"type": "string"
 												},
@@ -2264,9 +2383,6 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
-																"exclude_regex": {
-																	"type": "string"
-																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -2277,9 +2393,6 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
-																},
-																"include_regex": {
-																	"type": "string"
 																},
 																"use_browser_rendering": {
 																	"default": false,
@@ -2725,6 +2838,34 @@
 									"r2_jurisdiction": "default"
 								},
 								"properties": {
+									"exclude_items": {
+										"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+										"example": [
+											"/admin/*",
+											"/private/**",
+											"*\\temp\\*"
+										],
+										"items": {
+											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"type": "string"
+										},
+										"maxItems": 10,
+										"type": "array"
+									},
+									"include_items": {
+										"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+										"example": [
+											"/blog/*",
+											"/docs/**/*.html",
+											"*\\blog\\*.html"
+										],
+										"items": {
+											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"type": "string"
+										},
+										"maxItems": 10,
+										"type": "array"
+									},
 									"prefix": {
 										"type": "string"
 									},
@@ -2739,9 +2880,6 @@
 										"properties": {
 											"parse_options": {
 												"properties": {
-													"exclude_regex": {
-														"type": "string"
-													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
@@ -2752,9 +2890,6 @@
 													"include_images": {
 														"default": false,
 														"type": "boolean"
-													},
-													"include_regex": {
-														"type": "string"
 													},
 													"use_browser_rendering": {
 														"default": false,
@@ -3107,6 +3242,34 @@
 												"r2_jurisdiction": "default"
 											},
 											"properties": {
+												"exclude_items": {
+													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"example": [
+														"/admin/*",
+														"/private/**",
+														"*\\temp\\*"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
+												"include_items": {
+													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"example": [
+														"/blog/*",
+														"/docs/**/*.html",
+														"*\\blog\\*.html"
+													],
+													"items": {
+														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
 												"prefix": {
 													"type": "string"
 												},
@@ -3121,9 +3284,6 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
-																"exclude_regex": {
-																	"type": "string"
-																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -3134,9 +3294,6 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
-																},
-																"include_regex": {
-																	"type": "string"
 																},
 																"use_browser_rendering": {
 																	"default": false,

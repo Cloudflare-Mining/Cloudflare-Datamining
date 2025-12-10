@@ -56,10 +56,11 @@
 				"name": "status",
 				"schema": {
 					"enum": [
-						"completed",
 						"queued",
 						"running",
-						"error"
+						"completed",
+						"error",
+						"skipped"
 					],
 					"type": "string"
 				}
@@ -92,10 +93,11 @@
 											},
 											"status": {
 												"enum": [
+													"queued",
+													"running",
 													"completed",
 													"error",
-													"queued",
-													"running"
+													"skipped"
 												],
 												"type": "string"
 											}
@@ -320,10 +322,11 @@
 										},
 										"status": {
 											"enum": [
+												"queued",
+												"running",
 												"completed",
 												"error",
-												"queued",
-												"running"
+												"skipped"
 											],
 											"type": "string"
 										}
