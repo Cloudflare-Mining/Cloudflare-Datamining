@@ -994,7 +994,7 @@
 		]
 	},
 	"dx-login-flows-kumo": {
-		"enabled": false
+		"enabled": true
 	},
 	"dx-login-social-authentication-update": {
 		"enabled": true,
@@ -2029,6 +2029,13 @@
 		"branches": [
 			"purchase-r2",
 			"activate-r2"
+		]
+	},
+	"rachel-test-delete-okay": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
 		]
 	},
 	"radar-notifications": {
