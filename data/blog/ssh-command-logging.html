@@ -29,7 +29,7 @@
 
 	</figure>
 	<p>This then exposes that machine for SSH access and proxies all SSH commands via Cloudflare’s global edge network. All commands are automatically captured without complex logging software installed on the machine and across all hosts. TTY traffic can also be recorded for a later full session replay.</p>
-	<p>As an added measure of security, all logs captured by Cloudflare are immediately encrypted via a public key provided by each customer, to ensure that only authorized security users can inspect SSH commands. Furthermore, we are launching this feature with an opt-in FIPS 140-2 mode to support FedRAMP compliant users.</p>
+	<p>As an added measure of security, all logs captured by Cloudflare are immediately encrypted via a public key provided by each customer, to ensure that only authorized security users can inspect SSH commands. Furthermore, we are launching this feature with an opt-in FIPS 140-2 mode to support <a href="https://www.cloudflare.com/learning/privacy/what-is-fedramp">FedRAMP compliant </a>users.</p>
 	<p>All user authentication is performed via <a href="https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates">Cloudflare Short-Lived Certificates</a>. Once the client certificate is loaded onto a user machine, their SSH setup is complete and secure. This eliminates the need for tedious and tricky SSH key-pair management. This means no more key management on end user devices, all the need is the Cloudflare root CA, and they can access any machine they are entitled to, including using ProxyJump.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next</h3>
