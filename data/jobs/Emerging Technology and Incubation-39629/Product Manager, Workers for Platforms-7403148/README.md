@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Lisbon, and London</strong></p>
+<p><strong>Available Locations: Lisbon, and London</strong></p>
 <p><strong>About the Role</strong></p>
 <p><a href="https://workers.cloudflare.com/solutions/platforms">Workers for Platforms</a> lets anyone build their own platform on top of <a href="https://workers.cloudflare.com/">Cloudflare’s Developer Platform</a>, turning Cloudflare’s infrastructure, compute and storage primitives into a programmable foundation others can build on.</p>
 <p>As a Product Manager for Workers for Platforms, you’ll define and execute the strategy that helps developers build platform businesses on top of Cloudflare. You’ll collaborate closely with engineering, partnerships, and design to make Cloudflare’s primitives — Workers, Durable Objects, Agents, AI inference, and more — composable for any company to use as their own infrastructure.</p>
