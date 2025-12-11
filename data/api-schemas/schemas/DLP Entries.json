@@ -368,400 +368,422 @@
 									"properties": {
 										"result": {
 											"items": {
-												"discriminator": {
-													"propertyName": "type"
-												},
-												"oneOf": [
+												"allOf": [
 													{
-														"allOf": [
+														"oneOf": [
 															{
-																"properties": {
-																	"created_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"enabled": {
-																		"type": "boolean"
-																	},
-																	"id": {
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"type": "string"
-																	},
-																	"pattern": {
+																"allOf": [
+																	{
 																		"properties": {
-																			"regex": {
+																			"created_at": {
+																				"format": "date-time",
 																				"type": "string"
 																			},
-																			"validation": {
-																				"allOf": [
-																					{
-																						"deprecated": true,
-																						"enum": [
-																							"luhn"
-																						],
-																						"type": "string"
-																					}
-																				]
-																			}
-																		},
-																		"required": [
-																			"regex"
-																		],
-																		"type": "object"
-																	},
-																	"profile_id": {
-																		"format": "uuid",
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"updated_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"created_at",
-																	"updated_at",
-																	"pattern",
-																	"enabled"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"custom"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type"
-																],
-																"type": "object"
-															}
-														],
-														"title": "Custom Entry"
-													},
-													{
-														"allOf": [
-															{
-																"properties": {
-																	"confidence": {
-																		"properties": {
-																			"ai_context_available": {
-																				"description": "Indicates whether this entry has AI remote service validation.",
+																			"enabled": {
 																				"type": "boolean"
 																			},
-																			"available": {
-																				"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
-																				"type": "boolean"
-																			}
-																		},
-																		"required": [
-																			"available",
-																			"ai_context_available"
-																		],
-																		"type": "object"
-																	},
-																	"enabled": {
-																		"type": "boolean"
-																	},
-																	"id": {
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"type": "string"
-																	},
-																	"profile_id": {
-																		"format": "uuid",
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"variant": {
-																		"allOf": [
-																			{
-																				"oneOf": [
-																					{
-																						"properties": {
-																							"description": {
-																								"nullable": true,
-																								"type": "string"
-																							},
-																							"topic_type": {
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"pattern": {
+																				"properties": {
+																					"regex": {
+																						"type": "string"
+																					},
+																					"validation": {
+																						"allOf": [
+																							{
+																								"deprecated": true,
 																								"enum": [
-																									"Intent",
-																									"Content"
-																								],
-																								"type": "string"
-																							},
-																							"type": {
-																								"enum": [
-																									"PromptTopic"
+																									"luhn"
 																								],
 																								"type": "string"
 																							}
-																						},
-																						"required": [
-																							"topic_type",
-																							"type"
-																						],
-																						"type": "object"
+																						]
+																					}
+																				},
+																				"required": [
+																					"regex"
+																				],
+																				"type": "object"
+																			},
+																			"profile_id": {
+																				"format": "uuid",
+																				"nullable": true,
+																				"type": "string"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"created_at",
+																			"updated_at",
+																			"pattern",
+																			"enabled"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"custom"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																],
+																"title": "Custom Entry"
+															},
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"confidence": {
+																				"properties": {
+																					"ai_context_available": {
+																						"description": "Indicates whether this entry has AI remote service validation.",
+																						"type": "boolean"
+																					},
+																					"available": {
+																						"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
+																						"type": "boolean"
+																					}
+																				},
+																				"required": [
+																					"available",
+																					"ai_context_available"
+																				],
+																				"type": "object"
+																			},
+																			"enabled": {
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"profile_id": {
+																				"format": "uuid",
+																				"nullable": true,
+																				"type": "string"
+																			},
+																			"variant": {
+																				"allOf": [
+																					{
+																						"oneOf": [
+																							{
+																								"properties": {
+																									"description": {
+																										"nullable": true,
+																										"type": "string"
+																									},
+																									"topic_type": {
+																										"enum": [
+																											"Intent",
+																											"Content"
+																										],
+																										"type": "string"
+																									},
+																									"type": {
+																										"enum": [
+																											"PromptTopic"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"topic_type",
+																									"type"
+																								],
+																								"type": "object"
+																							}
+																						]
 																					}
 																				]
 																			}
-																		]
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"enabled",
+																			"confidence"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"predefined"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"enabled",
-																	"confidence"
 																],
-																"type": "object"
+																"title": "Predefined Entry"
 															},
 															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"predefined"
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"enabled": {
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"profile_id": {
+																				"format": "uuid",
+																				"nullable": true,
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"created_at",
+																			"updated_at",
+																			"enabled"
 																		],
-																		"type": "string"
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"integration"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"type"
 																],
-																"type": "object"
+																"title": "Integration Entry"
+															},
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"case_sensitive": {
+																				"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																				"type": "boolean"
+																			},
+																			"created_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"enabled": {
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"secret": {
+																				"type": "boolean"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"created_at",
+																			"updated_at",
+																			"enabled",
+																			"secret",
+																			"case_sensitive"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"exact_data"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																],
+																"title": "Exact Data Entry"
+															},
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"enabled": {
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"created_at",
+																			"updated_at",
+																			"enabled"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"document_fingerprint"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																],
+																"title": "Document Fingerprint Entry"
+															},
+															{
+																"allOf": [
+																	{
+																		"properties": {
+																			"created_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"enabled": {
+																				"type": "boolean"
+																			},
+																			"id": {
+																				"format": "uuid",
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			},
+																			"profile_id": {
+																				"format": "uuid",
+																				"nullable": true,
+																				"type": "string"
+																			},
+																			"updated_at": {
+																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"word_list": {}
+																		},
+																		"required": [
+																			"id",
+																			"name",
+																			"created_at",
+																			"updated_at",
+																			"word_list",
+																			"enabled"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"type": {
+																				"enum": [
+																					"word_list"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	}
+																],
+																"title": "Word List Entry"
 															}
-														],
-														"title": "Predefined Entry"
+														]
 													},
 													{
-														"allOf": [
-															{
-																"properties": {
-																	"created_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"enabled": {
-																		"type": "boolean"
-																	},
-																	"id": {
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"type": "string"
-																	},
-																	"profile_id": {
-																		"format": "uuid",
-																		"nullable": true,
-																		"type": "string",
-																		"x-stainless-terraform-configurability": "computed_optional"
-																	},
-																	"updated_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"created_at",
-																	"updated_at",
-																	"enabled"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
+														"properties": {
+															"upload_status": {
+																"allOf": [
+																	{
 																		"enum": [
-																			"integration"
+																			"empty",
+																			"uploading",
+																			"pending",
+																			"processing",
+																			"failed",
+																			"complete"
 																		],
 																		"type": "string"
 																	}
-																},
-																"required": [
-																	"type"
 																],
-																"type": "object"
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
-														],
-														"title": "Integration Entry"
-													},
-													{
-														"allOf": [
-															{
-																"properties": {
-																	"case_sensitive": {
-																		"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
-																		"type": "boolean"
-																	},
-																	"created_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"enabled": {
-																		"type": "boolean"
-																	},
-																	"id": {
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"type": "string"
-																	},
-																	"secret": {
-																		"type": "boolean"
-																	},
-																	"updated_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"created_at",
-																	"updated_at",
-																	"enabled",
-																	"secret",
-																	"case_sensitive"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"exact_data"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type"
-																],
-																"type": "object"
-															}
-														],
-														"title": "Exact Data Entry"
-													},
-													{
-														"allOf": [
-															{
-																"properties": {
-																	"created_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"enabled": {
-																		"type": "boolean"
-																	},
-																	"id": {
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"type": "string"
-																	},
-																	"updated_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"created_at",
-																	"updated_at",
-																	"enabled"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"document_fingerprint"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type"
-																],
-																"type": "object"
-															}
-														],
-														"title": "Document Fingerprint Entry"
-													},
-													{
-														"allOf": [
-															{
-																"properties": {
-																	"created_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"enabled": {
-																		"type": "boolean"
-																	},
-																	"id": {
-																		"format": "uuid",
-																		"type": "string"
-																	},
-																	"name": {
-																		"type": "string"
-																	},
-																	"profile_id": {
-																		"format": "uuid",
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"updated_at": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"word_list": {}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"created_at",
-																	"updated_at",
-																	"word_list",
-																	"enabled"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"type": {
-																		"enum": [
-																			"word_list"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type"
-																],
-																"type": "object"
-															}
-														],
-														"title": "Word List Entry"
+														},
+														"type": "object"
 													}
 												]
 											},
@@ -1026,397 +1048,422 @@
 										"result": {
 											"allOf": [
 												{
-													"oneOf": [
+													"allOf": [
 														{
-															"allOf": [
+															"oneOf": [
 																{
-																	"properties": {
-																		"created_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		},
-																		"enabled": {
-																			"type": "boolean"
-																		},
-																		"id": {
-																			"format": "uuid",
-																			"type": "string"
-																		},
-																		"name": {
-																			"type": "string"
-																		},
-																		"pattern": {
+																	"allOf": [
+																		{
 																			"properties": {
-																				"regex": {
+																				"created_at": {
+																					"format": "date-time",
 																					"type": "string"
 																				},
-																				"validation": {
-																					"allOf": [
-																						{
-																							"deprecated": true,
-																							"enum": [
-																								"luhn"
-																							],
-																							"type": "string"
-																						}
-																					]
-																				}
-																			},
-																			"required": [
-																				"regex"
-																			],
-																			"type": "object"
-																		},
-																		"profile_id": {
-																			"format": "uuid",
-																			"nullable": true,
-																			"type": "string"
-																		},
-																		"updated_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"id",
-																		"name",
-																		"created_at",
-																		"updated_at",
-																		"pattern",
-																		"enabled"
-																	],
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"type": {
-																			"enum": [
-																				"custom"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"type"
-																	],
-																	"type": "object"
-																}
-															],
-															"title": "Custom Entry"
-														},
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"confidence": {
-																			"properties": {
-																				"ai_context_available": {
-																					"description": "Indicates whether this entry has AI remote service validation.",
+																				"enabled": {
 																					"type": "boolean"
 																				},
-																				"available": {
-																					"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
-																					"type": "boolean"
-																				}
-																			},
-																			"required": [
-																				"available",
-																				"ai_context_available"
-																			],
-																			"type": "object"
-																		},
-																		"enabled": {
-																			"type": "boolean"
-																		},
-																		"id": {
-																			"format": "uuid",
-																			"type": "string"
-																		},
-																		"name": {
-																			"type": "string"
-																		},
-																		"profile_id": {
-																			"format": "uuid",
-																			"nullable": true,
-																			"type": "string"
-																		},
-																		"variant": {
-																			"allOf": [
-																				{
-																					"oneOf": [
-																						{
-																							"properties": {
-																								"description": {
-																									"nullable": true,
-																									"type": "string"
-																								},
-																								"topic_type": {
+																				"id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"pattern": {
+																					"properties": {
+																						"regex": {
+																							"type": "string"
+																						},
+																						"validation": {
+																							"allOf": [
+																								{
+																									"deprecated": true,
 																									"enum": [
-																										"Intent",
-																										"Content"
-																									],
-																									"type": "string"
-																								},
-																								"type": {
-																									"enum": [
-																										"PromptTopic"
+																										"luhn"
 																									],
 																									"type": "string"
 																								}
-																							},
-																							"required": [
-																								"topic_type",
-																								"type"
-																							],
-																							"type": "object"
+																							]
+																						}
+																					},
+																					"required": [
+																						"regex"
+																					],
+																					"type": "object"
+																				},
+																				"profile_id": {
+																					"format": "uuid",
+																					"nullable": true,
+																					"type": "string"
+																				},
+																				"updated_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"created_at",
+																				"updated_at",
+																				"pattern",
+																				"enabled"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"custom"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Custom Entry"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"confidence": {
+																					"properties": {
+																						"ai_context_available": {
+																							"description": "Indicates whether this entry has AI remote service validation.",
+																							"type": "boolean"
+																						},
+																						"available": {
+																							"description": "Indicates whether this entry has any form of validation that is not an AI remote service.",
+																							"type": "boolean"
+																						}
+																					},
+																					"required": [
+																						"available",
+																						"ai_context_available"
+																					],
+																					"type": "object"
+																				},
+																				"enabled": {
+																					"type": "boolean"
+																				},
+																				"id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"profile_id": {
+																					"format": "uuid",
+																					"nullable": true,
+																					"type": "string"
+																				},
+																				"variant": {
+																					"allOf": [
+																						{
+																							"oneOf": [
+																								{
+																									"properties": {
+																										"description": {
+																											"nullable": true,
+																											"type": "string"
+																										},
+																										"topic_type": {
+																											"enum": [
+																												"Intent",
+																												"Content"
+																											],
+																											"type": "string"
+																										},
+																										"type": {
+																											"enum": [
+																												"PromptTopic"
+																											],
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"topic_type",
+																										"type"
+																									],
+																									"type": "object"
+																								}
+																							]
 																						}
 																					]
 																				}
-																			]
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"enabled",
+																				"confidence"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"predefined"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
 																		}
-																	},
-																	"required": [
-																		"id",
-																		"name",
-																		"enabled",
-																		"confidence"
 																	],
-																	"type": "object"
+																	"title": "Predefined Entry"
 																},
 																{
-																	"properties": {
-																		"type": {
-																			"enum": [
-																				"predefined"
+																	"allOf": [
+																		{
+																			"properties": {
+																				"created_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"enabled": {
+																					"type": "boolean"
+																				},
+																				"id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"profile_id": {
+																					"format": "uuid",
+																					"nullable": true,
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
+																				},
+																				"updated_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"created_at",
+																				"updated_at",
+																				"enabled"
 																			],
-																			"type": "string"
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"integration"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
 																		}
-																	},
-																	"required": [
-																		"type"
 																	],
-																	"type": "object"
+																	"title": "Integration Entry"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"case_sensitive": {
+																					"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
+																					"type": "boolean"
+																				},
+																				"created_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"enabled": {
+																					"type": "boolean"
+																				},
+																				"id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"secret": {
+																					"type": "boolean"
+																				},
+																				"updated_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"created_at",
+																				"updated_at",
+																				"enabled",
+																				"secret",
+																				"case_sensitive"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"exact_data"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Exact Data Entry"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"created_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"enabled": {
+																					"type": "boolean"
+																				},
+																				"id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"updated_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"created_at",
+																				"updated_at",
+																				"enabled"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"document_fingerprint"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Document Fingerprint Entry"
+																},
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"created_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"enabled": {
+																					"type": "boolean"
+																				},
+																				"id": {
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"profile_id": {
+																					"format": "uuid",
+																					"nullable": true,
+																					"type": "string"
+																				},
+																				"updated_at": {
+																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"word_list": {}
+																			},
+																			"required": [
+																				"id",
+																				"name",
+																				"created_at",
+																				"updated_at",
+																				"word_list",
+																				"enabled"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"word_list"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"title": "Word List Entry"
 																}
-															],
-															"title": "Predefined Entry"
+															]
 														},
 														{
-															"allOf": [
-																{
-																	"properties": {
-																		"created_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		},
-																		"enabled": {
-																			"type": "boolean"
-																		},
-																		"id": {
-																			"format": "uuid",
-																			"type": "string"
-																		},
-																		"name": {
-																			"type": "string"
-																		},
-																		"profile_id": {
-																			"format": "uuid",
-																			"nullable": true,
-																			"type": "string",
-																			"x-stainless-terraform-configurability": "computed_optional"
-																		},
-																		"updated_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"id",
-																		"name",
-																		"created_at",
-																		"updated_at",
-																		"enabled"
-																	],
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"type": {
+															"properties": {
+																"upload_status": {
+																	"allOf": [
+																		{
 																			"enum": [
-																				"integration"
+																				"empty",
+																				"uploading",
+																				"pending",
+																				"processing",
+																				"failed",
+																				"complete"
 																			],
 																			"type": "string"
 																		}
-																	},
-																	"required": [
-																		"type"
 																	],
-																	"type": "object"
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
-															],
-															"title": "Integration Entry"
-														},
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"case_sensitive": {
-																			"description": "Only applies to custom word lists.\nDetermines if the words should be matched in a case-sensitive manner\nCannot be set to false if secret is true",
-																			"type": "boolean"
-																		},
-																		"created_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		},
-																		"enabled": {
-																			"type": "boolean"
-																		},
-																		"id": {
-																			"format": "uuid",
-																			"type": "string"
-																		},
-																		"name": {
-																			"type": "string"
-																		},
-																		"secret": {
-																			"type": "boolean"
-																		},
-																		"updated_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"id",
-																		"name",
-																		"created_at",
-																		"updated_at",
-																		"enabled",
-																		"secret",
-																		"case_sensitive"
-																	],
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"type": {
-																			"enum": [
-																				"exact_data"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"type"
-																	],
-																	"type": "object"
-																}
-															],
-															"title": "Exact Data Entry"
-														},
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"created_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		},
-																		"enabled": {
-																			"type": "boolean"
-																		},
-																		"id": {
-																			"format": "uuid",
-																			"type": "string"
-																		},
-																		"name": {
-																			"type": "string"
-																		},
-																		"updated_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"id",
-																		"name",
-																		"created_at",
-																		"updated_at",
-																		"enabled"
-																	],
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"type": {
-																			"enum": [
-																				"document_fingerprint"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"type"
-																	],
-																	"type": "object"
-																}
-															],
-															"title": "Document Fingerprint Entry"
-														},
-														{
-															"allOf": [
-																{
-																	"properties": {
-																		"created_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		},
-																		"enabled": {
-																			"type": "boolean"
-																		},
-																		"id": {
-																			"format": "uuid",
-																			"type": "string"
-																		},
-																		"name": {
-																			"type": "string"
-																		},
-																		"profile_id": {
-																			"format": "uuid",
-																			"nullable": true,
-																			"type": "string"
-																		},
-																		"updated_at": {
-																			"format": "date-time",
-																			"type": "string"
-																		},
-																		"word_list": {}
-																	},
-																	"required": [
-																		"id",
-																		"name",
-																		"created_at",
-																		"updated_at",
-																		"word_list",
-																		"enabled"
-																	],
-																	"type": "object"
-																},
-																{
-																	"properties": {
-																		"type": {
-																			"enum": [
-																				"word_list"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"type"
-																	],
-																	"type": "object"
-																}
-															],
-															"title": "Word List Entry"
+															},
+															"type": "object"
 														}
 													]
 												},
@@ -1440,7 +1487,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
