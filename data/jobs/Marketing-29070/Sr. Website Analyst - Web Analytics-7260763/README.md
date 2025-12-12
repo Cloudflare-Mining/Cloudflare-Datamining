@@ -8,7 +8,7 @@
 <p><strong>Available Locations: Austin, TX, Mexico City or Lisbon</strong></p>
 <p><strong>About the role</strong></p>
 <p>The Web Strategy team is the digital front door to Cloudflare. We are looking for a curious, self-motivated superstar to be the analytical engine that fuels our most critical website initiatives.</p>
-<p>This is not a typical analyst role. We're looking for a unique blend of web analyst and data scientist—a true artisan of data who can go beyond simple reporting. You will be a strategic partner, responsible for diving deep into complex datasets, stitching together disparate sources, and surfacing the "why" behind the "what." Your insights will directly inform our roadmap for needle-moving personalization and experimentation, helping us understand user journeys, identify friction points, and uncover hidden opportunities. If you are passionate about transforming raw data into compelling stories and actionable strategies, we want to hear from you.</p>
+<p>This is not a typical analyst role. We're looking for a unique blend of <strong>web analyst</strong> and <strong>marketing data analyst</strong>—a true artisan of data who can go beyond simple reporting. You will be a strategic partner, responsible for diving deep into complex datasets, stitching together disparate sources, and surfacing the "why" behind the "what." Your insights will directly inform our roadmap for needle-moving personalization and experimentation, helping us understand user journeys, identify friction points, and uncover hidden opportunities. If you are passionate about transforming raw data into compelling stories and actionable strategies, we want to hear from you.</p>
 <h4><strong>Key responsibilities</strong></h4>
 <ul>
 	<li><strong>Lead deep-dive analysis:</strong> Serve as the subject matter expert for web analytics, conducting in-depth analyses of user behavior, conversion funnels, and content engagement across our global web properties</li>
@@ -23,10 +23,10 @@
 <h4><strong>Experience</strong></h4>
 <ul>
 	<li>8+ years experience working in a large B2B, D2C, SaaS, or enterprise cloud company</li>
-	<li>5+ years of experience in a data analytics role, preferably within marketing, web analytics, or product analytics</li>
+	<li>5+ years of experience in an analytics role, preferably within marketing, web analytics, or product analytics</li>
 	<li>Deep, hands-on experience with at least one enterprise-level web analytics platform (e.g., Adobe Analytics, Google Analytics 4, etc.) in a very high web traffic environment</li>
 	<li>Experience with A/B/n testing methodologies and statistical significance.</li>
-	<li>Experience with data warehouses like BigQuery, Snowflake or similar</li>
+	<li>Experience with data warehouses like BigQuery, Snowflake or similar&nbsp;</li>
 	<li>Proficiency in SQL for querying complex, large-scale datasets</li>
 	<li>Knowledge of statistical programming languages, such as Python or R is a plus</li>
 	<li>Familiarity with analyzing data from CRM (e.g., Salesforce) and Marketing Automation (e.g., Marketo) platforms to create a full-funnel view</li>
