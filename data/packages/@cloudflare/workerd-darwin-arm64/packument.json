@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-arm64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251211.0"
+		"latest": "1.20251212.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -6654,13 +6654,39 @@
 			"name": "@cloudflare/workerd-darwin-arm64",
 			"version": "1.20251211.0",
 			"dist": {
-				"integrity": "sha512-zwaKG6NIlNHZqsIOHljPF0C9SikuKgT/hDBlTKtzZ+MdDmLhGzxGMPinze6q2T5r8ch1sJ/moxcljZAzGuImgQ==",
 				"shasum": "eecf2c06e6858d341a1e229bda762a7a77d69be1",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251211.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 99858924,
+				"integrity": "sha512-zwaKG6NIlNHZqsIOHljPF0C9SikuKgT/hDBlTKtzZ+MdDmLhGzxGMPinze6q2T5r8ch1sJ/moxcljZAzGuImgQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDQM6e9X9O5GBk+D+R8x0gc7TG4Vbds2YKK4cBaHH8VAwIgZTz0JlhlgPBcvTNG7RSNY/ZE/fdUGRAle2TlKiZPLMg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20251211.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 99858924
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251212.0": {
+			"name": "@cloudflare/workerd-darwin-arm64",
+			"version": "1.20251212.0",
+			"dist": {
+				"integrity": "sha512-Qp6XmoHOz5V/72++639icrJE9xWju/Ve9QfUnIlGb7S3q+6kZ3y95l7p8yjto1AI1UyyojJc5fw7i1DQDgVQtA==",
+				"shasum": "2b06dc97af077074bc6706c6f97dfc1d7fe9a1f7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251212.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 99875788,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20251212.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -6668,7 +6694,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDQM6e9X9O5GBk+D+R8x0gc7TG4Vbds2YKK4cBaHH8VAwIgZTz0JlhlgPBcvTNG7RSNY/ZE/fdUGRAle2TlKiZPLMg="
+						"sig": "MEUCIQDtupXJ8IUYLBbKR29dSYv61jcwPzwPevpMlYkdyb6vjQIgZy55GxZfM7/m0+SRpSZrAdSE1Zby+7I1GOec3qZAvuI="
 					}
 				]
 			},
