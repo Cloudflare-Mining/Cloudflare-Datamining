@@ -567,6 +567,7 @@
 													},
 													"load_shedding": {
 														"description": "Configures load shedding policies and percentages for the pool.",
+														"nullable": true,
 														"properties": {
 															"default_percent": {
 																"default": 0,
@@ -715,6 +716,7 @@
 													},
 													"origin_steering": {
 														"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+														"nullable": true,
 														"properties": {
 															"policy": {
 																"default": "random",
@@ -1001,6 +1003,7 @@
 															},
 															"load_shedding": {
 																"description": "Configures load shedding policies and percentages for the pool.",
+																"nullable": true,
 																"properties": {
 																	"default_percent": {
 																		"default": 0,
@@ -1149,6 +1152,7 @@
 															},
 															"origin_steering": {
 																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+																"nullable": true,
 																"properties": {
 																	"policy": {
 																		"default": "random",
@@ -1543,6 +1547,7 @@
 												},
 												"load_shedding": {
 													"description": "Configures load shedding policies and percentages for the pool.",
+													"nullable": true,
 													"properties": {
 														"default_percent": {
 															"default": 0,
@@ -1691,6 +1696,7 @@
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+													"nullable": true,
 													"properties": {
 														"policy": {
 															"default": "random",
@@ -1953,6 +1959,7 @@
 														},
 														"load_shedding": {
 															"description": "Configures load shedding policies and percentages for the pool.",
+															"nullable": true,
 															"properties": {
 																"default_percent": {
 																	"default": 0,
@@ -2101,6 +2108,7 @@
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+															"nullable": true,
 															"properties": {
 																"policy": {
 																	"default": "random",
@@ -3391,6 +3399,7 @@
 													},
 													"load_shedding": {
 														"description": "Configures load shedding policies and percentages for the pool.",
+														"nullable": true,
 														"properties": {
 															"default_percent": {
 																"default": 0,
@@ -3539,6 +3548,7 @@
 													},
 													"origin_steering": {
 														"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+														"nullable": true,
 														"properties": {
 															"policy": {
 																"default": "random",
@@ -3825,6 +3835,7 @@
 															},
 															"load_shedding": {
 																"description": "Configures load shedding policies and percentages for the pool.",
+																"nullable": true,
 																"properties": {
 																	"default_percent": {
 																		"default": 0,
@@ -3973,6 +3984,7 @@
 															},
 															"origin_steering": {
 																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+																"nullable": true,
 																"properties": {
 																	"policy": {
 																		"default": "random",
@@ -4266,6 +4278,7 @@
 							},
 							"load_shedding": {
 								"description": "Configures load shedding policies and percentages for the pool.",
+								"nullable": true,
 								"properties": {
 									"default_percent": {
 										"default": 0,
@@ -4394,6 +4407,7 @@
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+								"nullable": true,
 								"properties": {
 									"policy": {
 										"default": "random",
@@ -4650,6 +4664,7 @@
 												},
 												"load_shedding": {
 													"description": "Configures load shedding policies and percentages for the pool.",
+													"nullable": true,
 													"properties": {
 														"default_percent": {
 															"default": 0,
@@ -4798,6 +4813,7 @@
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+													"nullable": true,
 													"properties": {
 														"policy": {
 															"default": "random",
@@ -5060,6 +5076,7 @@
 														},
 														"load_shedding": {
 															"description": "Configures load shedding policies and percentages for the pool.",
+															"nullable": true,
 															"properties": {
 																"default_percent": {
 																	"default": 0,
@@ -5208,6 +5225,7 @@
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+															"nullable": true,
 															"properties": {
 																"policy": {
 																	"default": "random",
@@ -5452,6 +5470,7 @@
 							},
 							"load_shedding": {
 								"description": "Configures load shedding policies and percentages for the pool.",
+								"nullable": true,
 								"properties": {
 									"default_percent": {
 										"default": 0,
@@ -5580,6 +5599,7 @@
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+								"nullable": true,
 								"properties": {
 									"policy": {
 										"default": "random",
@@ -5840,6 +5860,7 @@
 												},
 												"load_shedding": {
 													"description": "Configures load shedding policies and percentages for the pool.",
+													"nullable": true,
 													"properties": {
 														"default_percent": {
 															"default": 0,
@@ -5988,6 +6009,7 @@
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+													"nullable": true,
 													"properties": {
 														"policy": {
 															"default": "random",
@@ -6250,6 +6272,7 @@
 														},
 														"load_shedding": {
 															"description": "Configures load shedding policies and percentages for the pool.",
+															"nullable": true,
 															"properties": {
 																"default_percent": {
 																	"default": 0,
@@ -6398,6 +6421,7 @@
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+															"nullable": true,
 															"properties": {
 																"policy": {
 																	"default": "random",
@@ -6719,6 +6743,7 @@
 									},
 									"port": {
 										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+										"nullable": true,
 										"type": "integer",
 										"x-auditable": true
 									},
@@ -7202,6 +7227,7 @@
 							},
 							"load_shedding": {
 								"description": "Configures load shedding policies and percentages for the pool.",
+								"nullable": true,
 								"properties": {
 									"default_percent": {
 										"default": 0,
@@ -7330,6 +7356,7 @@
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+								"nullable": true,
 								"properties": {
 									"policy": {
 										"default": "random",
@@ -7590,6 +7617,7 @@
 												},
 												"load_shedding": {
 													"description": "Configures load shedding policies and percentages for the pool.",
+													"nullable": true,
 													"properties": {
 														"default_percent": {
 															"default": 0,
@@ -7738,6 +7766,7 @@
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+													"nullable": true,
 													"properties": {
 														"policy": {
 															"default": "random",
@@ -8000,6 +8029,7 @@
 														},
 														"load_shedding": {
 															"description": "Configures load shedding policies and percentages for the pool.",
+															"nullable": true,
 															"properties": {
 																"default_percent": {
 																	"default": 0,
@@ -8148,6 +8178,7 @@
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
+															"nullable": true,
 															"properties": {
 																"policy": {
 																	"default": "random",
