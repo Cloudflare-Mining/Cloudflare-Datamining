@@ -5,36 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Lisbon, Portugal&nbsp;</p>
-<p><strong>About the team:&nbsp;</strong><br><br></p>
-<p>Highly results-oriented and hands-on Order-to-Cash (OTC) professional adept at managing the full lifecycle of<br>worldwide Accounts Receivable (A/R) functions. Proven ability to ensure prompt and accurate invoicing in<br>compliance with contract terms, facilitate efficient cash application, and optimize cash flow. Successfully leverages<br>US GAAP revenue accounting principles (e.g., ASC 606) in billing practices while strengthening external<br>relationships by serving as a key finance liaison in Sales and Customer meetings to resolve disputes and secure<br>payment. Expertise includes supporting month-end close processes, running credit checks, maintaining SOX<br>compliance through key controls, and driving continuous improvement in A/R and billing systems.</p>
-<p>&nbsp;</p>
-<p><strong>What You Will Do:&nbsp;</strong></p>
-<p>Core Responsibilities</p>
+<p><strong>Available Locations: Lisbon or London</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Data Intelligence &amp; Analytics (DIA) team at Cloudflare has built a unified Data &amp; ML platform to provide our internal Business Partners with actionable analytics, insights, and recommendations.</p>
+<p>Our goals are to:</p>
 <ul>
-	<li>Billing and Invoicing: Direct preparation and issuance of customer invoices to ensure prompt and<br>accurate billing in compliance with contract terms, ensuring the accurate reflection of revenue<br>recognition standards.</li>
-	<li>Accounts Receivable Management: Facilitate all aspects of the Accounts Receivable cycle, including cash<br>receipt and application processes to ensure prompt and accurate deposit of all funds and accurate<br>application to customer accounts.</li>
-	<li>Revenue Accounting &amp;amp; Compliance: Apply US GAAP revenue recognition principles (e.g., ASC 606/605)<br>to billing and invoicing practices. Participate in month-end close processes associated with Accounts<br>Receivable and deferred/recognized revenue to support timely and accurate preparation and delivery of<br>financial statements.</li>
-	<li>Customer Interaction: Oversee the response to billing and A/R inquiries in a manner that cultivates a<br>culture of exemplary customer service. Act as a key finance liaison by attending Sales and Client<br>meetings as required to clarify contract terms, invoicing schedules, and payment obligations.</li>
-	<li>Systems and Data Integrity: Oversee maintenance of customer account information within Billing<br>System(s) to ensure up-to-date address, terms, tax, and contact information. Collaborate with cross-<br>functional teams on various systems projects, including selection, implementation, and upgrades to A/R<br>and Billing systems.</li>
-	<li>Internal Controls &amp;amp; Reporting: Support overall organization’s SOX compliance requirements through<br>adherence to key controls and timely completion of reporting for A/R and Revenue-related processes.</li>
+	<li>Democratize data &amp; intelligence</li>
+	<li>Support Cloudflare’s critical business needs</li>
+	<li>Provide self-service data &amp; AI applications to fuel business critical initiatives</li>
 </ul>
-<p>Experience</p>
+<p>As a central data analytics team, we work across all business functions, offering broad exposure to Cloudflare's entire business.</p>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for an experienced Data Analyst or Senior Data Analyst in London or Lisbon to scale our product analytics initiatives. You will be a trusted data advisor to our product organization, analyzing a wide array of datasets to inform product team data requests, ranging from reporting and ad-hoc analysis to strategic product roadmap-influencing projects.</p>
+<p>Success in this role relies on marrying a strong analytics background with product and business acumen to deliver highly strategic and compelling insights that accelerate growth and influence product decisions. This role requires a deep understanding of data infrastructure and a passion for operationalizing insights, not just generating them.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Bachelor’s degree required in Accounting or Finance.</li>
-	<li>2+ years of experience in Billing and A/R functions in a high-volume environment and in Revenue<br>Accounting.</li>
-	<li>Exposure to international operations.</li>
-	<li>Experience participating in system evaluation and implementation.</li>
-	<li>Demonstrated effective written, verbal and interpersonal communication skills at all levels of the<br>organization.</li>
-	<li>Creative problem-solving skills coupled with good judgment.</li>
-	<li>Effective communication skills, verbal and written, to research, prepare and present information to<br>Management, as well as effective communication skills with co-workers.</li>
-	<li>Critical thinking and strong analytical skills.</li>
-	<li>Advanced Microsoft office skills.</li>
-	<li>Comfort in a fast-paced work environment, with multiple concurrent projects and priorities.</li>
-	<li>Ability to plan, execute and deliver on projects in a timely manner; plus, the ability to multitask on varying<br>projects and initiatives.</li>
-	<li>Very high attention to detail; organized and thorough with a desire for continuous improvement.</li>
-	<li>Stellar work ethic.</li>
-	<li>CPA/CA a plus.</li>
+	<li>Provide analytics support, product understanding, and a strategic perspective to our product partners</li>
+	<li>Partner with data engineers, product managers, and stakeholders to enable data-driven answers to key business problems</li>
+	<li>Take initiative to define, build, and maintain business metrics and reports</li>
+	<li>Develop and automate data pipelines and reports to enable insights at scale</li>
+	<li>Weave stories with data to help stakeholders understand analytical insights</li>
+</ul>
+<p><strong>Role Requirements</strong></p>
+<ul>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>4+ years of experience in a centralized data analytics team, ideally with close working partnerships with business stakeholders</li>
+	<li>Expert-level proficiency in writing and optimizing complex SQL queries is mandatory, with a proven ability to performance-tune complex queries and manage analysis workflows against large, petabyte-scale datasets (Candidates will be assessed on advanced SQL skills including window functions, common table expressions (CTEs))</li>
+	<li>4+ years experience using Tableau to build and communicate data stories to technical and non-technical stakeholders</li>
+	<li>2+ years experience working in a version control environment using platforms such as Gitlab or Github</li>
+	<li>Experience with data ingestion and transformation frameworks (e.g., dbt, Fivetran, or custom/in-house developed platforms)</li>
+	<li>Initiative, curiosity, and strong stakeholder engagement and empathy</li>
+	<li>Experience translating business questions into analysis frameworks, converting results into business recommendations, and presenting those to stakeholders</li>
+</ul>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li>Experience and/or a keen interest in internet security</li>
+	<li>Proven analytics experience in a fast-growing technology, SaaS, or subscription-based business</li>
+	<li>Experience with statistical analysis programming languages (Python, R etc.)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
