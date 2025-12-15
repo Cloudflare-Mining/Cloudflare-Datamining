@@ -419,7 +419,7 @@
 			return dr(this, c)
 		}
 	}
-	var pr = function(e) {
+	var pr = (function(e) {
 		"use strict";
 		lr(n, e);
 		var t = fr(n);
@@ -430,7 +430,7 @@
 			return l = t.call(this, o), De(Be(l), "code", void 0), l.name = "TurnstileError", l.code = c, l
 		}
 		return n
-	}(He(Error));
+	})(He(Error));
 
 	function v(e, t) {
 		var n = "[Cloudflare Turnstile] ".concat(e, ".");
@@ -483,7 +483,7 @@
 	}
 	var ht = function(e, t, n, o) {
 			var c = pt(t.params, !1, o),
-				l = "h/".concat("g", "/"),
+				l = "h/".concat("b", "/"),
 				g, y, f = "".concat(c, "/cdn-cgi/challenge-platform/").concat(l, "feedback-reports/").concat(Ge(e), "/").concat(t.displayLanguage, "/").concat((y = t.params.theme) !== null && y !== void 0 ? y : t.theme, "/").concat(n);
 			if (window.top !== window.self) {
 				window.open(f, "_blank", "noopener,noreferrer");
@@ -899,7 +899,7 @@
 		for (var e = window; e && e.top !== e && !e.location.href.startsWith("http");) e = e.top;
 		return e == null ? void 0 : e.location.href
 	}
-	var Vt = function() {
+	var Vt = (function() {
 		var e = function(a, i, r, u) {
 				return k.apply(this, arguments)
 			},
@@ -1006,7 +1006,7 @@
 					(!h || !x) && v("Widget ".concat(r, " to reset was not found."), 3330), u.params.appearance === $.InteractionOnly && Sr(x), u.params.sitekey === null && v("Unexpected Error: Sitekey is null", 3347);
 					var E = x.cloneNode(),
 						I;
-					E.src = vt(r, u.params.sitekey, u.params, (I = u.rcV) !== null && I !== void 0 ? I : Q, !1, "g", a, m.scriptUrlParsed, ut(u)), (s = x.parentNode) === null || s === void 0 || s.replaceChild(E, x), Nt(h), u.retryTimeout && window.clearTimeout(u.retryTimeout)
+					E.src = vt(r, u.params.sitekey, u.params, (I = u.rcV) !== null && I !== void 0 ? I : Q, !1, "b", a, m.scriptUrlParsed, ut(u)), (s = x.parentNode) === null || s === void 0 || s.replaceChild(E, x), Nt(h), u.retryTimeout && window.clearTimeout(u.retryTimeout)
 				} else v("Widget ".concat(r, " to reset was not found."), 3331)
 			},
 			R = function(a) {
@@ -1145,7 +1145,7 @@
 							wrapper: pe
 						})), kt(m);
 						var tt = m.widgetMap.get(Ie);
-						tt || v("Turnstile Initialization Error ", 3606), B.style.display = "none", B.style.border = "none", B.style.overflow = "hidden", B.setAttribute("src", vt(Ie, q, p, Q, !1, "g", H.New, m.scriptUrlParsed, ut(tt))), B.onerror = function() {
+						tt || v("Turnstile Initialization Error ", 3606), B.style.display = "none", B.style.border = "none", B.style.overflow = "hidden", B.setAttribute("src", vt(Ie, q, p, Q, !1, "b", H.New, m.scriptUrlParsed, ut(tt))), B.onerror = function() {
 							if (ie) {
 								ie == null || ie(String(Kt.code));
 								return
@@ -1206,7 +1206,7 @@
 					switch (W.label) {
 						case 0:
 							if (u = _.params.sitekey, s = Ft(), !s) return b("Cannot determine Turnstile's embedded location, aborting clearance redemption."), n(_, a, !1), [2];
-							h = "h/".concat("g", "/"), x = new URL(s), E = "https", I = "", P = "".concat(E, "://").concat(x.host, "/cdn-cgi/challenge-platform/").concat(h, "rc/").concat(r).concat(I), W.label = 1;
+							h = "h/".concat("b", "/"), x = new URL(s), E = "https", I = "", P = "".concat(E, "://").concat(x.host, "/cdn-cgi/challenge-platform/").concat(h, "rc/").concat(r).concat(I), W.label = 1;
 						case 1:
 							return W.trys.push([1, 3, , 4]), [4, fetch(P, {
 								body: JSON.stringify({
@@ -1414,7 +1414,7 @@
 								appearance: r.params.appearance,
 								au: m.scriptUrl,
 								cData: r.cData,
-								ch: "5eaf848a0845",
+								ch: "8328113056b1",
 								chlPageData: r.chlPageData,
 								event: "extraParams",
 								execution: r.params.execution,
@@ -1549,7 +1549,7 @@
 			render: C,
 			reset: d
 		})
-	}();
+	})();
 
 	function Yr(e) {
 		var t = e.getAttribute("data-sitekey"),
@@ -1615,6 +1615,6 @@
 		typeof window[X] == "function" ? window[X]() : (b("Unable to find onload callback '".concat(X, "' immediately after loading, expected 'function', got '").concat(D(window[X]), "'.")), setTimeout(function() {
 			typeof window[X] == "function" ? window[X]() : b("Unable to find onload callback '".concat(X, "' after 1 second, expected 'function', got '").concat(D(window[X]), "'."))
 		}, 1e3))
-	}, 0)), Dt = "turnstile" in window, Dt && !ye ? b("Turnstile already has been loaded. Was Turnstile imported multiple times?") : (Dt && ye && (wr(window.turnstile, m), kt(m), (A == null || ($e = A.params) === null || $e === void 0 ? void 0 : $e.get("render")) !== "explicit" && setTimeout(Pt, 0)), window.turnstile = Vt, ye || ((A == null || (Je = A.params) === null || Je === void 0 ? void 0 : Je.get("render")) !== "explicit" && Wt.push(Pt), document.readyState === "complete" || document.readyState === "interactive" ? setTimeout(Rr, 0) : window.addEventListener("DOMContentLoaded", Rr))), Ar = 24 * 60 * 60 * 1e3, window.setTimeout(Qr, Ar);
+	}, 0)), Dt = "turnstile" in window, Dt && !ye ? b("Turnstile already has been loaded. Was Turnstile imported multiple times?") : (Dt && ye && (wr(window.turnstile, m), kt(m), (A == null || ($e = A.params) === null || $e === void 0 ? void 0 : $e.get("render")) !== "explicit" && setTimeout(Pt, 0)), window.turnstile = Vt, ye || ((A == null || (Je = A.params) === null || Je === void 0 ? void 0 : Je.get("render")) !== "explicit" && Wt.push(Pt), document.readyState === "complete" || document.readyState === "interactive" ? setTimeout(Rr, 0) : window.addEventListener("DOMContentLoaded", Rr))), Ar = 1440 * 60 * 1e3, window.setTimeout(Qr, Ar);
 	var ye, A, Ye, Qe, _e, X, Dt, $e, Je, Ar;
 })();
