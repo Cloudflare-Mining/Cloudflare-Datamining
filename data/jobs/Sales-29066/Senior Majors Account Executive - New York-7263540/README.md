@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Location: New Jersey/New York<br></strong></h3>
+<h3><strong>Available Location: New York<br></strong></h3>
 <hr>
 <h3><strong>About the Role</strong></h3>
 <p>We are seeking an exceptionally accomplished and visionary Senior Majors Account Executive Account Executive to join our Enterprise/Field Sales team. In this expert-level role, you will be the driving force behind Cloudflare's most strategic customer engagements, leading the charge in securing and expanding critical platform sales within focused accounts. The ideal candidate possesses unparalleled sales leadership, a profound grasp of enterprise architecture across all four pillars (business, data, applications, technology), and the ability to articulate how Cloudflare seamlessly integrates into modern cloud operating models.</p>

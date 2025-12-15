@@ -5,63 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Los Angeles or San Diego or Seattle</strong></p>
-<p>We are looking for a thoughtful, detail-oriented team member to join our global Trust and Safety Legal Support Team. In this role, you will address legal requests seeking customer information and perform account reviews to assist in combating abuse in line with Cloudflare’s Terms of Service. This is a position where you will also gain familiarity with the inner workings of Cloudflare's technology and policies.&nbsp;</p>
-<p><strong>Responsibilities</strong><strong>:</strong></p>
+<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
+<p><strong><span class="il">About The Team</span></strong></p>
+<p><span class="il">Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</span></p>
+<p><strong>About The Role&nbsp;</strong></p>
+<p>As a Senior Software Engineer: Resiliency, you will be part of a team responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. You will work on expanding and evolving the suite of automations that allow our Infrastructure Operations partners to provision, expand, repair, and decommission our rapidly growing fleet of servers. Your work will contribute to an increasingly autonomous system that reduces manual effort and supports Cloudflare’s growth. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
+<p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
+<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>Be part of a world class globally-distributed team.</li>
-	<li>Help administer efficient and compliant handling of legal requests, including but not limited to requests for information (subpoenas, court orders, etc) from law enforcement and government officials and in response to third-party civil matters.</li>
-	<li>Be responsible for performing operations seamlessly and timely Service-Level Agreement (SLA) delivery along with maintaining a high level of quality and accuracy.&nbsp;</li>
-	<li>Partner with cross functional teams including Public Policy, Legal, and Product Engineering teams to ensure our policies and processes are carried out in a scalable fashion.</li>
-	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Participate in a rotating weekend coverage duty.</li>
-</ul>
-<p><strong>Requirements</strong><strong>:</strong></p>
-<ul>
-	<li>5+ years of legal support experience processing requests for user information, legal documents, or other relevant background experience in Trust &amp; Safety.</li>
-	<li>Demonstrate working knowledge of DNS and how the Internet works.</li>
-	<li>Experience managing sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
-	<li>Strong written and verbal communication skills, attention to detail and ability to manage multiple projects and tasks to completion.</li>
-	<li>Comfortable navigating ambiguous matters.&nbsp;</li>
-	<li>A great attitude and team player.&nbsp;</li>
-</ul>
-<p><strong>Bonus Points:</strong></p>
-<ul>
-	<li>Experience with the global legal considerations related to legal requests seeking customer information.&nbsp;</li>
-	<li>You’ve interacted with law enforcement officials and agencies.</li>
-	<li>Hands-on experience with Cloudflare’s products and services.&nbsp;</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Washington State and California (excluding Bay Area) based hires: $122,000 - $149,000.</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>At least 8+ years of hands-on software development experience on meaningfully complex systems.</li>
+	<li>Excellent proficiency in one of Python, Go, or Rust, with deep understanding of the language and its best practices.</li>
+	<li>Experience working with Linux systems</li>
+	<li>Basic networking knowledge, like VLAN, Routing, DNS, etc</li>
+	<li>Experience building both backend systems and frontend widgets.</li>
+	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
+	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
+	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
+	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus</li>
+	<li>Excellent verbal and written English language skills.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
