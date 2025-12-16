@@ -5,48 +5,75 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the role</strong></p>
-<p>Cloudflare is seeking a curious and user-focused <strong>Product Manager Interns</strong> to join our team. You will contribute to building innovative products and services that help build a better Internet. Our interns are at the core of this mission, developing foundational technologies that impact millions of users globally.</p>
-<p><strong>What You'll Do</strong></p>
-<p>As a Product Manager Intern, you will be the voice of the user. You will own a project focused on improving products, user experience and contributing to the development of our offerings. Your responsibilities will include:</p>
+<p><strong>Available Locations: Austin, TX and San Francisco, CA</strong></p>
+<h4><strong>Key Responsibilities</strong></h4>
+<p>The role involves working closely with business partners to fully understand pain points and areas for improvement across the Anaplan platform. Key responsibilities include:</p>
 <ul>
-	<li><strong>Define the Future:</strong> Conduct user research and competitive analysis to understand user needs and market trends. You'll identify pain points and opportunities to make our tools best-in-class.</li>
-	<li><strong>Collaborate to Build:</strong> Work hand-in-hand with product, engineering and design counterparts and senior members of the engineering and product team to bring your vision to life, ensuring features are built to spec and meet user expectations or the getting things done to solve hard problems at scale.</li>
-	<li><strong>Drive for Impact:</strong> You will help define success metrics and be responsible for making sure the features you launch are not only technically sound but also solve real-world problems for our users</li>
-	<li><strong>Solve problems:</strong> Identify, analyze, and strategically address complex challenges, transforming them into opportunities for innovation and growth. This involves not only reactive problem-solving but also proactive identification of potential issues and the development of preventative measures. Effective problem-solving requires a deep understanding of user needs, market dynamics, and technological capabilities, allowing for the creation of solutions that are both feasible and impactful.</li>
+	<li>Develop the Connected Planning environment across the business on Anaplan.</li>
+	<li>Follow Anaplan best practices for model design and implementation (Anaplan Way/Agile).</li>
+	<li>Partner with extended BI/IT teams on data integration and automation.</li>
+	<li>Provide technical direction in the implementation of large-scale Anaplan projects: Expense Planning, Revenue Planning, Sales Capacity Planning, Project Planning&nbsp;</li>
+	<li>Validate or challenge existing processes and identify areas for process and/or support tool improvements and efficiencies.</li>
+	<li>Leverage business process knowledge and expertise in Anaplan to drive business process improvements.</li>
+	<li>Capture business requirements, requirements management, functional design, prototyping, process design (including scenario design, flow mapping), testing, training, defining support procedures, and supporting implementations within the Anaplan platform.</li>
 </ul>
-<p><strong>Who We're Looking For</strong></p>
-<p>We are looking for talented and ambitious students who are passionate about building products that users love. Cloudflare believes in the vital source of talent, new energy, and ideas that interns bring, especially as we stand at the cusp of the AI technological revolution.</p>
-<p><strong>Ideal Qualifications:</strong></p>
+<h4><strong>Job Qualifications</strong></h4>
 <ul>
-	<li>Currently pursuing a degree (Bachelor's or Master's) in Business, Computer Science, Human-Computer Interaction, or a related field.</li>
-	<li>A strong passion for technology and understanding user needs.</li>
-	<li>Technical literacy, with the ability to read and understand code (e.g., JavaScript, Python, Go or Rust) and empathize with developer workflows.</li>
-	<li>A solid understanding of networking concepts (e.g., TCP/IP, HTTP, DNS) is a plus.</li>
-	<li>Excellent written and verbal communication skills, with an ability to articulate complex concepts to both technical and non-technical audiences.</li>
-	<li>Strong analytical, problem-solving, and organizational skills.</li>
-	<li>The ability to thrive in a fast-paced, collaborative environment.</li>
+	<li>Experience and understanding of a SAAS business environment.</li>
+	<li><strong>Anaplan Certified Model Builder</strong> (completion of Level 1, 2 and 3 model building and Anaplan Way).</li>
+	<li>Minimum <strong>4 years</strong> supporting FP&amp;A business functions with a working knowledge of end-to-end business processes.</li>
+	<li>Ability to translate functional requirements into technical requirements and leverage best practice to drive towards the best result.</li>
+	<li>Data integration experience with CRM, HCM, ERP, etc. is a plus.</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
+<h4><strong>Required Skills</strong></h4>
 <ul>
-	<li>Hands-on experience with developer tools like Git, and personal or open-source projects that demonstrate an interest in software development.</li>
-	<li>Familiarity with command-line tools and the developer workflow.</li>
-	<li>Previous experience writing product specifications or conducting user research.</li>
-	<li>Knowledge of security or Zero Trust concepts.</li>
-	<li>Experience with competitor products or other developer-focused tools.</li>
+	<li>Analytical skills (data driven)</li>
+	<li>Great time management</li>
+	<li>Business requirements gathering, analysis and Data flow mapping</li>
+	<li>MS Word</li>
+	<li>MS Excel skills</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h4><strong>Soft Skills</strong></h4>
 <ul>
-	<li>Excellent communication skills with the ability to engage with both external partners and internal teams.</li>
-	<li>A self-starter who is comfortable with ambiguity and eager to take initiative.</li>
-	<li>Ability to commit to a full-time 12 week internship</li>
-	<li>In office 3-4 days a week in-office in Austin, TX</li>
+	<li>Verbal communication</li>
+	<li>Written communication</li>
+	<li>Adaptability</li>
+	<li>Problem Solving Skills</li>
+	<li>Attention to detail and accuracy</li>
+	<li>Good prioritization skills</li>
+	<li>Multi-tasker</li>
 </ul>
-<p><strong>Please note:</strong></p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>We will be hiring interns through the fall and early spring on a rolling basis until all roles are filled.</li>
-	<li>Internship dates:&nbsp;<strong>January 12, 2026 - May 1, 2026</strong></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $155,000 - $185,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

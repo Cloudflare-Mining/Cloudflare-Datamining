@@ -26,7 +26,7 @@
 	<li>In depth experience with contracts for professional services and related terms, including data processing addendums, customer flow down requirements.</li>
 	<li>Experience building relationships with cross functional stakeholders and developing strategic program policies and controls that can be effectively operationalized and maintained.</li>
 	<li>Admitted to practice law and in good standing or otherwise authorized to practice law in the state in which the position is located.</li>
-	<li>810+ years relevant experience.</li>
+	<li>8+ years relevant experience.</li>
 	<li>Experience with drafting, reviewing, and negotiating commercial agreements common to technology companies.</li>
 	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.&nbsp;</li>
 	<li>Detail oriented and technically-adept, preferably with experience at a SaaS or Cloud company.</li>
