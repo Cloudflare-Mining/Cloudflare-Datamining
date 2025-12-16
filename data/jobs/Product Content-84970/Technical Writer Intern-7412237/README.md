@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, Lisbon</p>
+<p><strong>Available Locations: </strong>Austin</p>
 <h4><strong>About the Role</strong></h4>
 <p>Cloudflare is looking for technical writing interns currently pursuing a degree to join the Product Content Experience (PCX) team and support product content creation. As a tech writing intern, you will partner with engineers, product managers, customer-facing teams, and other PCX writers to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. You will work alongside and learn from a team recently recognized for delivering the Best Unified Enterprise Dev Portal at the 2025 DevPortal Awards. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
 <h4><strong>Responsibilities</strong></h4>

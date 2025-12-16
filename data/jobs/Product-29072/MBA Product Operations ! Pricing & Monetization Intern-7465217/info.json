@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7412237?gh_jid=7412237",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7465217?gh_jid=7465217",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3302385,
+	"internal_job_id": 3316640,
 	"location": {
 		"name": "In-Office"
 	},
@@ -18,14 +18,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4500 - Emerg Tech & Incubation",
+			"value": "4400 - Product",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"New York, US",
+				"San Francisco, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -39,17 +41,17 @@
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7412237,
-	"updated_at": "2025-12-16T15:44:05-05:00",
+	"id": 7465217,
+	"updated_at": "2025-12-16T16:32:10-05:00",
 	"requisition_id": null,
-	"title": "Technical Writer Intern",
+	"title": "MBA Product Operations / Pricing & Monetization Intern",
 	"company_name": "Cloudflare",
-	"first_published": "2025-11-20T19:51:52-05:00",
+	"first_published": "2025-12-16T16:29:08-05:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 84970,
-			"name": "Product Content",
+			"id": 29072,
+			"name": "Product",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -59,6 +61,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}
