@@ -11,6 +11,7 @@
 				"schema": {
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
+						"CLIENT_TYPE",
 						"USER_AGENT",
 						"REFERER",
 						"CRAWL_REFER_RATIO",
@@ -120,6 +121,25 @@
 					"description": "Filters results by industry.",
 					"items": {
 						"maxLength": 2000,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by agent type.",
+				"in": "query",
+				"name": "clientType",
+				"schema": {
+					"description": "Filters results by agent type.",
+					"items": {
+						"description": "The type of the client.",
+						"enum": [
+							"HUMAN",
+							"NON_AI_BOT",
+							"AI_BOT",
+							"MIXED_PURPOSE"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -428,6 +448,7 @@
 				"schema": {
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
+						"CLIENT_TYPE",
 						"USER_AGENT",
 						"REFERER",
 						"CRAWL_REFER_RATIO",
@@ -553,6 +574,25 @@
 					"description": "Filters results by industry.",
 					"items": {
 						"maxLength": 2000,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by agent type.",
+				"in": "query",
+				"name": "clientType",
+				"schema": {
+					"description": "Filters results by agent type.",
+					"items": {
+						"description": "The type of the client.",
+						"enum": [
+							"HUMAN",
+							"NON_AI_BOT",
+							"AI_BOT",
+							"MIXED_PURPOSE"
+						],
 						"type": "string"
 					},
 					"type": "array"

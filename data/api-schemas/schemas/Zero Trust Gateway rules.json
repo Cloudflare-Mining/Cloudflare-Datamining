@@ -905,6 +905,19 @@
 																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
+															"forensic_copy": {
+																"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Enable sending the copy to storage.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
 															"ignore_cname_category_matches": {
 																"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
@@ -1827,6 +1840,19 @@
 																				"description": "Specify the IPv6 range to use for egress.",
 																				"example": "2001:DB8::/64",
 																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"forensic_copy": {
+																		"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Enable sending the copy to storage.",
+																				"type": "boolean",
 																				"x-auditable": true
 																			}
 																		},
@@ -2855,6 +2881,19 @@
 															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
+														"forensic_copy": {
+															"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Enable sending the copy to storage.",
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
 														"ignore_cname_category_matches": {
 															"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
@@ -3744,6 +3783,19 @@
 																			"description": "Specify the IPv6 range to use for egress.",
 																			"example": "2001:DB8::/64",
 																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"forensic_copy": {
+																	"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sending the copy to storage.",
+																			"type": "boolean",
 																			"x-auditable": true
 																		}
 																	},
@@ -4788,6 +4840,19 @@
 																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
+															"forensic_copy": {
+																"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																"nullable": true,
+																"properties": {
+																	"enabled": {
+																		"description": "Enable sending the copy to storage.",
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
 															"ignore_cname_category_matches": {
 																"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
 																"example": true,
@@ -5716,6 +5781,19 @@
 																		"type": "object",
 																		"x-stainless-terraform-configurability": "optional"
 																	},
+																	"forensic_copy": {
+																		"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																		"nullable": true,
+																		"properties": {
+																			"enabled": {
+																				"description": "Enable sending the copy to storage.",
+																				"type": "boolean",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
 																	"ignore_cname_category_matches": {
 																		"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
 																		"example": true,
@@ -6630,6 +6708,19 @@
 										"type": "object",
 										"x-stainless-terraform-configurability": "optional"
 									},
+									"forensic_copy": {
+										"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+										"nullable": true,
+										"properties": {
+											"enabled": {
+												"description": "Enable sending the copy to storage.",
+												"type": "boolean",
+												"x-auditable": true
+											}
+										},
+										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
+									},
 									"ignore_cname_category_matches": {
 										"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
 										"example": true,
@@ -7474,6 +7565,19 @@
 																	"description": "Specify the IPv6 range to use for egress.",
 																	"example": "2001:DB8::/64",
 																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"forensic_copy": {
+															"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Enable sending the copy to storage.",
+																	"type": "boolean",
 																	"x-auditable": true
 																}
 															},
@@ -8369,6 +8473,19 @@
 																			"description": "Specify the IPv6 range to use for egress.",
 																			"example": "2001:DB8::/64",
 																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"forensic_copy": {
+																	"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sending the copy to storage.",
+																			"type": "boolean",
 																			"x-auditable": true
 																		}
 																	},
@@ -9395,6 +9512,19 @@
 															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
+														"forensic_copy": {
+															"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Enable sending the copy to storage.",
+																	"type": "boolean",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
 														"ignore_cname_category_matches": {
 															"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
 															"example": true,
@@ -10281,6 +10411,19 @@
 																			"description": "Specify the IPv6 range to use for egress.",
 																			"example": "2001:DB8::/64",
 																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"forensic_copy": {
+																	"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sending the copy to storage.",
+																			"type": "boolean",
 																			"x-auditable": true
 																		}
 																	},
@@ -11211,6 +11354,19 @@
 										"type": "object",
 										"x-stainless-terraform-configurability": "optional"
 									},
+									"forensic_copy": {
+										"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+										"nullable": true,
+										"properties": {
+											"enabled": {
+												"description": "Enable sending the copy to storage.",
+												"type": "boolean",
+												"x-auditable": true
+											}
+										},
+										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
+									},
 									"ignore_cname_category_matches": {
 										"description": "Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.",
 										"example": true,
@@ -12055,6 +12211,19 @@
 																	"description": "Specify the IPv6 range to use for egress.",
 																	"example": "2001:DB8::/64",
 																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"forensic_copy": {
+															"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+															"nullable": true,
+															"properties": {
+																"enabled": {
+																	"description": "Enable sending the copy to storage.",
+																	"type": "boolean",
 																	"x-auditable": true
 																}
 															},
@@ -12950,6 +13119,19 @@
 																			"description": "Specify the IPv6 range to use for egress.",
 																			"example": "2001:DB8::/64",
 																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"forensic_copy": {
+																	"description": "Configure whether a copy of the HTTP request will be sent to storage when the rule matches.",
+																	"nullable": true,
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable sending the copy to storage.",
+																			"type": "boolean",
 																			"x-auditable": true
 																		}
 																	},
