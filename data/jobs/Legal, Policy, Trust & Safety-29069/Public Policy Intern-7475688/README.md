@@ -5,36 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4 id="DataScientist-AbouttheTeam"><strong>Available Locations: London, UK</strong></h4>
-<h4><strong>About the Team</strong></h4>
-<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.&nbsp;The team's core disciplines are data engineering, data science, devops, and security. We use data science and machine learning to process large volumes of data and build threat intelligence for Cloudflare's customers</p>
-<p><strong>About the Role</strong></p>
-<p data-sourcepos="13:1-13:838">We're seeking a<strong>&nbsp;</strong>Data Scientist to join our team and drive the analytical rigor behind our cyber threat intelligence efforts. In this highly impactful, hands-on role, you will be instrumental in<strong>&nbsp;</strong>researching, developing, and applying advanced analytical techniques and statistical models to massive datasets from our global network. Your work will uncover patterns, identify anomalies, and build predictive insights to detect and neutralize sophisticated cyber threats. You'll directly enhance our Cloudforce One offering by transforming raw data into critical, real-time threat intelligence, providing unparalleled protection and actionable insights to our customers. If you are passionate about applying sophisticated data science to solve complex cybersecurity challenges at an unprecedented scale, we want you on our team.</p>
-<p data-sourcepos="15:1-15:154">The ideal candidate will possess a strong foundational knowledge of data science principles and statistical modeling. Day-to-day responsibilities include:</p>
-<ul data-sourcepos="17:1-23:0">
-	<li data-sourcepos="17:1-17:163">Collaborate with other Data Scientists and Machine Learning Engineers to design and implement analytical approaches that inform scalable threat detection models.</li>
-	<li data-sourcepos="18:1-18:161">Partner with threat intelligence analysts to understand emerging attack techniques and leverage data to develop novel detection strategies and expose findings.</li>
-	<li data-sourcepos="19:1-19:112">Perform in-depth data analysis to identify trends, relationships, and anomalies within vast security datasets.</li>
-	<li data-sourcepos="20:1-20:121">Develop, validate, and refine statistical and machine learning models for threat detection and intelligence generation.</li>
-	<li data-sourcepos="21:1-21:152">Monitor the performance of analytical models and threat intelligence pipelines, continuously identifying opportunities for improvement and refinement.</li>
-	<li data-sourcepos="22:1-23:0">Investigate and resolve data-related issues in production environments, ensuring the accuracy and integrity of our threat intelligence.</li>
+<p><strong>Available Locations:&nbsp;</strong>Brussels, Belgium</p>
+<h4><strong>Public Policy at Cloudflare</strong></h4>
+<p>Because of the scope, complexity, and diversity of the company’s work, our Public Policy team members must be flexible, talented and able to work collaboratively across multi-functional teams to find and present policy solutions, to carry the Cloudflare narrative and promote the public policy brand externally.&nbsp;</p>
+<p>Cloudflare’s Public Policy team helps the company by anticipating regulatory challenges, acting as an external advocate for Cloudflare on priority policy issues and identifying opportunities to build relationships with external partners.&nbsp;</p>
+<p>The team is relatively small but growing, and is often tasked with addressing global policy issues on top of local market priorities. This is a fast-moving work environment with goals that are closely linked to business priorities, however, policy issues are typically within the areas of cybersecurity, data protection/privacy, connectivity and intermediary liability.</p>
+<p><strong>What You’ll Do</strong></p>
+<p>We are looking for an intern for a six-month period to help support our European Public Policy team, based in Brussels. <strong>The start date for this role is foreseen on 9 March, 2026</strong>.&nbsp;</p>
+<p>The responsibilities of the intern will consist of working day-to-day with the European Public Policy team across a wide range of work streams and projects including:</p>
+<ul>
+	<li>Help the Public Policy team to maintain internal knowledge databases, draft EU stakeholder maps and support with issue tracking</li>
+	<li>Support the team in evaluating EU policy and legislative developments, and support work to understand the impact on Cloudflare across its full product set, including attending relevant events (for instance in the European Parliament and conferences) and providing internal updates to the Public Policy team</li>
+	<li>Participate in developing talking points, policy narratives and presentation materials for use at external events and meetings and for other communication purposes (company blog, position papers, consultation responses etc)</li>
+	<li>Help compile materials for use by Cloudflare's sales and marketing teams to respond to policy-related questions raised by our customers and potential customers</li>
+	<li>Support work to build and maintain relationships with key policy makers, relevant policy makers and officials from the European Institutions, as well as within any identified national markets</li>
+	<li>Take part in engagement with business and civil society entities, including associations of which we are an active member</li>
+	<li>Support in providing daily/real-time and other updates to colleagues from the Cloudflare Public Policy, Legal, Trust &amp; Safety Teams and other internal stakeholders</li>
 </ul>
-<p data-sourcepos="24:1-24:60"><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
-<ul data-sourcepos="26:1-30:0">
-	<li data-sourcepos="26:1-26:180">Thorough understanding of statistical modeling, hypothesis testing, and various machine learning algorithms, including their strengths and weaknesses across different data types.</li>
-	<li data-sourcepos="27:1-27:190">Desire to see a data-driven project through all the way from initial research and experimentation, through model validation, to the delivery of actionable insights and automated processes.</li>
-	<li data-sourcepos="28:1-28:131">Demonstrated ability to present complex analytical findings clearly and concisely, and actively solicit and incorporate feedback.</li>
-	<li data-sourcepos="29:1-30:0">Proven ability to deliver high-quality analytical work (what) with strong collaborative and problem-solving behaviors (how).</li>
-</ul>
-<p data-sourcepos="31:1-31:16"><strong>Bonus Points</strong></p>
-<p data-sourcepos="33:1-33:151">These are skills that are beneficial and may be required in the role; we are happy to support your learning on the job, but prior experience is a plus:</p>
-<ul data-sourcepos="35:1-39:93">
-	<li data-sourcepos="35:1-35:78">Experience with large-scale data processing frameworks (e.g., Spark, Flink).</li>
-	<li data-sourcepos="36:1-36:100">Experience with time series analysis, anomaly detection, or graph analytics in a security context.</li>
-	<li data-sourcepos="37:1-37:101">Proficiency in data visualization tools and techniques to effectively communicate complex findings.</li>
-	<li data-sourcepos="38:1-38:100">A basic understanding of the cyber threat landscape and technical Indicators of Compromise (IOCs).</li>
-	<li data-sourcepos="39:1-39:93">Experience with Natural Language Processing (NLP) for analyzing unstructured security data.</li>
-</ul>
+<p>The position will require an active, self-starting individual with an academic background, a knowledge of and a curiosity for our business, in particular cyber security, connectivity/telecoms, content policy and privacy issues. Some prior work or internship experience within a (technology) company or association, and/or within the EU institutions working on relevant policy topics will be an asset. Perfect knowledge of English as a working language (written &amp; oral) is required. Knowledge of French is an asset.&nbsp;</p>
+<p>The position is remunerated and some, limited, travel within Europe may be required.&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
