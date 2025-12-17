@@ -45,6 +45,7 @@ import CloudInternet from './CloudInternet';
 import CloudMulti from './CloudMulti';
 import CloudSecurity from './CloudSecurity';
 import CloudflareAccess from './CloudflareAccess';
+import CloudflareArgoSmartRoutingOutline from './CloudflareArgoSmartRoutingOutline';
 import CloudflareBrowserOutline from './CloudflareBrowserOutline';
 import CloudflareDex from './CloudflareDex';
 import CloudflareEmailSecurity from './CloudflareEmailSecurity';
@@ -292,6 +293,7 @@ export default {
   'cloud-multi': CloudMulti,
   'cloud-security': CloudSecurity,
   'cloudflare-access': CloudflareAccess,
+  'cloudflare-argo-smart-routing-outline': CloudflareArgoSmartRoutingOutline,
   'cloudflare-browser-outline': CloudflareBrowserOutline,
   'cloudflare-dex': CloudflareDex,
   'cloudflare-email-security': CloudflareEmailSecurity,
