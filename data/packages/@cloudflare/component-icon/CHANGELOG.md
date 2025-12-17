@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.14.0
+
+### Minor Changes
+
+- 70df11a23a: Add cloudflare-argo-smart-routing-outline icon
+
 ## 13.13.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.0.30
+
+### Patch Changes
+
+- @cloudflare/component-button@9.4.5
+
 ## 9.0.29
 
 ### Patch Changes

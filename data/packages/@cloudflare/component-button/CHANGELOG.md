@@ -1,5 +1,7 @@
 # Change Log
 
+## 9.4.5
+
 ## 9.4.4
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # Change Log
 
+## 8.0.28
+
+### Patch Changes
+
+- Updated dependencies [02f7d03946]
+  - @cloudflare/util-formatters@2.7.7
+  - @cloudflare/util-responsive@4.2.3
+
 ## 8.0.27
 
 ### Patch Changes
