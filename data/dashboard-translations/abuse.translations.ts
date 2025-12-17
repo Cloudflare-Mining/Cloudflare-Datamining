@@ -13,13 +13,13 @@
 			error: "Error fetching abuse reports. Please try again."
 		},
 		column_name: {
-			[r.Xt.Id]: "Report ID",
-			[r.Xt.CDate]: "Date",
-			[r.Xt.Domain]: "Domain",
-			[r.Xt.Type]: "Report type",
-			[r.Xt.Status]: "Report status",
-			[r.Xt.AcceptedUrls]: "Accepted URLs",
-			[r.Xt.MitigationSummary]: "Cloudflare mitigations"
+			[s.Xt.Id]: "Report ID",
+			[s.Xt.CDate]: "Date",
+			[s.Xt.Domain]: "Domain",
+			[s.Xt.Type]: "Report type",
+			[s.Xt.Status]: "Report status",
+			[s.Xt.AcceptedUrls]: "Accepted URLs",
+			[s.Xt.MitigationSummary]: "Cloudflare mitigations"
 		},
 		mitigation_summary: {
 			accepted_url_count: "%{smart_count} accepted",
@@ -30,9 +30,9 @@
 		},
 		view_mitigations_link: "View mitigations",
 		filter: {
-			[r.Xt.Domain]: "Domain",
-			[r.Xt.Status]: "Report status",
-			[r.Xt.Type]: "Report type"
+			[s.Xt.Domain]: "Domain",
+			[s.Xt.Status]: "Report status",
+			[s.Xt.Type]: "Report type"
 		}
 	},
 	mitigations_table: {
@@ -42,15 +42,15 @@
 			error: "Error fetching mitigations. Please try again."
 		},
 		column_name: {
-			[r.on.EffectiveDate]: "Date",
-			[r.on.Type]: "Mitigation",
-			[r.on.Status]: "Status",
-			[r.on.EntityType]: "Entity type",
-			[r.on.EntityId]: "Entity name or ID"
+			[s.on.EffectiveDate]: "Date",
+			[s.on.Type]: "Mitigation",
+			[s.on.Status]: "Status",
+			[s.on.EntityType]: "Entity type",
+			[s.on.EntityId]: "Entity name or ID"
 		},
 		filter: {
-			[r.on.Status]: "Status",
-			[r.on.Type]: "Mitigation"
+			[s.on.Status]: "Status",
+			[s.on.Type]: "Mitigation"
 		}
 	},
 	streaming_mitigations_table: {
@@ -60,41 +60,41 @@
 			error: "Error fetching streaming mitigations. Please try again."
 		},
 		column_name: {
-			[s.m.EffectiveDate]: "Date",
-			[s.m.Type]: "Mitigation",
-			[s.m.Status]: "Status",
-			[s.m.EntityType]: "Entity type",
-			[s.m.EntityId]: "Entity name or ID"
+			[c.EffectiveDate]: "Date",
+			[c.Type]: "Mitigation",
+			[c.Status]: "Status",
+			[c.EntityType]: "Entity type",
+			[c.EntityId]: "Entity name or ID"
 		},
 		filter: {
-			[s.m.Status]: "Status"
+			[c.Status]: "Status"
 		}
 	},
 	blocked_content_tables: {
 		titles: {
 			pending: "Pending blocks",
-			pending_count: (0, a.p)(u(), "count"),
+			pending_count: (0, o.p)(l(), "count"),
 			active: "Active blocks",
-			active_count: (0, a.p)(l(), "count")
+			active_count: (0, o.p)(d(), "count")
 		},
 		empty_state: {
-			default: (0, a.p)(d(), "blockCategory"),
-			search: (0, a.p)(m(), "blockCategory"),
-			error: (0, a.p)(p(), "blockCategory")
+			default: (0, o.p)(m(), "blockCategory"),
+			search: (0, o.p)(p(), "blockCategory"),
+			error: (0, o.p)(_(), "blockCategory")
 		},
 		column_name: {
-			[r.dS.EnforcementDate]: "Date",
-			[r.dS.BlockType]: "Block Type",
-			[r.dS.Status]: "Status",
-			[r.dS.EntityType]: "Entity type",
-			[r.dS.EntityId]: "Entity name or ID"
+			[s.dS.EnforcementDate]: "Date",
+			[s.dS.BlockType]: "Block Type",
+			[s.dS.Status]: "Status",
+			[s.dS.EntityType]: "Entity type",
+			[s.dS.EntityId]: "Entity name or ID"
 		},
 		filter: {
-			[r.dS.Status]: {
-				[o.IR.Active]: "Active",
-				[o.IR.Cancelled]: "Canceled",
-				[o.IR.InReview]: "In Review",
-				[o.IR.Pending]: "Pending"
+			[s.dS.Status]: {
+				[r.IR.Active]: "Active",
+				[r.IR.Cancelled]: "Canceled",
+				[r.IR.InReview]: "In Review",
+				[r.IR.Pending]: "Pending"
 			}
 		}
 	},
@@ -134,37 +134,40 @@
 		network_block: "Network block"
 	},
 	report_type: {
-		[r.fs.EMERGENCY]: "CSAM",
-		[r.fs.DMCA]: "Copyright",
-		[r.fs.GENERAL]: "General",
-		[r.fs.NCSEI]: "NCSEI",
-		[r.fs.PHISHING]: "Phishing",
-		[r.fs.REGISTRAR_WHOIS]: "Registrar",
-		[r.fs.THREAT]: "Threat",
-		[r.fs.TRADEMARK]: "Trademark",
-		[r.fs.NETWORK]: "Network"
+		[s.fs.EMERGENCY]: "CSAM",
+		[s.fs.DMCA]: "Copyright",
+		[s.fs.GENERAL]: "General",
+		[s.fs.NCSEI]: "NCSEI",
+		[s.fs.PHISHING]: "Phishing",
+		[s.fs.REGISTRAR_WHOIS]: "Registrar",
+		[s.fs.THREAT]: "Threat",
+		[s.fs.TRADEMARK]: "Trademark",
+		[s.fs.NETWORK]: "Network"
 	},
 	report_type_long: {
-		[r.fs.EMERGENCY]: "Child Sexual Abuse Material (CSAM)",
-		[r.fs.DMCA]: "Copyright Infringement & DMCA Violations",
-		[r.fs.GENERAL]: "General",
-		[r.fs.NCSEI]: "Non-Consensual Sexually Explicit Imagery (NCSEI)",
-		[r.fs.PHISHING]: "Phishing",
-		[r.fs.REGISTRAR_WHOIS]: "Registrar",
-		[r.fs.THREAT]: "Threat",
-		[r.fs.TRADEMARK]: "Trademark",
-		[r.fs.NETWORK]: "Network"
+		[s.fs.EMERGENCY]: "Child Sexual Abuse Material (CSAM)",
+		[s.fs.DMCA]: "Copyright Infringement & DMCA Violations",
+		[s.fs.GENERAL]: "General",
+		[s.fs.NCSEI]: "Non-Consensual Sexually Explicit Imagery (NCSEI)",
+		[s.fs.PHISHING]: "Phishing",
+		[s.fs.REGISTRAR_WHOIS]: "Registrar",
+		[s.fs.THREAT]: "Threat",
+		[s.fs.TRADEMARK]: "Trademark",
+		[s.fs.NETWORK]: "Network"
 	},
 	api_handling: {
 		error: "Error",
 		summary_error_and_retry: "Summary details failed to load.",
 		refresh: "Refresh",
-		unavailable: "Unavailable"
+		unavailable: "Unavailable",
+		failed_to_load_abuse_report_details: "Failed to load abuse report details",
+		try_refreshing_page: "Try refreshing the page"
 	},
 	tab_titles: {
 		blocked_content: "Blocked content",
 		mitigations: "Cloudflare mitigations",
-		streaming_mitigations: "Streaming mitigations"
+		streaming_mitigations: "Streaming mitigations",
+		report_details: "Report details"
 	},
 	tab_descriptions: {
 		blocked_content: "View blocked content mitigations that Cloudflare will take or has taken against your domain for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
@@ -172,20 +175,46 @@
 		streaming_mitigations: "View streaming mitigations that Cloudflare will take or has taken against your account for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team."
 	},
 	report_summary_titles: {
+		report_summary: "Report summary",
 		report_status: "Report status",
 		date: "Date",
 		report_type: "Report type",
 		domain: "Domain",
 		accepted_urls: "Accepted URLs",
-		cloudflare_mitigations: "Cloudflare mitigations"
+		cloudflare_mitigations: "Cloudflare mitigations",
+		external_host_notified: "External host notified"
+	},
+	report_details: {
+		justification: {
+			title: "Logs or other evidence of abuse",
+			description: "The submitter's justification for reporting abuse against your account."
+		},
+		original_work: {
+			title: "Original work justification",
+			description: "The original work that was allegedly infringed, as reported by the submitter."
+		},
+		evidence_urls_title: "Evidence URLs",
+		evidence_urls_description: "The reported URLs that Cloudflare has determined to have evidence of abuse.",
+		evidence_urls_search_placeholder: "Search",
+		evidence_urls_column: "URL",
+		evidence_urls_empty_state: {
+			default: "No evidence URLs found.",
+			search: "No matching evidence URLs found."
+		},
+		submitter_info_title: "Submitter information",
+		submitter_info_description: "Reporters can elect to share their name and contact information with the website owner or submit reports anonymously.",
+		submitter_name: "Name",
+		submitter_email: "Email",
+		submitter_company: "Company name",
+		submitter_telephone: "Telephone"
 	},
 	report_summary_values: {
-		active: (0, a.p)(g(), "activeCount")
+		active: (0, o.p)(g(), "activeCount")
 	},
 	breadcrumb_titles: {
 		manage_account: "Manage Account",
 		abuse: "Abuse Reports",
-		abuse_report: (0, a.p)(_(), "reportId")
+		abuse_report: (0, o.p)(f(), "reportId")
 	},
 	product_documentation: "Documentation",
 	date_range: "Date range",

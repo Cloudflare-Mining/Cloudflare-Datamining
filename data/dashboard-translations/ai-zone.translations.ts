@@ -208,8 +208,7 @@
 		unsuccessful: "Unsuccessful",
 		upgrade: "Upgrade",
 		violation: "Violation",
-		violations: "Violations",
-		visits: "Visits"
+		violations: "Violations"
 	},
 	description: "Analyze and control how AI Crawlers access your content.",
 	documentation: "AI Crawl Control documentation",
@@ -255,7 +254,7 @@
 			},
 			columns: {
 				path: "Path",
-				hostname: "Hostname",
+				host: "Host",
 				requests: "Allowed requests"
 			}
 		},
@@ -317,7 +316,7 @@
 		},
 		violations: {
 			title: "Violations",
-			description: "Identify AI crawlers requesting paths currently disallowed by your robots.txt. Recently updated rules may flag previously legitimate requests.",
+			description: "Identify AI crawlers requesting paths currently disallowed by your robots.txt. This list only shows violations on highest-traffic paths. Filter by Crawler, Operator, or Hostname to view detailed activity.",
 			matched_rule: "Disallow: %{rule}",
 			table: {
 				columns: {

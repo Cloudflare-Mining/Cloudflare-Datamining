@@ -25,7 +25,8 @@
 				last_sync: "Last sync"
 			},
 			error: "sorry, an error occurred",
-			empty: "There is no AI Search"
+			empty: "No AI Search instance found",
+			empty_description: "Clear your search and try again."
 		}
 	},
 	metrics: {
@@ -35,7 +36,7 @@
 				title: "Index",
 				panels: {
 					fileStatus: {
-						title: "File status over time",
+						title: "Items status over time",
 						empty: "No data available",
 						status: {
 							completed: "completed",
@@ -58,12 +59,13 @@
 						}
 					},
 					topFiles: {
-						title: "Top files retrieved over time",
+						title: "Top items retrieved over time",
 						status: {
 							error: "Error",
 							empty: "No data available"
 						},
 						columns: {
+							item: "Item key",
 							filename: "File name",
 							count: "Count"
 						}
@@ -95,6 +97,19 @@
 	create_rag: {
 		title: "Create a new AI Search",
 		description: "Connect your data source to get started. AI Search will index your content automatically once created.",
+		mode_selection: {
+			divider: "Or use template",
+			normal: {
+				title: "Create a RAG",
+				description: "Set up a new retrieval augmented generation pipeline with your data. Connect a data source, choose embedding, and adjust retrieval and generation settings to shape results.",
+				button: "Get Started"
+			},
+			nlweb: {
+				title: "NLWeb for Websites",
+				description: "Try out NLWeb, an open project developed by Microsoft, to enable conversational search on your website. We index your content with tuned defaults and deploy a Worker that provides a ready-to-use interface with an MCP server.",
+				button: "Use Template"
+			}
+		},
 		steps: {
 			step1: "Connect your data source",
 			step2: "Connect an AI Gateway",
@@ -108,6 +123,20 @@
 				r2: "R2 Bucket",
 				br: "Website",
 				d1: "D1 Database"
+			},
+			filter_items: {
+				title: "Path Filters",
+				description: "Control the indexing scope by matching URL paths with wildcards.",
+				include_items: {
+					title: "Include Rules",
+					description: "Only index URLs matching these patterns (e.g., */blog/*)",
+					add_button: "Add include rule"
+				},
+				exclude_items: {
+					title: "Exclude Rules",
+					description: "Skip indexing URLs matching these patterns (e.g., */admin/*)",
+					add_button: "Add exclude rule"
+				}
 			},
 			r2: {
 				title: "Choose an R2 bucket",
@@ -290,6 +319,11 @@
 			source: {
 				title: "Data source"
 			},
+			filter_items: {
+				title: "Path Filters",
+				include_items: "Include Rules",
+				exclude_items: "Exclude Rules"
+			},
 			nlweb: {
 				title: "NLWeb Worker"
 			}
@@ -301,7 +335,8 @@
 				title: "Parsing mode",
 				drawer: {
 					title: "Parsing mode",
-					description: "Choose how content is fetched from your website:"
+					description: "Choose how content is fetched from your website:",
+					note: "Updating the parse options settings will trigger a full re-index of your AI Search instance after you Save."
 				}
 			},
 			custom_headers: {
@@ -329,7 +364,8 @@
 			},
 			chunk_overlap: {
 				title: "Chunk overlap",
-				description: "Controls the amount of overlap between chunks to keep related information together. Min 0% - Max 30%."
+				description: "Controls the amount of overlap between chunks to keep related information together. Min 0% - Max 30%.",
+				note: "Updating the chunking settings will trigger a full re-index of your AI Search instance after you Save."
 			}
 		},
 		cache: {
@@ -366,7 +402,7 @@
 			description: "Configure the model and system prompt used to generate responses.",
 			model: "Generation model",
 			system_prompt: "System prompt",
-			note: (0, o.p)(a()),
+			note: (0, o.p)(n()),
 			drawer: {
 				title: "Generation model"
 			}
@@ -445,6 +481,7 @@
 		search: {
 			table: {
 				columns: {
+					item: "Item key",
 					file: "File name",
 					score: "Score",
 					content: "Content"
@@ -454,6 +491,7 @@
 	},
 	jobs: {
 		title: "Jobs",
+		description: "Performs a full scan of all documents to update.",
 		table: {
 			columns: {
 				status: "Status",
@@ -463,13 +501,18 @@
 				duration: "Duration",
 				last_sync: "Last sync"
 			},
-			error: "sorry, an error occurred",
+			error: "Sorry, an error occurred",
 			empty: "There are no AI Search created"
 		},
 		status: {
 			canceled: "Canceled",
 			completed: "Completed",
 			processing: "Processing"
+		},
+		action: {
+			sync: "Sync",
+			pause: "Pause",
+			resume: "Resume"
 		},
 		trigger: {
 			user: "User",
@@ -487,11 +530,11 @@
 			}
 		},
 		jobs: {
-			title: "Job",
+			title: "Last Job",
 			view_all: "View all jobs"
 		},
 		logs: {
-			title: "Index Logs",
+			title: "Indexed items",
 			table: {
 				columns: {
 					index: "Index",
@@ -504,6 +547,7 @@
 				completed: "Completed",
 				queued: "Queued",
 				running: "Processing",
+				skipped: "Skipped",
 				error: "Errored"
 			}
 		}
@@ -591,6 +635,7 @@
 		errored: "Errored",
 		indexing: "Indexing",
 		indexed: "Indexed",
+		skipped: "Skipped",
 		paused: "Paused",
 		successful: "Successful",
 		processing: "Processing"
@@ -667,24 +712,6 @@
 			ms: {
 				one: "ms",
 				multi: "ms"
-			}
-		},
-		cache_threshold_options: {
-			super_strict_match: {
-				title: "Super Strict Match",
-				description: "Almost exactly the same"
-			},
-			close_enough: {
-				title: "Close Enough",
-				description: "Really similar"
-			},
-			flexible_friend: {
-				title: "Flexible Friend",
-				description: "Pretty similar"
-			},
-			anything_goes: {
-				title: "Anything Goes",
-				description: "Somewhat alike"
 			}
 		}
 	},

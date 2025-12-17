@@ -15,7 +15,10 @@
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed.",
 		error_message: "Something went wrong. Please try again or contact support for assistance.",
 		premium: "Premium",
-		continue: "Continue"
+		continue: "Continue",
+		price: "Price",
+		checkout: "Checkout",
+		standard: "Standard"
 	},
 	form: {
 		field_validation_error: (0, r.p)(s(), "field"),
@@ -86,7 +89,7 @@
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
 		purchase_agreement: (0, r.p)(p()),
-		purchase_agreement_with_icloud: (0, r.p)(g()),
+		purchase_agreement_with_icloud: (0, r.p)(f()),
 		automatic_renewal_agreement: 'Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in <a href="/%{accountId}/billing/subscriptions" rel="noopener noreferrer" target="_blank">Billing Subscriptions</a>, or via the Domain Management page in your account for registrar, at least a day before each renewal date.',
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
@@ -96,7 +99,7 @@
 	},
 	error: {
 		title: "Error",
-		description_domain: (0, r.p)(f(), "domainName"),
+		description_domain: (0, r.p)(g(), "domainName"),
 		description: "There was an error fetching data.",
 		button: "Retry"
 	},
@@ -178,11 +181,11 @@
 		auto_renew_off: "Automatic renewal is off",
 		domain_protection: "Domain is under Domain Protection",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, r.p)(D(), "expires_on"),
+		expires_on: (0, r.p)(R(), "expires_on"),
 		billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 		grace_period: {
 			title: "Domain expired",
-			details: (0, r.p)(R(), "grace_period_start", "grace_period_end")
+			details: (0, r.p)(D(), "grace_period_start", "grace_period_end")
 		},
 		not_on_cloudflare: {
 			expiration: (0, r.p)(C(), "expiration"),
@@ -315,7 +318,7 @@
 		price_per_year: "%{domainRenewalFee}/year",
 		billing: (0, r.p)(U(), "last4"),
 		billing_paypal: (0, r.p)(W(), "email"),
-		billing_cloud: (0, r.p)(B(), "last4"),
+		billing_cloud: (0, r.p)(F(), "last4"),
 		fees: "Domain fees subject to change."
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
@@ -336,7 +339,9 @@
 	domain_page_sidebar_related_domains: "Related Domains",
 	domain_page_sidebar_no_related_domains: "No related domains found.",
 	domain_page_sidebar_buy: "Buy",
-	registered_on: (0, r.p)(F(), "registration_date"),
+	related_domains_modal_buy_related_domain: "Buy %{domainName}",
+	related_domains_modal_renews_at: "Your domain will renew at %{renewalFee}/year",
+	registered_on: (0, r.p)(B(), "registration_date"),
 	success_page: {
 		page_title: (0, r.p)(M(), "domainName"),
 		page_description: "Have an idea for a website or app? Use Cloudflare to launch it with optimal security and speed.",
@@ -437,7 +442,7 @@
 	onboarding_confirm_and_finalize: "Confirm and finalize transfer",
 	onboarding_success_header: "Thanks for transferring your domain to Cloudflare",
 	onboarding_success_body: "You're on your way to having your domain transferred to Cloudflare. This process can take up to %{days} days to complete, but can be faster if you were to go to your registrar and confirm the transfer. <0>Learn more about domain transfer</0>.",
-	onboarding_success_expedite: "Cloudflare has submitted your transfer request to your current registrar. They have up to 10 days to release the domain to us. You can often skip this waiting period – look for a transfer approval email or log into your current registrar, go to Transfer or Domain Management settings, and approve the outgoing transfer manually. <0>Learn more about domain transfer</0>.",
+	onboarding_success_expedite: "Your transfer request has been submitted. While it can take up to %{days} days, you can often complete it faster by approving the transfer at your current registrar—look for an approval email or find the option in their Transfer/Domain Management settings. <0>Learn more about domain transfer</0>.",
 	onboarding_success_goto_account: "Go to my account",
 	onboarding_success_banner_header: "Domain transfer complete!",
 	onboarding_success_banner_body: "Your transfer is complete, however Cloudflare may still be ensuring your nameservers are correct. If you see nameserver instructions below, then you can safely ignore them.",
@@ -496,6 +501,7 @@
 	transfer_out_modal_domain_confirm_uk_notification_success: "Domain tag was updated to %{tag}. If the transfer is not accepted within 5 days the request will time out.",
 	transfer_out_modal_domain_locked_text: "If you change your mind, you can re-lock the domain.",
 	transfer_out_modal_domain_unlocked_text: "Use this code at your new registrar to proceed with the transfer.",
+	transfer_out_modal_domain_share_feedback: "<0>Share feedback</0> about your experience.",
 	transfer_out_modal_domain_unlocked_uk_text: "Enter the tag of the registry you would like to transfer to. If you don't know the tag please reach out to the new Registrar for instructions.",
 	transfer_out_modal_domain_confirm_uk_text: "By continuing, you confirm you wish to transfer your domain out of Cloudflare's registrar. The transfer is immediate and cannot be cancelled.",
 	transfer_out_modal_domain_locked_cta: "Confirm and unlock",
@@ -539,7 +545,7 @@
 	auth_code_section_description: "You may have entered the incorrect auth code for this domain.",
 	auth_code_section_submit: "Submit auth code",
 	cancel_transfer_title: "Cancel domain transfer",
-	cancel_transfer_body: "If you believe an issue has occurred during your transfer, you can cancel this request and restart the process. You will not be billed twice for the same domain.",
+	cancel_transfer_body: "Transfers can take up to %{days} days to complete. If you believe an issue has occurred during your transfer, you can cancel this request and restart the process. You will not be billed twice for the same domain.",
 	cancel_transfer_close: "Close",
 	cancel_transfer_cancel: "Cancel transfer",
 	domain_registration_advanced_settings: "Manage domain registration",
@@ -643,6 +649,7 @@
 	wizard_one_title: "Select domains to transfer",
 	wizard_table_show_more: "Show %{smart_count} more domain |||| Show %{smart_count} more domains",
 	wizard_table_auto_renew_grace_period_warning: "Domain is within 45 days following the expiration date so an extra year will not be added.",
+	wizard_table_auto_upcoming_expiration_warning: "Domain is within 30 days of expiration. A delay during transfer could put the domain at risk.",
 	unsupported_domains_show: "Show %{smart_count} ineligible domain |||| Show %{smart_count} ineligible domains",
 	unsupported_domains_hide: "Hide %{smart_count} ineligible domain |||| Hide %{smart_count} ineligible domains",
 	unsupported_domains_modal_title: "Ineligible domains",
@@ -741,6 +748,8 @@
 	wizard_two_domain_remove_aria_label: "Remove %{domainName} from transfer list",
 	wizard_two_authorization_code_placeholder: "Enter authorization code",
 	wizard_two_renewal_fee: "Renews at %{domainRenewalFee}",
+	wizard_two_other_fees: "Other possible fees",
+	wizard_two_redemption_tooltip: "Restore fee (only if expired): %{domainRedemptionFee}",
 	wizard_two_no_auth_code_required: "No authorization code required.",
 	wizard_four_title: "Enter contact and payment information",
 	wizard_three_description: "Make sure your contact information (also known as WHOIS) is up-to-date to avoid domain suspension or deletion by <0>ICANN</0>.",
@@ -754,6 +763,7 @@
 	wizard_four_errors: {
 		validation_error_multiple: "Some fields are missing or contain errors. Please review and correct the highlighted fields.",
 		validation_error_ca: "To complete your .ca domain transfer, please select a registrant legal type.",
+		validation_error_uk: "To complete your .uk domain transfer, please select a registrant type.",
 		validation_error_public_whois: "You must agree with the acknowledgement at the top of this form in order to continue with your transfer of a %{tlds} domain(s).",
 		validation_error_self_certification: "You must answer both questions in the .us Nexus Requirements Policy section in order to continue with your transfer of a .us domain."
 	},
@@ -850,6 +860,8 @@
 	registration_checkout_duration_select_label: "Payment option",
 	registration_checkout_duration_select_description: "Your domain will be registered for %{duration} and will expire on <strong>%{date}</strong>.",
 	registration_checkout_renews_at_price: "Renews at %{price} per year.",
+	registration_checkout_other_fees: "Other possible fees",
+	registration_checkout_redemption_tooltip: "Restore fee (only if expired): %{domainRedemptionFee}",
 	registration_checkout_registration_additional_years: "Additional years may be added after the registration has been completed.",
 	registration_checkout_payment_in_usd_disclaimer: "Payment will be charged in US dollars. <0>Learn more</0>.",
 	registration_checkout_nameservers_disclaimer: "You cannot change the nameservers of a domain registered with Cloudflare. <0>Learn about registering a domain</0>.",
@@ -1064,7 +1076,7 @@
 	nexus_form_placeholder: "Select a value",
 	delete_domain: {
 		card: {
-			title: (0, r.p)(Z(), "domainName"),
+			title: (0, r.p)(K(), "domainName"),
 			description: "This domain registration is eligible for deletion.",
 			description_delete_not_available: "Domain deletion is not available at this time, refer to our <1>delete a domain documentation</1> if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following <2>reasons</2>:",
 			description_delete_not_available_reason_1: "The status of the domain does not permit deletions",
@@ -1083,7 +1095,7 @@
 		},
 		verification_modal: {
 			description: "We need to confirm that you really intend to delete the domain and an email has been sent with a confirmation code.<0></0>Enter the code below and click Verify Code.",
-			expiration_notice: (0, r.p)(K(), "minutesLeft", "secondsLeft"),
+			expiration_notice: (0, r.p)(Z(), "minutesLeft", "secondsLeft"),
 			new_code: (0, r.p)(X()),
 			button: "Verify Code",
 			error: {
@@ -1271,6 +1283,16 @@
 			update_notification_success: "The registrant legal type for %{domainName} was successfully updated."
 		}
 	},
+	uk_registrant_type: {
+		title: "UK Registrant Requirements",
+		description: "To comply with .uk domain registration requirements, you must specify the type of registrant.",
+		registrant_type: "UK Registrant Type",
+		manage_domain: {
+			update_notification_error: "We were unable to update the registrant type for %{domainName} at this time. Please try again or contact support for assistance.",
+			update_notification_success: "The registrant type for %{domainName} was successfully updated."
+		},
+		validation_error: "UK Registrant Type field is required"
+	},
 	centralnic_reseller_notice: "This registration will be managed by Cloudflare Registrar but fulfilled by a trusted third party. In addition to communication from Cloudflare, you may receive a separate email to verify your email address with our trusted third party. It is imperative that you follow the steps in that email.",
 	missing_billing_email_error: {
 		manage_domain: "This account doesn't have a billing email. You won't be able to renew a domain until one is added. <0>Update your billing settings</0> to add a billing email.",
@@ -1291,5 +1313,10 @@
 	documentation_domain_registration_agreement_title: "Domain Registration Agreement",
 	documentation_icloud_domains_title: "iCloud Custom Email Domains",
 	documentation_universal_ssl_title: "Universal SSL",
-	documentation_payment_failure_title: "Payment failure"
+	documentation_payment_failure_title: "Payment failure",
+	transfer_domain_zone_banner: {
+		title: "Transfer your domain registration for lower renewal costs",
+		description: "Your domain is eligible to transfer to our at-cost registrar",
+		cta: "Start transfer"
+	}
 }

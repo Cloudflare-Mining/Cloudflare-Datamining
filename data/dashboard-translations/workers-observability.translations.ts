@@ -29,7 +29,7 @@
 		},
 		placeholders: {
 			datasets: "Select a dataset",
-			vizualizations: "Vizualizations show trends in your data",
+			visualizations: "Visualizations show trends in your data",
 			filters: "Filter configuration content goes here",
 			groupBy: "Use groups of fields to segment results",
 			orderBy: "Order results based on a visualization"
@@ -135,6 +135,13 @@
 		}
 	},
 	table: {
+		timestamp: "Timestamp",
+		fieldsButton: "Fields",
+		fieldsDialog: {
+			title: "Select Fields",
+			description: "Add or remove columns from the events table",
+			selectedCount: "%{count} selected"
+		},
 		actions: {
 			filterEquals: "Filter: equals",
 			filterNotEquals: "Filter: not equals",
@@ -158,5 +165,15 @@
 			startOutOfRange: "Start time is outside the allowed range",
 			endOutOfRange: "End time is outside the allowed range"
 		}
+	},
+	abr: {
+		message: "Results may be incomplete due to high data volume. Click to load more data.",
+		limit: "Results may be incomplete. Maximum query time reached - try narrowing your time range.",
+		loadMoreButton: "Load More"
+	},
+	error: {
+		title: "Something went wrong",
+		description: "An error occurred while fetching data. Please try again.",
+		refreshButton: "Refresh"
 	}
 }

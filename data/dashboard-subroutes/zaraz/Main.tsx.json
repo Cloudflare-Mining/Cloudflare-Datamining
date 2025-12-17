@@ -1,6 +1,4 @@
 [
-	"\n  query ZarazActionsSparklinesDataByDate(\n    $zoneTag: string\n    $start: Date\n    $end: Date\n  ) {\n    viewer {\n      zones(filter: { zoneTag: $zoneTag }) {\n        actions: zarazActionsAdaptiveGroups(\n          limit: 10000\n          filter: {\n            datetimeHour_geq: $start\n            datetimeHour_leq: $end\n            toolName: $toolId\n          }\n          orderBy: [datetimeHour_ASC]\n        ) {\n          count\n          dimensions {\n            ts: datetimeHour\n            name: actionName\n          }\n        }\n      }\n    }\n  }\n",
-	"\n  query ZarazSparklinesDataByDate($zoneTag: string, $start: Date, $end: Date) {\n    viewer {\n      zones(filter: { zoneTag: $zoneTag }) {\n        triggers: zarazTriggersAdaptiveGroups(\n          limit: 10000\n          filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }\n          orderBy: [datetimeHour_ASC]\n        ) {\n          count\n          dimensions {\n            ts: datetimeHour\n            name: triggerName\n          }\n        }\n        tools: zarazActionsAdaptiveGroups(\n          limit: 10000\n          filter: { datetimeHour_geq: $start, datetimeHour_leq: $end }\n          orderBy: [datetimeHour_ASC]\n        ) {\n          count\n          dimensions {\n            ts: datetimeHour\n            name: toolName\n          }\n        }\n      }\n    }\n  }\n",
 	"/[id]/[id]/zaraz",
 	"/[id]/[id]/zaraz/consent",
 	"/[id]/[id]/zaraz/history",
@@ -14,8 +12,5 @@
 	"/[id]/[id]/zaraz/tools-config/triggers/[id]/*",
 	"/[id]/[id]/zaraz/tools-config/variables",
 	"/[id]/[id]/zaraz/tools-config/variables/[id]/*",
-	"/[id]/billing/subscriptions",
-	"/accounts/[id]/members",
-	"/zones/[id]/settings/zaraz/v2/history?limit=&offset=/*",
-	"/zones/[id]/settings/zaraz/v2/notifications"
+	"/[id]/billing/subscriptions"
 ]
