@@ -17,7 +17,12 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					}
 				},
 				"metaTitle": null,
 				"metaDescription": null,
@@ -180,6 +185,12 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1lT8d5JbDfSf5rPbTWrrRZ",
+									"displayText": "How to start vibe coding",
+									"url": "/learning/ai/how-to-get-started-with-vibe-coding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
 									"displayText": "Third wave of AI",
 									"url": "/learning/ai/evolution-of-ai/"
@@ -189,6 +200,24 @@
 									"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
 									"displayText": "AI for cybersecurity",
 									"url": "/learning/ai/ai-for-cybersecurity/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "20yFv0dqwOoxfKslhoIhWT",
+									"displayText": "How to build RAG pipelines",
+									"url": "/learning/ai/how-to-build-rag-pipelines/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2wIHY9CfGidc5XlcH2pzXd",
+									"displayText": "How to manage AI agents",
+									"url": "/learning/ai/how-to-manage-ai-agents-for-businesses/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1KBcXvOgvGeMVpRGJQb03j",
+									"displayText": "How to block AI crawlers",
+									"url": "/learning/ai/how-to-block-ai-crawlers/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -288,6 +317,12 @@
 								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
 								"displayText": "What is big data?",
 								"url": "/learning/ai/big-data/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20yFv0dqwOoxfKslhoIhWT",
+								"displayText": "How to build RAG pipelines",
+								"url": "/learning/ai/how-to-build-rag-pipelines/"
 							}
 						]
 					},
@@ -393,6 +428,24 @@
 								"contentfulId": "4nT7mPavmYUtr9EtXw1kVT",
 								"displayText": "AI for cybersecurity",
 								"url": "/learning/ai/ai-for-cybersecurity/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1lT8d5JbDfSf5rPbTWrrRZ",
+								"displayText": "How to start vibe coding",
+								"url": "/learning/ai/how-to-get-started-with-vibe-coding/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2wIHY9CfGidc5XlcH2pzXd",
+								"displayText": "How to manage AI agents",
+								"url": "/learning/ai/how-to-manage-ai-agents-for-businesses/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1KBcXvOgvGeMVpRGJQb03j",
+								"displayText": "How to block AI crawlers",
+								"url": "/learning/ai/how-to-block-ai-crawlers/"
 							}
 						]
 					},
@@ -508,43 +561,37 @@
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "lPnhhxwLhjTEC8rurRhbS",
-						"displayText": "Web crawler",
-						"url": "/learning/bots/what-is-a-web-crawler/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3SKpU3640rjVtWf5XzzdsK",
-						"displayText": "What is content scraping?",
-						"url": "/learning/bots/what-is-content-scraping/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1hNforkr5Ico21tvUvlzQN",
-						"displayText": "How to prevent web scraping",
-						"url": "/learning/ai/how-to-prevent-web-scraping/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6zUsw3wyoBqtsDX8JNwzWM",
-						"displayText": "What is robots.txt?",
-						"url": "/learning/bots/what-is-robots-txt/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
 						"displayText": "What is artificial intelligence (AI)?",
 						"url": "/learning/ai/what-is-artificial-intelligence/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1p5yVGMlR7uAX8Y6PlnIi5",
-						"displayText": "What is bot management?",
-						"url": "/learning/bots/what-is-bot-management/"
+						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+						"displayText": "What is a large language model (LLM)?",
+						"url": "/learning/ai/what-is-large-language-model/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6COFjJFWkujpQraRJD2KHy",
+						"displayText": "What is generative AI?",
+						"url": "/learning/ai/what-is-generative-ai/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2rqSZGk3Uk8E4RbUBTXhuV",
+						"displayText": "AI image generation",
+						"url": "/learning/ai/ai-image-generation/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4T93P1Kxs7ZeP2eTLMiFs9",
+						"displayText": "AI hallucinations",
+						"url": "/learning/ai/what-are-ai-hallucinations/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How to block AI crawlers</h2>\n\n<p><a href=\"/learning/bots/what-is-a-web-crawler/\">Web crawlers</a> (also known as web scrapers) are bots that access, download, and / or index content from all over the Internet. Some of these bots are sent out by search engines to index and categorize content on the Internet. Other bots might be malicious, sent to scrape and download content without permission from the website's owner.</p>\n\n<p>Artificial intelligence (AI) crawlers are a type of web crawler that use the content they scrape to train <a href=\"/learning/ai/what-is-large-language-model/\">large language models (LLMs)</a> or contribute to the responses those models generate.</p>\n\n<p>AI crawlers operate similarly to traditional search engine crawlers in that they index information and use it to answer user queries. However, aspects of their functionality can cause problems for website owners. Understanding these problems is the first step in regaining control over original content.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What problems can AI crawlers cause?</h2>\n\n<p>AI crawlers can create several problems for content publishers. They might:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Ignore site policies that protect content:</strong> As AI crawlers send <a href=\"/learning/ddos/glossary/hypertext-transfer-protocol-http/\">HTTP</a> requests to download the site's content, they are expected to announce themselves to the site, then parse content, text, links, metadata, and tags. They are supposed to adhere to the site's policies, its <a href=\"/learning/bots/what-is-robots-txt/\">robots.txt</a> file's protocols, and general site guidelines. However, many AI crawlers simply ignore a specific site's set of rules and regulations and take whatever they can find, with or without permission.</li>\n\n  <li><strong>Steal intellectual property (IP):</strong> AI crawlers and their LLMs might republish original content as AI-summarized content, without giving proper credit. Crawlers and LLMs might also indiscriminately combine content from multiple sites, over- or underemphasizing some content without properly evaluating accuracy or importance of certain ideas.</li>\n\n  <li><strong>Reduce visitors for original content:</strong> Though AI-generated summaries might contain links to original websites, searchers are less likely to visit those sites when they can access summarized information. As a result, website owners experience reduced traffic and diminished ad-based revenue.</li>\n\n  <li><strong>Introduce biases and generate inaccurate information:</strong> AI crawling can amplify existing biases and purposeful misinformation included within scraped data, without sufficiently evaluating that information before presenting AI-generated summaries. AI models are also prone to \"<a href=\"/learning/ai/what-are-ai-hallucinations/\">hallucinations</a>,\" where the AI model basically makes up information it's missing.</li>\n\n  <li><a href=\"/learning/performance/more/website-performance-conversion-rates/\"><strong>Degrade site performance</strong></a><strong>:</strong> When bots repeatedly scrape a website, they can slow down its servers, increase page load times, and raise bandwidth costs.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What steps can content providers take to identify and limit AI crawlers?</h2>\n\n<p>The first step in managing AI crawling activity is to get a better understanding — and better visibility — into that activity. Understanding which crawlers are accessing your site, how often they're doing it, and how many referrals they are sending will help you define the rest of your strategy.</p>\n\n<p>Next, website owners can implement a multi-tiered strategy to allow the crawlers they want and block the rest. These tactics include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Updating their robots.txt file</strong> to restrict AI crawlers' access to certain content. Keep in mind, though, that some crawlers might continue to ignore the file and its instructions.</li>\n\n  <li><strong>Using meta tags</strong> to block AI crawlers from using all or specific parts of their site for training LLMs.</li>\n\n  <li><strong>Distinguishing humans from bots</strong> to limit bots without slowing humans. Though websites have used <a href=\"/learning/bots/how-captchas-work/\">CAPTCHA</a> tests in the past to prove that users are human, more advanced technologies, such as <a href=\"/application-services/products/turnstile/\">Cloudflare Turnstile</a>, can verify human users while reducing user frustration. This is an excellent way to limit AI crawlers that are ignoring a robots.txt file's instructions.</li>\n\n  <li><strong>Separating good bots from bad bots</strong> so you can continue to benefit from good ones. Modern <a href=\"/application-services/products/bot-management/\">bot management solutions</a> can help you block malicious bots while allowing others to access your site.</li>\n\n  <li><strong>Employing rate limiting</strong> through a <a href=\"/learning/ddos/glossary/web-application-firewall-waf/\">web application firewall (WAF)</a> solution to block or slow AI crawlers from excessive attempts to access certain content.</li>\n\n  <li><strong>Deploying a WAF</strong> to exclude certain known AI crawler IP addresses from accessing your site.</li>\n\n  <li><strong>Trapping misbehaving crawlers</strong> using a tool such as <a href=\"https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/\">Cloudflare's AI Labyrinth</a>, which feeds a jumble of nonsensical content and a maze of links only to AI bots that have been identified as ignoring the site's robots.txt file.</li>\n\n  <li><strong>Blocking crawlers by default</strong> to start with a clean slate. When launching a new website, you might choose to block all crawlers at first. You can then implement capabilities for identifying crawlers, monitoring their behavior, and selecting which are allowed to crawl your site, with certain restrictions.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help protect against AI crawlers?</h2>\n\n<p><a href=\"/ai-crawl-control/\">Cloudflare AI Crawl Control</a> helps web content owners regain control over AI crawlers. Cloudflare protects around 20% of all web properties, giving it deep insight into all kinds of crawler activity. This visibility enables content owners to use AI Crawl Control to:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Understand AI crawling patterns on their web properties</strong>, on a per-crawler, per-domain, or per-page basis\n  <li><strong>Manage crawler activity</strong> via block or allow rules\n  <li><strong>Request payment from AI crawlers on a per-crawl basis</strong>, either via <a href=\"https://blog.cloudflare.com/introducing-ai-crawl-control/#using-http-402-to-help-publishers-license-content-to-ai-crawlers\">customizable HTTP 402 responses</a> or a Cloudflare-built <a href=\"https://blog.cloudflare.com/introducing-pay-per-crawl/\">pay per crawl system</a>\n</ul>\n\n<p>Click here to <a href=\"https://dash.cloudflare.com/sign-up\">start for free</a>.</p>\n\n<h2>FAQs</h2>\n<h4>What are AI crawlers and how do they work?</h4>\n<p>AI crawlers are a type of web crawler (or web scraper) that access, download, and index content from the Internet. They use scraped content to train large language models (LLMs) or contribute to the responses those models generate.</p>\n<h4>What are the main problems AI crawlers can cause for website owners?</h4>\n<p>AI crawlers might ignore site policies (like those found in the robots.txt file), steal intellectual property (IP), reduce visitors for original content, degrade site performance, introduce biases, and generate inaccurate information.</p>\n<h4>What steps can content providers take to limit AI crawlers' access to their sites?</h4>\n<p>Content providers can implement a multi-tiered strategy, which includes updating their robots.txt file, using meta tags to block crawlers from some parts of a site, distinguishing humans from bots, employing rate limiting, and trapping misbehaving crawlers.</p>\n<h4>How can content providers differentiate between good and bad web crawlers?</h4>\n<p>Content providers can use modern bot management solutions to help block malicious bots while allowing beneficial crawlers to access their site. Additionally, they can start by blocking all crawlers by default on a new website.</p>\n<h4>How does Cloudflare AI Crawl Control help website owners manage AI crawler activity?</h4>\n<p>Cloudflare AI Crawl Control helps content owners understand crawling patterns, manage crawler activity, and request payment from AI crawler owners.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are AI crawlers and how do they work?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI crawlers are a type of web crawler (or web scraper) that access, download, and index content from the Internet. They use scraped content to train large language models (LLMs) or contribute to the responses those models generate.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the main problems AI crawlers can cause for website owners?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI crawlers might ignore site policies (like those found in the robots.txt file), steal intellectual property (IP), reduce visitors for original content, degrade site performance, introduce biases, and generate inaccurate information.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What steps can content providers take to limit AI crawlers' access to their sites?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Content providers can implement a multi-tiered strategy, which includes updating their robots.txt file, using meta tags to block crawlers from some parts of a site, distinguishing humans from bots, employing rate limiting, and trapping misbehaving crawlers.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can content providers differentiate between good and bad web crawlers?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Content providers can use modern bot management solutions to help block malicious bots while allowing beneficial crawlers to access their site. Additionally, they can start by blocking all crawlers by default on a new website.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does Cloudflare AI Crawl Control help website owners manage AI crawler activity?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Cloudflare AI Crawl Control helps content owners understand crawling patterns, manage crawler activity, and request payment from AI crawler owners.\"\n      }\n    }\n  ]\n}\n</script>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How to block AI crawlers</h2>\n\n<p><a href=\"/learning/bots/what-is-a-web-crawler/\">Web crawlers</a> (also known as web scrapers) are bots that access, download, or index content from all over the web. Some of these bots are sent out by search engines to index and categorize content on the web. Other bots might be malicious, sent to scrape and download content without permission from the website's owner.</p>\n\n<p>Artificial intelligence (AI) crawlers are a type of web crawler that use the content they scrape to train <a href=\"/learning/ai/what-is-large-language-model/\">large language models (LLMs)</a> or contribute to the responses those models generate.</p>\n\n<p>AI crawlers operate similarly to traditional search engine crawlers in that they index information and use it to answer user queries. However, aspects of their functionality can cause problems for website owners. Understanding these problems is the first step in regaining control over original content.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What problems can AI crawlers cause?</h2>\n\n<p>AI crawlers can create several problems for content publishers. They might:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Ignore site policies that protect content:</strong> As AI crawlers send <a href=\"/learning/ddos/glossary/hypertext-transfer-protocol-http/\">HTTP</a> requests to download the site's content, they are expected to announce themselves to the site, then parse content, text, links, metadata, and tags. They are supposed to adhere to the site's policies, its <a href=\"/learning/bots/what-is-robots-txt/\">robots.txt</a> file's protocols, and general site guidelines. However, many AI crawlers simply ignore a specific site's set of rules and regulations and take whatever they can find, with or without permission.</li>\n\n  <li><strong>Steal intellectual property (IP):</strong> AI crawlers and their LLMs might republish original content as AI-summarized content, without giving proper credit. Crawlers and LLMs might also indiscriminately combine content from multiple sites, over- or underemphasizing some content without properly evaluating accuracy or importance of certain ideas.</li>\n\n  <li><strong>Reduce visitors for original content:</strong> Though AI-generated summaries might contain links to original websites, searchers are less likely to visit those sites when they can access summarized information. As a result, website owners experience reduced traffic and diminished ad-based revenue.</li>\n\n  <li><strong>Introduce biases and generate inaccurate information:</strong> AI crawling can amplify existing biases and purposeful misinformation included within scraped data, without sufficiently evaluating that information before presenting AI-generated summaries. AI models are also prone to \"<a href=\"/learning/ai/what-are-ai-hallucinations/\">hallucinations</a>,\" where the AI model basically makes up information it's missing.</li>\n\n  <li><a href=\"/learning/performance/more/website-performance-conversion-rates/\"><strong>Degrade site performance</strong></a><strong>:</strong> When bots repeatedly scrape a website, they can slow down its servers, increase page load times, and raise bandwidth costs.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What steps can content providers take to identify and limit AI crawlers?</h2>\n\n<p>The first step in managing AI crawling activity is to get a better understanding — and better visibility — into that activity. Understanding which crawlers are accessing your site, how often they're doing it, and how many referrals they are sending will help you define the rest of your strategy.</p>\n\n<p>Next, website owners can implement a multi-tiered strategy to allow the crawlers they want and block the rest. These tactics include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Updating their robots.txt file</strong> to restrict AI crawlers' access to certain content. Keep in mind, though, that some crawlers might continue to ignore the file and its instructions.</li>\n\n  <li><strong>Using meta tags</strong> to block AI crawlers from using all or specific parts of their site for training LLMs.</li>\n\n  <li><strong>Distinguishing humans from bots</strong> to limit bots without slowing humans. Though websites have used <a href=\"/learning/bots/how-captchas-work/\">CAPTCHA</a> tests in the past to prove that users are human, more advanced technologies, such as <a href=\"/application-services/products/turnstile/\">Cloudflare Turnstile</a>, can verify human users while reducing user frustration. This is an excellent way to limit AI crawlers that are ignoring a robots.txt file's instructions.</li>\n\n  <li><strong>Separating good bots from bad bots</strong> so you can continue to benefit from good ones. Modern <a href=\"/application-services/products/bot-management/\">bot management solutions</a> can help you block malicious bots while allowing others to access your site.</li>\n\n  <li><strong>Employing rate limiting</strong> through a <a href=\"/learning/ddos/glossary/web-application-firewall-waf/\">web application firewall (WAF)</a> solution to block or slow AI crawlers from excessive attempts to access certain content.</li>\n\n  <li><strong>Deploying a WAF</strong> to exclude certain known AI crawler IP addresses from accessing your site.</li>\n\n  <li><strong>Trapping misbehaving crawlers</strong> using a tool such as <a href=\"https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/\" target=\"_blank\">Cloudflare's AI Labyrinth</a>, which feeds a jumble of nonsensical content and a maze of links only to AI bots that have been identified as ignoring the site's robots.txt file.</li>\n\n  <li><strong>Blocking crawlers by default</strong> to start with a clean slate. When launching a new website, you might choose to block all crawlers at first. You can then implement capabilities for identifying crawlers, monitoring their behavior, and selecting which are allowed to crawl your site, with certain restrictions.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help protect against AI crawlers?</h2>\n\n<p><a href=\"/ai-crawl-control/\">Cloudflare AI Crawl Control</a> helps web content owners regain control over AI crawlers. Cloudflare sits in front of around 20% of all web properties, giving it deep insight into all kinds of crawler activity. This visibility enables content owners to use AI Crawl Control to:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Understand AI crawling patterns on their web properties</strong>, on a per-crawler, per-domain, or per-page basis</li>\n  <li><strong>Manage crawler activity</strong> via block or allow rules</li>\n  <li><strong>Request payment from AI crawlers on a per-crawl basis</strong>, either via <a href=\"https://blog.cloudflare.com/introducing-ai-crawl-control/#using-http-402-to-help-publishers-license-content-to-ai-crawlers\" target=\"_blank\">customizable HTTP 402 responses</a> or a Cloudflare-built <a href=\"https://blog.cloudflare.com/introducing-pay-per-crawl/\" target=\"_blank\">pay per crawl system</a></li>\n</ul>\n\n<p>Click here to <a href=\"https://dash.cloudflare.com/sign-up\">start for free</a>.</p>\n\n<h2>FAQs</h2>\n<h4>What are AI crawlers and how do they work?</h4>\n<p>AI crawlers are a type of web crawler (or web scraper) that access, download, and index content from the Internet. They use scraped content to train large language models (LLMs) or contribute to the responses those models generate.</p>\n<h4>What are the main problems AI crawlers can cause for website owners?</h4>\n<p>AI crawlers might ignore site policies (like those found in the robots.txt file), steal intellectual property (IP), reduce visitors for original content, degrade site performance, introduce biases, and generate inaccurate information.</p>\n<h4>What steps can content providers take to limit AI crawlers' access to their sites?</h4>\n<p>Content providers can implement a multi-tiered strategy, which includes updating their robots.txt file, using meta tags to block crawlers from some parts of a site, distinguishing humans from bots, employing rate limiting, and trapping misbehaving crawlers.</p>\n<h4>How can content providers differentiate between good and bad web crawlers?</h4>\n<p>Content providers can use modern bot management solutions to help block malicious bots while allowing beneficial crawlers to access their site. Additionally, they can start by blocking all crawlers by default on a new website.</p>\n<h4>How does Cloudflare AI Crawl Control help website owners manage AI crawler activity?</h4>\n<p>Cloudflare AI Crawl Control helps content owners understand crawling patterns, manage crawler activity, and request payment from AI crawler owners.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are AI crawlers and how do they work?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI crawlers are a type of web crawler (or web scraper) that access, download, and index content from the Internet. They use scraped content to train large language models (LLMs) or contribute to the responses those models generate.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the main problems AI crawlers can cause for website owners?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI crawlers might ignore site policies (like those found in the robots.txt file), steal intellectual property (IP), reduce visitors for original content, degrade site performance, introduce biases, and generate inaccurate information.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What steps can content providers take to limit AI crawlers' access to their sites?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Content providers can implement a multi-tiered strategy, which includes updating their robots.txt file, using meta tags to block crawlers from some parts of a site, distinguishing humans from bots, employing rate limiting, and trapping misbehaving crawlers.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can content providers differentiate between good and bad web crawlers?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Content providers can use modern bot management solutions to help block malicious bots while allowing beneficial crawlers to access their site. Additionally, they can start by blocking all crawlers by default on a new website.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does Cloudflare AI Crawl Control help website owners manage AI crawler activity?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Cloudflare AI Crawl Control helps content owners understand crawling patterns, manage crawler activity, and request payment from AI crawler owners.\"\n      }\n    }\n  ]\n}\n</script>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {

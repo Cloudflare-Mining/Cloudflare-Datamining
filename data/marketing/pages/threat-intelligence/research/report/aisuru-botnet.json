@@ -1,0 +1,4839 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/threat-intelligence/research/report/aisuru-botnet/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Aisuru botnet: Early October attacks escalate into record-setting DDoS activity",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale",
+					"arAR": "No Page for Locale"
+				},
+				"relativePath": "/threat-intelligence/research/report/aisuru-botnet",
+				"topNavOptions": "custom",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"footerOptions": "default",
+				"metaTags": {
+					"metaTitle": "Aisuru botnet: Early October attacks escalate into record-setting DDoS activity",
+					"metaDescription": "On October 31st, 2025, Cloudflare's network detected the largest UDP DDoS attacks of the year—peaking at 29.7 Tbps.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4AGmwbizvZFZYqgCkwZqQ6/36b37e382a323638634226e7392b395b/Aisuru-botnet-meta-image.webp"
+						},
+						"description": "Aisuru botnet - meta image"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2025-12-11T00:28:08.856Z",
+					"updatedAt": "2025-12-11T00:28:08.856Z"
+				},
+				"contentfulId": "3sSU9jmgKvLhuQfgxpGF20",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": {
+					"contentTypeId": "navNavigationGroup",
+					"contentfulId": "4mgkKzSlPEQigDmFoHkSNG",
+					"locale": "en-US",
+					"mainNav": {
+						"contentTypeId": "navNavigation",
+						"contentfulId": "5ovYYqm8RxbXDv9cz7Vmh",
+						"locale": "en-US",
+						"navigationType": "Header",
+						"isDefaultNav": false,
+						"backgroundColor": "white",
+						"sectionPadding": "default",
+						"navigationItems": [
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "MoISKEri9ErdJtK7slU1n",
+								"locale": "en-US",
+								"name": "Home",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": null,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "4gkgjT6gOtqc4m0kRRAxg7",
+									"locale": "en-US",
+									"title": "Home",
+									"description": null,
+									"url": "/cloudforce-one/",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "3Jm0dt24laFdx0PE3zVgzd",
+								"locale": "en-US",
+								"name": "About",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "3iQ1qjJA5js5ig8DEldCbO",
+									"locale": "en-US",
+									"title": "About",
+									"description": null,
+									"url": "/cloudforce-one/about/",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "2gvTsLMyondrKa0ikHMyVR",
+								"locale": "en-US",
+								"name": "Research",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "7GDvUGe774BDg3RJ1iS20R",
+									"locale": "en-US",
+									"title": "Research",
+									"description": null,
+									"url": "/cloudforce-one/research/",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "5pO6tvxu2hppZWqPOHxbBo",
+								"locale": "en-US",
+								"name": "Services",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": false,
+								"navigationItems": [],
+								"mainLink": null,
+								"navigationLinks": [
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "6fUQ2l4RnRrn2KbowL6ZJZ",
+										"locale": "en-US",
+										"title": "Threat Intelligence",
+										"description": null,
+										"url": "/cloudforce-one/services/threat-intelligence/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "1KNDlGaKVW1BqtSmwecyGz",
+										"locale": "en-US",
+										"title": "Incident response and security advisory",
+										"description": null,
+										"url": "/cloudforce-one/services/incident-response/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									}
+								]
+							}
+						]
+					},
+					"utilityNav": {
+						"contentTypeId": "navNavigation",
+						"contentfulId": "4avDQZXJBIOQnbqOnBxB68",
+						"locale": "en-US",
+						"navigationType": "Custom Navigation",
+						"isDefaultNav": false,
+						"backgroundColor": null,
+						"sectionPadding": "default",
+						"navigationItems": [
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "5XqIIHouIN3SqoeS8eIQL8",
+								"locale": "en-US",
+								"name": "Support",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": null,
+								"overrideTheSalesPhoneNumber": null,
+								"navigationItems": [],
+								"mainLink": null,
+								"navigationLinks": [
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
+										"locale": "en-US",
+										"title": "Community Support",
+										"description": null,
+										"url": "https://community.cloudflare.com/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
+										"locale": "en-US",
+										"title": "Help Center",
+										"description": null,
+										"url": "https://support.cloudflare.com/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "39ahAfcnTcrePwvvA1l0MW",
+										"locale": "en-US",
+										"title": "Contact Cloudflare",
+										"description": null,
+										"url": "https://dash.cloudflare.com/?to=/:account/support",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "52WmBFB2P512JhW6jzATzc",
+										"locale": "en-US",
+										"title": "Lost account access?",
+										"description": null,
+										"url": "https://developers.cloudflare.com/support/account-management-billing/common-account-questions/login-and-account-issues/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									}
+								]
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "5RVyDopQTJRcit7qLKguL6",
+								"locale": "en-US",
+								"name": "Log in",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": null,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "2lsuZC3aMqjZ8qalaBPUmX",
+									"locale": "en-US",
+									"title": "Log in",
+									"description": null,
+									"url": "https://dash.cloudflare.com/login/",
+									"badges": null,
+									"specialLinkType": "BLUE_CTA",
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							}
+						]
+					},
+					"rightNav": {
+						"contentTypeId": "navNavigation",
+						"contentfulId": "xQoIAxt2PpSM1FUJU4Rmy",
+						"locale": "en-US",
+						"navigationType": "Custom Navigation",
+						"isDefaultNav": false,
+						"backgroundColor": null,
+						"sectionPadding": "default",
+						"navigationItems": [
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "44BUFM86f13WAMiCbKbFa1",
+								"locale": "en-US",
+								"name": " Sign up",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "MeYV6pTTsYr3WmOgakIKC",
+									"locale": "en-US",
+									"title": "Sign up",
+									"description": null,
+									"url": "https://www.cloudflare.com/plans/",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": true,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "6C1rwh6mbzhIbIstToAv60",
+								"locale": "en-US",
+								"name": "Under attack?",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "72TqunUhwVex9AwVqvhXJH",
+									"locale": "en-US",
+									"title": "Under attack?",
+									"description": null,
+									"url": "/under-attack-hotline/",
+									"badges": null,
+									"specialLinkType": "CTA",
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+								"locale": "en-US",
+								"name": "Log in",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"overrideTheSalesPhoneNumber": null,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+									"locale": "en-US",
+									"title": "Log in",
+									"description": null,
+									"url": "https://dash.cloudflare.com/login",
+									"badges": null,
+									"specialLinkType": "BLUE_CTA",
+									"openInNewWindow": true,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							}
+						]
+					},
+					"experimentId": null,
+					"variant": null
+				},
+				"headerLogo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VTRsg1ZUzS8mhYdxcuPwc/6f68397da510ce03d17697a651788f2b/image.svg"
+					},
+					"description": "Cloudforce One logo"
+				},
+				"proactivePopup": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"contentfulId": "2Nh5zwIgk4nMnSDgdGvvTB",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Aisuru botnet: Early October attacks escalate into record-setting DDoS activity",
+						"titleSize": "large",
+						"subtitle": null,
+						"subtitleSize": null,
+						"copy": "Threat brief - Dec 10, 2025",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": null,
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": null,
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "white",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": "left wide",
+						"backgroundAssetFile": {
+							"id": "4b52e851-be1f-5b84-8974-bba812b453a9",
+							"altText": "Apex Botnet Threat actor header tile",
+							"title": "Apex Botnet Threat actor header tile",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ahWCjHlZkufaB80eOICOP/09a8c2ba5b09b63849a8d9f37007ac0e/Apex-Botnet-Threat-actor-header-tile.svg"
+								},
+								"description": "Apex Botnet Threat actor header tile"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": null
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "5q5dPl9SwY4RzPrVmNnj3L",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "Left Sidebar",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2YlUFivRJisHJw6OOUmLim",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Table of contents",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#what-is-aisuru?"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "What is Aisuru?",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#aisuru-hyper-volumetric-ddos-attack-analysis"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Aisuru hyper-volumetric DDoS attack analysis",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#hyper-volumetric-attack-insights"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Hyper-volumetric attack insights",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n\n",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#aisuru-ip-analysis-september-and-october"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Aisuru IP analysis (September and October)",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#aisuru-ttps"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Aisuru TTPs",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#aisuru-victimology"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Aisuru victimology",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#aisuru-attribution"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Aisuru attribution",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#how-cloudflare-mitigated-the-attacks"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "How Cloudflare mitigated the attacks",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "#iocs"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "IOCs",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2jTCrt7b1i204gShf3ORDG",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru botnet: Early October attacks escalate into record-setting DDoS activity",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "On October 31st, 2025",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", Cloudflare's network detected the largest UDP DDoS attacks of the year—peaking at ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "29.7 Tbps",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". The attacks were powered by a fast-growing Aisuru botnet, composed of infected hosts ranging from public-cloud virtual machines to routers, security appliances (including firewalls), and Internet of Things (IoT) devices such as internet-connected cameras. Since early October, the botnet's footprint has expanded sharply, amplifying the scale and intensity of attacks. While our telemetry reveals that a multitude of industries were targeted, the Telecommunications industry by far has borne the brunt of these attacks, accounting for 73% of observed activity. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "This article provides a preliminary summary of what we've seen so far: how Aisuru evolved into record-setting volumes, what telemetry shows about its infrastructure and growth, and how Cloudflare's systems responded automatically in real time. We also shed light on how DDoS attacks in general have escalated massively in the past year, and how organizations can protect themselves in this new era of hyper-volumetric attacks. Our analysis is still developing under Cloudforce One, and findings here reflect current evidence from traffic telemetry and incident logs gathered between late September and early November.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What is Aisuru?",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "is an IoT-based botnet with approximately ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "500,000 compromised hosts",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", a force that doubled in size in just four weeks. Its operators leverage a multi-pronged infection strategy, including an alleged ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.xlab.qianxin.com/super-large-scale-botnet-aisuru-en/#:~:text=Multiple%20sources%20indicate%20the%20group%20allegedly%20compromised%20a%20router%20firmware%20update%20server%20in%20April%20and%20distributed%20malicious%20scripts%20to%20expand%20the%20botnet"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "firmware supply-chain compromise",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", to continuously grow their network of devices infected with the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " malware and its ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.apnic.net/2025/03/13/botnets-never-die/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "variants",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "kitty",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "AIRASHI",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The primary and most visible capability of the Aisuru botnet is its ability to generate DDoS attacks of a magnitude previously thought to be theoretical. The botnet has consistently set new records for attack volume, escalating from",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " 6.35 Tbps in May 2025",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " to a peak of ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "29.7 Tbps by October 2025",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". The sheer scale of these attacks is difficult to comprehend. A 12 Tbps flood, for instance, is about the bandwidth of ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "56,075 typical U.S. residential internet connections",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " being directed at a single target simultaneously. Such volumes are sufficient to overwhelm the infrastructure of all but the most well-prepared global network providers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Aisuru campaign observed by Cloudflare leverages a popular method: ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "hyper-volumetric and ultra-sophisticated UDP carpet-bombing DDoS attacks",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". The highly distributed UDP attacks sprayed traffic across thousands of ports per second, attempting to overwhelm targets with a flood of junk connectionless packets. At the same time, the actor heavily randomized packet attributes, making precise detection and mitigation nearly impossible for simple mitigation systems or ACL-based defenses. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru employs a tactic in which attacks surge from zero to maximum intensity almost instantly, sustaining peak traffic for only 30–70 seconds. This short, high-impact burst is designed to maximize damage while minimizing detection, leveraging both extreme brevity and heavy traffic randomization.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru hyper-volumetric DDoS attack analysis ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "On October 31, 2025, the Aisuru botnet launched a full-scale, coordinated assault, with Cloudflare's network detecting one of the largest and most sustained ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "IoT-driven DDoS attacks on record. ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Devices affected included routers (e.g., Totolink, Nexxt, Linksys), DVRs (Digital Video Recorders), internet-connected cameras, gateway/firewall appliances (e.g., Zyxel's USG FLEX, VPN, and ZyWALL/USG), and cnPilot networking devices (from Cambium Networks).",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "This carpet-bomb UDP attack—the largest DDoS attack in history at 29.7 Tbps—was mitigated autonomously by Cloudflare.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4T3a3J6ehhLbo4kVt5nHur",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "4T3a3J6ehhLbo4kVt5nHur",
+															"locale": "en-US",
+															"title": "aisuru content image - 1",
+															"file": {
+																"name": "aisuru-content-image-1.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4T3a3J6ehhLbo4kVt5nHur/5c455f83502ebc4984102b8ba4037ea9/aisuru-content-image-1.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru bombarded UDP packets at an average of 15,000 destination ports per second, peaking at 34,000 thousand per second in its initial spike. Cloudflare also observed multiple flood patterns in parallel—including TCP SYN floods and TCP ACK floods. Some instances targeted single IPs (e.g., /32) and others struck broader /24 subnets, suggesting that the bot operators were tuning parameters dynamically.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "6XJaVYXriMXMp3dlvaeX0f",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "6XJaVYXriMXMp3dlvaeX0f",
+															"locale": "en-US",
+															"title": "aisuru content image - 2",
+															"file": {
+																"name": "aisuru-content-image-2.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XJaVYXriMXMp3dlvaeX0f/eaf4bef45c75e1b64af0e01c04f145a0/aisuru-content-image-2.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The attack also randomized additional packet attributes in an attempt to evade detection, including but not limited to TTL, source ports, checksums, and option fields. Traffic originated from an average of 17,000 source ASNs per second, peaking at 45,000 per second, and was mitigated by Cloudflare data centers across 113 countries.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "6XWsxGFpvM1nc4w6hoQvz2",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "6XWsxGFpvM1nc4w6hoQvz2",
+															"locale": "en-US",
+															"title": "aisuru content image - 3",
+															"file": {
+																"name": "aisuru-content-image-3.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XWsxGFpvM1nc4w6hoQvz2/dc5a522bfb1c41e64499d7b0edb86b2c/aisuru-content-image-3.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Hyper-volumetric attack insights",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Since mid-2024, Cloudflare has observed an unprecedented increase in the size of hyper-volumetric DDoS attacks, predominantly UDP carpet-bombing attacks. The DDoS attack world record, for example, surged from 4.2 Tbps in October 2024 to 29.7 Tbps in October 2025—a staggering 707% increase YoY. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare has autonomously mitigated over 3,300 hyper-volumetric DDoS attacks launched by Aisuru since the start of 2025, an average of 334 hyper-volumetric DDoS attacks per month and 11 attacks every single day:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "4r5B5uXRnFS8Sy6hMrlFVq",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "4r5B5uXRnFS8Sy6hMrlFVq",
+															"locale": "en-US",
+															"title": "aisuru content image - 4",
+															"file": {
+																"name": "aisuru-content-image-4.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4r5B5uXRnFS8Sy6hMrlFVq/b6eb74d0c9c7cb192639ef2c8fb7a559/aisuru-content-image-4.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A sample of the largest DDoS attacks mitigated by Cloudflare, Sept 2024 - Oct 2025",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare mitigated 1,304 hyper-volumetric attacks in Q3 2025, an increase of 54% QoQ. These include the world-record breaking 29.7 Tbps Aisuru DDoS attack and a 14.1 billion packets per second (Bpps) DDoS attack:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "5cAZjrQTUETvUcOy9MPd7c",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "5cAZjrQTUETvUcOy9MPd7c",
+															"locale": "en-US",
+															"title": "aisuru content image - 5",
+															"file": {
+																"name": "aisuru-content-image-5.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cAZjrQTUETvUcOy9MPd7c/b5e2496950a98858eb6d3bf58b3dcd0f/aisuru-content-image-5.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Distribution of hyper-volumetric network-layer attacks, Jan 2025 - Oct 2025",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Overall, the number of attacks gradually increased steadily throughout the year, with July reaching 522 attacks in total—an average of 17 attacks per day:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "JfwOSfAPVt3gyZDcgDluy",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "JfwOSfAPVt3gyZDcgDluy",
+															"locale": "en-US",
+															"title": "aisuru content image - 6",
+															"file": {
+																"name": "aisuru-content-image-6.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/JfwOSfAPVt3gyZDcgDluy/9a21357a15c7d384408e20a4e1568322/aisuru-content-image-6.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Hyper-volumetric DDoS attacks by quarter, Q1 2025 - Q3 2025",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "In September and October, we saw the aforementioned bombardment of hyper-volumetric attacks including an increase in packet-rate intensive attacks:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1hshJmcXj7ZDY9N4emItxj",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1hshJmcXj7ZDY9N4emItxj",
+															"locale": "en-US",
+															"title": "aisuru content image - 7",
+															"file": {
+																"name": "aisuru-content-image-7.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1hshJmcXj7ZDY9N4emItxj/0566ff6f34ec73ab2bad67149d584d30/aisuru-content-image-7.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Hyper-volumetric DDoS attacks by month, Jan 2025 - Oct 2025",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "For a more comprehensive analysis of the evolving threat landscape of DDoS attacks based on recent data from the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/network/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudflare network",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", see Cloudflare's ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.cloudflare.com/ddos-threat-report-2025-q3/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "2025 Q3 DDoS Threat Report",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru IP analysis (September and October)",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Early IP analysis showed that 74% of attacking IPs were active for two days or less, suggesting high churn and that IP-based blocking alone would not remain effective for long. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1UMZo5kvd5CswJtYGwbgTO",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1UMZo5kvd5CswJtYGwbgTO",
+															"locale": "en-US",
+															"title": "aisuru content image - 8",
+															"file": {
+																"name": "aisuru-content-image-8.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1UMZo5kvd5CswJtYGwbgTO/69d9802af3cb8708b6019f912cd6d6c2/aisuru-content-image-8.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Pareto analysis of Aisuru attack IPs since early September 2025 showing most Aisuru-controlled  hosts appeared briefly before disappearing ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Through late September, the botnet demonstrated high volatility—frequent bursts, limited persistence, and rapid replacement of IPs—but by early October, that pattern shifted. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Between ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "October 1 and October 9",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", Cloudflare's mitigation telemetry showed a marked increase in stability and persistence across attacking IPs. New IPs continued joining daily, but the proportion of repeat offenders grew from ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "43% to nearly 87% ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "of observed traffic within 10 days—evidence that Aisuru was ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "stabilizing its botnet core",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "5ZZnG9gIf9ndC6q7h6WbDC",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "5ZZnG9gIf9ndC6q7h6WbDC",
+															"locale": "en-US",
+															"title": "aisuru content image - 9",
+															"file": {
+																"name": "aisuru-content-image-9.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5ZZnG9gIf9ndC6q7h6WbDC/29f86531107f51ddd3a045a366f77484/aisuru-content-image-9.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Persistence of Aisuru attack IPs on October 9, 2025 – compared to late September, a larger share of IPs remained active for several days ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "By October 6, the botnet's capacity had expanded dramatically. Cloudflare mitigated a ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "hyper-volumetric DDoS attack",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " peaking at ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "29.7 Tbps",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " and a ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "14.1 Bpps attack on October 7th",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", one of the largest events seen to date. At the same time, IP segmentation graphs showed ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "newly observed IPs joining en masse",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " during the period of October 3 through October 9, pointing to active device recruitment and command infrastructure expansion: ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1GPiqyLZvDO41tOPlld10l",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1GPiqyLZvDO41tOPlld10l",
+															"locale": "en-US",
+															"title": "aisuru content image - 10",
+															"file": {
+																"name": "aisuru-content-image-10.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GPiqyLZvDO41tOPlld10l/ca9d03f956fc261d30a05c6b78540ece/aisuru-content-image-10.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "DDoS volume segmented by IP first-seen date. New color bands after October 3, 2025 reflect a surge of freshly recruited IoT devices entering Aisuru's botnet. ",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru TTPs",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Analysis of the Aisuru attacks reveals a set of highly destructive and technically advanced tactics, techniques, and procedures (TTPs). Rather than relying on a single method, the operators employed a broad, customizable arsenal of attack variants. Cloudforce One is aware of at least eight flood types (including UDP, TCP SYN, and TCP ACK), each with its own configurable parameters—such as whether to target a fixed or randomized destination port, or whether to strike a single host or an entire subnet. Cloudforce One also conducted analysis of a key malware sample (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "nx86_64.elf",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", 08717d85a8a296279c2d2b792a33714d216a9de1950173d603222f78da9b9ca5), which revealed a sophisticated design focused on stealth, resilient command and control (C2), and advanced payload capabilities.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Command and Control",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru does not rely on simple, hardcoded IP addresses for its C2 infrastructure. Instead, it pulls its C2 IPs from DNS TXT records, a technique that makes the botnet highly resilient to takedowns. An operator can simply update the DNS record to redirect the entire botnet, rendering IP-based blocklists ineffective.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "To further conceal this, the IPs are obfuscated using a custom encoding scheme: the IP address is converted to hex, XORed with the constant ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "0xCAFEBABE",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", and finally Base64 encoded. This obfuscation is designed to bypass simple text-based security filters. The initial DNS callout observed was to the domain ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "dvrxpert.tiananmensquare1989[.]su",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". Cloudflare actioned this domain and all other identified domains controlled by the actor.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Advanced encryption model",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The malware employs a robust, two-tiered encryption strategy designed to protect both its internal configuration and its external C2 traffic. Internally, a hardcoded RC4 key (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "PJbiNbbeasddDfsc",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") is used to decrypt embedded strings, including C2 URLs, operational parameters, and other configuration data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "More significantly, all C2 communications are secured using ChaCha20 encryption. For each new connection, the malware and its C2 server exchange 64KB of random data to derive a unique session key. This \"per-session keying\" ensures that every connection is cryptographically isolated: data captured from one session cannot be used to decrypt any other. As a result, network defenders are unable to build reusable signatures or decrypt historical traffic, greatly complicating detection and forensic analysis.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Host-based stealth and anti-analysis",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "On an infected host, the malware immediately forks a child process and renames itself to mimic a common Linux daemon, such as ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "telnetd",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "udhcpc",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "ntpclient",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", or ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "klogd",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". This masquerading enables it to blend in with legitimate system processes, helping it evade detection during routine administrative checks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The binary also employs active anti-analysis techniques. It enumerates system CPU information (via ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "/sys/devices/system/cpu",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") and inspects process and CPU statistics (via ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "/proc/stat",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "/proc/cpuinfo",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "). These checks are designed to detect signs of sandboxing or virtualization commonly used by security researchers, allowing the malware to terminate or modify its behavior to impede analysis.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Advanced payload capabilities",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "nx86_64.elf",
+													"marks": [
+														{
+															"type": "code"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " sample contains detailed functions for parsing incoming HTTP requests, meticulously splitting URLs into their constituent parts (host, path, query, fragment). In addition, Aisuru uses STUN (Session Traversal Utilities for NAT) to identify its public-facing outbound communication. This enables infected devices to accurately register their public IPs with C2 servers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru victimology ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Aisuru campaigns primarily targeted Cloudflare customers using DNS and HTTP services, along with a smaller number of other major Internet providers. The profile of Aisuru's activity—focusing on DNS resolvers and API-heavy services—aligns with botnets used to disrupt services with large public endpoints. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "53cibtWR8UlKlg2ve31aql",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "53cibtWR8UlKlg2ve31aql",
+															"locale": "en-US",
+															"title": "aisuru content image - 11",
+															"file": {
+																"name": "aisuru-content-image-11.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53cibtWR8UlKlg2ve31aql/36297838599e00e18c8f2c3639bd7b3c/aisuru-content-image-11.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The campaign's scope and target selection mainly focused on Telecommunications, with over 60% of attacks (many of which were for testing the botnet) aimed at this industry, followed by Information Technology and Services (12.7%), Gaming (7.8%), and Cybersecurity (6.4%). In terms of geographic targets, Aisuru mainly focused on the United States (76%) followed by China (10%) and Hong Kong (5%).",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "16JrgN7dBUeOiHE2awitMA",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "16JrgN7dBUeOiHE2awitMA",
+															"locale": "en-US",
+															"title": "aisuru content image - 12",
+															"file": {
+																"name": "aisuru-content-image-12.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/16JrgN7dBUeOiHE2awitMA/2e015393b6b1835e97a966711831336e/aisuru-content-image-12.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Aisuru attribution",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "While precise attribution remains under investigation, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.xlab.qianxin.com/super-large-scale-botnet-aisuru-en/#:~:text=According%20to%20the%20anonymous%20source%2C%20the%20AISURU%20group%20has%20three%20key%20figures%20codenamed%20Snow%2C%20Tom%2C%20and%20Forky.%20In%202022%2C%20Forky%20met%20Snow%20and%20Tom%20when%20they%20were%20still%20small%2Dtime.%20After%20several%20successful%20collaborations%20including%20the%20catddos%20botnet%2C%20the%20three%20formed%20the%20AISURU%20team."
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "public reporting",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " indicates that the Aisuru botnet is purportedly run by a group of three individuals that operate under the pseudonyms Snow, Tom, and Forky. In a May 2025 ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://krebsonsecurity.com/2025/10/ddos-botnet-aisuru-blankets-us-isps-in-record-ddos/#:~:text=KrebsOnSecurity%20interviewed%20Forky,over%20the%20years."
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "article",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " about Aisuru's then-record 6.3 Tbps attack, Forky—identified as a 21-year-old man from Sao Paulo‚ Brazil—acknowledged contributing to Aisuru's development and marketing but denied any involvement in launching the attacks. An anonymous source further alleged that Tom was responsible for vulnerability discovery, while Snow handled the botnet's development.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The group has also stated that they carry out highly destructive attacks on ISPs \"for fun.\" Their domain-naming patterns reinforce this posture: alongside politically themed domains (e.g., tiananmensquare1989[.]su), the actors have registered sexually explicit and deliberately provocative names. This combination suggests an intent to shock, troll, or mislead analysts rather than signal any genuine ideological or geopolitical alignment, making these domains more likely to be false flags than meaningful indicators of motivation.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "How Cloudflare mitigated the attacks ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The distributed attack randomized various packet attributes in an attempt to evade defenses, but Cloudflare's mitigation systems detected and mitigated all the attacks, including this one, fully autonomously. Read more on ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack/#how-cloudflare-defends-against-large-attacks"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "How Cloudflare mitigates hyper-volumetric DDoS attacks",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".\t ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The following network-layer DDoS rules were most effective during mitigation:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Enable ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters/#sensitivity-level"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "high-sensitivity",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " DDoS Managed Rules, especially those targeting UDP floods and known-bad-source traffic.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Use ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://developers.cloudflare.com/magic-firewall/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Magic Firewall ",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "expressions to restrict inbound traffic to expected ports and protocols.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														},
+														{
+															"nodeType": "unordered-list",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "Enforce a positive security model: ",
+																					"marks": [],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "hyperlink",
+																					"data": {
+																						"target": null,
+																						"uri": "https://developers.cloudflare.com/magic-firewall/how-to/add-rules/"
+																					},
+																					"value": null,
+																					"marks": null,
+																					"content": [
+																						{
+																							"nodeType": "text",
+																							"data": {
+																								"target": null,
+																								"uri": null
+																							},
+																							"value": "Create rules",
+																							"marks": [],
+																							"content": null
+																						}
+																					]
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": " to allow the type of traffic you are expecting to the destination IP/ports you are expecting (if you are able to ",
+																					"marks": [],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "hyperlink",
+																					"data": {
+																						"target": null,
+																						"uri": "https://developers.cloudflare.com/magic-firewall/how-to/form-expressions/"
+																					},
+																					"value": null,
+																					"marks": null,
+																					"content": [
+																						{
+																							"nodeType": "text",
+																							"data": {
+																								"target": null,
+																								"uri": null
+																							},
+																							"value": "form an expression",
+																							"marks": [],
+																							"content": null
+																						}
+																					]
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": " to describe it with the ",
+																					"marks": [],
+																					"content": null
+																				},
+																				{
+																					"nodeType": "hyperlink",
+																					"data": {
+																						"target": null,
+																						"uri": "https://developers.cloudflare.com/magic-firewall/reference/magic-firewall-fields/"
+																					},
+																					"value": null,
+																					"marks": null,
+																					"content": [
+																						{
+																							"nodeType": "text",
+																							"data": {
+																								"target": null,
+																								"uri": null
+																							},
+																							"value": "Magic Firewall fields",
+																							"marks": [],
+																							"content": null
+																						}
+																					]
+																				},
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": ") followed by a \"deny all\" rule at the bottom of the list.",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																},
+																{
+																	"nodeType": "list-item",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "paragraph",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": null,
+																			"marks": null,
+																			"content": [
+																				{
+																					"nodeType": "text",
+																					"data": {
+																						"target": null,
+																						"uri": null
+																					},
+																					"value": "If a positive security model is not possible, then enforce a negative security model: Block unwanted traffic or traffic you do not expect to receive (with emphasis on the UDP protocol) to destination IP addresses/ranges, and ports/port ranges. For example, blocking UDP traffic to IPs and ports that are not expecting UDP traffic. ",
+																					"marks": [],
+																					"content": null
+																				}
+																			]
+																		}
+																	]
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Enterprise customers should ensure ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Adaptive DDoS protection",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " is enabled and that override rules are in \"Block\" mode rather than \"Log\".",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Monitor for short-lived spikes in traffic from newly observed IPs; review logs for patterns of randomized subdomain queries or HTTP floods with short-lived connections.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Recommendation for service providers",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Register your ASN with Cloudflare to receive free threat intelligence about DDoS attacks originating from your networks. The Free ISP DDoS Botnet threat feed is simple to set up, and using the API you can retrieve a list of IPs from within your network that we've seen participate, with high confidence, in launching DDoS attacks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "IOCs",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "6p3Gc6WordYAsurBezOiUF",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "6p3Gc6WordYAsurBezOiUF",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Aisuru botnet - Content - Table 1",
+																	"markdown": "\n| Type     | Indicator     | Description     |\n| ---------- | ---------- | ---------- |\n| SHA256 Hash       | 08717d85a8a296279c2d2b792a33714d216a9de1950173d603222f78da9b9ca5       | nx86_64.elf (Main sample analyzed)       |\n| SHA256 Hash       | 201d872e05f45062f3b18f1cb2bca7d5fe3811e7e6d4b8616d565a011fba091d       | skid.armv7l.elf       |\n| SHA256 Hash       | 7a5a5c813d636d96906fb4bf8f76c7f296a467dca756e92450f32dc69d781b71       | armv4l.elf       |\n| SHA256 Hash       | 50d3806f47d3f701d5f1f93bf39f827f936e3d1f43fa2cd8408db9655d53fb83       | armv7l.elf       |\n| SHA256 Hash       | 90e3b997161e33c6485b48182073a864dd3d0775ab96cadbf1b7c9dd4821c6d1       | aarch64.elf       |\n| Domain       | dvrxpert.tiananmensquare1989[.]su       | Initial C2 callout domain for nx86_64 sample       |\n| Encryption Key       | PJbiNbbeasddDfsc       | Hardcoded RC4 key for decrypting internal strings/config       |\n| Encryption Key       | 0xCAFEBABE       | XOR key used to encode C2 IPs in DNS TXT records       |\n| Host Artifact       | telnetd, udhcpc, inetd, ntpclient, watchdog, klogd, upnpd, dhclient       | Malware masquerades as these process names       |\n| Host Artifact       | /sys/devices/system/cpu, /proc/stat, /proc/cpuinfo       | File path used in anti-analysis checks       |\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n\n",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "1lVbK1G5z1o5TDfAg9Mi3N",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "1lVbK1G5z1o5TDfAg9Mi3N",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Aisuru botnet - Content - Table 2",
+																	"markdown": "\n| Domains     |\n| ---------- |\n| ballsack.14emeliaterracewestroxburyma02132[.]su\na.6mv1eyr328y6due83u3js6whtzuxfyhw[.]su\neviate-lives-at.14emeliaterracewestroxburyma02132[.]su\n2.tiananmensquare1989[.]su\napproach.dvrinside[.]net\ncoerece.dvrinside[.]net\ndvrinside[.]net \nlane.dvrinside[.]net\nministry.dvrinside[.]net\ns.cuckstudios[.]su\narf.santasbigcandycane[.]ru\nre.santasbigcandycane[.]ru\nnfs.santasbigcandycane[.]ru\nbusybox.feds2door[.]su\nfeds2door[.]su\nupdatetoto[.]tw \nlane.ilovegaysex[.]su\napproach.ilovegaysex[.]su\nministry.ilovegaysex[.]su\ncoerece.ilovegaysex[.]su\nepson.ilovegaysex[.]su\nilovegaysex[.]su\nstevenfromcoinbase.fk3[.]su\n6mv1eyr328y6due83u3js6whtzuxfyhw[.]su\ndvrxpert.tiananmensquare1989[.]su\ntestlmaololwtf.tiananmensquare1989[.]su\n14emeliaterracewestroxburyma02132[.]su |\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "3FPLeqd1VM33Guhn254p1b",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [
+																{
+																	"contentTypeId": "elementMarkdown",
+																	"contentfulId": "3FPLeqd1VM33Guhn254p1b",
+																	"locale": "en-US",
+																	"entryTitle": "Threat Intelligence - Aisuru botnet - Content - Table 3",
+																	"markdown": "\n| C2 IPs decoded from TXT records     |\n| ---------- |\n| 45[.]154[.]96[.]24\n45[.]138[.]16[.]234\n45[.]80[.]158[.]144\n45[.]80[.]158[.]129\n45[.]43[.]57[.]186\n45[.]43[.]57[.]167\n161[.]35[.]159[.]168\n164[.]90[.]174[.]64\n167[.]172[.]160[.]49\n167[.]172[.]190[.]98\n167[.]99[.]52[.]96\n193[.]26[.]115[.]154\n193[.]26[.]115[.]48\n194[.]58[.]38[.]57\n185[.]241[.]208[.]197\n185[.]241[.]208[.]165\n193[.]233[.]84[.]64\n193[.]233[.]84[.]67\n193[.]233[.]84[.]65\n193[.]233[.]84[.]68\n193[.]233[.]84[.]71\n193[.]233[.]84[.]76\n193[.]233[.]84[.]73\n193[.]233[.]84[.]63\n193[.]233[.]84[.]19\n178[.]128[.]227[.]241\n209[.]38[.]218[.]0\n77[.]110[.]112[.]132\n77[.]110[.]112[.]4\n77[.]110[.]112[.]5\n78[.]153[.]149[.]249\n65[.]108[.]5[.]46\n68[.]183[.]179[.]103\n68[.]183[.]206[.]140\n88[.]151[.]192[.]129\n81[.]19[.]140[.]41  |\n"
+																}
+															],
+															"entry_assetFile": [],
+															"entry_button": [],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentfulId": "6my47N0o3ksbtLUoo3ntgi",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Related resources",
+						"eyebrowHeading": null,
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "DouWs5cQG1drcHizifP69",
+								"title": "Cloudflare participates in global operation to disrupt Lumma Stealer",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Threat report",
+								"learnMoreUrl": "/cloudforce-one/research/cloudflare-participates-in-joint-operation-to-disrupt-lumma-stealer/",
+								"learnMoreText": "Read now",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "ad7071f0-a299-5b26-99d7-2db1e8ad993c",
+									"altText": "Cloudflare participates in global operation to disrupt Lumma Stealer - Element resource illustration",
+									"title": "Cloudflare participates in global operation to disrupt Lumma Stealer - Element resource illustration",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6S7ruiSp7j47xUO5gQPxOm/5155144fba400c279241543da661405b/Threat-intelligence-Lumma-Stealer-report-thumbnail.png"
+										},
+										"description": "Threat-intelligence Lumma Stealer report - thumbnail"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1CwO0gRFcdURCJHd2EfKF0",
+								"title": "Attackers abusing Proofpoint & Intermedia link wrapping to deliver phishing payloads",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Threat report",
+								"learnMoreUrl": "threat-intelligence/research/report/attackers-abusing-proofpoint-intermedia-link-wrapping-to-deliver-phishing-payloads",
+								"learnMoreText": "Read now",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "4c608ecc-2ec9-5bf5-a0bf-eea96b45b2f6",
+									"altText": "Attackers abusing Proofpoint & Intermedia link wrapping to deliver phishing payloads",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3z7vt0CdL8BBakE8yMpFTq/6b891441d4bb395f7a62f59cf85f89a9/Attackers_abusins_icon.png"
+										},
+										"description": "Attackers abusing Proofpoint & Intermedia link wrapping to deliver phishing payloads"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3ZbF9lLqcNSmLBfoUzCiv",
+								"title": "New SSA-themed phishing campaign installs trojanized ScreenConnect",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Threat report",
+								"learnMoreUrl": "/cloudforce-one/research/new-ssa-themed-phishing-campaign-installs-trojanized-screenconnect/",
+								"learnMoreText": "Read now",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "0937ec6d-bb4e-5a30-8dac-995f91ebde96",
+									"altText": "New SSA-themed phishing campaign installs trojanized ScreenConnect",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6eiRGc3SV4zqfHWabzgBaN/1b12749928019797b6c05d4497d9f558/SSA_phishing.png"
+										},
+										"description": "New SSA-themed phishing campaign installs trojanized ScreenConnect"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "38nfX7mkZGs0w3pPIvJykw",
+						"htmlContent": "<style>\n  .top-nav__logo{\n    width: 200px !important;\n    max-width: unset !important;\n  }\n\n  .button-cta a:hover, a:visited:hover {\n    background-color: white !important;\n  }\n\n  .bg-focus-orange-3-400_01:focus, .h-bg-orange-3-400_01:hover {\n    background-color: white !important;\n  }\n\n  @media screen and (max-width: 576px){\n    .main-header-logo {\n      overflow: hidden;\n      min-width: 58px !important;\n    }\n  }\n\n  .rich-text-renderer ul {\n    list-style: unset;\n  }\n\n  .rich-text-renderer .lazyload-wrapper + p:has(i) {\n    text-align: center;\n  }\n</style>\n",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "4YU6sa1PUPNZla9pIqx1GD",
+						"htmlContent": "<style>\n  html{scroll-behavior:smooth}\n</style>",
+						"htmlId": null
+					}
+				],
+				"noindex": false,
+				"formModal": [],
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"currentLocale": "en-US",
+			"locale": "en-US",
+			"pathname": "/threat-intelligence/research/report/aisuru-botnet/",
+			"contentfulId": "3sSU9jmgKvLhuQfgxpGF20",
+			"allowedHrefLangs": [
+				"en-US"
+			],
+			"hasPsaBanner": false,
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/nyc-government-financial-agency/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "NYC Government Financial Agency",
+				"contentfulId": "3DYXHUrI0lL0OvhjHKsxcS",
+				"nameUrlSlug": "nyc-government-financial-agency",
+				"metaTags": {
+					"metaTitle": "NYC Government Financial Agency & Cloudflare | Customer Story",
+					"metaDescription": "A NYC Government Agency deployed Cloudflare WAF and Application DDoS protection to immediately halt a massive, multi-week password-guessing campaign targeting its platform. Cloudflare's deployment restored stability, blocked 500 Million malicious requests, and freed the security team from non-stop manual incident response.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/46EG2srjtxMgjvxOhtGHZi/5b2785b94b06fdffb3849700678c79d5/State-and-local-government.png"
+						},
+						"description": "Cloudflare for Public Sector - State and local government - image"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2025-12-11",
+				"homepageUrl": "   ",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "A NYC government agency stopped a multi-week password-guessing attack, blocking 500M malicious requests and restoring platform stability, with Cloudflare.",
+				"longDescription": "## NYC Government Agency Stops Multi-Week Attack and Secures Critical Financial Services with Cloudflare Application Security\n\nThe NYC Government Agency serves a community of over 300,000, including active employees at NYC government agencies.\n\n### A multi-week credential-stuffing attack\n\nThe NYC Government Agency was targeted by a multi-week password-guessing attack by an attacker with scraped user IDs for the organization's remote employees. While the attack was ultimately unsuccessful at breaching accounts, the sheer volume of malicious traffic was overwhelming the agency's security team and firewall infrastructure. \n\n\"Several other CISOs recommended Cloudflare to me,\" commented the CISO for the NYC Government Agency. \"We called Cloudflare because our security team was up every night for a couple of weeks looking at the activity,\" they recalled. \"The best mitigation we had was blocking IP addresses at our existing firewall.\" However, this approach was unsustainable, due to the high volume of traffic the firewall needed to process,and ran the risk of blocking legitimate IP addresses if attackers were using public cloud infrastructure to host their attacks. \n\n### Blocking attack traffic from reaching the network\n\n\"Cloudflare was very easy to get up and running,\" praised the CISO, \"and with so many customers globally, it has a good gauge on active threats.\" A successful credential stuffing attack posed a serious threat to this NYC Government Agency, which protects sensitive information, such as personal information.\n\nWithin a few hours, Cloudflare was deployed in front of the agency's systems, and the attack traffic dropped immediately.  The deployment freed the security team from the unsustainable, manual work of blocking IP addresses. \"After implementing the two Cloudflare controls that throttled the attack traffic, our situation improved significantly. Attack volume dropped by over 90% immediately, and thanks to Cloudflare, we are now able to block approximately 500 Million malicious requests per month from reaching our origin,\" they explained.\n\nSince then, the organization has experienced a dramatic reduction in attack traffic. It's estimated that over 76% of attacks are now blocked, including malicious traffic originating outside the U.S. Blocking IPs and traffic from outside the U.S. alone already accounted for 53% of the total attack. \n\nWhile the organization initially deployed Cloudflare WAF to manage a credential stuffing attack, it's now taking advantage of other solutions to protect against other pressing threats. \"Before, we would have to layer multiple security tools and controls to achieve the same level of security that Cloudflare offers in one package and a single dashboard,\" the CISO explained. With Cloudflare's application-layer DDoS protection, the organization has been able to stop attackers from overloading its servers with bad requests.\n\n### Enhanced visibility improves security and reliability\n\nCloudflare helped mitigate a multi-week attack and continues to block attack traffic from reaching the agency's environment. The visibility that it ",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Attack Volume Blocked: Blocked approximately 500 Million attack requests per month.\n- Rapid Defense: Deployed and actively mitigating the ongoing attack in under 2 hours.\n- Total Coverage: Over 76% of all malicious attacks are now blocked at the edge.\n- Team Relief: Reduced manual incident response time by 50% per week.\n- Service Reliability: Maintained 100% availability for the platform after deployment.",
+				"relatedCaseStudyLinks": null,
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "CISO",
+				"employeeQuoteText": "We called Cloudflare because our security team was up every night for a couple of weeks looking at the activity. Cloudflare deployment freed us from that unsustainable, manual work.",
+				"employeeQuoteJobTitle": "NYC Government Agency",
+				"employeeQuoteName2": "CISO",
+				"employeeQuoteText2": "Before, we would have to layer multiple security tools and controls to achieve the same level of security that Cloudflare offers in one package and a single dashboard.",
+				"employeeQuoteJobTitle2": "NYC Government Agency",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6FUw6okd0JS1rwv0fudnHK/aec5d664cde3910b604f4751bddd7063/government-outline.svg"
+					},
+					"description": "Government outline - Icon"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3DYXHUrI0lL0OvhjHKsxcS",
+			"pathname": "/case-studies/nyc-government-financial-agency/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

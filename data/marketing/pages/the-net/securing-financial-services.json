@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - Digital transformation in banking - Page ",
+				"pageName": "theNET - Digital transformation in banking - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -38,21 +38,21 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Digital transformation in banking & financial services",
-					"metaDescription": "Banks and financial services organizations are undergoing rapid digital transformation. Discover what drives this trend learn strategies to minimize risk.",
+					"metaTitle": "theNET | Digital transformation in banking & financial services",
+					"metaDescription": "Explore how digital transformation is reshaping banking alongside the cybersecurity strategies financial services need to stay secure and resilient.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PQUbzarFZvjvz6YNDUDHF/96efbe2afb96fd186f82f89d9449ede1/digital-transformation-in-banking.jpg"
 						},
-						"description": "Digital transformation in banking - image"
+						"description": null
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
 					"createdAt": "2024-08-16T09:43:40.052Z",
-					"updatedAt": "2025-07-23T09:57:53.846Z"
+					"updatedAt": "2025-12-15T17:22:47.839Z"
 				},
 				"contentfulId": "7F0i6wklvmcNXYkFH7D3Wh",
 				"contentTypeId": "page",
@@ -378,26 +378,38 @@
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
-					"contentfulId": "14N3R0XZ8O2BkHyC79ESrm",
-					"headerText": "Leadership Perspectives: Overcoming the IT complexity crisis",
-					"subHeadingText": "Learn how to restore cyber and operational resilience, regain forward momentum, and effectively implement consolidation strategies.",
-					"hasMarketoForm": false,
-					"marketoForm": null,
-					"timeDelay": 1,
-					"ctaButton": {
-						"buttonAssetFile": null,
-						"buttonTextLoggedIn": null,
-						"contentTypeId": "button",
-						"contentfulId": "638v5ECXKTifOgItvZ9DiX",
-						"elementName": "theNET - Leadership Perspectives: Overcoming the IT complexity crisis - Digital magazine - Button",
-						"standardText": null,
-						"text": "Get the magazine!",
-						"url": "https://www.cloudflare.com/the-net/lp/overcoming-it-complexity/",
-						"loggedInUrl": null,
-						"buttonModal": null,
-						"openInNewTab": false,
-						"locale": "en-US"
-					}
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -462,7 +474,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Advancing security strategies to meet new challenges",
+													"value": "Advancing security strategies to meet new challenges in the financial industry",
 													"marks": [],
 													"content": null
 												}
@@ -481,7 +493,7 @@
 														{
 															"contentfulId": "6PQUbzarFZvjvz6YNDUDHF",
 															"locale": "en-US",
-															"title": "Digital transformation in banking - image",
+															"title": "theNET - Digital transformation in banking - Image",
 															"file": {
 																"name": "digital-transformation-in-banking.jpg",
 																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PQUbzarFZvjvz6YNDUDHF/96efbe2afb96fd186f82f89d9449ede1/digital-transformation-in-banking.jpg",
@@ -595,7 +607,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "5 factors driving digital transformation in banking",
+													"value": "5 factors driving digital transformation in financial services",
 													"marks": [
 														{
 															"type": "bold"
@@ -628,7 +640,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/banking-and-financial-services/"
+														"uri": "https://www.cloudflare.com/banking-and-financial-services"
 													},
 													"value": null,
 													"marks": null,
@@ -864,7 +876,38 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": ", machine learning (ML), blockchain, and big data analytics are providing banks with new tools to improve efficiency, security, and decision-making processes. These technologies enable banks to offer personalized services, detect fraud, and streamline operations.",
+																	"value": ", machine learning (ML), blockchain, and big data analytics are providing banks with new tools to improve efficiency, security, and decision-making processes. These ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/the-net/illuminate/ai-customer-experience/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "technologies",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " enable banks to offer personalized services, detect fraud, and streamline operations.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1006,7 +1049,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "/trust-hub/technologies/",
+																			"value": "trust",
 																			"marks": [],
 																			"content": null
 																		}
@@ -1151,7 +1194,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " for cybercriminals enabling them to discover vulnerabilities and compromising systems using various phishing and brute force methods. The security landscape in the banking sector is characterized by several key threats including:",
+													"value": " for cybercriminals enabling them to discover vulnerabilities and compromising systems using various phishing and ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/bots/brute-force-attack/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "brute force",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " methods. The security landscape in the banking sector is characterized by several key threats including:",
 													"marks": [],
 													"content": null
 												}
@@ -1436,7 +1510,69 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " with data privacy regulations such as the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA) is crucial.",
+																	"value": " with data privacy regulations such as the ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/privacy/what-is-the-gdpr/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "General Data Protection Regulation (GDPR)",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " and the ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/privacy/what-is-the-ccpa/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "California Consumer Privacy Act (CCPA)",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " is crucial.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1702,7 +1838,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "From the Equifax breach in 2017 (147 million customers affected) to 2019's Capital One (100 million+ credit card applications) and First American Financial Services (885 million records),  financial services has remained one of the most targeted sectors by nation-state hacking groups and other well-funded international bad actors ",
+													"value": "From insider threats like TD Bank's 2025 breach to supply chain attacks at Santander, DBS Bank, and Western Alliance, the financial sector continues to be a prime target for cybercriminals, some leveraging increasingly powerful ",
 													"marks": [],
 													"content": null
 												},
@@ -1721,7 +1857,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "armed with increasingly powerful AI technology",
+															"value": "AI technology",
 															"marks": [],
 															"content": null
 														}
@@ -1733,7 +1869,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". In 2024 alone, notable bank breaches have included HSBC-Barclays, Argentina Central, M&T, and Santander.",
+													"value": ". In 2025 alone, breaches linked to third-party vendors, technical errors, and ransomware exposed sensitive data from institutions including Connex Credit Union, TransUnion, and U.S. Bank.",
 													"marks": [],
 													"content": null
 												}
@@ -1993,7 +2129,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Zero Trust security:",
+																	"value": "Zero trust security:",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -2015,7 +2151,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/the-net/roadmap-zerotrust/"
+																		"uri": "https://www.cloudflare.com/the-net/security-transformation/zero-trust-roadmap"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2026,7 +2162,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Zero Trust",
+																			"value": "zero trust model",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2038,7 +2174,38 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " model operates on the principle of \"never trust, always verify.\" This approach requires continuous verification of user identities and strict access controls, regardless of whether the user is inside or outside the network perimeter. Implementing Zero Trust architecture for network security ensures that access to systems is provided based on identity and context - role, location, and others, thereby minimizing access to sensitive data and systems and minimizing the potential for internal threats and data breaches.",
+																	"value": " operates on the principle of \"never trust, always verify.\" This approach requires continuous verification of user identities and strict access controls, regardless of whether the user is inside or outside the network perimeter. ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Implementing zero trust architecture",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " for network security ensures that access to systems is provided based on identity and context - role, location, and others, thereby minimizing access to sensitive data and systems and minimizing the potential for internal threats and data breaches.",
 																	"marks": [],
 																	"content": null
 																}
@@ -2161,7 +2328,38 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " With the rise of remote work, securing endpoints such as laptops, mobile devices, and Internet of Things (IoT) devices is critical. ",
+																	"value": " With the ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/the-net/securing-distributed-enterprise/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "rise of remote work",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", securing endpoints such as laptops, mobile devices, and Internet of Things (IoT) devices is critical. ",
 																	"marks": [],
 																	"content": null
 																},
@@ -2376,7 +2574,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Securing digital assets and preventing data breaches in the banking sector is a complex, ongoing process requiring a multi-layered approach to cyber security. Leveraging emerging technologies such as blockchain and behavioral biometrics, coupled with regular security audits and robust incident response planning can further strengthen defenses, safeguard financial stability, and foster innovation.",
+													"value": "Securing digital assets and preventing data breaches in the banking sector is a complex, ongoing process requiring a multi-layered approach to cybersecurity. Leveraging emerging technologies such as blockchain and behavioral biometrics, coupled with regular security audits and robust incident response planning can further strengthen defenses, safeguard financial stability, and foster innovation.",
 													"marks": [],
 													"content": null
 												}
@@ -2428,7 +2626,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Connectivity cloud delivers 'Everywhere Security'",
+													"value": "Connectivity cloud delivers comprehensive security",
 													"marks": [
 														{
 															"type": "bold"
@@ -2536,7 +2734,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "With global reach and advanced security capabilities, Cloudflare offers financial organizations a secure, ",
+													"value": "With global reach and advanced security capabilities, Cloudflare offers ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/banking-and-financial-services/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "financial organizations",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " a secure, ",
 													"marks": [],
 													"content": null
 												},
@@ -2567,7 +2796,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " global cloud network that can help them accelerate their digital transformation efforts and improve operational excellence. By offering comprehensive 'Everywhere Security' Cloudflare helps banks protect sensitive data, ensure compliance with regulatory requirements, and maintain customer trust in an increasingly digital banking environment.",
+													"value": " global cloud network that can help them accelerate their digital transformation efforts and improve operational excellence. By offering comprehensive security, Cloudflare helps banks protect sensitive data, ensure compliance with regulatory requirements, and maintain customer trust in an increasingly digital banking environment.",
 													"marks": [],
 													"content": null
 												}
@@ -2736,8 +2965,12 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Cyber security best practices for financial services whitepaper",
-															"marks": [],
+															"value": "Cybersecurity best practices for financial services ",
+															"marks": [
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -2748,7 +2981,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".",
+													"value": "whitepaper.",
 													"marks": [],
 													"content": null
 												}
@@ -2791,7 +3024,7 @@
 																	"buttonTextLoggedIn": null,
 																	"contentTypeId": "button",
 																	"contentfulId": "4GFa8WD0DySzNPriIErIFb",
-																	"elementName": "theNET - Digital transformation in banking - Dive deeper - CTA",
+																	"elementName": "theNET - Digital transformation in banking - Dive Deeper - Button",
 																	"standardText": null,
 																	"text": "Get the whitepaper!",
 																	"url": "/lp/cyber-security-best-practices-financial-services/",
@@ -3184,7 +3417,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Cyber security best practices for financial services",
+																			"value": "Cybersecurity best practices for financial services",
 																			"marks": [],
 																			"content": null
 																		}
