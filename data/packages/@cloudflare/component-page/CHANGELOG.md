@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.1.15
+
+### Patch Changes
+
+- 21e3904266: Get location from useLocation instead of useHistory
+
 ## 10.1.14
 
 ### Patch Changes
