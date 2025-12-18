@@ -5,32 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX</strong></h3>
-<h3>About the department</h3>
-<p>The Cloudflare Research team stands at the nexus of academic inquiry and real-world implementation, operating with a clear mandate: to advance the company's mission to help build a better Internet. That core objective drives every project, publication, and standard the team contributes to, upholding Cloudflare's commitment to a more secure, private, and accessible Internet. The department is crucial in translating Cloudflare's public values into tangible, globally-scaled technologies. This environment offers a unique opportunity for specialized researchers and engineers to perform intellectually challenging work that delivers measurable, positive impacts on global digital infrastructure. Our current focus areas include Artificial Intelligence, Cryptography, Privacy, Network protocols, architecture, measurement and performance evaluation, and distributed systems.</p>
-<p>More information about Cloudflare's approach to research can be found<a href="https://research.cloudflare.com"> here</a>.</p>
-<h3>What you’ll do</h3>
-<p>A Cloudflare Research Engineering Manager plays a pivotal role in leading technical teams that are at the forefront of developing groundbreaking solutions. This position involves frequent and close collaboration with both research scientists and data scientists, fostering an environment where cutting-edge research seamlessly transitions into tangible product development. Their expertise is particularly crucial in highly specialized and rapidly evolving domains such as advanced cryptography, robust distributed systems, and practical applications of machine learning.</p>
-<p>Beyond their technical acumen, Research Engineering Managers are responsible for the comprehensive oversight of their teams. This includes providing clear technical guidance, making critical architectural decisions that shape the future of Cloudflare's infrastructure, and ensuring that individual projects align with the broader strategic objectives of the business. A key aspect of their role is to bridge the gap between high-level business goals and their granular technical implementation. Their efforts directly contribute to enhancing the developer experience by building scalable, resilient, and state-of-the-art technology that underpins Cloudflare's mission to help build a better Internet.</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal</strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
+<p><strong>The Team</strong></p>
+<p>We are looking to hire an experienced Security Third Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for completing vendor security reviews, maintaining our vendor master list, and supporting Cloudflare’s Third Party Risk Program.&nbsp;</p>
+<p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. We guarantee that you won’t get bored.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>A minimum of 6 years of experience in management or supervisory roles within a large, technology-driven organization.</li>
-	<li>A strong foundation in computer science, specializing in areas such as algorithms, data structures, software design, web security, and building large-scale distributed systems.</li>
-	<li>Exceptional skills in planning, cross-functional collaboration, and leading teams to consistently deliver results with predictability.</li>
-	<li>A proven track record of leading teams, including expertise in hiring, onboarding, and professional development. You are able to inspire your team and effectively communicate both the "why" and the "how."</li>
-	<li>Experience in implementing tools, processes, internal instrumentation, and methodologies, as well as resolving blockages.</li>
-	<li>Demonstrated ability to recruit and hire top-tier talent.</li>
-	<li>Comfortable managing teams and projects under tight deadlines and short release cycles.</li>
-	<li>Experience in fostering the growth and maximizing the potential of both budding and experienced engineers and researchers.</li>
-	<li>A track record of excellence in at least one of the team's key research areas.</li>
+	<li>Execute vendor security reviews by collecting and analyzing vendor security control documentation and audit reports.</li>
+	<li>Assist in identifying third-party security risks, documenting findings, and recommending risk treatment options.</li>
+	<li>Collaborate with the Contracts &amp; Legal teams to ensure security contract requirements are incorporated into vendor agreements.</li>
+	<li>Support the maintenance of Cloudflare’s vendor master list, ensuring data accuracy and proper classification of critical vendors.</li>
+	<li>Help the team monitor current security events (e.g., zero-day vulnerabilities) and support outreach to vendors to confirm their status and remediation efforts.</li>
+	<li>Gather and prepare evidence of vendor security reviews to support Cloudflare’s security certification audits.</li>
+	<li>Liaise and coordinate with stakeholders across Cloudflare’s Procurement, IT, Contracts, Legal, and Privacy teams to ensure vendor due diligence workflows are completed efficiently.</li>
+	<li>Assist in the ongoing improvement of the vendor security review process, documentation, and tooling.</li>
+	<li>Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, or other global Cloudflare locations.</li>
 </ul>
-<h3>Responsibilities</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>Lead and Develop the Team:</strong> Guide, mentor, and foster the growth of a skilled team of engineers, researchers, and data scientists. Cultivate an environment that values technical excellence, teamwork, continuous learning, and innovation. Conduct regular one-on-one meetings, offer constructive feedback, and support career progression.</li>
-	<li><strong>Drive Strategic Planning and Roadmap:</strong> Define and manage the team's strategic roadmap while enhancing effectiveness. Ensure team objectives align with broader organizational goals and contribute to the overall Research team strategy.</li>
-	<li><strong>Foster Cross-functional Collaboration:</strong> Collaborate closely with various teams, including engineers, data scientists, and product managers, to integrate research innovations into products.</li>
-	<li><strong>Communicate Progress and Strategy:</strong> Effectively communicate team progress, challenges, and strategic direction to senior leadership, stakeholders, and the wider organization. Represent the team's work internally and externally, including through blog posts and presentations.</li>
-	<li><strong>Contribute to Hiring and Growth:</strong> Actively participate in the hiring process to expand the team, identifying and attracting top talent who can contribute to Cloudflare's mission and culture.</li>
+	<li>Experience typically gained in 2-5 years working in Security GRC&nbsp;</li>
+	<li>Experience reviewing vendor security documentation including ISO 27001, SOC 2, PCI DSS, and other audit reports</li>
+	<li>Experience identifying security controls gaps, determining risk ratings, and recommending mitigating controls&nbsp;&nbsp;</li>
+	<li>Familiarity with security contract requirements&nbsp;</li>
+	<li>Strong organizational, analytical, and interpersonal skills</li>
+	<li>Self-starter with the ability to work independently with a sense of curiosity&nbsp;</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
