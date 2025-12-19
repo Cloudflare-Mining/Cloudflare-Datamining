@@ -5,38 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Sydney (Australia)</strong></p>
-<h3><strong>About the Team</strong></h3>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for CDN </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's CDN solutions with confidence.&nbsp;</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Traffic Management is responsible for the systems that <a href="https://blog.cloudflare.com/meet-traffic-manager/">dynamically route</a> traffic flows into, through, and from Cloudflare's global network.&nbsp;</p>
+<p>We don't just manage one company's traffic; they manage traffic for numerous products and&nbsp; millions of customers, from individual websites to major enterprises. This team is at the heart of Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>As a member of the team you will build and extend various traffic management and supporting systems. You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to collaborate on ambitious initiatives to make the best use of Cloudflare’s global network.</p>
+<p><strong>&nbsp;</strong></p>
+<p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, eBPF, ClickHouse, Salt, PostgreSQL, Prometheus, Kubernetes, and more.</p>
+<p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
+<p>Because you’ll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Role Requirements</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Serve as a trusted technical advisor for our Premium customers, responding to and resolving inquiries and incidents related to CDN services, while delivering timely, high-quality and personalized assistance.</li>
-	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
-	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>Minimum of 2 years of engineering experience with networking and/or distributed systems.</li>
+	<li>Systems-level programming experience in Go, Python, Rust, C, or C++</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge/interest in HTTP, TLS, and CDN networks.</li>
+	<li>Experience/interest in network performance monitoring and tuning</li>
+	<li>Strong collaboration and communication skills.</li>
 </ul>
-<h3><strong>What We're Looking For</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>You have a minimum of 4 years experience working as a Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
-	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
-	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
-	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
-	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience)</li>
-	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent</li>
+	<li>Experience building or developing capabilities in the domain of traffic engineering including automated load balancing and traffic prioritization.</li>
+	<li>Knowledge of statistical-analysis techniques and control theory.</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
