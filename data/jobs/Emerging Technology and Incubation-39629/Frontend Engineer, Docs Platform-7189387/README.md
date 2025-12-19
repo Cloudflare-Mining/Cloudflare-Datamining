@@ -22,7 +22,7 @@
 </ul>
 <h3><strong>Qualifications</strong></h3>
 <ul>
-	<li>2-5 years of experience with software development</li>
+	<li>2-5 years of experience with software development (JavaScript / TypeScript, frontend frameworks, bonus points for Astro)</li>
 	<li>Highly analytical, data and systems oriented problem solver</li>
 	<li>Excellent communication and interpersonal skills with the ability to influence and build strong relationships with customers and internal stakeholders</li>
 </ul>
