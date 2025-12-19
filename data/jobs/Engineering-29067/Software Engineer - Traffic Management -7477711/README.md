@@ -7,11 +7,10 @@
 </div>
 <p><strong>Available Locations: Austin, TX</strong></p>
 <p><strong>Role Summary</strong></p>
-<p>The Traffic Management is responsible for the systems that <a href="https://blog.cloudflare.com/meet-traffic-manager/">dynamically route</a> traffic flows into, through, and from Cloudflare's global network.&nbsp;</p>
-<p>We don't just manage one company's traffic; they manage traffic for numerous products and&nbsp; millions of customers, from individual websites to major enterprises. This team is at the heart of Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
+<p>The Traffic Management team is responsible for the systems that&nbsp;<a href="https://blog.cloudflare.com/meet-traffic-manager/">dynamically route</a> traffic flows into, through, and from Cloudflare's global network.&nbsp;</p>
+<p>We don't just manage one product or customer's traffic; we manage traffic for numerous products and millions of customers, from individual websites to major enterprises. This team is at the heart of Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
 <p><strong>Role Responsibilities</strong></p>
 <p>As a member of the team you will build and extend various traffic management and supporting systems. You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to collaborate on ambitious initiatives to make the best use of Cloudflare’s global network.</p>
-<p><strong>&nbsp;</strong></p>
 <p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, eBPF, ClickHouse, Salt, PostgreSQL, Prometheus, Kubernetes, and more.</p>
 <p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
 <p>Because you’ll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
