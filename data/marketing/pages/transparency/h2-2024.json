@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Transparency Report CURRENT H2 2024",
+				"pageName": "Transparency Report H2 2024",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -33,7 +33,7 @@
 					"arAR": "No Page for Locale"
 				},
 				"relativePath": "transparency/h2-2024",
-				"topNavOptions": null,
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2025-02-27T13:10:05.982Z",
-					"updatedAt": "2025-02-27T13:10:05.982Z"
+					"createdAt": "2025-12-19T16:29:22.453Z",
+					"updatedAt": "2025-12-19T16:29:22.453Z"
 				},
-				"contentfulId": "3da8LM5pDy2jBygiGdpLg3",
+				"contentfulId": "4Yfc9CD9iX3pYfIiPVSWBy",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -84,6 +84,12 @@
 								"page": null,
 								"url": null,
 								"subMenuItems": [
+									{
+										"contentfulId": "2HuqKkEn618HAkw5PkvM1W",
+										"linkText": "H2 2024",
+										"page": null,
+										"url": "/transparency/h2-2024/"
+									},
 									{
 										"contentfulId": "1DkEAIX9bC81C8QEjc5KRx",
 										"linkText": "H1 2024",
@@ -155,21 +161,21 @@
 						]
 					},
 					{
-						"contentfulId": "1R6hapJA5jUjNI1MNRK85z",
+						"contentfulId": "65kxmM02hJOSioaLyYkubV",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Transparency Report - H2 2024",
+						"title": "Cloudflare transparency report - H2 2024",
 						"titleSize": null,
 						"subtitle": null,
 						"subtitleSize": null,
-						"copy": "An essential part of earning and maintaining the trust of our customers is being transparent about the requests we receive from governments, courts, and private parties around the world. To this end, Cloudflare publishes semi-annual updates to our Transparency Report on requests to disclose customer information or to take action against content on websites using our services.",
+						"copy": "An essential part of earning and maintaining the trust of our customers is being transparent about the requests we receive from governments, courts, and private parties around the world. To this end, Cloudflare publishes semi-annual updates to our Transparency Report on requests to disclose customer information or to take action against content on websites using our services.\n",
 						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Legal Requests for Information Report",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Legal requests for information report",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2BmbjEkYKHyCBKwipz2Hjf/bed72e2328f2967941a17d773005a2d6/H2_2024_LegalRequestsforInformationTransparencyReport_AQFinal.pdf",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Abuse Processes Report",
+						"buttonText2": "Abuse processes report",
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vust2n7oACblNR2Jk7jZx/5b84afdbb6fbdcc751d6a7ba9a7f938b/H2_2024_AbuseProcessesTransparencyReport_AQFinal.pdf",
 						"button2ExtraClass": null,
@@ -186,7 +192,7 @@
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": true,
-						"button2OpenInNewTab": null,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
@@ -194,29 +200,20 @@
 						"imageSize": "Regular",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "[Legal Requests for Information (xlsx)](https://cf-assets.www.cloudflare.com/slt3lc6tev37/iP3H6bDlqqY6ubm80yINn/465573a30ed79380951bc4f19930cdfe/H2_2024_Legal_Requests_for_Information_data.xlsx)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Abuse Processes (xlsx)](https://cf-assets.www.cloudflare.com/slt3lc6tev37/4hoqBPtzY4P2LZJCVof1UE/93ab31b009e74b358d05f7a3eeec4ab1/H2_2024_Abuse_Processes_data__1_.xlsx)",
+						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
 						"textlayoutMode": "centered",
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "b875523a-01a7-5df9-8b4b-bf66f03e5130",
-							"altText": "Transparency shield - H2 2024",
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/46qAmWP6k85QXgczQ1gweP/0a2565957bd7525f426a7668829b6f54/BDES-6280_2H-2023Transparency-Report-Hero.png"
-								},
-								"description": "Transparency shield - H2 2023"
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/46qAmWP6k85QXgczQ1gweP/0a2565957bd7525f426a7668829b6f54/BDES-6280_2H-2023Transparency-Report-Hero.png"
 							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+							"description": "Transparency shield - H2 2023"
+						},
+						"imageAssetFile": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
@@ -589,7 +586,100 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The data above covers the period from July 1, 2024 to December 31, 2024. For data covering prior periods, see previous reports available under the Archives tab. For more information about how Cloudflare approaches the issues addressed in these reports, see the Trust & Safety section of Cloudflare's Trust Hub.",
+													"value": "The data above covers the period from January 1, 2025 to June 30, 2025. For data covering prior periods, see previous reports available under the Archives tab. For more information about how Cloudflare approaches the issues addressed in these reports, see the Trust & Safety section of Cloudflare's",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "/trust-hub/trust-and-safety/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Trust Hub",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "You can subscribe to updates on our Transparency Report using an ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/transparency/rss.xml"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "RSS Feed",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
 													"marks": [],
 													"content": null
 												}
@@ -615,7 +705,7 @@
 			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/transparency/h2-2024/",
-			"contentfulId": "3da8LM5pDy2jBygiGdpLg3",
+			"contentfulId": "4Yfc9CD9iX3pYfIiPVSWBy",
 			"allowedHrefLangs": [
 				"en-US"
 			],
