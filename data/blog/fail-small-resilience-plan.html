@@ -1,0 +1,103 @@
+<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cmVlVkQUHYoAvkK8fig0m/ac9be939f4b144360b065f2e8730eae4/BLOG-3097_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>On <a href="https://blog.cloudflare.com/18-november-2025-outage"><u>November 18, 2025</u></a>, Cloudflare’s network experienced significant failures to deliver network traffic for approximately two hours and ten minutes. Nearly three weeks later, on <a href="https://blog.cloudflare.com/5-december-2025-outage"><u>December 5, 2025</u></a>, our network again failed to serve traffic for 28% of applications behind our network for about 25 minutes.</p>
+	<p>We published detailed post-mortem blog posts following both incidents, but we know that we have more to do to earn back your trust. Today we are sharing details about the work underway at Cloudflare to prevent outages like these from happening again.</p>
+	<p>We are calling the plan “<b>Code Orange: Fail Small</b>”, which reflects our goal of making our network more resilient to errors or mistakes that could lead to a major outage. A “Code Orange” means the work on this project is prioritized above all else. For context, we declared a “Code Orange” at Cloudflare <a href="https://blog.cloudflare.com/major-data-center-power-failure-again-cloudflare-code-orange-tested"><u>once before</u></a>, following another major incident that required top priority from everyone across the company. We feel the recent events require the same focus.&nbsp; Code Orange is our way to enable that to happen, allowing teams to work cross-functionally as necessary to get the job done while pausing any other work.</p>
+	<p>The Code Orange work is organized into three main areas:</p>
+	<ul>
+		<li>
+			<p>Require controlled rollouts for any configuration change that is propagated to the network, just like we do today for software binary releases.</p>
+		</li>
+		<li>
+			<p>Review, improve, and test failure modes of all systems handling network traffic to ensure they exhibit well-defined behavior under all conditions, including unexpected error states.</p>
+		</li>
+		<li>
+			<p>Change our internal “break glass”* procedures, and remove any circular dependencies so that we, and our customers, can act fast and access all systems without issue during an incident.</p>
+		</li>
+	</ul>
+	<p>These projects will deliver iterative improvements as they proceed, rather than one “big bang” change at their conclusion. Every individual update will contribute to more resiliency at Cloudflare. By the end, we expect Cloudflare’s network to be much more resilient, including for issues such as those that triggered the global incidents we experienced in the last two months.</p>
+	<p>We understand that these incidents are painful for our customers and the Internet as a whole. We’re deeply embarrassed by them, which is why this work is the first priority for everyone here at Cloudflare.</p>
+	<p><sup><b><i>*</i></b></sup><sup><i> Break glass procedures at Cloudflare allow certain individuals to elevate their privilege under certain circumstances to perform urgent actions to resolve high severity scenarios.</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="what-went-wrong">What went wrong?</h2>
+		<a href="https://blog.cloudflare.com/#what-went-wrong" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In the first incident, users visiting a customer site on Cloudflare saw error pages that indicated Cloudflare could not deliver a response to their request. In the second, they saw blank pages.</p>
+	<p>Both outages followed a similar pattern. In the moments leading up to each incident we instantaneously deployed a configuration change in our data centers in hundreds of cities around the world.</p>
+	<p>The November change was an automatic update to our Bot Management classifier. We run various artificial intelligence models that learn from the traffic flowing through our network to build detections that identify bots. We constantly update those systems to stay ahead of bad actors trying to evade our security protection to reach customer sites.</p>
+	<p>During the December incident, while trying to protect our customers from a vulnerability in the popular open source framework React, we deployed a change to a security tool used by our security analysts to improve our signatures. Similar to the urgency of new bot management updates, we needed to get ahead of the attackers who wanted to exploit the vulnerability. That change triggered the start of the incident.</p>
+	<p>This pattern exposed a serious gap in how we deploy configuration changes at Cloudflare, versus how we release software updates. When we release software version updates, we do so in a controlled and monitored fashion. For each new binary release, the deployment must successfully complete multiple gates before it can serve worldwide traffic. We deploy first to employee traffic, before carefully rolling out the change to increasing percentages of customers worldwide, starting with free users. If we detect an anomaly at any stage, we can revert the release without any human intervention.</p>
+	<p>We have not applied that methodology to configuration changes. Unlike releasing the core software that powers our network, when we make configuration changes, we are modifying the values of how that software behaves and we can do so instantly. We give this power to our customers too: If you make a change to a setting in Cloudflare, it will propagate globally in seconds.</p>
+	<p>While that speed has advantages, it also comes with risks that we need to address. The past two incidents have demonstrated that we need to treat any change that is applied to how we serve traffic in our network with the same level of tested caution that we apply to changes to the software itself.</p>
+	<div class="flex anchor relative">
+		<h2 id="we-will-change-how-we-deploy-configuration-updates-at-cloudflare">We will change how we deploy configuration updates at Cloudflare</h2>
+		<a href="https://blog.cloudflare.com/#we-will-change-how-we-deploy-configuration-updates-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our ability to deploy configuration changes globally within seconds was the core commonality across the two incidents. In both events, a wrong configuration took down our network in seconds.</p>
+	<p>Introducing controlled rollouts of our configuration, just as we <b><i>already do</i></b> for software releases, is the most important workstream of our Code Orange plan.</p>
+	<p>Configuration changes at Cloudflare propagate to the network very quickly. When a user creates a new DNS record, or creates a new security rule, it reaches 90% of servers on the network within seconds. This is powered by a software component that we internally call Quicksilver.</p>
+	<p>Quicksilver is also used for any configuration change required by our own teams. The speed is a feature: we can react and globally update our network behavior very quickly. However, in both incidents this caused a breaking change to propagate to the entire network in seconds rather than passing through gates to test it.</p>
+	<p>While the ability to deploy changes to our network on a near-instant basis is useful in many cases, it is rarely necessary. Work is underway to treat configuration the same way that we treat code by introducing controlled deployments within Quicksilver to any configuration change.</p>
+	<p>We release software updates to our network multiple times per day through what we call our Health Mediated Deployment (HMD) system. In this framework, every team at Cloudflare that owns a service (a piece of software deployed into our network) must define the metrics that indicate a deployment has succeeded or failed, the rollout plan, and the steps to take if it does not succeed.</p>
+	<p>Different services will have slightly different variables. Some might need longer wait times before proceeding to more data centers, while others might have lower tolerances for error rates even if it causes false positive signals.</p>
+	<p>Once deployed, our HMD toolkit begins to carefully progress against that plan while monitoring each step before proceeding. If any step fails, the rollback will automatically begin and the team can be paged if needed.</p>
+	<p>By the end of Code Orange, configuration updates will follow this same process. We expect this to allow us to quickly catch the kinds of issues that occurred in these past two incidents long before they become widespread problems.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-will-we-address-failure-modes-between-services">How will we address failure modes between services?</h2>
+		<a href="https://blog.cloudflare.com/#how-will-we-address-failure-modes-between-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While we are optimistic that better control over configuration changes will catch more problems before they become incidents, we know that mistakes can and will occur. During both incidents, errors in one part of our network became problems in most of our technology stack, including the control plane that customers rely on to configure how they use Cloudflare.</p>
+	<p>We need to think about careful, graduated rollouts not just in terms of geographic progression (spreading to more of our data centers) or in terms of population progression (spreading to employees and customer types). We also need to plan for safer deployments that contain failures from service progression (spreading from one product like our Bot Management service to an unrelated one like our dashboard).</p>
+	<p>To that end, we are in the process of reviewing the interface contracts between every critical product and service that comprise our network to ensure that we a) <b>assume failure will occur</b> between each interface and b) handle that failure in the absolute <b>most reasonable way possible</b>.&nbsp;</p>
+	<p>To go back to our Bot Management service failure, there were at least two key interfaces where, if we had assumed failure was going to happen, we could have handled it gracefully to the point that it was unlikely any customer would have been impacted. The first was in the interface that read the corrupted config file. Instead of panicking, there should have been a sane set of validated defaults which would have allowed traffic to pass through our network, while we would have, at worst, lost the realtime fine-tuning that feeds into our bot detection machine-learning models.
+
+		The second interface was between the core software that runs our network and the Bot Management module itself. In the event that our bot management module failed (as it did), we should not have dropped traffic by default. Instead, we could have come up with, yet again, a more sane default of allowing the traffic to pass with a passable classification.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-will-we-solve-emergencies-faster">How will we solve emergencies faster?</h2>
+		<a href="https://blog.cloudflare.com/#how-will-we-solve-emergencies-faster" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>During the incidents, it took us too long to resolve the problem. In both cases, this was worsened by our security systems preventing team members from accessing the tools they needed to fix the problem, and in some cases, circular dependencies slowed us down as some internal systems also became unavailable.</p>
+	<p>As a security company, all our tools are behind authentication layers with fine-grained access controls to ensure customer data is safe and to prevent unauthorized access. This is the right thing to do, but at the same time, our current processes and systems slowed us down when speed was a top priority.</p>
+	<p>Circular dependencies also affected our customer experience. For example, during the November 18 incident, Turnstile, our no CAPTCHA bot solution, became unavailable. As we use Turnstile on the login flow to the Cloudflare dashboard, customers who did not have active sessions, or API service tokens, were not able to log in to Cloudflare in the moment of most need to make critical changes.</p>
+	<p>Our team will be reviewing and improving all of the break glass procedures and technology to ensure that, when necessary, we can access the right tools as fast as possible while maintaining our security requirements. This includes reviewing and removing circular dependencies, or being able to “bypass” them quickly in the event there is an incident.<b> </b>We will also increase the frequency of our training exercises, so that processes are well understood by all teams prior to any potential disaster scenario in the future.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="when-will-we-be-done">When will we be done?</h2>
+		<a href="https://blog.cloudflare.com/#when-will-we-be-done" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While we haven’t captured in this post all the work being undertaken internally, the workstreams detailed above describe the top priorities the teams are being asked to focus on. Each of these workstreams maps to a detailed plan touching nearly every product and engineering team at Cloudflare. We have a lot of work to do.</p>
+	<p>By the end of Q1, and largely before then, we will:</p>
+	<ul>
+		<li>
+			<p>Ensure all production systems are covered by Health Mediated Deployments (HMD) for configuration management.</p>
+		</li>
+		<li>
+			<p>Update our systems to adhere to proper failure modes as appropriate for each product set.</p>
+		</li>
+		<li>
+			<p>Ensure we have processes in place so the right people have the right access to provide proper remediation during an emergency.</p>
+		</li>
+	</ul>
+	<p>Some of these goals will be evergreen. We will always need to better handle circular dependencies as we launch new software and our break glass procedures will need to update to reflect how our security technology changes over time.</p>
+	<p>We failed our users and the Internet as a whole in these past two incidents. We have work to do to make it right. We plan to share updates as this work proceeds and appreciate the questions and feedback we have received from our customers and partners.</p>
+</div>
