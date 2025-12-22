@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7262995?gh_jid=7262995",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7490367?gh_jid=7490367",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,22 +10,24 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3251270,
+	"internal_job_id": 3322973,
 	"location": {
-		"name": "Hybrid"
+		"name": "Distributed"
 	},
 	"metadata": [
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5150 - Field Sales",
+			"value": "5830 - Cloudflare One",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"US"
+				"Denver, US",
+				"Los Angeles, US",
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -38,41 +40,39 @@
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7262995,
-	"updated_at": "2025-12-17T08:51:23-05:00",
-	"requisition_id": "GTM_PIPELINE_AMER US MJRS E MIDA#19479",
-	"title": "Senior Majors Account Executive - Charlotte, North Carolina",
+	"id": 7490367,
+	"updated_at": "2025-12-22T10:10:42-05:00",
+	"requisition_id": null,
+	"title": "Senior Solutions Engineer Specialist",
 	"company_name": "Cloudflare",
-	"first_published": "2025-09-24T10:57:01-04:00",
+	"first_published": "2025-12-22T10:10:42-05:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 29066,
-			"name": "Sales",
-			"child_ids": [
-				227430,
-				70661,
-				71029,
-				90946,
-				90947,
-				90948,
-				70657,
-				70662,
-				70658,
-				70659,
-				70660,
-				74075,
-				70663,
-				70664,
-				144594
-			],
+			"id": 30603,
+			"name": "Partnerships",
+			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 72999,
-			"name": "Charlotte, NC",
+			"id": 62226,
+			"name": "Los Angeles, CA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
