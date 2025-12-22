@@ -54,6 +54,14 @@
 	"acct-10465-user-group-ga": {
 		"enabled": true
 	},
+	"acm-banner-copy-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a",
+			"variant-b"
+		]
+	},
 	"add-kind-for-verified-bots": {
 		"enabled": true
 	},
