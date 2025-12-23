@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-arm64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20251221.0"
+		"latest": "1.20251223.0"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -6862,13 +6862,39 @@
 			"name": "@cloudflare/workerd-darwin-arm64",
 			"version": "1.20251221.0",
 			"dist": {
-				"integrity": "sha512-dBXiLD2EWl8/ygWBlAZg91q1e0hxQSHL2rp6VaEd1cSA9T1KDDYPsFyKFbRtR1cpkPvd2sAifvmPBn/tnHsLqQ==",
 				"shasum": "113cb2345d0b3c0b33c62d71c696fe53c6574551",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251221.0.tgz",
 				"fileCount": 3,
-				"unpackedSize": 100076884,
+				"integrity": "sha512-dBXiLD2EWl8/ygWBlAZg91q1e0hxQSHL2rp6VaEd1cSA9T1KDDYPsFyKFbRtR1cpkPvd2sAifvmPBn/tnHsLqQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCh1Oe/ssWjrhz9qyNVu6PNN/Ln1R9NabVfzItG9tGopgIhANkMWtajjSyBgJq6dmEUV+VwGV/3p6jZH7NBlsyfdoMD",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20251221.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 100076884
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20251223.0": {
+			"name": "@cloudflare/workerd-darwin-arm64",
+			"version": "1.20251223.0",
+			"dist": {
+				"integrity": "sha512-ogRZJacxIFCHObsYe5foxMNE+KhCtAjQPDdfH7qAw1MKYKH1CRzsva6y1wJVj0pFFXCJFsNeAF6z537piJRZkA==",
+				"shasum": "13f8ef37e5d21c6b9c7b4de9fd6dac6b3339f23d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20251223.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 100094532,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20251223.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -6876,7 +6902,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCh1Oe/ssWjrhz9qyNVu6PNN/Ln1R9NabVfzItG9tGopgIhANkMWtajjSyBgJq6dmEUV+VwGV/3p6jZH7NBlsyfdoMD"
+						"sig": "MEYCIQDV18Ii50EsLZ6maiDXv/sVUrkgAc/VdMW5c+fBdEqSSAIhAMBvIOGpSRajQj2y8Bvuajzi3WMlKv3JJHPMThz2DWOw"
 					}
 				]
 			},
