@@ -10,7 +10,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"apparmor": {
-		"version": "3.0.4-2ubuntu2.4",
+		"version": "3.0.4-2ubuntu2.5",
 		"short_description": "user-space parser utility for AppArmor",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -50,17 +50,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"binutils": {
-		"version": "2.38-4ubuntu2.10",
+		"version": "2.38-4ubuntu2.12",
 		"short_description": "GNU assembler, linker and binary utilities",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"binutils-common:amd64": {
-		"version": "2.38-4ubuntu2.10",
+		"version": "2.38-4ubuntu2.12",
 		"short_description": "Common files for the GNU assembler, linker and binary utilities",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"binutils-x86-64-linux-gnu": {
-		"version": "2.38-4ubuntu2.10",
+		"version": "2.38-4ubuntu2.12",
 		"short_description": "GNU binary utilities, for x86-64-linux-gnu target",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -525,7 +525,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"google-chrome-stable": {
-		"version": "142.0.7444.134-1",
+		"version": "143.0.7499.169-1",
 		"short_description": "The web browser from Google",
 		"author": "Chrome Linux Team <chromium-dev@chromium.org>"
 	},
@@ -665,7 +665,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libapparmor1:amd64": {
-		"version": "3.0.4-2ubuntu2.4",
+		"version": "3.0.4-2ubuntu2.5",
 		"short_description": "changehat AppArmor library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -740,22 +740,22 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libavahi-client3:amd64": {
-		"version": "0.8-5ubuntu5.2",
+		"version": "0.8-5ubuntu5.3",
 		"short_description": "Avahi client library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libavahi-common-data:amd64": {
-		"version": "0.8-5ubuntu5.2",
+		"version": "0.8-5ubuntu5.3",
 		"short_description": "Avahi common data files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libavahi-common3:amd64": {
-		"version": "0.8-5ubuntu5.2",
+		"version": "0.8-5ubuntu5.3",
 		"short_description": "Avahi common library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libbinutils:amd64": {
-		"version": "2.38-4ubuntu2.10",
+		"version": "2.38-4ubuntu2.12",
 		"short_description": "GNU binary utilities (private shared library)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -940,17 +940,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libctf-nobfd0:amd64": {
-		"version": "2.38-4ubuntu2.10",
+		"version": "2.38-4ubuntu2.12",
 		"short_description": "Compact C Type Format library (runtime, no BFD dependency)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libctf0:amd64": {
-		"version": "2.38-4ubuntu2.10",
+		"version": "2.38-4ubuntu2.12",
 		"short_description": "Compact C Type Format library (runtime, BFD dependency)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libcups2:amd64": {
-		"version": "2.4.1op1-1ubuntu4.12",
+		"version": "2.4.1op1-1ubuntu4.16",
 		"short_description": "Common UNIX Printing System(tm) - Core library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2115,17 +2115,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpng-dev:amd64": {
-		"version": "1.6.37-3build5",
+		"version": "1.6.37-3ubuntu0.1",
 		"short_description": "PNG library - development (version 1.6)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpng-tools": {
-		"version": "1.6.37-3build5",
+		"version": "1.6.37-3ubuntu0.1",
 		"short_description": "PNG library - tools (version 1.6)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpng16-16:amd64": {
-		"version": "1.6.37-3build5",
+		"version": "1.6.37-3ubuntu0.1",
 		"short_description": "PNG library - runtime (version 1.6)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2170,12 +2170,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpython3.10-minimal:amd64": {
-		"version": "3.10.12-1~22.04.11",
+		"version": "3.10.12-1~22.04.12",
 		"short_description": "Minimal subset of the Python language (version 3.10)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpython3.10-stdlib:amd64": {
-		"version": "3.10.12-1~22.04.11",
+		"version": "3.10.12-1~22.04.12",
 		"short_description": "Interactive high-level object-oriented language (standard library, version 3.10)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2720,7 +2720,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"linux-libc-dev:amd64": {
-		"version": "5.15.0-161.171",
+		"version": "5.15.0-164.174",
 		"short_description": "Linux Kernel Headers for development",
 		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
 	},
@@ -2905,12 +2905,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"python3.10": {
-		"version": "3.10.12-1~22.04.11",
+		"version": "3.10.12-1~22.04.12",
 		"short_description": "Interactive high-level object-oriented language (version 3.10)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"python3.10-minimal": {
-		"version": "3.10.12-1~22.04.11",
+		"version": "3.10.12-1~22.04.12",
 		"short_description": "Minimal subset of the Python language (version 3.10)",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2940,7 +2940,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"snapd": {
-		"version": "2.71+ubuntu22.04",
+		"version": "2.72+ubuntu22.04",
 		"short_description": "Daemon and tooling that enable snap packages",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
