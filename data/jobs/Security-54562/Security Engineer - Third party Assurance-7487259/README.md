@@ -5,71 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Germany&nbsp;</strong></p>
-<p><strong>About the Role&nbsp;</strong></p>
-<p>As the Director, Sales - DACH you will lead our partner teams across the DACH region. responsible for driving Cloudflare’s pipeline generation and enabling co-selling initiatives with partners.&nbsp;</p>
-<p>Reporting to the Vice President, Partner Sales - EMEA, you will collaborate closely with the partner and sales team to develop and execute a robust strategy for generating partner-initiated revenue.&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
-<p><strong>Partner Strategy Development:</strong></p>
+<p><strong>Location(s) Available:</strong> Bangalore, India<br><br><strong>About The Team</strong><br><br>Join Cloudflare’s Security Architecture Team with the following with the foll focus areas :&nbsp;</p>
 <ul>
-	<ul>
-		<li>Develop and implement a comprehensive partner sales strategy aligned with the company’s overall sales objectives.</li>
-		<li>Recruit, empower, develop, and guide a high-performing team of Partner Account Managers.</li>
-	</ul>
+	<li>Strategic Alignment: Translates the Organisations Cyber risk tolerance into specific technical blueprints and implements controls/prescriptive policies in mitigation/managing or remediating these risks</li>
+	<li>Preventative Focus: Focuses on "shifting left" to fix architectural flaws before they become bigger risks or costs&nbsp;</li>
+	<li>Technical Consulting: Acts as internal subject matter experts for Procurement (TPRM) and Engineering teams.</li>
 </ul>
-<p><strong>Relationship Management:</strong></p>
+<p><strong>About the role/</strong><strong>What You’ll Do</strong></p>
 <ul>
-	<ul>
-		<li>Build and maintain strong, long-term relationships with strategic partners.</li>
-		<li>Serve as the primary point of contact for partner organizations, addressing their needs, concerns, and opportunities for collaboration.</li>
-	</ul>
+	<li>Provide input on technical security requirements for new infrastructure and engineering initiatives.</li>
+	<li>Assist with documentation and maintenance of the corporate security architecture blueprints.</li>
+	<li>You will be on&nbsp; the Third-Party Risk Management (TPRM) program, assessing the security posture of vendors, suppliers, and external partners. This involves performing complex security due diligence, managing risk remediation plans, and ensuring contractual security clauses are enforced throughout the vendor lifecycle.</li>
+	<li>Conduct in-depth technical security assessments of new software, hardware, and services by evaluating system architecture, data flows, and infrastructure controls.</li>
+	<li>Review external vulnerability scans and security configuration evidence provided by vendors to identify potential exposure points prior to procurement.</li>
+	<li>Audit SaaS-to-SaaS and API-based integrations to ensure they follow the principle of least privilege and do not utilize over-privileged scopes or insecure authentication methods.</li>
+	<li>Advanced knowledge with hands-on in Cloud Architecture, Data Encryption,Application Security and IAM Architecture</li>
+	<li>Establish and enforce baseline security requirements for new software installations, covering encryption standards, multi-factor authentication (MFA), automated user provisioning/deprovisioning (SCIM), and SSO integration.</li>
+	<li>Perform periodic reviews of existing implementations to detect and remediate "configuration drift," such as unauthorized public data shares or legacy administrative accounts.</li>
+	<li>Utilize automated discovery tools to identify unmanaged SaaS applications (Shadow IT) and evaluate their security posture against corporate standards.</li>
+	<li>Partner with internal business owners and vendors to track identified security gaps and ensure technical remediation occurs within agreed-upon SLAs.</li>
+	<li>Provide technical expertise during third-party security incidents, assessing the impact on internal systems and validating vendor recovery and forensic efforts.</li>
+	<li>Evaluate vendor Business Continuity and Disaster Recovery (BCDR) plans, including the verification of recent failover test results and tabletop exercises.</li>
+	<li>Review vendor-side network segmentation, firewall configurations, and DDoS protection strategies for all critical cloud-hosted service implementations.</li>
+	<li>Perform rigorous technical security reviews of vendor integration configurations throughout the entire partnership lifecycle—including implementation and ongoing use—to ensure continuous compliance with security standards.</li>
+	<li>Assess completion of vendor offboarding processes, focusing on revoking system access, auditing final data handling, and validating post-offboarding security requirements.</li>
+	<li>Investigative skills to understand External Attack Surface Management (EASM) and Fourth-Party Risk&nbsp;</li>
+	<li>Understands Right to Audit: Understanding how to interpret penetration test summaries and vulnerability scan results provided by the vendor.</li>
 </ul>
-<p><strong>Pipeline Development</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<ul>
-		<li>Lead targeted pipeline development activities with partners, leveraging marketing and sales campaigns to build the partner initiated pipeline opportunities.</li>
-	</ul>
+	<li>Either advanced studies in Cybersecurity, Computer Science, Information Systems, or similar</li>
+	<li>Excellent written and verbal communication skills, including the ability to effectively collaborate with technical and senior business staff and management.</li>
+	<li><strong>5+ years</strong> of experience in GRC (Governance, Risk, and Compliance) or Information Security, with <strong>3+ years</strong> leading a TPRM/Vendor Risk program.&nbsp;</li>
+	<li>Deep practical knowledge of industry assessment standards (e.g., SOC 2, ISO 27001, SIG, CSA STAR).&nbsp;</li>
+	<li>Excellent analytical and communication skills to translate technical risk into business impact for stakeholders and Cloudflare end-to-end&nbsp;</li>
+	<li>Experience with GRC platforms (e.g., ServiceNow GRC, Archer) for workflow automation.</li>
 </ul>
-<p><strong>Revenue Growth:</strong></p>
+<p><strong>Preferred</strong></p>
 <ul>
-	<ul>
-		<li>Achieve and exceed revenue targets through effective partner sales strategies.</li>
-		<li>Drive co-selling initiatives and joint go-to-market strategies with partners to maximize sales opportunities.</li>
-	</ul>
-</ul>
-<p><strong>Market and Competitive Analysis:</strong></p>
-<ul>
-	<ul>
-		<li>Stay informed about industry trends, competitive landscape, and emerging opportunities in the partner ecosystem.</li>
-		<li>Use market insights to inform and adapt the partner sales strategy.</li>
-	</ul>
-</ul>
-<p><strong>Program Development:</strong></p>
-<ul>
-	<ul>
-		<li>Develop and manage partner programs, including training, certification, and incentive programs.</li>
-		<li>Ensure partners are equipped with the necessary tools, resources, and support to succeed in selling the company’s products and services.</li>
-	</ul>
-</ul>
-<p><strong>Budget Management:</strong></p>
-<ul>
-	<ul>
-		<li>Oversee the partner sales budget, ensuring resources are allocated effectively to maximize ROI.</li>
-	</ul>
-</ul>
-<p><strong>&nbsp;Qualifications:</strong></p>
-<ul>
-	<li>10+ years of proven success in sales, channel/alliances, partner management, and/or distribution relationship management, demonstrating increasing levels of responsibility.&nbsp;&nbsp;</li>
-	<li>5+ years of experience managing a team of Partner Account Managers.</li>
-	<li>Experience recruiting, developing, and managing both 1-tier and 2-tier channels.</li>
-	<li>Strong knowledge of the DACH partner landscape, including VARs, MSPs, GSIs and VADs, with familiarity with modern enterprise security products.</li>
-	<li>Proficiency in enterprise and sales efficiency technologies (e.g., G Suite, Office 365, Slack, Zoom).</li>
-	<li>Exceptional written and oral communication skills; must be persuasive and excel at presenting.</li>
-	<li>Strong sales management and partner operational skills, with a track record of achieving strategic objectives.</li>
-	<li>Proven ability to prioritize, develop strategic plans, and drive successful sales outcomes.</li>
-	<li>Ability to thrive under pressure in a fast-paced environment, and manage multiple projects simultaneously.</li>
-	<li>Ability to cultivate business relationships through networking.</li>
-	<li>Willingness to travel (50%+ of the time)</li>
+	<li>Certifications: CRISC, CTPRP (Certified Third-Party Risk Professional), or CISA.&nbsp;</li>
+	<li>Legal/Contractual experience relating to security clauses and Service Level Agreements (SLAs).&nbsp;</li>
+	<li>Experience working in a global vendor landscape.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

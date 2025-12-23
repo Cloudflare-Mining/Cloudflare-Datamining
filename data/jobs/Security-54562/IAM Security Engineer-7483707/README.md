@@ -5,78 +5,15 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: London / Hybrid<br><br>Position Summary:</strong></p>
-<p>We are seeking a highly experienced and results-driven <strong>Senior Named Account Executive</strong> to join our UKI sales team. This is a crucial role responsible for managing and growing a portfolio of high-value, named accounts within the <strong>policing, justice, and broader law enforcement sectors</strong> across the United Kingdom and Ireland.</p>
-<p>The ideal candidate will have a deep understanding of the unique challenges, procurement processes, and technological needs of police forces, government agencies, and related justice organisations. You will be a trusted advisor to senior stakeholders, including Chief Constables, IT Directors, and key operational leaders, helping them to leverage our [mention your company's product/service, e.g., 'SaaS platform', 'data analytics software', 'secure communications solutions'] to improve public safety and operational efficiency.</p>
-<p><strong>Key Responsibilities:</strong></p>
-<ul>
-	<li>
-		<p><strong>Strategic Account Management:</strong></p>
-		<ul>
-			<li>
-				<p>Develop and execute comprehensive strategic account plans for a defined list of named accounts, focusing on retention, expansion, and revenue growth.</p>
-			</li>
-			<li>
-				<p>Serve as the primary point of contact and trusted advisor for C-level and senior-level client stakeholders.</p>
-			</li>
-			<li>
-				<p>Identify and close new business opportunities within existing accounts by deeply understanding their pain points and aligning our solutions to their strategic objectives.</p>
-			</li>
-		</ul>
-	</li>
-	<li>
-		<p><strong>Sales &amp; New Business Development:</strong></p>
-		<ul>
-			<li>
-				<p>Proactively prospect and identify new opportunities within the policing and justice sectors, navigating complex government and public sector procurement frameworks.</p>
-			</li>
-			<li>
-				<p>Lead the entire sales cycle from initial contact to contract negotiation and close, ensuring a smooth and successful customer journey.</p>
-			</li>
-			<li>
-				<p>Collaborate with pre-sales engineers, product teams, and professional services to create compelling proposals and demonstrations that showcase our value.</p>
-			</li>
-		</ul>
-	</li>
-	<li>
-		<p><strong>Domain Expertise &amp; Market Intelligence:</strong></p>
-		<ul>
-			<li>
-				<p>Maintain a current and in-depth knowledge of the UKI policing and justice landscapes, including key initiatives, budgets, and technology trends.</p>
-			</li>
-			<li>
-				<p>Represent the company at key industry events and conferences, acting as a subject matter expert and brand ambassador.</p>
-			</li>
-			<li>
-				<p>Provide market feedback to our product and marketing teams to ensure our solutions and messaging are aligned with customer needs.</p>
-			</li>
-		</ul>
-	</li>
-</ul>
-<p><strong>Required Skills and Qualifications:</strong></p>
-<ul>
-	<li>
-		<p>Proven experience (5+ years) in a senior sales or account management role, with a strong track record of hitting and exceeding sales targets.</p>
-	</li>
-	<li>
-		<p><strong>Essential experience selling technology solutions to the UK police, justice, or defence sectors.</strong></p>
-	</li>
-	<li>
-		<p>In-depth knowledge of UK public sector procurement processes, frameworks (e.g., G-Cloud, DOS), and legal requirements.</p>
-	</li>
-	<li>
-		<p>Exceptional communication, presentation, and negotiation skills, with the ability to build rapport and trust with senior public sector officials.</p>
-	</li>
-	<li>
-		<p>A strong understanding of the operational and data security challenges faced by law enforcement agencies.</p>
-	</li>
-	<li>
-		<p>Ability to work independently and manage a sales pipeline effectively.</p>
-	</li>
-	<li>
-		<p>A Bachelor's degree in a relevant field is preferred.</p>
-	</li>
-</ul>
+<p><strong>About the Department:-</strong></p>
+<p>The Identity and Access Management (IAM) team is dedicated to ensuring the secure and efficient management of user identities, access privileges, and authentication mechanisms across internal systems, applications, and data. Our mission is to safeguard the organization against unauthorized access, protect sensitive information, and enable seamless user experiences while adhering to industry best practices and compliance standards.</p>
+<p><strong>About the Role:-</strong></p>
+<p>As an Identity and Access Management (IAM) Security Engineer, you will play a crucial role in designing,&nbsp;implementing, and scaling identity and access management solutions for Cloudflare’s internal workforce&nbsp;and workloads. You will be responsible for safeguarding our systems, applications, and data by ensuring&nbsp;secure user access, authentication, and authorization mechanisms.</p>
+<p><strong>What You’ll Do:-</strong></p>
+<p>● Design, build, test, and deploy IAM solutions across authentication, authorization, and accounting<br>● Leverage Cloudflare products to secure our identities<br>● Build SSO integrations leveraging SAML, OIDC, OAuth, and SCIM<br>● Build and manage the Identity Governance and Administration platform<br>● Develop automated roles leveraging RBAC and ABAC<br>● Build and manage an access certification platform<br>● Build and manage a Privileged Access Management (PAM) platform<br>● Provide operational support of IAM systems including an on-call rotation that may include after hours calls</p>
+<p><strong>Desirable Skills, Knowledge and Experience:-&nbsp;</strong></p>
+<p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:</p>
+<p>● 8+ years of experience in understanding of identity federation (SAML, OAuth, OpenID Connect, etc.)<br>● Experience implementing Identity Governance and Administration (IGA) solutions including&nbsp;lifecycle management, SCIM, birthright access (RBAC, ABAC), and access certifications<br>● Experience with secure configuration of containerized application platforms (e.g. Kubernetes)<br>● Advanced scripting experience (Python, TypeScript, Bash, etc.)<br>● Experience implementing Zero Trust controls<br>● Experience integrating with applications and SaaS solutions<br>● Experience with Identity and Access Management policy application and enforcement<br>● Experience working with Identity Threat Detection &amp; Response (ITDR)<br>● Experience working with infrastructure as code and configuration management tools like&nbsp;Terraform, Ansible, etc.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
