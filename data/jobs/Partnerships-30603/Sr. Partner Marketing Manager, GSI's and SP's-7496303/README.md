@@ -5,43 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>New York City (in-office)</p>
-<p><strong>About the role</strong></p>
-<p>The Places Team at Cloudflare is seeking an experienced and enthusiastic Office Operations Manager to lead and elevate the day-to-day operations of our brand-new New York office. In this role, you’ll be the go-to person for creating a smooth, welcoming, and highly functional workplace—partnering with global counterparts to share best practices and continuously enhance our spaces.</p>
-<p>You’ll gather feedback from employees and guests to shape how the office evolves, contribute to future buildouts, and collaborate with teams across IT, Legal, Physical Security, EBC, and more. You're comfortable navigating fast-paced environments, solving problems on the fly, and thinking creatively about how to improve systems and experiences. With a hospitality mindset and strong communication skills, you take pride in delivering excellent service and building a space that reflects our culture and values.</p>
-<p>This role reports to the Director, Global Workplace Experience &amp; Operations.</p>
-<h4>What you'll do</h4>
+<p><strong>Available Locations</strong></p>
+<p>This hybrid role may be located in: Austin, Atlanta, Denver, Seattle, Toronto, Washington D.C.&nbsp;</p>
+<p><strong>Job Title</strong></p>
+<p>Sr. Partner Marketing Manager - GSI's &amp; SP's</p>
+<p><strong>Role Summary</strong></p>
+<p>Cloudflare is seeking an experienced Sr. Partner Marketing Manager to focus on our Global Service Integrators (GSI's) and Service Provider (SP's) partners. This role is responsible for developing and executing a comprehensive joint marketing strategy that drives partner-sourced pipeline and revenue growth. The ideal candidate will be a high-energy self-starter with a proven track record of working collaboratively with strategic partners, sales, and internal marketing teams to deliver measurable results. They will play a critical role in expanding our reach within this crucial partner ecosystem.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><em>Workplace Experience:</em> Ensure our office is a functional, inspiring hub that reflects our culture and supports hybrid work. Act as the first point of contact for employee workplace needs, solving issues quickly and thoughtfully.</li>
-	<li><em>Stay Connected Across Channels:</em> Maintain clear, responsive communication with the local team across platforms like chat, email, and in-person touchpoints—ensuring everyone stays informed, supported, and aligned on workplace updates and needs.</li>
-	<li><em>Track and Report Workplace Metrics: </em>Monitor key data points such as space utilization, occupancy, and service ticket volume to support data-driven decision-making and long-term planning.</li>
-	<li><em>Support Workplace Programs: </em>Help drive local implementation of global workplace programs—from our food program (think snack stocking, team lunches, and special food moments) and sustainability initiatives to employee engagement efforts.</li>
-	<li><em>Support Internal Events &amp; Experiences:</em> Plan and execute a range of onsite events—including team onsites, in-person weeks, executive briefings, customer meetings, and cultural moments—both independently and in collaboration with the Global Events &amp; Experiences team, ensuring each gathering is seamless, engaging, and reflective of our culture.</li>
-	<li><em>Safety &amp; Compliance:</em> Partner with Security and Legal teams to maintain a safe and compliant workplace. Support emergency preparedness efforts, safety drills, and incident response protocols.</li>
-	<li><em>Scale Smartly</em>: As the office grows, help onboard new team members, support hiring needs for workplace roles, and participate in long-term workplace planning</li>
-	<li><em>Support the Regional Places Team:</em> Assist with administrative tasks such as responding to tickets, managing emails and inquiries, and providing holiday coverage to ensure seamless team operations across regions.</li>
-	<li><em>Lead Onsite Operations:</em> Own the day-to-day management of the workplace—from front desk services, greeting guests/employees/visiting employees, and mail handling to office supplies, swag, deliveries, and space readiness. You’ll make sure everything flows, looks great, and feels seamless for employees and visitors alike.</li>
-	<li><em>Be the go-to for Vendors and Places Team:</em> Liaise with building management, building security, and external vendors (cleaning crews, caterers, property managers, etc.) to keep our operations running efficiently. Oversee vendor performance and contracts, lead RFPs when needed, and track workplace budgets responsibly.</li>
+	<li>Develop and manage end-to-end partner marketing campaigns, including joint value proposition creation, content development, and co-branded enablement materials for GSI and SP sales teams.</li>
+	<li>Execute global and regional marketing programs such as joint webinars, virtual and in-person events, and digital campaigns to drive demand generation and solution adoption through our partners.</li>
+	<li>Manage a joint marketing budget (MDF) to ensure activities are executed efficiently and deliver a positive return on investment.</li>
+	<li>Collaborate with Partner Sales and Alliance Managers to identify key growth areas and translate business objectives into effective marketing strategies.</li>
+	<li>Establish and track key performance indicators (KPIs) for all partner marketing activities, providing regular reporting on campaign performance and business impact.</li>
+	<li>Act as the primary marketing liaison for a portfolio of strategic GSI's and SP's, fostering strong relationships to ensure alignment and maximum partner engagement.</li>
+	<li>Maintain a deep understanding of the Cloudflare product portfolio and the GSI/SP partner landscape, including their business models, market positioning, and offerings.</li>
 </ul>
-<h4>Desirable Skills, Knowledge, and Experience:</h4>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>Have 5+ years of experience leading office operations teams, ideally in a fast-paced, high-growth environment</li>
-	<li>Are people-first and service-minded, with a friendly, professional presence that makes everyone feel welcome</li>
-	<li>Know how to juggle vendors, projects, and priorities—and still sweat the small stuff</li>
-	<li>Bring sharp budget management skills and make thoughtful, cost-effective decisions</li>
-	<li>Communicate clearly and confidently across all levels and time zones using Google Workspace</li>
-	<li>Are highly organized, detail-oriented, and proactive—you spot what needs doing before anyone else does</li>
-	<li>Thrive in fast-moving environments, stay calm under pressure, and love finding creative solutions</li>
-	<li>Have experience collaborating cross-functionally with teams like IT, Security, People Ops, and more</li>
-	<li>Bring a hospitality mindset and a passion for building inspiring, functional spaces where people love to work</li>
-	<li>Able to commit to being&nbsp;onsite full-time; some OT required based on business needs</li>
+	<li>7+ years of experience in B2B partner marketing or alliance marketing, preferably within the cloud, SaaS, or cybersecurity industry.</li>
+	<li>Proven experience developing and executing successful marketing strategies with Global Service Integrators (e.g., Accenture, Deloitte, IBM Consulting, etc) and Service Provider partners.</li>
+	<li>Demonstrated ability to manage complex, multi-touch campaigns, including budget management and ROI analysis.</li>
+	<li>Strong verbal and written communication skills with the ability to create compelling marketing content and present to senior stakeholders.</li>
+	<li>Experience working cross-functionally with sales, product marketing, and partner teams in a fast-paced, global environment.</li>
+	<li>Bachelor's degree in Marketing, Business, or a related field, or equivalent practical experience.</li>
+	<li>Ability to travel up to 30% (domestic and international) for partner meetings and events.</li>
+</ul>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li>Experience with partner portals and marketing automation tools (e.g., Salesforce, HubSpot).</li>
+	<li>Prior experience marketing cloud or network security solutions.</li>
+	<li>Master's degree or advanced certification in a relevant area.</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For New York based hires: Estimated annual salary of $93,000 - $120,000</span></li>
+	<li>For Denver, Colorado based hires: Estimated annual salary of $139,000 - $169,000</li>
+	<li>For Seattle, Washington based hires: Estimated annual salary of $139,000 - $169,000</li>
+	<li>For Washington DC based hires: Estimated annual salary of $142,000 - $174,000</li>
 </ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -69,6 +73,9 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

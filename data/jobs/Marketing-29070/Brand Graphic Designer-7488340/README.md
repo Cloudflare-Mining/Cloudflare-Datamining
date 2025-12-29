@@ -5,31 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Lisbon&nbsp;</strong></p>
-<p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Email Routing, Radar, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
-<p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
-<p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
-<p>We are looking for a Software Engineer to join our Cloudflare Workflows’ team. You will work with a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites, services and applications. You will play an active part in shaping product features based on what’s technically possible. You will change the way people build applications. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment.</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>Location Available: Mexico City</strong></p>
+<p>&nbsp;</p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>&nbsp;</p>
+<p><strong>About The Opportunity</strong></p>
+<p>Cloudflare is looking for an experienced Designer to join the Brand Creative Studio within the Cloudflare marketing team.&nbsp; You must be a visual strategist who can take abstract concepts and make them accessible, scalable, and compelling.</p>
+<p>You will be responsible for conceptualizing designs for campaigns, trade show booths, events, signage, illustrations, collateral, and online banner ads with multiple concepts, following through with stakeholder requests. You will collaborate closely with the Creative Director and Design Managers on creative deliverables, bounce ideas to enhance creative/design, and take projects from start to finish.</p>
+<p><strong>You’re Excited About This Opportunity Because&nbsp;</strong></p>
+<p>You are seeking an opportunity to join a growing company to grow a new enterprise brand. You are excited to work with many stakeholders across the organization and the regions to produce creative designs that speak to our audience. You are someone who is continuing to develop their craft and can juggle multiple moving parts for a number of projects.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>What you will do.&nbsp;</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>Bachelor’s degree or equivalent in Computer Science, Engineering, or a related field;</li>
-	<li>Proven experience in software development (+3 years), with a strong focus on building high-performance distributed systems;</li>
-	<li>Solid understanding of software engineering principles and practices;</li>
-	<li>Strong problem-solving skills and attention to detail;</li>
-	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
-	<li>Passion for learning and exploring new technologies;</li>
-	<li>Creative thinker with the ability to propose innovative solutions to complex problems;</li>
-	<li>An operational mindset - we don't just write code, we also own it in production;</li>
-	<li>Experience with version control systems such as Git.</li>
+	<li>Design and build layouts to support tradeshow/experiential events, campaigns, create icons/illustrations, online banners, collateral and presentations.</li>
+	<li>Brainstorm ideas and work closely with the stakeholders and copywriters,&nbsp; work collaboratively in the creative process to further develop concept-driven campaigns</li>
+	<li>Refine designs based on constructive feedback from Creative Director,&nbsp; Design Managers, and stakeholders</li>
+	<li>Grow and collaborate with members within the Brand Design Team and stakeholders</li>
+	<li>Participate in creative critique meetings that result in high-quality outputs across the entire Brand Design team, keeping the bar for design and consistency elevated</li>
+	<li>Manage assets, update asset library</li>
+	<li>Work on executive presentation slides</li>
 </ul>
-<p><strong>Bonus Points:</strong></p>
+<p>&nbsp;</p>
+<p><strong>We’re Excited About You Because You Have</strong></p>
 <ul>
-	<li>Experience with TypeScript (or JavaScript), WebAssembly, Python, Rust or Go;</li>
-	<li>Some understanding of the Cloudflare developers platform (Workers, Durable Objects, Queues, etc) and V8 isolates;</li>
-	<li>Knowledge of SQL</li>
-	<li>Previous experience working in an Agile environment;</li>
-	<li>Meaningful contributions to open-source projects.</li>
+	<li>8+ years experience designing for an agency and/or in-house design team, with a focus on tradeshow/experiential events, campaigns, creating icons/illustrations, banners and presentations</li>
+	<li>Fluent in Adobe Creative Suite, Figma, Google&nbsp;</li>
+	<li>Experience with an enterprise B2B focused creative team</li>
+	<li>Strong skills in producing both print and digital assets</li>
+	<li>Strong written and verbal communication skills to present work to stakeholders</li>
+	<li>Strong attention to detail&nbsp;</li>
+	<li>Strong design portfolio demonstrating a range of work across different mediums; emphasis on design that demonstrates successful event and campaign creative work, icons and illustrations, online ads.</li>
+	<li>Fluent English speaking skills</li>
+	<li>Flexible schedule to align to Pacific Time</li>
+	<li>&nbsp;<strong>A portfolio link must be submitted with your application</strong></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
