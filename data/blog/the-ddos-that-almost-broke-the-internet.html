@@ -23,15 +23,15 @@
 	</div>
 	<p>The "inter" in Internet refers to the fact that it is a collection of independent networks connected together. CloudFlare runs a network, Google runs a network, and bandwidth providers like Level3, AT&amp;T, and Cogent run networks. These networks then interconnect through what are known as peering relationships.</p>
 	<p>When you surf the web, your browser sends and receives <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-packet">packets of information</a>. These packets are sent from one network to another. You can see this by running a traceroute. Here's one from <a href="http://www.slac.stanford.edu/cgi-bin/nph-traceroute.pl">Stanford University's network</a> to the New York Times' website (nytimes.com):</p>
-	<p>1 rtr-servcore1-serv01-webserv.slac.stanford.edu (134.79.197.130) 0.572 ms
-		2 rtr-core1-p2p-servcore1.slac.stanford.edu (134.79.252.166) 0.796 ms
-		3 rtr-border1-p2p-core1.slac.stanford.edu (134.79.252.133) 0.536 ms
-		4 slac-mr2-p2p-rtr-border1.slac.stanford.edu (192.68.191.245) 25.636 ms
-		5 sunncr5-ip-a-slacmr2.es.net (134.55.36.21) 3.306 ms
-		6 eqxsjrt1-te-sunncr5.es.net (134.55.38.146) 1.384 ms
-		7 xe-0-3-0.cr1.sjc2.us.above.net (64.125.24.1) 2.722 ms
-		8 xe-0-1-0.mpr1.sea1.us.above.net (64.125.31.17) 20.812 ms
-		9 209.249.122.125 (209.249.122.125) 21.385 ms</p>
+	<p><code>1 rtr-servcore1-serv01-webserv.slac.stanford.edu (134.79.197.130) 0.572 ms
+			2 rtr-core1-p2p-servcore1.slac.stanford.edu (134.79.252.166) 0.796 ms
+			3 rtr-border1-p2p-core1.slac.stanford.edu (134.79.252.133) 0.536 ms
+			4 slac-mr2-p2p-rtr-border1.slac.stanford.edu (192.68.191.245) 25.636 ms
+			5 sunncr5-ip-a-slacmr2.es.net (134.55.36.21) 3.306 ms
+			6 eqxsjrt1-te-sunncr5.es.net (134.55.38.146) 1.384 ms
+			7 xe-0-3-0.cr1.sjc2.us.above.net (64.125.24.1) 2.722 ms
+			8 xe-0-1-0.mpr1.sea1.us.above.net (64.125.31.17) 20.812 ms
+			9 209.249.122.125 (209.249.122.125) 21.385 ms</code></p>
 	<p>There are three networks in the above traceroute: stanford.edu, es.net, and above.net. The request starts at Stanford. Between lines 4 and 5 it passes from Stanford's network to their peer es.net. Then, between lines 6 and 7, it passes from es.net to above.net, which appears to provide hosting for the New York Times. This means Stanford has a peering relationship with ES.net. ES.net has a peering relationship with Above.net. And Above.net provides connectivity for the New York Times.</p>
 	<p>CloudFlare connects to a large number of networks. You can get a sense of some, although not all, of the networks we peer with through a tool like <a href="http://bgp.he.net/AS13335#_peers">Hurricane Electric's BGP looking glass</a>. CloudFlare connects to peers in two ways. First, we connect directly to certain large carriers and other networks to which we send a large amount of traffic. In this case, we connect our router directly to the router at the border of the other network, usually with a piece of fiber optic cable. Second, we connect to what are known as <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp">Internet Exchanges</a>, IXs for short, where a number of networks meet in a central point.</p>
 	<p>Most major cities have an IX. The model for IXs are different in different parts of the world. Europe runs some of the most robust IXs, and CloudFlare connects to several of them including LINX (the London Internet Exchange), AMS-IX (the Amsterdam Internet Exchange), and DE-CIX (the Frankfurt Internet Exchange), among others. The major networks that make up the Internet --Google, Facebook Yahoo, etc. -- connect to these same exchanges to pass traffic between each other efficiently. When the Spamhaus attacker realized he couldn't go after CloudFlare directly, he began targeting our upstream peers and exchanges.</p>
@@ -92,6 +92,5 @@ Internet" class="kg-image" width="500" height="472" loading="lazy">
 	<p>Unlike traditional <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">botnets</a> which could only generate limited traffic because of the modest Internet connections and home PCs they typically run on, these open resolvers are typically running on big servers with fat pipes. They are like bazookas and the events of the last week have shown the damage they can cause. What's troubling is that, compared with what is possible, this attack may prove to be relatively modest.</p>
 	<p>As someone in charge of <a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation">DDoS mitigation</a> at one of the Internet giants emailed me this weekend: "I've often said we don't have to prepare for the largest-possible attack, we just have to prepare for the largest attack the Internet can send without causing massive collateral damage to others. It looks like you've reached that point, so...congratulations!"</p>
 	<p>At CloudFlare one of our goals is to make DDoS something you only read about in the history books. We're proud of how our network held up under such a massive attack and are working with our peers and partners to ensure that the Internet overall can stand up to the threats it faces.</p>
-	<hr>
 	<p><b><i>Correction</i></b><i>: The original sentence about the impact on LINX was "From our perspective, the attacks had the largest effect on LINX which for a little over an hour on March 23 saw the infrastructure serving more than half of the usual 1.5Tbps of peak traffic fail." That was not well phrased, and has been edited, with notation in place.</i></p>
 </div>
