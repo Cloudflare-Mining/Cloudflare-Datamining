@@ -37,7 +37,19 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Replace Cisco Umbrella | DNS Filtering | Cloudflare",
+					"metaDescription": "Learn why customers are switching from Cisco Umbrella to Cloudflare. Start with DNS filtering and accelerate your Zero Trust roadmap with Cloudflare.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2021-09-14T17:23:04.303Z",
 					"updatedAt": "2025-11-04T18:41:09.189Z"
@@ -507,18 +519,7 @@
 										"locale": "en-US",
 										"name": "Connectivity cloud",
 										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "ZjoG6DQjlqHqBMrPWZyGs",
-											"locale": "en-US",
-											"title": "Connectivity cloud",
-											"description": null,
-											"url": "https://www.cloudflare.com/connectivity-cloud/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": true,
-											"isExternalUrl": null
-										},
+										"mainLink": null,
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -1064,18 +1065,6 @@
 											},
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "6k94HvLpOWSk22lb1Tv4FY",
-												"locale": "en-US",
-												"title": "Events",
-												"description": "Upcoming events",
-												"url": "/events",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
 												"contentfulId": "6yajw8NLlJvJcyvERx5TBM",
 												"locale": "en-US",
 												"title": "Whitepapers",
@@ -1193,6 +1182,18 @@
 														"title": "Firewall Rules",
 														"description": null,
 														"url": "https://developers.cloudflare.com/waf/custom-rules/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "3pJx4OI3NmXAeirB76Oigb",
+														"locale": "en-US",
+														"title": "SSL",
+														"description": null,
+														"url": "https://developers.cloudflare.com/ssl/",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": true,
@@ -1526,6 +1527,44 @@
 											},
 											{
 												"contentTypeId": "navNavigationItem",
+												"contentfulId": "4E0JADpOudRkHVrzdai31D",
+												"locale": "en-US",
+												"name": "Insights",
+												"description": null,
+												"mainLink": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "1Ju3iOzFafhq3TaFne7Dhh",
+														"locale": "en-US",
+														"title": "Analytics",
+														"description": null,
+														"url": "https://developers.cloudflare.com/analytics/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "2iC4qY12CEQF2X1TibYxug",
+														"locale": "en-US",
+														"title": "Logs",
+														"description": null,
+														"url": "https://developers.cloudflare.com/logs/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													}
+												],
+												"navIcon": null,
+												"showIconOnly": false,
+												"hideOnChinaSite": null,
+												"navigationItems": []
+											},
+											{
+												"contentTypeId": "navNavigationItem",
 												"contentfulId": "7rar0cPpSRnS1iSSSUJxib",
 												"locale": "en-US",
 												"name": "API",
@@ -1828,18 +1867,6 @@
 										"description": null,
 										"mainLink": null,
 										"navigationLinks": [
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "hdYexxrWtpU7JWtzfWckZ",
-												"locale": "en-US",
-												"title": "Compliance resources",
-												"description": "Cloudflare's industry-standard security compliance certifications and reports",
-												"url": "/trust-hub/compliance-resources/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
 											{
 												"contentTypeId": "elementNavLink",
 												"contentfulId": "4fD4BdNYH87js80vLS8b8f",
@@ -3252,6 +3279,77 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2VosZ89do0pMdGeOjS1jZX",
+						"title": "Modernize faster. Explore Cloudflare today.",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6pbOUO5LQqcm5pE6VLYndO",
+							"elementName": "[ZT PMM] Cisco Promo Button",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": "#",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "3NgoFSUVDvqnAarZ0dYklh",
+								"modalName": "Zero Trust-cisco-umbrella-takout-2024",
+								"modalId": "zero-trust-cisco-umbrella-takout-2022-zt-pmm",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "3cJghzkBVZR396iZQ73XmX",
+									"bladeName": "Zero Trust-cisco-umbrella-takout-2024",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Cisco Umbrella DNS Promo for Cloudflare Gateway",
+									"marketoFormHeaderText": "Cloudflare Gateway: DNS security",
+									"marketoFormDefaultComment": "Cloudflare Gateway: DNS security and Internet threat protection",
+									"showCommentBox": true,
+									"marketoFormThankYouText": "Thank you!",
+									"marketoFormCustomSuccessMessage": "Someone from Cloudflare will be in touch with you shortly. If you want to learn more about comparing Cloudflare vs. Cisco Umbrella for DNS filtering security and a limited-time promo, download this solution brief.",
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": "Download brief",
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Contact us",
+									"marketoFormSubmitButtonColor": "blue",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Ready to try Cloudflare?",
+								"regularCopy": "Fill out the form below, and a Cloudflare representative will get in touch to discuss your threat defense and broader Zero Trust srategy.",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentTypeId": "bladeHtml",
@@ -4781,7 +4879,48 @@
 					}
 				],
 				"noindex": false,
-				"formModal": null,
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "3NgoFSUVDvqnAarZ0dYklh",
+						"modalName": "Zero Trust-cisco-umbrella-takout-2024",
+						"modalId": "zero-trust-cisco-umbrella-takout-2022-zt-pmm",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "3cJghzkBVZR396iZQ73XmX",
+							"bladeName": "Zero Trust-cisco-umbrella-takout-2024",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Cisco Umbrella DNS Promo for Cloudflare Gateway",
+							"marketoFormHeaderText": "Cloudflare Gateway: DNS security",
+							"marketoFormDefaultComment": "Cloudflare Gateway: DNS security and Internet threat protection",
+							"showCommentBox": true,
+							"marketoFormThankYouText": "Thank you!",
+							"marketoFormCustomSuccessMessage": "Someone from Cloudflare will be in touch with you shortly. If you want to learn more about comparing Cloudflare vs. Cisco Umbrella for DNS filtering security and a limited-time promo, download this solution brief.",
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": "Download brief",
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": "Contact us",
+							"marketoFormSubmitButtonColor": "blue",
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Ready to try Cloudflare?",
+						"regularCopy": "Fill out the form below, and a Cloudflare representative will get in touch to discuss your threat defense and broader Zero Trust srategy.",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": true
 			},
 			"site": {
