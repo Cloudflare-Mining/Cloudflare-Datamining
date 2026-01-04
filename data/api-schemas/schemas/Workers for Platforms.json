@@ -2339,35 +2339,94 @@
 																"type": "object"
 															},
 															"placement": {
-																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																"properties": {
-																	"last_analyzed_at": {
-																		"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																		"example": "2025-01-01T00:00:00Z",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
+																"allOf": [
+																	{
+																		"oneOf": [
+																			{
+																				"properties": {
+																					"mode": {
+																						"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																						"enum": [
+																							"smart"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"mode"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"region": {
+																						"description": "Cloud region for targeted placement in format 'provider:region'.",
+																						"example": "aws:us-east-1",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"region"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"hostname": {
+																						"description": "HTTP hostname for targeted placement.",
+																						"example": "api.example.com",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"hostname"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"host": {
+																						"description": "TCP host and port for targeted placement.",
+																						"example": "db.example.com:5432",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"host"
+																				],
+																				"type": "object"
+																			}
+																		]
 																	},
-																	"mode": {
-																		"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																		"enum": [
-																			"smart"
-																		],
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"status": {
-																		"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																		"enum": [
-																			"SUCCESS",
-																			"UNSUPPORTED_APPLICATION",
-																			"INSUFFICIENT_INVOCATIONS"
-																		],
-																		"readOnly": true,
-																		"type": "string",
-																		"x-auditable": true
+																	{
+																		"properties": {
+																			"last_analyzed_at": {
+																				"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																				"example": "2025-01-01T00:00:00Z",
+																				"format": "date-time",
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			"status": {
+																				"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																				"enum": [
+																					"SUCCESS",
+																					"UNSUPPORTED_APPLICATION",
+																					"INSUFFICIENT_INVOCATIONS"
+																				],
+																				"readOnly": true,
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"type": "object"
 																	}
-																},
+																],
+																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
 																"type": "object"
 															},
 															"placement_mode": {
@@ -2970,35 +3029,94 @@
 															"type": "object"
 														},
 														"placement": {
-															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-															"properties": {
-																"last_analyzed_at": {
-																	"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																	"example": "2025-01-01T00:00:00Z",
-																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
+															"allOf": [
+																{
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"mode": {
+																					"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																					"enum": [
+																						"smart"
+																					],
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"region": {
+																					"description": "Cloud region for targeted placement in format 'provider:region'.",
+																					"example": "aws:us-east-1",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"region"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"hostname": {
+																					"description": "HTTP hostname for targeted placement.",
+																					"example": "api.example.com",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"hostname"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"host": {
+																					"description": "TCP host and port for targeted placement.",
+																					"example": "db.example.com:5432",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"host"
+																			],
+																			"type": "object"
+																		}
+																	]
 																},
-																"mode": {
-																	"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																	"enum": [
-																		"smart"
-																	],
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"status": {
-																	"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																	"enum": [
-																		"SUCCESS",
-																		"UNSUPPORTED_APPLICATION",
-																		"INSUFFICIENT_INVOCATIONS"
-																	],
-																	"readOnly": true,
-																	"type": "string",
-																	"x-auditable": true
+																{
+																	"properties": {
+																		"last_analyzed_at": {
+																			"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																			"example": "2025-01-01T00:00:00Z",
+																			"format": "date-time",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"status": {
+																			"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																			"enum": [
+																				"SUCCESS",
+																				"UNSUPPORTED_APPLICATION",
+																				"INSUFFICIENT_INVOCATIONS"
+																			],
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"type": "object"
 																}
-															},
+															],
+															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
 															"type": "object"
 														},
 														"placement_mode": {
@@ -8114,17 +8232,67 @@
 												"placement": {
 													"allOf": [
 														{
-															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-															"properties": {
-																"mode": {
-																	"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																	"enum": [
-																		"smart"
+															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+															"oneOf": [
+																{
+																	"properties": {
+																		"mode": {
+																			"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																			"enum": [
+																				"smart"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode"
 																	],
-																	"type": "string",
-																	"x-auditable": true
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"region": {
+																			"description": "Cloud region for targeted placement in format 'provider:region'.",
+																			"example": "aws:us-east-1",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"region"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"hostname": {
+																			"description": "HTTP hostname for targeted placement.",
+																			"example": "api.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"hostname"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"host": {
+																			"description": "TCP host and port for targeted placement.",
+																			"example": "db.example.com:5432",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"host"
+																	],
+																	"type": "object"
 																}
-															},
+															],
 															"type": "object"
 														},
 														{
@@ -11485,17 +11653,67 @@
 									"placement": {
 										"allOf": [
 											{
-												"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-												"properties": {
-													"mode": {
-														"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-														"enum": [
-															"smart"
+												"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+												"oneOf": [
+													{
+														"properties": {
+															"mode": {
+																"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																"enum": [
+																	"smart"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode"
 														],
-														"type": "string",
-														"x-auditable": true
+														"type": "object"
+													},
+													{
+														"properties": {
+															"region": {
+																"description": "Cloud region for targeted placement in format 'provider:region'.",
+																"example": "aws:us-east-1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"region"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"hostname": {
+																"description": "HTTP hostname for targeted placement.",
+																"example": "api.example.com",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"hostname"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"host": {
+																"description": "TCP host and port for targeted placement.",
+																"example": "db.example.com:5432",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
 													}
-												},
+												],
 												"type": "object"
 											},
 											{
@@ -14129,17 +14347,67 @@
 												"placement": {
 													"allOf": [
 														{
-															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-															"properties": {
-																"mode": {
-																	"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																	"enum": [
-																		"smart"
+															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+															"oneOf": [
+																{
+																	"properties": {
+																		"mode": {
+																			"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																			"enum": [
+																				"smart"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode"
 																	],
-																	"type": "string",
-																	"x-auditable": true
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"region": {
+																			"description": "Cloud region for targeted placement in format 'provider:region'.",
+																			"example": "aws:us-east-1",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"region"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"hostname": {
+																			"description": "HTTP hostname for targeted placement.",
+																			"example": "api.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"hostname"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"host": {
+																			"description": "TCP host and port for targeted placement.",
+																			"example": "db.example.com:5432",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"host"
+																	],
+																	"type": "object"
 																}
-															},
+															],
 															"type": "object"
 														},
 														{
@@ -16940,35 +17208,94 @@
 										"type": "object"
 									},
 									"placement": {
-										"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-										"properties": {
-											"last_analyzed_at": {
-												"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-												"example": "2025-01-01T00:00:00Z",
-												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
+										"allOf": [
+											{
+												"oneOf": [
+													{
+														"properties": {
+															"mode": {
+																"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																"enum": [
+																	"smart"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"region": {
+																"description": "Cloud region for targeted placement in format 'provider:region'.",
+																"example": "aws:us-east-1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"region"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"hostname": {
+																"description": "HTTP hostname for targeted placement.",
+																"example": "api.example.com",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"hostname"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"host": {
+																"description": "TCP host and port for targeted placement.",
+																"example": "db.example.com:5432",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"host"
+														],
+														"type": "object"
+													}
+												]
 											},
-											"mode": {
-												"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-												"enum": [
-													"smart"
-												],
-												"type": "string",
-												"x-auditable": true
-											},
-											"status": {
-												"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-												"enum": [
-													"SUCCESS",
-													"UNSUPPORTED_APPLICATION",
-													"INSUFFICIENT_INVOCATIONS"
-												],
-												"readOnly": true,
-												"type": "string",
-												"x-auditable": true
+											{
+												"properties": {
+													"last_analyzed_at": {
+														"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+														"example": "2025-01-01T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"status": {
+														"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+														"enum": [
+															"SUCCESS",
+															"UNSUPPORTED_APPLICATION",
+															"INSUFFICIENT_INVOCATIONS"
+														],
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
 											}
-										},
+										],
+										"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
 										"type": "object"
 									},
 									"tags": {
@@ -17325,35 +17652,94 @@
 																	"type": "object"
 																},
 																"placement": {
-																	"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																	"properties": {
-																		"last_analyzed_at": {
-																			"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																			"example": "2025-01-01T00:00:00Z",
-																			"format": "date-time",
-																			"readOnly": true,
-																			"type": "string"
+																	"allOf": [
+																		{
+																			"oneOf": [
+																				{
+																					"properties": {
+																						"mode": {
+																							"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																							"enum": [
+																								"smart"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"example": "aws:us-east-1",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"example": "api.example.com",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"example": "db.example.com:5432",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"host"
+																					],
+																					"type": "object"
+																				}
+																			]
 																		},
-																		"mode": {
-																			"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																			"enum": [
-																				"smart"
-																			],
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"status": {
-																			"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-																			"enum": [
-																				"SUCCESS",
-																				"UNSUPPORTED_APPLICATION",
-																				"INSUFFICIENT_INVOCATIONS"
-																			],
-																			"readOnly": true,
-																			"type": "string",
-																			"x-auditable": true
+																		{
+																			"properties": {
+																				"last_analyzed_at": {
+																					"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																					"example": "2025-01-01T00:00:00Z",
+																					"format": "date-time",
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				"status": {
+																					"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																					"enum": [
+																						"SUCCESS",
+																						"UNSUPPORTED_APPLICATION",
+																						"INSUFFICIENT_INVOCATIONS"
+																					],
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
 																		}
-																	},
+																	],
+																	"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
 																	"type": "object"
 																},
 																"placement_mode": {
@@ -17520,7 +17906,9 @@
 											"id": "this-is_my_script-01",
 											"logpush": false,
 											"modified_on": "2022-05-20T19:02:56.446492Z",
-											"placement_mode": "smart",
+											"placement": {
+												"mode": "smart"
+											},
 											"startup_time_ms": 10,
 											"tail_consumers": [
 												{
@@ -18058,35 +18446,94 @@
 													"type": "object"
 												},
 												"placement": {
-													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-													"properties": {
-														"last_analyzed_at": {
-															"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-															"example": "2025-01-01T00:00:00Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
+													"allOf": [
+														{
+															"oneOf": [
+																{
+																	"properties": {
+																		"mode": {
+																			"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																			"enum": [
+																				"smart"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"region": {
+																			"description": "Cloud region for targeted placement in format 'provider:region'.",
+																			"example": "aws:us-east-1",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"region"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"hostname": {
+																			"description": "HTTP hostname for targeted placement.",
+																			"example": "api.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"hostname"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"host": {
+																			"description": "TCP host and port for targeted placement.",
+																			"example": "db.example.com:5432",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"host"
+																	],
+																	"type": "object"
+																}
+															]
 														},
-														"mode": {
-															"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-															"enum": [
-																"smart"
-															],
-															"type": "string",
-															"x-auditable": true
-														},
-														"status": {
-															"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
-															"enum": [
-																"SUCCESS",
-																"UNSUPPORTED_APPLICATION",
-																"INSUFFICIENT_INVOCATIONS"
-															],
-															"readOnly": true,
-															"type": "string",
-															"x-auditable": true
+														{
+															"properties": {
+																"last_analyzed_at": {
+																	"description": "The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																	"example": "2025-01-01T00:00:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"status": {
+																	"description": "Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																	"enum": [
+																		"SUCCESS",
+																		"UNSUPPORTED_APPLICATION",
+																		"INSUFFICIENT_INVOCATIONS"
+																	],
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
 														}
-													},
+													],
+													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
 													"type": "object"
 												},
 												"placement_mode": {

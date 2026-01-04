@@ -743,6 +743,24 @@
 					"example": 2,
 					"type": "number"
 				}
+			},
+			{
+				"description": "Whether to include full tag details for each indicator. Defaults to false for performance.",
+				"in": "query",
+				"name": "includeTags",
+				"schema": {
+					"description": "Whether to include full tag details for each indicator. Defaults to false for performance.",
+					"type": "boolean"
+				}
+			},
+			{
+				"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
+				"in": "query",
+				"name": "includeTotalCount",
+				"schema": {
+					"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {

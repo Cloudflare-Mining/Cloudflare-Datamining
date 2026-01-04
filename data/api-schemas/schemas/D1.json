@@ -358,7 +358,7 @@
 													"name": {
 														"description": "D1 database name.",
 														"example": "my-database",
-														"pattern": "^[a-z0-9][a-z0-9-_]*$",
+														"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
 														"type": "string",
 														"x-auditable": true
 													},
@@ -556,7 +556,7 @@
 						{
 							"description": "D1 database name.",
 							"example": "my-database",
-							"pattern": "^[a-z0-9][a-z0-9-_]*$",
+							"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
 							"type": "string",
 							"x-auditable": true
 						}
@@ -656,7 +656,7 @@
 												"name": {
 													"description": "D1 database name.",
 													"example": "my-database",
-													"pattern": "^[a-z0-9][a-z0-9-_]*$",
+													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -818,6 +818,249 @@
 			"D1 Write"
 		]
 	},
+	"GET /accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark": {
+		"description": "Retrieves the current bookmark, or the nearest bookmark at or before a provided timestamp.\nBookmarks can be used with the restore endpoint to revert the database to a previous point in time.\n",
+		"operationId": "cloudflare-d1-time-travel-get-bookmark",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "database_id",
+				"required": true,
+				"schema": {
+					"description": "D1 database identifier (UUID).",
+					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "An optional ISO 8601 timestamp. If provided, returns the nearest available bookmark at or before this timestamp. If omitted, returns the current bookmark.",
+				"in": "query",
+				"name": "timestamp",
+				"schema": {
+					"description": "An ISO 8601 timestamp used for time travel operations. The database will be restored to the nearest available bookmark at or before this timestamp.",
+					"example": "2024-01-15T12:00:00Z",
+					"format": "date-time",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bookmark": {
+													"description": "A bookmark representing a specific state of the database at a specific point in time.",
+													"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Bookmark retrieved successfully"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to retrieve bookmark"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get D1 database bookmark",
+		"tags": [
+			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
+		]
+	},
 	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Updates partially the specified D1 database.",
 		"operationId": "cloudflare-d1-update-partial-database",
@@ -971,7 +1214,7 @@
 												"name": {
 													"description": "D1 database name.",
 													"example": "my-database",
-													"pattern": "^[a-z0-9][a-z0-9-_]*$",
+													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -1168,7 +1411,7 @@
 							"name": {
 								"description": "D1 database name.",
 								"example": "my-database",
-								"pattern": "^[a-z0-9][a-z0-9-_]*$",
+								"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
 								"type": "string",
 								"x-auditable": true
 							},
@@ -1288,7 +1531,7 @@
 												"name": {
 													"description": "D1 database name.",
 													"example": "my-database",
-													"pattern": "^[a-z0-9][a-z0-9-_]*$",
+													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -2141,6 +2384,12 @@
 																	"type": "number",
 																	"x-auditable": true
 																},
+																"served_by_colo": {
+																	"description": "The three letters airport code of the colo that handled the query.",
+																	"example": "LHR",
+																	"type": "string",
+																	"x-auditable": true
+																},
 																"served_by_primary": {
 																	"description": "Denotes if the query has been handled by the database primary instance.",
 																	"type": "boolean",
@@ -2295,7 +2544,7 @@
 										"result": {
 											"properties": {
 												"at_bookmark": {
-													"description": "The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import.",
+													"description": "The current bookmark for your D1, used to poll for updates. Will not change for the duration of the import.",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -2648,6 +2897,12 @@
 															"rows_written": {
 																"description": "Number of rows written during the SQL query execution, including indices.",
 																"type": "number",
+																"x-auditable": true
+															},
+															"served_by_colo": {
+																"description": "The three letters airport code of the colo that handled the query.",
+																"example": "LHR",
+																"type": "string",
 																"x-auditable": true
 															},
 															"served_by_primary": {
@@ -3028,6 +3283,12 @@
 																"type": "number",
 																"x-auditable": true
 															},
+															"served_by_colo": {
+																"description": "The three letters airport code of the colo that handled the query.",
+																"example": "LHR",
+																"type": "string",
+																"x-auditable": true
+															},
 															"served_by_primary": {
 																"description": "Denotes if the query has been handled by the database primary instance.",
 																"type": "boolean",
@@ -3218,6 +3479,283 @@
 			"D1"
 		]
 	},
+	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
+		"description": "Restores a D1 database to a previous point in time either via a bookmark or a timestamp.\n",
+		"operationId": "cloudflare-d1-time-travel-restore",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "database_id",
+				"required": true,
+				"schema": {
+					"description": "D1 database identifier (UUID).",
+					"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "A bookmark to restore the database to. Required if `timestamp` is not provided.",
+				"in": "query",
+				"name": "bookmark",
+				"schema": {
+					"description": "A bookmark representing a specific state of the database at a specific point in time.",
+					"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "An ISO 8601 timestamp to restore the database to. Required if `bookmark` is not provided.",
+				"in": "query",
+				"name": "timestamp",
+				"schema": {
+					"description": "An ISO 8601 timestamp used for time travel operations. The database will be restored to the nearest available bookmark at or before this timestamp.",
+					"example": "2024-01-15T12:00:00Z",
+					"format": "date-time",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Response from a time travel restore operation.",
+											"properties": {
+												"bookmark": {
+													"allOf": [
+														{
+															"description": "A bookmark representing a specific state of the database at a specific point in time.",
+															"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "The new bookmark representing the state of the database after the restore operation."
+														}
+													]
+												},
+												"message": {
+													"description": "A message describing the result of the restore operation.",
+													"example": "Database restored successfully",
+													"type": "string",
+													"x-auditable": true
+												},
+												"previous_bookmark": {
+													"allOf": [
+														{
+															"description": "A bookmark representing a specific state of the database at a specific point in time.",
+															"example": "00000001-00000002-00004e2f-0a83ea2fceebc654de0640c422be4653",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"description": "The bookmark representing the state of the database before the restore operation. Can be used to undo the restore if needed."
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Database restored successfully"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Restore operation failed"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Restore D1 Database to a bookmark or point in time",
+		"tags": [
+			"D1"
+		]
+	},
 	"PUT /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Updates the specified D1 database.",
 		"operationId": "cloudflare-d1-update-database",
@@ -3374,7 +3912,7 @@
 												"name": {
 													"description": "D1 database name.",
 													"example": "my-database",
-													"pattern": "^[a-z0-9][a-z0-9-_]*$",
+													"pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
 													"type": "string",
 													"x-auditable": true
 												},

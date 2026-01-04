@@ -552,6 +552,10 @@
 												"example": "Nation State",
 												"type": "string"
 											},
+											"categoryUuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
 											"externalReferenceLinks": {
 												"items": {
 													"type": "string"
@@ -787,6 +791,10 @@
 								},
 								"categoryName": {
 									"example": "Nation State",
+									"type": "string"
+								},
+								"categoryUuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
 									"type": "string"
 								},
 								"externalReferenceLinks": {
@@ -1045,6 +1053,10 @@
 								},
 								"categoryName": {
 									"example": "Nation State",
+									"type": "string"
+								},
+								"categoryUuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
 									"type": "string"
 								},
 								"externalReferenceLinks": {

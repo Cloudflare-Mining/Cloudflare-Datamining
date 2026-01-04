@@ -8,8 +8,8 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Subscription identifier tag.",
-					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string",
@@ -225,13 +225,15 @@
 																	"description": "The currency applied to the rate plan subscription.",
 																	"example": "USD",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"externally_managed": {
 																	"description": "Whether this rate plan is managed externally from Cloudflare.",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"id": {
 																	"description": "The ID of the rate plan.",
@@ -243,27 +245,32 @@
 																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"public_name": {
 																	"description": "The full name of the rate plan.",
 																	"example": "Business Plan",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"scope": {
 																	"description": "The scope that this rate plan applies to.",
 																	"example": "zone",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sets": {
-																	"description": "The list of sets this rate plan applies to.",
+																	"description": "The list of sets this rate plan applies to. Returns array of strings.",
+																	"example": [],
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -306,6 +313,40 @@
 																}
 															},
 															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"frequency": {
+															"allOf": [
+																{
+																	"description": "How often the subscription is renewed automatically.",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly"
+																	],
+																	"example": "monthly",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		"not-applicable"
+																	],
+																	"type": "string"
+																}
+															],
+															"description": "How often the subscription is renewed automatically (computed field).",
+															"readOnly": true,
+															"x-stainless-terraform-configurability": "computed"
 														}
 													},
 													"type": "object"
@@ -531,13 +572,15 @@
 																			"description": "The currency applied to the rate plan subscription.",
 																			"example": "USD",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"externally_managed": {
 																			"description": "Whether this rate plan is managed externally from Cloudflare.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"id": {
 																			"description": "The ID of the rate plan.",
@@ -549,27 +592,32 @@
 																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"public_name": {
 																			"description": "The full name of the rate plan.",
 																			"example": "Business Plan",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"scope": {
 																			"description": "The scope that this rate plan applies to.",
 																			"example": "zone",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sets": {
-																			"description": "The list of sets this rate plan applies to.",
+																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
+																			"example": [],
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -612,6 +660,40 @@
 																		}
 																	},
 																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"frequency": {
+																	"allOf": [
+																		{
+																			"description": "How often the subscription is renewed automatically.",
+																			"enum": [
+																				"weekly",
+																				"monthly",
+																				"quarterly",
+																				"yearly"
+																			],
+																			"example": "monthly",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		{
+																			"enum": [
+																				"weekly",
+																				"monthly",
+																				"quarterly",
+																				"yearly",
+																				"not-applicable"
+																			],
+																			"type": "string"
+																		}
+																	],
+																	"description": "How often the subscription is renewed automatically (computed field).",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
 																}
 															},
 															"type": "object"
@@ -751,8 +833,8 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Subscription identifier tag.",
-					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string",
@@ -865,13 +947,15 @@
 										"description": "The currency applied to the rate plan subscription.",
 										"example": "USD",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"externally_managed": {
 										"description": "Whether this rate plan is managed externally from Cloudflare.",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"id": {
 										"description": "The ID of the rate plan.",
@@ -883,27 +967,32 @@
 										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"public_name": {
 										"description": "The full name of the rate plan.",
 										"example": "Business Plan",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"scope": {
 										"description": "The scope that this rate plan applies to.",
 										"example": "zone",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"sets": {
-										"description": "The list of sets this rate plan applies to.",
+										"description": "The list of sets this rate plan applies to. Returns array of strings.",
+										"example": [],
 										"items": {
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-terraform-configurability": "optional"
 									}
 								},
 								"type": "object"
@@ -1162,13 +1251,15 @@
 																	"description": "The currency applied to the rate plan subscription.",
 																	"example": "USD",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"externally_managed": {
 																	"description": "Whether this rate plan is managed externally from Cloudflare.",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"id": {
 																	"description": "The ID of the rate plan.",
@@ -1180,27 +1271,32 @@
 																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"public_name": {
 																	"description": "The full name of the rate plan.",
 																	"example": "Business Plan",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"scope": {
 																	"description": "The scope that this rate plan applies to.",
 																	"example": "zone",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sets": {
-																	"description": "The list of sets this rate plan applies to.",
+																	"description": "The list of sets this rate plan applies to. Returns array of strings.",
+																	"example": [],
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -1243,6 +1339,40 @@
 																}
 															},
 															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"frequency": {
+															"allOf": [
+																{
+																	"description": "How often the subscription is renewed automatically.",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly"
+																	],
+																	"example": "monthly",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		"not-applicable"
+																	],
+																	"type": "string"
+																}
+															],
+															"description": "How often the subscription is renewed automatically (computed field).",
+															"readOnly": true,
+															"x-stainless-terraform-configurability": "computed"
 														}
 													},
 													"type": "object"
@@ -1468,13 +1598,15 @@
 																			"description": "The currency applied to the rate plan subscription.",
 																			"example": "USD",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"externally_managed": {
 																			"description": "Whether this rate plan is managed externally from Cloudflare.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"id": {
 																			"description": "The ID of the rate plan.",
@@ -1486,27 +1618,32 @@
 																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"public_name": {
 																			"description": "The full name of the rate plan.",
 																			"example": "Business Plan",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"scope": {
 																			"description": "The scope that this rate plan applies to.",
 																			"example": "zone",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sets": {
-																			"description": "The list of sets this rate plan applies to.",
+																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
+																			"example": [],
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -1549,6 +1686,40 @@
 																		}
 																	},
 																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"frequency": {
+																	"allOf": [
+																		{
+																			"description": "How often the subscription is renewed automatically.",
+																			"enum": [
+																				"weekly",
+																				"monthly",
+																				"quarterly",
+																				"yearly"
+																			],
+																			"example": "monthly",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		{
+																			"enum": [
+																				"weekly",
+																				"monthly",
+																				"quarterly",
+																				"yearly",
+																				"not-applicable"
+																			],
+																			"type": "string"
+																		}
+																	],
+																	"description": "How often the subscription is renewed automatically (computed field).",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
 																}
 															},
 															"type": "object"
@@ -1688,8 +1859,8 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "Subscription identifier tag.",
-					"example": "506e3185e9c882d175a2d0cb0093d9f2",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string",
@@ -1802,13 +1973,15 @@
 										"description": "The currency applied to the rate plan subscription.",
 										"example": "USD",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"externally_managed": {
 										"description": "Whether this rate plan is managed externally from Cloudflare.",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"id": {
 										"description": "The ID of the rate plan.",
@@ -1820,27 +1993,32 @@
 										"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"public_name": {
 										"description": "The full name of the rate plan.",
 										"example": "Business Plan",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"scope": {
 										"description": "The scope that this rate plan applies to.",
 										"example": "zone",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"sets": {
-										"description": "The list of sets this rate plan applies to.",
+										"description": "The list of sets this rate plan applies to. Returns array of strings.",
+										"example": [],
 										"items": {
 											"type": "string",
 											"x-auditable": true
 										},
-										"type": "array"
+										"type": "array",
+										"x-stainless-terraform-configurability": "optional"
 									}
 								},
 								"type": "object"
@@ -2099,13 +2277,15 @@
 																	"description": "The currency applied to the rate plan subscription.",
 																	"example": "USD",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"externally_managed": {
 																	"description": "Whether this rate plan is managed externally from Cloudflare.",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"id": {
 																	"description": "The ID of the rate plan.",
@@ -2117,27 +2297,32 @@
 																	"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																	"example": false,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"public_name": {
 																	"description": "The full name of the rate plan.",
 																	"example": "Business Plan",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"scope": {
 																	"description": "The scope that this rate plan applies to.",
 																	"example": "zone",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"sets": {
-																	"description": "The list of sets this rate plan applies to.",
+																	"description": "The list of sets this rate plan applies to. Returns array of strings.",
+																	"example": [],
 																	"items": {
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -2180,6 +2365,40 @@
 																}
 															},
 															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												{
+													"properties": {
+														"frequency": {
+															"allOf": [
+																{
+																	"description": "How often the subscription is renewed automatically.",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly"
+																	],
+																	"example": "monthly",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		"not-applicable"
+																	],
+																	"type": "string"
+																}
+															],
+															"description": "How often the subscription is renewed automatically (computed field).",
+															"readOnly": true,
+															"x-stainless-terraform-configurability": "computed"
 														}
 													},
 													"type": "object"
@@ -2405,13 +2624,15 @@
 																			"description": "The currency applied to the rate plan subscription.",
 																			"example": "USD",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"externally_managed": {
 																			"description": "Whether this rate plan is managed externally from Cloudflare.",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"id": {
 																			"description": "The ID of the rate plan.",
@@ -2423,27 +2644,32 @@
 																			"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																			"example": false,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"public_name": {
 																			"description": "The full name of the rate plan.",
 																			"example": "Business Plan",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"scope": {
 																			"description": "The scope that this rate plan applies to.",
 																			"example": "zone",
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"sets": {
-																			"description": "The list of sets this rate plan applies to.",
+																			"description": "The list of sets this rate plan applies to. Returns array of strings.",
+																			"example": [],
 																			"items": {
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"type": "array"
+																			"type": "array",
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -2486,6 +2712,40 @@
 																		}
 																	},
 																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														{
+															"properties": {
+																"frequency": {
+																	"allOf": [
+																		{
+																			"description": "How often the subscription is renewed automatically.",
+																			"enum": [
+																				"weekly",
+																				"monthly",
+																				"quarterly",
+																				"yearly"
+																			],
+																			"example": "monthly",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		{
+																			"enum": [
+																				"weekly",
+																				"monthly",
+																				"quarterly",
+																				"yearly",
+																				"not-applicable"
+																			],
+																			"type": "string"
+																		}
+																	],
+																	"description": "How often the subscription is renewed automatically (computed field).",
+																	"readOnly": true,
+																	"x-stainless-terraform-configurability": "computed"
 																}
 															},
 															"type": "object"

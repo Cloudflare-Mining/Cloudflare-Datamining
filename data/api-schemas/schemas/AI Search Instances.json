@@ -193,6 +193,45 @@
 											"default": false,
 											"type": "boolean"
 										},
+										"public_endpoint_id": {
+											"type": "string"
+										},
+										"public_endpoint_params": {
+											"properties": {
+												"authorized_hosts": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rate_limit": {
+													"properties": {
+														"period_ms": {
+															"maximum": 3600000,
+															"minimum": 60000,
+															"type": "integer"
+														},
+														"requests": {
+															"minimum": 1,
+															"type": "integer"
+														},
+														"technique": {
+															"enum": [
+																"fixed",
+																"sliding"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										},
 										"reranking": {
 											"default": false,
 											"type": "boolean"
@@ -747,6 +786,45 @@
 												"default": false,
 												"type": "boolean"
 											},
+											"public_endpoint_id": {
+												"type": "string"
+											},
+											"public_endpoint_params": {
+												"properties": {
+													"authorized_hosts": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"enabled": {
+														"default": false,
+														"type": "boolean"
+													},
+													"rate_limit": {
+														"properties": {
+															"period_ms": {
+																"maximum": 3600000,
+																"minimum": 60000,
+																"type": "integer"
+															},
+															"requests": {
+																"minimum": 1,
+																"type": "integer"
+															},
+															"technique": {
+																"enum": [
+																	"fixed",
+																	"sliding"
+																],
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"type": "object"
+											},
 											"reranking": {
 												"default": false,
 												"type": "boolean"
@@ -1283,6 +1361,45 @@
 										"paused": {
 											"default": false,
 											"type": "boolean"
+										},
+										"public_endpoint_id": {
+											"type": "string"
+										},
+										"public_endpoint_params": {
+											"properties": {
+												"authorized_hosts": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rate_limit": {
+													"properties": {
+														"period_ms": {
+															"maximum": 3600000,
+															"minimum": 60000,
+															"type": "integer"
+														},
+														"requests": {
+															"minimum": 1,
+															"type": "integer"
+														},
+														"technique": {
+															"enum": [
+																"fixed",
+																"sliding"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
 										},
 										"reranking": {
 											"default": false,
@@ -1899,6 +2016,42 @@
 								},
 								"type": "object"
 							},
+							"public_endpoint_params": {
+								"properties": {
+									"authorized_hosts": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"enabled": {
+										"default": false,
+										"type": "boolean"
+									},
+									"rate_limit": {
+										"properties": {
+											"period_ms": {
+												"maximum": 3600000,
+												"minimum": 60000,
+												"type": "integer"
+											},
+											"requests": {
+												"minimum": 1,
+												"type": "integer"
+											},
+											"technique": {
+												"enum": [
+													"fixed",
+													"sliding"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
 							"reranking": {
 								"default": false,
 								"type": "boolean"
@@ -2262,6 +2415,45 @@
 										"paused": {
 											"default": false,
 											"type": "boolean"
+										},
+										"public_endpoint_id": {
+											"type": "string"
+										},
+										"public_endpoint_params": {
+											"properties": {
+												"authorized_hosts": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rate_limit": {
+													"properties": {
+														"period_ms": {
+															"maximum": 3600000,
+															"minimum": 60000,
+															"type": "integer"
+														},
+														"requests": {
+															"minimum": 1,
+															"type": "integer"
+														},
+														"technique": {
+															"enum": [
+																"fixed",
+																"sliding"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
 										},
 										"reranking": {
 											"default": false,
@@ -2763,6 +2955,42 @@
 								"default": false,
 								"type": "boolean"
 							},
+							"public_endpoint_params": {
+								"properties": {
+									"authorized_hosts": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"enabled": {
+										"default": false,
+										"type": "boolean"
+									},
+									"rate_limit": {
+										"properties": {
+											"period_ms": {
+												"maximum": 3600000,
+												"minimum": 60000,
+												"type": "integer"
+											},
+											"requests": {
+												"minimum": 1,
+												"type": "integer"
+											},
+											"technique": {
+												"enum": [
+													"fixed",
+													"sliding"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
 							"reranking": {
 								"default": false,
 								"type": "boolean"
@@ -3163,6 +3391,45 @@
 										"paused": {
 											"default": false,
 											"type": "boolean"
+										},
+										"public_endpoint_id": {
+											"type": "string"
+										},
+										"public_endpoint_params": {
+											"properties": {
+												"authorized_hosts": {
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rate_limit": {
+													"properties": {
+														"period_ms": {
+															"maximum": 3600000,
+															"minimum": 60000,
+															"type": "integer"
+														},
+														"requests": {
+															"minimum": 1,
+															"type": "integer"
+														},
+														"technique": {
+															"enum": [
+																"fixed",
+																"sliding"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
 										},
 										"reranking": {
 											"default": false,

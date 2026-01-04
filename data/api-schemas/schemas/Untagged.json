@@ -424,6 +424,30 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/containers": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/registries/{domain}/credentials": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/realtime/kit/{app_id}/livestreams": [
 		{
 			"in": "path",

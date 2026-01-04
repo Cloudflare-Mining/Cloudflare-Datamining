@@ -1,0 +1,510 @@
+{
+	"GET /accounts/{account_id}/containers": {
+		"description": "Lists all the container applications that are associated with your account.",
+		"operationId": "publicListApplications",
+		"parameters": [
+			{
+				"description": "Filter containers by name",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter containers by image",
+				"in": "query",
+				"name": "image",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "Provides the current state and configuration of a Containers application.",
+												"properties": {
+													"created_at": {
+														"description": "UTC timestamp string in ISO 8601 format",
+														"example": "2021-04-01T12:32:41.488Z",
+														"type": "string"
+													},
+													"durable_object": {
+														"description": "Durable object configuration using a namespace ID",
+														"properties": {
+															"namespace_id": {
+																"description": "The namespace ID of the durable object namespace to use for this application.",
+																"type": "string"
+															}
+														},
+														"required": [
+															"namespace_id"
+														],
+														"type": "object"
+													},
+													"health": {
+														"description": "Shows a count of application instance states.",
+														"properties": {
+															"active": {
+																"description": "Number of instances with a running container.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"active",
+															"healthy",
+															"stopped",
+															"failed",
+															"starting",
+															"scheduling"
+														],
+														"type": "object"
+													},
+													"id": {
+														"description": "An Application ID represents an identifier of an application",
+														"type": "string"
+													},
+													"image": {
+														"description": "Image url",
+														"type": "string"
+													},
+													"instance_type": {
+														"description": "Specifies either a pre-set instance type or a custom resource allocation.",
+														"oneOf": [
+															{
+																"description": "Custom resource allocation with explicit vcpu, memory, and disk. Custom resource allocations must adhere to the following limits:\n- At least 1 vCPU\n- At least 3 GiB memory for each vCPU\n- Disk GB can be at most 2x memory in GiB\n",
+																"properties": {
+																	"disk_mb": {
+																		"description": "The disk size in MB.",
+																		"type": "integer"
+																	},
+																	"memory_mib": {
+																		"description": "Specify the memory to be used for the deployment, in MiB. The default will be the one configured for the account.",
+																		"type": "integer"
+																	},
+																	"vcpu": {
+																		"description": "Specify the vcpu to be used for the deployment. Vcpu must be at least 1. The input value will be rounded to\nthe nearest 0.0001. The default will be the one configured for the account.\n",
+																		"format": "float",
+																		"type": "number"
+																	}
+																},
+																"required": [
+																	"vcpu",
+																	"memory_mib",
+																	"disk_mb"
+																],
+																"type": "object"
+															},
+															{
+																"anyOf": [
+																	{
+																		"enum": [
+																			"lite",
+																			"basic",
+																			"standard-1",
+																			"standard-2",
+																			"standard-3",
+																			"standard-4"
+																		],
+																		"type": "string"
+																	}
+																],
+																"default": "lite",
+																"description": "The instance type will be used to configure vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+																"example": "lite",
+																"type": "string"
+															}
+														]
+													},
+													"max_instances": {
+														"description": "Maximum number of instances that the application will allow.",
+														"type": "integer"
+													},
+													"name": {
+														"description": "The name of the application.",
+														"type": "string"
+													},
+													"observability": {
+														"description": "Settings for observability such as logging.",
+														"properties": {
+															"logs": {
+																"description": "Observability logging settings.",
+																"properties": {
+																	"enabled": {
+																		"default": false,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"rollout_active_grace_period": {
+														"default": 0,
+														"description": "Grace period for active instances to stay alive before becoming eligible for shutdown signal due to a rollout, in seconds.\nDefaults to 0.\n",
+														"type": "integer"
+													},
+													"updated_at": {
+														"description": "UTC timestamp string in ISO 8601 format",
+														"example": "2021-04-01T12:32:41.488Z",
+														"type": "string"
+													},
+													"version": {
+														"description": "The current version number of this application. This increments with application rollouts.",
+														"example": 1,
+														"type": "integer"
+													}
+												},
+												"required": [
+													"id",
+													"created_at",
+													"updated_at",
+													"version",
+													"health",
+													"name",
+													"instance_type",
+													"max_instances",
+													"image"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Returns all public applications associated with your account."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized for Public API."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "InternalError500."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List containers.",
+		"tags": [
+			"Containers"
+		]
+	}
+}

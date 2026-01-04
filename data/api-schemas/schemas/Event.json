@@ -2075,6 +2075,15 @@
 								"example": "Domain Resolution",
 								"type": "string"
 							},
+							"createdAt": {
+								"example": "2025-12-19T00:00:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
+							"datasetId": {
+								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
+								"type": "string"
+							},
 							"date": {
 								"example": "2022-04-01T00:00:00Z",
 								"format": "date-time",
@@ -2464,6 +2473,203 @@
 			"Cloudforce One Write"
 		]
 	},
+	"POST /accounts/{account_id}/cloudforce-one/events/{dataset_id}/revert-do": {
+		"operationId": "post_EventDoRevert",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUID.",
+				"in": "path",
+				"name": "dataset_id",
+				"required": true,
+				"schema": {
+					"description": "Dataset UUID.",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"minutesAgo": {
+								"example": 120,
+								"type": "number"
+							}
+						},
+						"required": [
+							"minutesAgo"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"properties": {
+									"properties": {
+										"datasetId": {
+											"properties": {
+												"type": {
+													"example": "string",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"minutesAgo": {
+											"properties": {
+												"type": {
+													"example": "number",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"revertBookmark": {
+											"properties": {
+												"type": {
+													"example": "string",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"targetTimestamp": {
+											"properties": {
+												"type": {
+													"example": "string",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"undoBookmark": {
+											"properties": {
+												"type": {
+													"example": "string",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"datasetId",
+										"minutesAgo",
+										"targetTimestamp",
+										"revertBookmark",
+										"undoBookmark"
+									],
+									"type": "object"
+								},
+								"required": {
+									"items": {
+										"example": "datasetId",
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"type": {
+									"example": "object",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"properties",
+								"required"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Revert scheduled for the specified Durable Object."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Revert an Events Durable Object to a point in time",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
 		"operationId": "post_EventUpdate",
 		"parameters": [
@@ -2504,6 +2710,15 @@
 							},
 							"category": {
 								"example": "Domain Resolution",
+								"type": "string"
+							},
+							"createdAt": {
+								"example": "2025-12-19T00:00:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
+							"datasetId": {
+								"example": "9b769969-a211-466c-8ac3-cb91266a066a",
 								"type": "string"
 							},
 							"date": {
@@ -3391,22 +3606,23 @@
 			}
 		},
 		"responses": {
-			"200": {
+			"202": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"description": "Detailed result of bulk event creation with auto-tag management",
 							"properties": {
+								"createBulkEventsRequestId": {
+									"description": "Correlation ID for async indicator processing",
+									"format": "uuid",
+									"type": "string"
+								},
 								"createdEventsCount": {
 									"description": "Number of events created",
 									"type": "number"
 								},
-								"createdIndicatorsCount": {
-									"description": "Number of indicators created",
-									"type": "number"
-								},
 								"createdTagsCount": {
-									"description": "Number of tags created in SoT",
+									"description": "Number of new tags created in SoT",
 									"type": "number"
 								},
 								"errorCount": {
@@ -3433,11 +3649,15 @@
 										"type": "object"
 									},
 									"type": "array"
+								},
+								"queuedIndicatorsCount": {
+									"description": "Number of indicators queued for async processing",
+									"type": "number"
 								}
 							},
 							"required": [
 								"createdEventsCount",
-								"createdIndicatorsCount",
+								"queuedIndicatorsCount",
 								"createdTagsCount",
 								"errorCount"
 							],
@@ -3445,7 +3665,7 @@
 						}
 					}
 				},
-				"description": "Returns detailed counts of created events, indicators, and tags."
+				"description": "Accepted. Events created; indicators queued for async processing."
 			},
 			"400": {
 				"content": {

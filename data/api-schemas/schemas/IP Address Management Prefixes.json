@@ -2578,6 +2578,12 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"auto_generated": {
+													"description": "Whether the LOA has been auto-generated for the prefix owner by Cloudflare.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"created": {
 													"example": "2014-01-01T05:20:00.12345Z",
 													"format": "date-time",
@@ -2731,6 +2737,12 @@
 															"example": "258def64c72dae45f3e4c8516e2111f2",
 															"maxLength": 32,
 															"type": "string",
+															"x-auditable": true
+														},
+														"auto_generated": {
+															"description": "Whether the LOA has been auto-generated for the prefix owner by Cloudflare.",
+															"example": true,
+															"type": "boolean",
 															"x-auditable": true
 														},
 														"created": {

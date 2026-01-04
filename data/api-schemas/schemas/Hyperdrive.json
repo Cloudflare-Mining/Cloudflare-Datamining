@@ -4,6 +4,7 @@
 		"operationId": "delete-hyperdrive",
 		"parameters": [
 			{
+				"description": "The Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -17,6 +18,7 @@
 				}
 			},
 			{
+				"description": "The unique identifier of the Hyperdrive configuration.",
 				"in": "path",
 				"name": "hyperdrive_id",
 				"required": true,
@@ -239,6 +241,7 @@
 		"operationId": "list-hyperdrive",
 		"parameters": [
 			{
+				"description": "The Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -403,13 +406,13 @@
 																			{
 																				"properties": {
 																					"max_age": {
-																						"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+																						"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 																						"example": 60,
 																						"type": "integer",
 																						"x-auditable": true
 																					},
 																					"stale_while_revalidate": {
-																						"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+																						"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 																						"example": 15,
 																						"type": "integer",
 																						"x-auditable": true
@@ -469,6 +472,7 @@
 																"type": "object"
 															},
 															"name": {
+																"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 																"example": "example-hyperdrive",
 																"type": "string",
 																"x-auditable": true
@@ -531,8 +535,8 @@
 																						"x-auditable": true
 																					},
 																					"port": {
-																						"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-																						"example": "5432",
+																						"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+																						"example": 5432,
 																						"type": "integer",
 																						"x-auditable": true
 																					}
@@ -783,6 +787,7 @@
 		"operationId": "get-hyperdrive",
 		"parameters": [
 			{
+				"description": "The Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -796,6 +801,7 @@
 				}
 			},
 			{
+				"description": "The unique identifier of the Hyperdrive configuration.",
 				"in": "path",
 				"name": "hyperdrive_id",
 				"required": true,
@@ -929,13 +935,13 @@
 																		{
 																			"properties": {
 																				"max_age": {
-																					"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+																					"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 																					"example": 60,
 																					"type": "integer",
 																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
-																					"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+																					"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 																					"example": 15,
 																					"type": "integer",
 																					"x-auditable": true
@@ -995,6 +1001,7 @@
 															"type": "object"
 														},
 														"name": {
+															"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 															"example": "example-hyperdrive",
 															"type": "string",
 															"x-auditable": true
@@ -1057,8 +1064,8 @@
 																					"x-auditable": true
 																				},
 																				"port": {
-																					"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-																					"example": "5432",
+																					"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+																					"example": 5432,
 																					"type": "integer",
 																					"x-auditable": true
 																				}
@@ -1307,6 +1314,7 @@
 		"operationId": "patch-hyperdrive",
 		"parameters": [
 			{
+				"description": "The Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -1320,6 +1328,7 @@
 				}
 			},
 			{
+				"description": "The unique identifier of the Hyperdrive configuration.",
 				"in": "path",
 				"name": "hyperdrive_id",
 				"required": true,
@@ -1377,13 +1386,13 @@
 											{
 												"properties": {
 													"max_age": {
-														"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+														"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 														"example": 60,
 														"type": "integer",
 														"x-auditable": true
 													},
 													"stale_while_revalidate": {
-														"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+														"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 														"example": 15,
 														"type": "integer",
 														"x-auditable": true
@@ -1419,6 +1428,7 @@
 								"type": "object"
 							},
 							"name": {
+								"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 								"example": "example-hyperdrive",
 								"type": "string",
 								"x-auditable": true
@@ -1470,8 +1480,8 @@
 														"x-auditable": true
 													},
 													"port": {
-														"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-														"example": "5432",
+														"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+														"example": 5432,
 														"type": "integer",
 														"x-auditable": true
 													}
@@ -1649,13 +1659,13 @@
 																		{
 																			"properties": {
 																				"max_age": {
-																					"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+																					"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 																					"example": 60,
 																					"type": "integer",
 																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
-																					"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+																					"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 																					"example": 15,
 																					"type": "integer",
 																					"x-auditable": true
@@ -1715,6 +1725,7 @@
 															"type": "object"
 														},
 														"name": {
+															"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 															"example": "example-hyperdrive",
 															"type": "string",
 															"x-auditable": true
@@ -1777,8 +1788,8 @@
 																					"x-auditable": true
 																				},
 																				"port": {
-																					"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-																					"example": "5432",
+																					"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+																					"example": 5432,
 																					"type": "integer",
 																					"x-auditable": true
 																				}
@@ -2026,6 +2037,7 @@
 		"operationId": "create-hyperdrive",
 		"parameters": [
 			{
+				"description": "The Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -2083,13 +2095,13 @@
 											{
 												"properties": {
 													"max_age": {
-														"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+														"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 														"example": 60,
 														"type": "integer",
 														"x-auditable": true
 													},
 													"stale_while_revalidate": {
-														"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+														"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 														"example": 15,
 														"type": "integer",
 														"x-auditable": true
@@ -2149,6 +2161,7 @@
 								"type": "object"
 							},
 							"name": {
+								"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 								"example": "example-hyperdrive",
 								"type": "string",
 								"x-auditable": true
@@ -2211,8 +2224,8 @@
 														"x-auditable": true
 													},
 													"port": {
-														"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-														"example": "5432",
+														"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+														"example": 5432,
 														"type": "integer",
 														"x-auditable": true
 													}
@@ -2450,13 +2463,13 @@
 																		{
 																			"properties": {
 																				"max_age": {
-																					"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+																					"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 																					"example": 60,
 																					"type": "integer",
 																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
-																					"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+																					"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 																					"example": 15,
 																					"type": "integer",
 																					"x-auditable": true
@@ -2516,6 +2529,7 @@
 															"type": "object"
 														},
 														"name": {
+															"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 															"example": "example-hyperdrive",
 															"type": "string",
 															"x-auditable": true
@@ -2578,8 +2592,8 @@
 																					"x-auditable": true
 																				},
 																				"port": {
-																					"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-																					"example": "5432",
+																					"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+																					"example": 5432,
 																					"type": "integer",
 																					"x-auditable": true
 																				}
@@ -2827,6 +2841,7 @@
 		"operationId": "update-hyperdrive",
 		"parameters": [
 			{
+				"description": "The Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
@@ -2840,6 +2855,7 @@
 				}
 			},
 			{
+				"description": "The unique identifier of the Hyperdrive configuration.",
 				"in": "path",
 				"name": "hyperdrive_id",
 				"required": true,
@@ -2897,13 +2913,13 @@
 											{
 												"properties": {
 													"max_age": {
-														"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+														"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 														"example": 60,
 														"type": "integer",
 														"x-auditable": true
 													},
 													"stale_while_revalidate": {
-														"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+														"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 														"example": 15,
 														"type": "integer",
 														"x-auditable": true
@@ -2963,6 +2979,7 @@
 								"type": "object"
 							},
 							"name": {
+								"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 								"example": "example-hyperdrive",
 								"type": "string",
 								"x-auditable": true
@@ -3025,8 +3042,8 @@
 														"x-auditable": true
 													},
 													"port": {
-														"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-														"example": "5432",
+														"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+														"example": 5432,
 														"type": "integer",
 														"x-auditable": true
 													}
@@ -3264,13 +3281,13 @@
 																		{
 																			"properties": {
 																				"max_age": {
-																					"description": "Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).",
+																					"description": "Specify the maximum duration (in seconds) items should persist in the cache. Defaults to 60 seconds if not specified.",
 																					"example": 60,
 																					"type": "integer",
 																					"x-auditable": true
 																				},
 																				"stale_while_revalidate": {
-																					"description": "Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).",
+																					"description": "Specify the number of seconds the cache may serve a stale response. Defaults to 15 seconds if not specified.",
 																					"example": 15,
 																					"type": "integer",
 																					"x-auditable": true
@@ -3330,6 +3347,7 @@
 															"type": "object"
 														},
 														"name": {
+															"description": "The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.",
 															"example": "example-hyperdrive",
 															"type": "string",
 															"x-auditable": true
@@ -3392,8 +3410,8 @@
 																					"x-auditable": true
 																				},
 																				"port": {
-																					"description": "Defines the port (default: 5432 for Postgres) of your origin database.",
-																					"example": "5432",
+																					"description": "Defines the port of your origin database. Defaults to 5432 for PostgreSQL or 3306 for MySQL if not specified.",
+																					"example": 5432,
 																					"type": "integer",
 																					"x-auditable": true
 																				}
