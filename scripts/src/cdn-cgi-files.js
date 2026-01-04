@@ -27,21 +27,15 @@ await fs.ensureDir(dir);
 // iterate for error pages between 100 and 1500 - wide range
 const errors = {};
 for (let i = 100; i <= 1500; i++) {
-	const controller = new AbortController();
-	const timeout = setTimeout(() => {
-		controller.abort();
-	}, 1000);
 	let dataReq = null;
 	try {
 		dataReq = await fetch(`https://cloudflare.com/cdn-cgi/error/${i}`, {
 			agent,
-			signal: controller.signal,
+			signal: AbortSignal.timeout(500),
 		});
 	} catch (err) {
 		console.log(`Error fetching error page ${i}: ${err?.code ?? err}`);
 		continue;
-	} finally {
-		clearTimeout(timeout);
 	}
 	const data = await dataReq.text();
 	if (!dataReq.headers.get('content-type')?.includes?.('text/html') || data === '') {

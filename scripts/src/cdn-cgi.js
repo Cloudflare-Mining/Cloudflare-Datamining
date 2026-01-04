@@ -71,11 +71,7 @@ for (const { file, url, info } of buildVersions) {
 	let filePath = path.resolve(dir, file);
 	console.log('Fetching', file);
 	try {
-		const controller = new AbortController();
-		const timeout = setTimeout(() => {
-			controller.abort();
-		}, 30000);
-		const dataReq = await fetch(url, { agent, signal: controller.signal });
+		const dataReq = await fetch(url, { agent, signal: AbortSignal.timeout(15000) });
 		if (dataReq.ok) {
 			const headers = dataReq.headers;
 			// if sliver, append that to the file name
@@ -91,7 +87,6 @@ for (const { file, url, info } of buildVersions) {
 			await fs.ensureFile(filePath);
 			await fs.writeFile(filePath, data);
 		}
-		clearTimeout(timeout);
 	} catch (err) {
 		console.error(err);
 	}
