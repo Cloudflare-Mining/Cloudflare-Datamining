@@ -5,55 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations:</strong></p>
+<p><strong>Available Locations: Austin, Texas, USA</strong></p>
+<p><strong>About the team<br><br></strong>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Product Design Intern to join our team. Your work will impact and influence the user experience of a product used by millions of people daily. As a Product Design Intern on the Product Experience Team, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. If you're a systems-thinking Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li><strong>Austin, TX</strong></li>
-	<li><strong>Lisbon, Portugal</strong></li>
-	<li><strong>London, United Kingdom</strong></li>
+	<li>Demonstrate talent and passion for designing end-to-end experiences</li>
+	<li>Work with a small group to complete a challenging, real-world project</li>
+	<li>Distill complex problems into approachable steps through customer discovery, sketching, prototyping, and sharing ideas with your cross-functional team</li>
+	<li>Receive coaching and mentorship from a Product Experience Designer</li>
+	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps</li>
+	<li>Partner with other designers to collaborate on shared patterns, product vision, and design goals</li>
 </ul>
-<h2><strong>What you'll do</strong></h2>
-<p>We’re looking for a Software Engineer to join our<a href="https://www.cloudflare.com/zero-trust/"> Zero Trust</a> team. You will be working on the<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"> Zero Trust desktop client</a>, which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Zero Trust policies.</p>
-<p>In your role, you will predominantly be using <strong>Rust</strong> alongside platform-native languages &amp; APIs to implement high-performance networking code that runs on multiple desktop platforms. You’ll be expected to <strong>improve the code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of <strong>operating system concepts</strong> (multi-threading, process lifecycle, network adapters, sockets, etc.) and <strong>networking concepts &amp; protocols</strong> (VPNs, firewalls, TCP/IP, UDP, DNS, QUIC, H/3, proxying, etc.). You will also have to interact with other languages, such as Dart, Typescript, and Python.</p>
-<p>As a Software Engineer, you will be expected to be a voracious learner and fast-paced contributor to the design and implementation of major development projects. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</p>
-<h2><strong>Examples of desirable skills, knowledge, and experience</strong></h2>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Excellent programming skills, with experience writing <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation.</li>
-	<li>Experience writing <strong>easily-testable </strong>and<strong> thoroughly-tested code</strong> (e.g. using dependency injection or mocking with the right abstractions)</li>
-	<li>Experience with <strong>systems programming</strong> and familiarity with <strong>core OS concepts</strong> of one or more desktop OSes (macOS, Windows, and Linux)</li>
-	<li>Experience using <strong>lower-level languages</strong>, such as Rust, C, C++</li>
-	<li>Comfortable writing <strong>multithreaded, asynchronous</strong> code</li>
-	<li>Familiarity with <strong>debugging network-related problems</strong>, especially on desktop devices</li>
-	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
+	<li>Currently enrolled in an accredited school program (undergraduate or graduate) or enrolled full time in an equivalent training program, pursuing a degree or certificate in Design, Human-Computer Interaction, or a related technical field</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug)</li>
+	<li>Product design experience, especially designing technical tools for business&nbsp;</li>
+	<li>Ability to quickly grasp technical domains, such as internet security, network services, and translate them into clear, intuitive user experiences</li>
+	<li>Understanding of Design System, Accessibility concerns for SaaS products</li>
+	<li>Experience or strong interest in designing experiences that simplify and communicate complex information</li>
+	<li>Ability to advocate for customer centered design and be the voice of customers</li>
+	<li>Effective written and verbal communication skills</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

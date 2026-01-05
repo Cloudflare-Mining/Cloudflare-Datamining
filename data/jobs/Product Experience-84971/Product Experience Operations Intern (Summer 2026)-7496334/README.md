@@ -5,47 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London, UK</strong></p>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Research Team pursues strategic projects that have a large impact on Cloudflare systems and the Internet at large. Our focus is on solving difficult problems to connect and protect users, applications, and data, while helping to make the Internet more resilient, efficient, and transparent.</p>
-<p>In our quest to help make a better Internet, we frequently find ourselves exploring open problems at the boundaries of knowledge in scalable computing, with a focus on security and&nbsp; privacy, using techniques including AI/ML and performance analysis.&nbsp; We make cutting edge research contributions in-house, as well as in collaboration with academia, Internet standards organizations like the IETF, and more!</p>
-<p>Our team includes experts in many disciplines, including applied cryptography, privacy, network architectures and protocols, measurement, distributed systems, storage optimization, machine learning for systems, and more.&nbsp; We seek interns that augment our existing expertise as well as those who are working in broadly related areas. We have a vast set of potential projects focussed on our current priorities. We also welcome new ideas via concrete proposals that, more than just satisfying curiosity, may help to improve Cloudflare or aspects of the Internet and surrounding technologies touched by Cloudflare. We are, after all, researchers at heart and love learning, too!</p>
-<p>More information about Cloudflare's approach to research can be found <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">here</a>.</p>
+<p><strong>Available Locations: Austin, Texas, USA</strong></p>
+<p><strong>About the team<br><br></strong>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Product Experience (PX) Operations Intern to join our team.<br><br><strong>The role<br><br></strong>We are looking for an inquisitive, curious, and talented PX Operations Intern to join our team. In this role, you won't just be watching from the sidelines - you will be a systems-thinker who helps optimize the way our product design and product content design teams function.&nbsp;Your work will directly influence the efficiency and impact of our user experience. You will act as the "connective tissue" between designers, engineers, and product managers, ensuring that our creative engine runs smoothly as we continue to make the internet better.<strong><br></strong></p>
 <h4><strong>What you'll do</strong></h4>
-<p>Cloudflare's Research Team solves difficult problems in security, privacy, and systems at scale. This involves engineering, data analysis, open source software development, protocol design, implementation of primitives, with lots of measurement alongside.&nbsp;</p>
-<p>Successful candidates will be matched to suitable projects in on-going research directions. We also welcome novel proposals and ideas that can help to inform or build a better Internet (in the form of a max 200 word proposal).</p>
-<p>The Internet is evolving in ways that challenge convention, and many existing assumptions no longer hold. Interns and internship projects are designed to help maintain the integrity of the Internet, its systems, and its applications. Some of the fundamental areas we’re investigating focus on include advanced cryptography, hardware isolation, balancing user privacy against notions of identity, network and internetwork observability in a seemingly fragmented world, even applications of formal methods at scale — and this is just a small view into our <a href="https://research.cloudflare.com/outreach/updates/">work</a>! We’re also acutely aware that AI will impact all layers of a globally distributed system and the wider Internet.</p>
-<p><strong>General Research Intern Requirements</strong></p>
 <ul>
-	<li>Evidence of tackling hard or open-ended problems</li>
-	<li>Proven track record of peer-reviewed research, open-source software contributions, <strong>or</strong> standards development, that is commensurate with level of training --- students at all levels are welcome to apply</li>
-	<li>Experience clearly communicating research ideas through papers, pre-prints, standards documents, blogs, or similar media</li>
-	<li>Ability to work in a systems-level programming language (e.g. Rust, C, Go)&nbsp;</li>
-	<li>Passion for debugging and ensuring system reliability</li>
-	<li>Familiarity with continuous integration workflows and source control systems (e.g., Gitlab, Github)</li>
-	<li>Willing and eager to share knowledge, with the skills to do so</li>
-	<li>Available to intern and work</li>
+	<li>Streamlining workflows and implementing best practices to improve the design team's efficiency</li>
+	<li>Facilitating team rituals, such as stand-ups, critiques, sprint planning, and design reviews, to ensure they are efficient and productive</li>
+	<li>Maintaining project management tool hygiene (e.g., Jira) to keep tasks up-to-date and accurately assigned</li>
+	<li>You will learn project coordination within a defined scope such as project managing and workflow planning with design managers and/or design leads to define project goals, scope, timelines, and deliverables</li>
+	<li>Facilitating team communication through documentation (e.g. Wiki), meetings, dashboards, newsletters, and reports</li>
 </ul>
-<p><strong>Additional Requirements</strong></p>
-<p>Knowledge or experience with at least one of the following:</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Computer networking protocols (TCP/IP, DNS, BGP, QUIC, etc.) and related algorithms</li>
-	<li>Machine learning analysis, ideally in systems or network optimization</li>
-	<li>Authentication protocols, applied cryptography, PKI and SSL/TLS</li>
-	<li>Operating or distributed systems analysis or development</li>
-	<li>Measurement for network and computer systems</li>
-	<li>Proficiency in a scripting language, such as Python</li>
-</ul>
-<p>&nbsp;<strong>Bonus Points:</strong></p>
-<ul>
-	<li>Proven track record of independently driving projects in a fast-paced environment</li>
-	<li>Experience working in groups, or with multiple stakeholders</li>
-	<li>Able to fluently work across multiple programming languages</li>
-</ul>
-<p><strong>Internship Availability and Expectations:</strong></p>
-<ul>
-	<li>Ability to commit to a minimum 12 week summer internship starting in January 2026</li>
-	<li>In office 3-4 days a week in London, UK</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug)</li>
+	<li>Currently pursuing a Bachelor's or Master's degree or enrolled full time in an equivalent training program&nbsp;in a quantitative field, such as Design Management, Data Science, Psychology, Journalism, or Business Management</li>
+	<li>Human-focused, highly-collaborative, critical and strategic thinker</li>
+	<li>Demonstrated skills and experience in helping scaling and improving operational workflows</li>
+	<li>Experience working on programs with fluid requirements and shifting priorities, and able to keep teams focused on results necessary for achieving the latest goals/objectives</li>
+	<li>Effective written and verbal communication skills</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

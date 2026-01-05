@@ -5,37 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp; </strong>Austin, TX. Full-time, in-office.<br><strong>Reports to:</strong> Head of Global Real Estate &amp; Workplace</p>
-<h3><strong>About the Role</strong></h3>
-<p>We are seeking a dynamic and creative <strong>Senior Manager, Global Internal Events</strong> to lead and scale our global internal events program.&nbsp; In this highly visible role, you will shape experiences that creatively engage employees, reinforce our culture, and bring our values to life across all global hubs.</p>
-<p>You thrive in fast-paced environments, balancing operational excellence with creativity. With a hospitality mindset and strong stakeholder management skills, you’ll partner closely with executives, cross-functional teams, and site leads to deliver consistent, memorable, and culturally resonant events that connect employees around the world.&nbsp;</p>
-<p>This position is based in Austin, TX, reporting directly to the Head of Global Real Estate &amp; Workplace. It requires a full-time, in-office presence (Monday through Friday), with occasional evening hours as needed to accommodate event schedules.</p>
-<h3><strong>Responsibilities</strong></h3>
+<p><strong>Available Locations: Austin, TX | Lisbon, Portugal | London, UK</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>Workers Observability (WOBS) Team provides a growing suite of tools to monitor, troubleshoot and optimize applications on the Cloudflare Developer platform. These tools increasingly work across Cloudflare products to provide complete visibility into user applications. We aim to make these tools not only best-in-class but also frictionless and intuitive to use. All this within the context of Cloudflare's scale and globally distributed infrastructure.</p>
+<p>Team members help design and ship core software features across the observability stack - including the frontend customer experience, integrations with other Cloudflare primitives, and our internal data stores and ingestion pipelines. You will own code across the development lifecycle from design to release including QA, incident management, and performance optimization.&nbsp;</p>
+<p>The Systems Engineer role is a full-stack position which requires extensive cross-functional collaboration. On a given day you might incorporate frontend feedback from a customer, run a Clickhouse query to diagnose a data ingestion bug, and propose a better tracing integration with another product on the Workers platform.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li><strong>Global Events Leadership</strong>: Lead the strategy, planning, and execution of global workplace-supported internal events - including hub activations, team onsites, celebrations, employee experiences, and the startup program. Your team also owns the recruiting, management, and support of the Global Site Lead program. As an expert in your field, you bring a deep understanding of cultural and local nuances to ensure events resonate authentically with employees in each region.</li>
-	<li><strong>Team Mentorship &amp; Collaboration</strong>: Manage and mentor the Global Internal Events Manager. Partner with Workplace Operations teams and site leads worldwide to spark creativity, share best practices, and deliver impactful events across hubs.</li>
-	<li><strong>Employee Engagement &amp; ERG Support:</strong> Collaborate with Employee Resource Groups (ERGs) to support planning and execution of key cultural events, with focus on prominent identity- and mission-driven observances.</li>
-	<li><strong>Communications</strong>: Own internal communications for the Places team, ensuring events and initiatives are clearly, consistently, and creatively communicated across multiple formats to maximize visibility, engagement and participation.</li>
-	<li><strong>Scalable Frameworks</strong>: Establish a global event calendar, frameworks, and best practices to ensure consistency and high-quality experiences across global hubs. Build operating models that clearly define roles, responsibilities, and cross-functional workflows for event and onsite planning within Places and across the organization.</li>
-	<li><strong>Budget &amp; Vendor Management</strong>: Own the global events budget, including forecasting, negotiations, and vendor management. Drive creative, cost-effective solutions that maximize impact within constraints.</li>
-	<li><strong>Innovation &amp; Design</strong>: Experiment with new event formats and scalable models that can be customized regionally while maintaining brand consistency.</li>
-	<li><strong>Cross-Functional Partnerships:</strong> Build strong relationships with Physical Security, People, Communications, IT, EBC, Executive Admins, and Site Leads to ensure seamless delivery.</li>
-	<li><strong>Measurement &amp; Reporting:</strong> Track, measure, and report on event effectiveness&nbsp; - capturing engagement, outcomes, and ROI to inform strategy and scale successes globally. Lead post-event retrospectives and QBRs, using feedback to recommend improvements and refine future programs.</li>
-	<li><strong>Culture &amp; Hospitality:</strong> Ensure events reflect Cloudflare’s culture and values while creating inclusive, welcoming, and inspiring experiences. Stay ahead of industry trends to raise the bar for internal events.</li>
+	<li><strong>Customer Focus:</strong> Be responsive to customer escalations, bug reports, and product feedback, and participate in pager duty for our production systems.</li>
+	<li><strong>Software Development:</strong> Efficiently and reliably deliver high-quality software that meets the performance requirements of Cloudflare’s systems.</li>
+	<li><strong>Troubleshooting:</strong> Address complex and subtle issues on our platform, which may require debugging across multiple systems, languages, and datastores.</li>
+	<li><strong>Communication:</strong> Maintain clear written communication across a range of platforms as part of a globally distributed team (from US West Coast to UK) and across a range of different engineering and support teams.</li>
 </ul>
-<h3><strong>Requirements</strong></h3>
+<p><strong>Expertise: Success in this role will depend on becoming an expert not just on the observability platform, but on the Cloudflare Developer Platform as a whole.&nbsp;<br></strong></p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>10+ years of experience in event management, including 5+ years leading global internal events or employee experience programs.</li>
-	<li>Proven track record managing creative, large-scale event portfolios across multiple geographies.</li>
-	<li>Strong leadership skills, with experience managing and developing a high-performing team as well as external vendors.</li>
-	<li>Excellent organizational skills with the ability to manage multiple projects simultaneously in a fast-paced environment.</li>
-	<li>Exceptional communication and stakeholder management skills, including working with executives.</li>
-	<li>Expertise in budget management and vendor negotiation.</li>
-	<li>Creative mindset with an eye for detail, hospitality, and cultural alignment.</li>
-	<li>Thrives in an in-office, collaborative environment.</li>
-	<li>Ability to travel globally as needed.<br><br></li>
+	<li>Strong proficiency in at least one programming language, preferably a typed language (e.g. Go, TypeScript, Rust) as well as SQL</li>
+	<li>Experience building high-volume distributed systems using cloud primitives (AWS, GCP, CF), including queues, key-value stores, relational databases, blob storage, and serverless compute</li>
+	<li>Experience troubleshooting distributed data systems including working with logs and data stores.&nbsp;</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Nice-to-Have Skills</strong></p>
+<p>The following are nice-to-haves:</p>
+<ul>
+	<li>Working with lower level languages like Rust or C++</li>
+	<li>Building frontend application in Typescript and React</li>
+	<li>Building applications on the Cloudflare platform</li>
+	<li>Working with observability platforms and tools</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
