@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-09-10T05:27:25.071Z",
-					"updatedAt": "2025-12-22T19:24:01.273Z"
+					"updatedAt": "2026-01-05T15:45:05.096Z"
 				},
 				"contentfulId": "3pGNm2rdVbCUlh6HY33k8S",
 				"contentTypeId": "page",
@@ -831,6 +831,218 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "2qjRpRl5OOw7Rov9R9XuKG",
+						"bladeName": "AI Gateway FAQs",
+						"title": "AI Gateway FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3CyKHX2vbJgjUjBOok5pNa",
+								"title": "What is Cloudflare AI Gateway?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "AI Gateway provides centralized visibility and control for AI applications. It acts as a proxy between your application and AI providers to help you monitor usage, control costs, and reduce risks. AI Gateway offers logs, metrics, rate limiting, caching, and monitoring for AI applications.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "kNUwJKrTYK9BAgcIZCEee",
+								"title": "What are the main benefits of using AI Gateway?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "AI Gateway helps with controlling costs for all your AI applications, gaining easy-to-use analytics for troubleshooting, and unifying management across the most popular AI providers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2gxPeOCl4TPLpPieLDFX33",
+								"title": "Which AI providers are supported by AI Gateway?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "AI Gateway supports most popular providers, including Hugging Face, OpenAI, Perplexity, Anthropic, Replicate, Groq, and Cloudflare's own Workers AI.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5Ul5VR5TmJQYb4knbiRfIo",
+								"title": "How does AI Gateway help control costs?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "AI Gateway helps AI app developers control costs by providing usage statistics, allowing them to implement rate limiting to prevent excessive usage, and using caching to reduce latency and more efficiently serve redundant requests.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6RY6DqqiYmpH2fSm6Wakqk",
+								"title": "What can I monitor with AI Gateway?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "You can gain visibility into prompts, AI API requests, errors, token usage, and costs. Logs are also available for auditing and troubleshooting.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6EdQMlTupA3rR4g1tUfraP",
+								"title": "How does AI Gateway improve the reliability of AI applications?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "AI Gateway makes it easy for AI application developers to improve the resilience of their applications by defining request retry and model fallbacks in case of an error. AI Gateway can serve requests directly from Cloudflare's cache instead of the model providers, helping the application to more efficiently serve users at scale. And rate limiting can throttle excessive requests to prevent denial of service to legitimate users.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
