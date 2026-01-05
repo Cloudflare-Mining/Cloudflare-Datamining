@@ -5,35 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru, India</span></strong></p>
-<p><strong>Responsibilities</strong>:</p>
-<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
-<p>This position will be responsible for :&nbsp;</p>
+<p><strong>Available Location: Kuala Lumpur, Malaysia</strong></p>
+<p><strong>About the team</strong></p>
+<p>As a Customer Solutions Engineer (CSE), you will be the trusted technical advisor throughout a customer’s lifecycle. You are a product expert and will leverage your knowledge to ensure our Enterprise customers understand and utilise the Cloudflare platform to its fullest extent. Your goal is to help customers be successful and derive the most value possible from their Cloudflare investment.</p>
+<p>As a CSE, you strive to understand customer requirements and issues at the molecular level. No matter your background, you have natural curiosity and desire to identify root causes of strange problems and the most elegant and efficient solutions. Fundamentally, you are enamoured with how the internet works.&nbsp;</p>
+<p>You will work closely with the Customer Success Manager (CSM) as well as every other team at Cloudflare, from Sales and Product to Engineering and Customer Support. Customer success will drive you through the entire organization as you seek out and implement scalable solutions for your customer’s needs.</p>
+<p><strong>Responsibilities</strong></p>
+<p>As a critical member of the Account Team you will serve as a trusted technical advisor, help expand existing business, and ensure the success of our customers:</p>
 <ul>
-	<li>Technical operation and engineering of the Cloudflare network, including the provisioning and management of the network hardware and software,</li>
-	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams,</li>
-	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base,</li>
-	<li>Interacting with our network peers to assist with their inquiries, and subsequently provide meaningful data on performance degradation.</li>
+	<li>You will be part of a regional team and will work closely with CSMs supporting the regional book of business</li>
+	<li>From a technical perspective, as part of the account team, your primary responsibilities will be to deliver a timely and organised onboarding for customers, ensure customers see the full value in Cloudflare's products, and advise on technical best practices</li>
+	<li>Ensure customer retention and expansion through relationship building and participation in periodic account reviews to contribute your expertise on technical topics</li>
+	<li>Provide customers with clear proactive technical guidance and expertise across all our products</li>
+	<li>Collaborate with Customer Support, Engineering, and other teams to assist with technical escalations</li>
+	<li>Proactively identify opportunities for expansion for existing customers</li>
+	<li>Promote retention by capturing and communicating gaps in product or features</li>
+	<li>Contribute towards the success of the CSE organization through knowledge-sharing activities such as contributing to internal and external documentation, answering technical Q&amp;A, and helping iterate on best practices</li>
+	<li>The role requires 20-50% travel to attend meetings with customers, attend conferences, and other industry events, and to collaborate with your Cloudflare teammates.</li>
 </ul>
-<p><strong>Requirements</strong>:</p>
+<p><strong>Experiences might include a combination of the skills below:</strong></p>
 <ul>
-	<li>Capable of learning new technologies / systems / features under guidance of mentors,</li>
-	<li>Proficient in multiple network vendor operating systems , Associate level network certification(s) (JNCIA , CCNA , etc) or higher,</li>
-	<li>Understanding of BGP, Knowledge of the OSI-model and experience isolating network, hardware and software issues,</li>
-	<li>Experience writing scripts in Bash, Python, or other scripting language,</li>
-	<li>Experience in working as part of a team in a customer-facing role,</li>
-	<li>Ability to prioritise when faced with high pressure scenarios.</li>
+	<li style="font-weight: bold;">Fluency in English and Mandarin is required. Proficiency in Cantonese is considered an advantage.</li>
+	<li>5+ years of prior post-sales customer relationship management</li>
+	<li>Deep understanding of how the internet works and the desire to expand that knowledge. For example:</li>
+	<ul>
+		<li>Layers and protocols of the OSI model, such as TCP/IP, TLS, DNS, HTTP</li>
+		<li>Reverse and forward proxies and the applications of both</li>
+		<li>Security aspects of an internet property, such as Firewalls, WAFs, Bot Management, Rate Limiting, (M)TLS, Zero Trust</li>
+		<li>Performance aspects of an internet property, such as Speed, Latency, Caching, Video Streaming, HTTP/2, TLSv1.3</li>
+		<li>Enjoying the adventure of troubleshooting and solving technical problems</li>
+		<li>Understanding why Cloudflare plays an increasingly important role on today’s internet</li>
+	</ul>
+	<li>Ability to proactively identify and solve problems then build sustainable solutions to prevent recurrence</li>
+	<li>Demonstrated experience with a scripting language (e.g. Python, JavaScript, Bash) and a desire to expand those skills</li>
+	<li>Technical curiosity and passion: Cloudflare is at the cutting edge of internet technology, and our CSEs are viewed as subject-matter experts. It’s incumbent on us to stay up to date not only with Cloudflare’s specific products, but with industry trends.</li>
+	<li>Ability to manage a project, work to deadlines, and prioritise between competing demands</li>
 </ul>
-<p><strong>Bonus Points but not required:</strong></p>
+<p><strong>Bonus!</strong></p>
 <ul>
-	<li>Understanding of anycast routing,</li>
-	<li>Good working knowledge of&nbsp; Junos, IOS-XR,NX-OS, EOS and SONIC,</li>
-	<li>Experience writing network configuration and design documentation,</li>
-	<li>Experience solving problems through automation,</li>
-	<li>Experience with optical transport technologies such as CWDM/DWDM,</li>
-	<li>Linux system administration,</li>
-	<li>Multilingual.</li>
+	<li>Understanding of, or experience with, regulatory requirements such a PCI DSS, HIPAA, and SOC-2</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
