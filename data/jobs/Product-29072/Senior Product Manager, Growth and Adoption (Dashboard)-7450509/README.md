@@ -6,35 +6,35 @@
 	</div>
 </div>
 <p><strong>Available Locations: Atlanta, US, Austin, US, Denver, US, New York, US, Seattle, US, Toronto, Canada, Washington DC, US, Lisbon, Portugal, London, UK</strong></p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare’s Dashboard plays a central role in helping Cloudflare reach $5 billion revenue in the next few years and to accelerate our mission of helping to build a better Internet. As the product manager leading the Cloudflare Dashboard, you will be a technical leader that pushes the boundaries of growth, prototyping, and customer experience in order to measure and grow the engagement of customers and prospects with our products and with Cloudflare itself.&nbsp;</p>
-<p>Problems you may face:&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare’s dashboard is the gateway to our mission of building a better Internet. As the Senior Product Manager for Growth and Adoption, you will lead the charge in defining the "Aha" moment for every user—from individual developers to Fortune 500 enterprises. Your goal is to move users from "idea" to "deployed product" in a single, seamless workflow.</p>
+<p>This is an AI-first role where you are expected to do the majority of your work—prototyping, bug fixing, and building—leveraging AI coding agents to achieve maximum velocity. You will focus on the end-to-end user experience (UX) and optimize for high-velocity learning with the goal of showing users the magic of Cloudflare ASAP to drive long-term retention.</p>
+<p>This role sits on the platform product team.</p>
+<h3><strong>Problems you may face:</strong></h3>
 <ul>
-	<li>What’s the best way to set up our customers for success and show them the magic of Cloudflare when there are dozens of jobs-to-be-done and use cases? How do we do that while elevating the craft and customer experience for everyone at the same time?</li>
+	<li>The "Aha" Moment: How do we shorten the path from sign-up to a user’s first successful deployment across dozens of complex use cases?</li>
+	<li>Natural Language UX: To what extent do we transition the dashboard from a traditional UI to a natural language interface where users can manage their entire infrastructure via a chatbot? And how do we do that?</li>
+	<li>AI-Driven Velocity: How do you use AI agents to prototype and ship experiments faster than traditional development cycles while maintaining the "elegance of implementation" and high craft standards?</li>
 	<li>How can the dashboard provide individual product teams at Cloudflare with a powerful canvas to deliver world-class experiences? Can we maintain a tech stack and common design language that empowers teams to build great experiences rather than constrain them?</li>
-	<li>Can we simultaneously educate customers about our products, convince them to pay, then onboard and upsell them to new offerings, as well as encourage them to onboard their colleagues and friends?&nbsp;</li>
-	<li>Can we manage adjacent cost drivers like customer support and outbound sales? Can we be confident that moving the needle on these fronts is doing more good than harm?</li>
+	<li>Human Connection: As you automate tedious tasks with AI, how will you use that saved time to connect deeper with our customers on Discord, X, and in person to understand their evolving challenges?</li>
 </ul>
-<p>As the Senior Product Manager, Dashboard, you’ll partner with a committed set of engineering, design, and go-to-market teams as well as product teams from around the company to meet these challenges. At the same time, you’ll be expected to contribute to a high performance culture and citizenship at Cloudflare - sharing your knowledge and energy to accelerate the organization.&nbsp;</p>
-<h4><strong>Key Competencies</strong></h4>
-<p>We want to find someone who is curious, can learn quickly, think creatively, and work cross-functionally with engineering, design and other teams. A few key responsibilities:</p>
+<h3><strong>Key Competencies:</strong></h3>
 <ul>
-	<li>First-class execution and impact: Gets things done and has a track-record of driving excellence and impact.&nbsp;</li>
-	<li>A/B experimentation and prototyping: High velocity tests and prototyping to maximize learnings. Comfortable with to prototype, ship, and measure progress continuously.&nbsp;</li>
-	<li>Product sense and strategy: Have world-class UX sense and a high bar for craft. Define and communicate the vision and strategic direction for the Cloudflare Dashboard, prioritizing investment in specific, high-leverage platform capabilities</li>
+	<li>AI-first + world-class execution: You start every task with AI tools. You are comfortable feeding error logs into agents, building your own internal tools, and acting as a "serious reviewer" for AI-generated code and content.</li>
+	<li>A/B experimentation &amp; high-velocity learnings: You thrive on A/B testing and rapid prototyping. You use data-informed decisions to iterate on onboarding flows, constantly measuring impact on customer retention and adoption metrics.</li>
+	<li>UX mastery: You prioritize <em>how it works</em> over <em>how it looks</em>. You are committed to ending "shipping the org chart" and instead building workflows centered on user intent.</li>
+	<li>Technical taste &amp; discretion: You understand that while AI can build quickly, you ensure every feature shipped is elegant and actually solves a customer problem. Have world-class UX sense and a high bar for craft. Define and communicate the vision and strategic direction for the Cloudflare customer experience.</li>
 	<li>Roadmap prioritization: Develop and maintain a product roadmap that balances short-term dashboard improvements with projects that contribute to the long-term strategic vision</li>
-	<li>Data-informed decisions: Run thoughtful experiments, create dashboards to analyze user behavior and experiment results, and collaborate with the business intelligence team to analyze backend metrics impacted by new dashboard features</li>
-	<li>Voice of the customer: Conduct qualitative user research through customer calls and surveys to understand the needs, workflows, and challenges of different Cloudflare Dashboard users. Additionally, gather feedback internally from various channels and customer-facing teams to develop insights on customer challenges and new product requirements</li>
 	<li>Cross-functional partnership: Collaborate with engineering, product design, and context experience design to draft and review product requirement documents, design specs, and engineering specs. Also, partner with marketing, sales, customer support, business intelligence, and other cross-functional teams to ensure successful product launches, user adoption, and experiment analysis</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
+<h3>Bonus Points:</h3>
 <ul>
-	<li>Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</li>
-	<li>Data-fluency - there is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
+	<li>Coding Proficiency: You are comfortable using coding agents (like OpenCode) to build functional prototypes or fix bugs yourself, rather than just documenting them in tickets.</li>
+	<li>Data Fluency: You can build your own dashboards and run your own SQL; you don't wait for an analyst to tell you if an experiment was successful.</li>
+	<li>Codex Contributor: Experience or interest in contributing to an Engineering Codex that defines the best practices used to train our internal coding agents</li>
+	<li>UX chops: Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</li>
+	<li>Data-fluency: There is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may vary based on location and level. This role is eligible to participate in Cloudflare's equity (RSU) program.&nbsp;</p>

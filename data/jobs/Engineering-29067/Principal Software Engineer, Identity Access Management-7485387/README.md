@@ -5,34 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Position :- Bengaluru</strong></p>
-<p><strong>About The Role</strong></p>
-<p>A Security Operations Center (SOC) is typically something that a company will have to understand their systems' security risks and alert when any issues arise. We want to enable SOC teams to leverage Cloudflare data, logging, and events directly in Cloudflare's dashboard. This means we want to add new functionality to understand and react to any threats. This role is all about dealing with large amounts of data and helping customers understand it very quickly, as well as notifying customers about important happenings on that data.&nbsp;</p>
-<p>You will be working on systems that span multiple disciplines from databases to queues to search. We'll be not only processing data as it streams through but also allowing customers to search recent records, take actions inline, and document their entire process. As one of the founding engineers on the team you'll have a large influence on the architecture and will help decide the features and functionality of the product.</p>
-<p>Cloudflare is a system spanning the globe, on a mission to make the Internet better, safer, and more powerful every day. As a Software Engineer at Cloudflare, you’ll work on the code that runs close to the end user, runs at a massive scale, and is deployed to<a href="https://www.cloudflare.com/network/"> 330+ cities</a> around the world.</p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
-<p>If you think some of the below list describes you (or what you aspire to be) we would love to talk to you. Also please note that while not listed as a requirement, we want to call out that this role will need the flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<p><strong>Available Locations:</strong> Hybrid - Austin&nbsp;</p>
+<h4><strong>About the Department</strong></h4>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles large volumes of HTTP requests on the Internet today. We also build and run the internal tools that power our software. Within this organization, the <strong>Identity and Access Management (IAM)</strong> team is the foundation of our Control Plane. We are responsible for the security, scalability, and reliability of how every customer and internal service interacts with the Cloudflare ecosystem.</p>
+<h4><strong>What You'll Do</strong></h4>
+<p>As a Principal Engineer, you will be the technical north star for our IAM and Control Plane strategy. Your role transcends individual features; you will be responsible for the long-term health and architectural evolution of our identity systems.</p>
 <ul>
-	<li>First and foremost curiosity and critical thinking</li>
-	<li>6+ years of experience</li>
-	<li>Experience (and love for) debugging to ensure the system works in all cases</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
-	<li>Designing and building APIs</li>
-	<li>Understanding of what it takes to build secure systems</li>
-	<li>Confidence to work in multiple programming languages - bonus points for Go and/or Rust</li>
+	<li><strong>Architectural Leadership:</strong> Lead the design and evolution of high-throughput, low-latency IAM systems that power both customer-facing and internal service APIs.</li>
+	<li><strong>Technical Strategy:</strong> Define the roadmap for migrating or scaling our legacy authentication and authorization systems into modern, distributed architectures.</li>
+	<li><strong>Cross-Functional Influence:</strong> Work closely with Product, Security, and UX teams to translate complex business requirements into robust, secure technical specifications.</li>
+	<li><strong>Mentorship &amp; Excellence:</strong> Set the standard for engineering excellence through deep code reviews, technical design documents, and mentoring senior engineers.</li>
+	<li><strong>Operational Stewardship:</strong> Oversee the reliability of a platform under constant load, ensuring observability and resilience are baked into the core of the system.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>Some team-specific things we think are interesting and want to highlight.</p>
+<h4><strong>Required Experience (Must-Have Skills)</strong></h4>
 <ul>
-	<li>Understanding systems at the network protocol level, including the differences between what the specs say, and what actually happens on the Internet</li>
-	<li>Strong systems level programming skills</li>
-	<li>Optimization of complex solutions</li>
-	<li>Experience with databases (we use PostgreSQL and Clickhouse)</li>
-	<li>Understanding what it takes to build and maintain distributed systems</li>
-	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
-	<li>Fluent in analyses of data sets such as logs</li>
-	<li>Understanding of security and fraud detection systems</li>
+	<li><strong>Extensive Experience:</strong> 10+ years of professional experience building and managing software applications at a massive scale (with at least 5 years at a Senior or Staff level).</li>
+	<li><strong>Identity Domain Expertise:</strong> Deep understanding of IAM protocols (OAuth2, OIDC, SAML), RBAC/ABAC models, and the security implications of session management at the edge.</li>
+	<li><strong>Distributed Systems Mastery:</strong> Proven track record in designing, architecting, and debugging large-scale distributed systems that handle global traffic.</li>
+	<li><strong>Language Proficiency:</strong> Deep knowledge of <strong>Go</strong> (our primary backend language), though expertise in TypeScript, Rust, C++, or similar is highly valued.</li>
+	<li><strong>Database &amp; Storage:</strong> Expert-level knowledge of relational databases (PostgreSQL) and distributed caching/storage strategies.</li>
+	<li><strong>API Stewardship:</strong> Significant experience designing and versioning public-facing APIs that are used by millions of developers.</li>
 </ul>
+<h4><strong>Desirable Skills &amp; Experience</strong></h4>
+<ul>
+	<li><strong>Cloudflare Ecosystem:</strong> Experience building on <strong>Cloudflare Workers</strong> or similar serverless/edge computing environments.</li>
+	<li><strong>Observability Advocate:</strong> A passion for building "observable" systems using Prometheus, Grafana, and Kibana to proactively identify failures.</li>
+	<li><strong>Infrastructure as Code:</strong> Experience with modern containerized deployment (Docker &amp; Kubernetes), <strong>Terraform</strong>, and infrastructure automation.</li>
+	<li><strong>Security Mindset:</strong> A background in security engineering or formal verification of protocol implementations.</li>
+	<li><strong>Strategic Delivery:</strong> A history of leading multi-quarter projects from conception to global rollout in partnership with product owners.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
