@@ -1,5 +1,12 @@
 # Change Log
 
+## 11.0.33
+
+### Patch Changes
+
+- Updated dependencies [cc0e804d69]
+  - @cloudflare/component-link@10.0.0
+
 ## 11.0.32
 
 ## 11.0.31

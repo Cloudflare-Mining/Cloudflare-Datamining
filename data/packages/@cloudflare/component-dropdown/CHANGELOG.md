@@ -1,5 +1,16 @@
 # Change Log
 
+## 8.0.0
+
+### Major Changes
+
+- cc0e804d69: Use util-cl1-compat-router to decouple from react-router versions
+
+### Patch Changes
+
+- Updated dependencies [cc0e804d69]
+  - @cloudflare/component-link@10.0.0
+
 ## 7.0.30
 
 ### Patch Changes
