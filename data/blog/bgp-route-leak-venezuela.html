@@ -1,0 +1,111 @@
+<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48fD5tAcyQGJAbXwvROL56/67da925888bdc42ead10d2af9a620652/BLOG-3107_1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>As news unfolds surrounding the U.S. capture and arrest of Venezuelan leader Nicolás Maduro, a <a href="https://loworbitsecurity.com/radar/radar16/?cf_target_id=8EBD08FC8E3F122A23413E8273CF4AF3"><u>cybersecurity newsletter</u></a> examined <a href="https://radar.cloudflare.com"><u>Cloudflare Radar</u></a> data and took note of a routing leak in Venezuela on January 2.</p>
+	<p>We dug into the data. Since the beginning of December there have been eleven route leak events, impacting multiple prefixes, where AS8048 is the leaker. Although it is impossible to determine definitively what happened on the day of the event, this pattern of route leaks suggests that the CANTV (AS8048) network, a popular Internet Service Provider (ISP) in Venezuela, has insufficient routing export and import policies. In other words, the BGP anomalies observed by the researcher could be tied to poor technical practices by the ISP rather than malfeasance.</p>
+	<p>In this post, we’ll briefly discuss Border Gateway Protocol (BGP) and BGP route leaks, and then dig into the anomaly observed and what may have happened to cause it.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="background-bgp-route-leaks">Background: BGP route leaks</h3>
+		<a href="https://blog.cloudflare.com/#background-bgp-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>First, let’s revisit what a <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar"><u>BGP route leak</u></a> is. BGP route leaks cause behavior similar to taking the wrong exit off of a highway. While you may still make it to your destination, the path may be slower and come with delays you wouldn’t otherwise have traveling on a more direct route.</p>
+	<p>Route leaks were given a formal definition in <a href="https://datatracker.ietf.org/doc/html/rfc7908"><u>RFC7908</u></a> as “the propagation of routing announcement(s) beyond their intended scope.” Intended scope is defined using <a href="https://en.wikipedia.org/wiki/Pairwise"><u>pairwise</u></a> business relationships between networks. The relationships between networks, which in BGP we represent using <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)"><u>Autonomous Systems (ASes)</u></a>, can be one of the following:&nbsp;</p>
+	<ul>
+		<li>
+			<p>customer-provider: A customer pays a provider network to connect them and their own downstream customers to the rest of the Internet</p>
+		</li>
+		<li>
+			<p>peer-peer: Two networks decide to exchange traffic between one another, to each others’ customers, settlement-free (without payment)</p>
+		</li>
+	</ul>
+	<p>In a customer-provider relationship, the provider will announce <i>all routes to the customer</i>. The customer, on the other hand, will advertise <i>only the routes</i> from their own customers and originating from their network directly.</p>
+	<p>In a peer-peer relationship, each peer will advertise to one another <i>only their own routes and the routes of their downstream customers</i>.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16jXNbH5R5Q4evGm4oRY5p/08d0474000111923f37a7e53b809b5c2/BLOG-3107_2.png" alt="BLOG-3107 2" class="kg-image" width="1653" height="738" loading="lazy">
+	</figure>
+	<p>These advertisements help direct traffic in expected ways: from customers upstream to provider networks, potentially across a single peering link, and then potentially back down to customers on the far end of the path from their providers.&nbsp;</p>
+	<p>A valid path would look like the following that abides by the <a href="https://ieeexplore.ieee.org/document/6363987"><u>valley-free routing</u></a> rule:&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qKtxTWTrGcpMm8u3nAjYT/dd19181418076c0e12b6035154639e75/BLOG-3107_3.png" alt="BLOG-3107 3" class="kg-image" width="1540" height="636" loading="lazy">
+	</figure>
+	<p>A <b>route leak</b> is a violation of valley-free routing where an AS takes routes from a provider or peer and redistributes them to another provider or peer. For example, a BGP path should never go through a “valley” where traffic goes up to a provider, and back down to a customer, and then up to a provider again. There are different types of route leaks defined in RFC7908, but a simple one is the Type 1: Hairpin route leak between two provider networks by a customer.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XdHugzuQAVhucuninsUfB/43912258386debc0500e3ceb7c8abab2/BLOG-3107_4.png" alt="BLOG-3107 4" class="kg-image" width="1548" height="706" loading="lazy">
+	</figure>
+	<p>In the figure above, AS64505 takes routes from one of its providers and redistributes them to their other provider. This is unexpected, since we know providers should not use their customer as an intermediate IP transit network. AS64505 would become overwhelmed with traffic, as a smaller network with a smaller set of backbone and network links than its providers. This can become very impactful quickly.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="route-leak-by-as8048-cantv">Route leak by AS8048 (CANTV)</h3>
+		<a href="https://blog.cloudflare.com/#route-leak-by-as8048-cantv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Now that we have reminded ourselves what a route leak is in BGP, let’s examine what was hypothesized&nbsp; in <a href="https://loworbitsecurity.com/radar/radar16/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A106%2C%22targetId%22%3A%2251107FD345D9B86C319316904C23F966%22%7D"><u>the newsletter post</u></a>. The post called attention to a <a href="https://radar.cloudflare.com/routing/as8048#bgp-route-leaks"><u>few route leak anomalies</u></a> on Cloudflare Radar involving AS8048. On the <a href="https://radar.cloudflare.com/routing/anomalies/leak-462460"><u>Radar page</u></a> for this leak, we see this information:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7d1gGdOtSEvPxciyfNswhw/619965acdc1a7a4d3eafbd99b0ccb9f3/BLOG-3107_5.png" alt="BLOG-3107 5" class="kg-image" width="1360" height="726" loading="lazy">
+	</figure>
+	<p>We see the leaker AS, which is AS8048 — CANTV, Venezuela’s state-run telephone and Internet Service Provider. We observe that routes were taken from one of their providers AS6762 (Sparkle, an Italian telecom company) and then redistributed to AS52320 (V.tal GlobeNet, a Colombian network service provider). This is definitely a route leak.&nbsp;</p>
+	<p>The newsletter suggests “BGP shenanigans” and posits that such a leak could be exploited to collect intelligence useful to government entities.&nbsp;</p>
+	<p>While we can’t say with certainty what caused this route leak, our data suggests that its likely cause was more mundane. That’s in part because BGP route leaks happen all of the time, and they have always been part of the Internet — most often for reasons that aren’t malicious.</p>
+	<p>To understand more, let’s look closer at the impacted prefixes and networks. The prefixes involved in the leak were all originated by AS21980 (Dayco Telecom, a Venezuelan company):</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42cmmWdskKqGw7bByd3tGs/c3841ffa205b241798593b91194d25b1/BLOG-3107_6.png" alt="BLOG-3107 6" class="kg-image" width="1028" height="312" loading="lazy">
+	</figure>
+	<p>The prefixes are also all members of the same 200.74.224.0/20 <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-subnet"><u>subnet</u></a>, as noted by the newsletter author. Much more intriguing than this, though, is the relationship between the originating network AS21980 and the leaking network AS8048: AS8048 is a <i>provider</i> of AS21980.&nbsp;</p>
+	<p>The customer-provider relationship between AS8048 and AS21980 is visible in both <a href="https://radar.cloudflare.com/routing/as21980#connectivity"><u>Cloudflare Radar</u></a> and <a href="https://bgp.tools/as/21980#upstreams"><u>bgp.tools</u></a> AS relationship interference data. We can also get a confidence score of the AS relationship using the monocle tool from <a href="https://bgpkit.com"><u>BGPKIT</u></a>, as you see here:&nbsp;</p>
+	<p><code>➜&nbsp; ~ monocle as2rel 8048 21980
+			Explanation:
+			- connected: % of 1813 peers that see this AS relationship
+			- peer: % where the relationship is peer-to-peer
+			- as1_upstream: % where ASN1 is the upstream (provider)
+			- as2_upstream: % where ASN2 is the upstream (provider)</code></p>
+	<p><code>Data source: https://data.bgpkit.com/as2rel/as2rel-latest.json.bz2</code></p>
+	<p><code>╭──────┬───────┬───────────┬──────┬──────────────┬──────────────╮
+			│&nbsp;asn1 │ asn2&nbsp; │ connected&nbsp;│ peer │ as1_upstream&nbsp;│&nbsp;as2_upstream │
+			├──────┼───────┼───────────┼──────┼──────────────┼──────────────┤
+			│ 8048 │ 21980 │ 9.9% &nbsp; │ 0.6%&nbsp;│ 9.4%&nbsp; &nbsp; │ 0.0% &nbsp; &nbsp; &nbsp; &nbsp; │
+			╰──────┴───────┴───────────┴──────┴──────────────┴──────────────╯</code></p>
+	<p>While only 9.9% of route collectors see these two ASes as adjacent, almost all of the paths containing them reflect AS8048 as an upstream provider for AS21980, meaning confidence is high in the provider-customer relationship between the two.</p>
+	<p>Many of the leaked routes were also heavily prepended with AS8048, meaning it would have been <a href="https://blog.cloudflare.com/prepends-considered-harmful"><u>potentially</u></a> <i>less</i> attractive for routing when received by other networks. <b>Prepending</b> is the padding of an AS more than one time in an outbound advertisement by a customer or peer, to attempt to switch traffic away from a particular circuit to another. For example, many of the paths during the leak by AS8048 looked like this: “52320,8048,8048,8048,8048,8048,8048,8048,8048,8048,23520,1299,269832,21980”.&nbsp;</p>
+	<p>You can see that AS8048 has sent their AS multiple times in an advertisement to AS52320, because by means of BGP loop prevention the path would never actually travel in and out of AS8048 multiple times in a row. A non-prepended path would look like this: “52320,8048,23520,1299,269832,21980”.&nbsp;</p>
+	<p>If AS8048 was intentionally trying to become a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack"><u>man-in-the-middle (MITM)</u></a> for traffic, why would they make the BGP advertisement less attractive instead of <i>more </i>attractive? Also, why leak prefixes to try and MITM traffic when you’re <i>already</i> a provider for the downstream AS anyway? That wouldn’t make much sense.&nbsp;</p>
+	<p>The leaks from AS8048 also surfaced in multiple separate announcements, each around an hour apart on January 2, 2026 between 15:30 and 17:45 UTC, suggesting they may have been having network issues that surfaced in a routing policy issue or a convergence-based mishap.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LrT6YC3j7V9p6ab0OYEmA/cebeba76857f7976d8dd4912371c1c43/BLOG-3107_7.png" alt="BLOG-3107 7" class="kg-image" width="1999" height="271" loading="lazy">
+	</figure>
+	<p>It is also noteworthy that these leak events begin over twelve hours prior to the <a href="https://www.nytimes.com/2026/01/03/world/americas/venezuela-maduro-capture-trump.html"><u>U.S. military strikes in Venezuela</u></a>. Leaks that impact South American networks <a href="https://radar.cloudflare.com/routing/br#routing-anomalies"><u>are common</u></a>, and we have no reason to believe, based on timing or the other factors I have discussed, that the leak is related to the capture of Maduro several hours later.</p>
+	<p>In fact, looking back the past two months, we can see plenty of leaks by AS8048 that are just like this one, meaning this is not a new BGP anomaly:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Md8BdHtP1GIDkyNT8PTbD/3915068dc6f47046665410b665e29853/BLOG-3107_8.png" alt="BLOG-3107 8" class="kg-image" width="1802" height="924" loading="lazy">
+	</figure>
+	<p>You can see above in the history of Cloudflare Radar’s route leak alerting pipeline that AS8048 is no stranger to Type 1 hairpin route leaks. Since the beginning of December alone there have been <b>eleven route leak events</b> where AS8048 is the leaker.</p>
+	<p>From this we can draw a more innocent possible explanation about the route leak: AS8048 may have configured too loose of export policies facing at least one of their providers, AS52320. And because of that, redistributed routes belong to their customer even when the direct customer BGP routes were missing. If their export policy toward AS52320 only matched on <a href="https://blog.cloudflare.com/monitoring-as-sets-and-why-they-matter"><u>IRR-generated</u></a> prefix list and not a <i>customer</i> BGP <a href="https://datatracker.ietf.org/doc/html/rfc1997"><u>community</u></a> tag, for example, it would make sense why an indirect path toward AS6762 was leaked back upstream by AS8048.&nbsp;</p>
+	<p>These types of policy errors are something <a href="https://datatracker.ietf.org/doc/rfc9234"><u>RFC9234</u></a> and the Only-to-Customer (OTC) attribute would help with considerably, by coupling BGP more tightly to customer-provider and peer-peer roles, when supported <a href="https://blog.apnic.net/2025/09/05/preventing-route-leaks-made-simple-bgp-roleplay-with-junos-rfc-9234"><u>by all routing vendors</u></a>. I will save the more technical details on RFC9234 for a follow-up blog post.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-difference-between-origin-and-path-validation">The difference between origin and path validation</h3>
+		<a href="https://blog.cloudflare.com/#the-difference-between-origin-and-path-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The newsletter also calls out as “notable” that Sparkle (AS6762) does not implement <a href="https://rpki.cloudflare.com"><u>RPKI (Resource Public Key Infrastructure)</u></a> Route Origin Validation (ROV). While it is true that AS6762 appears to have an <a href="https://stats.labs.apnic.net/rpki/AS6762?a=6762&amp;c=IT&amp;ll=1&amp;ss=0&amp;mm=1&amp;vv=1&amp;w=7&amp;v=0"><u>incomplete deployment</u></a> of ROV and is flagged as “unsafe” on <a href="http://isbgpsafeyet.com"><u>isbgpsafeyet.com</u></a> <a href="https://isbgpsafeyet.com/#faq"><u>because of it</u></a>, origin validation would not have prevented this BGP anomaly in Venezuela.&nbsp;</p>
+	<p>It is important to separate BGP anomalies into two categories: route misoriginations, and path-based anomalies. Knowing the difference between the two helps to understand the solution for each. Route misoriginations, often called BGP hijacks, are meant to be fixed by RPKI Route Origin Validation (ROV) by making sure the originator of a prefix is who rightfully owns it. In the case of the BGP anomaly described in this post, the origin AS was correct as AS21980 and <b>only</b> the path was anomalous. This means ROV wouldn’t help here.</p>
+	<p>Knowing that, we need path-based validation. This is what <a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification"><u>Autonomous System Provider Authorization (ASPA)</u></a>, an upcoming draft standard in the IETF, is going to provide. The idea is similar to RPKI Route Origin Authorizations (ROAs) and ROV: create an ASPA object that defines a list of authorized providers (upstreams) for our AS, and everyone will use this to invalidate route leaks on the Internet at various vantage points. Using a concrete example, AS6762 is a <a href="https://en.wikipedia.org/wiki/Tier_1_network"><u>Tier-1</u></a> transit-free network, and they would use the special reserved “AS0” member in their ASPA signed object to communicate to the world that they have no upstream providers, only lateral peers and customers. Then, AS52320, the other provider of AS8048, would see routes from their customer with “6762” in the path and reject them by performing an ASPA verification process.</p>
+	<p>ASPA is based on RPKI and is exactly what would help prevent route leaks similar to the one we observed in Venezuela.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-safer-bgp-built-together">A safer BGP, built together&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#a-safer-bgp-built-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We felt it was important to offer an alternative explanation for the BGP route leak by AS8048 in Venezuela that was observed on Cloudflare Radar. It is helpful to understand that route leaks are an expected side effect of BGP historically being based entirely on trust and carefully-executed business relationship-driven intent.&nbsp;</p>
+	<p>While route leaks could be done with malicious intent, the data suggests this event may have been an accident caused by a lack of routing export and import policies that would prevent it. This is why to have a safer BGP and Internet we need to work together and drive adoption of RPKI-based ASPA, for which <a href="https://www.ripe.net/manage-ips-and-asns/resource-management/rpki/aspa"><u>RIPE recently released object creation</u></a>, on the wide Internet. It will be a collaborative effort, just like RPKI has been for origin validation, but it will be worth it and prevent BGP incidents such as the one in Venezuela.&nbsp;</p>
+	<p>In addition to ASPA, we can all implement simpler mechanisms such as <a href="https://github.com/job/peerlock"><u>Peerlock</u></a> and <a href="https://archive.nanog.org/sites/default/files/Snijders_Everyday_Practical_Bgp.pdf"><u>Peerlock-lite</u></a> as operators, which sanity-checks received paths for obvious leaks. One especially promising initiative is the adoption of <a href="https://datatracker.ietf.org/doc/rfc9234"><u>RFC9234</u></a>, which should be used in addition to ASPA for preventing route leaks with the establishing of BGP roles and a new Only-To-Customer (OTC) attribute. If you haven’t already asked your routing vendors for an implementation of RFC9234 to be on their roadmap: <i>please</i> <i>do</i>. You can help make a big difference.</p>
+</div>
