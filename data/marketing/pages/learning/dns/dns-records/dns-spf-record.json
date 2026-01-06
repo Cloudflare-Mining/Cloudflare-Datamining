@@ -7,7 +7,18 @@
 				"contentTypeId": "learningCenterArticle",
 				"contentfulId": "5Uq6NGWBAMBokH9AbZIQtb",
 				"urlSlug": "dns/dns-records/dns-spf-record",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "What is a DNS SPF record?",
+					"metaDescription": "SPF records are a type of DNS TXT record commonly used for email authentication. Learn more about how SPF records work, their benefits, and their basic structure. ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FQ0nr0TWKiiXvr1sipYj5/df80437167ef2215bb09fc00ba0429fc/dns_og.jpeg"
+						},
+						"description": null
+					},
+					"facebookCustomImage": null
+				},
 				"metaTitle": null,
 				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
@@ -98,6 +109,24 @@
 									"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
 									"displayText": "DNSKEY and DS Records",
 									"url": "/learning/dns/dns-records/dnskey-ds-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+									"displayText": "DNS SPF Record",
+									"url": "/learning/dns/dns-records/dns-spf-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+									"displayText": "DNS DKIM Record",
+									"url": "/learning/dns/dns-records/dns-dkim-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+									"displayText": "DNS DMARC Record",
+									"url": "/learning/dns/dns-records/dns-dmarc-record/"
 								}
 							]
 						},
@@ -465,6 +494,24 @@
 								"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
 								"displayText": "DNSKEY and DS Records",
 								"url": "/learning/dns/dns-records/dnskey-ds-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+								"displayText": "DNS SPF Record",
+								"url": "/learning/dns/dns-records/dns-spf-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+								"displayText": "DNS DKIM Record",
+								"url": "/learning/dns/dns-records/dns-dkim-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+								"displayText": "DNS DMARC Record",
+								"url": "/learning/dns/dns-records/dns-dmarc-record/"
 							}
 						]
 					},
@@ -712,6 +759,18 @@
 						"contentfulId": "2dqRthxmj41I1BD5u3aUwY",
 						"displayText": "DNS records",
 						"url": "/learning/dns/dns-records/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+						"displayText": "DNS DMARC Record",
+						"url": "/learning/dns/dns-records/dns-dmarc-record/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+						"displayText": "DNS DKIM Record",
+						"url": "/learning/dns/dns-records/dns-dkim-record/"
 					}
 				],
 				"enablementBlade": null,
