@@ -2,8 +2,8 @@
 	"name": "@cloudflare/realtimekit",
 	"dist-tags": {
 		"agent": "1.1.7-agent.1",
-		"latest": "1.2.3",
-		"staging": "1.2.3-staging.3"
+		"staging": "1.2.3-staging.3",
+		"latest": "1.2.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -4800,37 +4800,37 @@
 			"name": "@cloudflare/realtimekit",
 			"version": "1.2.3",
 			"dependencies": {
-				"@protobuf-ts/runtime": "^2.7.0",
+				"uuid": "^8.3.2",
 				"bowser": "^2.11.0",
 				"sdp-transform": "^2.14.1",
-				"uuid": "^8.3.2",
-				"worker-timers": "7.0.60"
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
 			},
 			"devDependencies": {
-				"@types/events": "^3.0.0",
-				"@types/lodash-es": "^4.17.6",
+				"type-fest": "^2.12.1",
 				"@types/long": "4.0.0",
 				"@types/node": "^16.0.0",
-				"@types/sdp-transform": "^2.4.5",
 				"@types/uuid": "^8.3.4",
-				"type-fest": "^2.12.1",
+				"@types/events": "^3.0.0",
+				"@types/lodash-es": "^4.17.6",
+				"@dyteinternals/utils": "3.4.0",
+				"@types/sdp-transform": "^2.4.5",
 				"@dyteinternals/callstats": "7.2.7",
 				"@dyteinternals/proto-entities": "2.110.5",
-				"@dyteinternals/sockrates-client": "1.8.5",
-				"@dyteinternals/utils": "3.4.0"
+				"@dyteinternals/sockrates-client": "1.8.5"
 			},
 			"dist": {
-				"integrity": "sha512-3lInCdx3AooZQsC73H6SbVw8xZhnTZfYw1zCvBuLG7F6y6TOHg+UPy/O8uug4bqsYi7IIgpKanykSH+SG8xvow==",
 				"shasum": "538acbd7276454c8abe4453a545279081d9e8c0d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.2.3.tgz",
 				"fileCount": 19,
-				"unpackedSize": 5649346,
+				"integrity": "sha512-3lInCdx3AooZQsC73H6SbVw8xZhnTZfYw1zCvBuLG7F6y6TOHg+UPy/O8uug4bqsYi7IIgpKanykSH+SG8xvow==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDXAffSge0NCBIZADEmzav3VTWEeBCYeZs+Onx91DGtKQIgI3oIsf32xmyEoAjqato7KAzZlDGvP1a865eJg2fLX54="
+						"sig": "MEUCIQDXAffSge0NCBIZADEmzav3VTWEeBCYeZs+Onx91DGtKQIgI3oIsf32xmyEoAjqato7KAzZlDGvP1a865eJg2fLX54=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 5649346
 			}
 		}
 	}

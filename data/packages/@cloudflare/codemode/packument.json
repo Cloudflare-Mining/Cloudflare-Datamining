@@ -32,28 +32,28 @@
 				"zod": "^4.1.8"
 			},
 			"peerDependencies": {
-				"agents": "^0.3.3",
 				"ai": "^6.0.0",
-				"zod": "^3.25.0 || ^4.0.0"
+				"zod": "^3.25.0 || ^4.0.0",
+				"agents": "^0.3.3"
 			},
 			"dist": {
-				"integrity": "sha512-GeLuWauxi4v35puqqcsIlQwL7/9p3sELDURCgj1TOgEsVoMER5Kc298bviWz/6N81i6RcPf+x9vjdm9N411GWQ==",
 				"shasum": "ec3649f01517699fb9a8904f5bab3a50470462d7",
 				"tarball": "https://registry.npmjs.org/@cloudflare/codemode/-/codemode-0.0.3.tgz",
 				"fileCount": 9,
-				"unpackedSize": 34380,
+				"integrity": "sha512-GeLuWauxi4v35puqqcsIlQwL7/9p3sELDURCgj1TOgEsVoMER5Kc298bviWz/6N81i6RcPf+x9vjdm9N411GWQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDDLa2veYDsxMp+YJqlwg4O0xl01vmS/w/NV/Zznr5S/wIgMZjMltYILtiVywQ2I7RNwRDJuykf3lHZ64bCxSj6BGk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemode@0.0.3",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDDLa2veYDsxMp+YJqlwg4O0xl01vmS/w/NV/Zznr5S/wIgMZjMltYILtiVywQ2I7RNwRDJuykf3lHZ64bCxSj6BGk="
-					}
-				]
+				"unpackedSize": 34380
 			}
 		}
 	}

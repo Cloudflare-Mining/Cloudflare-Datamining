@@ -24834,36 +24834,36 @@
 			"name": "@cloudflare/component-time-period-picker",
 			"version": "7.3.4",
 			"dependencies": {
-				"@cloudflare/component-calendar": "^8.0.23",
-				"@cloudflare/component-form": "^6.0.25",
-				"@cloudflare/component-listbox": "^3.0.24",
-				"@cloudflare/elements": "^4.0.4",
-				"@cloudflare/intl-react": "^1.9.80",
 				"moment": "^2.29.1",
 				"prop-types": "^15.7.2",
-				"react-addons-shallow-compare": "^15.6.2",
 				"react-dates": "^13.0.6",
-				"react-moment-proptypes": "^1.7.0"
+				"@cloudflare/elements": "^4.0.4",
+				"@cloudflare/intl-react": "^1.9.80",
+				"react-moment-proptypes": "^1.7.0",
+				"@cloudflare/component-form": "^6.0.25",
+				"react-addons-shallow-compare": "^15.6.2",
+				"@cloudflare/component-listbox": "^3.0.24",
+				"@cloudflare/component-calendar": "^8.0.23"
 			},
 			"peerDependencies": {
-				"@cloudflare/component-icon": "^13.0.0",
-				"@cloudflare/style-const": "^6.0.0",
-				"@cloudflare/style-container": "^8.0.0",
 				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
-				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react-dom": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^6.0.0",
+				"@cloudflare/component-icon": "^13.0.0",
+				"@cloudflare/style-container": "^8.0.0"
 			},
 			"dist": {
 				"shasum": "561d74bce6d274501f22b0a1450aa45c60bab150",
-				"integrity": "sha512-gutpHHkecOYUQTDEmuH2zLm7oeNA/JlgH518ZWIKIfOsIUkP6UMs7wKBrY6feOWBdBOzIrCxMu52d3AIz3Kz0A==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/component-time-period-picker/-/component-time-period-picker-7.3.4.tgz",
 				"fileCount": 11,
-				"unpackedSize": 206144,
+				"integrity": "sha512-gutpHHkecOYUQTDEmuH2zLm7oeNA/JlgH518ZWIKIfOsIUkP6UMs7wKBrY6feOWBdBOzIrCxMu52d3AIz3Kz0A==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCJ3GBxe8+IZOPKlpjjNjBhZsvZibPCbSr69tbttjVxQwIhAMik5xaWCmhubt8m+DKzfPxzLvIctAJuHA11r3cIxFry"
+						"sig": "MEYCIQCJ3GBxe8+IZOPKlpjjNjBhZsvZibPCbSr69tbttjVxQwIhAMik5xaWCmhubt8m+DKzfPxzLvIctAJuHA11r3cIxFry",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 206144
 			},
 			"stratus": {
 				"srcDirectory": "./src",

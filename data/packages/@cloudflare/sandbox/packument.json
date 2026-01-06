@@ -4532,32 +4532,32 @@
 				"@cloudflare/containers": "^0.0.30"
 			},
 			"devDependencies": {
+				"@repo/shared": "^0.0.0",
 				"@openai/agents": "^0.3.3",
-				"@opencode-ai/sdk": "^1.0.137",
-				"@repo/shared": "^0.0.0"
+				"@opencode-ai/sdk": "^1.0.137"
 			},
 			"peerDependencies": {
 				"@openai/agents": "^0.3.3",
 				"@opencode-ai/sdk": "^1.0.137"
 			},
 			"dist": {
-				"integrity": "sha512-rQygMktW45IPay8u326Eg5iAnuRAkROK3R2HjsN3xBqiqneNSYwdww+xxa0PuY+gkC/5ykzaCtXhE1LpOFhM+w==",
 				"shasum": "f2c67ef03e524f83a8f507cb7760e77e2cc7da14",
 				"tarball": "https://registry.npmjs.org/@cloudflare/sandbox/-/sandbox-0.6.10.tgz",
 				"fileCount": 24,
-				"unpackedSize": 718408,
+				"integrity": "sha512-rQygMktW45IPay8u326Eg5iAnuRAkROK3R2HjsN3xBqiqneNSYwdww+xxa0PuY+gkC/5ykzaCtXhE1LpOFhM+w==",
+				"signatures": [
+					{
+						"sig": "MEQCIFHpR8rjKS+mucU4sJw3Nl2htNsHYd9QbGOgcY/lFAsDAiBarY58GdblvHcui9lkjAnrEaz0kO1Obk2I4Se4axr/4g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fsandbox@0.6.10",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFHpR8rjKS+mucU4sJw3Nl2htNsHYd9QbGOgcY/lFAsDAiBarY58GdblvHcui9lkjAnrEaz0kO1Obk2I4Se4axr/4g=="
-					}
-				]
+				"unpackedSize": 718408
 			}
 		}
 	}
