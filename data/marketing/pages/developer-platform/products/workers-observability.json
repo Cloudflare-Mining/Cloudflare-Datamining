@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-04-09T03:44:25.628Z",
-					"updatedAt": "2025-11-08T00:37:54.441Z"
+					"updatedAt": "2026-01-06T23:06:08.915Z"
 				},
 				"contentfulId": "6BgLGj5VGWXuDHvLHYA7nr",
 				"contentTypeId": "page",
@@ -735,6 +735,185 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "1VWexMfqaCjbj4buuhiBks",
+						"bladeName": "Cloudflare Workers Observability FAQs",
+						"title": "FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "21bHlXsmDqHu3aHC8cOVeB",
+								"title": "What is Workers Observability?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Workers Observability provides telemetry for your Workers projects, giving you the ability to see how they are performing for your end users.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "18lToiSCiZGBpCNwsCOZtt",
+								"title": "What are the main benefits of using Workers Observability?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Workers Observability can help developers preemptively resolve problems using data that provides all the context needed to handle them, and it is implemented with just a few lines of code.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "VMWidbzAtZtzOmfZi9zm8",
+								"title": "How does Workers Observability help with incident resolution?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Workers Observability provides instant access to search, query, and filter your logs, which allows you to resolve problems quickly.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1FpDXNbpA9PUavRratGPeT",
+								"title": "Can I use Workers Observability to collaborate with my team?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The platform supports collaborative workflows by allowing a developer to save and share queries with the rest of their team.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6uMEPFLYuwZYCT1tKbdsC6",
+								"title": "How does Workers Observability help ensure stable deployments?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Developers can compare metrics across different Workers to determine if an issue is global or isolated to a specific deployment, which helps to deploy more stable releases.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,

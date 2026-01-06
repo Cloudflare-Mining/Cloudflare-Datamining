@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-07-30T18:16:34.587Z",
-					"updatedAt": "2025-12-10T03:21:00.132Z"
+					"updatedAt": "2026-01-06T23:05:16.151Z"
 				},
 				"contentfulId": "4W4dr3ghLPIgNtnwujO08T",
 				"contentTypeId": "page",
@@ -929,6 +929,218 @@
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "4zukWfFv1X7ilpLXkrLL6g",
+						"bladeName": "Firewall for AI FAQs",
+						"title": "Firewall for AI FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "446jDAzHQzV56zIV7Ts2Tr",
+								"title": "What is Cloudflare Firewall for AI?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Firewall for AI protects generative AI applications. It defends AI applications and APIs against common vulnerabilities, like those listed in the OWASP Top 10 for LLMs, to prevent injection attacks, data exfiltration, denial-of-service (DoS) attacks, and misuse.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "jkX3Cye2v078BwIdKtjMJ",
+								"title": "How does Firewall for AI work?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Firewall for AI operates on Cloudflare's global edge network to analyze and filter traffic to and from your AI applications in real-time. It functions somewhat like a traditional WAF, inspecting incoming requests and outgoing responses to identify attack signatures and sensitive data. By doing so, it can identify and block threats before they ever reach your infrastructure or compromise your data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3nFkxz1JLIpSauc9kP5g8Q",
+								"title": "What are the main benefits of using Firewall for AI?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Firewall for AI can discover and label all generative AI endpoints, including \"shadow AI\" usage. It detects attempts to extract sensitive data before they reach your models, mitigates threats at the edge in real time, and enables organizations to innovate with AI while maintaining strong security.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3JdVLm2Tx7gCEt6ljcgXxa",
+								"title": "Can Firewall for AI protect AI models that my company built?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Firewall for AI can protect any AI models, including custom-built, homegrown AI-powered applications and APIs.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3WpDdL4dTuPNXWlfoSmdja",
+								"title": "Does Firewall for AI work with third-party AI models?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The security controls of Firewall for AI are model-agnostic, allowing customers to add extra guardrails and security layers on top of third-party AI models or internally developed AI models alike.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2uV8rBf8IKIiYf65Bad2cC",
+								"title": "What is \"shadow AI\" and how does Firewall for AI help discover it?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"Shadow AI\" refers to AI endpoints that have been added to your applications without your security team's knowledge. Firewall for AI helps you discover these hidden endpoints, along with gaining full visibility into where your LLMs are running so you can protect them.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
