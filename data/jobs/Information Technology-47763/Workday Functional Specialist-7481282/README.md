@@ -5,25 +5,13 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong><span class="il">About The Team</span></strong></p>
-<p><span class="il">Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</span></p>
-<p><strong>About The Role&nbsp;</strong></p>
-<p>As a Senior Software Engineer: Resiliency, you will be part of a team responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. You will work on expanding and evolving the suite of automations that allow our Infrastructure Operations partners to provision, expand, repair, and decommission our rapidly growing fleet of servers. Your work will contribute to an increasingly autonomous system that reduces manual effort and supports Cloudflare’s growth. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
-<p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
-<ul>
-	<li>At least 8+ years of hands-on software development experience on meaningfully complex systems.</li>
-	<li>Excellent proficiency in one of Python, Go, or Rust, with deep understanding of the language and its best practices.</li>
-	<li>Experience working with Linux systems</li>
-	<li>Basic networking knowledge, like VLAN, Routing, DNS, etc</li>
-	<li>Experience building both backend systems and frontend widgets.</li>
-	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
-	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
-	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
-	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus</li>
-	<li>Excellent verbal and written English language skills.</li>
-</ul>
+<p><strong>Workday Functional Specialist</strong></p>
+<p><strong>Job Location: Bengaluru India&nbsp;</strong></p>
+<p><strong>About the department</strong><br>Cloudflare’s Enterprise Applications Team builds and runs Enterprise systems to enable&nbsp;Cloudflare internal teams to operate efficiently and enable our customers and partners to do&nbsp;business with us. Enterprise Applications Team is part of the CIO organization. Within the&nbsp;Enterprise Applications Team is a technical team whose main responsibility is to manage our&nbsp;Workday application.</p>
+<p><strong>About the role</strong><br>As a Workday Functional Analyst, you are expected to be involved in the following:<br> Configuration of the Workday application in multiple modules including but not limited to:&nbsp;Core HCM, Talent and Performance, Learning and Advanced Compensation, Absence&nbsp;Management, Time Tracking, Benefits, Security etc.<br> Lead and or participate in optimization projects to help business users realize the full&nbsp;potential of Workday<br> Serve as an advisor to other Workday post-production engagements in accordance with&nbsp;your areas of expertise<br> Creation and updating documentation for Workday system enhancements<br> Build consensus around business processes and design<br> Communication of Workday capabilities and limitations<br> Configuration of Workday application in multiple modules<br> Consistent and ongoing interaction with client subject matter experts<br> Collaborate/ Consult with on and offshore resources</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong><br> Total of 7+ yrs experience with Bachelors Degree or higher in technology-related field or relevant experience in implementing Business systems<br> 3-5 years of Project or Production Support experience with SaaS Human Resource information System<br> 3-5 years of Workday HCM configuration and business process experience in two or&nbsp;more of the following: Recruiting, Core HCM, Security, Reporting, Benefits&nbsp;Administration, Payroll, Time Tracking, or Absence or Learning<br> 2 years of Workday Configurable Security and Custom Report Design and Development<br> Experience serving as a workstream lead on HCM implementations or optimization&nbsp;engagements, from design to deployment<br> Superior communication skills, both written and verbal<br> Experience with Excel, Word, Visio and Power point<br> Attention to detail and strong work ethic<br> Experienced in working with both internal and system integrator teams for development<br> Experience with Jira and Google Suite</p>
+<p><strong>Preferred qualifications</strong><br> Workday PRO certified in HCM Core, Security, Advance Compensation, Benefits&nbsp;Administration, Time Tracking or Payroll</p>
+<p> Consulting experience within the Human Resources Information Systems space</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

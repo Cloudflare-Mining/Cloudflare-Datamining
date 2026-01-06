@@ -5,13 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Workday Functional Analyst</strong></p>
-<p><strong>Job Location: Bengaluru India&nbsp;</strong></p>
-<p><strong>About the department</strong><br>Cloudflare’s Enterprise Applications Team builds and runs Enterprise systems to enable&nbsp;Cloudflare internal teams to operate efficiently and enable our customers and partners to do&nbsp;business with us. Enterprise Applications Team is part of the CIO organization. Within the&nbsp;Enterprise Applications Team is a technical team whose main responsibility is to manage our&nbsp;Workday application.</p>
-<p><strong>About the role</strong><br>As a Workday Functional Analyst, you are expected to be involved in the following:<br> Configuration of the Workday application in multiple modules including but not limited to:&nbsp;Core HCM, Talent and Performance, Learning and Advanced Compensation, Absence&nbsp;Management, Time Tracking, Benefits, Security etc.<br> Lead and or participate in optimization projects to help business users realize the full&nbsp;potential of Workday<br> Serve as an advisor to other Workday post-production engagements in accordance with&nbsp;your areas of expertise<br> Creation and updating documentation for Workday system enhancements<br> Build consensus around business processes and design<br> Communication of Workday capabilities and limitations<br> Configuration of Workday application in multiple modules<br> Consistent and ongoing interaction with client subject matter experts<br> Collaborate/ Consult with on and offshore resources</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong><br> Total of 7+ yrs experience with Bachelors Degree or higher in technology-related field or relevant experience in implementing Business systems<br> 3-5 years of Project or Production Support experience with SaaS Human Resource information System<br> 3-5 years of Workday HCM configuration and business process experience in two or&nbsp;more of the following: Recruiting, Core HCM, Security, Reporting, Benefits&nbsp;Administration, Payroll, Time Tracking, or Absence or Learning<br> 2 years of Workday Configurable Security and Custom Report Design and Development<br> Experience serving as a workstream lead on HCM implementations or optimization&nbsp;engagements, from design to deployment<br> Superior communication skills, both written and verbal<br> Experience with Excel, Word, Visio and Power point<br> Attention to detail and strong work ethic<br> Experienced in working with both internal and system integrator teams for development<br> Experience with Jira and Google Suite</p>
-<p><strong>Preferred qualifications</strong><br> Workday PRO certified in HCM Core, Security, Advance Compensation, Benefits&nbsp;Administration, Time Tracking or Payroll</p>
-<p> Consulting experience within the Human Resources Information Systems space</p>
+<p><strong>Available Locations:&nbsp; </strong>Austin, TX. Full-time, in-office.<br><strong>Reports to:</strong> Head of Global Real Estate &amp; Workplace</p>
+<h3><strong>About the Role</strong></h3>
+<p>We are seeking a dynamic and creative <strong>Senior Manager, Global Internal Events</strong> to lead and scale our global internal events program.&nbsp; In this highly visible role, you will shape experiences that creatively engage employees, reinforce our culture, and bring our values to life across all global hubs.</p>
+<p>You thrive in fast-paced environments, balancing operational excellence with creativity. With a hospitality mindset and strong stakeholder management skills, you’ll partner closely with executives, cross-functional teams, and site leads to deliver consistent, memorable, and culturally resonant events that connect employees around the world.&nbsp;</p>
+<p>This position is based in Austin, TX, reporting directly to the Head of Global Real Estate &amp; Workplace. It requires a full-time, in-office presence (Monday through Friday), with occasional evening hours as needed to accommodate event schedules.</p>
+<h3><strong>Responsibilities</strong></h3>
+<ul>
+	<li><strong>Global Events Leadership</strong>: Lead the strategy, planning, and execution of global workplace-supported internal events - including hub activations, team onsites, celebrations, employee experiences, and the startup program. Your team also owns the recruiting, management, and support of the Global Site Lead program. As an expert in your field, you bring a deep understanding of cultural and local nuances to ensure events resonate authentically with employees in each region.</li>
+	<li><strong>Team Mentorship &amp; Collaboration</strong>: Manage and mentor the Global Internal Events Manager. Partner with Workplace Operations teams and site leads worldwide to spark creativity, share best practices, and deliver impactful events across hubs.</li>
+	<li><strong>Employee Engagement &amp; ERG Support:</strong> Collaborate with Employee Resource Groups (ERGs) to support planning and execution of key cultural events, with focus on prominent identity- and mission-driven observances.</li>
+	<li><strong>Communications</strong>: Own internal communications for the Places team, ensuring events and initiatives are clearly, consistently, and creatively communicated across multiple formats to maximize visibility, engagement and participation.</li>
+	<li><strong>Scalable Frameworks</strong>: Establish a global event calendar, frameworks, and best practices to ensure consistency and high-quality experiences across global hubs. Build operating models that clearly define roles, responsibilities, and cross-functional workflows for event and onsite planning within Places and across the organization.</li>
+	<li><strong>Budget &amp; Vendor Management</strong>: Own the global events budget, including forecasting, negotiations, and vendor management. Drive creative, cost-effective solutions that maximize impact within constraints.</li>
+	<li><strong>Innovation &amp; Design</strong>: Experiment with new event formats and scalable models that can be customized regionally while maintaining brand consistency.</li>
+	<li><strong>Cross-Functional Partnerships:</strong> Build strong relationships with Physical Security, People, Communications, IT, EBC, Executive Admins, and Site Leads to ensure seamless delivery.</li>
+	<li><strong>Measurement &amp; Reporting:</strong> Track, measure, and report on event effectiveness&nbsp; - capturing engagement, outcomes, and ROI to inform strategy and scale successes globally. Lead post-event retrospectives and QBRs, using feedback to recommend improvements and refine future programs.</li>
+	<li><strong>Culture &amp; Hospitality:</strong> Ensure events reflect Cloudflare’s culture and values while creating inclusive, welcoming, and inspiring experiences. Stay ahead of industry trends to raise the bar for internal events.</li>
+</ul>
+<h3><strong>Requirements</strong></h3>
+<ul>
+	<li>10+ years of experience in event management, including 5+ years leading global internal events or employee experience programs.</li>
+	<li>Proven track record managing creative, large-scale event portfolios across multiple geographies.</li>
+	<li>Strong leadership skills, with experience managing and developing a high-performing team as well as external vendors.</li>
+	<li>Excellent organizational skills with the ability to manage multiple projects simultaneously in a fast-paced environment.</li>
+	<li>Exceptional communication and stakeholder management skills, including working with executives.</li>
+	<li>Expertise in budget management and vendor negotiation.</li>
+	<li>Creative mindset with an eye for detail, hospitality, and cultural alignment.</li>
+	<li>Thrives in an in-office, collaborative environment.</li>
+	<li>Ability to travel globally as needed.<br><br></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
