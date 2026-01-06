@@ -520,7 +520,7 @@
 														"description": "The configuration object containing third-party integration information.",
 														"example": {
 															"api_url": "https://as123.awmdm.com/API",
-															"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+															"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 															"client_id": "example client id"
 														},
 														"oneOf": [
@@ -534,7 +534,7 @@
 																	},
 																	"auth_url": {
 																		"description": "The Workspace One Authorization URL depending on your region.",
-																		"example": "https://na.uemauth.vmwservices.com/connect/token",
+																		"example": "https://na.uemauth.workspaceone.com/connect/token",
 																		"type": "string"
 																	},
 																	"client_id": {
@@ -737,7 +737,7 @@
 																"description": "The configuration object containing third-party integration information.",
 																"example": {
 																	"api_url": "https://as123.awmdm.com/API",
-																	"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+																	"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 																	"client_id": "example client id"
 																},
 																"oneOf": [
@@ -751,7 +751,7 @@
 																			},
 																			"auth_url": {
 																				"description": "The Workspace One Authorization URL depending on your region.",
-																				"example": "https://na.uemauth.vmwservices.com/connect/token",
+																				"example": "https://na.uemauth.workspaceone.com/connect/token",
 																				"type": "string"
 																			},
 																			"client_id": {
@@ -1056,7 +1056,7 @@
 													"description": "The configuration object containing third-party integration information.",
 													"example": {
 														"api_url": "https://as123.awmdm.com/API",
-														"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+														"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 														"client_id": "example client id"
 													},
 													"oneOf": [
@@ -1070,7 +1070,7 @@
 																},
 																"auth_url": {
 																	"description": "The Workspace One Authorization URL depending on your region.",
-																	"example": "https://na.uemauth.vmwservices.com/connect/token",
+																	"example": "https://na.uemauth.workspaceone.com/connect/token",
 																	"type": "string"
 																},
 																"client_id": {
@@ -1250,7 +1250,7 @@
 															"description": "The configuration object containing third-party integration information.",
 															"example": {
 																"api_url": "https://as123.awmdm.com/API",
-																"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+																"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 																"client_id": "example client id"
 															},
 															"oneOf": [
@@ -1264,7 +1264,7 @@
 																		},
 																		"auth_url": {
 																			"description": "The Workspace One Authorization URL depending on your region.",
-																			"example": "https://na.uemauth.vmwservices.com/connect/token",
+																			"example": "https://na.uemauth.workspaceone.com/connect/token",
 																			"type": "string"
 																		},
 																		"client_id": {
@@ -1464,7 +1464,7 @@
 								"description": "The configuration object containing third-party integration information.",
 								"example": {
 									"api_url": "https://as123.awmdm.com/API",
-									"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+									"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 									"client_id": "example client id",
 									"client_secret": "example client secret"
 								},
@@ -1478,7 +1478,7 @@
 											},
 											"auth_url": {
 												"description": "The Workspace One Authorization URL depending on your region.",
-												"example": "https://na.uemauth.vmwservices.com/connect/token",
+												"example": "https://na.uemauth.workspaceone.com/connect/token",
 												"type": "string"
 											},
 											"client_id": {
@@ -1852,7 +1852,7 @@
 													"description": "The configuration object containing third-party integration information.",
 													"example": {
 														"api_url": "https://as123.awmdm.com/API",
-														"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+														"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 														"client_id": "example client id"
 													},
 													"oneOf": [
@@ -1866,7 +1866,7 @@
 																},
 																"auth_url": {
 																	"description": "The Workspace One Authorization URL depending on your region.",
-																	"example": "https://na.uemauth.vmwservices.com/connect/token",
+																	"example": "https://na.uemauth.workspaceone.com/connect/token",
 																	"type": "string"
 																},
 																"client_id": {
@@ -2046,7 +2046,7 @@
 															"description": "The configuration object containing third-party integration information.",
 															"example": {
 																"api_url": "https://as123.awmdm.com/API",
-																"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+																"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 																"client_id": "example client id"
 															},
 															"oneOf": [
@@ -2060,7 +2060,7 @@
 																		},
 																		"auth_url": {
 																			"description": "The Workspace One Authorization URL depending on your region.",
-																			"example": "https://na.uemauth.vmwservices.com/connect/token",
+																			"example": "https://na.uemauth.workspaceone.com/connect/token",
 																			"type": "string"
 																		},
 																		"client_id": {
@@ -2250,7 +2250,7 @@
 								"description": "The configuration object containing third-party integration information.",
 								"example": {
 									"api_url": "https://as123.awmdm.com/API",
-									"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+									"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 									"client_id": "example client id",
 									"client_secret": "example client secret"
 								},
@@ -2264,7 +2264,7 @@
 											},
 											"auth_url": {
 												"description": "The Workspace One Authorization URL depending on your region.",
-												"example": "https://na.uemauth.vmwservices.com/connect/token",
+												"example": "https://na.uemauth.workspaceone.com/connect/token",
 												"type": "string"
 											},
 											"client_id": {
@@ -2644,7 +2644,7 @@
 													"description": "The configuration object containing third-party integration information.",
 													"example": {
 														"api_url": "https://as123.awmdm.com/API",
-														"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+														"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 														"client_id": "example client id"
 													},
 													"oneOf": [
@@ -2658,7 +2658,7 @@
 																},
 																"auth_url": {
 																	"description": "The Workspace One Authorization URL depending on your region.",
-																	"example": "https://na.uemauth.vmwservices.com/connect/token",
+																	"example": "https://na.uemauth.workspaceone.com/connect/token",
 																	"type": "string"
 																},
 																"client_id": {
@@ -2838,7 +2838,7 @@
 															"description": "The configuration object containing third-party integration information.",
 															"example": {
 																"api_url": "https://as123.awmdm.com/API",
-																"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
+																"auth_url": "https://na.uemauth.workspaceone.com/connect/token",
 																"client_id": "example client id"
 															},
 															"oneOf": [
@@ -2852,7 +2852,7 @@
 																		},
 																		"auth_url": {
 																			"description": "The Workspace One Authorization URL depending on your region.",
-																			"example": "https://na.uemauth.vmwservices.com/connect/token",
+																			"example": "https://na.uemauth.workspaceone.com/connect/token",
 																			"type": "string"
 																		},
 																		"client_id": {

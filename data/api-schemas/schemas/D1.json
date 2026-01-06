@@ -3477,6 +3477,10 @@
 		"summary": "Raw D1 Database query",
 		"tags": [
 			"D1"
+		],
+		"x-api-token-group": [
+			"D1 Read",
+			"D1 Write"
 		]
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
