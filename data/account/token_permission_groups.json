@@ -2,7 +2,7 @@
 	{
 		"id": "7ea222f6d5064cfa89ea366d7c1fee89",
 		"name": "Access: Apps and Policies Read",
-		"description": "Grants read access to Cloudflare Access applications and policies",
+		"description": "Can read Cloudflare Access applications and policies",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -18,7 +18,7 @@
 	{
 		"id": "6c9d1cfcfc6840a987d1b5bfb880a841",
 		"name": "Access: Apps and Policies Revoke",
-		"description": "Grants ability to revoke Cloudflare Access application tokens",
+		"description": "Can revoke Cloudflare Access application tokens",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -34,7 +34,7 @@
 	{
 		"id": "1e13c5124ca64b72b1969a67e8829049",
 		"name": "Access: Apps and Policies Write",
-		"description": "Grants write access to Cloudflare Access applications and policies",
+		"description": "Can read and edit Cloudflare Access applications and policies",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -48,9 +48,33 @@
 		]
 	},
 	{
+		"id": "2dd44e425a914fb98f8d1ddbbcd66915",
+		"name": "Access: Apps Read",
+		"description": "Can read Cloudflare Access applications",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "969eb865330a4d68b215b0cc8fba64ea",
+		"name": "Access: Apps Revoke",
+		"description": "Can revoke Cloudflare Access application tokens",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "ad7a6f88896d498f98eb30592abfbbf4",
+		"name": "Access: Apps Write",
+		"description": "Can read and edit Cloudflare Access applications",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "b05b28e839c54467a7d6cba5d3abb5a3",
 		"name": "Access: Audit Logs Read",
-		"description": "Grants read access to Cloudflare Access audit logs",
+		"description": "Can read Cloudflare Access audit logs",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -58,7 +82,7 @@
 	{
 		"id": "08e61dabe81a422dab0dea6fdef1a98a",
 		"name": "Access: Custom Pages Read",
-		"description": "Grants read access to Cloudflare Access Custom Pages",
+		"description": "Can read Cloudflare Access Custom Pages",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -66,7 +90,7 @@
 	{
 		"id": "4e5fd8ac327b4a358e48c66fcbeb856d",
 		"name": "Access: Custom Pages Write",
-		"description": "Grants write access to Cloudflare Access Custom Pages",
+		"description": "Can read and edit Cloudflare Access Custom Pages",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -74,7 +98,7 @@
 	{
 		"id": "0f4841f80adb4bada5a09493300e7f8d",
 		"name": "Access: Device Posture Read",
-		"description": "Grants read access to Cloudflare Access Device Posture",
+		"description": "Can read Cloudflare Access Device Posture",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -82,7 +106,55 @@
 	{
 		"id": "2fc1072ee6b743828db668fcb3f9dee7",
 		"name": "Access: Device Posture Write",
-		"description": "Grants write access to Cloudflare Access Device Posture",
+		"description": "Can read and edit Cloudflare Access Device Posture",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "abe9cecdf3234d5da2a8d7a6adc9aebf",
+		"name": "Access: Groups Read",
+		"description": "Can read Cloudflare Access group resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "f2f1e4d555854b8593912806eb459691",
+		"name": "Access: Groups Write",
+		"description": "Can read and edit Cloudflare Access group resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "9c35051ed89842839a637f81448d8c7c",
+		"name": "Access: Identity Providers Read",
+		"description": "Can read Cloudflare Access identity provider resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5541aee5804a4850aa6d77351cc4a610",
+		"name": "Access: Identity Providers Write",
+		"description": "Can read and edit Cloudflare Access identity provider resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "0974adb35b73411a84ebcc8e91cc29eb",
+		"name": "Access: Keys Read",
+		"description": "Can read Cloudflare Access keys",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "e7e40392e132414fb68890c3328bdc6a",
+		"name": "Access: Keys Write",
+		"description": "Can read and edit Cloudflare Access keys",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -90,7 +162,7 @@
 	{
 		"id": "4f3196a5c95747b6ad82e34e1d0a694f",
 		"name": "Access: Mutual TLS Certificates Read",
-		"description": "Grants read access to Cloudflare Access mTLS certificates",
+		"description": "Can read Cloudflare Access mTLS certificates",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -98,7 +170,31 @@
 	{
 		"id": "29d3afbfd4054af9accdd1118815ed05",
 		"name": "Access: Mutual TLS Certificates Write",
-		"description": "Grants write access to Cloudflare Access mTLS certificates",
+		"description": "Can read and edit Cloudflare Access mTLS certificates",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "b219cc392cc843cfab473cf3abd06c5b",
+		"name": "Access: Organizations Read",
+		"description": "Can read Cloudflare Access organization resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "14fb1ba9b3924f91bd8e1a256d0a42f5",
+		"name": "Access: Organizations Revoke",
+		"description": "Can revoke user sessions of organizations",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "aed5acd922ae4fa68560cf0094e3e517",
+		"name": "Access: Organizations Write",
+		"description": "Can read and edit Cloudflare Access organization resources",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -106,7 +202,7 @@
 	{
 		"id": "26bc23f853634eb4bff59983b9064fde",
 		"name": "Access: Organizations, Identity Providers, and Groups Read",
-		"description": "Grants read access to Cloudflare Access account resources",
+		"description": "Can read Cloudflare Access account resources",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -114,7 +210,7 @@
 	{
 		"id": "7121a0c7e9ed46e3829f9cca2bb572aa",
 		"name": "Access: Organizations, Identity Providers, and Groups Revoke",
-		"description": "Grants ability to revoke user sessions to Cloudflare Access account resources",
+		"description": "Can revoke user sessions to Cloudflare Access account resources",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -122,7 +218,23 @@
 	{
 		"id": "bfe0d8686a584fa680f4c53b5eb0de6d",
 		"name": "Access: Organizations, Identity Providers, and Groups Write",
-		"description": "Grants write access to Cloudflare Access account resources",
+		"description": "Can read and edit Cloudflare Access account resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "84b9a6a947474555aeb43a82300ce145",
+		"name": "Access: Policies Read",
+		"description": "Can read Cloudflare Access policies",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "e9e3e5ccdebf43dbb1c9576fe74dfaab",
+		"name": "Access: Policies Write",
+		"description": "Can read and edit Cloudflare Access policies",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -130,7 +242,7 @@
 	{
 		"id": "b8b7514ce5364cd8ac0455f3eb16eb5f",
 		"name": "Access: Policy Test Read",
-		"description": "Grants read access to Cloudflare Access Policy Tests",
+		"description": "Can read Cloudflare Access Policy Tests",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -138,7 +250,7 @@
 	{
 		"id": "6d23f290472f4e6fad5c4398c057c356",
 		"name": "Access: Policy Test Write",
-		"description": "Grants full access to Cloudflare Access Policy Tests",
+		"description": "Can read and edit Cloudflare Access Policy Tests",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -146,7 +258,7 @@
 	{
 		"id": "de99c87e48d642ce8c985d027905b475",
 		"name": "Access: Population Read",
-		"description": "Grants read access to Cloudflare Access Populations",
+		"description": "Can read Cloudflare Access Populations",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -154,15 +266,15 @@
 	{
 		"id": "bc783549a3a741aaa10556faf8b485bb",
 		"name": "Access: Population Write",
-		"description": "Grants write access to Cloudflare Access Populations",
+		"description": "Can read and edit Cloudflare Access Populations",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
 	},
 	{
 		"id": "e985ca9351db460faebbe8681c48e560",
-		"name": "Access: SCIM logs read",
-		"description": "Grants read access to SCIM audit logs",
+		"name": "Access: SCIM Logs Read",
+		"description": "Can read SCIM audit logs",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -170,7 +282,7 @@
 	{
 		"id": "91f7ce32fa614d73b7e1fc8f0e78582b",
 		"name": "Access: Service Tokens Read",
-		"description": "Grants read access to Cloudflare Access Service Tokens",
+		"description": "Can read Cloudflare Access Service Tokens",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -178,7 +290,7 @@
 	{
 		"id": "a1c0fec57cf94af79479a6d827fa518c",
 		"name": "Access: Service Tokens Write",
-		"description": "Grants write access to Cloudflare Access Service Tokens",
+		"description": "Can read and edit Cloudflare Access Service Tokens",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -186,7 +298,7 @@
 	{
 		"id": "99ff99e4e30247a99d3777a8c4c18541",
 		"name": "Access: SSH Auditing Read",
-		"description": "Grants read access to Cloudflare Access SSH certificate authorities (CAs)",
+		"description": "Can read Cloudflare Access SSH certificate authorities (CAs)",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -194,7 +306,23 @@
 	{
 		"id": "d30c9ad8b5224e7cb8d41bcb4757effc",
 		"name": "Access: SSH Auditing Write",
-		"description": "Grants write access to Cloudflare Access SSH certificate authorities (CAs)",
+		"description": "Can read and edit Cloudflare Access SSH certificate authorities (CAs)",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "f6f99815bf8f4f7abffe6bc73873a5b9",
+		"name": "Access: Tags Read",
+		"description": "Can read Cloudflare Access tags",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "d320e35958c845c89e69098a4ea38f64",
+		"name": "Access: Tags Write",
+		"description": "Can read and edit Cloudflare Access tags",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -2410,7 +2538,7 @@
 	{
 		"id": "a1a6298e52584c8fb6313760a30c681e",
 		"name": "Zero Trust: Seats Write",
-		"description": "Grants write access to the Zero Trust seats your organization can use (and be billed for)",
+		"description": "Can read and edit the Zero Trust seats your organization can use (and be billed for)",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
