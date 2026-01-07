@@ -5,35 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>Role Summary</strong></p>
-<p>Lead a team of engineers responsible for the Data Localization Suite of products that allows our customers to harness Cloudflare's massive and performant network to meet their federal Data Sovereignty standards as well as their internal regionalization policies.</p>
-<p>You will guide the career growth of the team members, and ensure we have the right skills and behaviours in the team. You will need to identify high level strategies to meet the needs of the company, and apply those to balance short and long term priorities for the team. Additionally, you will be responsible for building relationships with teams across the company, identifying their needs and supporting them in building products for customers. You will also be involved in direct product development for customers, working closely with our product, support and customer facing teams.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: Austin, TX - Hybrid</strong></p>
+<p><strong>Program Manager - Data Intelligence and Analytics</strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us! &nbsp;</p>
+<p><strong>About the Department:</strong></p>
+<p>Cloudflare’s Business Intelligence team plays a critical role in providing the advanced data analytics solution for the company’s business teams. We are responsible for building a centralized cloud data analytics platform using open source technologies that are used by our internal Business Partners and Machine Learning teams. Our goal is to democratize data, support Cloudflare’s critical business needs, and provide reporting and analytics self-service tools to fuel existing and new business critical initiatives.</p>
+<p><strong>About the Role:</strong></p>
+<p>We are looking for a self-motivated Program Manager to join our Data Intelligence and Analytics (DIA) team. You will work with our technical leads in driving the delivery of various initiatives, including AI/ML projects, as well as supporting the roadmap tracking of our teams.&nbsp; This role is solely dedicated to supporting the building of internal data environments or the data products that serve internal data customers. The ideal candidate is process driven but remains flexible and iterative, able to manage internal and external stakeholders, and is able to adapt to quickly evolving situations.&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Prioritise short and long term tasks to balance the immediate needs and long term strategic goals of the company.</li>
-	<li>Support and guide the career growth of the team.</li>
-	<li>Actively participate in the hiring process to expand the team, identifying and attracting top talent who can contribute to Cloudflare's mission and culture..</li>
-	<li>Ensure quality of engineering.</li>
-	<li>Effectively communicate team progress, challenges, and strategic direction to senior leadership, stakeholders, and the wider organization. Represent the team's work internally and externally, including through blog posts and presentations.</li>
-	<li>Participate in our incident management process.</li>
-	<li>Organise the team to provide effective 24/7 escalation support for the system in case of critical incidents.</li>
+	<li>Engage with various operations teams to plan, track, and manage the execution of programs and initiatives.</li>
+	<li>Develop clear and transparent communication channels to align with business stakeholders and other delivery teams and ensure relevant audiences receive appropriate updates on programs and projects.</li>
+	<li>Support DIA managers in requirements gathering, project tracking, meeting alignment, documentation and requisite follow-up.</li>
+	<li>Actively partner with DIA managers and team members on quarterly planning and roadmap tracking of our engineering teams.</li>
+	<li>Collaborate with team leads to develop executive reporting materials (e.g., executive steer co, weekly updates, key artifacts, etc.).</li>
+	<li>Facilitate communication between business stakeholders and the development team.</li>
+	<li>Support the management of data sourcing schedules, timelines, and milestones for the implementation and delivery of the projects and programs.</li>
+	<li>Organize daily activities: meetings, reporting, follow-up, to support the ongoing management of programs in flight.</li>
+	<li>Support the operational development of program management within the DIA team, and lend support to various operational functions.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Required skills, knowledge, and experience:</strong></p>
 <ul>
-	<li>Minimum 2 years experience in engineering management.</li>
-	<li>Significant experience as a hands-on engineer.</li>
-	<li>Track record of shipping high-quality products and features at scale</li>
-	<li>Excellent at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Experience of managing multiple concurrent projects with competing priorities.</li>
-	<li>Track record of managing a diverse team including hiring, onboarding, and professional development. You inspire your team to reach higher and to get there by collaborating. You’re as good at explaining “why” as you are “how”.</li>
-	<li>Working with other managers, maintaining clear lines of communication across and upwards in an organisation.</li>
+	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
+	<li>3-5 years experience in planning and prioritization for highly cross functional teams</li>
+	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</li>
+	<li>Strong competency with project management tools (Confluence, JIRA) and various development methodologies (Agile, Waterfall, Scrum, etc).</li>
+	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Knowledge of technical program management and a desire for continuous improvement.</li>
+	<li>Cooperative leader who has successfully gained authority with peers by demonstrating empathy, providing support, and motivating others.&nbsp;</li>
+	<li>Role is based in Austin and you will be working with teams in various time zones.&nbsp; Expectation to be able to attend day-long in-office sessions.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Experience of operating high performance and large scale software systems.</li>
-	<li>Customer focused experience - managing difficult conversations with customers.</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

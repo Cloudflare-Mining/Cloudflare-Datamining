@@ -5,35 +5,64 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, Texas | Lisbon, Portugal | London, United Kingdom</strong></h3>
-<h3 id="EngineeringManagerWorkersRuntime-AbouttheTeam">About the Team</h3>
-<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - System resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.<br>At the same time we want to provide the best offering for our customers coming from many different languages and ecosystems, built in idiomatic support for JavaScript, Node.js, Rust, Python and more on Workers is crucial for our success.</p>
-<h3 id="EngineeringManagerWorkersRuntime-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>We are looking for an Engineering Manager to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features and providing the best APIs to make our runtime the best it can be. You will make sure our company hits our ambitious goals from an engineering standpoint.<span class="Apple-converted-space">&nbsp;</span>You will change the way people build applications.</p>
-<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
-<h3 id="EngineeringManagerWorkersRuntime-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Available Locations: London, UK or Lisbon, Portugal</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Traffic Management is responsible for the systems that <a href="https://blog.cloudflare.com/meet-traffic-manager/">dynamically route</a> traffic flows into, through, and from Cloudflare's global network.&nbsp;</p>
+<p>We don't just manage one company's traffic; they manage traffic for numerous products and&nbsp; millions of customers, from individual websites to major enterprises. This team is at the heart of Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>As a member of the team you will build and extend various traffic management and supporting systems. You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to collaborate on ambitious initiatives to make the best use of Cloudflare’s global network.</p>
+<p><strong>&nbsp;</strong></p>
+<p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, eBPF, ClickHouse, Salt, PostgreSQL, Prometheus, Kubernetes, and more.</p>
+<p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
+<p>Because you’ll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Role Requirements</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Experience leading a team</li>
-	<li>Comfortable leading and hiring a team that builds low level distributed systems.</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Comfortable building developer-loved APIs that scale</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>At least 4 years of recent professional experience with C++ or Rust.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
+	<li>Minimum of 2 years of engineering experience with networking and/or distributed systems.</li>
+	<li>Systems-level programming experience in Go, Python, Rust, C, or C++</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge/interest in HTTP, TLS, and CDN networks.</li>
+	<li>Experience/interest in network performance monitoring and tuning</li>
+	<li>Strong collaboration and communication skills.</li>
 </ul>
-<h3 id="EngineeringManagerWorkersRuntime-BonusPoints"><strong>Bonus Points</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Experience building high performance distributed systems.</li>
-	<li>Experience working with cloud platforms, especially server-less platforms.</li>
-	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore</li>
-	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc</li>
-	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
-	<li>Contributions to large open source projects</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+	<li>Experience building or developing capabilities in the domain of traffic engineering including automated load balancing and traffic prioritization.</li>
+	<li>Knowledge of statistical-analysis techniques and control theory.</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
