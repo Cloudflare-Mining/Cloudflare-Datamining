@@ -2,7 +2,7 @@
 	"name": "@cloudflare/vite-plugin",
 	"dist-tags": {
 		"beta": "0.0.0-66edd2f3b",
-		"latest": "1.17.1"
+		"latest": "1.20.0"
 	},
 	"versions": {
 		"0.0.0-ce165ff11": {
@@ -34545,6 +34545,64 @@
 					}
 				},
 				"unpackedSize": 2424814
+			}
+		},
+		"1.20.0": {
+			"name": "@cloudflare/vite-plugin",
+			"version": "1.20.0",
+			"dependencies": {
+				"@remix-run/node-fetch-server": "^0.8.0",
+				"defu": "^6.1.4",
+				"get-port": "^7.1.0",
+				"picocolors": "^1.1.1",
+				"tinyglobby": "^0.2.12",
+				"unenv": "2.0.0-rc.24",
+				"ws": "8.18.0",
+				"miniflare": "4.20260103.0",
+				"wrangler": "4.57.0",
+				"@cloudflare/unenv-preset": "2.8.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20260103.0",
+				"@types/node": "^22.10.1",
+				"@types/semver": "^7.5.1",
+				"@types/ws": "^8.5.13",
+				"magic-string": "^0.30.12",
+				"mlly": "^1.7.4",
+				"semver": "^7.7.1",
+				"tree-kill": "^1.2.2",
+				"tsdown": "0.16.3",
+				"typescript": "~5.8.3",
+				"vite": "7.1.12",
+				"vitest": "~3.2.0",
+				"@cloudflare/mock-npm-registry": "0.0.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/containers-shared": "0.7.0",
+				"@cloudflare/workers-shared": "0.18.9",
+				"@cloudflare/workers-utils": "0.6.0"
+			},
+			"peerDependencies": {
+				"vite": "^6.1.0 || ^7.0.0",
+				"wrangler": "^4.57.0"
+			},
+			"dist": {
+				"integrity": "sha512-dBYcksSXSa8z97odNJYOC4s3f3bFdYTvFEVem8sJmuWlZPcNdrZYASNid+XVessFM5rATmJ5AbaozXbiqEYQAw==",
+				"shasum": "5b174d4f80e6433b19cb614732318385e3783d86",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vite-plugin/-/vite-plugin-1.20.0.tgz",
+				"fileCount": 12,
+				"unpackedSize": 3150761,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvite-plugin@1.20.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIAE0Dv0oVhb3K6S2jMQVZ3kDVQyHRf9FaYJzQYUgMXZOAiEA0nA14A5liC1jSf1fdRooU9t6tMvEavd09DsdJ7jSwOg="
+					}
+				]
 			}
 		}
 	}
