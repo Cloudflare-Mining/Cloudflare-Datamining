@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Bengaluru, India, Kuala Lumpur, Malaysia</strong></p>
+<p><strong>Available Locations: Kuala Lumpur, Malaysia</strong></p>
 <p><strong>About this job</strong></p>
 <p>Ensuring the privacy of personal information is core to Cloudflare’s mission to help build a better Internet. We’re looking for an experienced privacy attorney to help Cloudflare navigate the complicated challenges of processing personal data amid an ever-changing and diverse regulatory landscape in Asia. Our legal team helps the company deal with complex matters by anticipating regulatory changes, and guiding the company around the complications and distractions that arise from such obstacles. Our new privacy counsel team member will help foster our unique corporate philosophy and approach, in which the security and privacy of our customers’ data are paramount.&nbsp;</p>
 <p>We are looking for an exceptionally talented, energetic and friendly privacy attorney to join our team based in Bengaluru or Kuala Lumpur. This role is ideal for someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth, all while working as part of a great team. This position reports to Cloudflare’s Chief Privacy Officer.&nbsp;</p>
