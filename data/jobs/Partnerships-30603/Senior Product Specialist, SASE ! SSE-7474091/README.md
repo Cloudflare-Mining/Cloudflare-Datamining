@@ -5,85 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco (on-site)</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As an <strong>IT Operations Specialist II (P3)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
-<p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
-<p><strong>Responsibilities</strong></p>
-<p><strong>Onsite IT Operations &amp; Office Support</strong></p>
+<p><span style="text-decoration: underline;"><strong>This role will be located in either Austin, TX or one of our eastern U.S. Hubs</strong></span></p>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Product Specialists, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p>Our Product Specialization &amp; Growth team provides deep subject matter expertise on converging Network and Security services in our Cloudflare One (CF1) portfolio, including Secure Access Service Edge (SASE), Security Service Edge (SSE), Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Remote Browser Isolation (RBI), Data Protection (including DLP), and Email Security (CES).</p>
+<p><strong>What you’ll do</strong></p>
+<p>As a <strong>Senior</strong> <strong>Product Specialist</strong> you will be responsible for growing CloudflareOne (CF1) revenue and product adoption. In this role, you will serve as the segment lead for CF1 sales. You will advise the sales leaders on opportunities and programs to grow CF1 revenue, partner with the technical sales teams, enable account executives on product positioning and competitive intelligence, grow partner engagement around CF1, form a tight feedback loop with product and PMM, and support strategic deals from discovery to close. The ideal candidate possesses a consultative mindset, strong selling skills, and a deep technical background to drive engagement internally among the sales organization and externally with decision-makers and influencers within security, networking, and IT and operations.</p>
 <ul>
-	<ul>
-		<li>Act as the onsite IT support resource, responding to employee requests and incidents.</li>
-		<li>Ensure conference rooms, IT systems, and shared office equipment are functioning properly.</li>
-		<li>Assist with IT asset management, including device provisioning, check-in/check-out, and tracking.</li>
-		<li>Partner with IT and Security teams to follow access control and compliance policies.</li>
-	</ul>
+	<li>Present to strategic customers as an expert of our SASE, SSE, and Email solutions.</li>
+	<li>Align Director and C-Level perceived business value with Cloudflare solutions in the transformational objectives of securing remote work, corporate network modernization, adoption of SASE/SSE, and data protection</li>
+	<li>Develop and advise on sales strategies and pipeline generation in partnership with regional and country sales leaders.&nbsp;</li>
+	<li>Create net-new partner initiated pipeline programs</li>
+	<li>Prepare and give regular business reviews to the management team highlighting attainment progress and challenges to closing business</li>
+	<li>Generate a succinct feedback loop with PM, PMM, Demand Generation, Enablement, Programs, and Partner Organization to deliver relevant CF1 anecdotes and data points.</li>
+	<li>Lead New Product Introduction with a sales lens to ensure emerging products in the CF1 space begin and maintain healthy adoption across current and net-new customers</li>
 </ul>
-<p><strong>Conference Room &amp; Event Support</strong></p>
+<p>The Senior Product Specialist Role is a consultative sales excellence role that directly supports sales delivery of regional CF1 quota. In order to be successful, you will need to become a thought leader, trusted advisor, and spokesperson for Cloudflare One - Cloudflare's SASE platform.</p>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<ul>
-		<li>Provide setup and basic troubleshooting for conference room AV technology and video conferencing platforms (Zoom, Google Meet).</li>
-		<li>Assist with small to mid-sized corporate meetings and events, including setup and technical support.</li>
-		<li>Escalate complex AV or event issues to senior specialists or vendors as needed.</li>
-	</ul>
-</ul>
-<p><strong>Employee IT Support</strong></p>
-<ul>
-	<ul>
-		<li>Provide in-person support for hardware, software, and network connectivity issues.</li>
-		<li>Help employees with device setup, account access, and secure remote connectivity.</li>
-		<li>Deliver professional, customer-focused service when working with employees at all levels.</li>
-	</ul>
-</ul>
-<p><strong>Qualifications &amp; Skills</strong></p>
-<p><strong>Required:</strong></p>
-<ul>
-	<li>1–2 years of IT support or helpdesk experience in a corporate environment.</li>
-	<li>Strong troubleshooting skills for common hardware, software, and connectivity issues.</li>
-	<li>Familiarity with video conferencing platforms (Zoom, Google Meet).</li>
-	<li>Knowledge of IT asset management practices.</li>
-	<li>Excellent communication and customer service skills.</li>
-	<li>Associate’s degree in Information Technology, Computer Science, or related field (or equivalent experience).</li>
-</ul>
-<p><strong>Preferred:</strong></p>
-<ul>
-	<li>Experience with IT ticketing systems (e.g., Jira Service Management).</li>
-	<li>Familiarity with device management tools such as JAMF or Intune.</li>
-	<li>Basic understanding of IT security best practices.</li>
-	<li>Certifications such as CompTIA A+, ITIL 4 Foundation, or Microsoft 365 Fundamentals.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $104,000 - $115,000.&nbsp;</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Minimum 7 years of experience selling or supporting the sales of cyber security, networking, identity management, cloud or SaaS solutions.</li>
+	<li>Technical expertise in SASE, SSE, ZTNA, SWG, CASB, DLP, SD-WAN, and Email Security</li>
+	<li>Experience building territory plans, prospecting and bringing in new logos in a competitive market</li>
+	<li>Experience introducing new products, services, or programs</li>
+	<li>Knowledge of key market players/competitors in the software defined networking, zero trust and cybersecurity solution spaces.</li>
+	<li>Demonstrated ability to think strategically and develop/execute corresponding objectives.</li>
+	<li>Strong verbal and written communications, as well as the ability to work effectively across internal and external organizations.</li>
+	<li>Excellent presentation and public speaking skills.</li>
+	<li>Bachelor’s Degree</li>
+	<li>10 - 20% travel</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

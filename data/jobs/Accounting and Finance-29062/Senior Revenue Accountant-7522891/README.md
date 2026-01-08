@@ -5,59 +5,53 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco (on-site)</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As an <strong>IT Operations Specialist II (P3)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
-<p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
-<p><strong>Responsibilities</strong></p>
-<p><strong>Onsite IT Operations &amp; Office Support</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Senior Revenue Accountant’s primary responsibility is helping to ensure the Company’s revenue recognition to be in compliance with US GAAP and Company policies.&nbsp; It is both advisory and operational in nature. The advisory role helps business partners make informed business decisions while maintaining accounting compliance.&nbsp; The operational role ensures accounting processes comply with policies and function in an effective and efficient manner while working with local partners to complete business transactions with customers.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
+	<li>Participates in accounting close activities, including:</li>
 	<ul>
-		<li>Act as the onsite IT support resource, responding to employee requests and incidents.</li>
-		<li>Ensure conference rooms, IT systems, and shared office equipment are functioning properly.</li>
-		<li>Assist with IT asset management, including device provisioning, check-in/check-out, and tracking.</li>
-		<li>Partner with IT and Security teams to follow access control and compliance policies.</li>
+		<li>partnering with other teams (legal, sales, etc.) to interpret, research, discuss, and / or process deal reviews</li>
+		<li>complete contract accounting of executed customer contracts</li>
+		<li>preparation / review of journal entries</li>
+		<li>preparation / review of reconciliations and related financial analysis for management and external reporting</li>
 	</ul>
+	<li>Participates in Company-wide initiatives and cross-functional projects that directly impact or relate to the revenue accounting area, particularly increasing the revenue analytical capabilities within Cloudflare</li>
+	<li>Develop and streamline processes using system automation and tools to maximize efficiency and accuracy of revenue accounting systems and processes</li>
+	<li>Takes a clean sheet of paper approach when revisiting operational processes and continually works to consolidate and streamline using automation and tools to maximize efficiency and accuracy</li>
+	<li>Stay current on the latest financial accounting and reporting developments and U.S GAAP reporting requirements, as applicable.</li>
+	<li>Effectively interacts with peers and shares knowledge</li>
+	<li>Mentors and supports junior members of the team and provides feedback</li>
+	<li>Communicates any problems to senior management timely</li>
+	<li>Present findings and solutions to the management team, while considering global impacts and subsequent guidance to influence other regions where appropriate to adopt a consistent process and policy</li>
+	<li>Establish and track Key Performance Indicators (KPI’s)</li>
+	<li>Prepares schedules in support of the external audit process</li>
+	<li>Coordinates with the auditors on accounting issues and audit related queries</li>
+	<li>Reviews and maintains controls as the business environment changes as a result of process, system and policy enhancements. Includes risk assessment and review of risk areas</li>
 </ul>
-<p><strong>Conference Room &amp; Event Support</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>Role Requirements&nbsp;</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<ul>
-		<li>Provide setup and basic troubleshooting for conference room AV technology and video conferencing platforms (Zoom, Google Meet).</li>
-		<li>Assist with small to mid-sized corporate meetings and events, including setup and technical support.</li>
-		<li>Escalate complex AV or event issues to senior specialists or vendors as needed.</li>
-	</ul>
-</ul>
-<p><strong>Employee IT Support</strong></p>
-<ul>
-	<ul>
-		<li>Provide in-person support for hardware, software, and network connectivity issues.</li>
-		<li>Help employees with device setup, account access, and secure remote connectivity.</li>
-		<li>Deliver professional, customer-focused service when working with employees at all levels.</li>
-	</ul>
-</ul>
-<p><strong>Qualifications &amp; Skills</strong></p>
-<p><strong>Required:</strong></p>
-<ul>
-	<li>1–2 years of IT support or helpdesk experience in a corporate environment.</li>
-	<li>Strong troubleshooting skills for common hardware, software, and connectivity issues.</li>
-	<li>Familiarity with video conferencing platforms (Zoom, Google Meet).</li>
-	<li>Knowledge of IT asset management practices.</li>
-	<li>Excellent communication and customer service skills.</li>
-	<li>Associate’s degree in Information Technology, Computer Science, or related field (or equivalent experience).</li>
-</ul>
-<p><strong>Preferred:</strong></p>
-<ul>
-	<li>Experience with IT ticketing systems (e.g., Jira Service Management).</li>
-	<li>Familiarity with device management tools such as JAMF or Intune.</li>
-	<li>Basic understanding of IT security best practices.</li>
-	<li>Certifications such as CompTIA A+, ITIL 4 Foundation, or Microsoft 365 Fundamentals.</li>
+	<li>Bachelor’s degree in Accounting, or a related field, or advanced experience</li>
+	<li>Active CPA</li>
+	<li>Accounting/Audit firm experience preferred&nbsp;</li>
+	<li>4 years of experience in accounting roles</li>
+	<li>Strong understanding of revenue accounting rules under ASC 606</li>
+	<li>Experience working with revenue related systems such as billing systems, ERP, and revenue recognition tool / subledger</li>
+	<li>Revenue accounting for SaaS revenue recognition and understanding of multi-element arrangements</li>
+	<li>Ability to work effectively with various departments, particularly Sales</li>
+	<li>Ability to manage multiple priorities</li>
+	<li>Flexibility to work under time constraints and deadlines</li>
+	<li>Must be meticulous, detail oriented, and organized</li>
+	<li>Strong interpersonal and communication skills</li>
+	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
+	<li>Highly proficient in advanced MS Excel</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $104,000 - $115,000.&nbsp;</span></li>
-</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
