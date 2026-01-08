@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: San Francisco</strong></p>
 <p><strong>About the Role</strong></p>
-<p>As an <strong>IT Operations Specialist I (P2)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
+<p>As an <strong>IT Operations Specialist II (P3)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
 <p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
 <p><strong>Responsibilities</strong></p>
 <p><strong>Onsite IT Operations &amp; Office Support</strong></p>
@@ -56,7 +56,7 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $104,000 - $127,000.&nbsp;</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $104,000 - $115,000.&nbsp;</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
