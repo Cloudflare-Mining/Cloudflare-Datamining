@@ -328,6 +328,22 @@
 		]
 	},
 	{
+		"id": "7a3629ac278d41adbfac30094a94f778",
+		"name": "Access: Users Read",
+		"description": "Can read Cloudflare Access user resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "d376dac8822b439a991b795c87789e6f",
+		"name": "Access: Users Write",
+		"description": "Can read and edit Cloudflare Access user resources",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "b89a480218d04ceb98b4fe57ca29dc1f",
 		"name": "Account Analytics Read",
 		"description": "Grants read access to analytics",
