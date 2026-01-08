@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-07-15T15:58:37.218Z",
-					"updatedAt": "2025-12-04T22:09:32.990Z"
+					"updatedAt": "2026-01-08T15:54:58.660Z"
 				},
 				"contentfulId": "202IN8V5xFoy0U2ku9CHJw",
 				"contentTypeId": "page",
@@ -852,6 +852,185 @@
 						"contentfulId": "2LpBnxBNoYF4sTPCuhXYxl",
 						"htmlContent": "<style>\n  #how-does-secure-guest-wif-work .container .row {\n    justify-content: center;\n  }\n\n  #how-does-secure-guest-wif-work .container .row .col-lg-12.offset-lg-0 {\n    flex: 0 0 66.666%;\n    max-width: 66.666%;\n\n    @media (max-width: 992px){\n      flex: 0 0 100%;\n      max-width: 100%;\n    }\n  }\n\n  #how-does-secure-guest-wif-work .container .row .col-lg-12.offset-lg-0 .rich-text-renderer  .lazyload-wrapper, #how-does-secure-guest-wif-work .container .row .col-lg-12.offset-lg-0 .rich-text-renderer .headline-2.black-900.f6.f6-ns.f6-m.f7-l.fw6.lh-2.mb2 {\n    text-align: center;\n  }  \n\n  #how-does-secure-guest-wif-work .container .row .col-lg-12.offset-lg-0 .rich-text-renderer  .lazyload-wrapper img {\n    max-width: 600px;\n  }\n\n  #public-sector-organizations .feature-card.items-start.br8px.ba.b--black-20.h-100.flex.flex-column.flex-auto span[role=\"button\"]{\n    padding: 24px 24px 0; \n  }\n\n  #public-sector-organizations .feature-card.items-start.br8px.ba.b--black-20.h-100.flex.flex-column.flex-auto span[role=\"button\"] img{\n    max-height: 85px;\n  }\n</style>",
 						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "1CrX1vECZRwBpzTWgQk79p",
+						"bladeName": "Secure guest wifi FAQs",
+						"title": "FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "3kQGaRrcUcwKu0CTF5xWIB",
+								"title": "What is Cloudflare API Shield?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare API Shield is a security product designed to monitor your APIs and protect them from threats and misuse. It operates on Cloudflare's global network to automatically discover and secure your API endpoints, helping to prevent attacks and data loss.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7z8DJ1zK1veUf0HYYuaMcV",
+								"title": "How does API Shield protect against security risks?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "API Shield blocks common API attacks, including OWASP Top 10 API Security risks. It accomplishes this by using a positive security model to ensure all API traffic conforms to your schemas. API Shield also identifies shadow APIs and unsecured APIs..",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1OzOgXkLHj9rYgF3647vj6",
+								"title": "Can API Shield help prevent data leaks?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "API Shield is designed to prevent data exfiltration by continuously scanning response payloads to identify and block sensitive information.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6YJQAD6tU78btLkl7BSztz",
+								"title": "How does API Shield discover API endpoints?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare API Shield uses machine learning and heuristics to analyze traffic and identify all API endpoints in use, even those that are undocumented.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "65W70eCcAU4AydtoUZpVd7",
+								"title": "How does API Shield use a positive security model?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "API Shield only allows API traffic that strictly follows the rules defined in your OpenAPI schemas, effectively blocking any request that deviates from the expected structure or content.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
