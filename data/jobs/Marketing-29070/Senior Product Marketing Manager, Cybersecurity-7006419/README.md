@@ -5,13 +5,12 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available: Austin</strong></p>
-<p>&nbsp;</p>
+<p>Available: Austin, TX preferred.</p>
 <p><strong>About Us</strong></p>
 <p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
 <p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!</p>
 <p><strong>About the Role</strong></p>
-<p>We’re hiring a Senior/Principal Product Marketing Lead to drive cybersecurity product marketing strategy. This is a hybrid role for a T-shaped marketer—someone with technical fluency in cloud security, networking, and threat prevention domains, combined with the storytelling and messaging chops to craft compelling narratives for CxOs, IT leaders, and practitioners alike.</p>
+<p>We’re hiring a Senior Product Marketing Manager to drive cybersecurity product marketing strategy. This is a hybrid role for a T-shaped marketer—someone with technical fluency in cloud security, networking, and threat prevention domains, combined with the storytelling and messaging chops to craft compelling narratives for CxOs, IT leaders, and practitioners alike.</p>
 <p>You’ll work cross-functionally with Product, Sales, Field, and Demand Generation teams to lead go-to-market execution, shape product positioning, and create content that cuts through complexity and connects to customer pain.</p>
 <p><strong>Key Responsibilities</strong></p>
 <p><strong>Messaging &amp; Positioning</strong></p>
@@ -23,16 +22,18 @@
 	<li>Partner with technical sellers and PM’s to align positioning with roadmap, features, and technical differentiators</li>
 </ul>
 <p><strong>Go-to-Market Strategy &amp; Execution</strong></p>
-<p><strong>Define and execute launch plans, including messaging, sales enablement, web content, analyst briefings, and campaign themes.</strong></p>
-<p><strong>Lead messaging and GTM motions for high-value industries (healthcare, media, financial services, etc.) based on buyer insights, pain points, and compliance drivers. </strong><strong>Work with regional as well industry specialists and customer-facing teams to create use case collateral and personas by segment. </strong><strong>Build assets like battle cards, ROI tools, customer stories, vertical playbooks, and objection handling guides. </strong><strong>Deliver field training and participate in key account engagements as a subject matter expert. </strong><strong>Collaborate closely with demand gen and campaign teams to drive pipeline and revenue growth. </strong><strong>Support analyst and customer briefings, working closely with AR, PR, and customer marketing teams.</strong></p>
-<p><strong>Qualifications</strong>&nbsp;</p>
-<p><strong>8–12+ years in product marketing, with deep knowledge and direct experience in cybersecurity and networking (cloud, endpoint, Zero Trust, etc.).&nbsp;</strong></p>
 <ul>
+	<li>Define and execute launch plans, including messaging, sales enablement, web content, analyst briefings, and campaign themes.</li>
+	<li>Lead messaging and GTM motions for high-value industries (healthcare, media, financial services, etc.) based on buyer insights, pain points, and compliance drivers. Work with regional as well industry specialists and customer-facing teams to create use case collateral and personas by segment. Build assets like battle cards, ROI tools, customer stories, vertical playbooks, and objection handling guides. Deliver field training and participate in key account engagements as a subject matter expert. Collaborate closely with demand gen and campaign teams to drive pipeline and revenue growth. Support analyst and customer briefings, working closely with AR, PR, and customer marketing teams.</li>
+</ul>
+<p><strong>Qualifications&nbsp;</strong></p>
+<ul>
+	<li>8–12+ years in product marketing, with deep knowledge and direct experience in cybersecurity and networking (cloud, endpoint, Zero Trust, etc.).&nbsp;</li>
 	<li>Technical fluency -&nbsp; you can confidently talk to a room of security architects without a translator, but know how to zoom out for the boardroom.</li>
 	<li>Strategic storyteller—skilled at crafting messaging that’s crisp, audience-aware, and drives emotional as well as rational buy-in.</li>
 	<li>Strong understanding of GTM best practices.</li>
+	<li>Thrive in cross-functional environments—aligning product, field, demand gen, and exec stakeholders around common narratives. Are intellectually curious, customer-obsessed, and unafraid to challenge assumptions or dive deep into technical discussions when needed. High sense of urgency and entrepreneurial work ethic required to drive business outcomes. Impeccable verbal and written communication skills, obsessive attention to detail. Confident presenter, on stage, video, webinars.<strong>&nbsp;</strong>Team player, ready to go above and beyond to ensure team success.&nbsp;</li>
 </ul>
-<p><strong>Thrive in cross-functional environments—aligning product, field, demand gen, and exec stakeholders around common narratives. </strong><strong>Are intellectually curious, customer-obsessed, and unafraid to challenge assumptions or dive deep into technical discussions when needed. </strong><strong>High sense of urgency and entrepreneurial work ethic required to drive business outcomes.&nbsp;</strong><strong>Impeccable verbal and written communication skills, obsessive attention to detail.&nbsp;</strong><strong>Confident presenter, on stage, video, webinars.&nbsp;</strong>Team player, ready to go above and beyond to ensure team success.&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
