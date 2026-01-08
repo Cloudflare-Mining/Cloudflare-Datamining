@@ -16,6 +16,7 @@
 					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
+					"esLA": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -29,8 +30,7 @@
 					"trTR": null,
 					"zhHansCN": null,
 					"plPL": null,
-					"elGR": null,
-					"nbNO": null
+					"arAR": null
 				},
 				"relativePath": "trust-hub/hipaa",
 				"topNavOptions": "default",
@@ -38,15 +38,21 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Cloudflare and HIPAA compliance",
-					"metaDescription": "Learn how Cloudflare's network and products help healthcare organizations align with HIPAA security needs.\n",
+					"metaTitle": "Cloudflare and US privacy law compliance",
+					"metaDescription": "Learn how Cloudflare's network and products help healthcare organizations align with US privacy law security needs.\n",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/1c28d510cb5bb9a44e56916e37a889b6/Cloudflare_default_OG_.png"
-						}
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": null,
+					"author": []
+				},
+				"sys": {
+					"createdAt": "2021-05-14T22:07:48.796Z",
+					"updatedAt": "2024-04-24T16:16:55.198Z"
 				},
 				"contentfulId": "2uI5qX6InWq8bJT4nWbj67",
 				"contentTypeId": "page",
@@ -78,10 +84,28 @@
 										"url": "/trust-hub/gdpr/"
 									},
 									{
+										"contentfulId": "2TqMpxIgH3sKTfeNFifqfJ",
+										"linkText": "Brazil (LGPD)",
+										"page": null,
+										"url": "https://cloudflare.com/trust-hub/brazil-lgpd/"
+									},
+									{
 										"contentfulId": "4jcIu8w1i4SwOVFFPgtwfq",
 										"linkText": "Japan (APPI)",
 										"page": null,
 										"url": "https://www.cloudflare.com/trust-hub/appi/"
+									},
+									{
+										"contentfulId": "4o79P9x237wgF8M7qQo3LS",
+										"linkText": "Singapore (PDPA)",
+										"page": null,
+										"url": "https://cloudflare.com/trust-hub/singapore-pdpa/"
+									},
+									{
+										"contentfulId": "3Di4xZ009MA8P9Fmj6PEle",
+										"linkText": "South Korea (PIPA)",
+										"page": null,
+										"url": "https://cloudflare.com/trust-hub/south-korea-pipa/"
 									},
 									{
 										"contentfulId": "5agE8jWKzGmi1RxiymFXvl",
@@ -97,9 +121,9 @@
 									},
 									{
 										"contentfulId": "4ulEfXkZVy80Nxdcpn7hff",
-										"linkText": "HIPAA",
+										"linkText": "United States",
 										"page": null,
-										"url": "/trust-hub/hipaa/"
+										"url": "/trust-hub/us-privacy-compliance/"
 									},
 									{
 										"contentfulId": "7bT7F1ooWx5vibmcju4Mzu",
@@ -110,11 +134,18 @@
 								]
 							},
 							{
+								"contentfulId": "63AEC59n9k9YEmzqMgVZ0L",
+								"linkText": "Responsible AI",
+								"page": null,
+								"url": "trust-hub/responsible-ai",
+								"subMenuItems": []
+							},
+							{
 								"contentfulId": "4hZZA4VbGtrVg07DrdTgmb",
 								"linkText": "Compliance resources",
 								"page": null,
 								"url": "/trust-hub/compliance-resources/",
-								"subMenuItems": null
+								"subMenuItems": []
 							},
 							{
 								"contentfulId": "441FrXaeDXQCGeEEVk31TJ",
@@ -126,13 +157,13 @@
 										"contentfulId": "6nxpzf9PhsGosomeGVFHIP",
 										"linkText": "Encryption",
 										"page": null,
-										"url": "/ssl/"
+										"url": "/application-services/products/ssl/"
 									},
 									{
 										"contentfulId": "6Oqza0Tz4htG9I4oD34Che",
 										"linkText": "Access management",
 										"page": null,
-										"url": "/teams/"
+										"url": "/zero-trust/"
 									},
 									{
 										"contentfulId": "6GfPeqY5GAUU7wzDGQxbM7",
@@ -201,6 +232,18 @@
 										"linkText": "Grievance Officer",
 										"page": null,
 										"url": "/trust-hub/grievance-officer/"
+									},
+									{
+										"contentfulId": "28z6f46r2lMNYdujwzUmyw",
+										"linkText": "EU Digital Services Act - Legal Representative",
+										"page": null,
+										"url": "eu-digital-services/"
+									},
+									{
+										"contentfulId": "3VlzQyXx65SxGskibqm83m",
+										"linkText": "Australia- Information on eSafety",
+										"page": null,
+										"url": "/lp/australia-information-esafety/"
 									}
 								]
 							}
@@ -209,19 +252,21 @@
 					{
 						"contentfulId": "EAirDkUxDsGNEAGgp0rTN",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare and HIPAA compliance",
+						"title": "Cloudflare and US privacy law compliance",
+						"titleSize": null,
 						"subtitle": null,
-						"copy": "Cloudflare supports many businesses with rigorous data security requirements, including a number of healthcare organizations. Learn how our services aligns to HIPAA compliance needs.",
-						"buttonColor": null,
-						"buttonColor2": null,
-						"buttonText1": null,
+						"subtitleSize": null,
+						"copy": "Although the United States does not have a single comprehensive privacy law, Cloudflare is committed to providing all users with data protection rights across our services, regardless of their residency. Cloudflare also complies with existing state data privacy laws, and we constantly monitor the privacy landscape to ensure that we are providing compliant and privacy-forward services.\n\nFor more information about the personal data Cloudflare collects, how we use and disclose that information, data subject rights, and international data transfers, please see our Privacy Policy. For frequently asked questions about Cloudflare's data protection practices in the United States, see below. \n",
+						"buttonColor": "orange",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Read FAQ",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": null,
+						"buttonUrl1": "#usprivacycompliance",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": null,
+						"buttonText2": "Privacy Policy",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "https://www.cloudflare.com/privacypolicy/",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -251,7 +296,8 @@
 						"image": {
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4OT7hm9uyOfHaLUF3fF65U/f9f2a7e5e93c4ec5746d15b9fd334025/spectrum-hero-illustration_formatted-616px.svg"
-							}
+							},
+							"description": null
 						},
 						"imageAssetFile": {
 							"id": "8590565d-99d4-5f22-803c-8bbc53f8a0d3",
@@ -273,31 +319,43 @@
 						}
 					},
 					{
-						"button": null,
-						"contentTypeId": "bladeDoubleContent",
-						"contentfulId": "4po49pNrtYKKdijoPsEC2w",
-						"bladeName": "Cloudflare and HIPAA compliance - privacy philosophy",
-						"title": null,
-						"longCopy": null,
-						"header1": "Our data privacy philosophy",
-						"subheader1": null,
-						"copy1": null,
+						"contentfulId": "2UkYpyBGdLI4IVPGwh4P1M",
+						"title": "Our data privacy philosophy",
+						"copy": "Cloudflare's mission is to help build a better Internet, and we believe the protection of our customers' and their end users' data is fundamental to this mission. \n\nCloudflare's network and all of our products are built with data protection in mind. Cloudflare does not sell personal data we process on customers' behalf, or use it for any purpose other than to provide our services. We build trust by creating and deploying products that improve the security of our systems, encrypt data, and allow our customers to determine how traffic is inspected across different locations around the world.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": null,
-						"buttonText1": null,
-						"buttonUrl1": null,
-						"button1ExtraClass": null,
-						"header2": null,
-						"subheader2": null,
-						"copy2": "Cloudflare's network and all of our products are built with data protection in mind. Cloudflare does not sell personal data we process on customers' behalf, or use it for any purpose other than to provide our services to customers. In addition, we build trust by building and deploying products that improve the security of our systems, encrypt data at rest or in transit, and allow our customers to determine how traffic is inspected across different locations around the world.\n",
-						"buttonText2": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
 						"backgroundColor": "white",
-						"bladeBorder": "border-bottom",
-						"textColor": "black",
-						"sectionPadding": "tile--no-bottom-padding",
-						"link": null
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "kl4Z6CwrGJ23F7Oq0uwqS",
@@ -318,35 +376,38 @@
 								"contentTypeId": "feature",
 								"contentfulId": "45pVkdKcP9i1z8lvmSJ4c",
 								"title": "Data confidentiality and availability",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Cloudflare encrypts data by default using the latest protocols, and offers granular control over where encryption keys are stored and where logs are sent.",
 								"learnMoreUrl": "https://www.cloudflare.com/ssl/",
 								"learnMoreText": "Learn More",
 								"displayBorder": null,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/c2e8424698981e63844072e8ce1b2663/icon_security-lock_blue_48px.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+									},
+									"description": "Padlock icon"
 								},
 								"iconAssetFile": {
 									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock blue",
-									"title": "Security lock blue",
-									"activeAsset": "Brandfolder Asset",
+									"altText": "Security lock Orange",
+									"title": "Security lock Orange",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1116,
-										"height": 192,
-										"width": 192,
-										"filename": "security-lock-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-lock-blue.svg"
-										}
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+										},
+										"description": "Padlock icon"
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -356,35 +417,38 @@
 								"contentTypeId": "feature",
 								"contentfulId": "4qDWWf5dwj3ZGKRCgRSCXU",
 								"title": "Threat prevention",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Cloudflare's network uses threat intelligence from millions of Internet properties to protect cloud, hybrid, and on-premises infrastructure from a variety of attacks.\n",
 								"learnMoreUrl": "https://www.cloudflare.com/magic-transit/",
 								"learnMoreText": "Learn More",
 								"displayBorder": null,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CzpRaPu9MRLDfD4xFpmWE/e186c84b15d6fd8567ea3adb63b2a69e/network-scale.svg"
-									}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7CzpRaPu9MRLDfD4xFpmWE/78891b2676298493412a2e596dab02bd/network-scale__1_.png"
+									},
+									"description": null
 								},
 								"iconAssetFile": {
 									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale blue",
-									"title": "Network scale blue",
-									"activeAsset": "Brandfolder Asset",
+									"altText": "Network scale ",
+									"title": "Network scale ",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 5263,
-										"height": 192,
-										"width": 192,
-										"filename": "network-scale-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/network-scale-blue.svg"
-										}
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+										},
+										"description": "Network scale orange"
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -394,35 +458,38 @@
 								"contentTypeId": "feature",
 								"contentfulId": "25KFIYpDYVRu5FtFNmK6tu",
 								"title": "Access management",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Cloudflare Zero Trust lets companies enforce identity-aware, least privilege access  for all of their applications — helping prevent impermissible data uses or disclosures.",
 								"learnMoreUrl": "https://www.cloudflare.com/teams/",
 								"learnMoreText": "Learn More",
 								"displayBorder": null,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oCyFOzO5Eea49jKXa2MvM/9f769926f22358912667415037c477eb/security-fingerprint-privacy.svg"
-									}
+									},
+									"description": null
 								},
 								"iconAssetFile": {
 									"id": "e06663fb-a656-5e71-86c6-252eccfcc3b8",
-									"altText": "Security fingerprint privacy blue",
-									"title": "Security fingerprint privacy blue",
-									"activeAsset": "Brandfolder Asset",
+									"altText": "Security fingerprint privacy orange",
+									"title": "Security fingerprint privacy orange",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2430,
-										"height": 192,
-										"width": 192,
-										"filename": "security-fingerprint-privacy-blue.svg",
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/security-fingerprint-privacy-blue.svg"
-										}
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o7wgV3QOT67tMsuQmIMPc/105a1dd4cd229dcee110b92e40e5151a/security-fingerprint-privacy.svg"
+										},
+										"description": ""
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -445,7 +512,8 @@
 						"image": {
 							"file": {
 								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6qV8D9q0ghT3dNsE7jKD2D/10293a8f67d9b61900fffd5479a08d02/logo_flo_quote-blade_gray.svg"
-							}
+							},
+							"description": null
 						},
 						"imageAssetFile": {
 							"id": "df4999fc-4738-50e9-b085-889607cd1167",
@@ -466,9 +534,9 @@
 							"brandfolderAssetMobile": null
 						},
 						"imageLinkUrl": null,
-						"logoList": null,
-						"logoListAssetFile": null,
-						"quoteCarousel": null
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": []
 					},
 					{
 						"contentfulId": "5uBQki6CQiPYwrs9dJDpIT",
@@ -489,14 +557,19 @@
 								"contentTypeId": "feature",
 								"contentfulId": "7FiGLl2Eqw5tsTitJTZ9az",
 								"title": "Maintaining HIPAA and HITECH compliance while using Cloudflare products",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Learn about the Business Associate Agreement (BAA) Cloudflare offers, which incorporates clauses required by HIPAA about PHI protection.",
 								"learnMoreUrl": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/3PeVHvuZAh7p3tN77kIfhG/596a459dd1cfbc2ad6b1dbef36ff0eb1/BDES-1265_Privacy_Compliance_Whitepapers_HIPAA.pdf",
 								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -506,14 +579,19 @@
 								"contentTypeId": "feature",
 								"contentfulId": "2Ml2ygZESDNrRuRLMrlBb9",
 								"title": "Healthcare industry case studies",
+								"makeTitleLink": null,
+								"titleUrl": null,
 								"titleSize": null,
 								"description": "Learn how Cloudflare has helped healthcare organizations around the world improve their security posture and protect patients' personal data.",
 								"learnMoreUrl": "https://www.cloudflare.com/case-studies/?industry=Healthcare+%26+Life+Sciences",
 								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
+								"removeCardBorder": null,
 								"icon": null,
 								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -524,27 +602,38 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "5uQdAeXMiE7VMDSvCLDXum",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Protect and accelerate your websites, apps, and teams.",
-						"backgroundColor": "blue",
-						"buttonText": "Sign up",
-						"buttonUrl": "https://dash.cloudflare.com/sign-up",
-						"buttonText2": "Contact us",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
 						"buttonModalId2": null,
-						"buttonUrl2": "https://www.cloudflare.com/plans/enterprise/contact/",
+						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2kO1BXe4hQs8vCFZ1nooQO",
+							"elementName": "Sign Up to dash btn",
+							"standardText": null,
+							"text": "Sign Up",
+							"url": "https://dash.cloudflare.com",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
-				"noindex": false,
-				"formModal": null,
+				"noindex": true,
+				"formModal": [],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
@@ -568,7 +657,8 @@
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
-				"es-ES"
+				"es-ES",
+				"es-LA"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
