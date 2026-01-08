@@ -137,9 +137,6 @@
 	"dex-ip-monitoring": {
 		"enabled": true
 	},
-	"dex-last-seen-v2": {
-		"enabled": false
-	},
 	"dex-maxmind-r2": {
 		"enabled": false
 	},
@@ -157,6 +154,9 @@
 	},
 	"dex-rules-docs": {
 		"enabled": true
+	},
+	"dex-skip-last-seen-device-state-reads": {
+		"enabled": false
 	},
 	"dex-speed-test": {
 		"enabled": true
