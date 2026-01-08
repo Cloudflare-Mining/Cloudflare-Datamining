@@ -62,6 +62,11 @@
 									"compaction": {
 										"state": "enabled",
 										"target_size_mb": "128"
+									},
+									"snapshot_expiration": {
+										"max_snapshot_age": "7d",
+										"min_snapshots_to_keep": 3,
+										"state": "enabled"
 									}
 								}
 							},
@@ -162,6 +167,41 @@
 															"required": [
 																"state",
 																"target_size_mb"
+															],
+															"type": "object"
+														},
+														"snapshot_expiration": {
+															"description": "Configures snapshot expiration settings.",
+															"properties": {
+																"max_snapshot_age": {
+																	"default": "7d",
+																	"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\n",
+																	"example": "7d",
+																	"pattern": "^\\d+(d|h|m|s)$",
+																	"type": "string"
+																},
+																"min_snapshots_to_keep": {
+																	"default": 3,
+																	"description": "Specifies the minimum number of snapshots to retain.",
+																	"example": 3,
+																	"format": "int64",
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"state": {
+																	"description": "Specifies the state of maintenance operations.",
+																	"enum": [
+																		"enabled",
+																		"disabled"
+																	],
+																	"example": "enabled",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"min_snapshots_to_keep",
+																"max_snapshot_age"
 															],
 															"type": "object"
 														}
@@ -455,50 +495,91 @@
 						"compaction": {
 							"state": "enabled",
 							"target_size_mb": "256"
+						},
+						"snapshot_expiration": {
+							"max_snapshot_age": "14d",
+							"min_snapshots_to_keep": 5,
+							"state": "enabled"
 						}
 					},
 					"schema": {
-						"description": "Contains request to update table maintenance configuration.",
-						"properties": {
-							"compaction": {
-								"description": "Updates compaction configuration (all fields optional).",
+						"allOf": [
+							{
+								"description": "Contains maintenance update parameters.",
 								"properties": {
-									"state": {
-										"allOf": [
-											{
-												"description": "Specifies the state of maintenance operations.",
-												"enum": [
-													"enabled",
-													"disabled"
+									"compaction": {
+										"description": "Updates compaction configuration (all fields optional).",
+										"properties": {
+											"state": {
+												"allOf": [
+													{
+														"description": "Specifies the state of maintenance operations.",
+														"enum": [
+															"enabled",
+															"disabled"
+														],
+														"example": "enabled",
+														"type": "string"
+													}
 												],
-												"example": "enabled",
-												"type": "string"
+												"description": "Updates the state optionally."
+											},
+											"target_size_mb": {
+												"allOf": [
+													{
+														"default": "128",
+														"description": "Sets the target file size for compaction in megabytes.",
+														"enum": [
+															"64",
+															"128",
+															"256",
+															"512"
+														],
+														"example": "128",
+														"type": "string"
+													}
+												],
+												"description": "Updates the target file size optionally."
 											}
-										],
-										"description": "Updates the state optionally."
+										},
+										"type": "object"
 									},
-									"target_size_mb": {
-										"allOf": [
-											{
-												"default": "128",
-												"description": "Sets the target file size for compaction in megabytes.",
-												"enum": [
-													"64",
-													"128",
-													"256",
-													"512"
-												],
-												"example": "128",
+									"snapshot_expiration": {
+										"description": "Updates snapshot expiration configuration (all fields optional).",
+										"properties": {
+											"max_snapshot_age": {
+												"description": "Updates the maximum age for snapshots optionally.",
+												"pattern": "^\\d+(d|h|m|s)$",
 												"type": "string"
+											},
+											"min_snapshots_to_keep": {
+												"description": "Updates the minimum number of snapshots to retain optionally.",
+												"format": "int64",
+												"minimum": 1,
+												"type": "integer"
+											},
+											"state": {
+												"allOf": [
+													{
+														"description": "Specifies the state of maintenance operations.",
+														"enum": [
+															"enabled",
+															"disabled"
+														],
+														"example": "enabled",
+														"type": "string"
+													}
+												],
+												"description": "Updates the state optionally."
 											}
-										],
-										"description": "Updates the target file size optionally."
+										},
+										"type": "object"
 									}
 								},
 								"type": "object"
 							}
-						},
-						"type": "object"
+						],
+						"description": "Contains request to update table maintenance configuration."
 					}
 				}
 			},
@@ -515,6 +596,11 @@
 								"compaction": {
 									"state": "enabled",
 									"target_size_mb": "256"
+								},
+								"snapshot_expiration": {
+									"max_snapshot_age": "14d",
+									"min_snapshots_to_keep": 5,
+									"state": "enabled"
 								}
 							},
 							"success": true
@@ -611,6 +697,41 @@
 													"required": [
 														"state",
 														"target_size_mb"
+													],
+													"type": "object"
+												},
+												"snapshot_expiration": {
+													"description": "Configures snapshot expiration settings.",
+													"properties": {
+														"max_snapshot_age": {
+															"default": "7d",
+															"description": "Specifies the maximum age for snapshots. The system deletes snapshots older than this age.\nFormat: <number><unit> where unit is d (days), h (hours), m (minutes), or s (seconds).\nExamples: \"7d\" (7 days), \"48h\" (48 hours), \"2880m\" (2,880 minutes).\n",
+															"example": "7d",
+															"pattern": "^\\d+(d|h|m|s)$",
+															"type": "string"
+														},
+														"min_snapshots_to_keep": {
+															"default": 3,
+															"description": "Specifies the minimum number of snapshots to retain.",
+															"example": 3,
+															"format": "int64",
+															"minimum": 1,
+															"type": "integer"
+														},
+														"state": {
+															"description": "Specifies the state of maintenance operations.",
+															"enum": [
+																"enabled",
+																"disabled"
+															],
+															"example": "enabled",
+															"type": "string"
+														}
+													},
+													"required": [
+														"state",
+														"min_snapshots_to_keep",
+														"max_snapshot_age"
 													],
 													"type": "object"
 												}

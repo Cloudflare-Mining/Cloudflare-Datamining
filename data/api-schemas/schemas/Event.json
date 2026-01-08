@@ -581,6 +581,17 @@
 				"schema": {
 					"type": "boolean"
 				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"enum": [
+						"json",
+						"stix2"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -3236,6 +3247,11 @@
 							"tlp": {
 								"example": "amber",
 								"type": "string"
+							},
+							"uuid": {
+								"description": "Optional UUID for the event. Only used when preserveUuid=true in bulk create. Must be a valid UUID format.",
+								"example": "12345678-1234-1234-1234-1234567890ab",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -3578,6 +3594,11 @@
 										"tlp": {
 											"example": "amber",
 											"type": "string"
+										},
+										"uuid": {
+											"description": "Optional UUID for the event. Only used when preserveUuid=true in bulk create. Must be a valid UUID format.",
+											"example": "12345678-1234-1234-1234-1234567890ab",
+											"type": "string"
 										}
 									},
 									"required": [
@@ -3594,6 +3615,10 @@
 							"datasetId": {
 								"example": "durableObjectName",
 								"type": "string"
+							},
+							"preserveUuid": {
+								"description": "When true, use provided UUIDs from event data instead of generating new ones. Used for migration scenarios where original UUIDs must be preserved. Duplicate UUIDs will be skipped.",
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -3653,10 +3678,15 @@
 								"queuedIndicatorsCount": {
 									"description": "Number of indicators queued for async processing",
 									"type": "number"
+								},
+								"skippedEventsCount": {
+									"description": "Number of events skipped due to duplicate UUID (only when preserveUuid=true)",
+									"type": "number"
 								}
 							},
 							"required": [
 								"createdEventsCount",
+								"skippedEventsCount",
 								"queuedIndicatorsCount",
 								"createdTagsCount",
 								"errorCount"
@@ -3847,6 +3877,11 @@
 										},
 										"tlp": {
 											"example": "amber",
+											"type": "string"
+										},
+										"uuid": {
+											"description": "Optional UUID for the event. Only used when preserveUuid=true in bulk create. Must be a valid UUID format.",
+											"example": "12345678-1234-1234-1234-1234567890ab",
 											"type": "string"
 										}
 									},

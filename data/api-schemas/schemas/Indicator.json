@@ -761,6 +761,20 @@
 					"description": "Whether to compute accurate total count via COUNT(*). Defaults to false for performance. When false, total_count is an approximation.",
 					"type": "boolean"
 				}
+			},
+			{
+				"description": "Output format for indicator data. 'json' returns the default format, 'stix2' returns STIX 2.1 Indicator SDOs.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Output format for indicator data. 'json' returns the default format, 'stix2' returns STIX 2.1 Indicator SDOs.",
+					"enum": [
+						"json",
+						"stix2"
+					],
+					"example": "json",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

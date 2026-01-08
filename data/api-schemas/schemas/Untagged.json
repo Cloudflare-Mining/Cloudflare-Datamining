@@ -1731,5 +1731,7 @@
 				]
 			}
 		}
-	]
+	],
+	"X-AUDITABLE /accounts/{account_id}/queues/{queue_id}/messages/ack": false,
+	"X-AUDITABLE /accounts/{account_id}/queues/{queue_id}/messages/pull": false
 }

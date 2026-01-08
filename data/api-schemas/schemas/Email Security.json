@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/email-security/investigate": {
-		"description": "Returns information for each email that matches the search parameter(s).",
+		"description": "Returns information for each email that matches the search parameter(s).\nIf the search takes too long, the endpoint returns 202 with a Location header\npointing to a polling endpoint where results can be retrieved once ready.",
 		"operationId": "email_security_investigate",
 		"parameters": [
 			{
@@ -634,7 +634,7 @@
 													"from": "d1994@example.com",
 													"from_name": "Sender Name",
 													"htmltext_structure_hash": null,
-													"id": "47JJcT1w6GztQV7-email@example.com",
+													"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-email@example.com",
 													"is_phish_submission": false,
 													"is_quarantined": false,
 													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
@@ -721,6 +721,547 @@
 					}
 				},
 				"description": "Contains the search results for the provided query."
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"format": "int32",
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"action_log": {},
+															"alert_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"client_recipients": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"delivery_mode": {
+																"allOf": [
+																	{
+																		"enum": [
+																			"DIRECT",
+																			"BCC",
+																			"JOURNAL",
+																			"REVIEW_SUBMISSION",
+																			"DMARC_UNVERIFIED",
+																			"DMARC_FAILURE_REPORT",
+																			"DMARC_AGGREGATE_REPORT",
+																			"THREAT_INTEL_SUBMISSION",
+																			"SIMULATION_SUBMISSION",
+																			"API",
+																			"RETRO_SCAN"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	}
+																]
+															},
+															"detection_reasons": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"edf_hash": {
+																"nullable": true,
+																"type": "string"
+															},
+															"envelope_from": {
+																"nullable": true,
+																"type": "string"
+															},
+															"envelope_to": {
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"final_disposition": {
+																"allOf": [
+																	{
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "string"
+																	}
+																]
+															},
+															"findings": {
+																"items": {
+																	"properties": {
+																		"attachment": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"detail": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"detection": {
+																			"allOf": [
+																				{
+																					"enum": [
+																						"MALICIOUS",
+																						"MALICIOUS-BEC",
+																						"SUSPICIOUS",
+																						"SPOOF",
+																						"SPAM",
+																						"BULK",
+																						"ENCRYPTED",
+																						"EXTERNAL",
+																						"UNKNOWN",
+																						"NONE"
+																					],
+																					"type": "string"
+																				},
+																				{
+																					"nullable": true,
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"field": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"portion": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"reason": {
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"score": {
+																			"format": "double",
+																			"nullable": true,
+																			"type": "number"
+																		},
+																		"value": {
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"from": {
+																"nullable": true,
+																"type": "string"
+															},
+															"from_name": {
+																"nullable": true,
+																"type": "string"
+															},
+															"htmltext_structure_hash": {
+																"nullable": true,
+																"type": "string"
+															},
+															"is_phish_submission": {
+																"type": "boolean"
+															},
+															"is_quarantined": {
+																"type": "boolean"
+															},
+															"message_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"postfix_id": {
+																"description": "The identifier of the message.",
+																"example": "4Njp3P0STMz2c02Q",
+																"title": "postfix_id",
+																"type": "string"
+															},
+															"postfix_id_outbound": {
+																"nullable": true,
+																"type": "string"
+															},
+															"properties": {
+																"properties": {
+																	"allowlisted_pattern": {
+																		"type": "string"
+																	},
+																	"allowlisted_pattern_type": {
+																		"allOf": [
+																			{
+																				"enum": [
+																					"quarantine_release",
+																					"acceptable_sender",
+																					"allowed_sender",
+																					"allowed_recipient",
+																					"domain_similarity",
+																					"domain_recency",
+																					"managed_acceptable_sender",
+																					"outbound_ndr"
+																				],
+																				"type": "string"
+																			}
+																		]
+																	},
+																	"blocklisted_message": {
+																		"type": "boolean"
+																	},
+																	"blocklisted_pattern": {
+																		"type": "string"
+																	},
+																	"whitelisted_pattern_type": {
+																		"allOf": [
+																			{
+																				"enum": [
+																					"quarantine_release",
+																					"acceptable_sender",
+																					"allowed_sender",
+																					"allowed_recipient",
+																					"domain_similarity",
+																					"domain_recency",
+																					"managed_acceptable_sender",
+																					"outbound_ndr"
+																				],
+																				"type": "string"
+																			}
+																		]
+																	}
+																},
+																"type": "object"
+															},
+															"replyto": {
+																"nullable": true,
+																"type": "string"
+															},
+															"sent_date": {
+																"nullable": true,
+																"type": "string"
+															},
+															"subject": {
+																"nullable": true,
+																"type": "string"
+															},
+															"threat_categories": {
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"to": {
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"to_name": {
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"ts": {
+																"type": "string"
+															},
+															"validation": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"comment": {
+																				"nullable": true,
+																				"type": "string"
+																			},
+																			"dkim": {
+																				"allOf": [
+																					{
+																						"enum": [
+																							"pass",
+																							"neutral",
+																							"fail",
+																							"error",
+																							"none"
+																						],
+																						"type": "string"
+																					},
+																					{
+																						"nullable": true,
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"dmarc": {
+																				"allOf": [
+																					{
+																						"enum": [
+																							"pass",
+																							"neutral",
+																							"fail",
+																							"error",
+																							"none"
+																						],
+																						"type": "string"
+																					},
+																					{
+																						"nullable": true,
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"spf": {
+																				"allOf": [
+																					{
+																						"enum": [
+																							"pass",
+																							"neutral",
+																							"fail",
+																							"error",
+																							"none"
+																						],
+																						"type": "string"
+																					},
+																					{
+																						"nullable": true,
+																						"type": "string"
+																					}
+																				]
+																			}
+																		},
+																		"type": "object"
+																	},
+																	{
+																		"nullable": true,
+																		"type": "object"
+																	}
+																]
+															}
+														},
+														"required": [
+															"ts",
+															"client_recipients",
+															"postfix_id",
+															"detection_reasons",
+															"action_log",
+															"is_quarantined",
+															"is_phish_submission",
+															"properties"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"id": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													}
+												],
+												"example": {
+													"action_log": [],
+													"alert_id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49",
+													"client_recipients": [
+														"email@example.com"
+													],
+													"delivery_mode": "DIRECT",
+													"detection_reasons": [
+														"Selector is a source of spam/uce : Smtp-Helo-Server-Ip=<b>127.0.0[dot]186</b>"
+													],
+													"edf_hash": null,
+													"envelope_from": "d1994@example.com",
+													"envelope_to": [
+														"email@example.com"
+													],
+													"final_disposition": "MALICIOUS",
+													"findings": null,
+													"from": "d1994@example.com",
+													"from_name": "Sender Name",
+													"htmltext_structure_hash": null,
+													"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-email@example.com",
+													"is_phish_submission": false,
+													"is_quarantined": false,
+													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
+													"postfix_id": "47JJcT1w6GztQV7",
+													"postfix_id_outbound": null,
+													"properties": {},
+													"replyto": "email@example.com",
+													"sent_date": "2019-11-21T00:22:01",
+													"subject": "listen, I highly recommend u to read that email, just to ensure not a thing will take place",
+													"threat_categories": [
+														"IPReputation",
+														"ASNReputation"
+													],
+													"to": [
+														"email@example.com"
+													],
+													"to_name": [
+														"Recipient Name"
+													],
+													"ts": "2019-11-20T23:22:01",
+													"validation": {
+														"comment": null,
+														"dkim": "pass",
+														"dmarc": "none",
+														"spf": "fail"
+													}
+												}
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"next": {
+													"nullable": true,
+													"type": "string"
+												},
+												"page": {
+													"deprecated": true,
+													"description": "Deprecated: Returns always 0",
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"per_page": {
+													"description": "number of items per page",
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"previous": {
+													"nullable": true,
+													"type": "string"
+												},
+												"total_count": {
+													"deprecated": true,
+													"description": "Deprecated: Returns always 0",
+													"format": "int32",
+													"minimum": 0,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"per_page",
+												"count",
+												"page",
+												"total_count"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The search is taking longer than expected. Use the Location header to poll for results.",
+				"headers": {
+					"Location": {
+						"description": "URL to poll for search results",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
 			},
 			"4XX": {
 				"content": {
@@ -1285,7 +1826,7 @@
 												"from": "d1994@example.com",
 												"from_name": "Sender Name",
 												"htmltext_structure_hash": null,
-												"id": "47JJcT1w6GztQV7-email@example.com",
+												"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-email@example.com",
 												"is_phish_submission": false,
 												"is_quarantined": false,
 												"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
@@ -3475,6 +4016,7 @@
 														"type": "string"
 													},
 													"item_count": {
+														"deprecated": true,
 														"format": "int32",
 														"type": "integer"
 													},
@@ -3493,11 +4035,15 @@
 													"status": {
 														"nullable": true,
 														"type": "string"
+													},
+													"success": {
+														"type": "boolean"
 													}
 												},
 												"required": [
-													"item_count",
-													"completed_timestamp"
+													"completed_timestamp",
+													"success",
+													"item_count"
 												],
 												"type": "object"
 											},
@@ -3962,6 +4508,7 @@
 														"type": "string"
 													},
 													"item_count": {
+														"deprecated": true,
 														"format": "int32",
 														"type": "integer"
 													},
@@ -3980,11 +4527,15 @@
 													"status": {
 														"nullable": true,
 														"type": "string"
+													},
+													"success": {
+														"type": "boolean"
 													}
 												},
 												"required": [
-													"item_count",
-													"completed_timestamp"
+													"completed_timestamp",
+													"success",
+													"item_count"
 												],
 												"type": "object"
 											},
