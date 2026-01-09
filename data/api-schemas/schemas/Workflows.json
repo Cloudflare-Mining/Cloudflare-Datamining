@@ -3104,6 +3104,54 @@
 								"type": "string"
 							},
 							"instance_retention": {
+								"properties": {
+									"error_retention": {
+										"anyOf": [
+											{
+												"description": "Duration in milliseconds.",
+												"type": "number"
+											},
+											{
+												"type": "string"
+											}
+										],
+										"description": "Duration in milliseconds or as a string like '5 minutes'",
+										"oneOf": [
+											{
+												"description": "Duration in milliseconds.",
+												"type": "integer"
+											},
+											{
+												"example": "5 minutes",
+												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+												"type": "string"
+											}
+										]
+									},
+									"success_retention": {
+										"anyOf": [
+											{
+												"description": "Duration in milliseconds.",
+												"type": "number"
+											},
+											{
+												"type": "string"
+											}
+										],
+										"description": "Duration in milliseconds or as a string like '5 minutes'",
+										"oneOf": [
+											{
+												"description": "Duration in milliseconds.",
+												"type": "integer"
+											},
+											{
+												"example": "5 minutes",
+												"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+												"type": "string"
+											}
+										]
+									}
+								},
 								"type": "object"
 							},
 							"params": {
@@ -3693,6 +3741,54 @@
 									"type": "string"
 								},
 								"instance_retention": {
+									"properties": {
+										"error_retention": {
+											"anyOf": [
+												{
+													"description": "Duration in milliseconds.",
+													"type": "number"
+												},
+												{
+													"type": "string"
+												}
+											],
+											"description": "Duration in milliseconds or as a string like '5 minutes'",
+											"oneOf": [
+												{
+													"description": "Duration in milliseconds.",
+													"type": "integer"
+												},
+												{
+													"example": "5 minutes",
+													"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+													"type": "string"
+												}
+											]
+										},
+										"success_retention": {
+											"anyOf": [
+												{
+													"description": "Duration in milliseconds.",
+													"type": "number"
+												},
+												{
+													"type": "string"
+												}
+											],
+											"description": "Duration in milliseconds or as a string like '5 minutes'",
+											"oneOf": [
+												{
+													"description": "Duration in milliseconds.",
+													"type": "integer"
+												},
+												{
+													"example": "5 minutes",
+													"pattern": "^(\\d+)\\s+(second|minute|hour|day|week|month|year)s?$",
+													"type": "string"
+												}
+											]
+										}
+									},
 									"type": "object"
 								},
 								"params": {

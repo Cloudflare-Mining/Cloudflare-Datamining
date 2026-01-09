@@ -28,6 +28,13 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -549,6 +556,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -1012,6 +1020,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -1227,7 +1236,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -1517,6 +1527,13 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -1927,6 +1944,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -2757,6 +2775,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -2840,7 +2859,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -3126,6 +3146,13 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -3519,6 +3546,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -4254,6 +4282,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -4341,7 +4370,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -4622,6 +4652,13 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -5143,6 +5180,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -5606,6 +5644,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -5821,7 +5860,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -6099,6 +6139,13 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -6488,6 +6535,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -7521,6 +7569,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -7604,7 +7653,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -7850,6 +7900,18 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"elements": [
+									{
+										"selector": "h1"
+									}
+								],
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -8254,6 +8316,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -8997,6 +9060,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -9081,7 +9145,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -9430,6 +9495,13 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -9819,6 +9891,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -10742,6 +10815,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -10825,7 +10899,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
@@ -11123,6 +11198,13 @@
 		"requestBody": {
 			"content": {
 				"application/json": {
+					"examples": {
+						"example1": {
+							"value": {
+								"url": "https://www.example.com/"
+							}
+						}
+					},
 					"schema": {
 						"allOf": [
 							{
@@ -11512,6 +11594,7 @@
 											},
 											"html": {
 												"description": "Set the content of the page, eg: `<h1>Hello World!!</h1>`. Either `html` or `url` must be set.",
+												"example": "<h1>Hello World!</h1>",
 												"minLength": 1,
 												"type": "string"
 											},
@@ -12387,6 +12470,7 @@
 											},
 											"url": {
 												"description": "URL to navigate to, eg. `https://example.com`.",
+												"example": "https://example.com/",
 												"format": "uri",
 												"type": "string"
 											},
@@ -12470,7 +12554,8 @@
 						]
 					}
 				}
-			}
+			},
+			"required": true
 		},
 		"responses": {
 			"200": {
