@@ -5,33 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<h4>About the LPT Team</h4>
-<p>Because of the scope, complexity, and diversity of the company’s work, we need a world-class support team to help the company avoid distractions, and guide company leadership around obstacles.&nbsp; Our Legal Policy, and Trust and Safety teams are made up of very accomplished lawyers and staff who comprise a flexible, talented, and very cohesive team.</p>
-<h4>What you'll do</h4>
-<p>Cloudflare is looking for a bright, proactive, and detail-oriented Senior Administrative Assistant who can support three VPs: our VP, Chief Privacy Officer; our VP of Risk, Litigation, and Employment; and our VP of Trust &amp; Safety. The ideal candidate must be comfortable with a significant volume of tasks and prioritization in a fast-paced environment with close attention to detail, accuracy, and timeliness. The position requires the ability to apply a good deal of common sense and a growing understanding of work habits and priorities to keep everything working smoothly. The candidate will have to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information and professionalism in dealing with executives both inside and outside the company is important, as is a positive attitude and sense of humor.</p>
-<p>The responsibilities of the Executive Assistant will be to provide administrative and substantive support, including:&nbsp;</p>
+<h3><strong>Available Locations: </strong>San Francisco, CA</h3>
+<h3 data-path-to-node="3">About the Role</h3>
+<p data-path-to-node="4">As a Principal Ecosystem Partnerships Manager, your mission is to make Cloudflare the premier destination for discovering, running, and scaling AI models. This is a high-impact, strategic role where you will own the partner strategy and execution end-to-end. Operating with significant autonomy, you will navigate the entire partnership lifecycle from initial strategy and outreach to landing models in production. You will serve as the essential link between Cloudflare’s internal Product, Engineering, Legal, and Finance teams and the broader AI ecosystem, acting as the connective tissue between ecosystem strategy and platform execution.</p>
+<h3 data-path-to-node="6">What You’ll Do</h3>
 <ul>
-	<li>Proactively own and flawlessly execute on very active, fluid calendars, prioritizing with purpose, deflecting with tact, and understanding both the short and long-term impacts of each confirmed, declined, and rescheduled meeting. Scheduling needs range from external meetings with outside counsel, industry meetings, internal cross-functional meetings, interviews with candidates, 1:1s with direct reports, and regular team meetings with a dozen or more attendees, as well as balancing work calendars with personal commitments.</li>
-	<li>Coordinate participation in external and company events. Help book domestic and international travel, ensure timely submission of expense reports.&nbsp;</li>
-	<li>Track and draft communications with tact, substance, and accuracy. Vet and provide confidential requested information to appropriate stakeholders.</li>
-	<li>Help organize internal and well as external events and other collaborative opportunities for the three VPs, including event planning, assistance with scheduling, catering, working with the internal cross-functional teams (e.g., the Cloudflare Places and IT teams, and other Legal team EAs) to ensure a smooth and seamless experience.</li>
-	<li>Coordinate on ad hoc projects to support the VPs as requested.</li>
-	<li>Develop and foster relationships across the company, from the Admins of each team to senior members of the various orgs to become a helpful bridge and representative of the LPT Team. Problem solve where pain points can be eliminated and efficiencies can be attained.</li>
+	<li data-path-to-node="7,0,0"><strong data-path-to-node="7,0,0" data-index-in-node="0">Ecosystem Strategy:</strong> Define and execute the overarching partner strategy for Cloudflare’s AI Developer Platform. Serve as the strategic lead for high-value model provider relationships.</li>
+	<li data-path-to-node="7,1,0"><strong data-path-to-node="7,1,0" data-index-in-node="0">Marketplace Curation:</strong> Identify, recruit, and onboard top-tier model providers across image, video, multimodal, speech, code, and LLMs. Maintain a data-driven "Top-X" provider list aligned with developer demand and performance benchmarks.</li>
+	<li data-path-to-node="7,2,0"><strong data-path-to-node="7,2,0" data-index-in-node="0">Negotiation &amp; Deal Leadership:</strong> Lead complex negotiations covering pricing, revenue share, SLAs, and licensing. Partner closely with Legal and Finance to structure scalable, durable agreements that protect Cloudflare’s flexibility and margin.</li>
+	<li data-path-to-node="7,3,0"><strong data-path-to-node="7,3,0" data-index-in-node="0">Launch Execution:</strong> Own a repeatable launch pipeline (validation, performance and cost checks, documentation, and quickstarts). Ensure models are easy to discover and production-ready for developers within the Workers AI Marketplace.</li>
+	<li data-path-to-node="7,4,0"><strong data-path-to-node="7,4,0" data-index-in-node="0">Commercial Ownership:</strong> Set volume tiers and pricing logic while tracking unit economics and model-level profitability. Drive GTM efforts focused on driving actual deployment and usage.</li>
+	<li data-path-to-node="7,5,0"><strong data-path-to-node="7,5,0" data-index-in-node="0">Operational Excellence:</strong> Lead business reviews, roadmap previews, and incident response with key partners. Act as a trusted counterpart to both external providers and internal leadership.</li>
+	<li data-path-to-node="7,6,0"><strong data-path-to-node="7,6,0" data-index-in-node="0">Industry Insights:</strong> Stay ahead of generative AI trends and new model launches to ensure Cloudflare remains the go-to platform for the widest selection of high-performance models.</li>
 </ul>
-<p>Examples of desirable skills, knowledge and experience</p>
+<h3 data-path-to-node="8">Who You Are</h3>
 <ul>
-	<li>The ideal candidate is someone who wants an opportunity for growth and is excited to jump into a close working relationship with leaders at one of the fastest-growing tech companies in the world. This position is ideal for someone with a thirst for knowledge and a desire to learn more about technology, Internet policy, and legal issues.&nbsp;</li>
-	<li>6+ years minimum experience in an administrative or support role, experience in a law firm or tech in-house environment is a plus</li>
-	<li>High School diploma required, Associate or Bachelor's Degree preferred</li>
-	<li>Strong written and verbal communication skills</li>
-	<li>Proactive approach, combined with good judgment</li>
-	<li>Ability to manage their own time with limited or no supervision</li>
-	<li>Ability to hit the ground running and take charge of the position</li>
-	<li>Start-up and tech background is a plus</li>
-	<li>Working knowledge of Google Suite, Excel, Navan, and Zip is a plus</li>
+	<li data-path-to-node="9,0,0"><strong data-path-to-node="9,0,0" data-index-in-node="0">Expert Partner Leader:</strong> You bring extensive experience (typically 8+ years) in AI ecosystems, partnerships, or business development, with a proven track record of signing and scaling high-profile providers.</li>
+	<li data-path-to-node="9,1,0"><strong data-path-to-node="9,1,0" data-index-in-node="0">Technically Fluent:</strong> You are deeply comfortable discussing APIs, tokens, context windows, throughput, and GPU performance tradeoffs. You can hold your own in technical discussions with engineers and legal discussions with counsel.</li>
+	<li data-path-to-node="9,2,0"><strong data-path-to-node="9,2,0" data-index-in-node="0">Strategic &amp; Pragmatic:</strong> You possess strong product intuition and can distinguish between hype and sustainable value, making hard prioritization decisions based on quality and cost.</li>
+	<li data-path-to-node="9,3,0"><strong data-path-to-node="9,3,0" data-index-in-node="0">Action-Oriented:</strong> You have a strong bias for action, moving quickly and operating independently even in highly ambiguous environments.</li>
+	<li data-path-to-node="9,4,0"><strong data-path-to-node="9,4,0" data-index-in-node="0">Exceptional Communicator:</strong> You are a clear writer and an effective negotiator who remains calm during escalations and builds trust across diverse functional teams.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $295,000 - $328,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
