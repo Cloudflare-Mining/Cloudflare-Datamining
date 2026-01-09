@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-08-01T23:21:16.877Z",
-					"updatedAt": "2024-10-31T15:27:25.744Z"
+					"updatedAt": "2026-01-09T17:03:25.070Z"
 				},
 				"contentfulId": "sYx5EnH8ohw0bMA1COUMt",
 				"contentTypeId": "page",
@@ -382,6 +382,185 @@
 						"imageSize": "medium",
 						"imageTextAlignment": "center",
 						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "7fqRVdjhnW5zqvjCOZr00",
+						"bladeName": "Cloudflare hosting FAQs",
+						"title": "Cloudflare hosting FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6P6E7zzQSUbIk5H9wSkHy2",
+								"title": "What hosting solutions does Cloudflare offer?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare provides a range of hosting solutions for various needs, from hobby projects to large enterprise applications. Websites built and hosted on Cloudflare are secure and fast-performing no matter where their user base is located.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "59JfjmstARFtkXMT2RTGPj",
+								"title": "How does Cloudflare Pages work?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Pages is a simple, fast way to build, test, and deploy. It allows you to build full-stack applications and deploy your code instantly. It offers seamless integration with other Cloudflare developer tools and services, enabling developers to construct both static and dynamic applications with minimal configuration. With unlimited seats, Pages makes it easy for developers to collaborate on applications.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "344YmK90J88lL3NG4t3rxr",
+								"title": "What is Cloudflare Images?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Images is an end-to-end solution for hosting images. It allows application developers to cost-effectively store, resize, optimize, and deliver images at scale using a single, unified product.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "FhEpIorcPZZf59QYYQbQL",
+								"title": "How can I host videos on Cloudflare?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare customers can use Cloudflare Stream to upload, store, encode, and deliver both live and on-demand video. Stream customers are only charged for the minutes of video delivered and stored, with no extra fees for encoding or bandwidth.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "22IJHgV2ZHOo7bOD8mdU2N",
+								"title": "What is Cloudflare R2, and how does it improve application performance?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare R2 is object storage that does not charge egress fees. By storing your application assets directly on Cloudflare, where your application is hosted, you can reduce round trips when loading data from the backend and improve the overall performance of your application.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
