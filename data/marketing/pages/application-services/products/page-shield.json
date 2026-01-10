@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2021-09-13T22:41:28.836Z",
-					"updatedAt": "2026-01-10T06:29:07.256Z"
+					"updatedAt": "2026-01-10T07:51:48.284Z"
 				},
 				"contentfulId": "4dFy11xwTfNW36275hDE8L",
 				"contentTypeId": "page",
@@ -774,7 +774,21 @@
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
+									"altText": "Yes check blue",
+									"title": "Yes check blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+										},
+										"description": "Checkmark icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -910,7 +924,17 @@
 								"heading": "Article",
 								"description": "Website security guide: A 10-step checklist",
 								"category": "None",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "75DqYYWfJd9rhgNwQpu0ei",
+									"elementName": "Page Shield - Resources - Website security guide: A 10-step checklist - Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/learning/security/glossary/website-security-checklist/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "1763ab8c-9b68-5fc6-b36c-2b974b3a73ad",
 									"altText": "theNET - generic - Article",
