@@ -5,43 +5,86 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<h4><strong>Summary</strong></h4>
-<p>The Zero Trust QA team is looking for a<strong> Systems Test Engineer</strong> to test and exercise our Zero Trust products similar to our customers’ devices and infrastructure. You will start from the customer’s perspective using <strong>Cloudflare WARP</strong> and<strong> Cloudflare Tunnel</strong>, which are network and security-focused applications that enable secure communications between our customers’ devices and their private infrastructure. You will expand test coverage to additional Zero Trust products and services to close test gaps and increase coverage for full product validation.</p>
-<p><strong>What you’ll do</strong></p>
-<p>As a Systems Test Engineer, you will own a variety of technical and product-focused responsibilities to ensure we deliver a high-quality security product.&nbsp;&nbsp;</p>
+<p><strong>Available Locations: San Francisco (on-site)</strong></p>
+<p><strong>About the Role</strong></p>
+<p>As an <strong>IT Operations Specialist II (P3)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
+<p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
+<p><strong>Responsibilities</strong></p>
+<p><strong>Onsite IT Operations &amp; Office Support</strong></p>
 <ul>
-	<li><strong>Collaborate closely with</strong> fellow test engineers, PMs and development teams to understand all features</li>
-	<li>Define and execute in-depth product <strong>test strategies</strong> for new and existing features</li>
-	<li>Assist teams to <strong>quickly</strong> <strong>reproduce customer issues</strong>, test fixes and update tests to close coverage gaps&nbsp;&nbsp;</li>
-	<li><strong>Discover edge cases across Zero Trust products</strong> and partner with teams to find and validate solutions</li>
-	<li>Regularly set up,<strong> </strong>configure,<strong> test, debug, and troubleshoot </strong>network-related features</li>
-	<li>Create, maintain, and<strong> execute a suite of critical manual tests&nbsp;</strong></li>
-	<li><strong>Leverage the automation framework</strong> to efficiently exercise functionality for faster feedback</li>
-	<li>Provide methods to identify and&nbsp;<strong>reduce repetitive</strong> manual test runs while maintaining a high level of quality</li>
-	<li>Maintain a collection of <strong>physical devices and virtual environments</strong> for testing<strong> </strong>various scenarios</li>
-	<li>Regularly <strong>report quality status</strong> to all stakeholders on key features</li>
+	<ul>
+		<li>Act as the onsite IT support resource, responding to employee requests and incidents.</li>
+		<li>Ensure conference rooms, IT systems, and shared office equipment are functioning properly.</li>
+		<li>Assist with IT asset management, including device provisioning, check-in/check-out, and tracking.</li>
+		<li>Partner with IT and Security teams to follow access control and compliance policies.</li>
+	</ul>
 </ul>
-<p><strong>What you’ll bring</strong></p>
-<p>We expect you to have a background in QA and hands-on experience with <strong>mobile and desktop device networking configurations across Windows, Linux, and macOS platforms.&nbsp; </strong>You'll understand how data is managed on each device and routed across public and private cloud environments. You will be adept at reviewing functional specifications, participating in technical design reviews and designing test scenarios and setting up physical and virtual environments to properly exercise all features.&nbsp; Your passion and curiosity for understanding how our services work will be crucial in debugging issues at all levels. Additionally, you should be adept at distilling complex scenarios into actionable reports and working towards resolution with development, product, and QA team members. You are comfortable raising issues and can clearly articulate details in tests, bug reports, test environment documentation and team-wide updates.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Conference Room &amp; Event Support</strong></p>
 <ul>
-	<li>Experience with <strong>manual E2E testing of network-based apps</strong>, especially VPNs (e.g. DNS, protocols, throttling, packet loss, etc.)</li>
-	<li>Strong knowledge of <strong>L3 to L7 networking</strong> technologies&nbsp;(Major networking certifications are a plus)</li>
-	<li>Experience&nbsp;with <strong>IP, TCP, UDP, DNS, QUIC, H/3 </strong>and proxying, routing, switching concepts</li>
-	<li>Strong knowledge of <strong>macOS, Windows, Linux, and mobile client (iOS,</strong> <strong>Android)</strong> platforms&nbsp;</li>
-	<li>Experience with testing <strong>device connectivity</strong> across networks (wired-to-wireless, cellular-to-wireless)</li>
-	<li>Strong&nbsp;<strong>attention to detail</strong> for building test plans and <strong>analytical mindset</strong> when debugging issues</li>
-	<li>Experience setting up and maintaining physical and virtual&nbsp;<strong>device environments</strong></li>
-	<li>Adept at finding edge cases and go <strong>beyond surface-level testing</strong></li>
-	<li>Consistently think of scenarios which could cause a poor customer experience<strong> </strong></li>
-	<li>Proficient with running and interpreting <strong>traffic captures, gathering logs</strong>,<strong> </strong>and reporting test results</li>
-	<li>Experience using one or more&nbsp;<strong>Mobile Device Management platforms</strong> (MDMs)</li>
-	<li>Empathetic, proactive, and constructive&nbsp;<strong>communication skills</strong>, verbal and written</li>
-	<li>Experience with Python to <strong>understand automated tests</strong> and framework capabilities</li>
-	<li><strong>Develop scripts</strong> to assist in testing and convert tests from manual to automated</li>
+	<ul>
+		<li>Provide setup and basic troubleshooting for conference room AV technology and video conferencing platforms (Zoom, Google Meet).</li>
+		<li>Assist with small to mid-sized corporate meetings and events, including setup and technical support.</li>
+		<li>Escalate complex AV or event issues to senior specialists or vendors as needed.</li>
+	</ul>
+</ul>
+<p><strong>Employee IT Support</strong></p>
+<ul>
+	<ul>
+		<li>Provide in-person support for hardware, software, and network connectivity issues.</li>
+		<li>Help employees with device setup, account access, and secure remote connectivity.</li>
+		<li>Deliver professional, customer-focused service when working with employees at all levels.</li>
+	</ul>
+</ul>
+<p><strong>Qualifications &amp; Skills</strong></p>
+<p><strong>Required:</strong></p>
+<ul>
+	<li>1–2 years of IT support or helpdesk experience in a corporate environment.</li>
+	<li>Strong troubleshooting skills for common hardware, software, and connectivity issues.</li>
+	<li>Familiarity with video conferencing platforms (Zoom, Google Meet).</li>
+	<li>Knowledge of IT asset management practices.</li>
+	<li>Excellent communication and customer service skills.</li>
+	<li>Associate’s degree in Information Technology, Computer Science, or related field (or equivalent experience).</li>
+</ul>
+<p><strong>Preferred:</strong></p>
+<ul>
+	<li>Experience with IT ticketing systems (e.g., Jira Service Management).</li>
+	<li>Familiarity with device management tools such as JAMF or Intune.</li>
+	<li>Basic understanding of IT security best practices.</li>
+	<li>Certifications such as CompTIA A+, ITIL 4 Foundation, or Microsoft 365 Fundamentals.</li>
 </ul>
 <p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $104,000 - $115,000.&nbsp;</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
