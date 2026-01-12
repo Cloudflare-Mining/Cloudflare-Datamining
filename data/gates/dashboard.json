@@ -889,13 +889,6 @@
 	"dx-account-details-table": {
 		"enabled": true
 	},
-	"dx-account-overview-tab": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-account-selector-table": {
 		"enabled": true,
 		"branches": [
@@ -922,9 +915,6 @@
 			"baseline",
 			"experiment"
 		]
-	},
-	"dx-change-modal": {
-		"enabled": false
 	},
 	"dx-chunkload-repro": {
 		"enabled": true
@@ -960,22 +950,8 @@
 	"dx-enable-adobe-launch": {
 		"enabled": true
 	},
-	"dx-footer-phone-link": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-footer-simplify": {
 		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
-	"dx-full-zone-nameserver-instructions": {
-		"enabled": false,
 		"branches": [
 			"baseline",
 			"experiment"
@@ -2414,6 +2390,9 @@
 	},
 	"timezone-preference": {
 		"enabled": true
+	},
+	"top-level-tunnels": {
+		"enabled": false
 	},
 	"total-tls": {
 		"enabled": true
