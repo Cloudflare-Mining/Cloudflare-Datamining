@@ -552,13 +552,7 @@
 	"custom-ps-alerts": {
 		"enabled": true
 	},
-	"d1-insights": {
-		"enabled": true
-	},
 	"d1-jurisdiction-ui": {
-		"enabled": true
-	},
-	"d1-storage-unification": {
 		"enabled": true
 	},
 	"d2c-existing-resources": {
@@ -712,9 +706,6 @@
 	},
 	"ddp-gray-cloud-custom-hostnames": {
 		"enabled": false
-	},
-	"deploy-to-cloudflare-for-own-git-repos": {
-		"enabled": true
 	},
 	"deploy-to-workers-v2": {
 		"enabled": true
@@ -912,13 +903,6 @@
 			"experiment"
 		]
 	},
-	"dx-account-switcher-dropdown": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-account-switcher-top-nav": {
 		"enabled": true,
 		"branches": [
@@ -1041,13 +1025,6 @@
 			"experiment"
 		]
 	},
-	"dx-onboarding-workers-experiment-2": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-paid-plan-ribbon": {
 		"enabled": true,
 		"branches": [
@@ -1067,9 +1044,6 @@
 	},
 	"dx-product-catalogue": {
 		"enabled": true
-	},
-	"dx-quick-actions-and-upgrade-on-zone-table-view": {
-		"enabled": false
 	},
 	"dx-recents-in-search": {
 		"enabled": true
@@ -1133,23 +1107,12 @@
 			"experiment"
 		]
 	},
-	"dx-welcome-page-cards-experiment": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"variant-a",
-			"variant-b"
-		]
-	},
 	"dx-welcome-slide": {
 		"enabled": false,
 		"branches": [
 			"variant-a",
 			"variant-b"
 		]
-	},
-	"dx-zone-onboarding-v2": {
-		"enabled": false
 	},
 	"dx-zone-route-update": {
 		"enabled": true
@@ -1183,9 +1146,6 @@
 	},
 	"environments-in-deploy-to-cloudflare": {
 		"enabled": false
-	},
-	"eos-navigation": {
-		"enabled": true
 	},
 	"event-hub-ui": {
 		"enabled": true
@@ -1306,9 +1266,6 @@
 	"http-2-multiplexing": {
 		"enabled": true
 	},
-	"hyperdrive-adopts-workers-storage-unification-ui": {
-		"enabled": true
-	},
 	"hyperdrive-private-networking": {
 		"enabled": true
 	},
@@ -1381,9 +1338,6 @@
 	},
 	"kumo-ify": {
 		"enabled": false
-	},
-	"kv-adopts-workers-storage-unification-ui": {
-		"enabled": true
 	},
 	"kv-analytics": {
 		"enabled": true
@@ -2085,13 +2039,6 @@
 	"related-domains-in-sidebar": {
 		"enabled": true
 	},
-	"remove-left-sidebar": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"remove-side-nav"
-		]
-	},
 	"reset-quick-action-basic-feature-activation": {
 		"enabled": false
 	},
@@ -2156,9 +2103,6 @@
 		"enabled": true
 	},
 	"security-analytics-ai": {
-		"enabled": true
-	},
-	"security-analytics-free": {
 		"enabled": true
 	},
 	"security-analytics-rl": {
@@ -2281,12 +2225,6 @@
 		]
 	},
 	"simpler-command-palette": {
-		"enabled": true
-	},
-	"simplified-worker-create-screen": {
-		"enabled": true
-	},
-	"simplified-worker-success-screen": {
 		"enabled": true
 	},
 	"skip-sbfm": {
@@ -2631,9 +2569,6 @@
 	"vs-code-container-in-dash": {
 		"enabled": true
 	},
-	"waf-activity-and-csr-analytics": {
-		"enabled": true
-	},
 	"waf-alerts-filtering-by-actions": {
 		"enabled": true
 	},
@@ -2694,9 +2629,6 @@
 		]
 	},
 	"worker-deployments-tab-refresh": {
-		"enabled": true
-	},
-	"worker-from-template-to-deploy-to-cloudflare": {
 		"enabled": true
 	},
 	"workers-access-buttons": {
