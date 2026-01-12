@@ -149,6 +149,10 @@
 											"default": 1,
 											"type": "number"
 										},
+										"hybrid_search_enabled": {
+											"default": false,
+											"type": "boolean"
+										},
 										"id": {
 											"description": "Use your AI Search ID.",
 											"example": "my-ai-search",
@@ -742,6 +746,10 @@
 												"default": 1,
 												"type": "number"
 											},
+											"hybrid_search_enabled": {
+												"default": false,
+												"type": "boolean"
+											},
 											"id": {
 												"description": "Use your AI Search ID.",
 												"example": "my-ai-search",
@@ -1317,6 +1325,10 @@
 										"engine_version": {
 											"default": 1,
 											"type": "number"
+										},
+										"hybrid_search_enabled": {
+											"default": false,
+											"type": "boolean"
 										},
 										"id": {
 											"description": "Use your AI Search ID.",
@@ -1991,6 +2003,10 @@
 									}
 								]
 							},
+							"hybrid_search_enabled": {
+								"default": false,
+								"type": "boolean"
+							},
 							"id": {
 								"description": "Use your AI Search ID.",
 								"example": "my-ai-search",
@@ -2371,6 +2387,10 @@
 										"engine_version": {
 											"default": 1,
 											"type": "number"
+										},
+										"hybrid_search_enabled": {
+											"default": false,
+											"type": "boolean"
 										},
 										"id": {
 											"description": "Use your AI Search ID.",
@@ -2934,6 +2954,10 @@
 									}
 								]
 							},
+							"hybrid_search_enabled": {
+								"default": false,
+								"type": "boolean"
+							},
 							"max_num_results": {
 								"default": 10,
 								"maximum": 50,
@@ -3347,6 +3371,10 @@
 										"engine_version": {
 											"default": 1,
 											"type": "number"
+										},
+										"hybrid_search_enabled": {
+											"default": false,
+											"type": "boolean"
 										},
 										"id": {
 											"description": "Use your AI Search ID.",
