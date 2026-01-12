@@ -5,29 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal&nbsp;</p>
-<p><strong>Role Summary</strong></p>
-<p>At Cloudflare, we’re committed to delivering seamless and accurate payroll experience to our global workforce. As our company grows, we are expanding our international payroll capabilities and are looking for a Global Payroll Analyst to join our team in Lisbon. This role will play a critical part in the end-to-end payroll process for employees across multiple international regions. You’ll work closely with HR, Finance, and external vendors to ensure timely, accurate, and compliant payroll processing while continuously seeking opportunities to improve processes and enhance employee experience.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
+<p><strong>Overview:</strong>&nbsp;</p>
+<p>At Cloudflare, we’re committed to delivering seamless and accurate payroll experience to our&nbsp;global workforce. As our company grows, we are expanding our international payroll capabilities&nbsp;and are looking for a Global Payroll Analyst to join our team in India.&nbsp;This role will play a critical part in the end-to-end payroll process for employees across multiple&nbsp;international regions. You’ll work closely with HR, Finance, and external vendors to ensure&nbsp;timely, accurate, and compliant payroll processing while continuously seeking opportunities to&nbsp;improve processes and enhance employee experience.</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Own and manage day-to-day international payroll operations across designated countries,</li>
-	<li>including base pay, bonuses, commissions, equity transactions, benefits, and statutory requirements.</li>
+	<li>Own and manage day-to-day international payroll operations across designated countries,&nbsp;including base pay, bonuses, commissions, equity transactions, benefits, and statutory requirements.</li>
 	<li>Partner closely with HR to maintain accurate and up-to-date employee data for payroll processing.</li>
 	<li>Ensure timely and accurate execution of off-cycle payments, including manual payments and electronic bank transfers.</li>
 	<li>Perform regular audits and reconciliations of payroll data and records to ensure accuracy and compliance.</li>
 	<li>Prepare reports and provide formal and ad-hoc analysis related to payroll, headcount, benefits, and compensation.</li>
 	<li>Serve as a key point of contact for employee payroll inquiries and resolve issues with professionalism and confidentiality.</li>
-	<li>Collaborate with external payroll vendors and ensure compliance with local tax laws, labor regulations, and reporting requirements.</li>
+	<li>Collaborate with external payroll vendors and ensure compliance with local tax laws, labor regulations, and reporting requirements.&nbsp;</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Required Skills and Qualifications:</strong></p>
 <ul>
 	<li>Bachelor's degree in Accounting, Finance, Business, or a related field—or equivalent practical experience.</li>
-	<li>1–3 years of experience in international payroll operations.</li>
+	<li>5+years of experience in international payroll operations.</li>
 	<li>Strong understanding of payroll fundamentals, tax regulations, and compliance requirements.</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
 	<li>Prior experience with APAC payroll operations is highly desirable.</li>
 	<li>Familiarity with processing payroll involving equity transactions, benefits, commissions, and multiple statutory withholdings.</li>
 	<li>Experience with Workday and payroll vendor platforms.</li>
