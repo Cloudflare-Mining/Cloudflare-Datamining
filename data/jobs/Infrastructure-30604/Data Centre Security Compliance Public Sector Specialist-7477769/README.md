@@ -19,18 +19,14 @@
 	<li>Collect, validate, and organize FedRAMP evidence and artifacts to present to auditors, FedRAMP customers, and the FedRAMP PMO.<br><br></li>
 	<li>Help guide our overall security policy and governance architecture to ensure alignment with evolving government regulations.<br><br></li>
 </ul>
-<ol>
-	<li>Audit Lifecycle Management</li>
-</ol>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;2. Audit Lifecycle Management</p>
 <ul>
 	<li>Orchestrate end-to-end audit activities for standards such as PCI, SOC2, ISO, NIST, and FedRAMP.<br><br></li>
 	<li>Coordinate with auditors to manage data center access, compliance certificate collection, and evidence defense.<br><br></li>
 	<li>Work cross-functionally with Engineering, Legal, Product, and Operational teams to maintain management and technical controls.<br><br></li>
 	<li>Support compliance and regulatory projects, including implementation of new legislation / regulation.<br><br></li>
 </ul>
-<ol>
-	<li>Identity &amp; Access Management (IAM) Operations</li>
-</ol>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; 3. Identity &amp; Access Management (IAM) Operations</p>
 <ul>
 	<li>Execute monthly Periodic Access Reviews (PARs): Compare portal user lists against ACLs to ensure least-privilege access is maintained across all data centers.<br><br></li>
 	<li>Manage the lifecycle of portal access: Auditing access, provisioning/deprovisioning users, and maintaining accurate documentation.<br><br></li>
@@ -38,15 +34,12 @@
 	<li>Drive the resolution of daily DCSC Jira tickets for portal access, physical access, audits, and site decommissioning.<br><br></li>
 	<li>Automate and streamline access review processes where possible, utilizing standard communication templates to site managers.<br><br></li>
 </ul>
-<ol>
-	<li>Partner Relations &amp; Reporting</li>
-</ol>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;4.&nbsp; Partner Relations &amp; Reporting</p>
 <ul>
 	<li>Own, influence, and orchestrate relationships within the partner Offering teams that can help drive Cloudflare offerings and strategic positioning.<br><br></li>
 	<li>Monitor and implement changes to individual accountability regime requirements (such as UK, Ireland, Singapore and Australia).<br><br></li>
 	<li>Maintain centralized documentation, databases, dashboards, and reporting mechanisms to track compliance health.</li>
 </ul>
-<h1>&nbsp;</h1>
 <p><strong>Requirements</strong></p>
 <ul>
 	<li>3-6 years working in Security Compliance, Information Security, or Risk Management.</li>

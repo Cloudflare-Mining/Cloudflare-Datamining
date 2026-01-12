@@ -5,85 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: San Francisco (on-site)</strong></p>
-<p><strong>About the Role</strong></p>
-<p>As an <strong>IT Operations Specialist II (P3)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
-<p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
-<p><strong>Responsibilities</strong></p>
-<p><strong>Onsite IT Operations &amp; Office Support</strong></p>
+<p><strong>Available Locations:</strong> Lisbon, Portugal</p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare's Network Engineering Team builds and runs the infrastructure that runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world's largest networks with data centers in 190 cities worldwide and a couple of large specialized data centers for internal needs.</p>
+<p><strong>About the Position</strong></p>
+<p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network automation engineers who are building software solutions to improve network resilience and reduce engineering operational toil.</p>
+<p>You will work on a range of tools, infrastructure and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable and scalable solutions.</p>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <ul>
-	<ul>
-		<li>Act as the onsite IT support resource, responding to employee requests and incidents.</li>
-		<li>Ensure conference rooms, IT systems, and shared office equipment are functioning properly.</li>
-		<li>Assist with IT asset management, including device provisioning, check-in/check-out, and tracking.</li>
-		<li>Partner with IT and Security teams to follow access control and compliance policies.</li>
-	</ul>
+	<li>BA/BS in Computer Science or equivalent experience</li>
+	<li>Solid foundation on configuration management frameworks: Ansible, Chef, Saltstack.</li>
+	<li>Knowledge of programming languages like Python or Golang.</li>
+	<li>Highly Proficient with modern Unix/Linux operating systems/distributions</li>
+	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>
+	<li>Experience in systems Observability</li>
 </ul>
-<p><strong>Conference Room &amp; Event Support</strong></p>
+<p><strong>Bonus Points but not required:</strong></p>
 <ul>
-	<ul>
-		<li>Provide setup and basic troubleshooting for conference room AV technology and video conferencing platforms (Zoom, Google Meet).</li>
-		<li>Assist with small to mid-sized corporate meetings and events, including setup and technical support.</li>
-		<li>Escalate complex AV or event issues to senior specialists or vendors as needed.</li>
-	</ul>
-</ul>
-<p><strong>Employee IT Support</strong></p>
-<ul>
-	<ul>
-		<li>Provide in-person support for hardware, software, and network connectivity issues.</li>
-		<li>Help employees with device setup, account access, and secure remote connectivity.</li>
-		<li>Deliver professional, customer-focused service when working with employees at all levels.</li>
-	</ul>
-</ul>
-<p><strong>Qualifications &amp; Skills</strong></p>
-<p><strong>Required:</strong></p>
-<ul>
-	<li>1–2 years of IT support or helpdesk experience in a corporate environment.</li>
-	<li>Strong troubleshooting skills for common hardware, software, and connectivity issues.</li>
-	<li>Familiarity with video conferencing platforms (Zoom, Google Meet).</li>
-	<li>Knowledge of IT asset management practices.</li>
-	<li>Excellent communication and customer service skills.</li>
-	<li>Associate’s degree in Information Technology, Computer Science, or related field (or equivalent experience).</li>
-</ul>
-<p><strong>Preferred:</strong></p>
-<ul>
-	<li>Experience with IT ticketing systems (e.g., Jira Service Management).</li>
-	<li>Familiarity with device management tools such as JAMF or Intune.</li>
-	<li>Basic understanding of IT security best practices.</li>
-	<li>Certifications such as CompTIA A+, ITIL 4 Foundation, or Microsoft 365 Fundamentals.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $104,000 - $115,000.&nbsp;</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Professional experience as a Site Reliability Engineer (SRE)</li>
+	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
+	<li>Experience building and maintaining large distributed systems</li>
+	<li>Experience managing internal and/or external customer requirements and expectations</li>
+	<li>Knowledge of Javascript (React and other frontend frameworks)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
