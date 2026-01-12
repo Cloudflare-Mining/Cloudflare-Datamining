@@ -9359,17 +9359,21 @@
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Number of queries per dimension",
 		"dimensions": "List of dimensions to group by",
-		"quantiles": "Quantiles of a metric per dimension"
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsAvg": {
 		"__description": "",
 		"processingTimeUs": "Average processing time in microseconds",
+		"processingTimeUsNotCachedAndNotStale": "Average processing time in microseconds, only counting where responseCached and responseStale are not zero",
+		"processingTimeUsNotStale": "Average processing time in microseconds, only counting where responseStale is not zero",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsConfidence": {
 		"__description": "",
 		"count": "Number of queries per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -9402,9 +9406,25 @@
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsQuantiles": {
 		"__description": "",
+		"processingTimeUsNotCachedAndNotStaleP50": "50th percentile processing time in microseconds (median), only counting where responseCached and responseStale are not zero",
+		"processingTimeUsNotCachedAndNotStaleP90": "90th percentile processing time in microseconds, only counting where responseCached and responseStale are not zero",
+		"processingTimeUsNotCachedAndNotStaleP99": "99th percentile processing time in microseconds, only counting where responseCached and responseStale are not zero",
+		"processingTimeUsNotStaleP50": "50th percentile processing time in microseconds (median), only counting where responseStale is not zero",
+		"processingTimeUsNotStaleP90": "90th percentile processing time in microseconds, only counting where responseStale is not zero",
+		"processingTimeUsNotStaleP99": "99th percentile processing time in microseconds, only counting where responseStale is not zero",
 		"processingTimeUsP50": "50th percentile processing time in microseconds (median)",
 		"processingTimeUsP90": "90th percentile processing time in microseconds",
 		"processingTimeUsP99": "99th percentile processing time in microseconds"
+	},
+	"ZoneDnsAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
+		"countNotCachedAndNotStale": "Number of queries where responseCached and responseStale are not zero",
+		"countNotStale": "Number of queries where responseStale is not zero"
+	},
+	"ZoneDnsAnalyticsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"countNotCachedAndNotStale": "Confidence interval for the corresponding point estimate",
+		"countNotStale": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneDnsAnalyticsAdaptiveOrderBy": {
 		"__description": ""
