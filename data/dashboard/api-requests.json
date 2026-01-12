@@ -612,12 +612,12 @@
 	{
 		"uri": "/zones/:zone_identifier/settings/replace_insecure_js",
 		"method": "GET",
-		"id": "zone-settings-get-replace-insecure-js"
+		"id": "zone-settings-get-replace-insecure-js-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/replace_insecure_js",
 		"method": "PATCH",
-		"id": "zone-settings-change-replace-insecure-js"
+		"id": "zone-settings-change-replace-insecure-js-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/rocket_loader",

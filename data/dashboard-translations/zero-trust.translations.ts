@@ -7,7 +7,7 @@
 		subheading: "Replace legacy security perimeters with Cloudflare's global network. Zero Trust tools help make the Internet faster and safer for both teams and home networks."
 	},
 	zeroTrustView: {
-		teamName: (0, o.p)(a(), "teamName"),
+		teamName: (0, o.p)(i(), "teamName"),
 		zeroTrustHomeLink: "Go to Zero Trust",
 		zeroTrustUsersLink: "Manage active users",
 		zeroTrustAnalyticsLink: "View detailed analytics",
@@ -29,17 +29,6 @@
 			dns: "Gateway DNS policies",
 			network: "Gateway network policies",
 			tunnels: "Cloudflare Tunnels"
-		},
-		products: {
-			title: "Explore Zero Trust products",
-			sections: {
-				access: "Secure Access",
-				networking: "Networking",
-				traffic: "Traffic",
-				data: "Data security",
-				insights: "Insights"
-			},
-			cards: s.$N
 		}
 	},
 	onboarding: {
@@ -76,9 +65,9 @@
 	},
 	plans: {
 		categories: {
-			zeroTrust: (0, o.p)(c(), "plan"),
-			access: (0, o.p)(l(), "plan"),
-			gateway: (0, o.p)(u(), "plan")
+			zeroTrust: (0, o.p)(a(), "plan"),
+			access: (0, o.p)(c(), "plan"),
+			gateway: (0, o.p)(l(), "plan")
 		},
 		basic: "Basic",
 		premium: "Premium",
@@ -104,8 +93,8 @@
 	analyticsError: {
 		error: "Error",
 		tooltips: {
-			noPermissionError: (0, o.p)(d(), "label"),
-			otherErrors: (0, o.p)(p(), "label")
+			noPermissionError: (0, o.p)(u(), "label"),
+			otherErrors: (0, o.p)(d(), "label")
 		}
 	}
 }

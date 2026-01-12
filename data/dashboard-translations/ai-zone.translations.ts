@@ -1,7 +1,30 @@
 {
 	overview_page: {
 		operators_card: {
-			title: "Operators"
+			title: "Crawlers"
+		},
+		robots_policy_card: {
+			title: "Robots.txt policy"
+		},
+		violations_card: {
+			title: "Robots.txt violations",
+			no_violations: "No robots.txt violations found",
+			violated_rules: "Violated rules"
+		},
+		executive_summary_card: {
+			title: "Summary",
+			empty_state: "No requests from AI Crawlers with the selected filters",
+			ai_crawlers: "AI Crawlers",
+			blocked_requests: "Cloudflare blocked <b>%{count}</b> request from %{subject}. |||| Cloudflare blocked <b>%{count}</b> requests from %{subject}.",
+			blocked_requests_generic: "Cloudflare blocked <b>%{count}</b> request. |||| Cloudflare blocked <b>%{count}</b> requests.",
+			detected_requests: "Cloudflare detected <b>%{count}</b> request from %{subject}. |||| Cloudflare detected <b>%{count}</b> requests from %{subject}.",
+			detected_requests_generic: "Cloudflare detected <b>%{count}</b> request. |||| Cloudflare detected <b>%{count}</b> requests.",
+			most_common_status_code: "<b>%{count}</b> crawl received an <b>HTTP %{statusCode}</b> response |||| <b>%{count}</b> crawls received an <b>HTTP %{statusCode}</b> response.",
+			increase: "This is a <b>%{percentage}% increase</b> compared to the previous period.",
+			decrease: "This is a <b>%{percentage}% decrease</b> compared to the previous period.",
+			crawler_requests: "<b>%{count}</b> request was from <b>%{crawler}</b>. |||| <b>%{count}</b> requests were from <b>%{crawler}</b>.",
+			operator_referrals: "<b>%{operator}</b> referred <b>%{count}</b> visitor to <b>%{zone}</b>. |||| <b>%{operator}</b> referred <b>%{count}</b> visitors to <b>%{zone}</b>.",
+			most_crawled_path: "<b>%{path}</b> is the most crawled path with <b>%{count}</b> successful requests. |||| <b>%{path}</b> is the most crawled path with <b>%{count}</b> successful requests."
 		}
 	},
 	bots_page: {
@@ -310,7 +333,7 @@
 			empty_state: "No robots.txt files found."
 		},
 		toggle: {
-			title: "Use Cloudflare managed robots.txt",
+			title: "Cloudflare managed",
 			description: "When enabled, Cloudflare creates or updates your robots.txt file to signal that your content should not be used for AI training.",
 			tooltip: "Cloudflare will manage your robots.txt file to signal that your content should not be used for AI training."
 		},

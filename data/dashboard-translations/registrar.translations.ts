@@ -64,7 +64,7 @@
 			subheader_receipt: "This is required to calculate sales tax, and will be displayed on your receipt.",
 			subheader_invoice: "This is required to calculate sales tax, and will be displayed on your invoice.",
 			verify_button: "Verify address",
-			verify_success: "We have suggested small edits to your address, to ensure accuracy. Please edit if incorrect.",
+			verify_success: "We found a more accurate address format. Please review it before continuing.",
 			verify_error: "Please correct the errors highlighted above."
 		},
 		credit_card: {
@@ -203,14 +203,15 @@
 			domain_status: "Domain status",
 			expiration_date: "Expiration date",
 			auto_renew: "Auto renew",
-			renewal_charge_notice: (0, r.p)(I(), "amount", "date"),
+			renewal_charge_notice_singular: (0, r.p)(I(), "amount", "date"),
+			renewal_charge_notice_plural: (0, r.p)(P(), "amount", "date", "years"),
 			renew_early_button: "Renew early today",
 			renew_now: "Renew now",
 			modal_title: "Extend your domain registration",
 			renew_for_label: "Renew for",
 			select_year_placeholder: "Select a year",
-			year_option_singular: (0, r.p)(P(), "years", "pricePerYear"),
-			year_option_plural: (0, r.p)(S(), "years", "pricePerYear"),
+			year_option_singular: (0, r.p)(S(), "years", "pricePerYear"),
+			year_option_plural: (0, r.p)(x(), "years", "pricePerYear"),
 			renewal_price_label: "Renewal price",
 			cancel_button: "Cancel",
 			continue_button: "Continue to checkout",
@@ -219,8 +220,8 @@
 		},
 		redemption_period: {
 			title: "Domain in Redemption Period",
-			description: (0, r.p)(x(), "expiresOn", "redemptionFee"),
-			description_domain_active: (0, r.p)(E(), "redemptionFee"),
+			description: (0, r.p)(E(), "expiresOn", "redemptionFee"),
+			description_domain_active: (0, r.p)(O(), "redemptionFee"),
 			description_common: "<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><0>Learn more about domain restoration</0>.",
 			restore_cta: "Restore",
 			billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
@@ -237,8 +238,8 @@
 				}
 			},
 			messages: {
-				success: (0, r.p)(O(), "domainName"),
-				error: (0, r.p)(z(), "domainName")
+				success: (0, r.p)(z(), "domainName"),
+				error: (0, r.p)(q(), "domainName")
 			},
 			in_progress: {
 				title: "Domain Restoration",
@@ -264,7 +265,7 @@
 		toggle_view: "Renew/Extend Domain",
 		renew: "Renew for",
 		years: "%{smart_count} year |||| %{smart_count} years",
-		due: (0, r.p)(q(), "amount"),
+		due: (0, r.p)(L(), "amount"),
 		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance.",
 		notification_success_domain: "Successfully renewed %{domainName}!",
 		notification_success: "Domain successfully renewed",
@@ -302,7 +303,9 @@
 		nexus_category: "Nexus category",
 		application_purpose: "Application purpose",
 		is_required: "This field is required.",
-		whois_visibility: "WHOIS visibility"
+		whois_visibility: "WHOIS visibility",
+		email_verification_warning_register: "We will email you a verification link after registration. Please use an accessible address to ensure your domain remains active.",
+		email_verification_warning_transfer: "We will email you a verification link after transfer. Please use an accessible address to ensure your domain remains active."
 	},
 	cor_header: "Registrant Contact Change Pending",
 	cor_subheader: "The following changes are pending approval:",
@@ -312,13 +315,13 @@
 	cor_resend_email: "Resend Email",
 	cor_cancel_error_message: "Unable to cancel a partially approved change of registrant request for %{domainName}",
 	renewal_info: {
-		expires_on: (0, r.p)(L(), "expiresOn"),
-		renews_on: (0, r.p)(Y(), "renewsOn"),
+		expires_on: (0, r.p)(Y(), "expiresOn"),
+		renews_on: (0, r.p)(U(), "renewsOn"),
 		price: "Price",
 		price_per_year: "%{domainRenewalFee}/year",
-		billing: (0, r.p)(U(), "last4"),
-		billing_paypal: (0, r.p)(W(), "email"),
-		billing_cloud: (0, r.p)(F(), "last4"),
+		billing: (0, r.p)(W(), "last4"),
+		billing_paypal: (0, r.p)(F(), "email"),
+		billing_cloud: (0, r.p)(B(), "last4"),
 		fees: "Domain fees subject to change."
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
@@ -341,9 +344,9 @@
 	domain_page_sidebar_buy: "Buy",
 	related_domains_modal_buy_related_domain: "Buy %{domainName}",
 	related_domains_modal_renews_at: "Your domain will renew at %{renewalFee}/year",
-	registered_on: (0, r.p)(B(), "registration_date"),
+	registered_on: (0, r.p)(M(), "registration_date"),
 	success_page: {
-		page_title: (0, r.p)(M(), "domainName"),
+		page_title: (0, r.p)(H(), "domainName"),
 		page_description: "Have an idea for a website or app? Use Cloudflare to launch it with optimal security and speed.",
 		workers: {
 			title: "Deploy an application",
@@ -394,7 +397,7 @@
 		},
 		auto_renewal: {
 			title: "Auto Renew",
-			description: (0, r.p)(H(), "date")
+			description: (0, r.p)(V(), "date")
 		}
 	},
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
@@ -628,7 +631,7 @@
 	retry_transfer_body: "It appears that the transfer at your previous registrar was cancelled. To continue transferring to Cloudflare, enter a new auth code and click retry. You will not be billed twice.",
 	retry_transfer_retry: "Retry transfer",
 	retry_transfer_auth_code: "Auth code",
-	wizard_step_indicator: (0, r.p)(V(), "currentStep", "totalSteps"),
+	wizard_step_indicator: (0, r.p)(G(), "currentStep", "totalSteps"),
 	wizard_auth_code_tooltip: "There was an error with the request. Please try again.",
 	wizard_error_no_domains: "Select at least one domain to transfer",
 	wizard_error_no_auth_key: "All authorization codes must be valid to continue",
@@ -740,7 +743,7 @@
 	wizard_two_title: "Enter authorization codes",
 	wizard_two_description: "Validate the transfer with an authorization code (also known as a transfer code) from your previous registrar.",
 	wizard_two_continue_button: "Continue to payment",
-	wizard_two_nameservers_notice: "You cannot change the nameservers of a domain registered with Cloudflare.",
+	wizard_two_nameservers_notice: "For maximum security and performance, your domains will use Cloudflare nameservers.",
 	wizard_two_ai_notice: "The .%{tld} registry policy requires that transfers add 2 years to the registration term.",
 	wizard_two_authorization_code_label: "Authorization code",
 	wizard_two_authorization_code_label_info_sign_label: "What is authorization code",
@@ -819,7 +822,7 @@
 	registration_checkout_loading_2: "Confirming domain name availability...",
 	registration_checkout_loading_3: "Checking for trademark claims...",
 	registration_checkout_loading_4: "Loading checkout cart...",
-	registration_checkout_refund_disclaimer: (0, r.p)(G(), "domainName"),
+	registration_checkout_refund_disclaimer: (0, r.p)(j(), "domainName"),
 	registration_checkout_error: {
 		title: "Unable to check domain availability",
 		subtitle: 'We\'re currently unable to check the availability of <strong>%{domainName}</strong> at the registry. Please try again. If the issue persists, please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
@@ -1015,7 +1018,7 @@
 	protection_domains_table_manage: "Manage",
 	protection_domains_table_error: "No domains available",
 	protection_unlock_modal_title_account: "Approval required",
-	protection_unlock_modal_title_domain: (0, r.p)(j(), "domainName"),
+	protection_unlock_modal_title_domain: (0, r.p)(K(), "domainName"),
 	protection_unlock_modal_subtitle_domain: "You will need to select at least %{smart_count} approver to initiate the initiate the unlock of your domain. |||| You will need to select at least %{smart_count} approvers to initiate the unlock of your domain.",
 	protection_unlock_modal_subtitle_account: "You will need to select at least %{smart_count} approver to initiate an update to your domain protection configuration. |||| You will need to select at least %{smart_count} approvers to initiate an update your domain protection configuration.",
 	protection_unlock_modal_search_approvers: "Search approvers",
@@ -1076,7 +1079,7 @@
 	nexus_form_placeholder: "Select a value",
 	delete_domain: {
 		card: {
-			title: (0, r.p)(K(), "domainName"),
+			title: (0, r.p)(Z(), "domainName"),
 			description: "This domain registration is eligible for deletion.",
 			description_delete_not_available: "Domain deletion is not available at this time, refer to our <1>delete a domain documentation</1> if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following <2>reasons</2>:",
 			description_delete_not_available_reason_1: "The status of the domain does not permit deletions",
@@ -1095,11 +1098,11 @@
 		},
 		verification_modal: {
 			description: "We need to confirm that you really intend to delete the domain and an email has been sent with a confirmation code.<0></0>Enter the code below and click Verify Code.",
-			expiration_notice: (0, r.p)(Z(), "minutesLeft", "secondsLeft"),
-			new_code: (0, r.p)(X()),
+			expiration_notice: (0, r.p)(X(), "minutesLeft", "secondsLeft"),
+			new_code: (0, r.p)(Q()),
 			button: "Verify Code",
 			error: {
-				too_many_attempts: (0, r.p)(Q(), "date")
+				too_many_attempts: (0, r.p)(J(), "date")
 			}
 		},
 		confirmation_modal: {
@@ -1107,13 +1110,13 @@
 			button: "Delete Domain Permanently"
 		},
 		notifications: {
-			success: (0, r.p)(J(), "domainName")
+			success: (0, r.p)($(), "domainName")
 		},
 		errors: {
 			title: "Error:",
 			invalid_confirmation_code: "The confirmation code entered is not valid.",
 			no_permission: "Your account does not have permission to delete this domain.",
-			generic: (0, r.p)($(), "domainName")
+			generic: (0, r.p)(ee(), "domainName")
 		}
 	},
 	no_access: {

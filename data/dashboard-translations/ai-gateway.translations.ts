@@ -67,7 +67,7 @@
 		title: "Create new gateway",
 		description: "Choose an name for your gateway.",
 		gateway: {
-			title: "Gateway name",
+			title: "Gateway ID",
 			placeholder: "my-gateway"
 		},
 		settings: {
@@ -112,6 +112,7 @@
 		search_button: "Search",
 		stream: "Stream",
 		live: "Live",
+		cached: "Cached Response",
 		table: {
 			header: {
 				time: "Time",
@@ -168,15 +169,26 @@
 			input_short: "in",
 			output_short: "out",
 			filter: "Filter",
-			input_tokens: "input",
-			output_tokens: "output",
+			input_tokens: "total input",
+			output_tokens: "total output",
 			input_cached_tokens: "input cached",
 			input_cache_creation_tokens: "input cache creation",
 			input_text_tokens: "input text",
 			input_image_tokens: "input image",
 			input_audio_tokens: "input audio",
 			input_video_tokens: "input video",
-			output_reasoning_tokens: "output reasoning"
+			output_reasoning_tokens: "output reasoning",
+			output_image_tokens: "output image tokens",
+			cache_write_tokens: "cache write tokens",
+			audio_minute: "audio minute",
+			audio_minute_ws: "audio minute ws",
+			characters: "characters",
+			input_audio_minutes: "input audio minutes",
+			input_audio_minutes_ws: "input audio minutes ws",
+			input_characters: "input characters",
+			input_image_count: "input image count",
+			output_audio_minutes: "output audio minutes",
+			output_image_count: "output image count"
 		},
 		filters: {
 			provider: "Provider",
@@ -647,7 +659,8 @@
 			invalid_format: "Invalid format to a gateway",
 			input_length: "Gateway slug must contain at most 24 characters",
 			invalid_rsa_public_key: "Invalid logpush RSA public key",
-			public_key_length: "Public key must contain at least 16 characters"
+			public_key_length: "Public key must contain at least 16 characters",
+			unknown: "Unknown error occurred"
 		},
 		prompt: {
 			already_exist: "A prompt with this id already exists",

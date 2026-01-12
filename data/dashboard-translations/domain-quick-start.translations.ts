@@ -11,11 +11,11 @@
 		plan: {
 			header: (0, i.p)(a(), "planName"),
 			description: "Several features are on by default, including CDN/caching, DDoS protection, SSL/TLS, and WAF. Explore other features included in your plan below and in the menu.",
-			information: (0, i.p)(l()),
+			information: (0, i.p)(c()),
 			tabs: {
 				security: {
 					header: "Security",
-					description: (0, i.p)(c())
+					description: (0, i.p)(l())
 				},
 				performance: {
 					header: "Performance",

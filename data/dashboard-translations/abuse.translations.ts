@@ -51,7 +51,8 @@
 		filter: {
 			[s.on.Status]: "Status",
 			[s.on.Type]: "Mitigation"
-		}
+		},
+		not_appealable: "This mitigation type is not appealable."
 	},
 	streaming_mitigations_table: {
 		empty_state: {
@@ -93,7 +94,7 @@
 			[s.dS.Status]: {
 				[r.IR.Active]: "Active",
 				[r.IR.Cancelled]: "Canceled",
-				[r.IR.InReview]: "In Review",
+				[r.IR.InReview]: "In review",
 				[r.IR.Pending]: "Pending"
 			}
 		}
@@ -101,13 +102,13 @@
 	mitigation_status: {
 		active: "Active",
 		cancelled: "Canceled",
-		in_review: "In Review",
+		in_review: "In review",
 		pending: "Pending",
 		removed: "Removed"
 	},
 	report_status: {
 		accepted: "Accepted",
-		in_review: "In Review"
+		in_review: "In review"
 	},
 	entity_type: {
 		account: "Account",
