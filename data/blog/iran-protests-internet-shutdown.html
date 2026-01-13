@@ -1,0 +1,116 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3EHLoEviGaWwISAHNEbBMQ/61e4c19a60d73bf72903943dcca8797e/unnamed__1_.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>In late December 2025, <a href="https://apnews.com/article/iran-protests-us-israel-war-economy-d5da3b5f56449dd3871c9438c07f069f"><u>wide-scale protests erupted across multiple cities in Iran</u></a>. While these protests were initially fueled by frustration over inflation, food prices, and currency depreciation, they have grown into demonstrations <a href="https://www.theguardian.com/world/2025/dec/31/we-want-the-mullahs-gone-economic-crisis-sparks-biggest-protests-in-iran-since-2022"><u>demanding a change</u></a> in the country’s leadership regime.&nbsp;</p>
+	<p>In the last few days, Internet traffic from Iran has effectively dropped to zero. This is evident in the data available in Cloudflare Radar, as we’ll describe in this post.&nbsp; </p>
+	<div class="flex anchor relative">
+		<h2 id="background">Background</h2>
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Iranian government has a history of cutting off Internet connectivity when such protests take place. In November 2019, protests erupted following the announcement of a significant increase in fuel prices. In response, the Iranian government implemented an <a href="https://iran-shutdown.amnesty.org"><u>Internet shutdown</u></a> for more than five days. In September 2022, <a href="https://www.cnn.com/2022/09/21/middleeast/iran-mahsa-amini-death-widespread-protests-intl-hnk/index.html"><u>protests and demonstrations erupted across Iran</u></a> in response to the death <a href="https://www.aljazeera.com/news/2022/9/16/iranian-woman-dies-after-moral-polices-detention-reports"><u>in police custody</u></a> of Mahsa/Zhina Amini, a 22-year-old woman from the Kurdistan Province of Iran. Internet services were <a href="https://blog.cloudflare.com/protests-internet-disruption-ir"><u>disrupted across multiple network providers</u></a> in the following days.</p>
+	<p>Amid the current protests, lower traffic volumes were already <a href="https://x.com/nima/status/2007830078093250904"><u>observed</u></a> at the start of the year, indicating potential connectivity issues leading into the more dramatic shutdown that has followed.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="internet-connectivity-in-iran-plummeted-on-january-8">Internet connectivity in Iran plummeted on January 8</h2>
+		<a href="https://blog.cloudflare.com/#internet-connectivity-in-iran-plummeted-on-january-8" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Some traffic anomalies were seen in the first few days of 2026 (described in further detail below), though peak traffic levels recovered by January 5, and exceeded expected levels during the following days.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cBTGRkiBSJTfJd1QMuXYV/195ffd12571ef25f35c753d8f2594d38/unnamed.png" alt="" class="kg-image" width="1600" height="1066" loading="lazy">
+	</figure>
+	<p>However, this strong recovery proved to be short-lived. IPv6-related shifts observed on January 8 provided the first indication of the changes to come. At 11:50 UTC (15:20 local time), <a href="https://x.com/CloudflareRadar/status/2009266152355041543"><u>the amount of IPv6 address space announced by Iranian networks dropped by 98.5%</u></a>, falling from over 48 million /48s (blocks of 2^80 IPv6 addresses) to just over 737,000 /48s. A drop in announced IP address space (whether IPv6 or IPv4) means that the announcing networks are no longer telling the world how to reach those addresses. A major drop like this one can signal an intentional disruption to Internet connectivity, as there is no longer a path to the clients or servers using those IP addresses.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lQVvoLc77jO11pGGPRG5N/44eabb313e139af6f93ee976c6cd70e7/BLOG-3110_2.png" alt="BLOG-3110 2" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p>This drop in announced IPv6 address space served to reduce IPv6’s share of human-generated traffic from around 12% to around 2%.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GOdWNEvSKh4HapwJEYsOW/878b4cdfcacf00a416629b7aae464f20/BLOG-3110_3.png" alt="BLOG-3110 3" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p>As seen in the graph below, this drop in IPv6 traffic stayed at a relatively consistent level for approximately 100 minutes, before falling further just before 13:30 UTC (17:00 local time). This second drop resulted in IPv6 traffic from Iran all but disappearing.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oYBhaT8U8NKRMYTMfSWY2/21a3aee3066274b11c7b4c059a789bbc/BLOG-3110_4.jpg" alt="BLOG-3110 4" class="kg-image" width="1999" height="441" loading="lazy">
+	</figure>
+	<p>Several hours later, we observed <a href="https://x.com/CloudflareRadar/status/2009312093749801350?s=20"><u>overall traffic levels from the country begin to decline rapidly</u></a>. Between 16:30 - 17:00 UTC (20:00 - 20:30 local time), traffic volumes fell nearly 90%, fueled by a loss of traffic from the major Iranian network providers, including <a href="https://radar.cloudflare.com/as197207"><u>MCCI (AS197207)</u></a>, <a href="https://radar.cloudflare.com/as44244"><u>IranCell (AS44244)</u></a>, and <a href="https://radar.cloudflare.com/as58224"><u>TCI (AS58224)</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/17V0uq3ZHwSClk1NbMsfXj/6d02a99d67224ebe72d03c2f9aa537c8/BLOG-3110_5.png" alt="BLOG-3110 5" class="kg-image" width="1999" height="549" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FZOw6Vf0zyZcFReGTDgbJ/9fbd98a696d895b10ce76e3831a258ff/BLOG-3110_6.png" alt="BLOG-3110 6" class="kg-image" width="1999" height="549" loading="lazy">
+	</figure>
+	<p>Around 18:45 UTC, Internet traffic from Iran <a href="https://x.com/CloudflareRadar/status/2009354299302908143"><u>dropped to effectively zero</u></a>, signaling a complete shutdown in the country and disconnection from the global Internet.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4h1G0brqaDqQP4LroOpmu8/6a74b8803bbd251375a6d65732f1be56/BLOG-3110_7.png" alt="BLOG-3110 7" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5RY1SofUechQRgKU81yEt9/6ce900d5165a848701306cc34c964817/BLOG-3110_8.png" alt="BLOG-3110 8" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="brief-windows-of-connectivity-on-january-9-but-they-dont-last">Brief windows of connectivity on January 9 — but they don’t last</h2>
+		<a href="https://blog.cloudflare.com/#brief-windows-of-connectivity-on-january-9-but-they-dont-last" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>After the shutdown took hold the previous day, internal traffic data showed an <a href="https://x.com/CloudflareRadar/status/2009758510909665404"><u>extremely low volume of traffic from Iran</u></a>, amounting to less than 0.01% of pre-shutdown peaks, starting around 10:00 UTC (13:30 local time) on January 9. It appears that access to Cloudflare’s public DNS resolver, <a href="https://1.1.1.1/dns"><u>1.1.1.1</u></a>, also became available again around 10:00 UTC (13:30 local time), leading request traffic to briefly spike well above the expected range. However, after spiking, only a small amount of request traffic to 1.1.1.1 remained visible.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1q43txqeO1Y5jfDtaHHvIN/0108bd24f598bbf8b89b4485d9ec58b6/BLOG-3110_9.png" alt="BLOG-3110 9" class="kg-image" width="1600" height="676" loading="lazy">
+	</figure>
+	<p>Several Iranian universities also saw <a href="https://x.com/CloudflareRadar/status/2009630454383870417?s=20"><u>connectivity briefly restored</u></a>, starting around 11:30 UTC (15:00 local time). These included <a href="https://radar.cloudflare.com/as29068"><u>University of Tehran Informatics Center (AS29068)</u></a>, <a href="https://radar.cloudflare.com/as12660"><u>Sharif University of Technology (AS12660)</u></a>, <a href="https://radar.cloudflare.com/as43965"><u>Tehran University of Medical Science (AS43965)</u></a>, and <a href="https://radar.cloudflare.com/as57745"><u>Tarbita Modares University (AS57745)</u></a>. It is unclear whether this restoration was intentional, but traffic from these networks was once again non-existent after 15:00 UTC (18:30 local time).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/pcP3V6y2nhRnH7swgSnZb/bd1e5601cb208046324607f792c51d2a/BLOG-3110_10.png" alt="BLOG-3110 10" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XEwTXqeAu6O1StFLmeGLe/20ccec04c3441eb10117535c92424c30/BLOG-3110_11.png" alt="BLOG-3110 11" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ACIe46mGSsNGrcKDRxfQr/8deb5247b24fa9a5b12891dcacae7e27/BLOG-3110_12.png" alt="BLOG-3110 12" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vZpp0VGcx4He4oNyCLOSK/423f26e3fcdd309dae8a02acad990406/BLOG-3110_13.png" alt="BLOG-3110 13" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="changes-in-http-traffic-preceded-the-internet-shutdown">Changes in HTTP traffic preceded the Internet shutdown</h2>
+		<a href="https://blog.cloudflare.com/#changes-in-http-traffic-preceded-the-internet-shutdown" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Alongside the lower traffic levels observed at the start of the year, as discussed above, a clear shift in HTTP version usage from human-generated traffic was also observed across leading network providers, as seen in the graphs below. Prior to that point, as much as 40% of HTTP requests on <a href="https://radar.cloudflare.com/as44244"><u>IranCell (AS44244)</u></a> used HTTP/3, but that figure fell to just 5% at 20:00 UTC (23:30 local time) on December 31, and continued to decline over the following days. Usage of QUIC from the network followed a similar pattern, as it relies on HTTP/3.&nbsp;</p>
+	<p>On <a href="https://radar.cloudflare.com/as58224"><u>TCI (AS58224)</u></a>, HTTP/3 also accounted for as much as 40% of requests at peak, but gradually declined starting on January 1 before falling below 5% starting around 07:00 UTC (10:30 local time) on January 3. QUIC usage on this network followed a similar pattern as well. MahsaNet, an organization that fights against Internet censorship in Iran, <a href="https://x.com/mahsanet/status/2007491214405140716?s=20"><u>suggested</u></a> that these shifts could indicate that “Severe filtering and layered, upgraded whitelisting are clearly evident and being implemented” (translation via X). </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2aF6ntL7YtxVJDEibF0tPh/184f99765daf533480f1b9791774a59f/BLOG-3110_15.png" alt="BLOG-3110 15" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LsVTrJf0kJfhUR0kgu114/9d71caca08bf4aa39979e4388760d158/BLOG-3110_16.png" alt="BLOG-3110 16" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XyJjijsAwE8M7c9xwqI0Y/88b30b6d306e03d168710b21f90076c6/BLOG-3110_17.png" alt="BLOG-3110 17" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Wq1neIAWfcz5P7GP6u5VF/ceeb800a75a1419f2c6de2aa3d9ae1ce/BLOG-3110_18.png" alt="BLOG-3110 18" class="kg-image" width="1600" height="914" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="the-shutdown-continues">The shutdown continues</h2>
+		<a href="https://blog.cloudflare.com/#the-shutdown-continues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>As we noted in social media posts (<a href="https://x.com/cloudflareradar"><u>X</u></a>, <a href="https://noc.social/@cloudflareradar"><u>Mastodon</u></a>, <a href="https://bsky.app/profile/radar.cloudflare.com"><u>Bluesky</u></a>), no significant changes have been observed in Iran’s Internet traffic since January 10. <b>The country remains almost entirely cut off from the global Internet, with internal data showing traffic volumes remaining at a fraction of a percent of previous levels.</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EY7TALUsSytiMgsei2y2h/0aaf1473dfc1a0be908beee6f0b14e72/BLOG-3110_19.png" alt="BLOG-3110 19" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JXW8ND7fQCbbPj5vexBJH/f194dfd409c343691915dc214917d402/BLOG-3110_20.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p>We will continue to monitor the state of Internet connectivity in Iran, and will continue to post updates on our social media accounts. Use Cloudflare Radar’s <a href="https://radar.cloudflare.com/traffic/ir"><u>Traffic</u></a> and <a href="https://radar.cloudflare.com/routing/ir"><u>Routing</u></a> pages for Iran and the <a href="https://radar.cloudflare.com/traffic/ir#autonomous-systems"><u>top networks</u></a> within the country for near-real time insights into these metrics.</p>
+</div>
