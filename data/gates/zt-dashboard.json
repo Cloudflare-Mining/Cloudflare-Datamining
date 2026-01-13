@@ -2,26 +2,14 @@
 	"access-ai-controls-for-mcp-q32025": {
 		"enabled": true
 	},
-	"access-apps-policies-refactor": {
-		"enabled": false
-	},
 	"access-clientless-web-based-rdp-q1-2025": {
 		"enabled": true
 	},
 	"access-inbound-scim-logs-q22025": {
 		"enabled": true
 	},
-	"access-login-methods-table-q4-2025": {
-		"enabled": false
-	},
 	"access-scim-all-idps-11-15-24": {
 		"enabled": true
-	},
-	"ai-confidence-scores-q3-2025": {
-		"enabled": false
-	},
-	"akm-test-gate1": {
-		"enabled": false
 	},
 	"art-show-access-drilldown-page": {
 		"enabled": true
@@ -53,14 +41,8 @@
 	"art-show-top-hostnames": {
 		"enabled": true
 	},
-	"billing-zt-apple-pay-gate": {
-		"enabled": false
-	},
 	"billing-zt-fly-fishing-trial-limit-message": {
 		"enabled": true
-	},
-	"billing-zt-google-pay-gate": {
-		"enabled": false
 	},
 	"billing-zt-stripe-paypal-payment-method": {
 		"enabled": true
@@ -107,12 +89,6 @@
 	"crowdstrike-endpoint-survey": {
 		"enabled": true
 	},
-	"dash-colors-v2-q2-2025": {
-		"enabled": false
-	},
-	"dex-agg-by-device-test": {
-		"enabled": false
-	},
 	"dex-agg-by-test-old": {
 		"enabled": true
 	},
@@ -133,9 +109,6 @@
 	},
 	"dex-ip-monitoring": {
 		"enabled": true
-	},
-	"dex-maxmind-r2": {
-		"enabled": false
 	},
 	"dex-multi-user": {
 		"enabled": true
@@ -161,9 +134,6 @@
 	"dex-test-percentiles-approx-fallback": {
 		"enabled": true
 	},
-	"dex-tests-to-authenticated-resources": {
-		"enabled": false
-	},
 	"dex-timescale": {
 		"enabled": true
 	},
@@ -175,9 +145,6 @@
 	},
 	"dlp-ai-prompt-classification-q3-2025": {
 		"enabled": true
-	},
-	"dlp-ai-prompt-logging-q3-2025": {
-		"enabled": false
 	},
 	"dlp-document-fingerprinting-q2-2025": {
 		"enabled": true
@@ -202,9 +169,6 @@
 	},
 	"email-security-biso-check": {
 		"enabled": true
-	},
-	"email-security-investigate-with-pagination": {
-		"enabled": false
 	},
 	"email-security-llm-driven-summaries": {
 		"enabled": true
@@ -233,9 +197,6 @@
 	"gateway-body-phase-selector-q3-2025": {
 		"enabled": true
 	},
-	"gateway-granular-rbac-q42025": {
-		"enabled": false
-	},
 	"gateway-http-inspection-mode-q22025": {
 		"enabled": true
 	},
@@ -251,9 +212,6 @@
 	"last-seen-device-profiles": {
 		"enabled": true
 	},
-	"magic-merge-q3-2025": {
-		"enabled": false
-	},
 	"onedash-gateway-scheduled-policies-ui-q32025": {
 		"enabled": true
 	},
@@ -262,12 +220,6 @@
 	},
 	"oneux-cloudy-for-logs-q2-2025": {
 		"enabled": true
-	},
-	"oneux-cloudy-translations": {
-		"enabled": false
-	},
-	"oneux-translation-cloudy": {
-		"enabled": false
 	},
 	"posture-remediation-job-csv-export": {
 		"enabled": true
@@ -287,17 +239,11 @@
 	"unified-access-application-definition": {
 		"enabled": true
 	},
-	"ux-new-table-header-q2-2025": {
-		"enabled": false
-	},
 	"warp-antivirus-posture-check-q4-2025": {
 		"enabled": true
 	},
 	"warp-fail-open-on-external-signal-q4-2025": {
 		"enabled": true
-	},
-	"warp-net-bios-setting-q4-2025": {
-		"enabled": false
 	},
 	"warp-revamp-client-proxy-mode-q3-2025": {
 		"enabled": true
@@ -311,29 +257,11 @@
 	"xos-network-settings-q1-2025": {
 		"enabled": true
 	},
-	"zt-access-global-policies": {
-		"enabled": false
-	},
-	"zt-access-policy-groups-refactor": {
-		"enabled": false
-	},
 	"zt-access-scim-provisioning": {
 		"enabled": true
 	},
-	"zt-access-sso-q3-2025": {
-		"enabled": false
-	},
 	"zt-av-or-sandbox-scan-risk-score": {
 		"enabled": true
-	},
-	"zt-banner-ia-research-q22025": {
-		"enabled": false
-	},
-	"zt-banner-survey-dex-2025-q1": {
-		"enabled": false
-	},
-	"zt-biso-isolate-file-types-remote-session-q2-2025": {
-		"enabled": false
 	},
 	"zt-biso-policy": {
 		"enabled": true
@@ -362,20 +290,11 @@
 	"zt-dark-mode": {
 		"enabled": true
 	},
-	"zt-dash-custom-i-ps-tunnel-subnets-dash-ui-q42025": {
-		"enabled": false
-	},
 	"zt-dash-product-billing-updates-q42025": {
 		"enabled": true
 	},
 	"zt-debug-page": {
 		"enabled": true
-	},
-	"zt-device-posture": {
-		"enabled": false
-	},
-	"zt-device-posture-refactor": {
-		"enabled": false
 	},
 	"zt-dlp-ces-rules": {
 		"enabled": true
@@ -392,17 +311,11 @@
 	"zt-dlp-exact-data-match": {
 		"enabled": true
 	},
-	"zt-dlp-expanded-file-types": {
-		"enabled": false
-	},
 	"zt-dlp-expanded-file-types-2": {
 		"enabled": true
 	},
 	"zt-dlp-free": {
 		"enabled": true
-	},
-	"zt-dlp-har-file-type": {
-		"enabled": false
 	},
 	"zt-dlp-high-entropy-files": {
 		"enabled": true
@@ -431,17 +344,8 @@
 	"zt-dlp-templates": {
 		"enabled": true
 	},
-	"zt-gartner-banner-2024-q1": {
-		"enabled": false
-	},
-	"zt-gartner-banner-2024-q3": {
-		"enabled": false
-	},
 	"zt-gartner-banner-2024-q4": {
 		"enabled": true
-	},
-	"zt-gartner-banner-2024-q4-gpi": {
-		"enabled": false
 	},
 	"zt-gateway-default-cert-modal-warning": {
 		"enabled": true
@@ -458,9 +362,6 @@
 	"zt-gateway-sandboxing": {
 		"enabled": true
 	},
-	"zt-gw-raw-wirefilter": {
-		"enabled": false
-	},
 	"zt-gw-wirefilter-preview-q3-2025": {
 		"enabled": true
 	},
@@ -470,9 +371,6 @@
 	"zt-icmp-proxy": {
 		"enabled": true
 	},
-	"zt-legacy-dev-preview": {
-		"enabled": false
-	},
 	"zt-predefined-code-detection": {
 		"enabled": true
 	},
@@ -481,12 +379,6 @@
 	},
 	"zt-sentinel-one-s2s-posture-integration": {
 		"enabled": true
-	},
-	"zt-show-session-duration": {
-		"enabled": false
-	},
-	"zt-sidebar": {
-		"enabled": false
 	},
 	"zt-status-notification-banner": {
 		"enabled": true
