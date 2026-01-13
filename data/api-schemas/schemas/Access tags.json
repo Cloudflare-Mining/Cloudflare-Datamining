@@ -265,6 +265,9 @@
 		"summary": "Delete a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"GET /accounts/{account_id}/access/tags": {
@@ -611,6 +614,11 @@
 		"summary": "List tags",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"GET /accounts/{account_id}/access/tags/{tag_name}": {
@@ -916,6 +924,10 @@
 		"summary": "Get a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
 		]
 	},
 	"POST /accounts/{account_id}/access/tags": {
@@ -1226,6 +1238,9 @@
 		"summary": "Create a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	},
 	"PUT /accounts/{account_id}/access/tags/{tag_name}": {
@@ -1577,6 +1592,9 @@
 		"summary": "Update a tag",
 		"tags": [
 			"Access tags"
+		],
+		"x-api-token-group": [
+			"Access: Apps and Policies Write"
 		]
 	}
 }
