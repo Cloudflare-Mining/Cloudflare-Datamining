@@ -5,38 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available location: Lisbon, Portugal</strong></p>
-<p><strong>About Cloudflare's Engineering Teams</strong></p>
-<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 330 cities in more than 125 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
-<p>Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: Typescript/Javascript, Go, Rust, C/C++ and Python.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal intern is passionate about making the Internet a better place. You will work alongside experienced engineers. You will push code this spring that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious, proactive, and able to complete projects. This is a great opportunity for engineers who want to learn to develop at Internet scale.</p>
-<p>What would you do as a Cloudflare intern?</p>
+<p><strong>Available locations: London&nbsp;</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>As a <strong>Global Mobility Coordinator</strong>, you will play a vital role in executing the day-to-day logistics of our global relocation and immigration programs, ensuring a seamless transition for employees moving internationally. You will work closely with the People Operations team and external vendors to track visa milestones, coordinate relocation services, and maintain high standards of data integrity. We are looking for a highly organised, detail-oriented individual who possesses the empathy to support employees through major life changes and the proactivity to keep complex processes moving on schedule.</p>
+<p>&nbsp;</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
-	<li>Work cross-functionally with various teams.</li>
-	<li>Work closely with a mentor to guide you through the internship and help with career goals.</li>
-	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups.</li>
-	<li>Present your project to the entire company at the end of the internship.</li>
-	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
-	<li>Learn and develop skills through our professional development workshops.</li>
-	<li>Write for our <a href="https://blog.cloudflare.com/">Cloudflare blog</a> and be featured on <a href="http://cloudflare.tv/">Cloudflare.tv</a> sessions.&nbsp;</li>
+	<li><strong>Operational Support:</strong> Serve as a point of contact for employees during their relocation journey, providing initial process overviews and ensuring they feel supported from initiation to arrival.</li>
+	<li><strong>Immigration and Relocation Coordination:</strong> Initiate relevant vendors, assist in the day-to-day coordination of immigration support and relocation logistics.&nbsp;</li>
+	<li><strong>Process Administration:</strong> Partner with People Operations to execute the administrative tasks associated with permanent transfers, assignments and temporary remote work requests. You will help ensure that all internal records and payroll notifications are accurate and timely.</li>
+	<li><strong>Immigration Tracking:</strong> Support the team in monitoring global immigration compliance, specifically by tracking visa expiry dates and coordinate with external counsel to initiate renewals and extensions.</li>
+	<li><strong>Data Management:</strong> Maintain and update global mobility trackers (short-term assignments, transfers, and repatriations). You will ensure that our reports are accurate.</li>
+	<li><strong>Resource Maintenance:</strong> Assist in the upkeep of internal resources, including FAQs, intranet pages, and process maps, ensuring that our employees always have access to the most current mobility information.</li>
+	<li><strong>Vendor Liaison:</strong> Act as a junior point of contact for external relocation and immigration vendors, helping to schedule briefings and following up on pending action items to keep cases moving forward.</li>
+	<li><strong>Program Support:</strong> Provide administrative and project support to the Global Mobility Specialists on new initiatives, helping with data collection and analysis, and internal communications.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3><strong>Who You Are:</strong></h3>
 <ul>
-	<li>Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
-	<li>Open to recent graduates within last 6 months.&nbsp;</li>
-	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
-	<li>Curiosity, empathy and ability to get things done.</li>
-	<li>Ability to commit to a minimum 12 week spring internship.</li>
-	<li>In office 3-4 days a week in Lisbon office.</li>
-	<li><strong>Bonus:</strong> Demonstrated passion for software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></li>
-</ul>
-<p><strong>Important dates:</strong></p>
-<ul>
-	<li>Deadline to apply: November 21, 2025</li>
-	<li>Internship dates: January 12, 2026 - April 3, 2026 (12 week internship)</li>
+	<li><strong>Experience:</strong> You have 1–2 years of experience in an HR, legal, or administrative role, ideally with some exposure to immigration or global mobility. You understand the basics of visa types or relocation logistics and are eager to grow your expertise.</li>
+	<li><strong>Detail-Oriented:</strong> You have a high degree of "operational excellence." You enjoy checking boxes, meeting deadlines, and ensuring that no detail falls through the cracks.</li>
+	<li><strong>Self-Starter:</strong> You are proactive and motivated. While you will have guidance, you are someone who looks for the next task and isn't afraid to ask questions to ensure you’re providing the best support possible.</li>
+	<li><strong>Empathetic Communicator:</strong> You recognize that moving countries is a major life event. You are a kind, clear, and professional communicator who enjoys helping people navigate complex processes.</li>
+	<li><strong>Organized:</strong> You can juggle multiple tasks at once without losing your cool. You thrive in a fast-paced environment and love using spreadsheets or tools to keep your work organized.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

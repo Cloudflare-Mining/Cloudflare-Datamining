@@ -5,39 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available location: London, UK</strong></p>
-<p><strong>About Cloudflare's Engineering Teams</strong></p>
-<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 330 cities in more than 125 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
-<p>Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: Typescript/Javascript, Go, Rust, C/C++ and Python.</p>
-<p><strong>About the Internship Program</strong></p>
-<p>The ideal intern is passionate about making the Internet a better place. You will work alongside experienced engineers. You will push code this spring that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious, proactive, and able to complete projects. This is a great opportunity for engineers who want to learn to develop at Internet scale.</p>
-<p>What would you do as a Cloudflare intern?</p>
+<p><strong>Available Locations: Austin</strong></p>
+<h2>About the Team</h2>
+<p>The Core Data team’s mission is building a centralized data platform for Cloudflare that provides&nbsp; secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We facilitate access to data from federated sources across the company for dashboarding, ad-hoc querying and in-product use cases. We power data pipelines and data products, secure and monitor data, and drive data governance at Cloudflare. Our work enables every individual at the company to act with greater information and make more informed decisions.&nbsp;</p>
+<h2>About the Role</h2>
+<p>We are looking for a systems engineer with a strong background in data to help us expand and maintain our data infrastructure. You’ll contribute to the technical implementation of our scaling data platform, manage access while accounting for privacy and security, build data pipelines, and develop tools to automate accessibility and usefulness of data. You’ll collaborate with teams including Product Growth, Marketing, and Billing to help them make informed decisions and power usage-based invoicing platforms, as well as work with product teams to bring new data-driven solutions to Cloudflare customers.</p>
+<h2>What You’ll Do</h2>
 <ul>
-	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
-	<li>Work cross-functionally with various teams.</li>
-	<li>Work closely with a mentor to guide you through the internship and help with career goals.</li>
-	<li>Build your network across the company through our various in and out of office socials, networking programs, Employee Resource Group (ERG) programs, and Activity Groups.</li>
-	<li>Present your project to the entire company at the end of the internship.</li>
-	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
-	<li>Learn and develop skills through our professional development workshops.</li>
-	<li>Write for our <a href="https://blog.cloudflare.com/">Cloudflare blog</a> and be featured on <a href="http://cloudflare.tv/">Cloudflare.tv</a> sessions.&nbsp;</li>
+	<li>Contribute to the design and execution of technical architecture for highly visible data infrastructure at the company.</li>
+	<li>Design and develop tools and infrastructure to improve and scale our data systems at Cloudflare.</li>
+	<li>Build and maintain data pipelines and data products to serve customers throughout the company, including tools to automate delivery of those services.</li>
+	<li>Gain deep knowledge of our data platforms and tools to guide and enable stakeholders with their data needs.</li>
+	<li>Work across our tech stack, which includes Kubernetes, Trino, Iceberg, Clickhouse, and PostgreSQL, with software built using Go, Javascript/Typescript, Python, and others.</li>
+	<li>Collaborate with peers to reinforce a culture of exceptional delivery and accountability on the team.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h2>Requirements</h2>
 <ul>
-	<li>Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
-	<li>Open to recent graduates within last 6 months.&nbsp;</li>
-	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
-	<li>Curiosity, empathy and ability to get things done.</li>
-	<li>Ability to commit to a minimum 12 week internship.</li>
-	<li>In office 3-4 days a week in London office.</li>
-	<li><strong>Bonus:</strong> Demonstrated passion for software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></li>
+	<li>3-5+ years of experience as a software engineer with a focus on building and maintaining data infrastructure.</li>
+	<li>Experience participating in technical initiatives in a cross-functional context, working with stakeholders to deliver value.</li>
+	<li>Practical experience with data infrastructure components, such as Trino, Spark, Iceberg/Delta Lake, Kafka, Clickhouse, or PostgreSQL.</li>
+	<li>Hands-on experience building and debugging data pipelines.</li>
+	<li>Proficient using backend languages like Go, Python, or Typescript, along with strong SQL skills.</li>
+	<li>Strong analytical skills, with a focus on understanding how data is used to drive business value.</li>
+	<li>Solid communication skills, with the ability to explain technical concepts to both technical and non-technical audiences.</li>
 </ul>
-<p><strong>Important dates:</strong></p>
+<h2>Desirable Skills</h2>
 <ul>
-	<li>Deadline to apply: November 21, 2025</li>
-	<li>Internship dates: January 12, 2026 - April 3, 2026 (12 week internship)</li>
+	<li>Experience with data orchestration and infrastructure platforms like Airflow and DBT.</li>
+	<li>Experience deploying and managing services in Kubernetes.</li>
+	<li>Familiarity with data governance processes, privacy requirements, or auditability.</li>
+	<li>Interest in or knowledge of machine learning models and MLOps.</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
