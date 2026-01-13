@@ -530,7 +530,7 @@
 			}
 		},
 		jobs: {
-			title: "Last Job",
+			title: "Last job",
 			view_all: "View all jobs"
 		},
 		logs: {
@@ -545,6 +545,7 @@
 			status: {
 				all: "All",
 				completed: "Completed",
+				indexed: "Indexed",
 				queued: "Queued",
 				running: "Processing",
 				skipped: "Skipped",

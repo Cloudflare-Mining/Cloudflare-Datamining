@@ -1,7 +1,7 @@
 {
 	header: {
 		title: "Quick start guide",
-		description: (0, i.p)(s(), "zoneName")
+		description: (0, o.p)(s(), "zoneName")
 	},
 	buttons: {
 		hide: "Hide",
@@ -9,23 +9,23 @@
 	},
 	sections: {
 		plan: {
-			header: (0, i.p)(a(), "planName"),
+			header: (0, o.p)(a(), "planName"),
 			description: "Several features are on by default, including CDN/caching, DDoS protection, SSL/TLS, and WAF. Explore other features included in your plan below and in the menu.",
-			information: (0, i.p)(c()),
+			information: (0, o.p)(l()),
 			tabs: {
 				security: {
 					header: "Security",
-					description: (0, i.p)(l())
+					description: (0, o.p)(c())
 				},
 				performance: {
 					header: "Performance",
-					description: (0, i.p)(d())
+					description: (0, o.p)(d())
 				}
 			}
 		},
 		messages: {
-			max_rules_exceeded: (0, i.p)(u(), "zonePlan"),
-			rule_deployed: (0, i.p)(p())
+			max_rules_exceeded: (0, o.p)(u(), "zonePlan"),
+			rule_deployed: (0, o.p)(p())
 		},
 		configurations: {
 			header: "Feature",
@@ -48,7 +48,7 @@
 				title: "Super Bot Fight Mode",
 				business_description: "Block AI bots and challenge complex bots using machine learning and prevent threats like content scraping using the standard configuration of Super Bot Fight Mode.",
 				pro_description: "Block AI bots and challenge bots from any source that may carry out attacks like content scraping and credential stuffing using the standard configuration of Super Bot Fight Mode.",
-				footer: (0, i.p)(m())
+				footer: (0, o.p)(m())
 			},
 			page_shield: {
 				title: "Page Shield",
@@ -73,7 +73,7 @@
 			always_online: {
 				title: "Always Online™",
 				description: "Allow visitors to access your domain even when your origin server is unavailable by serving limited copies of pages from the Internet Archive's Wayback Machine.",
-				supplementalDetails: (0, i.p)(f())
+				supplementalDetails: (0, o.p)(f())
 			},
 			speed_optimization: {
 				title: "Speed optimizations",
@@ -86,7 +86,7 @@
 			how_cloudflare_interact: {
 				header: "Learn",
 				title: "How Cloudflare products interact with your HTTP traffic",
-				description: (0, i.p)(h(), "zoneName"),
+				description: (0, o.p)(h(), "zoneName"),
 				traffic_sequence: "Traffic Sequence"
 			},
 			rules: {

@@ -764,7 +764,10 @@
 		blocked_ent: "Please contact your Account Manager to purchase ACM.",
 		current_plan_paranthetical: " (current plan)",
 		banner_title: "Advanced Certificate Manager",
-		banner_description: "Unlock more control and flexibility for your Certificates and SSL/TLS settings"
+		banner_description: "Unlock more control and flexibility for your Certificates and SSL/TLS settings",
+		banner_experiment_variant_a_description: "Unlock auto-renewing wildcard and dedicated certificates that cover multi-level subdomains with Advanced Certificate Manager",
+		banner_experiment_variant_b_description: "Customize certificate authorities, validity periods, hostnames, and cipher suites",
+		banner_experiment_variant_b_link_text: "Unlock"
 	},
 	api: {
 		get_certificate_packs: "List Certificate Packs"
