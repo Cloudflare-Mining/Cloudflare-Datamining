@@ -9014,123 +9014,20 @@
 							"shared_entries": {
 								"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
 								"items": {
-									"oneOf": [
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"custom"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
+									"properties": {
+										"enabled": {
+											"type": "boolean"
 										},
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"predefined"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"integration"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"exact_data"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"document_fingerprint"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
+										"entry_id": {
+											"format": "uuid",
+											"type": "string"
 										}
-									]
+									},
+									"required": [
+										"entry_id",
+										"enabled"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -13613,100 +13510,20 @@
 							"shared_entries": {
 								"description": "Other entries, e.g. predefined or integration.",
 								"items": {
-									"oneOf": [
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"predefined"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
+									"properties": {
+										"enabled": {
+											"type": "boolean"
 										},
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"integration"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"exact_data"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"enabled": {
-													"type": "boolean"
-												},
-												"entry_id": {
-													"format": "uuid",
-													"type": "string"
-												},
-												"entry_type": {
-													"enum": [
-														"document_fingerprint"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"entry_id",
-												"enabled",
-												"entry_type"
-											],
-											"type": "object"
+										"entry_id": {
+											"format": "uuid",
+											"type": "string"
 										}
-									]
+									},
+									"required": [
+										"entry_id",
+										"enabled"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
