@@ -42,6 +42,14 @@
 	"acct-10465-user-group-ga": {
 		"enabled": true
 	},
+	"acm-banner-copy-experiment": {
+		"enabled": true,
+		"branches": [
+			"baseline",
+			"variant-a",
+			"variant-b"
+		]
+	},
 	"active-billing-alert": {
 		"enabled": true
 	},
@@ -1162,6 +1170,13 @@
 	},
 	"prg-dynamic-dash-banners": {
 		"enabled": true
+	},
+	"prg-edge-certificate-messaging-experiment": {
+		"enabled": true,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
 	},
 	"prg-free-trial": {
 		"enabled": true
