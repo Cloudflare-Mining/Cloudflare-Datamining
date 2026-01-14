@@ -5,34 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Singapore, Sydney (Australia), or Tokyo (Japan)</strong></h3>
-<h3><strong>About the Team</strong></h3>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Network Security Engineer</strong> to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<p><strong>Available Locations: Singapore, Seoul, Tokyo</strong></p>
+<p>&nbsp;</p>
+<p><strong>Public Policy at Cloudflare</strong></p>
+<p>Cloudflare is one of the most dynamic and innovative companies providing services on the Internet. Regulation of the Internet is exploding -- across a number of subject areas and jurisdictions -- at a rate previously unseen in the history of the Internet. We’re looking for a new team member who can help foster and promote our corporate philosophy and approach, in which the security and privacy of our customers are paramount.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>What You’ll Do&nbsp;&nbsp;</strong></p>
+<p>We are looking for an exceptionally talented and energetic person to join our Public Policy&nbsp;</p>
+<p>team in<strong> Singapore, Seoul or Tokyo</strong>. With a focus on Korea and Japan but able to jump into issues across the Asia Pacific, China and Japan (APJC) region as needed, we’re looking for someone who can foster our unique corporate philosophy, develop public policy solutions to challenging technology issues and provide front line support on issues requiring engagement.&nbsp;</p>
+<p>You will work on some of the most complicated and rapidly evolving policy issues, such as AI, cybersecurity, privacy, and intermediary liability. The perfect candidate is also passionate about Trust &amp; Safety topics such as copyright, phishing, and child safety. You’ll help us develop and communicate real-world solutions to addressing these challenges.&nbsp;</p>
+<p>This person has a deep understanding of technology as well as regulatory environments. The ideal candidate can seamlessly go from a technical conversation with engineers to a high-level discussion with policymakers regarding where Cloudflare fits in the Internet stack. This person should be an expert at presenting technical topics at a level any audience will be able to understand.</p>
+<p>Because of the scope, complexity, and diversity of the company’s work, our Public Policy team members must be flexible, talented and able to work collaboratively across multi-functional teams to find and present policy solutions, to carry the Cloudflare narrative, and promote the public policy brand externally.&nbsp;</p>
+<p>This role is ideal for an experienced and energetic team player who is proactive, a strategic thinker, a skilled communicator and above all else, someone who has a thirst for knowledge and continued growth, all while working as part of a great team.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>This role has non-standard working hours.</p>
+<p>The Sr North Asia Public Policy Manager will report to the APJC Head of Public Policy.</p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
+<p>This role will lead Cloudflare’s government advocacy and outreach in Japan and Korea and support the APJC public policy team when needed. Specific areas of responsibility include:</p>
 <ul>
-	<li>Serve as a trusted technical advisor for our enterprise customers, responding to and resolving inquiries and incidents related to network security and performance, while delivering timely, high-quality and personalized assistance.</li>
-	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
-	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>Evaluate policy conversations, legislative developments and government requests, and work to understand the impact on Cloudflare and its customers and develop strategies in response.</li>
+	<li>Engage with trade associations, industry partners, non-profit groups, governments and law enforcement agencies and others to educate on Cloudflare’s position on public policy and trust and safety issues.</li>
+	<li>Develop talking points, policy narratives and presentation materials for use at external events and meetings and for other communication purposes (company blog, position papers, etc.).</li>
+	<li>Coordinate with cross-functional teams to address government and law enforcement requests, as appropriate.</li>
+	<li>Provide timely updates to colleagues from the Cloudflare Public Policy, Legal, Trust &amp; Safety Teams and other internal stakeholders.</li>
 </ul>
-<h3><strong>What We're Looking For</strong></h3>
+<p>&nbsp;</p>
+<p><strong>Minimum Qualification</strong></p>
 <ul>
-	<li>You have a minimum of 4 years experience working as a Network Security Engineer / Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
-	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
-	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
-	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
-	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
-	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent.</li>
+	<li>Bachelor’s degree or equivalent.</li>
+	<li>3-8+ years of related experience in public policy, trade associations, government and/or law enforcement.&nbsp;</li>
+	<li>Familiarity with Japan’s policy and legal system, including government and civil society stakeholders, laws and regulations related to technology companies.&nbsp;</li>
+	<li>Fluency in both English and Japanese.&nbsp;</li>
+	<li>Strong communications (written and oral) and interpersonal skills.</li>
+	<li>Team player, with a sense of humor.</li>
+	<li>Detail oriented, well organized and a sense of initiative.</li>
+	<li>An ambitious mindset that enables you to successfully work independently with little guidance, but also to use good judgment and escalate / call out issues when needed.</li>
+	<li>Flexibility and willingness to jump into issues and regions that are not as familiar.&nbsp;</li>
+	<li>Willingness to travel within the region and occasionally outside the region.</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Preferred Qualification</strong></p>
+<ul>
+	<li>Relevant experience in other APJC regions.</li>
+	<li>Fluency in another APJC language.&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
