@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-06-02T19:26:51.758Z",
-					"updatedAt": "2026-01-14T17:53:13.802Z"
+					"updatedAt": "2026-01-14T18:52:08.233Z"
 				},
 				"contentfulId": "5sfy0lFRunNgkrnElG4nKu",
 				"contentTypeId": "page",
@@ -666,6 +666,221 @@
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "1FvEgjtCa7MEw7gKPHZFUS",
 												"textValue": "100 GB",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "3h31imcuYKzE4mOdEzXfqc",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "Pricing After Free Tier",
+								"features": [
+									{
+										"contentfulId": "6zsRIxa5igi2HTQhEjwmqF",
+										"contentTypeId": "planElementFeatures",
+										"name": "Storage / Month",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7xtiNcYQHyMqEustdlkClQ",
+												"textValue": "$0.015 per GB",
+												"plan": {
+													"contentfulId": "5XAaszeVndmH4SDpEskMK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
+													"name": "Cloudflare R2",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": "       ",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1DMMxVjIPuFdMWOLfXrZXM",
+												"textValue": "Starts at $0.023 per GB",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "3xl5wPkex3kizmdvKZl7WO",
+										"contentTypeId": "planElementFeatures",
+										"name": "Class A Operations (POST)",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3QXkDRpqKZ61I8VASHFEIQ",
+												"textValue": "$0.0045 per 1,000",
+												"plan": {
+													"contentfulId": "5XAaszeVndmH4SDpEskMK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
+													"name": "Cloudflare R2",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": "       ",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1ugA7Q1NE0xNLelX9amntV",
+												"textValue": "$0.005 per 1,000",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "1xlHHEW7S8Dh172bmzHoK0",
+										"contentTypeId": "planElementFeatures",
+										"name": "Class B Operations (GET)",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2rGGlVs4xs4cOj0bCjZ79d",
+												"textValue": "$0.00036 per 1,000",
+												"plan": {
+													"contentfulId": "5XAaszeVndmH4SDpEskMK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
+													"name": "Cloudflare R2",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": "       ",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3TF8DEQU5fWrT4toppHNeB",
+												"textValue": "$0.0004 per 1,000",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "1AA87uoBoghuYuQq0Jv9ru",
+										"contentTypeId": "planElementFeatures",
+										"name": "Egress Fees",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "18FQzfj4T28I4faCVlReZ6",
+												"textValue": "FREE",
+												"plan": {
+													"contentfulId": "5XAaszeVndmH4SDpEskMK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
+													"name": "Cloudflare R2",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": "       ",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "aStKykr01h03TnyuQOT61",
+												"textValue": "Starts at $0.09 per GB",
 												"plan": {
 													"contentfulId": "66TAyowgjpPOaaErq8Usor",
 													"contentTypeId": "planElementPlan",
