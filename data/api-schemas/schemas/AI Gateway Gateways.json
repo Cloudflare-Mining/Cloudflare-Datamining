@@ -161,6 +161,10 @@
 											"format": "uuid",
 											"type": "string"
 										},
+										"is_default": {
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"log_management": {
 											"maximum": 10000000,
 											"minimum": 10000,
@@ -549,6 +553,10 @@
 											"internal_id": {
 												"format": "uuid",
 												"type": "string"
+											},
+											"is_default": {
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"log_management": {
 												"maximum": 10000000,
@@ -1054,6 +1062,10 @@
 											"format": "uuid",
 											"type": "string"
 										},
+										"is_default": {
+											"type": "boolean",
+											"x-auditable": true
+										},
 										"log_management": {
 											"maximum": 10000000,
 											"minimum": 10000,
@@ -1313,6 +1325,10 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"is_default": {
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"log_management": {
 								"maximum": 10000000,
 								"minimum": 10000,
@@ -1513,6 +1529,10 @@
 										"internal_id": {
 											"format": "uuid",
 											"type": "string"
+										},
+										"is_default": {
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"log_management": {
 											"maximum": 10000000,
@@ -1871,6 +1891,10 @@
 									}
 								]
 							},
+							"is_default": {
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"log_management": {
 								"maximum": 10000000,
 								"minimum": 10000,
@@ -2129,6 +2153,10 @@
 										"internal_id": {
 											"format": "uuid",
 											"type": "string"
+										},
+										"is_default": {
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"log_management": {
 											"maximum": 10000000,
