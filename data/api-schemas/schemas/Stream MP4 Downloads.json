@@ -300,6 +300,10 @@
 				"schema": {
 					"default": "default",
 					"description": "The type of downloads available are: `default`, `audio`.",
+					"enum": [
+						"default",
+						"audio"
+					],
 					"example": "audio",
 					"type": "string",
 					"x-auditable": true
@@ -668,6 +672,77 @@
 								{
 									"properties": {
 										"result": {
+											"description": "An object with download type keys. Each key is optional and only present if that download type has been created.",
+											"properties": {
+												"audio": {
+													"allOf": [
+														{
+															"properties": {
+																"percentComplete": {
+																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"maximum": 100,
+																	"minimum": 0,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The status of a generated download.",
+																	"enum": [
+																		"ready",
+																		"inprogress",
+																		"error"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"url": {
+																	"description": "The URL to access the generated download.",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
+																	"format": "uri",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "The audio-only download. Only present if this download type has been created."
+												},
+												"default": {
+													"allOf": [
+														{
+															"properties": {
+																"percentComplete": {
+																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"maximum": 100,
+																	"minimum": 0,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The status of a generated download.",
+																	"enum": [
+																		"ready",
+																		"inprogress",
+																		"error"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"url": {
+																	"description": "The URL to access the generated download.",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
+																	"format": "uri",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "The default video download. Only present if this download type has been created."
+												}
+											},
 											"type": "object"
 										}
 									},
@@ -940,6 +1015,32 @@
 								{
 									"properties": {
 										"result": {
+											"properties": {
+												"percentComplete": {
+													"description": "Indicates the progress as a percentage between 0 and 100.",
+													"maximum": 100,
+													"minimum": 0,
+													"type": "number",
+													"x-auditable": true
+												},
+												"status": {
+													"description": "The status of a generated download.",
+													"enum": [
+														"ready",
+														"inprogress",
+														"error"
+													],
+													"type": "string",
+													"x-auditable": true
+												},
+												"url": {
+													"description": "The URL to access the generated download.",
+													"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
+													"format": "uri",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
 											"type": "object"
 										}
 									},
@@ -1112,6 +1213,10 @@
 				"schema": {
 					"default": "default",
 					"description": "The type of downloads available are: `default`, `audio`.",
+					"enum": [
+						"default",
+						"audio"
+					],
 					"example": "audio",
 					"type": "string",
 					"x-auditable": true
@@ -1220,6 +1325,77 @@
 								{
 									"properties": {
 										"result": {
+											"description": "An object with download type keys. Each key is optional and only present if that download type has been created.",
+											"properties": {
+												"audio": {
+													"allOf": [
+														{
+															"properties": {
+																"percentComplete": {
+																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"maximum": 100,
+																	"minimum": 0,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The status of a generated download.",
+																	"enum": [
+																		"ready",
+																		"inprogress",
+																		"error"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"url": {
+																	"description": "The URL to access the generated download.",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
+																	"format": "uri",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "The audio-only download. Only present if this download type has been created."
+												},
+												"default": {
+													"allOf": [
+														{
+															"properties": {
+																"percentComplete": {
+																	"description": "Indicates the progress as a percentage between 0 and 100.",
+																	"maximum": 100,
+																	"minimum": 0,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"status": {
+																	"description": "The status of a generated download.",
+																	"enum": [
+																		"ready",
+																		"inprogress",
+																		"error"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"url": {
+																	"description": "The URL to access the generated download.",
+																	"example": "https://customer-m033z5x00ks6nunl.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a/downloads/default.mp4",
+																	"format": "uri",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													],
+													"description": "The default video download. Only present if this download type has been created."
+												}
+											},
 											"type": "object"
 										}
 									},

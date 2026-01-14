@@ -419,7 +419,7 @@
 																"x-auditable": true
 															},
 															"pctComplete": {
-																"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
+																"description": "Indicates the progress as a percentage between 0 and 100.",
 																"maximum": 100,
 																"minimum": 0,
 																"type": "string",
@@ -992,7 +992,7 @@
 															"x-auditable": true
 														},
 														"pctComplete": {
-															"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
+															"description": "Indicates the progress as a percentage between 0 and 100.",
 															"maximum": 100,
 															"minimum": 0,
 															"type": "string",
@@ -2188,7 +2188,7 @@
 															"x-auditable": true
 														},
 														"pctComplete": {
-															"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
+															"description": "Indicates the progress as a percentage between 0 and 100.",
 															"maximum": 100,
 															"minimum": 0,
 															"type": "string",
@@ -3197,7 +3197,7 @@
 															"x-auditable": true
 														},
 														"pctComplete": {
-															"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
+															"description": "Indicates the progress as a percentage between 0 and 100.",
 															"maximum": 100,
 															"minimum": 0,
 															"type": "string",
