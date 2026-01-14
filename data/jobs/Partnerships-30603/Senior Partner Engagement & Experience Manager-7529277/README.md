@@ -5,29 +5,63 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX | Lisbon, Portugal | Bengaluru, India</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Role</strong></h3>
-<p>As a Design Engineer on the Product Content Experience (PCX) team, you’ll play an important role at Cloudflare.&nbsp;</p>
-<p>You’ll be part of a growing engineering team tasked with making our <a href="https://developers.cloudflare.com/">docs site</a> shine, as well as other, interactive (and future) responsibilities. You’ll partner with technical writers, content strategists, developer educators, product managers, and engineers who are committed to developing and improving the customer experience (seriously, check out our <a href="https://github.com/cloudflare/cloudflare-docs/pulse/monthly">contributor graph</a>, we have some passionate folks!).&nbsp;</p>
-<p>If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
-<h3><strong>What you’ll do</strong></h3>
-<p>We are looking for an experienced and empathetic Design Engineer who will help build and scale the platform that empowers millions of developers to be successful with Cloudflare. In this role, you’ll use your skills to ensure we have a world-class documentation platform that gives customers relevant and up-to-date content whenever they need it. This is a cross-functional role where you’ll work collaboratively across the product and developer relations teams.</p>
+<p><strong>Available Locations: This role is based in the Washington DC metro area.</strong></p>
+<p>About the Role</p>
+<p>This role supports the Principal Partner Engagement &amp; Experience Manager by owning and executing key partner communications, content operations, and digital experience workflows. The position is highly cross-functional, partnering closely with Partner Marketing, PR, Enablement, Programs, and Corporate Social teams to deliver timely, accurate, and engaging partner communications across all channels.</p>
+<h3>Responsibilities</h3>
 <ul>
-	<li>Build and maintain our documentation platform (and soon other platforms)</li>
-	<li>Work with technical writers, content strategists, and developer educators to create a seamless process for technical content</li>
-	<li>Collaborate with Product teams to be customer zero for Cloudflare’s own products within our documentation platform</li>
-	<li>Cultivate and establish relationships both internally and externally with users of our documentation, being a thoughtful point of contact to help collect and implement improvements based on feedback&nbsp;</li>
+	<li>Drive Partner Communications &amp; Engagement: Develop and execute partner-first communication strategies that increase awareness, adoption, and engagement across Cloudflare’s global partner ecosystem.</li>
+	<li>Create Impactful Partner Content: Own the creation, curation, and distribution of partner-facing and internal content that supports programs, enablement, incentives, events, and key business priorities.</li>
+	<li>Elevate Digital Partner Experience: Support the ongoing optimization of Cloudflare’s partner digital experiences, including content organization, discoverability, and usability across partner-facing platforms.</li>
+	<li>Amplify Partner Visibility &amp; Recognition: Partner with cross-functional teams to promote partner success stories, announcements, and recognition, reinforcing Cloudflare’s partner-first culture.</li>
+	<li>Support Partner Readiness &amp; Enablement: Collaborate with partner marketing, product marketing, enablement, and sales teams to deliver timely, relevant content that improves field and partner readiness.</li>
+	<li>Execute Partner Engagement Programs: Support the planning, promotion, and execution of partner engagement initiatives, including webinars and campaigns, ensuring a consistent and professional experience.</li>
+	<li>Own Cross-Functional Coordination &amp; Execution: Act as a key liaison across Partner Experience, Marketing, PR, and Operations to ensure alignment, operational excellence, and effective execution of partner initiatives.</li>
 </ul>
-<h3><strong>Qualifications</strong></h3>
+<h3>Key Skills &amp; Attributes&nbsp;</h3>
 <ul>
-	<li>2-7 years of experience working with distributed systems.</li>
-	<li>Experience designing and building frontend applications.</li>
-	<li>Solid understanding of cloud primitives and how they work together to build distributed systems.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use TypeScript.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in frontend applications.</li>
+	<li>5+ years of experience in partner-focused roles (marketing, communications, experience, programs, project management, or analytics).</li>
+	<li>Detail-oriented, proactive, and partner-first in approach.</li>
+	<li>Strong written communication and editing skills, with the ability to tailor messaging for different audiences.</li>
+	<li>Highly organized with the ability to manage multiple workflows and deadlines simultaneously.</li>
+	<li>Comfortable working across teams and balancing competing priorities.</li>
+	<li>Willingness and ability to learn new tools and systems (e.g., Salesforce Experience Cloud, Wiki, Poppulo platforms).</li>
+	<li>Analytical mindset with experience reviewing engagement metrics and using insights to improve content performance.</li>
 </ul>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Washington DC Metro-based hires: Estimated annual salary of $213,000 - $261,000.</li>
+</ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

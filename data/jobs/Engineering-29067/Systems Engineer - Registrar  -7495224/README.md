@@ -5,32 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2>This is a hybrid role with a preferred location of Austin, TX. Candidates located near our London and Lisbon hubs will also be considered.</h2>
-<p><strong>Cloudflare One GTM Strategy Manager</strong></p>
-<p>Cloudflare is looking for a Strategy Manager to support our Cloudflare One GTM function. This role is a unique opportunity to work closely with the leader of Cloudflare One GTM, serving as a thought partner on strategic initiatives that accelerate SASE revenue and improve how we operate across teams. This is a high-ownership, high-impact role where strategic thinking meets operational execution.</p>
-<p>We're looking for someone with a strong background in strategy, business ops, or revenue ops. This is an ideal opportunity for someone who thrives in fast-paced environments, loves solving ambiguous problems, and can balance multiple priorities across cross-functional teams.</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Available Locations: Austin or Lisbon</strong></p>
+<p><strong>About the Department</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p><strong>About the Team</strong></p>
+<p>Domain management is the foundation for any online presence and Cloudflare Registrar is our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</p>
+<p><strong>What you'll do</strong></p>
+<p>We are looking for a talented systems engineer to be part of our engineering team. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Drive cross-functional initiatives across Cloudflare One GTM, ensuring teams are unblocked, aligned, and operationally efficient.</li>
-	<li>Partner with teams like Product, Sales, Support, and Professional Services to streamline workflows and improve the end to end customer experience for Cloudflare One.</li>
-	<li>Contribute to and help track key SASE growth KPIs, including revenue, market awareness and post-sales adoption.</li>
-	<li>Measure tactical and strategic campaign insights</li>
-	<li>Manage data driven signals and utilization roadmap for internal tools</li>
-	<li>Support and build new strategic programs like Cloudflare Helix and the Cloudflare One Design Partner Program</li>
-	<li>Long-term strategic vision setting for the Cloudflare One GTM team, including org design, team planning, budgeting, tracking, and process improvements.</li>
-	<li>Own and manage multiple high-priority projects simultaneously, ensuring deadlines are met and teams are aligned.</li>
+	<li>3+ years of experience as a software engineer with a focus on designing, building and scaling data infrastructure</li>
+	<li>Strong communication skills, especially around articulating technical concepts for technical and non-technical audiences</li>
+	<li>Experience working on, and deploying, large scale systems in Typescript,&nbsp; Go, Ruby/Rails, Java, or other high performance languages</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Strong systems level programming skills</li>
+	<li>Excited by the idea of optimizing complex solutions to general problems that all websites face</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)&nbsp;</li>
 </ul>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience:</strong></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>6+ years of experience in strategy, business operations, revenue operations, or product operations, with a track record of managing multiple high-impact initiatives.</li>
-	<li>Strong sense of ownership; someone who takes initiative, works independently, and manages time effectively.</li>
-	<li>Excellent cross-functional communication skills and the ability to influence and align stakeholders at all levels.</li>
-	<li>Highly customer-centric, with natural curiosity about technical products and a strategic mindset for solving complex problems.</li>
-	<li>Comfortable working under pressure and adjusting priorities to meet deadlines in a fast-moving environment.</li>
-	<li>Proven ability to nurture and grow customer relationships over the long term.</li>
-	<li>Data-driven, proficient in Excel/Google Sheets, and experienced in using data to inform decisions.</li>
-	<li>Prior experience with Salesforce CRM, Tableau, BigQuery, or BoostUp is a plus.</li>
+	<li>Designing, building, running and scaling tools and services that support the full spectrum of domain management.</li>
+	<li>Analyzing and communicating complex technical requirements and concepts, working with technical leaders to carve a path to delivery</li>
+	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</li>
+	<li>Ongoing monitoring and maintenance of production services, including participation in on-call rotations</li>
 </ul>
+<ul>
+	<li>Experience working on, and deploying, large scale systems in Typescript,&nbsp; Go, Ruby/Rails, Java, or other high performance languages</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Strong systems level programming skills</li>
+	<li>Excited by the idea of optimizing complex solutions to general problems that all websites face</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)&nbsp;</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Experience with Cloudflare Developer Platform</li>
+	<li>Experience with Ruby or Go&nbsp; (or a strong desire to learn)</li>
+	<li>Experience working with OpenAPI</li>
+	<li>Experience with AI coding tools</li>
+	<li>Experience with Kubernetes</li>
+	<li>Experience with Kibana, Grafana, and/or Prometheus</li>
+	<li>Experience with relational databases (e.g. Postgres)</li>
+	<li>Experience with Gitlab and Gitlab CI</li>
+	<li>Experience with DNS (and DNSSEC)</li>
+	<li>Experience in the registry/registrar industry</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
