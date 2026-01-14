@@ -208,9 +208,29 @@
 													},
 													"type": "array"
 												},
+												"chat_completions_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable chat completions endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
+												},
+												"mcp": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable MCP endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
 												},
 												"rate_limit": {
 													"properties": {
@@ -229,6 +249,16 @@
 																"sliding"
 															],
 															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"search_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable search endpoint for this public endpoint",
+															"type": "boolean"
 														}
 													},
 													"type": "object"
@@ -805,9 +835,29 @@
 														},
 														"type": "array"
 													},
+													"chat_completions_endpoint": {
+														"properties": {
+															"disabled": {
+																"default": false,
+																"description": "Disable chat completions endpoint for this public endpoint",
+																"type": "boolean"
+															}
+														},
+														"type": "object"
+													},
 													"enabled": {
 														"default": false,
 														"type": "boolean"
+													},
+													"mcp": {
+														"properties": {
+															"disabled": {
+																"default": false,
+																"description": "Disable MCP endpoint for this public endpoint",
+																"type": "boolean"
+															}
+														},
+														"type": "object"
 													},
 													"rate_limit": {
 														"properties": {
@@ -826,6 +876,16 @@
 																	"sliding"
 																],
 																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"search_endpoint": {
+														"properties": {
+															"disabled": {
+																"default": false,
+																"description": "Disable search endpoint for this public endpoint",
+																"type": "boolean"
 															}
 														},
 														"type": "object"
@@ -1385,9 +1445,29 @@
 													},
 													"type": "array"
 												},
+												"chat_completions_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable chat completions endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
+												},
+												"mcp": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable MCP endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
 												},
 												"rate_limit": {
 													"properties": {
@@ -1406,6 +1486,16 @@
 																"sliding"
 															],
 															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"search_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable search endpoint for this public endpoint",
+															"type": "boolean"
 														}
 													},
 													"type": "object"
@@ -2040,9 +2130,29 @@
 										},
 										"type": "array"
 									},
+									"chat_completions_endpoint": {
+										"properties": {
+											"disabled": {
+												"default": false,
+												"description": "Disable chat completions endpoint for this public endpoint",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"enabled": {
 										"default": false,
 										"type": "boolean"
+									},
+									"mcp": {
+										"properties": {
+											"disabled": {
+												"default": false,
+												"description": "Disable MCP endpoint for this public endpoint",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"rate_limit": {
 										"properties": {
@@ -2061,6 +2171,16 @@
 													"sliding"
 												],
 												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"search_endpoint": {
+										"properties": {
+											"disabled": {
+												"default": false,
+												"description": "Disable search endpoint for this public endpoint",
+												"type": "boolean"
 											}
 										},
 										"type": "object"
@@ -2447,9 +2567,29 @@
 													},
 													"type": "array"
 												},
+												"chat_completions_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable chat completions endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
+												},
+												"mcp": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable MCP endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
 												},
 												"rate_limit": {
 													"properties": {
@@ -2468,6 +2608,16 @@
 																"sliding"
 															],
 															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"search_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable search endpoint for this public endpoint",
+															"type": "boolean"
 														}
 													},
 													"type": "object"
@@ -2987,9 +3137,29 @@
 										},
 										"type": "array"
 									},
+									"chat_completions_endpoint": {
+										"properties": {
+											"disabled": {
+												"default": false,
+												"description": "Disable chat completions endpoint for this public endpoint",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"enabled": {
 										"default": false,
 										"type": "boolean"
+									},
+									"mcp": {
+										"properties": {
+											"disabled": {
+												"default": false,
+												"description": "Disable MCP endpoint for this public endpoint",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
 									},
 									"rate_limit": {
 										"properties": {
@@ -3008,6 +3178,16 @@
 													"sliding"
 												],
 												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"search_endpoint": {
+										"properties": {
+											"disabled": {
+												"default": false,
+												"description": "Disable search endpoint for this public endpoint",
+												"type": "boolean"
 											}
 										},
 										"type": "object"
@@ -3431,9 +3611,29 @@
 													},
 													"type": "array"
 												},
+												"chat_completions_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable chat completions endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
 												"enabled": {
 													"default": false,
 													"type": "boolean"
+												},
+												"mcp": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable MCP endpoint for this public endpoint",
+															"type": "boolean"
+														}
+													},
+													"type": "object"
 												},
 												"rate_limit": {
 													"properties": {
@@ -3452,6 +3652,16 @@
 																"sliding"
 															],
 															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"search_endpoint": {
+													"properties": {
+														"disabled": {
+															"default": false,
+															"description": "Disable search endpoint for this public endpoint",
+															"type": "boolean"
 														}
 													},
 													"type": "object"
