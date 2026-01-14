@@ -60,6 +60,7 @@ declare const _default: {
     'code-api-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'code-edit': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     code: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    collapse: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     connector: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'corner-down-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.15.0
+
+### Minor Changes
+
+- d6beb3b20e: Add the collapse icon
+
 ## 13.14.0
 
 ### Minor Changes

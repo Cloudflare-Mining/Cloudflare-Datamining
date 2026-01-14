@@ -58,6 +58,7 @@ import CloudflareZeroTrust from './CloudflareZeroTrust';
 import CodeApiOutline from './CodeApiOutline';
 import CodeEdit from './CodeEdit';
 import Code from './Code';
+import Collapse from './Collapse';
 import Connector from './Connector';
 import Copy from './Copy';
 import CornerDownRight from './CornerDownRight';
@@ -306,6 +307,7 @@ export default {
   'code-api-outline': CodeApiOutline,
   'code-edit': CodeEdit,
   code: Code,
+  collapse: Collapse,
   connector: Connector,
   copy: Copy,
   'corner-down-right': CornerDownRight,
