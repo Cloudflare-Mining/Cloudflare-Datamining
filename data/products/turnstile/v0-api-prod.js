@@ -483,7 +483,7 @@
 	}
 	var ht = function(e, t, r, o) {
 			var c = mt(t.params, !1, o),
-				u = "h/".concat("g", "/"),
+				u = "h/".concat("b", "/"),
 				v, h, f = "".concat(c, "/cdn-cgi/challenge-platform/").concat(u, "feedback-reports/").concat(Ye(e), "/").concat(t.displayLanguage, "/").concat((h = t.params.theme) !== null && h !== void 0 ? h : t.theme, "/").concat(r);
 			if (window.top !== window.self) {
 				window.open(f, "_blank", "noopener,noreferrer");
@@ -876,7 +876,7 @@
 				}
 				break;
 			case z.Invisible:
-				!Xr("floating-invisible", t) && t.params.sitekey === "0x4AAAAAAADnOjc0PNeA8qVm" ? (e.style.width = "1px", e.style.height = "1px", e.style.opacity = "0", e.style.position = "absolute", e.style.left = "0", e.style.top = "0", e.style.visibility = "visible", e.style.pointerEvents = "none", e.style.transform = "translateX(-9999px)") : (e.style.width = "0", e.style.height = "0", e.style.position = "absolute", e.style.visibility = "hidden"), e.setAttribute("tabindex", "-1"), e.setAttribute("aria-hidden", "true");
+				!Xr("floating-invisible", t) && t.params.sitekey === "0x4AAAAAAADnOjc0PNeA8qVm" ? (e.style.width = "1px", e.style.height = "1px", e.style.opacity = "0", e.style.position = "fixed", e.style.left = "0", e.style.top = "0", e.style.visibility = "visible", e.style.pointerEvents = "none", e.style.clipPath = "inset(100%)") : (e.style.width = "0", e.style.height = "0", e.style.position = "absolute", e.style.visibility = "hidden"), e.setAttribute("tabindex", "-1"), e.setAttribute("aria-hidden", "true");
 				break;
 			default:
 				m('Invalid value for parameter "mode", expected "'.concat(z.NonInteractive, '", "').concat(z.Managed, '" or "').concat(z.Invisible, '", got "').concat(u, '"'), 2818)
@@ -1036,7 +1036,7 @@
 					(!y || !x) && m("Widget ".concat(n, " to reset was not found."), 3330), l.params.appearance === $.InteractionOnly && Ar(x), l.params.sitekey === null && m("Unexpected Error: Sitekey is null", 3347);
 					var T = x.cloneNode(),
 						I;
-					T.src = gt(n, l.params.sitekey, l.params, (I = l.rcV) !== null && I !== void 0 ? I : J, !1, "g", a, g.scriptUrlParsed, st(l)), (s = x.parentNode) === null || s === void 0 || s.replaceChild(T, x), Lt(y), l.retryTimeout && window.clearTimeout(l.retryTimeout)
+					T.src = gt(n, l.params.sitekey, l.params, (I = l.rcV) !== null && I !== void 0 ? I : J, !1, "b", a, g.scriptUrlParsed, st(l)), (s = x.parentNode) === null || s === void 0 || s.replaceChild(T, x), Lt(y), l.retryTimeout && window.clearTimeout(l.retryTimeout)
 				} else m("Widget ".concat(n, " to reset was not found."), 3331)
 			},
 			S = function(a) {
@@ -1175,7 +1175,7 @@
 							wrapper: ve
 						})), Mt(g);
 						var nt = g.widgetMap.get(Ce);
-						nt || m("Turnstile Initialization Error ", 3606), B.style.display = "none", B.style.border = "none", B.style.overflow = "hidden", B.setAttribute("src", gt(Ce, q, p, J, !1, "g", H.New, g.scriptUrlParsed, st(nt))), B.onerror = function() {
+						nt || m("Turnstile Initialization Error ", 3606), B.style.display = "none", B.style.border = "none", B.style.overflow = "hidden", B.setAttribute("src", gt(Ce, q, p, J, !1, "b", H.New, g.scriptUrlParsed, st(nt))), B.onerror = function() {
 							if (oe) {
 								oe == null || oe(String(Zt.code));
 								return
@@ -1237,7 +1237,7 @@
 					switch (W.label) {
 						case 0:
 							if (l = _.params.sitekey, s = Pt(), !s) return b("Cannot determine Turnstile's embedded location, aborting clearance redemption."), r(_, a, !1), [2];
-							y = "h/".concat("g", "/"), x = new URL(s), T = "https", I = "", V = "".concat(T, "://").concat(x.host, "/cdn-cgi/challenge-platform/").concat(y, "rc/").concat(n).concat(I), W.label = 1;
+							y = "h/".concat("b", "/"), x = new URL(s), T = "https", I = "", V = "".concat(T, "://").concat(x.host, "/cdn-cgi/challenge-platform/").concat(y, "rc/").concat(n).concat(I), W.label = 1;
 						case 1:
 							return W.trys.push([1, 3, , 4]), [4, fetch(V, {
 								body: JSON.stringify({
@@ -1446,7 +1446,7 @@
 								appearance: n.params.appearance,
 								au: g.scriptUrl,
 								cData: n.cData,
-								ch: "fc21b7e0d793",
+								ch: "d251aa49a8a3",
 								chlPageData: n.chlPageData,
 								event: "extraParams",
 								execution: n.params.execution,
