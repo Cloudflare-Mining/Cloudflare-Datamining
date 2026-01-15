@@ -152,7 +152,15 @@
 			pay_per_crawl_disabled: "Pay Per Crawl is disabled. <0>Enable</0>",
 			terms_required: "Please accept the terms and conditions to enable. <0>Review now</0>.",
 			ironclad_error: "An error occurred while agreeing to terms.<br>Check your permissions or try again later.<br>Contact us if the problem persists.",
-			bot_management_required: "Pay Per Crawl requires <0>Enterprise Bot Management</0>."
+			bot_management_required: "Pay Per Crawl requires <0>Enterprise Bot Management</0>.",
+			url: {
+				required: "The URL must not be empty",
+				max_length: "The URL exceeds the maximum length of %{maxLength} characters",
+				protocol: "The URL protocol must be http:// or https://",
+				credentials: "The URL must not contain credentials",
+				private: "The URL must be publicly accessible",
+				invalid: "The URL must be valid"
+			}
 		},
 		filters: {
 			search: {
@@ -214,6 +222,7 @@
 			crawlers: "Illustration of a web page with a lock and crabs crawling over it"
 		},
 		more_actions: "More actions",
+		optional_field: "(optional)",
 		pay_per_crawl: "Pay Per Crawl",
 		pending: "Pending",
 		policies: "policies",
@@ -397,12 +406,40 @@
 		pay_per_crawl: {
 			title: "Pay Per Crawl",
 			description: "Manage your website's pay per crawl settings.",
-			placeholder: "Set a rate to start charging",
-			info: "<b>Pay Per Crawl price (per request)</b><br>Crawlers scanning your website will be charged this price each time they make a request.",
-			unit: "per crawl",
+			price: {
+				label: "Price",
+				tooltip: "<b>Pay Per Crawl price (per request)</b><br>Crawlers scanning your website will be charged this price each time they make a request.",
+				unit: "per crawl",
+				placeholder: "Set a rate to start charging",
+				not_set: "Not set",
+				errors: {
+					required: "Price must not be empty",
+					invalid: "Price must not be lower than %{minPrice} %{code}"
+				}
+			},
+			license: {
+				label: "Terms URL",
+				tooltip: "Sets the URL to display in the Link header for responses to crawlers.",
+				placeholder: "e.g. %{url}",
+				not_set: "Not set"
+			},
+			default_action: {
+				label: "Default action",
+				tooltip: "Whether new crawler additions should be charged or allowed.",
+				charge: "Charge new crawlers",
+				allow: "Allow new crawlers"
+			},
+			in_band_pricing: {
+				label: "In-band pricing",
+				tooltip: "Allows the origin to include a <0>crawler-price</0> header in the responses."
+			},
 			enable_modal: {
-				title: "Save and begin charging?",
-				description: "Crawlers will be set to <b>Charge</b> at <b>$%{price}</b> per request. Googlebot and crawlers already set to <b>Block</b> will not change. You can modify individual crawler settings anytime in the Crawlers tab.",
+				title: "Save and enable Pay Per Crawl?",
+				price: "Charging price will be set at <b>$%{price}</b> per request.",
+				charge: "Crawlers will be <b>charged</b> by default.",
+				allow: "Crawlers will be <b>allowed</b> by default.",
+				googlebot: "Googlebot and crawlers already set to <b>Block</b> will not change.",
+				description: "You can modify individual crawler settings anytime in the Crawlers tab.",
 				enable: "Save"
 			},
 			disable_modal: {

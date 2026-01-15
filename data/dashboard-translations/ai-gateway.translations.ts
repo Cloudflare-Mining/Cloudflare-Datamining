@@ -265,9 +265,9 @@
 			description: "Store request and response payloads, including the prompt, response, provider, timestamps, and the status of the request.",
 			limit: {
 				title: "Set log limit",
-				description: (0, i.p)(d()),
+				description: (0, i.p)(u()),
 				note: "New logs outside of the set limit will not be stored",
-				limits: (0, i.p)(u()),
+				limits: (0, i.p)(d()),
 				resume_label: (0, i.p)(c())
 			},
 			auto_delection: {
@@ -680,7 +680,8 @@
 		provider_keys: {
 			secret_required: "A secret is required",
 			secret_name_already_exists: 'A secret with the same name ("%{secretName}") already exists on <0>Secret Store</0>. Please delete that to configure a secret for AI gateway.',
-			internal_error: "Internal error occurred. Please contact customer support for assistance."
+			internal_error: "Internal error occurred. Please contact customer support for assistance.",
+			invalid_json: "Invalid JSON format. Please check your input."
 		}
 	},
 	learnMore: {
@@ -830,16 +831,21 @@
 		subtitle: "Securely use your own provider API keys with AI Gateway without the hassle of managing them in code.",
 		view_docs: "View Docs",
 		table: {
-			provider: "Provider",
+			provider: "Provider / Alias",
 			last_updated: "Last Updated",
-			value: "Value"
+			value: "Value",
+			alias: "Alias"
 		},
 		add_var: "+ Add another provider",
 		type: "Provider:",
 		secret_placeholder: "API Key",
 		save: "Save",
 		auth_warning: "Your gateway needs to be authenticated to store and use keys.",
-		learn_more: "Learn more"
+		learn_more: "Learn more",
+		key_count: "%{count} key",
+		key_count_plural: "%{count} keys",
+		expand_keys: "Show keys",
+		collapse_keys: "Hide keys"
 	},
 	edit_provider_modal: {
 		title_add: "Add",
@@ -848,15 +854,31 @@
 		input_label: "API Key",
 		secret_store_info: "Your key is encrypted and stored securely using Secrets Store.",
 		cancel: "Cancel",
+		alias_label: "Key Alias",
+		alias_placeholder: "Enter a unique alias (e.g., production, development)",
+		alias_description: "A unique identifier for this key. Cannot be changed after creation.",
+		alias_tooltip: 'The "default" alias is used automatically for all requests to this provider. For other aliases, pass the cf-aig-byok-alias header to specify which key alias to use.',
+		alias_required: "Alias is required",
+		alias_duplicate: "This alias already exists for this provider",
+		alias_invalid: "Alias can only contain letters, numbers, hyphens, and underscores",
 		google_vertex: {
 			service_account_json: "Service Account JSON",
 			service_account_placeholder: "Paste your Google Cloud service account JSON here...",
 			region: "Region",
 			configuration: "Configuration"
+		},
+		azure_openai: {
+			resource_name: "Resource Name",
+			resource_name_placeholder: "Enter your Azure OpenAI resource name",
+			resource_name_description: "Optional. The name of your Azure OpenAI resource."
+		},
+		aws_bedrock: {
+			bedrock_api_key: "Bedrock API Key"
 		}
 	},
 	confirm_provider_config_delete_modal: {
 		title: "Are you sure you want to delete the key for %{provider}?",
+		title_with_alias: 'Are you sure you want to delete the "%{alias}" key for %{provider}?',
 		description: "Deleting this key will cause all subsequent requests to requests hosted by %{provider} which depend on this key to fail."
 	}
 }

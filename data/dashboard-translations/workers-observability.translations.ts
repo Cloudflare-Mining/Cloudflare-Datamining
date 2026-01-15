@@ -35,6 +35,8 @@
 			cancelButton: "Cancel",
 			saveButton: "Save"
 		},
+		quickQueries: "Quick Queries",
+		allQueries: "All Queries",
 		sections: {
 			datasets: "Dataset",
 			visualizations: "Visualizations",
@@ -318,5 +320,20 @@
 		newAlert: "New Alert",
 		checkNow: "Check Now",
 		manageNotifications: "Manage Notifications"
+	},
+	usage: {
+		optIn: {
+			banner: "Your plan now includes new Workers Observability pricing. <0>Review now and accept the changes.</0>",
+			title: "Agree to the new features on your Workers Plan",
+			body: "Once you have agreed to the new features on the account <b>%{accountName}</b>, your plan will begin to incur the additional usage fees for the following:",
+			detailHeader: "Workers Observability",
+			includedEvents: "%{millionEvents} million events included per month",
+			additionalCost: "$%{price} per additional 1 million events",
+			disclaimer: "Until you agree to the new features, your usage for those features will be limited to the included volume according to your plan type.",
+			totalDue: "Total due now: $0.00",
+			terms: "Agreeing to these additional features will not change the pricing for the existing features on your plan. Your billing cycle will remain the same.",
+			acceptButton: "Agree",
+			dismissButton: "Review later"
+		}
 	}
 }

@@ -1321,5 +1321,11 @@
 		title: "Transfer your domain registration for lower renewal costs",
 		description: "Your domain is eligible to transfer to our at-cost registrar",
 		cta: "Start transfer"
+	},
+	email_domain_warning_modal: {
+		title: "Use a separate email for safer recovery",
+		description: (0, r.p)(et(), "domainName"),
+		continue_button: (0, r.p)(ea(), "email"),
+		use_different_email_button: "Use a different email"
 	}
 }

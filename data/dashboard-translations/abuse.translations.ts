@@ -61,27 +61,27 @@
 			error: "Error fetching streaming mitigations. Please try again."
 		},
 		column_name: {
-			[c.EffectiveDate]: "Date",
-			[c.Type]: "Mitigation",
-			[c.Status]: "Status",
-			[c.EntityType]: "Entity type",
-			[c.EntityId]: "Entity name or ID"
+			[l.EffectiveDate]: "Date",
+			[l.Type]: "Mitigation",
+			[l.Status]: "Status",
+			[l.EntityType]: "Entity type",
+			[l.EntityId]: "Entity name or ID"
 		},
 		filter: {
-			[c.Status]: "Status"
+			[l.Status]: "Status"
 		}
 	},
 	blocked_content_tables: {
 		titles: {
 			pending: "Pending blocks",
-			pending_count: (0, o.p)(l(), "count"),
+			pending_count: (0, i.p)(u(), "count"),
 			active: "Active blocks",
-			active_count: (0, o.p)(d(), "count")
+			active_count: (0, i.p)(d(), "count")
 		},
 		empty_state: {
-			default: (0, o.p)(m(), "blockCategory"),
-			search: (0, o.p)(p(), "blockCategory"),
-			error: (0, o.p)(_(), "blockCategory")
+			default: (0, i.p)(p(), "blockCategory"),
+			search: (0, i.p)(g(), "blockCategory"),
+			error: (0, i.p)(f(), "blockCategory")
 		},
 		column_name: {
 			[s.dS.EnforcementDate]: "Date",
@@ -92,10 +92,10 @@
 		},
 		filter: {
 			[s.dS.Status]: {
-				[r.IR.Active]: "Active",
-				[r.IR.Cancelled]: "Canceled",
-				[r.IR.InReview]: "In review",
-				[r.IR.Pending]: "Pending"
+				[a.IR.Active]: "Active",
+				[a.IR.Cancelled]: "Canceled",
+				[a.IR.InReview]: "In review",
+				[a.IR.Pending]: "Pending"
 			}
 		}
 	},
@@ -210,12 +210,12 @@
 		submitter_telephone: "Telephone"
 	},
 	report_summary_values: {
-		active: (0, o.p)(g(), "activeCount")
+		active: (0, i.p)(m(), "activeCount")
 	},
 	breadcrumb_titles: {
 		manage_account: "Manage Account",
 		abuse: "Abuse Reports",
-		abuse_report: (0, o.p)(f(), "reportId")
+		abuse_report: (0, i.p)(y(), "reportId")
 	},
 	product_documentation: "Documentation",
 	date_range: "Date range",
