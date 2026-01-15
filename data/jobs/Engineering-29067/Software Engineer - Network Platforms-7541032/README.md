@@ -5,57 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas</strong></p>
-<h4><strong>About the department</strong></h4>
-<p>As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
-<p><strong>About the role:</strong></p>
-<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 300 cities spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operations, engineering and architecture of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
-<p>&nbsp;</p>
-<p><strong>Requirements</strong>:</p>
+<p><strong>Available Locations: London, UK or Lisbon, Portugal&nbsp;</strong></p>
+<p><strong>About the role</strong></p>
+<h3><strong>About the team</strong></h3>
+<p>The Network Platforms team contributes to Traffic Management functions at Cloudflare. One of the multiple teams responsible for the systems that optimize the flow of traffic into, through, and from Cloudflare's global network.</p>
+<h4>&nbsp;</h4>
+<p>You would be working on the latest Linux network technologies and low level details of the network protocols. The code written would be running on thousands of servers and will be directly impacting each of the packets crossing the network infrastructure, that directly maps to numerous products and millions of customers. These systems are key to Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
+<p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
+<h3><strong>What you’ll do</strong></h3>
+<p>You will build and extend various systems that carry traffic end-to-end on the egress path of Cloudflare network. Starting at the host server linux kernel, with integration towards the network hardware dataplane until the physical Interconnect to an adjacent network. Millions of customers depend on these systems even if not directly visible to them. You'll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet. You will collaborate with engineers across the company, from operations teams to the teams building customer-facing products.</p>
+<h3><strong>What we are looking for</strong></h3>
+<p>We are looking for smart, innovative team players that have experience in covering Linux kernel network stack development (particularly with eBPF), complex distributed systems, and understanding of internet protocols and technologies. Particularly, growth-oriented individuals who enjoy being outside of their comfort zones, are comfortable in a fast-paced but sensible work environment and that value and lead with curiosity and empathy.</p>
+<h4><strong>Role requirements</strong></h4>
 <ul>
-	<li>Experience working in large scale network engineering environments</li>
-	<li>Experience working with automation frameworks such as SaltStack and/or Ansible</li>
-	<li>Experience solving problems through automation</li>
-	<li>Experience with BGP and anycast routing</li>
-	<li>Understanding of MPLS and Segment Routing&nbsp;</li>
-	<li>Optimize end user experience by architecting the network to lower latency, packet loss, and jitter while increasing scale</li>
-	<li>Proficient in multiple vendor operating systems</li>
-	<li>Experience writing network configuration and design documentation</li>
-	<li>Ability to prioritize when faced with high pressure scenarios</li>
+	<li>Systems-level programming experience in Go, Python, Rust, C, or C++</li>
+	<li>A solid grasp of BGP and internet routing.</li>
+	<li>Relish opportunities to dive into new technologies, and a demonstrated ability to do so</li>
+	<li>Experience in implementing, deploying, and debugging mission-critical distributed systems</li>
+	<li>Strong collaboration and communication skills.</li>
 </ul>
-<p><strong>Bonus Points but not required:</strong></p>
+<h4><strong>Bonus Points</strong></h4>
+<p>Skills the role requires, we are happy to help you learn on the job.</p>
 <ul>
-	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
-	<li>Professional level network certification(s) (JNCIP , CCNP , etc) or higher</li>
-	<li>Linux system administration</li>
+	<li>Familiarity vendor switching SDKs</li>
+	<li>Familiarity with SR-MPLS and sFlow, BGP-LS &amp; PCE protocols</li>
+	<li>Experience writing packet-processing software (eg, eBPF at TC or XDP, DPDK)&nbsp;</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
