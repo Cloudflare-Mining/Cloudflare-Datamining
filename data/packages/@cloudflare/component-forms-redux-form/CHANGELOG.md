@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.0.39
+
+### Patch Changes
+
+- Updated dependencies [5cad7d28f0]
+  - @cloudflare/component-button@9.5.0
+  - @cloudflare/component-forms@7.0.39
+
 ## 7.0.38
 
 ### Patch Changes

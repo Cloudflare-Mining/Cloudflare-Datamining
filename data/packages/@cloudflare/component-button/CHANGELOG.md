@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.5.0
+
+### Minor Changes
+
+- 5cad7d28f0: Bump component-button icon package version
+
 ## 9.4.6
 
 ## 9.4.5
