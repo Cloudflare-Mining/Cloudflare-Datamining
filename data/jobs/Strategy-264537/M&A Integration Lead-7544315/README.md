@@ -5,58 +5,63 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Title: </strong>SASE Marketing Program Manager</p>
-<p><strong>Location:&nbsp;</strong>Austin, TX, must be willing to relocate.</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare’s global campaigns team is seeking a detail-oriented and creative Program Manager to support the development and execution of Cloudflare One programs—one of the company’s highest-priority solution areas. In this role, you’ll take core components of global campaigns and turn them into scalable, repeatable programs that can be adopted by regional marketing teams around the world.&nbsp;You’ll work closely with global campaign leads, product marketing, and regional stakeholders to ensure programs are well-structured, accessible, and optimized for consistent execution. This is an ideal role for someone with strong organizational skills, a knack for simplifying complexity, and experience managing marketing programs in a global environment.</p>
-<p><strong>What You’ll Do</strong></p>
-<p>Translate Global Campaigns Into Scalable Programs</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>As a Strategic M&amp;A Integration Lead, you will manage overall integration efforts, ensuring all workstreams remain aligned with business decisions. You will act as a primary liaison between business owners and cross-functional teams, translating high-level strategy into operational reality for customers and vendors. Beyond managing the current deal, you will partner with functional leaders to codify best practices into a repeatable M&amp;A playbook. We are seeking a proactive, intellectually curious leader who can drive accountability across the organization while maintaining a clear view of how individual tasks connect to the broader strategic "forest”.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Build program toolkits and execution guides based on global campaign strategies</li>
-	<li>Localize and package core campaign elements for regional deployment</li>
-	<li>Ensure programs include clear audiences, messaging, assets, timelines, and KPIs</li>
+	<li><strong>Drive Program Accountability: </strong>You will lead the overall integration program, establishing a cadence for status updates, tracking milestones, and ensuring all cross-functional leads are held accountable for their deliverables.</li>
+	<li><strong>Develop M&amp;A Playbooks: </strong>You will partner with functional teams (GTM, Finance, People, etc.) to capture lessons learned and build a repeatable M&amp;A integration playbook, ensuring the organization matures with every deal.</li>
+	<li><strong>Translate Strategy into Plans: </strong>You will convert complex business decisions into actionable, cross-functional support plans that protect customer and vendor stability throughout the integration process.</li>
+	<li><strong>Orchestrate Cross-Functional Alignment: </strong>You will facilitate regular synchronization meetings across cross-functional teams to identify dependencies and ensure no department operates in a vacuum.</li>
+	<li><strong>Synthesize Executive Reporting:</strong> You are responsible for distilling project updates from various workstreams into clear, strategic insights for C-suite stakeholders, highlighting risks and required decisions.</li>
 </ul>
-<p>Drive Cross-Functional Coordination</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Work closely with Global Campaign Managers to align on priorities and delivery timelines</li>
-	<li>Partner with Product Marketing, Content Marketing, Digital, and Regional Marketing teams</li>
-	<li>Support global-to-regional handoff and ensure stakeholders understand how to activate programs</li>
-	<li>Collaborate with and present to key sales specialists on program rollouts, account engagement strategies, and opportunity analysis.</li>
+	<li>You must have 5+ years of experience in M&amp;A Integration, Strategic Operations, or Management Consulting.</li>
+	<li>You possess a demonstrated ability to translate abstract strategy into detailed, cross-functional project plans that have successfully guided teams through change.</li>
+	<li>You have a proven track record of driving alignment between teams to solve typical M&amp;A friction points.</li>
+	<li>You must exhibit high business acumen and critical thinking skills, specifically the ability to connect disparate "dots" across an organization.</li>
+	<li>You are required to have expert-level soft skills and the ability to influence without formal authority to gain cross-functional buy-in.</li>
+	<li>You must be curious and willing to "dig in" further to understand root causes rather than just managing a high-level status report.</li>
 </ul>
-<p>Manage Program Development &amp; Execution</p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Coordinate creation of assets, enablement materials, and program resources</li>
-	<li>Maintain program documentation, Confluence pages, and reporting dashboards</li>
-	<li>Track progress, flag risks, and keep teams aligned throughout development cycles</li>
+	<li>Experience leading Quote to Cash (Q2C) or Procure to Pay (P2P) initiatives, especially during organizational transitions.</li>
+	<li>A background in Computer Science or a technical field to speak the same language as business stakeholders.</li>
+	<li>Experience in Change Management.</li>
+	<li>Experience in cross-functional transformation initiatives</li>
 </ul>
-<p>Support Multi-Channel Program Activation</p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Help package programs for use across digital, email, webinars, sales plays, and BDR outreach</li>
-	<li>Coordinate with channel owners to ensure programs are execution-ready</li>
-	<li>Gather activation feedback from regions and iterate programs for improvement</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Deliver Reporting &amp; Insights</p>
+<p><strong>Financial Benefits</strong></p>
 <ul>
-	<li>Track program adoption, performance, and stakeholder feedback</li>
-	<li>Identify opportunities to simplify, streamline, or enhance programs</li>
-	<li>Provide clear updates to campaign leads and marketing leadership</li>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Required Qualifications</strong></p>
+<p><strong>Time Off</strong></p>
 <ul>
-	<li>3–5 years of experience in B2B marketing, ideally in Program Management, Campaigns, Field Marketing, Demand Generation, or ABM</li>
-	<li>Demonstrated ability to manage projects or programs from concept to delivery</li>
-	<li>Highly organized with excellent attention to detail</li>
-	<li>Strong communication and stakeholder-management skills</li>
-	<li>Ability to translate strategy into clear, actionable steps</li>
-	<li>Comfortable working in a fast-paced environment and handling multiple workstreams</li>
-	<li>Experience using marketing tools such as Salesforce, Marketo, Asana/Jira, or similar</li>
-</ul>
-<p><strong>Preferred Qualifications</strong></p>
-<ul>
-	<li>Experience in cloud, networking, or cybersecurity</li>
-	<li>Familiarity with technical buyer personas (IT, security, networking teams)</li>
-	<li>Experience supporting global or regional marketing teams</li>
-	<li>Understanding of multi-channel marketing (digital, email, webinars, sales plays)</li>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
