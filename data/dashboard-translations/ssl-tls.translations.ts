@@ -245,8 +245,10 @@
 	ech_api_title_put: "Update Zone ECH setting",
 	enable_acm: {
 		card_title: "Advanced Certificate Manager",
+		card_title_alt: "Advanced Certificate Manager (ACM)",
 		card_description: "Advanced Certificate Manager gives you more control and flexibility for your certificates and TLS settings. Benefits include:\n* Customize the hostnames on the certificate\n* Full TLS certificate coverage through Total TLS\n* Cipher suite selection\n* Per hostname TLS settings\n* and more!",
-		card_button: "Purchase ACM"
+		card_button: "Purchase ACM",
+		cta: "Activate"
 	},
 	ussl_ca_card_changed_notification: "Universal SSL Certificate Authority successfully changed.",
 	ussl_ca_card_title: "Universal SSL Certificate Authority",
@@ -369,6 +371,7 @@
 		ECDSAWithSHA512: "ECDSA SHA512"
 	},
 	ssl_certs_add_custom_button: "Upload Custom SSL Certificate",
+	ssl_certs_add_custom_button_alt: "Upload a custom certificate",
 	ssl_certs_add_custom_description: "Enter private key and certificate.",
 	ssl_certs_add_custom_title: "Upload custom SSL certificate and key",
 	ssl_certs_add_custom_type_select_label: "Legacy Client Support",
@@ -748,16 +751,17 @@
 		select_plan: "Select your plan",
 		free_description: "Basic certificate",
 		free_dedicated_to_domain: "Dedicated to your domain",
-		free_protected_hostnames: (0, a.p)(_(), "zone_name", "zone_name"),
+		free_protected_hostnames: (0, a.p)(d(), "zone_name", "zone_name"),
 		description: "Advanced Certificate Manager allows for more control and flexibility for your certificates and SSL/TLS settings.",
 		additional_certificates: "Create additional certificates",
-		common_name_of: (0, a.p)(d(), "common_name"),
+		common_name_of: (0, a.p)(_(), "common_name"),
 		configurable_validity: "Configurable certificate validity",
 		configurable_sans: "Configurable SANs",
 		custom_ciphers: "Custom Cipher Suite settings",
 		custom_truststore: "Custom Trust Store",
 		on_purchase: "Advanced Certificate Manager is now a part of your plan.",
 		order_cta: "Order Advanced Certificate",
+		order_cta_alt: "Order an advanced certificate",
 		quota: (0, a.p)(u(), "used", "allocated"),
 		order_success: "Your Advanced certificate has been created will be automatically deployed to our edge and served to your visitors once it has been validated",
 		order_success_autodcv: "Your Advanced certificate has been created will be automatically validated and deployed to our edge and served to your visitors.",
@@ -906,5 +910,44 @@
 	},
 	ssl_change_modal: {
 		dismiss_button: "Continue to SSL/TLS Overview"
+	},
+	cards: {
+		edge_certs: {
+			shared: {
+				title: "Manage Edge Certificates",
+				included: "Your plan includes:",
+				customization: "Additional certificate customization options:",
+				universal_ssl: "A shared Cloudflare universal SSL certificate and a corresponding backup certificate",
+				acm: "<0>Activate Advanced Certificate Manager (ACM)</0> to order auto-renewing, wildcard or dedicated certificates with customizable hostnames",
+				advanced_tooltip: "To order an advanced certificate you must first activate Advanced Certificate Manager (ACM)",
+				quota: (0, a.p)(m(), "used", "allocated")
+			},
+			paygo: {
+				upgrade: "Upgrade to the Business plan",
+				upgrade_tooltip: "upgrade to Business",
+				custom: "<0>Upgrade to the Business plan</0> to upload a custom certificate",
+				custom_tooltip: "To upload a custom certificate you must first upgrade to Business or a higher plan"
+			},
+			biz_ent: {
+				custom: "Ability to upload custom certificates (1 legacy and 1 modern certification pack) which you must renew and re-upload prior to expiration"
+			}
+		},
+		acm: {
+			description: "Get more control and flexibility over your certificates and unlock TLS settings.",
+			issue: "Issue auto-renewing, wildcard and dedicated certificates",
+			customize: "Customize hostnames on certificates",
+			cover: "Cover more than one level of a subdomain (e.g. dev.www.example.com)",
+			settings: "Per hostname TLS settings",
+			specify: "Specify cipher suites to enhance security and meet industry standards",
+			define: "Define your preferred certificate authority (CA) and validity period"
+		},
+		tls: {
+			acm: "<0>Activate Advanced Certificate Manager (ACM)</0> to enable Total TLS",
+			tooltip: "To configure Total TLS you must first activate Advanced Certificate Manager (ACM)"
+		},
+		cipher_suites: {
+			acm: "<0>Activate Advanced Certificate Manager (ACM)</0> to configure Cipher Suites.",
+			tooltip: "To configure cipher suites you must first activate Advanced Certificate Manager (ACM)"
+		}
 	}
 }

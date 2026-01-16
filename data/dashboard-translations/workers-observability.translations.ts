@@ -171,7 +171,9 @@
 			upTo: "up to",
 			results: "results",
 			ascending: "Ascending",
-			descending: "Descending"
+			descending: "Descending",
+			limitError: "Limit must be between 0 and 100",
+			emptyState: "Add a visualization to unlock ordering"
 		},
 		alertHeader: {
 			namePlaceholder: "New Alert",
@@ -335,5 +337,18 @@
 			acceptButton: "Agree",
 			dismissButton: "Review later"
 		}
+	},
+	keyboardShortcuts: {
+		title: "Keyboard shortcuts",
+		toggleQueryBuilder: "Toggle query builder",
+		toggleQueryBuilderDescription: "Open or close the query builder panel",
+		runQuery: "Run query",
+		runQueryDescription: "Execute the current query",
+		eventsView: "Events",
+		invocationsView: "Invocations",
+		tracesView: "Traces",
+		visualizationsView: "Visualizations",
+		showHelp: "Keyboard shortcuts",
+		showHelpDescription: "Show this help dialog"
 	}
 }
