@@ -5,36 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>This position is open to candidates based in either Austin, TX, Atlanta, GA or Washington DC locations</p>
-<p><strong>About the Role</strong></p>
-<p>In this specialized role, you'll focus on service delivery success for partnerships with key GSI partners in the Americas. There is nothing more important to us than our customers' success, which is why we aim to provide them with a white-glove experience in implementing and deploying our solutions. Our service delivery partners—consultancy partners, regional system integrators, global system integrators, and managed service providers—are a crucial part of this success. Our team's role is to collaborate with the best partners worldwide, who are experts in delivering, implementing, migrating, and managing our solutions. Partner Service Delivery Managers play a key role in onboarding service partners, ensuring they are successful and receive necessary support, as well as hand holding them through launching new service offerings in the market.</p>
-<p><strong>Key Responsibilities</strong></p>
+<p><strong>What You’ll Do</strong></p>
+<p>The Argo team was formed to own a very important aspect of Cloudflare's systems: enable more reliable network connectivity for Cloudflare’s products than the Internet itself provides.<br><br>Almost all products in Cloudflare’s portfolio are or will be powered by Orpheus technology, including CDN, Spectrum, Magic Transit, Stream, Workers, Workers AI, R2, WARP, and more. As a member of the Orpheus team, you’ll be a key technical contributor to the cutting edge network software infrastructure used by those products.</p>
+<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
+<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
+<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
+<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Strategic Alignment: Collaborate with service delivery partners to develop and execute joint business/technical plans that align with Cloudflare's strategic objectives.</li>
-	<li>Onboarding and Enablement: Lead the onboarding process for new service partners and provide continual support to ensure their proficiency with Cloudflare solutions.</li>
-	<li>Executive Engagement: Regularly engage in strategic and roadmap planning discussions with key stakeholders at partners..</li>
-	<li>Cross-Functional Collaboration: Consistently engage with internal departments such as partner enablement, product team, field sales, partner solutions engineers, Cloudflare professional services team, and others to ensure both partner and customer success..</li>
-	<li>Performance Metrics: Develop, manage, and track key performance indicators to measure and improve the effectiveness of partnerships.</li>
-	<li>Global Oversight: Provide governance and oversight on global projects, ensuring that deliverables are met on time and within scope.</li>
-	<li>Technical Engagement: While not expected to be hands-on for post-sales, engage daily with partner technical teams, including technical delivery teams. Possess enough technical understanding and experience to lead those conversations effectively.</li>
-	<li>Service Delivery Ecosystem Ownership: Own the service delivery partner ecosystem in the region, including building partner capabilities in alignment with regional leaders.</li>
-	<li>Quality Assurance: Monitor and ensure the quality of service delivery by partners, addressing any issues and facilitating improvements as needed.</li>
+	<li>Systems-level programming experience in Go, Rust, C, or C++. We use Rust extensively, and while experience with the language isn't required a willingness to learn it is.</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
+	<li>Experience in implementing secure and highly-available distributed systems.</li>
+	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Strong collaboration and communication skills.</li>
+	<li>Experience/interest in HTTP networking and VPN technologies.</li>
+	<li>Experience/interest in network performance monitoring and tuning</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Consulting Background: Significant experience in a consulting environment, ideally within a GSI, is required.</li>
-	<li>Enterprise IT Expertise: Must possess a deep understanding of enterprise IT architectures and how they integrate with broader business processes.</li>
-	<li>Project Management: A proven track record of managing complex projects with multiple stakeholders is essential.</li>
-	<li>Regulatory Awareness: Must have an understanding of global compliance and data protection regulations.</li>
-	<li>Technical Knowledge: Familiarity with multi-cloud and hybrid cloud environments.</li>
-	<li>Experience with Service Delivery Partners: Demonstrated experience working with consultancy partners, regional system integrators, global system integrators, and/or managed service providers.</li>
-	<li>Customer Success Focus: Strong focus on customer success, ensuring service delivery partners can provide high-quality implementations and support to customers.</li>
-	<li>Stakeholder Engagement: Ability to engage effectively with C-suite executives and technical teams at partner organizations.</li>
-	<li>Analytical Skills: Strong analytical skills to develop, manage, and track key performance indicators.</li>
-	<li>Communication Skills: Excellent communication and interpersonal skills, with the ability to lead strategic discussions and presentations.</li>
-	<li>Ownership and Accountability: Strong sense of ownership and accountability for the service delivery partner ecosystem in the region.</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Professional systems-level programming experience in Rust.</li>
+	<li>Working knowledge of statistical-analysis techniques and control theory.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
