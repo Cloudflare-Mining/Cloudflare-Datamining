@@ -5,48 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: </strong>Austin, London, Lisbon</h4>
-<h4><strong>About the Department</strong></h4>
-<p>Production Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
-<p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
-<p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
-<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h4>&nbsp;</h4>
-<p><strong>About the Role</strong></p>
-<p>In this role, you can expect to:</p>
+<p><strong>Available Locations: Austin or Lisbon</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 200+ cities worldwide.</p>
+<p><strong>About the Team</strong></p>
+<p>Domain management is the foundation for any online presence and Cloudflare Registrar our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</p>
+<p><strong>What you'll do</strong></p>
+<p>We are looking for a talented systems engineer to be part of our Austin or Lisbon office. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</p>
+<p><strong>Responsibilities:&nbsp;</strong></p>
 <ul>
-	<li>Design, write, and deliver software that improves Cloudflare's Internal and External platforms</li>
-	<li>Scale and evolve systems through software and automation to improve reliability and velocity</li>
-	<li>Work on highly distributed and scalable systems with a globally distributed team</li>
-	<li>Participate in the constant cycle of knowledge sharing and mentoring</li>
-	<li>Research and introduce cutting-edge technologies</li>
-	<li>Contribute to open-source</li>
+	<li>Designing, building, running and scaling tools and services that support the full spectrum of domain management.</li>
+	<li>Analyzing and communicating complex technical requirements and concepts, identifying the highest priority areas, and carving a path to delivery</li>
+	<li>Collaborating with product teams to understand goals and develop robust and scalable solutions that align with the customer need</li>
+	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</li>
+	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a better place</li>
+	<li>Ongoing monitoring and maintenance of production services, including participation in on-call rotations</li>
 </ul>
-<p>We are well-funded, growing quickly and focused on building an extraordinary company. This is a systems reliability engineering role and is a superb opportunity to be part of a high performing team and help to support Cloudflare’s mission and help build a better internet.</p>
-<p>You will build services and APIs to constantly improve availability, performance, uptime and response times. The ideal candidates will have experience working with large-scale applications and a track record of producing great output. You must care deeply not only about the quality of your and the team's code, but also the user experience.</p>
-<p><strong>Qualifications</strong></p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>We want someone who understands and obsesses over front-end systems.</li>
-	<li>Passion for improving developer experience and increasing development velocity.</li>
-	<li>Multiple years of experience in frontend engineering, specializing in JavaScript, TypeScript, and React.</li>
-	<li>Strong knowledge of UI infrastructure, CI/CD, and testing frameworks (e.g., Playwright, Cypress).</li>
-	<li>Proven ability to drive projects independently, from concept to implementation.</li>
+	<li>Experience working on, and deploying UI front ends implemented in Typescript</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Strong programming skills</li>
+	<li>The ability to collaborate across teams</li>
+	<li>Excited by the idea of optimizing complex solutions to general problems that all websites face</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)&nbsp;</li>
 </ul>
-<p><strong>Preferred Skills:</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Expertise in React, TypeScript, and modern front-end systems</li>
-	<li>Experience with modern JavaScript bundling tools like Webpack or Vite</li>
-	<li>Familiarity with RESTful APIs</li>
-	<li>Familiarity with backend software development in Go</li>
-	<li>Experience building and maintaining integration test suites with API mocks</li>
-	<li>Experience building and scaling large-scale web applications.</li>
+	<li>Experience with Javascript and Typescript&nbsp;</li>
+	<li>Experience with Gitlab CI</li>
+	<li>Experience with Cloudflare Workers &amp; Pages</li>
+	<li>Experience with Kibana, Grafana, and/or Prometheus</li>
+	<li>Experience with relational databases (e.g. Postgres)</li>
+	<li>Experience with DNS (and DNSSEC)</li>
+	<li>Experience with using AI</li>
 </ul>
-<p><strong>Why Join Us?</strong></p>
-<ul>
-	<li>Help us shape and improve the engineering process within Cloudflare.</li>
-	<li>Shape best practices and drive impactful engineering change.</li>
-	<li>Work with modern technologies and solve large-scale challenges.</li>
-</ul>
+<h4><strong><br><br></strong></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
