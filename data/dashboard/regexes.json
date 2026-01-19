@@ -1273,6 +1273,7 @@
 	"/^commit \\w{40}$/m",
 	"/^component\\.(.*)/",
 	"/^components\\[name=([^\\]]+)]\\.(.+)/",
+	"/^f[cd][0-9a-f]{0,2}:/",
 	"/^git@(github|gitlab)\\.com:(.+)\\/([^\\/]+)\\.git$/",
 	"/^https:\\/\\/([A-Za-z0-9-]{1,63}\\.)+([A-Za-z]{2,6}(?::\\d{1,6})?)\\/services\\/collector(?:\\/raw$|\\/event$|$)/",
 	"/^https:\\/\\//",

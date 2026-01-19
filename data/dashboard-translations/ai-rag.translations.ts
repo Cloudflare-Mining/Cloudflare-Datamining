@@ -416,6 +416,43 @@
 				description: "Select a model to rerank retrieved results. Note this will be included in your model's usage and billing."
 			}
 		},
+		public_url: {
+			title: "Public URL",
+			description: "Enable public access to your AI Search and configure security settings.",
+			rate_limiting: "Rate limiting",
+			rate_limiting_description: "Limit the number of requests to your public endpoint.",
+			authorized_hosts: "Authorized hosts",
+			mcp_server: "MCP Server",
+			mcp_server_description: "Expose this AI Search as an MCP (Model Context Protocol) server.",
+			search_endpoint: "Search endpoint",
+			search_endpoint_description: "Enable the /search endpoint for direct search queries.",
+			chat_completions_endpoint: "Chat completions endpoint",
+			chat_completions_endpoint_description: "Enable the /chat/completions endpoint for OpenAI-compatible chat.",
+			drawer: {
+				title: "Configure Public URL",
+				description: "Configure rate limiting and authorized hosts for public access.",
+				enable_rate_limiting: "Enable rate limiting",
+				requests: "Requests",
+				requests_description: "Maximum number of requests allowed in the specified period",
+				period: "Period",
+				period_description: "Select the time period for rate limiting",
+				technique: "Rate limit technique",
+				technique_description: "Fixed window: simple counter resets at fixed intervals. Sliding window: more precise, considers rolling time window",
+				authorized_hosts_label: "Authorized hosts",
+				authorized_hosts_description: "List of hosts authorized to access this AI Search (one per line)",
+				authorized_hosts_placeholder: "example.com\n*.example.com",
+				time_periods: {
+					one_minute: "1 minute",
+					five_minutes: "5 minutes",
+					thirty_minutes: "30 minutes",
+					one_hour: "1 hour"
+				},
+				techniques: {
+					fixed_window: "Fixed window",
+					sliding_window: "Sliding window"
+				}
+			}
+		},
 		general: {
 			title: "General",
 			name: "Name",

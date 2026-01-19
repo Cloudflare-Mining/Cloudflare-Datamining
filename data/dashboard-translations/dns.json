@@ -477,6 +477,8 @@
 	"dns.dns_editor.dkim.proxied_tooltip": "This proxied record always resolves to Cloudflare Anycast IPs. To make sure <0>DKIM</0> works correctly for your domain, this record should be DNS-only so it resolves to the configured target.",
 	"dns.status.proxied": "Proxied",
 	"dns.status.dns_only": "DNS only",
+	"dns.status.dns_only_reserved_ip": "DNS only - reserved IP",
+	"dns.private_origin.label": "private",
 	"dns.status.paused.warning": "%{zoneName} is <0>paused</0>, meaning traffic is not proxied and security and performance services are inactive. Learn more about <1>pausing domains.</1>",
 	"dns.status.pending.warning": "%{zoneName} is <0>pending</0> until you complete the instructions on the <1>Overview page</1> and we are able to verify ownership. Learn more about <2>pending domains.</2>",
 	"dns.delete_record.confirmation_modal.title": "Delete record for %{name}",
