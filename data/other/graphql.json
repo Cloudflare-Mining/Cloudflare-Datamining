@@ -2185,6 +2185,7 @@
 		"date": "Datetime that the storage usage was recorded, truncated to start of a day",
 		"datetimeHour": "Datetime that the storage usage was recorded, truncated to start of an hour",
 		"datetimeMinute": "Datetime that the storage usage was recorded, truncated to start of a minute",
+		"datetimeSixHours": "Datetime that the storage usage was recorded, truncated to start of six hour window",
 		"namespaceId": "Durable Object namespace ID"
 	},
 	"AccountDurableObjectsSqlStorageGroupsFilter_InputObject": {
@@ -6381,6 +6382,48 @@
 		"rowGroupsWritten": "Confidence interval for the corresponding point estimate",
 		"uncompressedBytesWritten": "Confidence interval for the corresponding point estimate"
 	},
+	"AccountPipelinesUserErrorsAdaptive": {
+		"__description": "Raw user errors from Workers Pipelines",
+		"datetime": "Error timestamp",
+		"errorDetails": "Error details",
+		"errorFamily": "Error category",
+		"errorType": "Specific error type",
+		"pipelineId": "The pipeline identifier",
+		"sampleInterval": "ABR sample interval"
+	},
+	"AccountPipelinesUserErrorsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesUserErrorsAdaptiveGroups": {
+		"__description": "User errors from Workers Pipelines",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of user errors",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountPipelinesUserErrorsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of user errors, with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"AccountPipelinesUserErrorsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Error timestamp, truncated to start of a day",
+		"datetime": "Error timestamp",
+		"datetimeHour": "Error timestamp, truncated to start of hour",
+		"datetimeMinute": "Error timestamp, truncated to start of minute",
+		"errorFamily": "Error category",
+		"errorType": "Specific error type",
+		"pipelineId": "The pipeline identifier"
+	},
+	"AccountPipelinesUserErrorsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPipelinesUserErrorsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPipelinesUserErrorsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"AccountProgrammableFlowProtectionNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Programmable Flow Protection",
 		"avg": "The average of values for a metric per dimension",
@@ -7204,6 +7247,8 @@
 		"pipelinesOperatorStagingAdaptiveGroups": "",
 		"pipelinesSinkAdaptiveGroups": "",
 		"pipelinesSinkStagingAdaptiveGroups": "",
+		"pipelinesUserErrorsAdaptive": "",
+		"pipelinesUserErrorsAdaptiveGroups": "",
 		"programmableFlowProtectionNetworkAnalyticsAdaptiveGroups": "",
 		"queueBacklogAdaptiveGroups": "",
 		"queueConsumerMetricsAdaptiveGroups": "",
@@ -11774,6 +11819,8 @@
 		"pipelinesOperatorStagingAdaptiveGroups": "Aggregated Pipelines source metrics with adaptive sampling",
 		"pipelinesSinkAdaptiveGroups": "Aggregated Pipelines sink metrics with adaptive sampling",
 		"pipelinesSinkStagingAdaptiveGroups": "Aggregated Pipelines sink metrics with adaptive sampling",
+		"pipelinesUserErrorsAdaptive": "Raw user errors from Workers Pipelines",
+		"pipelinesUserErrorsAdaptiveGroups": "User errors from Workers Pipelines",
 		"programmableFlowProtectionNetworkAnalyticsAdaptiveGroups": "Network analytics data for Programmable Flow Protection",
 		"queueBacklogAdaptiveGroups": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
