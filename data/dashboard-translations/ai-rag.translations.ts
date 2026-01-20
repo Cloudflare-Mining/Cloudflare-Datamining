@@ -224,6 +224,10 @@
 				title: "More embedding models",
 				description: "Select an embedding model to convert your data into vectors. Note this will be included in your model's usage and billing."
 			},
+			hybrid_search: {
+				title: "Hybrid Search",
+				description: "Enable hybrid search to combine vector and keyword search for improved results."
+			},
 			chunking: {
 				title: "Chunking",
 				size: {
@@ -415,6 +419,10 @@
 				title: "Reranking model",
 				description: "Select a model to rerank retrieved results. Note this will be included in your model's usage and billing."
 			}
+		},
+		hybrid_search: {
+			title: "Hybrid search",
+			description: "Enable hybrid search to combine vector and keyword search for improved results."
 		},
 		public_url: {
 			title: "Public URL",

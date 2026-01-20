@@ -445,6 +445,9 @@
 			disable_modal: {
 				title: "Disable Pay Per Crawl",
 				description: "Are you sure you want to disable Pay Per Crawl? This will stop charging any crawlers."
+			},
+			signed_contract: {
+				download: "Terms and conditions"
 			}
 		},
 		custom_response: {
