@@ -10,6 +10,31 @@
 <p><strong>What you'll do</strong></p>
 <p>As a Software Engineer: Resiliency, you will be part of a Resiliency Organization responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. We are looking for engineers to join the <strong>Maintenance Optimizer</strong> team and shape the future of infrastructure reliability. We're building a cutting-edge Maintenance Coordination System in Typescript &amp; Go that will be pivotal in guaranteeing our service level capacity, dynamically allocating hardware resources, and supporting our critical capacity SLOs. This is a unique opportunity to work on complex, globally distributed systems which underpin core infrastructure and all Cloudflare products. We ensure the seamless operation of our global network. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
 <p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
+<p>Technologies we use:</p>
+<ul>
+	<li>Cloudflare Workers, Workers KV, R2, and Durable Objects</li>
+	<li>Kubernetes</li>
+	<li>Go, Typescript, Python</li>
+	<li>For service monitoring we use Prometheus, Grafana and Sentry</li>
+</ul>
+<p>Because you’ll be<a href="https://blog.cloudflare.com/gateway-swg/"> solving problems of massive scale and significance</a>, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
+<p>A rough list of the skills we would love to see you bring:</p>
+<ul>
+	<li>A degree in Computer Science, Engineering, Mathematics, Statistics or related field; OR have relevant background/experience to the field.</li>
+	<li>Programming experience in Go, or similar languages</li>
+	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
+	<li>Experience with continuous delivery and deployment of a k8s hosted application</li>
+	<li>​​Understanding of security issues and responsibilities</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Fluent in analyses of data sets such as logs</li>
+	<li>Strong English language oral and written communications skills</li>
+	<li>Designing and building APIs</li>
+	<li>Experience with the Cloudflare development stack is a plus</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
@@ -25,7 +50,7 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $140,000 - 172,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

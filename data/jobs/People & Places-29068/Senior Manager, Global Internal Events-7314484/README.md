@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp; </strong>Austin, TX. Full-time, in-office (relocation assistance available)</p>
+<p><strong>Available Locations:&nbsp; </strong>Austin, TX or San Francisco, CA</p>
 <p><strong>Reports to:</strong> Head of Global Real Estate &amp; Workplace</p>
 <h3><strong>About the Role</strong></h3>
 <p>We are seeking a dynamic and creative <strong>Senior Manager, Global Internal Events</strong> to lead and scale our global internal events program.&nbsp; In this highly visible role, you will shape experiences that creatively engage employees, reinforce our culture, and bring our values to life across all global hubs.</p>

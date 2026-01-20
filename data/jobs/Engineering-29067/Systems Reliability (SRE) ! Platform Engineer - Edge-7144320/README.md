@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin and San Francisco, CA</strong></p>
+<p><strong>Available Locations: Austin TX and San Francisco CA, Seattle WA and Denver CO</strong></p>
 <h4><strong>About the Role</strong></h4>
 <p>We are looking for talented Systems Reliability Engineers to build and operate our Edge platform running in more than 320 cities in over 120 countries. Our SREs come from diverse technical backgrounds and have built up their knowledge working in different environments, but common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence. We support our services in a “follow the sun” model with offices in East Asia, Europe and North America.</p>
 <p>This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows. We live at the boundary between systems, network, and software, and love improving the glue that holds them together. Working with us, you will build tools to constantly improve service availability, performance, and operational velocity. You will nurture a passion for an “automate everything” approach that makes systems failure resistant and ready to scale.</p>
@@ -56,6 +56,8 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $162,000 - $198,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $133,000 - $163,000</span></li>
+	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $115,000 - $141,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

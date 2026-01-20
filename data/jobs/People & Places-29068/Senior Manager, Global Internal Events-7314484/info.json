@@ -26,7 +26,6 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"New York, US",
 				"San Francisco, US"
 			],
 			"value_type": "multi_select"
@@ -41,9 +40,9 @@
 		}
 	],
 	"id": 7314484,
-	"updated_at": "2026-01-16T15:31:14-05:00",
+	"updated_at": "2026-01-20T15:33:24-05:00",
 	"requisition_id": null,
-	"title": "Senior Manager, Global Internal Events (Austin, TX)",
+	"title": "Senior Manager, Global Internal Events",
 	"company_name": "Cloudflare",
 	"first_published": "2025-10-14T08:42:14-04:00",
 	"language": "en",
@@ -64,6 +63,13 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}
