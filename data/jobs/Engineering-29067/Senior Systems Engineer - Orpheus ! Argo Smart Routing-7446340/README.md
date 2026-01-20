@@ -18,9 +18,9 @@
 	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
 	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
 	<li>Experience in implementing secure and highly-available distributed systems.</li>
-	<li>Strong ability to debug issues in complex systems.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 	<li>Strong collaboration and communication skills.</li>
-	<li>Experience/interest in HTTP networking and VPN technologies.</li>
 	<li>Experience/interest in network performance monitoring and tuning</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
@@ -29,8 +29,6 @@
 	<li>Professional systems-level programming experience in Rust.</li>
 	<li>Working knowledge of statistical-analysis techniques and control theory.</li>
 	<li>Experience building tools and APIs.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
-	<li>Experience participating in an on-call rotation.</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Equity</strong></p>
