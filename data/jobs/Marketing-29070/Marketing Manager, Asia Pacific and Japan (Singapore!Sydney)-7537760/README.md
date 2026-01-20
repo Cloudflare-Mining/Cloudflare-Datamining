@@ -27,7 +27,7 @@
 </ul>
 <p>Who You Are</p>
 <ul>
-	<li>10+ years of B2B marketing experience in cybersecurity, networking, or cloud infrastructure industries.</li>
+	<li>8+ years of B2B marketing experience in cybersecurity, networking, or cloud infrastructure industries.</li>
 	<li>Proven experience with or exposure to major SASE, email security, and Zero Trust vendors in the cybersecurity and networking industry</li>
 	<li>Deep understanding of the CISO and networking buyer journey, with the ability to translate technical capabilities into business outcomes.</li>
 	<li>Skilled at developing compelling content and campaigns that resonate with enterprise buyers.</li>
