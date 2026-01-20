@@ -26,6 +26,7 @@
 	<li>Experience or strong interest in designing experiences that simplify and communicate complex information</li>
 	<li>Ability to advocate for customer centered design and be the voice of customers</li>
 	<li>Effective written and verbal communication skills</li>
+	<li>Interest, curiosity, and experience engaging with and using AI tools</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

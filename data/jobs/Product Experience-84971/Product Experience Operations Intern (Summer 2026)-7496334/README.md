@@ -20,6 +20,7 @@
 	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug)</li>
 	<li>Currently pursuing a Bachelor's or Master's degree or enrolled full time in an equivalent training program&nbsp;in a quantitative field, such as Design Management, Data Science, Psychology, Journalism, or Business Management</li>
 	<li>Human-focused, highly-collaborative, critical and strategic thinker</li>
+	<li>Interest, curiosity, and experience engaging with and using AI tools</li>
 	<li>Demonstrated skills and experience in helping scaling and improving operational workflows</li>
 	<li>Experience working on programs with fluid requirements and shifting priorities, and able to keep teams focused on results necessary for achieving the latest goals/objectives</li>
 	<li>Effective written and verbal communication skills</li>

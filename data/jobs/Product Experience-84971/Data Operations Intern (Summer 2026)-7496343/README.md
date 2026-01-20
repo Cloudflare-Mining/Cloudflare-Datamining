@@ -19,6 +19,7 @@
 	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the summer (May-Aug)</li>
 	<li>Currently pursuing a Bachelor's or Master's degree or enrolled full time in an equivalent training program&nbsp;in a quantitative field, such as Design Management, Data Science, Psychology, Journalism, or Business Management</li>
 	<li>Human-focused, highly-collaborative, critical and strategic thinker</li>
+	<li>Interest, curiosity, and experience engaging with and using AI tools</li>
 	<li>Hands-on experience with Amplitude (preferred) or similar product analytics platforms<strong> </strong>(e.g., Mixpanel, Heap, Lookr, Tableau, Google Analytics)</li>
 	<li>Strong proficiency in SQL for querying, validating, and manipulating data. Foundational understanding of data warehousing/ETL concepts.</li>
 	<li>An appreciation for user experience (UX) and information design, specifically related to data visualization and dashboard layout</li>

@@ -5,32 +5,85 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: Austin, United States</strong></p>
-<p><strong>What you'll do</strong></p>
-<p>As a Senior Software Engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
-<p>We are looking for engineers that are versatile and display leadership qualities capable of setting technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will support the management team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Available Locations: Austin and San Francisco, CA</strong></p>
+<h4><strong>About the Role</strong></h4>
+<p>We are looking for talented Systems Reliability Engineers to build and operate our Edge platform running in more than 320 cities in over 120 countries. Our SREs come from diverse technical backgrounds and have built up their knowledge working in different environments, but common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence. We support our services in a “follow the sun” model with offices in East Asia, Europe and North America.</p>
+<p>This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows. We live at the boundary between systems, network, and software, and love improving the glue that holds them together. Working with us, you will build tools to constantly improve service availability, performance, and operational velocity. You will nurture a passion for an “automate everything” approach that makes systems failure resistant and ready to scale.</p>
+<p>SREs focus on the immediate state and functionality of the Cloudflare platform around the world, leveraging an array of monitoring, alerting and diagnostics tools while developing and enhancing the Cloudflare platform and its capabilities. We own a wide portfolio of applications and services, running a tight feedback loop of developer and operator patterns. The ideal SRE candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of networking, Linux and TLS along with coding ability in Go, Rust, or Python.</p>
+<h4><strong>Requisite Skills</strong></h4>
 <ul>
-	<li>Technical leadership experience</li>
-	<li>Experience managing high available systems with disaster recovery support.</li>
-	<li>Experience with Go, Rust or similar programming languages</li>
-	<li>Experience in Typescript</li>
-	<li>Experience designing and integrating RESTful APIs at scale</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
-	<li>Knowledge on distributed NoSQL databases</li>
-	<li>Excellent debugging experience and optimization skills</li>
-	<li>Experience with Kubernetes</li>
+	<li>Aptitude for identifying problems, owning them and working with others to solve them</li>
+	<li>Linux systems experience</li>
+	<li>3 years experience in an SRE role or a role with similar functions</li>
+	<li>Software development skills in some programming language such as Go, Rust, or Python</li>
+	<li>Understanding of distributed software systems and large scale system design tradeoffs</li>
+	<li>Intermediate experience of common network protocols like DNS and HTTP</li>
 </ul>
-<p><strong>Responsibilities</strong></p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
-	<li>Provide technical leadership to the team projects and objectives</li>
-	<li>Influence a team of engineers, coach and mentor a distributed team.</li>
-	<li>Support the management team on the strategy and roadmap of the team, identifying opportunities and critical projects for the success of the team and product.</li>
-	<li>Facilitate alignment and clarity across the Zero Trust teams on goals, outcomes, and timelines.</li>
-	<li>Support on the management of project priorities, deadlines, and deliverables.</li>
+	<li>Experience with the Linux kernel and Linux software packaging</li>
+	<li>Performance analysis and debugging</li>
+	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
+	<li>Workflow automation systems such as Temporal or Apache Airflow</li>
+	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Squid or Apache</li>
+	<li>SQL databases</li>
+	<li>Time series databases such as OpenTSDB, Graphite, Prometheus or Grafana</li>
+	<li>Key/Value stores</li>
+	<li>Internetworking and BGP</li>
 </ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed</p>
+<h4><strong>Bonus Points</strong></h4>
+<ul>
+	<li>Experience with continuous / rapid release engineering</li>
+	<li>Strong tooling and automation development experience</li>
+	<li>Experience working in a 24/7/365 service environment</li>
+	<li>Experience working with large scale production distributed systems</li>
+	<li>A history of contributing to Open Source Software</li>
+</ul>
+<h4><strong>Some tools that we use</strong></h4>
+<ul>
+	<li>Nginx</li>
+	<li>PostgreSQL</li>
+	<li>Docker</li>
+	<li>Prometheus</li>
+	<li>Grafana</li>
+	<li>Consul</li>
+	<li>Nomad</li>
+	<li>Temporal</li>
+	<li>Salt</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $162,000 - $198,000</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
