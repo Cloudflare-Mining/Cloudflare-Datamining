@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.0.6
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-box@5.1.1
+  - @cloudflare/component-text@5.1.1
+  - @cloudflare/util-formatters@2.7.8
+
 ## 6.0.5
 
 ### Patch Changes

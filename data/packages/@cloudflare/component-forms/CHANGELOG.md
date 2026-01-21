@@ -1,5 +1,26 @@
 # Change Log
 
+## 7.0.40
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-button@9.5.1
+  - @cloudflare/component-checkbox@6.0.5
+  - @cloudflare/component-grid@4.0.30
+  - @cloudflare/component-input@9.0.6
+  - @cloudflare/component-listbox@3.0.26
+  - @cloudflare/component-radio@6.0.4
+  - @cloudflare/component-search@9.0.27
+  - @cloudflare/component-select-2@8.0.27
+  - @cloudflare/component-textarea@5.0.4
+  - @cloudflare/component-time-period-picker@7.3.6
+  - @cloudflare/component-toast@6.0.4
+  - @cloudflare/elements@4.0.5
+  - @cloudflare/util-hooks@1.3.2
+  - @cloudflare/util-responsive@4.2.5
+
 ## 7.0.39
 
 ### Patch Changes

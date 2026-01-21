@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.33
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
@@ -7,90 +13,52 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @cloudflare/util-logger
 
-
-
-
-
 ## [1.0.31](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.28...@cloudflare/util-logger@1.0.31) (2021-10-28)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
-
-
-
-
+- **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
 
 ## [1.0.28](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.27...@cloudflare/util-logger@1.0.28) (2021-04-23)
 
 **Note:** Version bump only for package @cloudflare/util-logger
 
-
-
-
-
 ## [1.0.27](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.25...@cloudflare/util-logger@1.0.27) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/util-logger
-
-
-
-
 
 ## [1.0.25](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.24...@cloudflare/util-logger@1.0.25) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/util-logger
 
-
-
-
-
 ## [1.0.24](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.22...@cloudflare/util-logger@1.0.24) (2020-02-12)
 
 **Note:** Version bump only for package @cloudflare/util-logger
 
-
-
-
-
 ## [1.0.22](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.16...@cloudflare/util-logger@1.0.22) (2020-02-02)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 ## [1.0.21](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.16...@cloudflare/util-logger@1.0.21) (2020-02-02)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 
       <a name="1.0.16"></a>
+
 ## [1.0.16](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.15...@cloudflare/util-logger@1.0.16) (2019-02-03)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-logger
 
       <a name="1.0.15"></a>
+
 ## [1.0.15](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.14...@cloudflare/util-logger@1.0.15) (2018-10-12)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-logger
 
@@ -100,7 +68,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @cloudflare/util-logger
 
-  <a name="1.0.13"></a>
+<a name="1.0.13"></a>
 
 ## [1.0.13](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-logger@1.0.12...@cloudflare/util-logger@1.0.13) (2018-10-03)
 
@@ -154,8 +122,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* UI-836 fix babelrc and republish all packages
-([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
+- UI-836 fix babelrc and republish all packages
+  ([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
 
 <a name="1.0.2"></a>
 

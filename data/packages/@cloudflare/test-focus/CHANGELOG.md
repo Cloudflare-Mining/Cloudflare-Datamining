@@ -1,104 +1,70 @@
 # Change Log
 
+## 1.0.31
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/test-stub@1.0.32
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.0.30](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.27...@cloudflare/test-focus@1.0.30) (2021-10-28)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
-
-
-
-
+- **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
 
 ## [1.0.27](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.26...@cloudflare/test-focus@1.0.27) (2021-04-23)
 
 **Note:** Version bump only for package @cloudflare/test-focus
 
-
-
-
-
 ## [1.0.26](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.25...@cloudflare/test-focus@1.0.26) (2020-12-11)
 
 **Note:** Version bump only for package @cloudflare/test-focus
-
-
-
-
 
 ## [1.0.25](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.24...@cloudflare/test-focus@1.0.25) (2020-12-11)
 
 **Note:** Version bump only for package @cloudflare/test-focus
 
-
-
-
-
 ## [1.0.24](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.23...@cloudflare/test-focus@1.0.24) (2020-12-11)
 
 **Note:** Version bump only for package @cloudflare/test-focus
-
-
-
-
 
 ## [1.0.23](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.21...@cloudflare/test-focus@1.0.23) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/test-focus
 
-
-
-
-
 ## [1.0.21](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.19...@cloudflare/test-focus@1.0.21) (2020-02-12)
 
 **Note:** Version bump only for package @cloudflare/test-focus
 
-
-
-
-
 ## [1.0.19](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.14...@cloudflare/test-focus@1.0.19) (2020-02-02)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 ## [1.0.18](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.14...@cloudflare/test-focus@1.0.18) (2020-02-02)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 
       <a name="1.0.14"></a>
+
 ## [1.0.14](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.13...@cloudflare/test-focus@1.0.14) (2019-02-03)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/test-focus
 
       <a name="1.0.13"></a>
+
 ## [1.0.13](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.12...@cloudflare/test-focus@1.0.13) (2018-10-12)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/test-focus
 
@@ -108,7 +74,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @cloudflare/test-focus
 
-  <a name="1.0.11"></a>
+<a name="1.0.11"></a>
 
 ## [1.0.11](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-focus@1.0.10...@cloudflare/test-focus@1.0.11) (2018-10-03)
 
@@ -150,8 +116,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* UI-836 fix babelrc and republish all packages
-([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
+- UI-836 fix babelrc and republish all packages
+  ([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
 
 <a name="1.0.2"></a>
 

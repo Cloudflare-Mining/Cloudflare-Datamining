@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.0.17
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/util-logger@1.0.33
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
@@ -7,232 +15,138 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [2.0.15](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.12...@cloudflare/util-http@2.0.15) (2021-10-28)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
-
-
-
-
+- **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
 
 ## [2.0.12](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.11...@cloudflare/util-http@2.0.12) (2021-04-23)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [2.0.11](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.10...@cloudflare/util-http@2.0.11) (2020-12-30)
 
 **Note:** Version bump only for package @cloudflare/util-http
-
-
-
-
 
 ## [2.0.10](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.8...@cloudflare/util-http@2.0.10) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [2.0.8](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.7...@cloudflare/util-http@2.0.8) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/util-http
-
-
-
-
 
 ## [2.0.7](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.5...@cloudflare/util-http@2.0.7) (2020-02-12)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [2.0.5](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.2...@cloudflare/util-http@2.0.5) (2020-02-02)
 
 **Note:** Version bump only for package @cloudflare/util-http
-
-
-
-
 
 ## [2.0.4](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.2...@cloudflare/util-http@2.0.4) (2020-02-02)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [2.0.2](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.1...@cloudflare/util-http@2.0.2) (2020-01-30)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [2.0.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@2.0.0...@cloudflare/util-http@2.0.1) (2020-01-30)
-
 
 ### Bug Fixes
 
-* **util-http:** UI-3160 clone response before consuming body ([e401b1b](http://stash.cfops.it:7999/fe/stratus/commits/e401b1b))
-
-
-
-
+- **util-http:** UI-3160 clone response before consuming body ([e401b1b](http://stash.cfops.it:7999/fe/stratus/commits/e401b1b))
 
 # [2.0.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.12...@cloudflare/util-http@2.0.0) (2020-01-14)
 
-
 ### Bug Fixes
 
-* **util-http:** TSX-161 update response.body type to unknown ([96afa34](http://stash.cfops.it:7999/fe/stratus/commits/96afa34))
-
+- **util-http:** TSX-161 update response.body type to unknown ([96afa34](http://stash.cfops.it:7999/fe/stratus/commits/96afa34))
 
 ### BREAKING CHANGES
 
-* **util-http:** response.body was previously typed
-as `string | Record<string, any>`.
-Now that it is `unknown`, users will need to narrow the type
-using type guards or type assertions.
-
-
-
-
+- **util-http:** response.body was previously typed
+  as `string | Record<string, any>`.
+  Now that it is `unknown`, users will need to narrow the type
+  using type guards or type assertions.
 
 ## [1.2.12](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.8...@cloudflare/util-http@1.2.12) (2019-11-20)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-* **util-http:** STREAM-1672 Allow undefined values for parameters ([0cc5453](http://stash.cfops.it:7999/fe/stratus/commits/0cc5453))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
+- **util-http:** STREAM-1672 Allow undefined values for parameters ([0cc5453](http://stash.cfops.it:7999/fe/stratus/commits/0cc5453))
 
 ## [1.2.11](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.8...@cloudflare/util-http@1.2.11) (2019-11-19)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-* **util-http:** STREAM-1672 Allow undefined values for parameters ([0cc5453](http://stash.cfops.it:7999/fe/stratus/commits/0cc5453))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
+- **util-http:** STREAM-1672 Allow undefined values for parameters ([0cc5453](http://stash.cfops.it:7999/fe/stratus/commits/0cc5453))
 
 ## [1.2.8](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.7...@cloudflare/util-http@1.2.8) (2019-06-17)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [1.2.7](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.6...@cloudflare/util-http@1.2.7) (2019-06-14)
 
 **Note:** Version bump only for package @cloudflare/util-http
-
-
-
-
 
 ## [1.2.6](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.5...@cloudflare/util-http@1.2.6) (2019-03-22)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
 ## [1.2.5](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.4...@cloudflare/util-http@1.2.5) (2019-02-07)
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-
-
-
-
       <a name="1.2.4"></a>
+
 ## [1.2.4](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.3...@cloudflare/util-http@1.2.4) (2019-02-03)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-http
 
       <a name="1.2.3"></a>
+
 ## [1.2.3](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.2...@cloudflare/util-http@1.2.3) (2019-01-16)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-http
 
     <a name="1.2.2"></a>
+
 ## [1.2.2](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.2.0...@cloudflare/util-http@1.2.2) (2018-11-19)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-http
 
-  <a name="1.2.0"></a>
-# [1.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.1.1...@cloudflare/util-http@1.2.0) (2018-10-30)
+<a name="1.2.0"></a>
 
+# [1.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.1.1...@cloudflare/util-http@1.2.0) (2018-10-30)
 
 ### Features
 
-* **stratus-core:** UI-1464 Renaming framework-core to stratus-core and ([63cb9f0](http://stash.cfops.it:7999/fe/stratus/commits/63cb9f0))
-
-
-
+- **stratus-core:** UI-1464 Renaming framework-core to stratus-core and ([63cb9f0](http://stash.cfops.it:7999/fe/stratus/commits/63cb9f0))
 
 <a name="1.1.1"></a>
+
 ## [1.1.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.1.0...@cloudflare/util-http@1.1.1) (2018-10-29)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-http
 
 <a name="1.1.0"></a>
-# [1.1.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.0.18...@cloudflare/util-http@1.1.0) (2018-10-25)
 
+# [1.1.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.0.18...@cloudflare/util-http@1.1.0) (2018-10-25)
 
 ### Features
 
-* **framework-core:** UI-1438 test cmd for framework-core ([132a932](http://stash.cfops.it:7999/fe/stratus/commits/132a932))
-
-
-
+- **framework-core:** UI-1438 test cmd for framework-core ([132a932](http://stash.cfops.it:7999/fe/stratus/commits/132a932))
 
 <a name="1.0.18"></a>
+
 ## [1.0.18](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-http@1.0.17...@cloudflare/util-http@1.0.18) (2018-10-12)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-http
 
@@ -278,8 +192,8 @@ using type guards or type assertions.
 
 ### Bug Fixes
 
-* **util-http:** UI-1025 missing Headers support fixed in Edge 16.16216
-([f917e15](http://stash.cfops.it:7999/fe/stratus/commits/f917e15))
+- **util-http:** UI-1025 missing Headers support fixed in Edge 16.16216
+  ([f917e15](http://stash.cfops.it:7999/fe/stratus/commits/f917e15))
 
 <a name="1.0.10"></a>
 
@@ -317,8 +231,8 @@ using type guards or type assertions.
 
 ### Bug Fixes
 
-* UI-836 fix babelrc and republish all packages
-([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
+- UI-836 fix babelrc and republish all packages
+  ([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
 
 <a name="1.0.2"></a>
 
@@ -344,8 +258,8 @@ using type guards or type assertions.
 
 ### Bug Fixes
 
-* **cf-util-http:** UI-404 - Do not ignore qs parameters, even if url already
-has some ([8a49b60](http://stash.cfops.it:7999/www/cf-ux/commits/8a49b60))
+- **cf-util-http:** UI-404 - Do not ignore qs parameters, even if url already
+  has some ([8a49b60](http://stash.cfops.it:7999/www/cf-ux/commits/8a49b60))
 
 <a name="4.0.11"></a>
 
@@ -353,9 +267,9 @@ has some ([8a49b60](http://stash.cfops.it:7999/www/cf-ux/commits/8a49b60))
 
 ### Bug Fixes
 
-* **cf-util-http:** UI-289: Add 'body-transform' option to request to stop
-transformation of body
-([dfb8659](http://stash.cfops.it:7999/www/cf-ux/commits/dfb8659))
+- **cf-util-http:** UI-289: Add 'body-transform' option to request to stop
+  transformation of body
+  ([dfb8659](http://stash.cfops.it:7999/www/cf-ux/commits/dfb8659))
 
 <a name="4.0.10"></a>
 
@@ -363,10 +277,10 @@ transformation of body
 
 ### Bug Fixes
 
-* **cf-util-http:** UI-186: Fix headers response
-([6c3f6c0](http://stash.cfops.it:7999/www/cf-ux/commits/6c3f6c0))
-* **cf-util-http:** UI-186: Fix it
-([4597055](http://stash.cfops.it:7999/www/cf-ux/commits/4597055))
+- **cf-util-http:** UI-186: Fix headers response
+  ([6c3f6c0](http://stash.cfops.it:7999/www/cf-ux/commits/6c3f6c0))
+- **cf-util-http:** UI-186: Fix it
+  ([4597055](http://stash.cfops.it:7999/www/cf-ux/commits/4597055))
 
 <a name="4.0.9"></a>
 
@@ -392,9 +306,9 @@ transformation of body
 
 ### Bug Fixes
 
-* **cf-util-http:** Fetch polyfill fix for Edge: correct order of requires in
-transpiled code
-([a337483](https://github.com/cloudflare/cf-ui/commit/a337483))
+- **cf-util-http:** Fetch polyfill fix for Edge: correct order of requires in
+  transpiled code
+  ([a337483](https://github.com/cloudflare/cf-ui/commit/a337483))
 
 <a name="4.0.4"></a>
 
@@ -402,8 +316,8 @@ transpiled code
 
 ### Bug Fixes
 
-* **cf-util-http:** Fetch polyfill fix for Edge: correct order of requires in
-transpiled code ([a337483](https://github.com/sejoker/cf-ui/commit/a337483))
+- **cf-util-http:** Fetch polyfill fix for Edge: correct order of requires in
+  transpiled code ([a337483](https://github.com/sejoker/cf-ui/commit/a337483))
 
 <a name="4.0.3"></a>
 

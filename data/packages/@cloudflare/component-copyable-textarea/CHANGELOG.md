@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.4
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-textarea@5.0.4
+
 ## 6.0.3
 
 ### Patch Changes

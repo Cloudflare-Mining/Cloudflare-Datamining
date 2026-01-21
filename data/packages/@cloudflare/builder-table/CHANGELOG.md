@@ -1,5 +1,14 @@
 # Change Log
 
+## 5.0.34
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-sortable@6.0.33
+  - @cloudflare/component-table@11.1.7
+
 ## 5.0.33
 
 ### Patch Changes

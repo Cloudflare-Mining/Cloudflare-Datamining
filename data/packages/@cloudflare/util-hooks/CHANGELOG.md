@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.2
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+
 ## 1.3.1
 
 ### Patch Changes

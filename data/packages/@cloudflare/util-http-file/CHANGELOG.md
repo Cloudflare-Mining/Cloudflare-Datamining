@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.2.63
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/util-http@2.0.17
+  - @cloudflare/util-sparrow@6.0.1
+
 ## 1.2.62
 
 ### Patch Changes

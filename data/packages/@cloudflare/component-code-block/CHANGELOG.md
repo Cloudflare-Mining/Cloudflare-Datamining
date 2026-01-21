@@ -1,5 +1,16 @@
 # @cloudflare/component-code-block
 
+## 6.0.33
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-button@9.5.1
+  - @cloudflare/component-tooltip@6.0.5
+  - @cloudflare/component-visually-hidden@2.0.5
+  - @cloudflare/elements@4.0.5
+
 ## 6.0.32
 
 ### Patch Changes

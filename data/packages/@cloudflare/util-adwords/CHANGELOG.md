@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.29
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
@@ -7,82 +13,47 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @cloudflare/util-adwords
 
-
-
-
-
 ## [1.0.27](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.24...@cloudflare/util-adwords@1.0.27) (2021-10-28)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
-
-
-
-
+- **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
 
 ## [1.0.24](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.23...@cloudflare/util-adwords@1.0.24) (2021-04-23)
 
 **Note:** Version bump only for package @cloudflare/util-adwords
 
-
-
-
-
 ## [1.0.23](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.21...@cloudflare/util-adwords@1.0.23) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/util-adwords
-
-
-
-
 
 ## [1.0.21](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.19...@cloudflare/util-adwords@1.0.21) (2020-02-12)
 
 **Note:** Version bump only for package @cloudflare/util-adwords
 
-
-
-
-
 ## [1.0.19](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.13...@cloudflare/util-adwords@1.0.19) (2020-02-02)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 ## [1.0.18](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.13...@cloudflare/util-adwords@1.0.18) (2020-02-02)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 <a name="1.0.13"></a>
+
 ## [1.0.13](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.12...@cloudflare/util-adwords@1.0.13) (2019-02-03)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-adwords
 
 <a name="1.0.12"></a>
+
 ## [1.0.12](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/util-adwords@1.0.11...@cloudflare/util-adwords@1.0.12) (2018-10-12)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/util-adwords
 

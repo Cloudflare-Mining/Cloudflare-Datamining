@@ -1,5 +1,14 @@
 # Change Log
 
+## 9.0.33
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-button@9.5.1
+  - @cloudflare/component-checkbox@6.0.5
+
 ## 9.0.32
 
 ### Patch Changes

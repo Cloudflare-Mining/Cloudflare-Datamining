@@ -1,5 +1,15 @@
 # @cloudflare/component-forms-hook-form
 
+## 3.0.40
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-button@9.5.1
+  - @cloudflare/component-forms@7.0.40
+  - @cloudflare/elements@4.0.5
+
 ## 3.0.39
 
 ### Patch Changes

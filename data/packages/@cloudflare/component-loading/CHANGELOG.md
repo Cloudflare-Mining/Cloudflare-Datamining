@@ -1,5 +1,14 @@
 # Change Log
 
+## 7.0.5
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-visually-hidden@2.0.5
+  - @cloudflare/elements@4.0.5
+
 ## 7.0.4
 
 ### Patch Changes

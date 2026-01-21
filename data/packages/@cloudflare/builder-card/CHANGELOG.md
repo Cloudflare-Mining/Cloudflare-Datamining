@@ -1,5 +1,15 @@
 # Change Log
 
+## 10.0.36
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-dynamic-content@4.0.4
+  - @cloudflare/component-loading@7.0.5
+  - @cloudflare/component-card@11.0.36
+
 ## 10.0.35
 
 ### Patch Changes

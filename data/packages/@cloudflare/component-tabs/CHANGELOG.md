@@ -1,5 +1,14 @@
 # Change Log
 
+## 7.0.40
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-forms@7.0.40
+  - @cloudflare/util-responsive@4.2.5
+
 ## 7.0.39
 
 ### Patch Changes

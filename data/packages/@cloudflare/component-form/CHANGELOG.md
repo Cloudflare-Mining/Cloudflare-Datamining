@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.27
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/component-listbox@3.0.26
+
 ## 6.0.26
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # Change Log
 
+## 11.0.5
+
+### Patch Changes
+
+- 625b95cb19: Add data-source-file attributes to JSX elements for a11y debugging (non-production only)
+- Updated dependencies [625b95cb19]
+  - @cloudflare/chart-color-legend@6.0.5
+  - @cloudflare/component-box@5.1.1
+  - @cloudflare/component-text@5.1.1
+  - @cloudflare/component-tooltip@6.0.5
+
 ## 11.0.4
 
 ### Patch Changes
