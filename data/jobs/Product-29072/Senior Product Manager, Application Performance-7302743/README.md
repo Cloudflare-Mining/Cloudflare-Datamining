@@ -5,49 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin TX, Washington DC, Denver CO</strong></p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p><strong>About the Department</strong></p>
-<p>The Growth Engineering team is responsible for building world-class experiences that help the millions of Cloudflare self-service customers get what they need faster, from acquisition and onboarding all the way through to adoption and scale up. Our team is focused on high velocity experimentation and thoughtful optimizations to that experience on Cloudflare’s properties.</p>
-<p>This team has a dual mandate, also focusing on evolving our current marketing attribution, customer event ingress and experimentation capabilities that process billions of events across those properties to drive data-driven decision making.&nbsp;</p>
-<p>As the manager of the team responsible for Product Growth and Experimentation, your job will be to deliver on those growth-driven features and experiences while evolving our current marketing attribution, consumer event ingress and experimentation setup across these experiences, and partner with many teams on implementations, and make those capabilities more generally available across Cloudflare’s customer-facing properties.</p>
-<p><strong>About the Role</strong></p>
-<p>The Experimentation and Data Capture Engineering Manager will be responsible for the following:</p>
+<p><strong>Available Locations: NYC, SF, Austin TX</strong></p>
+<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
+<p>As a<strong> Senior Product Manager at Cloudflare</strong>, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<h4>About the role</h4>
+<p>As a Senior Product Manager for Platforms within Application Performance, you will own the offering that enables Cloudflare customers to securely proxy traffic to other zones also protected by Cloudflare. This service is essential for major platform providers and SaaS companies who host thousands of end-customer domains, empowering those end customers to have their own Cloudflare configuration, giving them greater control over their performance, security, and application logic. You will own the strategy for authentication, metering, billing, and the seamless integration experience for these large platform partners. This is an outward-facing, high-impact role requiring exceptional strategic partnership skills. You will work directly with our most significant platform customers—leading providers in e-commerce, content management, and SaaS—to understand their unique scale and integration needs.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Manage the engineering team and drive technical delivery for Experimentation and Product Growth capabilities intended for all of our customer-facing UI properties, driving user acquisition, engagement, and retention through data-driven strategies and technical implementations</li>
-	<li>Lead the team who work with a cross-functional team of engineers, data scientists, marketers, and product managers to design, implement, and optimize growth initiatives that scale our customer tools and maximize their impact</li>
-	<li>Executing as a ‘player-coach’, spending at least 20% of your time delivering alongside the team</li>
-	<li>Collaborate with product, design and stakeholders to establish outcome measurements, roadmaps and key deliverables</li>
-	<li>Own and lead execution of engineering projects in the area of web data acquisition and experimentation</li>
-	<li>Work across the entire product lifecycle from conceptualization through production</li>
-	<li>Build features end-to-end: front-end, back-end, IaC, system design, debugging and testing, engaging with feature teams and data processing teams</li>
-	<li>Inspire and mentor less experienced engineers</li>
-	<li>Work closely with the trust and safety team to handle any compliance or data privacy-related matters</li>
-	<li>Analytically driven to co-own and drive up product adoption KPIs</li>
+	<li>Own your space. You will own the priorities and scope, partnering with a high performing engineering team focused on one of Cloudflare’s Application Performance products.&nbsp;</li>
+	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
+	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
+	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
+	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.&nbsp;</li>
 </ul>
-<p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access, Cloudflare Workers, and Zaraz, these are all tools in our engineer's tool belt, so it is a plus if you have been a customer of ours, even as a free user.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4>&nbsp;</h4>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
+<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results. Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>At least 6 years of relevant experience and at least 3 years of experience managing engineers is preferred</li>
-	<li>Track record of shipping high-quality products and features at scale</li>
-	<li>Specific experience with client-side consumer data capture platforms (Google Tag Manager, Adobe Launch, etc) ideal</li>
-	<li>Familiarity with event driven architectures and high-scale data processing using open-source or commercial systems</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Comfort with TypeScript/JavaScript in a full-stack context required, familiarity with other languages (Go/Rust/Python) a plus</li>
-	<li>Familiarity with global data privacy requirements governed by laws like GDPR/CCPA/etc and how it affects data capture, modeling and analysis</li>
-	<li>Experience with data lake/warehouse products like Clickhouse, Apache Iceberg, etc, and some familiarity with commercial analytics systems (Adobe Analytics, Google BigQuery, etc)</li>
-	<li>Desire to work in a very fast-paced environment</li>
-	<li>Ability to turn business and product ideas into engineering solutions</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
-	<li>Excellent problem-solving skills, and ability to work independently or as part of a team.</li>
+	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
+	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
+	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
+	<li>Strong collaboration skills and experience working with engineering and design teams</li>
+	<li>Comfort operating in fast-paced, evolving environments</li>
+	<li>A passion for user empathy and delivering customer-centric solutions</li>
+	<li>Excellent communication skills and attention to detail</li>
+	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
+</ul>
+<h4><strong>Bonus points</strong></h4>
+<ul>
+	<li>Prior experience as a product manager for a team focused on driving the roadmap for products focused on Edge infrastructure, high-performance web delivery, or network optimization.</li>
+	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
+	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $213,000 - $261,000</span></li>
-	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $191,000 - $233,000</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $202,000 - $246,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $192,000 - $234,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
