@@ -5,54 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Washington DC or Austin TX</strong></p>
-<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<p>As a Software Engineer: Release Manager, you will be part of the Resiliency Organization responsible for building and maintaining the platform that powers safe, reliable, and automated deployments across Cloudflare. We are looking for engineers to join the <strong>Deploy@Scale</strong> team and shape the future of deployment automation and release safety. The Release Manager platform is pivotal in ensuring service resiliency by orchestrating progressive deployments, supporting health-mediated rollouts, and automating release workflows at scale. Our mission is to make deployments seamless, predictable, and observable for all engineering teams across Cloudflare. This is a unique opportunity to work on complex, globally distributed systems that underpin every Cloudflare product. You will play a key role in advancing the infrastructure that enables fast, safe delivery of changes to production, directly impacting the reliability and velocity of Cloudflare’s global network</p>
-<p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Location(s) Available:</strong> Austin, TX<br><br><strong>About The Team</strong><br><br>Join Cloudflare’s Security Team in Bangalore. We seek motivated students in Cybersecurity, Computer Science, or Information Systems for a cross-functional role. This position offers hands-on experience across multiple security domains, including GRC, IAM, Appsec, and Sec Arch, to help build a safer internet.<br><br></p>
+<p><strong>About the role/</strong><strong>What You’ll Do</strong></p>
 <ul>
-	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
-	<li>Experience building both backend systems and frontend widgets.</li>
-	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
-	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
-	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
-	<li>Strong verbal and written English language skills.</li>
+	<li>Provide input on security requirements for new infrastructure and engineering initiatives.</li>
+	<li>Assist with documentation and maintenance of the corporate security architecture blueprints</li>
+	<li>Your focus will be on hardware security ,secure boot processes, side-channel attack mitigation, BIOS level security requirements&nbsp; and cryptographic isolation within devices, etc.</li>
+	<li>Partner with hardware and firmware teams to provide security guidance for the&nbsp; design and implementation of security features such as Hardware Root of Trust (RoT), Secure Boot (e.g., UEFI configuration), and hardware-based cryptographic accelerators.</li>
+	<li>Define advanced memory protection strategies.</li>
+	<li>Collaborate with the Security Detections and Monitoring team to develop telemetry and alerts for detecting unauthorized hardware changes, firmware tampering, or suspicious BIOS/UEFI configuration modifications.</li>
+	<li>Define and enforce secure configuration standards for BIOS/UEFI settings, Trusted Platform Modules (TPM), and physical port management (e.g., USB, JTAG, UART) to prevent unauthorized access.</li>
+	<li>Coordinate 3rd party hardware and firmware penetration tests, review technical findings, and translate complex vulnerabilities into actionable security requirements for engineering teams.</li>
+	<li>Design secure solutions for complex infrastructure problems, such as implementing Zero Trust principles at the hardware level and securing high-performance computing or edge-device integrations.</li>
+	<li>Perform regular audits of hardware and firmware environments to identify "configuration drift" where systems have deviated from established security baselines or approved firmware versions.</li>
+	<li>Evaluate vendor updates, microcode patches, and vulnerability data (CVEs) to make prioritized risk-based recommendations for patching critical hardware flaws.</li>
+	<li>Act as the security liaison between infrastructure, firmware, and other engineering teams to embed "secure-by-design" principles into the early stages of the hardware procurement and development lifecycle.</li>
+	<li>Conduct detailed threat modeling sessions specifically focused on physical attack vectors, side-channel attacks, and supply chain integrity risks.</li>
+	<li>Provide deep technical expertise during hardware-related security incidents, assisting with forensic analysis of compromised firmware or physical tampering detected by monitoring systems.</li>
+	<li>Develop hardware-specific security policies and reference architectures that comply with international standards such as NIST SP 800-193 (Platform Firmware Resiliency).</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
+	<li>Either advanced studies in Cybersecurity, Computer Science, Information Systems, or similar</li>
+	<li>Excellent written and verbal communication skills, including the ability to effectively collaborate with technical and senior business staff and management.</li>
+	<li><strong>12+ years</strong> in a product or embedded security role, with <strong>7+ years</strong> as a Hardware Security Architect.&nbsp;</li>
+	<li>Expertise in Medium to high-level security concepts, including secure boot, memory protection, and secure element implementation.&nbsp;</li>
+	<li>Proficiency with hardware description languages and hands-on experience with hardware/firmware vulnerability assessment and penetration testing.&nbsp;</li>
+	<li>Strong knowledge of security standards relevant to device manufacturing and supply chain&nbsp;</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Preferred</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li>Certifications: CSSLP or relevant vendor-specific hardware security certifications.</li>
+	<li>Experience with open-source hardware architectures.&nbsp;</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>Background in securing IoT, industrial control systems (ICS), or consumer electronics devices.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
