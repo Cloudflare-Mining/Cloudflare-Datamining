@@ -32,7 +32,7 @@
 					"plPL": "No Page for Locale",
 					"arAR": null
 				},
-				"relativePath": "tld-policies",
+				"relativePath": "/tld-policies/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2018-10-16T20:30:00.604Z",
-					"updatedAt": "2022-06-06T13:02:39.111Z"
+					"updatedAt": "2026-01-20T21:50:28.402Z"
 				},
 				"contentfulId": "aIVgj0bTZmCsoOumG6Ius",
 				"contentTypeId": "page",
@@ -99,7 +99,7 @@
 						"sectionPadding": "tile--no-bottom-padding",
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -110,7 +110,21 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "5aa2cdb0-b8f6-5a2e-a0f0-8ab8fd80d48d",
+							"altText": "Cloudflare Registrar",
+							"title": "Cloudflare Registrar",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3QiiYEspdKggXZXwxu9wUw/e051b4143daeb1e6b58a49f66887d43c/registar-hero-illustration.svg"
+								},
+								"description": null
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
@@ -168,7 +182,7 @@
 															"contentfulId": "21n3yE7PqEgiB9IvmqPGNL",
 															"locale": "en-US",
 															"entryTitle": "TLD Policies - Newly Published",
-															"markdown": "| TLD     |\n| ---------- |\n| app<br>boo<br>dad<br>day<br>dev<br>esq<br>foo<br>how<br>mov<br>new<br>nexus<br>page<br>phd<br>prof<br>rsvp<br>soy |\n"
+															"markdown": "| TLD   |      |\n| ---------- | ---------- |\n|mx<br>com.mx<br>org.mx<br>nz<br>co.nz<br>geek.nz<br>net.nz<br>org.nz<br>ca<br>ab.ca| bc.ca<br>mb.ca<br>nb.ca<br>nl.ca<br>ns.ca<br>nt.ca<br>nu.ca<br>on.ca<br>pe.ca<br>qc.ca<br>sk.ca |\n"
 														}
 													],
 													"entry_assetFile": [],
@@ -251,94 +265,6 @@
 										}
 									]
 								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "4hEa6JJr8wfq8SDZG1Hj5w",
-								"title": null,
-								"htmlId": null,
-								"elementPosition": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "TLDs Available soon",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "5wiLrGFL9MIIdvyc8XrDjm",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": [],
-													"entry_elementMarkdown": [
-														{
-															"contentTypeId": "elementMarkdown",
-															"contentfulId": "5wiLrGFL9MIIdvyc8XrDjm",
-															"locale": "en-US",
-															"entryTitle": "TLD - Coming Soon Table",
-															"markdown": "| TLD |\n| ---------- |\n| airforce<br>army<br>eco<br>inc<br>link<br>navy<br>shop<br>travel |"
-														}
-													],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
 							}
 						]
 					},
@@ -377,6 +303,38 @@
 						],
 						"groupsInTable": [],
 						"rowsInTable": [
+							{
+								"contentfulId": "4TkjKvPrVs0vGysxgBfNaj",
+								"rowHeader2": {
+									"contentfulId": "2eyDWIcUwQcHYmUOWDpkhb",
+									"cellText": "ab.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
 							{
 								"contentfulId": "3GG26rWMyWVDlwiJBZORiF",
 								"rowHeader2": {
@@ -529,6 +487,38 @@
 								]
 							},
 							{
+								"contentfulId": "5Mb3jfXXWIInHsK3UjxEVD",
+								"rowHeader2": {
+									"contentfulId": "4TskFlIyc6XMcjjxjEfL54",
+									"cellText": "airforce",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6PX81bQqSgNkChOD0lzBUZ",
+										"cellText": "Identity Digital",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
+										"cellText": "https://identity.digital/policies/",
+										"cellTextLinkUrl": "https://identity.digital/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "17nGOLzSOiPiRmmXb21s12",
 								"rowHeader2": {
 									"contentfulId": "1LXhmcpPvTTejEPxmsROJM",
@@ -585,6 +575,38 @@
 										"contentfulId": "6krMauRnMjv1VTaXeS5mgv",
 										"cellText": "https://get.app/",
 										"cellTextLinkUrl": "https://get.app/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "1TPjMG59415QbpbAw12NxP",
+								"rowHeader2": {
+									"contentfulId": "OfuAVZj3BIC3Y9U1l3q3n",
+									"cellText": "army",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6PX81bQqSgNkChOD0lzBUZ",
+										"cellText": "Identity Digital",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
+										"cellText": "https://identity.digital/policies/",
+										"cellTextLinkUrl": "https://identity.digital/policies/",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -777,6 +799,38 @@
 										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
 										"cellText": "https://identity.digital/policies/",
 										"cellTextLinkUrl": "https://identity.digital/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "nrpaXxxJOazSXwB2bDMW1",
+								"rowHeader2": {
+									"contentfulId": "4u3xZVsUCHc6X0VQW6QdZE",
+									"cellText": "bc.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -1221,6 +1275,38 @@
 										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
 										"cellText": "https://identity.digital/policies/",
 										"cellTextLinkUrl": "https://identity.digital/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "72XHyB8wdy7t1fLlrQ8kmI",
+								"rowHeader2": {
+									"contentfulId": "5bqXqZltiOkMOQ4xQdDaam",
+									"cellText": "ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -2199,6 +2285,38 @@
 								]
 							},
 							{
+								"contentfulId": "1ZEor1sURK805OYTnqPoKS",
+								"rowHeader2": {
+									"contentfulId": "4UfEAwEc2RxOY59vSosDQ8",
+									"cellText": "com.mx",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "7EsK28VzaAfUj1RIv29iuJ",
+										"cellText": "NIC México",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "qSg1jrGaI493IUbGc0SxX",
+										"cellText": "https://www.dominios.mx/policies",
+										"cellTextLinkUrl": "https://www.dominios.mx/policies",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "6N90jM4ayiM3LxPMO4LkrC",
 								"rowHeader2": {
 									"contentfulId": "5f3uiS8hFgalbDGbDA3VC7",
@@ -2533,6 +2651,38 @@
 								]
 							},
 							{
+								"contentfulId": "7oUyBPTur2xDisKe62KjpN",
+								"rowHeader2": {
+									"contentfulId": "6f1n2MPhQmmvp4dQom9VN5",
+									"cellText": "co.nz",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4BsPAg4V4s3r1L7IFrVspo",
+										"cellText": "InternetNZ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6eCf8QjmxZQswJgi4AFviD",
+										"cellText": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
+										"cellTextLinkUrl": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "6ulcEPeDVTbhIYbzRYwUbp",
 								"rowHeader2": {
 									"contentfulId": "7a8QtzTJBiQVpy7tOG5IeH",
@@ -2555,8 +2705,8 @@
 									},
 									{
 										"contentfulId": "5Igk8nZOO0nHdb9cp6e0Y5",
-										"cellText": "https://www.nominet.uk/domain-registration-tandc",
-										"cellTextLinkUrl": "https://www.nominet.uk/domain-registration-tandc",
+										"cellText": "https://nominet.uk/uk-registry/uk-policy/",
+										"cellTextLinkUrl": "https://nominet.uk/uk-registry/uk-policy/",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -4633,6 +4783,38 @@
 								]
 							},
 							{
+								"contentfulId": "Bb1hK5ST1vrmxxmed4U9X",
+								"rowHeader2": {
+									"contentfulId": "2jW3CeWGfQDE6n050oEJII",
+									"cellText": "geek.nz",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4BsPAg4V4s3r1L7IFrVspo",
+										"cellText": "InternetNZ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6eCf8QjmxZQswJgi4AFviD",
+										"cellText": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
+										"cellTextLinkUrl": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "GoSuetzQ8EijAkW83TkzB",
 								"rowHeader2": {
 									"contentfulId": "62Lq5UgsqgitcTwTMv4XeM",
@@ -5447,6 +5629,29 @@
 								]
 							},
 							{
+								"contentfulId": "2H748hz0NCzbcw2g186Ygs",
+								"rowHeader2": {
+									"contentfulId": "79CNZhY1DGJLw7ROl7LKQp",
+									"cellText": "inc",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3hQq47VkJ8JEHMez5eKtQb",
+										"cellText": "Intercap Registry",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "5CtIX2VI649dnwQ8qgpDOX",
 								"rowHeader2": {
 									"contentfulId": "42YppDyGZbtG7NvJIXw6cY",
@@ -6183,6 +6388,38 @@
 								]
 							},
 							{
+								"contentfulId": "6kpaMH3KHKLa2BNKhnvGhn",
+								"rowHeader2": {
+									"contentfulId": "553rawxtezrrSn6DTJwm5l",
+									"cellText": "TLD Table - link",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6RBhJY5GV1CFe8H2ZKmCN8",
+										"cellText": "Nova Registry",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "7aKvpknMDdThkZJTzr6ZyG",
+										"cellText": "https://nova.link/wp-content/uploads/2023/05/Nova-.link-Acceptable-Use-Policy-2023-Final.pdf",
+										"cellTextLinkUrl": "https://nova.link/wp-content/uploads/2023/05/Nova-.link-Acceptable-Use-Policy-2023-Final.pdf",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "4JFdOsj8unaEh6raL0e0vu",
 								"rowHeader2": {
 									"contentfulId": "6a9hloMoCQ8D6yxHc49pHF",
@@ -6549,6 +6786,38 @@
 								]
 							},
 							{
+								"contentfulId": "78gECUT1RX7a7bG233ksfk",
+								"rowHeader2": {
+									"contentfulId": "1e6fUtAZQfv0jm7pXB0rDI",
+									"cellText": "mb.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "5Cpt5aXDqaXk7kgUTDB6Gb",
 								"rowHeader2": {
 									"contentfulId": "FLLXbv8rmRBHZ8jcMUmKQ",
@@ -6690,8 +6959,8 @@
 									},
 									{
 										"contentfulId": "5Igk8nZOO0nHdb9cp6e0Y5",
-										"cellText": "https://www.nominet.uk/domain-registration-tandc",
-										"cellTextLinkUrl": "https://www.nominet.uk/domain-registration-tandc",
+										"cellText": "https://nominet.uk/uk-registry/uk-policy/",
+										"cellTextLinkUrl": "https://nominet.uk/uk-registry/uk-policy/",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -6906,6 +7175,102 @@
 								]
 							},
 							{
+								"contentfulId": "2GZnhHrefmGG7ipxmomGKL",
+								"rowHeader2": {
+									"contentfulId": "1wQtRX6cJL2PPIsiI6b2h7",
+									"cellText": "mx",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "7EsK28VzaAfUj1RIv29iuJ",
+										"cellText": "NIC México",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "qSg1jrGaI493IUbGc0SxX",
+										"cellText": "https://www.dominios.mx/policies",
+										"cellTextLinkUrl": "https://www.dominios.mx/policies",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "7hUN7lZljlxBmpEYshJfKt",
+								"rowHeader2": {
+									"contentfulId": "5IdbHm0DXCKMWBNv8EXozw",
+									"cellText": "navy",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6PX81bQqSgNkChOD0lzBUZ",
+										"cellText": "Identity Digital",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
+										"cellText": "https://identity.digital/policies/",
+										"cellTextLinkUrl": "https://identity.digital/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "hOAojdDouLFG7b8gOKz1V",
+								"rowHeader2": {
+									"contentfulId": "3QY8ZMmxqhJsZF58CZaAD5",
+									"cellText": "nb.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "5Eh4kP4A6rEtjvSa7nwSJk",
 								"rowHeader2": {
 									"contentfulId": "2I6oabecZWRVNLHMAl2be",
@@ -6953,6 +7318,38 @@
 										"contentfulId": "1pH9wtC9rxiUHkbW9ZfT29",
 										"cellText": "CO Internet SAS",
 										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "beTuv5jN5wcjzPUhjLlSS",
+								"rowHeader2": {
+									"contentfulId": "4h9vC05C1JWIDkvia3ERRE",
+									"cellText": "net.nz",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4BsPAg4V4s3r1L7IFrVspo",
+										"cellText": "InternetNZ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6eCf8QjmxZQswJgi4AFviD",
+										"cellText": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
+										"cellTextLinkUrl": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -7112,6 +7509,38 @@
 								]
 							},
 							{
+								"contentfulId": "2u8ro5tx3byUi0il0v14LD",
+								"rowHeader2": {
+									"contentfulId": "5nuA4jl2UjeGpVGakanBLq",
+									"cellText": "nl.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "Ti00HYCe2jrgmpRPC70Vb",
 								"rowHeader2": {
 									"contentfulId": "2tkbCrEECZVhgt4P0pBkL4",
@@ -7127,6 +7556,134 @@
 										"contentfulId": "1pH9wtC9rxiUHkbW9ZfT29",
 										"cellText": "CO Internet SAS",
 										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "a9YEy2JjtWxIePzWzerS1",
+								"rowHeader2": {
+									"contentfulId": "3vJ0oQdD6RJI6SQKq48loK",
+									"cellText": "ns.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "335b5tdmIYIw5VKWyXTyDP",
+								"rowHeader2": {
+									"contentfulId": "3dafkPoGRnMh4RkN4TAXzQ",
+									"cellText": "nt.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "7gIKfeuj8WLxEclp2dCaA8",
+								"rowHeader2": {
+									"contentfulId": "60ou6sxlebkIXw3ihCU7Yi",
+									"cellText": "nu.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "srwY1WSiLqCmigJH45Xfw",
+								"rowHeader2": {
+									"contentfulId": "5AM5PCP1iCDyjNTredP3ci",
+									"cellText": "nz",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4BsPAg4V4s3r1L7IFrVspo",
+										"cellText": "InternetNZ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6eCf8QjmxZQswJgi4AFviD",
+										"cellText": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
+										"cellTextLinkUrl": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -7159,6 +7716,38 @@
 										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
 										"cellText": "https://identity.digital/policies/",
 										"cellTextLinkUrl": "https://identity.digital/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "7Err7UryDIfv1tDskmuNyB",
+								"rowHeader2": {
+									"contentfulId": "6mdIGPII1x7wfQQOy20N7o",
+									"cellText": "on.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -7231,6 +7820,38 @@
 								]
 							},
 							{
+								"contentfulId": "3kxB2cMxXMQYU9QopdIZWI",
+								"rowHeader2": {
+									"contentfulId": "4tcs1a09vhfqvhIuDIkyj8",
+									"cellText": "org.mx",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "7EsK28VzaAfUj1RIv29iuJ",
+										"cellText": "NIC México",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "qSg1jrGaI493IUbGc0SxX",
+										"cellText": "https://www.dominios.mx/policies",
+										"cellTextLinkUrl": "https://www.dominios.mx/policies",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "4HSBhMrN8UOfJlUmwrb03X",
 								"rowHeader2": {
 									"contentfulId": "48MB93txQyTfdIxmoxMJZp",
@@ -7253,8 +7874,40 @@
 									},
 									{
 										"contentfulId": "5Igk8nZOO0nHdb9cp6e0Y5",
-										"cellText": "https://www.nominet.uk/domain-registration-tandc",
-										"cellTextLinkUrl": "https://www.nominet.uk/domain-registration-tandc",
+										"cellText": "https://nominet.uk/uk-registry/uk-policy/",
+										"cellTextLinkUrl": "https://nominet.uk/uk-registry/uk-policy/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "5Fq8U8Edt7GzZRcGzZOP14",
+								"rowHeader2": {
+									"contentfulId": "5xmahjiTQWExLzxtifOjo2",
+									"cellText": "org.nz",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4BsPAg4V4s3r1L7IFrVspo",
+										"cellText": "InternetNZ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6eCf8QjmxZQswJgi4AFviD",
+										"cellText": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
+										"cellTextLinkUrl": "https://internetnz.nz/nz-domains/nz-policies/nz-rules-2024",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -7374,6 +8027,38 @@
 										"contentfulId": "5m9TkLzxoOGEan3cHRQI54",
 										"cellText": "GRS Domains",
 										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "2T4qpBSzguDPEMR0ozWzCQ",
+								"rowHeader2": {
+									"contentfulId": "6wTJFX5SPz8IyvN8M6QCb1",
+									"cellText": "pe.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -7900,6 +8585,38 @@
 										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
 										"cellText": "https://identity.digital/policies/",
 										"cellTextLinkUrl": "https://identity.digital/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "v3cvVaDsgE77knfVpWff3",
+								"rowHeader2": {
+									"contentfulId": "2WrT8JHnJh6boWtKTTFK9Q",
+									"cellText": "qc.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -8942,6 +9659,38 @@
 								]
 							},
 							{
+								"contentfulId": "3g4rE75dLNOqp0fecCHIQE",
+								"rowHeader2": {
+									"contentfulId": "3XgpNvxIeUfjYiP3LZeFZI",
+									"cellText": "shop",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4ViruxIEVgwipW9jUaUDrc",
+										"cellText": "GMO Registry, Inc.",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "g0ih1vwQEjxNzKeVPVC4M",
+										"cellText": "https://www.gmoregistry.com/en/shop_policy",
+										"cellTextLinkUrl": "https://www.gmoregistry.com/en/shop_policy",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "2tJwye1cOGv1RSs0M90i12",
 								"rowHeader2": {
 									"contentfulId": "6QA6iLEA3TC70pzZQ0QIj2",
@@ -8998,6 +9747,38 @@
 										"contentfulId": "62gtu9PmwOn9Kt5RpIbVG3",
 										"cellText": "http://radix.website/policies/",
 										"cellTextLinkUrl": "http://radix.website/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "2pLDZYjK4pAL2WxxC1Imyu",
+								"rowHeader2": {
+									"contentfulId": "4puSQ1el3B4awtaQdpQGFX",
+									"cellText": "sk.ca",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6riOgvf4MjPHwyHAssLgrE",
+										"cellText": "CIRA",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1YZH7EMvmeLTTzu0Fk3frU",
+										"cellText": "https://www.cira.ca/en/legal-policy-and-compliance",
+										"cellTextLinkUrl": "https://www.cira.ca/en/legal-policy-and-compliance",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
@@ -10163,6 +10944,38 @@
 								]
 							},
 							{
+								"contentfulId": "3MkSBdNrsevzS0G6SJUoVE",
+								"rowHeader2": {
+									"contentfulId": "4EODH49srH2ERE9UQrlHLK",
+									"cellText": "travel",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6PX81bQqSgNkChOD0lzBUZ",
+										"cellText": "Identity Digital",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3uBP7f8xQNRU7H5ZjSoTzL",
+										"cellText": "https://identity.digital/policies/",
+										"cellTextLinkUrl": "https://identity.digital/policies/",
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "55c7VKDBSW31ti5iYHDvLG",
 								"rowHeader2": {
 									"contentfulId": "4eHjJqyj5VRGoLXkvmsyTY",
@@ -10208,8 +11021,8 @@
 									},
 									{
 										"contentfulId": "5Igk8nZOO0nHdb9cp6e0Y5",
-										"cellText": "https://www.nominet.uk/domain-registration-tandc",
-										"cellTextLinkUrl": "https://www.nominet.uk/domain-registration-tandc",
+										"cellText": "https://nominet.uk/uk-registry/uk-policy/",
+										"cellTextLinkUrl": "https://nominet.uk/uk-registry/uk-policy/",
 										"buttonText": null,
 										"buttonUrl": null,
 										"commonElements": null,
