@@ -5,13 +5,14 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, NYC, Lisbon, or London (Hybrid)</strong></p>
+<p><strong>Available Locations: Austin, NYC, (Hybrid)</strong></p>
 <p><strong>About The Role</strong></p>
-<p>You’ll be responsible for two of Cloudflare’s most critical database infrastructure products: Workers KV and Hyperdrive.</p>
-<p>“<a href="https://developers.cloudflare.com/kv/">KV</a>” is a globally distributed key-value store that enables extremely high read volume workloads and low-latency (sub-10ms) retrievals at millions (and more) of RPS.&nbsp;</p>
-<p><a href="https://blog.cloudflare.com/how-hyperdrive-speeds-up-database-access/">Hyperdrive</a> is our distributed connection pooler and query caching service that supports querying Postgres and MySQL databases directly from Cloudflare Workers (using any off-the-shelf database driver). It’s a key part of building full-stack applications on Workers and is the foundation of our future transactional database efforts and services.</p>
+<p>You’ll be responsible for two of Cloudflare’s <a href="https://developers.cloudflare.com/directory/?product-group=Developer+platform">Developer Platform</a> most critical application database products: Workers KV and D1.</p>
+<p><a href="https://developers.cloudflare.com/kv/">Workers KV</a> is a globally distributed key-value store that enables extremely high read volume workloads and low-latency (sub-10ms) retrievals at millions (and more) of RPS.&nbsp;</p>
+<p><a href="https://developers.cloudflare.com/d1/">D1</a> provides managed, serverless relational databases (100s of thousands of SQLite databases) for building full-stack applications on Workers.&nbsp;</p>
 <p>This is a role with high agency and accountability: you’ll be the sole PM for the products you’re responsible for, and you’ll work closely with your peers across the team to ensure we’re shipping great developer experiences and not silos.</p>
 <p><strong>What You’ll Do</strong></p>
+<p>&nbsp;</p>
 <ul>
 	<li>Drive the strategy, roadmap &amp; (most importantly) ship great products that help developers build reliable, high performance full-stack applications on Cloudflare.</li>
 	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
@@ -22,13 +23,16 @@
 	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
 	<li>Delve into market research to drive new investment opportunities in the developer space</li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p>&nbsp;</p>
 <p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.</p>
+<p>&nbsp;</p>
 <ul>
 	<li>A desire to sweat the details and ship great end-to-end developer experiences. APIs, UIs, docs: all of these are part of the product.</li>
 	<li>Proven track record of shipping developer-facing products from ideation to launch. You should know what it means to be a developer and what gets in the way of building production services.</li>
 	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems</li>
-	<li>Demonstrated experience with transactional databases (building on or building them directly), and a desire to become a domain expert in the space as quickly as humanly possible. You should want to understand Postgres’ connection model vs. MySQL’s process model, how replication works across different RDBMS’, and get excited for every new Jepsen analysis.</li>
+	<li>Demonstrated experience with transactional databases (NoSQL or SQL, building on or building them directly), and a desire to become a domain expert in the space as quickly as humanly possible. You should want to understand application data models, how replication works across different RDBMS, and get excited for every new Jepsen analysis.</li>
 	<li>A focus on the developer: you'll be working directly with customers, and often be a part of the customer's team in helping them get their initial implementation off the ground</li>
 	<li>BS/MS in a technology field</li>
 	<li>Professional product management experience (3-4 years), previous founder experience or demonstrated experience on an engineering team shipping user-facing products.</li>
