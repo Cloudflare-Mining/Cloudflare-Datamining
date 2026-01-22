@@ -5,33 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3 id="MachineLearningEngineer-AbouttheTeam"><strong>Available Locations: </strong><strong>London, UK</strong></h3>
-<p><strong>About the Team</strong></p>
-<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.&nbsp;The team's core disciplines are data engineering, data science, devops, and security. We use data science and machine learning to process large volumes of data and build threat intelligence for Cloudflare's customers</p>
-<p><strong>About the Role</strong></p>
-<p>We're looking for a Machine Learning Engineer to join our team and lead the charge in applying cutting-edge machine learning to cyber threat intelligence. In this highly impactful, hands-on role, you'll design, develop, and deploy scalable machine learning models that leverage massive datasets from our global network to identify and neutralize sophisticated cyber threats. Your expertise will directly enhance our Cloudforce One offering, providing critical, real-time insights and unparalleled protection to our customers. If you're driven to solve complex cybersecurity challenges at an unprecedented scale, we want you on our team.</p>
-<p><span style="text-decoration: underline;">The candidate should have strong foundational machine learning knowledge. Day to day responsibilities include:</span></p>
+<h3><strong>Available Locations: Austin, TX</strong></h3>
+<h3>About the department</h3>
+<p>The Cloudflare Research team stands at the nexus of academic inquiry and real-world implementation, operating with a clear mandate: to advance the company's mission to help build a better Internet. We translate public values into tangible, globally-scaled technologies, ensuring the Internet remains secure, private, and accessible.</p>
+<p>Cloudflare Research is unique because we don’t just publish papers; we build the protocols and systems that power a significant portion of the web. Our current focus areas include Artificial Intelligence, Cryptography, Privacy, Network Protocols, Measurement and Performance Evaluation, and Distributed Systems. More information about our vision can be found at<a href="https://research.cloudflare.com"> research.cloudflare.com</a>.</p>
+<h3>What you’ll do</h3>
+<p>As a Research Manager, you will lead a world-class group of researchers - ranging from Junior to Mid, to Senior and Principal Researchers - covering the entire Cloudflare research portfolio. Unlike a traditional engineering manager role, your success is measured by the impact and rigor of scientific output as well as its successful integration into our global network.</p>
+<p>You will act as a bridge between deep academic exploration and product reality. You will foster an environment where "moonshot" ideas are balanced with the practical constraints of a global edge network. Your leadership will ensure that Cloudflare remains a leader in the IETF, W3C, and other standards bodies, while simultaneously delivering code that improves the lives of millions of users.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
 <ul>
-	<li>Collaborate with other Data Scientists and Machine Learning Engineers to integrate and deploy scalable Machine Learning models</li>
-	<li>Collaborate with analysts to understand new email attack techniques then design and deploy models to detect these techniques</li>
-	<li>Implement Machine Learning models in production systems and monitor their performance in real-time.</li>
-	<li>Continuously improve the performance and scalability of existing Machine Learning models.</li>
-	<li>Identify, diagnose and resolve issues in production environments</li>
+	<li>Proven Leadership: <strong>A minimum of 10 years of experience managing high-performing technical or research teams.</strong> Experience managing principle-level individual contributors is highly preferred.</li>
+	<li>Academic and Industry Fluency: An advanced degree or equivalent industry experience in Computer Science, focusing on one of our core areas (Cryptography, AI, Systems, or Networking).</li>
+	<li>Publication Record: Familiarity with the academic lifecycle - understanding how to guide a project from a hypothesis to a peer-reviewed publication or a standard proposal.</li>
+	<li>Operational Excellence: Ability to manage "research uncertainty." You can help researchers navigate blockers and pivot when a hypothesis isn't panning out, while still meeting organizational milestones.</li>
+	<li>Recruitment: A track record of identifying and hiring top-tier research talent from both academia and industry.</li>
+	<li>Communication: Exceptional ability to translate complex theoretical concepts into business value for non-technical stakeholders.</li>
+	<li>Technology: Experience working with/for a hyperscaler or SAAS provider on high impact projects</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3>Responsibilities</h3>
 <ul>
-	<li>Thorough understanding of machine learning concepts such as what types of models perform best again what types of data</li>
-	<li>Desire to see a project through all the way from model creation, training, productionalized deployment, through automated retraining from feedback</li>
-	<li>Demonstrated ability to deliver and listen to feedback.</li>
-	<li>Proven ability to deliver performance (what) with the right behaviors (how)</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
-<ul>
-	<li>Experience with deploying Deep Learning models in production systems</li>
-	<li>Experience with development and deployment of Natural Language Processing (NLP) applications</li>
-	<li>Wide machine learning knowledge from linear regression through LLMs</li>
-	<li>A basic understanding of the cyber threat landscape&nbsp;and&nbsp;technical Indicators of Compromise (IOCs)</li>
+	<li>Multigenerational Leadership: Manage and mentor a diverse team of Junior, Mid, Senior, and Principal Researchers. You will tailor your management style to support early-career growth while providing high-level strategic partnership to industry-leading Principal scientists.</li>
+	<li>Research Strategy &amp; Roadmap: Help define and execute the long-term research agenda for your domain. This will include aligning research initiatives with Cloudflare’s product roadmap, to ensure that today’s experiments become tomorrow’s core features - as well as leading initiatives that define tomorrow and help build a better internet.</li>
+	<li>Standards &amp; External Impact: Support the team in contributing to global internet standards (e.g., IETF, W3C, NIST) and maintaining Cloudflare’s presence in top-tier academic conferences.</li>
+	<li>Cross-Functional Integration: Partner with Product and Engineering leaders to identify "research-shaped" problems within their stacks and deploy research-led solutions to production.</li>
+	<li>Scientific Rigor &amp; Ethics: Ensure all research is conducted with the highest standards of integrity, particularly regarding data privacy and the ethical implications of AI and cryptography.</li>
+	<li>Evangelism: Help the team communicate their work to both internal and external audiences, such as through the Cloudflare Blog, white papers, and industry talks to maintain our status as a thought leader in the research community.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

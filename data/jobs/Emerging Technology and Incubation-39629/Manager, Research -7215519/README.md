@@ -5,63 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Hybrid - Lisbon</p>
-<h4><strong>Role Summary</strong></h4>
-<p>We are looking for an experienced, empathetic, and highly technical Senior Product Manager to join our Gateway PM team. Working alongside PMs in the same space, you’ll join a growing team to own the core Firewall offering that powers the heart of Cloudflare One, Cloudflare’s SASE/SSE solution.</p>
-<h4><strong>Role Responsibilities</strong></h4>
-<p>You’ll be joining a growing PM team focused on the <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/">SWG (Secure Web Gateway) and DNS filtering</a>&nbsp; portion of our SASE platform. We are looking for someone to take on core pieces of the platform (ex. How network traffic flows), with a focus on the policy engine that spans the entire SWG.&nbsp; Acting as the CEO of your area, this means you'll work alongside sales, support, design, engineering, solution engineering, technical writers, and all pieces of the sales and development cycle.&nbsp;</p>
-<p>We operate with small teams of highly motivated, technical, and experienced engineers. The ideal candidate will have built Firewall, SWG, or other policy based systems in the past. A strong understanding of networking concepts is required.</p>
-<p>Some of your responsibilities will include:</p>
+<h3><strong>Available Locations: Austin, TX</strong></h3>
+<h3>About the department</h3>
+<p>The Cloudflare Research team stands at the nexus of academic inquiry and real-world implementation, operating with a clear mandate: to advance the company's mission to help build a better Internet. We translate public values into tangible, globally-scaled technologies, ensuring the Internet remains secure, private, and accessible.</p>
+<p>Cloudflare Research is unique because we don’t just publish papers; we build the protocols and systems that power a significant portion of the web. Our current focus areas include Artificial Intelligence, Cryptography, Privacy, Network Protocols, Measurement and Performance Evaluation, and Distributed Systems. More information about our vision can be found at<a href="https://research.cloudflare.com"> research.cloudflare.com</a>.</p>
+<h3>What you’ll do</h3>
+<p>As a Research Manager, you will lead a world-class group of researchers - ranging from Junior to Mid, to Senior and Principal Researchers - covering the entire Cloudflare research portfolio. Unlike a traditional engineering manager role, your success is measured by the impact and rigor of scientific output as well as its successful integration into our global network.</p>
+<p>You will act as a bridge between deep academic exploration and product reality. You will foster an environment where "moonshot" ideas are balanced with the practical constraints of a global edge network. Your leadership will ensure that Cloudflare remains a leader in the IETF, W3C, and other standards bodies, while simultaneously delivering code that improves the lives of millions of users.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
 <ul>
-	<li>Write requirements documents and work with engineering and design to build, ship, and support enterprise class mission critical security systems</li>
-	<li>Join pre-sales and post-sales calls with customers, sales, support, etc., to assist with, and help understand all phases of the customer lifecycle</li>
-	<li>Support a global engineering, sales, support, customers, and partners with a flexible schedule (expect occasional later than normal Western European times to effectively engage with a handful of customer and co-worker in PST timezone in North America)</li>
-	<li>Work in a fast paced, dynamic and interrupt driven environment</li>
+	<li>Proven Leadership: <strong>A minimum of 6 years of experience managing high-performing technical or research teams.</strong> Experience managing principle-level individual contributors is highly preferred.</li>
+	<li>Academic and Industry Fluency: An advanced degree or equivalent industry experience in Computer Science, focusing on one of our core areas (Cryptography, AI, Systems, or Networking).</li>
+	<li>Publication Record: Familiarity with the academic lifecycle - understanding how to guide a project from a hypothesis to a peer-reviewed publication or a standard proposal.</li>
+	<li>Operational Excellence: Ability to manage "research uncertainty." You can help researchers navigate blockers and pivot when a hypothesis isn't panning out, while still meeting organizational milestones.</li>
+	<li>Recruitment: A track record of identifying and hiring top-tier research talent from both academia and industry.</li>
+	<li>Communication: Exceptional ability to translate complex theoretical concepts into business value for non-technical stakeholders.</li>
+	<li>Technology: Experience working with/for a hyperscaler or SAAS provider on high impact projects</li>
 </ul>
-<h4><strong>Role Requirements (Must-Have Skills)</strong></h4>
-<p><strong>Must-Have Skills</strong></p>
+<h3>Responsibilities</h3>
 <ul>
-	<li>5-10 years working as a Product Manager or Technical Product Manager shipping enterprise class software, or relevant experience</li>
-	<li>Strong technical understanding of Firewalls, Packet Inspection, TCP/IP, DNS, etc.</li>
-	<li>Experience working alongside multiple disciplines (ex. Design, engineering, support, sales) and decision makers to ship software</li>
-	<li>Excellent customer facing skills (empathy, problem solving, clear and succinct communicator)</li>
-	<li>Ability to work with common networking tools across multiple OS platforms, common scripting languages, and call web APIs, and use systems like Terraform</li>
-	<li>Excellent written and verbal communication skills</li>
-	<li>Ability to speak in English at both a high level and low-level technical discussions</li>
-</ul>
-<p><strong>Nice-to-Have Skills</strong></p>
-<ul>
-	<li>Experience with modern SASE or SSE solutions (either building or implementing)</li>
-	<li>Experience building policy engines and/or complex decision making UI</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Multigenerational Leadership: Manage and mentor a diverse team of Junior, Mid, Senior, and Principal Researchers. You will tailor your management style to support early-career growth while providing high-level strategic partnership to industry-leading Principal scientists.</li>
+	<li>Research Strategy &amp; Roadmap: Help define and execute the long-term research agenda for your domain. This will include aligning research initiatives with Cloudflare’s product roadmap, to ensure that today’s experiments become tomorrow’s core features - as well as leading initiatives that define tomorrow and help build a better internet.</li>
+	<li>Standards &amp; External Impact: Support the team in contributing to global internet standards (e.g., IETF, W3C, NIST) and maintaining Cloudflare’s presence in top-tier academic conferences.</li>
+	<li>Cross-Functional Integration: Partner with Product and Engineering leaders to identify "research-shaped" problems within their stacks and deploy research-led solutions to production.</li>
+	<li>Scientific Rigor &amp; Ethics: Ensure all research is conducted with the highest standards of integrity, particularly regarding data privacy and the ethical implications of AI and cryptography.</li>
+	<li>Evangelism: Help the team communicate their work to both internal and external audiences, such as through the Cloudflare Blog, white papers, and industry talks to maintain our status as a thought leader in the research community.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
