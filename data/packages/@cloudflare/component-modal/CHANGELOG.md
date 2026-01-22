@@ -1,5 +1,14 @@
 # Change Log
 
+## 9.0.34
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/component-button@9.5.2
+  - @cloudflare/component-checkbox@6.0.6
+
 ## 9.0.33
 
 ### Patch Changes

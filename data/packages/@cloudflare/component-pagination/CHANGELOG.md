@@ -1,5 +1,16 @@
 # Change Log
 
+## 11.0.28
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/component-dynamic-content@4.0.5
+  - @cloudflare/component-loading@7.0.6
+  - @cloudflare/util-formatters@2.7.9
+  - @cloudflare/util-markdown@1.2.18
+
 ## 11.0.27
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # Change Log
 
+## 11.0.37
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/component-arrow-swivel@9.0.27
+  - @cloudflare/component-button@9.5.2
+  - @cloudflare/component-link@10.0.4
+
 ## 11.0.36
 
 ### Patch Changes

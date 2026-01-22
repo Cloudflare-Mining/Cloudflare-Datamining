@@ -1,5 +1,17 @@
 # Change Log
 
+## 6.0.36
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/component-box@5.1.2
+  - @cloudflare/component-button@9.5.2
+  - @cloudflare/component-modal@9.0.34
+  - @cloudflare/component-progress@10.0.35
+  - @cloudflare/component-test-dummy@5.0.5
+
 ## 6.0.35
 
 ### Patch Changes

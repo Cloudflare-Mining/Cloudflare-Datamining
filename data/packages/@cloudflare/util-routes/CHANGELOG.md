@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.2.36
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+
 ## 5.2.35
 
 ### Patch Changes

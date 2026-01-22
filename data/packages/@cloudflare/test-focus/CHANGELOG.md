@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.32
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/test-stub@1.0.33
+
 ## 1.0.31
 
 ### Patch Changes

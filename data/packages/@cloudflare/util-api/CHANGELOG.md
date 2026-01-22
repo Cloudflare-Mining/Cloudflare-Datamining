@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.2.30
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/util-en-garde@8.0.13
+
 ## 1.2.29
 
 ### Patch Changes

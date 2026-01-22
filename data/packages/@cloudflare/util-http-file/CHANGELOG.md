@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.2.64
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/util-http@2.0.18
+  - @cloudflare/util-sparrow@6.0.2
+
 ## 1.2.63
 
 ### Patch Changes

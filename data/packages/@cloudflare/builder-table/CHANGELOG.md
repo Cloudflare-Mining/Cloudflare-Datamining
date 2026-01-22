@@ -1,5 +1,14 @@
 # Change Log
 
+## 5.0.35
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/component-sortable@6.0.34
+  - @cloudflare/component-table@11.1.8
+
 ## 5.0.34
 
 ### Patch Changes

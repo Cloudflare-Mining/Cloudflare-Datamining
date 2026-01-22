@@ -1,5 +1,16 @@
 # Change Log
 
+## 8.0.31
+
+### Patch Changes
+
+- 1bc29ca267: Fix: Use IS_RELEASE_CANDIDATE to enable a11y source file attributes in preview builds
+- Updated dependencies [1bc29ca267]
+  - @cloudflare/component-visually-hidden@2.0.6
+  - @cloudflare/util-color@1.1.20
+  - @cloudflare/util-formatters@2.7.9
+  - @cloudflare/util-responsive@4.2.6
+
 ## 8.0.30
 
 ### Patch Changes
