@@ -6,9 +6,11 @@ var SvgBoltSolid = props => /*#__PURE__*/React.createElement("svg", _extends({},
   viewBox: "0 0 16 17",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/BoltSolid.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M12.2726 6.89997H8.90756L9.95756 0.959973L9.04756 0.597473L3.31006 9.24997L3.72756 10.025H7.17756L6.23506 16.025L7.15006 16.37L12.6951 7.66747L12.2726 6.89997Z"
+  d: "M12.2726 6.89997H8.90756L9.95756 0.959973L9.04756 0.597473L3.31006 9.24997L3.72756 10.025H7.17756L6.23506 16.025L7.15006 16.37L12.6951 7.66747L12.2726 6.89997Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/BoltSolid.tsx:12"
 }));
 
 export default SvgBoltSolid;

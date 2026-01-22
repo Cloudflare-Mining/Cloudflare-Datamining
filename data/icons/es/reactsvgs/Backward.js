@@ -6,9 +6,11 @@ var SvgBackward = props => /*#__PURE__*/React.createElement("svg", _extends({}, 
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Backward.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z"
+  d: "M14 7.5H3.439l4.29-4.387-.714-.699L1.55 8l5.465 5.586.714-.7L3.44 8.5h10.56v-1z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Backward.tsx:12"
 }));
 
 export default SvgBackward;

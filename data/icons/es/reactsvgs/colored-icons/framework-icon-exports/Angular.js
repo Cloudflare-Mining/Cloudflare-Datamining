@@ -6,16 +6,22 @@ var SvgAngular = props => /*#__PURE__*/React.createElement("svg", _extends({}, p
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
-}), /*#__PURE__*/React.createElement("defs", null), /*#__PURE__*/React.createElement("polygon", {
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Angular.tsx:5"
+}), /*#__PURE__*/React.createElement("defs", {
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Angular.tsx:12"
+}), /*#__PURE__*/React.createElement("polygon", {
   className: "Angular_svg__a",
-  points: "8 0.255 8 0.255 8 0.255 0.785 2.828 1.885 12.368 8 15.755 8 15.755 8 15.755 14.115 12.368 15.215 2.828 8 0.255"
+  points: "8 0.255 8 0.255 8 0.255 0.785 2.828 1.885 12.368 8 15.755 8 15.755 8 15.755 14.115 12.368 15.215 2.828 8 0.255",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Angular.tsx:13"
 }), /*#__PURE__*/React.createElement("polygon", {
   className: "Angular_svg__b",
-  points: "8 0.255 8 1.975 8 1.968 8 9.818 8 9.818 8 15.755 8 15.755 14.115 12.368 15.215 2.828 8 0.255"
+  points: "8 0.255 8 1.975 8 1.968 8 9.818 8 9.818 8 15.755 8 15.755 14.115 12.368 15.215 2.828 8 0.255",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Angular.tsx:17"
 }), /*#__PURE__*/React.createElement("path", {
   className: "Angular_svg__c",
-  d: "M8,1.9676,3.49,12.0814H5.1712l.9068-2.263H9.9065l.9068,2.263H12.495L8,1.9676ZM9.3175,8.4234H6.6825L8,5.2536Z"
+  d: "M8,1.9676,3.49,12.0814H5.1712l.9068-2.263H9.9065l.9068,2.263H12.495L8,1.9676ZM9.3175,8.4234H6.6825L8,5.2536Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Angular.tsx:21"
 }));
 
 export default SvgAngular;

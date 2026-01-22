@@ -6,11 +6,14 @@ var SvgCreditCard = props => /*#__PURE__*/React.createElement("svg", _extends({}
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CreditCard.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14.027 3.972H2l-.5.5V12l.5.5h12.027l.5-.5V4.472l-.5-.5zm-.5 1v1.163H2.5V4.972h11.027zM2.5 11.5V7.135h11.027V11.5H2.5z"
+  d: "M14.027 3.972H2l-.5.5V12l.5.5h12.027l.5-.5V4.472l-.5-.5zm-.5 1v1.163H2.5V4.972h11.027zM2.5 11.5V7.135h11.027V11.5H2.5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CreditCard.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M11.607 10.35a.75.75 0 100-1.5.75.75 0 000 1.5z"
+  d: "M11.607 10.35a.75.75 0 100-1.5.75.75 0 000 1.5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CreditCard.tsx:13"
 }));
 
 export default SvgCreditCard;

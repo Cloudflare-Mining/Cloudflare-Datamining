@@ -6,9 +6,11 @@ var SvgNone = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/None.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1ZM2.077 8a5.923 5.923 0 0 1 9.714-4.547l-8.306 8.375A5.896 5.896 0 0 1 2.077 8ZM8 13.923a5.896 5.896 0 0 1-3.748-1.346l8.3-8.346A5.923 5.923 0 0 1 8 13.923Z"
+  d: "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1ZM2.077 8a5.923 5.923 0 0 1 9.714-4.547l-8.306 8.375A5.896 5.896 0 0 1 2.077 8ZM8 13.923a5.896 5.896 0 0 1-3.748-1.346l8.3-8.346A5.923 5.923 0 0 1 8 13.923Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/None.tsx:12"
 }));
 
 export default SvgNone;

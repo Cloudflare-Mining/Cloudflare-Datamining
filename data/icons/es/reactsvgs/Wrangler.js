@@ -6,10 +6,12 @@ var SvgWrangler = props => /*#__PURE__*/React.createElement("svg", _extends({}, 
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Wrangler.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M14.417 1H1.583L1 1.583v12.834l.583.583h12.834l.583-.583V1.583L14.417 1Zm-.584 12.833H2.167V2.167h11.666v11.666ZM7.708 6.605 3.625 4.208v1.378l2.618 1.538-2.618 1.535v1.383l4.083-2.4V6.605Zm4.375 4.02H7.708v1.167h4.375v-1.167Z"
+  d: "M14.417 1H1.583L1 1.583v12.834l.583.583h12.834l.583-.583V1.583L14.417 1Zm-.584 12.833H2.167V2.167h11.666v11.666ZM7.708 6.605 3.625 4.208v1.378l2.618 1.538-2.618 1.535v1.383l4.083-2.4V6.605Zm4.375 4.02H7.708v1.167h4.375v-1.167Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Wrangler.tsx:12"
 }));
 
 export default SvgWrangler;

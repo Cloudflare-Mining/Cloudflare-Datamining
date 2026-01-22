@@ -6,12 +6,15 @@ var SvgHome = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Home.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14.172 7.878 8 2.52 1.828 7.878l-.656-.756 6.5-5.641h.656l6.5 5.641-.656.756Z"
+  d: "M14.172 7.878 8 2.52 1.828 7.878l-.656-.756 6.5-5.641h.656l6.5 5.641-.656.756Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Home.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M4 8.101V13h2.125V9.759l.5-.5h2.75l.5.5V13H12V8.101h1V13.5l-.5.5h-9l-.5-.5V8.101h1ZM8.875 13h-1.75v-2.741h1.75V13Z"
+  d: "M4 8.101V13h2.125V9.759l.5-.5h2.75l.5.5V13H12V8.101h1V13.5l-.5.5h-9l-.5-.5V8.101h1ZM8.875 13h-1.75v-2.741h1.75V13Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Home.tsx:13"
 }));
 
 export default SvgHome;

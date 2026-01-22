@@ -6,11 +6,14 @@ var SvgExclamationSign = props => /*#__PURE__*/React.createElement("svg", _exten
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ExclamationSign.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.442 1.95h-.885l-6 11.342.443.733h12l.442-.732-6-11.343zM2.827 13.025L8 3.25l5.172 9.775H2.827z"
+  d: "M8.442 1.95h-.885l-6 11.342.443.733h12l.442-.732-6-11.343zM2.827 13.025L8 3.25l5.172 9.775H2.827z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ExclamationSign.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.48 6.63h-1v3.44h1V6.63zM8.48 10.727h-1v1.146h1v-1.146z"
+  d: "M8.48 6.63h-1v3.44h1V6.63zM8.48 10.727h-1v1.146h1v-1.146z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ExclamationSign.tsx:13"
 }));
 
 export default SvgExclamationSign;

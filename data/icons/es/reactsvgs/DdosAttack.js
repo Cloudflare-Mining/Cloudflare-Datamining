@@ -6,9 +6,11 @@ var SvgDdosAttack = props => /*#__PURE__*/React.createElement("svg", _extends({}
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/DdosAttack.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M32.48 5.95H21.99v4h10.49v-4Zm7.37 5.33H21.99v4h17.86v-4ZM56 16.62H12.49v4H56v-4Zm-6.83 5.33H31.99v4h17.18v-4Zm-22.5 0h-9.18v4h9.18v-4Zm17.74 5.33H21.49v4h22.92v-4Zm0 5.34H30.92v4h13.49v-4Zm-22.92 0H8v4h13.49v-4Zm13.99 5.33H8v4h27.48v-4Zm13.69 0h-7.48v4h7.48v-4Zm-9.32 5.33h-7.94v4h7.94v-4Zm-13.59 0h-7.94v4h7.94v-4Zm9.22 5.34H13.43v4h22.05v-4Zm0 5.33H21.04v4h14.44v-4Z"
+  d: "M32.48 5.95H21.99v4h10.49v-4Zm7.37 5.33H21.99v4h17.86v-4ZM56 16.62H12.49v4H56v-4Zm-6.83 5.33H31.99v4h17.18v-4Zm-22.5 0h-9.18v4h9.18v-4Zm17.74 5.33H21.49v4h22.92v-4Zm0 5.34H30.92v4h13.49v-4Zm-22.92 0H8v4h13.49v-4Zm13.99 5.33H8v4h27.48v-4Zm13.69 0h-7.48v4h7.48v-4Zm-9.32 5.33h-7.94v4h7.94v-4Zm-13.59 0h-7.94v4h7.94v-4Zm9.22 5.34H13.43v4h22.05v-4Zm0 5.33H21.04v4h14.44v-4Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/DdosAttack.tsx:12"
 }));
 
 export default SvgDdosAttack;

@@ -6,11 +6,14 @@ var SvgSecurityBots = props => /*#__PURE__*/React.createElement("svg", _extends(
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/SecurityBots.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M53.984 21.15H34v-5.78a4 4 0 1 0-4 0v5.78H10.016l-2 2v30.776l2 2h43.968l2-2V23.15l-2-2Zm-2 30.776H12.016V25.15h39.968v26.775Z"
+  d: "M53.984 21.15H34v-5.78a4 4 0 1 0-4 0v5.78H10.016l-2 2v30.776l2 2h43.968l2-2V23.15l-2-2Zm-2 30.776H12.016V25.15h39.968v26.775Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/SecurityBots.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M22.677 38.058a3.325 3.325 0 0 0 3.321-3.328 3.325 3.325 0 0 0-3.321-3.328 3.325 3.325 0 0 0-3.321 3.328 3.325 3.325 0 0 0 3.321 3.328Zm18.646 0a3.325 3.325 0 0 0 3.321-3.328 3.325 3.325 0 0 0-3.321-3.328 3.325 3.325 0 0 0-3.321 3.328 3.325 3.325 0 0 0 3.321 3.328Zm-3 4.274H25.678v4h12.645v-4Z"
+  d: "M22.677 38.058a3.325 3.325 0 0 0 3.321-3.328 3.325 3.325 0 0 0-3.321-3.328 3.325 3.325 0 0 0-3.321 3.328 3.325 3.325 0 0 0 3.321 3.328Zm18.646 0a3.325 3.325 0 0 0 3.321-3.328 3.325 3.325 0 0 0-3.321-3.328 3.325 3.325 0 0 0-3.321 3.328 3.325 3.325 0 0 0 3.321 3.328Zm-3 4.274H25.678v4h12.645v-4Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/SecurityBots.tsx:13"
 }));
 
 export default SvgSecurityBots;

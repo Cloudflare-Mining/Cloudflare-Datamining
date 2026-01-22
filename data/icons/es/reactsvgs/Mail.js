@@ -6,9 +6,11 @@ var SvgMail = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Mail.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14.013 3.523h-12l-.5.5v7.954l.5.5h12l.5-.5V4.023l-.5-.5zm-6 5.132L3.335 4.523h9.358l-4.68 4.132zM5.763 8l-3.25 2.87V5.12L5.763 8zm.75.668l1.165 1.027h.662L9.5 8.668l3.193 2.81H3.335l3.178-2.81zM10.263 8l3.25-2.87v5.75L10.263 8z"
+  d: "M14.013 3.523h-12l-.5.5v7.954l.5.5h12l.5-.5V4.023l-.5-.5zm-6 5.132L3.335 4.523h9.358l-4.68 4.132zM5.763 8l-3.25 2.87V5.12L5.763 8zm.75.668l1.165 1.027h.662L9.5 8.668l3.193 2.81H3.335l3.178-2.81zM10.263 8l3.25-2.87v5.75L10.263 8z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Mail.tsx:12"
 }));
 
 export default SvgMail;

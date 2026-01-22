@@ -6,11 +6,14 @@ var SvgFile = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/File.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M13 1.5H3l-.5.5v11.95l.5.5h10l.5-.5V2l-.5-.5zm-.5 11.95h-9V2.5h9v10.95z"
+  d: "M13 1.5H3l-.5.5v11.95l.5.5h10l.5-.5V2l-.5-.5zm-.5 11.95h-9V2.5h9v10.95z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/File.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.965 3.678H4.63v1h3.335v-1zM11.342 5.768H4.63v1h6.712v-1zM11.342 7.857H4.63v1h6.712v-1z"
+  d: "M7.965 3.678H4.63v1h3.335v-1zM11.342 5.768H4.63v1h6.712v-1zM11.342 7.857H4.63v1h6.712v-1z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/File.tsx:13"
 }));
 
 export default SvgFile;

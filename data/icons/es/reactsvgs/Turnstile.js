@@ -6,11 +6,14 @@ var SvgTurnstile = props => /*#__PURE__*/React.createElement("svg", _extends({},
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Turnstile.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.002 2.6a5.991 5.991 0 0 0-4.117 1.637l.317-2.087L3.213 2l-.557 3.664 3.665.557.15-.989-1.882-.285a4.982 4.982 0 1 1-1.46 2.528l-.975-.225A6 6 0 1 0 8.002 2.6Z"
+  d: "M8.002 2.6a5.991 5.991 0 0 0-4.117 1.637l.317-2.087L3.213 2l-.557 3.664 3.665.557.15-.989-1.882-.285a4.982 4.982 0 1 1-1.46 2.528l-.975-.225A6 6 0 1 0 8.002 2.6Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Turnstile.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.178 9.696 5.583 7.822 5 8.452 7.168 11 11 6.638 10.427 6l-3.25 3.696Z"
+  d: "M7.178 9.696 5.583 7.822 5 8.452 7.168 11 11 6.638 10.427 6l-3.25 3.696Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Turnstile.tsx:13"
 }));
 
 export default SvgTurnstile;

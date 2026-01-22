@@ -9,28 +9,36 @@ var SvgGitlab = props => /*#__PURE__*/React.createElement("svg", _extends({}, pr
   fill: "none",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#E24329",
-  d: "M8.052 14.257l2.487-7.65H5.57l2.483 7.65z"
+  d: "M8.052 14.257l2.487-7.65H5.57l2.483 7.65z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:15"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#FCA326",
-  d: "M2.083 6.606l-.758 2.325a.515.515 0 00.187.575l6.538 4.751-5.967-7.65z"
+  d: "M2.083 6.606l-.758 2.325a.515.515 0 00.187.575l6.538 4.751-5.967-7.65z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:16"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#E24329",
-  d: "M2.084 6.606h3.484l-1.5-4.608c-.077-.235-.411-.235-.49 0L2.084 6.606z"
+  d: "M2.084 6.606h3.484l-1.5-4.608c-.077-.235-.411-.235-.49 0L2.084 6.606z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:20"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#FCA326",
-  d: "M14.02 6.606l.755 2.325a.515.515 0 01-.187.575l-6.54 4.751 5.972-7.65z"
+  d: "M14.02 6.606l.755 2.325a.515.515 0 01-.187.575l-6.54 4.751 5.972-7.65z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:24"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#E24329",
-  d: "M14.02 6.606h-3.484l1.497-4.608c.076-.235.41-.235.49 0l1.497 4.608z"
+  d: "M14.02 6.606h-3.484l1.497-4.608c.076-.235.41-.235.49 0l1.497 4.608z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:28"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#FC6D26",
-  d: "M8.049 14.257l2.487-7.65h3.484l-5.971 7.65z"
+  d: "M8.049 14.257l2.487-7.65h3.484l-5.971 7.65z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:32"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#FC6D26",
-  d: "M8.051 14.257l-5.967-7.65h3.484l2.483 7.65z"
+  d: "M8.051 14.257l-5.967-7.65h3.484l2.483 7.65z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/Gitlab.tsx:33"
 }));
 
 export default SvgGitlab;

@@ -6,13 +6,18 @@ var SvgVue = props => /*#__PURE__*/React.createElement("svg", _extends({}, props
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
-}), /*#__PURE__*/React.createElement("defs", null), /*#__PURE__*/React.createElement("polygon", {
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Vue.tsx:5"
+}), /*#__PURE__*/React.createElement("defs", {
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Vue.tsx:12"
+}), /*#__PURE__*/React.createElement("polygon", {
   className: "Vue_svg__a",
-  points: "9.79 1.288 8 4.388 6.21 1.288 0.25 1.288 8 14.712 15.75 1.288 9.79 1.288"
+  points: "9.79 1.288 8 4.388 6.21 1.288 0.25 1.288 8 14.712 15.75 1.288 9.79 1.288",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Vue.tsx:13"
 }), /*#__PURE__*/React.createElement("polygon", {
   className: "Vue_svg__b",
-  points: "9.79 1.288 8 4.388 6.21 1.288 3.35 1.288 8 9.343 12.65 1.288 9.79 1.288"
+  points: "9.79 1.288 8 4.388 6.21 1.288 3.35 1.288 8 9.343 12.65 1.288 9.79 1.288",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Vue.tsx:17"
 }));
 
 export default SvgVue;

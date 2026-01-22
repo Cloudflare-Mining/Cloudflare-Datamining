@@ -6,9 +6,11 @@ var SvgRefresh = props => /*#__PURE__*/React.createElement("svg", _extends({}, p
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Refresh.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.999 2c1.53 0 3.004.586 4.117 1.638l-.317-2.088.988-.15.558 3.664-3.666.557-.15-.989 1.882-.285a4.982 4.982 0 101.46 2.528l.976-.225A6 6 0 117.999 2z"
+  d: "M7.999 2c1.53 0 3.004.586 4.117 1.638l-.317-2.088.988-.15.558 3.664-3.666.557-.15-.989 1.882-.285a4.982 4.982 0 101.46 2.528l.976-.225A6 6 0 117.999 2z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Refresh.tsx:12"
 }));
 
 export default SvgRefresh;

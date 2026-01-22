@@ -6,10 +6,12 @@ var SvgBookmarkSolid = props => /*#__PURE__*/React.createElement("svg", _extends
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/BookmarkSolid.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "m4 .5-.5.5v14.252l.82.384L8 12.566l3.68 3.07.821-.383V1.002l-.5-.5L4 .5Zm3.881 2.211L7.404 4.18H5.86l-.073.226 1.249.907-.477 1.469.192.14L8 6.013l1.249.907.192-.14-.477-1.468 1.25-.907-.074-.226H8.596L8.119 2.71H7.88Z"
+  d: "m4 .5-.5.5v14.252l.82.384L8 12.566l3.68 3.07.821-.383V1.002l-.5-.5L4 .5Zm3.881 2.211L7.404 4.18H5.86l-.073.226 1.249.907-.477 1.469.192.14L8 6.013l1.249.907.192-.14-.477-1.468 1.25-.907-.074-.226H8.596L8.119 2.71H7.88Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/BookmarkSolid.tsx:12"
 }));
 
 export default SvgBookmarkSolid;

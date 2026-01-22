@@ -6,11 +6,14 @@ var SvgInternetBrowser = props => /*#__PURE__*/React.createElement("svg", _exten
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/InternetBrowser.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M3.623 5.4a.522.522 0 100-1.045.522.522 0 000 1.045zM5.298 5.4a.522.522 0 100-1.045.522.522 0 000 1.045zM6.97 5.4a.522.522 0 100-1.045.522.522 0 000 1.045z"
+  d: "M3.623 5.4a.522.522 0 100-1.045.522.522 0 000 1.045zM5.298 5.4a.522.522 0 100-1.045.522.522 0 000 1.045zM6.97 5.4a.522.522 0 100-1.045.522.522 0 000 1.045z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/InternetBrowser.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14 3.017H2l-.5.5v9.968l.5.5h12l.5-.5V3.517l-.5-.5zm-.5 1V5.75h-11V4.017h11zm-11 8.968V6.75h11V13l-11-.015z"
+  d: "M14 3.017H2l-.5.5v9.968l.5.5h12l.5-.5V3.517l-.5-.5zm-.5 1V5.75h-11V4.017h11zm-11 8.968V6.75h11V13l-11-.015z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/InternetBrowser.tsx:13"
 }));
 
 export default SvgInternetBrowser;

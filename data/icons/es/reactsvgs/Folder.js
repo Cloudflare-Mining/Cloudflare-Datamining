@@ -6,13 +6,17 @@ var SvgFolder = props => /*#__PURE__*/React.createElement("svg", _extends({}, pr
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Folder.tsx:5"
 }), /*#__PURE__*/React.createElement("g", {
-  fillRule: "evenodd"
+  fillRule: "evenodd",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Folder.tsx:12"
 }, /*#__PURE__*/React.createElement("path", {
-  d: "M1.5 3l.5-.5h4.75l.419.227.852 1.306H14l.5.5V13l-.5.5H2l-.5-.5V3zm1 .5v9h11V5.033H7.75l-.419-.227L6.48 3.5H2.5z"
+  d: "M1.5 3l.5-.5h4.75l.419.227.852 1.306H14l.5.5V13l-.5.5H2l-.5-.5V3zm1 .5v9h11V5.033H7.75l-.419-.227L6.48 3.5H2.5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Folder.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14 8H2V7h12v1z"
+  d: "M14 8H2V7h12v1z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Folder.tsx:14"
 })));
 
 export default SvgFolder;

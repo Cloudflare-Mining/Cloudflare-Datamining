@@ -6,10 +6,12 @@ var SvgWaitingRoom = props => /*#__PURE__*/React.createElement("svg", _extends({
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WaitingRoom.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M3 2l.5-.5h9l.5.5v3.5h1l.5.5v5.75l-.5.5h-2v2.25h-1v-2.25H5v2.25H4v-2.25H2l-.5-.5V6l.5-.5h1V2zm9 .5v3h-.5L11 6v2.75H5V6l-.5-.5H4v-3h8zm-9.5 8.75V6.5H4v2.75l.5.5h7l.5-.5V6.5h1.5v4.75h-11z"
+  d: "M3 2l.5-.5h9l.5.5v3.5h1l.5.5v5.75l-.5.5h-2v2.25h-1v-2.25H5v2.25H4v-2.25H2l-.5-.5V6l.5-.5h1V2zm9 .5v3h-.5L11 6v2.75H5V6l-.5-.5H4v-3h8zm-9.5 8.75V6.5H4v2.75l.5.5h7l.5-.5V6.5h1.5v4.75h-11z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WaitingRoom.tsx:12"
 }));
 
 export default SvgWaitingRoom;

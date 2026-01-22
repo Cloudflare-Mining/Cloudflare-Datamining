@@ -6,9 +6,11 @@ var SvgArrowExternalLink = props => /*#__PURE__*/React.createElement("svg", _ext
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ArrowExternalLink.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "m15.983 16.26.034 4 27.115-.22-28.546 28.546 2.828 2.828L45.96 22.868l-.22 27.115 4 .034.277-34.034-34.034.277Z"
+  d: "m15.983 16.26.034 4 27.115-.22-28.546 28.546 2.828 2.828L45.96 22.868l-.22 27.115 4 .034.277-34.034-34.034.277Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ArrowExternalLink.tsx:12"
 }));
 
 export default SvgArrowExternalLink;

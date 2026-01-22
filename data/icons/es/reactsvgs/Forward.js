@@ -6,9 +6,11 @@ var SvgForward = props => /*#__PURE__*/React.createElement("svg", _extends({}, p
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Forward.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M9.005 2.408l-.697.712 4.467 4.38H1.503v1h11.272l-4.467 4.38.697.715L14.715 8l-5.71-5.592z"
+  d: "M9.005 2.408l-.697.712 4.467 4.38H1.503v1h11.272l-4.467 4.38.697.715L14.715 8l-5.71-5.592z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Forward.tsx:12"
 }));
 
 export default SvgForward;

@@ -6,15 +6,22 @@ var SvgFilter = props => /*#__PURE__*/React.createElement("svg", _extends({}, pr
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Filter.tsx:5"
 }), /*#__PURE__*/React.createElement("g", {
-  clipPath: "url(#filter_svg__clip0)"
+  clipPath: "url(#filter_svg__clip0)",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Filter.tsx:12"
 }, /*#__PURE__*/React.createElement("path", {
-  d: "M8.38 14.595l-.018-2.475-.73.005.02 2.502-.65-.625-.505.525 1.535 1.48 1.48-1.537-.525-.505-.607.63zM4.25 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM6.75 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM9.25 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM11.75 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM5.55 3.995a.75.75 0 100-1.5.75.75 0 000 1.5zM8.05 3.995a.75.75 0 100-1.5.75.75 0 000 1.5zM10.55 3.995a.75.75 0 100-1.5.75.75 0 000 1.5zM6.725 11.123l.5.5h1.55l.5-.5v-2.75l3.55-3.123-.325-.865h-9l-.325.865 3.55 3.112v2.76zm-1.918-5.75h6.38L8.437 7.77l-.17.372v2.5H7.71v-2.5l-.168-.37-2.735-2.4z"
-})), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
-  id: "filter_svg__clip0"
+  d: "M8.38 14.595l-.018-2.475-.73.005.02 2.502-.65-.625-.505.525 1.535 1.48 1.48-1.537-.525-.505-.607.63zM4.25 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM6.75 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM9.25 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM11.75 1.612a.75.75 0 100-1.5.75.75 0 000 1.5zM5.55 3.995a.75.75 0 100-1.5.75.75 0 000 1.5zM8.05 3.995a.75.75 0 100-1.5.75.75 0 000 1.5zM10.55 3.995a.75.75 0 100-1.5.75.75 0 000 1.5zM6.725 11.123l.5.5h1.55l.5-.5v-2.75l3.55-3.123-.325-.865h-9l-.325.865 3.55 3.112v2.76zm-1.918-5.75h6.38L8.437 7.77l-.17.372v2.5H7.71v-2.5l-.168-.37-2.735-2.4z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Filter.tsx:13"
+})), /*#__PURE__*/React.createElement("defs", {
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Filter.tsx:15"
+}, /*#__PURE__*/React.createElement("clipPath", {
+  id: "filter_svg__clip0",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Filter.tsx:16"
 }, /*#__PURE__*/React.createElement("path", {
-  d: "M0 0h16v16H0z"
+  d: "M0 0h16v16H0z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Filter.tsx:17"
 }))));
 
 export default SvgFilter;

@@ -6,9 +6,11 @@ var SvgRemove = props => /*#__PURE__*/React.createElement("svg", _extends({}, pr
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Remove.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14.34 13.605L8.696 8.023l5.582-5.645-.71-.703-5.583 5.644L2.34 1.737l-.703.711L7.282 8.03 1.7 13.675l.71.703 5.583-5.645 5.644 5.583.703-.711z"
+  d: "M14.34 13.605L8.696 8.023l5.582-5.645-.71-.703-5.583 5.644L2.34 1.737l-.703.711L7.282 8.03 1.7 13.675l.71.703 5.583-5.645 5.644 5.583.703-.711z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Remove.tsx:12"
 }));
 
 export default SvgRemove;

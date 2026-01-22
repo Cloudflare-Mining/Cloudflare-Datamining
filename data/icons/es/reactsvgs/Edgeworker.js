@@ -6,13 +6,17 @@ var SvgEdgeworker = props => /*#__PURE__*/React.createElement("svg", _extends({}
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Edgeworker.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M6.21 12.293l-3.215-4.3 3.197-4.178-.617-.842-3.603 4.712-.005.603 3.62 4.847.623-.842z"
+  d: "M6.21 12.293l-3.215-4.3 3.197-4.178-.617-.842-3.603 4.712-.005.603 3.62 4.847.623-.842z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Edgeworker.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.332 1.988H6.095l4.462 6.1-4.357 5.9h1.245L11.8 8.09 7.332 1.988z"
+  d: "M7.332 1.988H6.095l4.462 6.1-4.357 5.9h1.245L11.8 8.09 7.332 1.988z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Edgeworker.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M9.725 1.988H8.472l4.533 6.027-4.533 5.973h1.255l4.303-5.67v-.603L9.725 1.988z"
+  d: "M9.725 1.988H8.472l4.533 6.027-4.533 5.973h1.255l4.303-5.67v-.603L9.725 1.988z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Edgeworker.tsx:14"
 }));
 
 export default SvgEdgeworker;

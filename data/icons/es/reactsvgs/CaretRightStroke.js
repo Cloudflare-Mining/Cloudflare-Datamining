@@ -6,9 +6,11 @@ var SvgCaretRightStroke = props => /*#__PURE__*/React.createElement("svg", _exte
   viewBox: "0 0 64 64",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretRightStroke.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M19.96 58.014L17.132 55.186L40.318 32L17.132 8.81402L19.96 5.98602L45.975 32L19.96 58.014Z"
+  d: "M19.96 58.014L17.132 55.186L40.318 32L17.132 8.81402L19.96 5.98602L45.975 32L19.96 58.014Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretRightStroke.tsx:12"
 }));
 
 export default SvgCaretRightStroke;

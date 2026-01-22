@@ -6,9 +6,11 @@ var SvgMore = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/More.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M3.05 9.585a1.584 1.584 0 11-.002-3.17 1.584 1.584 0 01.002 3.17zM8 9.585a1.584 1.584 0 110-3.17 1.584 1.584 0 010 3.17zM12.95 9.585a1.585 1.585 0 11.002-3.17 1.585 1.585 0 01-.002 3.17z"
+  d: "M3.05 9.585a1.584 1.584 0 11-.002-3.17 1.584 1.584 0 01.002 3.17zM8 9.585a1.584 1.584 0 110-3.17 1.584 1.584 0 010 3.17zM12.95 9.585a1.585 1.585 0 11.002-3.17 1.585 1.585 0 01-.002 3.17z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/More.tsx:12"
 }));
 
 export default SvgMore;

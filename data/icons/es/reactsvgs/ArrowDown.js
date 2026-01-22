@@ -6,9 +6,11 @@ var SvgArrowDown = props => /*#__PURE__*/React.createElement("svg", _extends({},
   viewBox: "0 0 64 64",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ArrowDown.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M54.75 36.01L51.9 33.22L34.38 51.09L34.38 5.99996L30.38 5.99996L30.38 51.09L12.86 33.22L10 36.01L32.38 58.85L54.75 36.01Z"
+  d: "M54.75 36.01L51.9 33.22L34.38 51.09L34.38 5.99996L30.38 5.99996L30.38 51.09L12.86 33.22L10 36.01L32.38 58.85L54.75 36.01Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ArrowDown.tsx:12"
 }));
 
 export default SvgArrowDown;

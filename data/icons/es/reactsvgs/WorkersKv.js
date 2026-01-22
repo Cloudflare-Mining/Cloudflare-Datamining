@@ -6,12 +6,15 @@ var SvgWorkersKv = props => /*#__PURE__*/React.createElement("svg", _extends({},
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersKv.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M5.5 11.238H3.75v-1H5.5v1zM3.75 9.237H5.5v-1H3.75v1zM5.5 7.237H3.75v-1H5.5v1zM6.5 11.238h5.75v-1H6.5v1zM12.25 9.237H6.5v-1h5.75v1zM6.5 7.237h5.75v-1H6.5v1z"
+  d: "M5.5 11.238H3.75v-1H5.5v1zM3.75 9.237H5.5v-1H3.75v1zM5.5 7.237H3.75v-1H5.5v1zM6.5 11.238h5.75v-1H6.5v1zM12.25 9.237H6.5v-1h5.75v1zM6.5 7.237h5.75v-1H6.5v1z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersKv.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M1.5 3l.5-.5h4.75l.419.227.852 1.306H14l.5.5V13l-.5.5H2l-.5-.5V3zm1 .5v9h11V5.033H7.75l-.419-.227L6.48 3.5H2.5z"
+  d: "M1.5 3l.5-.5h4.75l.419.227.852 1.306H14l.5.5V13l-.5.5H2l-.5-.5V3zm1 .5v9h11V5.033H7.75l-.419-.227L6.48 3.5H2.5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersKv.tsx:13"
 }));
 
 export default SvgWorkersKv;

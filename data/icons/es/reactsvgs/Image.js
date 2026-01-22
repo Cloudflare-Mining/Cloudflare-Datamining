@@ -6,11 +6,14 @@ var SvgImage = props => /*#__PURE__*/React.createElement("svg", _extends({}, pro
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Image.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14 2.98H2l-.5.5v9.967l.5.5h12l.5-.5V3.48l-.5-.5zm-.5 1v4.672l-2-1.637-.655.02-1.27 1.17-1.357-1-.618.02-3.5 2.925-1.6-1.1V3.98h11zm-11 8.967V10.27l1.325.925.605-.027L7.938 8.25l1.375 1 .634-.035 1.25-1.158L13.5 9.943v3l-11 .005z"
+  d: "M14 2.98H2l-.5.5v9.967l.5.5h12l.5-.5V3.48l-.5-.5zm-.5 1v4.672l-2-1.637-.655.02-1.27 1.17-1.357-1-.618.02-3.5 2.925-1.6-1.1V3.98h11zm-11 8.967V10.27l1.325.925.605-.027L7.938 8.25l1.375 1 .634-.035 1.25-1.158L13.5 9.943v3l-11 .005z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Image.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M4.77 8.04a1 1 0 100-2 1 1 0 000 2z"
+  d: "M4.77 8.04a1 1 0 100-2 1 1 0 000 2z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Image.tsx:13"
 }));
 
 export default SvgImage;

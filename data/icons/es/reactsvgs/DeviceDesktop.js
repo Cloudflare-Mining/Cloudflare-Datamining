@@ -6,10 +6,12 @@ var SvgDeviceDesktop = props => /*#__PURE__*/React.createElement("svg", _extends
   viewBox: "0 0 64 64",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/DeviceDesktop.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M5 13L7 11H58L60 13V45L58 47H33.998V52H45.542V56H18.458V52H29.998V47H7L5 45V13ZM56 43H9V15H56V43Z"
+  d: "M5 13L7 11H58L60 13V45L58 47H33.998V52H45.542V56H18.458V52H29.998V47H7L5 45V13ZM56 43H9V15H56V43Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/DeviceDesktop.tsx:12"
 }));
 
 export default SvgDeviceDesktop;

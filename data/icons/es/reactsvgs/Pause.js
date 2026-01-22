@@ -6,11 +6,14 @@ var SvgPause = props => /*#__PURE__*/React.createElement("svg", _extends({}, pro
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Pause.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8 1.5A6.5 6.5 0 1014.5 8 6.507 6.507 0 008 1.5zm0 12A5.5 5.5 0 1113.5 8 5.507 5.507 0 018 13.5z"
+  d: "M8 1.5A6.5 6.5 0 1014.5 8 6.507 6.507 0 008 1.5zm0 12A5.5 5.5 0 1113.5 8 5.507 5.507 0 018 13.5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Pause.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7 5H6v6h1V5zM10 5H9v6h1V5z"
+  d: "M7 5H6v6h1V5zM10 5H9v6h1V5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Pause.tsx:13"
 }));
 
 export default SvgPause;

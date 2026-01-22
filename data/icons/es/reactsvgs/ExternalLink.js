@@ -6,11 +6,14 @@ var SvgExternalLink = props => /*#__PURE__*/React.createElement("svg", _extends(
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ExternalLink.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M9.996 1.532l.008 1 2.779-.022-4.136 4.136.707.707 4.136-4.136-.023 2.779 1 .008.037-4.508-4.508.036z"
+  d: "M9.996 1.532l.008 1 2.779-.022-4.136 4.136.707.707 4.136-4.136-.023 2.779 1 .008.037-4.508-4.508.036z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ExternalLink.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M12 12H4V4h4.5V3h-5l-.5.5v9l.5.5h9l.5-.5v-5h-1V12z"
+  d: "M12 12H4V4h4.5V3h-5l-.5.5v9l.5.5h9l.5-.5v-5h-1V12z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ExternalLink.tsx:13"
 }));
 
 export default SvgExternalLink;

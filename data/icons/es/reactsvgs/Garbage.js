@@ -6,14 +6,18 @@ var SvgGarbage = props => /*#__PURE__*/React.createElement("svg", _extends({}, p
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Garbage.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M3.5 13.621V5.25h1v8h7v-8h1v8.392l-.64.608H4.134l-.635-.629Z"
+  d: "M3.5 13.621V5.25h1v8h7v-8h1v8.392l-.64.608H4.134l-.635-.629Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Garbage.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M6 6.25h1V12H6V6.25Zm3 0h1V12H9V6.25Z"
+  d: "M6 6.25h1V12H6V6.25Zm3 0h1V12H9V6.25Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Garbage.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M2.5 4.5h11v-1h-3V2.125L9.876 1.5H6.124l-.624.625V3.5h-3v1Zm7-2h-3v1h3v-1Z"
+  d: "M2.5 4.5h11v-1h-3V2.125L9.876 1.5H6.124l-.624.625V3.5h-3v1Zm7-2h-3v1h3v-1Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Garbage.tsx:14"
 }));
 
 export default SvgGarbage;

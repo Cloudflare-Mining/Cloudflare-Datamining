@@ -6,11 +6,14 @@ var SvgCaseStudy = props => /*#__PURE__*/React.createElement("svg", _extends({},
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaseStudy.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "m55.41 22.59-16-16L38 6H18l-2 2v8h4v-6h16v14l2 2h14v28H20v-6h-4v8l2 2h36l2-2V24l-.59-1.41ZM40 22v-9.16l4.58 4.58L49.17 22H40Z"
+  d: "m55.41 22.59-16-16L38 6H18l-2 2v8h4v-6h16v14l2 2h14v28H20v-6h-4v8l2 2h36l2-2V24l-.59-1.41ZM40 22v-9.16l4.58 4.58L49.17 22H40Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaseStudy.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "m26.26 41.79 8.83 8 2.69-3-8.83-8a12.53 12.53 0 1 0-2.69 2.95v.05ZM10 32a8.5 8.5 0 1 1 8.5 8.5A8.51 8.51 0 0 1 10 32Z"
+  d: "m26.26 41.79 8.83 8 2.69-3-8.83-8a12.53 12.53 0 1 0-2.69 2.95v.05ZM10 32a8.5 8.5 0 1 1 8.5 8.5A8.51 8.51 0 0 1 10 32Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaseStudy.tsx:13"
 }));
 
 export default SvgCaseStudy;

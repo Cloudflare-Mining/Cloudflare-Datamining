@@ -6,11 +6,14 @@ var SvgLink = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Link.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M1 6.75A2.253 2.253 0 013.25 4.5h4.5a2.25 2.25 0 110 4.5H7v1h.75a3.25 3.25 0 000-6.5h-4.5a3.25 3.25 0 000 6.5H4V9h-.75A2.253 2.253 0 011 6.75z"
+  d: "M1 6.75A2.253 2.253 0 013.25 4.5h4.5a2.25 2.25 0 110 4.5H7v1h.75a3.25 3.25 0 000-6.5h-4.5a3.25 3.25 0 000 6.5H4V9h-.75A2.253 2.253 0 011 6.75z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Link.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M12.75 6H12v1h.75a2.25 2.25 0 010 4.5h-4.5a2.25 2.25 0 010-4.5H9V6h-.75a3.25 3.25 0 000 6.5h4.5a3.25 3.25 0 100-6.5z"
+  d: "M12.75 6H12v1h.75a2.25 2.25 0 010 4.5h-4.5a2.25 2.25 0 010-4.5H9V6h-.75a3.25 3.25 0 000 6.5h4.5a3.25 3.25 0 100-6.5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Link.tsx:13"
 }));
 
 export default SvgLink;

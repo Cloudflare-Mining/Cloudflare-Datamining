@@ -6,12 +6,17 @@ var SvgZola = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
-}), /*#__PURE__*/React.createElement("defs", null), /*#__PURE__*/React.createElement("path", {
-  d: "M14.2969,15.75H1.7031A1.49,1.49,0,0,1,.25,14.2969V1.7031A1.49,1.49,0,0,1,1.7031.25H14.2a1.5117,1.5117,0,0,1,1.55,1.4531V14.2A1.5117,1.5117,0,0,1,14.2969,15.75Z"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Zola.tsx:5"
+}), /*#__PURE__*/React.createElement("defs", {
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Zola.tsx:12"
+}), /*#__PURE__*/React.createElement("path", {
+  d: "M14.2969,15.75H1.7031A1.49,1.49,0,0,1,.25,14.2969V1.7031A1.49,1.49,0,0,1,1.7031.25H14.2a1.5117,1.5117,0,0,1,1.55,1.4531V14.2A1.5117,1.5117,0,0,1,14.2969,15.75Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Zola.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
   className: "Zola_svg__a",
-  d: "M4.9969,11.5359,9.7437,4.4641H5.3844V3.4953h5.6187v.9688L6.2563,11.5359h4.7468l-.1937.9688H4.9969Z"
+  d: "M4.9969,11.5359,9.7437,4.4641H5.3844V3.4953h5.6187v.9688L6.2563,11.5359h4.7468l-.1937.9688H4.9969Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/colored-icons/framework-icon-exports/Zola.tsx:14"
 }));
 
 export default SvgZola;

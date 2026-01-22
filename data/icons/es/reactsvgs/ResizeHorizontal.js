@@ -6,9 +6,11 @@ var SvgResizeHorizontal = props => /*#__PURE__*/React.createElement("svg", _exte
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ResizeHorizontal.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M9.678 14.516l-1.053-.436V1.436L9.678 1 16 7.322v.872l-6.322 6.322zM7.375 1.439v12.643l-1.053.436L0 8.196v-.872l6.322-6.321 1.053.436z"
+  d: "M9.678 14.516l-1.053-.436V1.436L9.678 1 16 7.322v.872l-6.322 6.322zM7.375 1.439v12.643l-1.053.436L0 8.196v-.872l6.322-6.321 1.053.436z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ResizeHorizontal.tsx:12"
 }));
 
 export default SvgResizeHorizontal;

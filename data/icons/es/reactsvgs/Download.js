@@ -6,9 +6,11 @@ var SvgDownload = props => /*#__PURE__*/React.createElement("svg", _extends({}, 
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Download.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M11.962 7.442l-.712-.7L8.36 9.69V1.975h-1V9.69L4.472 6.742l-.715.7L7.86 11.63l4.102-4.188zM13.357 12.998H2.477v1h10.88v-1z"
+  d: "M11.962 7.442l-.712-.7L8.36 9.69V1.975h-1V9.69L4.472 6.742l-.715.7L7.86 11.63l4.102-4.188zM13.357 12.998H2.477v1h10.88v-1z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Download.tsx:12"
 }));
 
 export default SvgDownload;

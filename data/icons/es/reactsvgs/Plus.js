@@ -6,9 +6,11 @@ var SvgPlus = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Plus.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14.003 8.466l-.006-1-5.5.031-.03-5.5-1 .006.03 5.5-5.5.03.006 1 5.5-.03.03 5.5 1-.006-.03-5.5 5.5-.03z"
+  d: "M14.003 8.466l-.006-1-5.5.031-.03-5.5-1 .006.03 5.5-5.5.03.006 1 5.5-.03.03 5.5 1-.006-.03-5.5 5.5-.03z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Plus.tsx:12"
 }));
 
 export default SvgPlus;

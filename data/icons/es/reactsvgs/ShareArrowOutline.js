@@ -6,17 +6,24 @@ var SvgShareArrowOutline = props => /*#__PURE__*/React.createElement("svg", _ext
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ShareArrowOutline.tsx:5"
 }), /*#__PURE__*/React.createElement("g", {
-  clipPath: "url(#share-arrow-outline_svg__a)"
+  clipPath: "url(#share-arrow-outline_svg__a)",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ShareArrowOutline.tsx:12"
 }, /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
   d: "M5.854 3.932 7.5 2.286V9.5h1V2.336l1.596 1.596.707-.707L8.328.75 7.975.396 7.62.75 5.146 3.225zM3 5l-.5.5v8l.5.5h10l.5-.5v-8L13 5h-3v1h2.5v7h-9V6H6V5z",
-  clipRule: "evenodd"
-})), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
-  id: "share-arrow-outline_svg__a"
+  clipRule: "evenodd",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ShareArrowOutline.tsx:13"
+})), /*#__PURE__*/React.createElement("defs", {
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ShareArrowOutline.tsx:19"
+}, /*#__PURE__*/React.createElement("clipPath", {
+  id: "share-arrow-outline_svg__a",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ShareArrowOutline.tsx:20"
 }, /*#__PURE__*/React.createElement("path", {
-  d: "M0 0h16v16H0z"
+  d: "M0 0h16v16H0z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/ShareArrowOutline.tsx:21"
 }))));
 
 export default SvgShareArrowOutline;

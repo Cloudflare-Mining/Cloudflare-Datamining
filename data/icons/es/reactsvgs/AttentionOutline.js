@@ -6,13 +6,17 @@ var SvgAttentionOutline = props => /*#__PURE__*/React.createElement("svg", _exte
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/AttentionOutline.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.44249 1.94995H7.55749L1.5575 13.2925L2 14.025H14L14.4425 13.2925L8.44249 1.94995ZM2.8275 13.025L7.99999 3.24995L13.1725 13.025H2.8275Z"
+  d: "M8.44249 1.94995H7.55749L1.5575 13.2925L2 14.025H14L14.4425 13.2925L8.44249 1.94995ZM2.8275 13.025L7.99999 3.24995L13.1725 13.025H2.8275Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/AttentionOutline.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.47999 6.62995H7.47999V10.07H8.47999V6.62995Z"
+  d: "M8.47999 6.62995H7.47999V10.07H8.47999V6.62995Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/AttentionOutline.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.47999 10.7275H7.47999V11.8725H8.47999V10.7275Z"
+  d: "M8.47999 10.7275H7.47999V11.8725H8.47999V10.7275Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/AttentionOutline.tsx:14"
 }));
 
 export default SvgAttentionOutline;

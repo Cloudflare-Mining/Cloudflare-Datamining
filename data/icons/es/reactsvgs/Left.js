@@ -6,9 +6,11 @@ var SvgLeft = props => /*#__PURE__*/React.createElement("svg", _extends({}, prop
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Left.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M11.022 14.503L4.518 8l6.504-6.504.707.707L5.932 8l5.797 5.796-.707.707z"
+  d: "M11.022 14.503L4.518 8l6.504-6.504.707.707L5.932 8l5.797 5.796-.707.707z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Left.tsx:12"
 }));
 
 export default SvgLeft;

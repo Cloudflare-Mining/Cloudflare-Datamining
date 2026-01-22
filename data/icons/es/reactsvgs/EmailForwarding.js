@@ -6,18 +6,26 @@ var SvgEmailForwarding = props => /*#__PURE__*/React.createElement("svg", _exten
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/EmailForwarding.tsx:5"
 }), /*#__PURE__*/React.createElement("g", {
-  clipPath: "url(#email-forwarding_svg__clip0)"
+  clipPath: "url(#email-forwarding_svg__clip0)",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/EmailForwarding.tsx:12"
 }, /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M3.728 4l.5-.5h11.286l.5.5v7.983l-.5.5H4.228l-.5-.5V4zm4.037 3.963l-3.037 2.862v-5.68l3.037 2.818zm-2.277 3.52L8.5 8.644l1.03.956h.68l1.031-.955 3.013 2.838H5.488zm9.526-.658v-5.68l-3.038 2.818 3.037 2.862zM9.87 8.552L5.502 4.5h8.737L9.871 8.552z"
+  d: "M3.728 4l.5-.5h11.286l.5.5v7.983l-.5.5H4.228l-.5-.5V4zm4.037 3.963l-3.037 2.862v-5.68l3.037 2.818zm-2.277 3.52L8.5 8.644l1.03.956h.68l1.031-.955 3.013 2.838H5.488zm9.526-.658v-5.68l-3.038 2.818 3.037 2.862zM9.87 8.552L5.502 4.5h8.737L9.871 8.552z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/EmailForwarding.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M.75 6.5H3v-1H.75v1zM3 8.5H0v-1h3v1zM.75 10.5H3v-1H.75v1z"
-})), /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
-  id: "email-forwarding_svg__clip0"
+  d: "M.75 6.5H3v-1H.75v1zM3 8.5H0v-1h3v1zM.75 10.5H3v-1H.75v1z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/EmailForwarding.tsx:17"
+})), /*#__PURE__*/React.createElement("defs", {
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/EmailForwarding.tsx:19"
+}, /*#__PURE__*/React.createElement("clipPath", {
+  id: "email-forwarding_svg__clip0",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/EmailForwarding.tsx:20"
 }, /*#__PURE__*/React.createElement("path", {
-  d: "M0 0h16v16H0z"
+  d: "M0 0h16v16H0z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/EmailForwarding.tsx:21"
 }))));
 
 export default SvgEmailForwarding;

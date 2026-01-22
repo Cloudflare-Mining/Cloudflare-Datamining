@@ -6,9 +6,11 @@ var SvgSubtract = props => /*#__PURE__*/React.createElement("svg", _extends({}, 
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Subtract.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14 7.5H2v1h12v-1Z"
+  d: "M14 7.5H2v1h12v-1Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Subtract.tsx:12"
 }));
 
 export default SvgSubtract;

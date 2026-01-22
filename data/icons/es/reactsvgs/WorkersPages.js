@@ -6,15 +6,20 @@ var SvgWorkersPages = props => /*#__PURE__*/React.createElement("svg", _extends(
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersPages.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "m6.22 12.305-3.198-4.3 3.181-4.178-.614-.842-3.584 4.713L2 8.3l3.601 4.848.62-.843Z"
+  d: "m6.22 12.305-3.198-4.3 3.181-4.178-.614-.842-3.584 4.713L2 8.3l3.601 4.848.62-.843Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersPages.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.337 2h-1.23l4.439 6.1L6.21 14h1.238l4.333-5.898L7.337 2Z"
+  d: "M7.337 2h-1.23l4.439 6.1L6.21 14h1.238l4.333-5.898L7.337 2Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersPages.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M9.717 2H8.471l4.51 6.027L8.47 14h1.25L14 8.33v-.603L9.717 2Z"
+  d: "M9.717 2H8.471l4.51 6.027L8.47 14h1.25L14 8.33v-.603L9.717 2Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersPages.tsx:14"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "m7.771 5.578-.335 1.716h.877l.295.538-2.227 3.365-.486-.635.329-1.7h-.878l-.295-.537 2.223-3.424.497.677Z"
+  d: "m7.771 5.578-.335 1.716h.877l.295.538-2.227 3.365-.486-.635.329-1.7h-.878l-.295-.537 2.223-3.424.497.677Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/WorkersPages.tsx:15"
 }));
 
 export default SvgWorkersPages;

@@ -6,10 +6,12 @@ var SvgMinus = props => /*#__PURE__*/React.createElement("svg", _extends({}, pro
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Minus.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M4.389 2.595A6.5 6.5 0 018 1.5 6.507 6.507 0 0114.5 8 6.5 6.5 0 114.389 2.595zM4 7.5h8v1H4v-1z"
+  d: "M4.389 2.595A6.5 6.5 0 018 1.5 6.507 6.507 0 0114.5 8 6.5 6.5 0 114.389 2.595zM4 7.5h8v1H4v-1z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Minus.tsx:12"
 }));
 
 export default SvgMinus;

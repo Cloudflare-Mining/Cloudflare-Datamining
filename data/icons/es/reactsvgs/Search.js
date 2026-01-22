@@ -6,9 +6,11 @@ var SvgSearch = props => /*#__PURE__*/React.createElement("svg", _extends({}, pr
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Search.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14.84 13.377L9.75 8.75a4.577 4.577 0 10-.673.738l5.088 4.627.675-.738zm-8.775-3.75A3.565 3.565 0 119.63 6.052a3.57 3.57 0 01-3.565 3.566v.01z"
+  d: "M14.84 13.377L9.75 8.75a4.577 4.577 0 10-.673.738l5.088 4.627.675-.738zm-8.775-3.75A3.565 3.565 0 119.63 6.052a3.57 3.57 0 01-3.565 3.566v.01z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Search.tsx:12"
 }));
 
 export default SvgSearch;

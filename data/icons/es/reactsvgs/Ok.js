@@ -6,10 +6,12 @@ var SvgOk = props => /*#__PURE__*/React.createElement("svg", _extends({}, props,
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Ok.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M14.485 4.347l-8.324 8.625-4.648-4.877.724-.69 3.929 4.123 7.6-7.875.72.694z"
+  d: "M14.485 4.347l-8.324 8.625-4.648-4.877.724-.69 3.929 4.123 7.6-7.875.72.694z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Ok.tsx:12"
 }));
 
 export default SvgOk;

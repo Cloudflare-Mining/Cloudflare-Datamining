@@ -6,10 +6,12 @@ var SvgAdd = props => /*#__PURE__*/React.createElement("svg", _extends({}, props
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Add.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M4.389 2.595A6.5 6.5 0 018 1.5 6.507 6.507 0 0114.5 8 6.5 6.5 0 114.389 2.595zm4.108 4.902l3.939-.022.005 1-3.938.022.022 3.939-1 .005-.022-3.938-3.939.022-.006-1 3.94-.022-.023-3.939 1-.006.022 3.94z"
+  d: "M4.389 2.595A6.5 6.5 0 018 1.5 6.507 6.507 0 0114.5 8 6.5 6.5 0 114.389 2.595zm4.108 4.902l3.939-.022.005 1-3.938.022.022 3.939-1 .005-.022-3.938-3.939.022-.006-1 3.94-.022-.023-3.939 1-.006.022 3.94z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Add.tsx:12"
 }));
 
 export default SvgAdd;

@@ -6,10 +6,12 @@ var SvgTerraform = props => /*#__PURE__*/React.createElement("svg", _extends({},
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Terraform.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M2 1v4.42l3.827 2.21V3.21L2 1Zm8.074 4.677-3.828-2.21v4.42l3.828 2.21v-4.42Zm.42 4.42v-4.42L14 3.79V8l-3.506 2.096ZM10.074 15l-3.828-2.21V8.371l3.828 2.21V15Z"
+  d: "M2 1v4.42l3.827 2.21V3.21L2 1Zm8.074 4.677-3.828-2.21v4.42l3.828 2.21v-4.42Zm.42 4.42v-4.42L14 3.79V8l-3.506 2.096ZM10.074 15l-3.828-2.21V8.371l3.828 2.21V15Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Terraform.tsx:12"
 }));
 
 export default SvgTerraform;

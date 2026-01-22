@@ -6,11 +6,14 @@ var SvgSpeech = props => /*#__PURE__*/React.createElement("svg", _extends({}, pr
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Speech.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14 2H2l-.5.5v11.165l.863.345L5.215 11H14l.5-.5v-8L14 2zm-.5 8H4.785L2.5 12.411V3h11v7z"
+  d: "M14 2H2l-.5.5v11.165l.863.345L5.215 11H14l.5-.5v-8L14 2zm-.5 8H4.785L2.5 12.411V3h11v7z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Speech.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M12.5 4.503h-9v1h9v-1zM12.5 7h-9v1h9V7z"
+  d: "M12.5 4.503h-9v1h9v-1zM12.5 7h-9v1h9V7z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Speech.tsx:13"
 }));
 
 export default SvgSpeech;

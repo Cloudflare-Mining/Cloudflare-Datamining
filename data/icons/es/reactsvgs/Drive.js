@@ -6,17 +6,22 @@ var SvgDrive = props => /*#__PURE__*/React.createElement("svg", _extends({}, pro
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Drive.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M12.375 7.409a.523.523 0 100-1.046.523.523 0 000 1.046z"
-}), /*#__PURE__*/React.createElement("path", {
-  fillRule: "evenodd",
-  d: "M3.863 2.183L4.25 2h7.5l.387.183 2.25 2.75.113.317v.14l.002.002v3.213l-.5.5H2l-.5-.5V5.25l.113-.317 2.25-2.75zM2.5 5.892v2.213h11.002V6.25H13.5v-.358h-11zm10.56-1H2.94L4.486 3h7.026l1.548 1.892z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M12.375 12.303a.523.523 0 100-1.047.523.523 0 000 1.046z"
+  d: "M12.375 7.409a.523.523 0 100-1.046.523.523 0 000 1.046z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Drive.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M2 9.785l-.5.5v3.213l.5.5h12.002l.5-.5v-3.213l-.5-.5H2zm.5 3.213v-2.213h11.002v2.213H2.5z"
+  d: "M3.863 2.183L4.25 2h7.5l.387.183 2.25 2.75.113.317v.14l.002.002v3.213l-.5.5H2l-.5-.5V5.25l.113-.317 2.25-2.75zM2.5 5.892v2.213h11.002V6.25H13.5v-.358h-11zm10.56-1H2.94L4.486 3h7.026l1.548 1.892z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Drive.tsx:13"
+}), /*#__PURE__*/React.createElement("path", {
+  d: "M12.375 12.303a.523.523 0 100-1.047.523.523 0 000 1.046z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Drive.tsx:17"
+}), /*#__PURE__*/React.createElement("path", {
+  fillRule: "evenodd",
+  d: "M2 9.785l-.5.5v3.213l.5.5h12.002l.5-.5v-3.213l-.5-.5H2zm.5 3.213v-2.213h11.002v2.213H2.5z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Drive.tsx:18"
 }));
 
 export default SvgDrive;

@@ -6,15 +6,20 @@ var SvgCollapse = props => /*#__PURE__*/React.createElement("svg", _extends({}, 
   viewBox: "0 0 16 16",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Collapse.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M6 5.293L2.207 1.5L1.5 2.207L5.293 6H3V7H7V3H6V5.293Z"
+  d: "M6 5.293L2.207 1.5L1.5 2.207L5.293 6H3V7H7V3H6V5.293Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Collapse.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M13 6H10.707L14.5 2.207L13.793 1.5L10 5.293V3H9V7H13V6Z"
+  d: "M13 6H10.707L14.5 2.207L13.793 1.5L10 5.293V3H9V7H13V6Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Collapse.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M13 10V9H9V13H10V10.707L13.793 14.5L14.5 13.793L10.707 10H13Z"
+  d: "M13 10V9H9V13H10V10.707L13.793 14.5L14.5 13.793L10.707 10H13Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Collapse.tsx:14"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M3 10H5.293L1.5 13.793L2.207 14.5L6 10.707V13H7V9H3V10Z"
+  d: "M3 10H5.293L1.5 13.793L2.207 14.5L6 10.707V13H7V9H3V10Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Collapse.tsx:15"
 }));
 
 export default SvgCollapse;

@@ -6,9 +6,11 @@ var SvgCaretUpStroke = props => /*#__PURE__*/React.createElement("svg", _extends
   viewBox: "0 0 64 64",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretUpStroke.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M57.5676 43.5936L54.7396 46.4216L31.5535 23.2356L8.36755 46.4216L5.53955 43.5936L31.5535 17.5786L57.5676 43.5936Z"
+  d: "M57.5676 43.5936L54.7396 46.4216L31.5535 23.2356L8.36755 46.4216L5.53955 43.5936L31.5535 17.5786L57.5676 43.5936Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretUpStroke.tsx:12"
 }));
 
 export default SvgCaretUpStroke;

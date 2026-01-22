@@ -6,11 +6,14 @@ var SvgCaretDoubleLeft = props => /*#__PURE__*/React.createElement("svg", _exten
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretDoubleLeft.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.707 8l5.797 5.796-.707.708L7.293 8l6.504-6.504.707.708L8.707 8z"
+  d: "M8.707 8l5.797 5.796-.707.708L7.293 8l6.504-6.504.707.708L8.707 8z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretDoubleLeft.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M2.93 8l5.796 5.796-.707.708L1.516 8l6.503-6.504.707.708L2.93 8z"
+  d: "M2.93 8l5.796 5.796-.707.708L1.516 8l6.503-6.504.707.708L2.93 8z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretDoubleLeft.tsx:13"
 }));
 
 export default SvgCaretDoubleLeft;

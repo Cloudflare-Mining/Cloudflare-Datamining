@@ -6,9 +6,11 @@ var SvgAttentionSolid = props => /*#__PURE__*/React.createElement("svg", _extend
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/AttentionSolid.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8.44225 1.94995H7.55725L1.55475 13.2925L1.99725 14.025H14.0022L14.4447 13.2925L8.44225 1.94995ZM8.47975 11.8725H7.47975V10.7275H8.47975V11.8725ZM8.47975 10.07H7.47975V6.62995H8.47975V10.07Z"
+  d: "M8.44225 1.94995H7.55725L1.55475 13.2925L1.99725 14.025H14.0022L14.4447 13.2925L8.44225 1.94995ZM8.47975 11.8725H7.47975V10.7275H8.47975V11.8725ZM8.47975 10.07H7.47975V6.62995H8.47975V10.07Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/AttentionSolid.tsx:12"
 }));
 
 export default SvgAttentionSolid;

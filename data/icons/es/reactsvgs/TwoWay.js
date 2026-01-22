@@ -6,9 +6,11 @@ var SvgTwoWay = props => /*#__PURE__*/React.createElement("svg", _extends({}, pr
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/TwoWay.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M11.558 8.271l-.7.715 1.676 1.643H2.01v1h10.525l-1.676 1.642.7.715 2.915-2.857-2.915-2.858zM5.152 6.988L3.475 5.345H14v-1H3.475l1.677-1.642-.7-.715-2.916 2.858 2.916 2.857.7-.715z"
+  d: "M11.558 8.271l-.7.715 1.676 1.643H2.01v1h10.525l-1.676 1.642.7.715 2.915-2.857-2.915-2.858zM5.152 6.988L3.475 5.345H14v-1H3.475l1.677-1.642-.7-.715-2.916 2.858 2.916 2.857.7-.715z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/TwoWay.tsx:12"
 }));
 
 export default SvgTwoWay;

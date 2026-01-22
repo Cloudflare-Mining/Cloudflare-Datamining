@@ -6,11 +6,14 @@ var SvgOfficeBranch = props => /*#__PURE__*/React.createElement("svg", _extends(
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/OfficeBranch.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M56 20H42V8l-2-2H8L6 8v46l2 2h48l2-2V22l-2-2ZM10 10h28v42H28v-6h-8v6H10V10Zm44 42H42V24h12v28Z"
+  d: "M56 20H42V8l-2-2H8L6 8v46l2 2h48l2-2V22l-2-2ZM10 10h28v42H28v-6h-8v6H10V10Zm44 42H42V24h12v28Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/OfficeBranch.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M18 14h-4v4h4v-4Zm8 0h-4v4h4v-4Zm-8 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm-8 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm8-16h-4v4h4v-4Zm0 8h-4v4h4v-4Zm0 8h-4v4h4v-4Zm-16 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm8 0h-4v4h4v-4Zm16-10h-4v4h4v-4Zm0 8h-4v4h4v-4Zm0 8h-4v4h4v-4Z"
+  d: "M18 14h-4v4h4v-4Zm8 0h-4v4h4v-4Zm-8 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm-8 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm8-16h-4v4h4v-4Zm0 8h-4v4h4v-4Zm0 8h-4v4h4v-4Zm-16 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm8 0h-4v4h4v-4Zm16-10h-4v4h4v-4Zm0 8h-4v4h4v-4Zm0 8h-4v4h4v-4Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/OfficeBranch.tsx:13"
 }));
 
 export default SvgOfficeBranch;

@@ -6,19 +6,26 @@ var SvgZaraz = props => /*#__PURE__*/React.createElement("svg", _extends({}, pro
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Zaraz.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M 1 3.5 L 6.5 3.5 L 6.5 2.5 L 1 2.5 Z M 1 3.5 "
+  d: "M 1 3.5 L 6.5 3.5 L 6.5 2.5 L 1 2.5 Z M 1 3.5 ",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Zaraz.tsx:12"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M 1 5.5 L 6.5 5.5 L 6.5 4.5 L 1 4.5 Z M 1 5.5 "
+  d: "M 1 5.5 L 6.5 5.5 L 6.5 4.5 L 1 4.5 Z M 1 5.5 ",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Zaraz.tsx:13"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M 10 9.5 L 6.5 9.5 L 6.5 8.5 L 10 8.5 Z M 10 9.5 "
+  d: "M 10 9.5 L 6.5 9.5 L 6.5 8.5 L 10 8.5 Z M 10 9.5 ",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Zaraz.tsx:14"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M 6.5 7.5 L 10 7.5 L 10 6.5 L 6.5 6.5 Z M 6.5 7.5 "
+  d: "M 6.5 7.5 L 10 7.5 L 10 6.5 L 6.5 6.5 Z M 6.5 7.5 ",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Zaraz.tsx:15"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M 15 13.5 L 6.5 13.5 L 6.5 12.5 L 15 12.5 Z M 15 13.5 "
+  d: "M 15 13.5 L 6.5 13.5 L 6.5 12.5 L 15 12.5 Z M 15 13.5 ",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Zaraz.tsx:16"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M 6.5 11.5 L 15 11.5 L 15 10.5 L 6.5 10.5 Z M 6.5 11.5 "
+  d: "M 6.5 11.5 L 15 11.5 L 15 10.5 L 6.5 10.5 Z M 6.5 11.5 ",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Zaraz.tsx:17"
 }));
 
 export default SvgZaraz;

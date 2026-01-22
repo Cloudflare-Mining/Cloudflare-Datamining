@@ -6,10 +6,12 @@ var SvgCaretReorder2 = props => /*#__PURE__*/React.createElement("svg", _extends
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 17 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false"
+  focusable: "false",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretReorder2.tsx:5"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M8.385 2.707 4.24 6.854l-.707-.708 4.5-4.5h.707l4.5 4.5-.707.708-4.147-4.147Zm0 10.586L4.24 9.146l-.707.708 4.5 4.5h.707l4.5-4.5-.707-.708-4.147 4.147Z"
+  d: "M8.385 2.707 4.24 6.854l-.707-.708 4.5-4.5h.707l4.5 4.5-.707.708-4.147-4.147Zm0 10.586L4.24 9.146l-.707.708 4.5 4.5h.707l4.5-4.5-.707-.708-4.147 4.147Z",
+  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretReorder2.tsx:12"
 }));
 
 export default SvgCaretReorder2;
