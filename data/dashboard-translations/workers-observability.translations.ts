@@ -381,5 +381,9 @@
 		visualizationsView: "Visualizations",
 		showHelp: "Keyboard shortcuts",
 		showHelpDescription: "Show this help dialog"
+	},
+	emptyState: {
+		title: "Enable %{product} Observability",
+		description: "Automatically collect, search, filter, and analyze logs emitted by %{product}"
 	}
 }
