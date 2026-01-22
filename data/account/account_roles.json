@@ -540,6 +540,10 @@
 		"name": "Email Security Analyst",
 		"description": "Read access to all of Email Security including Settings, and can also action emails (Requires Cloudflare Zero Trust PII)",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": true
+			},
 			"cf1_integration": {
 				"read": true,
 				"edit": false
@@ -552,10 +556,6 @@
 				"read": true,
 				"edit": false
 			},
-			"ces_submissions": {
-				"read": true,
-				"edit": false
-			},
 			"ces_integration": {
 				"read": true,
 				"edit": false
@@ -564,9 +564,9 @@
 				"read": true,
 				"edit": false,
 				"action": true,
-				"trace": true,
+				"preview": true,
 				"raw": true,
-				"preview": true
+				"trace": true
 			},
 			"ces_phishguard": {
 				"read": true,
@@ -1534,6 +1534,10 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -1556,10 +1560,6 @@
 			"cds": {
 				"read": true,
 				"edit": true
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": false
 			},
 			"ces_integration": {
 				"read": true,
@@ -1645,6 +1645,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": true
+			},
 			"access": {
 				"read": true,
 				"edit": true
@@ -1744,10 +1748,6 @@
 			"cds": {
 				"read": true,
 				"edit": true
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": false
 			},
 			"subscription": {
 				"read": true,
@@ -2578,6 +2578,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"ces_submissions": {
+				"read": true,
+				"edit": true
+			},
 			"access": {
 				"read": true,
 				"edit": true
@@ -2672,10 +2676,6 @@
 			"cds": {
 				"read": true,
 				"edit": true
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": false
 			},
 			"subscription": {
 				"read": true,
