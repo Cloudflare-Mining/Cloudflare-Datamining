@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/dns/dns-records/dnskey-ds-records/",
+	"path": "/learning/dns/what-is-cybersquatting/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "CJPDWqJ4s3YnBKJhmpSa2",
-				"urlSlug": "dns/dns-records/dnskey-ds-records",
+				"contentfulId": "7jqJDOimnlNbxyew4aEQo6",
+				"urlSlug": "dns/what-is-cybersquatting",
 				"metaTags": {
-					"metaTitle": "DNS DNSKEY and DS records",
-					"metaDescription": "The DNSKEY and DS records are used by DNSSEC resolvers to verify the authenticity of DNS records. Learn how these DNS records work.",
+					"metaTitle": "What is cybersquatting? | Domain squatting",
+					"metaDescription": "Cybersquatting, or domain squatting, is when a domain name is registered by malicious or opportunistic parties. Learn how to prevent cybersquatting.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -17,12 +17,7 @@
 						},
 						"description": null
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3FQ0nr0TWKiiXvr1sipYj5/df80437167ef2215bb09fc00ba0429fc/dns_og.jpeg"
-						},
-						"description": null
-					}
+					"facebookCustomImage": null
 				},
 				"metaTitle": null,
 				"metaDescription": null,
@@ -761,38 +756,64 @@
 						]
 					}
 				},
-				"header": "DNS DNSKEY and DS Records",
-				"blurbSubHeader": "The DNSKEY and DS records are used by DNSSEC resolvers to verify the authenticity of DNS records.",
-				"objectivesHeader": "DNSKEY and DS Records",
+				"header": "What is cybersquatting?",
+				"blurbSubHeader": "Cybersquatters register domain names only to hold the domain name hostage or to deceive users.",
+				"objectivesHeader": "Cybersquatting",
 				"objectivesList": [
-					"Understand the purpose of the DNSKEY record",
-					"Understand the role the DS record plays in DNSSEC"
+					"Define cybersquatting",
+					"List some cybersquatting examples",
+					"Compare cybersquatting versus typosquatting",
+					"Know how to prevent domain squatting"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1SMJ4pF8JegIMgSOBwUWIM",
-						"displayText": "Empty related article - default sidebar form",
-						"url": "   "
+						"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+						"displayText": "Expired domains",
+						"url": "/learning/dns/glossary/expired-domains/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+						"displayText": "Domain hijacking",
+						"url": "/learning/dns/what-is-domain-hijacking/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+						"displayText": "Top-level domain",
+						"url": "/learning/dns/top-level-domain/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+						"displayText": "How to buy a domain name",
+						"url": "/learning/dns/how-to-buy-a-domain-name/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+						"displayText": "Domain name",
+						"url": "/learning/dns/glossary/what-is-a-domain-name/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<style>\n  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .ttu.f2.fw7.mt6.mb0.orange0,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .divider.pv2.w-100,  .container .mt5.mt9-ns.row .col-lg-3 .mb11 .below-divider{\n    display: none\n  }\n</style>\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are the DNSKEY and DS records?</h2>\n\n<p>The <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a> is the phonebook of the Internet, but it was not designed with security in mind. For this reason, an optional security protocol called <a href='/dns/dnssec/how-dnssec-works/'>DNSSEC</a> was created so that owners of web properties could better secure their applications. DNSSEC increases security by adding cryptographic signatures to DNS records; these signatures can be checked to verify that a record came from the correct DNS server.</p>\n\n<p>For the implementation of these cryptographic signatures, two new <a href='/learning/dns/dns-records/'>DNS record types</a> were created: DNSKEY and DS. The DNSKEY record contains a public signing key, and the DS record contains a hash* of a DNSKEY record.</p>\n\n<p>Each DNSSEC zone is assigned a set of <a href='/learning/dns/glossary/dns-zone/'>zone</a> signing keys (ZSK). This set includes a private and public ZSK. The private ZSK is used to sign the DNS records in that zone, and the public ZSK is used to verify the private one.</p>\n\n<p>The public ZSK is published in a DNSSEC record, which is how it is provided to a DNSSEC resolver; the resolver will use the public ZSK to ensure the records from that zone are authentic. As an added layer of security, DNSSEC zones contain a second DNSKEY record containing a key signing key (KSK), which verifies the authenticity of the public ZSK.</p>\n\n<p>The DS record is used to verify the authenticity of child zones** of DNSSEC zones. The DS key record on a parent zone contains a hash of the KSK in a child zone. A DNSSEC resolver can therefore verify the authenticity of the child zone by hashing its KSK record, and comparing that to what is in the parent zone's DS record.</p>\n\n<p>*<em>A cryptographic hash is a one-way scrambling of alphanumeric input; hashes are often used for storing sensitive information like passwords on servers. For example, a hash of the input 'cantguessthis' is 18fe9934cf77a759eb2471f2b304708a. Every time 'cantguessthis' is put through the hashing function, it outputs the same hash. But there is no way to get the original input using just the hash. The hash on its own is essentially useless.</em></p>\n\n<p>**<em>A child zone is a delegated subdomain of another zone. For instance, a URL of example.com could have child zones with domains like blog.example.com and mail.example.com.</em></p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is cybersquatting?</h2>\n\n<p>Domain squatting, also referred to as cybersquatting, is the practice of registering, using, or selling a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain name</a> in bad faith, with the intent to profit from another party's trademark, brand name, or reputation. In most cases, the squatter has no legitimate interest in the domain other than reselling it, redirecting traffic, or exploiting user confusion.</p>\n\n<p>Domain squatting can lead to financial loss, reputational damage, customer confusion, and security risks. While laws exist to combat it, prevention is often far easier and less expensive than recovery.</p>\n\n<p>Domain squatting typically involves:</p>\n\n<ul class=\"learning-list\">\n  <li>Trademarked brand names</li>\n  <li>Misspellings or variations of known brands</li>\n  <li>Intent to mislead, extort, or exploit users</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How domain squatting works</h2>\n\n<p>A common cybersquatting scenario looks like this:</p>\n\n<ol class=\"learning-list\">\n  <li>A business launches a brand or product</li>\n  <li>A third party, the \"squatter,\" registers related domain names or variations</li>\n  <li>The squatter attempts to profit by selling the domain back at a premium, redirecting traffic for ads or affiliate revenue, or running <a href='/learning/access-management/phishing-attack/'>phishing</a> or <a href='/learning/ddos/glossary/malware/'>malware</a> campaigns</li>\n</ol>\n\n<p>Because most domains are inexpensive and easy to register, cybersquatters can operate at scale.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Common types of domain squatting</h2>\n\n<h4 class=\"learning-content-h4\">Exact-match domain squatting</h4>\n\n<p>Registering a domain that exactly matches a trademarked brand with the intent to sell it back to the rightful owner or misuse its traffic.</p>\n\n<h4 class=\"learning-content-h4\">Typosquatting</h4>\n\n<p>Registering common misspellings or character variations to capture accidental traffic.</p>\n\n<p>Typosquatting is frequently used for:</p>\n\n<ul class=\"learning-list\">\n  <li>Phishing attacks: Fake login pages or emails that trick users into entering passwords, payment details, or other sensitive information</li>\n  <li>Malware distribution: Malicious files or scripts that infect a user's device when the site is visited or a download is triggered</li>\n  <li><a href='/learning/bots/what-is-ad-fraud/'>Ad fraud</a>: Redirecting visitors to ad-filled pages to generate revenue from accidental clicks</li>\n</ul>\n\n<h4 class=\"learning-content-h4\">Top-level domain (TLD) squatting</h4>\n\n<p>Registering a brand name under a different <a href='/learning/dns/top-level-domain/'>TLD</a> than the one officially used by the brand, such as example.org or example.net when the legitimate site is example.com.</p>\n\n<p>These domains may be used to confuse customers, divert traffic, or create leverage for resale, especially when users assume that common or country-specific TLDs are affiliated with the brand.</p>\n\n<h4 class=\"learning-content-h4\">Combo-squatting</h4>\n\n<p>Combining a legitimate brand name with additional words such as \"login,\" \"support,\" \"secure,\" or \"shop\" to create a domain that appears trustworthy and official.</p>\n\n<p>For example, a malicious actor might register example-login.com or example-support.net, where the entire name is the second-level domain. These domains are designed to look legitimate to example.com users at a glance. This approach is commonly used in phishing emails or for fake support pages.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Domain squatting (cybersquatting) examples</h2>\n\n<p>These examples demonstrate how domain squatting typically works: registering domains that intentionally mimic established brands to profit from confusion. While legal remedies exist, these cases also show why proactive domain registration and monitoring are often more effective than relying on disputes after the fact.</p>\n\n<h4 class=\"learning-content-h4\">Facebook vs. typosquatters</h4>\n\n<p>Meta (formerly Facebook) has successfully pursued legal action against multiple typosquatters who registered misspelled versions of its brand name to deceive users and profit from confusion. These domains were often used to redirect traffic, display ads, or impersonate Facebook services — tactics commonly associated with typosquatting.</p>\n\n<p>In <a href='https://www.theverge.com/2013/5/1/4290490/facebook-typosquatting-lawsuit-damages-cybersquatters' target='_blank'>one notable case</a>, a US court ruled in Facebook's favor, <a href='https://www.cnet.com/tech/services-and-software/facebook-wins-millions-in-case-against-typo-squatters/' target='_blank'>awarding damages</a> and ordering the transfer of infringing domains. The decision reinforced that registering confusingly similar domain names to exploit a well-known brand constitutes trademark infringement and cybersquatting.</p>\n\n<h4 class=\"learning-content-h4\">Microsoft vs. MikeRoweSoft</h4>\n\n<p>One of the most well-known domain squatting cases involved Microsoft and the domain mikerowesoft.com, which was <a href='https://www.zdnet.com/article/software-giant-threatens-mikerowesoft/' target='_blank'>registered by a third party</a> in the early 2000s. Although the registrant claimed the domain was a personal name, the pronunciation was intentionally similar to \"Microsoft,\" and the site was used in a way that traded on the company's brand recognition.</p>\n\n<p>Microsoft successfully challenged the registration, and the domain was ultimately transferred to the company.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why domain squatting is a security risk</h2>\n\n<p>Domain squatting is more than a branding inconvenience — it introduces serious security, financial, and operational risks that can directly affect an organization's reputation, customers, and bottom line.</p>\n\n<p>Domain squatting can lead to:</p>\n\n<p><strong>Financial extortion:</strong> Squatters often demand inflated prices to transfer domains back to their rightful owners.</p>\n\n<p><strong>Brand and reputation damage:</strong> Customers may associate scams, malware, or misleading content with the legitimate brand.</p>\n\n<p><strong>Operational disruption:</strong> Traffic diversion, <a href='/learning/email-security/what-is-email-spoofing/'>email spoofing</a>, and support impersonation can disrupt normal business operations and erode trust.</p>\n\n<p><strong>Security threats to users:</strong> Beyond brand and financial damage, domain squatting can expose users to serious security risks, often without their awareness. When attackers control lookalike or deceptive domains, they can undermine user trust and create downstream harm that is difficult to detect or contain.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is domain squatting illegal?</h2>\n\n<p>In many jurisdictions, domain squatting is illegal when it involves bad faith use of a trademarked name.</p>\n\n<p>Laws and policies such as the Anti-Cybersquatting Consumer Protection Act (ACPA) and ICANN's Uniform Domain-Name Dispute-Resolution Policy (UDRP) allow trademark owners to challenge bad-faith registrations.</p>\n\n<p>However, these processes are time-consuming and costly, making prevention the preferred strategy.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to prevent domain squatting</h2>\n\n<p>Preventing domain squatting is far more effective — and less expensive — than trying to recover a domain after it has been taken. A proactive approach combines defensive registration, monitoring, and secure domain management practices.</p>\n\n<h4 class=\"learning-content-h4\">Defensive domain registration</h4>\n\n<p>Register common misspellings, variations, and relevant top-level domains (TLDs) of your primary domain before squatters can. This includes plural forms, hyphenated versions, and adjacent TLDs that users might reasonably type or expect. Set up redirects from those domains to the primary domain.</p>\n\n<h4 class=\"learning-content-h4\">Domain monitoring</h4>\n\n<p>Actively monitor new domain registrations that resemble your brand name. Early detection can help you identify potential threats before they're used for scams, phishing, or extortion.</p>\n\n<h4 class=\"learning-content-h4\">Secure registrar practices</h4>\n\n<p>Enable <a href='/learning/dns/dns-security/'>DNS security</a> features such as domain lock, transfer protection, and <a href='/learning/access-management/what-is-multi-factor-authentication/'>multi-factor authentication</a> to prevent unauthorized changes or <a href='/learning/dns/what-is-domain-hijacking/'>domain hijacking</a> attempts.</p>\n\n<h4 class=\"learning-content-h4\">Centralized domain management</h4>\n\n<p>Manage all domains in a single platform whenever possible. Centralization reduces the risk of accidental expiration, misconfiguration, or overlooked renewals — common entry points for domain squatters.</p>\n\n<h4 class=\"learning-content-h4\">Use a reputable registrar</h4>\n\n<p>Choose a <a href='/learning/dns/glossary/what-is-a-domain-name-registrar/'>registrar</a> with transparent pricing and clear expiration policies. Some registrars profit from allowing domains to expire and then reselling them at inflated prices through aftermarket auctions. Working with a registrar that prioritizes long-term ownership and clear renewal practices helps reduce this risk.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">The Cloudflare approach to preventing domain squatting</h2>\n\n<p><a href='/products/registrar/'>Cloudflare Registrar</a> offers at-cost domain pricing, making large-scale defensive registration <a href='/application-services/solutions/low-cost-domain-names/'>affordable</a>. Because Cloudflare sells domains at cost, registrants do not face inflated renewal fees — a common tactic squatters rely on.</p>\n\n<p>Integrated security features such as DNS protection, domain lock, and DDoS mitigation help prevent hijacking or abuse once domains are registered. Managing domains, DNS, and security from a single platform also reduces operational risk and simplifies long-term protection.</p>\n\n<p>Search for a domain at <a href='https://domains.cloudflare.com/'>domains.cloudflare.com</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -804,64 +825,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "CJPDWqJ4s3YnBKJhmpSa2",
-			"pathname": "/learning/dns/dns-records/dnskey-ds-records/",
+			"contentfulId": "7jqJDOimnlNbxyew4aEQo6",
+			"pathname": "/learning/dns/what-is-cybersquatting/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
