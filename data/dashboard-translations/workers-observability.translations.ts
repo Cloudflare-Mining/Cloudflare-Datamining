@@ -7,6 +7,10 @@
 		toggleThreshold: "Thresholds",
 		toggleCheckPreviews: "Checks",
 		checksTooltip: "Check times shown are approximate. Actual checks may occur at different times.",
+		actions: {
+			refresh: "Refresh",
+			keyboardShortcuts: "Keyboard Shortcuts"
+		},
 		download: {
 			downloadAsJson: "Download as JSON",
 			downloadAsCsv: "Download as CSV",
@@ -21,9 +25,23 @@
 		title: "Query Builder",
 		savedQueriesButton: "Saved Queries",
 		saveQueryButton: "Save Query",
+		updateQueryButton: "Update",
+		updateQuerySuccess: "Query saved",
 		runQueryButton: "Run Query",
 		saveAlertButton: "Save Alert",
 		addButton: "Add",
+		saveQueryDialog: {
+			title: "Save Query",
+			description: "Give your query a name and description to save it for later use.",
+			nameLabel: "Name",
+			namePlaceholder: "Enter query name",
+			nameRequired: "Name is required",
+			nameConflict: "A query with this name already exists",
+			descriptionLabel: "Description",
+			descriptionPlaceholder: "A helpful description for your query (optional)",
+			cancelButton: "Cancel",
+			saveButton: "Save"
+		},
 		saveAlertDialog: {
 			title: "Save Alert",
 			description: "Give your alert a name and description to help identify it later.",
@@ -34,6 +52,17 @@
 			descriptionPlaceholder: "A helpful description for your alert (optional)",
 			cancelButton: "Cancel",
 			saveButton: "Save"
+		},
+		updateQueryDialog: {
+			title: "Update Query",
+			description: "Update the name, description, and parameters of your saved query.",
+			nameLabel: "Name",
+			namePlaceholder: "Enter query name",
+			nameRequired: "Name is required",
+			descriptionLabel: "Description",
+			descriptionPlaceholder: "A helpful description for your query (optional)",
+			cancelButton: "Cancel",
+			saveButton: "Update"
 		},
 		quickQueries: "Quick Queries",
 		allQueries: "All Queries",
@@ -132,7 +161,8 @@
 		},
 		calculationsSection: {
 			removeCalculation: "Remove calculation",
-			of: "of"
+			of: "of",
+			aliasTooltip: "Add an alias to label this visualization in charts"
 		},
 		conditionsSection: {
 			andTooltip: "The check will fail only if all conditions are met",
@@ -244,6 +274,7 @@
 		endTimeLabel: "End Time",
 		applyButton: "Apply",
 		customRange: "Custom Range",
+		relativeTime: "Relative Time",
 		errors: {
 			startBeforeEnd: "Start time must be before end time",
 			startOutOfRange: "Start time is outside the allowed range",

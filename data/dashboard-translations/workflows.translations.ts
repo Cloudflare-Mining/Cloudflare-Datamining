@@ -51,6 +51,9 @@
 	},
 	workflowPage: {
 		boundWorker: "Bound Worker",
+		graphEmptyState: {
+			title: "This workflow doesn't have a graph yet. Deploy a new version to automatically generate a workflow graph."
+		},
 		charts: {
 			cpuTime: {
 				title: "CPU time",
@@ -159,6 +162,14 @@
 			year: "Past 12 months"
 		},
 		noInstancesFound: "No instances found",
+		emptyState: {
+			noInstancesInTimePeriod: "No instances found in the %{timePeriod}",
+			noInstancesInTimeRange: "No instances found between %{startTime} and %{endTime}",
+			noInstancesWithStateInTimePeriod: "No instances found in the state '%{state}' in the %{timePeriod}",
+			noInstancesWithStateInTimeRange: "No instances found in the state '%{state}' between %{startTime} and %{endTime}",
+			changeTimePeriod: "Change time period",
+			clearFilters: "Clear filters"
+		},
 		backgroundTime: "Background Time:",
 		backgroundTimeTooltip: "Background time can be composed by the time the instance was queued, plus the time the instance was pause."
 	},
@@ -169,7 +180,8 @@
 		actions: {
 			resume: "Resume",
 			pause: "Pause",
-			stop: "Terminate"
+			stop: "Terminate",
+			restart: "Restart"
 		},
 		summary: "Summary",
 		stats: {
@@ -186,6 +198,7 @@
 		config: "Config",
 		attempts: "Attempts",
 		stepHistory: "Step History",
+		visualization: "Workflow Visualization",
 		noSteps: "No steps found",
 		table: {
 			columns: {
@@ -243,6 +256,12 @@
 		description: "This will immediately terminate instance (<strong>%{instanceId}</strong>).",
 		cancel: "Cancel",
 		terminate: "Terminate Instance"
+	},
+	restartInstanceModal: {
+		title: "Restart Instance?",
+		description: "This will restart instance (<strong>%{instanceId}</strong>) from the beginning with the same parameters.",
+		cancel: "Cancel",
+		restart: "Restart Instance"
 	},
 	cancelModal: {
 		title: "Cancel workflow?",
