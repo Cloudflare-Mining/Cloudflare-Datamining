@@ -1,0 +1,214 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xCUVyJD77uApQnstN3KmC/99c33fbd46f0e33009c39be4c98cdf12/image2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>On January 22, 2026, an automated routing policy configuration error caused us to leak some <a href="https://cloudflare.com/learning/security/glossary/what-is-bgp"><u>Border Gateway Protocol (BGP)</u></a> prefixes unintentionally from a router at our data center in Miami, Florida. While the route leak caused some impact to Cloudflare customers, multiple external parties were also affected because their traffic was accidentally funnelled through our Miami data center location.</p>
+	<p>The route leak lasted 25 minutes, causing congestion on some of our backbone infrastructure in Miami, elevated loss for some Cloudflare customer traffic, and higher latency for traffic across these links. Additionally, some traffic was discarded by firewall filters on our routers that are designed to only accept traffic for Cloudflare services and our customers.</p>
+	<p>While we’ve written about route leaks before, we rarely find ourselves causing them. This route leak was the result of an accidental misconfiguration on a router in Cloudflare’s network, and only affected IPv6 traffic. We sincerely apologize to the users, customers, and networks we impacted yesterday as a result of this BGP route leak.</p>
+	<div class="flex anchor relative">
+		<h3 id="bgp-route-leaks">BGP route leaks&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#bgp-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We have <a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today"><u>written multiple times</u></a> about <a href="https://blog.cloudflare.com/cloudflare-1111-incident-on-june-27-2024"><u>BGP route leaks</u></a>, and we even record <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar"><u>route leak events</u></a> on Cloudflare Radar for anyone to view and learn from. To get a fuller understanding of what route leaks are, you can refer to this <a href="https://blog.cloudflare.com/bgp-route-leak-venezuela/#background-bgp-route-leaks"><u>detailed background section</u></a>, or refer to the formal definition within <a href="https://datatracker.ietf.org/doc/html/rfc7908"><u>RFC7908</u></a>.&nbsp;</p>
+	<p>Essentially, a route leak occurs when a network tells the broader Internet to send it traffic that it's not supposed to forward. Technically, a route leak occurs when a network, or Autonomous System (AS), appears unexpectedly in an AS path. An AS path is what BGP uses to determine the path across the Internet to a final destination. An example of an anomalous AS path indicative of a route leak would be finding a network sending routes received from a peer to a provider.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30z4NDtf6DjVQZOfZatGUX/6ff06eb02c61d8e818d9da8ecd87c1c8/BLOG-3135_2.png" alt="BLOG-3135 2" class="kg-image" width="1724" height="704" loading="lazy">
+	</figure>
+	<p>During this type of route leak, the rules of <a href="https://people.eecs.berkeley.edu/~sylvia/cs268-2019/papers/gao-rexford.pdf"><u>valley-free routing</u></a> are violated, as BGP updates are sent from AS64501 to their peer (AS64502), and then unexpectedly up to a provider (AS64503). Oftentimes the leaker, in this case AS64502, is not prepared to handle the amount of traffic they are going to receive and may not even have firewall filters configured to accept all of the traffic coming in their direction. In simple terms, once a route update is sent to a peer or provider, it should only be sent further to customers and not to another peer or provider AS.</p>
+	<p>During the incident on January 22, we caused a similar kind of route leak, in which we took routes from some of our peers and redistributed them in Miami to some of our peers and providers. According to the route leak definitions in RFC7908, we caused a mixture of Type 3 and Type 4 route leaks on the Internet.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="timeline">Timeline</h3>
+		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Time (UTC)</b></p>
+				</th>
+				<th>
+					<p><b>Event</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 19:52 UTC</p>
+				</td>
+				<td>
+					<p>A change that ultimately triggers the routing policy bug is merged in our network automation code repository</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 20:25 UTC</p>
+				</td>
+				<td>
+					<p>Automation is run on single Miami edge-router resulting in unexpected advertisements to BGP transit providers and peers</p>
+					<p><b>IMPACT START</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 20:40 UTC</p>
+				</td>
+				<td>
+					<p>Network team begins investigating unintended route advertisements from Miami</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 20:44 UTC</p>
+				</td>
+				<td>
+					<p>Incident is raised to coordinate response</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 20:50 UTC</p>
+				</td>
+				<td>
+					<p>The bad configuration change is manually reverted by a network operator, and automation is paused for the router, so it cannot run again</p>
+					<p><b>IMPACT STOP</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 21:47 UTC</p>
+				</td>
+				<td>
+					<p>The change that triggered the leak is reverted from our code repository</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 22:07 UTC</p>
+				</td>
+				<td>
+					<p>Automation is confirmed by operators to be healthy to run again on the Miami router, without the routing policy bug</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>2026-01-22 22:40 UTC</p>
+				</td>
+				<td>
+					<p>Automation is unpaused on the single router in Miami</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="what-happened-the-configuration-error">What happened: the configuration error</h3>
+		<a href="https://blog.cloudflare.com/#what-happened-the-configuration-error" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>On January 22, 2026, at 20:25 UTC, we pushed a change via our policy automation platform to remove the BGP announcements from Miami for one of our data centers in Bogotá, Colombia. This was purposeful, as we previously forwarded some IPv6 traffic through Miami toward the Bogotá data center, but recent infrastructure upgrades removed the need for us to do so.</p>
+	<p>This change generated the following diff (a program that <a href="https://www.google.com/search?sca_esv=3236b0192813a1a3&amp;rlz=1C5GCEM_enUS1183US1183&amp;sxsrf=ANbL-n4_5E8v7Ar8tpKKnczz7xfci6HL8w%3A1769145786825&amp;q=compares&amp;si=AL3DRZGCrnAF0R35UNPJcgaBbCFaNwxQEU_o22EUn2GaHpSR2UyenaROnahi_5cmhKmzHjtezT-J9hw3KLJeTkLeyo7_nJgoJebLkbDRWvoJl5t5oX8bAPI%3D&amp;expnd=1&amp;sa=X&amp;ved=2ahUKEwiW1bfR9aCSAxXaOjQIHSIBDMoQyecJegQIKhAR">compares</a> configuration files in order to determine how or whether they differ):</p>
+	<pre class="language-typescript"><code class="language-typescript">[edit policy-options policy-statement 6-COGENT-ACCEPT-EXPORT term ADV-SITELOCAL-GRE-RECEIVER from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-COMCAST-ACCEPT-EXPORT term ADV-SITELOCAL-GRE-RECEIVER from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-GTT-ACCEPT-EXPORT term ADV-SITELOCAL-GRE-RECEIVER from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-LEVEL3-ACCEPT-EXPORT term ADV-SITELOCAL-GRE-RECEIVER from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-PRIVATE-PEER-ANYCAST-OUT term ADV-SITELOCAL from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-PUBLIC-PEER-ANYCAST-OUT term ADV-SITELOCAL from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-PUBLIC-PEER-OUT term ADV-SITELOCAL from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-TELEFONICA-ACCEPT-EXPORT term ADV-SITELOCAL-GRE-RECEIVER from]
+-      prefix-list 6-BOG04-SITE-LOCAL;
+[edit policy-options policy-statement 6-TELIA-ACCEPT-EXPORT term ADV-SITELOCAL-GRE-RECEIVER from]
+-      prefix-list 6-BOG04-SITE-LOCAL;</code></pre>
+	<p>While this policy change looks innocent at a glance, only removing the prefix lists containing BOG04 unicast prefixes resulted in a policy that was too permissive:</p>
+	<pre class="language-typescript"><code class="language-typescript">policy-options policy-statement 6-TELIA-ACCEPT-EXPORT {
+    term ADV-SITELOCAL-GRE-RECEIVER {
+        from route-type internal;
+        then {
+            community add STATIC-ROUTE;
+            community add SITE-LOCAL-ROUTE;
+            community add MIA01;
+            community add NORTH-AMERICA;
+            accept;
+        }
+    }
+}
+</code></pre>
+	<p>The policy would now mark every prefix of type “internal” as acceptable, and proceed to add some informative communities to all matching prefixes. But more importantly, the policy also accepted the route through the policy filter, which resulted in the prefix — which was intended to be “internal” —&nbsp; being advertised externally. This is an issue because the “route-type internal” match in JunOS or JunOS EVO (the operating systems used by <a href="https://www.hpe.com/us/en/home.html"><u>HPE Juniper Networks</u></a> devices) will match any non-external route type, such as Internal BGP (IBGP) routes, which is what happened here.</p>
+	<p>As a result, all IPv6 prefixes that Cloudflare redistributes internally across the backbone were accepted by this policy, and advertised to all our BGP neighbors in Miami. This is unfortunately very similar to the outage we experienced in 2020, on which you can read more <a href="https://blog.cloudflare.com/cloudflare-outage-on-july-17-2020"><u>on our blog</u></a>.</p>
+	<p>When the policy misconfiguration was applied at 20:25 UTC, a series of unintended BGP updates were sent from AS13335 to peers and providers in Miami. These BGP updates are viewable historically by looking at MRT files with the <a href="https://github.com/bgpkit/monocle"><u>monocle</u></a> tool or using <a href="https://stat.ripe.net/bgplay/2a03%3A2880%3Af312%3A%3A%2F48#starttime=1769112000&amp;endtime=1769115659&amp;instant=56,1769113845"><u>RIPE BGPlay</u></a>.&nbsp;</p>
+	<pre class="language-typescript"><code class="language-typescript">➜  ~ monocle search --start-ts 2026-01-22T20:24:00Z --end-ts 2026-01-22T20:30:00Z --as-path ".*13335[ \d$]32934$*"
+A|1769113609.854028|2801:14:9000::6:4112:1|64112|2a03:2880:f077::/48|64112 22850 174 3356 13335 32934|IGP|2801:14:9000::6:4112:1|0|0|22850:65151|false|||pit.scl
+A|1769113609.854028|2801:14:9000::6:4112:1|64112|2a03:2880:f091::/48|64112 22850 174 3356 13335 32934|IGP|2801:14:9000::6:4112:1|0|0|22850:65151|false|||pit.scl
+A|1769113609.854028|2801:14:9000::6:4112:1|64112|2a03:2880:f16f::/48|64112 22850 174 3356 13335 32934|IGP|2801:14:9000::6:4112:1|0|0|22850:65151|false|||pit.scl
+A|1769113609.854028|2801:14:9000::6:4112:1|64112|2a03:2880:f17c::/48|64112 22850 174 3356 13335 32934|IGP|2801:14:9000::6:4112:1|0|0|22850:65151|false|||pit.scl
+A|1769113609.854028|2801:14:9000::6:4112:1|64112|2a03:2880:f26f::/48|64112 22850 174 3356 13335 32934|IGP|2801:14:9000::6:4112:1|0|0|22850:65151|false|||pit.scl
+A|1769113609.854028|2801:14:9000::6:4112:1|64112|2a03:2880:f27c::/48|64112 22850 174 3356 13335 32934|IGP|2801:14:9000::6:4112:1|0|0|22850:65151|false|||pit.scl
+A|1769113609.854028|2801:14:9000::6:4112:1|64112|2a03:2880:f33f::/48|64112 22850 174 3356 13335 32934|IGP|2801:14:9000::6:4112:1|0|0|22850:65151|false|||pit.scl
+A|1769113583.095278|2001:504:d::4:9544:1|49544|2a03:2880:f17c::/48|49544 1299 3356 13335 32934|IGP|2001:504:d::4:9544:1|0|0|1299:25000 1299:25800 49544:16000 49544:16106|false|||route-views.isc
+A|1769113583.095278|2001:504:d::4:9544:1|49544|2a03:2880:f27c::/48|49544 1299 3356 13335 32934|IGP|2001:504:d::4:9544:1|0|0|1299:25000 1299:25800 49544:16000 49544:16106|false|||route-views.isc
+A|1769113583.095278|2001:504:d::4:9544:1|49544|2a03:2880:f091::/48|49544 1299 3356 13335 32934|IGP|2001:504:d::4:9544:1|0|0|1299:25000 1299:25800 49544:16000 49544:16106|false|||route-views.isc
+A|1769113584.324483|2001:504:d::19:9524:1|199524|2a03:2880:f091::/48|199524 1299 3356 13335 32934|IGP|2001:2035:0:2bfd::1|0|0||false|||route-views.isc
+A|1769113584.324483|2001:504:d::19:9524:1|199524|2a03:2880:f17c::/48|199524 1299 3356 13335 32934|IGP|2001:2035:0:2bfd::1|0|0||false|||route-views.isc
+A|1769113584.324483|2001:504:d::19:9524:1|199524|2a03:2880:f27c::/48|199524 1299 3356 13335 32934|IGP|2001:2035:0:2bfd::1|0|0||false|||route-views.isc
+{trimmed}
+</code></pre>
+	<p><sup><i>In the monocle output seen above, we have the timestamp of our BGP update, followed by the next-hop in the announcement, the ASN of the network feeding a given route-collector, the prefix involved, and the AS path and BGP communities if any are found. At the end of the output per-line, we also find the route-collector instance.</i></sup></p>
+	<p>Looking at the first update for prefix 2a03:2880:f077::/48, the AS path is <i>64112 22850 174 3356 13335 32934</i>. This means we (AS13335) took the prefix received from Meta (AS32934), our peer, and then advertised it toward Lumen (AS3356), one of our upstream transit providers. We know this is a route leak as routes received from peers are only meant to be readvertised to downstream (customer) networks, not laterally to other peers or up to providers.</p>
+	<p>As a result of the leak and the forwarding of unintended traffic into our Miami router from providers and peers, we experienced congestion on our backbone between Miami and Atlanta, as you can see in the graph below.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/SIiBSb7qnfStZ0jQAZ8ne/14009779b7551e4f26c4cc3ae2c1141b/BLOG-3135_3.png" alt="BLOG-3135 3" class="kg-image" width="1999" height="1025" loading="lazy">
+	</figure>
+	<p>This would have resulted in elevated loss for some Cloudflare customer traffic, and higher latency than usual for traffic traversing these links. In addition to this congestion, the networks whose prefixes we leaked would have had their traffic discarded by firewall filters on our routers that are designed to only accept traffic for Cloudflare services and our customers. At peak, we discarded around 12Gbps of traffic ingressing our router in Miami for these non-downstream prefixes.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jMaMLbijdtS8GYZOVzwoX/40325907032cbb8d27f00bc561191d23/BLOG-3135_4.png" alt="BLOG-3135 4" class="kg-image" width="1999" height="443" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="follow-ups-and-preventing-route-leaks">Follow-ups and preventing route leaks&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#follow-ups-and-preventing-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are big supporters and active contributors to efforts within the <a href="https://www.ietf.org"><u>IETF</u></a> and <a href="https://manrs.org"><u>infrastructure community</u></a> that strengthen routing security. We know firsthand how easy it is to cause a route leak accidentally, as evidenced by this incident.&nbsp;</p>
+	<p>Preventing route leaks will require a multi-faceted approach, but we have identified multiple areas in which we can improve, both short- and long-term.</p>
+	<p>In terms of our routing policy configurations and automation, we are:</p>
+	<ul>
+		<li>
+			<p>Patching the failure in our routing policy automation that caused the route leak, and will mitigate this potential failure and others like it immediately&nbsp;</p>
+		</li>
+		<li>
+			<p>Implementing additional BGP community-based safeguards in our routing policies that explicitly reject routes that were received from providers and peers on external export policies&nbsp;</p>
+		</li>
+		<li>
+			<p>Adding automatic routing policy evaluation into our CI/CD pipelines that looks specifically for empty or erroneous policy terms&nbsp;</p>
+		</li>
+		<li>
+			<p>Improve early detection of issues with network configurations and the negative effects of an automated change</p>
+		</li>
+	</ul>
+	<p>To help prevent route leaks in general, we are:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Validating routing equipment vendors' implementation of <a href="https://datatracker.ietf.org/doc/rfc9234"><u>RFC9234</u></a> (BGP roles and the Only-to-Customer Attribute) in preparation for our rollout of the feature, which is the only way <i>independent of routing policy</i> to prevent route leaks caused at the <i>local</i> Autonomous System (AS)</p>
+		</li>
+		<li>
+			<p>Encouraging the long term adoption of RPKI <a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification"><u>Autonomous System Provider Authorization (ASPA)</u></a>, where networks could automatically reject routes that contain anomalous AS paths</p>
+		</li>
+	</ul>
+	<p>Most importantly, we would again like to apologize for the impact we caused users and customers of Cloudflare, as well as any impact felt by external networks.</p>
+	<p></p>
+</div>
