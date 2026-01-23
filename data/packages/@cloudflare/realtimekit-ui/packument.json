@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-ui",
 	"dist-tags": {
 		"latest": "1.0.8",
-		"staging": "1.1.0-staging.10"
+		"staging": "1.1.0-staging.11"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1706,6 +1706,30 @@
 			"name": "@cloudflare/realtimekit-ui",
 			"version": "1.1.0-staging.10",
 			"dependencies": {
+				"hark": "^1.2.3",
+				"hls.js": "^1.5.17",
+				"lodash-es": "^4.17.21",
+				"@floating-ui/dom": "^1.7.4",
+				"resize-observer-polyfill": "^1.5.1"
+			},
+			"dist": {
+				"shasum": "a32fafa53b583f2a2ef898757048be0acedde784",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.0-staging.10.tgz",
+				"fileCount": 1257,
+				"integrity": "sha512-IsIMrxMutEUGAe4W61Z3Dmcpu9H/XcIaV29b2OicmWg2P6wCZwRgyim2ychma1R9rFAiB/d22DeryWV7cN/ySA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBOGe+nVZvCV9EFy7k+WFGsOUh6LiIUyJ9Tn/92e0X+ZAiEA2dMLmSh0jsR3wet424SH+DCZVf+WIqXVhSWRIr1HCGc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 30407621
+			}
+		},
+		"1.1.0-staging.11": {
+			"name": "@cloudflare/realtimekit-ui",
+			"version": "1.1.0-staging.11",
+			"dependencies": {
 				"@floating-ui/dom": "^1.7.4",
 				"hark": "^1.2.3",
 				"hls.js": "^1.5.17",
@@ -1713,15 +1737,15 @@
 				"resize-observer-polyfill": "^1.5.1"
 			},
 			"dist": {
-				"integrity": "sha512-IsIMrxMutEUGAe4W61Z3Dmcpu9H/XcIaV29b2OicmWg2P6wCZwRgyim2ychma1R9rFAiB/d22DeryWV7cN/ySA==",
-				"shasum": "a32fafa53b583f2a2ef898757048be0acedde784",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.0-staging.10.tgz",
-				"fileCount": 1257,
-				"unpackedSize": 30407621,
+				"integrity": "sha512-1g2/SCxI7oDIuWCLlfzRLZpelvcH96OyhU3qpT6JkrcKszOkjEO2AsaoTX44XagbecfG02KWboNTp2S1xi9Wjg==",
+				"shasum": "68ed5cc73b19034cb63c0399fe6d1cfa2e398659",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-ui/-/realtimekit-ui-1.1.0-staging.11.tgz",
+				"fileCount": 1218,
+				"unpackedSize": 29269298,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBOGe+nVZvCV9EFy7k+WFGsOUh6LiIUyJ9Tn/92e0X+ZAiEA2dMLmSh0jsR3wet424SH+DCZVf+WIqXVhSWRIr1HCGc="
+						"sig": "MEUCIBfQHrVcjMSo9WBWBVAkAIA+32SM8VtJQwHBfCpnjX2CAiEAhl0gD/JBujB/srESIspPDMlBUsbVJkirGtQ5yXbdNS8="
 					}
 				]
 			}
