@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/dns/dns-records/",
+	"path": "/learning/dns/what-is-domain-privacy/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "7c1Fty4gmBZbEpQ2ucokny",
-				"urlSlug": "dns/dns-records",
+				"contentfulId": "1pPP4TTZUbHdRtNgBRRejV",
+				"urlSlug": "dns/what-is-domain-privacy",
 				"metaTags": {
-					"metaTitle": "What are DNS records?",
-					"metaDescription": "DNS records are text instructions stored on DNS servers. They indicate the IP address associated with a domain and can provide other information as well.",
+					"metaTitle": "What is domain privacy? | WHOIS privacy",
+					"metaDescription": "Domain privacy, or WHOIS privacy, is a way to conceal domain registrant contact information from public WHOIS databases. Learn if you need domain privacy.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -19,8 +19,8 @@
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "DNS records",
-				"metaDescription": "DNS records are text instructions stored on DNS servers. They are vital to the success of a DNS lookup and indicate what IP address is associated with a domain.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "7skJGddyApM6rrCZOvn9YF",
@@ -768,62 +768,63 @@
 						]
 					}
 				},
-				"header": "DNS records",
-				"blurbSubHeader": "DNS records are sets of instructions that live on DNS servers. These instructions are vital to the success of a DNS lookup.",
-				"objectivesHeader": "DNS records",
+				"header": "What is domain privacy?",
+				"blurbSubHeader": "Domain privacy, or WHOIS privacy, is a way to conceal domain registrant contact information from public view.",
+				"objectivesHeader": "Domain Privacy",
 				"objectivesList": [
-					"Define 'DNS record'",
-					"Identify several types of DNS records"
+					"Explain what WHOIS privacy is and why it matters",
+					"Understand who needs domain privacy",
+					"Find a domain privacy service that charges no additional fees"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
-						"displayText": "DNS A Record",
-						"url": "/learning/dns/dns-records/dns-a-record/"
+						"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+						"displayText": "How to buy a domain name",
+						"url": "/learning/dns/how-to-buy-a-domain-name/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
-						"displayText": "DNS MX Record",
-						"url": "/learning/dns/dns-records/dns-mx-record/"
+						"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+						"displayText": "Domain name registrar",
+						"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+						"displayText": "DNS security",
+						"url": "/learning/dns/dns-security/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1uVaDmyQZ10pIC5OvHkEwU",
+						"displayText": "Domain hijacking",
+						"url": "/learning/dns/what-is-domain-hijacking/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
 						"displayText": "What is DNS?",
 						"url": "/learning/dns/what-is-dns/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "zUbDVzpVYeLJyroEFft7S",
-						"displayText": "DNS Root Server",
-						"url": "/learning/dns/glossary/dns-root-server/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3MOZsA9003MKQ1GDZMGFY5",
-						"displayText": "DNS Server Types",
-						"url": "/learning/dns/dns-server-types/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<div itemscope itemtype=\"https://schema.org/FAQPage\">\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What is a DNS record?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p><a href=\"/learning/dns/what-is-dns/\">DNS</a> records (aka zone files) are instructions that live in authoritative <a href=\"/learning/dns/dns-server-types/\">DNS servers</a> and provide information about a domain including what <a href=\"/learning/dns/glossary/what-is-my-ip-address/\">IP address</a> is associated with that domain and how to handle requests for that domain. These records consist of a series of text files written in what is known as DNS syntax. DNS syntax is just a string of characters used as commands that tell the DNS server what to do. All DNS records also have a '<a href='/learning/cdn/glossary/time-to-live-ttl/'>TTL</a>', which stands for time-to-live, and indicates how often a DNS server will refresh that record.</p>\n\n<p>You can think of a set of DNS records like a business listing on Yelp. That listing will give you a bunch of useful information about a business such as their location, hours, services offered, etc. All domains are required to have at least a few essential DNS records for a user to be able to access their website using a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain name</a>, and there are several optional records that serve additional purposes.</p>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"cards-banner-lcnew\">\n      <div class=\"card_content-banner-lcnew \">\n\n        <div class=\"card_title-banner-lcnew\"><span>Report</span></div>\n\n        <div class=\"card_text-banner-lcnew\">2024 IDC Marketscape for Edge Delivery Services</div>\n      </div>\n        <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/idc-marketscape-for-worldwide-commercial-edge-delivery-services-2024/\" data-tracking-action=\"click\" data-tracking-label=\"Get the report - /lp/idc-marketscape-for-worldwide-commercial-edge-delivery-services-2024/\" data-tracking-category=\"card1-banner\">Get the report</a></div>\n\n    </div>\n    </div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the most common types of DNS record?</h2>\n\n<ul class=\"learning-list\">\n  <li><strong>A record</strong> - The record that holds the IP address of a domain. <a href=\"/learning/dns/dns-records/dns-a-record/\">Learn more about the A record.</a></li>\n  <li><strong>AAAA record</strong> - The record that contains the IPv6 address for a domain (as opposed to A records, which list the IPv4 address). <a href='/learning/dns/dns-records/dns-aaaa-record/'>Learn more about the AAAA record.</a></li>\n  <li><strong>CNAME record</strong> - Forwards one domain or subdomain to another domain, does NOT provide an IP address. <a href=\"/learning/dns/dns-records/dns-cname-record/\">Learn more about the CNAME record.</a></li>\n  <li><strong>MX record</strong> - Directs mail to an email server. <a href=\"/learning/dns/dns-records/dns-mx-record/\">Learn more about the MX record.</a></li>\n  <li><strong>TXT record</strong> - Lets an admin store text notes in the record. These records are often used for email security. <a href=\"/learning/dns/dns-records/dns-txt-record/\">Learn more about the TXT record.</a></li>\n  <li><strong>NS record</strong> - Stores the name server for a DNS entry. <a href=\"/learning/dns/dns-records/dns-ns-record/\">Learn more about the NS record.</a></li>\n  <li><strong>SOA record</strong> - Stores admin information about a domain. <a href=\"/learning/dns/dns-records/dns-soa-record/\">Learn more about the SOA record.</a></li>\n  <li><strong>SRV record</strong> - Specifies a port for specific services. <a href=\"/learning/dns/dns-records/dns-srv-record/\">Learn more about the SRV record.</a></li>\n  <li><strong>PTR record</strong> - Provides a domain name in reverse-lookups. <a href=\"/learning/dns/dns-records/dns-ptr-record/\">Learn more about the PTR record.</a></li>\n</ul>\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>Sign Up</span></div>\n        <div class=\"card_text-banner-lcnew\">Free DNS included with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/lp/pg-all-plans-dns/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /lp/pg-all-plans-dns/\" data-tracking-category=\"card2\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some of the less commonly used DNS records?</h2>\n\n<ul class=\"learning-list\">\n  <li><strong>AFSDB record</strong> - This record is used for clients of the Andrew File System (AFS) developed by Carnegie Melon. The AFSDB record functions to find other AFS cells.</li>\n  <li><strong>APL record</strong> - The 'address prefix list' is an experiment record that specifies lists of address ranges.</li>\n  <li><strong>CAA record</strong> - This is the 'certification authority authorization' record, it allows domain owners state which certificate authorities can issue certificates for that domain. If no CAA record exists, then anyone can issue a certificate for the domain. These records are also inherited by subdomains.</li>\n  <li><strong>DNSKEY record</strong> - The '<a href='/learning/dns/dns-records/dnskey-ds-records/'>DNS Key Record</a>' contains a <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key</a> used to verify <a href=\"/learning/dns/dns-security/\">Domain Name System Security Extension (DNSSEC)</a> signatures.</li>\n  <li><strong>CDNSKEY record</strong> - This is a child copy of the DNSKEY record, meant to be transferred to a parent.</li>\n  <li><strong>CERT record</strong> - The 'certificate record' stores public key certificates.</li>\n  <li><strong>DCHID record</strong> - The 'DHCP Identifier' stores info for the Dynamic Host Configuration Protocol (DHCP), a standardized network protocol used on IP networks.</li>\n  <li><strong>DNAME record</strong> - The 'delegation name' record creates a domain alias, just like CNAME, but this alias will redirect all subdomains as well. For instance if the owner of 'example.com' bought the domain 'website.net' and gave it a DNAME record that points to 'example.com', then that pointer would also extend to 'blog.website.net' and any other subdomains.</li>\n  <li><strong>HIP record</strong> - This record uses 'Host identity protocol', a way to separate the roles of an IP address; this record is used most often in mobile computing.</li>\n  <li><strong>IPSECKEY record</strong> - The 'IPSEC key' record works with the <a href='/learning/network-layer/what-is-ipsec/'>Internet Protocol Security (IPSEC)</a>, an end-to-end security protocol framework and part of the Internet Protocol Suite <a href='/learning/ddos/glossary/tcp-ip/'>(TCP/IP)</a>.</li>\n  <li><strong>LOC record</strong> - The 'location' record contains geographical information for a domain in the form of longitude and latitude coordinates.</li>\n  <li><strong>NAPTR record</strong> - The 'name authority pointer' record can be combined with an <a href=\"/learning/dns/dns-records/dns-srv-record/\">SRV record</a> to dynamically create URI's to point to based on a regular expression.</li>\n  <li><strong>NSEC record</strong> - The 'next secure record' is part of DNSSEC, and it's used to prove that a requested DNS resource record does not exist.</li>\n  <li><strong>RRSIG record</strong> - The 'resource record signature' is a record to store digital signatures used to authenticate records in accordance with DNSSEC.</li>\n  <li><strong>RP record</strong> - This is the 'responsible person' record and it stores the email address of the person responsible for the domain.</li>\n  <li><strong>SSHFP record</strong> - This record stores the 'SSH public key fingerprints'; SSH stands for Secure Shell and it's a cryptographic networking protocol for secure communication over an unsecure network.</li>\n</ul>\n\n<p>Cloudflare DNS is an authoritative DNS service that offers the fastest response time and advanced security. Cloudflare DNS supports a wide variety of DNS records, plus additional services like easy <a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC</a>, <a href='/learning/dns/dns-records/dns-dkim-record/'>DKIM</a>, and <a href='/learning/dns/dns-records/dns-spf-record/'>SPF</a> configuration. Cloudflare also offers <a href='/learning/dns/what-is-1.1.1.1/'>1.1.1.1</a>, a free DNS resolver that is fast and private. Learn about Cloudflare's <a href='/dns/'>authoritative DNS service</a>, or about <a href='https://support.cloudflare.com/hc/en-us/articles/360019093151-Managing-DNS-records-in-Cloudflare'>managing DNS records in Cloudflare</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is domain privacy?</h2>\n\n<p>Domain privacy (sometimes called WHOIS privacy or domain privacy protection) is a service that hides a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> registrant's personal contact information from public WHOIS databases. Instead of displaying the registrant's name, address, email, and phone number publicly, the <a href='/learning/dns/glossary/what-is-a-domain-name-registrar/'>registrar</a> displays forwarding or anonymized contact information on their behalf.</p>\n\n<p>Domain privacy allows domains to function normally on the Internet while limiting public access to sensitive <a href='/learning/privacy/what-is-personal-information/'>personal data</a>.</p>\n\n<p>Domain privacy is a protective layer, not invisibility. It does not:</p>\n\n<ul class=\"learning-list\">\n  <li>Make a domain anonymous to law enforcement or regulators</li>\n  <li>Eliminate the requirement to provide accurate registration information</li>\n  <li>Prevent all forms of online abuse</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why does domain privacy matter?</h2>\n\n<p><a href='/learning/dns/how-to-buy-a-domain-name/'>Registering a domain name</a> is often the first step in establishing an online presence for personal projects, small businesses, or large organizations alike.</p>\n\n<p>However, registering a domain typically requires submitting personal contact information, which may be made publicly available by default. This public exposure can lead to unwanted consequences, including <a href='/learning/email-security/how-to-stop-spam-emails/'>spam</a>, <a href='/learning/access-management/phishing-attack/'>phishing</a> attempts, scams, doxxing, identity theft, and even personal harassment. Concealing the contact information associated with a domain reduces the likelihood of these unintended consequences.</p>\n\n<h4 class=\"learning-content-h4\">Reducing exposure to spam and scams</h4>\n\n<p>Public WHOIS data is a common source for email harvesting. Once the registrant's contact details are indexed, they can be used for unsolicited marketing, phishing attempts, and fraudulent outreach.</p>\n\n<h4 class=\"learning-content-h4\">Protection against identity theft and harassment</h4>\n\n<p>For many individuals, publishing a home address or personal phone number can lead to harassment or identity-related risks. Domain privacy helps prevent personal details from being linked to an online presence.</p>\n\n<h4 class=\"learning-content-h4\">Lowering security risk</h4>\n\n<p>Publicly available domain records can be used for reconnaissance in <a href='/learning/security/threats/social-engineering-attack/'>social engineering</a>, <a href='/learning/access-management/spear-phishing/'>spear phishing</a>, or other targeted attacks. Limiting publicly available information reduces an attacker's ability to build profiles or impersonate domain owners.</p>\n\n<p>Domain WHOIS privacy addresses these risks by keeping registrant information private while still meeting technical and legal requirements for registrants.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How domain registration, ICANN, and domain privacy work together</h2>\n\n<p>When someone registers a domain name, they are required to provide accurate contact information. This information is collected by their domain registrar and stored as part of the official domain registration record.</p>\n\n<p>The overall domain name system is coordinated by the Internet Corporation for Assigned Names and Numbers (ICANN), a global nonprofit organization responsible for ensuring that domain names are unique and that users around the world can reliably reach websites on the Internet. ICANN sets the policies that registries and registrars must follow, including the requirement that domain owners provide valid contact information. Domain registrars collect this personal contact information to ensure every domain has a verifiable, accountable owner. This data is used for renewals, technical communication, and legitimate legal or administrative inquiries.</p>\n\n<p>By default, this registration data is published in a public directory known as WHOIS, which allows anyone to look up who owns a domain and how to contact them. While ICANN requires accurate registration data, it does not require that personal information be publicly displayed.</p>\n\n<p>When domain privacy is enabled, the registrar keeps the registrant's real contact information securely on file but replaces it in public WHOIS records with anonymized or forwarding contact details. From the outside, the domain still appears properly registered and valid, but personal information is shielded from public view.</p>\n\n<p>For example, imagine a small business owner registers \"example.com\" without domain privacy. Their name, <a href='/learning/email-security/what-is-email/'>email</a> address, phone number, and physical address would be publicly visible in WHOIS records and easily <a href='/learning/bots/what-is-data-scraping/'>scraped</a> by spammers or attackers.</p>\n\n<p>With domain privacy enabled, those public records instead would display the contact information for a forwarding service managed by the registrar. The registrar still knows who owns the domain and can contact them or forward information to them if needed, but outside parties cannot directly access the registrant's personal information.</p>\n\n<p>Legitimate communications — such as legal notices or administrative inquiries — can still reach the registrant through the registrar, while spam, data harvesting, and unwanted contact are significantly reduced. The registrant's real information can also be disclosed if required by law, ensuring compliance without unnecessary public exposure.</p>\n\n<p>In short, domain privacy allows the registrant to meet ICANN's registration requirements while protecting personal or business data from being openly accessible on the Internet.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Who needs domain privacy?</h2>\n\n<p>Domain privacy is beneficial for most domain name registrants, including:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Individuals and personal projects:</strong> Personal websites, blogs, portfolios, and side projects often use home addresses and personal email accounts, making domain privacy especially important for protecting this personal information.</li>\n  <li><strong>Small businesses and startups:</strong> Early-stage businesses may not yet have dedicated office addresses or legal teams to handle abuse, phishing attempts, or impersonation risks tied to public registration data.</li>\n  <li><strong>Developers and technical users:</strong> Developers frequently register domains for testing, applications, <a href='/learning/security/api/what-is-an-api/'>APIs</a>, and internal tools — often without considering long-term exposure of personal contact details.</li>\n  <li><strong>Organizations in sensitive or regulated industries:</strong> Healthcare, finance, journalism, advocacy, and security-focused organizations benefit from minimizing publicly accessible data that could be exploited for targeted attacks or harassment.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is domain privacy always necessary?</h2>\n\n<p>Domain privacy is not required, but it is widely considered a best practice. The law requires accurate registration information, not public display of that information.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to evaluate domain privacy options</h2>\n\n<h4 class=\"learning-content-h4\">Included versus paid privacy</h4>\n\n<p>Some registrars include domain privacy at no additional cost, while others treat it as a paid add-on. Privacy should be evaluated as a standard security feature, not a premium upsell.</p>\n\n<h4 class=\"learning-content-h4\">Transparency and renewal policies</h4>\n\n<p>Look for:</p>\n\n<ul class=\"learning-list\">\n  <li>Clear pricing at registration and renewal</li>\n  <li>No hidden fees for enabling, renewing, or maintaining privacy</li>\n</ul>\n\n<h4 class=\"learning-content-h4\">Integration with DNS and security tools</h4>\n\n<p>Using a registrar that integrates domain management, <a href='/learning/dns/what-is-dns/'>DNS</a>, and security simplifies the process of protecting a domain and its data.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">The Cloudflare approach to domain privacy</h2>\n\n<p><a href='/products/registrar/'>Cloudflare Registrar</a> includes domain privacy by default, without additional fees. Registrant information is protected while still meeting ICANN requirements for accurate data collection. By integrating domain registration, DNS, and security into a single platform, Cloudflare reduces exposure, simplifies workflows, and helps registrants <a href='/application-services/solutions/low-cost-domain-names/'>avoid unnecessary fees</a>.</p>\n\n<p>Search for a domain at <a href='https://domains.cloudflare.com/'>domains.cloudflare.com</a>.</p>\n\n<p>&nbsp;</p>\n\n<h2>FAQs</h2>\n<h4>Does using domain privacy make a website owner completely anonymous?</h4>\n<p>Domain privacy is not a tool for total invisibility. It does not hide a domain owner's identity from regulators or law enforcement, nor does it remove the legal obligation to provide the registrar with accurate registration details.</p>\n\n<h4>Why is personal information often public by default when registering a domain?</h4>\n<p>The Internet Corporation for Assigned Names and Numbers (ICANN) establishes policies requiring domain owners to provide valid contact information to ensure every domain has an accountable owner. While this data is used for technical communications and renewals, it is published by default in the WHOIS directory where anyone can view it.</p>\n\n<h4>What are the risks of leaving domain registration data exposed?</h4>\n<p>Publicly available contact details in WHOIS records are frequently harvested for unsolicited marketing and phishing scams. Keeping this information public also may leave the website owner open to personal attacks, such as doxxing and harassment.</p>\n\n<h4>How can legitimate inquiries reach a registrant if their contact info is hidden?</h4>\n<p>Even when privacy is active, the registrar maintains the owner's actual contact information securely on file. Legitimate administrative or legal notices can still reach the registrant through the registrar's forwarding service.</p>\n\n<h4>Is there a standard cost for activating WHOIS privacy?</h4>\n<p>Pricing varies by provider; some registrars offer domain privacy as a paid add-on, while others include it at no extra cost. Cloudflare, for example, provides domain privacy by default for all its registrants without charging additional fees.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Does using domain privacy make a website owner completely anonymous?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Domain privacy is not a tool for total invisibility. It does not hide a domain owner's identity from regulators or law enforcement, nor does it remove the legal obligation to provide the registrar with accurate registration details.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Why is personal information often public by default when registering a domain?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"The Internet Corporation for Assigned Names and Numbers (ICANN) establishes policies requiring domain owners to provide valid contact information to ensure every domain has an accountable owner. While this data is used for technical communications and renewals, it is published by default in the WHOIS directory where anyone can view it.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are the risks of leaving domain registration data exposed?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Publicly available contact details in WHOIS records are frequently harvested for unsolicited marketing and phishing scams. Keeping this information public also may leave the website owner open to personal attacks, such as doxxing and harassment.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can legitimate inquiries reach a registrant if their contact info is hidden?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Even when privacy is active, the registrar maintains the owner's actual contact information securely on file. Legitimate administrative or legal notices can still reach the registrant through the registrar's forwarding service.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Is there a standard cost for activating WHOIS privacy?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Pricing varies by provider; some registrars offer domain privacy as a paid add-on, while others include it at no extra cost. Cloudflare, for example, provides domain privacy by default for all its registrants without charging additional fees.\"\n      }\n    }\n  ]\n}\n</script>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -835,64 +836,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "7c1Fty4gmBZbEpQ2ucokny",
-			"pathname": "/learning/dns/dns-records/",
+			"contentfulId": "1pPP4TTZUbHdRtNgBRRejV",
+			"pathname": "/learning/dns/what-is-domain-privacy/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
