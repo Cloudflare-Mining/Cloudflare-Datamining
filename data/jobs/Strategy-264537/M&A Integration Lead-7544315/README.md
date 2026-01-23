@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, TX OR New York, NY</strong></p>
 <p><strong>Role Summary</strong></p>
 <p>As a Strategic M&amp;A Integration Lead, you will manage overall integration efforts, ensuring all workstreams remain aligned with business decisions. You will act as a primary liaison between business owners and cross-functional teams, translating high-level strategy into operational reality for customers and vendors. Beyond managing the current deal, you will partner with functional leaders to codify best practices into a repeatable M&amp;A playbook. We are seeking a proactive, intellectually curious leader who can drive accountability across the organization while maintaining a clear view of how individual tasks connect to the broader strategic "forest”.</p>
 <p><strong>Role Responsibilities</strong></p>
@@ -36,6 +36,7 @@
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<p style="padding-left: 40px;">For New York City based hires: Estimated annual salary of $137,000 - $167,000</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
