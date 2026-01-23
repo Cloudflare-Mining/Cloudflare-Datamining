@@ -8,7 +8,6 @@
 <p><strong>Available Locations: Austin, TX</strong></p>
 <p><strong>About the Department</strong></p>
 <p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective, and independent assurance over the Company’s key business and financial risks to the Audit Committee and Management in a cost-effective manner and in alignment with professional standards. In addition to managing the Company’s SOX compliance program, the function is expanding its focus to include broader operational and strategic risks. Reflecting the Company’s core value of continuous improvement, Internal Audit is also exploring more efficient audit approaches and adopting industry best practices where appropriate.</p>
-<p>&nbsp;</p>
 <p><strong>About the Role</strong></p>
 <p>We’re looking for a highly motivated, collaborative, and detail-oriented Senior Internal Auditor to join our Internal Audit team. In this role, you’ll perform risk-based audits across business functions, helping evaluate the efficiency and effectiveness of processes, controls, and operations. You’ll work closely with stakeholders to identify improvement opportunities that drive value—not just compliance. The ideal candidate has a strong background in risk and operations, and is able to perform high-quality audits to help the business improve.&nbsp;This is a great opportunity for someone who thrives in a fast-paced environment and wants to make a visible impact. This role will report directly to the Senior Director, Internal Audit.</p>
 <p><strong>&nbsp;</strong></p>
