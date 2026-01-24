@@ -5,43 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin, London, Lisbon</p>
-<h4>About the Team</h4>
-<p>The Supportability Team is made up of product experts who partner with Product, Engineering, and Support leaders to reduce the friction that customers experience when using our products, and ensure that our Technical Support Engineers are able to support products efficiently. We represent the voice-of-the-customer to help communicate their needs and use cases back to the rest of the company to help us build easy to use products and deliver better service.</p>
-<h4>What you’ll do</h4>
-<p>Supportability Engineers are hands-on, technical subject matter experts who work cross-functionally across the Product, Engineering, and Customer Support teams. In this role, you will work with <a href="https://www.cloudflare.com/developer-platform/products/">Cloudflare’s Developer Platform Products</a>, building internal tools, documentation and processes that help developers and internal teams answer questions and debug problems. This is a high impact role, where you will directly shape our support strategy for developers, as well as how pain points, bugs, and questions from customers big and small are addressed, enabling the support team to best support developers. The goals are to improve product supportability, reduce customer contact rates and escalations, and to improve the customer experience, while also supporting new go-to-market preparedness efforts for any new Developer Platform features.</p>
-<h4>Responsibilities</h4>
-<ul>
-	<li>Enable customers to easily adopt and use our developer platform products by identifying usability issues and working closely with the Product and Engineering teams to unblock them.</li>
-	<li>Regularly meet with the Product &amp; Engineering teams for Developer Platform products, as well as front line technical support engineers to drive improvements to tooling, process, and product&nbsp;</li>
-	<li>Manage key Supportability metrics for specific Developer Platform products including contact rate, escalation rate, support efficiency, and product CSAT.&nbsp;</li>
-	<li>Manage a top issues tracker for Developer Platform products&nbsp;</li>
-	<li>Using a metrics-driven approach, drive UX improvements that would prevent customers from needing to contact support</li>
-	<li>Work with the New Product Introduction (NPI) business function on Go-to-market (GTM) readiness efforts, monitoring Product roadmaps and release schedules, ensuring the team is prepared to support and launches</li>
-	<li>Help to enable team members on Developer Platform products</li>
-	<li>Support the creation and maintenance of internal and external facing Developer Platform support content</li>
-	<li>Review escalated customer inquiries to identify product and content needs, and to help Escalation Engineers, as well as Product and Engineering teams resolve complex customer issues</li>
-	<li>Maintain testing and issue reproduction environments</li>
-</ul>
-<h4>Required&nbsp;</h4>
-<ul>
-	<li>Demonstrated ability to work with data visualization and analytics platforms to generate insights and determine opportunities to impact key metrics</li>
-	<li>Experience building full-stack web applications in JavaScript</li>
-	<li>Experience working with databases</li>
-	<li>Experience with LLM prompting and a strong understanding of the underlying tech</li>
-	<li>Excellent debugging skills and ability to troubleshoot complex issues to resolution</li>
-	<li>Great cross-functional collaboration skills, ability to work effectively with many different teams</li>
-	<li>Strong verbal and written communication skills, including technical documentation&nbsp;</li>
-	<li>Self-motivated, can positively influence others, team player, problem solver</li>
-	<li>Technical Support or Product Operations experience</li>
-</ul>
-<h4>Desired</h4>
-<ul>
-	<li>Expertise in Cloudflare’s Developer Platform products</li>
-	<li>Strong project and change management skills</li>
-	<li>Professional experience in a software engineering or developer advocacy role</li>
-</ul>
+<p><strong>Available Location: Mexico City</strong></p>
 <p>&nbsp;</p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
+<p><strong>About the department</strong></p>
+<p>Cloudflare’s P2P department is housed within the Finance team, but our reach is global, supporting thousands of purchases across our global offices per quarter. We use an integrated platform for purchase-orders and approvals, and a contract management and collaboration tool for negotiated, signed contracts. We interact daily with stakeholders from Finance, Commercial Legal, Privacy, Security, and IT to get critical purchases over the line. The majority of our purchases involve technology and internet infrastructure, so we ensure we are familiar with industry trends and challenges faced by our internal customers. Our team is responsible for setting policies, defining new processes, reviewing &amp; negotiating vendor agreements to ensure that the Procurement function aligns to Cloudflare’s long-term strategic vision and goals. We are a small and growing team, presenting lots of opportunity for professional growth and visibility across multiple departments.</p>
+<p><br><br></p>
+<p><strong>What you'll do</strong></p>
+<p>Cloudflare’s Contracts Specialist will support the end-to-end contracting process including, CLM system management, workflow orchestration &amp; assignment, contract administration, contract execution and liaising with various business units regarding the Procurement process and procedures.. This person will be the internal point of contact for key all contracting related activity within the procurement function. They will work closely with the Sr. Specialist and the other Procurement groups.&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Who You Are:</strong></p>
+<p>We are seeking a detail oriented, highly organized Contract Specialist to provide day to day operational and administrative support for our Contract Lifecycle Management (CLM) systems.&nbsp; This role is essential in ensuring accuracy of contract data, smooth execution of contract workflows and timely completion of contract related tasks. The ideal candidate for this role is a proactive problem solver, fearless, approachable, and adaptable. You enjoy contracts, thrive in a fast paced environment, working with data and seeking out metrics to maximize value, and are eager to grow your skills in CLM administration.&nbsp;</p>
+<p><strong>Key Responsibilities:</strong></p>
+<ul>
+	<li>Manage day-to-day CLM system tasks, including contract intake triage, routing, and signature coordination.</li>
+	<li>Validate contract metadata, ensuring accuracy and completeness&nbsp;</li>
+	<li>Maintain contract hierarchy and link related agreements in the CLM system.<br>Support data quality processes, including regular audits of metadata and key dates (renewals, obligations, etc.).</li>
+	<li>Coordinate workflows across multiple teams (Sourcing, Legal, Procurement) to ensure timely contract execution.</li>
+	<li>Provide basic CLM tool support to users and escalate complex issues as needed</li>
+	<li>Support the Sr Contract Analyst with quarterly audit and ad-hoc reporting<br><br></li>
+</ul>
+<p><strong>Qualifications:</strong></p>
+<ul>
+	<li>1–2 years of experience in administrative, operations, or contracts-related roles (CLM experience is a plus).</li>
+	<li>Strong attention to detail and accuracy in data entry</li>
+	<li>General knowledge of procurement processes</li>
+	<li>Excellent organizational skills and ability to manage multiple tasks simultaneously.</li>
+	<li>Proficiency in Microsoft Office Suite; experience with CLM tools (Ironclad, Zip, Adobesign) preferred.</li>
+	<li>Experience using Excel or system dashboards to track contract volumes and cycle times.</li>
+	<li>Developed critical thinking and proactive problem solving skills, with a willingness to get into the details of complex problems and drive creative solutions</li>
+	<li>Strong communication skills and a collaborative approach to working with cross-functional teams.</li>
+	<li>Eagerness to learn and grow in contract operations and system administration.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
