@@ -419,7 +419,21 @@
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "238f5e9f-f3da-58ef-bc95-c778fadf0365",
+							"altText": "Service Providers",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4k0RbbnsX4EJcWxaZSxXtG/1d777ad6be59cccc10ec77ceff2c28fa/Service_Providers.webp"
+								},
+								"description": "Service Providers"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -659,7 +673,17 @@
 								"heading": "Award",
 								"description": "Cloudflare was named one of the 20 Hottest AI Cybersecurity Companies on CRN's 2025 AI 100 list.",
 								"category": "Events",
-								"link": null,
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "2UChp6ap2eoJyA6ilceOgb",
+									"elementName": "CRN's 2025 AI 100 list. - Read more",
+									"standardText": null,
+									"text": "Read more",
+									"url": "https://www.crn.com/news/security/2025/the-20-hottest-ai-cybersecurity-companies-the-2025-crn-ai-100?page=5",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
 								"image": {
 									"id": "8ff8e95e-eb4a-5160-9f50-50405c077eae",
 									"altText": "CRN's 2025 AI 100 list.",
