@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Lisbon, and London</strong></p>
+<p><strong>Available Locations: Austin, NYC, or SF</strong></p>
 <div><strong>About The Role</strong><br>Cloudflare Realtime is a new and exciting suite of products designed to empower developers to build truly interactive applications with real-time audio, video, and AI experiences. This suite brings together our highly performant SFU (Selective Forwarding Unit), STUN, and TURN services, alongside the innovative RealtimeKit – a collection of mobile and web SDKs and server-side services (recording, coordination, transcription).<br>We are looking for a passionate and technically adept Product Manager to drive the strategy, roadmap, and execution for Cloudflare Realtime. You will be instrumental in shaping the future of real-time communication on our global network, making complex media capabilities accessible to developers of all skill levels.</div>
 <div><br><strong>What You’ll Do</strong><br>
 	<ul>
@@ -31,6 +31,13 @@
 		<li>Outstanding communication and collaboration skills, able to work with diverse groups, gain alignment, and drive product forward.</li>
 	</ul>
 </div>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $202,000 - $246,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $192,000 - $234,000</span></li>
+	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $170,000 - $208,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

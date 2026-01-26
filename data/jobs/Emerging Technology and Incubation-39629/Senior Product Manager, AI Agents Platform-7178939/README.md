@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Lisbon, and London&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, NYC, and SF&nbsp;</strong></p>
 <div>
 	<p><strong>About the Role</strong></p>
 	<p>Since launching Cloudflare Workers in 2017, we've evolved from an edge compute platform into a comprehensive developer platform. Now, we're expanding into AI infrastructure, specifically focusing on making Cloudflare an excellent platform for building and deploying AI agents.</p>
@@ -32,6 +32,13 @@
 		<li>Customer-obsessed, with direct experience working with early adopters to find product-market fit.</li>
 		<li>Experience with developer tools and profound empathy for the challenges developers face.</li>
 		<li>Some programming experience (e.g., Python, Javascript, Go) is highly desirable.</li>
+	</ul>
+	<p><strong>Compensation</strong></p>
+	<p>Compensation may be adjusted depending on work location.</p>
+	<ul>
+		<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $202,000 - $246,000</span></li>
+		<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $192,000 - $234,000</span></li>
+		<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $170,000 - $208,000</span></li>
 	</ul>
 </div>
 <p><strong>Equity</strong></p>

@@ -12,7 +12,6 @@
 <p><a href="https://developers.cloudflare.com/d1/">D1</a> provides managed, serverless relational databases (100s of thousands of SQLite databases) for building full-stack applications on Workers.&nbsp;</p>
 <p>This is a role with high agency and accountability: you’ll be the sole PM for the products you’re responsible for, and you’ll work closely with your peers across the team to ensure we’re shipping great developer experiences and not silos.</p>
 <p><strong>What You’ll Do</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Drive the strategy, roadmap &amp; (most importantly) ship great products that help developers build reliable, high performance full-stack applications on Cloudflare.</li>
 	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
@@ -23,11 +22,8 @@
 	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
 	<li>Delve into market research to drive new investment opportunities in the developer space</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
-<p>&nbsp;</p>
 <p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.</p>
-<p>&nbsp;</p>
 <ul>
 	<li>A desire to sweat the details and ship great end-to-end developer experiences. APIs, UIs, docs: all of these are part of the product.</li>
 	<li>Proven track record of shipping developer-facing products from ideation to launch. You should know what it means to be a developer and what gets in the way of building production services.</li>
@@ -43,8 +39,8 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000 - $224,000</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $192,000 - $213,000</span></li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $147,000 - $246,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $141,000 - $234,000</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
