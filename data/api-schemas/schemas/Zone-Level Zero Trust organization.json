@@ -179,7 +179,8 @@
 												"ui_read_only_toggle_reason": {
 													"description": "A description of the reason why the UI read only field is being toggled.",
 													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -399,7 +400,8 @@
 							"ui_read_only_toggle_reason": {
 								"description": "A description of the reason why the UI read only field is being toggled.",
 								"example": "Temporarily turn off the UI read only lock to make a change via the UI",
-								"type": "string"
+								"type": "string",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -583,7 +585,8 @@
 												"ui_read_only_toggle_reason": {
 													"description": "A description of the reason why the UI read only field is being toggled.",
 													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -994,7 +997,8 @@
 							"ui_read_only_toggle_reason": {
 								"description": "A description of the reason why the UI read only field is being toggled.",
 								"example": "Temporarily turn off the UI read only lock to make a change via the UI",
-								"type": "string"
+								"type": "string",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
@@ -1174,7 +1178,8 @@
 												"ui_read_only_toggle_reason": {
 													"description": "A description of the reason why the UI read only field is being toggled.",
 													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",

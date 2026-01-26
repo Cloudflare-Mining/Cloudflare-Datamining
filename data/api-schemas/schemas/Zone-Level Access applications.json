@@ -961,6 +961,12 @@
 																		"description": "The application type.",
 																		"example": "self_hosted",
 																		"type": "string"
+																	},
+																	"use_clientless_isolation_app_launcher_url": {
+																		"default": false,
+																		"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																		"example": false,
+																		"type": "boolean"
 																	}
 																},
 																"required": [
@@ -2248,6 +2254,12 @@
 																				"description": "The application type.",
 																				"example": "self_hosted",
 																				"type": "string"
+																			},
+																			"use_clientless_isolation_app_launcher_url": {
+																				"default": false,
+																				"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																				"example": false,
+																				"type": "boolean"
 																			}
 																		},
 																		"required": [
@@ -2806,6 +2818,12 @@
 																				"description": "The application type.",
 																				"example": "self_hosted",
 																				"type": "string"
+																			},
+																			"use_clientless_isolation_app_launcher_url": {
+																				"default": false,
+																				"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																				"example": false,
+																				"type": "boolean"
 																			}
 																		},
 																		"required": [
@@ -5430,6 +5448,12 @@
 																	"description": "The application type.",
 																	"example": "self_hosted",
 																	"type": "string"
+																},
+																"use_clientless_isolation_app_launcher_url": {
+																	"default": false,
+																	"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																	"example": false,
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -6717,6 +6741,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -7275,6 +7305,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -10472,6 +10508,12 @@
 												"description": "The application type.",
 												"example": "self_hosted",
 												"type": "string"
+											},
+											"use_clientless_isolation_app_launcher_url": {
+												"default": false,
+												"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+												"example": false,
+												"type": "boolean"
 											}
 										},
 										"required": [
@@ -11759,6 +11801,12 @@
 														"description": "The application type.",
 														"example": "self_hosted",
 														"type": "string"
+													},
+													"use_clientless_isolation_app_launcher_url": {
+														"default": false,
+														"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+														"example": false,
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -12317,6 +12365,12 @@
 														"description": "The application type.",
 														"example": "self_hosted",
 														"type": "string"
+													},
+													"use_clientless_isolation_app_launcher_url": {
+														"default": false,
+														"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+														"example": false,
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -14763,6 +14817,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -16050,6 +16110,12 @@
 																					"description": "The application type.",
 																					"example": "self_hosted",
 																					"type": "string"
+																				},
+																				"use_clientless_isolation_app_launcher_url": {
+																					"default": false,
+																					"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																					"example": false,
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -16608,6 +16674,12 @@
 																					"description": "The application type.",
 																					"example": "self_hosted",
 																					"type": "string"
+																				},
+																				"use_clientless_isolation_app_launcher_url": {
+																					"default": false,
+																					"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																					"example": false,
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -18960,6 +19032,12 @@
 																	"description": "The application type.",
 																	"example": "self_hosted",
 																	"type": "string"
+																},
+																"use_clientless_isolation_app_launcher_url": {
+																	"default": false,
+																	"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																	"example": false,
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -20247,6 +20325,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -20805,6 +20889,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -23530,6 +23620,12 @@
 												"description": "The application type.",
 												"example": "self_hosted",
 												"type": "string"
+											},
+											"use_clientless_isolation_app_launcher_url": {
+												"default": false,
+												"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+												"example": false,
+												"type": "boolean"
 											}
 										},
 										"required": [
@@ -24817,6 +24913,12 @@
 														"description": "The application type.",
 														"example": "self_hosted",
 														"type": "string"
+													},
+													"use_clientless_isolation_app_launcher_url": {
+														"default": false,
+														"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+														"example": false,
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -25375,6 +25477,12 @@
 														"description": "The application type.",
 														"example": "self_hosted",
 														"type": "string"
+													},
+													"use_clientless_isolation_app_launcher_url": {
+														"default": false,
+														"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+														"example": false,
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -27821,6 +27929,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -29108,6 +29222,12 @@
 																					"description": "The application type.",
 																					"example": "self_hosted",
 																					"type": "string"
+																				},
+																				"use_clientless_isolation_app_launcher_url": {
+																					"default": false,
+																					"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																					"example": false,
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -29666,6 +29786,12 @@
 																					"description": "The application type.",
 																					"example": "self_hosted",
 																					"type": "string"
+																				},
+																				"use_clientless_isolation_app_launcher_url": {
+																					"default": false,
+																					"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																					"example": false,
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -32018,6 +32144,12 @@
 																	"description": "The application type.",
 																	"example": "self_hosted",
 																	"type": "string"
+																},
+																"use_clientless_isolation_app_launcher_url": {
+																	"default": false,
+																	"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																	"example": false,
+																	"type": "boolean"
 																}
 															},
 															"required": [
@@ -33305,6 +33437,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
@@ -33863,6 +34001,12 @@
 																			"description": "The application type.",
 																			"example": "self_hosted",
 																			"type": "string"
+																		},
+																		"use_clientless_isolation_app_launcher_url": {
+																			"default": false,
+																			"description": "Determines if users can access this application via a clientless browser isolation URL.\nThis allows users to access private domains without connecting to Gateway. The option requires\nClientless Browser Isolation to be set up with policies that allow users of this application.\n",
+																			"example": false,
+																			"type": "boolean"
 																		}
 																	},
 																	"required": [
