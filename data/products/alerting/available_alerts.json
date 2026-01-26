@@ -161,6 +161,12 @@
 			"type": "open_port_scan_alert",
 			"description": "Get notifications when Cloudflare detects newly open ports",
 			"filter_options": []
+		},
+		{
+			"display_name": "Cloudforce One Containers Security Alert",
+			"type": "containers_security_alert",
+			"description": "Get notifications when a potential threat has been identified in Containers",
+			"filter_options": []
 		}
 	],
 	"DoS Protection": [
