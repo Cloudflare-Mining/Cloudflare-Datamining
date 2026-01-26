@@ -634,7 +634,7 @@
 													"from": "d1994@example.com",
 													"from_name": "Sender Name",
 													"htmltext_structure_hash": null,
-													"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-email@example.com",
+													"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-2a539d65",
 													"is_phish_submission": false,
 													"is_quarantined": false,
 													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
@@ -1167,7 +1167,7 @@
 													"from": "d1994@example.com",
 													"from_name": "Sender Name",
 													"htmltext_structure_hash": null,
-													"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-email@example.com",
+													"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-2a539d65",
 													"is_phish_submission": false,
 													"is_quarantined": false,
 													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
@@ -1826,7 +1826,7 @@
 												"from": "d1994@example.com",
 												"from_name": "Sender Name",
 												"htmltext_structure_hash": null,
-												"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-email@example.com",
+												"id": "4Njp3P0STMz2c02Q-2022-12-30T02:44:49-2a539d65",
 												"is_phish_submission": false,
 												"is_quarantined": false,
 												"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
@@ -4412,7 +4412,17 @@
 								],
 								"type": "string"
 							},
+							"ids": {
+								"description": "List of message IDs to move.",
+								"items": {
+									"type": "string",
+									"x-auditable": true
+								},
+								"type": "array"
+							},
 							"postfix_ids": {
+								"deprecated": true,
+								"description": "Deprecated: Use `ids` instead. List of message IDs to move.",
 								"items": {
 									"description": "The identifier of the message.",
 									"example": "4Njp3P0STMz2c02Q",
@@ -4423,7 +4433,6 @@
 							}
 						},
 						"required": [
-							"postfix_ids",
 							"destination"
 						],
 						"type": "object"
@@ -4989,6 +4998,9 @@
 													},
 													{
 														"properties": {
+															"id": {
+																"type": "string"
+															},
 															"postfix_id": {
 																"description": "The identifier of the message.",
 																"example": "4Njp3P0STMz2c02Q",
@@ -4997,6 +5009,7 @@
 															}
 														},
 														"required": [
+															"id",
 															"postfix_id"
 														],
 														"type": "object"

@@ -287,6 +287,11 @@
 		"summary": "List Placement Regions",
 		"tags": [
 			"Worker Placement"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
 		]
 	}
 }

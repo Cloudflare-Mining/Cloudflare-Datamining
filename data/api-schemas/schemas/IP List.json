@@ -1,6 +1,6 @@
 {
-	"GET /accounts/{account_id}/intel/ip-list": {
-		"description": "Get IP Lists.",
+	"GET /accounts/{account_id}/intel/ip-lists": {
+		"description": "Returns a list of available IP list categories (e.g., anonymizer, botnetcc, malware, tor, vpn, open_proxies). This endpoint provides metadata about which IP lists are available in the system.",
 		"operationId": "ip-list-get-ip-lists",
 		"parameters": [
 			{
@@ -187,7 +187,7 @@
 						}
 					}
 				},
-				"description": "Get IP Lists response."
+				"description": "Get Available IP Lists response."
 			},
 			"4XX": {
 				"content": {
@@ -443,7 +443,7 @@
 						}
 					}
 				},
-				"description": "Get IP Lists response failure."
+				"description": "Get Available IP Lists response failure."
 			}
 		},
 		"security": [
@@ -455,7 +455,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get IP Lists",
+		"summary": "Get Available IP Lists",
 		"tags": [
 			"IP List"
 		],

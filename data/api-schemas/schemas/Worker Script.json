@@ -1220,6 +1220,147 @@
 																					"host"
 																				],
 																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"mode": {
+																						"description": "Targeted placement mode.",
+																						"enum": [
+																							"targeted"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"region": {
+																						"description": "Cloud region for targeted placement in format 'provider:region'.",
+																						"example": "aws:us-east-1",
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"mode",
+																					"region"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"hostname": {
+																						"description": "HTTP hostname for targeted placement.",
+																						"example": "api.example.com",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"mode": {
+																						"description": "Targeted placement mode.",
+																						"enum": [
+																							"targeted"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"mode",
+																					"hostname"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"host": {
+																						"description": "TCP host and port for targeted placement.",
+																						"example": "db.example.com:5432",
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"mode": {
+																						"description": "Targeted placement mode.",
+																						"enum": [
+																							"targeted"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"mode",
+																					"host"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"mode": {
+																						"description": "Targeted placement mode.",
+																						"enum": [
+																							"targeted"
+																						],
+																						"type": "string",
+																						"x-auditable": true
+																					},
+																					"target": {
+																						"description": "Array of placement targets (currently limited to single target).",
+																						"items": {
+																							"description": "A target to run your Worker near.",
+																							"oneOf": [
+																								{
+																									"additionalProperties": false,
+																									"properties": {
+																										"region": {
+																											"description": "Cloud region in format 'provider:region'.",
+																											"example": "aws:us-east-1",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"region"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"additionalProperties": false,
+																									"properties": {
+																										"hostname": {
+																											"description": "HTTP hostname for targeted placement.",
+																											"example": "api.example.com",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"hostname"
+																									],
+																									"type": "object"
+																								},
+																								{
+																									"additionalProperties": false,
+																									"properties": {
+																										"host": {
+																											"description": "TCP host:port for targeted placement.",
+																											"example": "db.example.com:5432",
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"host"
+																									],
+																									"type": "object"
+																								}
+																							],
+																							"type": "object"
+																						},
+																						"maxItems": 1,
+																						"minItems": 1,
+																						"type": "array",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"mode",
+																					"target"
+																				],
+																				"type": "object"
 																			}
 																		]
 																	},
@@ -1247,15 +1388,16 @@
 																		"type": "object"
 																	}
 																],
-																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+																"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 																"type": "object"
 															},
 															"placement_mode": {
 																"allOf": [
 																	{
-																		"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																		"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 																		"enum": [
-																			"smart"
+																			"smart",
+																			"targeted"
 																		],
 																		"type": "string",
 																		"x-auditable": true
@@ -6046,9 +6188,10 @@
 												"placement": {
 													"allOf": [
 														{
-															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 															"oneOf": [
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"mode": {
 																			"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -6065,6 +6208,7 @@
 																	"type": "object"
 																},
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"region": {
 																			"description": "Cloud region for targeted placement in format 'provider:region'.",
@@ -6079,6 +6223,7 @@
 																	"type": "object"
 																},
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"hostname": {
 																			"description": "HTTP hostname for targeted placement.",
@@ -6093,6 +6238,7 @@
 																	"type": "object"
 																},
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"host": {
 																			"description": "TCP host and port for targeted placement.",
@@ -6103,6 +6249,151 @@
 																	},
 																	"required": [
 																		"host"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"region": {
+																			"description": "Cloud region for targeted placement in format 'provider:region'.",
+																			"example": "aws:us-east-1",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"region"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"hostname": {
+																			"description": "HTTP hostname for targeted placement.",
+																			"example": "api.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"hostname"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"host": {
+																			"description": "TCP host and port for targeted placement.",
+																			"example": "db.example.com:5432",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"host"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"target": {
+																			"description": "Array of placement targets (currently limited to single target).",
+																			"items": {
+																				"description": "A target to run your Worker near.",
+																				"oneOf": [
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"region": {
+																								"description": "Cloud region in format 'provider:region'.",
+																								"example": "aws:us-east-1",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"region"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"hostname": {
+																								"description": "HTTP hostname for targeted placement.",
+																								"example": "api.example.com",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"hostname"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"host": {
+																								"description": "TCP host:port for targeted placement.",
+																								"example": "db.example.com:5432",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"host"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"type": "object"
+																			},
+																			"maxItems": 1,
+																			"minItems": 1,
+																			"type": "array",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"target"
 																	],
 																	"type": "object"
 																}
@@ -9992,9 +10283,10 @@
 									"placement": {
 										"allOf": [
 											{
-												"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+												"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 												"oneOf": [
 													{
+														"additionalProperties": false,
 														"properties": {
 															"mode": {
 																"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -10011,6 +10303,7 @@
 														"type": "object"
 													},
 													{
+														"additionalProperties": false,
 														"properties": {
 															"region": {
 																"description": "Cloud region for targeted placement in format 'provider:region'.",
@@ -10025,6 +10318,7 @@
 														"type": "object"
 													},
 													{
+														"additionalProperties": false,
 														"properties": {
 															"hostname": {
 																"description": "HTTP hostname for targeted placement.",
@@ -10039,6 +10333,7 @@
 														"type": "object"
 													},
 													{
+														"additionalProperties": false,
 														"properties": {
 															"host": {
 																"description": "TCP host and port for targeted placement.",
@@ -10049,6 +10344,151 @@
 														},
 														"required": [
 															"host"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"region": {
+																"description": "Cloud region for targeted placement in format 'provider:region'.",
+																"example": "aws:us-east-1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"region"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"hostname": {
+																"description": "HTTP hostname for targeted placement.",
+																"example": "api.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"hostname"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"host": {
+																"description": "TCP host and port for targeted placement.",
+																"example": "db.example.com:5432",
+																"type": "string",
+																"x-auditable": true
+															},
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"host"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"target": {
+																"description": "Array of placement targets (currently limited to single target).",
+																"items": {
+																	"description": "A target to run your Worker near.",
+																	"oneOf": [
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"region": {
+																					"description": "Cloud region in format 'provider:region'.",
+																					"example": "aws:us-east-1",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"region"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"hostname": {
+																					"description": "HTTP hostname for targeted placement.",
+																					"example": "api.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"hostname"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"host": {
+																					"description": "TCP host:port for targeted placement.",
+																					"example": "db.example.com:5432",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																"maxItems": 1,
+																"minItems": 1,
+																"type": "array",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"target"
 														],
 														"type": "object"
 													}
@@ -12686,9 +13126,10 @@
 												"placement": {
 													"allOf": [
 														{
-															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 															"oneOf": [
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"mode": {
 																			"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
@@ -12705,6 +13146,7 @@
 																	"type": "object"
 																},
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"region": {
 																			"description": "Cloud region for targeted placement in format 'provider:region'.",
@@ -12719,6 +13161,7 @@
 																	"type": "object"
 																},
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"hostname": {
 																			"description": "HTTP hostname for targeted placement.",
@@ -12733,6 +13176,7 @@
 																	"type": "object"
 																},
 																{
+																	"additionalProperties": false,
 																	"properties": {
 																		"host": {
 																			"description": "TCP host and port for targeted placement.",
@@ -12743,6 +13187,151 @@
 																	},
 																	"required": [
 																		"host"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"region": {
+																			"description": "Cloud region for targeted placement in format 'provider:region'.",
+																			"example": "aws:us-east-1",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"region"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"hostname": {
+																			"description": "HTTP hostname for targeted placement.",
+																			"example": "api.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"hostname"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"host": {
+																			"description": "TCP host and port for targeted placement.",
+																			"example": "db.example.com:5432",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"host"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"target": {
+																			"description": "Array of placement targets (currently limited to single target).",
+																			"items": {
+																				"description": "A target to run your Worker near.",
+																				"oneOf": [
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"region": {
+																								"description": "Cloud region in format 'provider:region'.",
+																								"example": "aws:us-east-1",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"region"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"hostname": {
+																								"description": "HTTP hostname for targeted placement.",
+																								"example": "api.example.com",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"hostname"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"host": {
+																								"description": "TCP host:port for targeted placement.",
+																								"example": "db.example.com:5432",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"host"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"type": "object"
+																			},
+																			"maxItems": 1,
+																			"minItems": 1,
+																			"type": "array",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"target"
 																	],
 																	"type": "object"
 																}
@@ -15735,6 +16324,147 @@
 															"host"
 														],
 														"type": "object"
+													},
+													{
+														"properties": {
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"region": {
+																"description": "Cloud region for targeted placement in format 'provider:region'.",
+																"example": "aws:us-east-1",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"region"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"hostname": {
+																"description": "HTTP hostname for targeted placement.",
+																"example": "api.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"hostname"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"host": {
+																"description": "TCP host and port for targeted placement.",
+																"example": "db.example.com:5432",
+																"type": "string",
+																"x-auditable": true
+															},
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"host"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"mode": {
+																"description": "Targeted placement mode.",
+																"enum": [
+																	"targeted"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"target": {
+																"description": "Array of placement targets (currently limited to single target).",
+																"items": {
+																	"description": "A target to run your Worker near.",
+																	"oneOf": [
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"region": {
+																					"description": "Cloud region in format 'provider:region'.",
+																					"example": "aws:us-east-1",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"region"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"hostname": {
+																					"description": "HTTP hostname for targeted placement.",
+																					"example": "api.example.com",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"hostname"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"host": {
+																					"description": "TCP host:port for targeted placement.",
+																					"example": "db.example.com:5432",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"host"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"type": "object"
+																},
+																"maxItems": 1,
+																"minItems": 1,
+																"type": "array",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode",
+															"target"
+														],
+														"type": "object"
 													}
 												]
 											},
@@ -15762,7 +16492,7 @@
 												"type": "object"
 											}
 										],
-										"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+										"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 										"type": "object"
 									},
 									"tags": {
@@ -16179,6 +16909,147 @@
 																						"host"
 																					],
 																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"enum": [
+																								"targeted"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"region": {
+																							"description": "Cloud region for targeted placement in format 'provider:region'.",
+																							"example": "aws:us-east-1",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"region"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"hostname": {
+																							"description": "HTTP hostname for targeted placement.",
+																							"example": "api.example.com",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"enum": [
+																								"targeted"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"hostname"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"host": {
+																							"description": "TCP host and port for targeted placement.",
+																							"example": "db.example.com:5432",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"enum": [
+																								"targeted"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"host"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"mode": {
+																							"description": "Targeted placement mode.",
+																							"enum": [
+																								"targeted"
+																							],
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"target": {
+																							"description": "Array of placement targets (currently limited to single target).",
+																							"items": {
+																								"description": "A target to run your Worker near.",
+																								"oneOf": [
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"region": {
+																												"description": "Cloud region in format 'provider:region'.",
+																												"example": "aws:us-east-1",
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"region"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"hostname": {
+																												"description": "HTTP hostname for targeted placement.",
+																												"example": "api.example.com",
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"hostname"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"additionalProperties": false,
+																										"properties": {
+																											"host": {
+																												"description": "TCP host:port for targeted placement.",
+																												"example": "db.example.com:5432",
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"host"
+																										],
+																										"type": "object"
+																									}
+																								],
+																								"type": "object"
+																							},
+																							"maxItems": 1,
+																							"minItems": 1,
+																							"type": "array",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"mode",
+																						"target"
+																					],
+																					"type": "object"
 																				}
 																			]
 																		},
@@ -16206,15 +17077,16 @@
 																			"type": "object"
 																		}
 																	],
-																	"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+																	"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 																	"type": "object"
 																},
 																"placement_mode": {
 																	"allOf": [
 																		{
-																			"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+																			"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 																			"enum": [
-																				"smart"
+																				"smart",
+																				"targeted"
 																			],
 																			"type": "string",
 																			"x-auditable": true
@@ -16961,6 +17833,147 @@
 																		"host"
 																	],
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"region": {
+																			"description": "Cloud region for targeted placement in format 'provider:region'.",
+																			"example": "aws:us-east-1",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"region"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"hostname": {
+																			"description": "HTTP hostname for targeted placement.",
+																			"example": "api.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"hostname"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"host": {
+																			"description": "TCP host and port for targeted placement.",
+																			"example": "db.example.com:5432",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"host"
+																	],
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"mode": {
+																			"description": "Targeted placement mode.",
+																			"enum": [
+																				"targeted"
+																			],
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"target": {
+																			"description": "Array of placement targets (currently limited to single target).",
+																			"items": {
+																				"description": "A target to run your Worker near.",
+																				"oneOf": [
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"region": {
+																								"description": "Cloud region in format 'provider:region'.",
+																								"example": "aws:us-east-1",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"region"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"hostname": {
+																								"description": "HTTP hostname for targeted placement.",
+																								"example": "api.example.com",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"hostname"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"host": {
+																								"description": "TCP host:port for targeted placement.",
+																								"example": "db.example.com:5432",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"host"
+																						],
+																						"type": "object"
+																					}
+																				],
+																				"type": "object"
+																			},
+																			"maxItems": 1,
+																			"minItems": 1,
+																			"type": "array",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"mode",
+																		"target"
+																	],
+																	"type": "object"
 																}
 															]
 														},
@@ -16988,15 +18001,16 @@
 															"type": "object"
 														}
 													],
-													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted placement.",
+													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 													"type": "object"
 												},
 												"placement_mode": {
 													"allOf": [
 														{
-															"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).",
+															"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 															"enum": [
-																"smart"
+																"smart",
+																"targeted"
 															],
 															"type": "string",
 															"x-auditable": true

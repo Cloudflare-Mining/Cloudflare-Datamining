@@ -329,6 +329,87 @@
 			"Cloudforce One Write"
 		]
 	},
+	"DELETE /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
+		"description": "Delete a saved event query by its ID",
+		"operationId": "delete_EventQueryDelete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Event query ID",
+				"in": "path",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"description": "Event query ID",
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "Event query deleted successfully."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete a saved event query",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
 		"operationId": "delete_EventReferenceDelete",
 		"parameters": [
@@ -475,6 +556,15 @@
 			},
 			{
 				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"description": "Cursor for pagination. When provided, filters are embedded in the cursor so you only need to pass cursor and pageSize. Returned in the previous response's result_info.cursor field. Use cursor-based pagination for deep pagination (beyond 100,000 records) or for optimal performance.",
+					"example": "eyJ2ZXJzaW9uIjoxLCJwb3NpdGlvbiI6eyJkYXRlIjoiMjAyNC0wMS0xMlQxMDowMDowMFoiLCJ1dWlkIjoiYWJjMTIzIn19",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "search",
 				"schema": {
 					"default": [],
@@ -537,6 +627,7 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"description": "Page number (1-indexed) for offset-based pagination. Limited to offset of 100,000 records. For deep pagination, use cursor-based pagination instead.",
 					"type": "number"
 				}
 			},
@@ -544,6 +635,7 @@
 				"in": "query",
 				"name": "pageSize",
 				"schema": {
+					"description": "Number of results per page. Maximum 25,000.",
 					"type": "number"
 				}
 			},
@@ -611,6 +703,10 @@
 									},
 									"category": {
 										"example": "Domain Resolution",
+										"type": "string"
+									},
+									"datasetId": {
+										"example": "dataset-example-id",
 										"type": "string"
 									},
 									"date": {
@@ -735,7 +831,8 @@
 									"mitreAttack",
 									"referencedIds",
 									"referencesIds",
-									"hasChildren"
+									"hasChildren",
+									"datasetId"
 								],
 								"type": "object"
 							},
@@ -840,6 +937,10 @@
 								},
 								"category": {
 									"example": "Domain Resolution",
+									"type": "string"
+								},
+								"datasetId": {
+									"example": "dataset-example-id",
 									"type": "string"
 								},
 								"date": {
@@ -964,7 +1065,8 @@
 								"mitreAttack",
 								"referencedIds",
 								"referencesIds",
-								"hasChildren"
+								"hasChildren",
+								"datasetId"
 							],
 							"type": "object"
 						}
@@ -1289,6 +1391,10 @@
 										"example": "Domain Resolution",
 										"type": "string"
 									},
+									"datasetId": {
+										"example": "dataset-example-id",
+										"type": "string"
+									},
 									"date": {
 										"example": "2022-04-01T00:00:00Z",
 										"type": "string"
@@ -1411,7 +1517,8 @@
 									"mitreAttack",
 									"referencedIds",
 									"referencesIds",
-									"hasChildren"
+									"hasChildren",
+									"datasetId"
 								],
 								"type": "object"
 							},
@@ -1730,6 +1837,10 @@
 									"example": "Domain Resolution",
 									"type": "string"
 								},
+								"datasetId": {
+									"example": "dataset-example-id",
+									"type": "string"
+								},
 								"date": {
 									"example": "2022-04-01T00:00:00Z",
 									"type": "string"
@@ -1852,7 +1963,8 @@
 								"mitreAttack",
 								"referencedIds",
 								"referencesIds",
-								"hasChildren"
+								"hasChildren",
+								"datasetId"
 							],
 							"type": "object"
 						}
@@ -1905,6 +2017,293 @@
 			}
 		],
 		"summary": "Reads an event",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/queries": {
+		"description": "Retrieve all saved event queries for the account",
+		"operationId": "get_EventQueryList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"account_id": {
+										"description": "Account ID",
+										"type": "integer"
+									},
+									"alert_enabled": {
+										"description": "Whether alerts are enabled",
+										"type": "boolean"
+									},
+									"alert_rollup_enabled": {
+										"description": "Whether alert rollup is enabled",
+										"type": "boolean"
+									},
+									"created_at": {
+										"description": "Creation timestamp",
+										"type": "string"
+									},
+									"id": {
+										"description": "Unique identifier for the saved query",
+										"type": "integer"
+									},
+									"name": {
+										"description": "Name of the saved query",
+										"type": "string"
+									},
+									"query_json": {
+										"description": "JSON string containing the query parameters",
+										"type": "string"
+									},
+									"rule_enabled": {
+										"description": "Whether rule is enabled",
+										"type": "boolean"
+									},
+									"rule_scope": {
+										"description": "Scope for the rule",
+										"type": "string"
+									},
+									"updated_at": {
+										"description": "Last update timestamp",
+										"type": "string"
+									},
+									"user_email": {
+										"description": "Email of the user who created the query",
+										"type": "string"
+									}
+								},
+								"required": [
+									"id",
+									"account_id",
+									"name",
+									"user_email",
+									"query_json",
+									"alert_enabled",
+									"alert_rollup_enabled",
+									"rule_enabled",
+									"created_at",
+									"updated_at"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns a list of event queries."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List all saved event queries",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
+		"description": "Retrieve a saved event query by its ID",
+		"operationId": "get_EventQueryRead",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Event query ID",
+				"in": "path",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"description": "Event query ID",
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"account_id": {
+									"description": "Account ID",
+									"type": "integer"
+								},
+								"alert_enabled": {
+									"description": "Whether alerts are enabled",
+									"type": "boolean"
+								},
+								"alert_rollup_enabled": {
+									"description": "Whether alert rollup is enabled",
+									"type": "boolean"
+								},
+								"created_at": {
+									"description": "Creation timestamp",
+									"type": "string"
+								},
+								"id": {
+									"description": "Unique identifier for the saved query",
+									"type": "integer"
+								},
+								"name": {
+									"description": "Name of the saved query",
+									"type": "string"
+								},
+								"query_json": {
+									"description": "JSON string containing the query parameters",
+									"type": "string"
+								},
+								"rule_enabled": {
+									"description": "Whether rule is enabled",
+									"type": "boolean"
+								},
+								"rule_scope": {
+									"description": "Scope for the rule",
+									"type": "string"
+								},
+								"updated_at": {
+									"description": "Last update timestamp",
+									"type": "string"
+								},
+								"user_email": {
+									"description": "Email of the user who created the query",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"account_id",
+								"name",
+								"user_email",
+								"query_json",
+								"alert_enabled",
+								"alert_rollup_enabled",
+								"rule_enabled",
+								"created_at",
+								"updated_at"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the event query."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read a saved event query",
 		"tags": [
 			"Event"
 		],
@@ -2170,6 +2569,10 @@
 									"example": "Domain Resolution",
 									"type": "string"
 								},
+								"datasetId": {
+									"example": "dataset-example-id",
+									"type": "string"
+								},
 								"date": {
 									"example": "2022-04-01T00:00:00Z",
 									"type": "string"
@@ -2292,7 +2695,8 @@
 								"mitreAttack",
 								"referencedIds",
 								"referencesIds",
-								"hasChildren"
+								"hasChildren",
+								"datasetId"
 							],
 							"type": "object"
 						}
@@ -2807,6 +3211,10 @@
 									"example": "Domain Resolution",
 									"type": "string"
 								},
+								"datasetId": {
+									"example": "dataset-example-id",
+									"type": "string"
+								},
 								"date": {
 									"example": "2022-04-01T00:00:00Z",
 									"type": "string"
@@ -2929,7 +3337,8 @@
 								"mitreAttack",
 								"referencedIds",
 								"referencesIds",
-								"hasChildren"
+								"hasChildren",
+								"datasetId"
 							],
 							"type": "object"
 						}
@@ -3247,11 +3656,6 @@
 							"tlp": {
 								"example": "amber",
 								"type": "string"
-							},
-							"uuid": {
-								"description": "Optional UUID for the event. Only used when preserveUuid=true in bulk create. Must be a valid UUID format.",
-								"example": "12345678-1234-1234-1234-1234567890ab",
-								"type": "string"
 							}
 						},
 						"required": [
@@ -3282,6 +3686,10 @@
 								},
 								"category": {
 									"example": "Domain Resolution",
+									"type": "string"
+								},
+								"datasetId": {
+									"example": "dataset-example-id",
 									"type": "string"
 								},
 								"date": {
@@ -3406,7 +3814,8 @@
 								"mitreAttack",
 								"referencedIds",
 								"referencesIds",
-								"hasChildren"
+								"hasChildren",
+								"datasetId"
 							],
 							"type": "object"
 						}
@@ -3594,11 +4003,6 @@
 										"tlp": {
 											"example": "amber",
 											"type": "string"
-										},
-										"uuid": {
-											"description": "Optional UUID for the event. Only used when preserveUuid=true in bulk create. Must be a valid UUID format.",
-											"example": "12345678-1234-1234-1234-1234567890ab",
-											"type": "string"
 										}
 									},
 									"required": [
@@ -3616,8 +4020,8 @@
 								"example": "durableObjectName",
 								"type": "string"
 							},
-							"preserveUuid": {
-								"description": "When true, use provided UUIDs from event data instead of generating new ones. Used for migration scenarios where original UUIDs must be preserved. Duplicate UUIDs will be skipped.",
+							"includeCreatedEvents": {
+								"description": "When true, response includes array of created event UUIDs and shard IDs. Useful for tracking which events were created and where.",
 								"type": "boolean"
 							}
 						},
@@ -3641,6 +4045,33 @@
 									"description": "Correlation ID for async indicator processing",
 									"format": "uuid",
 									"type": "string"
+								},
+								"createdEvents": {
+									"description": "Array of created events with UUIDs and shard locations. Only present when includeCreatedEvents=true",
+									"items": {
+										"properties": {
+											"eventIndex": {
+												"description": "Original index in the input data array",
+												"type": "number"
+											},
+											"shardId": {
+												"description": "Dataset ID of the shard where the event was created",
+												"type": "string"
+											},
+											"uuid": {
+												"description": "UUID of the created event",
+												"format": "uuid",
+												"type": "string"
+											}
+										},
+										"required": [
+											"eventIndex",
+											"uuid",
+											"shardId"
+										],
+										"type": "object"
+									},
+									"type": "array"
 								},
 								"createdEventsCount": {
 									"description": "Number of events created",
@@ -3678,15 +4109,10 @@
 								"queuedIndicatorsCount": {
 									"description": "Number of indicators queued for async processing",
 									"type": "number"
-								},
-								"skippedEventsCount": {
-									"description": "Number of events skipped due to duplicate UUID (only when preserveUuid=true)",
-									"type": "number"
 								}
 							},
 							"required": [
 								"createdEventsCount",
-								"skippedEventsCount",
 								"queuedIndicatorsCount",
 								"createdTagsCount",
 								"errorCount"
@@ -3877,11 +4303,6 @@
 										},
 										"tlp": {
 											"example": "amber",
-											"type": "string"
-										},
-										"uuid": {
-											"description": "Optional UUID for the event. Only used when preserveUuid=true in bulk create. Must be a valid UUID format.",
-											"example": "12345678-1234-1234-1234-1234567890ab",
 											"type": "string"
 										}
 									},
@@ -4258,6 +4679,185 @@
 			}
 		],
 		"summary": "Adds a tag to an event",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/queries/create": {
+		"description": "Create a new saved event query for the account",
+		"operationId": "post_EventQueryCreate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"alert_enabled": {
+								"description": "Enable alerts for this query",
+								"type": "boolean"
+							},
+							"alert_rollup_enabled": {
+								"description": "Enable alert rollup for this query",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Unique name for the saved query",
+								"type": "string"
+							},
+							"query_json": {
+								"description": "JSON string containing the query parameters",
+								"type": "string"
+							},
+							"rule_enabled": {
+								"description": "Enable rule for this query",
+								"type": "boolean"
+							},
+							"rule_scope": {
+								"description": "Scope for the rule",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"query_json",
+							"alert_enabled",
+							"alert_rollup_enabled",
+							"rule_enabled"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"account_id": {
+									"description": "Account ID",
+									"type": "integer"
+								},
+								"alert_enabled": {
+									"description": "Whether alerts are enabled",
+									"type": "boolean"
+								},
+								"alert_rollup_enabled": {
+									"description": "Whether alert rollup is enabled",
+									"type": "boolean"
+								},
+								"created_at": {
+									"description": "Creation timestamp",
+									"type": "string"
+								},
+								"id": {
+									"description": "Unique identifier for the saved query",
+									"type": "integer"
+								},
+								"name": {
+									"description": "Name of the saved query",
+									"type": "string"
+								},
+								"query_json": {
+									"description": "JSON string containing the query parameters",
+									"type": "string"
+								},
+								"rule_enabled": {
+									"description": "Whether rule is enabled",
+									"type": "boolean"
+								},
+								"rule_scope": {
+									"description": "Scope for the rule",
+									"type": "string"
+								},
+								"updated_at": {
+									"description": "Last update timestamp",
+									"type": "string"
+								},
+								"user_email": {
+									"description": "Email of the user who created the query",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"account_id",
+								"name",
+								"user_email",
+								"query_json",
+								"alert_enabled",
+								"alert_rollup_enabled",
+								"rule_enabled",
+								"created_at",
+								"updated_at"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created event query."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a saved event query",
 		"tags": [
 			"Event"
 		],

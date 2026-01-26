@@ -112,7 +112,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -225,7 +225,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -237,7 +237,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Delete security.txt",
+		"summary": "Deletes security.txt",
 		"tags": [
 			"security.txt"
 		],
@@ -444,13 +444,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -563,7 +564,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -575,7 +576,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get security.txt",
+		"summary": "Retrieves security.txt",
 		"tags": [
 			"security.txt"
 		],
@@ -793,7 +794,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -906,7 +907,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -918,7 +919,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Update security.txt",
+		"summary": "Updates security.txt",
 		"tags": [
 			"security.txt"
 		],

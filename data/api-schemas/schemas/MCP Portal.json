@@ -73,6 +73,11 @@
 											"example": "My MCP Portal",
 											"maxLength": 350,
 											"type": "string"
+										},
+										"secure_web_gateway": {
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
 										}
 									},
 									"required": [
@@ -253,6 +258,11 @@
 												"example": "My MCP Portal",
 												"maxLength": 350,
 												"type": "string"
+											},
+											"secure_web_gateway": {
+												"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+												"example": false,
+												"type": "boolean"
 											}
 										},
 										"required": [
@@ -417,6 +427,11 @@
 											"maxLength": 350,
 											"type": "string"
 										},
+										"secure_web_gateway": {
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
+										},
 										"servers": {
 											"items": {
 												"properties": {
@@ -463,6 +478,11 @@
 														"maxLength": 32,
 														"minLength": 1,
 														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string"
+													},
+													"last_successful_sync": {
+														"format": "date-time",
+														"readOnly": true,
 														"type": "string"
 													},
 													"last_synced": {
@@ -688,6 +708,11 @@
 								"maxLength": 350,
 								"type": "string"
 							},
+							"secure_web_gateway": {
+								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+								"example": false,
+								"type": "boolean"
+							},
 							"servers": {
 								"items": {
 									"properties": {
@@ -815,6 +840,11 @@
 											"example": "My MCP Portal",
 											"maxLength": 350,
 											"type": "string"
+										},
+										"secure_web_gateway": {
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
 										}
 									},
 									"required": [
@@ -960,6 +990,11 @@
 								"maxLength": 350,
 								"type": "string"
 							},
+							"secure_web_gateway": {
+								"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+								"example": false,
+								"type": "boolean"
+							},
 							"servers": {
 								"items": {
 									"properties": {
@@ -1082,6 +1117,11 @@
 											"example": "My MCP Portal",
 											"maxLength": 350,
 											"type": "string"
+										},
+										"secure_web_gateway": {
+											"description": "Route outbound MCP traffic through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
 										}
 									},
 									"required": [

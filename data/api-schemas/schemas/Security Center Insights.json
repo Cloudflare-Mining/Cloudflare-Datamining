@@ -115,13 +115,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -234,7 +235,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -246,7 +247,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Issues Types",
+		"summary": "Retrieves Security Center Issues Types",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -458,7 +459,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Current page within paginated list of results",
+							"description": "Specifies the current page within paginated list of results.",
 							"example": 1,
 							"type": "integer"
 						}
@@ -472,7 +473,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Number of results per page of results",
+							"description": "Sets the number of results per page of results.",
 							"example": 25,
 							"maximum": 1000,
 							"minimum": 1,
@@ -578,7 +579,7 @@
 												{
 													"properties": {
 														"count": {
-															"description": "Total number of results",
+															"description": "Indicates the total number of results.",
 															"example": 1,
 															"type": "integer",
 															"x-auditable": true
@@ -615,7 +616,7 @@
 																	"payload": {
 																		"properties": {
 																			"detection_method": {
-																				"description": "Method used to detect insight",
+																				"description": "Describes the method used to detect insight.",
 																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
 																				"type": "string",
 																				"x-auditable": true
@@ -665,12 +666,12 @@
 															"type": "array"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Specifies the current page within paginated list of results.",
 															"example": 1,
 															"type": "integer"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Sets the number of results per page of results.",
 															"example": 25,
 															"maximum": 1000,
 															"minimum": 1,
@@ -681,13 +682,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -800,7 +802,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -812,7 +814,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Issues",
+		"summary": "Retrieves Security Center Issues",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -1130,13 +1132,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -1249,7 +1252,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -1261,7 +1264,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Issue Counts by Class",
+		"summary": "Retrieves Security Center Issue Counts by Class",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -1579,13 +1582,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -1698,7 +1702,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -1710,7 +1714,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Issue Counts by Severity",
+		"summary": "Retrieves Security Center Issue Counts by Severity",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -2028,13 +2032,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -2147,7 +2152,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -2159,7 +2164,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Issue Counts by Type",
+		"summary": "Retrieves Security Center Issue Counts by Type",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -2370,7 +2375,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Current page within paginated list of results",
+							"description": "Specifies the current page within paginated list of results.",
 							"example": 1,
 							"type": "integer"
 						}
@@ -2384,7 +2389,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Number of results per page of results",
+							"description": "Sets the number of results per page of results.",
 							"example": 25,
 							"maximum": 1000,
 							"minimum": 1,
@@ -2490,7 +2495,7 @@
 												{
 													"properties": {
 														"count": {
-															"description": "Total number of results",
+															"description": "Indicates the total number of results.",
 															"example": 1,
 															"type": "integer",
 															"x-auditable": true
@@ -2527,7 +2532,7 @@
 																	"payload": {
 																		"properties": {
 																			"detection_method": {
-																				"description": "Method used to detect insight",
+																				"description": "Describes the method used to detect insight.",
 																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
 																				"type": "string",
 																				"x-auditable": true
@@ -2577,12 +2582,12 @@
 															"type": "array"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Specifies the current page within paginated list of results.",
 															"example": 1,
 															"type": "integer"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Sets the number of results per page of results.",
 															"example": 25,
 															"maximum": 1000,
 															"minimum": 1,
@@ -2593,13 +2598,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -2712,7 +2718,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -2724,7 +2730,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Insights",
+		"summary": "Retrieves Security Center Insights",
 		"tags": [
 			"Security Center Insights"
 		]
@@ -3037,13 +3043,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -3156,7 +3163,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -3168,7 +3175,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Insight Counts by Class",
+		"summary": "Retrieves Security Center Insight Counts by Class",
 		"tags": [
 			"Security Center Insights"
 		]
@@ -3481,13 +3488,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -3600,7 +3608,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -3612,7 +3620,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Insight Counts by Severity",
+		"summary": "Retrieves Security Center Insight Counts by Severity",
 		"tags": [
 			"Security Center Insights"
 		]
@@ -3925,13 +3933,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -4044,7 +4053,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -4056,7 +4065,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Security Center Insight Counts by Type",
+		"summary": "Retrieves Security Center Insight Counts by Type",
 		"tags": [
 			"Security Center Insights"
 		]
@@ -4263,7 +4272,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Current page within paginated list of results",
+							"description": "Specifies the current page within paginated list of results.",
 							"example": 1,
 							"type": "integer"
 						}
@@ -4277,7 +4286,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Number of results per page of results",
+							"description": "Sets the number of results per page of results.",
 							"example": 25,
 							"maximum": 1000,
 							"minimum": 1,
@@ -4383,7 +4392,7 @@
 												{
 													"properties": {
 														"count": {
-															"description": "Total number of results",
+															"description": "Indicates the total number of results.",
 															"example": 1,
 															"type": "integer",
 															"x-auditable": true
@@ -4420,7 +4429,7 @@
 																	"payload": {
 																		"properties": {
 																			"detection_method": {
-																				"description": "Method used to detect insight",
+																				"description": "Describes the method used to detect insight.",
 																				"example": "We detected security rules referencing multiple IP addresses directly in the rules.",
 																				"type": "string",
 																				"x-auditable": true
@@ -4470,12 +4479,12 @@
 															"type": "array"
 														},
 														"page": {
-															"description": "Current page within paginated list of results",
+															"description": "Specifies the current page within paginated list of results.",
 															"example": 1,
 															"type": "integer"
 														},
 														"per_page": {
-															"description": "Number of results per page of results",
+															"description": "Sets the number of results per page of results.",
 															"example": 25,
 															"maximum": 1000,
 															"minimum": 1,
@@ -4486,13 +4495,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -4605,7 +4615,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -4617,7 +4627,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zone Security Center Insights",
+		"summary": "Retrieves Zone Security Center Insights",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -4934,13 +4944,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -5053,7 +5064,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -5065,7 +5076,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zone Security Center Insight Counts by Class",
+		"summary": "Retrieves Zone Security Center Insight Counts by Class",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -5382,13 +5393,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -5501,7 +5513,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -5513,7 +5525,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zone Security Center Insight Counts by Severity",
+		"summary": "Retrieves Zone Security Center Insight Counts by Severity",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -5830,13 +5842,14 @@
 												}
 											]
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -5949,7 +5962,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -5961,7 +5974,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Zone Security Center Insight Counts by Type",
+		"summary": "Retrieves Zone Security Center Insight Counts by Type",
 		"tags": [
 			"Security Center Insights"
 		],
@@ -6109,7 +6122,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -6222,7 +6235,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -6234,7 +6247,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Archive Security Center Insight",
+		"summary": "Archives Security Center Insight",
 		"tags": [
 			"Security Center Insights"
 		]
@@ -6377,7 +6390,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -6490,7 +6503,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -6502,7 +6515,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Archive Security Center Insight",
+		"summary": "Archives Security Center Insight",
 		"tags": [
 			"Security Center Insights"
 		]
@@ -6645,7 +6658,7 @@
 						}
 					}
 				},
-				"description": "OK"
+				"description": "The request was successful."
 			},
 			"4XX": {
 				"content": {
@@ -6758,7 +6771,7 @@
 						}
 					}
 				},
-				"description": "Client Error"
+				"description": "A client error occurred."
 			}
 		},
 		"security": [
@@ -6770,7 +6783,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Archive Zone Security Center Insight",
+		"summary": "Archives Zone Security Center Insight",
 		"tags": [
 			"Security Center Insights"
 		],

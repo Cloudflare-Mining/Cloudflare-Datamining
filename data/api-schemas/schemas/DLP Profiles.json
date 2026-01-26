@@ -8293,6 +8293,7 @@
 													"type": "string"
 												},
 												"enabled_entries": {
+													"description": "Entries to enable for this predefined profile. Any entries not provided will be disabled.",
 													"items": {
 														"format": "uuid",
 														"type": "string"
@@ -8301,6 +8302,7 @@
 												},
 												"entries": {
 													"deprecated": true,
+													"description": "This field has been deprecated for `enabled_entries`.",
 													"items": {
 														"oneOf": [
 															{
@@ -12753,6 +12755,7 @@
 													"type": "string"
 												},
 												"enabled_entries": {
+													"description": "Entries to enable for this predefined profile. Any entries not provided will be disabled.",
 													"items": {
 														"format": "uuid",
 														"type": "string"
@@ -12761,6 +12764,7 @@
 												},
 												"entries": {
 													"deprecated": true,
+													"description": "This field has been deprecated for `enabled_entries`.",
 													"items": {
 														"oneOf": [
 															{
@@ -17242,6 +17246,7 @@
 													"type": "string"
 												},
 												"enabled_entries": {
+													"description": "Entries to enable for this predefined profile. Any entries not provided will be disabled.",
 													"items": {
 														"format": "uuid",
 														"type": "string"
@@ -17250,6 +17255,7 @@
 												},
 												"entries": {
 													"deprecated": true,
+													"description": "This field has been deprecated for `enabled_entries`.",
 													"items": {
 														"oneOf": [
 															{

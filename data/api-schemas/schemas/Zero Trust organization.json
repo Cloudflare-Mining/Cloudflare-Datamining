@@ -163,6 +163,23 @@
 													},
 													"type": "object"
 												},
+												"deny_unmatched_requests": {
+													"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+													"example": "true",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"deny_unmatched_requests_exempted_zone_names": {
+													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+													"example": [
+														"example.com"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true
+												},
 												"is_ui_read_only": {
 													"default": false,
 													"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
@@ -777,6 +794,23 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
+							"deny_unmatched_requests": {
+								"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+								"example": "true",
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"deny_unmatched_requests_exempted_zone_names": {
+								"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+								"example": [
+									"example.com"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array",
+								"x-auditable": true
+							},
 							"is_ui_read_only": {
 								"default": false,
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
@@ -998,6 +1032,23 @@
 														}
 													},
 													"type": "object"
+												},
+												"deny_unmatched_requests": {
+													"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+													"example": "true",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"deny_unmatched_requests_exempted_zone_names": {
+													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+													"example": [
+														"example.com"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true
 												},
 												"is_ui_read_only": {
 													"default": false,
@@ -1496,6 +1547,23 @@
 								},
 								"type": "object"
 							},
+							"deny_unmatched_requests": {
+								"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+								"example": "true",
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"deny_unmatched_requests_exempted_zone_names": {
+								"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+								"example": [
+									"example.com"
+								],
+								"items": {
+									"type": "string"
+								},
+								"type": "array",
+								"x-auditable": true
+							},
 							"is_ui_read_only": {
 								"default": false,
 								"description": "Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled.",
@@ -1713,6 +1781,23 @@
 														}
 													},
 													"type": "object"
+												},
+												"deny_unmatched_requests": {
+													"description": "Determines whether to deny all requests to Cloudflare-protected resources that lack an associated Access application. If enabled, you must explicitly configure an Access application and policy to allow traffic to your Cloudflare-protected resources. For domains you want to be public across all subdomains, add the domain to the `deny_unmatched_requests_exempted_zone_names` array.",
+													"example": "true",
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"deny_unmatched_requests_exempted_zone_names": {
+													"description": "Contains zone names to exempt from the `deny_unmatched_requests` feature. Requests to a subdomain in an exempted zone will block unauthenticated traffic by default if there is a configured Access application and policy that matches the request.",
+													"example": [
+														"example.com"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true
 												},
 												"is_ui_read_only": {
 													"default": false,

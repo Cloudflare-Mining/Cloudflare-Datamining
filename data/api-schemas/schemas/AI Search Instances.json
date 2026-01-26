@@ -22,7 +22,8 @@
 					"maxLength": 32,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -41,7 +42,8 @@
 											"type": "string"
 										},
 										"ai_gateway_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"ai_search_model": {
 											"anyOf": [
@@ -81,11 +83,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"cache": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_threshold": {
 											"default": "close_enough",
@@ -95,22 +99,26 @@
 												"flexible_friend",
 												"anything_goes"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"chunk": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
 											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"chunk_size": {
 											"default": 256,
 											"minimum": 64,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -123,10 +131,10 @@
 											"anyOf": [
 												{
 													"enum": [
+														"@cf/qwen/qwen3-embedding-0.6b",
 														"@cf/baai/bge-m3",
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
-														"@cf/qwen/qwen3-embedding-0.6b",
 														"google-ai-studio/gemini-embedding-001",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
@@ -139,11 +147,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"enable": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"engine_version": {
 											"default": 1,
@@ -151,7 +161,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "Use your AI Search ID.",
@@ -159,7 +170,8 @@
 											"maxLength": 32,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -173,7 +185,8 @@
 											"default": 10,
 											"maximum": 50,
 											"minimum": 1,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"metadata": {
 											"properties": {
@@ -184,7 +197,8 @@
 													"type": "string"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -195,10 +209,12 @@
 										},
 										"paused": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -264,11 +280,13 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"reranking": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"reranking_model": {
 											"anyOf": [
@@ -284,7 +302,8 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_model": {
 											"anyOf": [
@@ -324,20 +343,24 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_query": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"score_threshold": {
 											"default": 0.4,
 											"maximum": 1,
 											"minimum": 0,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"source": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"source_params": {
 											"default": {
@@ -345,11 +368,11 @@
 											},
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
 													"example": [
-														"/admin/*",
+														"/admin/**",
 														"/private/**",
-														"*\\temp\\*"
+														"**\\temp\\**"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -359,11 +382,11 @@
 													"type": "array"
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
 													"example": [
-														"/blog/*",
+														"/blog/**",
 														"/docs/**/*.html",
-														"*\\blog\\*.html"
+														"**\\blog\\**.html"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -396,6 +419,19 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"specific_sitemaps": {
+																	"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
+																	"example": [
+																		"https://example.com/sitemap.xml",
+																		"https://example.com/blog-sitemap.xml"
+																	],
+																	"items": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
 																},
 																"use_browser_rendering": {
 																	"default": false,
@@ -438,7 +474,8 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"status": {
 											"default": "waiting",
@@ -446,7 +483,8 @@
 										},
 										"summarization": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"summarization_model": {
 											"anyOf": [
@@ -486,27 +524,33 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"system_prompt_ai_search": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_index_summarization": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_rewrite_query": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"token_id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": {
 											"enum": [
 												"r2",
 												"web-crawler"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
 											"type": "string"
@@ -523,7 +567,6 @@
 										"type",
 										"source",
 										"vectorize_name",
-										"token_id",
 										"created_at",
 										"modified_at"
 									],
@@ -668,7 +711,8 @@
 												"type": "string"
 											},
 											"ai_gateway_id": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"ai_search_model": {
 												"anyOf": [
@@ -708,11 +752,13 @@
 														],
 														"type": "string"
 													}
-												]
+												],
+												"x-auditable": true
 											},
 											"cache": {
 												"default": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"cache_threshold": {
 												"default": "close_enough",
@@ -722,22 +768,26 @@
 													"flexible_friend",
 													"anything_goes"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"chunk": {
 												"default": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"chunk_overlap": {
 												"default": 10,
 												"maximum": 30,
 												"minimum": 0,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"chunk_size": {
 												"default": 256,
 												"minimum": 64,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"created_at": {
 												"format": "date-time",
@@ -750,10 +800,10 @@
 												"anyOf": [
 													{
 														"enum": [
+															"@cf/qwen/qwen3-embedding-0.6b",
 															"@cf/baai/bge-m3",
 															"@cf/baai/bge-large-en-v1.5",
 															"@cf/google/embeddinggemma-300m",
-															"@cf/qwen/qwen3-embedding-0.6b",
 															"google-ai-studio/gemini-embedding-001",
 															"openai/text-embedding-3-small",
 															"openai/text-embedding-3-large"
@@ -766,11 +816,13 @@
 														],
 														"type": "string"
 													}
-												]
+												],
+												"x-auditable": true
 											},
 											"enable": {
 												"default": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"engine_version": {
 												"default": 1,
@@ -778,7 +830,8 @@
 											},
 											"hybrid_search_enabled": {
 												"default": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"id": {
 												"description": "Use your AI Search ID.",
@@ -786,7 +839,8 @@
 												"maxLength": 32,
 												"minLength": 1,
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"internal_id": {
 												"format": "uuid",
@@ -800,7 +854,8 @@
 												"default": 10,
 												"maximum": 50,
 												"minimum": 1,
-												"type": "integer"
+												"type": "integer",
+												"x-auditable": true
 											},
 											"metadata": {
 												"properties": {
@@ -811,7 +866,8 @@
 														"type": "string"
 													}
 												},
-												"type": "object"
+												"type": "object",
+												"x-auditable": true
 											},
 											"modified_at": {
 												"format": "date-time",
@@ -822,10 +878,12 @@
 											},
 											"paused": {
 												"default": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"public_endpoint_id": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"public_endpoint_params": {
 												"properties": {
@@ -891,11 +949,13 @@
 														"type": "object"
 													}
 												},
-												"type": "object"
+												"type": "object",
+												"x-auditable": true
 											},
 											"reranking": {
 												"default": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"reranking_model": {
 												"anyOf": [
@@ -911,7 +971,8 @@
 														],
 														"type": "string"
 													}
-												]
+												],
+												"x-auditable": true
 											},
 											"rewrite_model": {
 												"anyOf": [
@@ -951,20 +1012,24 @@
 														],
 														"type": "string"
 													}
-												]
+												],
+												"x-auditable": true
 											},
 											"rewrite_query": {
 												"default": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"score_threshold": {
 												"default": 0.4,
 												"maximum": 1,
 												"minimum": 0,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											},
 											"source": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"source_params": {
 												"default": {
@@ -972,11 +1037,11 @@
 												},
 												"properties": {
 													"exclude_items": {
-														"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+														"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
 														"example": [
-															"/admin/*",
+															"/admin/**",
 															"/private/**",
-															"*\\temp\\*"
+															"**\\temp\\**"
 														],
 														"items": {
 															"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -986,11 +1051,11 @@
 														"type": "array"
 													},
 													"include_items": {
-														"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+														"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
 														"example": [
-															"/blog/*",
+															"/blog/**",
 															"/docs/**/*.html",
-															"*\\blog\\*.html"
+															"**\\blog\\**.html"
 														],
 														"items": {
 															"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -1023,6 +1088,19 @@
 																	"include_images": {
 																		"default": false,
 																		"type": "boolean"
+																	},
+																	"specific_sitemaps": {
+																		"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
+																		"example": [
+																			"https://example.com/sitemap.xml",
+																			"https://example.com/blog-sitemap.xml"
+																		],
+																		"items": {
+																			"format": "uri",
+																			"type": "string"
+																		},
+																		"maxItems": 10,
+																		"type": "array"
 																	},
 																	"use_browser_rendering": {
 																		"default": false,
@@ -1065,7 +1143,8 @@
 														"type": "object"
 													}
 												},
-												"type": "object"
+												"type": "object",
+												"x-auditable": true
 											},
 											"status": {
 												"default": "waiting",
@@ -1073,7 +1152,8 @@
 											},
 											"summarization": {
 												"default": false,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"summarization_model": {
 												"anyOf": [
@@ -1113,27 +1193,33 @@
 														],
 														"type": "string"
 													}
-												]
+												],
+												"x-auditable": true
 											},
 											"system_prompt_ai_search": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"system_prompt_index_summarization": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"system_prompt_rewrite_query": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"token_id": {
 												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"type": {
 												"enum": [
 													"r2",
 													"web-crawler"
 												],
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"vectorize_active_namespace": {
 												"type": "string"
@@ -1150,7 +1236,6 @@
 											"type",
 											"source",
 											"vectorize_name",
-											"token_id",
 											"created_at",
 											"modified_at"
 										],
@@ -1259,7 +1344,8 @@
 					"maxLength": 32,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -1278,7 +1364,8 @@
 											"type": "string"
 										},
 										"ai_gateway_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"ai_search_model": {
 											"anyOf": [
@@ -1318,11 +1405,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"cache": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_threshold": {
 											"default": "close_enough",
@@ -1332,22 +1421,26 @@
 												"flexible_friend",
 												"anything_goes"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"chunk": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
 											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"chunk_size": {
 											"default": 256,
 											"minimum": 64,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -1360,10 +1453,10 @@
 											"anyOf": [
 												{
 													"enum": [
+														"@cf/qwen/qwen3-embedding-0.6b",
 														"@cf/baai/bge-m3",
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
-														"@cf/qwen/qwen3-embedding-0.6b",
 														"google-ai-studio/gemini-embedding-001",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
@@ -1376,11 +1469,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"enable": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"engine_version": {
 											"default": 1,
@@ -1388,7 +1483,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "Use your AI Search ID.",
@@ -1396,7 +1492,8 @@
 											"maxLength": 32,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -1410,7 +1507,8 @@
 											"default": 10,
 											"maximum": 50,
 											"minimum": 1,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"metadata": {
 											"properties": {
@@ -1421,7 +1519,8 @@
 													"type": "string"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -1432,10 +1531,12 @@
 										},
 										"paused": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -1501,11 +1602,13 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"reranking": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"reranking_model": {
 											"anyOf": [
@@ -1521,7 +1624,8 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_model": {
 											"anyOf": [
@@ -1561,20 +1665,24 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_query": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"score_threshold": {
 											"default": 0.4,
 											"maximum": 1,
 											"minimum": 0,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"source": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"source_params": {
 											"default": {
@@ -1582,11 +1690,11 @@
 											},
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
 													"example": [
-														"/admin/*",
+														"/admin/**",
 														"/private/**",
-														"*\\temp\\*"
+														"**\\temp\\**"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -1596,11 +1704,11 @@
 													"type": "array"
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
 													"example": [
-														"/blog/*",
+														"/blog/**",
 														"/docs/**/*.html",
-														"*\\blog\\*.html"
+														"**\\blog\\**.html"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -1633,6 +1741,19 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"specific_sitemaps": {
+																	"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
+																	"example": [
+																		"https://example.com/sitemap.xml",
+																		"https://example.com/blog-sitemap.xml"
+																	],
+																	"items": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
 																},
 																"use_browser_rendering": {
 																	"default": false,
@@ -1675,7 +1796,8 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"status": {
 											"default": "waiting",
@@ -1683,7 +1805,8 @@
 										},
 										"summarization": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"summarization_model": {
 											"anyOf": [
@@ -1723,27 +1846,33 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"system_prompt_ai_search": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_index_summarization": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_rewrite_query": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"token_id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": {
 											"enum": [
 												"r2",
 												"web-crawler"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
 											"type": "string"
@@ -1760,7 +1889,6 @@
 										"type",
 										"source",
 										"vectorize_name",
-										"token_id",
 										"created_at",
 										"modified_at"
 									],
@@ -1862,7 +1990,8 @@
 					"maxLength": 32,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2014,7 +2143,8 @@
 					"schema": {
 						"properties": {
 							"ai_gateway_id": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ai_search_model": {
 								"anyOf": [
@@ -2054,31 +2184,35 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"chunk": {
 								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"chunk_overlap": {
 								"default": 10,
 								"maximum": 30,
 								"minimum": 0,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"chunk_size": {
 								"default": 256,
 								"minimum": 64,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"embedding_model": {
 								"anyOf": [
 									{
 										"enum": [
+											"@cf/qwen/qwen3-embedding-0.6b",
 											"@cf/baai/bge-m3",
 											"@cf/baai/bge-large-en-v1.5",
 											"@cf/google/embeddinggemma-300m",
-											"@cf/qwen/qwen3-embedding-0.6b",
 											"google-ai-studio/gemini-embedding-001",
 											"openai/text-embedding-3-small",
 											"openai/text-embedding-3-large"
@@ -2091,11 +2225,13 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"hybrid_search_enabled": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "Use your AI Search ID.",
@@ -2103,13 +2239,15 @@
 								"maxLength": 32,
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"max_num_results": {
 								"default": 10,
 								"maximum": 50,
 								"minimum": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"metadata": {
 								"properties": {
@@ -2120,7 +2258,8 @@
 										"type": "string"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-auditable": true
 							},
 							"public_endpoint_params": {
 								"properties": {
@@ -2186,11 +2325,13 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-auditable": true
 							},
 							"reranking": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"reranking_model": {
 								"anyOf": [
@@ -2206,7 +2347,8 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"rewrite_model": {
 								"anyOf": [
@@ -2246,20 +2388,24 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"rewrite_query": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"score_threshold": {
 								"default": 0.4,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"source": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"source_params": {
 								"default": {
@@ -2267,11 +2413,11 @@
 								},
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
 										"example": [
-											"/admin/*",
+											"/admin/**",
 											"/private/**",
-											"*\\temp\\*"
+											"**\\temp\\**"
 										],
 										"items": {
 											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -2281,11 +2427,11 @@
 										"type": "array"
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
 										"example": [
-											"/blog/*",
+											"/blog/**",
 											"/docs/**/*.html",
-											"*\\blog\\*.html"
+											"**\\blog\\**.html"
 										],
 										"items": {
 											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -2318,6 +2464,19 @@
 													"include_images": {
 														"default": false,
 														"type": "boolean"
+													},
+													"specific_sitemaps": {
+														"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
+														"example": [
+															"https://example.com/sitemap.xml",
+															"https://example.com/blog-sitemap.xml"
+														],
+														"items": {
+															"format": "uri",
+															"type": "string"
+														},
+														"maxItems": 10,
+														"type": "array"
 													},
 													"use_browser_rendering": {
 														"default": false,
@@ -2360,25 +2519,27 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-auditable": true
 							},
 							"token_id": {
 								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"type": {
 								"enum": [
 									"r2",
 									"web-crawler"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
 							"id",
 							"type",
-							"source",
-							"token_id"
+							"source"
 						],
 						"type": "object"
 					}
@@ -2400,7 +2561,8 @@
 											"type": "string"
 										},
 										"ai_gateway_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"ai_search_model": {
 											"anyOf": [
@@ -2440,11 +2602,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"cache": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_threshold": {
 											"default": "close_enough",
@@ -2454,22 +2618,26 @@
 												"flexible_friend",
 												"anything_goes"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"chunk": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
 											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"chunk_size": {
 											"default": 256,
 											"minimum": 64,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -2482,10 +2650,10 @@
 											"anyOf": [
 												{
 													"enum": [
+														"@cf/qwen/qwen3-embedding-0.6b",
 														"@cf/baai/bge-m3",
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
-														"@cf/qwen/qwen3-embedding-0.6b",
 														"google-ai-studio/gemini-embedding-001",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
@@ -2498,11 +2666,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"enable": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"engine_version": {
 											"default": 1,
@@ -2510,7 +2680,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "Use your AI Search ID.",
@@ -2518,7 +2689,8 @@
 											"maxLength": 32,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -2532,7 +2704,8 @@
 											"default": 10,
 											"maximum": 50,
 											"minimum": 1,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"metadata": {
 											"properties": {
@@ -2543,7 +2716,8 @@
 													"type": "string"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -2554,10 +2728,12 @@
 										},
 										"paused": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -2623,11 +2799,13 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"reranking": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"reranking_model": {
 											"anyOf": [
@@ -2643,7 +2821,8 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_model": {
 											"anyOf": [
@@ -2683,20 +2862,24 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_query": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"score_threshold": {
 											"default": 0.4,
 											"maximum": 1,
 											"minimum": 0,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"source": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"source_params": {
 											"default": {
@@ -2704,11 +2887,11 @@
 											},
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
 													"example": [
-														"/admin/*",
+														"/admin/**",
 														"/private/**",
-														"*\\temp\\*"
+														"**\\temp\\**"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -2718,11 +2901,11 @@
 													"type": "array"
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
 													"example": [
-														"/blog/*",
+														"/blog/**",
 														"/docs/**/*.html",
-														"*\\blog\\*.html"
+														"**\\blog\\**.html"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -2755,6 +2938,19 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"specific_sitemaps": {
+																	"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
+																	"example": [
+																		"https://example.com/sitemap.xml",
+																		"https://example.com/blog-sitemap.xml"
+																	],
+																	"items": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
 																},
 																"use_browser_rendering": {
 																	"default": false,
@@ -2797,7 +2993,8 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"status": {
 											"default": "waiting",
@@ -2805,7 +3002,8 @@
 										},
 										"summarization": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"summarization_model": {
 											"anyOf": [
@@ -2845,27 +3043,33 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"system_prompt_ai_search": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_index_summarization": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_rewrite_query": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"token_id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": {
 											"enum": [
 												"r2",
 												"web-crawler"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
 											"type": "string"
@@ -2882,7 +3086,6 @@
 										"type",
 										"source",
 										"vectorize_name",
-										"token_id",
 										"created_at",
 										"modified_at"
 									],
@@ -3001,7 +3204,8 @@
 					"maxLength": 32,
 					"minLength": 1,
 					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -3011,7 +3215,8 @@
 					"schema": {
 						"properties": {
 							"ai_gateway_id": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"ai_search_model": {
 								"anyOf": [
@@ -3051,11 +3256,13 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"cache": {
 								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"cache_threshold": {
 								"default": "close_enough",
@@ -3065,31 +3272,35 @@
 									"flexible_friend",
 									"anything_goes"
 								],
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"chunk": {
 								"default": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"chunk_overlap": {
 								"default": 10,
 								"maximum": 30,
 								"minimum": 0,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"chunk_size": {
 								"default": 256,
 								"minimum": 64,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"embedding_model": {
 								"anyOf": [
 									{
 										"enum": [
+											"@cf/qwen/qwen3-embedding-0.6b",
 											"@cf/baai/bge-m3",
 											"@cf/baai/bge-large-en-v1.5",
 											"@cf/google/embeddinggemma-300m",
-											"@cf/qwen/qwen3-embedding-0.6b",
 											"google-ai-studio/gemini-embedding-001",
 											"openai/text-embedding-3-small",
 											"openai/text-embedding-3-large"
@@ -3102,17 +3313,20 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"hybrid_search_enabled": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"max_num_results": {
 								"default": 10,
 								"maximum": 50,
 								"minimum": 1,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"metadata": {
 								"properties": {
@@ -3123,11 +3337,13 @@
 										"type": "string"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-auditable": true
 							},
 							"paused": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"public_endpoint_params": {
 								"properties": {
@@ -3193,11 +3409,13 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-auditable": true
 							},
 							"reranking": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"reranking_model": {
 								"anyOf": [
@@ -3213,7 +3431,8 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"rewrite_model": {
 								"anyOf": [
@@ -3253,17 +3472,20 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"rewrite_query": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"score_threshold": {
 								"default": 0.4,
 								"maximum": 1,
 								"minimum": 0,
-								"type": "number"
+								"type": "number",
+								"x-auditable": true
 							},
 							"source_params": {
 								"default": {
@@ -3271,11 +3493,11 @@
 								},
 								"properties": {
 									"exclude_items": {
-										"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
 										"example": [
-											"/admin/*",
+											"/admin/**",
 											"/private/**",
-											"*\\temp\\*"
+											"**\\temp\\**"
 										],
 										"items": {
 											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -3285,11 +3507,11 @@
 										"type": "array"
 									},
 									"include_items": {
-										"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+										"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
 										"example": [
-											"/blog/*",
+											"/blog/**",
 											"/docs/**/*.html",
-											"*\\blog\\*.html"
+											"**\\blog\\**.html"
 										],
 										"items": {
 											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -3322,6 +3544,19 @@
 													"include_images": {
 														"default": false,
 														"type": "boolean"
+													},
+													"specific_sitemaps": {
+														"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
+														"example": [
+															"https://example.com/sitemap.xml",
+															"https://example.com/blog-sitemap.xml"
+														],
+														"items": {
+															"format": "uri",
+															"type": "string"
+														},
+														"maxItems": 10,
+														"type": "array"
 													},
 													"use_browser_rendering": {
 														"default": false,
@@ -3364,11 +3599,13 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-auditable": true
 							},
 							"summarization": {
 								"default": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-auditable": true
 							},
 							"summarization_model": {
 								"anyOf": [
@@ -3408,20 +3645,25 @@
 										],
 										"type": "string"
 									}
-								]
+								],
+								"x-auditable": true
 							},
 							"system_prompt_ai_search": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"system_prompt_index_summarization": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"system_prompt_rewrite_query": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"token_id": {
 								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -3444,7 +3686,8 @@
 											"type": "string"
 										},
 										"ai_gateway_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"ai_search_model": {
 											"anyOf": [
@@ -3484,11 +3727,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"cache": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"cache_threshold": {
 											"default": "close_enough",
@@ -3498,22 +3743,26 @@
 												"flexible_friend",
 												"anything_goes"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"chunk": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
 											"minimum": 0,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"chunk_size": {
 											"default": 256,
 											"minimum": 64,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"created_at": {
 											"format": "date-time",
@@ -3526,10 +3775,10 @@
 											"anyOf": [
 												{
 													"enum": [
+														"@cf/qwen/qwen3-embedding-0.6b",
 														"@cf/baai/bge-m3",
 														"@cf/baai/bge-large-en-v1.5",
 														"@cf/google/embeddinggemma-300m",
-														"@cf/qwen/qwen3-embedding-0.6b",
 														"google-ai-studio/gemini-embedding-001",
 														"openai/text-embedding-3-small",
 														"openai/text-embedding-3-large"
@@ -3542,11 +3791,13 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"enable": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"engine_version": {
 											"default": 1,
@@ -3554,7 +3805,8 @@
 										},
 										"hybrid_search_enabled": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"description": "Use your AI Search ID.",
@@ -3562,7 +3814,8 @@
 											"maxLength": 32,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"internal_id": {
 											"format": "uuid",
@@ -3576,7 +3829,8 @@
 											"default": 10,
 											"maximum": 50,
 											"minimum": 1,
-											"type": "integer"
+											"type": "integer",
+											"x-auditable": true
 										},
 										"metadata": {
 											"properties": {
@@ -3587,7 +3841,8 @@
 													"type": "string"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"modified_at": {
 											"format": "date-time",
@@ -3598,10 +3853,12 @@
 										},
 										"paused": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -3667,11 +3924,13 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"reranking": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"reranking_model": {
 											"anyOf": [
@@ -3687,7 +3946,8 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_model": {
 											"anyOf": [
@@ -3727,20 +3987,24 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"rewrite_query": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"score_threshold": {
 											"default": 0.4,
 											"maximum": 1,
 											"minimum": 0,
-											"type": "number"
+											"type": "number",
+											"x-auditable": true
 										},
 										"source": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"source_params": {
 											"default": {
@@ -3748,11 +4012,11 @@
 											},
 											"properties": {
 												"exclude_items": {
-													"description": "List of path patterns to exclude. Supports wildcards (e.g., */admin/*, /private/**, *\\private\\*)",
+													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
 													"example": [
-														"/admin/*",
+														"/admin/**",
 														"/private/**",
-														"*\\temp\\*"
+														"**\\temp\\**"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -3762,11 +4026,11 @@
 													"type": "array"
 												},
 												"include_items": {
-													"description": "List of path patterns to include. Supports wildcards (e.g., */blog/*.html, /docs/**, *\\blog\\*.html)",
+													"description": "List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post)",
 													"example": [
-														"/blog/*",
+														"/blog/**",
 														"/docs/**/*.html",
-														"*\\blog\\*.html"
+														"**\\blog\\**.html"
 													],
 													"items": {
 														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
@@ -3799,6 +4063,19 @@
 																"include_images": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"specific_sitemaps": {
+																	"description": "List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'.",
+																	"example": [
+																		"https://example.com/sitemap.xml",
+																		"https://example.com/blog-sitemap.xml"
+																	],
+																	"items": {
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
 																},
 																"use_browser_rendering": {
 																	"default": false,
@@ -3841,7 +4118,8 @@
 													"type": "object"
 												}
 											},
-											"type": "object"
+											"type": "object",
+											"x-auditable": true
 										},
 										"status": {
 											"default": "waiting",
@@ -3849,7 +4127,8 @@
 										},
 										"summarization": {
 											"default": false,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"summarization_model": {
 											"anyOf": [
@@ -3889,27 +4168,33 @@
 													],
 													"type": "string"
 												}
-											]
+											],
+											"x-auditable": true
 										},
 										"system_prompt_ai_search": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_index_summarization": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"system_prompt_rewrite_query": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"token_id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"type": {
 											"enum": [
 												"r2",
 												"web-crawler"
 											],
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
 											"type": "string"
@@ -3926,7 +4211,6 @@
 										"type",
 										"source",
 										"vectorize_name",
-										"token_id",
 										"created_at",
 										"modified_at"
 									],

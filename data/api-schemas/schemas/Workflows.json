@@ -1465,11 +1465,14 @@
 																			},
 																			"delay": {
 																				"anyOf": [
-																					{},
+																					{
+																						"type": "string"
+																					},
 																					{
 																						"type": "number"
 																					}
-																				]
+																				],
+																				"description": "Specifies the delay duration."
 																			},
 																			"limit": {
 																				"type": "number"
@@ -1483,11 +1486,14 @@
 																	},
 																	"timeout": {
 																		"anyOf": [
-																			{},
+																			{
+																				"type": "string"
+																			},
 																			{
 																				"type": "number"
 																			}
-																		]
+																		],
+																		"description": "Specifies the timeout duration."
 																	}
 																},
 																"required": [
@@ -2705,6 +2711,245 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/dag": {
+		"operationId": "wor-describe-workflow-versions-dag",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "workflow_name",
+				"required": true,
+				"schema": {
+					"maxLength": 64,
+					"minLength": 1,
+					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "version_id",
+				"required": true,
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"class_name": {
+											"type": "string"
+										},
+										"created_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"dag": {
+											"nullable": true,
+											"type": "object"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"modified_on": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"workflow_id": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"created_on",
+										"modified_on",
+										"id",
+										"workflow_id",
+										"class_name",
+										"dag"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"cursor": {
+											"type": "string"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"per_page",
+										"count",
+										"total_count"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"result",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get the parsed DAG for a specific workflow version."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"messages",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Version not found."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get Workflow version dag",
+		"tags": [
+			"Workflows"
+		],
+		"x-api-token-group": [
+			"Workers Tail Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.workers.write",
+				"com.cloudflare.api.workers.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
 		"operationId": "wor-change-status-workflow-instance",
 		"parameters": [
@@ -3108,17 +3353,17 @@
 									"error_retention": {
 										"anyOf": [
 											{
-												"description": "Duration in milliseconds.",
+												"description": "Specifies the duration in milliseconds.",
 												"type": "number"
 											},
 											{
 												"type": "string"
 											}
 										],
-										"description": "Duration in milliseconds or as a string like '5 minutes'",
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
-												"description": "Duration in milliseconds.",
+												"description": "Specifies the duration in milliseconds.",
 												"type": "integer"
 											},
 											{
@@ -3131,17 +3376,17 @@
 									"success_retention": {
 										"anyOf": [
 											{
-												"description": "Duration in milliseconds.",
+												"description": "Specifies the duration in milliseconds.",
 												"type": "number"
 											},
 											{
 												"type": "string"
 											}
 										],
-										"description": "Duration in milliseconds or as a string like '5 minutes'",
+										"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 										"oneOf": [
 											{
-												"description": "Duration in milliseconds.",
+												"description": "Specifies the duration in milliseconds.",
 												"type": "integer"
 											},
 											{
@@ -3745,17 +3990,17 @@
 										"error_retention": {
 											"anyOf": [
 												{
-													"description": "Duration in milliseconds.",
+													"description": "Specifies the duration in milliseconds.",
 													"type": "number"
 												},
 												{
 													"type": "string"
 												}
 											],
-											"description": "Duration in milliseconds or as a string like '5 minutes'",
+											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 											"oneOf": [
 												{
-													"description": "Duration in milliseconds.",
+													"description": "Specifies the duration in milliseconds.",
 													"type": "integer"
 												},
 												{
@@ -3768,17 +4013,17 @@
 										"success_retention": {
 											"anyOf": [
 												{
-													"description": "Duration in milliseconds.",
+													"description": "Specifies the duration in milliseconds.",
 													"type": "number"
 												},
 												{
 													"type": "string"
 												}
 											],
-											"description": "Duration in milliseconds or as a string like '5 minutes'",
+											"description": "Specifies the duration in milliseconds or as a string like '5 minutes'.",
 											"oneOf": [
 												{
-													"description": "Duration in milliseconds.",
+													"description": "Specifies the duration in milliseconds.",
 													"type": "integer"
 												},
 												{

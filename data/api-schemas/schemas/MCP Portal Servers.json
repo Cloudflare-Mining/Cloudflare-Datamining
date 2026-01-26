@@ -74,6 +74,11 @@
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 											"type": "string"
 										},
+										"last_successful_sync": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
 										"last_synced": {
 											"format": "date-time",
 											"readOnly": true,
@@ -297,6 +302,11 @@
 												"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 												"type": "string"
 											},
+											"last_successful_sync": {
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
 											"last_synced": {
 												"format": "date-time",
 												"readOnly": true,
@@ -501,6 +511,11 @@
 											"maxLength": 32,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"last_successful_sync": {
+											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_synced": {
@@ -749,6 +764,11 @@
 											"maxLength": 32,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"last_successful_sync": {
+											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_synced": {
@@ -1107,6 +1127,11 @@
 											"maxLength": 32,
 											"minLength": 1,
 											"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+											"type": "string"
+										},
+										"last_successful_sync": {
+											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_synced": {

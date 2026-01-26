@@ -2061,7 +2061,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v2": {
-		"description": "List up to 10000 images with one request. Use the optional parameters below to get a specific range of images.\nEndpoint returns continuation_token if more images are present.\n",
+		"description": "List up to 10000 images with up to 1000 results per page. Use the optional parameters below to get a specific range of images.\nPagination is supported via continuation_token.\n\n**Metadata Filtering (Optional):**\n\nYou can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax.\n\n**Supported Operators:**\n- `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match\n- `in` / `in:string` / `in:number` - Match any value in list (pipe-separated)\n\n**Metadata Filter Constraints:**\n- Maximum 5 metadata filters per request\n- Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`)\n- Maximum 10 elements for list operators (`in`)\n- Supports string, number, and boolean value types\n\n**Examples:**\n```\n# List all images\n/v2/images\n\n# Filter by metadata\n/v2/images?meta.status[eq]=active\n\n# Filter by nested metadata\n/v2/images?meta.region.name[eq]=eu-west\n\n# Combine metadata filters with creator\n/v2/images?meta.status[eq]=active&creator=user123\n\n# Multiple metadata filters (AND logic)\n/v2/images?meta.status[eq]=active&meta.priority[eq:number]=5\n```\n",
 		"operationId": "cloudflare-images-list-images-v2",
 		"parameters": [
 			{
@@ -2081,9 +2081,13 @@
 				"in": "query",
 				"name": "continuation_token",
 				"schema": {
-					"description": "Continuation token for a next page. List images V2 returns continuation_token",
+					"description": "Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint.",
+					"example": "iD0bxlWFSVUWsDHbzIqvDkgBW4otifAAuGXLz1n8BQA",
+					"maxLength": 32,
 					"nullable": true,
-					"type": "string"
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -2091,7 +2095,7 @@
 				"name": "per_page",
 				"schema": {
 					"default": 1000,
-					"description": "Number of items per page.",
+					"description": "Number of items per page",
 					"maximum": 10000,
 					"minimum": 10,
 					"type": "number"
@@ -2102,7 +2106,7 @@
 				"name": "sort_order",
 				"schema": {
 					"default": "desc",
-					"description": "Sorting order by upload time.",
+					"description": "Sorting order by upload time",
 					"enum": [
 						"asc",
 						"desc"
@@ -2118,6 +2122,16 @@
 					"nullable": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "Optional metadata filter(s). Multiple filters can be combined with AND logic.\n\n**Operators:**\n- `eq`, `eq:string`, `eq:number`, `eq:boolean` - Exact match\n- `in`, `in:string`, `in:number` - Match any value in pipe-separated list\n\n**Examples:**\n- `meta.status[eq]=active`\n- `meta.priority[eq:number]=5`\n- `meta.enabled[eq:boolean]=true`\n- `meta.region[in]=us-east|us-west|eu-west`\n",
+				"explode": true,
+				"in": "query",
+				"name": "meta.<field>[<operator>]",
+				"schema": {
+					"type": "string"
+				},
+				"style": "form"
 			}
 		],
 		"responses": {
@@ -2335,6 +2349,344 @@
 					}
 				},
 				"description": "List images response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"invalid_operator": {
+								"summary": "Invalid metadata operator",
+								"value": {
+									"errors": [
+										{
+											"code": 5400,
+											"message": "Unsupported metadata filter operator: 'not-eq'"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"too_many_filters": {
+								"summary": "Too many metadata filters",
+								"value": {
+									"errors": [
+										{
+											"code": 5400,
+											"message": "Too many metadata filters: 6 provided, maximum 5 allowed"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"properties": {
+																"continuation_token": {
+																	"description": "Continuation token to fetch next page. Passed as a query param when requesting List V2 api endpoint.",
+																	"example": "iD0bxlWFSVUWsDHbzIqvDkgBW4otifAAuGXLz1n8BQA",
+																	"maxLength": 32,
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"images": {
+															"items": {
+																"properties": {
+																	"creator": {
+																		"description": "Can set the creator field with an internal user ID.",
+																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+																		"maxLength": 1024,
+																		"nullable": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"filename": {
+																		"description": "Image file name.",
+																		"example": "logo.png",
+																		"maxLength": 255,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"id": {
+																		"description": "Image unique identifier.",
+																		"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"meta": {
+																		"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
+																		"example": {
+																			"key": "value"
+																		},
+																		"type": "object"
+																	},
+																	"requireSignedURLs": {
+																		"default": false,
+																		"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"uploaded": {
+																		"description": "When the media item was uploaded.",
+																		"example": "2014-01-02T02:20:00.123Z",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"variants": {
+																		"description": "Object specifying available variants for an image.",
+																		"example": [
+																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+																			"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original"
+																		],
+																		"items": {
+																			"anyOf": [
+																				{
+																					"description": "URI to thumbnail variant for an image.",
+																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+																					"format": "uri",
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				{
+																					"description": "URI to hero variant for an image.",
+																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+																					"format": "uri",
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				{
+																					"description": "URI to original variant for an image.",
+																					"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
+																					"format": "uri",
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			]
+																		},
+																		"readOnly": true,
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Bad request"
 			},
 			"4XX": {
 				"content": {

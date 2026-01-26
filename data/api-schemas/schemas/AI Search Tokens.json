@@ -17,7 +17,8 @@
 				"required": true,
 				"schema": {
 					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -36,7 +37,8 @@
 											"type": "string"
 										},
 										"cf_api_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"cf_api_key": {
 											"type": "string"
@@ -50,11 +52,13 @@
 										},
 										"enabled": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"legacy": {
 											"default": true,
@@ -68,7 +72,8 @@
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"synced_at": {
 											"format": "date-time",
@@ -217,7 +222,8 @@
 												"type": "string"
 											},
 											"cf_api_id": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"cf_api_key": {
 												"type": "string"
@@ -231,11 +237,13 @@
 											},
 											"enabled": {
 												"default": true,
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"id": {
 												"format": "uuid",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"legacy": {
 												"default": true,
@@ -249,7 +257,8 @@
 												"type": "string"
 											},
 											"name": {
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"synced_at": {
 												"format": "date-time",
@@ -366,7 +375,8 @@
 				"required": true,
 				"schema": {
 					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -385,7 +395,8 @@
 											"type": "string"
 										},
 										"cf_api_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"cf_api_key": {
 											"type": "string"
@@ -399,11 +410,13 @@
 										},
 										"enabled": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"legacy": {
 											"default": true,
@@ -417,7 +430,8 @@
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"synced_at": {
 											"format": "date-time",
@@ -537,7 +551,8 @@
 					"schema": {
 						"properties": {
 							"cf_api_id": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"cf_api_key": {
 								"type": "string"
@@ -547,7 +562,8 @@
 								"type": "boolean"
 							},
 							"name": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -575,7 +591,8 @@
 											"type": "string"
 										},
 										"cf_api_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"cf_api_key": {
 											"type": "string"
@@ -589,11 +606,13 @@
 										},
 										"enabled": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"legacy": {
 											"default": true,
@@ -607,7 +626,8 @@
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"synced_at": {
 											"format": "date-time",
@@ -734,7 +754,8 @@
 				"required": true,
 				"schema": {
 					"format": "uuid",
-					"type": "string"
+					"type": "string",
+					"x-auditable": true
 				}
 			}
 		],
@@ -744,7 +765,8 @@
 					"schema": {
 						"properties": {
 							"cf_api_id": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"cf_api_key": {
 								"type": "string"
@@ -754,7 +776,8 @@
 								"type": "boolean"
 							},
 							"name": {
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -782,7 +805,8 @@
 											"type": "string"
 										},
 										"cf_api_id": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"cf_api_key": {
 											"type": "string"
@@ -796,11 +820,13 @@
 										},
 										"enabled": {
 											"default": true,
-											"type": "boolean"
+											"type": "boolean",
+											"x-auditable": true
 										},
 										"id": {
 											"format": "uuid",
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"legacy": {
 											"default": true,
@@ -814,7 +840,8 @@
 											"type": "string"
 										},
 										"name": {
-											"type": "string"
+											"type": "string",
+											"x-auditable": true
 										},
 										"synced_at": {
 											"format": "date-time",

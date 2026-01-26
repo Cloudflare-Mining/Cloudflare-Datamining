@@ -5133,6 +5133,14 @@
 																"description": "MTU as measured between the two ends of the tunnel",
 																"type": "number"
 															},
+															"recent_healthy_pings": {
+																"description": "Number of recent healthy pings for this tunnel",
+																"type": "number"
+															},
+															"recent_unhealthy_pings": {
+																"description": "Number of recent unhealthy pings for this tunnel",
+																"type": "number"
+															},
 															"tunnel_id": {
 																"description": "Tunnel identifier",
 																"type": "string"
@@ -6689,6 +6697,14 @@
 																		},
 																		"probed_mtu": {
 																			"description": "MTU as measured between the two ends of the tunnel",
+																			"type": "number"
+																		},
+																		"recent_healthy_pings": {
+																			"description": "Number of recent healthy pings for this tunnel",
+																			"type": "number"
+																		},
+																		"recent_unhealthy_pings": {
+																			"description": "Number of recent unhealthy pings for this tunnel",
 																			"type": "number"
 																		},
 																		"tunnel_id": {
