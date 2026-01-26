@@ -6,32 +6,33 @@
 	</div>
 </div>
 <p><strong>Available Locations: Lisbon or London</strong></p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</p>
-<p><strong>The Team</strong></p>
-<p>We are looking to hire an experienced Security Third Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for completing vendor security reviews, maintaining our vendor master list, and supporting Cloudflare’s Third Party Risk Program.&nbsp;</p>
-<p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. We guarantee that you won’t get bored.&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Responsibilities</strong>:</p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
+<p>This position will be responsible for :&nbsp;</p>
 <ul>
-	<li>Execute vendor security reviews by collecting and analyzing vendor security control documentation and audit reports.</li>
-	<li>Assist in identifying third-party security risks, documenting findings, and recommending risk treatment options.</li>
-	<li>Collaborate with the Contracts &amp; Legal teams to ensure security contract requirements are incorporated into vendor agreements.</li>
-	<li>Support the maintenance of Cloudflare’s vendor master list, ensuring data accuracy and proper classification of critical vendors.</li>
-	<li>Help the team monitor current security events (e.g., zero-day vulnerabilities) and support outreach to vendors to confirm their status and remediation efforts.</li>
-	<li>Gather and prepare evidence of vendor security reviews to support Cloudflare’s security certification audits.</li>
-	<li>Liaise and coordinate with stakeholders across Cloudflare’s Procurement, IT, Contracts, Legal, and Privacy teams to ensure vendor due diligence workflows are completed efficiently.</li>
-	<li>Assist in the ongoing improvement of the vendor security review process, documentation, and tooling.</li>
-	<li>Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, or other global Cloudflare locations.</li>
+	<li>Technical operation and engineering of the Cloudflare network, including the provisioning and management of the network hardware and software,</li>
+	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams,</li>
+	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base,</li>
+	<li>Interacting with our network peers to assist with their inquiries, and subsequently provide meaningful data on performance degradation.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Requirements</strong>:</p>
 <ul>
-	<li>Experience typically gained in 2-5 years working in Security GRC&nbsp;</li>
-	<li>Experience reviewing vendor security documentation including ISO 27001, SOC 2, PCI DSS, and other audit reports</li>
-	<li>Experience identifying security controls gaps, determining risk ratings, and recommending mitigating controls&nbsp;&nbsp;</li>
-	<li>Familiarity with security contract requirements&nbsp;</li>
-	<li>Strong organizational, analytical, and interpersonal skills</li>
-	<li>Self-starter with the ability to work independently with a sense of curiosity&nbsp;</li>
+	<li>Capable of learning new technologies / systems / features under guidance of mentors,</li>
+	<li>Proficient in multiple network vendor operating systems , Associate level network certification(s) (JNCIA , CCNA , etc) or higher,</li>
+	<li>Understanding of BGP, Knowledge of the OSI-model and experience isolating network, hardware and software issues,</li>
+	<li>Experience writing scripts in Bash, Python, or other scripting language,</li>
+	<li>Experience in working as part of a team in a customer-facing role,</li>
+	<li>Ability to prioritise when faced with high pressure scenarios.</li>
+</ul>
+<p><strong>Bonus Points but not required:</strong></p>
+<ul>
+	<li>Understanding of anycast routing,</li>
+	<li>Good working knowledge of&nbsp; Junos, IOS-XR, NX-OS, EOS and SONIC,</li>
+	<li>Experience writing network configuration and design documentation,</li>
+	<li>Experience solving problems through automation,</li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM,</li>
+	<li>Linux system administration,</li>
+	<li>Multilingual.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

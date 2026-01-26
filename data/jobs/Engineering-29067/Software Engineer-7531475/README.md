@@ -5,31 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Austin, TX; </strong>Lisbon, Portugal or London, UK</h4>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare’s Billing Engineering team builds and maintains all the internal/external billing services related to customer onboarding, subscription management, payments, provisioning, usage processing/analytics and back office integrations with financial systems. This is a vital team central to every product launch, campaign or initiative Cloudflare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>The Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
-<h4><strong>About the Role</strong></h4>
-<p>We are looking for experienced front-end engineers to join our FinTech Billing team; an energetic team focused engineer who is growth mindset oriented, able to drive their work from inception, requirements definition, technical specification phase, development, testing and go live. The ideal candidates will have experience working with large-scale applications and a deep knowledge of system designs. You must care deeply not only about the quality of your and the team's code, but also the customer experience and developer experience. We have growing front-end needs, so we’re looking for highly motivated individuals that are excited to join a team and work with product owners and other software engineers to build high impact user experiences for our customer facing functions.</p>
-<p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access to Cloudflare Workers, these are all tools in our frontend engineer's tool belt.&nbsp;</p>
-<p>Technologies we use include React, Redux, TypeScript, ES6, Remix, Vite, Webpack, Cypress, Go, git, Bitbucket, Teamcity and many more..</p>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong>&nbsp;Hiring Process &amp; Cloudflare's Engineering Teams</strong></p>
+<p>If you want to build things at Cloudflare but are unsure about which team to apply for, this role will give you the best opportunity to match with a team that is most aligned to your experience, skill, and ambition. We've created a hiring process designed to find great candidates and figure out where they fit best as we go along. At the end of the hiring process you will have the opportunity to meet with one or more teams to find out if there is a fit, but if you discover during the interview process that a particular team or product area is interesting to you let us know.</p>
+<p><strong>About Engineering at Cloudflare</strong></p>
+<p>Cloudflare’s Engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
+<p>Cloudflare is a system spanning the globe, on a mission to make the Internet better, safer, and more powerful every day. As a Software Engineer at Cloudflare, you’ll work on the code that runs close to the end user, runs at a massive scale, and is deployed to&nbsp;<a href="https://www.cloudflare.com/network/">330+ cities</a> around the world.</p>
+<p><strong>Role Summary&nbsp;</strong></p>
+<p>We are looking for a talented Systems Engineer to join the Security Rules team. You will work on a range of microservices written mainly in Rust. Technologies we use include Docker, Go, Lua, PostgreSQL, Redis, gRPC, Kafka, Clickhouse and the usual Unix/Linux tools and workflows. We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale. You will join a team of bright, hard-working, and supportive engineers who are passionate about their craft, and you will be comfortable operating in a fast-paced but sane work environment.</p>
+<p>&nbsp;<strong>Role Responsibilities</strong>&nbsp;</p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent</li>
-	<li>Minimum of 5+ years experience building web applications</li>
-	<li>Strong knowledge of HTML, CSS, and JavaScript</li>
-	<li>Expertise with TypeScript</li>
-	<li>Knowledge of both software engineering and systems engineering</li>
-	<li>Deep understanding of internal workings of React.js applications</li>
-	<li>Extensive knowledge of the JavaScript ecosystem</li>
-	<li>Experience working with build pipelines, artifact management, error management</li>
-	<li>Ability to work in cross-functional teams and collaborate effectively with product and design teams</li>
-	<li>Strong analytical and debugging skills</li>
-	<li>Unit/integration testing experience</li>
-	<li>Experience working with and/or designing RESTful APIs</li>
-	<li>Working knowledge of internationalization, localization, and/or accessibility</li>
+	<li>Design, implement, and maintain the software systems that comprise Cloudflare’s Application Security Product Offering.</li>
+	<li>Participate in all stages of the software development lifecycle, from designing and documenting systems to writing code, automated tests, and monitoring production deployments.</li>
+	<li>Collaborate with internal teams, including security, network engineering, SRE, and product management, to design scalable solutions to difficult technical problems.</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle to ensure high-quality, maintainable code.</li>
+	<li>Mentor team members and work with support teams to ensure customer delight and bring out the best in everyone.</li>
+	<li>Debug issues in complex systems and contribute to the maintenance and improvement of operational health.</li>
+	<li>Work with a wide range of technologies and programming languages, including Rust, Go, and Typescript, as well as various databases (SQL and No-SQL), Docker, and Kubernetes.</li>
 </ul>
-<p><strong>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</strong></p>
+<p>&nbsp;<strong>Role Requirements </strong></p>
+<ul>
+	<li>First and foremost curiosity and critical thinking</li>
+	<li>3+ years of relevant professional experience with a technology company</li>
+	<li>Strong programming skills in Rust, Go, C++, or a similar systems-level language</li>
+	<li>Experience building and operating distributed systems</li>
+	<li>Experience with modern Unix/Linux development and runtime environments</li>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+	<li>Experience with databases (we use PostgreSQL and Clickhouse)</li>
+	<li>Experience with monitoring and logging tools like Prometheus and Grafana.</li>
+	<li>Experience with containerization and orchestration technologies, such as Docker and Kubernetes.</li>
+	<li>Strong interpersonal and communication skills, demonstrating empathy, teamwork and a sense of ownership.</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
