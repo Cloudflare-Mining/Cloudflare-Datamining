@@ -5,67 +5,21 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Atlanta GA, Austin TX, Denver CO</strong></p>
-<p><strong>About the dept.</strong></p>
-<p>Cloudflare’s Enterprise Integrations Engineering Team designs, builds, and maintains integrations across a wide range of SaaS applications used throughout the organization. Our mission is to create scalable, reliable, and maintainable systems that ensure data flows securely and efficiently between platforms. With several high-impact projects always in motion, the ability to manage shifting priorities, communicate clearly, and collaborate effectively is essential.</p>
-<p>Our team is highly collaborative, values continuous learning, and supports each other through shared ownership and open communication. We work closely with both technical and business teams, conduct regular retrospectives, and look for ways to improve how we build and deliver integrations.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>You will build out and lead a team of talented engineers responsible for designing, implementing, and maintaining Cloudflare’s internal integrations solutions. You will oversee the development of scalable, highly reliable integration infrastructure designed to facilitate organizational change as we scale. Your work will directly accelerate our sales velocity, customer support, and platform experience for our customers. You will play a key role in the next era of Cloudflare’s growth ensuring our future initiatives are resilient, scalable, and future-proof.</p>
-<p>Beyond the technical execution, you will focus on growing and mentoring a high-performing engineering team. You will set clear expectations, provide thoughtful leadership and feedback, and create an environment where engineers can thrive. Your ability to communicate effectively, manage priorities, and navigate a fast-paced environment will be critical in driving success.</p>
-<h4><strong>Responsibilities</strong></h4>
+<h3><strong>Available Locations: Austin, TX&nbsp;</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>What you'll do</strong></h3>
+<p>In this role you will design, build, and ship AI-powered product features. You will often collaborate across disciplines by partnering with engineers, data scientists, designers, and stakeholders to integrate AI seamlessly into existing systems and workflows. As the landscape for AI continues to change you will be expected to stay current on emerging AI techniques and tooling, experiment rapidly, and bring forward ideas that are practical, maintainable, and impactful. Applying AI to existing products as well as new products will be an important part of this role and your ability to ship production-grade systems will be an expected requisite. On any given day you might be benchmarking various AI models, writing evals, collaborating with other AI teams on novel solutions, or developing a net-new product to release to Cloudflare customers.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Experience leading a team of senior engineers.</li>
-	<li>Experience working with cross-functional teams, driving alignment, and clearly creating and communicating technical direction for large cross-company efforts.</li>
-	<li>Comfortable leading and hiring a team that builds the backend APIs and Integrations.</li>
-	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability.</li>
-	<li>Comfortable building developer-loved APIs that scale.</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development.</li>
-	<li>You inspire your team to reach higher.</li>
-	<li>You’re as good as explaining “why” as you are “how”.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
-	<li>Comfortable managing teams/projections with tight deadlines and short release cycles.</li>
+	<li>5+ years of experience working with distributed systems.</li>
+	<li>Experience designing and building frontend applications.</li>
+	<li>Solid understanding of cloud primitives and how they work together to build distributed systems.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use TypeScript.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in large-scale frontend applications.</li>
+	<li>Experience developing and deploying AI solutions</li>
 </ul>
-<p><strong>N</strong><strong>ice to Have</strong></p>
-<ul>
-	<li>Proficiency in Go</li>
-	<li>Experience building RESTful APIs with proper service security practices</li>
-	<li>Experience working with observability tools such as Grafana, Prometheus, Sentry, or Kibana</li>
-	<li>Experience with Kubernetes&nbsp;</li>
-	<li>Experience with GitLab or other CI/CD tools<br><br></li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $191,000 - $233,000</span></li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
