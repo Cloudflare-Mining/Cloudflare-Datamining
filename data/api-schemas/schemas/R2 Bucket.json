@@ -3698,6 +3698,186 @@
 			"R2 Bucket"
 		]
 	},
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
+		"description": "Get the local uploads configuration for a bucket. When enabled, object's data is written to the nearest region first, then asynchronously replicated to the bucket's primary region.",
+		"operationId": "r2-get-bucket-local-uploads-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Configuration for local uploads on a bucket.",
+											"properties": {
+												"enabled": {
+													"description": "Whether local uploads is enabled for this bucket. When enabled, object's data is written to the nearest region first, then asynchronously replicated to the bucket's primary region.",
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Get Local Uploads Configuration",
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.read"
+			]
+		}
+	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"description": "Get lock rules for a bucket.",
 		"operationId": "r2-get-bucket-lock-configuration",
@@ -6722,6 +6902,193 @@
 		"tags": [
 			"R2 Bucket"
 		]
+	},
+	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
+		"description": "Set the local uploads configuration for a bucket. When enabled, object's data is written to the nearest region first, then asynchronously replicated to the bucket's primary region.",
+		"operationId": "r2-put-bucket-local-uploads-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the bucket.",
+					"example": "example-bucket",
+					"maxLength": 64,
+					"minLength": 3,
+					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"enabled": {
+								"description": "Whether to enable local uploads for this bucket.",
+								"type": "boolean",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"enabled"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"result": {
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Success Response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error Response."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Put Local Uploads Configuration",
+		"tags": [
+			"R2 Bucket"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.r2.bucket.write"
+			]
+		}
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"description": "Set lock rules for a bucket.",
