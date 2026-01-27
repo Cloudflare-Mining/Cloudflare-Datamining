@@ -2,6 +2,17 @@
 	common: {
 		search: "Search"
 	},
+	emailSending: {
+		title: "Email Sending",
+		description: "Send emails to your users from your domain reliably, securely and at scale.",
+		zoneList: {
+			emptyState: {
+				title: "Enable Email Sending",
+				description: "No zones found"
+			},
+			onboardDomain: "Onboard Domain"
+		}
+	},
 	emailRouting: {
 		title: "Email Routing",
 		description: "Create custom email addresses and route email to your verified email addresses or Workers.",

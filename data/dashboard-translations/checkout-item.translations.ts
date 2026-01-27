@@ -1,0 +1,138 @@
+{
+	common: {
+		bandwidth: "Bandwidth",
+		cache_storage: "Cache Storage",
+		gb_month_of_storage: "GB-month of storage",
+		includes_count_hostname_gateways: "Includes %{count} hostname gateways",
+		included: "Included:",
+		additional: "Additional:",
+		price_per_additional_units: "%{price} per additional %{units}",
+		price_per_count_units: "%{price} per %{count} %{units}",
+		price_per_additional_count_units: "%{price} per additional %{count} %{units}",
+		price_per_additional_count_million_units: "%{price} per additional %{count} million %{units}"
+	},
+	prod_argo: {
+		title: "Argo Smart Routing",
+		accelerated_gigabytes: "Accelerated Gigabytes",
+		gb_data_transferred: "GB of data transferred between Cloudflare and your visitors"
+	},
+	prod_cache_reserve: {
+		title: "Cache Reserve",
+		cache_storage: "Cache Storage",
+		million_write_operations: "1 million write operations",
+		million_read_operations: "1 million read operations"
+	},
+	prod_cloudflare: {
+		pro_plan: "Pro Plan",
+		pro_plus_plan: "Pro Plus Plan",
+		business_plan: "Business Plan",
+		page_rules: "Page Rules",
+		apo_wordpress: "Automatic Platform Optimization for WordPress"
+	},
+	prod_load_balancing: {
+		load_balancing: "Load Balancing",
+		allows_you_to_load_balance_and_failover_across: "Allows you to load balance and failover across:",
+		endpoint_server: "endpoint server",
+		endpoint_servers: "endpoint servers",
+		health_check_region: "health check region",
+		health_check_regions: "health check regions",
+		second_health_checks: "second health checks",
+		count_origin_servers: "%{count} origin servers",
+		count_second_health_checks: "%{count} second health checks",
+		count_health_check_regions: "%{smarterCount} health check region |||| %{smarterCount} health check regions",
+		traffic_steering: "Traffic Steering",
+		no_traffic_steering: "No traffic steering",
+		enabled: "Enabled",
+		queries: "Queries",
+		included: "Included:",
+		count_queries_shared: "%{count} queries shared across all load balancers in your account",
+		requests_per_enabled_hostname: "requests per enabled hostname and billed at the end of each month",
+		endpoint_servers_label: "Endpoint Servers",
+		faster_checks: "Faster Checks",
+		check_from: "Check From"
+	},
+	prod_log_explorer: {
+		eos_ingestion: "EOS Ingestion",
+		ingestion_usage_pricing: "Ingestion usage pricing",
+		gb_of_data_ingested: "GB of data ingested"
+	},
+	prod_r2: {
+		title: "R2",
+		title_enterprise: "R2 for Enterprise",
+		r2_storage: "R2 Storage",
+		class_a_operations: "Class A operations",
+		class_b_operations: "Class B operations",
+		one_gb_month: "1 GB-month",
+		includes_class_a_operations: "Includes %{count} million Class A operations per month",
+		includes_class_b_operations: "Includes %{count} million Class B operations per month",
+		includes_storage: "Includes %{count} GB-months of storage"
+	},
+	prod_rate_limiting: {
+		requests: "Requests",
+		legitimate_requests: "legitimate (non-blocked) requests",
+		includes_count_units: "Includes %{count} legitimate (non-blocked) requests"
+	},
+	prod_smart_shield: {
+		smart_shield_advanced: "Smart Shield Advanced",
+		smart_shield_argo: "Smart Shield + Argo"
+	},
+	prod_stream: {
+		images_stream_starter_bundle: "Cloudflare Images Stream Starter Bundle",
+		images_stream_creator_bundle: "Cloudflare Images Stream Creator Bundle",
+		images_stream_starter_bundle_legacy: "Cloudflare Images Stream Starter Bundle (Legacy)",
+		images_stream_creator_bundle_legacy: "Cloudflare Images Stream Creator Bundle (Legacy)",
+		images_delivered: "Images Delivered",
+		images_transformed: "Images Transformed",
+		video_delivered: "Video Delivered",
+		image_storage: "Image Storage",
+		video_storage: "Video Storage",
+		image_storage_pricing: "Image Storage Pricing",
+		stream_storage_pricing: "Stream Storage Pricing",
+		unique_transformations_per_month: "1,000 unique transformations per month",
+		count_images_delivered: "%{count} images delivered",
+		images: "Images",
+		stream: "Stream",
+		images_delivered_label: "images delivered",
+		images_stored: "images stored",
+		count_images_stored: "%{count} images stored",
+		minutes_of_video: "minutes of video",
+		unique_image_transformations: "unique image transformations",
+		additional_images_stored: "%{count} additional images stored at %{price} per %{quantity} additional images stored per month",
+		additional_video_stored: "%{count} additional minutes of video stored at %{price} per %{quantity} additional minutes of video stored per month"
+	},
+	prod_web3_ethereum: {
+		http_requests_per_month: "HTTP requests per month",
+		includes_http_requests: "Includes %{count} HTTP requests"
+	},
+	prod_web3_ipfs: {
+		gb_data_transfer_per_month: "GB data transfer per month",
+		includes_gb_data_transfer: "Includes %{count} GB data transfer per month"
+	},
+	prod_workers: {
+		workers_paid_plan: "Workers Paid Plan",
+		workers_enterprise: "Workers for Enterprise",
+		workers_unbound: "Workers Unbound",
+		workers_bundled: "Workers Bundled",
+		durable_objects: "Durable Objects",
+		kv_storage: "KV Storage",
+		queues: "Queues",
+		metered_in_4kb_increments: "metered in 4 KB increments",
+		billable_requests: "billable requests",
+		million_billable_gb_second_duration: "1 million billable GB-second duration",
+		million_billable_requests: "1 million billable requests",
+		million_requests: "1 million requests",
+		million_gb_second_duration: "1 million GB-second duration",
+		one_gb_stored_data: "1 GB of stored data",
+		delete_operations: "delete operations",
+		one_gb_storage: "1 GB of storage",
+		million_read_operations: "1 million read operations",
+		write_operations: "write operations",
+		list_operations: "list operations",
+		standard_operations: "standard operations",
+		includes_bundled_requests: "Includes first %{count} million Bundled requests",
+		includes_unbound_requests: "Includes first %{requests} million Unbound requests and %{duration} GB-sec duration",
+		includes_kv_storage: "Includes first %{storage} GB KV storage, %{reads} million read operations, %{writes} million write operations, %{deletes} million delete operations, and %{lists} million list operations",
+		includes_durable_objects: "Includes first %{requests} million requests, %{duration} GB-second duration, %{storage} GB stored data, %{reads} million read units, %{writes} million write units, and %{deletes} million delete operations of Durable Objects",
+		includes_queues: "Includes first %{count} million standard operations of Queues"
+	}
+}

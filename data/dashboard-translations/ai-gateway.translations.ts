@@ -474,7 +474,7 @@
 		get_token: {
 			title: "Get AI Gateway Token",
 			description: "To use authenticated AI Gateway, create a custom token with the correct <i>Run</i> permissions:",
-			button: "Create an AI Gateway authentication token"
+			button: "Create authentication token"
 		},
 		get_account: {
 			title: "Get Account ID",
@@ -631,7 +631,8 @@
 			}
 		},
 		usage_examples: {
-			title: "Usage Examples",
+			title: "Unified API Examples",
+			native_title: "Native API/SDK Examples",
 			no_examples: "No code examples available for this provider",
 			select_options: {
 				unified: "Unified / OpenAI compat",

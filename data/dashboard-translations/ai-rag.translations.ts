@@ -126,15 +126,15 @@
 			},
 			filter_items: {
 				title: "Path Filters",
-				description: "Control the indexing scope by matching URL paths with wildcards.",
+				description: "Path filtering allows you to control which files or URLs are indexed by defining include and exclude patterns.</br> Use this to limit indexing to specific content or to skip files you do not want searchable.",
 				include_items: {
 					title: "Include Rules",
-					description: "Only index URLs matching these patterns (e.g., */blog/*)",
+					description: "All items except those matching exclude patterns are indexed (e.g., **/blog/*)",
 					add_button: "Add include rule"
 				},
 				exclude_items: {
 					title: "Exclude Rules",
-					description: "Skip indexing URLs matching these patterns (e.g., */admin/*)",
+					description: "All items except those matching exclude patterns are indexed (e.g., **/admin/*)",
 					add_button: "Add exclude rule"
 				}
 			},
@@ -190,6 +190,12 @@
 						title: "Extra header",
 						description: "Add additional headers to crawl your website."
 					}
+				},
+				specific_sitemaps: {
+					title: "Specific sitemaps",
+					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery.",
+					add_button: "Add sitemap",
+					placeholder: "https://example.com/sitemap.xml"
 				}
 			},
 			common: {
@@ -325,6 +331,7 @@
 			},
 			filter_items: {
 				title: "Path Filters",
+				description: "Path filtering allows you to control which files or URLs are indexed by defining include and exclude patterns. Use this to limit indexing to specific content or to skip files you do not want searchable.",
 				include_items: "Include Rules",
 				exclude_items: "Exclude Rules"
 			},
@@ -348,6 +355,13 @@
 				drawer: {
 					title: "Add extra headers",
 					description: "Add extra headers to be used in crawling:"
+				}
+			},
+			specific_sitemaps: {
+				title: "Specific sitemaps",
+				drawer: {
+					title: "Specific sitemaps",
+					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery."
 				}
 			}
 		},
@@ -661,6 +675,7 @@
 	},
 	actions: {
 		sync_index: "Sync",
+		sync_item: "Sync item",
 		delete: "Delete",
 		paused_index: "Pause",
 		resume_index: "Resume",

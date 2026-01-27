@@ -267,7 +267,8 @@
 				failed_internal: "An internal error prevented the form from submitting. Please try again.",
 				project_name_unavailable: "A project with this name already exists on this account.",
 				project_name_invalid_characters: "Project name can only contain lowercase letters (a-z), numbers (0-9), dashes",
-				invalid_variable_name: "Environment variable names can only contain letters, numbers, hyphens, and underscores. They must start with a letter or underscore."
+				invalid_variable_name: "Environment variable names can only contain letters, numbers, hyphens, and underscores. They must start with a letter or underscore.",
+				permission_denied: "You need to be an Administrator on the Cloudflare account in order to create a Workers Builds connection. <0>Visit the account members page</0> to check your role."
 			}
 		}
 	},

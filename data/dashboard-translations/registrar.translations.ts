@@ -24,8 +24,8 @@
 		field_validation_error: (0, o.p)(s(), "field"),
 		field_required_error: "This field is required",
 		field_name_required_error: (0, o.p)(d(), "field"),
-		field_mismatch_error: (0, o.p)(c(), "fieldPlural"),
-		field_min_length_error: (0, o.p)(l(), "length", "characters"),
+		field_mismatch_error: (0, o.p)(l(), "fieldPlural"),
+		field_min_length_error: (0, o.p)(c(), "length", "characters"),
 		field_length_error: (0, o.p)(_(), "length", "characters"),
 		field_must_contain_alpha_characters_error: "This field must contain more than one alphabetical character",
 		field_must_contain_at_least_multiple_alpha_characters_error: (0, o.p)(u(), "numAlphaCharacters"),
@@ -70,8 +70,8 @@
 		credit_card: {
 			header_new_card: "Card details",
 			header_replace_card: "New card details",
-			subheader_replace_card: "This will replace your primary card on file.\nBy providing your card information, you allow Cloudflare, Inc. to charge your card for future payments in accordance with their terms.",
-			subheader_new_card: "By providing your card information, you allow Cloudflare, Inc. to charge your card for future payments in accordance with their terms.",
+			subheader_replace_card: "This will replace your primary card on file.\nBy providing your card information, you allow Cloudflare, Inc. to charge your card for future checkout in accordance with their terms.",
+			subheader_new_card: "By providing your card information, you allow Cloudflare, Inc. to charge your card for future checkout in accordance with their terms.",
 			expires_in: "Expires in"
 		},
 		paypal: {
@@ -88,8 +88,8 @@
 		},
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
-		purchase_agreement: (0, o.p)(p()),
-		purchase_agreement_with_icloud: (0, o.p)(f()),
+		purchase_agreement: (0, o.p)(f()),
+		purchase_agreement_with_icloud: (0, o.p)(p()),
 		automatic_renewal_agreement: 'Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in <a href="/%{accountId}/billing/subscriptions" rel="noopener noreferrer" target="_blank">Billing Subscriptions</a>, or via the Domain Management page in your account for registrar, at least a day before each renewal date.',
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
@@ -97,20 +97,30 @@
 		notification_toggle_expand: "Click for more information",
 		notification_toggle_collapse: "Hide information"
 	},
+	tld_freeze: {
+		transfer_unavailable: "Transfers for .%{tld} domains are temporarily unavailable. Please try again later.",
+		transfer_unavailable_until: (0, o.p)(g(), "tld", "frozenUntil"),
+		renewal_unavailable: "Renewals for .%{tld} domains are temporarily unavailable. Please try again later.",
+		renewal_unavailable_until: (0, o.p)(h(), "tld", "frozenUntil"),
+		renewal_unavailable_short: "Renewals temporarily unavailable",
+		renewal_unavailable_until_short: (0, o.p)(y(), "frozenUntil"),
+		generic_notice: "Some actions for this domain are temporarily unavailable.",
+		generic_notice_until: (0, o.p)(b(), "frozenUntil")
+	},
 	error: {
 		title: "Error",
-		description_domain: (0, o.p)(g(), "domainName"),
+		description_domain: (0, o.p)(w(), "domainName"),
 		description: "There was an error fetching data.",
 		button: "Retry"
 	},
 	domain_page: {
-		title: (0, o.p)(h(), "domainName"),
+		title: (0, o.p)(v(), "domainName"),
 		back: "Back to Manage Domains",
 		registration: "Registration",
 		contacts: "Contacts",
 		configuration: "Configuration",
 		error: {
-			deletion_irredeemable: (0, o.p)(y(), "paymentExpiresAt")
+			deletion_irredeemable: (0, o.p)(k(), "paymentExpiresAt")
 		},
 		banners: {
 			unverified_contacts: {
@@ -118,7 +128,7 @@
 				link_text: "View Contacts"
 			},
 			suspended_email_verification: {
-				text: (0, o.p)(b(), "registrantEmail"),
+				text: (0, o.p)(T(), "registrantEmail"),
 				link_text: "Resend verifcation email"
 			},
 			suspended_trust_and_safety: {
@@ -139,7 +149,7 @@
 			long: "Domain or keyword must be less than than 64 characters.",
 			unsupported: "Domain or keyword must not contain special characters or internationalized domain names (IDN)."
 		},
-		billing_permissions_error_title: (0, o.p)(w(), "domainName"),
+		billing_permissions_error_title: (0, o.p)(R(), "domainName"),
 		billing_permissions_error_message_link: "You need permission to manage billing in order to register a domain.<0></0> Please contact an account super-admin to request access.",
 		billing_permissions_error_message: "You need permission to manage billing in order to register a domain. Please reach out to a super-admin on the account for assistance."
 	},
@@ -147,7 +157,7 @@
 		overview: {
 			transfer_in: {
 				title: "Complete your transfer",
-				subtitle: (0, o.p)(v(), "domainName"),
+				subtitle: (0, o.p)(A(), "domainName"),
 				body: "Complete the following tasks to finish your domain transfer and activate on Cloudflare.",
 				refresh: "Refresh transfer status"
 			},
@@ -162,12 +172,12 @@
 		disable_privacy: "Disable WHOIS privacy",
 		completed_foa: "Completed Form of Authorization (FOA)",
 		pending_foa: "Waiting for a Form of Authorization (FOA)",
-		pending_foa_description: (0, o.p)(k(), "days"),
+		pending_foa_description: (0, o.p)(D(), "days"),
 		invalid_auth_code: "Invalid auth code",
 		auth_code: "Enter authorization code",
 		payment: "Payment - %{amount} for %{smart_count} year |||| Payment - %{amount} for %{smart_count} years",
 		approve: "Waiting for your previous registrar to release the domain",
-		approve_description: (0, o.p)(T(), "days"),
+		approve_description: (0, o.p)(C(), "days"),
 		success: "Domain transfer completed",
 		uk_ips_tag: "Waiting for an updated IPS tag",
 		uk_ips_tag_description: 'Request your current registrar to update the Internet Provider Security (IPS) tag for this domain to "CLOUDFLARE" and follow any additional instructions provided by your registrar to finish the transfer.',
@@ -175,22 +185,21 @@
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, o.p)(A(), "expired_on", "purchaseable_on"),
+		pending_deletion: (0, o.p)(N(), "expired_on", "purchaseable_on"),
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Automatic renewal is on",
 		auto_renew_off: "Automatic renewal is off",
-		domain_protection: "Domain is under Domain Protection",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, o.p)(R(), "expires_on"),
+		expires_on: (0, o.p)(I(), "expires_on"),
 		billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 		grace_period: {
 			title: "Domain expired",
-			details: (0, o.p)(D(), "grace_period_start", "grace_period_end")
+			details: (0, o.p)(P(), "grace_period_start", "grace_period_end")
 		},
 		not_on_cloudflare: {
-			expiration: (0, o.p)(C(), "expiration"),
+			expiration: (0, o.p)(S(), "expiration"),
 			transfer_cta: "Transfer to Cloudflare",
-			transfer_cta_subext: (0, o.p)(N(), "price")
+			transfer_cta_subext: (0, o.p)(x(), "price")
 		},
 		transfer_in_progress: {
 			title: "Transfer Progress",
@@ -203,15 +212,15 @@
 			domain_status: "Domain status",
 			expiration_date: "Expiration date",
 			auto_renew: "Auto renew",
-			renewal_charge_notice_singular: (0, o.p)(I(), "amount", "date"),
-			renewal_charge_notice_plural: (0, o.p)(P(), "amount", "date", "years"),
+			renewal_charge_notice_singular: (0, o.p)(E(), "amount", "date"),
+			renewal_charge_notice_plural: (0, o.p)(O(), "amount", "date", "years"),
 			renew_early_button: "Renew early today",
 			renew_now: "Renew now",
 			modal_title: "Extend your domain registration",
 			renew_for_label: "Renew for",
 			select_year_placeholder: "Select a year",
-			year_option_singular: (0, o.p)(S(), "years", "pricePerYear"),
-			year_option_plural: (0, o.p)(x(), "years", "pricePerYear"),
+			year_option_singular: (0, o.p)(z(), "years", "pricePerYear"),
+			year_option_plural: (0, o.p)(L(), "years", "pricePerYear"),
 			renewal_price_label: "Renewal price",
 			cancel_button: "Cancel",
 			continue_button: "Continue to checkout",
@@ -220,8 +229,8 @@
 		},
 		redemption_period: {
 			title: "Domain in Redemption Period",
-			description: (0, o.p)(E(), "expiresOn", "redemptionFee"),
-			description_domain_active: (0, o.p)(O(), "redemptionFee"),
+			description: (0, o.p)(q(), "expiresOn", "redemptionFee"),
+			description_domain_active: (0, o.p)(Y(), "redemptionFee"),
 			description_common: "<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><0>Learn more about domain restoration</0>.",
 			restore_cta: "Restore",
 			billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
@@ -238,8 +247,8 @@
 				}
 			},
 			messages: {
-				success: (0, o.p)(z(), "domainName"),
-				error: (0, o.p)(q(), "domainName")
+				success: (0, o.p)(U(), "domainName"),
+				error: (0, o.p)(W(), "domainName")
 			},
 			in_progress: {
 				title: "Domain Restoration",
@@ -265,7 +274,7 @@
 		toggle_view: "Renew/Extend Domain",
 		renew: "Renew for",
 		years: "%{smart_count} year |||| %{smart_count} years",
-		due: (0, o.p)(L(), "amount"),
+		due: (0, o.p)(F(), "amount"),
 		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance.",
 		notification_success_domain: "Successfully renewed %{domainName}!",
 		notification_success: "Domain successfully renewed",
@@ -304,6 +313,7 @@
 		application_purpose: "Application purpose",
 		is_required: "This field is required.",
 		whois_visibility: "WHOIS visibility",
+		uk_registrant_type: "UK registrant type",
 		whois_visibility_organization: "Display organization in WHOIS",
 		whois_visibility_enabled: "Enabled",
 		whois_visibility_disabled: "Disabled",
@@ -318,18 +328,17 @@
 	cor_resend_email: "Resend Email",
 	cor_cancel_error_message: "Unable to cancel a partially approved change of registrant request for %{domainName}",
 	renewal_info: {
-		expires_on: (0, o.p)(Y(), "expiresOn"),
-		renews_on: (0, o.p)(U(), "renewsOn"),
+		expires_on: (0, o.p)(B(), "expiresOn"),
+		renews_on: (0, o.p)(M(), "renewsOn"),
 		price: "Price",
 		price_per_year: "%{domainRenewalFee}/year",
-		billing: (0, o.p)(W(), "last4"),
-		billing_paypal: (0, o.p)(B(), "email"),
-		billing_cloud: (0, o.p)(F(), "last4"),
+		billing: (0, o.p)(H(), "last4"),
+		billing_paypal: (0, o.p)(V(), "email"),
+		billing_cloud: (0, o.p)(G(), "last4"),
 		fees: "Domain fees subject to change."
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
 	domain_page_sidebar_status: "Status",
-	domain_page_sidebar_domain_protection_status: "Domain Protection Status",
 	domain_page_sidebar_lock_now: "Lock now",
 	domain_page_sidebar_unlock_now: "Unlock now",
 	domain_page_sidebar_manage: "Manage",
@@ -347,9 +356,9 @@
 	domain_page_sidebar_buy: "Buy",
 	related_domains_modal_buy_related_domain: "Buy %{domainName}",
 	related_domains_modal_renews_at: "Your domain will renew at %{renewalFee}/year",
-	registered_on: (0, o.p)(M(), "registration_date"),
+	registered_on: (0, o.p)(j(), "registration_date"),
 	success_page: {
-		page_title: (0, o.p)(H(), "domainName"),
+		page_title: (0, o.p)(K(), "domainName"),
 		page_description: "Have an idea for a website or app? Use Cloudflare to launch it with optimal security and speed.",
 		workers: {
 			title: "Deploy an application",
@@ -400,7 +409,7 @@
 		},
 		auto_renewal: {
 			title: "Auto Renew",
-			description: (0, o.p)(V(), "date")
+			description: (0, o.p)(Z(), "date")
 		}
 	},
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
@@ -473,6 +482,8 @@
 	search_domain_premium_domain_explanation: "Premium domains have non-standard pricing.",
 	search_domain_premium_domain_docs: "<0>What is a premium domain name?</0>",
 	search_domain_dot_ai_notice: "Registry policy requires a minimum registration period of 2 years for the .%{tld} extension.",
+	search_domain_frozen: ".<0>%{tld}</0> is temporarily unavailable. Registrations will resume on %{frozenUntil}.",
+	search_domain_frozen_no_date: ".<0>%{tld}</0> is temporarily unavailable. Please try again later.",
 	whois_privacy_card_title: "WHOIS privacy",
 	whois_privacy_card_enabled: "Data redaction is currently enabled for this domain.",
 	whois_privacy_card_disabled: "Data redaction is currently disabled for this domain.",
@@ -595,6 +606,7 @@
 	domain_management_default_contact_card_phone_format_error: "Invalid phone number",
 	domain_management_default_contact_card_toggle_expand: "Expand contact",
 	domain_management_default_contact_card_toggle_collapse: "Collapse contact",
+	domain_management_default_contact_card_uk_registrant_type_missing: "Please add a UK registrant type to this contact.",
 	domain_management_default_contact_card_public: "Public",
 	domain_management_table_domain_name: "Search registered domains",
 	domain_management_table_domain: "Domain",
@@ -604,7 +616,6 @@
 	domain_management_table_manage: "Manage",
 	domain_management_table_invalid_date: "-",
 	domain_management_auto_renew_no_payment_method: "No payment method in billing profile. Add a supported method to enable automatic renewal.",
-	domain_management_auto_renew_domain_protection: "As this domain is enrolled in domain protection, it is automatically renewed.",
 	domain_management_clear_filters_button: "Clear all",
 	domains_management_no_domains: "You currently have no domains in your account.",
 	domains_management_no_search_results: "No domains found for your search.",
@@ -635,7 +646,7 @@
 	retry_transfer_body: "It appears that the transfer at your previous registrar was cancelled. To continue transferring to Cloudflare, enter a new auth code and click retry. You will not be billed twice.",
 	retry_transfer_retry: "Retry transfer",
 	retry_transfer_auth_code: "Auth code",
-	wizard_step_indicator: (0, o.p)(G(), "currentStep", "totalSteps"),
+	wizard_step_indicator: (0, o.p)(X(), "currentStep", "totalSteps"),
 	wizard_auth_code_tooltip: "There was an error with the request. Please try again.",
 	wizard_error_no_domains: "Select at least one domain to transfer",
 	wizard_error_no_auth_key: "All authorization codes must be valid to continue",
@@ -662,16 +673,30 @@
 	unsupported_domains_modal_title: "Ineligible domains",
 	unsupported_domains_modal_title_tooltip: "To transfer a domain, it must first be fully onboarded to Cloudflare with active DNS.",
 	wizard_one: {
-		ready_for_transfer_table: {
-			title: "Ready for transfer",
+		transfer_domain_table: {
 			expand: "Expand",
 			collapse: "Collapse",
+			expand_table_aria_label: "Expand table",
+			collapse_table_aria_label: "Collapse table"
+		},
+		ready_for_transfer_table: {
+			title: "Ready for transfer",
 			domain: "Domain",
 			price: "Price",
 			price_tooltip: "Includes a 1-year registration extension at cost. Taxes not included.",
 			first_year: "1st year:",
 			renews_at: "Renews at:",
-			restore_fee: "Restore fee:"
+			restore_fee: "Restore fee:",
+			empty_title: "No domains ready for transfer",
+			empty_description: "Please check below to review and prepare your domains for transfer."
+		},
+		not_available_for_transfer_table: {
+			title: "Not available for transfer",
+			domain: "Domain",
+			status: "Status",
+			price: "Price",
+			empty_title: "No restricted domains found",
+			empty_description: "There are no domains with transfer restrictions at this time."
 		},
 		description: "Choose the domains you want to transfer to your account. You'll be able to review details and complete the transfer in the next steps.",
 		stats: {
@@ -801,7 +826,8 @@
 		[n.no.SYSTEM_ERROR_REQUEST_TIMED_OUT]: "System error. Please try again in a few minutes.",
 		[n.no.TRANSFER_ERROR_BILLING_ERROR]: "System error. Please try again in a few minutes.",
 		[n.no.TRANSFER_ERROR_COULD_NOT_CREATE_TRANSFER]: "System error. Please try again in a few minutes.",
-		[n.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_PREMIUM_DOMAIN]: "System error. Please try again in a few minutes."
+		[n.no.TRANSFER_ERROR_UNABLE_TO_TRANSFER_PREMIUM_DOMAIN]: "System error. Please try again in a few minutes.",
+		[n.no.TRANSFER_ERROR_TRANSFER_FROZEN]: "Transfers are temporarily unavailable for this TLD. Please try again later."
 	},
 	wizard_four_post_x: "Post",
 	wizard_four_post_x_text: "I just started transferring my domains to Cloudflare, the world's first no-markup registrar.",
@@ -837,7 +863,7 @@
 	registration_checkout_loading_2: "Confirming domain name availability...",
 	registration_checkout_loading_3: "Checking for trademark claims...",
 	registration_checkout_loading_4: "Loading checkout cart...",
-	registration_checkout_refund_disclaimer: (0, o.p)(j(), "domainName"),
+	registration_checkout_refund_disclaimer: (0, o.p)(Q(), "domainName"),
 	registration_checkout_error: {
 		title: "Unable to check domain availability",
 		subtitle: 'We\'re currently unable to check the availability of <strong>%{domainName}</strong> at the registry. Please try again. If the issue persists, please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
@@ -928,7 +954,7 @@
 	registration_checkout_total_sub_header_gala: "Your payment will include any sales tax required by your location.\nPayment will be charged in US dollars.",
 	registration_checkout_select_payment: "Select payment method",
 	registration_checkout_error_header: "We're sorry, something went wrong with that.",
-	registration_checkout_error_sub_header_default: "Please review your purchase details and try again, or review the <0>troubleshoot failed payments</0> guide for further guidance.",
+	registration_checkout_error_sub_header_default: "Please review your purchase details and try again, or review the <0>troubleshoot failed checkout</0> guide for further guidance.",
 	registration_checkout_error_sub_header_banned_zone: 'The registration was not able to be completed. The domain you are attempting to register has been blocked for security reasons. Please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
 	registration_checkout_default_error_message: "Something went wrong. Please try again.",
 	registration_checkout_billing_quote_error_message: 'An internal system error has occurred while trying to process the transaction. Please wait a few minutes and try again. If the issue persists, please <a href="https://support.cloudflare.com" target="_blank">contact support</a> for assistance.',
@@ -945,6 +971,7 @@
 	registration_organization_whois_visibility_tooltip: "When enabled, your organization will be visible even if WHOIS privacy is turned on",
 	registration_uk_notice: "Cloudflare and the .uk Registry will attempt to verify the registrant name, organization, and address. Failure to provide accurate information may result in the suspension of the domain. .UK contacts must only include A-Z, a-z, 0-7, spaces, punctuation, and symbols.",
 	registration_organization_uk_notice: "Organization should either be your first and last name or your company/organization name. This data will be verified by Cloudflare and/or the registry. Inaccurate information may lead to the domain being suspended.",
+	registration_uk_registrant_type_warning: "Please add a registrant type to complete your UK domain registration information.",
 	registration_success_title: "All done!",
 	registration_success_navigate_icloud_cta: "Complete Registration",
 	registration_success_navigate_icloud_description: "Cloudflare will pass your registry information back to Apple. Welcome to Cloudflare!",
@@ -979,32 +1006,6 @@
 	tld_no_results: "No results found. Try a different TLD.",
 	tld_generic_error: "There was an error while loading the TLDs. Please try again.",
 	tld_form_label: "Search for a domain extension",
-	protection_unlock_modal_title_account: "Approval required",
-	protection_unlock_modal_title_domain: (0, o.p)(K(), "domainName"),
-	protection_unlock_modal_subtitle_domain: "You will need to select at least %{smart_count} approver to initiate the initiate the unlock of your domain. |||| You will need to select at least %{smart_count} approvers to initiate the unlock of your domain.",
-	protection_unlock_modal_subtitle_account: "You will need to select at least %{smart_count} approver to initiate an update to your domain protection configuration. |||| You will need to select at least %{smart_count} approvers to initiate an update your domain protection configuration.",
-	protection_unlock_modal_search_approvers: "Search approvers",
-	protection_unlock_modal_search: "Search",
-	protection_unlock_modal_email: "Email address",
-	protection_unlock_modal_no_results: "No results",
-	protection_unlock_modal_requests_summary: "Requests will be sent to: ",
-	protection_unlock_modal_submit: "Submit request",
-	protection_unlock_modal_min_approvals: "Select at least %{smart_count} approver |||| Select at least %{smart_count} approvers",
-	protection_unlock_modal_existing_request_title: "Manage existing request",
-	protection_unlock_modal_existing_request_subtitle_account: "There is a pending request for a change to your Domain Protection configuration.",
-	protection_unlock_modal_existing_request_subtitle_domain: "There is already a pending request to unlock %{domainName}",
-	protection_unlock_modal_existing_request_subtitle_account_from_domain: "There is a pending request for a change to your Domain Protection configuration. In order to unlock %{domainName}, this request must either be completed or cancelled.",
-	protection_unlock_modal_existing_request_cancel: "Cancel Request",
-	protection_unlock_modal_existing_request_cancel_description_domain: "Cancel this request to return the domain to a locked state.",
-	protection_unlock_modal_existing_request_cancel_description_account: "Cancelling this configuration request will allow for new domain protection configuration and domain unlock requests.",
-	protection_unlock_modal_existing_request_retry: "Retry Request",
-	protection_unlock_modal_existing_request_retry_description: "Retry to send an approval request to the previously selected approvers who have yet to respond.",
-	protection_unlock_modal_existing_request_close: "Close window",
-	protection_unlock_modal_domain_pending_lock_title: "Pending registry lock",
-	protection_unlock_modal_domain_pending_lock_description: "<strong>%{domainName}</strong> is currently pending registry lock. Until this action has been taken by the registry, we are unable to unlock the domain.<br></br>You will receive an email when the registry has locked the domain and at this point, you will be able to request the unlock of the domain in the Cloudflare dashboard.",
-	protection_confirm_enrollment_modal_title: "Confirm enrollment for %{domainName}",
-	protection_confirm_enrollment_modal_description: "When you enroll a domain into domain protection, you are unable to un-enroll the domain from the service for 90 days.<br></br>Please confirm that you would like to enroll %{domainName} into domain protection.",
-	protection_confirm_enrollment_modal_confirm: "Confirm enrollment",
 	prgExperiment: {
 		register: {
 			title: "Register a new domain",
@@ -1028,7 +1029,7 @@
 	nexus_form_placeholder: "Select a value",
 	delete_domain: {
 		card: {
-			title: (0, o.p)(Z(), "domainName"),
+			title: (0, o.p)(J(), "domainName"),
 			description: "This domain registration is eligible for deletion.",
 			description_delete_not_available: "Domain deletion is not available at this time, refer to our <1>delete a domain documentation</1> if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following <2>reasons</2>:",
 			description_delete_not_available_reason_1: "The status of the domain does not permit deletions",
@@ -1047,11 +1048,11 @@
 		},
 		verification_modal: {
 			description: "We need to confirm that you really intend to delete the domain and an email has been sent with a confirmation code.<0></0>Enter the code below and click Verify Code.",
-			expiration_notice: (0, o.p)(X(), "minutesLeft", "secondsLeft"),
-			new_code: (0, o.p)(Q()),
+			expiration_notice: (0, o.p)($(), "minutesLeft", "secondsLeft"),
+			new_code: (0, o.p)(ee()),
 			button: "Verify Code",
 			error: {
-				too_many_attempts: (0, o.p)(J(), "date")
+				too_many_attempts: (0, o.p)(et(), "date")
 			}
 		},
 		confirmation_modal: {
@@ -1059,13 +1060,13 @@
 			button: "Delete Domain Permanently"
 		},
 		notifications: {
-			success: (0, o.p)($(), "domainName")
+			success: (0, o.p)(ea(), "domainName")
 		},
 		errors: {
 			title: "Error:",
 			invalid_confirmation_code: "The confirmation code entered is not valid.",
 			no_permission: "Your account does not have permission to delete this domain.",
-			generic: (0, o.p)(ee(), "domainName")
+			generic: (0, o.p)(er(), "domainName")
 		}
 	},
 	no_access: {
@@ -1274,8 +1275,8 @@
 	},
 	email_domain_warning_modal: {
 		title: "Use a separate email for safer recovery",
-		description: (0, o.p)(et(), "domainName"),
-		continue_button: (0, o.p)(ea(), "email"),
+		description: (0, o.p)(eo(), "domainName"),
+		continue_button: (0, o.p)(en(), "email"),
 		use_different_email_button: "Use a different email"
 	},
 	transfer_domains_header: {

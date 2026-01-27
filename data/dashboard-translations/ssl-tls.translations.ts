@@ -760,6 +760,7 @@
 		custom_ciphers: "Custom Cipher Suite settings",
 		custom_truststore: "Custom Trust Store",
 		on_purchase: "Advanced Certificate Manager is now a part of your plan.",
+		checkout_error: "Failed to add Advanced Certificate Manager to checkout. Please try again.",
 		order_cta: "Order Advanced Certificate",
 		order_cta_alt: "Order an advanced certificate",
 		quota: (0, a.p)(u(), "used", "allocated"),

@@ -110,6 +110,7 @@
 		blocked_by_waf: "Blocked by WAF",
 		cancel: "Cancel",
 		charge: "Charge",
+		charge_amount: "charge $%{amount}",
 		charged: "Charged",
 		clear: "Clear All",
 		configure: "Configure",
@@ -124,7 +125,10 @@
 		disabled: "Disabled",
 		disallow: "Disallow",
 		disallowed: "Disallowed",
+		discard: "Discard",
+		discard_changes_message: "You have unsaved changes. Are you sure you want to discard them?",
 		disconnect: "Disconnect",
+		done: "Done",
 		edit: "Edit",
 		empty: {
 			bots_table: "No crawlers with the current filters.",
@@ -238,6 +242,7 @@
 		total: "Total",
 		unknown: "Unknown",
 		unsuccessful: "Unsuccessful",
+		unsaved_changes: "Unsaved Changes",
 		upgrade: "Upgrade",
 		violation: "Violation",
 		violations: "Violations"
@@ -271,16 +276,32 @@
 			others: "Others",
 			referrals: "referrals"
 		},
+		referrals_over_time_chart: {
+			title: "Referrals over time",
+			description: "Track AI-driven traffic referrals to your site over time.",
+			no_data_available: "No referral data available for the selected time period",
+			group_by: {
+				operator: "By Operator",
+				source: "By Source",
+				total: "Total"
+			}
+		},
 		table: {
 			tabs: {
+				all: "All",
+				patterns: "Patterns",
 				content: "Content",
 				media: "Media"
 			},
 			title: {
+				all: "Most crawled paths",
+				patterns: "Path patterns",
 				content: "Most crawled content",
 				media: "Most crawled media"
 			},
 			description: {
+				all: "View all paths crawled by AI crawlers, regardless of content type.",
+				patterns: "Analyze path patterns to identify which sections of your site are most crawled.",
 				content: "View the most requested content pages (HTML, JSON, Markdown, etc.) by AI crawlers.",
 				media: "View the most requested media files (images, videos, audio) by AI crawlers."
 			},
@@ -406,12 +427,21 @@
 		pay_per_crawl: {
 			title: "Pay Per Crawl",
 			description: "Manage your website's pay per crawl settings.",
+			pricing_mode: {
+				label: "Price",
+				targeted: "Targeted pricing",
+				targeted_description: 'Apply a flat rate to all requests from crawlers specifically marked to "Charge".',
+				global: "Global pricing",
+				global_description: "Require payment for all bot-scored traffic at the path level. Define specific exceptions for known crawlers.",
+				recommended: "Recommended"
+			},
 			price: {
 				label: "Price",
 				tooltip: "<b>Pay Per Crawl price (per request)</b><br>Crawlers scanning your website will be charged this price each time they make a request.",
 				unit: "per crawl",
 				placeholder: "Set a rate to start charging",
 				not_set: "Not set",
+				error: "Price must be at least %{minPrice} %{code}",
 				errors: {
 					required: "Price must not be empty",
 					invalid: "Price must not be lower than %{minPrice} %{code}"
@@ -448,6 +478,9 @@
 			},
 			signed_contract: {
 				download: "Terms and conditions"
+			},
+			errors: {
+				disable_global_pricing: "Failed to disable global pricing"
 			}
 		},
 		custom_response: {
@@ -510,9 +543,181 @@
 		operator: "Operator",
 		crawler: "Crawler",
 		path: "Path",
-		status_code: "Status Code",
+		status_code: "Status code",
 		host: "Host",
 		waf: "WAF"
+	},
+	rules_engine: {
+		title: "Pay Per Crawl pricing",
+		description: "Create custom price set to control AI crawler access based on request properties, bot scores, and more. Price sets are evaluated in order and the first matching price determines the action.",
+		rules_list_title: "Price sets",
+		rules_list_description: "Manage your Pay Per Crawl price sets. Click on a price set to edit it or create a new price set.",
+		create_rule_title: "Create Pay Per Crawl price",
+		edit_rule_title: "Edit Pay Per Crawl price",
+		learn_more: "Learn more about Pay Per Crawl prices",
+		dialog: {
+			title: "Manage Pay Per Crawl pricing rules",
+			subtitle: "Configure pricing rules for AI crawler access",
+			back_button: "Back to rules",
+			success_message: "Worker deployed successfully!",
+			view_worker: "View worker"
+		},
+		menu: {
+			view_worker: "View worker",
+			view_waf: "View WAF rule"
+		},
+		summary_card: {
+			title: "Pay Per Crawl pricing",
+			worker_active: "Worker is active with %{smart_count} rule |||| Worker is active with %{smart_count} rules",
+			manage_button: "Manage rules"
+		},
+		deployment: {
+			card_title: "Deploy pricing worker",
+			card_description: "Create a Cloudflare Worker to set pricing for specific content. Define a price per path or content type, and select which bots can access for free.",
+			button: "Get started",
+			worker_config_title: "Worker configuration",
+			worker_name_label: "Worker name",
+			worker_name_placeholder: "e.g., My Site",
+			worker_name_helper: "Spaces will be converted to dashes. Only alphanumeric characters, dashes, and underscores are allowed.",
+			worker_name_preview: "Worker will be named:",
+			worker_name_preview_placeholder: "[name]-ai-crawl",
+			errors: {
+				worker_name_required: "Worker name is required",
+				worker_name_invalid: "Worker name must contain at least one alphanumeric character",
+				invalid_rules: "Invalid price set configuration",
+				deployment_failed: "Deployment failed",
+				deployment_error: "There was an error while deploying:"
+			}
+		},
+		rule_builder: {
+			create_title: "Create price",
+			edit_title: "Edit price",
+			if_section: {
+				title: "If",
+				description: "Define the condition that triggers this rule"
+			},
+			then_section: {
+				title: "Then",
+				description: "Charge a fee when the condition is met"
+			},
+			unless_section: {
+				title: "Unless",
+				description: "Skip charging if any of these exceptions apply"
+			},
+			condition: {
+				field_label: "Condition",
+				field_placeholder: "Select condition...",
+				operator_label: "Operator",
+				operator_placeholder: "Select operator...",
+				value_label: "Value",
+				value_placeholder: "value"
+			},
+			action: {
+				charge_amount_label: "Charge amount (USD)",
+				charge_amount_placeholder: "0.01"
+			},
+			exceptions: {
+				bot_label: "Bot is",
+				bot_placeholder: "Select bots...",
+				bot_score_label: "Bot score is",
+				bot_score_value_label: "Value",
+				bot_score_value_placeholder: "50",
+				or_separator: "OR"
+			},
+			bot_score_presets: {
+				likely_legitimate: "Likely legitimate traffic (score >= 30)",
+				potentially_human: "Potentially human or unknown (score >= 2)",
+				definitely_bot: "Not a definite bot (score != 1)"
+			},
+			buttons: {
+				cancel: "Cancel",
+				create: "Create price",
+				update: "Update price"
+			},
+			field_options: {
+				request_path: "Request path"
+			},
+			operator_options: {
+				equals: "equals",
+				not_equals: "not equals",
+				contains: "contains",
+				does_not_contain: "does not contain"
+			},
+			bot_score_operators: {
+				gt: ">",
+				lt: "<",
+				ge: ">=",
+				le: "<=",
+				eq: "==",
+				ne: "!="
+			}
+		},
+		rules_list: {
+			title: "Price set",
+			create_button: "Create price",
+			empty_state: "No price sets yet. Create your first price set to get started.",
+			edit_button: "Edit",
+			delete_button: "Delete",
+			cancel_button: "Cancel",
+			deploy_button: "Deploy",
+			rule_description: "When <0>%{field}</0> %{operator} <1>%{value}</1>, %{action}",
+			exception_both: "Exceptions: Bot Score is <b>%{scoreOperator} %{scoreValue}</b>, or Bot is <b>%{bots}</b>",
+			exception_bot_score_only: "Exceptions: Bot Score is <b>%{scoreOperator} %{scoreValue}</b>",
+			exception_bot_identity_only: "Exceptions: Bot is <b>%{bots}</b>"
+		},
+		worker_healthy: "Pay Per Crawl pricing worker deployed. <0>View worker</0>",
+		validation: {
+			at_least_one_enabled: "At least one enabled price set is required",
+			rule_incomplete_condition: "Price set has incomplete condition",
+			rule_invalid_charge: "Price set must have a valid charge amount",
+			rule_missing_bot_score_exception: "Price set must have a bot score exception for WAF protection"
+		},
+		action: {
+			title: "Action",
+			description: "Choose what action to take when a request matches this rule",
+			select_label: "Select action",
+			challenge_info: "Challenge actions will present a verification challenge to the requester. Legitimate crawlers may not be able to complete challenges.",
+			log_warning: "Log action will only record the match without taking any action. Use this for testing rules before enforcement."
+		},
+		custom_response: {
+			title: "Custom response",
+			info: "Configure a custom response message and status code for blocked requests",
+			status_code: "Status code",
+			content_type: "Content type",
+			content: "Response content",
+			content_help: "Enter the message to display when a request is blocked. Maximum 10,000 characters."
+		},
+		filters: {
+			request_properties: "Request properties",
+			response_properties: "Response properties",
+			bot_properties: "Bot detection",
+			client_properties: "Client properties",
+			security_properties: "Security properties",
+			content_type: "Content type",
+			bot_score: "Bot score",
+			verified_bot: "Verified bot",
+			ja3_hash: "JA3 hash",
+			threat_score: "Threat score"
+		},
+		warnings: {
+			no_worker_but_waf_exists: "A WAF rule exists but the Pay Per Crawl worker was not found. The WAF rule may need to be removed.",
+			no_waf_but_worker_exists: "The Pay Per Crawl worker exists but no WAF rule was found. Create rules below to enable bot blocking.",
+			no_worker_routes: "The Pay Per Crawl worker has no routes configured. <0>Add a route</0> to enable the worker.",
+			config_hash_mismatch: "The Pay Per Crawl worker is running an outdated version. <0>Redeploy</0> to update to the latest template.",
+			config_parse_error: "Unable to read the Pay Per Crawl worker configuration. The config.json file may be corrupted or invalid."
+		},
+		delete_pricing: {
+			button: "Delete",
+			title: "Delete Pay Per Crawl pricing?",
+			description: "This will permanently remove the Pay Per Crawl pricing worker and WAF rule. This action cannot be undone.",
+			confirm_button: "Delete",
+			success_message: "Pay Per Crawl pricing deleted successfully",
+			error: "Failed to delete Pay Per Crawl pricing"
+		},
+		cleanup_resources: {
+			button: "Clean up resources",
+			description: "There are unused resources from a previous configuration that can be cleaned up."
+		}
 	},
 	terms_and_conditions: {
 		title: "Enable access to quality content",
@@ -525,7 +730,7 @@
 		disagree: "Disagree",
 		banner: {
 			content: "Please accept the terms and conditions to enable pay per crawl.",
-			button: "Review Terms and Conditions"
+			button: "Review terms and conditions"
 		}
 	},
 	title: "AI Crawl Control",
