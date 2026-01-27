@@ -1,0 +1,51 @@
+<div class="content-intro">
+	<div><strong>About Us</strong></div>
+	<div>
+		<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
+	</div>
+</div>
+<p><strong>Job Location: Singapore or Kuala Lumpur</strong></p>
+<p><strong>About the Role&nbsp;</strong></p>
+<p>Cloudflare is looking for a dynamic B2B Enterprise SaaS marketing lead, who is a driven, creative, and analytical business builder. Sounds like a fit? If so, you will have a track record of delivering high-profile programs aligned to business goals that exceed expectations. You will be dedicated to using all resources to grow our business in ASEAN: from direct lead generation, to expanding existing customer accounts and leveraging our channel and technology partner ecosystem.&nbsp;</p>
+<p>You will plan, launch, measure and optimize an omni-channel marketing strategy for the region, catering to multiple segments, focus industries and priority countries. You will be familiar and experienced with marketing tactics including events, account based marketing (ABM), Pay-per-click (PPC), display, retargeting, email, social, webinars, and content syndication, to name a few. You have a bias towards action and analytics: a desire to measure the effectiveness of marketing activities, strong project management skills, a firm approach to negotiation. You need to see the big picture and sweat the details. You will have the ability to work cross-functionally with all teams, including sales, channel, customer success, and operations, within the APAC region and globally. Deep local market experience and expertise is required for this role.&nbsp;</p>
+<p><strong>What you'll do&nbsp;</strong></p>
+<p>As ASEAN marketing lead, you will be responsible for pipeline generation via online and offline marketing strategies and tactics&nbsp;</p>
+<ul>
+	<li>Work in cross-functional teams and collaborate closely with global demand generation, product marketing, sales, marketing operations, sales ops and many others in the development, execution and measurement of marketing initiatives&nbsp;</li>
+	<li>Align the marketing activities to support the sales goals for leads and opportunities&nbsp;</li>
+	<li>Measure campaign impact through SFDC and Tableau reporting, evaluate campaign ROI, and present recommendations for improvement&nbsp;</li>
+	<li>Plan, promote, and host field marketing events (trade shows, conferences, executive dinners, and workshops) across the country that capture prospects and help move them into customers&nbsp;</li>
+	<li>Be a champion to design and own experimental campaigns to help sales break into new markets and provide qualitative &amp; quantitative recommendations for optimisation.&nbsp;</li>
+	<li>You will be responsible for the design, production, execution, and optimization of online marketing campaigns across multiple channels (e.g. SEM, organic/SEO, retargeting, email, webinars, etc.)&nbsp;</li>
+	<li>Work with the global marketing teams to optimise and localise global campaigns to ensure market relevancy&nbsp;</li>
+	<li>Help and support other marketing functions such as Communications and Customer Advocacy&nbsp;&nbsp;</li>
+	<li>Ongoing project management of campaign execution: timeline, ROI, and data-driven improvements through optimization&nbsp;</li>
+	<li>Communicate campaign results to key stakeholders&nbsp;</li>
+	<li>Reporting into the Vice President of APAC and Japan Marketing based in Singapore&nbsp;</li>
+</ul>
+<p><br>Examples of desirable skills, knowledge and experience:&nbsp;</p>
+<ul>
+	<li>Fluency in the English language (both spoken and written) a must.&nbsp;</li>
+	<li>8 years proven experience in B2B marketing: enterprise software, SaaS, regional marketing, developer and/or cybersecurity experience a plus&nbsp;</li>
+	<li>Strategy, planning, budgeting and managing trade shows, events, campaigns and ABM programs from start to finish&nbsp;</li>
+	<li>Track record of launching successful online and offline marketing campaigns and driving qualified leads in the funnel&nbsp;</li>
+	<li>Strong interpersonal skills, collaborative, and the ability to coordinate and influence across multiple departments in different time zones</li>
+	<li>Results-oriented with experience using qualitative and quantitative metrics with a focus on revenue, conversion, sales and other marketing goals&nbsp;</li>
+	<li>Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines&nbsp;</li>
+	<li>Having a strong sense of curiosity and passion for learning&nbsp;</li>
+	<li>Exhibit strong stakeholders' management and communication skills&nbsp;</li>
+	<li>Hands-on experience with Salesforce, Tableau and other reporting tools, will be an advantage.&nbsp;</li>
+	<li>An established player in the business and marketing community with a strong business network which included media, marketing agencies, events organisers, social media platforms amongst others.</li>
+</ul>
+<div class="content-conclusion">
+	<p><strong>What Makes Cloudflare Special?</strong></p>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>
