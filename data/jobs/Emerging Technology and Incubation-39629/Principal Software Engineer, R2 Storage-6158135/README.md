@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX | New York, NY | San Francisco, CA | Seattle, WA | London, UK&nbsp;</strong></h3>
+<h3><strong>Locations: Austin, TX | New York, NY | Seattle, WA | London, UK&nbsp;</strong></h3>
 <h3><span class="selected">About the Department: Emerging Technologies &amp; Incubation (ETI)</span></h3>
 <p><strong><span class="selected">Emerging Technologies &amp; Incubation (ETI)</span></strong><span class="selected"> at Cloudflare is where we build and launch bold new products. We leverage Cloudflare's unique global network and edge to deliver innovative tools and solutions, solving problems at a scale impossible for most organizations. Join us to work on the bleeding edge.</span></p>
 <h3><span class="selected">About the Team: R2</span></h3>
@@ -33,8 +33,7 @@
 <h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $230,000 - $281,000</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $234,000 - $286,000</li>
+	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $220,000 - $303,000</li>
 </ul>
 <h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

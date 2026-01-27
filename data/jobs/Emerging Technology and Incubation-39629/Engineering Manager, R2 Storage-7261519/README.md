@@ -33,7 +33,7 @@
 <h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $213,000 - $261,000</li>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $220,000 - $303,000</li>
 </ul>
 <h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
