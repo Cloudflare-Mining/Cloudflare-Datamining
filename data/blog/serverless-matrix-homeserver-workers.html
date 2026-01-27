@@ -1,24 +1,25 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69gB2WZitUmabxBT6plcUz/521842f66872218d784cbf112609104a/BLOG-3101_1.png" alt="">
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69gB2WZitUmabxBT6plcUz/521842f66872218d784cbf112609104a/BLOG-3101_1.png" alt="">
 <div class="post-content lh-copy gray1">
+	<p><sup><i>* </i></sup><sup><i>This post was updated at 11:45 a.m. Pacific time to clarify that the use case described here is a proof of concept and a personal project. Some sections have been updated for clarity.</i></sup></p>
 	<p>Matrix is the gold standard for decentralized, end-to-end encrypted communication. It powers government messaging systems, open-source communities, and privacy-focused organizations worldwide.&nbsp;</p>
 	<p>For the individual developer, however, the appeal is often closer to home: bridging fragmented chat networks (like Discord and Slack) into a single inbox, or simply ensuring your conversation history lives on infrastructure you control. Functionally, Matrix operates as a decentralized, eventually consistent state machine. Instead of a central server pushing updates, homeservers exchange signed JSON events over HTTP, using a conflict resolution algorithm to merge these streams into a unified view of the room's history.</p>
-	<p><b>But there is a "tax" to running it
-		</b>Traditionally, operating a Matrix <a href="https://matrix.org/homeserver/about"><u>homeserver</u></a> has meant accepting a heavy operational burden. You aren't just installing software; you are becoming a system administrator. You have to provision virtual private servers (VPS), tune PostgreSQL for heavy write loads, manage Redis for caching, configure <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy"><u>reverse proxies</u></a>, and handle rotation for TLS certificates. It’s a stateful, heavy beast that demands to be fed time and money, whether you are sending one message a day or one million.</p>
-	<p>We wanted to see if we could eliminate that tax entirely. </p>
-	<p><b>Spoiler: We could.</b> In this post, we’ll explain how we ported a complete Matrix homeserver to <a href="https://workers.cloudflare.com"><u>Cloudflare Workers</u></a>. The result is a serverless architecture where operations disappear, costs scale to zero when idle, and every connection is protected by <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography"><u>post-quantum cryptography</u></a> by default. You can view the source code and <a href="https://github.com/nkuntz1934/matrix-workers"><u>deploy your own instance directly from GitHub</u></a>.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fnkuntz1934%2Fmatrix-workers"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p><b>But there is a "tax" to running it. </b>Traditionally, operating a Matrix <a href="https://matrix.org/homeserver/about"><u>homeserver</u></a> has meant accepting a heavy operational burden. You have to provision virtual private servers (VPS), tune PostgreSQL for heavy write loads, manage Redis for caching, configure <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy"><u>reverse proxies</u></a>, and handle rotation for TLS certificates. It’s a stateful, heavy beast that demands to be fed time and money, whether you’re using it a lot or a little.</p>
+	<p>We wanted to see if we could eliminate that tax entirely.</p>
+	<p><b>Spoiler: We could.</b> In this post, we’ll explain how we ported a Matrix homeserver to <a href="https://workers.cloudflare.com"><u>Cloudflare Workers</u></a>. The resulting proof of concept is a serverless architecture where operations disappear, costs scale to zero when idle, and every connection is protected by <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography"><u>post-quantum cryptography</u></a> by default. You can view the source code and <a href="https://github.com/nkuntz1934/matrix-workers"><u>deploy your own instance directly from Github</u></a>.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fnkuntz1934%2Fmatrix-workers"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
 	<p></p>
 	<div class="flex anchor relative">
-		<h2 id="from-tuwunel-to-workers">From Tuwunel to Workers</h2>
-		<a href="https://blog.cloudflare.com/#from-tuwunel-to-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h2 id="from-synapse-to-workers">From Synapse to Workers</h2>
+		<a href="https://blog.cloudflare.com/#from-synapse-to-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
 		</a>
 	</div>
-	<p>Our starting point was <a href="https://matrix-construct.github.io/tuwunel"><u>Tuwunel</u></a>, a Rust-based Matrix homeserver designed for traditional deployments. PostgreSQL for persistence, Redis for caching, filesystem for media. Porting it to Workers meant questioning every storage assumption we’d taken for granted.</p>
-	<p>The good news: Rust compiles to WebAssembly, and the core Matrix protocol logic — event authorization, room state resolution, cryptographic verification — translated directly. The <a href="https://github.com/cloudflare/workers-rs"><u>workers-rs</u></a> crate bridges the gap to Cloudflare’s runtime.</p>
-	<p>The challenge was storage. Traditional homeservers assume strong consistency via a central SQL database. Cloudflare offers a powerful alternative: <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a>. This primitive gives us the strong consistency and atomicity required for Matrix state resolution, while still allowing the application to run at the edge.</p>
+	<p>Our starting point was <a href="https://github.com/matrix-org/synapse"><u>Synapse</u></a>, the Python-based reference Matrix homeserver designed for traditional deployments. PostgreSQL for persistence, Redis for caching, filesystem for media.</p>
+	<p>Porting it to Workers meant questioning every storage assumption we’d taken for granted.</p>
+	<p>The challenge was storage. Traditional homeservers assume strong consistency via a central SQL database. Cloudflare <a href="https://developers.cloudflare.com/durable-objects"><u>Durable Objects</u></a> offers a powerful alternative. This primitive gives us the strong consistency and atomicity required for Matrix state resolution, while still allowing the application to run at the edge.</p>
+	<p>We ported the core Matrix protocol logic — event authorization, room state resolution, cryptographic verification — in TypeScript using the Hono framework. D1 replaces PostgreSQL, KV replaces Redis, R2 replaces the filesystem, and Durable Objects handle real-time coordination.</p>
 	<p>Here’s how the mapping worked out:</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JTja38UZRbFygluawrnz1/9bce290e3070155c734e874c17051551/BLOG-3101_2.png" alt="BLOG-3101 2" class="kg-image" width="1432" height="918" loading="lazy">
@@ -33,24 +34,20 @@
 	</div>
 	<p>Moving to Cloudflare Workers brings several advantages for a developer: simple deployment, lower costs, low latency, and built-in security.</p>
 	<p><b>Easy deployment: </b>A traditional Matrix deployment requires server provisioning, PostgreSQL administration, Redis cluster management, TLS certificate renewal, load balancer configuration, monitoring infrastructure, and on-call rotations.</p>
-	<p>With Workers, deployment is <code>wrangler deploy</code>. We handle TLS, load balancing, DDoS protection, and global distribution. So there’s no server to patch, no database to vacuum, or certificates to renew.</p>
-	<p><b>Usage-based costs: </b>Traditional homeservers cost money whether anyone is using them or not. A small community server handling a few hundred requests per day still requires a typical VPS costing around $20/month running 24/7.</p>
-	<p>Workers pricing is request-based, so low-traffic homeservers cost just pennies. When usage spikes during active conversations, you pay for what you use. When everyone goes to sleep, costs drop toward zero.</p>
-	<p><b>Lower latency globally:</b> A traditional Matrix homeserver in us-east-1 adds 200ms+ latency for users in Asia or Europe. Every sync request, message sent, and typing indicator go round-trip to a single region.</p>
-	<p>Workers, meanwhile, run in 300+ locations worldwide. When a user in Tokyo sends a message, the Worker executes in Tokyo.&nbsp;</p>
+	<p>With Workers, deployment is simply: wrangler deploy. Workers handles TLS, load balancing, DDoS protection, and global distribution. </p>
+	<p><b>Usage-based costs: </b>Traditional homeservers cost money whether anyone is using them or not. Workers pricing is request-based, so you pay when you’re using it, but costs drop to near zero when everyone’s asleep.&nbsp;</p>
+	<p><b>Lower latency globally:</b> A traditional Matrix homeserver in us-east-1 adds 200ms+ latency for users in Asia or Europe. Workers, meanwhile, run in 300+ locations worldwide. When a user in Tokyo sends a message, the Worker executes in Tokyo.&nbsp;</p>
 	<p><b>Built-in security: </b>Matrix homeservers can be high-value targets: They handle encrypted communications, store message history, and authenticate users. Traditional deployments require careful hardening: firewall configuration, rate limiting, DDoS mitigation, WAF rules, IP reputation filtering.</p>
-	<p>We provide all of this by default. The Worker never sees attack traffic, because we filter it first. For a solo developer or small team, achieving this level of hardening on a Linux VPS is a full-time job. On Workers, it is the baseline environment.</p>
+	<p>Workers provide all of this by default.&nbsp;</p>
 	<div class="flex anchor relative">
-		<h2 id="post-quantum-protection-without-the-complexity">Post-quantum protection without the complexity</h2>
-		<a href="https://blog.cloudflare.com/#post-quantum-protection-without-the-complexity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="post-quantum-protection">Post-quantum protection&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#post-quantum-protection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
 		</a>
 	</div>
-	<p>Here’s something most Matrix operators don’t consider: harvest now, decrypt later.</p>
-	<p>An adversary captures your encrypted TLS traffic today and stores it. Years from now, when quantum computers can break classical key exchange algorithms, they decrypt everything retroactively. For a messaging platform handling sensitive communications, this isn’t theoretical. Government agencies and well-funded adversaries are already stockpiling encrypted traffic.</p>
-	<p>Fortunately, we didn’t have to protect against this by ourselves. Cloudflare deployed post-quantum hybrid key agreement across all <a href="https://www.cloudflare.com/learning/ssl/why-use-tls-1.3"><u>TLS 1.3</u></a> connections in <a href="https://blog.cloudflare.com/post-quantum-for-all"><u>October 2022</u></a>. Every connection to our Worker automatically negotiates X25519MLKEM768 — a hybrid combining classical X25519 with ML-KEM, the post-quantum algorithm standardized by NIST.</p>
+	<p>Cloudflare deployed post-quantum hybrid key agreement across all <a href="https://www.cloudflare.com/learning/ssl/why-use-tls-1.3"><u>TLS 1.3</u></a> connections in <a href="https://blog.cloudflare.com/post-quantum-for-all"><u>October 2022</u></a>. Every connection to our Worker automatically negotiates X25519MLKEM768 — a hybrid combining classical X25519 with ML-KEM, the post-quantum algorithm standardized by NIST.</p>
 	<p>Classical cryptography relies on mathematical problems that are hard for traditional computers but trivial for quantum computers running Shor’s algorithm. ML-KEM is based on lattice problems that remain hard even for quantum computers. The hybrid approach means both algorithms must fail for the connection to be compromised.</p>
 	<div class="flex anchor relative">
 		<h3 id="following-a-message-through-the-system">Following a message through the system</h3>
@@ -75,11 +72,9 @@
 			</svg>
 		</a>
 	</div>
-	<p>This creates defense in depth through two encryption layers that operate independently:</p>
+	<p>This protects via two encryption layers that operate independently:</p>
 	<p>The <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls"><u>transport layer (TLS)</u></a> protects data in transit. It’s encrypted at the client and decrypted at the Cloudflare edge. With X25519MLKEM768, this layer is now post-quantum.</p>
 	<p>The <a href="https://www.cloudflare.com/learning/ddos/what-is-layer-7"><u>application layer</u></a> (Megolm E2EE) protects message content. It’s encrypted on the sender’s device and decrypted only on recipient devices. This uses classical Curve25519 cryptography.</p>
-	<p>Here’s why this architecture matters: Even if Matrix E2EE is eventually broken by quantum computers, the message content was never transmitted in a quantum-vulnerable form. The TLS layer that carried the E2EE ciphertext was itself post-quantum secured.</p>
-	<p>The post-quantum TLS acts as a quantum-resistant envelope around everything, including the classical E2EE layer. This buys time for the Matrix protocol to migrate to post-quantum E2EE algorithms without leaving current communications vulnerable to harvest-now-decrypt-later attacks.</p>
 	<div class="flex anchor relative">
 		<h3 id="who-sees-what">Who sees what</h3>
 		<a href="https://blog.cloudflare.com/#who-sees-what" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -88,9 +83,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Any Matrix homeserver operator — whether running Synapse on a VPS or this implementation on Workers — can see metadata: which rooms exist, who’s in them, when messages were sent. This is inherent to operating the server. You’re the operator; you control the infrastructure.</p>
-	<p>What no one in the infrastructure chain can see: message content. The E2EE payload is encrypted on sender devices before it ever hits the network. Cloudflare terminates TLS and passes requests to your Worker, but both see only Megolm ciphertext. Media in encrypted rooms is encrypted client-side before upload. Private keys never leave user devices.</p>
-	<p>The server processes ciphertext, not conversations. That’s true whether you’re self-hosting on bare metal or running on Workers.</p>
+	<p>Any Matrix homeserver operator — whether running Synapse on a VPS or this implementation on Workers — can see metadata: which rooms exist, who’s in them, when messages were sent. But no one in the infrastructure chain can see the message content, because the E2EE payload is encrypted on sender devices before it ever hits the network. Cloudflare terminates TLS and passes requests to your Worker, but both see only Megolm ciphertext. Media in encrypted rooms is encrypted client-side before upload, and private keys never leave user devices.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-traditional-deployments-would-need">What traditional deployments would need</h3>
 		<a href="https://blog.cloudflare.com/#what-traditional-deployments-would-need" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -131,7 +124,7 @@
 );
 </code></pre>
 	<p>D1’s SQLite foundation meant we could port Tuwunel’s queries with minimal changes. Joins, indexes, and aggregations work as expected.</p>
-	<p>We learned one hard lesson: D1’s eventual consistency breaks foreign key constraints. A write to rooms might not be visible when a subsequent write to events checks the foreign key — different replicas, different views of the world. We removed all foreign keys and enforce referential integrity in application code.</p>
+	<p>We learned one hard lesson: D1’s eventual consistency breaks foreign key constraints. A write to rooms might not be visible when a subsequent write to events checks the foreign key. We removed all foreign keys and enforce referential integrity in application code.</p>
 	<div class="flex anchor relative">
 		<h3 id="kv-for-ephemeral-state">KV for ephemeral state</h3>
 		<a href="https://blog.cloudflare.com/#kv-for-ephemeral-state" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -140,13 +133,12 @@
 			</svg>
 		</a>
 	</div>
-	<p>OAuth authorization codes live for 10 minutes. Refresh tokens last for a session. None of this needs SQL — it needs fast key-value access with automatic expiration.</p>
+	<p>OAuth authorization codes live for 10 minutes, while refresh tokens last for a session.</p>
 	<pre class="language-typescript"><code class="language-typescript">// Store OAuth code with 10-minute TTL
 kv.put(&amp;format!("oauth_code:{}", code), &amp;token_data)?
 	.expiration_ttl(600)
 	.execute()
-	.await?;
-</code></pre>
+	.await?;</code></pre>
 	<p>KV’s global distribution means OAuth flows work fast regardless of where users are located.</p>
 	<div class="flex anchor relative">
 		<h3 id="r2-for-media">R2 for media</h3>
@@ -156,7 +148,7 @@ kv.put(&amp;format!("oauth_code:{}", code), &amp;token_data)?
 			</svg>
 		</a>
 	</div>
-	<p>Matrix media maps directly to R2. Upload an image, get back a content-addressed URL. Egress is free, which matters for a protocol where clients frequently download the same avatars and images.</p>
+	<p>Matrix media maps directly to R2, so you can upload an image, get back a content-addressed URL – and egress is free.</p>
 	<div class="flex anchor relative">
 		<h3 id="durable-objects-for-atomicity">Durable Objects for atomicity</h3>
 		<a href="https://blog.cloudflare.com/#durable-objects-for-atomicity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -193,15 +185,16 @@ impl UserKeysObject {
 }</code></pre>
 	<p>We use UserKeysObject for E2EE key management, RoomObject for real-time room events like typing indicators and read receipts, and UserSyncObject for to-device message queues. The rest flows through D1.</p>
 	<div class="flex anchor relative">
-		<h2 id="complete-e2ee-complete-oauth">Complete E2EE, complete OAuth</h2>
-		<a href="https://blog.cloudflare.com/#complete-e2ee-complete-oauth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<h3 id="complete-end-to-end-encryption-complete-oauth">Complete end-to-end encryption, complete OAuth</h3>
+		<a href="https://blog.cloudflare.com/#complete-end-to-end-encryption-complete-oauth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
 		</a>
 	</div>
-	<p>End-to-end encryption is non-negotiable for secure communications. Our implementation supports the full Matrix E2EE stack: device keys, cross-signing keys, one-time keys, fallback keys, key backup, and dehydrated devices.</p>
-	<p>Modern Matrix clients use OAuth 2.0/OIDC instead of legacy password flows. We implemented a complete OAuth provider: dynamic client registration, PKCE authorization, RS256-signed JWT tokens, token refresh with rotation, and standard OIDC discovery endpoints.</p>
+	<p>Our implementation supports the full Matrix E2EE stack: device keys, cross-signing keys, one-time keys, fallback keys, key backup, and dehydrated devices.</p>
+	<p>Modern Matrix clients use OAuth 2.0/OIDC instead of legacy password flows. We implemented a complete OAuth provider, with dynamic client registration, PKCE authorization, RS256-signed JWT tokens, token refresh with rotation, and standard OIDC discovery endpoints.
+	</p>
 	<pre class="language-typescript"><code class="language-typescript">curl https://matrix.example.com/.well-known/openid-configuration
 {
   "issuer": "https://matrix.example.com",
@@ -219,9 +212,9 @@ impl UserKeysObject {
 			</svg>
 		</a>
 	</div>
-	<p>Traditional Matrix sync transfers megabytes of data on initial connection — every room, every state event, recent timeline for each. This destroys mobile battery and data plans.</p>
+	<p>Traditional Matrix sync transfers megabytes of data on initial connection,&nbsp; draining mobile battery and data plans.</p>
 	<p>Sliding Sync lets clients request exactly what they need. Instead of downloading everything, clients get the 20 most recent rooms with minimal state. As users scroll, they request more ranges. The server tracks position and sends only deltas.</p>
-	<p>Combined with edge execution, mobile clients can connect and render their room list in under 500ms — even on slow networks.</p>
+	<p>Combined with edge execution, mobile clients can connect and render their room list in under 500ms, even on slow networks.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-comparison">The comparison</h2>
 		<a href="https://blog.cloudflare.com/#the-comparison" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -333,10 +326,9 @@ impl UserKeysObject {
 			</svg>
 		</a>
 	</div>
-	<p>When we started this project, the goal was simply to see if the pieces would fit. Could a protocol as complex and stateful as Matrix — designed for heavy iron and persistent file systems — actually run on an ephemeral, serverless edge?</p>
-	<p>The answer is yes, but the implication is bigger than just Matrix.</p>
-	<p>By mapping traditional stateful components to Cloudflare’s primitives — Postgres to D1, Redis to KV, mutexes to Durable Objects — we proved that <b>complex applications don't need complex infrastructure</b>. We stripped away the operating system, the database management, and the network configuration, leaving only the application logic and the data itself.</p>
-	<p>This architecture shifts the paradigm for self-hosting. It turns "running a server" from a chore into a utility. You get the sovereignty of owning your data without the burden of owning the infrastructure.</p>
-	<p>Matrix on Workers runs in production today, handling real encrypted communications for our team. It is fast, it is cheap, and it is arguably one of the most secure ways to deploy a homeserver today.</p>
-	<p>Ready to build secure, real-time applications on Workers? Get started with<a href="https://developers.cloudflare.com/workers"> <u>Cloudflare Workers</u></a> and explore<a href="https://developers.cloudflare.com/durable-objects"> <u>Durable Objects</u></a> for your own stateful edge applications. Join our<a href="https://discord.cloudflare.com"> <u>Discord community</u></a> to connect with other developers building at the edge. </p>
+	<p>We started this as an experiment: could Matrix run on Workers? It can—and the approach can work for other stateful protocols, too.</p>
+	<p>By mapping traditional stateful components to Cloudflare’s primitives — Postgres to D1, Redis to KV, mutexes to Durable Objects — we can see&nbsp; that complex applications don't need complex infrastructure. We stripped away the operating system, the database management, and the network configuration, leaving only the application logic and the data itself.</p>
+	<p>Workers offers the sovereignty of owning your data, without the burden of owning the infrastructure.</p>
+	<p>I have been experimenting with the implementation and am excited for any contributions from others interested in this kind of service.&nbsp;</p>
+	<p>Ready to build powerful, real-time applications on Workers? Get started with<a href="https://developers.cloudflare.com/workers"> <u>Cloudflare Workers</u></a> and explore<a href="https://developers.cloudflare.com/durable-objects"> <u>Durable Objects</u></a> for your own stateful edge applications. Join our<a href="https://discord.cloudflare.com"> <u>Discord community</u></a> to connect with other developers building at the edge.</p>
 </div>
