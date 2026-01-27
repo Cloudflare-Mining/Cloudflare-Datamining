@@ -23,6 +23,9 @@
 	<li>Experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
 	<li>Empathetic, proactive, and constructive&nbsp;<strong>communication skills</strong>, both verbal and written</li>
 </ul>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<p>For Colorado, Hawaii, and Illinois &nbsp;based hires: Estimated annual salary of $168,000 - $231,000<br>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000<br>For Bay Area-based hires: Estimated annual salary of $194,000 - $266,000</p>
+<p><strong>Equity</strong><br>The role is eligible to participate in Cloudflare's equity plan.</p>
 <p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
