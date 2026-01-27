@@ -5,39 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, Washington, DC, New York, NY, San Diego, CA, Los Angeles, CA. Relocation assistance available for those willing to move to Austin, TX.&nbsp;</strong></p>
-<p><strong>About the Team</strong></p>
-<p>The Legal, Policy, and Trust &amp; Safety (“LPT”) department is staffed by a world-class group of professionals who help Cloudflare navigate complex challenges while staying compliant and minimizing risk. Legal Operations plays a central role in scaling the LPT department – from driving contract management excellence, implementing technology solutions, and building processes that make our department more efficient and impactful.&nbsp;</p>
-<p>We are seeking a highly motivated Legal Operations Analyst to join our growing team. In this role, you will be responsible for optimizing and scaling our contract lifecycle management (CLM) processes, and advancing the LPT department’s technology roadmap. You will work with the Head of Legal Operations to optimize our Ironclad CLM system for efficient, scalable, and compliant workflows, while also driving automation, technology, and AI initiatives. You will partner with Legal, IT, and business teams to evaluate tools, lead implementations, and enhance the user experience across the organization.</p>
-<p>The ideal candidate brings hands-on Ironclad experience, a deep understanding of legal operations best practices, and a passion for process improvement and technology. This highly impactful role offers the opportunity to shape contract management, drive adoption of AI and automation, and help scale the LPT department’s operations in a fast-paced, evolving environment.</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Available Locations: </strong>Austin</p>
+<h4><strong>About the Department</strong></h4>
+<p>Security at Cloudflare is a diverse, focused team committed to helping secure both Cloudflare and our customers.&nbsp; And the Technical Program Management team is the group that helps connect the dots between threats, risk, business needs, and innovation to execute on reducing risk at Cloudflare while partnering to build the best solutions for our customers.&nbsp;&nbsp;&nbsp;</p>
+<h4><strong>About the Role</strong></h4>
+<p>We need to solve big security challenges at scale. As a Technical Program Manager on the Security team, at a high level, you will help discover, define, and drive the execution of transformational security projects to reduce risk at Cloudflare. You will work with our team and all of our stakeholders to:</p>
 <ul>
-	<li><strong>CLM Administration:</strong> Serve as a co-administrator for Ironclad, managing legal workflows, templates, clause libraries, reporting, and user access. Facilitate end-to-end contract processes, track milestones, and ensure timely approvals.</li>
-	<li><strong>AI &amp; Technology Initiatives:</strong> Help pilot, implement, and optimize AI and automation tools to streamline legal workflows and enhance productivity. Document requirements and help build business cases, evaluate new technologies, and help drive adoption across the department.</li>
-	<li><strong>Process Improvement: </strong>Identify opportunities to streamline in contract and workflow processes, recommend solutions, and help implement best practices to scale the legal function.</li>
-	<li><strong>Project Management:</strong> Support projects end-to-end – from planning and coordination to rollout and adoption. Partner with Legal, IT, Finance, vendors, and other business stakeholders to ensure seamless implementations and integrations.</li>
-	<li><strong>Analytics &amp; Reporting:</strong> Build dashboards and reports on contract metrics, KPIs, and technology adoption metrics to maintain data for leadership review.</li>
-	<li><strong>Training &amp; Enablement:</strong> Develop documentation and training for LPT teams and business partners to maximize adoption of CLM and AI tools.</li>
-	<li><strong>General Legal Ops Support:</strong> Ensure smooth execution of department workflows by supporting day-to-day operations, including maintaining knowledge bases, driving cross-functional initiatives, and supporting strategic ad hoc projects.</li>
+	<li>Partner with the Security Detections and Response team as their dedicated Technical Program Manager&nbsp;&nbsp;</li>
+	<li>Connect with Cloudflare's many teams through expert communication and diplomacy to maintain alignment and encourage collaboration</li>
+	<li>Support the long term program roadmap planning, manage project updates aligned with the roadmap and report on project level OKRs</li>
+	<li>Manage projects with tight deadlines and changing priorities, effectively balancing risk to achieve business objectives</li>
+	<li>Identify stakeholders and drive alignment, including dependency identification and tracking</li>
+	<li>Generate cadenced program updates, reports, and metrics that provide executive and board level summaries</li>
+	<li>Manage change to scope, timeline, key results/outcomes and budget</li>
+	<li>Maintain a project management framework using milestones, communication plans, decision logs, issues, risks, etc.</li>
+	<li>Balance the focus on long term vision and roadmap versus addressing high risk tactical security issues</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4><strong>Examples of desirable skills, knowledge and experience.</strong></h4>
 <ul>
-	<li>5+ years of experience in legal operations, preferably at a fast-paced global technology company.</li>
-	<li>Highly organized and proven in defining and executing a project from start to finish, ability to manage multiple concurrent projects, high-volume workloads, and shifting priorities with confidence.</li>
-	<li>Strong technical acumen with hands-on experience designing processes, implementing, managing, and integrating legal systems with enterprise platforms.</li>
-	<li>Proven track record of evaluating technology, driving automation initiatives, and delivering measurable improvements in legal workflows.</li>
-	<li>Skilled in legal data analytics (ROI, cycle times, volumes, trends).</li>
-	<li>Excellent communicator with strong writing skills; able to present complex issues clearly and concisely.</li>
-	<li>Collaborative, adaptable, and cross-functional team player with integrity, curiosity, and strong interpersonal skills – with the ability to work independently or cross-functionally.</li>
-</ul>
-<p><strong>Bonus</strong></p>
-<ul>
-	<li>Working knowledge of AI tools and applications, including prompt design, data extraction, document analysis, and model training.&nbsp;</li>
-	<li>A sense of humor!</li>
+	<li>8-10+ years of experience in technical program management and a desire for continuous improvement</li>
+	<li>Experience in cybersecurity or detections and response, including experience directly supporting security programs&nbsp;</li>
+	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
+	<li>Proven track record of creating realistic project plans, managing dependencies, and overseeing execution to meet commitments with predictability.</li>
+	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
+	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Proven ability to forge and sustain effective partnerships internally and externally</li>
+	<li>Strong competency with Confluence and JIRA and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</li>
+	<li>Willingness to learn and continuously improve</li>
+	<li>Embraces technology including automation and AI augmentation</li>
+	<li>Highly skilled communicator and influencer with the ability to reflect and question positively and effectively&nbsp;</li>
+	<li>Experience working with multiple time zones and cross-functional teams.</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted based on location:</p>
-<p>For the New York, D.C., and California (Excluding the bay area) the expected salary range is $124,000 - $152,000</p>
+<p>Compensation may be adjusted depending on work location.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
