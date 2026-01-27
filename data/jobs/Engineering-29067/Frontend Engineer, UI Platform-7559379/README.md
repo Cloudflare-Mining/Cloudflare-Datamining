@@ -5,28 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Mexico City</p>
-<h4><strong>About the Deal Desk Team</strong></h4>
-<p>The Deal Desk team is a critical component of the Finance function, acting as a strategic partner to the global Go-To-Market (GTM) organization. We are responsible for partnering with sales to structure, negotiate and close complex commercial deals. We effectively balance a focus on deals that are profitable, compliant, and scalable while also keeping our customers’ best interest in mind. We are committed to leveraging technology and automation to improve our processes and provide a competitive advantage. We collaborate closely with Sales, Legal, and Operations to deliver innovative and effective deal structures that meet our customers' needs and align with our business and financial objectives.</p>
-<p><strong>What you’ll do</strong></p>
-<p>As a Deal Desk Analyst, you will be a key partner to the sales team, providing support and ensuring a smooth deal process. Your primary responsibilities will include:</p>
+<h4><strong>Available Locations:&nbsp;</strong></h4>
 <ul>
-	<li>Deal Review and Approval: Review and approve deals, ensuring they comply with established pricing, discounting, and commercial policies. You will serve as a gatekeeper for deal integrity.</li>
-	<li>Policy Guidance: Act as a subject matter expert for the sales team on standard deal terms, product configurations, and deal submission requirements. You will be the first point of contact for common questions and deal-related issues.</li>
-	<li>Process Improvement: Identify and propose opportunities to automate, streamline, or simplify our deal approval processes, particularly for repetitive tasks and standard deals.</li>
-	<li>Administrative Support: Manage and monitor the deal queue to ensure we meet internal Service Level Agreements (SLAs) and keep deals moving through the pipeline efficiently.</li>
+	<li>Austin, TX&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p>To succeed in this role, you should be a detail-oriented and organized individual with a strong desire to learn and contribute to a fast-paced environment.</p>
+<h4><strong>About the Department</strong></h4>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>We are seeking a skilled <strong>Frontend (UI) Platform Engineer</strong> to join our team. You'll be responsible for the core technology that drives the Cloudflare Dashboard.&nbsp; You'll be pioneering new techniques and tooling to move away from a traditional monolithic application and onto <a href="https://blog.cloudflare.com/fragment-piercing/">Cloudflare's innovative Web Fragments</a>. In this role, you will enhance UI infrastructure, streamline development workflows, and collaborate across teams to improve code quality and developer velocity. Your contributions will be pivotal in refining the developer experience, ensuring high-quality frontend delivery, and optimizing performance and reliability at scale. Our mission is to improve developer productivity and application performance.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Experience: 2-3 years of experience in a sales support, sales operations, or finance role. Experience with a SaaS company is a plus.</li>
-	<li>Attention to Detail: Exceptional attention to detail and accuracy, particularly when working with numbers and contract terms.</li>
-	<li>Problem-Solving: A strong aptitude for identifying issues and finding effective, policy-compliant solutions.</li>
-	<li>Communication: Excellent written and verbal communication skills. You can clearly and concisely explain policies and procedures to a sales audience.</li>
-	<li>Technical Aptitude: Proficiency with common business software, including Microsoft Excel or Google Sheets. Experience with a CRM (e.g., Salesforce) and a CPQ (Configure, Price, Quote) tool is highly desirable.</li>
-	<li>Process-Oriented Mindset: A desire to understand and improve processes and an interest in how technology and automation can make your work more efficient.</li>
+	<li>Help build, migrate, and scale the UI platform frameworks.</li>
+	<li>Drive UI infrastructure excellence, including CI/CD, observability, and experimentation tools.</li>
+	<li>Tackle cross-cutting concerns to enhance developer velocity, maintainability, and code quality.</li>
+	<li>Upgrade and maintain the frontend codebase, modernizing legacy components to align with current best practices.</li>
+	<li>Collaborate with product and design teams to deliver cohesive, self-serviceable user experiences.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Technologies We Use</strong></p>
+<p>React, TypeScript, JavaScript (ES6+), Remix, Qwik, PlayWright, Cypress, Vite, Webpack, Bazel, CI/CD tools, Go, RESTful APIs</p>
+<p><strong>Qualifications</strong></p>
+<ul>
+	<li>We want someone who understands and obsesses over front-end systems.</li>
+	<li>Passion for improving developer experience and increasing development velocity.</li>
+	<li>4+ years of experience in frontend engineering, specializing in JavaScript, TypeScript, and React.</li>
+	<li>Strong knowledge of UI infrastructure, CI/CD, and testing frameworks (e.g., Playwright, Cypress).</li>
+	<li>Proven ability to drive projects independently, from concept to implementation.</li>
+</ul>
+<p><strong>Preferred Skills:</strong></p>
+<ul>
+	<li>Expertise in React.js, TypeScript, and modern front-end systems.</li>
+	<li>Expertise in performance optimization for frontend applications.</li>
+	<li>Experience with modern JavaScript bundling tools like Webpack, Vite, and Bazel.</li>
+	<li>Familiarity with Remix, Qwik, RESTful APIs, and Go.</li>
+	<li>Experience building and maintaining integration test suites with API mocks.</li>
+	<li>Experience building and scaling large-scale web applications.</li>
+</ul>
+<p><strong>Why Join Us?</strong></p>
+<ul>
+	<li>Lead a pivotal migration to a modern, scalable UI platform.</li>
+	<li>Shape best practices and drive impactful engineering change.</li>
+	<li>Work with modern technologies and solve large-scale challenges.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

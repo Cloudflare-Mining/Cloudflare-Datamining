@@ -31,7 +31,7 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Washington DC Metro-based hires: Estimated annual salary of $213,000 - $261,000.</li>
+	<li>For Washington DC Metro-based hires: Estimated annual salary of $190,000 - $261,000.</li>
 </ul>
 <p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>

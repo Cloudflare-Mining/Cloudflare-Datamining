@@ -39,8 +39,8 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may vary based on location and level. This role is eligible to participate in Cloudflare's equity (RSU) program.&nbsp;</p>
 <ul>
-	<li>New York, Seattle, &amp; Washington D.C. estimated salary: $192,000 - $234,000 (Senior Level)</li>
-	<li>Austin &amp; Colorado estimated salary: $170,000 - $208,000 (Senior Level)</li>
+	<li>New York, Seattle, &amp; Washington D.C. estimated salary: $172,000 - $237,000 (Senior Level)</li>
+	<li>Austin &amp; Colorado estimated salary: $156,000 - $215,000 (Senior Level)</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

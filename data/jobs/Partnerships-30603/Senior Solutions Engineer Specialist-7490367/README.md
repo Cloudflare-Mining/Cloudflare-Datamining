@@ -43,9 +43,9 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Seattle based hires: Estimated annual salary of $208,000 - $254,000</li>
-	<li>For Denver based hires: Estimated annual salary of $208,000 - $254,000</li>
-	<li>For Remote California hires: Estimated annual salary of $211,000 - $257,000</li>
+	<li>For Seattle based hires: Estimated annual salary of $234,000 - $321,000</li>
+	<li>For Denver based hires: Estimated annual salary of $212,000 - $292,000</li>
+	<li>For Remote California hires: Estimated annual salary of $234,000 - $321,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
