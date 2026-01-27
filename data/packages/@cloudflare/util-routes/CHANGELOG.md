@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.0
+
+### Minor Changes
+
+- a4dce672bb: Add support for optional params
+
 ## 5.2.36
 
 ### Patch Changes

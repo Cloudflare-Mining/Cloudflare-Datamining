@@ -30,3 +30,23 @@ const domainRoute = route`${domainsRoute}/${'domainName'}`
 // => /api/v4/accounts/123/domains/abc.com
 domainRoute.toUrl({ accountId: '123', domainName: 'abc.com' })
 ```
+
+### Optional Parameters
+
+Parameters can be marked optional with a `?` suffix. TypeScript will make them optional in the `toUrl` signature:
+
+```typescript
+const apiRoute = route`/api/${'filter?'}`
+
+// filter is optional in toUrl
+apiRoute.toUrl({}) // => /api
+apiRoute.toUrl({ filter: 'active' }) // => /api/active
+
+// Composing routes with optional params
+const accountsRoute = route`/accounts/${'accountId'}`
+const accountZonesRoute = route`${accountsRoute}/zones/${'filter?'}`
+
+// TypeScript knows filter is optional
+accountZonesRoute.toUrl({ accountId: '123' }) // => /accounts/123/zones
+accountZonesRoute.toUrl({ accountId: '123', filter: 'active' }) // => /accounts/123/zones/active
+```
