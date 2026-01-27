@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "2244079d-c47a-5d61-99d5-d82dcbe6df9b")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "734def80-005b-553c-a0c9-d45a3d4aebf4")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -802,10 +802,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "5f9c8c918cadcee942ecdd8a0949d330f662ca63",
-							dashVersion: "38201741",
+							commit: "151616ae1a82f858299f49f531562e6db07593a8",
+							dashVersion: "38204022",
 							env: "production",
-							builtAt: 0x19c001545ba,
+							builtAt: 0x19c0053dac2,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								"@cloudflare/kumo": "0.7.0",
@@ -986,9 +986,15 @@
 					let g = (null == d ? void 0 : d.data) || {};
 					u.dispatch((0, i.b7)("user", null == g ? void 0 : g.user));
 					let m = null == d || null == (n = d.data) ? void 0 : n.user;
-					if (e.g.bootstrap = d, m && m.id && ((s = m.id) ? a.gV({
-							id: s
-						}) : a.gV(null)), !await rp(J, "gates") || !(0, x.W)() && !await rp(rl, "tracking")) return;
+					e.g.bootstrap = d, m && m.id && ((s = m.id) ? a.gV({
+						id: s
+					}) : a.gV(null));
+					try {
+						await J()
+					} catch (n) {
+						a.Cp("Gates failed to initialize")
+					}
+					if (!(0, x.W)() && !await rp(rl, "tracking")) return;
 					return (0, n4._)(), void((p = document.getElementById("react-app")) && (0, no.createRoot)(p).render((0, $.jsx)(ra, {})))
 				} catch (n) {
 					rd(n, "global")
@@ -8101,4 +8107,4 @@
 		}
 	}
 ]);
-//# debugId=2244079d-c47a-5d61-99d5-d82dcbe6df9b
+//# debugId=734def80-005b-553c-a0c9-d45a3d4aebf4
