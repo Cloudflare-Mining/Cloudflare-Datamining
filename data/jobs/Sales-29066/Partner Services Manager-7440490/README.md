@@ -5,36 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location -&nbsp;</strong>Austin, Texas</p>
-<p><strong>About the department</strong></p>
-<p>Cloudflare’s P2P department is housed within the Finance team, but our reach is global, supporting thousands of purchases across our global offices per quarter. We use an integrated platform for purchase-orders and approvals, and a contract management and collaboration tool for negotiated, signed contracts. We interact daily with stakeholders from Finance, Commercial Legal, Privacy, Security, and IT to get critical purchases over the line. The majority of our purchases involve technology and internet infrastructure, so we ensure we are familiar with industry trends and challenges faced by our internal customers. Our team is responsible for setting policies, defining new processes, reviewing &amp; negotiating vendor agreements to ensure that the Procurement function aligns to Cloudflare’s long-term strategic vision and goals. We are a small and growing team, presenting lots of opportunity for professional growth and visibility across multiple departments.</p>
-<p><strong>What you'll do</strong></p>
-<p>Cloudflare’s Contracts Negotiator will support the end-to-end contracting process including contract negotiations, contract management, contract administration, and supplier relationship management functions across all business segments within Cloudflare. Because we are growing, applicants should anticipate that this role may evolve over time. This person will be the internal point of contact for key all contracting related activity within the procurement function. They will work closely with the Sourcing and Commercial Legal team.&nbsp;</p>
-<p><strong>Who You Are:</strong></p>
-<p>We are looking for business-driven, experienced contracts professionals who love KPIs, are strong collaborators, can manage vendor contracts, draft a redline, and bring relentless attention to detail. We are seeking an experienced procurement professional who can support the end-to-end process from planning to signature through post-signature contract reviews and vendor performance management. The ideal candidate for this role is a proactive problem solver, fearless, approachable, and adaptable. You enjoy contracts, seek out metrics to maximize value, exercise judgment and operate independently.&nbsp; The negotiator handles legal tasks and ensures contract processing with high professionalism under pressure.</p>
-<p><strong>Key Functions:</strong></p>
+<p>This position is open to candidates based in either Austin, TX, Atlanta, GA or a SE USA location</p>
+<p><strong>About the Role</strong></p>
+<p>In this specialized role, you'll focus on service delivery success for partnerships with key GSI partners in the Americas. There is nothing more important to us than our customers' success, which is why we aim to provide them with a white-glove experience in implementing and deploying our solutions. Our service delivery partners—consultancy partners, regional system integrators, global system integrators, and managed service providers—are a crucial part of this success. Our team's role is to collaborate with the best partners worldwide, who are experts in delivering, implementing, migrating, and managing our solutions. Partner Service Delivery Managers play a key role in onboarding service partners, ensuring they are successful and receive necessary support, as well as hand holding them through launching new service offerings in the market.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li><strong>Contract Negotiation &amp; Management</strong> – Draft, review, and negotiate a wide range of procurement agreements, including technology, security, and data privacy contracts, ensuring terms align with company policies and risk tolerance.</li>
-	<li><strong>Risk &amp; Legal Assessment</strong> – Identify and mitigate contractual, legal, and commercial risks through detailed review and collaboration with Legal, Privacy, and Security teams.</li>
-	<li><strong>Dispute Resolution</strong> – Partner with internal stakeholders and external vendors to resolve contract-related issues efficiently and maintain positive business relationships.</li>
-	<li><strong>Compliance &amp; Governance</strong> – Ensure adherence to corporate policies, ethical standards, and applicable regulatory requirements throughout the contracting process.</li>
-	<li><strong>Cross-Functional Collaboration</strong> – Work closely with Legal, Finance, Security, and business stakeholders to align contract strategies with organizational goals and operational needs.</li>
-	<li><strong>Contract Lifecycle Oversight</strong> – Manage agreements from intake through execution, leveraging contract management tools and systems to drive efficiency and visibility across the lifecycle.</li>
+	<li>Strategic Alignment: Collaborate with service delivery partners to develop and execute joint business/technical plans that align with Cloudflare's strategic objectives.</li>
+	<li>Onboarding and Enablement: Lead the onboarding process for new service partners and provide continual support to ensure their proficiency with Cloudflare solutions.</li>
+	<li>Executive Engagement: Regularly engage in strategic and roadmap planning discussions with key stakeholders at partners..</li>
+	<li>Cross-Functional Collaboration: Consistently engage with internal departments such as partner enablement, product team, field sales, partner solutions engineers, Cloudflare professional services team, and others to ensure both partner and customer success..</li>
+	<li>Performance Metrics: Develop, manage, and track key performance indicators to measure and improve the effectiveness of partnerships.</li>
+	<li>Global Oversight: Provide governance and oversight on global projects, ensuring that deliverables are met on time and within scope.</li>
+	<li>Technical Engagement: While not expected to be hands-on for post-sales, engage daily with partner technical teams, including technical delivery teams. Possess enough technical understanding and experience to lead those conversations effectively.</li>
+	<li>Service Delivery Ecosystem Ownership: Own the service delivery partner ecosystem in the region, including building partner capabilities in alignment with regional leaders.</li>
+	<li>Quality Assurance: Monitor and ensure the quality of service delivery by partners, addressing any issues and facilitating improvements as needed.</li>
+</ul>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>Consulting Background: Significant experience in a consulting environment, ideally within a GSI, is required.</li>
+	<li>Enterprise IT Expertise: Must possess a deep understanding of enterprise IT architectures and how they integrate with broader business processes.</li>
+	<li>Project Management: A proven track record of managing complex projects with multiple stakeholders is essential.</li>
+	<li>Regulatory Awareness: Must have an understanding of global compliance and data protection regulations.</li>
+	<li>Technical Knowledge: Familiarity with multi-cloud and hybrid cloud environments.</li>
+	<li>Experience with Service Delivery Partners: Demonstrated experience working with consultancy partners, regional system integrators, global system integrators, and/or managed service providers.</li>
+	<li>Customer Success Focus: Strong focus on customer success, ensuring service delivery partners can provide high-quality implementations and support to customers.</li>
+	<li>Stakeholder Engagement: Ability to engage effectively with C-suite executives and technical teams at partner organizations.</li>
+	<li>Analytical Skills: Strong analytical skills to develop, manage, and track key performance indicators.</li>
+	<li>Communication Skills: Excellent communication and interpersonal skills, with the ability to lead strategic discussions and presentations.</li>
+	<li>Ownership and Accountability: Strong sense of ownership and accountability for the service delivery partner ecosystem in the region.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Qualifications</strong></p>
-<p><strong>Required Knowledge, Skills, and Experience</strong></p>
-<ul>
-	<li><strong>Experience:</strong> Minimum 2+ years of experience managing commercial contracts within Procurement, Sourcing, or a Commercial Legal environment.</li>
-	<li><strong>Education:</strong> Bachelor’s degree required; Juris Doctor (JD) or equivalent legal experience preferred.</li>
-	<li><strong>Industry Knowledge:</strong> Familiarity with SaaS, cybersecurity, internet infrastructure, OEM suppliers, and marketing technology solutions is highly desirable.</li>
-	<li><strong>Contracting Expertise:</strong> Demonstrated ability to draft, review, and negotiate complex commercial agreements with precision and attention to detail.</li>
-	<li><strong>Legal &amp; Regulatory Acumen:</strong> Strong understanding of commercial contract law, data security, and privacy regulations.</li>
-	<li><strong>Analytical &amp; Problem-Solving Skills:</strong> Ability to assess risk, identify creative solutions, and provide sound business recommendations.</li>
-	<li><strong>Collaboration &amp; Communication:</strong> Excellent written and verbal communication skills with the ability to build effective cross-functional relationships.</li>
-	<li><strong>Organization &amp; Adaptability:</strong> Highly organized, detail-oriented, and capable of managing multiple priorities in a fast-paced environment.</li>
-</ul>
-<p><strong>Technology Proficiency:</strong> Experience with <strong>Ironclad</strong>, <strong>Zip</strong>, or similar CLM and intake management tools preferred.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
