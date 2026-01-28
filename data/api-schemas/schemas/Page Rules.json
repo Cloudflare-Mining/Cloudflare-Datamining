@@ -944,7 +944,7 @@
 																{
 																	"properties": {
 																		"id": {
-																			"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+																			"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 																			"enum": [
 																				"disable_performance"
 																			],
@@ -1161,6 +1161,7 @@
 																	]
 																},
 																{
+																	"deprecated": true,
 																	"properties": {
 																		"id": {
 																			"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -1184,6 +1185,7 @@
 																	},
 																	"title": "Mirage",
 																	"type": "object",
+																	"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																	"x-stainless-skip": [
 																		"terraform"
 																	]
@@ -2439,7 +2441,7 @@
 															{
 																"properties": {
 																	"id": {
-																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 																		"enum": [
 																			"disable_performance"
 																		],
@@ -2656,6 +2658,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -2679,6 +2682,7 @@
 																},
 																"title": "Mirage",
 																"type": "object",
+																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
 																]
@@ -3875,7 +3879,7 @@
 										{
 											"properties": {
 												"id": {
-													"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+													"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 													"enum": [
 														"disable_performance"
 													],
@@ -4092,6 +4096,7 @@
 											]
 										},
 										{
+											"deprecated": true,
 											"properties": {
 												"id": {
 													"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -4115,6 +4120,7 @@
 											},
 											"title": "Mirage",
 											"type": "object",
+											"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 											"x-stainless-skip": [
 												"terraform"
 											]
@@ -5167,7 +5173,7 @@
 															{
 																"properties": {
 																	"id": {
-																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 																		"enum": [
 																			"disable_performance"
 																		],
@@ -5384,6 +5390,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -5407,6 +5414,7 @@
 																},
 																"title": "Mirage",
 																"type": "object",
+																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
 																]
@@ -6553,7 +6561,7 @@
 										{
 											"properties": {
 												"id": {
-													"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+													"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 													"enum": [
 														"disable_performance"
 													],
@@ -6770,6 +6778,7 @@
 											]
 										},
 										{
+											"deprecated": true,
 											"properties": {
 												"id": {
 													"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -6793,6 +6802,7 @@
 											},
 											"title": "Mirage",
 											"type": "object",
+											"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 											"x-stainless-skip": [
 												"terraform"
 											]
@@ -7849,7 +7859,7 @@
 															{
 																"properties": {
 																	"id": {
-																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 																		"enum": [
 																			"disable_performance"
 																		],
@@ -8066,6 +8076,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -8089,6 +8100,7 @@
 																},
 																"title": "Mirage",
 																"type": "object",
+																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
 																]
@@ -9248,7 +9260,7 @@
 										{
 											"properties": {
 												"id": {
-													"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+													"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 													"enum": [
 														"disable_performance"
 													],
@@ -9465,6 +9477,7 @@
 											]
 										},
 										{
+											"deprecated": true,
 											"properties": {
 												"id": {
 													"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -9488,6 +9501,7 @@
 											},
 											"title": "Mirage",
 											"type": "object",
+											"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 											"x-stainless-skip": [
 												"terraform"
 											]
@@ -10544,7 +10558,7 @@
 															{
 																"properties": {
 																	"id": {
-																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/),\n[Mirage](https://developers.cloudflare.com/speed/optimization/images/mirage/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
+																		"description": "Turn off\n[Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/), and\n[Polish](https://developers.cloudflare.com/images/polish/).\n",
 																		"enum": [
 																			"disable_performance"
 																		],
@@ -10761,6 +10775,7 @@
 																]
 															},
 															{
+																"deprecated": true,
 																"properties": {
 																	"id": {
 																		"description": "Cloudflare Mirage reduces bandwidth used by images in mobile browsers.\nIt can accelerate loading of image-heavy websites on very slow mobile connections and HTTP/1.\n",
@@ -10784,6 +10799,7 @@
 																},
 																"title": "Mirage",
 																"type": "object",
+																"x-stainless-deprecation-message": "Mirage is deprecated. This functionality is no longer supported. \nSee https://developers.cloudflare.com/fundamentals/api/reference/deprecations/#2025-11-03 for further details.\n",
 																"x-stainless-skip": [
 																	"terraform"
 																]
