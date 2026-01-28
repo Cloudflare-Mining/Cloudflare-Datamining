@@ -446,6 +446,822 @@
 			"Cloudforce One Read"
 		]
 	},
+	"GET /accounts/{accountId}/resource-library/categories": {
+		"description": "Get all application categories.",
+		"operationId": "getCategories",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Returns the list of categories.",
+											"items": {
+												"properties": {
+													"created_at": {
+														"description": "Returns the category creation time.",
+														"example": "2025-01-01T00:00:00Z",
+														"type": "string"
+													},
+													"description": {
+														"description": "Returns the category description.",
+														"example": "Category description",
+														"type": "string"
+													},
+													"id": {
+														"description": "Returns the category ID.",
+														"example": "12345678-1234-1234-1234-123456789012",
+														"type": "string"
+													},
+													"name": {
+														"description": "Returns the category name.",
+														"example": "Category name",
+														"type": "string"
+													}
+												},
+												"required": [
+													"created_at",
+													"description",
+													"id",
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get all application categories response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicates whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "Returns the list of categories.",
+													"items": {
+														"properties": {
+															"created_at": {
+																"description": "Returns the category creation time.",
+																"example": "2025-01-01T00:00:00Z",
+																"type": "string"
+															},
+															"description": {
+																"description": "Returns the category description.",
+																"example": "Category description",
+																"type": "string"
+															},
+															"id": {
+																"description": "Returns the category ID.",
+																"example": "12345678-1234-1234-1234-123456789012",
+																"type": "string"
+															},
+															"name": {
+																"description": "Returns the category name.",
+																"example": "Category name",
+																"type": "string"
+															}
+														},
+														"required": [
+															"created_at",
+															"description",
+															"id",
+															"name"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get application categories response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get all application categories",
+		"tags": [
+			"Category"
+		]
+	},
+	"GET /accounts/{accountId}/resource-library/categories/{id}": {
+		"description": "Get application category by ID.",
+		"operationId": "getCategoryById",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"in": "path",
+				"name": "accountId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Application category ID.",
+				"example": "0b63249c-95bf-4cc0-a7cc-d7faaaf1dac0",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "Returns the category creation time.",
+													"example": "2025-01-01T00:00:00Z",
+													"type": "string"
+												},
+												"description": {
+													"description": "Returns the category description.",
+													"example": "Category description",
+													"type": "string"
+												},
+												"id": {
+													"description": "Returns the category ID.",
+													"example": "12345678-1234-1234-1234-123456789012",
+													"type": "string"
+												},
+												"name": {
+													"description": "Returns the category name.",
+													"example": "Category name",
+													"type": "string"
+												}
+											},
+											"required": [
+												"created_at",
+												"description",
+												"id",
+												"name"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get application category by id response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicates whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_at": {
+															"description": "Returns the category creation time.",
+															"example": "2025-01-01T00:00:00Z",
+															"type": "string"
+														},
+														"description": {
+															"description": "Returns the category description.",
+															"example": "Category description",
+															"type": "string"
+														},
+														"id": {
+															"description": "Returns the category ID.",
+															"example": "12345678-1234-1234-1234-123456789012",
+															"type": "string"
+														},
+														"name": {
+															"description": "Returns the category name.",
+															"example": "Category name",
+															"type": "string"
+														}
+													},
+													"required": [
+														"created_at",
+														"description",
+														"id",
+														"name"
+													],
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get application category by id response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Show application category by ID",
+		"tags": [
+			"Category"
+		]
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
 		"operationId": "patch_CategoryUpdate",
 		"parameters": [
