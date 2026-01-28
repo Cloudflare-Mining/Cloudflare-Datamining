@@ -2888,6 +2888,225 @@
 			"Cloudforce One Write"
 		]
 	},
+	"PATCH /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
+		"description": "Update an existing saved event query by its ID",
+		"operationId": "patch_EventQueryUpdate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Event query ID",
+				"in": "path",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"description": "Event query ID",
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"alert_enabled": {
+								"description": "Enable alerts for this query",
+								"type": "boolean"
+							},
+							"alert_rollup_enabled": {
+								"description": "Enable alert rollup for this query",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Unique name for the saved query",
+								"type": "string"
+							},
+							"query_json": {
+								"description": "JSON string containing the query parameters",
+								"type": "string"
+							},
+							"rule_enabled": {
+								"description": "Enable rule for this query",
+								"type": "boolean"
+							},
+							"rule_scope": {
+								"description": "Scope for the rule",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"account_id": {
+									"description": "Account ID",
+									"type": "integer"
+								},
+								"alert_enabled": {
+									"description": "Whether alerts are enabled",
+									"type": "boolean"
+								},
+								"alert_rollup_enabled": {
+									"description": "Whether alert rollup is enabled",
+									"type": "boolean"
+								},
+								"created_at": {
+									"description": "Creation timestamp",
+									"type": "string"
+								},
+								"id": {
+									"description": "Unique identifier for the saved query",
+									"type": "integer"
+								},
+								"name": {
+									"description": "Name of the saved query",
+									"type": "string"
+								},
+								"query_json": {
+									"description": "JSON string containing the query parameters",
+									"type": "string"
+								},
+								"rule_enabled": {
+									"description": "Whether rule is enabled",
+									"type": "boolean"
+								},
+								"rule_scope": {
+									"description": "Scope for the rule",
+									"type": "string"
+								},
+								"updated_at": {
+									"description": "Last update timestamp",
+									"type": "string"
+								},
+								"user_email": {
+									"description": "Email of the user who created the query",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"account_id",
+								"name",
+								"user_email",
+								"query_json",
+								"alert_enabled",
+								"alert_rollup_enabled",
+								"rule_enabled",
+								"created_at",
+								"updated_at"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated event query."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update a saved event query",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{dataset_id}/revert-do": {
 		"operationId": "post_EventDoRevert",
 		"parameters": [
@@ -4679,6 +4898,226 @@
 			}
 		],
 		"summary": "Adds a tag to an event",
+		"tags": [
+			"Event"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/queries/{query_id}": {
+		"description": "Update an existing saved event query by its ID",
+		"operationId": "post_EventQueryUpdate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Event query ID",
+				"in": "path",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"description": "Event query ID",
+					"type": "integer"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"alert_enabled": {
+								"description": "Enable alerts for this query",
+								"type": "boolean"
+							},
+							"alert_rollup_enabled": {
+								"description": "Enable alert rollup for this query",
+								"type": "boolean"
+							},
+							"name": {
+								"description": "Unique name for the saved query",
+								"type": "string"
+							},
+							"query_json": {
+								"description": "JSON string containing the query parameters",
+								"type": "string"
+							},
+							"rule_enabled": {
+								"description": "Enable rule for this query",
+								"type": "boolean"
+							},
+							"rule_scope": {
+								"description": "Scope for the rule",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"account_id": {
+									"description": "Account ID",
+									"type": "integer"
+								},
+								"alert_enabled": {
+									"description": "Whether alerts are enabled",
+									"type": "boolean"
+								},
+								"alert_rollup_enabled": {
+									"description": "Whether alert rollup is enabled",
+									"type": "boolean"
+								},
+								"created_at": {
+									"description": "Creation timestamp",
+									"type": "string"
+								},
+								"id": {
+									"description": "Unique identifier for the saved query",
+									"type": "integer"
+								},
+								"name": {
+									"description": "Name of the saved query",
+									"type": "string"
+								},
+								"query_json": {
+									"description": "JSON string containing the query parameters",
+									"type": "string"
+								},
+								"rule_enabled": {
+									"description": "Whether rule is enabled",
+									"type": "boolean"
+								},
+								"rule_scope": {
+									"description": "Scope for the rule",
+									"type": "string"
+								},
+								"updated_at": {
+									"description": "Last update timestamp",
+									"type": "string"
+								},
+								"user_email": {
+									"description": "Email of the user who created the query",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"account_id",
+								"name",
+								"user_email",
+								"query_json",
+								"alert_enabled",
+								"alert_rollup_enabled",
+								"rule_enabled",
+								"created_at",
+								"updated_at"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated event query."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update a saved event query",
 		"tags": [
 			"Event"
 		],
