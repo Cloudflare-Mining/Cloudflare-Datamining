@@ -5,44 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru, India</span></strong></p>
-<p><strong>About The Department</strong></p>
-<p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<h4><strong>About the team</strong></h4>
+<p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data Engineer to join our Bengaluru team and help scale the development of our internal data products. In this role, you will build data-driven applications that empower teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing features to implementation and long-term ownership.</p>
+<p>You will work on building scalable, reliable systems that solve critical business problems, partnering closely with full-stack engineers to develop new features and operate the data pipelines and services behind our applications. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, and continues to evolve. Many of our products also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
+<p>&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Hands-on experience working with threat detection and prevention product engineering teams, recognizing vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
-	<li>Apply a deep understanding of security vulnerabilities in web application and application security.&nbsp;</li>
-	<li>Reverse and research n-day exploits, proactively detect patterns of bot and fraud attacks, review false positive and false negative reports, and recommend security configurations.</li>
-	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences. Including writing public facing research blogs.</li>
-	<li>Authoring periodic report on trends on Internet traffic and security attack insights</li>
-	<li>Experience with modern cloud-based technologies used to deliver rapidly-changing products at scale.</li>
-	<li>Conduct penetration testing to identify security gaps and potential exploits across applications and services.</li>
-	<li>Develop, maintain, and enhance security dashboards to monitor and analyze attack trends, bot activity, and fraud detection metrics.</li>
-	<li>Leverage strong coding skills to build and automate security tools, improve system engineering workflows, and develop new security rules and heuristics.</li>
+	<li>Design and implement core components of our data pipelines and services in Go and Scala, with a focus on scalability, performance, and long-term maintainability.<br><br></li>
+	<li>Partner closely with engineers, analysts, and product stakeholders to design solutions for strategic initiatives and business-critical data products.<br><br></li>
+	<li>Contribute to the evolution of our data platform architecture, improving scalability, reliability, observability, and data correctness across the stack.<br><br></li>
+	<li>Build and curate high-quality, well-modeled datasets that power internal products, analytics, and AI-enabled features at company scale.<br><br></li>
+	<li>Develop a deep understanding of the company’s data ecosystem — including source systems, tooling, and data flows — and collaborate closely with the data engineering teams in Austin and San Francisco to improve data ingestion, quality, and governance.<br><br></li>
+	<li>Lead by example through design reviews, knowledge sharing, and mentorship, helping raise the technical bar and data engineering practices across the organization.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><br><br></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>A degree in computer science, IT, systems engineering, or related qualification.</li>
-	<li>4 years of work experience with incident detection, incident response, forensics, reverse engineering, security research or similar.</li>
-	<li>Ability to work under pressure in a fast-paced environment.</li>
-	<li>Strong attention to detail with an analytical mind and outstanding problem-solving skills. Excellent organizational skills.</li>
-	<li>Great awareness of cybersecurity trends and hacking techniques.</li>
-	<li>Demonstrated results in identifying, tracking and resolving issues to resolution in the areas of cybersecurity.</li>
-	<li>Strong written and verbal communication skills.</li>
-	<li>Experience in OWASP, security standards and best practice</li>
-	<li>Strong SQL experience.</li>
-	<li>Proficiency in penetration testing methodologies, tools, and vulnerability assessment techniques.</li>
-	<li>Experience in building security dashboards using tools like Grafana or similar visualization platforms.</li>
-	<li>Strong programming experience with expertise in Python, Go, Rust, or JavaScript to develop security tools and automation.</li>
-	<li>Prior experience or interest in Web Security, HTTP protocols, Python, Jupyter Notebook, and JavaScript is a huge plus!</li>
-	<li>Knowledge and experience with machine learning, statistical inference, and AI in general is a huge plus</li>
+	<li>B.S. or M.S. in Computer Science, Engineering, Statistics, Mathematics, or a related quantitative field, or equivalent practical experience.<br><br></li>
+	<li>7+ years of professional experience in data engineering, software engineering, or related roles, building and operating production data systems.<br><br></li>
+	<li>Strong programming expertise in Go, Python, or JVM-based languages, with experience writing high-quality, production-grade services and pipelines.<br><br></li>
+	<li>Deep knowledge of SQL and hands-on experience designing data models and working with relational and/or analytical databases (e.g., PostgreSQL, MySQL, ClickHouse).<br><br></li>
+	<li>Experience building scalable, reliable, and observable data pipelines, with an understanding of performance, data quality, and operational best practices.<br><br></li>
+	<li>Proven problem-solving and communication skills, with a track record of driving projects in ambiguous environments and partnering effectively with cross-functional teams.<br><br></li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Knowledge and experience with columnar database like Clickhouse</li>
-	<li>Familiarity writing and optimizing advanced SQL queries</li>
-	<li>Good Linux/UNIX systems knowledge</li>
-	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
+	<li>Familiarity with container based deployments such as Docker &amp; K</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

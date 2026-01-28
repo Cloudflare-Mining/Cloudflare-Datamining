@@ -5,44 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru, India</span></strong></p>
-<p><strong>About The Department</strong></p>
-<p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations: Austin Texas</strong></p>
+<p><strong>About the department</strong></p>
+<p>Cloudflare’s IT/Enterprise Engineering, Planning and Governance Team is a crucial pillar of the CIO Organization. It manages programs and initiatives across IT Infrastructure, Enterprise Systems, and Enterprise Engineering, enabling Cloudflare internal teams to operate at their most efficient level. The team establishes end-to-end governance principles and frameworks, leads business partnering, and drives program planning, execution, and demand capacity management.</p>
+<p><strong>What you'll do</strong></p>
+<p>We are looking for a highly skilled, proactive Scrum Lead<strong> </strong>with excellent communication and facilitation skills to join our IT PMO. Your primary mission will be to lead the Hire to Retire value stream, ensuring the seamless delivery of technical solutions that power our employee lifecycle. Your main role will be driving the team’s delivery engine, partnering closely with Engineering Managers and Product Managers to remove blockers, optimize flow, and ensure high-quality, transformational outcomes.</p>
+<p>You bring a passion for Agile principles and excel at shifting between the tactical and the strategic, understanding how sprint-level details inform the broader program and product roadmap. You are an expert at adapting the Scrum framework to the unique needs of a complex IT environment, persistently driving improvements in team dynamics and agile metrics.</p>
+<p>The ideal candidate is a master facilitator and influencer who is comfortable playing multiple roles: coach, negotiator, diplomat, and data-driven reporter. Combined with a technical background, you have the ability to build deep trust and strong partnerships with counterparts in Engineering, Business and Operations teams.</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Hands-on experience working with threat detection and prevention product engineering teams, recognizing vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
-	<li>Apply a deep understanding of security vulnerabilities in web application and application security.&nbsp;</li>
-	<li>Reverse and research n-day exploits, proactively detect patterns of bot and fraud attacks, review false positive and false negative reports, and recommend security configurations.</li>
-	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences. Including writing public facing research blogs.</li>
-	<li>Authoring periodic report on trends on Internet traffic and security attack insights</li>
-	<li>Experience with modern cloud-based technologies used to deliver rapidly-changing products at scale.</li>
-	<li>Conduct penetration testing to identify security gaps and potential exploits across applications and services.</li>
-	<li>Develop, maintain, and enhance security dashboards to monitor and analyze attack trends, bot activity, and fraud detection metrics.</li>
-	<li>Leverage strong coding skills to build and automate security tools, improve system engineering workflows, and develop new security rules and heuristics.</li>
+	<li>Lead all aspects of the Agile lifecycle for the Hire to Retire value stream. Orchestrate the planning and execution of sprints to ensure the team meets committed milestones for Cloudflare’s internal ecosystem.</li>
+	<li>Facilitate high-impact Daily Standups, Sprint Planning, Refinement, Demos, and Retrospectives. Continuously adapt these ceremonies to fit the team’s evolving needs, ensuring they remain a catalyst for progress, not just a ritual.</li>
+	<li>Maintain clear, transparent communication channels. Translate technical sprint progress, sprint themes and goals, and risks into polished updates for stakeholders visibility, ensuring leadership understands the value stream’s health and roadblocks.</li>
+	<li>Act as the glue between Engineering Managers and Product Managers. Build bridges with stakeholders to ensure clear communication, visibility and transparency.</li>
+	<li>Manage the delivery performance and synergy of a cross-functional team comprising both FTEs and external contractors, ensuring all members are aligned toward a shared Definition of Done.</li>
+	<li>Establish and monitor advanced Agile metrics (Lead Time, Cycle Time, Throughput). Use this data to diagnose bottlenecks and implement structural changes that improve team dynamics and delivery predictability.</li>
+	<li>Partner with PMs to refine the backlog, ensuring business requirements are translated into actionable technical stories that incorporate sound architecture and design principles.</li>
+	<li>Apply learnings from the H2R value stream to the broader IT organization. Actively contribute to the PMO and ACE’s methodologies and mentor others to level up Agile maturity across Cloudflare.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
+<p><strong>Skills, knowledge and experience</strong></p>
 <ul>
-	<li>A degree in computer science, IT, systems engineering, or related qualification.</li>
-	<li>4 years of work experience with incident detection, incident response, forensics, reverse engineering, security research or similar.</li>
-	<li>Ability to work under pressure in a fast-paced environment.</li>
-	<li>Strong attention to detail with an analytical mind and outstanding problem-solving skills. Excellent organizational skills.</li>
-	<li>Great awareness of cybersecurity trends and hacking techniques.</li>
-	<li>Demonstrated results in identifying, tracking and resolving issues to resolution in the areas of cybersecurity.</li>
-	<li>Strong written and verbal communication skills.</li>
-	<li>Experience in OWASP, security standards and best practice</li>
-	<li>Strong SQL experience.</li>
-	<li>Proficiency in penetration testing methodologies, tools, and vulnerability assessment techniques.</li>
-	<li>Experience in building security dashboards using tools like Grafana or similar visualization platforms.</li>
-	<li>Strong programming experience with expertise in Python, Go, Rust, or JavaScript to develop security tools and automation.</li>
-	<li>Prior experience or interest in Web Security, HTTP protocols, Python, Jupyter Notebook, and JavaScript is a huge plus!</li>
-	<li>Knowledge and experience with machine learning, statistical inference, and AI in general is a huge plus</li>
+	<li>5+ year experience as Scrum Master or IT Program Manager, with a focus on team-level execution and process optimization.</li>
+	<li>Proven experience leading Agile teams through the full lifecycle of complex IT projects, preferentially within the Hire to Retire or HR Technology domain.</li>
+	<li>Track record of improving team performance through Agile metrics (Cycle Time, Throughput, Sprint Velocity).</li>
+	<li>A strong capability to establish trust and facilitate decision-making with Engineering Managers and Product Managers, even without direct hierarchical authority.</li>
+	<li>Proven ability to maintain team focus and high-velocity delivery in a fast-paced, high-pressure environment with shifting business requirements.</li>
+	<li>Advanced proficiency in Jira and Confluence, with the ability to customize workflows and dashboards. Deep knowledge of Scrum, Kanban and SAFe.</li>
+	<li>Thrive in a hyper-growth environment, with the capacity to learn new HR technologies quickly and turn ambiguity into actionable sprint backlogs.</li>
+	<li>Bachelor's degree in Computer Science, Information Systems Management, Technology management, Business management or comparable work experience.</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Knowledge and experience with columnar database like Clickhouse</li>
-	<li>Familiarity writing and optimizing advanced SQL queries</li>
-	<li>Good Linux/UNIX systems knowledge</li>
-	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
+	<li>Familiarity with the technical landscape of HR platforms (e.g., Workday, ADP) and an understanding of how these integrate with boundary systems.</li>
+	<li>A strong engineering or technical background, enabling you to facilitate deep-dive discussions on integrations, data schemas, and technical debt with Engineering Managers.</li>
+	<li>CSM (Certified Scrum Master), PSM II/III or other Agile certifications</li>
+	<li>Proven experience coaching other Scrum Leads to improve Agile maturity across an organization.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

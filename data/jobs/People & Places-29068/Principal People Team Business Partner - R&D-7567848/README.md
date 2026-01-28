@@ -5,45 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru, India</span></strong></p>
-<p><strong>About The Department</strong></p>
-<p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>What You Would Do Here</strong></p>
+<p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing you to do your best work. As we continue to build out our Business Partner team, we are looking for a trusted business partner who is naturally curious about what we do and driven to help our people thrive. In this role, you will report to the Director of People Team Business Partners - R&amp;D (Americas) - and support our strategic initiatives, partnering closely with leadership across our R&amp;D Teams. You will be the People Team Business Partner to the Communications, Legal, Policy and Trust &amp; Safety, Finance, Places, Strategy and Special Projects Teams.</p>
+<p>You will develop and implement proactive solutions for a broad scope of activities, ensuring alignment on initiatives and priorities, maintaining open and transparent lines of communication and keeping our teams thriving and well supported. You will serve as a strategic partner with strong client partnership based in business acumen. You will focus on organizational design, talent management, and driving initiatives and change leadership.</p>
+<p>We passionately believe in leadership at all levels, and our fast growth has created a special opportunity to really enable our team members to acquire new skills and grow on the job. You will help us get better at this by spending time with our people and developing and implementing programs that are responsive to our leaders' needs, role model our company capabilities and will scale as we continue to grow an enterprise business.</p>
+<p><strong><em>*** Please note a cover letter is required to be considered for this position. ***</em></strong></p>
+<p><strong>Who You Are:</strong></p>
 <ul>
-	<li>Hands-on experience working with threat detection and prevention product engineering teams, recognizing vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
-	<li>Apply a deep understanding of security vulnerabilities in web application and application security.&nbsp;</li>
-	<li>Reverse and research n-day exploits, proactively detect patterns of bot and fraud attacks, review false positive and false negative reports, and recommend security configurations.</li>
-	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences. Including writing public facing research blogs.</li>
-	<li>Authoring periodic report on trends on Internet traffic and security attack insights</li>
-	<li>Experience with modern cloud-based technologies used to deliver rapidly-changing products at scale.</li>
-	<li>Conduct penetration testing to identify security gaps and potential exploits across applications and services.</li>
-	<li>Develop, maintain, and enhance security dashboards to monitor and analyze attack trends, bot activity, and fraud detection metrics.</li>
-	<li>Leverage strong coding skills to build and automate security tools, improve system engineering workflows, and develop new security rules and heuristics.</li>
+	<li>Motivated by cultivating company culture, building great businesses and helping people do their best work, you have served on a People/ HR team for 12+ years of experience, 5+ of which have been as a senior business partner.</li>
+	<li>You have a successful history of developing strong relationships and operating effectively through virtual support and in a distributed environment.</li>
+	<li>You have an entrepreneurial spirit, are always looking for ways to innovate, improve and operate independently.</li>
+	<li>You think of and present solutions and don’t get bogged down by problems, rather perceive them as opportunities.</li>
+	<li>You have participated in large-scale change initiatives and have a few stories about leading a few. You know what complexity looks like and are able to navigate through it to get things across the finish line.</li>
+	<li>You have a keen business acumen and a track record of partnering closely with business leaders. You can articulate how People teams bring value to an organization and are able to quickly develop the business case for People Team initiatives.</li>
+	<li>You have built at least one scalable program from the ground up and have a demonstrated history of building relationships and credibility across all levels of an organization.</li>
+	<li>You are an influencer that leads with empathy. Others have described you as skilled in implementing workforce plans, leveraging subject matter experts and your network to enable programmatic solutions in talent management, workforce planning - think ideation to action on engagement surveys, organizational design, as two examples.</li>
+	<li>You are a skillful communicator, verbally in small and large groups, as well as written through emails and presentations. Your super strength, especially when the message may be difficult, is face-to-face.</li>
+	<li>You are generous with your time and earn and maintain the trust that people place with you.</li>
+	<li>Uncompromising when it comes to your integrity, you speak truth, act with respect and lead with dignity.</li>
+	<li>You love working with people - you maybe secretly love working with spreadsheets too!</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
-<ul>
-	<li>A degree in computer science, IT, systems engineering, or related qualification.</li>
-	<li>4 years of work experience with incident detection, incident response, forensics, reverse engineering, security research or similar.</li>
-	<li>Ability to work under pressure in a fast-paced environment.</li>
-	<li>Strong attention to detail with an analytical mind and outstanding problem-solving skills. Excellent organizational skills.</li>
-	<li>Great awareness of cybersecurity trends and hacking techniques.</li>
-	<li>Demonstrated results in identifying, tracking and resolving issues to resolution in the areas of cybersecurity.</li>
-	<li>Strong written and verbal communication skills.</li>
-	<li>Experience in OWASP, security standards and best practice</li>
-	<li>Strong SQL experience.</li>
-	<li>Proficiency in penetration testing methodologies, tools, and vulnerability assessment techniques.</li>
-	<li>Experience in building security dashboards using tools like Grafana or similar visualization platforms.</li>
-	<li>Strong programming experience with expertise in Python, Go, Rust, or JavaScript to develop security tools and automation.</li>
-	<li>Prior experience or interest in Web Security, HTTP protocols, Python, Jupyter Notebook, and JavaScript is a huge plus!</li>
-	<li>Knowledge and experience with machine learning, statistical inference, and AI in general is a huge plus</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Knowledge and experience with columnar database like Clickhouse</li>
-	<li>Familiarity writing and optimizing advanced SQL queries</li>
-	<li>Good Linux/UNIX systems knowledge</li>
-	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
-</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
