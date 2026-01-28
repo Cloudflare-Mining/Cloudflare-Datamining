@@ -5,47 +5,23 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Lisbon, Portugal</p>
-<p><strong>About the role</strong></p>
-<p>Cloudflare is seeking a curious and user-focused <strong>Product Manager Interns</strong> to join our team. You will contribute to building innovative products and services that help build a better Internet. Our interns are at the core of this mission, developing foundational technologies that impact millions of users globally.</p>
-<p><strong>What You'll Do</strong></p>
-<p>As a Product Manager Intern, you will be the voice of the user. You will own a project focused on improving products, user experience and contributing to the development of our offerings. Your responsibilities will include:</p>
+<p><strong>Available location(s): Austin, US</strong></p>
+<p>Cloudflare’s Hardware team is looking for interns to work on our upcoming ARM servers and GPU / AI servers. The interns will gain experience with testing enterprise hardware, managing a production server fleet, and working in cloud data centers.</p>
+<p>An ideal intern candidate for the Hardware Team would be interested in the following:</p>
 <ul>
-	<li><strong>Define the Future:</strong> Conduct user research and competitive analysis to understand user needs and market trends. You'll identify pain points and opportunities to make our tools best-in-class.</li>
-	<li><strong>Collaborate to Build:</strong> Work hand-in-hand with product, engineering and design counterparts and senior members of the engineering and product team to bring your vision to life, ensuring features are built to spec and meet user expectations or the getting things done to solve hard problems at scale.</li>
-	<li><strong>Drive for Impact:</strong> You will help define success metrics and be responsible for making sure the features you launch are not only technically sound but also solve real-world problems for our users</li>
-	<li><strong>Solve problems:</strong> Identify, analyze, and strategically address complex challenges, transforming them into opportunities for innovation and growth. This involves not only reactive problem-solving but also proactive identification of potential issues and the development of preventative measures. Effective problem-solving requires a deep understanding of user needs, market dynamics, and technological capabilities, allowing for the creation of solutions that are both feasible and impactful.</li>
+	<li>Learning how to qualify and manage enterprise hardware in a lab and production environment</li>
+	<li>Learning how enterprise data centers are architected</li>
+	<li>Converting knowledge gained through coursework into tools used by Cloudflare’s Hardware Team or its adjacent teams</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 2-5 days a week in Austin, TX.</li>
 </ul>
-<p><strong>Who We're Looking For</strong></p>
-<p>We are looking for talented and ambitious students who are passionate about building products that users love. Cloudflare believes in the vital source of talent, new energy, and ideas that interns bring, especially as we stand at the cusp of the AI technological revolution.</p>
-<p><strong>Ideal Qualifications:</strong></p>
+<p>An ideal intern candidate for the Hardware Team would possess the following skills:</p>
 <ul>
-	<li>Currently pursuing a degree (Bachelor's or Master's) in Business, Computer Science, Human-Computer Interaction, or a related field.</li>
-	<li>A strong passion for technology and understanding user needs.</li>
-	<li>Technical literacy, with the ability to read and understand code (e.g., JavaScript, Python, Go or Rust) and empathize with developer workflows.</li>
-	<li>A solid understanding of networking concepts (e.g., TCP/IP, HTTP, DNS) is a plus.</li>
-	<li>Excellent written and verbal communication skills, with an ability to articulate complex concepts to both technical and non-technical audiences.</li>
-	<li>Strong analytical, problem-solving, and organizational skills.</li>
-	<li>The ability to thrive in a fast-paced, collaborative environment.</li>
-</ul>
-<p><strong>Bonus Points:</strong></p>
-<ul>
-	<li>Hands-on experience with developer tools like Git, and personal or open-source projects that demonstrate an interest in software development.</li>
-	<li>Familiarity with command-line tools and the developer workflow.</li>
-	<li>Previous experience writing product specifications or conducting user research.</li>
-	<li>Knowledge of security or Zero Trust concepts.</li>
-	<li>Experience with competitor products or other developer-focused tools.</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>Excellent communication skills with the ability to engage with both external partners and internal teams.</li>
-	<li>A self-starter who is comfortable with ambiguity and eager to take initiative.</li>
-	<li>Ability to commit to a full-time 12 week internship</li>
-	<li>In office 3-4 days a week in-office in Lisbon, Portugal</li>
-</ul>
-<p><strong>Please note:</strong></p>
-<ul>
-	<li>We will be hiring interns through the fall and early spring on a rolling basis until all roles are filled.</li>
+	<li>Exposure to compute hardware architecture (x86 or ARM)</li>
+	<li>Experience with machine learning, neural networks (preferably hands-on)</li>
+	<li>Experience with GPUs for training and inference</li>
+	<li>Experience with version control systems (git, mercurial, or similar)</li>
+	<li>Experience with Linux command line (file manipulation, text editing, etc)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

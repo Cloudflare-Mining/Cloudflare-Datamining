@@ -5,57 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Washington DC or Austin TX</strong></p>
-<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
-<p><strong>What you'll do</strong></p>
-<p>As a Software Engineer: Resiliency, you will be part of a Resiliency Organization responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. We are looking for engineers to join the <strong>Maintenance Optimizer</strong> team and shape the future of infrastructure reliability. We're building a cutting-edge Maintenance Coordination System in Typescript &amp; Go that will be pivotal in guaranteeing our service level capacity, dynamically allocating hardware resources, and supporting our critical capacity SLOs. This is a unique opportunity to work on complex, globally distributed systems which underpin core infrastructure and all Cloudflare products. We ensure the seamless operation of our global network. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
-<p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
-<p>Technologies we use:</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<h4><strong>About the Deal Desk Team</strong></h4>
+<p>The Deal Desk team is a critical component of the Finance function, acting as a strategic partner to the global Sales organization. We are responsible for partnering with sales to structure, negotiate and close complex deals. We ensure that deals meet the requirements of "good business" (profitability, compliance, simplicity, ease of execution, scalability) while also keeping our customers’ best interest in mind. We are committed to leveraging technology and automation to improve our processes and provide a competitive advantage. We collaborate closely with Sales, Legal, and Operations to deliver innovative and effective deal structures that meet our customers' needs and align with our business and financial objectives.</p>
+<p><strong>What you’ll do</strong></p>
+<p>As a Deal Desk Manager, you will play a pivotal role in our sales process, from initial deal scoping to final contract execution. Your primary responsibilities will include:</p>
 <ul>
-	<li>Cloudflare Workers, Workers KV, R2, and Durable Objects</li>
-	<li>Kubernetes</li>
-	<li>Go, Typescript, Python</li>
-	<li>For service monitoring we use Prometheus, Grafana and Sentry</li>
+	<li><strong>Deal Structuring &amp; Strategy</strong>: Partner with the sales team to develop winning commercial strategies for complex deals. You'll analyze pricing terms and conditions and perform margin analysis to create proposals that are competitive and financially sound.&nbsp;</li>
+	<li><strong>Negotiation Support</strong>: Advise and support the sales team during customer negotiations, providing guidance on pricing, terms, and alternative deal structures to protect margin and profitability.</li>
+	<li><strong>Process Automation &amp; Improvement</strong>: Identify and champion opportunities to leverage AI and automation to streamline deal processes, from initial quote generation to final contract approval. You will actively look for ways to make the deal desk more efficient and data-driven.</li>
+	<li><strong>Training &amp; Enablement</strong>: Educate the sales organization on best practices for deal structuring, pricing, and our GTM policies from a financial and business compliance perspective. You will be a subject matter expert and a go-to resource for the sales team, including how new tools and automation can help them.</li>
+	<li><strong>Reporting &amp; Analysis</strong>: Analyze deal performance metrics, identify trends, and provide insights to leadership to improve our pricing strategies and sales processes, with a focus on financial performance and the impact of our automation efforts.</li>
 </ul>
-<p>Because you’ll be<a href="https://blog.cloudflare.com/gateway-swg/"> solving problems of massive scale and significance</a>, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
-<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
-<p>A rough list of the skills we would love to see you bring:</p>
-<ul>
-	<li>A degree in Computer Science, Engineering, Mathematics, Statistics or related field; OR have relevant background/experience to the field.</li>
-	<li>Programming experience in Go, or similar languages</li>
-	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
-	<li>Experience with continuous delivery and deployment of a k8s hosted application</li>
-	<li>​​Understanding of security issues and responsibilities</li>
-	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
-	<li>Fluent in analyses of data sets such as logs</li>
-	<li>Strong English language oral and written communications skills</li>
-	<li>Designing and building APIs</li>
-	<li>Experience with the Cloudflare development stack is a plus</li>
-</ul>
+<p>If you're excited by fast-paced innovation, dedicated to driving global growth, and want to help build a better internet, we’d love to hear from you.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>To succeed in this role, you should be a strategic thinker with a strong financial acumen and the ability to thrive in a fast-paced, technology-driven environment.</p>
 <ul>
-	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
-	<li>Experience building both backend systems and frontend widgets.</li>
-	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
-	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
-	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
-	<li>Strong verbal and written English language skills.</li>
-	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus.</li>
-	<li>Experience with data ingestion and analysis - pulling metrics from hundreds of edge data centers.</li>
-	<li>Experience with graph theory - building a health graph on one of the world's largest physical networks.</li>
+	<li>Experience: You have 6-8 years of professional experience across Deal Desk, Financial Planning &amp; Analysis (FP&amp;A), Revenue Operations, or a similar role, preferably in a SaaS or technology company; 3+ years of deal desk experience is preferred.&nbsp;</li>
+	<li>Financial &amp; Sales Acumen: A solid understanding of SaaS metrics, pricing models, and financial concepts like ARR (Annual Recurring Revenue), Gross Margin, churn, and profitability. Experience with revenue recognition principles (e.g., ASC 606) is highly desirable. Experience selling software is a bonus.&nbsp;</li>
+	<li>Contract &amp; Pricing Knowledge: Experience with drafting and interpreting commercial contracts, with a focus on terms that impact revenue recognition and financial risk. You also have a solid understanding of SaaS pricing models and therefore are able to &nbsp; analyze &amp; recommend the best course of action for complex pricing &amp; licensing situations.</li>
+	<li>Analytical Skills: You can analyze complex data and use it to inform decisions and recommendations. Proficiency with data analysis tools (like Microsoft Excel or SQL) and experience building complex models is highly desirable.&nbsp;</li>
+	<li>Process Automation Mindset: A genuine interest in and an eye for how AI and automation can improve business processes. Experience with or a desire to learn about tools for process automation, business intelligence (e.g., Tableau, Power BI), or AI-powered solutions is a significant plus.</li>
+	<li>Communication &amp; Collaboration: Excellent communication and interpersonal skills. You can build strong relationships with a diverse group of stakeholders and clearly explain complex financial and policy topics, including new technologies, to non-finance teams.</li>
+	<li>Problem-Solving: You can identify challenges and opportunities and propose creative, effective solutions that balance business needs with financial goals and leverage technology to do so.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $140,000 - 172,000.</span></li>
-</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
@@ -79,6 +58,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

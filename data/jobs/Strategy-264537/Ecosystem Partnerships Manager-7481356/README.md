@@ -21,10 +21,11 @@
 <h3 data-path-to-node="8">Who You Are</h3>
 <ul>
 	<li data-path-to-node="9,0,0"><strong data-path-to-node="9,0,0" data-index-in-node="0">Expert Partner Leader:</strong> You bring extensive experience (typically 8+ years) in AI ecosystems, partnerships, or business development, with a proven track record of signing and scaling high-profile providers.</li>
-	<li data-path-to-node="9,1,0"><strong data-path-to-node="9,1,0" data-index-in-node="0">Technically Fluent:</strong> You are deeply comfortable discussing APIs, tokens, context windows, throughput, and GPU performance tradeoffs. You can hold your own in technical discussions with engineers and legal discussions with counsel.</li>
+	<li data-path-to-node="9,1,0"><strong data-path-to-node="9,1,0" data-index-in-node="0">Technically Fluent:</strong> Previous product management, engineering, or equivalent technical experience required.&nbsp; You are deeply comfortable discussing APIs, tokens, context windows, throughput, and GPU performance tradeoffs. You can hold your own in technical discussions with engineers and legal discussions with counsel.</li>
 	<li data-path-to-node="9,2,0"><strong data-path-to-node="9,2,0" data-index-in-node="0">Strategic &amp; Pragmatic:</strong> You possess strong product intuition and can distinguish between hype and sustainable value, making hard prioritization decisions based on quality and cost.</li>
 	<li data-path-to-node="9,3,0"><strong data-path-to-node="9,3,0" data-index-in-node="0">Action-Oriented:</strong> You have a strong bias for action, moving quickly and operating independently even in highly ambiguous environments.</li>
 	<li data-path-to-node="9,4,0"><strong data-path-to-node="9,4,0" data-index-in-node="0">Exceptional Communicator:</strong> You are a clear writer and an effective negotiator who remains calm during escalations and builds trust across diverse functional teams.</li>
+	<li data-path-to-node="9,4,0">&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
