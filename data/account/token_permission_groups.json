@@ -2168,6 +2168,22 @@
 		]
 	},
 	{
+		"id": "18ac4526dc844013a799d8406a0ebb12",
+		"name": "Tag Read",
+		"description": "Grants access to reading resource tags",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "0224cdb141684f0f9760ed0be83b6766",
+		"name": "Tag Write",
+		"description": "Grants access to reading and editing resource tags",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "a9a99455bf3245f6a5a244f909d74830",
 		"name": "Transform Rules Read",
 		"description": "Grants read access to transform rules",
