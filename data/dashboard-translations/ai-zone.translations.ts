@@ -274,7 +274,11 @@
 			description: "View AI operators that refer traffic to your site, ranked by total requests and top referring domains.",
 			no_referral_data: "No referral data available",
 			others: "Others",
-			referrals: "referrals"
+			referrals: "referrals",
+			tabs: {
+				destination: "Referral destination",
+				source: "Referral source"
+			}
 		},
 		referrals_over_time_chart: {
 			title: "Referrals over time",
