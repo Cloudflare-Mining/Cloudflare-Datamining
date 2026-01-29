@@ -5,53 +5,57 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Dallas, San Antonio, Houston TX</strong></p>
-<p><strong>About the role</strong></p>
-<p>We are seeking a highly motivated and detail-oriented Procurement Digital &amp; Analytics Manager to be the engine of our Procurement Excellence function. As a foundational member of a growing team, you will partner directly with the Director to execute a high-impact portfolio of projects spanning system deployments, data analytics, change management, and governance.</p>
-<p>This role demands a proactive and operational mindset. The ideal candidate will possess a strong sense of urgency, a customer-centric focus, and concrete experience using coding or AI technologies to build robust automation. Your expertise will be directly applied to identifying and eliminating recurrent manual tasks and driving significant process improvements across our procurement landscape. As a builder and an operator, your work will directly protect annual savings, reduce manual reporting, and accelerate our digital transformation journey.</p>
-<p>If you thrive in a fast-paced environment and are passionate about using technology and data to solve complex problems, this is the perfect opportunity to make a tangible impact.</p>
-<p><strong>What you'll do</strong></p>
-<h4><strong>Program &amp; Project Management (PMO):</strong></h4>
-<ul>
-	<li>Manage the end-to-end lifecycle of global deployments for our procurement platforms, including sprint prioritization, user acceptance testing (UAT), and governance reviews.</li>
-	<li>Provide critical "hypercare" support during go-live periods to ensure a smooth transition and rapid user adoption.</li>
-	<li>Own and maintain core PMO artifacts, including RAID (Risks, Assumptions, Issues, Dependencies) logs, project plans, and decision trackers.</li>
-	<li>Prepare and contribute to materials for high-visibility forums, including Steering Committees and Quarterly Business Reviews (QBRs).</li>
-</ul>
-<p><strong>Analytics &amp; Reporting:</strong></p>
-<ul>
-	<li>Develop, maintain, and enhance key dashboards for Spend Under Management (SUM), savings pipeline tracking, and operational SLA adherence.</li>
-	<li>Perform data cleansing, consolidation, and analysis from various sources to generate actionable insights and prepare executive-level reports.</li>
-	<li>Leverage tools like Celonis and Alteryx to conduct process mining, identify bottlenecks, and recommend data-driven improvements.</li>
-</ul>
-<p><strong> Digital Transformation &amp; Technology Enablement:</strong></p>
-<ul>
-	<li>Become a subject matter expert on our procurement tech stack to identify underutilized features and drive ROI.</li>
-	<li>Support the evaluation and implementation of new technologies, including AI-driven solutions for contract review, spend analytics, and supplier insights.</li>
-</ul>
-<p><strong> Communications &amp; Change Management:</strong></p>
-<ul>
-	<li>Develop and maintain a library of training and enablement resources, including user guides, wikis, and onboarding materials.</li>
-	<li>Execute change management campaigns and deliver training sessions to drive adoption of new systems and policies across a global user base.</li>
-	<li>Manage communication channels to keep stakeholders informed and gather feedback for continuous improvement.</li>
-</ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li>5+ years of experience in procurement, finance operations, program management, or a related analytical field.</li>
-	<li>Proven success managing complex, cross-functional technology projects from start to finish.</li>
-	<li>Strong analytical mindset with advanced proficiency in Excel and hands-on experience with BI/visualization tools (Tableau, Power BI, etc.).</li>
-	<li>Exceptional organizational skills and a proactive sense of ownership, with a keen eye for detail.</li>
-	<li>Excellent communication and stakeholder management skills, with the ability to collaborate and influence effectively across all levels.</li>
-	<li>A natural problem-solver who is adaptable and thrives in a fast-paced, dynamic environment.</li>
-</ul>
-<h4><strong>Skills That Will Make You Stand Out</strong></h4>
-<ul>
-	<li>Direct experience with procurement platforms (Zip, Coupa) or our tech stack (Ironclad, Celonis, Tableau).</li>
-	<li>Deep understanding of the end-to-end Procure-to-Pay (P2P) lifecycle.</li>
-	<li>Experience with large-scale ERP systems like Oracle or SAP.</li>
-	<li>Project or change management certifications (PMP, Prosci, Agile/Scrum).</li>
-</ul>
+<p><strong>Available Locations: Austin, Texas</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
+<p><strong>About the role:</strong></p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 300 cities spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operations, engineering and architecture of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
 <p>&nbsp;</p>
+<p><strong>Requirements</strong>:</p>
+<ul>
+	<li>Experience working in large scale network engineering environments</li>
+	<li>Experience working with automation frameworks such as SaltStack and/or Ansible</li>
+	<li>Experience solving problems through automation</li>
+	<li>Experience with BGP and anycast routing</li>
+	<li>Understanding of MPLS and Segment Routing&nbsp;</li>
+	<li>Optimize end user experience by architecting the network to lower latency, packet loss, and jitter while increasing scale</li>
+	<li>Proficient in multiple vendor operating systems</li>
+	<li>Experience writing network configuration and design documentation</li>
+	<li>Ability to prioritize when faced with high pressure scenarios</li>
+</ul>
+<p><strong>Bonus Points but not required:</strong></p>
+<ul>
+	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
+	<li>Professional level network certification(s) (JNCIP , CCNP , etc) or higher</li>
+	<li>Linux system administration</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
