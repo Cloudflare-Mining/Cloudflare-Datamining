@@ -97,10 +97,11 @@ These attributes are available on all components:
 
 Additional attributes for `<search-bar-snippet>` and `<search-modal-snippet>`:
 
-| Attribute     | Type   | Default | Description                          |
-| ------------- | ------ | ------- | ------------------------------------ |
-| `max-results` | number | `10`    | Maximum search results to display    |
-| `debounce-ms` | number | `300`   | Input debounce delay in milliseconds |
+| Attribute     | Type    | Default | Description                          |
+| ------------- | ------- | ------- | ------------------------------------ |
+| `max-results` | number  | `10`    | Maximum search results to display    |
+| `debounce-ms` | number  | `300`   | Input debounce delay in milliseconds |
+| `show-url`    | boolean | `false` | Show URL in search results           |
 
 ### Modal-Specific Attributes
 
