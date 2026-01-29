@@ -2059,7 +2059,7 @@ export interface Request<
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/signal)
    */
   signal: AbortSignal;
-  cf: Cf | undefined;
+  cf?: Cf;
   /**
    * The **`integrity`** read-only property of the Request interface contains the subresource integrity value of the request.
    *
@@ -11788,6 +11788,15 @@ export declare namespace TailStream {
     readonly level: "debug" | "error" | "info" | "log" | "warn";
     readonly message: object;
   }
+  interface DroppedEventsDiagnostic {
+    readonly diagnosticsType: "droppedEvents";
+    readonly count: number;
+  }
+  interface StreamDiagnostic {
+    readonly type: "streamDiagnostic";
+    // To add new diagnostic types, define a new interface and add it to this union type.
+    readonly diagnostic: DroppedEventsDiagnostic;
+  }
   // This marks the worker handler return information.
   // This is separate from Outcome because the worker invocation can live for a long time after
   // returning. For example - Websockets that return an http upgrade response but then continue
@@ -11820,6 +11829,7 @@ export declare namespace TailStream {
     | DiagnosticChannelEvent
     | Exception
     | Log
+    | StreamDiagnostic
     | Return
     | Attributes;
   // Context in which this trace event lives.
