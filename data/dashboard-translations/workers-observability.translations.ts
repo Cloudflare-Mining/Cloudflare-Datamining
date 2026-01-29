@@ -369,6 +369,14 @@
 			dismissButton: "Review later"
 		}
 	},
+	disabled: {
+		title: "Workers Observability is Disabled",
+		description: "Enable Workers Observability to get insights into your Workers performance and behavior.",
+		enableButton: "Enable Observability",
+		containers: {
+			dialogTitle: "Enable Container Logs"
+		}
+	},
 	keyboardShortcuts: {
 		title: "Keyboard shortcuts",
 		toggleQueryBuilder: "Toggle query builder",

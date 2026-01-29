@@ -1,10 +1,4 @@
 {
-	support: {
-		contact_support: "Contact Support",
-		billing_profile_problem: "For security reasons, there is a problem with your billing profile.",
-		support_portal: "Refer to our <0>Support Portal</0> for assistance.",
-		support_code: "Code: %{code_number}"
-	},
 	address: {
 		billing_address: "Billing address",
 		confirm_modal: {
@@ -16,14 +10,17 @@
 		optional: "(optional)"
 	},
 	common: {
+		activate: "Activate",
 		activate_product: "Activate %{name}",
 		back: "Back",
 		cancel: "Cancel",
+		card: "Card",
 		checkout: "Checkout",
 		close: "Close",
 		close_error_message: "Close error message",
 		continue: "Continue",
 		divider_label: "OR",
+		exit_checkout: "Exit checkout",
 		go_back: "Go back",
 		loading: "Loading",
 		month: "month",
@@ -31,6 +28,7 @@
 		order_summary: "Order summary",
 		please_check_payment_info: "Please check your payment information",
 		purchase: "Purchase",
+		session_expired: "Session Expired",
 		total: "Total",
 		unauthorized: "Unauthorized",
 		usage_based: "Usage based",
@@ -39,15 +37,20 @@
 	checkout: {
 		exit: {
 			button: "Exit",
-			title: "Exit checkout",
 			confirm: "Yes, exit checkout",
 			cancel: "No, stay here",
 			warning: "You are about to exit checkout. Your order will not be saved. Are you sure you want to do this?"
 		},
 		summary: {
+			due_today: "Due today",
 			plus_taxes: "Plus any applicable taxes and fees listed on your invoice, including state taxes, local taxes, VAT and GST.",
-			price_per_month: "%{price} per month",
-			price_per_year: "%{price} per year"
+			base_fee_charged_today_usage_monthly: "Base fee charged today. Additional usage beyond included allowance billed monthly.",
+			charged_monthly_for_usage: "Your account will only be charged for usage beyond the included free tier. Billing is calculated monthly based on actual usage.",
+			price_month: "%{price}/month",
+			price_year: "%{price}/year",
+			price_per_month: "%{price} / month",
+			price_per_year: "%{price} / year",
+			view_details: "View details"
 		}
 	},
 	error: {
@@ -130,17 +133,10 @@
 	item: {
 		price: "%{price}",
 		price_included: "Included",
-		price_per_month: "%{price} per month",
-		price_per_year: "%{price} per year",
+		price_per_month: "%{price} / month",
+		price_per_year: "%{price} / year",
 		usage: {
 			after_plan_limits_exceeded: "After plan limits are exceeded:"
-		}
-	},
-	layout: {
-		session_expired: {
-			order_summary: "Order Summary",
-			return_dashboard: "Return to the <0>dashboard</0> or refer to our <1>Support Portal</1> for assistance.",
-			title: "Session Expired"
 		}
 	},
 	page_title: {
@@ -162,6 +158,7 @@
 			ending_in_expires: "Card ending in <0>%{last_four}</0> — expires %{month_year}",
 			primary: "Primary"
 		},
+		edit_payment_method: "Use a different payment",
 		payment_cancelled: "Payment cancelled by customer.",
 		payment_method: "Payment method",
 		secure_billing: "Secure billing"
@@ -191,5 +188,11 @@
 		saved_cards: "Saved cards",
 		select_saved_card: "Select a saved card",
 		thank_you: "Thank you for your purchase! The subscription is active and you can begin using the service."
+	},
+	support: {
+		contact_support: "Contact Support",
+		billing_profile_problem: "For security reasons, there is a problem with your billing profile.",
+		support_portal: "Refer to our <0>Support Portal</0> for assistance.",
+		support_code: "Code: %{code_number}"
 	}
 }

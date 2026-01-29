@@ -6,7 +6,8 @@
 				no_connections: {
 					heading: "Git repository",
 					github: "GitHub",
-					gitlab: "GitLab"
+					gitlab: "GitLab",
+					gitlab_internal: "Internal GitLab"
 				},
 				connect: {
 					heading: "Git repository"
@@ -238,7 +239,9 @@
 				scm_account: "Git account",
 				scm_account_option_github: "New GitHub Connection",
 				scm_account_option_gitlab: "New GitLab Connection",
-				environment_variables: "Not yet supported"
+				scm_account_option_gitlab_internal: "New Internal GitLab Connection",
+				environment_variables: "Not yet supported",
+				branch_control_disabled: "Branch control is not yet supported for internal GitLab connections."
 			},
 			constraints: {
 				deploy_command: "Deploy command must be between 1 and 512 characters long",

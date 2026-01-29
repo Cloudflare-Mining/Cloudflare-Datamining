@@ -265,9 +265,9 @@
 			description: "Store request and response payloads, including the prompt, response, provider, timestamps, and the status of the request.",
 			limit: {
 				title: "Set log limit",
-				description: (0, i.p)(u()),
+				description: (0, i.p)(d()),
 				note: "New logs outside of the set limit will not be stored",
-				limits: (0, i.p)(d()),
+				limits: (0, i.p)(u()),
 				resume_label: (0, i.p)(c())
 			},
 			auto_delection: {
@@ -858,7 +858,7 @@
 		alias_label: "Key Alias",
 		alias_placeholder: "Enter a unique alias (e.g., production, development)",
 		alias_description: "A unique identifier for this key. Cannot be changed after creation.",
-		alias_tooltip: 'The "default" alias is used automatically for all requests to this provider. For other aliases, pass the cf-aig-byok-alias header to specify which key alias to use.',
+		alias_tooltip: 'For non-default aliases, pass the header "cf-aig-byok-alias: <alias_name>" in the request to specify which key alias to use.',
 		alias_required: "Alias is required",
 		alias_duplicate: "This alias already exists for this provider",
 		alias_invalid: "Alias can only contain letters, numbers, hyphens, and underscores",
@@ -871,7 +871,7 @@
 		azure_openai: {
 			resource_name: "Resource Name",
 			resource_name_placeholder: "Enter your Azure OpenAI resource name",
-			resource_name_description: "Optional. The name of your Azure OpenAI resource."
+			resource_name_description: "Optional"
 		},
 		aws_bedrock: {
 			bedrock_api_key: "Bedrock API Key"

@@ -688,7 +688,8 @@
 			renews_at: "Renews at:",
 			restore_fee: "Restore fee:",
 			empty_title: "No domains ready for transfer",
-			empty_description: "Please check below to review and prepare your domains for transfer."
+			empty_description: "Please check below to review and prepare your domains for transfer.",
+			ca_domain_subtext: "Domains ending in .ca need to be transferred on their own"
 		},
 		not_available_for_transfer_table: {
 			title: "Not available for transfer",
@@ -1304,5 +1305,11 @@
 			exceptions_item_2: "The transfer occurs in the 45-day window following expiration.",
 			exceptions_item_3: "The domain is nearing the 10-year maximum registration limit."
 		}
+	},
+	transfer_domains_footer: {
+		navigation_label: "Domain transfer steps",
+		step_indicator: (0, o.p)(ei(), "currentStep", "totalSteps"),
+		subtotal: "Subtotal (Before tax)",
+		submit_button: "Continue with %{smart_count} domain |||| Continue with %{smart_count} domains"
 	}
 }

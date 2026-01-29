@@ -54,6 +54,10 @@
 		graphEmptyState: {
 			title: "This workflow doesn't have a graph yet. Deploy a new version to automatically generate a workflow graph."
 		},
+		diagram: {
+			expand: "Expand diagram",
+			collapse: "Collapse diagram"
+		},
 		charts: {
 			cpuTime: {
 				title: "CPU time",
