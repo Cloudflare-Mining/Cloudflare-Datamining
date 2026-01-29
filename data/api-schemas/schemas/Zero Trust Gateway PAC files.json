@@ -1,4 +1,307 @@
 {
+	"DELETE /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
+		"description": "Delete a configured Zero Trust Gateway PAC file.",
+		"operationId": "zero-trust-gateway-pacfiles-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "pacfile_id",
+				"required": true,
+				"schema": {
+					"example": "ed35569b41ce4d1facfe683550f54086",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a deleted PAC file response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a deleted PAC file response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete a PAC file",
+		"tags": [
+			"Zero Trust Gateway PAC files"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
 	"GET /accounts/{account_id}/gateway/pacfiles": {
 		"description": "List all Zero Trust Gateway PAC files for an account.",
 		"operationId": "zero-trust-gateway-pacfiles-list",
@@ -447,6 +750,410 @@
 			"Zero Trust Write"
 		]
 	},
+	"GET /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
+		"description": "Get a single Zero Trust Gateway PAC file.",
+		"operationId": "zero-trust-gateway-pacfiles-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "pacfile_id",
+				"required": true,
+				"schema": {
+					"example": "ed35569b41ce4d1facfe683550f54086",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"contents": {
+													"description": "Actual contents of the PAC file",
+													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "Detailed description of the PAC file.",
+													"example": "PAC file for Devops team",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"example": "ed35569b41ce4d1facfe683550f54086",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Name of the PAC file.",
+													"example": "Devops team",
+													"type": "string",
+													"x-auditable": true
+												},
+												"slug": {
+													"description": "URL-friendly version of the PAC file name.",
+													"example": "pac_devops",
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"url": {
+													"description": "Unique URL to download the PAC file.",
+													"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a PAC file response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"contents": {
+															"description": "Actual contents of the PAC file",
+															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
+															"type": "string",
+															"x-auditable": true
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "Detailed description of the PAC file.",
+															"example": "PAC file for Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Name of the PAC file.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"slug": {
+															"description": "URL-friendly version of the PAC file name.",
+															"example": "pac_devops",
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"url": {
+															"description": "Unique URL to download the PAC file.",
+															"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a PAC file response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get a PAC file",
+		"tags": [
+			"Zero Trust Gateway PAC files"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
 	"POST /accounts/{account_id}/gateway/pacfiles": {
 		"description": "Create a new Zero Trust Gateway PAC file.",
 		"operationId": "zero-trust-gateway-pacfiles-create-pacfile",
@@ -873,6 +1580,444 @@
 			}
 		],
 		"summary": "Create a PAC file",
+		"tags": [
+			"Zero Trust Gateway PAC files"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	},
+	"PUT /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
+		"description": "Update a configured Zero Trust Gateway PAC file.",
+		"operationId": "zero-trust-gateway-pacfiles-update",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "pacfile_id",
+				"required": true,
+				"schema": {
+					"example": "ed35569b41ce4d1facfe683550f54086",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"contents": {
+								"description": "Actual contents of the PAC file",
+								"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
+								"type": "string",
+								"x-auditable": true
+							},
+							"description": {
+								"description": "Detailed description of the PAC file.",
+								"example": "PAC file for Devops team",
+								"type": "string",
+								"x-auditable": true
+							},
+							"name": {
+								"description": "Name of the PAC file.",
+								"example": "Devops team",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"name",
+							"description",
+							"contents"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Indicate whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"contents": {
+													"description": "Actual contents of the PAC file",
+													"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
+													"type": "string",
+													"x-auditable": true
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "Detailed description of the PAC file.",
+													"example": "PAC file for Devops team",
+													"type": "string",
+													"x-auditable": true
+												},
+												"id": {
+													"example": "ed35569b41ce4d1facfe683550f54086",
+													"type": "string",
+													"x-auditable": true
+												},
+												"name": {
+													"description": "Name of the PAC file.",
+													"example": "Devops team",
+													"type": "string",
+													"x-auditable": true
+												},
+												"slug": {
+													"description": "URL-friendly version of the PAC file name.",
+													"example": "pac_devops",
+													"type": "string",
+													"x-auditable": true
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"url": {
+													"description": "Unique URL to download the PAC file.",
+													"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a Zero Trust Gateway PAC file response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"success": {
+															"description": "Indicate whether the API call was successful.",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"contents": {
+															"description": "Actual contents of the PAC file",
+															"example": "function FindProxyForURL(url, host) { return \"DIRECT\"; }",
+															"type": "string",
+															"x-auditable": true
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "Detailed description of the PAC file.",
+															"example": "PAC file for Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"id": {
+															"example": "ed35569b41ce4d1facfe683550f54086",
+															"type": "string",
+															"x-auditable": true
+														},
+														"name": {
+															"description": "Name of the PAC file.",
+															"example": "Devops team",
+															"type": "string",
+															"x-auditable": true
+														},
+														"slug": {
+															"description": "URL-friendly version of the PAC file name.",
+															"example": "pac_devops",
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"url": {
+															"description": "Unique URL to download the PAC file.",
+															"example": "https://pac.cloudflare-gateway.com/699d98642c564d2e855e9661899b7252/pac_devops",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1,
+											"type": "object"
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [],
+											"type": "object"
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Indicate whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update a Zero Trust Gateway PAC file response failure."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update a Zero Trust Gateway PAC file",
 		"tags": [
 			"Zero Trust Gateway PAC files"
 		],
