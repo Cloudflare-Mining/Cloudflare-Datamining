@@ -5,37 +5,53 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal</strong></p>
-<p><strong>About the team</strong></p>
-<p>You will be part of the Radar team within Cloudflare’s ETI Engineering department. Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
-<p><strong>About the role</strong></p>
-<p>We are looking for an experienced Data and Analytics Engineer to join our team to scale our data insights initiatives. You will work with a wide array of data sources about network traffic, performance, and reliability. You’ll be responsible for building data pipelines, doing ad-hoc analytics based on the data, and automating our analysis. Important projects include understanding Internet trends and insights based on data produced by Cloudflare’s broad product portfolio.</p>
-<p>A candidate will be successful in this role if they’re flexible and able to match the right solution to the right problem and work at multiple levels of the stack. Flexibility is key. Cloudflare is a fast-paced environment and requirements change frequently.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>Back in 2014, Cloudflare launched Universal SSL to provide all of our customers with the security of encrypted traffic between visitors and Cloudflare’s network. On the day we flipped the switch, we doubled the amount of sites using SSL/TLS on the internet. Since then, we’ve been working on providing even more ways to encrypt traffic easier and more effectively. To better serve our customers, we’re constantly improving our systems for issuing, managing, and deploying TLS certificates. By joining Cloudflare’s SSL/TLS Team, you can help ensure that every site owner has the ability to provide their users with a secure connection.</p>
+<p>Your code will help ensure millions of websites have access to encryption. As such, the results of your code will be felt by millions of site owners and billions of visitors every day. We’re continuously providing technology to site owners that was previously only available to the largest organizations. Your contributions will help make the web a faster, safer, better, and more heavily encrypted place.</p>
+<p>Cloudflare is looking for a Systems Engineer to help us build services with RESTful APIs and their own datastores using Go and other languages. You will also write and maintain functional specifications for your service, so others know how it works. In this role you will integrate multiple services via message queue systems and evaluate 3rd party and open source tools. You will design and implement alerts, write procedures for ops to handle such alerts, or serve as an escalation point for unresolved operational issues. You will also need to read and understand code from a legacy codebase to migrate logic to a modern services architecture and review the code of fellow engineers via pull requests.&nbsp; We strive to build reliable, fault-tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
-	<li>Work closely with other product and engineering teams to ensure our products and services collect the right data for our analytics;</li>
-	<li>Extract, clean, and analyze complex datasets from various sources;</li>
-	<li>Design,implement and maintain data pipelines (ETL's) that take unprocessed data and make it usable for advanced analytics;</li>
-	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale;</li>
-	<li>Build tooling, automation, and visualizations around our analytics for consumption by other Cloudflare teams.</li>
+	<li>3+ years of professional experience building backend systems at a technology company</li>
+	<li>Experience writing production-quality code in Go (or other languages with a willingness to learn Go)</li>
+	<li>Proven experience building and operating distributed systems</li>
+	<li>Proficiency with modern Unix/Linux development and runtime environments</li>
+	<li>Strong debugging and troubleshooting skills with attention to detail</li>
+	<li>Track record of delivering well-tested, reliable code for production environments</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li>Strong Python and SQL skills;</li>
-	<li>Experience with Linux container environments (Docker, Kubernetes);</li>
-	<li>Understanding of modern software development lifecycles, including CI/CD;</li>
-	<li>High-level understanding of networking and most common Internet protocols;</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design (e.g. B.S. or M.S. in Computer Science, Engineering, Mathematics, or related fields);</li>
-	<li>Minimum 3 years of industry experience in software engineering, data engineering, data analysis, or related field;</li>
-	<li>Excellent data analysis skills, with a natural curiosity to query and manipulate data to answer challenging questions;</li>
-	<li>Strong communication and collaboration skills, with a proven ability to partner with cross-functional teams, navigate ambiguous business requirements, and articulate complex data insights to both technical and non-technical audiences with attention to detail.</li>
+	<li>Experience designing and building RESTful APIs and full-stack applications</li>
+	<li>Familiarity with PKI/TLS concepts and certificate management</li>
+	<li>Experience writing technical documentation and specifications</li>
+	<li>Working knowledge of SQL and relational databases such as PostgreSQL</li>
+	<li>Understanding of distributed systems constraints: performance, caching, data storage/retrieval</li>
+	<li>Experience with message queues (Kafka, RabbitMQ, etc)</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Prior knowledge or experience with large-scale analytics databases (e.g. Clickhouse);</li>
-	<li>Working experience with the Go programming language;</li>
-	<li>Experience with server-side JavaScript and/or TypeScript;</li>
-	<li>A keen interest in cybersecurity-related topics and global technology trends.</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
