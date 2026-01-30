@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/ddos/glossary/hypertext-transfer-protocol-http/",
+	"path": "/learning/ddos/glossary/aisuru-kimwolf-botnet/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "cKz1Z2SJrqdn0ZFwOnDXx",
-				"urlSlug": "ddos/glossary/hypertext-transfer-protocol-http",
+				"contentfulId": "6MbnVgSuYoH3OxH4ho2AV8",
+				"urlSlug": "ddos/glossary/aisuru-kimwolf-botnet",
 				"metaTags": {
-					"metaTitle": "What is HTTP?",
-					"metaDescription": "Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load web pages using hypertext links. Learn more about HTTP.",
+					"metaTitle": "What is the Aisuru-Kimwolf botnet?",
+					"metaDescription": "The Aisuru-Kimwolf botnet is a network of malware-infected devices that launches hyper-volumetric DDoS attacks. Learn how the Aisuru-Kimwolf botnet works.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -19,8 +19,8 @@
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "What is HTTP?",
-				"metaDescription": "Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load web pages using hypertext links. Learn more about HTTP.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "28LvlxvxleYGQ8oAcq8Gc2",
@@ -766,16 +766,34 @@
 						]
 					}
 				},
-				"header": "What is HTTP?",
-				"blurbSubHeader": "The Hypertext Transfer Protocol is used to load pages on the Internet using hyperlinks.",
-				"objectivesHeader": "HTTP",
+				"header": "What is the Aisuru-Kimwolf botnet?",
+				"blurbSubHeader": "The Aisuru-Kimwolf botnet is a large network of malware-compromised devices capable of launching hyper-volumetric DDoS attacks.",
+				"objectivesHeader": "Aisuru-Kimwolf",
 				"objectivesList": [
-					"Define HTTP",
-					"Describe the anatomy of HTTP requests and responses",
-					"Understand how DDoS attacks can be launched over HTTP"
+					"Describe how botnets like Aisuru-Kimwolf function and spread",
+					"Understand the scale of Aisuru-Kimwolf's largest attacks",
+					"Explain how to detect and stop Aisuru-Kimwolf DDoS attacks with Cloudflare"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+						"displayText": "Mirai botnet",
+						"url": "/learning/ddos/glossary/mirai-botnet/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+						"displayText": "What is a DDoS botnet?",
+						"url": "/learning/ddos/what-is-a-ddos-botnet/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+						"displayText": "UDP flood attack",
+						"url": "/learning/ddos/udp-flood-ddos-attack/"
+					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
@@ -784,45 +802,27 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6xtVT6OheomGscU244Gy4c",
-						"displayText": "TCP/IP",
-						"url": "/learning/ddos/glossary/tcp-ip/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "2JgJvIWgo72kFjaMf1xzWc",
-						"displayText": "User Datagram Protocol (UDP)",
-						"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3m3SoSRTz9H3QUP1Y3fLJ0",
-						"displayText": "Web application firewall (WAF)",
-						"url": "/learning/ddos/glossary/web-application-firewall-waf/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
-						"displayText": "Malware",
-						"url": "/learning/ddos/glossary/malware/"
+						"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+						"displayText": "DNS flood attack",
+						"url": "/learning/ddos/dns-flood-ddos-attack/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<style>\n\n    .cards-wrapper-lcnew  { display: grid; grid-template-columns: 1fr 1fr; grid-gap: 20px; margin: 64px 0px;}\n    .cards_item-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fMg89go9MegG1EDg39mNy/5a42817cd388ae352f77f56e53b1ff81/card-new.png'); background-repeat: no-repeat; background-size: cover;  background-position: center;  border-radius: 8px;  box-shadow: 10px 10px 20px -14px rgba(0, 0, 0, 1.0);  overflow: hidden;}\n    .btn-lcnew { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .btn:hover { background-color: rgba(255, 255, 255, 0.12);}\n    .card_content-lcnew  { padding: 1rem; display: flex; flex-direction: column;}\n    .card_title-lcnew  { color: #ffffff; font-size: 12px; margin: 0px; line-height: 18px; text-transform: uppercase;}\n    .card_title-lcnew span  {font-weight: 500}\n    .card_text-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; margin-bottom: 1rem; margin-top: 1rem; font-weight: 600;}\n     a:hover {background-size: 100% 4em !important; color: var(--inline-link-color);}\n\n    @media (max-width: 40rem) \n    {.cards-wrapper-lcnew { grid-template-columns: 1fr; } }\n\n    .cards-banner-lcnew { background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/6bNeiYhSx0RGvbzxS5Fi8c/3ff83bcc36e86e85170201f8264b2c1c/banner-new.png'); background-repeat: no-repeat;background-size: cover; background-position: center; border-radius: 8px;  margin: 64px 0px; box-shadow: 5px 5px 12px 3px rgba(0, 0, 0, 0.2); overflow: hidden; display: grid;  grid-template-columns: 75% 1fr;}\n    .card_content-banner-lcnew { padding: 1rem;  display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10px;}\n    .btn-lcnew-banner { margin-bottom: 0.5rem; align-self: end; margin-top: 0.5rem; border-radius: 6px;}\n    .btn-lcnew-banner a {font-size: 12px;font-weight: 500; cursor: pointer; background-color: white; padding: 14px 18px 14px 18px; border-radius: 6px; color: #000000 !important; text-decoration: none;}\n    .card_title-banner-lcnew  { color: #ffffff; font-size: 12px; font-weight: 700; margin: 0px;}\n    .card_title-banner-lcnew span  {text-transform: uppercase; font-weight: 500 !important}\n    .card_text-banner-lcnew  { color: #000000; font-size: 16px; line-height: 24px ; font-weight: 600;  }\n    .card_content-banner-bt { align-self: center; justify-self: center;}\n\n    @media (max-width: 40rem) \n    { .cards-banner-lcnew { grid-template-columns: unset; padding: 0.75rem; display: flex; flex-direction: column; }\n      .card_text-banner-lcnew { line-height: 18px; }\n      .card_content-banner-lcnew { padding: 0.4rem; grid-gap: 10px;}\n      .card_content-banner-bt {align-self: end;}\n    }\n\n    </style> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTP?</h2>\n\n<p>The Hypertext Transfer Protocol (HTTP) is the foundation of the World Wide Web, and is used to load webpages using hypertext links. HTTP is an <a href=\"/learning/ddos/application-layer-ddos-attack/\">application layer</a> protocol designed to transfer information between networked devices and runs on top of other layers of the network <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a> stack. A typical flow over HTTP involves a client machine making a request to a server, which then sends a response message.</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP request?</h2>\n\n<p>An HTTP request is the way Internet communications platforms such as web browsers ask for the information they need to load a website.</p>\n\n<p>Each HTTP request made across the Internet carries with it a series of encoded data that carries different types of information. A typical HTTP request contains:</p>\n\n <ol class=\"learning-list\">\n              <li>HTTP version type</li>\n              <li>a URL</li>\n              <li>an HTTP method</li>\n              <li>HTTP request headers</li>\n              <li>Optional HTTP body.</li>\n            </ol>\n\n <p>Let's explore in greater depth how these requests work, and how the contents of a request can be used to share information.</p>\n\n<div class=\"cards-banner-lcnew\">\n      <div class=\"card_content-banner-lcnew \">\n\n        <div class=\"card_title-banner-lcnew\"><span>Report</span></div>\n\n        <div class=\"card_text-banner-lcnew\">2025 Security Signals Report</div>\n      </div>\n        <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew  card_btn\"><a href=\"/lp/signals-report-2025/\" data-tracking-action=\"click\" data-tracking-label=\"Get the report - /lp/signals-report-2025/\" data-tracking-category=\"card1-banner\">Get the report</a></div>\n\n    </div>\n    </div>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an HTTP method?</h2>\n\n<p>An HTTP method, sometimes referred to as an HTTP verb, indicates the action that the HTTP request expects from the queried server. For example, two of the most common HTTP methods are 'GET' and 'POST'; a 'GET' request expects information back in return (usually in the form of a website), while a 'POST' request typically indicates that the client is submitting information to the web server (such as form information, e.g. a submitted username and password).</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are HTTP request headers?</h2>\n\n<p>HTTP headers contain text information stored in key-value pairs, and they are included in every HTTP request (and response, more on that later). These headers communicate core information, such as what browser the client is using and what data is being requested.</p>\n\n<p>Example of HTTP request headers from Google Chrome's network tab:<p>\n\n            <img class=\"responsive-image\" title=\"HTTP request headers\" alt=\"HTTP request headers\" src=\"/img/learning/ddos/glossary/hypertext-transfer-protocol-http/http-request-headers.png\" itemprop=\"image\" />\n\n<div class=\"cards-banner-lcnew\">\n    <div class=\"card_content-banner-lcnew \">\n        <div class=\"card_title-banner-lcnew\"><span>DDoS Protection</span></div>\n        <div class=\"card_text-banner-lcnew\">Get DDoS protection with any Cloudflare plan</div>\n    </div>\n    <div class=\"card_content-banner-bt\">\n        <div class=\"btn-lcnew-banner  card_btn\"><a href=\"/plans/\" data-tracking-action=\"click\" data-tracking-label=\"Get started free - /plans/\" data-tracking-category=\"card2\">Start for free</a>\n        </div>\n    </div>\n</div>\n\n             <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP request body?</h2>\n\n<p>The body of a request is the part that contains the 'body' of information the request is transferring. The body of an HTTP request contains any information being submitted to the web server, such as a username and password, or any other data entered into a form.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP response?</h2>\n\n<p>An HTTP response is what web clients (often browsers) receive from an Internet server in answer to an HTTP request. These responses communicate valuable information based on what was asked for in the HTTP request.</p>\n\n<p>A typical HTTP response contains:</p>\n<ol class=\"learning-list\">\n              <li>an HTTP status code</li>\n              <li>HTTP response headers</li>\n              <li>optional HTTP body</li>\n          <p>Let's break these down:</p>\n   <h2 class=\"learning-content-h2\" itemprop=\"headline\">What's an HTTP status code?</h2>\n  <p>HTTP status codes are 3-digit codes most often used to indicate whether an HTTP request has been successfully completed. Status codes are broken into the following 5 blocks:</p>\n  <ol class=\"learning-list\">\n              <li>1xx Informational</li>\n              <li>2xx Success</li>\n              <li>3xx Redirection</li>\n              <li>4xx Client Error</li>\n              <li>5xx Server Error</li>\n            <p>The \"xx\" refers to different numbers between 00 and 99.</p>\n\n            <p>Status codes starting with the number '2' indicate a success. For example, after a client requests a webpage, the most commonly seen responses have a status code of '200 OK', indicating that the request was properly completed.</p>\n\n            <p>If the response starts with a '4' or a '5' that means there was an error and the webpage will not be displayed. A status code that begins with a '4' indicates a client-side error (it is very common to encounter a '404 NOT FOUND' status code when making a typo in a URL). A status code beginning in '5' means something went wrong on the server side. Status codes can also begin with a '1' or a '3', which indicate an informational response and a redirect, respectively.</p>\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What are HTTP response headers?</h2>\n\n <p>Much like an HTTP request, an HTTP response comes with headers that convey important information such as the language and format of the data being sent in the response body.</p>\n\n <p>Example of HTTP response headers from Google Chrome's network tab:<p>\n\n <img class=\"responsive-image\" title=\"HTTP response headers\" alt=\"HTTP response headers\" src=\"/img/learning/ddos/glossary/hypertext-transfer-protocol-http/http-response-headers.png\" itemprop=\"image\" />\n\n  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is in an HTTP response body?</h2>\n\n <p>Successful HTTP responses to 'GET' requests generally have a body which contains the requested information. In most web requests, this is HTML data that a web browser will translate into a webpage.</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">Can DDoS attacks be launched over HTTP?</h2>\n\n <p>Keep in mind that HTTP is a \"stateless\" protocol, which means that each command runs independent of any other command. In the original spec, HTTP requests each created and closed a <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a> connection. In newer versions of the HTTP protocol (HTTP 1.1 and above), persistent connection allows for multiple HTTP requests to pass over a persistent TCP connection, improving resource consumption. In the context of <a href=\"/learning/ddos/glossary/denial-of-service/\">DoS</a> or <a href=\"/learning/ddos/what-is-a-ddos-attack/\">DDoS attacks</a>, HTTP requests in large quantities can be used to mount an attack on a target device, and are considered part of application layer attacks or <a href='/learning/ddos/what-is-layer-7/'>layer 7</a> attacks.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is the Aisuru-Kimwolf botnet?</h2>\n\n<p>The Aisuru-Kimwolf botnet is a massive collection of <a href='/learning/ddos/glossary/malware/'>malware</a>-infected devices that are used in a range of attacks, including <a href='/learning/ddos/what-is-a-ddos-attack/'>distributed denial-of-service (DDoS) attacks</a>. Together, Aisuru and Kimwolf comprise an estimated 1-4 million infected hosts. Aisuru-Kimwolf is capable of launching DDoS attacks that can cripple critical infrastructure, crash most legacy cloud-based DDoS protection solutions, and even disrupt the connectivity of entire nations.</p>\n\n<h4 class=\"learning-content-h4\">Hyper-volumetric and ultra-sophisticated attacks</h4>\n\n<p>Aisuru-Kimwolf has been responsible for some of the largest hyper-volumetric DDoS attacks on record, including a <a href='https://radar.cloudflare.com/year-in-review/2025#ddos-attacks' target='_blank'>31.4 Terabit-per-second (Tbps) DDoS attack</a>, a 14.1 billion packet-per-second (Bpps) DDoS attack, sophisticated DNS-based DDoS attacks such as \"Water Torture\" and <a href='https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/' target='_blank'>Random Prefix attacks</a>, and <a href='/learning/ddos/http-flood-ddos-attack/'>HTTP DDoS</a> attacks exceeding 200 million requests per second.</p>\n\n<p>These bit-intensive and packet-intensive attacks usually use a carpet bombing technique along with heavy randomization of <a href='/learning/network-layer/what-is-a-packet/'>packet</a> attributes in an attempt to avoid detection. The attacks are usually executed in a \"hit and run\" technique: a fast burst of attack traffic reaching the max rates almost instantly, and lasting anywhere from a few seconds to a few minutes. Within a single year (2025-2026), the potential Aisuru-Kimwolf attack size grew by over 700%.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is Aisuru?</h2>\n\n<p>The Aisuru botnet is a network of malware-infected computing devices ranging from consumer <a href='/learning/ddos/glossary/internet-of-things-iot/'>Internet of Things (IoT)</a> devices and DVRs to network appliances and even cloud-hosted <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machines (VMs)</a>. These infected devices work together to launch DDoS attacks.</p>\n\n<p>Aisuru serves as the architectural foundation or \"parent\" botnet from which other variants have been developed. It is part of a broader malware ecosystem that targets various devices to launch hyper-volumetric DDoS attacks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is Kimwolf?</h2>\n\n<p>Kimwolf is a highly active and rapidly growing botnet that specifically targets Android devices, such as TV streaming boxes (Smart TVs), Android streamers, and Android mobile devices. Kimwolf itself comprises approximately 2 million devices globally with significant infection rates in Vietnam, Brazil, India, and Saudi Arabia.</p>\n\n<p>It is used for hyper-volumetric DDoS attacks, <a href='/learning/bots/what-is-credential-stuffing/'>credential stuffing</a>, and unauthorized app installations.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">The relationship between Aisuru and Kimwolf</h2>\n\n<p>The relationship is essentially that of a variant to a parent. Kimwolf is the \"Android variant\" of the Aisuru DDoS botnet. It uses the core DDoS functionality of Aisuru but is specialized to infect and operate within the Android ecosystem.</p>\n\n<p>Both are part of a system that monetizes compromised devices by turning them into \"residential proxies.\" The parties who run Aisuru and Kimwolf sell access to these infected devices' <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a> to other users or <a href='/learning/cdn/glossary/reverse-proxy/'>proxy</a> providers, allowing cyber criminals to keep their attacks anonymous. Aisuru's proxying services have been used especially for <a href='/learning/bots/what-is-data-scraping/'>data scraping</a> attacks.</p>\n\n<p>Additionally, chunks of the botnet are monetized by many distributors as a botnet-for-hire, also known as DDoS-as-a-service. They sell these services over Discord and Telegram channels, sometimes for as low as tens of US dollars. Their DDoS services can however cost up to thousands of US dollars — depending on the size and duration of the attack they sell. The revenue helps fund further development of the botnet.</p>\n\n<p>To summarize, Aisuru is the original DDoS framework, and Kimwolf is the specialized Android \"arm\" that has fueled the network's massive growth by exploiting the lax security of residential proxy services. The Aisuru-Kimwolf botnet is a parasitic, high-velocity DDoS ecosystem. It represents a modern shift in cybercrime where threat actors do not just target end users, but specifically exploit the residential proxy industry to achieve massive scale.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a botnet?</h2>\n\n<p>A <a href='/learning/ddos/what-is-a-ddos-botnet/'>botnet</a> is a collection of network-connected computing devices that have been compromised by malware and are controlled by a malicious party. Many, if not most, computers in a botnet may appear to be running normally while the malware runs in the background, awaiting orders. Botnet operators want to remain undetected so that their networks remain as large as possible. Generally, the more devices there are in a botnet, the more effective the botnet is: more devices means greater volumes of traffic from a wider range of IP addresses.</p>\n\n<p>Botnets mostly contain ordinary, everyday devices in homes and offices. IoT devices are particularly susceptible to becoming part of a botnet. This is because IoT devices are:</p>\n\n<ul class=\"learning-list\">\n  <li>Rarely updated, meaning software vulnerabilities can be exploited for years</li>\n  <li>Not monitored or checked often for compromise (most users just plug them in and turn them on)</li>\n  <li>Rarely turned off</li>\n  <li>Frequently have default credentials for admin access</li>\n</ul>\n\n<p><a href='/learning/network-layer/what-is-a-router/'>Routers</a> are often targets for botnet-spreading malware as well because they are constantly connected to the Internet, rarely turned off or updated, and often contain security flaws. Many, if not most, homes and businesses have routers, and many people do not know how to properly secure them.</p>\n\n<h4 class=\"learning-content-h4\">How a botnet works</h4>\n\n<p>Botnet devices wait for instructions before performing malicious activity. Once they have instructions, they send packets of information — network \"traffic\" — to the target, which is typically some specified application, website, network, or server. With thousands of devices working together, the target can be overwhelmed.</p>\n\n<p>Imagine several hundred packages from a variety of senders all arrive at an office's front desk at once, and the front desk receptionist has to sign for all of them. Visitors to the office will have to wait to receive service from the receptionist, and may not receive service at all. A botnet has a similar effect on its target, causing service to be denied to legitimate application users.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is unique about Aisuru-Kimwolf compared to other botnets?</h2>\n\n<ul class=\"learning-list\">\n  <li><strong>Scale:</strong> Aisuru-Kimwolf has launched massive attacks at traffic volumes never before seen, in the neighborhood of 30 Tbps and 14 Bpps. While even these DDoS attacks can be blocked by <a href='/learning/ddos/ddos-mitigation/'>DDoS mitigation with sufficient capacity</a>, Aisuru-Kimwolf attacks are so large that they can degrade ISP services to downstream customers regardless. Think of how heavy automobile traffic on a freeway can cause backups even on roads that lead onto or off of the freeway.</li>\n  <li><strong>Location:</strong> Many of the infected devices in the Aisuru-Kimwolf botnet are in the US, making it harder for US-based service providers to sort out attack traffic from legitimate traffic. Identifying attack traffic is easier when a service is suddenly flooded with traffic from an unusual location, such as a country on the other side of the world. The US locations also make Aisuru-Kimwolf's proxying services more valuable to cyber criminals, as they can impersonate legitimate US customers in large population areas.</li>\n  <li><strong>Selective targets:</strong> Aisuru-Kimwolf's operators seem to be avoiding attacks on essential services like government or military targets. This may help keep it from being a priority for disruption by law enforcement.</li>\n</ul>\n\n<p>It is worth noting that while Aisuru-Kimwolf's attacks can be huge, the largest attacks rarely last more than a few seconds.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Aisuru-Kimwolf spread?</h2>\n\n<p>The devices Aisuru targets can be vulnerable for any of the reasons listed above — default credentials, outdated firmware that contains known vulnerabilities, and so on. The operators of the botnet scan the Internet for devices that are vulnerable and insert their malware on whatever devices they can.</p>\n\n<p>Aisuru may also use <a href='/learning/security/threats/zero-day-exploit/'>zero-day vulnerabilities</a> in router firmware to spread rapidly. There is no defense against such vulnerabilities until the manufacturer identifies them and issues a patch.</p>\n\n<p>Kimwolf exploits vulnerable Android Debug Bridge (ADB) services. Many low-cost TV boxes come \"pre-infected\" with proxy SDKs; Kimwolf then scans these residential proxy networks and exploits the devices within minutes as it propagates.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What tactics does the Aisuru-Kimwolf botnet use?</h2>\n\n<p>For DDoS attacks, Aisuru tends to use <a href='/learning/ddos/dns-flood-ddos-attack/'>DNS</a>, <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a>, <a href='/learning/ddos/udp-flood-ddos-attack/'>UDP</a>, and <a href='/learning/network-layer/what-is-gre-tunneling/'>GRE protocol</a> attacks. UDP carpet bombing is the most common, and this was the tactic used for Aisuru's massive 31.4 Tbps attack and similarly sized attacks. In a UDP carpet bombing attack, the attack traffic targets multiple IP addresses instead of one. The traffic directed at an individual IP address may fall below the threshold for it to be identified as an attack, but the combined force of the traffic can exhaust the network's bandwidth.</p>\n\n<p>Additionally, Aisuru-Kimwolf has been launching hyper-volumetric HTTP DDoS attacks, mainly targeting the gaming industry.</p>\n\n<p>To learn how TCP-based attacks work, see <a href='/learning/ddos/syn-flood-ddos-attack/'>SYN flood attacks</a> and <a href='/learning/ddos/what-is-an-ack-flood/'>ACK flood attacks</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Aisuru-Kimwolf help cyber attackers conceal their traffic?</h2>\n\n<p>A proxy is a server that sits in between a network-connected computer and the rest of the network and forwards traffic on its behalf. While proxies are used for a number of legitimate purposes (including enhancing security), for cyber criminals, using a proxy is one way to conceal the true source of malicious network traffic.</p>\n\n<p><a href='https://krebsonsecurity.com/2025/10/aisuru-botnet-shifts-from-ddos-to-residential-proxies/' target='_blank'>Researchers have identified</a> Aisuru as the source of large amounts of proxied malicious traffic. Aisuru sells \"residential proxy\" services: traffic can be made to appear to come from regular home users in the US. These services have been used in large part to conceal the true source of data scraping bots that harvest data from websites in defiance of those websites' wishes.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Aisuru-Kimwolf and Mirai</h2>\n\n<p>The <a href='/learning/ddos/glossary/mirai-botnet/'>Mirai botnet</a> is a large and powerful DDoS botnet that was especially active in the late 2010s. Mirai's code was leaked in 2016, and its code has formed the basis for several other major botnets since, including Aisuru. Both Aisuru-Kimwolf and Mirai contain large amounts of IoT devices.</p>\n\n<p>Other examples of botnets include <a href='https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps/' target='_blank'>Moobot</a> and <a href='https://blog.cloudflare.com/meris-botnet/' target='_blank'>Meris</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to stay safe from Aisuru-Kimwolf DDoS attacks</h2>\n\n<p>Cloudflare mitigates DDoS attacks no matter their size. The 31.4 Tbps Aisuru-Kimwolf attack described above was automatically detected and mitigated by Cloudflare's autonomous DDoS protection defenses. Any network, website, application, or API can use Cloudflare to block Aisuru attacks both large and small. <a href='/plans/'>See Cloudflare plans here</a>.</p>\n\n<p>To learn more about Aisuru, including indicators of compromise (IoC) that signify an Aisuru-based attack, see the threat brief \"<a href='/threat-intelligence/research/report/aisuru-botnet/' target='_blank'>Aisuru botnet: Early October attacks escalate into record-setting DDoS activity</a>.\"</p>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -834,64 +834,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "cKz1Z2SJrqdn0ZFwOnDXx",
-			"pathname": "/learning/ddos/glossary/hypertext-transfer-protocol-http/",
+			"contentfulId": "6MbnVgSuYoH3OxH4ho2AV8",
+			"pathname": "/learning/ddos/glossary/aisuru-kimwolf-botnet/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}

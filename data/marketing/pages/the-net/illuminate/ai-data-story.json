@@ -58,7 +58,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-12-10T21:12:59.151Z",
-					"updatedAt": "2026-01-21T06:39:47.353Z"
+					"updatedAt": "2026-01-29T19:55:09.862Z"
 				},
 				"contentfulId": "4bYWgCuca48TArOCgcOHL4",
 				"contentTypeId": "page",
@@ -1622,7 +1622,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "If you are training your own AI model, you also need to ensure that the data you are feeding into the model is not compromised or corrupted. For example, we have seen companies using Reddit data — including conversations between company employees and customers — to train generative AI models. They plan to deploy those models in forums to answer customer questions on their behalf. But they need to be sure they have clean, accurate data. If someone goes into a forum and impersonates users, the models based on that data will not deliver accurate, constructive responses.",
+													"value": "If you are training your own AI model, you also need to ensure that the data you are feeding into the model is not ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/ai/how-to-secure-training-data-against-ai-data-leaks/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "compromised or corrupted",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". For example, we have seen companies using Reddit data — including conversations between company employees and customers — to train generative AI models. They plan to deploy those models in forums to answer customer questions on their behalf. But they need to be sure they have clean, accurate data. If someone goes into a forum and impersonates users, the models based on that data will not deliver accurate, constructive responses.",
 													"marks": [],
 													"content": null
 												}
