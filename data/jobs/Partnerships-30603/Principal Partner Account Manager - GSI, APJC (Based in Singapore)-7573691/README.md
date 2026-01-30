@@ -5,32 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>&nbsp;</p>
-<p><strong>Available Locations: Lisbon or London (EMEA)</strong></p>
-<h4><strong>About the department</strong></h4>
-<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our team responsible for Bots and Fraud Detection develops cutting-edge solutions to identify and mitigate malicious bot activities, ensuring the security and integrity of online applications. The team collaborates with product and other engineering teams to implement advanced fraud detection mechanisms and employ machine learning techniques to safeguard digital assets from evolving threats in the cybersecurity landscape.</p>
-<p><strong>What you'll do</strong></p>
-<p>Join Cloudflare's Bot and Fraud Detection team to tackle real-world security challenges, leveraging massive threat intelligence data through data science and machine learning. Design, build, and scale high-performance distributed software for one of Cloudflare's fastest-growing security products. Work with global data exceeding 50 million HTTP requests per second, utilizing a tech stack that includes Go, Python, JavaScript, Rust, Lua, Kafka, Kubernetes, ClickHouse, PostgreSQL, and Jupyter notebook. Make a meaningful impact in detecting and mitigating abusive HTTP L7 layer traffic worldwide.</p>
-<p><strong>What are we looking for?</strong></p>
+<h3><strong>About The Role</strong></h3>
+<p>We are seeking a Principal Partner Account Manager to join our Global System Integrator (GSI) team. The role is based out of Singapore and will report to the Sr. Director, GSI.&nbsp;&nbsp;</p>
+<p>The Principal Partner Account Manager will be responsible for managing and optimizing strategic relationships with our key GSI’s across APJC.&nbsp; This role will focus on developing and executing partnership strategies that enhance collaboration, drive revenue growth, and leverage the combined strengths of our organizations to deliver exceptional value to clients.</p>
+<p>The ideal candidate will have strong executive presence, established relationships and experience leading GSI partnerships, preferably in the technology and/or security and networking sector. They can work independently to build a strategy and execute the plan leveraging stakeholders both internally and externally. They will have the ability to influence decisions and investments. Key stakeholders include Cloudflare Leadership, Account Executives, Solution Engineering, Channel Managers, Customer Success teams, Sales Operations, Marketing teams and external Partner executives.&nbsp;&nbsp;</p>
+<p>You will be expected to travel as required. The ideal candidate will have a network of existing partner contacts within the key GSI partnerships, including client leads and decision makers.&nbsp;&nbsp;</p>
+<p>Key Accountability: Achieve and exceed partner booked sales goals.</p>
+<h3>Responsibilities&nbsp;</h3>
 <ul>
-	<li>Proficiency in designing, integrating, and optimizing distributed data processing pipelines</li>
-	<li>Strong coding skills in Go, Java, Python, or other high-performance languages</li>
-	<li>Experience in constructing and managing alerting and monitoring systems for data processing pipelines</li>
-	<li>Exceptional abilities in systems-level debugging</li>
-	<li>Preferred background or interest in Web Security, HTTP protocols, and JavaScript</li>
-	<li>Familiarity with advanced analytics encompassing machine learning, statistical inference, and AI.</li>
-	<li>Curiosity and empathy</li>
-	<li>Comfortable with tackling ambiguous problems and unblocking yourself</li>
+	<li>Create and implement strategic account plans for each partner that align with overall business objectives and growth targets, including the ownership of partner sales revenue</li>
+	<li>Identify opportunities for joint ventures, co-marketing initiatives, and solutions integration with partners to drive strong pipeline generation and growth.&nbsp;</li>
+	<li>Build the joint go-to-market services and solution stack offerings working closely with the global alliances team and services team</li>
+	<li>Relationship development including building executive key influencer and sales relationships that peer with Cloudflare leadership</li>
+	<li>Act as the primary contact for all partner-related inquiries and ensure effective communication and collaboration</li>
+	<li>Business planning, including account mapping, development and execution of the joint growth and customer acquisition strategies to expand into new verticals and territories</li>
+	<li>Own and run Business and Quarterly Planning/Reviews both internally and externally in partnership with regional Partner and Sales teams</li>
+	<li>Track and analyze partner performance metrics, including targets, revenue attribution, and market impact</li>
+	<li>Own the plan for ongoing training &amp; support for client leads and technical resources</li>
+	<li>Work with GSI partnerships and /or field sales on RFPs, proactive account planning, deal registrations and forecasting</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h3>Desirable skills, knowledge and experience</h3>
 <ul>
-	<li>Knowledge and experience with columnar database like Clickhouse.</li>
-	<li>Experience productionalizing ML models</li>
-	<li>Experience with cluster and configuration management systems such as Docker, Salt</li>
-	<li>Strong web security fundamentals</li>
-	<li>Previous experience in bot and fraud detection</li>
+	<li>Relevant Bachelor Degree&nbsp;</li>
+	<li>15+ years experience including 10+ years working with Global System Integrator partnerships.&nbsp;</li>
+	<li>Existing relationships with Accenture, NTT, Kyndryl and HCL</li>
+	<li>Executive presence with proven success in managing large enterprise partnerships, with demonstrated results in driving growth and innovation</li>
+	<li>Experience working in the Technology sector. Network and/or security vendor experience a bonus</li>
+	<li>Excellent communication, negotiation, and presentation skills, with the ability to influence stakeholders at all levels</li>
+	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions.</li>
+	<li>Ability to work independently and collaboratively across various teams in a fast-paced environment.</li>
+	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions</li>
 </ul>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
