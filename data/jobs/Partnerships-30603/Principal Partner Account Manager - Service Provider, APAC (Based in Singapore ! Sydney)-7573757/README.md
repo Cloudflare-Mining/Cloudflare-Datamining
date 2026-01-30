@@ -5,32 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin TX, New York, NY</strong></p>
-<p><strong>What you'll do:</strong><br><br>You will lead a team of talented engineers responsible for building a resilient infrastructure to prevent payment related Fraud at Cloudflare . You will oversee the development of scalable processes and tools that handle everything related to protecting Cloudflare’s revenue. Your work will directly support billions in revenue and millions of customers while enabling new product launches and monetization motions across Cloudflare.</p>
-<p>&nbsp;</p>
-<p>Your work will play a key role in rebuilding our entire billing platform, designing a next-generation financial infrastructure that ensures financial accuracy and seamless performance. Leading a team of skilled engineers, you will drive the execution of complex technical initiatives, ensuring our architecture is resilient, scalable, and future-proof.&nbsp;</p>
-<p>&nbsp;</p>
-<p>Beyond technical execution, you will focus on growing and mentoring a high-performing engineering team. You will set clear expectations, provide thoughtful feedback, and create an environment where engineers can thrive. You will collaborate closely with product, engineering, finance, data science, operations and support departments to align technical decisions with business objectives. Your ability to communicate effectively, manage priorities, and navigate a fast-paced environment will be critical in driving success.</p>
-<p>&nbsp;</p>
-<p>This role is an opportunity to make a lasting impact at the intersection of financial infrastructure and distributed systems. You will help shape the future of Cloudflare, ensuring it can support the company’s rapid growth and evolving product ecosystem.</p>
-<p>Examples of desirable skills, knowledge and experience</p>
+<h3>About the role</h3>
+<p>We are seeking an exceptionally accomplished Senior Partner Account Manager to join our Service Provider (SP) team. The role is based in Singapore or Sydney and will report to the Senior Director, Global Service Provider Sales.&nbsp;&nbsp;</p>
+<p>In this role, you will be the driving force behind Cloudflare’s most strategic and high-value Service Provider partners. You will be responsible for: developing network, security and technology services producing new revenue streams, building business plans as well as establishing and strengthening executive relationships. This role will focus on developing and executing partnership strategies that enhance collaboration, drive significant revenue growth, and leverage the combined strengths of our networks to deliver exceptional value to clients.</p>
+<p>We are looking for an experienced Senior Partner Account Manager to lead and build out our APJ Service Provider GTM. In this role, you’ll drive the strategy and execution for managing high-value, strategic Service Providers across different regions in Asia. You will lead the development of joint business plans, work with senior sales and partner stakeholders to align on mutual growth objectives, and ensure partners have the resources and support needed to drive new Service Provider revenue.</p>
+<p>As a Senior Partner Account Manager, you will be responsible for developing, managing, and optimizing key partner relationships, including driving the full sales lifecycle from opportunity initiation to deal closure. You will influence partners’ go-to-market strategies, manage and optimize partner incentive programs, and collaborate closely with internal teams to achieve revenue and strategic goals.</p>
+<p>The ideal candidate will have strong executive presence, established executive relationships, and a proven track record in negotiating agreements and ensuring successful partnership execution within the telecommunications industry. This individual will have a strong background in business development with Service Providers and the ability to independently build and execute a strategy, leveraging internal and external stakeholders, while influencing decisions and investments. Key stakeholders include Cloudflare Leadership, Account Executives, Solution Engineering, Product Management, Partner Managers, Customer Success teams, Sales Operations, Marketing teams and external Partner executives.&nbsp; The candidate will be a thought leader in the Service Provider industry and have the ability to articulate how Cloudflare seamlessly integrates into modern cloud operating models.&nbsp;</p>
+<p>You will be expected to travel as required which is 30-40% of your time.&nbsp;</p>
+<h3><strong>Responsibilities</strong></h3>
 <ul>
-	<li>Experience building out tooling that supports fraud prevention on self-serve purchasing motions and usage based products&nbsp;</li>
-	<li>Experience leading a team or multiple teams of senior and staff engineers.</li>
-	<li>Experience working with cross-functional teams, driving alignment, and clearly creating and communicating technical direction for large cross-company efforts.</li>
-	<li>Led initiatives in partnership with data science teams to oversee the end-to-end development, training, and fine-tuning of machine learning models to meet specific business KPIs</li>
-	<li>Comfortable building developer-loved APIs that scale.</li>
-	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development.</li>
-	<li>You inspire your team to reach higher.</li>
-	<li>You’re as good as explaining “why” as you are “how”.</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages.</li>
-	<li>Comfortable managing teams/projections with tight deadlines and short release cycles.</li>
+	<li>Create and implement strategic partner account plans for AsianService Providers that align with overall business objectives and growth targets.</li>
+	<li>Identify opportunities for joint ventures, co-marketing initiatives, and solutions integration that leverage the strengths of each partner.</li>
+	<li>Build the joint go-to-market services and solution stack offerings.</li>
+	<li>Drive high-level engagement between Cloudflare leadership and the SP’s senior executives, industry leads, and delivery teams.</li>
+	<li>Partner with the SP team to support the creation of scalable implementation practices, including training, certifications, reusable solution assets, and reference architectures.</li>
+	<li>Act as the primary contact for all partner-related inquiries and ensure effective communication and collaboration.</li>
+	<li>Business planning, including account mapping, development and execution of the joint growth and customer acquisition strategies to expand into new verticals and new customer segments.</li>
+	<li>Own and run business and quarterly planning/reviews, both internally and externally</li>
+	<li>Track and analyze partner performance metrics, including targets, revenue attribution, and market impact.</li>
+	<li>Own the plan for ongoing training and support for SP leads and technical resources.</li>
+	<li>Accurately forecast SP business weekly.</li>
+	<li>Develop and drive pipeline development across multiple SP partners.&nbsp;</li>
 </ul>
-<p><strong><br><br></strong></p>
-<p><strong>Bonus Points</strong></p>
+<h3><strong>Desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Experience building enterprise grade, scaled and distributed systems</li>
-	<li>Experience leading teams working on areas of financial infrastructure, payments, billing, and data infrastructure.</li>
+	<li>Relevant Bachelor Degree&nbsp;</li>
+	<li>10+ years experience working with Service Provider partnerships.&nbsp;</li>
+	<li>Proven ability to drive GTM success with Service Provider partners.</li>
+	<li>Executive presence, negotiation skills, and ability to manage complex stakeholder environments with proven success in managing large enterprise partnerships, with demonstrated results in driving growth and innovation.</li>
+	<li>Experience working in the Technology sector: Network and/or cybersecurity experience a must.&nbsp;</li>
+	<li>Excellent communication, negotiation, and presentation skills, with the ability to influence stakeholders at all levels.</li>
+	<li>Strong analytical skills and experience in utilizing data to inform strategic decisions.</li>
+	<li>Ability to work independently and collaboratively across various teams in a fast-paced, matrixed environment.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
