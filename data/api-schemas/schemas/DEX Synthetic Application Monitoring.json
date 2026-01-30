@@ -55,119 +55,84 @@
 						"schema": {
 							"allOf": [
 								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
 														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
+															"pointer": {
 																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
 															}
 														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
+														"type": "object"
+													}
 												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"documentation_url": {
-																"type": "string"
-															},
-															"message": {
-																"type": "string"
-															},
-															"source": {
-																"properties": {
-																	"pointer": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful.",
-													"enum": [
-														true
-													],
-													"example": true,
-													"type": "boolean"
-												}
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
+											"type": "array"
 										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
-														}
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "object"
-												}
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"type": "object"
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
 										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
 									],
 									"type": "object"
 								},
@@ -176,29 +141,29 @@
 										"result": {
 											"description": "array of colos.",
 											"items": {
+												"properties": {
+													"airportCode": {
+														"description": "Airport code",
+														"example": "SFO",
+														"type": "string"
+													},
+													"city": {
+														"description": "City",
+														"example": "San Francisco",
+														"type": "string"
+													},
+													"countryCode": {
+														"description": "Country code",
+														"example": "US",
+														"type": "string"
+													}
+												},
 												"required": [
 													"airportCode",
 													"countryCode",
 													"city"
 												],
 												"type": "object"
-											},
-											"properties": {
-												"airportCode": {
-													"description": "Airport code",
-													"example": "SFO",
-													"type": "string"
-												},
-												"city": {
-													"description": "City",
-													"example": "San Francisco",
-													"type": "string"
-												},
-												"countryCode": {
-													"description": "Country code",
-													"example": "US",
-													"type": "string"
-												}
 											},
 											"type": "array"
 										}
@@ -1256,7 +1221,7 @@
 				}
 			},
 			{
-				"description": "Source:\n  * `hourly` - device details aggregated hourly, up to 7 days prior\n  * `last_seen` - device details, up to 24 hours prior\n  * `raw` - device details, up to 7 days prior\n",
+				"description": "Source:\n  * `hourly` - device details aggregated hourly, up to 7 days prior\n  * `last_seen` - device details, up to 60 minutes prior\n  * `raw` - device details, up to 7 days prior\n",
 				"in": "query",
 				"name": "source",
 				"schema": {
@@ -2622,6 +2587,190 @@
 		],
 		"responses": {
 			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deviceStats": {
+													"properties": {
+														"byMode": {
+															"items": {
+																"properties": {
+																	"timestamp": {
+																		"description": "Timestamp in ISO format",
+																		"example": "2023-10-11T00:00:00Z",
+																		"type": "string"
+																	},
+																	"uniqueDevicesTotal": {
+																		"description": "Number of unique devices",
+																		"type": "number"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"byStatus": {
+															"items": {
+																"properties": {
+																	"timestamp": {
+																		"description": "Timestamp in ISO format",
+																		"example": "2023-10-11T00:00:00Z",
+																		"type": "string"
+																	},
+																	"uniqueDevicesTotal": {
+																		"description": "Number of unique devices",
+																		"type": "number"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"uniqueDevicesTotal": {
+															"description": "Number of unique devices",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
 				"description": "List DEX devices response"
 			},
 			"4XX": {
@@ -3514,6 +3663,9 @@
 																"type": "boolean"
 															},
 															"id": {
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
 																"type": "string"
 															},
 															"name": {
@@ -4132,6 +4284,18 @@
 					"minimum": 1,
 					"type": "number"
 				}
+			},
+			{
+				"description": "Filter by test type",
+				"in": "query",
+				"name": "kind",
+				"schema": {
+					"enum": [
+						"http",
+						"traceroute"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -4534,6 +4698,9 @@
 																			"type": "boolean"
 																		},
 																		"id": {
+																			"description": "API Resource UUID tag.",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
 																			"type": "string"
 																		},
 																		"name": {
@@ -5810,6 +5977,9 @@
 																"type": "boolean"
 															},
 															"id": {
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
 																"type": "string"
 															},
 															"name": {

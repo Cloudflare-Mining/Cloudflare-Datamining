@@ -1,0 +1,1894 @@
+{
+	"DELETE /accounts/{account_id}/dex/rules/{rule_id}": {
+		"description": "Delete a DEX Rule",
+		"operationId": "delete-dex-rule",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "unique identifier of the rule",
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "API Resource UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"type": "boolean"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "success response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update DEX Rule failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Delete a DEX Rule",
+		"tags": [
+			"DEX Rules"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
+		]
+	},
+	"GET /accounts/{account_id}/dex/rules": {
+		"description": "List DEX Rules",
+		"operationId": "list-dex-rules",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number of paginated results",
+				"in": "query",
+				"name": "page",
+				"required": true,
+				"schema": {
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Number of items per page",
+				"in": "query",
+				"name": "per_page",
+				"required": true,
+				"schema": {
+					"maximum": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Sort direction for sort_by property",
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"default": "ASC",
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Which property to sort results by",
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"default": "name",
+					"enum": [
+						"name",
+						"created_at",
+						"updated_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter results by rule name",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"rules": {
+													"items": {
+														"properties": {
+															"created_at": {
+																"example": "2023-07-16 15:00:00+00",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"description": {
+																"type": "string"
+															},
+															"id": {
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string"
+															},
+															"match": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"targeted_tests": {
+																"items": {
+																	"properties": {
+																		"data": {
+																			"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																			"example": {
+																				"host": "https://dash.cloudflare.com",
+																				"kind": "http",
+																				"method": "GET"
+																			},
+																			"properties": {
+																				"host": {
+																					"description": "The desired endpoint to test.",
+																					"example": "https://dash.cloudflare.com",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"kind": {
+																					"description": "The type of test.",
+																					"enum": [
+																						"http",
+																						"traceroute"
+																					],
+																					"example": "http",
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"method": {
+																					"description": "The HTTP request method type.",
+																					"enum": [
+																						"GET"
+																					],
+																					"example": "GET",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"kind",
+																				"host"
+																			],
+																			"type": "object"
+																		},
+																		"enabled": {
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"name": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"test_id": {
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"test_id",
+																		"name",
+																		"enabled",
+																		"data"
+																	],
+																	"type": "object"
+																},
+																"type": "array",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															},
+															"updated_at": {
+																"example": "2023-07-16 15:00:00+00",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"match",
+															"created_at"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "success response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List DEX Rules failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "List DEX Rules",
+		"tags": [
+			"DEX Rules"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
+	},
+	"GET /accounts/{account_id}/dex/rules/{rule_id}": {
+		"description": "Get details for a DEX Rule",
+		"operationId": "get-dex-rule",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "unique identifier of the rule",
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "API Resource UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"example": "2023-07-16 15:00:00+00",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"description": {
+													"type": "string"
+												},
+												"id": {
+													"description": "API Resource UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"match": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"targeted_tests": {
+													"items": {
+														"properties": {
+															"data": {
+																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																"example": {
+																	"host": "https://dash.cloudflare.com",
+																	"kind": "http",
+																	"method": "GET"
+																},
+																"properties": {
+																	"host": {
+																		"description": "The desired endpoint to test.",
+																		"example": "https://dash.cloudflare.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"kind": {
+																		"description": "The type of test.",
+																		"enum": [
+																			"http",
+																			"traceroute"
+																		],
+																		"example": "http",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"method": {
+																		"description": "The HTTP request method type.",
+																		"enum": [
+																			"GET"
+																		],
+																		"example": "GET",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kind",
+																	"host"
+																],
+																"type": "object"
+															},
+															"enabled": {
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"test_id": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"test_id",
+															"name",
+															"enabled",
+															"data"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"updated_at": {
+													"example": "2023-07-16 15:00:00+00",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"match",
+												"created_at"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "success response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List DEX Rule failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Get DEX Rule",
+		"tags": [
+			"DEX Rules"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/dex/rules/{rule_id}": {
+		"description": "Update a DEX Rule",
+		"operationId": "update-dex-rule",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "unique identifier of the rule",
+				"in": "path",
+				"name": "rule_id",
+				"required": true,
+				"schema": {
+					"description": "API Resource UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"type": "string",
+								"x-auditable": true
+							},
+							"match": {
+								"description": "The wirefilter expression to match.",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the Rule.",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"example": "2023-07-16 15:00:00+00",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"description": {
+													"type": "string"
+												},
+												"id": {
+													"description": "API Resource UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"match": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"targeted_tests": {
+													"items": {
+														"properties": {
+															"data": {
+																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																"example": {
+																	"host": "https://dash.cloudflare.com",
+																	"kind": "http",
+																	"method": "GET"
+																},
+																"properties": {
+																	"host": {
+																		"description": "The desired endpoint to test.",
+																		"example": "https://dash.cloudflare.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"kind": {
+																		"description": "The type of test.",
+																		"enum": [
+																			"http",
+																			"traceroute"
+																		],
+																		"example": "http",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"method": {
+																		"description": "The HTTP request method type.",
+																		"enum": [
+																			"GET"
+																		],
+																		"example": "GET",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kind",
+																	"host"
+																],
+																"type": "object"
+															},
+															"enabled": {
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"test_id": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"test_id",
+															"name",
+															"enabled",
+															"data"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"updated_at": {
+													"example": "2023-07-16 15:00:00+00",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"match",
+												"created_at"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "success response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update DEX Rule failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Update a DEX Rule",
+		"tags": [
+			"DEX Rules"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
+		]
+	},
+	"POST /accounts/{account_id}/dex/rules": {
+		"description": "Create a DEX Rule",
+		"operationId": "create-dex-rule",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"type": "string",
+								"x-auditable": true
+							},
+							"match": {
+								"description": "The wirefilter expression to match.",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the Rule.",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"name",
+							"match"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"example": "2023-07-16 15:00:00+00",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"description": {
+													"type": "string"
+												},
+												"id": {
+													"description": "API Resource UUID tag.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"match": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"targeted_tests": {
+													"items": {
+														"properties": {
+															"data": {
+																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																"example": {
+																	"host": "https://dash.cloudflare.com",
+																	"kind": "http",
+																	"method": "GET"
+																},
+																"properties": {
+																	"host": {
+																		"description": "The desired endpoint to test.",
+																		"example": "https://dash.cloudflare.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"kind": {
+																		"description": "The type of test.",
+																		"enum": [
+																			"http",
+																			"traceroute"
+																		],
+																		"example": "http",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"method": {
+																		"description": "The HTTP request method type.",
+																		"enum": [
+																			"GET"
+																		],
+																		"example": "GET",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"kind",
+																	"host"
+																],
+																"type": "object"
+															},
+															"enabled": {
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"name": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"test_id": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"test_id",
+															"name",
+															"enabled",
+															"data"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												},
+												"updated_at": {
+													"example": "2023-07-16 15:00:00+00",
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"match",
+												"created_at"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "success response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create DEX Rule failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Create a DEX Rule",
+		"tags": [
+			"DEX Rules"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write"
+		]
+	}
+}

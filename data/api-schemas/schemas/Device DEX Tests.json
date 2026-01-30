@@ -132,19 +132,33 @@
 																	"host": {
 																		"description": "The desired endpoint to test.",
 																		"example": "https://dash.cloudflare.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"kind": {
 																		"description": "The type of test.",
+																		"enum": [
+																			"http",
+																			"traceroute"
+																		],
 																		"example": "http",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"method": {
 																		"description": "The HTTP request method type.",
+																		"enum": [
+																			"GET"
+																		],
 																		"example": "GET",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
+																"required": [
+																	"kind",
+																	"host"
+																],
 																"type": "object"
 															},
 															"description": {
@@ -173,23 +187,31 @@
 																	"properties": {
 																		"default": {
 																			"description": "Whether the DEX rule is the account default",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"id": {
-																			"description": "The id of the DEX rule",
+																			"description": "API Resource UUID tag.",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
 																			"type": "string"
 																		},
 																		"name": {
 																			"description": "The name of the DEX rule",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
+																	"required": [
+																		"id"
+																	],
 																	"type": "object"
 																},
 																"type": "array"
 															},
 															"targeted": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"test_id": {
 																"description": "The unique identifier for the test.",
@@ -339,19 +361,33 @@
 																	"host": {
 																		"description": "The desired endpoint to test.",
 																		"example": "https://dash.cloudflare.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"kind": {
 																		"description": "The type of test.",
+																		"enum": [
+																			"http",
+																			"traceroute"
+																		],
 																		"example": "http",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"method": {
 																		"description": "The HTTP request method type.",
+																		"enum": [
+																			"GET"
+																		],
 																		"example": "GET",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
+																"required": [
+																	"kind",
+																	"host"
+																],
 																"type": "object"
 															},
 															"description": {
@@ -380,23 +416,31 @@
 																	"properties": {
 																		"default": {
 																			"description": "Whether the DEX rule is the account default",
-																			"type": "boolean"
+																			"type": "boolean",
+																			"x-stainless-terraform-configurability": "computed"
 																		},
 																		"id": {
-																			"description": "The id of the DEX rule",
+																			"description": "API Resource UUID tag.",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
 																			"type": "string"
 																		},
 																		"name": {
 																			"description": "The name of the DEX rule",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed"
 																		}
 																	},
+																	"required": [
+																		"id"
+																	],
 																	"type": "object"
 																},
 																"type": "array"
 															},
 															"targeted": {
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"test_id": {
 																"description": "The unique identifier for the test.",
@@ -561,6 +605,47 @@
 					"readOnly": true,
 					"type": "string"
 				}
+			},
+			{
+				"description": "Page number of paginated results",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Number of items per page",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 10,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Filter by test name",
+				"in": "query",
+				"name": "testName",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by test type",
+				"in": "query",
+				"name": "kind",
+				"schema": {
+					"enum": [
+						"http",
+						"traceroute"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -681,19 +766,33 @@
 															"host": {
 																"description": "The desired endpoint to test.",
 																"example": "https://dash.cloudflare.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"kind": {
 																"description": "The type of test.",
+																"enum": [
+																	"http",
+																	"traceroute"
+																],
 																"example": "http",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"method": {
 																"description": "The HTTP request method type.",
+																"enum": [
+																	"GET"
+																],
 																"example": "GET",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
+														"required": [
+															"kind",
+															"host"
+														],
 														"type": "object"
 													},
 													"description": {
@@ -722,23 +821,31 @@
 															"properties": {
 																"default": {
 																	"description": "Whether the DEX rule is the account default",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-stainless-terraform-configurability": "computed"
 																},
 																"id": {
-																	"description": "The id of the DEX rule",
+																	"description": "API Resource UUID tag.",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
 																	"type": "string"
 																},
 																"name": {
 																	"description": "The name of the DEX rule",
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-terraform-configurability": "computed"
 																}
 															},
+															"required": [
+																"id"
+															],
 															"type": "object"
 														},
 														"type": "array"
 													},
 													"targeted": {
-														"type": "boolean"
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed"
 													},
 													"test_id": {
 														"description": "The unique identifier for the test.",
@@ -875,19 +982,33 @@
 																"host": {
 																	"description": "The desired endpoint to test.",
 																	"example": "https://dash.cloudflare.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"kind": {
 																	"description": "The type of test.",
+																	"enum": [
+																		"http",
+																		"traceroute"
+																	],
 																	"example": "http",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"method": {
 																	"description": "The HTTP request method type.",
+																	"enum": [
+																		"GET"
+																	],
 																	"example": "GET",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
+															"required": [
+																"kind",
+																"host"
+															],
 															"type": "object"
 														},
 														"description": {
@@ -916,23 +1037,31 @@
 																"properties": {
 																	"default": {
 																		"description": "Whether the DEX rule is the account default",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-terraform-configurability": "computed"
 																	},
 																	"id": {
-																		"description": "The id of the DEX rule",
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
 																		"type": "string"
 																	},
 																	"name": {
 																		"description": "The name of the DEX rule",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed"
 																	}
 																},
+																"required": [
+																	"id"
+																],
 																"type": "object"
 															},
 															"type": "array"
 														},
 														"targeted": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"test_id": {
 															"description": "The unique identifier for the test.",
@@ -1220,19 +1349,33 @@
 														"host": {
 															"description": "The desired endpoint to test.",
 															"example": "https://dash.cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"kind": {
 															"description": "The type of test.",
+															"enum": [
+																"http",
+																"traceroute"
+															],
 															"example": "http",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"method": {
 															"description": "The HTTP request method type.",
+															"enum": [
+																"GET"
+															],
 															"example": "GET",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
+													"required": [
+														"kind",
+														"host"
+													],
 													"type": "object"
 												},
 												"description": {
@@ -1261,23 +1404,31 @@
 														"properties": {
 															"default": {
 																"description": "Whether the DEX rule is the account default",
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"id": {
-																"description": "The id of the DEX rule",
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
 																"type": "string"
 															},
 															"name": {
 																"description": "The name of the DEX rule",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															}
 														},
+														"required": [
+															"id"
+														],
 														"type": "object"
 													},
 													"type": "array"
 												},
 												"targeted": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"test_id": {
 													"description": "The unique identifier for the test.",
@@ -1412,19 +1563,33 @@
 																"host": {
 																	"description": "The desired endpoint to test.",
 																	"example": "https://dash.cloudflare.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"kind": {
 																	"description": "The type of test.",
+																	"enum": [
+																		"http",
+																		"traceroute"
+																	],
 																	"example": "http",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"method": {
 																	"description": "The HTTP request method type.",
+																	"enum": [
+																		"GET"
+																	],
 																	"example": "GET",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
+															"required": [
+																"kind",
+																"host"
+															],
 															"type": "object"
 														},
 														"description": {
@@ -1453,23 +1618,31 @@
 																"properties": {
 																	"default": {
 																		"description": "Whether the DEX rule is the account default",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-terraform-configurability": "computed"
 																	},
 																	"id": {
-																		"description": "The id of the DEX rule",
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
 																		"type": "string"
 																	},
 																	"name": {
 																		"description": "The name of the DEX rule",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed"
 																	}
 																},
+																"required": [
+																	"id"
+																],
 																"type": "object"
 															},
 															"type": "array"
 														},
 														"targeted": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"test_id": {
 															"description": "The unique identifier for the test.",
@@ -1653,19 +1826,33 @@
 									"host": {
 										"description": "The desired endpoint to test.",
 										"example": "https://dash.cloudflare.com",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"kind": {
 										"description": "The type of test.",
+										"enum": [
+											"http",
+											"traceroute"
+										],
 										"example": "http",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"method": {
 										"description": "The HTTP request method type.",
+										"enum": [
+											"GET"
+										],
 										"example": "GET",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
+								"required": [
+									"kind",
+									"host"
+								],
 								"type": "object"
 							},
 							"description": {
@@ -1694,23 +1881,31 @@
 									"properties": {
 										"default": {
 											"description": "Whether the DEX rule is the account default",
-											"type": "boolean"
+											"type": "boolean",
+											"x-stainless-terraform-configurability": "computed"
 										},
 										"id": {
-											"description": "The id of the DEX rule",
+											"description": "API Resource UUID tag.",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+											"maxLength": 36,
 											"type": "string"
 										},
 										"name": {
 											"description": "The name of the DEX rule",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed"
 										}
 									},
+									"required": [
+										"id"
+									],
 									"type": "object"
 								},
 								"type": "array"
 							},
 							"targeted": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-stainless-terraform-configurability": "computed"
 							},
 							"test_id": {
 								"description": "The unique identifier for the test.",
@@ -1840,19 +2035,33 @@
 														"host": {
 															"description": "The desired endpoint to test.",
 															"example": "https://dash.cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"kind": {
 															"description": "The type of test.",
+															"enum": [
+																"http",
+																"traceroute"
+															],
 															"example": "http",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"method": {
 															"description": "The HTTP request method type.",
+															"enum": [
+																"GET"
+															],
 															"example": "GET",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
+													"required": [
+														"kind",
+														"host"
+													],
 													"type": "object"
 												},
 												"description": {
@@ -1881,23 +2090,31 @@
 														"properties": {
 															"default": {
 																"description": "Whether the DEX rule is the account default",
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"id": {
-																"description": "The id of the DEX rule",
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
 																"type": "string"
 															},
 															"name": {
 																"description": "The name of the DEX rule",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															}
 														},
+														"required": [
+															"id"
+														],
 														"type": "object"
 													},
 													"type": "array"
 												},
 												"targeted": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"test_id": {
 													"description": "The unique identifier for the test.",
@@ -2032,19 +2249,33 @@
 																"host": {
 																	"description": "The desired endpoint to test.",
 																	"example": "https://dash.cloudflare.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"kind": {
 																	"description": "The type of test.",
+																	"enum": [
+																		"http",
+																		"traceroute"
+																	],
 																	"example": "http",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"method": {
 																	"description": "The HTTP request method type.",
+																	"enum": [
+																		"GET"
+																	],
 																	"example": "GET",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
+															"required": [
+																"kind",
+																"host"
+															],
 															"type": "object"
 														},
 														"description": {
@@ -2073,23 +2304,31 @@
 																"properties": {
 																	"default": {
 																		"description": "Whether the DEX rule is the account default",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-terraform-configurability": "computed"
 																	},
 																	"id": {
-																		"description": "The id of the DEX rule",
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
 																		"type": "string"
 																	},
 																	"name": {
 																		"description": "The name of the DEX rule",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed"
 																	}
 																},
+																"required": [
+																	"id"
+																],
 																"type": "object"
 															},
 															"type": "array"
 														},
 														"targeted": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"test_id": {
 															"description": "The unique identifier for the test.",
@@ -2281,19 +2520,33 @@
 									"host": {
 										"description": "The desired endpoint to test.",
 										"example": "https://dash.cloudflare.com",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"kind": {
 										"description": "The type of test.",
+										"enum": [
+											"http",
+											"traceroute"
+										],
 										"example": "http",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"method": {
 										"description": "The HTTP request method type.",
+										"enum": [
+											"GET"
+										],
 										"example": "GET",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
+								"required": [
+									"kind",
+									"host"
+								],
 								"type": "object"
 							},
 							"description": {
@@ -2322,23 +2575,31 @@
 									"properties": {
 										"default": {
 											"description": "Whether the DEX rule is the account default",
-											"type": "boolean"
+											"type": "boolean",
+											"x-stainless-terraform-configurability": "computed"
 										},
 										"id": {
-											"description": "The id of the DEX rule",
+											"description": "API Resource UUID tag.",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+											"maxLength": 36,
 											"type": "string"
 										},
 										"name": {
 											"description": "The name of the DEX rule",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed"
 										}
 									},
+									"required": [
+										"id"
+									],
 									"type": "object"
 								},
 								"type": "array"
 							},
 							"targeted": {
-								"type": "boolean"
+								"type": "boolean",
+								"x-stainless-terraform-configurability": "computed"
 							},
 							"test_id": {
 								"description": "The unique identifier for the test.",
@@ -2468,19 +2729,33 @@
 														"host": {
 															"description": "The desired endpoint to test.",
 															"example": "https://dash.cloudflare.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"kind": {
 															"description": "The type of test.",
+															"enum": [
+																"http",
+																"traceroute"
+															],
 															"example": "http",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"method": {
 															"description": "The HTTP request method type.",
+															"enum": [
+																"GET"
+															],
 															"example": "GET",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
+													"required": [
+														"kind",
+														"host"
+													],
 													"type": "object"
 												},
 												"description": {
@@ -2509,23 +2784,31 @@
 														"properties": {
 															"default": {
 																"description": "Whether the DEX rule is the account default",
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"id": {
-																"description": "The id of the DEX rule",
+																"description": "API Resource UUID tag.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
 																"type": "string"
 															},
 															"name": {
 																"description": "The name of the DEX rule",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															}
 														},
+														"required": [
+															"id"
+														],
 														"type": "object"
 													},
 													"type": "array"
 												},
 												"targeted": {
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"test_id": {
 													"description": "The unique identifier for the test.",
@@ -2660,19 +2943,33 @@
 																"host": {
 																	"description": "The desired endpoint to test.",
 																	"example": "https://dash.cloudflare.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"kind": {
 																	"description": "The type of test.",
+																	"enum": [
+																		"http",
+																		"traceroute"
+																	],
 																	"example": "http",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"method": {
 																	"description": "The HTTP request method type.",
+																	"enum": [
+																		"GET"
+																	],
 																	"example": "GET",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
+															"required": [
+																"kind",
+																"host"
+															],
 															"type": "object"
 														},
 														"description": {
@@ -2701,23 +2998,31 @@
 																"properties": {
 																	"default": {
 																		"description": "Whether the DEX rule is the account default",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-stainless-terraform-configurability": "computed"
 																	},
 																	"id": {
-																		"description": "The id of the DEX rule",
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
 																		"type": "string"
 																	},
 																	"name": {
 																		"description": "The name of the DEX rule",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed"
 																	}
 																},
+																"required": [
+																	"id"
+																],
 																"type": "object"
 															},
 															"type": "array"
 														},
 														"targeted": {
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-terraform-configurability": "computed"
 														},
 														"test_id": {
 															"description": "The unique identifier for the test.",
