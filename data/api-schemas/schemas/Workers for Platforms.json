@@ -3819,6 +3819,7 @@
 														"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 														"queue": "#/components/schemas/workers_binding_kind_queue",
 														"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+														"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 														"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 														"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 														"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -4378,6 +4379,59 @@
 															"name",
 															"type",
 															"queue_name"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"name": {
+																"description": "A JavaScript variable name for the binding.",
+																"example": "myBinding",
+																"type": "string",
+																"x-auditable": true
+															},
+															"namespace_id": {
+																"description": "Identifier of the rate limit namespace to bind to.",
+																"example": "1234",
+																"type": "string",
+																"x-auditable": true
+															},
+															"simple": {
+																"description": "The rate limit configuration.",
+																"properties": {
+																	"limit": {
+																		"description": "The limit (requests per period).",
+																		"example": 100,
+																		"type": "number",
+																		"x-auditable": true
+																	},
+																	"period": {
+																		"description": "The period in seconds.",
+																		"example": 60,
+																		"type": "integer",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"limit",
+																	"period"
+																],
+																"type": "object"
+															},
+															"type": {
+																"description": "The kind of resource that the binding provides.",
+																"enum": [
+																	"ratelimit"
+																],
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"name",
+															"type",
+															"namespace_id",
+															"simple"
 														],
 														"type": "object"
 													},
@@ -6138,6 +6192,7 @@
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 																		"queue": "#/components/schemas/workers_binding_kind_queue",
 																		"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																		"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -6697,6 +6752,59 @@
 																			"name",
 																			"type",
 																			"queue_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"namespace_id": {
+																				"description": "Identifier of the rate limit namespace to bind to.",
+																				"example": "1234",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"simple": {
+																				"description": "The rate limit configuration.",
+																				"properties": {
+																					"limit": {
+																						"description": "The limit (requests per period).",
+																						"example": 100,
+																						"type": "number",
+																						"x-auditable": true
+																					},
+																					"period": {
+																						"description": "The period in seconds.",
+																						"example": 60,
+																						"type": "integer",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"limit",
+																					"period"
+																				],
+																				"type": "object"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ratelimit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"namespace_id",
+																			"simple"
 																		],
 																		"type": "object"
 																	},
@@ -7162,6 +7270,7 @@
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 																		"queue": "#/components/schemas/workers_binding_kind_queue",
 																		"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																		"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -7721,6 +7830,59 @@
 																			"name",
 																			"type",
 																			"queue_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"namespace_id": {
+																				"description": "Identifier of the rate limit namespace to bind to.",
+																				"example": "1234",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"simple": {
+																				"description": "The rate limit configuration.",
+																				"properties": {
+																					"limit": {
+																						"description": "The limit (requests per period).",
+																						"example": 100,
+																						"type": "number",
+																						"x-auditable": true
+																					},
+																					"period": {
+																						"description": "The period in seconds.",
+																						"example": 60,
+																						"type": "integer",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"limit",
+																					"period"
+																				],
+																				"type": "object"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ratelimit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"namespace_id",
+																			"simple"
 																		],
 																		"type": "object"
 																	},
@@ -9708,6 +9870,7 @@
 															"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 															"queue": "#/components/schemas/workers_binding_kind_queue",
 															"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+															"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 															"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 															"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 															"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -10267,6 +10430,59 @@
 																"name",
 																"type",
 																"queue_name"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"namespace_id": {
+																	"description": "Identifier of the rate limit namespace to bind to.",
+																	"example": "1234",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"simple": {
+																	"description": "The rate limit configuration.",
+																	"properties": {
+																		"limit": {
+																			"description": "The limit (requests per period).",
+																			"example": 100,
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"period": {
+																			"description": "The period in seconds.",
+																			"example": 60,
+																			"type": "integer",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"limit",
+																		"period"
+																	],
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ratelimit"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"namespace_id",
+																"simple"
 															],
 															"type": "object"
 														},
@@ -10732,6 +10948,7 @@
 															"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 															"queue": "#/components/schemas/workers_binding_kind_queue",
 															"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+															"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 															"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 															"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 															"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -11291,6 +11508,59 @@
 																"name",
 																"type",
 																"queue_name"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"namespace_id": {
+																	"description": "Identifier of the rate limit namespace to bind to.",
+																	"example": "1234",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"simple": {
+																	"description": "The rate limit configuration.",
+																	"properties": {
+																		"limit": {
+																			"description": "The limit (requests per period).",
+																			"example": 100,
+																			"type": "number",
+																			"x-auditable": true
+																		},
+																		"period": {
+																			"description": "The period in seconds.",
+																			"example": 60,
+																			"type": "integer",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"limit",
+																		"period"
+																	],
+																	"type": "object"
+																},
+																"type": {
+																	"description": "The kind of resource that the binding provides.",
+																	"enum": [
+																		"ratelimit"
+																	],
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"namespace_id",
+																"simple"
 															],
 															"type": "object"
 														},
@@ -12551,6 +12821,7 @@
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 																		"queue": "#/components/schemas/workers_binding_kind_queue",
 																		"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																		"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -13110,6 +13381,59 @@
 																			"name",
 																			"type",
 																			"queue_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"namespace_id": {
+																				"description": "Identifier of the rate limit namespace to bind to.",
+																				"example": "1234",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"simple": {
+																				"description": "The rate limit configuration.",
+																				"properties": {
+																					"limit": {
+																						"description": "The limit (requests per period).",
+																						"example": 100,
+																						"type": "number",
+																						"x-auditable": true
+																					},
+																					"period": {
+																						"description": "The period in seconds.",
+																						"example": 60,
+																						"type": "integer",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"limit",
+																					"period"
+																				],
+																				"type": "object"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ratelimit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"namespace_id",
+																			"simple"
 																		],
 																		"type": "object"
 																	},
@@ -13575,6 +13899,7 @@
 																		"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 																		"queue": "#/components/schemas/workers_binding_kind_queue",
 																		"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+																		"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 																		"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 																		"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 																		"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -14134,6 +14459,59 @@
 																			"name",
 																			"type",
 																			"queue_name"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"description": "A JavaScript variable name for the binding.",
+																				"example": "myBinding",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"namespace_id": {
+																				"description": "Identifier of the rate limit namespace to bind to.",
+																				"example": "1234",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"simple": {
+																				"description": "The rate limit configuration.",
+																				"properties": {
+																					"limit": {
+																						"description": "The limit (requests per period).",
+																						"example": 100,
+																						"type": "number",
+																						"x-auditable": true
+																					},
+																					"period": {
+																						"description": "The period in seconds.",
+																						"example": 60,
+																						"type": "integer",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"limit",
+																					"period"
+																				],
+																				"type": "object"
+																			},
+																			"type": {
+																				"description": "The kind of resource that the binding provides.",
+																				"enum": [
+																					"ratelimit"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"namespace_id",
+																			"simple"
 																		],
 																		"type": "object"
 																	},
@@ -16588,6 +16966,7 @@
 													"plain_text": "#/components/schemas/workers_binding_kind_plain_text",
 													"queue": "#/components/schemas/workers_binding_kind_queue",
 													"r2_bucket": "#/components/schemas/workers_binding_kind_r2_bucket",
+													"ratelimit": "#/components/schemas/workers_binding_kind_ratelimit",
 													"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
 													"secret_text": "#/components/schemas/workers_binding_kind_secret_text",
 													"secrets_store_secret": "#/components/schemas/workers_binding_kind_secrets_store_secret",
@@ -17147,6 +17526,59 @@
 														"name",
 														"type",
 														"queue_name"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"namespace_id": {
+															"description": "Identifier of the rate limit namespace to bind to.",
+															"example": "1234",
+															"type": "string",
+															"x-auditable": true
+														},
+														"simple": {
+															"description": "The rate limit configuration.",
+															"properties": {
+																"limit": {
+																	"description": "The limit (requests per period).",
+																	"example": 100,
+																	"type": "number",
+																	"x-auditable": true
+																},
+																"period": {
+																	"description": "The period in seconds.",
+																	"example": 60,
+																	"type": "integer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"limit",
+																"period"
+															],
+															"type": "object"
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"ratelimit"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"namespace_id",
+														"simple"
 													],
 													"type": "object"
 												},

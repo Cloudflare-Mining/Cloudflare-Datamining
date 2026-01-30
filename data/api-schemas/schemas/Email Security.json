@@ -4380,6 +4380,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
+		"description": "Maximum batch size: 100 messages per request",
 		"operationId": "email_security_post_bulk_message_move",
 		"parameters": [
 			{
