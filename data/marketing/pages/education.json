@@ -37,7 +37,19 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare for Education",
+					"metaDescription": "Cybersecurity, data breach protection, and web performance acceleration for all educational institutions, k-12 and universities\n",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2021-06-01T15:10:22.908Z",
 					"updatedAt": "2025-09-17T03:56:05.283Z"
@@ -51,6 +63,60 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentfulId": "ulr3eMQqGNiOaZVNHIOUm",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare for Education",
+						"titleSize": "medium",
+						"subtitle": "Build trust and student value with modern Internet security and digital experiences",
+						"subtitleSize": null,
+						"copy": "Cloudflare makes websites, learning platforms, and networks faster and more secure – helping schools embrace change, increase efficiency, and accelerate the future of education in the age of AI.\n",
+						"buttonColor": "orange",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Learn more",
+						"buttonText1LoggedIn": "Learn more",
+						"buttonUrl1": "https://bit.ly/4mBVNkq",
+						"buttonUrl1LoggedIn": "https://bit.ly/4mBVNkq",
+						"button1ExtraClass": null,
+						"buttonText2": "Contact us",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "cloudflare-education-solutions-form-modal",
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": true,
+						"streamVideoId": "8470e03b1d03f5fb26f0158a20274b30",
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": true,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/a9pLjYmqtK2X5zCD6aIu4/8b566405fe0932294c450dfdbb762578/Video_Icon_-_Cloudflare_for_Education.png"
+							},
+							"description": "Cloudflare for Public Sector - video thumbnail"
+						},
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": "left medium",
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": null
+					},
 					{
 						"contentfulId": "3VIStFsuAijZBywWbQ1NET",
 						"backgroundColor": "white",
@@ -367,6 +433,47 @@
 						],
 						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "6087KwOm1UxaPmAAodpAf1",
+						"quote": "\"Cloudflare Magic Transit has made a huge difference to Godwin Heights Public School District. Last year, I had to sit at my desk and monitor for DDoS attacks. This year, I can focus on other duties because Magic Transit blocks these attacks.\"\n",
+						"quoteAuthor": "Johann Radloff",
+						"quoteTitle": "Director of Information Services, Godwin Heights Public School District",
+						"learnMoreText": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3TlBL98MUScDM5BeYq0C4K/6bf30ba6b1fceece49f5d4b79326af30/GodwinHeightsSchoolDistrict.png"
+							},
+							"description": "Godwin Heights Public School District logo"
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "3Q1gg226udDaCVmmrZgyCp",
+								"quote": "\"It is really nice to be able to just – with the flip of a switch – click on a couple settings, and all the traffic is being proxied through Cloudflare. That is a big plus, because we did not have that visibility.\"",
+								"quoteAuthor": "Noe Arzate",
+								"quoteTitle": "Chief Technology Officer, Mount Pleasant International School District",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5lRI8EQPVeHtEp4bELGYgR/02dbe6250e8396ded4ae47678e09655d/Mount_Pleasant_International_School_District_-_logo.png"
+									},
+									"description": "Mount Pleasant International School District - logo"
+								}
+							}
+						]
 					},
 					{
 						"contentfulId": "4hIM5mRghwEo0Gqm3tTo9m",
@@ -1742,7 +1849,48 @@
 					}
 				],
 				"noindex": false,
-				"formModal": null,
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "48okycbpfOcCuRs0mEepQ4",
+						"modalName": "Cloudflare Education Solutions - Form Modal",
+						"modalId": "cloudflare-education-solutions-form-modal",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "7hB6sc9sKxNBnDJpPM6lE3",
+							"bladeName": "Cloudflare Education Solutions - Marketo Form (1341)",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[ACQ] Q2'21 WEB - GBL - Education Solutions Page",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": false,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": false,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Contact us",
+						"regularCopy": "Cloudflare for Education",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
