@@ -275,13 +275,15 @@
 																		"address": {
 																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -295,12 +297,14 @@
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -410,13 +414,15 @@
 																		"address": {
 																			"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -430,12 +436,14 @@
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -499,16 +507,19 @@
 																"description": "The mode to run the WARP client under.",
 																"example": "proxy",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"port": {
 																"description": "The port number when used with proxy mode.",
 																"example": 3000,
 																"type": "number",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"support_url": {
 														"default": "",
@@ -805,13 +816,15 @@
 																				"address": {
 																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																					"example": "192.0.2.0/24",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Exclude testing domains from the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -825,12 +838,14 @@
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Exclude testing domains from the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"host": {
 																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																					"example": "*.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -940,13 +955,15 @@
 																				"address": {
 																					"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																					"example": "192.0.2.0/24",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -960,12 +977,14 @@
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"host": {
 																					"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																					"example": "*.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -1029,16 +1048,19 @@
 																		"description": "The mode to run the WARP client under.",
 																		"example": "proxy",
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"port": {
 																		"description": "The port number when used with proxy mode.",
 																		"example": 3000,
 																		"type": "number",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"support_url": {
 																"default": "",
@@ -3257,13 +3279,15 @@
 																		"address": {
 																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -3277,12 +3301,14 @@
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -3392,13 +3418,15 @@
 																		"address": {
 																			"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"description": {
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -3412,12 +3440,14 @@
 																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Include testing domains in the tunnel",
 																			"maxLength": 100,
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"host": {
 																			"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
-																			"type": "string"
+																			"type": "string",
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"required": [
@@ -3481,16 +3511,19 @@
 																"description": "The mode to run the WARP client under.",
 																"example": "proxy",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"port": {
 																"description": "The port number when used with proxy mode.",
 																"example": 3000,
 																"type": "number",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"support_url": {
 														"default": "",
@@ -3787,13 +3820,15 @@
 																				"address": {
 																					"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																					"example": "192.0.2.0/24",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Exclude testing domains from the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -3807,12 +3842,14 @@
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Exclude testing domains from the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"host": {
 																					"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																					"example": "*.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -3922,13 +3959,15 @@
 																				"address": {
 																					"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																					"example": "192.0.2.0/24",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"description": {
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -3942,12 +3981,14 @@
 																					"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																					"example": "Include testing domains in the tunnel",
 																					"maxLength": 100,
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				},
 																				"host": {
 																					"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																					"example": "*.example.com",
-																					"type": "string"
+																					"type": "string",
+																					"x-stainless-terraform-configurability": "computed_optional"
 																				}
 																			},
 																			"required": [
@@ -4011,16 +4052,19 @@
 																		"description": "The mode to run the WARP client under.",
 																		"example": "proxy",
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"port": {
 																		"description": "The port number when used with proxy mode.",
 																		"example": 3000,
 																		"type": "number",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"support_url": {
 																"default": "",
@@ -4401,13 +4445,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -4421,12 +4467,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -4536,13 +4584,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -4556,12 +4606,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -4592,16 +4644,19 @@
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"support_url": {
 													"default": "",
@@ -4853,13 +4908,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -4873,12 +4930,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -4988,13 +5047,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -5008,12 +5069,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -5044,16 +5107,19 @@
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
 																	"type": "number",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"support_url": {
 															"default": "",
@@ -5433,13 +5499,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -5453,12 +5521,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -5568,13 +5638,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -5588,12 +5660,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -5657,16 +5731,19 @@
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"support_url": {
 													"default": "",
@@ -5940,13 +6017,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -5960,12 +6039,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -6075,13 +6156,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -6095,12 +6178,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -6164,16 +6249,19 @@
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
 																	"type": "number",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"support_url": {
 															"default": "",
@@ -6479,13 +6567,15 @@
 															"address": {
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -6499,12 +6589,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -6662,13 +6754,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -6682,12 +6776,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -7431,13 +7527,15 @@
 															"address": {
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -7451,12 +7549,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -7614,13 +7714,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -7634,12 +7736,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -7908,13 +8012,15 @@
 															"address": {
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -7928,12 +8034,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -8091,13 +8199,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -8111,12 +8221,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -8838,13 +8950,15 @@
 															"address": {
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -8858,12 +8972,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -9021,13 +9137,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -9041,12 +9159,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -9606,13 +9726,15 @@
 												"address": {
 													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -9626,12 +9748,14 @@
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -9642,7 +9766,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"exclude_office_ips": {
 								"default": false,
@@ -9659,13 +9784,15 @@
 												"address": {
 													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -9679,12 +9806,14 @@
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -9695,7 +9824,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"lan_allow_minutes": {
 								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
@@ -9725,16 +9855,19 @@
 										"description": "The mode to run the WARP client under.",
 										"example": "proxy",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
 										"description": "The port number when used with proxy mode.",
 										"example": 3000,
 										"type": "number",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"support_url": {
 								"default": "",
@@ -9980,13 +10113,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -10000,12 +10135,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -10115,13 +10252,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -10135,12 +10274,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -10171,16 +10312,19 @@
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"support_url": {
 													"default": "",
@@ -10432,13 +10576,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -10452,12 +10598,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -10567,13 +10715,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -10587,12 +10737,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -10623,16 +10775,19 @@
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
 																	"type": "number",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"support_url": {
 															"default": "",
@@ -10852,13 +11007,15 @@
 												"address": {
 													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -10872,12 +11029,14 @@
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -10888,7 +11047,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"exclude_office_ips": {
 								"default": false,
@@ -10905,13 +11065,15 @@
 												"address": {
 													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -10925,12 +11087,14 @@
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -10941,7 +11105,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"lan_allow_minutes": {
 								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
@@ -10988,16 +11153,19 @@
 										"description": "The mode to run the WARP client under.",
 										"example": "proxy",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
 										"description": "The port number when used with proxy mode.",
 										"example": 3000,
 										"type": "number",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"support_url": {
 								"default": "",
@@ -11249,13 +11417,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -11269,12 +11439,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -11384,13 +11556,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -11404,12 +11578,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -11473,16 +11649,19 @@
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"support_url": {
 													"default": "",
@@ -11756,13 +11935,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -11776,12 +11957,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -11891,13 +12074,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -11911,12 +12096,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -11980,16 +12167,19 @@
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
 																	"type": "number",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"support_url": {
 															"default": "",
@@ -12616,13 +12806,15 @@
 												"address": {
 													"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -12636,12 +12828,14 @@
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Exclude testing domains from the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -12652,7 +12846,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"exclude_office_ips": {
 								"default": false,
@@ -12669,13 +12864,15 @@
 												"address": {
 													"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 													"example": "192.0.2.0/24",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"description": {
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -12689,12 +12886,14 @@
 													"description": "A description of the Split Tunnel item, displayed in the client UI.",
 													"example": "Include testing domains in the tunnel",
 													"maxLength": 100,
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"host": {
 													"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 													"example": "*.example.com",
-													"type": "string"
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed_optional"
 												}
 											},
 											"required": [
@@ -12705,7 +12904,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"lan_allow_minutes": {
 								"description": "The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.",
@@ -12752,16 +12952,19 @@
 										"description": "The mode to run the WARP client under.",
 										"example": "proxy",
 										"type": "string",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									},
 									"port": {
 										"description": "The port number when used with proxy mode.",
 										"example": 3000,
 										"type": "number",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"support_url": {
 								"default": "",
@@ -13018,13 +13221,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -13038,12 +13243,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -13153,13 +13360,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -13173,12 +13382,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -13242,16 +13453,19 @@
 															"description": "The mode to run the WARP client under.",
 															"example": "proxy",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"port": {
 															"description": "The port number when used with proxy mode.",
 															"example": 3000,
 															"type": "number",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"support_url": {
 													"default": "",
@@ -13525,13 +13739,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -13545,12 +13761,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Exclude testing domains from the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -13660,13 +13878,15 @@
 																			"address": {
 																				"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																				"example": "192.0.2.0/24",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"description": {
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -13680,12 +13900,14 @@
 																				"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																				"example": "Include testing domains in the tunnel",
 																				"maxLength": 100,
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			},
 																			"host": {
 																				"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																				"example": "*.example.com",
-																				"type": "string"
+																				"type": "string",
+																				"x-stainless-terraform-configurability": "computed_optional"
 																			}
 																		},
 																		"required": [
@@ -13749,16 +13971,19 @@
 																	"description": "The mode to run the WARP client under.",
 																	"example": "proxy",
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"port": {
 																	"description": "The port number when used with proxy mode.",
 																	"example": 3000,
 																	"type": "number",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"support_url": {
 															"default": "",
@@ -14643,13 +14868,15 @@
 										"address": {
 											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 											"example": "192.0.2.0/24",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -14663,12 +14890,14 @@
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 											"example": "*.example.com",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -14820,13 +15049,15 @@
 															"address": {
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -14840,12 +15071,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -15003,13 +15236,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -15023,12 +15258,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -15695,13 +15932,15 @@
 										"address": {
 											"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 											"example": "192.0.2.0/24",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -15715,12 +15954,14 @@
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 											"example": "*.example.com",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -15872,13 +16113,15 @@
 															"address": {
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -15892,12 +16135,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -16055,13 +16300,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -16075,12 +16322,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -16228,13 +16477,15 @@
 										"address": {
 											"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 											"example": "192.0.2.0/24",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -16248,12 +16499,14 @@
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Exclude testing domains from the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 											"example": "*.example.com",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -16405,13 +16658,15 @@
 															"address": {
 																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -16425,12 +16680,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -16588,13 +16845,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -16608,12 +16867,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -17258,13 +17519,15 @@
 										"address": {
 											"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 											"example": "192.0.2.0/24",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"description": {
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -17278,12 +17541,14 @@
 											"description": "A description of the Split Tunnel item, displayed in the client UI.",
 											"example": "Include testing domains in the tunnel",
 											"maxLength": 100,
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"host": {
 											"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 											"example": "*.example.com",
-											"type": "string"
+											"type": "string",
+											"x-stainless-terraform-configurability": "computed_optional"
 										}
 									},
 									"required": [
@@ -17435,13 +17700,15 @@
 															"address": {
 																"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"description": {
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -17455,12 +17722,14 @@
 																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Include testing domains in the tunnel",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"host": {
 																"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
-																"type": "string"
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -17618,13 +17887,15 @@
 																	"address": {
 																		"description": "The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"description": {
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
@@ -17638,12 +17909,14 @@
 																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Include testing domains in the tunnel",
 																		"maxLength": 100,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"host": {
 																		"description": "The domain name to include in the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	}
 																},
 																"required": [
