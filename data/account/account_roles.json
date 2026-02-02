@@ -71,6 +71,10 @@
 				"read": true,
 				"edit": false
 			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
 			"healthchecks": {
 				"read": true,
 				"edit": false
@@ -2010,6 +2014,10 @@
 			"lb": {
 				"read": true,
 				"edit": true
+			},
+			"waf": {
+				"read": true,
+				"edit": false
 			},
 			"healthchecks": {
 				"read": true,
