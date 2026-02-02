@@ -368,6 +368,15 @@
 				"example": "asc",
 				"type": "string"
 			}
+		},
+		{
+			"description": "Filter widgets by field using case-insensitive substring matching.\nFormat: `field:value`\n\nSupported fields:\n- `name` - Filter by widget name (e.g., `filter=name:login-form`)\n- `sitekey` - Filter by sitekey (e.g., `filter=sitekey:0x4AAA`)\n\nReturns 400 Bad Request if the field is unsupported or format is invalid.\nAn empty filter value returns all results.\n",
+			"in": "query",
+			"name": "filter",
+			"schema": {
+				"example": "name:my-widget",
+				"type": "string"
+			}
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets/{sitekey}": [
