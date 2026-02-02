@@ -77,6 +77,7 @@
 				bot: "Crawler",
 				operator: "Operator",
 				category: "Category",
+				data_transfer: "Bytes Transferred",
 				allowed_requests: "Allowed requests",
 				blocked_requests: "Blocked requests",
 				violations: "Robots.txt violations",
@@ -262,7 +263,13 @@
 			title: "Allowed requests over time",
 			description: "Review successful AI crawler requests over time for your domain.",
 			no_data_available: "No allowed requests data found",
-			more_items: "+%{count} More"
+			more_items: "+%{count} More",
+			metric_label: "Metric:",
+			group_by_label: "Group by:",
+			view_mode: {
+				requests: "Requests",
+				bytes: "Bytes"
+			}
 		},
 		status_code_chart: {
 			title: "Status code distribution",

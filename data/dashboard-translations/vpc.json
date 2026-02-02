@@ -3,10 +3,12 @@
 	"vpc.overview.create": "Create",
 	"vpc.overview.createPrivateNetworkService": "Create VPC Service",
 	"vpc.overview.createTunnel": "Create Tunnel",
-	"vpc.overview.subtitle": "Connect to services and APIs in your external private networks using Cloudflare Tunnels and VPC Services",
+	"vpc.overview.subtitle": "Connect to services and APIs in your external private networks using Cloudflare Tunnels and VPC Services.",
+	"vpc.overview.manageTunnelsLink": "Manage your tunnels",
 	"vpc.overview.documentation": "Documentation",
 	"vpc.overview.nav.privateNetworkServices": "VPC Services",
 	"vpc.overview.nav.tunnels": "Tunnels",
+	"vpc.tunnels.subtitle": "Create secure, outbound-only connections from your infrastructure to Cloudflare without opening inbound ports.",
 	"vpc.tunnels.status.healthy": "Healthy",
 	"vpc.tunnels.status.inactive": "Inactive",
 	"vpc.tunnels.status.degraded": "Degraded",
@@ -23,6 +25,7 @@
 	"vpc.tunnels.emptyState.description": "Create a Tunnel within your external private network to connect it to Cloudflare. This is needed to connect to external services in the private network from Workers using VPC Services.",
 	"vpc.createTunnel.title": "Create a Tunnel",
 	"vpc.createTunnel.description": "Start by creating a Tunnel to connect your private network to Cloudflare. Then, you will be able to create a VPC Service for each service in the private network in which your Tunnel is running.",
+	"vpc.createTunnel.description.v2": "Start by creating a Tunnel to connect your private network to Cloudflare.",
 	"vpc.createTunnel.form.tunnelName.label": "Tunnel name",
 	"vpc.createTunnel.form.tunnelName.required": "A unique name for your Tunnel",
 	"vpc.createTunnel.form.tunnelName.placeholder": "Enter Tunnel name",
@@ -54,6 +57,7 @@
 	"vpc.privateNetworkServices.columns.name": "Name",
 	"vpc.privateNetworkServices.columns.serviceId": "Service ID",
 	"vpc.privateNetworkServices.columns.host": "Host",
+	"vpc.privateNetworkServices.columns.tunnel": "Tunnel",
 	"vpc.privateNetworkServices.columns.port": "Port",
 	"vpc.privateNetworkServices.columns.created": "Created",
 	"vpc.privateNetworkServices.search": "Search services...",
@@ -109,5 +113,7 @@
 	"vpc.createTunnel.form.tunnelName.tooltip": "A unique name for your Tunnel that will appear in the Cloudflare dashboard and CLI tools.",
 	"vpc.createTunnel.operatingSystem.tooltip": "Select the operating system where you'll install and run the cloudflared daemon.",
 	"vpc.createTunnel.architecture.tooltip": "Select the CPU architecture of your system. Most modern systems use 64-bit architecture.",
-	"vpc.tunnels.actions.manageInZeroTrust": "Manage in Zero Trust"
+	"vpc.tunnels.actions.manageInZeroTrust": "Manage in Zero Trust",
+	"vpc.tunnels.deleteSuccess": "This tunnel has been successfully deleted",
+	"vpc.tunnels.deleteError": "Tunnel deletion failed"
 }

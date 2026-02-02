@@ -52,7 +52,7 @@
 	workflowPage: {
 		boundWorker: "Bound Worker",
 		graphEmptyState: {
-			title: "This workflow doesn't have a graph yet. Deploy a new version to automatically generate a workflow graph."
+			title: "The latest instance of this workflow doesn't have a graph yet. Deploy a new version to automatically generate a workflow graph."
 		},
 		diagram: {
 			expand: "Expand diagram",
