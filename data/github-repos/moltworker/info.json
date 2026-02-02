@@ -10,13 +10,18 @@
 	"homepage": "https://blog.cloudflare.com/moltworker-self-hosted-ai-agent/",
 	"archived": false,
 	"disabled": false,
-	"license": null,
+	"license": {
+		"key": "apache-2.0",
+		"name": "Apache License 2.0",
+		"spdx_id": "Apache-2.0",
+		"url": "https://api.github.com/licenses/apache-2.0",
+		"node_id": "MDc6TGljZW5zZTI="
+	},
 	"allow_forking": true,
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
 		"add-deploy-button",
-		"ai-contributions",
 		"ajansson/pr81-e2e-configs",
 		"auto-generate-cdp-secret",
 		"celso/name",
