@@ -36,9 +36,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"ai_gateway_id": {
@@ -122,10 +124,39 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
+										},
+										"custom_metadata": {
+											"items": {
+												"properties": {
+													"data_type": {
+														"enum": [
+															"text",
+															"number",
+															"boolean"
+														],
+														"type": "string"
+													},
+													"field_name": {
+														"maxLength": 64,
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"field_name",
+													"data_type"
+												],
+												"type": "object"
+											},
+											"maxItems": 5,
+											"type": "array",
+											"x-auditable": true
 										},
 										"embedding_model": {
 											"anyOf": [
@@ -157,6 +188,7 @@
 										},
 										"engine_version": {
 											"default": 1,
+											"readOnly": true,
 											"type": "number"
 										},
 										"hybrid_search_enabled": {
@@ -175,10 +207,12 @@
 										},
 										"internal_id": {
 											"format": "uuid",
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_activity": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"max_num_results": {
@@ -202,9 +236,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"paused": {
@@ -213,8 +249,8 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string",
-											"x-auditable": true
+											"readOnly": true,
+											"type": "string"
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -479,6 +515,7 @@
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"summarization": {
@@ -553,9 +590,11 @@
 											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"vectorize_name": {
+											"readOnly": true,
 											"type": "string"
 										}
 									},
@@ -705,9 +744,11 @@
 									"items": {
 										"properties": {
 											"account_id": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"account_tag": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"ai_gateway_id": {
@@ -791,10 +832,39 @@
 											},
 											"created_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"created_by": {
+												"readOnly": true,
 												"type": "string"
+											},
+											"custom_metadata": {
+												"items": {
+													"properties": {
+														"data_type": {
+															"enum": [
+																"text",
+																"number",
+																"boolean"
+															],
+															"type": "string"
+														},
+														"field_name": {
+															"maxLength": 64,
+															"minLength": 1,
+															"type": "string"
+														}
+													},
+													"required": [
+														"field_name",
+														"data_type"
+													],
+													"type": "object"
+												},
+												"maxItems": 5,
+												"type": "array",
+												"x-auditable": true
 											},
 											"embedding_model": {
 												"anyOf": [
@@ -826,6 +896,7 @@
 											},
 											"engine_version": {
 												"default": 1,
+												"readOnly": true,
 												"type": "number"
 											},
 											"hybrid_search_enabled": {
@@ -844,10 +915,12 @@
 											},
 											"internal_id": {
 												"format": "uuid",
+												"readOnly": true,
 												"type": "string"
 											},
 											"last_activity": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"max_num_results": {
@@ -871,9 +944,11 @@
 											},
 											"modified_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"modified_by": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"paused": {
@@ -882,8 +957,8 @@
 												"x-auditable": true
 											},
 											"public_endpoint_id": {
-												"type": "string",
-												"x-auditable": true
+												"readOnly": true,
+												"type": "string"
 											},
 											"public_endpoint_params": {
 												"properties": {
@@ -1148,6 +1223,7 @@
 											},
 											"status": {
 												"default": "waiting",
+												"readOnly": true,
 												"type": "string"
 											},
 											"summarization": {
@@ -1222,9 +1298,11 @@
 												"x-auditable": true
 											},
 											"vectorize_active_namespace": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"vectorize_name": {
+												"readOnly": true,
 												"type": "string"
 											}
 										},
@@ -1358,9 +1436,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"ai_gateway_id": {
@@ -1444,10 +1524,39 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
+										},
+										"custom_metadata": {
+											"items": {
+												"properties": {
+													"data_type": {
+														"enum": [
+															"text",
+															"number",
+															"boolean"
+														],
+														"type": "string"
+													},
+													"field_name": {
+														"maxLength": 64,
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"field_name",
+													"data_type"
+												],
+												"type": "object"
+											},
+											"maxItems": 5,
+											"type": "array",
+											"x-auditable": true
 										},
 										"embedding_model": {
 											"anyOf": [
@@ -1479,6 +1588,7 @@
 										},
 										"engine_version": {
 											"default": 1,
+											"readOnly": true,
 											"type": "number"
 										},
 										"hybrid_search_enabled": {
@@ -1497,10 +1607,12 @@
 										},
 										"internal_id": {
 											"format": "uuid",
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_activity": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"max_num_results": {
@@ -1524,9 +1636,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"paused": {
@@ -1535,8 +1649,8 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string",
-											"x-auditable": true
+											"readOnly": true,
+											"type": "string"
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -1801,6 +1915,7 @@
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"summarization": {
@@ -1875,9 +1990,11 @@
 											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"vectorize_name": {
+											"readOnly": true,
 											"type": "string"
 										}
 									},
@@ -2203,6 +2320,33 @@
 								"default": 256,
 								"minimum": 64,
 								"type": "integer",
+								"x-auditable": true
+							},
+							"custom_metadata": {
+								"items": {
+									"properties": {
+										"data_type": {
+											"enum": [
+												"text",
+												"number",
+												"boolean"
+											],
+											"type": "string"
+										},
+										"field_name": {
+											"maxLength": 64,
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"field_name",
+										"data_type"
+									],
+									"type": "object"
+								},
+								"maxItems": 5,
+								"type": "array",
 								"x-auditable": true
 							},
 							"embedding_model": {
@@ -2555,9 +2699,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"ai_gateway_id": {
@@ -2641,10 +2787,39 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
+										},
+										"custom_metadata": {
+											"items": {
+												"properties": {
+													"data_type": {
+														"enum": [
+															"text",
+															"number",
+															"boolean"
+														],
+														"type": "string"
+													},
+													"field_name": {
+														"maxLength": 64,
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"field_name",
+													"data_type"
+												],
+												"type": "object"
+											},
+											"maxItems": 5,
+											"type": "array",
+											"x-auditable": true
 										},
 										"embedding_model": {
 											"anyOf": [
@@ -2676,6 +2851,7 @@
 										},
 										"engine_version": {
 											"default": 1,
+											"readOnly": true,
 											"type": "number"
 										},
 										"hybrid_search_enabled": {
@@ -2694,10 +2870,12 @@
 										},
 										"internal_id": {
 											"format": "uuid",
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_activity": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"max_num_results": {
@@ -2721,9 +2899,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"paused": {
@@ -2732,8 +2912,8 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string",
-											"x-auditable": true
+											"readOnly": true,
+											"type": "string"
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -2998,6 +3178,7 @@
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"summarization": {
@@ -3072,9 +3253,11 @@
 											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"vectorize_name": {
+											"readOnly": true,
 											"type": "string"
 										}
 									},
@@ -4272,6 +4455,33 @@
 								"type": "integer",
 								"x-auditable": true
 							},
+							"custom_metadata": {
+								"items": {
+									"properties": {
+										"data_type": {
+											"enum": [
+												"text",
+												"number",
+												"boolean"
+											],
+											"type": "string"
+										},
+										"field_name": {
+											"maxLength": 64,
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"field_name",
+										"data_type"
+									],
+									"type": "object"
+								},
+								"maxItems": 5,
+								"type": "array",
+								"x-auditable": true
+							},
 							"embedding_model": {
 								"anyOf": [
 									{
@@ -4659,9 +4869,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"ai_gateway_id": {
@@ -4745,10 +4957,39 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
+										},
+										"custom_metadata": {
+											"items": {
+												"properties": {
+													"data_type": {
+														"enum": [
+															"text",
+															"number",
+															"boolean"
+														],
+														"type": "string"
+													},
+													"field_name": {
+														"maxLength": 64,
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"field_name",
+													"data_type"
+												],
+												"type": "object"
+											},
+											"maxItems": 5,
+											"type": "array",
+											"x-auditable": true
 										},
 										"embedding_model": {
 											"anyOf": [
@@ -4780,6 +5021,7 @@
 										},
 										"engine_version": {
 											"default": 1,
+											"readOnly": true,
 											"type": "number"
 										},
 										"hybrid_search_enabled": {
@@ -4798,10 +5040,12 @@
 										},
 										"internal_id": {
 											"format": "uuid",
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_activity": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"max_num_results": {
@@ -4825,9 +5069,11 @@
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"paused": {
@@ -4836,8 +5082,8 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
-											"type": "string",
-											"x-auditable": true
+											"readOnly": true,
+											"type": "string"
 										},
 										"public_endpoint_params": {
 											"properties": {
@@ -5102,6 +5348,7 @@
 										},
 										"status": {
 											"default": "waiting",
+											"readOnly": true,
 											"type": "string"
 										},
 										"summarization": {
@@ -5176,9 +5423,11 @@
 											"x-auditable": true
 										},
 										"vectorize_active_namespace": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"vectorize_name": {
+											"readOnly": true,
 											"type": "string"
 										}
 									},

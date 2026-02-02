@@ -31,9 +31,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"cf_api_id": {
@@ -45,9 +47,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"enabled": {
@@ -62,13 +66,16 @@
 										},
 										"legacy": {
 											"default": true,
+											"readOnly": true,
 											"type": "boolean"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -77,6 +84,7 @@
 										},
 										"synced_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										}
 									},
@@ -216,9 +224,11 @@
 									"items": {
 										"properties": {
 											"account_id": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"account_tag": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"cf_api_id": {
@@ -230,9 +240,11 @@
 											},
 											"created_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"created_by": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"enabled": {
@@ -247,13 +259,16 @@
 											},
 											"legacy": {
 												"default": true,
+												"readOnly": true,
 												"type": "boolean"
 											},
 											"modified_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											},
 											"modified_by": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"name": {
@@ -262,6 +277,7 @@
 											},
 											"synced_at": {
 												"format": "date-time",
+												"readOnly": true,
 												"type": "string"
 											}
 										},
@@ -389,9 +405,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"cf_api_id": {
@@ -403,9 +421,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"enabled": {
@@ -420,13 +440,16 @@
 										},
 										"legacy": {
 											"default": true,
+											"readOnly": true,
 											"type": "boolean"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -435,6 +458,7 @@
 										},
 										"synced_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										}
 									},
@@ -559,6 +583,7 @@
 							},
 							"legacy": {
 								"default": true,
+								"readOnly": true,
 								"type": "boolean"
 							},
 							"name": {
@@ -585,9 +610,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"cf_api_id": {
@@ -599,9 +626,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"enabled": {
@@ -616,13 +645,16 @@
 										},
 										"legacy": {
 											"default": true,
+											"readOnly": true,
 											"type": "boolean"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -631,6 +663,7 @@
 										},
 										"synced_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										}
 									},
@@ -773,6 +806,7 @@
 							},
 							"legacy": {
 								"default": true,
+								"readOnly": true,
 								"type": "boolean"
 							},
 							"name": {
@@ -799,9 +833,11 @@
 								"result": {
 									"properties": {
 										"account_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"account_tag": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"cf_api_id": {
@@ -813,9 +849,11 @@
 										},
 										"created_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"created_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"enabled": {
@@ -830,13 +868,16 @@
 										},
 										"legacy": {
 											"default": true,
+											"readOnly": true,
 											"type": "boolean"
 										},
 										"modified_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										},
 										"modified_by": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
@@ -845,6 +886,7 @@
 										},
 										"synced_at": {
 											"format": "date-time",
+											"readOnly": true,
 											"type": "string"
 										}
 									},
