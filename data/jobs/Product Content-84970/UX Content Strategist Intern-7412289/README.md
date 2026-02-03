@@ -20,6 +20,8 @@
 <ul>
 	<li>Currently pursuing a degree in UX, Technical Communication, Journalism, English, Design, Engineering, Marketing, or a related field with a strong writing emphasis or technical communication.</li>
 	<li>A writing or design sample portfolio demonstrating experience in clear, user-focused content creation (course work is acceptable).</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in Austin, TX.</li>
 	<li>Exceptional written and verbal communication skills, with a proven ability to distill complex topics into simple, usable language.</li>
 	<li>High degree of organization and strong collaboration skills, with a demonstrated willingness to ask clarifying questions and interview/talk to a variety of stakeholders (users, engineers, product managers).</li>
 	<li>Proven proactive and responsible attitude with the willingness to partner in leading projects and owning outcomes from concept to completion.</li>

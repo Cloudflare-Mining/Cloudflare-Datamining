@@ -5,63 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: This role is based in the Washington DC metro area.</strong></p>
-<p>About the Role</p>
-<p>This role supports the Principal Partner Engagement &amp; Experience Manager by owning and executing key partner communications, content operations, and digital experience workflows. The position is highly cross-functional, partnering closely with Partner Marketing, PR, Enablement, Programs, and Corporate Social teams to deliver timely, accurate, and engaging partner communications across all channels.</p>
-<h3>Responsibilities</h3>
+<p><strong>Available locations: Lisbon&nbsp;</strong></p>
+<p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Email Routing, Radar, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
+<p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
+<p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
+<p>We are looking for a Systems Engineer to join our Cloudflare Workflows’ team. You will work with a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites, services and applications. You will play an active part in shaping product features based on what’s technically possible. You will change the way people build applications. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment.</p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li>Drive Partner Communications &amp; Engagement: Develop and execute partner-first communication strategies that increase awareness, adoption, and engagement across Cloudflare’s global partner ecosystem.</li>
-	<li>Create Impactful Partner Content: Own the creation, curation, and distribution of partner-facing and internal content that supports programs, enablement, incentives, events, and key business priorities.</li>
-	<li>Elevate Digital Partner Experience: Support the ongoing optimization of Cloudflare’s partner digital experiences, including content organization, discoverability, and usability across partner-facing platforms.</li>
-	<li>Amplify Partner Visibility &amp; Recognition: Partner with cross-functional teams to promote partner success stories, announcements, and recognition, reinforcing Cloudflare’s partner-first culture.</li>
-	<li>Support Partner Readiness &amp; Enablement: Collaborate with partner marketing, product marketing, enablement, and sales teams to deliver timely, relevant content that improves field and partner readiness.</li>
-	<li>Execute Partner Engagement Programs: Support the planning, promotion, and execution of partner engagement initiatives, including webinars and campaigns, ensuring a consistent and professional experience.</li>
-	<li>Own Cross-Functional Coordination &amp; Execution: Act as a key liaison across Partner Experience, Marketing, PR, and Operations to ensure alignment, operational excellence, and effective execution of partner initiatives.</li>
+	<li>Bachelor’s degree or equivalent in Computer Science, Engineering, or a related field;</li>
+	<li>Proven experience in software development (+3 years);</li>
+	<li>TypeScript experience in a production system;</li>
+	<li>Solid understanding of systems engineering principles and practices;</li>
+	<li>Active usage of AI development tools to enhance your development workflow;</li>
+	<li>Strong problem-solving skills and attention to detail;</li>
+	<li>Excellent communication and interpersonal skills, with the ability to work effectively in a team environment;</li>
+	<li>Passion for learning and exploring new technologies;</li>
+	<li>Creative thinker with the ability to propose innovative solutions to complex problems;</li>
+	<li>An operational mindset - we don't just write code, we also own it in production;</li>
+	<li>Experience with Git.</li>
 </ul>
-<h3>Key Skills &amp; Attributes&nbsp;</h3>
+<p><strong>Bonus Points:</strong></p>
 <ul>
-	<li>5+ years of experience in partner-focused roles (marketing, communications, experience, programs, project management, or analytics).</li>
-	<li>Detail-oriented, proactive, and partner-first in approach.</li>
-	<li>Strong written communication and editing skills, with the ability to tailor messaging for different audiences.</li>
-	<li>Highly organized with the ability to manage multiple workflows and deadlines simultaneously.</li>
-	<li>Comfortable working across teams and balancing competing priorities.</li>
-	<li>Willingness and ability to learn new tools and systems (e.g., Salesforce Experience Cloud, Wiki, Poppulo platforms).</li>
-	<li>Analytical mindset with experience reviewing engagement metrics and using insights to improve content performance.</li>
+	<li>Projects built with the Cloudflare Developer Platform (Workers, Durable Objects, Queues, etc);</li>
+	<li>Experience with Python, Rust, or Go;</li>
+	<li>Experience building high performance distributed systems;</li>
+	<li>Knowledge of SQL.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Washington DC Metro-based hires: Estimated annual salary of $190,000 - $261,000.</li>
-</ul>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

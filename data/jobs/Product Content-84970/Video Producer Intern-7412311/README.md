@@ -21,6 +21,8 @@
 <ul>
 	<li>Currently pursuing a degree in Technical Communication, Video Production, Journalism, or a related multimedia field.</li>
 	<li>A portfolio or video samples demonstrating experience in creating and editing content. Independent projects or course work is acceptable.&nbsp;</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in Lisbon.</li>
 	<li>Proficiency with video editing software (e.g., Adobe Premiere Pro) and demonstrable skills in applying animation or motion graphics to enhance visual storytelling.</li>
 	<li>Strong eagerness to learn new video production workflows, developer concepts, and content strategy best practices.</li>
 	<li>Proven proactive and responsible attitude with the willingness to partner in leading projects and owning outcomes from concept to completion.</li>

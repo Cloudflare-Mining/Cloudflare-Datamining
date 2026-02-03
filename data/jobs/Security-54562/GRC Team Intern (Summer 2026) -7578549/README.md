@@ -5,37 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, Texas, US</p>
-<h4><strong>About the team</strong></h4>
-<p>The Data Intelligence &amp; Analytics team at Cloudflare is responsible for building a unified data &amp; ML platform that enables our internal Business Partners and Product teams with actionable analytics, insights and recommendations. Our goal is to democratize data &amp; intelligence, support Cloudflare’s critical business needs, and provide self-service data &amp; AI applications to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for a Data Scientist Intern to join our Austin team to help us extract insights from our large datasets and drive business decisions. As an intern, you’ll work alongside experienced data scientists and machine learning engineers to tackle real-world challenges in natural language processing (NLP) and AI development.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Location: Lisbon, Portugal</strong></p>
+<p><strong>About Cloudflare's Security Team</strong></p>
+<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
+<p>The Security Governance, Risk and Compliance team (GRC) is a sub-team of Security. Our job is to make sure that Cloudflare has the right controls in place to secure our systems and customer data. We work cross-functionally with almost every team at Cloudflare to implement new controls, manage risk, and demonstrate our security posture to auditors and customers.&nbsp;</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
+<p><strong>What you’ll do</strong></p>
+<p>As a GRC intern, you won’t just be checking boxes. Over 12 weeks, you will:</p>
 <ul>
-	<li>Develop and deploy predictive models to drive business outcomes</li>
-	<li>Collaborate with cross-functional teams to design and implement data-driven solutions</li>
-	<li>Work with large datasets to extract insights and inform business decisions</li>
-	<li>Work on data preprocessing/parsing strategies to make it LLM ready</li>
-	<li>Rapidly test new frameworks such as AI agents, RAG, NL2SQL, etc in the Generative AI domain</li>
-	<li>Support the evaluation and benchmarking of LLM performance across various tasks and metrics</li>
-	<li>Continuously involved in knowledge sharing and mentorship</li>
+	<li>Execute a specialized project that directly improves Cloudflare’s security posture.</li>
+	<li>Improve the maturity of Cloudflare’s Security Compliance program by working on projects like:</li>
+	<ul>
+		<li>Evaluating the efficacy of Cloudflare security controls implemented across the organization.</li>
+		<li>Developing and implementing automated solutions to improve Governance, Risk, and Compliance processes and operations, integrating with existing security, engineering, and AI tools.&nbsp;</li>
+		<li>Supporting the security risk register by triaging and assessing potential risks, proposing mitigation strategies, and presenting key security insights to leadership.</li>
+		<li>Supporting Cloudflare’s security data center audits and assessments.</li>
+	</ul>
+	<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
+	<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
+	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+	<li>Present your security project to the entire company at the end of the internship.</li>
+	<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
-	<li>Experience working with programming languages such as Python, SQL or Javascript</li>
-	<li>Knowledge of machine learning algorithms, statistical modeling and LLMs</li>
-	<li>Excellent communication &amp; problem solving skills</li>
-	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
-	<li>Ability to commit to a minimum 12 week summer internship</li>
-	<li>In office 3-5 days a week in Austin, TX</li>
+	<li>Working knowledge of industry-standard frameworks such as NIST 800-53, ISO 27001, or SOC 2 principles through coursework or personal study.</li>
+	<li>Understanding of risk management methodologies - identifying threats, assessing impact/likelihood, and suggesting mitigation strategies.</li>
+	<li>Ability to write basic Python scripts to automate repetitive tasks, such as interacting with APIs or data cleaning.&nbsp;</li>
+	<li>Workflow Logic &amp; Orchestration - experience with "if-this-then-that" logic in automation platforms.</li>
+	<li>Understanding how to "instruct" AI models effectively and leverage them to perform day-to-day tasks.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In the office 3-5 days a week in the Lisbon office</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>Familiarity with Google Cloud Platform or something similar</li>
-	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
-	<li>Experience with JavaScript, Typescript, and React</li>
+	<li>Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience&nbsp;</li>
 </ul>
+<p>You’ve built something with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students</a></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -24,6 +24,8 @@
 		<li>Samples should be 500-1,000 words in length, and at least one sample should be a technical procedure</li>
 		<li>Coursework or original content is totally fine</li>
 	</ul>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in Austin, TX.</li>
 	<li>Interest in technical subject matter and a career in technical writing</li>
 	<li>Knack for conducting research, asking questions, and getting into the details</li>
 </ul>

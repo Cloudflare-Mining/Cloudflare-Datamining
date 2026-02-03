@@ -5,37 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Lisbon, Portugal</p>
-<h4><strong>About the Role</strong></h4>
-<p>Cloudflare is looking for technical writing interns currently pursuing a degree to join the Product Content Experience (PCX) team and support product content creation. As a tech writing intern, you will partner with engineers, product managers, customer-facing teams, and other PCX writers to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. You will work alongside and learn from a team recently recognized for delivering the Best Unified Enterprise Dev Portal at the 2025 DevPortal Awards. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the Internet better!</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Locations: Lisbon, Portugal</strong></p>
+<p><strong>About Cloudflare's Security Team</strong></p>
+<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
+<p>The Threat Detection and Security Incident Response teams are responsible for identifying, understanding, detecting, and responding to threats targeting Cloudflare.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
+<p>What would you do as a Cloudflare intern?</p>
 <ul>
-	<li>Create and edit product documentation according to company guidelines, varying from support content to product and developer documentation.</li>
-	<li>Collaborate with content experts and project managers to distill complex, broad concepts about products into usable and accurate documentation.&nbsp;</li>
-	<li>Work closely with a variety of product, engineering, and customer-facing teams to document how to use new product features to both technical and non-technical users.</li>
-	<li>Work independently and manage multiple simultaneous projects.</li>
-	<li>Own, create, and help manage all product and support content.</li>
+	<li>Execute a specialized security project over 12-16 weeks that directly improves Cloudflare’s defensive posture.</li>
+	<li>With a focus on threats and how they operate, work to build and improve systems that are the front lines of protecting Cloudflare from malicious attacks.</li>
+	<li>Work with Incident Response Engineers to triage and respond to security alerts and incidents.</li>
+	<li>Use the latest technologies and techniques to engineer solutions to enhance incident response and security operations. Including automation, agentic AI and others</li>
+	<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
+	<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
+	<li>Present your security project to the entire company at the end of the internship.</li>
+	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+	<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
 </ul>
-<h4><strong>Requirements</strong></h4>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Currently pursuing a degree in English, Technical Communication, or another major with a writing-intensive component and/or a technology emphasis&nbsp;</li>
-	<li>Strong verbal, written, and interpersonal communication skills - must provide samples of excellent writing skills</li>
-	<ul>
-		<li>Samples should be 500-1,000 words in length, and at least one sample should be a technical procedure</li>
-		<li>Coursework or original content is totally fine</li>
-	</ul>
+	<li>Understanding of attacker Tools, Techniques, and Procedures (TTPs)</li>
+	<li>Understanding of operating systems, SaaS applications, CI/CD, and common security tools.</li>
+	<li>Understanding of the Incident Response Lifecycle.</li>
+	<li>Proficiency in at least one scripting/programming language for automation.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
 	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In office 3-5 days a week in Lisbon.</li>
-	<li>Interest in technical subject matter and a career in technical writing</li>
-	<li>Knack for conducting research, asking questions, and getting into the details</li>
+	<li>In office 3-5 days a week in the Lisbon office.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Experience writing for technical or general audiences; for example, writing for a student newspaper or creating content for your school’s IT help desk</li>
-	<li>Experience with multimedia and graphic design</li>
-	<li>Familiarity with databases, HTML, Markdown, CSS, and JSON</li>
-	<li>Familiarity with JavaScript, Python, Git, Mercurial, or other modern programming languages and frameworks</li>
-</ul>
+<p><strong>Bonus: Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></strong></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

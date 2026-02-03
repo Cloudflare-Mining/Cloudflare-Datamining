@@ -20,6 +20,8 @@
 <ul>
 	<li>Currently pursuing a degree in a field requiring Journalism, Marketing, Technical Communication, Information Science, Computer Science, or UX/HCI.</li>
 	<li>A portfolio of writing samples or case studies demonstrating the ability to structure and explain technical concepts clearly.&nbsp;</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in Austin, TX.</li>
 	<li>Technical Comfortability: Demonstrated high comfort level with or a fierce eagerness to learn technical concepts, developer tools, and content platforms.</li>
 	<li>UX "Chops": Foundational understanding of user experience principles and how content impacts the user journey.</li>
 	<li>Strong organizational and collaborative skills, with the professionalism to work with technical experts and product leadership.</li>
