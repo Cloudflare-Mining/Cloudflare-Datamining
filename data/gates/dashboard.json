@@ -758,6 +758,9 @@
 	"deseng-kumo-zones-table": {
 		"enabled": true
 	},
+	"deseng-workers-architecture": {
+		"enabled": true
+	},
 	"detection-modules": {
 		"enabled": true
 	},
@@ -2070,6 +2073,13 @@
 	},
 	"registrar-domain-privacy-modes": {
 		"enabled": false
+	},
+	"registrar-empty-state-v1": {
+		"enabled": false,
+		"branches": [
+			"sequenced-onboarding",
+			"card-based-onboarding"
+		]
 	},
 	"registrar-unified-checkout-register": {
 		"enabled": false
