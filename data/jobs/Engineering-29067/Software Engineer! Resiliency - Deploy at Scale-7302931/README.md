@@ -5,38 +5,54 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the role:</strong></p>
-<p>Cloudflare is seeking a seasoned and hands-on People Technology Operations Manager to join our People Operations team to lead the strategic evolution of our HR technology ecosystem. You will own the roadmap for global system enhancements, ensuring our infrastructure scales alongside Cloudflare’s global growth. This role will lead the execution of global programs, addressing immediate, high-priority HR systems needs and projects.The work will have a direct and immediate impact on our most significant initiatives, including our multi-year, global payroll provider implementation and the establishment of new entities.</p>
-<p>You will act as the vital bridge between HR, Payroll, and IT, translating operational needs into technical requirements. Your expert knowledge of HR processes, Workday configuration, and project management skills will be essential as you work directly with our teams to deliver on these immediate priorities.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Location: Washington DC or Austin TX</strong></p>
+<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
+<p>&nbsp;</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Software Engineer: Release Manager, you will be part of the Resiliency Organization responsible for building and maintaining the platform that powers safe, reliable, and automated deployments across Cloudflare. We are looking for engineers to join the <strong>Deploy@Scale</strong> team and shape the future of deployment automation and release safety. The Release Manager platform is pivotal in ensuring service resiliency by orchestrating progressive deployments, supporting health-mediated rollouts, and automating release workflows at scale. Our mission is to make deployments seamless, predictable, and observable for all engineering teams across Cloudflare. This is a unique opportunity to work on complex, globally distributed systems that underpin every Cloudflare product. You will play a key role in advancing the infrastructure that enables fast, safe delivery of changes to production, directly impacting the reliability and velocity of Cloudflare’s global network</p>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>Project Leadership for Immediate Needs:</strong> Provide expert project management and hands-on support for high-priority initiatives, including our global payroll provider implementation and new entity setups.</li>
-	<li><strong>Systems &amp; Operations Support:</strong> Serve as a subject matter expert for Workday and other HR systems, providing direct support for immediate operational needs and projects.</li>
-	<li><strong>Liaison &amp; Translation:</strong> Act as the direct liaison between HR, Payroll, and IT, ensuring the technical design of new implementations is fully supported by our systems and bridging any gaps between the functions.</li>
-	<li><strong>Workday Expertise:</strong> Utilize deep knowledge of Workday fields and configuration to drive system efficiency and accuracy, providing guidance to internal teams.</li>
-	<li><strong>Process Optimization:</strong> Lead and execute user acceptance testing, change management, and training for enhancements and new implementations.</li>
-	<li><strong>Compliance &amp; Documentation:</strong> Ensure all solutions align with internal data security policies and SOX controls by developing and maintaining technical documentation, including process flows and project plans.</li>
-	<li><strong>Hands-on Problem Solving:</strong> Provide direct technical guidance and support to the HR Operations team on complex system issues and configurations.</li>
-</ul>
-<p><strong>Profile</strong></p>
-<ul>
-	<li>
-		<ul>
-			<li>Proven experience (8+ years) as an HR Systems and Operations work or a similar role.</li>
-			<li>Strong expertise in the Workday data model and Workday reporting tools.</li>
-			<li>In-depth understanding of Workday HCM, Compensation, Benefits, Talent, and Security. Expert-level knowledge of Workday configuration for core HR processes.</li>
-			<li>Demonstrated mastery in business requirements gathering, process mapping (e.g., Miro), and translating functional needs into technical specifications.</li>
-			<li>Exceptional project management skills, with direct experience in at least one full-cycle payroll system implementation.</li>
-			<li>Strong analytical and problem-solving abilities, with a keen eye for detail.</li>
-			<li>Excellent communication skills, with the ability to translate complex technical information to non-technical stakeholders.</li>
-			<li>Experience using Jira or similar tools for agile project management.</li>
-			<li>A strong understanding of compliance and security frameworks relevant to HR and payroll data (e.g., SOX, GDPR).</li>
-		</ul>
-	</li>
+	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
+	<li>Experience building both backend systems and frontend widgets.</li>
+	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
+	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
+	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
+	<li>Strong verbal and written English language skills.</li>
 </ul>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $154,000 - 188,000.</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
