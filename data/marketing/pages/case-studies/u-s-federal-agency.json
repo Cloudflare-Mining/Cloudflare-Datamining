@@ -1,0 +1,78 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/u-s-federal-agency/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "U.S. Federal Agency",
+				"contentfulId": "2rlU2EqJeVpafP9Y35pRpG",
+				"nameUrlSlug": "u-s-federal-agency",
+				"metaTags": {
+					"metaTitle": "U.S. Federal Agency & Cloudflare | Customer Story",
+					"metaDescription": "Cloudflare DDoS protection builds service resilience into public-facing digital services.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/11TDDkix2nsORRbuNbIj0l/1c25171ce64f8638d49df60668849e10/Public_Sector_01.png"
+						},
+						"description": "Cloudflare for Public Sector - Hero illustration"
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2024-09-13",
+				"homepageUrl": " ",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "Cloudflare DDoS protection builds service resilience into public-facing digital services.",
+				"longDescription": "## __U.S. government agency eliminated DDoS attacks with help from Cloudflare__\n\n<br>\n\n### __Challenge: Defending U.S. government agency against sustained DDoS attacks__\n\nIn the spring of 2023, many U.S. government agencies were the target of ongoing distributed denial-of-service (DDoS) attacks. These attacks were relentless, lasting more than a month and a half and [prompted CISA guidance](https://www.cisa.gov/news-events/alerts/2023/06/30/dos-and-ddos-attacks-against-multiple-sectors) on best practices for DDoS attack mitigation.\n\nDespite having DDOS protection from its ISP, A US Government agency was under siege. Since the attacker targeted the DNS server — making many requests for non-existent sites on the organization's domain — both internal and public-facing applications were impacted by the attack.\n\n### __Solution: Cloudflare DDoS protection eliminates DDoS attack traffic__\n\nWhen under attack, speed is of the essence. Cloudflare deployed DDOS protection in a matter of days, preparing behind the scenes so the work could commence as soon as the paperwork was complete. The work began on Friday and continued through the weekend as various organizations replaced their cached data with new DNS entries. By the end of Sunday, all traffic to the agency's systems passed through Cloudflare's network, and the attack traffic dropped to zero.\n\nThe agency's CISO had requested traffic logs from their ISP to track the volume of attack traffic and the amount being blocked. Once Cloudflare was in place, he saw the attack traffic rapidly drop to zero, as the attack traffic was blocked before it even reached the ISP's systems.\n\n### __Implementation: Restoring normal operations and offering new security opportunities__\n\nRestoring operations was critical to preserving the agency's reputation and citizen services. The weeks-long DDOS attack had crippled the performance of critical public-facing applications and had significant operational impacts. In addition to forcing remote workers to return to the office due to overloaded VPN servers, the attack generated a large volume of IT help desk tickets as users struggled to access various applications. While under attack these tickets diverted resources from other IT priorities; normal levels were rapidly restored after Cloudflare's defenses were in place.\n\nMoving the agency's infrastructure behind Cloudflare added another layer to its defense-in-depth strategy. Previously, IP filtering was performed by firewalls located at the perimeter of the agency's network. With Cloudflare WAF in place, the organization blocked this traffic before it ever reached its systems, reducing the potential impacts of DDoS and other attacks.\n\n### __Impact: Helping at every step along the way__\n\nAfter over a month of ongoing attacks, Cloudflare's rapid remediation was key to the agency restoring operations and preserving the citizen digital experience. According to its CISO, \"We were under attack, and Cloudflare was there for us every step of the way. That's the kind of service that you remember for a long time.\"\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Restored application availability by eradicating DDoS attacks\n\n- Eliminated help desk tickets associated with unavailable applications",
+				"relatedCaseStudyLinks": null,
+				"inPartnershipWith": [],
+				"relatedCloudflareProducts": [
+					{
+						"title": "DNS",
+						"url": "/application-services/products/dns/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "/application-services/products/bot-management/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/application-services/products/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4YXtCIajgzc4s7krW9WXqZ/6e5362380b9b2375171b14f6265be7ad/Government-Agency-Logo.png"
+					},
+					"description": "Government Agency - Logo"
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2rlU2EqJeVpafP9Y35pRpG",
+			"pathname": "/case-studies/u-s-federal-agency/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
