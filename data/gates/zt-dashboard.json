@@ -17,6 +17,9 @@
 	"access-scim-all-idps-11-15-24": {
 		"enabled": true
 	},
+	"access-self-hosted-app-builder-q1-2026": {
+		"enabled": true
+	},
 	"akm-test-gate1": {
 		"enabled": false
 	},
@@ -350,9 +353,6 @@
 	"zt-access-zone-level-deny-by-default-q1-2026": {
 		"enabled": false
 	},
-	"zt-av-or-sandbox-scan-risk-score": {
-		"enabled": true
-	},
 	"zt-banner-ia-research-q22025": {
 		"enabled": false
 	},
@@ -511,6 +511,9 @@
 	},
 	"zt-logs-ui-ssh-q1-2026": {
 		"enabled": false
+	},
+	"zt-malware-risk-score": {
+		"enabled": true
 	},
 	"zt-predefined-code-detection": {
 		"enabled": true
