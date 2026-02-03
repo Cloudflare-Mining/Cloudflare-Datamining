@@ -18,10 +18,10 @@
 </ul>
 <h4>Skills, Knowledge, and Experience</h4>
 <ul>
-	<li>Professional Experience: 5+ years of professional experience in software development, building and operating mission-critical, high-scale distributed systems.</li>
-	<li>Programming Languages: Strong proficiency in Go (Golang) or a similar modern systems language (e.g., Rust, Java, C++).</li>
+	<li>Professional Experience: 3+ years of professional experience in software development, building and operating mission-critical, high-scale distributed systems.</li>
+	<li>Programming Languages: Strong proficiency in Go (Golang)&nbsp;</li>
 	<li>Systems Design: Proven experience in designing, building, and operating scalable, highly available services at cloud-scale.</li>
-	<li>Architectural Thinking: Deep understanding of concepts related to organization, dependency management, and resource orchestration in a large, multi-tenant environment.</li>
+	<li>Architectural Thinking: Understanding of concepts related to organization, dependency management, and resource orchestration in a large, multi-tenant environment.</li>
 	<li>Collaboration: Experience participating in a code review process and contributing thoughtful feedback to design specifications. Comfortable working across teams to identify shared challenges and propose platform-level solutions.</li>
 </ul>
 <h4>Bonus Skills:</h4>

@@ -9,6 +9,7 @@
 <p><strong>About the Role</strong></p>
 <p>Are you passionate about the intersection of technology, market strategy, and business growth? Do you thrive in a fast-paced environment and enjoy tackling complex, high-impact problems? Cloudflare is looking for a driven and analytical Summer 2026 MBA Strategy Intern to join our team.</p>
 <p>This is a unique opportunity to work alongside Cloudflare's leadership and gain hands-on experience in shaping the future direction of a global, mission-driven company. You will contribute to projects that directly inform executive-level decision-making and Cloudflare's long-term corporate strategy.</p>
+<p>The deadline to submit an application is February 22, 2026 at 11:59 PM PT.</p>
 <h4><strong>Responsibilities</strong></h4>
 <p>The MBA Strategy Intern will contribute to high-priority strategic initiatives across the company. While the exact projects will depend on Cloudflare’s internal priorities at the time of the internship, potential areas of focus include:</p>
 <ul>
