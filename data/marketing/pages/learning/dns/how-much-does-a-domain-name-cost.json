@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/dns/dns-records/protect-domains-without-email/",
+	"path": "/learning/dns/how-much-does-a-domain-name-cost/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "4mTkO6QXduJDF0QNc9Wi33",
-				"urlSlug": "dns/dns-records/protect-domains-without-email",
+				"contentfulId": "14NtkBtQxy396hHgNbhaLg",
+				"urlSlug": "dns/how-much-does-a-domain-name-cost",
 				"metaTags": {
-					"metaTitle": "How to protect domains that do not send emails ",
-					"metaDescription": "Setting up a few specific DNS records helps protect domains that do not send emails. Learn how to set up these DNS records for your domain. ",
+					"metaTitle": "Domain prices: How much do domains cost?",
+					"metaDescription": "Domain prices can vary widely: some are affordable, while premium domains cost a lot. Learn how to check a domain's price and how domain prices are determined.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -780,63 +780,63 @@
 						]
 					}
 				},
-				"header": "How to protect domains that do not send email ",
-				"blurbSubHeader": "Creating these specific DNS records helps protect domains that do not send emails from being used in domain spoofing attacks.",
-				"objectivesHeader": "How to protect domains that do not send email ",
+				"header": "How much does a domain name cost?",
+				"blurbSubHeader": "Domain prices vary based on market demand and availability. Prices are initially set by domain name registries, and registrars or third parties may add markups on top of that.",
+				"objectivesHeader": "Domain Pricing",
 				"objectivesList": [
-					"Learn what DNS records can help protect domains that do not send emails ",
-					"Describe how these types of DNS records work",
-					"Understand the major components of these types of DNS records"
+					"Describe the factors that impact domain prices",
+					"Differentiate between ordinary domains and premium domains",
+					"Find a domain registrar with transparent pricing"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
-						"displayText": "DNS TXT Record",
-						"url": "/learning/dns/dns-records/dns-txt-record/"
+						"contentfulId": "67RJSp1sJG41jCWeXqs16u",
+						"displayText": "Premium domains",
+						"url": "/learning/dns/glossary/premium-domains/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
-						"displayText": "DNS MX Record",
-						"url": "/learning/dns/dns-records/dns-mx-record/"
+						"contentfulId": "4JEHEWrkif96aKydhBWgcF",
+						"displayText": "How to buy a domain name",
+						"url": "/learning/dns/how-to-buy-a-domain-name/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
-						"displayText": "DNS DMARC Record",
-						"url": "/learning/dns/dns-records/dns-dmarc-record/"
+						"contentfulId": "5oRXF0N6KDBX7PdOnyxfNd",
+						"displayText": "How to transfer a domain name",
+						"url": "/learning/dns/how-to-transfer-a-domain-name/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
-						"displayText": "DNS DKIM Record",
-						"url": "/learning/dns/dns-records/dns-dkim-record/"
+						"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+						"displayText": "Expired domains",
+						"url": "/learning/dns/glossary/expired-domains/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5qZnEhej6gYQitbACd6zyl",
-						"displayText": "DNS SPF Record",
-						"url": "/learning/dns/dns-records/dns-spf-record/"
+						"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+						"displayText": "Domain name registrar",
+						"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How to protect domains that do not send emails</h2>\n\n<p>Domains that do not send emails can still be used in email <a href='/learning/ssl/what-is-domain-spoofing/'>spoofing</a> or <a href='/learning/access-management/phishing-attack/'>phishing attacks</a>, but there are specific types of <a href='/learning/dns/dns-records/dns-txt-record/'>DNS text (TXT)</a> records that can be used to stifle attackers. Each of these records sets rules for how unauthorized emails should be treated by mail servers, making it harder for attackers to exploit these domains. </p> \n\n<p>A DNS TXT record allows domain administrators to enter text into the <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a>. DNS TXT records are used for processes like email authentication because they can store important information that servers can use to confirm whether or not a domain has authorized an email sender to send messages on its behalf.</p> \n\n<p>Examples of domains that do not send emails include domains <a href='https://www.cloudflare.com/products/registrar/'>purchased</a> to protect a brand name or for a future business. Defunct, legacy domains also have no reason to send emails and could benefit from these types of records. </p> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are the different types of DNS TXT records used for email authentication?</h2>\n\n<p>There are three main types of DNS TXT records used for email authentication. Each of them differs slightly in how they work: </p>\n<ul class=\"learning-list\"><li><strong><a href='/learning/dns/dns-records/dns-spf-record/'>Sender Policy Framework (SPF)</a></strong> records list all of the IP addresses and domain names that are authorized to send emails on behalf of the domain. </li>\n  <li><strong><a href='/learning/dns/dns-records/dns-dkim-record/'>DomainKeys Identified Mail (DKIM)</a></strong> records provide a digital signature to authenticate whether or not the sender actually authorized the email. This digital signature also helps prevent <a href='/learning/security/threats/on-path-attack/'>on-path attacks</a>, in which attackers intercept communications and alter messages for nefarious purposes.  </li>\n  <li><strong><a href='/learning/dns/dns-records/dns-dmarc-record/'>Domain-based Message Authentication, Reporting and Conformance (DMARC)</a></strong> records hold a domain's DMARC policy. DMARC is a system for authenticating emails by checking a domain's SPF and DKIM records. The DMARC policy states whether emails that fail SPF or DKIM checks should be marked as spam, blocked, or allowed to go through. </li></ul>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What do these DNS records look like?</h2>\n<p>Because these DNS records all function slightly differently, each of their components are unique. </p>\n\n<p><strong>SPF</strong></p>\n\n<p>SPF records can be formatted to protect domains against attempted phishing attacks by rejecting any emails sent from the domain. To do so, an SPF record must use the following format.</p>\n\n<pre><code>v=spf1 -all</code></pre>\n\n<p><i>*Note, SPF records are set directly on the domain itself, meaning they do not require a special subdomain.</i></p>\n\n<p>Here is what the individual components of this record mean:</p> \n<ul class=\"learning-list\"><li><code>v=spf1</code> lets the server know that the record contains an SPF policy. All SPF records must begin with this component. </li>\n  <li>The indicator <code>-all</code> tells the server what to do with non-compliant emails or any senders that are not explicitly listed in the SPF record. With this type of SPF record, no IP addresses or domains are allowed, so <code>-all</code> states that all non-compliant emails will be rejected. For this type of record, all emails are considered non-compliant because there are no accepted IP addresses or domains. </li></ul>\n\n<p><strong>DKIM</strong></p>\n<p>DKIM records protect domains by ensuring emails were actually authorized by the sender using a public key and a private key. DKIM records store the public key that the email server then uses to authenticate that the email signature was authorized by the sender. For domains that do not send emails, the DKIM record should be configured without an associated public key. Below is an example:</p>\n\n<table>\n  <tr>\n    <th>Name</th>\n    <th>Type</th>\n    <th>Content</th>\n  </tr>\n  <tr>\n    <td><code>*._domainkey.example.com</code></td>\n    <td><code>TXT</code></td>\n    <td><code>v=DKIM1; p=</code></td>\n  </tr>\n</table>\n\n<p>&nbsp;</p>\n\n<ul class=\"learning-list\"><li><code>*._domainkey.example.com</code> is the specialized name for the DKIM record (where \"example.com\" should be replaced with your domain). In this example, the asterisk (referred to as the wildcard) is being used as the selector, which is a specialized value that the email service provider generates and uses for the domain. The selector is part of the DKIM header and the email server uses it to perform the DKIM lookup in the DNS. The wildcard covers all possible values for the selector. </li>\n<li><code>TXT</code> indicates the DNS record type.</li>\n<li><code>v=DKIM1</code> sets the version number and tells the server that this record references a DKIM policy. </li>\n  <li>The <code>p</code> value helps authenticate emails by tying a signature to its public key. In this DKIM record, the <code>p</code> value should be empty because there is no signature/public key to tie back to. </li>\n\n  <p><strong>DMARC</strong></p>\n\n<p>DMARC policies can also help protect domains that do not send emails by rejecting all emails that fail SPF and DKIM. In this case, all emails sent from a domain not configured to send emails would fail SPF and DKIM checks. Below is an example of how to format a policy this way:</p>\n\n<table>\n  <tr>\n    <th>Name</th>\n    <th>Type</th>\n    <th>Content</th>\n  </tr>\n  <tr>\n    <td><code>_dmarc.example.com</code></td>\n    <td><code>TXT</code></td>\n    <td><code>v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s</code></td>\n  </tr>\n</table>\n<p>&nbsp;</p>\n<ul class=\"learning-list\"><li>The name field ensures that the record is set on the subdomain called <code>_dmarc.example.com</code>, which is required for DMARC policies.</li> \n  <li><code>TXT</code> indicates the DNS record type.</li>\n  <li><code>v=DMARC1</code> tells the server that this DNS record contains a DMARC policy. </li>\n <li><code>p=reject</code> indicates that email servers should reject emails that fail DKIM and SPF checks.  </li>\n <li><code>adkim=s</code> represents something called the alignment mode. In this case, the alignment mode is set to \"s\" for strict. Strict alignment mode means that the server of the email domain that contains the DMARC record must exactly match the domain in the <code>From</code> header of the email. If it does not, the DKIM check fails. </li>\n <li><code>aspf=s</code> serves the same purpose as <code>adkim=s</code>, but for SPF alignment. </li>\n\n<p>The Cloudflare Email Security DNS Wizard makes it simple to set up the correct DNS TXT records and block spammers from using a domain. <a href='https://blog.cloudflare.com/tackling-email-spoofing/' target='_blank'>Read more about the Wizard here</a>.</p>\n",
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">How much does a domain name cost?</h2>\n\n<p>A <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain name</a> is a line of text that corresponds to an <a href='/learning/dns/glossary/what-is-my-ip-address/'>Internet protocol (IP) address</a>. When typed into the address bar of a web browser, it connects users to websites. \"<a href='https://www.cloudflare.com/'>Cloudflare.com</a>,\" for instance, is the domain name for this website.</p>\n\n<p>Domains, then, are essential to organizations that aim to reach and serve people online. The right domain name makes it easier for customers to find them. Individuals and businesses lease domains from <a href='/learning/dns/glossary/what-is-a-domain-name-registrar/'>domain registrars</a>, and the domain prices vary wildly, based on factors ranging from the inherent value of the domain itself to the pricing practices of the registrar.</p>\n\n<p>Domain prices range from a few dollars (US) per year to thousands or millions annually. At $12 million US, \"Icon.com\" was <a href='https://www.dnjournal.com/archive/domainsales/2025/2025-top-100-sales-charts.htm' target='_blank'>the most expensive domain</a> to change hands in 2025, according to Domain Name Journal. Standard domains that do not spark competition, however, can be leased for as little as $10 or $12 US per year.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What factors affect the price of a domain name?</h2>\n\n<p>Some domains are more expensive because of their inherent value. But often, price variations stem from the business practices of traditional domain registrars. Some use opaque pricing structures that hide the cost of profit-boosting markups and add-ons that may not actually add value.</p>\n\n<p>The <a href='/learning/dns/top-level-domain/'>top-level domain (TLD)</a> — the short string of text at the end of a domain, after the last period — is one key factor for domain price. Long-tenured extensions like \".com,\" \".org,\" and \".net\" tend to have stable prices, although they can be high because organizations may perceive that they lend credibility to a domain name.</p>\n\n<p>Pricing for new or industry-specific extensions, such as \"<a href='/application-services/products/registrar/buy-io-domains/' target='_blank'>.io</a>,\" \".shop,\" or \".xyz,\" can be volatile. Extensions that reflect trends or make domains more easily identifiable may come at a higher price. Two of the top 12 domains in the Domain Name Journal list, for example, had \".bet\" extensions, easy identifiers for gambling sites. Less legible extensions may be less costly, and registrars may offer first-year discounts to spur interest in newer extensions.</p>\n\n<p>Differences between registration and renewal pricing also affect the cost of a domain name. It is common for registrars to court new customers with low first-year domain costs, then raise prices when it is time to renew. One way to avoid that increase is to renew early or negotiate to lock in first-year pricing with a multi-year contract.</p>\n\n<p>\nRegistrar markups also add to the price of domain names. Domain registry operators set wholesale prices for domains, and many registrars raise that price for customers. Those increases may range from 10% to more than 100%, and they cover the registrar's expenses or create a profit for them.</p>\n\n<p>Finally, <a href='/learning/dns/glossary/premium-domains/'>premium and aftermarket domains</a> tend to be among the most expensive domains available. Premium domains are those that a registry expects to sell for a higher price, usually because they are memorable or they include language that could be valuable for branding or search engine optimization (SEO) purposes. Aftermarket domains are domains resold on auction sites, forums, or other online sales platforms. Aftermarket prices tend to be high, since these are domains that generate enough demand for the current domain holder to put them up for sale.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the hidden costs of owning a domain?</h2>\n\n<p>Pricing transparency is rare among legacy domain registrars. Knowing the most common hidden costs can help buyers sort low-value upsells from useful add-ons.</p>\n\n<h4 class=\"learning-content-h4\">Renewal price hikes</h4>\n\n<p>Many traditional registrars advertise first-year prices as low as a few dollars, but renewals can be two, three, or even four times higher. This is especially common with newer generic top-level domains (gTLDs), such as \".biz,\" \".tech,\" or \".shop,\" where promotional pricing masks long-term costs. Because domains are recurring expenses, a small annual increase can add up quickly, particularly if you manage multiple domains or expect to hold a name for many years.</p>\n\n<h4 class=\"learning-content-h4\">Transfer fees</h4>\n\n<p>While <a href='/learning/dns/how-to-transfer-a-domain-name/'>transferring a domain</a> between registrars is generally allowed, it is not always free. Some registrars charge transfer fees, while others make the process cumbersome or restrict transfers shortly after renewal. In most cases, a transfer adds an extra year of registration. That may be something a domain buyer wants, but it is still a cost that goes undisclosed up front. Transfer fees and friction can discourage switching even when better pricing or features are available elsewhere.</p>\n\n<h4 class=\"learning-content-h4\">WHOIS privacy</h4>\n\n<p>By default, domain registrations publish public contact information in the WHOIS database. WHOIS privacy services replace that data with proxy information, helping reduce <a href='/learning/email-security/how-to-stop-spam-emails/'>spam</a> and protect personal or business details. Some registrars include <a href='/learning/dns/what-is-domain-privacy/'>WHOIS privacy</a> at no additional cost, but others charge an annual fee per domain. Over time, those fees can rival or exceed the cost of the domain itself, particularly for portfolios with dozens or hundreds of names.</p>\n\n<h4 class=\"learning-content-h4\">DNS hosting fees</h4>\n\n<p>While some registrars offer basic <a href='/learning/dns/what-is-dns/'>DNS</a> hosting for free, advanced features — such as faster global resolution, traffic steering, or higher query limits — may cost extra. In some cases, authoritative DNS is treated as a separate product entirely. That leads to additional charges or forcing customers to accept complexity by using third-party providers to manage DNS resource records.</p>\n\n<h4 class=\"learning-content-h4\">Security add-ons</h4>\n\n<p>Legacy registrars regularly sell features like <a href='/learning/dns/dnssec/how-dnssec-works/'>domain name security extensions (DNSSEC)</a>, email authentication, malware scanning, or advanced <a href='/learning/email-security/what-is-email-security/'>email security</a> as paid upgrades. They may not all be necessary for every site, but they increasingly represent baseline expectations for professional or commercial domains. Paying for them individually can inflate the effective cost of ownership beyond the advertised price.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are premium domains?</h2>\n\n<p>Not all premium domains are the same, and understanding the difference matters. Registry premium domains are names that the registry itself has designated as high value. They are often short, generic, or commercially attractive keywords. These domains typically have higher upfront prices and, importantly, higher recurring renewal fees. The premium status does not go away after the first year.</p>\n\n<p>Aftermarket premium domains are different. They are already owned by someone else and resold through marketplaces or private transactions. The premium price is usually paid once, at purchase, after which the domain renews at standard rates. The value here often lies in branding, memorability, or existing traffic, rather than registry-imposed scarcity.</p>\n\n<h4 class=\"learning-content-h4\">When do premium domains make sense?</h4>\n\n<p>Premium domains are most cost-effective when the domain itself is a strategic asset. A strong, intuitive name can reduce marketing costs, improve credibility, and increase direct traffic. For companies building a long-term brand or competing in crowded markets, the right premium domain can pay for itself over time.</p>\n\n<p>For many entities, a premium domain is not worth the expense. Early-stage startups, side projects, or internal tools may see little return on a high upfront or recurring domain cost. In many cases, a clear, well-chosen standard domain performs just as well.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to choose a domain name registrar with transparent pricing</h2>\n\n<p>With <a href='/learning/dns/glossary/choose-the-best-domain-name-registrar/'>the right registrar</a>, all these issues of cost, value, and transparency are more manageable. Clear, predictable pricing is the first thing to look for. Registrars that clearly disclose renewal prices and avoid promotional traps make it easier to budget and plan long term.</p>\n\n<p>Look for other essential bundled services as well to save on costs associated with domains: DNS performance and uptime, for instance. Before loading a single image, script, or page, a browser must resolve your domain name to an IP address. A globally distributed DNS network with robust redundancy and a strong uptime record can improve <a href='/learning/performance/why-site-speed-matters/'>performance</a>.</p>\n\n<p>Security is also key. DNSSEC, modern security defaults, and other essentials should come at no extra charge. You should be free to move your domain and change nameservers, too.</p>\n\n<p>Finally, consider how the registrar integrates with your hosting, content delivery networks, email services, and security tools. A domain may be a small line item, but the right choices can make it a stable foundation rather than a source of friction.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">The Cloudflare approach to domain pricing</h2>\n\n<p><a href='/products/registrar/'>Cloudflare Registrar</a> offers transparent, at-cost pricing for standard and premium domains, up front and at renewal time.</p>\n\n<p><a href='/application-services/solutions/low-cost-domain-names/'>Low-cost domains</a> from Cloudflare come with integrated DNS, security, and performance tools backed by our global network. With less complexity and no hidden costs, Cloudflare Registrar customers can focus on building better online experiences, not managing complex infrastructure.</p>\n\n<p>Search for a domain at <a href='https://domains.cloudflare.com/'>domains.cloudflare.com</a>.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -848,64 +848,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
 				"proactivePopup": null,
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "4mTkO6QXduJDF0QNc9Wi33",
-			"pathname": "/learning/dns/dns-records/protect-domains-without-email/",
+			"contentfulId": "14NtkBtQxy396hHgNbhaLg",
+			"pathname": "/learning/dns/how-much-does-a-domain-name-cost/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
