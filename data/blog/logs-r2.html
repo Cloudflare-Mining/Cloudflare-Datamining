@@ -13,7 +13,7 @@
 	</div>
 	<p>Cloudflare helps customers at different levels of scale — from a few requests per day, up to a million requests per second. Because of this, the cost of log storage also varies widely. For customers with higher-traffic websites, log storage costs can grow large, quickly.</p>
 	<p>As an example, imagine a website that gets 100,000 requests per second. This site would generate about 9.2 TB of HTTP request logs per day, or 850 GB/day after gzip compression. Over a month, you’ll be storing about 26 TB (compressed) of HTTP logs.</p>
-	<p>For a typical use case, imagine that you write and read the data exactly once – for example, you might write the data to <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> before ingesting it into an alerting system. Compare the costs of R2 and S3 (note that this excludes costs per operation to read/write data).</p>
+	<p>For a typical use case, imagine that you write and read the data exactly once – for example, you might write the data to <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> before ingesting it into an alerting system. <a href="https://r2-calculator.cloudflare.com">Compare the costs of R2 and S3</a> (note that this excludes costs per operation to read/write data).</p>
 	<table>
 		<tbody>
 			<tr>
@@ -72,7 +72,7 @@
 		</a>
 	</div>
 	<p>When designing products, one of Cloudflare’s core principles is ease of use. We take on the complexity, so you don’t have to. Storing logs is only half the battle, you also need to be able to access relevant logs when you need them – in the heat of an incident or when doing an in depth analysis.</p>
-	<p>Our product, <a href="https://developers.cloudflare.com/logs/logpull">Logpull</a>, offers seven days of log retention and an easy-to-use API to access. Our customers love that Logpull doesn’t need any setup on third parties since it's completely managed by Cloudflare. However, Logpull is limited in the retention of logs, the type of logs that we store (only HTTP request logs) and the amount of data that can be queried at one time.</p>
+	<p>Our product, <a href="https://developers.cloudflare.com/logs/logpull">Logpull</a>, offers seven days of <a href="https://www.cloudflare.com/learning/performance/log-retention-best-practices">log retention</a> and an easy-to-use API to access. Our customers love that Logpull doesn’t need any setup on third parties since it's completely managed by Cloudflare. However, Logpull is limited in the retention of logs, the type of logs that we store (only HTTP request logs) and the amount of data that can be queried at one time.</p>
 	<p>We’re building tools for log retrieval that make it super easy to get your data out of R2 from any of our datasets. Similar to Logpull, we’ll start by supporting lookups by time period and rayId. From there, we’ll tackle more complex functions like returning logs within time X and Y that have 500 errors or where WAF action = <code>block</code>.</p>
 	<p>We’re looking for customers to join a closed beta for our Log Retrieval API. If you’re interested in testing it out, giving feedback and ultimately helping us shape the product sign up <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIzZk_giT5KFLL7PyUQofZKMLMp9BIo0ObCbxqKg1vlD0dlw/viewform?usp=sf_link">here</a>.</p>
 	<div class="flex anchor relative">
