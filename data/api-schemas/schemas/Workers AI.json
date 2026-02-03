@@ -1889,10 +1889,21 @@
 		],
 		"requestBody": {
 			"content": {
-				"application/octet-stream": {
+				"multipart/form-data": {
 					"schema": {
-						"format": "binary",
-						"type": "string"
+						"properties": {
+							"files": {
+								"items": {
+									"format": "binary",
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"files"
+						],
+						"type": "object"
 					}
 				}
 			}
