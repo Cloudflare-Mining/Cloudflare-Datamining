@@ -1,0 +1,71 @@
+{
+	"name": "@cloudflare/kumo",
+	"dist-tags": {
+		"latest": "1.0.0"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@cloudflare/kumo",
+			"version": "1.0.0",
+			"dependencies": {
+				"@base-ui/react": "^1.0.0",
+				"clsx": "^2.1.1",
+				"tailwind-merge": "^3.4.0"
+			},
+			"devDependencies": {
+				"@tailwindcss/cli": "catalog:",
+				"@tailwindcss/vite": "catalog:",
+				"@testing-library/react": "16.3.1",
+				"@testing-library/user-event": "14.6.1",
+				"@types/glob": "9.0.0",
+				"@types/node": "catalog:",
+				"@types/react": "catalog:",
+				"@types/react-dom": "catalog:",
+				"@vitest/browser": "catalog:",
+				"@vitest/ui": "catalog:",
+				"esbuild": "0.27.2",
+				"eslint": "catalog:",
+				"eslint-plugin-jsx-a11y": "catalog:",
+				"glob": "13.0.0",
+				"happy-dom": "catalog:",
+				"oxlint": "1.28.0",
+				"oxlint-tsgolint": "0.6.0",
+				"playwright": "catalog:",
+				"plop": "4.0.4",
+				"rollup-plugin-preserve-directives": "0.4.0",
+				"tailwindcss": "catalog:",
+				"ts-json-schema-generator": "2.4.0",
+				"tsx": "catalog:",
+				"typescript": "catalog:",
+				"typescript-eslint": "^8.18.1",
+				"vite": "catalog:",
+				"vite-plugin-dts": "catalog:",
+				"vitest": "catalog:",
+				"wrangler": "catalog:",
+				"zod": "^3.24.0"
+			},
+			"peerDependencies": {
+				"@phosphor-icons/react": "^2.1.10",
+				"react": "^18.0.0 || ^19.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"zod": "^3.24.0"
+			},
+			"bin": {
+				"kumo": "dist/command-line/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-G4H1O3WVRGyXdaA619jsLpcZTs4rU2EsNC1tRdIvO1hPtQ5OTd7ZWFGa7CvgZgeg+Br2jUSRWSTVpO8rOmF9EA==",
+				"shasum": "5bb64a5e04b9a0bc440534ac612665d2980582c7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.0.0.tgz",
+				"fileCount": 560,
+				"unpackedSize": 5136640,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIESOWo6dQaLIrLN519nXYpFv/iuyjHI6e9qv221wDz9IAiBhfkd6iFH5damWilyBKxo1l2I/ABmFBEnN7YTK3lYnpQ=="
+					}
+				]
+			}
+		}
+	}
+}
