@@ -5,12 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3>Job Location: US East Coast</h3>
-<h3><strong>About Us</strong></h3>
-<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attack</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!</p>
-<h3><strong>About the Department</strong></h3>
-<p>Customer Solutions Engineers, Customer Success Managers, Account Executives, Business Development Representatives, Solution Engineers, and Sales Operations - all working together to help our customers solve their business challenges by adopting Cloudflare while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<h3>Job Location: Atlanta, GA, New York, NY, and Washington, DC</h3>
 <h3><strong>What you'll do</strong></h3>
 <p>As a <strong>Customer Solutions Engineer (CSE)</strong>, you are the technical heartbeat of the customer journey.&nbsp; You will be the trusted technical advisor throughout the lifecycles of select Mid Market Customers. You will leverage your knowledge to ensure our customers understand and utilize the Cloudflare Connectivity Cloud platform to its fullest extent. Your goal is to help customers be successful and derive the most value possible from their Cloudflare investment.</p>
 <p>While you will support the entire Cloudflare stack—including our core Security and Performance suites—you will serve as the team’s Subject Matter Expert (SME) for Cloudflare’s Developer Platform. You will bridge the gap between "traditional" networking and "modern" serverless development, helping customers migrate legacy logic to the edge.</p>
@@ -66,7 +61,11 @@
 	<li>Certifications such as AWS Solutions Architect or GCP Cloud Architect are a plus.</li>
 	<li>Auxiliary knowledge of developer tooling and relevant frameworks is a plus.</li>
 </ul>
-<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.&nbsp;<br>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.<br><br><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.<br><br><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.<br><br><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For New York City and Washington, DC Metro: Estimated annual salary of $122,000.00 - $168,000.00</li>
+</ul>
+<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.<br><br><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.<br><br><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
