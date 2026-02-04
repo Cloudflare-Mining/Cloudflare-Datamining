@@ -31,10 +31,12 @@
 	<li>Experience working with Data Scientists to deploy Machine Learning applications systems for training, inference and observability.<br><br></li>
 	<li>Experience with Full-stack Web technologies and languages (FastAPI, Streamlit, JavaScript/TypeScript, Cloudflare Workers, etc.) preferred with the ability to quickly learn and contribute across a multi-language stack.<br><br></li>
 	<li>Experience with Terraform, Google Cloud Platform (or any other public cloud equivalent) etc.<br><br></li>
-	<li>Experience working with CI/CD systems, version control (Git, Bitbucket, etc.) and DevOps tools.&nbsp; <br><br></li>
+	<li>Experience working with CI/CD systems, version control (Git, Bitbucket, etc.), testing (Pytest, etc.) and DevOps tools.<br><br></li>
 	<li>Experience with Databases such as BigQuery, Postgres, SQLite and ETL/ELT practices<br><br></li>
 	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.<br><br></li>
-	<li>Proficiency in large language models and the frameworks necessary for implementing GenAI applications, such as chatbots and related use cases.<br><br></li>
+	<li>
+		<div>Proficiency in large language models and the frameworks like Langchain, LangGraph, etc. necessary for implementing GenAI applications, such as chatbots and related use cases.</div>
+	</li>
 	<li>Strong communication and presentation skills catered to different audiences within the company.<br><br></li>
 	<li>Demonstrated ability to design scalable, reliable, and observable systems, with experience influencing architecture and improving platform foundations.<br><br></li>
 	<li>Strong problem-solving and communication skills, with a track record of working effectively with cross-functional partners and driving projects through ambiguous problem spaces.<br><br></li>
