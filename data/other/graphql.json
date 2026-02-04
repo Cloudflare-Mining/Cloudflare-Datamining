@@ -1260,6 +1260,7 @@
 	},
 	"AccountCloudchamberMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"active": "Whether the container is active or not",
 		"applicationId": "The application ID",
 		"date": "The date the metric was received",
 		"datetimeFifteenMinutes": "The date and time the metric was received, truncated to fifteen minutes",
@@ -1455,6 +1456,7 @@
 	},
 	"AccountContainersMetricsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"active": "Whether the container is active or not",
 		"applicationId": "The application ID",
 		"date": "The date the metric was received",
 		"datetimeFifteenMinutes": "The date and time the metric was received, truncated to fifteen minutes",
@@ -11156,6 +11158,7 @@
 		"deviceBrowser": "Device browser name.",
 		"deviceOS": "Device OS name.",
 		"eventTimestamp": "When the event happened.",
+		"eventType": "Type of the event. Possible values are signup or login.",
 		"userId": "Unique identifier for a user."
 	},
 	"ZoneUserProfilesRawEventsGroupsFilter_InputObject": {
