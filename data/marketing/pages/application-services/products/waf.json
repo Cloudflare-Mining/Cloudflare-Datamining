@@ -3765,6 +3765,39 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
+								"contentfulId": "59yDuRTxL5Tj83dVj9LLDs",
+								"title": "How does Cloudflare WAF work?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare WAF operates on Cloudflare's global network. Positioned in front of web applications, it stops a variety of attacks through powerful rulesets, advanced rate limiting, exposed credentials detection, and content upload scanning. The Cloudflare WAF has rulesets that are continually updated to block the latest threats, in addition to the top OWASP threats. Using machine learning, Cloudflare identifies new and emerging threats in real time, and updates its WAF rules to block those threats. The WAF also integrates with Cloudflare's other application security services for comprehensive protection.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
 								"contentfulId": "kDFEn1o4oyLtKaSsg7RiE",
 								"title": "What types of attacks does Cloudflare WAF help block?",
 								"htmlId": null,

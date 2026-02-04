@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-09-19T21:08:07.422Z",
-					"updatedAt": "2026-02-04T11:08:33.378Z"
+					"updatedAt": "2026-02-04T12:33:48.798Z"
 				},
 				"contentfulId": "7cgyYFfMqkSTHyCQqZ8g8Z",
 				"contentTypeId": "page",
@@ -2649,6 +2649,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5w4pWDyHZARKW2D4lNHnSb",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    /* Only underline the Read Blog link */\n    .link-helper {\n        color: #ffffff !important;\n        text-decoration: none; /* remove underline for all by default */\n        margin-left: 5px;\n    }\n    .link-helper.read-blog {\n        text-decoration: underline;\n        text-underline-offset: 4px;\n    }\n    .link-helper.read-blog:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n    }\n    .link-helper.first-element {\n        display: inline-block;\n        font-weight: bold; /* keep bold if needed */\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <a class=\"link-helper first-element\" href=\"/events/\">\n            New AI prompt protection capabilities in DLP\n        </a>\n        <a class=\"link-helper read-blog\" href=\"https://blog.cloudflare.com/ai-prompt-protection/\">\n            Read blog >\n        </a>\n    </div>\n</section>\n",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
 						"menuTitle": "SASE & workspace security",
@@ -4069,6 +4075,39 @@
 														"uri": null
 													},
 													"value": "Cloudflare DLP assists organizations in maintaining compliance with evolving regulations such as GDPR, CCPA, and HIPAA by automating the tracking, control, and auditing of sensitive data. It also provides detailed audit trails and integrates with SIEM systems to reduce regulatory risk. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6iL6QbnsSe8qDEk5JP7y5z",
+								"title": "How does Cloudflare DLP address the security of intellectual property?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DLP helps protect valuable intellectual property and proprietary code by identifying this data in emails, user interactions, HTTP traffic, and application usage, then blocking any outgoing messages or requests that contain it. This reduces data exposure and prevents users from oversharing sensitive data through cloud services, shadow IT applications, AI tools, or email. ",
 													"marks": [],
 													"content": null
 												}
