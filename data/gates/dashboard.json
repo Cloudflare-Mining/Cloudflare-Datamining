@@ -907,6 +907,13 @@
 	"dx-account-details-table": {
 		"enabled": true
 	},
+	"dx-account-home-empty-state": {
+		"enabled": false,
+		"branches": [
+			"sequenced-onboarding",
+			"card-based-onboarding"
+		]
+	},
 	"dx-account-overview-audit-logs-widget": {
 		"enabled": true
 	},
