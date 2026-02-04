@@ -5,36 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London, UK or Lisbon, Portugal</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Traffic Management is responsible for the systems that <a href="https://blog.cloudflare.com/meet-traffic-manager/">dynamically route</a> traffic flows into, through, and from Cloudflare's global network.&nbsp;</p>
-<p>We don't just manage one company's traffic; they manage traffic for numerous products and&nbsp; millions of customers, from individual websites to major enterprises. This team is at the heart of Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
-<p><strong>Role Responsibilities</strong></p>
-<p>As a member of the team you will build and extend various traffic management and supporting systems. You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to collaborate on ambitious initiatives to make the best use of Cloudflare’s global network.</p>
-<p><strong>&nbsp;</strong></p>
-<p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, eBPF, ClickHouse, Salt, PostgreSQL, Prometheus, Kubernetes, and more.</p>
-<p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
-<p>Because you’ll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Role Requirements</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<h3><strong>About the Product Experience (PX) team</strong></h3>
+<p>We're a diverse group of creative people who love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and highly technical Senior Product Designer to join our team.</p>
+<p>Your work will impact the core infrastructure of a product used by millions of people daily. As a Senior Product Designer on the Platform team, you will focus on enterprise-readiness, ensuring our user experience is scalable and works for the most sophisticated needs while being approachable to everyone. We are looking for a "designer who builds" and leverages modern workflows, including AI-augmented design and development, to deliver quickly and bridge the gap between design intent and production.</p>
+<p>If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
+<h3><strong>What you’ll do</strong></h3>
 <ul>
-	<li>Minimum of 2 years of engineering experience with networking and/or distributed systems.</li>
-	<li>Systems-level programming experience in Go, Python, Rust, C, or C++</li>
-	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
-	<li>Knowledge/interest in HTTP, TLS, and CDN networks.</li>
-	<li>Experience/interest in network performance monitoring and tuning</li>
-	<li>Strong collaboration and communication skills.</li>
+	<li>Design holistic, end-to-end experiences that transform complex technical constraints into approachable, enterprise-grade product experiences</li>
+	<li>Partner deeply with product and engineering leaders to navigate technical tradeoffs and shape the long-term platform roadmap, facilitate cross-functional design reviews</li>
+	<li>Collaborate across product areas to build shared patterns and design goals that ensure a cohesive experience for enterprise use-cases across products</li>
+	<li>Scale design’s impact and influence throughout the organization by sharing design decisions, concepts, and demos</li>
+	<li>Be an early adopter of AI-assisted design and "vibe coding" tools (Windsurf, OpenCode, etc.), experiment with modern workflows and share learnings with the broader team</li>
+	<li>Move fluidly between Figma and code, for example creating prototypes or designing in code; utilizing the right tools depending on the job</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
 <ul>
-	<li>Experience building or developing capabilities in the domain of traffic engineering including automated load balancing and traffic prioritization.</li>
-	<li>Knowledge of statistical-analysis techniques and control theory.</li>
-	<li>Knowledge of TCP/IP and Internet routing.</li>
-	<li>Experience building tools and APIs.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
-	<li>Experience participating in an on-call rotation.</li>
+	<li>8+ years of professional experience in product design, ideally within enterprise or platform-centric environments</li>
+	<li>Strong systems thinker capable of managing complex logic and technical constraints without compromising on visual or interaction quality</li>
+	<li>Excellent visual, written, and verbal communication skills, with the ability to translate technical concepts into clear UX approaches and proposals</li>
+	<li>High technical fluency and comfort in a code editor; you are a "designer who builds" and understands how your work translates to production</li>
+	<li>Proactive use of generative AI and developer-centric tools to accelerate ideation and increase output quality</li>
+	<li>Experience with developer tools, network services, or cloud infrastructure is a significant plus</li>
 </ul>
-<p>&nbsp;</p>
+<p><br><br></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -62,7 +56,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
