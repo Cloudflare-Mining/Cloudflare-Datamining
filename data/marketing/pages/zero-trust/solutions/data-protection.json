@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-06T15:38:46.866Z",
-					"updatedAt": "2026-02-04T07:38:30.301Z"
+					"updatedAt": "2026-02-04T11:17:20.064Z"
 				},
 				"contentfulId": "6AplZKWDaWJi7cIbiKlj5E",
 				"contentTypeId": "page",
@@ -1488,6 +1488,68 @@
 											},
 											{
 												"contentTypeId": "navNavigationItem",
+												"contentfulId": "17gVooh39dfRemmSh9KSyK",
+												"locale": "en-US",
+												"name": "Network Services",
+												"description": null,
+												"mainLink": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "6FKNGzfd6ztul6YW2drwPD",
+														"locale": "en-US",
+														"title": "Magic Transit",
+														"description": null,
+														"url": "https://developers.cloudflare.com/magic-transit/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "LC71xLM6HBejqEzaEnkho",
+														"locale": "en-US",
+														"title": "Magic WAN",
+														"description": null,
+														"url": "https://developers.cloudflare.com/magic-wan/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "1NFi9Iri7yY5vLq2PlK4fU",
+														"locale": "en-US",
+														"title": "Magic Firewall",
+														"description": null,
+														"url": "https://developers.cloudflare.com/magic-firewall/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "4wL6hxITkwSdpMToyggJNz",
+														"locale": "en-US",
+														"title": "Spectrum (TCP/UDP)",
+														"description": null,
+														"url": "https://developers.cloudflare.com/spectrum/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													}
+												],
+												"navIcon": null,
+												"showIconOnly": false,
+												"hideOnChinaSite": null,
+												"navigationItems": []
+											},
+											{
+												"contentTypeId": "navNavigationItem",
 												"contentfulId": "4E0JADpOudRkHVrzdai31D",
 												"locale": "en-US",
 												"name": "Insights",
@@ -2586,12 +2648,6 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "5w4pWDyHZARKW2D4lNHnSb",
-						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    /* Only underline the Read Blog link */\n    .link-helper {\n        color: #ffffff !important;\n        text-decoration: none; /* remove underline for all by default */\n        margin-left: 5px;\n    }\n    .link-helper.read-blog {\n        text-decoration: underline;\n        text-underline-offset: 4px;\n    }\n    .link-helper.read-blog:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n    }\n    .link-helper.first-element {\n        display: inline-block;\n        font-weight: bold; /* keep bold if needed */\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <a class=\"link-helper first-element\" href=\"/events/\">\n            New AI prompt protection capabilities in DLP\n        </a>\n        <a class=\"link-helper read-blog\" href=\"https://blog.cloudflare.com/ai-prompt-protection/\">\n            Read blog >\n        </a>\n    </div>\n</section>\n",
-						"htmlId": null
-					},
 					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
