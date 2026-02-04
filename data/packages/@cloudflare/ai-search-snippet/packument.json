@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/ai-search-snippet",
 	"dist-tags": {
-		"latest": "0.0.22"
+		"latest": "0.0.23"
 	},
 	"versions": {
 		"0.0.17": {
@@ -66,6 +66,35 @@
 			"name": "@cloudflare/ai-search-snippet",
 			"version": "0.0.22",
 			"devDependencies": {
+				"vite": "^7.3.0",
+				"vitest": "^3.2.4",
+				"wrangler": "^4.58.0",
+				"typescript": "~5.8.3",
+				"@biomejs/biome": "2.3.3",
+				"vite-plugin-dts": "^4.5.4",
+				"@cloudflare/vite-plugin": "^1.15.0"
+			},
+			"dist": {
+				"shasum": "83f07bc0dbf823bdec31b929d676ff95343f1c24",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-search-snippet/-/ai-search-snippet-0.0.22.tgz",
+				"fileCount": 11,
+				"integrity": "sha512-7/lkui/cjTEECfIAkpS4AyVnVMFFojc9pzltRESXOR6A92FGzYqP8ioKRACMy44oVU5TU3BStKawNqtoJhyT7g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDircys8JUHIUv5XsPkSVaW3RNzXlCesa9NBTnU8vpXVQIhAPTi5JZklQKxfVYwhtH74QZyUlF7IWvzi5BEY+HabceP",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 706104
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"0.0.23": {
+			"name": "@cloudflare/ai-search-snippet",
+			"version": "0.0.23",
+			"devDependencies": {
 				"@biomejs/biome": "2.3.3",
 				"@cloudflare/vite-plugin": "^1.15.0",
 				"typescript": "~5.8.3",
@@ -75,15 +104,15 @@
 				"wrangler": "^4.58.0"
 			},
 			"dist": {
-				"integrity": "sha512-7/lkui/cjTEECfIAkpS4AyVnVMFFojc9pzltRESXOR6A92FGzYqP8ioKRACMy44oVU5TU3BStKawNqtoJhyT7g==",
-				"shasum": "83f07bc0dbf823bdec31b929d676ff95343f1c24",
-				"tarball": "https://registry.npmjs.org/@cloudflare/ai-search-snippet/-/ai-search-snippet-0.0.22.tgz",
+				"integrity": "sha512-cQrtCkR4NALGAsdJQX1VuwTx7sgFkdGggNtfK1NXtneF6frrtRkE4q78Qm7JtkXgxCHRP/Xcn5ggTmEK6Jo7Yw==",
+				"shasum": "684ee2be72039ceb3e0d892f8873ffeb5b2f66c9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-search-snippet/-/ai-search-snippet-0.0.23.tgz",
 				"fileCount": 11,
-				"unpackedSize": 706104,
+				"unpackedSize": 706263,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDircys8JUHIUv5XsPkSVaW3RNzXlCesa9NBTnU8vpXVQIhAPTi5JZklQKxfVYwhtH74QZyUlF7IWvzi5BEY+HabceP"
+						"sig": "MEUCICLBndVw6nY2Nt0E5K0qC8fIUsPT1LextYTWjpoVyWosAiEA6cwK1Kl0Zq/QjjZDgPUnV2+be87TEFM/FBxtNX9PM9Q="
 					}
 				]
 			},
