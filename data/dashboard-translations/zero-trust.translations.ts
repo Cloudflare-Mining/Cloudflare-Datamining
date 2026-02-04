@@ -96,5 +96,37 @@
 			noPermissionError: (0, o.p)(u(), "label"),
 			otherErrors: (0, o.p)(d(), "label")
 		}
+	},
+	landingPage: {
+		header: {
+			title: "Welcome to Cloudflare Zero Trust",
+			subtitle: "Protect your internal users, apps, networks, and data with Zero Trust security."
+		},
+		actions: {
+			get_started: "Get started",
+			documentation: "Zero Trust documentation"
+		},
+		sections: {
+			getting_started: {
+				title: "Get started with Zero Trust"
+			},
+			about: {
+				title: "About Zero Trust",
+				description: "Replace legacy security tools with faster, more consistent security controls delivered from Cloudflare's global network — scalable yet intuitive enough for both enterprise administration and DIY home networks."
+			},
+			core_features: {
+				title: "Core features",
+				manage_access: "Manage access to web, SaaS, and private apps with granular, contextual controls",
+				stop_threats: "Stop application and network layer threats before they reach your network",
+				scan_data: "Scan for sensitive data at rest, in transit, and in use across your organization"
+			},
+			plans: {
+				title: "Included in all plans",
+				remote_access: "Zero Trust remote access",
+				traffic_filtering: "Device traffic filtering",
+				api_access: "API and Terraform access",
+				explore_plans: "Explore plans"
+			}
+		}
 	}
 }

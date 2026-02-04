@@ -475,13 +475,14 @@
 				tooltip: "Allows the origin to include a <0>crawler-price</0> header in the responses."
 			},
 			enable_modal: {
-				title: "Save and enable Pay Per Crawl?",
+				title: "Enable Pay Per Crawl?",
 				price: "Charging price will be set at <b>$%{price}</b> per request.",
+				in_band_pricing: "Charging price will be set by Pay Per Crawl worker rules.",
 				charge: "Crawlers will be <b>charged</b> by default.",
 				allow: "Crawlers will be <b>allowed</b> by default.",
 				googlebot: "Googlebot and crawlers already set to <b>Block</b> will not change.",
 				description: "You can modify individual crawler settings anytime in the Crawlers tab.",
-				enable: "Save"
+				enable: "Enable"
 			},
 			disable_modal: {
 				title: "Disable Pay Per Crawl",
@@ -621,7 +622,8 @@
 				operator_label: "Operator",
 				operator_placeholder: "Select operator...",
 				value_label: "Value",
-				value_placeholder: "value"
+				value_placeholder: "e.g. /content",
+				value_error: "must start with /"
 			},
 			action: {
 				charge_amount_label: "Charge amount (USD)",
@@ -636,9 +638,10 @@
 				or_separator: "OR"
 			},
 			bot_score_presets: {
-				likely_legitimate: "Likely legitimate traffic (score >= 30)",
-				potentially_human: "Potentially human or unknown (score >= 2)",
-				definitely_bot: "Not a definite bot (score != 1)"
+				likely_human: "Likely human (score >= 30)",
+				likely_automated: "Likely automated (score >= 2)",
+				automated: "Automated (score == 1)",
+				unknown: "Unknown (score == 0)"
 			},
 			buttons: {
 				cancel: "Cancel",
@@ -646,13 +649,11 @@
 				update: "Update price"
 			},
 			field_options: {
-				request_path: "Request path"
+				request_path: "Request Path"
 			},
 			operator_options: {
 				equals: "equals",
-				not_equals: "not equals",
-				contains: "contains",
-				does_not_contain: "does not contain"
+				starts_with: "starts with"
 			},
 			bot_score_operators: {
 				gt: ">",
@@ -713,9 +714,10 @@
 		warnings: {
 			no_worker_but_waf_exists: "A WAF rule exists but the Pay Per Crawl worker was not found. The WAF rule may need to be removed.",
 			no_waf_but_worker_exists: "The Pay Per Crawl worker exists but no WAF rule was found. Create rules below to enable bot blocking.",
-			no_worker_routes: "The Pay Per Crawl worker has no routes configured. <0>Add a route</0> to enable the worker.",
-			config_hash_mismatch: "The Pay Per Crawl worker is running an outdated version. <0>Redeploy</0> to update to the latest template.",
-			config_parse_error: "Unable to read the Pay Per Crawl worker configuration. The config.json file may be corrupted or invalid."
+			no_worker_routes: "The Pay Per Crawl worker has no routes configured for this zone. <0>Add a route</0> to enable the worker.",
+			config_hash_mismatch: "The worker has been modified and may harm site behavior. <0>Redeploy</0> to fix.",
+			config_parse_error: "Unable to read the Pay Per Crawl worker configuration. The config.json file may be corrupted or invalid.",
+			config_waf_mismatch: "The WAF rule does not match the Worker configuration. <0>Redeploy</0> to fix."
 		},
 		delete_pricing: {
 			button: "Delete",

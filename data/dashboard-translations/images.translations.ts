@@ -222,6 +222,8 @@
 	create_variant_metadata: "Keep or remove metadata",
 	edit_image_custom_id_error: "Images with custom IDs cannot be set to private",
 	drop_here_or_browse: "Drop images here or click to browse",
+	select_files: "Select files",
+	image_max_size_warning: "Maximum file size: 10 MB",
 	image_url: "Image URL",
 	video_url: "Video URL",
 	preview: "Preview",
@@ -404,7 +406,7 @@
 	storage_capacity_ent: "To modify your Images usage limits, please contact your Account Manager.",
 	unknown_error: "An unknown error has occurred",
 	output_confirm_delete_title: "Delete Output?",
-	output_confirm_delete_body: (0, i.p)(A(), "outputUrl"),
+	output_confirm_delete_body: (0, i.p)(z(), "outputUrl"),
 	refresh: "Refresh",
 	developer_resources: "Developer Resources",
 	get_help: "Get Help",
@@ -420,7 +422,7 @@
 		delivery_zones_enable_cta: "Manage Transformations",
 		description: "Cloudflare Images is an end-to-end solution designed to help you streamline your image infrastructure from a single API.",
 		transformations1: "With transformations, you can optimize and manipulate images that are stored in remote sources.",
-		transformations2: (0, i.p)(z(), "freeTransformations"),
+		transformations2: (0, i.p)(A(), "freeTransformations"),
 		purchase_paid_plan: (0, i.p)(D(), "accountId"),
 		storage1: "To make the most of our storage and delivery features, upgrade your Images plan.",
 		storage2: "A subscription is required to add storage and unlock additional features."
@@ -607,7 +609,7 @@
 	add_variant: "Add Variant",
 	export_image: "Export Image",
 	add_new_variant: "Add New Variant",
-	variant_page_title: (0, i.p)(O(), "variantName"),
+	variant_page_title: (0, i.p)(B(), "variantName"),
 	beta: "Beta",
 	guidance_and_feedback: "Guidance & Feedback",
 	guidance_description: "For <b>guidance</b> on Sourcing Kit’s capabilities, refer to our developer documentation. For bug reporting or <b>feedback</b>, join the #images Discord channel, or use our Community board.",
@@ -622,7 +624,7 @@
 	delivery_zone_confirm_disable: "Are you sure you want to disable transformations for %{zoneName}?",
 	delivery_zone_confirm_disable_all: "Are you sure you want to disable image and video transformations for %{zoneName}?",
 	disable_for_website: "Disable for zone",
-	cancel_resizing_after_bundle_error: (0, i.p)(B()),
+	cancel_resizing_after_bundle_error: (0, i.p)(O()),
 	enable_for_website: "Enable for zone",
 	no_storage_card: {
 		title: "Your current Cloudflare Images plan doesn’t include any storage.",
@@ -799,5 +801,7 @@
 		drawer_duplicate_domain: "Duplicate domain"
 	},
 	hosted_images: "Hosted images",
-	no_analytics_available: "No analytics are currently available"
+	no_analytics_available: "No analytics are currently available",
+	private: "Private",
+	drop_to_upload: "Drop to upload"
 }

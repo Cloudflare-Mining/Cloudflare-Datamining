@@ -312,6 +312,24 @@
 				api_token: "API Token:",
 				exist: "I already have one",
 				crete: "Create one for me"
+			},
+			custom_metadata: {
+				title: "Custom Metadata",
+				description: "Add custom metadata fields to your AI Search instance for filtering and organization.",
+				field_name: "Field Name",
+				field_type: "Field Type",
+				add_button: "Add Metadata",
+				remove_button: "Remove",
+				max_items_error: "Maximum 5 custom metadata entries allowed",
+				duplicate_field_name_error: "Field name must be unique",
+				empty_field_name_error: "Field name cannot be empty",
+				lowercase_field_name_error: "Field name must be lowercase",
+				reserved_field_name_error: 'Field name cannot be "timestamp", "folder", or "filename"',
+				no_metadata: "No custom metadata added",
+				drawer: {
+					title: "Custom Metadata",
+					description: "Add custom metadata for your AI Search instance."
+				}
 			}
 		}
 	},
@@ -420,7 +438,7 @@
 			description: "Configure the model and system prompt used to generate responses.",
 			model: "Generation model",
 			system_prompt: "System prompt",
-			note: (0, o.p)(n()),
+			note: (0, o.p)(a()),
 			drawer: {
 				title: "Generation model"
 			}
@@ -485,6 +503,24 @@
 				select_token: "Select an existing token",
 				create_new: "Create a new token",
 				new_token_description: "This enables AI Search to create and access resources in your account."
+			}
+		},
+		custom_metadata: {
+			title: "Custom Metadata",
+			description: "Add custom metadata fields to your AI Search instance for filtering and organization.",
+			field_name: "Field Name",
+			field_type: "Field Type",
+			add_button: "Add Metadata",
+			remove_button: "Remove",
+			max_items_error: "Maximum 5 custom metadata entries allowed",
+			duplicate_field_name_error: "Field name must be unique",
+			empty_field_name_error: "Field name cannot be empty",
+			lowercase_field_name_error: "Field name must be lowercase",
+			reserved_field_name_error: 'Field name cannot be "timestamp", "folder", or "filename"',
+			no_metadata: "No custom metadata configured",
+			drawer: {
+				title: "Custom Metadata",
+				description: "Manage custom metadata for your AI Search instance. Maximum 5 entries allowed."
 			}
 		}
 	},

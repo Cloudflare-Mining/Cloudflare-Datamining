@@ -56,6 +56,7 @@
 		queues: "Queues",
 		r2_buckets: "R2 Buckets",
 		secrets: "Secrets",
+		turnstile_widgets: "Turnstile Widgets",
 		vectorize_indexes: "Vectorize Indexes",
 		dispatch_namespaces: "Dispatch Namespaces",
 		workers_and_pages: "Workers & Pages",
@@ -77,6 +78,7 @@
 		queues_description: "Search Queues",
 		r2_description: "Search R2 buckets",
 		secrets_store_description: "Search Secrets Store",
+		turnstile_description: "Search Turnstile widgets",
 		vectorize_description: "Search Vectorize indexes",
 		worker_description: "Find Workers and related resources",
 		workflows_description: "Search Workflows"
