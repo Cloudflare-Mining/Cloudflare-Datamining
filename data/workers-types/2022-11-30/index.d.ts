@@ -11596,6 +11596,16 @@ declare namespace CloudflareWorkersModule {
       },
     ): Promise<WorkflowStepEvent<T>>;
   }
+  export type WorkflowInstanceStatus =
+    | "queued"
+    | "running"
+    | "paused"
+    | "errored"
+    | "terminated"
+    | "complete"
+    | "waiting"
+    | "waitingForPause"
+    | "unknown";
   export abstract class WorkflowEntrypoint<
     Env = unknown,
     T extends Rpc.Serializable<T> | unknown = unknown,
