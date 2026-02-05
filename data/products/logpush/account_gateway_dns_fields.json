@@ -26,6 +26,7 @@
 	"InitialCategoryIDs": "array[int]; ID or IDs of category that the queried domains belongs to (for example, [7,12,28,122,129,163]).",
 	"InitialCategoryNames": "array[string]; Name or names of category that the queried domains belongs to (for example, ['Photography', 'Weather']).",
 	"InitialResolvedIPs": "array[string]; The IPs used to correlate existing FQDN matching policy between Gateway DNS and Gateway proxy.",
+	"InternalDNSDurationMs": "int; The time it took for the internal DNS to respond.",
 	"InternalDNSFallbackStrategy": "string; The fallback strategy applied over the internal DNS response. Empty if no fallback strategy was applied.",
 	"InternalDNSRCode": "int; The return code sent back by the internal DNS service.",
 	"InternalDNSViewID": "string; The DNS internal view identifier that was sent to the internal DNS service.",
