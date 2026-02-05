@@ -42,7 +42,7 @@
 			<p><b>Deploy Hook Name:</b> You can name your deploy hook something like “Contentful” or “My Blog” to identify which source the Deploy Hook is monitoring. A unique name for each deploy hook will also help you to differentiate hooks in the event that you create multiple Deploy Hooks for your Pages site.</p>
 		</li>
 		<li>
-			<p><b><b><b>Branch to Build:</b></b></b> You can specify which branch will be built and deployed when the URL is requested with the Deploy Hook. This is especially helpful if you’d like to stage your changes first instead of pushing directly to your production branch.</p>
+			<p><b>Branch to Build:</b> You can specify which branch will be built and deployed when the URL is requested with the Deploy Hook. This is especially helpful if you’d like to stage your changes first instead of pushing directly to your production branch.</p>
 		</li>
 	</ol>
 	<figure class="kg-card kg-image-card ">
@@ -69,7 +69,7 @@
 	</div>
 	<p>After creating your Deploy Hook, Pages also provides you with the HTTP POST request snippet with your URL that looks something like this:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/ 66c5dd3a-989f-4ba7-a6e2-6d2695524d7”</code></pre>
-	<p>Every time you execute the snippet, you will trigger a new build to your Pages site. In addition to utilizing this snippet for a forced deployment within your command line, you can also customize your CI/CD pipeline and trigger deployments only under certain conditions. For example, you only want to deploy if there were changes within specific directories and only after an extensive test suite passes. Additionally, this snippet is useful for scheduling a CRON trigger to initiate builds on a specific timeline or cadence. Read more about how to use Pages deploy hooks in our <a href="https://developers.cloudflare.com/pages/platform/deploy-hooks">docs</a>.</p>
+	<p>Every time you execute the snippet, you will trigger a new build to your Pages site. In addition to utilizing this snippet for a forced deployment within your command line, you can also customize your <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd">CI/CD pipeline</a> and trigger deployments only under certain conditions. For example, you only want to deploy if there were changes within specific directories and only after an extensive test suite passes. Additionally, this snippet is useful for scheduling a CRON trigger to initiate builds on a specific timeline or cadence. Read more about how to use Pages deploy hooks in our <a href="https://developers.cloudflare.com/pages/platform/deploy-hooks">docs</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="try-it-for-yourself">Try it for yourself!</h2>
 		<a href="https://blog.cloudflare.com/#try-it-for-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">

@@ -375,7 +375,7 @@ To git@github.com:$GITHUB_USER/cf-config.git
 		</a>
 	</div>
 	<p>Now that you've got a basic website proxied through Cloudflare, it's time to use Terraform to adjust some additional settings on your zone. Below we'll configure some optional HTTPS settings, and then push the updated configuration to GitHub for posterity.</p>
-	<p>We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your CI/CD system to perform tests automatically using another Cloudflare domain.</p>
+	<p>We'll use a new git branch for the changes, and then merge it into master before applying. On a team, you might consider using this step as an opportunity for others to review your change before merging and deploying it. Or you may integrate Terraform into your <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd">CI/CD system</a> to perform tests automatically using another Cloudflare domain.</p>
 	<div class="flex anchor relative">
 		<h4 id="1-create-a-new-branch-and-append-the-new-zone-settings">1. Create a new branch and append the new zone settings</h4>
 		<a href="https://blog.cloudflare.com/#1-create-a-new-branch-and-append-the-new-zone-settings" aria-hidden="true" class="relative sm:absolute sm:-left-5">
@@ -842,4 +842,5 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.</code></pre>
 			<p>Importing Existing State and Configuration</p>
 		</li>
 	</ul>
+	<p></p>
 </div>
