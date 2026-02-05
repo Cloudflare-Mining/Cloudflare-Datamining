@@ -26,13 +26,16 @@
 			pending_count: "%{smart_count} pending",
 			active_count: "%{smart_count} active",
 			in_review_count: "%{smart_count} in review",
+			cancelled_count: "%{smart_count} canceled",
+			removed_count: "%{smart_count} removed",
 			external_host_notified: "External host notified"
 		},
 		view_mitigations_link: "View mitigations",
 		filter: {
 			[r.Xt.Domain]: "Domain",
 			[r.Xt.Status]: "Report status",
-			[r.Xt.Type]: "Report type"
+			[r.Xt.Type]: "Report type",
+			mitigation_status: "Mitigation status"
 		}
 	},
 	mitigations_table: {
@@ -64,7 +67,7 @@
 		empty_state: {
 			default: (0, a.p)(l(), "blockCategory"),
 			search: (0, a.p)(d(), "blockCategory"),
-			error: (0, a.p)(p(), "blockCategory")
+			error: (0, a.p)(m(), "blockCategory")
 		},
 		column_name: {
 			[r.dS.EnforcementDate]: "Date",
@@ -193,7 +196,7 @@
 		submitter_telephone: "Telephone"
 	},
 	report_summary_values: {
-		active: (0, a.p)(m(), "activeCount")
+		active: (0, a.p)(p(), "activeCount")
 	},
 	breadcrumb_titles: {
 		manage_account: "Manage Account",

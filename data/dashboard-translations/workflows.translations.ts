@@ -54,6 +54,10 @@
 		graphEmptyState: {
 			title: "The latest instance of this workflow doesn't have a graph yet. Deploy a new version to automatically generate a workflow graph."
 		},
+		graphErrorState: {
+			title: "Failed to render workflow diagram.",
+			description: "We ran into a problem while rendering the workflow diagram:"
+		},
 		diagram: {
 			expand: "Expand diagram",
 			collapse: "Collapse diagram"

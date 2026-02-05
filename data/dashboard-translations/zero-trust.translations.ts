@@ -1,6 +1,7 @@
 {
 	common: {
 		heading: "Zero Trust",
+		widgetHeading: "Zero trust security",
 		api_error: "An error occurred while retrieving account information. Refresh the page to try again.",
 		permission_denied_error: "You do not have Zero Trust permissions. Contact your account administrator for more details.",
 		documentationLabel: "Zero Trust documentation",
@@ -21,14 +22,14 @@
 			resolversAndProxies: "Resolvers & proxies"
 		},
 		analytics: {
-			seats: "Used seats / Total seats",
-			access: "Access applications",
+			seats: "Used / total seats",
+			access: "Access controls applications",
 			integrations: "SaaS integrations",
-			casb: "CASB findings",
+			casb: "Cloud and SaaS findings",
 			http: "Gateway HTTP policies",
-			dns: "Gateway DNS policies",
+			dns: "DNS policies",
 			network: "Gateway network policies",
-			tunnels: "Cloudflare Tunnels"
+			tunnels: "Tunnels"
 		}
 	},
 	onboarding: {
