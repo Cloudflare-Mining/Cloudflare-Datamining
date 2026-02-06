@@ -686,7 +686,6 @@
 			price_tooltip: "Includes a 1-year registration extension at cost. Taxes not included.",
 			renews_at: "Renews at",
 			empty_title: "No domains ready for transfer",
-			empty_description: "Please check below to review and prepare your domains for transfer.",
 			ca_domain_subtext: "Domains ending in .ca need to be transferred on their own",
 			grace_period_subtext: "The domain renewed recently, so transferring it won't add an additional year to the registration.",
 			upcoming_expiration_warning: "Domain is within 30 days of expiration. A delay during transfer could put the domain at risk."
@@ -722,24 +721,26 @@
 			recheck_still_locked: "Still locked at registrar. Try again in %{seconds}s.",
 			recheck_unlocked: "Unlocked! Moving to available...",
 			recheck_error: "Unable to check status. Try again in %{seconds}s.",
-			empty_title: "All domains are ready",
-			empty_description: "All your domains are now ready for transfer."
+			empty_title: "No domains requiring action"
 		},
 		not_available_for_transfer_table: {
 			title: "Not available for transfer",
 			domain: "Domain",
 			status: "Status",
 			price: "Price",
-			empty_title: "No restricted domains found",
-			empty_description: "There are no domains with transfer restrictions at this time."
+			empty_title: "No restricted domains found"
 		},
 		transfers_in_progress_table: {
 			title: "Transfers in progress",
 			domain: "Domain",
 			verification_required: (0, n.p)(Q(), "email"),
 			track_status: "Track status",
-			empty_title: "No transfers in progress",
-			empty_description: "Domains you have submitted for transfer will appear here."
+			empty_title: "No transfers in progress"
+		},
+		no_domains_empty_state: {
+			title: "No eligible domains detected",
+			description: "Before you can transfer a domain, it needs to be part of your Cloudflare account. We'll help you through the quick setup process.",
+			get_started: "Get started"
 		},
 		description: "Choose the domains you want to transfer to your account. You'll be able to review details and complete the transfer in the next steps.",
 		stats: {
