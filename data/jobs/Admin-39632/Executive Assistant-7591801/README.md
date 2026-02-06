@@ -5,39 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, TX (Hybrid)<br><br><strong>About the Team</strong></p>
-<p>Cloudflare’s Cloud Email Security (CES) service builds advanced technology focused on the source of 95% of data breaches on the internet: phishing.</p>
-<p>Hunting for bad actors on the internet is an intellectual and technical challenge. We hunt at scale with web crawling, machine learning, computer vision, petabytes of data, and a global network of sensors.</p>
-<p>All of this technology delivers a comprehensive email, network and web protection layer around each of our customers. Customers know that with Cloudflare CES solution deployed their users won’t enable a hacker to gain a foothold that results in a breach of their systems.</p>
-<p>Come and join an engineering team that builds extensible, reliable, scalable web-based, and data processing applications that our customers count on every second of the day.</p>
-<p><strong>RESPONSIBILITIES</strong></p>
+<p><strong>Available Locations: London, UK&nbsp;</strong></p>
+<p><strong>What You’ll Do:</strong></p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Executive Assistant&nbsp;to support the VP, Product Management &amp; VP, Product Engineering.</p>
+<p>Your job is to keep our leaders organized, prioritized and productive while Cloudflare continues to grow and scale. This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude.The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA.&nbsp;</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Create the product’s subsystems and key components by applying up-to-date expertise in Software Engineering to define, design and create world-class implementations.</li>
-	<li>Collaborate with other senior engineers to improve the overall system at the architectural, design, and implementation levels.</li>
-	<li>Design and implement new features for our cloud-based email gateway solution that empowers Fortune 1000 customers.</li>
-	<li>Design and implement forward-looking portions of the system to execute a long-term product vision.</li>
-	<li>Work with large scale data systems in both online/streaming and offline/batch fashions</li>
-	<li>Design and implement revisions to areas of the system to enhance key features such as performance, reliability, scalability, or add new functionality</li>
+	<li>Admin: Provide excellent administrative support for members of the Executive Leadership team exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Including room set-ups, light catering, Audio/Visual set up, attendance tracking and materials distribution. Provide agendas, detailed data, information and resources in preparation for meetings.&nbsp;</li>
+	<li>Calendar: Proactively own and flawlessly execute on calendars, prioritizing with purpose, deflecting with tact, and understanding both the short- and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the leaders are equipped with all the necessary meeting information and manage inbound and outbound requests. If you enjoy “playing Tetris” with different Time Zones and schedules to help people get together, that would be a plus!</li>
+	<li>Travel and Expenses: Plan all aspects of domestic and international travel, optimizing and balancing executives’ time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date. Ensure timely submission of expense reports through Concur.</li>
+	<li>EA Team: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</li>
+	<li>Ability to come into the office approximately 2 days per week or as needed.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>MIN REQUIREMENTS:</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>~5+ years of experience designing and implementing software systems</li>
-	<li>Advanced ability to design and implement software systems in Java.</li>
-	<li>Someone who enjoys security work focused on email detections that identify and protect our users.</li>
-	<li>Distributed systems experience in a Unix environment&nbsp;</li>
-</ul>
-<p><strong>PREFERRED:</strong></p>
-<ul>
-	<li>BS/MS in Computer Science or similar engineering discipline</li>
-	<li>Strong software engineering skills and substantial expertise in additional programming and scripting languages: Rust, Python, and shell scripting</li>
-	<li>Experience with SMTP</li>
-	<li>Significant experience in networking, security, cryptography, malware analysis, data analysis, high-reliability clusters, statistics</li>
-	<li>Detailed understanding of object-oriented design practices.</li>
-	<li>Expert who specializes in big data analysis and design and construction of large-scale multi-tier systems using open-source technologies</li>
-	<li>Recent development or architectural leadership experience with large-scale data systems, streaming analytics.</li>
-	<li>Experience with continuous integration and delivery environments and agile methodologies.</li>
-	<li>Experience developing, deploying, maintaining applications using public cloud providers (AWS/GCP/Azure)</li>
+	<li>You have 5+ years' experience as an Executive Assistant in a high growth environment, prior experience supporting senior leaders&nbsp;</li>
+	<li>Excellent verbal and written communication skills</li>
+	<li>Working knowledge of Google Suite and major airline carrier’s platforms</li>
+	<li>Exhibits a strong work ethic, professionalism, confidentiality and good judgment</li>
+	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
+	<li>Personable with a can do attitude that sees no task or project to be too small or too big</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
