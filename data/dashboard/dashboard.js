@@ -2,7 +2,7 @@
 	try {
 		var e = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : {},
 			n = (new Error).stack;
-		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "f8cccd55-90cc-51b1-90bd-d37dcc281d35")
+		n && (e._sentryDebugIds = e._sentryDebugIds || {}, e._sentryDebugIds[n] = "523e4cc8-c92f-5432-badf-64675844b54c")
 	} catch (e) {}
 }();
 (self.webpackChunk_cloudflare_app_dash = self.webpackChunk_cloudflare_app_dash || []).push([
@@ -521,7 +521,7 @@
 				n$ = e("./react/utils/fragments.ts");
 			let n0 = (0, nn.lazy)(() => Promise.all([e.e("38962"), e.e("29231"), e.e("4715"), e.e("4370"), e.e("30948"), e.e("14079"), e.e("70858"), e.e("35606"), e.e("53171")]).then(e.bind(e, "./react/AuthenticatedApp.tsx"))),
 				n1 = (0, nn.lazy)(() => Promise.all([e.e("97702"), e.e("66358"), e.e("29231"), e.e("24240"), e.e("70647"), e.e("70858"), e.e("14014")]).then(e.bind(e, "./react/UnauthenticatedApp.tsx")));
-			var n5 = n => {
+			var n2 = n => {
 					let r, {
 						userIsAuthed: o
 					} = n;
@@ -596,14 +596,14 @@
 						})
 					})
 				},
-				n2 = e("../../../node_modules/yup/es/index.js"),
+				n5 = e("../../../node_modules/yup/es/index.js"),
 				n4 = e("../../common/util/types/src/utils/index.ts");
 			let n3 = {
-				cfEmail: () => n2.Yj().email((0, nu.Ay)("common.validation.email")).required((0, nu.Ay)("common.validation.email")),
-				cfPassword: () => n2.Yj().required((0, nu.Ay)("common.validation.required"))
+				cfEmail: () => n5.Yj().email((0, nu.Ay)("common.validation.email")).required((0, nu.Ay)("common.validation.email")),
+				cfPassword: () => n5.Yj().required((0, nu.Ay)("common.validation.required"))
 			};
 			(0, n4.uv)(n3).forEach(n => {
-				n2.Zg(n2.Yj, n, n3[n])
+				n5.Zg(n5.Yj, n, n3[n])
 			});
 			var n6 = e("./react/utils/sessionSync.ts"),
 				n8 = e("../../../node_modules/@cloudflare/authorization/es/index.js"),
@@ -746,7 +746,7 @@
 																	onDarkModeChangeCb: i,
 																	children: (0, $.jsx)(ns.Ay, {
 																		children: (0, $.jsx)(ra.B, {
-																			children: (0, $.jsx)(n5, {
+																			children: (0, $.jsx)(n2, {
 																				userIsAuthed: n
 																			})
 																		})
@@ -815,10 +815,10 @@
 						}({}, {
 							branch: "master",
 							isReleaseCandidate: "true",
-							commit: "45b78894d26d92f44d90ecdddcedbd0a6d9d5ed4",
-							dashVersion: "38344690",
+							commit: "34d60072b2762904f288edec727d27fe5b1d9060",
+							dashVersion: "38346000",
 							env: "production",
-							builtAt: 0x19c33f07ce1,
+							builtAt: 0x19c342d234a,
 							versions: {
 								"@cloudflare/app-dash": "25.161.22",
 								"@cloudflare/kumo": "0.7.0",
@@ -7719,8 +7719,8 @@
 				n$ = "pageview",
 				n0 = "create zone",
 				n1 = "create user",
-				n5 = "Plan Purchase Success",
-				n2 = "Product Purchase Success",
+				n2 = "Plan Purchase Success",
+				n5 = "Product Purchase Success",
 				n4 = "Plan Update Success",
 				n3 = "Product Update Success",
 				n6 = nS.FF.completedWCIBuildForNewWorker,
@@ -7732,8 +7732,8 @@
 					[n$]: !0,
 					[n0]: !0,
 					[n1]: !0,
-					[n5]: !0,
 					[n2]: !0,
+					[n5]: !0,
 					[n4]: !0,
 					[n3]: !0,
 					[L.hw]: !0,
@@ -7798,7 +7798,7 @@
 											value: 0
 										} : void 0
 									})(r);
-								case n5:
+								case n2:
 									return (n => {
 										let {
 											price: r,
@@ -7817,7 +7817,7 @@
 											label: o
 										}) : void 0
 									})(r);
-								case n2:
+								case n5:
 									return (n => {
 										let {
 											price: r,
@@ -8159,4 +8159,4 @@
 		}
 	}
 ]);
-//# debugId=f8cccd55-90cc-51b1-90bd-d37dcc281d35
+//# debugId=523e4cc8-c92f-5432-badf-64675844b54c
