@@ -9,7 +9,7 @@
 <p>Cloudflare helps build the future of the Internet. The Emerging Technology and Incubation (ETI) team invents, launches, and brings to market the technologies required to reach that goal. ETI ships software that changes the Internet. The world's fastest DNS resolver, 1.1.1.1, Cloudflare WARP, Email Routing, Radar, Cloudflare Workers, D1, R2, and Workers AI are examples of our launches.</p>
 <p>The team members in ETI make this possible. The group consists of engineers, product managers, developer advocates and researchers who share a common passion for helping build a better Internet. The ETI organization encourages individual team members to be ambitious and bold in how we find and solve problems. We move quickly and shape our products based on customer usage and feedback, while leveraging the massive scale and reliability of our global network.</p>
 <p>ETI also helps drive our Innovation Weeks at Cloudflare and contributes with new products, features, and visions for helping build a better Internet. Doing that requires all of ETI to execute on releases that customers will use today, tell our story as part of Cloudflare’s larger mission, and to build products that allow Cloudflare’s customers to realize that 1+1 can equal 3 when using all of these features together.</p>
-<p>We are looking for a Systems Engineer to join our Cloudflare Workflows’ team. You will work with a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites, services and applications. You will play an active part in shaping product features based on what’s technically possible. You will change the way people build applications. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>We are looking for a Systems Engineer to join our Cloudflare Workflows’ team. You will work with a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites, services and applications. You will play an active part in shaping product features based on what’s technically possible. You will change the way people build applications. Furthermore, you will make sure our company hits our ambitious goals from an engineering standpoint.&nbsp;</p>
 <p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel to understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment.</p>
 <p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
@@ -32,6 +32,7 @@
 	<li>Experience building high performance distributed systems;</li>
 	<li>Knowledge of SQL.</li>
 </ul>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
