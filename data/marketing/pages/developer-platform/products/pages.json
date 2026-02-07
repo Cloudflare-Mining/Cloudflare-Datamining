@@ -57,7 +57,15 @@
 				"contentfulId": "2jP8IXVO3kejCQ48koS36j",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "2fPHkIXDvVgKKfFKh56uOj",
+					"text": "We recommend using Workers for new projects. ",
+					"learnMoreText": "Learn more",
+					"learnMoreUrl": "https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/",
+					"backgroundColor": null,
+					"hideCloseButton": null
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -1240,7 +1248,7 @@
 				"zh-Hans-CN",
 				"pl-PL"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
