@@ -312,36 +312,32 @@ pnpm test:coverage
 
 ## Beta Releases
 
-Beta releases allow you to test changes before publishing to production. Beta versions are automatically created for merge requests and include the commit hash for identification.
+Beta releases allow you to test changes before publishing to production. Beta versions are automatically created for pull requests and include the commit hash for identification.
 
 ### Automated Beta Releases
 
-Beta releases are automatically triggered for merge requests through the CI pipeline configured in the root `.gitlab-ci.yml`:
+Beta releases are automatically triggered for pull requests through GitHub Actions (`.github/workflows/preview.yml`):
 
-**CI Job Configuration:**
+**Workflow Configuration:**
 
-- **Job Name**: `version-and-publish-beta`
-- **Stage**: `beta-release` (runs after build, checks, and tests)
-- **Triggers**: Automatically on merge requests with changes to `packages/kumo/**/*`
-- **Dependencies**: Requires `validate-changeset-run` job to pass
-- **Environment**: Node.js container with pnpm, jq, and git configured
-- **Authentication**: Uses Vault secrets for npm and GitLab API tokens
+- **Workflow**: `preview.yml`
+- **Triggers**: Pull requests with changes to `packages/kumo/**` or `.changeset/**`
+- **Dependencies**: Requires changeset to exist for `@cloudflare/kumo`
 
 **Process Flow:**
 
 1. **Validate**: Ensures changeset exists for `@cloudflare/kumo`
-2. **Version**: Runs `pnpm run version:beta` (executes `./ci/versioning/version-beta.sh`)
+2. **Version**: Runs `pnpm run version:beta`
    - Consumes pending changesets
    - Appends `-beta.{commit-hash}` to version number
-3. **Build**: Runs `pnpm run build` in `packages/kumo`
-4. **Publish**: Runs `pnpm run release:beta` to publish with `beta` tag
-5. **Verify**: Waits 45s for npm propagation and verifies publication
-6. **Notify**: Posts MR comment with installation instructions
+3. **Build**: Runs `pnpm --filter @cloudflare/kumo build`
+4. **Publish**: Publishes to npm with `beta` tag
+5. **Notify**: Posts PR comment with installation instructions
 
 **Secrets Required:**
 
 - `NPM_TOKEN`: Authentication for npm registry
-- `GITLAB_API_TOKEN`: For posting MR comments
+- `GITHUB_TOKEN`: For posting PR comments (built-in)
 
 ### Beta Version Format
 
@@ -355,7 +351,7 @@ For example: `0.1.0-beta.a1b2c3d`
 
 ### Installing Beta Versions
 
-When a beta is published, the MR will include a comment with installation instructions:
+When a beta is published, the PR will include a comment with installation instructions:
 
 ```bash
 # Install the specific beta version
@@ -367,15 +363,15 @@ pnpm add @cloudflare/kumo@0.1.0-beta.a1b2c3d
 
 ### Testing Beta Releases
 
-1. **Create MR**: Submit your changes with a changeset
+1. **Create PR**: Submit your changes with a changeset
 2. **Wait for Beta**: The beta job runs automatically after changeset validation passes
-3. **Install Beta**: Use the version from the MR comment
+3. **Install Beta**: Use the version from the PR comment
 4. **Test Changes**: Verify functionality in your project
-5. **Merge**: Once tested, merge the MR for production release
+5. **Merge**: Once tested, merge the PR for production release
 
 ### Changeset Validation
 
-All merge requests with changes to `packages/kumo/` must include a changeset:
+All pull requests with changes to `packages/kumo/` must include a changeset:
 
 ```bash
 # Create a changeset
@@ -416,9 +412,9 @@ This package uses [Changesets](https://github.com/changesets/changesets) for ver
 
 1. **Development**: Make changes to components or blocks
 2. **Changeset**: Create changeset describing the changes
-3. **Review**: Submit MR with changes and changeset
-4. **Beta Test**: Test the beta version published to the MR
-5. **Merge**: Merge MR to main branch
+3. **Review**: Submit PR with changes and changeset
+4. **Beta Test**: Test the beta version published to the PR
+5. **Merge**: Merge PR to main branch
 6. **Release**: Run the production release process
 
 ### Production Release Process
@@ -509,7 +505,7 @@ If the beta release job fails:
 1. **Check build**: Ensure `pnpm build` succeeds locally
 2. **Check npm token**: Verify npm authentication is configured in CI
 3. **Check version format**: Ensure version follows semver format
-4. **Review CI logs**: Check GitLab CI logs for specific error messages
+4. **Review CI logs**: Check GitHub Actions logs for specific error messages
 
 **Import Errors After Release**
 

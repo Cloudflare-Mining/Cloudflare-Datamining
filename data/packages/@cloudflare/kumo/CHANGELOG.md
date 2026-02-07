@@ -1,5 +1,15 @@
 # @cloudflare/kumo
 
+## 1.1.0
+
+### Minor Changes
+
+- 001f9e7: fixes to figma plugin init + zod v4 in kumo
+
+### Patch Changes
+
+- 6dc9a73: Fix `kumo` CLI bin resolution in repo checkouts so `pnpm install` doesn't warn when `dist/` hasn't been built yet.
+
 ## 1.0.0
 
 ### Major Changes
