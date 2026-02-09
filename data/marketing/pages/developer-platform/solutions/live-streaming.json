@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-10-17T20:21:35.629Z",
-					"updatedAt": "2024-06-20T11:28:33.531Z"
+					"updatedAt": "2026-02-09T14:45:37.614Z"
 				},
 				"contentfulId": "7evKZ3tgxmCY44JJHobvu9",
 				"contentTypeId": "page",
@@ -904,6 +904,251 @@
 						],
 						"sectionPadding": "tile--no-top-padding",
 						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "6fIT66kF8rbFwhS7akexHD",
+						"bladeName": "Ultra low-latency live streaming - FAQs",
+						"title": "Live-stream FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2SV46hyfdLKVpgJZ7pW99j",
+								"title": "What is Cloudflare's live-streaming solution?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Stream lets you upload, store, encode, and broadcast live video with ultra low latency. The service is developer-friendly and simple to manage.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "29CJea4dbARHLjkzgVRnnO",
+								"title": "How does Cloudflare ensure low-latency streaming?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Stream automatically delivers video at the ideal resolution for a variety of connections, devices, and platforms. It uses a global network that is located within milliseconds of 95% of all Internet users to ensure fast and reliable delivery.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "We5ygIP858U6U0Mvr6UtT",
+								"title": "What makes Cloudflare's video API developer-friendly?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The API provides fast, reliable, and consistent video delivery thanks to single-pass traffic routing and inspection across Cloudflare's global network.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "74NSFagilCpuHpH5q2GyQa",
+								"title": "How is pricing for Cloudflare Stream different from traditional video CDNs?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Unlike traditional CDNs that bill based on the total bytes transferred, Cloudflare Stream bills by the number of minutes watched. Content providers never have to pay for ingress, compute, or egress, which makes for more transparent and predictable pricing.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "16oqRq2p62DJ4dB5yy45o6",
+								"title": "What video management tasks does Cloudflare Stream handle automatically?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Stream simplifies the technical aspects of video delivery by automatically managing video codecs, protocols, and adaptive bitrate streaming.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "VhdzWR5iccc650nE72wga",
+								"title": "Can I build interactive features into my live streams?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "You can use the Cloudflare Developer Platform to build live reactions, chats, and Q&A sessions into your video streams.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4e81hk3eySkqmRBm53QhGI",
+								"title": "What kind of analytics does Cloudflare provide for live streaming?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare allows you to track details about your viewer counts and viewing patterns, which can help you plan and improve your future live-streaming events.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,

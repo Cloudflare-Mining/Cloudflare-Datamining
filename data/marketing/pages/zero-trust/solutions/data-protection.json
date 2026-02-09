@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-06T15:38:46.866Z",
-					"updatedAt": "2026-02-04T12:26:21.401Z"
+					"updatedAt": "2026-02-09T14:42:02.135Z"
 				},
 				"contentfulId": "6AplZKWDaWJi7cIbiKlj5E",
 				"contentTypeId": "page",
@@ -3499,6 +3499,185 @@
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "1GMyezYkcGmowwLJFLiYtS",
+						"bladeName": "Data protection - FAQs",
+						"title": "Data protection FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "13nNuNor166d6q1NbgfAB6",
+								"title": "How does Cloudflare help organizations protect their sensitive data?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's connectivity cloud helps organizations regain visibility and control over their sensitive data across various environments, including web, SaaS, private applications, and AI tools, by unifying multiple data security services onto a single platform. These security services include data loss prevention (DLP), quantum-safe encryption, Zero Trust Network Access (ZTNA), browser isolation, and CASB, all working together to keep customer data safe.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6rrCQkNFveyGraBS7pHzy9",
+								"title": "What are the main benefits of using Cloudflare for data protection?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare offers simplified management through a unified platform, a frictionless user experience, and the ability to innovate and adapt to new risks with a set of composable services that work together seamlessly.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5TDZ9VUGBq6NtBVtF7jk2v",
+								"title": "What specific data protection capabilities does Cloudflare offer?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's platform combines several security services to protect data. These include scanning and remediating misconfigured public repositories to prevent code leaks, detecting and applying controls to source code in uploads and downloads, scanning SaaS apps for risks and misconfigurations, blocking sensitive data with data loss prevention (DLP) policies, and securing access to data in applications with Zero Trust Network Access (ZTNA).",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7jcJMigNZHgSSOdHFQE5uL",
+								"title": "Can Cloudflare protect data being used in AI tools?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare can prevent users from copy-and-pasting or inputting sensitive data into generative AI services. It can also monitor and control how users manipulate data in AI, including restricting downloads, uploads, and copy-and-paste actions.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6xb4hoWmB4pMP66YVyuB8s",
+								"title": "How does Cloudflare's network architecture support its data protection services? ",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's unified platform uses single-pass inspection to enforce all security and data controls. Because the network is within 50ms of 95% of all Internet users, this inspection is performed quickly and consistently, preserving a fast-performing user experience.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,

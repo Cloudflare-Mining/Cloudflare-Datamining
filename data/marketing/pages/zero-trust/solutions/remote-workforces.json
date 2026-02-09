@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:23:24.797Z",
-					"updatedAt": "2026-02-04T12:17:58.705Z"
+					"updatedAt": "2026-02-09T14:41:27.864Z"
 				},
 				"contentfulId": "1KQAfY2M4iouBOSyJi3B4c",
 				"contentTypeId": "page",
@@ -3658,6 +3658,185 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "7KHplQ2yL9i5Z2uCMsCcJp",
+						"bladeName": "RW - FAQs",
+						"title": "Remote workforces FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4uyDlOrygG4fTrMkN0M6EF",
+								"title": "How does Cloudflare help secure remote and hybrid workforces?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare protects work-from-anywhere organizations from threats like malware, ransomware, and phishing. Cloudflare allows organizations to enforce consistent security protections across their entire workforce without disrupting user productivity, no matter where their employees and contractors are located.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5ILuenKPmD2pPYpgTG4SJf",
+								"title": "What are the main benefits of using Cloudflare for remote workforce security?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare mitigates the latest Internet risks with industry-leading threat intelligence, enables growth by scaling protections with you, enhances the user experience, simplifies security operations through automation, and helps you reduce costs by consolidating or replacing legacy tools.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1alCdEolXQpKrnY3sTvCQW",
+								"title": "How does Cloudflare filter and inspect web activity for remote users?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare uses DNS filtering, a secure web gateway (SWG), remote browser isolation (RBI), and data loss prevention (DLP) to block harmful websites and data exfiltration.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5kfsODC8zLpodXwpRsAhR4",
+								"title": "How does Cloudflare's network improve the experience for remote users?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's global network is approximately 50ms from about 95% of all Internet users. This ensures that security enforcement is fast and consistent, leading to a superior experience for remote employees no matter where they are located.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2iSbK3ZNzopbiBP6PxW3rO",
+								"title": "How does Cloudflare's threat intelligence protect remote workers?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare uses AI-backed threat-hunting models that are informed by the Cloudflare network's visibility into approximately %{DNSQueriesPerDay} trillion DNS queries per day. This mass-scale intelligence helps Cloudflare to dynamically identify and stay ahead of evolving threats.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,

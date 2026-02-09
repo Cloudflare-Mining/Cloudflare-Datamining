@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2022-01-24T18:08:54.329Z",
-					"updatedAt": "2025-12-19T23:35:07.795Z"
+					"updatedAt": "2026-02-09T14:40:14.285Z"
 				},
 				"contentfulId": "362Bdc5Hu8qJabqKplPhqZ",
 				"contentTypeId": "page",
@@ -3789,6 +3789,218 @@
 						"contentTypeId": "bladePadding",
 						"height": 10,
 						"backgroundColor": "white"
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "1wjhFBoeDocT9E5ptOYSpP",
+						"bladeName": "Shadow IT discovery FAQs",
+						"title": "FAQs",
+						"htmlId": null,
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6xYxAL3DbTP4FdINcfrg0w",
+								"title": "What are the main challenges with securing SaaS usage?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "SaaS applications provide flexibility but their use also introduces security risks. Employees may use unauthorized apps and AI tools (known as \"shadow IT\"), which can lead to a loss of visibility, weakened access control, and a higher risk of data leaks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5B51vOMBH23QQ9Nj5lYjTD",
+								"title": "How does Cloudflare help organizations secure their SaaS access?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's SASE platform helps manage SaaS app access by discovering all the apps employees use, control who can access them, and protect sensitive data, all from a centralized dashboard.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4sakitQnTZTroBm1MmzyE5",
+								"title": "What are the key benefits of using Cloudflare for secure SaaS access?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The main benefits include improved visibility into app usage to manage shadow IT, strict access controls to ensure employees use only authorized tools, prevention of data exfiltration, and simplified security operations.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "47gGI87RXzFtNiLCwKHzGk",
+								"title": "How does Cloudflare provide visibility into SaaS and AI tool usage?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare provides a detailed, categorized view of application activity across an organization. This allows admins to see who is using which tools, when, and from where, so they can better understand usage trends and target their security efforts.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6J5glXhSgE45iuyXgh4fnY",
+								"title": "Can I control which SaaS applications my employees are allowed to use?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "You can govern application usage by marking approval statuses for each app to distinguish between sanctioned and unsanctioned tools. You can then apply identity-aware security policies to block unauthorized apps or place limits on their usage.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7k8h10pdQueBsZ8egdRWIh",
+								"title": "How does Cloudflare prevent data loss through SaaS applications?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare lets customers implement inline protections to prevent data exfiltration. This includes creating data loss prevention (DLP) rules, restricting actions like file uploads or copy-and-pasting in certain apps, and isolating user sessions for applications that are still under review.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
