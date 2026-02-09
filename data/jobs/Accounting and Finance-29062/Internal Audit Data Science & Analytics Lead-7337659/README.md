@@ -5,33 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available:&nbsp;</strong>Lisbon, Portugal</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a passionate, detail-oriented, tech-savvy, motivated People Operations Specialist to join our People Ops&nbsp; team within our EMEA region. In this vital role, you will be the first point of contact for our employees, ensuring their journey is smooth, positive, and seamless. You won't just be managing data; you’ll be a champion of the employee experience resolving inquiries with empathy, optimizing our workflows through automation, and ensuring our people systems run like a well-oiled machine as we scale globally. Along the way you’ll have the opportunity to help with the implementation of automated solutions that transform how we manage our People data and programs. If this sounds exciting to you, and you’re ready to roll up your sleeves in a fast-paced, dynamic environment with a growing, global company, we’d love to hear from you.&nbsp;&nbsp;</p>
-<p>&nbsp;</p>
-<h3><strong>Key Responsibilities</strong></h3>
+<p><strong>Available Locations: Austin, TX, Bengaluru, India</strong></p>
+<p><strong>About the role</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
+<p>The Internal Audit Data Science &amp; Analytics Lead will be a critical role in building our global data analytics, automation and continuous auditing strategy and program.&nbsp; Reporting directly to our Chief Audit Executive, this leader will identify and implement advanced audit capabilities using data, programming and other available toolsets.&nbsp; This role will be highly collaborative with leaders both within Internal Audit and across the business to develop and deliver data-driven audit and risk management solutions.&nbsp; This leader will have the energy and intellectual curiosity to continue to deepen technical capabilities and broaden subject matter expertise, asserting their mission in delivering data-driven, advance audit capabilities to the core of our team across all areas of audit, compliance and risk management.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li><strong>Champion the Employee Lifecycle:</strong> Take ownership of end-to-end processes including onboarding, internal transfers, organisation changes/compensations changes and offboarding, generate/review and update accurate, country-specific employment letters using existing templates. Collaborate with subject matter experts (HR and Legal) ensuring any updated contracts&nbsp; and HR documentation are replaced and reuploaded for the EMEA region.&nbsp;</li>
-	<li><strong>Architect of Process Documentation:</strong> Create, maintain, and regularly amend Standard Operating Procedures (SOPs) for all Ops-related processes. You will ensure our internal knowledge base is the "single source of truth" for the team, making complex workflows easy to follow.</li>
-	<li><strong>HR-to-Payroll Ownership:</strong> Manage the preparation and submission of accurate payroll data. You will act as the trusted bridge between People and Payroll, ensuring data integrity across different geographies.</li>
-	<li><strong>Systems Super-User:</strong> Maintain and optimize our tech stack. You will be responsible for ensuring clean, reliable data within Workday ensuring all changes are processed in a timely manner to adhere to the payroll/business cut- off&nbsp; and managing our recruitment-to-onboarding flow via Greenhouse.</li>
-	<li><strong>Subject Matter Expertise:</strong> Act as the first line of support for employee inquiries (via Zendesk and other channels) adhering to the SLA’s. You’ll resolve issues related to benefits, payroll, and policy with high-quality service and discretion.</li>
-	<li><strong>Drive Operational Excellence:</strong> Don’t just follow processes, improve them. You will identify opportunities for automation, reducing manual work and implementing scalable solutions that help the Pops team grow.</li>
-	<li><strong>Data Integrity &amp; Compliance:</strong> Maintain 100% accuracy in employee records, contracts, and right-to-work documentation. Provide basic reporting to teams across the organization. You’ll perform regular audits to ensure we are compliant with global regulatory requirements.&nbsp;</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner proactively with the wider People Team Legal, IT, and Finance to resolve complex cases and support strategic projects like annual compensation cycles and system implementations, and UAT testing as and when required.</li>
+	<li>Applying a data-driven mindset, continue the build of our Internal Audit Data Solutions program that will deliver advanced audit capabilities including automation, continuous auditing and data analytics&nbsp;</li>
+	<li>Develop and implement AI-driven solutions using available tools, supporting our audit teams and audit operations</li>
+	<li>As a data champion, will elevate awareness within the IA team on the appropriate and possible uses of data in performing our assurance and advisory work</li>
+	<li>Lead and oversee data analytics initiatives within Internal Audit, leveraging advanced analytical techniques to enhance audit procedures and identify risks</li>
+	<li>Design and execute on data-driven testing of key controls throughout in-scope processes, systems and programs, elevating levels of assurance and coverage</li>
+	<li>Build&nbsp; relationships with key data leaders and owners, enabling timely access to data necessary to perform audit and risk project work</li>
+	<li>Leverage existing data points and structures to provide a more quantitative measure to key control and risk considerations and conclusions</li>
+	<li>Develop our continuous auditing program and architect solutions that can deliver control and business insight on a more real-time basis, driving action for improvement in targeted areas</li>
+	<li>Drive automation across audit, SOX and risk projects, unlocking efficiencies in our testing&nbsp;</li>
+	<li>Evaluate and recommend data tools, technologies and methodologies to enhance our audit capabilities and stay abreast of industry trends</li>
 </ul>
-<h3><strong>What We’re Looking For</strong></h3>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li><strong>Experience:</strong> 3+ years in People Operations or HR Administration, ideally within a high-growth tech environment.</li>
-	<li><strong>Systems Proficiency:</strong> Hands-on experience with Workday or similar HRIS is essential. You should also be comfortable navigating Greenhouse (ATS) or similar and support tools like Zendesk.</li>
-	<li><strong>Data Fluency:</strong> You are proficient using Excel/Google Sheets. You enjoy using formulas to analyze data and have a "process-oriented" approach to problem-solving.</li>
-	<li><strong>Payroll Knowledge:</strong> Experience with the HR-to-Payroll pipeline and an understanding of how data flows from People systems to payroll.</li>
-	<li><strong>Detail Obsessed:</strong> You have a measure twice, cut once mentality, especially when handling sensitive employee information and compliance documentation.</li>
-	<li><strong>Adaptable &amp; Empathetic:</strong> You are highly adaptable and thrive in a fast-paced, dynamic environment. You possess the ability to manage shifting priorities efficiently, effortlessly pivoting between complex tasks, such as a data audit, and sensitive interpersonal situations, like an employee conversation.</li>
-	<li><strong>Communication:</strong> Excellent verbal and written communication skills, with the ability to explain complex People processes in simple, user-friendly terms.</li>
+	<li>6 + years of experience in applying data analytics techniques (i.e. including automation, data-driven control testing) and the use of AI within internal audit and enterprise risk projects</li>
+	<li>Bachelor’s Degree or equivalent in Computer Science, Data Science, or Management Information Systems&nbsp;</li>
+	<li>Proven track record in delivering audit solutions through application of data analytics, scripting and programming skills (Python, R, SQL) as well as any relevant tools</li>
+	<li>Appropriate certifications/trainings relevant to Internal Audit (i.e. CPA, CISA, CIA, CISSP) and/or data tools (i.e. AWS Certified Data Analyst, Google Cloud Certified, etc.)&nbsp;</li>
+	<li>Strong experience in working through the full data analytics lifecycle from data acquisition to cleansing to scripting/programming to analysis to reporting</li>
+	<li>Experience in working with visualization tools (i.e. Tableau) to aid in reporting and presenting observations at a thematic level to executives and program leaders</li>
+	<li>Experience in building continuous audit capabilities and dashboards that will provide reliable and timely performance metrics on focused control points at the right level of detail allowing for management actions and measurement</li>
 </ul>
-<p><br><br></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

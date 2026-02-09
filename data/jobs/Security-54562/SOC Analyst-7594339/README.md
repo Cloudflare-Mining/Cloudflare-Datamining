@@ -5,33 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available:&nbsp;</strong>Lisbon, Portugal</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a passionate, detail-oriented, tech-savvy, motivated People Operations Specialist to join our People Ops&nbsp; team within our EMEA region. In this vital role, you will be the first point of contact for our employees, ensuring their journey is smooth, positive, and seamless. You won't just be managing data; you’ll be a champion of the employee experience resolving inquiries with empathy, optimizing our workflows through automation, and ensuring our people systems run like a well-oiled machine as we scale globally. Along the way you’ll have the opportunity to help with the implementation of automated solutions that transform how we manage our People data and programs. If this sounds exciting to you, and you’re ready to roll up your sleeves in a fast-paced, dynamic environment with a growing, global company, we’d love to hear from you.&nbsp;&nbsp;</p>
-<p>&nbsp;</p>
-<h3><strong>Key Responsibilities</strong></h3>
+<p><strong>Available Locations: London, UK</strong></p>
+<p><strong>About the Department:</strong></p>
+<p>Security Operations Center Engineers provide premium-level support for Cloudflare's security products and features. Our largest and most technically sophisticated customers will contact SOC for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This spans the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation (including Advanced TCP Protection and Advanced DNS Protection), and Magic Firewall, to using the Web Application Firewall (WAF), Spectrum, Bot Management, API Security, and Rate Limiting to help customers.</p>
+<p>Security Operations Center Analysts/Engineers analyze threats using customer-facing dashboards and internal tools, make detailed and informed suggestions for mitigation, and may implement mitigation strategies directly on behalf of the customer with appropriate approval. The team provides 24x7x365 proactive monitoring via our internal alerting systems, near real-time analysis of security events, and attack reporting beyond Cloudflare's self-service reports.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li><strong>Champion the Employee Lifecycle:</strong> Take ownership of end-to-end processes including onboarding, internal transfers, organisation changes/compensations changes and offboarding, generate/review and update accurate, country-specific employment letters using existing templates. Collaborate with subject matter experts (HR and Legal) ensuring any updated contracts&nbsp; and HR documentation are replaced and reuploaded for the EMEA region.&nbsp;</li>
-	<li><strong>Architect of Process Documentation:</strong> Create, maintain, and regularly amend Standard Operating Procedures (SOPs) for all Ops-related processes. You will ensure our internal knowledge base is the "single source of truth" for the team, making complex workflows easy to follow.</li>
-	<li><strong>HR-to-Payroll Ownership:</strong> Manage the preparation and submission of accurate payroll data. You will act as the trusted bridge between People and Payroll, ensuring data integrity across different geographies.</li>
-	<li><strong>Systems Super-User:</strong> Maintain and optimize our tech stack. You will be responsible for ensuring clean, reliable data within Workday ensuring all changes are processed in a timely manner to adhere to the payroll/business cut- off&nbsp; and managing our recruitment-to-onboarding flow via Greenhouse.</li>
-	<li><strong>Subject Matter Expertise:</strong> Act as the first line of support for employee inquiries (via Zendesk and other channels) adhering to the SLA’s. You’ll resolve issues related to benefits, payroll, and policy with high-quality service and discretion.</li>
-	<li><strong>Drive Operational Excellence:</strong> Don’t just follow processes, improve them. You will identify opportunities for automation, reducing manual work and implementing scalable solutions that help the Pops team grow.</li>
-	<li><strong>Data Integrity &amp; Compliance:</strong> Maintain 100% accuracy in employee records, contracts, and right-to-work documentation. Provide basic reporting to teams across the organization. You’ll perform regular audits to ensure we are compliant with global regulatory requirements.&nbsp;</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner proactively with the wider People Team Legal, IT, and Finance to resolve complex cases and support strategic projects like annual compensation cycles and system implementations, and UAT testing as and when required.</li>
+	<li>Monitor and investigate proactive alerts to identify attacks</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>Communicate with customers via chat, email, and phone</li>
+	<li>Review alerts to determine relevancy and urgency; create tracking tickets for incidents requiring review or escalation</li>
+	<li>Adhere to SOC SLAs for alert response and customer communication</li>
+	<li>Configure and manage security monitoring rules; contribute to tool and threshold improvements</li>
+	<li>DDoS mitigation for OSI Layers 3, 4, &amp; 7: filter malicious traffic using Cloudflare tools including Magic Transit, Magic Firewall, Advanced TCP Protection, WAF, Custom Rules, IP Access Rules, and Rate Limiting</li>
+	<li>Maintain customer-specific SOC runbooks and escalation matrices</li>
+	<li>Support SOC customer onboarding and deliver monthly security reviews</li>
 </ul>
-<h3><strong>What We’re Looking For</strong></h3>
+<p><strong>Key Skill Sets</strong></p>
 <ul>
-	<li><strong>Experience:</strong> 3+ years in People Operations or HR Administration, ideally within a high-growth tech environment.</li>
-	<li><strong>Systems Proficiency:</strong> Hands-on experience with Workday or similar HRIS is essential. You should also be comfortable navigating Greenhouse (ATS) or similar and support tools like Zendesk.</li>
-	<li><strong>Data Fluency:</strong> You are proficient using Excel/Google Sheets. You enjoy using formulas to analyze data and have a "process-oriented" approach to problem-solving.</li>
-	<li><strong>Payroll Knowledge:</strong> Experience with the HR-to-Payroll pipeline and an understanding of how data flows from People systems to payroll.</li>
-	<li><strong>Detail Obsessed:</strong> You have a measure twice, cut once mentality, especially when handling sensitive employee information and compliance documentation.</li>
-	<li><strong>Adaptable &amp; Empathetic:</strong> You are highly adaptable and thrive in a fast-paced, dynamic environment. You possess the ability to manage shifting priorities efficiently, effortlessly pivoting between complex tasks, such as a data audit, and sensitive interpersonal situations, like an employee conversation.</li>
-	<li><strong>Communication:</strong> Excellent verbal and written communication skills, with the ability to explain complex People processes in simple, user-friendly terms.</li>
+	<li>Strong understanding of internet protocols (TCP, UDP, ICMP, GRE, BGP)</li>
+	<li>Networking fundamentals are crucial for success</li>
+	<li>Analysis of traffic for attack anomaly detection and creation of mitigation rules</li>
+	<li>Experience handling attack mitigation with knowledge of L3/4 and L7 attacks</li>
+	<li>Command line / Bash shell proficiency</li>
+	<li>Customer Facing or Technical support experience is mandatory</li>
+	<li>Strong communication skills, including with VIP customers during active attacks</li>
+	<li>Ability to remain calm under pressure</li>
+	<li>Ability to work 24x7 rotating shifts</li>
+	<li>Sysadmin skills - Linux, Mac, or Windows (Preferred)</li>
+	<li>Knowledge of Cloudflare Security Products &amp; Features (Preferred)</li>
+	<li>Scripting skills, Python preferred (Preferred)</li>
+	<li>Prometheus/Grafana monitoring experience (Preferred)</li>
+	<li>Packet capture tools such as tcpdump or Wireshark (Preferred)</li>
+	<li>API/GraphQL experience (Nice to have)</li>
+	<li>Foundational Certifications: BTL1, ISC2 CC, Network+, Security+, CCNA Security, or equivalent (Highly Valued)</li>
+	<li>Advanced Certifications: GCIH, GCIA, CISSP, CCNP, or equivalent (Considered a Plus)</li>
 </ul>
-<p><br><br></p>
+<p><em>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</em></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

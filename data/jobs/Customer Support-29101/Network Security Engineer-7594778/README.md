@@ -5,33 +5,46 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available:&nbsp;</strong>Lisbon, Portugal</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a passionate, detail-oriented, tech-savvy, motivated People Operations Specialist to join our People Ops&nbsp; team within our EMEA region. In this vital role, you will be the first point of contact for our employees, ensuring their journey is smooth, positive, and seamless. You won't just be managing data; you’ll be a champion of the employee experience resolving inquiries with empathy, optimizing our workflows through automation, and ensuring our people systems run like a well-oiled machine as we scale globally. Along the way you’ll have the opportunity to help with the implementation of automated solutions that transform how we manage our People data and programs. If this sounds exciting to you, and you’re ready to roll up your sleeves in a fast-paced, dynamic environment with a growing, global company, we’d love to hear from you.&nbsp;&nbsp;</p>
-<p>&nbsp;</p>
-<h3><strong>Key Responsibilities</strong></h3>
+<p><strong>Available Locations: </strong>Austin</p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>What You’ll do</strong></h4>
+<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
+<p><strong>Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li><strong>Champion the Employee Lifecycle:</strong> Take ownership of end-to-end processes including onboarding, internal transfers, organisation changes/compensations changes and offboarding, generate/review and update accurate, country-specific employment letters using existing templates. Collaborate with subject matter experts (HR and Legal) ensuring any updated contracts&nbsp; and HR documentation are replaced and reuploaded for the EMEA region.&nbsp;</li>
-	<li><strong>Architect of Process Documentation:</strong> Create, maintain, and regularly amend Standard Operating Procedures (SOPs) for all Ops-related processes. You will ensure our internal knowledge base is the "single source of truth" for the team, making complex workflows easy to follow.</li>
-	<li><strong>HR-to-Payroll Ownership:</strong> Manage the preparation and submission of accurate payroll data. You will act as the trusted bridge between People and Payroll, ensuring data integrity across different geographies.</li>
-	<li><strong>Systems Super-User:</strong> Maintain and optimize our tech stack. You will be responsible for ensuring clean, reliable data within Workday ensuring all changes are processed in a timely manner to adhere to the payroll/business cut- off&nbsp; and managing our recruitment-to-onboarding flow via Greenhouse.</li>
-	<li><strong>Subject Matter Expertise:</strong> Act as the first line of support for employee inquiries (via Zendesk and other channels) adhering to the SLA’s. You’ll resolve issues related to benefits, payroll, and policy with high-quality service and discretion.</li>
-	<li><strong>Drive Operational Excellence:</strong> Don’t just follow processes, improve them. You will identify opportunities for automation, reducing manual work and implementing scalable solutions that help the Pops team grow.</li>
-	<li><strong>Data Integrity &amp; Compliance:</strong> Maintain 100% accuracy in employee records, contracts, and right-to-work documentation. Provide basic reporting to teams across the organization. You’ll perform regular audits to ensure we are compliant with global regulatory requirements.&nbsp;</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner proactively with the wider People Team Legal, IT, and Finance to resolve complex cases and support strategic projects like annual compensation cycles and system implementations, and UAT testing as and when required.</li>
+	<li>Fluent English speaker is a requirement</li>
+	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
+	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
+	<li>Fundamental understanding how the Internet works (OSI Model)</li>
+	<li>Advanced understanding of internet protocols like TCP and UDP</li>
+	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Packet capture analysis</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
+	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
+	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
+	<li>Experience in working as part of a team in a customer-facing role</li>
 </ul>
-<h3><strong>What We’re Looking For</strong></h3>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li><strong>Experience:</strong> 3+ years in People Operations or HR Administration, ideally within a high-growth tech environment.</li>
-	<li><strong>Systems Proficiency:</strong> Hands-on experience with Workday or similar HRIS is essential. You should also be comfortable navigating Greenhouse (ATS) or similar and support tools like Zendesk.</li>
-	<li><strong>Data Fluency:</strong> You are proficient using Excel/Google Sheets. You enjoy using formulas to analyze data and have a "process-oriented" approach to problem-solving.</li>
-	<li><strong>Payroll Knowledge:</strong> Experience with the HR-to-Payroll pipeline and an understanding of how data flows from People systems to payroll.</li>
-	<li><strong>Detail Obsessed:</strong> You have a measure twice, cut once mentality, especially when handling sensitive employee information and compliance documentation.</li>
-	<li><strong>Adaptable &amp; Empathetic:</strong> You are highly adaptable and thrive in a fast-paced, dynamic environment. You possess the ability to manage shifting priorities efficiently, effortlessly pivoting between complex tasks, such as a data audit, and sensitive interpersonal situations, like an employee conversation.</li>
-	<li><strong>Communication:</strong> Excellent verbal and written communication skills, with the ability to explain complex People processes in simple, user-friendly terms.</li>
+	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
+	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
+	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
+	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
+	<li>Work with Engineering and Product teams to improve products and tools</li>
 </ul>
-<p><br><br></p>
+<p><strong>Availability and Schedule Requirements</strong></p>
+<ul>
+	<li>Flexibility to work varying work schedules including; Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>You are familiar with Cloudflare and are actively using our platform</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
+	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

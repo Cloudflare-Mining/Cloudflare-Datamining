@@ -5,33 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available:&nbsp;</strong>Lisbon, Portugal</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. We are looking for a passionate, detail-oriented, tech-savvy, motivated People Operations Specialist to join our People Ops&nbsp; team within our EMEA region. In this vital role, you will be the first point of contact for our employees, ensuring their journey is smooth, positive, and seamless. You won't just be managing data; you’ll be a champion of the employee experience resolving inquiries with empathy, optimizing our workflows through automation, and ensuring our people systems run like a well-oiled machine as we scale globally. Along the way you’ll have the opportunity to help with the implementation of automated solutions that transform how we manage our People data and programs. If this sounds exciting to you, and you’re ready to roll up your sleeves in a fast-paced, dynamic environment with a growing, global company, we’d love to hear from you.&nbsp;&nbsp;</p>
-<p>&nbsp;</p>
-<h3><strong>Key Responsibilities</strong></h3>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is seeking a curious and user-focused <strong>Product Manager Interns</strong> to join our team. You will contribute to building innovative products and services that help build a better Internet. Our interns are at the core of this mission, developing foundational technologies that impact millions of users globally.</p>
+<p><strong>What You'll Do</strong></p>
+<p>As a Product Manager Intern, you will be the voice of the user. You will own a project focused on improving products, user experience and contributing to the development of our offerings. Your responsibilities will include:</p>
 <ul>
-	<li><strong>Champion the Employee Lifecycle:</strong> Take ownership of end-to-end processes including onboarding, internal transfers, organisation changes/compensations changes and offboarding, generate/review and update accurate, country-specific employment letters using existing templates. Collaborate with subject matter experts (HR and Legal) ensuring any updated contracts&nbsp; and HR documentation are replaced and reuploaded for the EMEA region.&nbsp;</li>
-	<li><strong>Architect of Process Documentation:</strong> Create, maintain, and regularly amend Standard Operating Procedures (SOPs) for all Ops-related processes. You will ensure our internal knowledge base is the "single source of truth" for the team, making complex workflows easy to follow.</li>
-	<li><strong>HR-to-Payroll Ownership:</strong> Manage the preparation and submission of accurate payroll data. You will act as the trusted bridge between People and Payroll, ensuring data integrity across different geographies.</li>
-	<li><strong>Systems Super-User:</strong> Maintain and optimize our tech stack. You will be responsible for ensuring clean, reliable data within Workday ensuring all changes are processed in a timely manner to adhere to the payroll/business cut- off&nbsp; and managing our recruitment-to-onboarding flow via Greenhouse.</li>
-	<li><strong>Subject Matter Expertise:</strong> Act as the first line of support for employee inquiries (via Zendesk and other channels) adhering to the SLA’s. You’ll resolve issues related to benefits, payroll, and policy with high-quality service and discretion.</li>
-	<li><strong>Drive Operational Excellence:</strong> Don’t just follow processes, improve them. You will identify opportunities for automation, reducing manual work and implementing scalable solutions that help the Pops team grow.</li>
-	<li><strong>Data Integrity &amp; Compliance:</strong> Maintain 100% accuracy in employee records, contracts, and right-to-work documentation. Provide basic reporting to teams across the organization. You’ll perform regular audits to ensure we are compliant with global regulatory requirements.&nbsp;</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner proactively with the wider People Team Legal, IT, and Finance to resolve complex cases and support strategic projects like annual compensation cycles and system implementations, and UAT testing as and when required.</li>
+	<li><strong>Define the Future:</strong> Conduct user research and competitive analysis to understand user needs and market trends. You'll identify pain points and opportunities to make our tools best-in-class.</li>
+	<li><strong>Collaborate to Build:</strong> Work hand-in-hand with product, engineering and design counterparts and senior members of the engineering and product team to bring your vision to life, ensuring features are built to spec and meet user expectations or the getting things done to solve hard problems at scale.</li>
+	<li><strong>Drive for Impact:</strong> You will help define success metrics and be responsible for making sure the features you launch are not only technically sound but also solve real-world problems for our users</li>
+	<li><strong>Solve problems:</strong> Identify, analyze, and strategically address complex challenges, transforming them into opportunities for innovation and growth. This involves not only reactive problem-solving but also proactive identification of potential issues and the development of preventative measures. Effective problem-solving requires a deep understanding of user needs, market dynamics, and technological capabilities, allowing for the creation of solutions that are both feasible and impactful.</li>
 </ul>
-<h3><strong>What We’re Looking For</strong></h3>
+<p><strong>Who We're Looking For</strong></p>
+<p>We are looking for talented and ambitious students who are passionate about building products that users love. Cloudflare believes in the vital source of talent, new energy, and ideas that interns bring, especially as we stand at the cusp of the AI technological revolution.</p>
+<p><strong>Ideal Qualifications:</strong></p>
 <ul>
-	<li><strong>Experience:</strong> 3+ years in People Operations or HR Administration, ideally within a high-growth tech environment.</li>
-	<li><strong>Systems Proficiency:</strong> Hands-on experience with Workday or similar HRIS is essential. You should also be comfortable navigating Greenhouse (ATS) or similar and support tools like Zendesk.</li>
-	<li><strong>Data Fluency:</strong> You are proficient using Excel/Google Sheets. You enjoy using formulas to analyze data and have a "process-oriented" approach to problem-solving.</li>
-	<li><strong>Payroll Knowledge:</strong> Experience with the HR-to-Payroll pipeline and an understanding of how data flows from People systems to payroll.</li>
-	<li><strong>Detail Obsessed:</strong> You have a measure twice, cut once mentality, especially when handling sensitive employee information and compliance documentation.</li>
-	<li><strong>Adaptable &amp; Empathetic:</strong> You are highly adaptable and thrive in a fast-paced, dynamic environment. You possess the ability to manage shifting priorities efficiently, effortlessly pivoting between complex tasks, such as a data audit, and sensitive interpersonal situations, like an employee conversation.</li>
-	<li><strong>Communication:</strong> Excellent verbal and written communication skills, with the ability to explain complex People processes in simple, user-friendly terms.</li>
+	<li>Currently pursuing a degree (Bachelor's or Master's) in Business, Computer Science, Human-Computer Interaction, or a related field.</li>
+	<li>A strong passion for technology and understanding user needs.</li>
+	<li>Technical literacy, with the ability to read and understand code (e.g., JavaScript, Python, Go or Rust) and empathize with developer workflows.</li>
+	<li>A solid understanding of networking concepts (e.g., TCP/IP, HTTP, DNS) is a plus.</li>
+	<li>Excellent written and verbal communication skills, with an ability to articulate complex concepts to both technical and non-technical audiences.</li>
+	<li>Strong analytical, problem-solving, and organizational skills.</li>
+	<li>The ability to thrive in a fast-paced, collaborative environment.</li>
 </ul>
-<p><br><br></p>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li>Hands-on experience with developer tools like Git, and personal or open-source projects that demonstrate an interest in software development.</li>
+	<li>Familiarity with command-line tools and the developer workflow.</li>
+	<li>Previous experience writing product specifications or conducting user research.</li>
+	<li>Knowledge of security or Zero Trust concepts.</li>
+	<li>Experience with competitor products or other developer-focused tools.</li>
+</ul>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li>Excellent communication skills with the ability to engage with both external partners and internal teams.</li>
+	<li>A self-starter who is comfortable with ambiguity and eager to take initiative.</li>
+	<li>Ability to commit to a full-time 12 week internship</li>
+	<li>In office 3-4 days a week in-office in Austin, TX</li>
+</ul>
+<p><strong>Please note:</strong></p>
+<ul>
+	<li>We will be hiring interns through the fall and early spring on a rolling basis until all roles are filled.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
