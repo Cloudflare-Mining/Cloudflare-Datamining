@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
-		"latest": "1.1.0"
+		"latest": "1.2.0"
 	},
 	"versions": {
 		"1.0.0": {
@@ -71,40 +71,103 @@
 			"name": "@cloudflare/kumo",
 			"version": "1.1.0",
 			"dependencies": {
+				"clsx": "^2.1.1",
+				"@base-ui/react": "^1.0.0",
+				"tailwind-merge": "^3.4.0"
+			},
+			"devDependencies": {
+				"tsx": "catalog:",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "catalog:",
+				"eslint": "catalog:",
+				"oxlint": "catalog:",
+				"vitest": "catalog:",
+				"esbuild": "0.27.2",
+				"wrangler": "catalog:",
+				"happy-dom": "catalog:",
+				"@vitest/ui": "catalog:",
+				"playwright": "catalog:",
+				"typescript": "catalog:",
+				"@types/glob": "9.0.0",
+				"@types/node": "catalog:",
+				"tailwindcss": "catalog:",
+				"@types/react": "catalog:",
+				"@vitest/browser": "catalog:",
+				"oxlint-tsgolint": "catalog:",
+				"vite-plugin-dts": "catalog:",
+				"@tailwindcss/cli": "catalog:",
+				"@types/react-dom": "catalog:",
+				"@tailwindcss/vite": "catalog:",
+				"typescript-eslint": "^8.18.1",
+				"@testing-library/react": "16.3.1",
+				"eslint-plugin-jsx-a11y": "catalog:",
+				"ts-json-schema-generator": "2.4.0",
+				"@testing-library/user-event": "14.6.1",
+				"rollup-plugin-preserve-directives": "0.4.0"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "ffab7c116e1915c47fe264fb75df4cb970e0462d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.1.0.tgz",
+				"fileCount": 561,
+				"integrity": "sha512-Qh6lqKuDSuBwjc2VJPQIeVBxvTHVfIRG2FtxLrLYFQmagkHCagiOppvxtoxULC0gTl17ybUpEzmZwHKW0ztdHg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD/6MAsHfsZnFiKx69mD0u+4KxbPtaZo8T/QahvI90dgAIgVMEMZTNu93KJHlg8X9RiiwXiyXvqCm0BMEVJCol6ieE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 5316844
+			}
+		},
+		"1.2.0": {
+			"name": "@cloudflare/kumo",
+			"version": "1.2.0",
+			"dependencies": {
 				"@base-ui/react": "^1.0.0",
 				"clsx": "^2.1.1",
 				"tailwind-merge": "^3.4.0"
 			},
 			"devDependencies": {
-				"@tailwindcss/cli": "catalog:",
-				"@tailwindcss/vite": "catalog:",
+				"@tailwindcss/cli": "^4.1.17",
+				"@tailwindcss/vite": "^4.1.17",
 				"@testing-library/react": "16.3.1",
 				"@testing-library/user-event": "14.6.1",
 				"@types/glob": "9.0.0",
-				"@types/node": "catalog:",
-				"@types/react": "catalog:",
-				"@types/react-dom": "catalog:",
-				"@vitest/browser": "catalog:",
-				"@vitest/ui": "catalog:",
+				"@types/node": "^22.10.2",
+				"@types/react": "19.2.4",
+				"@types/react-dom": "19.2.3",
+				"@vitest/browser": "^3.2.4",
+				"@vitest/ui": "^3.2.4",
 				"esbuild": "0.27.2",
-				"eslint": "catalog:",
-				"eslint-plugin-jsx-a11y": "catalog:",
+				"eslint": "^9.17.0",
+				"eslint-plugin-jsx-a11y": "^6.10.2",
 				"glob": "13.0.0",
-				"happy-dom": "catalog:",
-				"oxlint": "catalog:",
-				"oxlint-tsgolint": "catalog:",
-				"playwright": "catalog:",
+				"happy-dom": "^15.11.7",
+				"oxlint": "1.42.0",
+				"oxlint-tsgolint": "0.11.3",
+				"playwright": "^1.57.0",
 				"plop": "4.0.4",
 				"rollup-plugin-preserve-directives": "0.4.0",
-				"tailwindcss": "catalog:",
+				"tailwindcss": "^4.1.17",
 				"ts-json-schema-generator": "2.4.0",
-				"tsx": "catalog:",
-				"typescript": "catalog:",
+				"tsx": "^4.19.2",
+				"typescript": "^5.9.2",
 				"typescript-eslint": "^8.18.1",
-				"vite": "catalog:",
-				"vite-plugin-dts": "catalog:",
-				"vitest": "catalog:",
-				"wrangler": "catalog:",
+				"vite": "^7.1.7",
+				"vite-plugin-dts": "^4.3.0",
+				"vitest": "^3.2.4",
+				"wrangler": "^4.59.1",
 				"zod": "^4.0.0"
 			},
 			"peerDependencies": {
@@ -117,15 +180,21 @@
 				"kumo": "bin/kumo.js"
 			},
 			"dist": {
-				"integrity": "sha512-Qh6lqKuDSuBwjc2VJPQIeVBxvTHVfIRG2FtxLrLYFQmagkHCagiOppvxtoxULC0gTl17ybUpEzmZwHKW0ztdHg==",
-				"shasum": "ffab7c116e1915c47fe264fb75df4cb970e0462d",
-				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.1.0.tgz",
-				"fileCount": 561,
-				"unpackedSize": 5316844,
+				"integrity": "sha512-Ky9VeEfK5SHNnpCsqTCc218TkfMsBGK/ipOv4yZT6TyoVGvoErFJ+K5wZOo1X1VvPongvqpojIDafWnZsbU5Gw==",
+				"shasum": "dbc9fdcffab8c900094753be31c230c95d275f6a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.2.0.tgz",
+				"fileCount": 562,
+				"unpackedSize": 5357697,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQD/6MAsHfsZnFiKx69mD0u+4KxbPtaZo8T/QahvI90dgAIgVMEMZTNu93KJHlg8X9RiiwXiyXvqCm0BMEVJCol6ieE="
+						"sig": "MEYCIQCDqgKmI+51R3Gu+5v5siJdkZnSwwuREpRyLpDKIz+QhQIhAOwYNBylnCzEvcHgEhwU+JzALk/kBNo0vn0vGM2ZqZ9M"
 					}
 				]
 			}
