@@ -100,7 +100,8 @@
 		"AI Search": "AI Search",
 		Archiver: "Archiver",
 		Other: "Other",
-		"Search Engine Crawler": "Search Engine Crawler"
+		"Search Engine Crawler": "Search Engine Crawler",
+		Testing: "Testing"
 	},
 	common: {
 		allow: "Allow",
@@ -238,6 +239,8 @@
 		robots_txt: "Robots.txt",
 		save: "Save",
 		saving: "Saving...",
+		select: "Select",
+		select_all: "Select all",
 		settings: "Settings",
 		successful: "Successful",
 		total: "Total",

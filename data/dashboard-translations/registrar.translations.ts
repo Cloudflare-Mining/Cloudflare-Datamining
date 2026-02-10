@@ -558,6 +558,7 @@
 	whois_card_no_info: "No WHOIS information is currently available.",
 	public_whois_acknowledgement: "I understand that, per Registry policy, the personal contact information provided in this section will be publicly visible in WHOIS domain record searches for %{tlds} domains",
 	public_whois_acknowledgement_mixed_domains: "I understand that, per Registry policy, contact information for %{tlds} domains will be publicly available through WHOIS domain record searches. Contact details for other domains will be redacted",
+	public_whois_warning: "The .%{tld} registry requires that domain contact data is displayed in the public WHOIS database. Redaction and/or use of WHOIS privacy services is prohibited. This is a registry policy that all registrars must comply with.",
 	auth_code_section_title: "Authorization code required",
 	auth_code_section_description: "You may have entered the incorrect auth code for this domain.",
 	auth_code_section_submit: "Submit auth code",
@@ -687,6 +688,7 @@
 			renews_at: "Renews at",
 			empty_title: "No domains ready for transfer",
 			ca_domain_subtext: "Domains ending in .ca need to be transferred on their own",
+			ai_domain_subtext: "This domain transfer requires a 2-year extension.",
 			grace_period_subtext: "The domain renewed recently, so transferring it won't add an additional year to the registration.",
 			upcoming_expiration_warning: "Domain is within 30 days of expiration. A delay during transfer could put the domain at risk."
 		},

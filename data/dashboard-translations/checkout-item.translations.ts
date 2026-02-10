@@ -134,5 +134,22 @@
 		includes_kv_storage: "Includes first %{storage} GB KV storage, %{reads} million read operations, %{writes} million write operations, %{deletes} million delete operations, and %{lists} million list operations",
 		includes_durable_objects: "Includes first %{requests} million requests, %{duration} GB-second duration, %{storage} GB stored data, %{reads} million read units, %{writes} million write units, and %{deletes} million delete operations of Durable Objects",
 		includes_queues: "Includes first %{count} million standard operations of Queues"
+	},
+	prod_registrar: {
+		domain_renewal: "Domain Renewal",
+		renewal_years: "Renewal Period",
+		renewal_years_count_singular: "%{count} year",
+		renewal_years_count_plural: "%{count} years",
+		domain_name: "Domain",
+		included_at_no_extra_cost: "Included at no extra cost",
+		due_today: "Due today",
+		feature_whois_privacy: "WHOIS Privacy",
+		feature_whois_privacy_description: "Hide your personal information",
+		feature_dnssec: "DNSSEC",
+		feature_dnssec_description: "DNS security extensions",
+		feature_custom_nameservers: "Custom Nameservers",
+		feature_custom_nameservers_description: "Use your own nameservers",
+		feature_email_forwarding: "Email Forwarding",
+		feature_email_forwarding_description: "Create email aliases"
 	}
 }

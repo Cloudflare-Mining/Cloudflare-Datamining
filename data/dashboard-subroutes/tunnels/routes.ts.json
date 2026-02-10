@@ -1,6 +1,15 @@
 [
 	"/[id]/tunnels",
+	"/[id]/tunnels/[id]/*",
+	"/[id]/tunnels/[id]/overview",
+	"/[id]/tunnels/[id]/routes",
 	"/[id]/tunnels/create",
 	"/accounts/[id]/cfd_tunnel",
-	"/accounts/[id]/tunnels"
+	"/accounts/[id]/cfd_tunnel/[id]/configurations",
+	"/accounts/[id]/cfd_tunnel/[id]/connections",
+	"/accounts/[id]/cfd_tunnel/[id]/token",
+	"/accounts/[id]/connectivity/directory/services",
+	"/accounts/[id]/teamnet/routes",
+	"/accounts/[id]/tunnels",
+	"/accounts/[id]/zerotrust/routes/hostname"
 ]

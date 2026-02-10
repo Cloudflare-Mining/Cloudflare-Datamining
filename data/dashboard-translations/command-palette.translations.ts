@@ -60,7 +60,8 @@
 		vectorize_indexes: "Vectorize Indexes",
 		dispatch_namespaces: "Dispatch Namespaces",
 		workers_and_pages: "Workers & Pages",
-		workflows: "Workflows"
+		workflows: "Workflows",
+		tagged_resources: "Tagged Resources"
 	},
 	tip: {
 		access_description: "Search Access applications",
@@ -81,6 +82,7 @@
 		turnstile_description: "Search Turnstile widgets",
 		vectorize_description: "Search Vectorize indexes",
 		worker_description: "Find Workers and related resources",
-		workflows_description: "Search Workflows"
+		workflows_description: "Search Workflows",
+		tags_description: "Find resources by tag"
 	}
 }

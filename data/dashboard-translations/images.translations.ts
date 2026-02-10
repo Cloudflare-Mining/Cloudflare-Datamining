@@ -487,7 +487,7 @@
 	start_date: "Start date",
 	status: "Status",
 	last_updated: "Last updated",
-	no_search_results: (0, i.p)(T(), "value"),
+	no_search_results: (0, i.p)(q(), "value"),
 	sourcing_kit_wizard_title: "Import images",
 	source_credential_hint: "We were unable to validate the credentials of this source",
 	source_select_description: "Select or define a source to start importing photos from your external source.",
@@ -534,7 +534,7 @@
 		define_rules: "Define rules",
 		advanced_rules: "Advanced rules",
 		exclude_image_files: "Exclude image files?",
-		exclude_image_files_decription: (0, i.p)(q()),
+		exclude_image_files_decription: (0, i.p)(T()),
 		source_created: "Source was created successfully.",
 		bucket_root_path: "Amazon S3 root path (optional)",
 		bucket_root_path_hint: "Specify the root path you want to import images from.",
@@ -624,7 +624,7 @@
 	delivery_zone_confirm_disable: "Are you sure you want to disable transformations for %{zoneName}?",
 	delivery_zone_confirm_disable_all: "Are you sure you want to disable image and video transformations for %{zoneName}?",
 	disable_for_website: "Disable for zone",
-	cancel_resizing_after_bundle_error: (0, i.p)(O()),
+	cancel_resizing_after_bundle_error: (0, i.p)(L()),
 	enable_for_website: "Enable for zone",
 	no_storage_card: {
 		title: "Your current Cloudflare Images plan doesn’t include any storage.",
@@ -681,7 +681,7 @@
 	manage_plan: "Manage plan",
 	images_usage_dashboard: {
 		images_stored: "Images stored (current)",
-		storage_warning_low: (0, i.p)(L()),
+		storage_warning_low: (0, i.p)(O()),
 		storage_warning_high: (0, i.p)(N()),
 		storage_warning_low_enterprise: "You are nearing your image storage capacity. Contact your account manager to increase your capacity.",
 		storage_warning_high_enterprise: "You have reached your image storage capacity. Contact your account manager to increase your capacity."
@@ -803,5 +803,28 @@
 	hosted_images: "Hosted images",
 	no_analytics_available: "No analytics are currently available",
 	private: "Private",
-	drop_to_upload: "Drop to upload"
+	drop_to_upload: "Drop to upload",
+	flows: {
+		automation: "Automation",
+		description: "Builds flows to automatically optimize images that are requested on this zone.",
+		provider: "Provider",
+		add_provider: "Add provider flow",
+		add_custom: "Add custom flow",
+		failed_to_save: "Failed to save flows",
+		define_custom_flow_title: "Define a custom flow",
+		define_custom_flow_description: "Define a transformation flow to automatically optimize based on URL conditions.",
+		define_provider_flow_title: "Define a provider flow",
+		define_provider_flow_description: "Define a transformation flow to emulate the behaviour of another provider",
+		trigger_name: "Trigger",
+		trigger_description: "Define the conditions to trigger this policy",
+		query_parameters_name: "Query parameters",
+		query_parameters_description: "Use an asterisk (*) character if you want to match any use of this query parameter.",
+		extensions_name: "Extensions",
+		extensions_description: "Select what file extensions this flow should affect. If none are selected, all files in this path will be affected.",
+		paths_name: "Paths",
+		paths_description: "Use an asterisk (*) character to match many requests on this zone. Use * to match all requests on this zone.",
+		actions_description: "When the conditions are met, perform these actions.",
+		actions_no_duplicates: "No duplicate actions allowed"
+	},
+	discard_changes: "Discard changes"
 }

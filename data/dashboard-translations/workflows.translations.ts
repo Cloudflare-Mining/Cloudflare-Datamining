@@ -54,10 +54,15 @@
 		graphEmptyState: {
 			title: "The latest instance of this workflow doesn't have a graph yet. Deploy a new version to automatically generate a workflow graph."
 		},
+		graphGeneratingState: {
+			title: "Generating workflow graph...",
+			description: "The workflow graph is being generated for this version. This usually takes a few seconds."
+		},
 		graphErrorState: {
 			title: "Failed to render workflow diagram.",
 			description: "We ran into a problem while rendering the workflow diagram:"
 		},
+		graphFallbackLoading: "The latest version graph is being generated. Showing the previous version.",
 		diagram: {
 			expand: "Expand diagram",
 			collapse: "Collapse diagram"

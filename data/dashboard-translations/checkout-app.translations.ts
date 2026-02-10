@@ -18,6 +18,7 @@
 		checkout: "Checkout",
 		close: "Close",
 		close_error_message: "Close error message",
+		complete_purchase: "Complete purchase",
 		continue: "Continue",
 		divider_label: "OR",
 		exit_checkout: "Exit checkout",
@@ -28,6 +29,7 @@
 		order_summary: "Order summary",
 		please_check_payment_info: "Please check your payment information",
 		purchase: "Purchase",
+		renew_domain: "Renew domain",
 		session_expired: "Session Expired",
 		total: "Total",
 		unauthorized: "Unauthorized",
@@ -176,7 +178,8 @@
 	purchase: {
 		agreement: {
 			terms_of_service_and_privacy: "I agree to the <0>Terms of Service</0> and <1>Privacy Policy</1>.",
-			authorize_charge_monthly_usage: "I authorize Cloudflare to charge this card for <0>usage that exceeds free limits</0> each month <1>until cancellation</1>. Cancellation is effective at the end of the current billing period. Contact us via the <2>Cloudflare Dashboard</2>."
+			authorize_charge_monthly_usage: "I authorize Cloudflare to charge this card for <0>usage that exceeds free limits</0> each month <1>until cancellation</1>. Cancellation is effective at the end of the current billing period. Contact us via the <2>Cloudflare Dashboard</2>.",
+			authorize_domain_renewal: "I authorize Cloudflare to charge this card <0>%{price}</0> for %{years} of domain renewal."
 		},
 		check_payment_info: "Please check for missing or incorrect payment information.",
 		clear_saved: "Clear saved card selection",
