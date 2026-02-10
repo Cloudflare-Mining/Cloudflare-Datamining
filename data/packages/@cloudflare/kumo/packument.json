@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
-		"latest": "1.3.0"
+		"latest": "1.4.1"
 	},
 	"versions": {
 		"1.0.0": {
@@ -203,6 +203,144 @@
 			"name": "@cloudflare/kumo",
 			"version": "1.3.0",
 			"dependencies": {
+				"clsx": "^2.1.1",
+				"@base-ui/react": "^1.0.0",
+				"tailwind-merge": "^3.4.0"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "^7.1.7",
+				"eslint": "^9.17.0",
+				"oxlint": "1.42.0",
+				"vitest": "^3.2.4",
+				"esbuild": "0.27.2",
+				"wrangler": "^4.59.1",
+				"happy-dom": "^15.11.7",
+				"@vitest/ui": "^3.2.4",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"@vitest/browser": "^3.2.4",
+				"oxlint-tsgolint": "0.11.3",
+				"vite-plugin-dts": "^4.3.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"typescript-eslint": "^8.18.1",
+				"@testing-library/react": "16.3.1",
+				"eslint-plugin-jsx-a11y": "^6.10.2",
+				"ts-json-schema-generator": "2.4.0",
+				"@testing-library/user-event": "14.6.1",
+				"rollup-plugin-preserve-directives": "0.4.0"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "45fb74eb7ccc2e1b343911ce16210831f5b026d3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.3.0.tgz",
+				"fileCount": 566,
+				"integrity": "sha512-VHkq0jdpd8fOY7tTyinKiFFmJe1O9Q91YKexIhSkaF+GRt9nXB9+CZ7+KtoVgOfXdOOxiDVF5oIJWBVeHytYEg==",
+				"signatures": [
+					{
+						"sig": "MEQCIAjrBPPlkOoxbCf8tP3Xt1U0U9ysDPpSdsOtNQH4Q+9kAiAcuFjKUuqRss5FWwwuG5IeWbpm7i/L8pKunqi054glyw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.3.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5380714
+			}
+		},
+		"1.4.0": {
+			"name": "@cloudflare/kumo",
+			"version": "1.4.0",
+			"dependencies": {
+				"clsx": "^2.1.1",
+				"@base-ui/react": "^1.0.0",
+				"tailwind-merge": "^3.4.0"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "^7.1.7",
+				"eslint": "^9.17.0",
+				"oxlint": "1.42.0",
+				"vitest": "^3.2.4",
+				"esbuild": "0.27.2",
+				"wrangler": "^4.59.1",
+				"happy-dom": "^20.0.2",
+				"@vitest/ui": "^3.2.4",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"@vitest/browser": "^3.2.4",
+				"oxlint-tsgolint": "0.11.3",
+				"vite-plugin-dts": "^4.3.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"typescript-eslint": "^8.18.1",
+				"@testing-library/react": "16.3.1",
+				"eslint-plugin-jsx-a11y": "^6.10.2",
+				"ts-json-schema-generator": "2.4.0",
+				"@testing-library/user-event": "14.6.1",
+				"rollup-plugin-preserve-directives": "0.4.0"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "f8e51d26347127a3e86ed5184fac8b00c0c797e8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.4.0.tgz",
+				"fileCount": 578,
+				"integrity": "sha512-WuNTmyhmJ2Tuj0MIOsdDb5WXT3hQwowmj30tS/cjCCKd6oNCPs9ZZauWVxgYqg5OEvPD+r+k9uYHOzHyiXH1Hw==",
+				"signatures": [
+					{
+						"sig": "MEUCIECdR6TkzPf2cxgm6X7P6lUiEyiUDcD9yl4GVgyZzcxVAiEAkUTlEm7G6EnS4AQVlf0waofd5/BiUN0ttkeugsSf0R0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5631794
+			}
+		},
+		"1.4.1": {
+			"name": "@cloudflare/kumo",
+			"version": "1.4.1",
+			"dependencies": {
 				"@base-ui/react": "^1.0.0",
 				"clsx": "^2.1.1",
 				"tailwind-merge": "^3.4.0"
@@ -222,7 +360,7 @@
 				"eslint": "^9.17.0",
 				"eslint-plugin-jsx-a11y": "^6.10.2",
 				"glob": "13.0.0",
-				"happy-dom": "^15.11.7",
+				"happy-dom": "^20.0.2",
 				"oxlint": "1.42.0",
 				"oxlint-tsgolint": "0.11.3",
 				"playwright": "^1.57.0",
@@ -249,13 +387,13 @@
 				"kumo": "bin/kumo.js"
 			},
 			"dist": {
-				"integrity": "sha512-VHkq0jdpd8fOY7tTyinKiFFmJe1O9Q91YKexIhSkaF+GRt9nXB9+CZ7+KtoVgOfXdOOxiDVF5oIJWBVeHytYEg==",
-				"shasum": "45fb74eb7ccc2e1b343911ce16210831f5b026d3",
-				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.3.0.tgz",
-				"fileCount": 566,
-				"unpackedSize": 5380714,
+				"integrity": "sha512-cvu2RC//X3GHqvIz4uN61nPW5xHDBhFH7YqwtAKmzQqe8OKLObtwyqPm1oFB8yO8K8hhj7KCQxAn+DBPmVkcmQ==",
+				"shasum": "a721144ef36f1d57102aa7326dcb5f697fa6a96b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.4.1.tgz",
+				"fileCount": 578,
+				"unpackedSize": 5631992,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.3.0",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.4.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -263,7 +401,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIAjrBPPlkOoxbCf8tP3Xt1U0U9ysDPpSdsOtNQH4Q+9kAiAcuFjKUuqRss5FWwwuG5IeWbpm7i/L8pKunqi054glyw=="
+						"sig": "MEQCIDZUDx8CgiBRakssmQJsDfBKHRvK5yQ7+WXn4+j4+xIFAiA4mUDTstjPdD/ot6Wx8iqxyxmpmdsZuoNFzTXDRDAxBQ=="
 					}
 				]
 			}

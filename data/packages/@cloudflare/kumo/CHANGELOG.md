@@ -1,5 +1,22 @@
 # @cloudflare/kumo
 
+## 1.4.1
+
+### Patch Changes
+
+- b64847d: fix: CLI commands now find component registry and run codegen:registry before publish
+- ea583d8: fix(cli): resolve registry path for docs and ls commands
+
+## 1.4.0
+
+### Minor Changes
+
+- 71d667b: Add CloudflareLogo component with glyph and full logo variants, color schemes (brand/black/white), and exported SVG path data for custom implementations
+
+### Patch Changes
+
+- 262e0e6: Replace `.toSorted()` with `.sort()` on spread copies to fix TypeError on Chrome <110
+
 ## 1.3.0
 
 ### Minor Changes
