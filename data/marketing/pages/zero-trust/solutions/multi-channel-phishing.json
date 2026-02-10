@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2024-11-07T14:29:36.353Z",
-					"updatedAt": "2026-02-09T21:07:03.309Z"
+					"updatedAt": "2026-02-09T23:02:04.055Z"
 				},
 				"contentfulId": "11RXb7FmyWLVEFt9vnKTPf",
 				"contentTypeId": "page",
@@ -1622,6 +1622,56 @@
 												"navIcon": null,
 												"showIconOnly": false,
 												"hideOnChinaSite": null,
+												"navigationItems": []
+											},
+											{
+												"contentTypeId": "navNavigationItem",
+												"contentfulId": "5X7wGsPUdNt0dMVyQPGq10",
+												"locale": "en-US",
+												"name": "AI",
+												"description": null,
+												"mainLink": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "cV6TIgA5iVpDToSOaKYmS",
+														"locale": "en-US",
+														"title": "AI Gateway",
+														"description": null,
+														"url": "https://developers.cloudflare.com/ai-gateway/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "4ed9qTNFECVl2E8KOVpDc4",
+														"locale": "en-US",
+														"title": "Vectorize",
+														"description": null,
+														"url": "https://developers.cloudflare.com/vectorize/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": true
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "4veP3pkVzZNagUz7RKpZ7d",
+														"locale": "en-US",
+														"title": "Workers AI",
+														"description": null,
+														"url": "https://developers.cloudflare.com/workers-ai/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": true
+													}
+												],
+												"navIcon": null,
+												"showIconOnly": false,
+												"hideOnChinaSite": false,
 												"navigationItems": []
 											}
 										]
