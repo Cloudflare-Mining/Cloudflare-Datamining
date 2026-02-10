@@ -5,32 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available location: Lisbon, Portugal</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>We are looking for a Software Engineer intern to join our Lisbon team and contribute to the next generation of our internal data products as part of the Data Intelligence &amp; Analytics team. We build the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, providing a rich environment to grow your technical skills. As part of the team you will assist in building the systems behind the data-driven applications that power teams across the company, including go-to-market, engineering, and product.&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
-<p>You will focus on learning to build scalable, reliable services and application backends, partnering closely with data and full-stack engineers to help deliver new features and maintain the pipelines behind our products. You will gain hands-on experience across the full development lifecycle—from observing how we shape requirements to assisting with implementation and deployment. In addition you will have the opportunity to explore modern AI infrastructure, working with tools such as vector databases, MCP-based services, and Workers AI as we integrate AI components into the heart of our applications.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>San Francisco, CA</p>
+<p><strong>About the Role</strong></p>
+<p>Are you passionate about the intersection of technology, market strategy, and business growth? Do you thrive in a fast-paced environment and enjoy tackling complex, high-impact problems? Cloudflare is looking for a driven and analytical Summer 2026 Technical Operations &amp; Strategy Intern to join our team.</p>
+<p>This is a unique opportunity to work alongside Cloudflare's strategy leadership and gain hands-on experience in shaping the future direction of a global, mission-driven company. You will contribute to projects that directly influence decision-making and Cloudflare's cost basis.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>The Technical Operations &amp; Strategy Intern will contribute to high-priority strategic initiatives across the company. While the exact projects will depend on Cloudflare’s internal priorities at the time of the internship, potential areas of focus include:</p>
 <ul>
-	<li>Design and implement smaller features across our internal data applications, spanning backend services, data integrations, and application systems</li>
-	<li>Join a product team with product, data, and engineering stakeholders to participate in shaping requirements and designing solutions that solve real, high-impact business problems</li>
-	<li>Contribute to building scalable, reliable, and observable systems that power business-critical products used across the company</li>
-	<li>Contribute to the ongoing evolution of our data and application platform, improving architecture, performance, and developer experience</li>
-	<li>Develop and operate in a multi-language environment (including Go, Scala, and ClickHouse-backed systems)</li>
-	<li>Work on modern, AI-enabled components such as vector search, MCP-based services, and AI-powered application features</li>
+	<li><strong>Infrastructure Expansion:</strong> Conducting market and provider assessments, developing strategic options, and contributing to the creation of a 3-year infrastructure strategy.</li>
+	<li><strong>Business Cases:</strong> Analyzing global spend basis for colocation and network and recommending actions to senior management.</li>
+	<li><strong>Automation:</strong> Enhancing our tooling, forecasting and tracking with AI and other forms of intelligent automation.</li>
+	<li><strong>Market Intelligence:</strong> Deep diving into emerging competitive threats and market shifts within key Cloudflare supplier areas (e.g., AI/ML, data center, cloud) to produce actionable recommendations.</li>
+	<li><strong>Business Development:</strong> Finding and speaking to new infrastructure companies and creating new business relationships.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>Must-Haves:&nbsp;</strong></h4>
 <ul>
-	<li>Currently enrolled in M.S in Computer Science, Engineering or related STEM field</li>
-	<li>Experience with one or more systems or backend languages such as Go, Java, or Python, with the ability to quickly learn and contribute across a multi-language stack</li>
-	<li>Interest in working with data-intensive systems, including SQL skills and some exposure to relational and/or analytical databases (e.g., PostgreSQL, MySQL, ClickHouse)</li>
-	<li>Excellent problem-solving and communication skills</li>
+	<li>Currently enrolled in an undergraduate degree program in a relevant field (e.g., Business, Liberal Arts, Computer Science).</li>
+	<li>Exceptional analytical and quantitative skills, with a proven ability to structure complex problems, conduct rigorous analysis, and synthesize findings into clear, concise, and compelling narratives.</li>
+	<li>Strong communication and presentation skills, comfortable engaging with senior leaders and facilitating cross-functional discussions.</li>
+	<li>A self-starter with a high degree of intellectual curiosity and a proactive approach to problem-solving; detail-oriented and organized.</li>
+	<li>A passion for Cloudflare's mission to help build a better Internet and a genuine interest in the underlying technologies (networking, security, edge computing, AI).</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Experience building modern web applications, including JavaScript/TypeScript and React</li>
-	<li>Hands-on experience in data pipeline development</li>
-	<li>Familiarity with container based deployments such as Docker and Kubernetes</li>
+	<li>Self-starter who enjoys working in a fast-paced, collaborative, and innovative high-growth environment.</li>
+	<li>Ability to commit to a full-time 12 week internship.</li>
+	<li>In office 3-4 days a week in-office in Austin, San Francisco, or New York.</li>
+	<li>Familiarity with infrastructure concepts (cross-connects, circuits, colocation vendors/sites) or interest in learning quickly.</li>
+	<li>Ability to write or prompt (OpenCode etc) scripting and code</li>
+	<li>API familiarity and ability to create persistent, reliable data pipelines</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
