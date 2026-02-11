@@ -1,22 +1,56 @@
 {
 	"name": "@cloudflare/tanstack-ai",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.1.0"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/tanstack-ai",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-jl/1tw3/EeLItR3MK03IevaUG6+ctqyqxkcjhfiqMFXNBtM6mGuaNwC/VRzaTbwuQ9+m/B++2GWzo919lqpSdw==",
 				"shasum": "f9da50216becdb52780ae6fa7fe1f661a3b866b3",
 				"tarball": "https://registry.npmjs.org/@cloudflare/tanstack-ai/-/tanstack-ai-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 259,
+				"integrity": "sha512-jl/1tw3/EeLItR3MK03IevaUG6+ctqyqxkcjhfiqMFXNBtM6mGuaNwC/VRzaTbwuQ9+m/B++2GWzo919lqpSdw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDMBvCrygBIToVLw4xAw160L/xiFVUSi74u+chd78mmJwIgMDFaKBhx8vobuv2kyewK9eLzcSIibZJWx3kMYUeab8A=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 259
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/tanstack-ai",
+			"version": "0.1.0",
+			"dependencies": {
+				"openai": "^6.16.0"
+			},
+			"devDependencies": {
+				"@microsoft/api-extractor": "^7.56.3",
+				"@tanstack/ai": "^0.4.2",
+				"dotenv": "^17.2.3"
+			},
+			"peerDependencies": {
+				"@tanstack/ai": "^0.4.2"
+			},
+			"dist": {
+				"integrity": "sha512-pBRRBoyI0tG+TEpMXhUd3H2BEusOub7Avm+GE5j21GdBh6/wAjAW2J1hMgLas2KZeOCk/rAVAEtAINIYiwVWaA==",
+				"shasum": "24d2e341d3234236e5bf6c2be30eb2f06298dee4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/tanstack-ai/-/tanstack-ai-0.1.0.tgz",
+				"fileCount": 127,
+				"unpackedSize": 486882,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2ftanstack-ai@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDMBvCrygBIToVLw4xAw160L/xiFVUSi74u+chd78mmJwIgMDFaKBhx8vobuv2kyewK9eLzcSIibZJWx3kMYUeab8A="
+						"sig": "MEUCIQDN39gxBQKEPUcqbdZUp+hJYEeJHyaP+iUXQixshYfWXAIgMfwghu8dVz9gFtmV+DfJsyNPSVUA5+01JOva0BSVX70="
 					}
 				]
 			}
