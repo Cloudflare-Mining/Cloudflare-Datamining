@@ -1740,6 +1740,16 @@
 	"prg-free-trial": {
 		"enabled": true
 	},
+	"prg-html-gen-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a"
+		]
+	},
+	"prg-html-gen-flag": {
+		"enabled": false
+	},
 	"prg-image-optimization-video-experiment": {
 		"enabled": true,
 		"branches": [
