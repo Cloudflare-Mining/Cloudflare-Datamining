@@ -5,27 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Lisbon, Portugal</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
-<h3><strong>What you'll do</strong></h3>
-<p>As a Systems Engineer focused on Cloudflare's Email Service, you will shape the future of industry-leading services that redefine what is possible for developers. We don't just copy what other cloud providers do; we work backward from developer needs, reimagining solutions by leveraging our unique global network.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might implement innovative solutions for deliverability, optimize time-to-inbox, or design an API for a new product feature. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust and Go</p>
-<h3><strong>Qualifications:</strong></h3>
+<p><strong>Available Locations:&nbsp;</strong>Lisbon, Portugal</p>
+<p><strong>About the Role</strong></p>
+<p>Are you passionate about the intersection of technology, market strategy, and business growth? Do you thrive in a fast-paced environment and enjoy tackling complex, high-impact problems? Cloudflare is looking for a driven and analytical Summer 2026 Technical Operations &amp; Strategy Intern to join our team.</p>
+<p>This is a unique opportunity to work alongside Cloudflare's strategy leadership and gain hands-on experience in shaping the future direction of a global, mission-driven company. You will contribute to projects that directly influence decision-making and Cloudflare's cost basis.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>The Technical Operations &amp; Strategy Intern will contribute to high-priority strategic initiatives across the company. While the exact projects will depend on Cloudflare’s internal priorities at the time of the internship, potential areas of focus include:</p>
 <ul>
-	<li>Experience with transactional email infrastructure at scale</li>
-	<li>Strong knowledge of email deliverability / anti-spam standards (e.g. SPF, DKIM, DMARC, VERP)</li>
-	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Rust, TypeScript, and Go.</li>
-	<li>Experience with Cloudflare Developer Platform</li>
-	<li>Proven ability to drive projects independently, from concept to implementation.</li>
+	<li><strong>Infrastructure Expansion:</strong> Conducting market and provider assessments, developing strategic options, and contributing to the creation of a 3-year infrastructure strategy.</li>
+	<li><strong>Business Cases:</strong> Analyzing global spend basis for colocation and network and recommending actions to senior management.</li>
+	<li><strong>Automation:</strong> Enhancing our tooling, forecasting and tracking with AI and other forms of intelligent automation.</li>
+	<li><strong>Market Intelligence:</strong> Deep diving into emerging competitive threats and market shifts within key Cloudflare supplier areas (e.g., AI/ML, data center, cloud) to produce actionable recommendations.</li>
+	<li><strong>Business Development:</strong> Finding and speaking to new infrastructure companies and creating new business relationships.</li>
 </ul>
-<h3><strong>Bonus Points:</strong></h3>
+<h4><strong>Must-Haves:&nbsp;</strong></h4>
 <ul>
-	<li>Deep Linux / UNIX systems knowledge.</li>
-	<li>Technical writing skills</li>
-	<li>Experience building and scaling large-scale applications.</li>
+	<li>Currently enrolled in an undergraduate degree program in a relevant field (e.g., Business, Liberal Arts, Computer Science).</li>
+	<li>Exceptional analytical and quantitative skills, with a proven ability to structure complex problems, conduct rigorous analysis, and synthesize findings into clear, concise, and compelling narratives.</li>
+	<li>Strong communication and presentation skills, comfortable engaging with senior leaders and facilitating cross-functional discussions.</li>
+	<li>A self-starter with a high degree of intellectual curiosity and a proactive approach to problem-solving; detail-oriented and organized.</li>
+	<li>A passion for Cloudflare's mission to help build a better Internet and a genuine interest in the underlying technologies (networking, security, edge computing, AI).</li>
 </ul>
-<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li>Self-starter who enjoys working in a fast-paced, collaborative, and innovative high-growth environment.</li>
+	<li>Ability to commit to a full-time 12 week internship.</li>
+	<li>In office 3-4 days a week in-office in Lisbon.</li>
+	<li>Familiarity with infrastructure concepts (cross-connects, circuits, colocation vendors/sites) or interest in learning quickly.</li>
+	<li>Ability to write or prompt (OpenCode etc) scripting and code</li>
+	<li>API familiarity and ability to create persistent, reliable data pipelines</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

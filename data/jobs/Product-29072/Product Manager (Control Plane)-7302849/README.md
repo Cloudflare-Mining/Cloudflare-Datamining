@@ -5,36 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Denver, Washington D.C, Lisbon, Portugal, or London, UK&nbsp;</strong></p>
-<p><strong>About the Data Team</strong></p>
-<p>Cloudflare’s Data Team owns the full lifecycle of analytics data: ingestion, streaming, processing, storage, and retrieval. We operate one of the largest event pipelines in the world, processing billions of events per second across globally distributed systems. As an Engineering Manager on our team, you will have the opportunity to work on complex distributed systems challenges across a variety of parts of our data stack.</p>
-<p>The Logs squad builds and operates the infrastructure and products that power Cloudflare’s Logging Platform—including Logpush, Audit Logs, ingestion contracts for internal teams, APIs, and the systems that ensure customers can reliably export and analyze their data at scale.</p>
-<p><em>Please note this is a software engineering and infrastructure management role on the Data Team, not a Data Science or Data Analyst position.</em></p>
-<p><strong>About the Role</strong></p>
-<p>As the Engineering Manager for Logs, you will lead a team responsible for delivering high-scale, low-latency, and highly reliable logging systems used by every Cloudflare customer and internal service.</p>
+<p><strong>Available Locations: NYC, SF, Austin TX</strong></p>
+<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
+<p>As a<strong> Product Manager at Cloudflare</strong>, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
+<p>&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p><strong>As the Control Plane Product Manager</strong>, you will own the mission-critical systems that govern how customer configurations are managed and deployed across Cloudflare’s global network. You will be responsible for defining the strategy and roadmap for essential change management features like configuration versioning, phased rollouts and rollbacks. Your goal is to build a system that provides customers with ultimate confidence, ensuring that changes to caching rules, security policies, and edge logic are deployed with speed, safety, and atomicity, minimizing risk to their live applications.</p>
+<p>This role requires a unique combination of technical depth in distributed systems and a keen focus on the user experience for platform engineers and DevOps teams. You will drive the design of APIs and dashboard experiences that allow customers to safely test changes, progressively roll them out to global or regional traffic subsets, monitor the impact, and immediately revert to a previous state if issues arise.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Lead, grow, and coach an engineering team working on distributed systems that power Logpush, Audit Logs, and core logging infrastructure.</li>
-	<li>Drive technical execution of roadmap commitments in partnership with Product—ensuring we deliver predictable, high-quality outcomes.</li>
-	<li>Own operational excellence for the logging platform, including performance, reliability, on-call practices, observability, and incident response.</li>
-	<li>Collaborate with partner teams (pipeline, storage, analytics) and with product feature teams to define ingestion standards, schemas, retention models, and API surfaces.</li>
-	<li>Guide architectural decisions for large-scale event ingestion, transformation, and delivery systems.</li>
-	<li>Create an environment that supports autonomy, psychological safety, and high engineering standards.</li>
-	<li>Foster strong cross-functional relationships to ensure logging capabilities evolve with Cloudflare’s broader platform and customer needs.</li>
+	<li>Own your space. You will own the priorities and scope, partnering with a high performing engineering team focused on one of Cloudflare’s Application Performance products.&nbsp;</li>
+	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
+	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
+	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
+	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4>&nbsp;</h4>
+<h4>Examples of desirable skills, knowledge and experience</h4>
+<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results. Examples of desirable skills, knowledge and experience:</p>
 <ul>
-	<li>6+ years of engineering experience and 3+ years leading engineers, ideally in distributed systems or data infrastructure.</li>
-	<li>Proven track record of delivering complex, high-scale backend systems to production.</li>
-	<li>Experience with event-driven architectures and large-scale data processing (e.g., Kafka, Pulsar, Flink, ClickHouse, Iceberg, BigQuery).</li>
-	<li>Strong understanding of API design and standards (OpenAPI/Swagger, OAuth/JWT).</li>
-	<li>Familiarity with large-scale logging, observability, or telemetry systems is highly desirable.</li>
-	<li>Ability to translate product requirements into sound engineering plans and execution strategies.</li>
-	<li>Strong communication and leadership skills with a bias for clarity, accountability, and action.</li>
-	<li>Experience fostering healthy teams through coaching, feedback, and thoughtful process design.</li>
-	<li>Bonus: prior experience using Cloudflare’s platform (Workers, Access, D1/R2, etc.) or operating multi-region infrastructure.</li>
+	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
+	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
+	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
+	<li>Strong collaboration skills and experience working with engineering and design teams</li>
+	<li>Comfort operating in fast-paced, evolving environments</li>
+	<li>A passion for user empathy and delivering customer-centric solutions</li>
+	<li>Excellent communication skills and attention to detail</li>
+	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
 </ul>
+<h4><strong>Bonus points</strong></h4>
+<ul>
+	<li>Prior experience as a Product Manager driving the roadmap for products focused on Edge infrastructure, high-performance web delivery, or network optimization</li>
+	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
+	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location and level.</p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $166,000 - $202,000</span></li>
+	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $158,000 - $193,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

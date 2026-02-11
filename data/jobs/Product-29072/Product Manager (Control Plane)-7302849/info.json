@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7398294?gh_jid=7398294",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7302849?gh_jid=7302849",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3296880,
+	"internal_job_id": 3266295,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,7 +18,7 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4300 - Systems Engineering",
+			"value": "4400 - Product",
 			"value_type": "single_select"
 		},
 		{
@@ -26,10 +26,8 @@
 			"name": "Job Posting Location",
 			"value": [
 				"Austin, US",
-				"Denver, US",
-				"Lisbon, Portugal",
-				"London, UK",
-				"Washington DC, US"
+				"New York, US",
+				"San Francisco, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -37,22 +35,22 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering"
+				"Product"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7398294,
-	"updated_at": "2026-02-06T10:04:45-05:00",
+	"id": 7302849,
+	"updated_at": "2026-02-11T11:42:18-05:00",
 	"requisition_id": null,
-	"title": "Engineering Manager, Logs",
+	"title": "Product Manager (Control Plane)",
 	"company_name": "Cloudflare",
-	"first_published": "2025-11-18T14:27:35-05:00",
+	"first_published": "2025-10-07T18:09:20-04:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 29072,
+			"name": "Product",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -66,31 +64,30 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19988,
-			"name": "London, United Kingdom",
-			"location": "London, United Kingdom",
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
-			"id": 19994,
-			"name": "Washington, DC",
-			"location": "Washington, DC, United States",
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		},
 		{
-			"id": 63782,
-			"name": "Lisbon, Portugal",
-			"location": "Lisboa, Lisboa, Portugal",
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
 		},
 		{
-			"id": 65527,
-			"name": "Denver, CO",
-			"location": "Denver, Colorado, United States",
-			"child_ids": [],
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				75886,
+				75885,
+				75884,
+				75596,
+				73335
+			],
 			"parent_id": 48752
 		}
 	]

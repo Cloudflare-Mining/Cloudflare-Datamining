@@ -18,11 +18,13 @@
 	<li><strong>Strategic Partnerships:</strong> Facilitating cross-functional workshops and brainstorming sessions with potential GTM or infrastructure partners in priority markets to identify and develop joint partnership options.</li>
 	<li><strong>Competitive Landscape Analysis:</strong> Deep diving into emerging competitive threats and market shifts within key Cloudflare product areas (e.g., AI/ML, security, networking) to produce actionable recommendations for product and sales strategy.</li>
 	<li><strong>New Product/Market Entry:</strong> Performing a strategic assessment of a potential new product category or emerging customer segment, including sizing the opportunity, evaluating entry options, and outlining a potential launch plan.</li>
+	<li><strong>Demo Development:</strong> Work with the Head of Industry Solutions to design industry specific demos leveraging the Cloudflare developer platform</li>
 </ul>
 <p><strong>Note:</strong> The projects listed above are examples of the high-impact work we focus on. <strong>None of these projects are guaranteed.</strong> The actual internship project(s) will be assigned based on Cloudflare's most critical business priorities at the time of the Summer 2026 internship.</p>
 <h4><strong>Ideal Qualifications</strong></h4>
 <ul>
 	<li>Currently enrolled in a top-tier MBA program or a Master's degree program in a relevant field (e.g., Strategy, Finance, Technology Management).</li>
+	<li>Background, degree, or dual degree in Computer Science is a plus!&nbsp;</li>
 	<li>Exceptional analytical and quantitative skills, with a proven ability to structure complex problems, conduct rigorous analysis (market sizing, financial modeling, competitive analysis), and synthesize findings into clear, concise, and compelling narratives.</li>
 	<li>Strong communication and presentation skills, comfortable engaging with senior leaders and facilitating cross-functional discussions.</li>
 	<li>A self-starter with a high degree of intellectual curiosity and a proactive approach to problem-solving.</li>
