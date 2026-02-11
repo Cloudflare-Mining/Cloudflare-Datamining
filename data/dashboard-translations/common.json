@@ -3843,7 +3843,7 @@
 	"api_tokens.edit_only_tooltip": "Tokens created by API can only be edited by API",
 	"api_tokens.edit_only": "API edit only",
 	"api_tokens.edit": "Edit",
-	"api_tokens.help": "API Tokens use the standard Authorization: Bearer header for authentication instead of `x-auth-email` and `x-auth-key` that API Keys use. Requests can be authenticated like the following:\n\n```\ncurl \"{apiBaseUrl}/zones/cd7d0123e3012345da9420df9514dad0\" \\ \n-H \"Authorization: Bearer 1234567893feefc5f0q5000bfo0c38d90bbeb\"\n```\n\nFor additional information see the [API Request documentation](https://developers.cloudflare.com/fundamentals/api/).",
+	"api_tokens.help": "API Tokens use the standard Authorization: Bearer header for authentication instead of `x-auth-email` and `x-auth-key` that API Keys use. Requests can be authenticated like the following:\n\n```\ncurl \"https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0\" \\ \n-H \"Authorization: Bearer 1234567893feefc5f0q5000bfo0c38d90bbeb\"\n```\n\nFor additional information see the [API Request documentation](https://developers.cloudflare.com/fundamentals/api/).",
 	"api_tokens.ip_address_example": "e.g. 192.168.1.88",
 	"api_tokens.ip_address_in": "Is in",
 	"api_tokens.ip_address_not_in": "Is not in",

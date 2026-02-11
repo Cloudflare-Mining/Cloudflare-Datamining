@@ -218,21 +218,9 @@
 				exact_match: "Exact match"
 			},
 			advanced: {
-				clear: "Clear all",
-				add_filter: "Add filter",
-				new_filter: "New filter",
-				edit_filter: "Edit filter",
-				field_placeholder: "Field",
-				operator_placeholder: "Operator",
-				value_placeholder: "Value"
-			},
-			operators: {
-				eq: "equals",
-				neq: "does not equal",
-				contains: "contains",
-				notContains: "does not contain",
-				starts: "starts with",
-				ends: "ends with"
+				show: "Show Advanced Filters",
+				hide: "Hide Advanced Filters",
+				clear: "Clear Filters"
 			}
 		},
 		hostname: "Hostname",

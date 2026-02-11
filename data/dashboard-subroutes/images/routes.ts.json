@@ -55,5 +55,7 @@
 	"/variants/edit/[id]/*",
 	"/zone/[id]/*",
 	"/zones/[id]/*",
-	"/zones?account.id=/*"
+	"/zones?account.id=/*",
+	"https://api.cloudflare.com/client/v4/zones/[id]/settings/image_resizing",
+	"https://api.cloudflare.com/client/v4/zones/[id]/settings/transformations"
 ]

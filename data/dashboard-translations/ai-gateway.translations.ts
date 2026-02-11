@@ -857,7 +857,6 @@
 		cancel: "Cancel",
 		alias_label: "Key Alias",
 		alias_placeholder: "Enter a unique alias (e.g., production, development)",
-		alias_placeholder_default: "default",
 		alias_description: "A unique identifier for this key. Cannot be changed after creation.",
 		alias_tooltip: 'For non-default aliases, pass the header "cf-aig-byok-alias: <alias_name>" in the request to specify which key alias to use.',
 		alias_required: "Alias is required",

@@ -67,8 +67,8 @@
 	plans: {
 		categories: {
 			zeroTrust: (0, o.p)(i(), "plan"),
-			access: (0, o.p)(l(), "plan"),
-			gateway: (0, o.p)(c(), "plan")
+			access: (0, o.p)(c(), "plan"),
+			gateway: (0, o.p)(l(), "plan")
 		},
 		basic: "Basic",
 		premium: "Premium",
