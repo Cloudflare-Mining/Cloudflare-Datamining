@@ -5,43 +5,64 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location(s) Available:</strong> Austin, TX<br><br><strong>About The Team</strong><br><br>Join Cloudflare’s Security Architecture Team with the following with the foll focus areas :&nbsp;</p>
+<p><strong>Available Locations: London, UK or Lisbon, Portugal</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Traffic Management is responsible for the systems that <a href="https://blog.cloudflare.com/meet-traffic-manager/">dynamically route</a> traffic flows into, through, and from Cloudflare's global network.&nbsp;</p>
+<p>We don't just manage one company's traffic; they manage traffic for numerous products and&nbsp; millions of customers, from individual websites to major enterprises. This team is at the heart of Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
+<p><strong>Role Responsibilities</strong></p>
+<p>As a member of the team you will build and extend various traffic management and supporting systems. You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to collaborate on ambitious initiatives to make the best use of Cloudflare’s global network.</p>
+<p><strong>&nbsp;</strong></p>
+<p>You will participate in all stages of the software development lifecycle: from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Rust, eBPF, ClickHouse, Salt, PostgreSQL, Prometheus, Kubernetes, and more.</p>
+<p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
+<p>Because you’ll be solving problems of massive scale and significance, and shaping the future of reliability and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
+<p><strong>Role Requirements</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Strategic Alignment: Translates the Organisations Cyber risk tolerance into specific technical blueprints and implements controls/prescriptive policies in mitigation/managing or remediating these risks</li>
-	<li>Preventative Focus: Focuses on "shifting left" to fix architectural flaws before they become bigger risks or cost&nbsp;</li>
-	<li>Technical Consulting: Acts as internal subject matter experts for Procurement (TPRM) and Engineering teams.<br><br></li>
+	<li>Minimum of 2 years of engineering experience with networking and/or distributed systems.</li>
+	<li>Systems-level programming experience in Go, Python, Rust, C, or C++</li>
+	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
+	<li>Knowledge/interest in HTTP, TLS, and CDN networks.</li>
+	<li>Experience/interest in network performance monitoring and tuning</li>
+	<li>Strong collaboration and communication skills.</li>
 </ul>
-<p><strong>About the role/</strong><strong>What You’ll Do</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Provide input on technical security requirements for new infrastructure and engineering initiatives.&nbsp;</li>
-	<li>Assist with documentation and maintenance of the corporate security architecture blueprints.&nbsp;</li>
-	<li>Participate in the design of robust PKI hierarchies (Root CAs, Intermediate CAs, Issuing CAs) and certificate policies, selecting appropriate hardware (HSMs) and software for scalable, secure deployments.</li>
-	<li>Provide security guidance and review of the deployment of encryption solutions across systems, applications, and networks.</li>
-	<li>Provide security guidance and review of the end-to-end lifecycle of cryptographic keys and digital certificates, including generation, secure storage, rotation, usage, backup, revocation and destruction.</li>
-	<li>Conduct analysis of existing encryption and management solutions to find weaknesses and identify gaps.</li>
-	<li>Ensure encryption implementations meet industry standards (e.g., NIST, FIPS) and compliance mandates (e.g., GDPR, HIPAA).</li>
-	<li>Document security requirements and architectural decisions.</li>
-	<li>Assist with defining security policies and standards, enforcing best practices, conducting risk assessments, and ensuring compliance with regulations.</li>
-	<li>Work with CISO, IT teams, developers, and engineers to implement secure designs.</li>
-	<li>&nbsp;</li>
+	<li>Experience building or developing capabilities in the domain of traffic engineering including automated load balancing and traffic prioritization.</li>
+	<li>Knowledge of statistical-analysis techniques and control theory.</li>
+	<li>Knowledge of TCP/IP and Internet routing.</li>
+	<li>Experience building tools and APIs.</li>
+	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
+	<li>Experience participating in an on-call rotation.</li>
 </ul>
 <p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <p>&nbsp;</p>
-<p><strong>Requirements</strong></p>
-<ul>
-	<li>Either advanced studies in Cybersecurity, Computer Science, Information Systems, or similar</li>
-	<li>Excellent written and verbal communication skills, including the ability to effectively collaborate with technical and senior business staff and management.</li>
-	<li><strong>12+ years</strong> of experience in information security, with <strong>7+ years</strong> focused on applied cryptography and Public Key Infrastructure (PKI).&nbsp;</li>
-	<li>Expert-level knowledge of cryptographic primitives, algorithms (AES, RSA, ECC), hashing functions, and digital signature standards.&nbsp;</li>
-	<li>Proven experience designing and deploying Hardware Security Modules (HSMs) and enterprise Key Management Systems (KMS).&nbsp;</li>
-	<li>Strong understanding of regulatory and compliance frameworks related to data protection and packaging&nbsp;</li>
-</ul>
-<p><strong>Preferred</strong></p>
-<ul>
-	<li>Certifications: CISSP, CISM, or CCSP.&nbsp;</li>
-	<li>Experience with cloud-native KMS solutions (e.g., AWS KMS, Azure Key Vault, GCP Cloud KMS).&nbsp;</li>
-	<li>Worked on similar organisations in the past as Cloudflare</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
