@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/privacypass-ts",
 	"dist-tags": {
-		"latest": "0.8.0"
+		"latest": "0.8.1"
 	},
 	"versions": {
 		"0.2.1": {
@@ -445,6 +445,51 @@
 			"name": "@cloudflare/privacypass-ts",
 			"version": "0.8.0",
 			"dependencies": {
+				"asn1js": "3.0.5",
+				"rfc4648": "1.5.3",
+				"quicvarint": "0.1.4",
+				"asn1-parser": "1.1.8",
+				"@cloudflare/voprf-ts": "1.0.0",
+				"@cloudflare/blindrsa-ts": "0.4.3"
+			},
+			"devDependencies": {
+				"eslint": "8.57.1",
+				"rimraf": "6.0.1",
+				"vitest": "3.0.7",
+				"prettier": "3.3.3",
+				"benchmark": "2.1.4",
+				"@eslint/js": "9.9.1",
+				"typescript": "5.5.4",
+				"@types/node": "^25.2.3",
+				"@types/benchmark": "2.1.5",
+				"typescript-eslint": "8.26.0",
+				"@vitest/coverage-v8": "3.0.7",
+				"eslint-plugin-vitest": "0.5.4",
+				"eslint-config-prettier": "9.1.0",
+				"eslint-plugin-prettier": "5.2.1",
+				"eslint-plugin-security": "3.0.1"
+			},
+			"dist": {
+				"shasum": "9dd9cc133688408c6855461076180c467c4de091",
+				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.8.0.tgz",
+				"fileCount": 35,
+				"integrity": "sha512-nzOuek193myWcdKu+WOKjTi4lOOEMiKx/pwcnJEuknH73ycJnX7tXjHmR5jpHkfYIv1xQzqEul5MaBgQtIreow==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD46Q+LtlJ6gEZ/08oWiXL7DlpX3M2lZF82NEZ9t9gXhgIgQowDYRUd+yEOBpn9D7l3xNDDlrPL1rLEKVMQl8LMok0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 154971
+			},
+			"engines": {
+				"node": ">=20"
+			}
+		},
+		"0.8.1": {
+			"name": "@cloudflare/privacypass-ts",
+			"version": "0.8.1",
+			"dependencies": {
 				"@cloudflare/blindrsa-ts": "0.4.3",
 				"@cloudflare/voprf-ts": "1.0.0",
 				"asn1-parser": "1.1.8",
@@ -470,15 +515,15 @@
 				"vitest": "3.0.7"
 			},
 			"dist": {
-				"integrity": "sha512-nzOuek193myWcdKu+WOKjTi4lOOEMiKx/pwcnJEuknH73ycJnX7tXjHmR5jpHkfYIv1xQzqEul5MaBgQtIreow==",
-				"shasum": "9dd9cc133688408c6855461076180c467c4de091",
-				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.8.0.tgz",
+				"integrity": "sha512-c4iTsV881GV2iX4UF63nUBxu3lghcC6xbHLIyq3kAVU43QbriVqi5/tpZFje3zNcxTXXmaw5sjgChtESOsAS/w==",
+				"shasum": "8d66fbf1b332ec48c9812cbb4b62022ecddf8442",
+				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.8.1.tgz",
 				"fileCount": 35,
-				"unpackedSize": 154971,
+				"unpackedSize": 157085,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQD46Q+LtlJ6gEZ/08oWiXL7DlpX3M2lZF82NEZ9t9gXhgIgQowDYRUd+yEOBpn9D7l3xNDDlrPL1rLEKVMQl8LMok0="
+						"sig": "MEQCIB+3auDM0FgQS50sMZyb9NZfOeu0wBnXWlWVicT2uSi9AiAHo0alQzpgaMyOe5FXmfPwhvWkdGQlHQlvs76dektNAg=="
 					}
 				]
 			},
