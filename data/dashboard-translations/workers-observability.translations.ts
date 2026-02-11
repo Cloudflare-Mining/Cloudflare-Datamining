@@ -3,6 +3,8 @@
 	header: {
 		searchPlaceholder: "Search events...",
 		searchPlaceholderMobile: "Search...",
+		regexToggleTooltip: "Enable regular expression search",
+		caseSensitiveToggleTooltip: "Enable case-sensitive search",
 		liveButton: "Live",
 		toggleThreshold: "Thresholds",
 		toggleCheckPreviews: "Checks",
