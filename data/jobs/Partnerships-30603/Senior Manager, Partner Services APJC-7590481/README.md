@@ -5,40 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Location: This role can be based out of Austin, TX or Lisbon, Portugal</p>
-<p><strong>About the department</strong></p>
-<p>Cloudflare’s Enterprise Engineering Team builds and runs software and systems that make Cloudflare run more efficiently and enable our customers and partners to do business with us. Enterprise Engineering is part of the Engineering organization.&nbsp; This team seeks talented business systems analyst who takes great pride in both the technical and business contribution of their work. You will be given the chance to have a significant impact on our systems, our business and most importantly, our customers. As a member of our team, you will work closely with the business to design and implement new features. You will contribute to all aspects of an agile software development life cycle including design, architecture, development, documentation, testing and operations. You will push your design and architecture limits by owning all aspects of solutions end-to-end.&nbsp;</p>
-<p><strong>&nbsp;What you'll do</strong></p>
+<p><strong>Available Location: Singapore </strong></p>
+<h3><strong>About the Role</strong></h3>
+<p>As the Senior Manager, Partner Services APJC, you will serve as the GTM Services Owner and Business Owner for the region. This is a strategic leadership role focused on driving the full lifecycle of partner services—from initial planning and service creation to field acceleration.</p>
+<p>You will be the architect of partner success, ensuring that our Authorized Service Delivery (ASD) partners and MSSPs are not only ready to deliver but are achieving operational excellence and driving consistent pipeline growth. You will act as a bridge between Cloudflare’s internal product/engineering teams and the partner’s service delivery engine.</p>
+<h3><strong>Key Responsibilities</strong></h3>
+<h4><strong>1. Services Business Planning &amp; Strategy</strong></h4>
 <ul>
-	<li>Maintain quote to cash systems and integrations including internal and SAAS systems that support ordering, subscriptions, entitlements, customer billing, invoices, taxation, payments, revenue recognition and other systems/ integrations supported by enterprise engineering team</li>
-	<li>Participate in systems analysis, writing functional/ technical specs and detailed systems design.</li>
-	<li>Respond promptly to application alerts, production issues and follow through to resolution per established SLAs</li>
-	<li>Effectively communicate issue status to internal stakeholders</li>
-	<li>Maintain in-depth functional knowledge of the supported applications and interdependencies</li>
-	<li>Partner with the business teams to identify gaps, document and re-engineer current processes within business applications.&nbsp;</li>
-	<li>Work on Proof of concepts for new requirements as appropriate</li>
-	<li>Work closely with the finance and other internal teams in bringing efficiencies to their monthly close process and improve upon existing system reporting needs</li>
-	<li>Seek opportunities to streamline and/or automate processes</li>
-	<li>Participate in QA activities for various projects. Work closely with business teams, analysts, engineers and product managers to write test plans, test cases and estimates to support project and product releases ensuring consistency with specified requirements agreed with both external and internal customers</li>
+	<li>GTM Strategy: Act as the primary GTM Services Business Owner for the APJC aligned to regional goals.</li>
+	<li>Service Creation: Collaborate with partners to define and build high-value service offerings (Professional Services, Managed Services) powered by Cloudflare.</li>
+	<li>Resource Alignment: Identify and secure the necessary internal and external resources to support partner-led service initiatives.</li>
 </ul>
-<p><strong>&nbsp;&nbsp;Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>2. Delivery Readiness &amp; Excellence (Build)</strong></h4>
 <ul>
-	<li>Minimum 5 years experience implementing a SAAS based/ subscription billing system (eg. Stripe, Zuora, Oracle BRM, GoTransverse etc)</li>
-	<li>Proficient in writing database queries in PostGres/ BigQuery/ Snowflake or other languages</li>
-	<li>Adaptability and Learning Mindset: Demonstrating a willingness to learn new technologies, tools, and methodologies is crucial. Adaptability to changing project requirements and the ability to work in a dynamic environment is highly desirable</li>
-	<li>Possess excellent communication skills – written and oral, interpersonal and organizational.</li>
-	<li>Ability to handle multiple projects and responsibilities with competing priorities</li>
-	<li>Solid understanding of business Financial processes including but not limited to Quote to cash process including OM/ Billing/ AR/ RevRec and understanding of GL</li>
-	<li>Able to deliver a high degree of customer satisfaction at all times</li>
-	<li>Must be results/ Outcome focused</li>
+	<li>Capability Assessment: Evaluate partner technical capabilities and design tailored roadmaps to bridge gaps in delivery readiness.</li>
+	<li>Onboarding &amp; Enablement: Oversee the execution of Cloudflare’s enablement tracks (Essentials, Advanced, Advanced Plus) to ensure partners meet "Build" phase standards.</li>
+	<li>Standardization: Develop reference architectures, solution frameworks, and best practices to ensure scalable, high-quality service delivery.</li>
 </ul>
-<p><strong>&nbsp;Bonus points if you have</strong>:</p>
+<h4><strong>3. Services Pipeline Development &amp; Progression</strong></h4>
 <ul>
-	<li>Track record of delivering successful large-scale, business transformation, and multi-disciplinary change initiatives especially in Subscription/SaaS model</li>
-	<li>5+ years experience in systems analyst roles, implementing and supporting ERP applications such as Oracle, Netsuite, SAP or Workday Financials</li>
-	<li>Business engagement and business analysis experience in implementing ERP systems is preferred</li>
-	<li>Hands-on experience with analytics and monitoring tools like Grafana (configuring, creating queries, dashboards, and alerts), and ability to troubleshoot application/ systems logs using tools like Kibana, Sentry</li>
+	<li>Demand Generation: Work with Partner Account Managers to identify service-led opportunities within the partner’s existing customer base.</li>
+	<li>Pipeline Health: Monitor the services pipeline, identifying bottlenecks and providing technical/operational support to progress deals through the lifecycle.</li>
+	<li>Value Realization: Ensure partners are effectively articulating the value of Cloudflare services to drive higher attach rates.</li>
 </ul>
+<h4><strong>4. Field Engagement &amp; Acceleration (Accelerate)</strong></h4>
+<ul>
+	<li>Strategic Advisory: Serve as a trusted advisor to partner leadership, optimizing their operational processes and service models for maximum performance.</li>
+	<li>Cross-Functional Collaboration: Partner with Sales, Solutions Engineering, and Customer Success to align resources and unblock complex technical engagements in the field.</li>
+	<li>Continuous Improvement: Lead feedback loops between partners and Cloudflare Product teams to drive serviceability improvements and excellence.</li>
+</ul>
+<h3><strong>Required Skills and Experience</strong></h3>
+<ul>
+	<li>Regional Leadership: Proven ability to lead and scale a team of technical services or partner success managers across the diverse APJC landscape.</li>
+	<li>Partner Expertise: Extensive experience in partner services, post-sales enablement, and driving partner-led GTM strategies.</li>
+	<li>Executive Presence: Comfortable engaging and influencing C-suite and senior leaders within large partner organizations.</li>
+	<li>Technical Acumen: Deep understanding of cloud security, networking, and edge computing to guide reference architecture development.</li>
+	<li>Project Management: Skilled at managing complex, multi-stakeholder projects with a focus on meeting deadlines and driving measurable business outcomes.</li>
+</ul>
+<p><strong>Why You’ll Love This Role:</strong><strong><br></strong>You will play a pivotal role in shaping Cloudflare’s services ecosystem, helping our partners grow and succeed while delivering world-class experiences to customers. This is an opportunity to lead impactful initiatives, collaborate with high-performing teams, and contribute to the global expansion of Cloudflare’s Authorized Service Delivery and MSSP programs.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

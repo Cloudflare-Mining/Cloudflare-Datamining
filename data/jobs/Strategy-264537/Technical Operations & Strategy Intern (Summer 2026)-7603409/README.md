@@ -21,19 +21,28 @@
 <h4><strong>Must-Haves:&nbsp;</strong></h4>
 <ul>
 	<li>Currently enrolled in an undergraduate degree program in a relevant field (e.g., Business, Liberal Arts, Computer Science).</li>
+	<li>Ability to commit to a full-time 12 week internship.</li>
+	<li>In office 3-4 days a week in-office in San Francisco.</li>
 	<li>Exceptional analytical and quantitative skills, with a proven ability to structure complex problems, conduct rigorous analysis, and synthesize findings into clear, concise, and compelling narratives.</li>
 	<li>Strong communication and presentation skills, comfortable engaging with senior leaders and facilitating cross-functional discussions.</li>
-	<li>A self-starter with a high degree of intellectual curiosity and a proactive approach to problem-solving; detail-oriented and organized.</li>
 	<li>A passion for Cloudflare's mission to help build a better Internet and a genuine interest in the underlying technologies (networking, security, edge computing, AI).</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h4><strong>Bonus:</strong></h4>
 <ul>
 	<li>Self-starter who enjoys working in a fast-paced, collaborative, and innovative high-growth environment.</li>
-	<li>Ability to commit to a full-time 12 week internship.</li>
-	<li>In office 3-4 days a week in-office in Austin, San Francisco, or New York.</li>
 	<li>Familiarity with infrastructure concepts (cross-connects, circuits, colocation vendors/sites) or interest in learning quickly.</li>
 	<li>Ability to write or prompt (OpenCode etc) scripting and code</li>
 	<li>API familiarity and ability to create persistent, reliable data pipelines</li>
+	<li>A self-starter with a high degree of intellectual curiosity and a proactive approach to problem-solving; detail-oriented and organized.</li>
+</ul>
+<p><strong>Compensation:&nbsp;</strong></p>
+<ul>
+	<li>
+		<p>Compensation may be adjusted depending on work location.</p>
+		<ul>
+			<li><span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:157000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))"><span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:212000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">Estimated hourly pay of $24/hour.</span></span></li>
+		</ul>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
