@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/zero-trust/solutions/third-party-access/",
+	"path": "/zero-trust/solutions/multi-channel-phishing/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Third Party Access",
+				"pageName": "Multi-channel phishing - Solutions Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -27,19 +27,19 @@
 					"ruRU": "Translated for Locale",
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
-					"trTR": "English for Locale",
+					"trTR": "Translated for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "zero-trust/solutions/third-party-access",
+				"relativePath": "zero-trust/solutions/multi-channel-phishing",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Third-party access management | Zero Trust",
-					"metaDescription": "Cloudflare manages third-party access while protecting your critical resources. Learn more about how Cloudflare streamlines third-party access management.",
+					"metaTitle": "Multi-channel phishing | Zero Trust",
+					"metaDescription": "Safeguard your workforce with full-scale phishing protection that extends beyond the inbox",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -51,10 +51,10 @@
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2022-01-24T18:27:05.749Z",
-					"updatedAt": "2026-02-07T01:27:43.555Z"
+					"createdAt": "2024-11-07T14:29:36.353Z",
+					"updatedAt": "2026-02-09T23:02:04.055Z"
 				},
-				"contentfulId": "W6P7WWOOswy3Ut1w8YJfW",
+				"contentfulId": "11RXb7FmyWLVEFt9vnKTPf",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -2649,6 +2649,12 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "xcMCaLoIhD6Ur0OGlxAnT",
+						"htmlContent": "<style>\n    .wrapper {\n        background-color: #003682;\n        margin: 0;\n        padding: 20px;\n        width: 100vw;\n        margin-left: calc((100vw - 100%) / -2);\n    }\n    .content {\n        color: #ffffff;\n        margin: 0px auto;\n        width: fit-content;\n    }\n    .link-helper {\n        color: #ffffff !important;\n        margin-left: 5px;\n        text-decoration: underline !important;\n        text-underline-offset: 4px;\n    }\n    .link-helper:hover {\n        text-decoration: underline;\n        color: #ffffff !important;\n        text-underline-offset: 4px;\n    }\n</style>\n\n<section class=\"wrapper\" id=\"contentful-psa-banner\">\n    <div class=\"content\">\n        <span>Cloudy LLM summarizations of email detections |</span>\n\n        <a class=\"link-helper\" href=\"https://blog.cloudflare.com/cloudy-driven-email-security-summaries/\">\n           <strong>Read blog ></strong>\n        </a>\n    </div>\n</section>\n</section>",
+						"htmlId": null
+					},
+					{
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "70Il4X62A37cPxf97qmEgo",
 						"menuTitle": "SASE & workspace security",
@@ -2755,40 +2761,43 @@
 						]
 					},
 					{
-						"contentfulId": "5glHuACQQ7WaioyQLwYH6M",
+						"contentfulId": "4h7BgEhLFhYBudWJk9pFBN",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Secure third-party access with Cloudflare",
+						"title": "Protect against multi-channel phishing with Cloudflare",
 						"titleSize": null,
-						"subtitle": "Give external users a first-class experience, with fast, safe access to applications and infrastructure",
+						"subtitle": "Implement layered protection that extends beyond your inbox",
 						"subtitleSize": null,
-						"copy": "Providing internal access to contractors, partners, and other external users can create security risks and management headaches. Learn how Cloudflare's connectivity cloud makes connecting third-party users to key apps and infrastructure secure and simple.",
+						"copy": "Cloudflare's connectivity cloud offers an automated, multi-layered approach to stop phishing threats across email, SMS, social media, instant messaging, and other collaboration apps.",
 						"buttonColor": "orange",
-						"buttonColor2": "orange-outline",
-						"buttonText1": "Sign Up",
+						"buttonColor2": "orange",
+						"buttonText1": "Contact us",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up/teams",
+						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "teams-ent-plan-contact-us",
-						"buttonText2": "Read the solution brief",
+						"button1ExtraClass": "multi-channel-phishing-contact-sales",
+						"buttonText2": null,
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cfl.re/third-party-access-solution-brief ",
+						"buttonUrl2": null,
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": true,
+						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Medium",
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -2800,23 +2809,23 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "f3f72f21-7927-5d38-a2d0-124746566e84",
-							"altText": "Teams access hero third-party-users - Illustration",
-							"title": "Teams access hero third-party-users - Illustration",
+							"id": "fa5c58bb-c396-589c-8fe9-ce6074ef0b1d",
+							"altText": "Multi-channel phishing - Hero image",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7g2zmZviiWuLjuodl7Hf9u/1321367c415fd236faeb1fcac14f2b9b/teams-access-third-party-users-spot-illustration.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3GosHoDm3f89BWaa5E0kPr/ca25fd804017f3e9d377a739dcdcedf7/Preventing_Multi-Channel_Phishing_with_Cloudflare.png"
 								},
-								"description": null
+								"description": "Multi-channel phishing - Hero image"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
 					},
 					{
-						"contentfulId": "Q4GGJgO9j0aAqdX68SaB2",
+						"contentfulId": "1NlMibQhjDXT1zlJiUAQoR",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
 						"eyebrowHeading": "THE CLOUDFLARE DIFFERENCE",
@@ -2826,12 +2835,12 @@
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1hhETLTKNdxOlTUNyJQjOp",
-								"title": "Avoid privilege creep",
+								"contentfulId": "1puDUWmkSbNenEHeq51qUY",
+								"title": "Low-touch, high-efficacy protection",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Protect critical resources and sensitive data by implementing least privilege access for external users based on [Zero Trust principles](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/).",
+								"description": "Minimize phishing risk with industry-leading detection capabilities that require minimal tuning.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2839,14 +2848,50 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust ",
-									"title": "Security shield zero trust ",
+									"id": "7e7d463f-0987-5271-9a49-1e1ab5cb93f9",
+									"altText": null,
+									"title": "Phishing Icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d9LyCHv5R4RRxDjm7shyv/baaec3fdbd12468b4f5ee0378874855b/Phishing-Icon-orange.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5wbW0iNuIE6MGoFgZV0cdV",
+								"title": "Greater consolidation, lower cost",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Reduce spend with a single, fully integrated platform that addresses all phishing use cases.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
 										},
 										"description": null
 									},
@@ -2862,12 +2907,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5Nq62bIeal2NydV9N9JYNs",
-								"title": "Onboard and offboard faster",
+								"contentfulId": "73KpduCBs37h723Rn0FYzO",
+								"title": "Fast to deploy, easy to manage",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Avoid setting up VPN access or shipping out corporate devices. Now external users can authenticate with unmanaged devices through a simple, browser-based access flow.",
+								"description": "Gain immediate protection while reducing the time and effort required for ongoing management.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -2875,52 +2920,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
-									"altText": "Performance acceleration bolt orange",
-									"title": "Performance acceleration bolt orange",
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket ",
+									"title": "Performance acceleration rocket",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
 										},
-										"description": "Lightning bolt icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4UJdRSSNWwRJyYMIvvpAg0",
-								"title": "Streamline management",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cut the time and costs of access management. Support for multiple identity providers enables you to provide third-party user access without provisioning corporate identities for single sign-on (SSO).",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
-									"altText": "Reliability timer blue",
-									"title": "Reliability timer blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/41aBOr3gowykuADnSlJuCp/897c938c653f6d736e3832afe4fcab59/reliability-timer.svg"
-										},
-										"description": "Stopwatch icon"
+										"description": "Performance acceleration rocket orange"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -2937,28 +2946,13 @@
 						"htmlId": null
 					},
 					{
-						"contentfulId": "6i1Ly9XaORx5MGC0yfZZOi",
-						"title": "Manage third-party access confidently with granular security policies",
-						"copy": "Cloudflare's [Zero Trust Network Access (ZTNA)](https://www.cloudflare.com/zero-trust/products/access/) service provides frictionless access for third-party users — with data controls all through the browser. You can enforce least privilege access for web apps and infrastructure (like RDP servers) without additional management overhead.",
+						"contentfulId": "7403hlCWgeeaUCxCqNLZpk",
+						"title": "Implement complete multi-channel protection with a single platform",
+						"copy": "Use Cloudflare's unified security platform to first protect email, then enable additional Zero Trust services to extend phishing protection across all channels.",
 						"toggleText": null,
-						"button": [
-							{
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "7dbGIouGcxE69OgonQkpkE",
-								"elementName": "Third Party Access - HOW IT WORKS - CTA",
-								"standardText": null,
-								"text": "Explore a SASE reference architecture",
-								"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
-								"loggedInUrl": null,
-								"buttonModal": null,
-								"openInNewTab": true,
-								"locale": "en-US"
-							}
-						],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"button": [],
+						"learnMoreUrl": "https://cfl.re/Multi-Channel-Phishing-Protection-SB",
+						"learnMoreText": "Read the solution brief",
 						"link": [],
 						"subheadline": null,
 						"button1Text": null,
@@ -2977,16 +2971,16 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "2bfeadde-c17d-56cd-9a29-06d2e4237f45",
-							"altText": "Third Party Access - How it works - Diagram",
-							"title": "Third Party Access - How it works - Diagram",
+							"id": "f77af3ef-637b-5e47-9c30-12df9cc02bdb",
+							"altText": "Multi-channel phishing - How it works - Image",
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jArQroiQrmGTEMjKxxjvx/92416d6fc520205d3573b2ee53c91725/Web_SASE_Ref_Arquitecture-1.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44GRBVEFPQLD238ahPakqD/f794442500d571dd37178fac4193ce01/BDES-6863__Multi-channel-phishing-protection-illustration-V2.png"
 								},
-								"description": null
+								"description": "Multi-channel phishing - How it works - Image"
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
@@ -3000,12 +2994,12 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": "large",
+						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "32f3cBRHCHrWCac5sx8KUC",
+						"contentfulId": "6uMXLHU68tJSTeodnrc0lC",
 						"contentTypeId": "bladeMultipleColumnsLayout",
 						"title": null,
 						"eyebrowHeading": null,
@@ -3015,12 +3009,12 @@
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "zyrWiEJreJ2RPsm5hTU5a",
-								"title": "Multiple identity sources",
+								"contentfulId": "2RZS8BCknsOcBCQhAqjG63",
+								"title": "Deploy and scale with ease",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Avoid onboarding external users to your centralized identity provider. With ZTNA, you can use multiple sources of identity to grant user access for every app.",
+								"description": "Rapidly layer on email security to protect the most critical channel and then easily enable multi-channel capabilities at your own pace.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3028,16 +3022,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
-									"altText": "User multi ",
-									"title": "User multi ",
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale orange",
+									"title": "Optimization scale orange",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oO1wqLlaSM1U8pwMbT3jY/e894b1327f9ec28e674794ac78b233e5/user-multi.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e9733d09150035751acd28962d65831/optimization-scale.png"
 										},
-										"description": "User Multi - Orange"
+										"description": "icon scale aqua"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3051,12 +3045,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2CVGgDNOOdAXF9QY74Qggc",
-								"title": "Existing identities",
+								"contentfulId": "6dJC2q7C61on8bmtM7NMBN",
+								"title": "Stop email threats",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Enable contractors to bring existing identities from LinkedIn, GitHub, Google, or other providers for a seamless login experience.",
+								"description": "Automatically block business email compromise (BEC) attacks, malicious attachments, and other email-based threats using ML-powered contextual analysis.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3064,14 +3058,14 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "e06663fb-a656-5e71-86c6-252eccfcc3b8",
-									"altText": "Security fingerprint privacy orange",
-									"title": "Security fingerprint privacy orange",
+									"id": "8cb02df8-4ee5-51a0-93bd-5d68cd65230d",
+									"altText": "Spam email blue",
+									"title": "Spam email blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3o7wgV3QOT67tMsuQmIMPc/105a1dd4cd229dcee110b92e40e5151a/security-fingerprint-privacy.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/16iB8yBZdgX7paOzbM5YtE/6904656352f05ecfaade9fccb666c427/spam-email.png"
 										},
 										"description": ""
 									},
@@ -3087,12 +3081,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Wg98TbbAUXPImuZKyedzw",
-								"title": "Clientless access",
+								"contentfulId": "6WpOKPflQzDz5w1OIDPBqR",
+								"title": "Prevent breaches from credential theft",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Simplify onboarding by avoiding endpoint software. Cloudflare's reverse proxy offers secure clientless access to web apps and in-browser terminals, even on unmanaged devices.\n",
+								"description": "Implement conditional access and phishing-resistant FIDO2 security keys that act as a last line of defense if credentials are stolen or compromised.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3100,16 +3094,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b81f14af-5749-5ed0-ba32-c9f27ea1c4a2",
-									"altText": "Traffic legit orange",
-									"title": "Traffic legit orange",
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4nC4blUcOffvGbQwA4Z1is/d9f36076577d83bef87ab2042ce8b3d2/traffic-legit-browser.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
 										},
-										"description": "Global traffic management icon"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3123,12 +3117,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4DGqQvERqjmQKmZlACKviv",
-								"title": "Data protection",
+								"contentfulId": "1o9MlTBg3tdpxzOcCZfpjh",
+								"title": "Block deceptive link-based attacks",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Enhance your third-party access implementation by adding clientless [remote browser isolation (RBI)](https://www.cloudflare.com/zero-trust/products/browser-isolation/) and [data loss prevention (DLP)](https://www.cloudflare.com/zero-trust/products/dlp/) to further prevent risks of data exfiltration.",
+								"description": "Insulate users from targeted attacks that use various collaboration apps to bait users into clicking on cleverly obfuscated links.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3136,16 +3130,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "27326293-fc97-5648-82bc-13665c1ed82d",
-									"altText": "DLP icon",
-									"title": null,
+									"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
+									"altText": "Traffic attack blue",
+									"title": "Traffic attack blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6r1JDZlNvDcQNry0BATrCK/e69af34d7d95ee9725c4c48cf871e874/cloudflare-dlp.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/44OWJ7jF9JVwp4zh7zMy7B/d80f24569dfb7d418d6913b32940bf5b/traffic-attack-browser_1_.svg"
 										},
-										"description": "DLP icon"
+										"description": "Prevent financial and identity theft icon"
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3158,22 +3152,28 @@
 								"streamThumbnailAssetFile": null
 							}
 						],
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "7a3KhNqQg5tUUSvv9BdZ33",
+						"htmlContent": "<div style=\"text-align:left; padding-bottom:64px; padding-top: 64px;\" class=\"headline-2\">\nWerner Enterprises curbs phishing and consolidates security with Cloudflare \n</div>",
 						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "3scAmksSEj3ufRBMygjgFe",
+						"contentfulId": "1Tw5xmZAVFxcESEs5Olc3C",
 						"htmlId": null,
-						"mainHeadline": "Canva uses Cloudflare to streamline access management ",
+						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Half & Half",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "Vul8MPp12Qp80oZ1t3s9t",
+								"contentfulId": "5gPovDTXFDZ7HNOpEcGYBC",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -3195,7 +3195,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The Canva graphic design platform is used by tens of millions of people worldwide. As the company has hired more employees and outsourced more work to third-party developers, IT managers needed a better way to authenticate users and track app usage.\n\nCanva adopted Cloudflare Access to provide secure access to internal apps. The company has improved security, eliminated the inefficient use of shared passwords, and avoided development of an internal identity and access management system. Cloudflare Access has made employee and contractor onboarding and offboarding easier and more secure.",
+													"value": "One of the largest truckload cargo carriers in the United States, Werner Enterprises is at the center of a connected alliance of world-class supply-chain solutions. The company needed to step up phishing protection for its large, dispersed workforce as attacks increased in frequency and sophistication. ",
 													"marks": [],
 													"content": null
 												}
@@ -3216,7 +3216,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\n",
+													"value": "Werner adopted Cloudflare Email Security to protect Microsoft 365 inboxes, improve protection for mobile and roaming users, and take a more proactive approach to stopping phishing. The company reduced malicious emails while reducing management complexity.",
 													"marks": [],
 													"content": null
 												}
@@ -3227,7 +3227,7 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "4vNGK8RbrvHLUUxmZX4PPS",
+								"contentfulId": "GXSC3eiNHaIc1B6s83iJD",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -3249,29 +3249,12 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\"Cloudflare Access saved us from having to develop our own identity and access management (IAM) system.\"",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "— Head of Infrastructure, Canva",
-													"marks": [],
+													"value": "\"Since we implemented, we have seen a 50% reduction in the number of malicious or suspicious emails our users receive every day.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -3281,18 +3264,18 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "6fp4AwIlUGV41zFxpDbyf8",
+														"id": "3K18ZkW9R0r3IJuUk6LxUy",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "6fp4AwIlUGV41zFxpDbyf8",
+															"contentfulId": "3K18ZkW9R0r3IJuUk6LxUy",
 															"locale": "en-US",
-															"title": "teams logo canva color svg",
+															"title": "Werner enterprises logo svg",
 															"file": {
-																"name": "logo_canva_color_svg.svg",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6fp4AwIlUGV41zFxpDbyf8/b5508b7f025945b83cb9d0814fe38419/logo_canva_color_svg.svg",
+																"name": "werner_logo 2.svg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3K18ZkW9R0r3IJuUk6LxUy/8a0e3a45ca7520b784494007770469b3/werner_logo_2.svg",
 																"internal": {
 																	"mediaType": "image/svg+xml"
 																}
@@ -3343,8 +3326,8 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6NqydqfR666pAs070wG8Wa",
-						"title": "Ready to discuss your third-party access needs?",
+						"contentfulId": "5wPdLttH9NX6xKID5UdJaP",
+						"title": "Ready to stop phishing across multiple channels?",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -3359,18 +3342,18 @@
 							"buttonAssetFile": null,
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "6X0p0vmriXriy5KUeD4kxO",
-							"elementName": "Third Party Access - ENABLEMENT BLADE - CTA",
+							"contentfulId": "5tmTvVrghZpAvO2woAKorW",
+							"elementName": "Contact us",
 							"standardText": null,
 							"text": "Contact us",
-							"url": null,
+							"url": "#",
 							"loggedInUrl": null,
 							"buttonModal": {
 								"contentTypeId": "formModal",
-								"contentfulId": "quIwh8ZxD9pISQGe6WSfv",
-								"modalName": "Third Party Access - Contact Us",
-								"modalId": "third-party-access-contact-us",
-								"modalType": "single-form",
+								"contentfulId": "20neOBPysp0tYdy9tgd1F9",
+								"modalName": "Multi-Channel Phishing - Contact Sales",
+								"modalId": "multi-channel-phishing-contact-sales",
+								"modalType": "split-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
 									"contentfulId": "1ujDGExdXSfyindmg265xQ",
@@ -3397,8 +3380,8 @@
 									"disableEnterpriseEmailNotification": null,
 									"enableRingout": null
 								},
-								"title": "Request a third-party access discussion",
-								"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your third-party access journey and how Cloudflare may be able to help.",
+								"title": "Request a Multi-Channel Phishing discussion",
+								"regularCopy": null,
 								"splitFormDefaultTab": null,
 								"selfServeTabText": null,
 								"selfServeCopy": null,
@@ -3413,22 +3396,90 @@
 						"eyebrow": null
 					},
 					{
-						"contentfulId": "TfE1YQyNgVmNTnw9xcB6I",
+						"contentfulId": "3Jzpnd1hAO0ET8mA1ag1uI",
+						"title": "Cloudflare scored among the top 3 in the 'Current Offering' category in this Email Security analyst report",
+						"copy": "Cloudflare is a Strong Performer in The Forrester Wave™: Email, Messaging, And Collaboration Security Solutions, Q2 2025. We received the highest possible scores, 5.0/5.0 in 9 criteria, including antimalware and sandboxing, malicious URL detection and web security, threat intelligence, and content analysis and processing.\n\nAccording to the report, \"Cloudflare is a solid choice for organizations looking to augment current email, messaging, and collaboration security tooling with deep content analysis and processing and malware detection capabilities.",
+						"toggleText": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "15kMsQsAbgx3PByMFXzEyP",
+								"elementName": "2025 Forrester Wave Email Security - link",
+								"standardText": null,
+								"text": "Read report",
+								"url": "/lp/forrester-wave-email-security-2025/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "0d9a2cdf-9ea3-5a14-8870-e3c681bbab98",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1g3VmX4a7mNn0z1u2mYyDT/c1d994cd2b1754cceaabb41f1440e55b/Strong_Performer_182410.png"
+								},
+								"description": ""
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Analyst recognition",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "small",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "6TurNADd3vukr2BBiZ4Ftz",
 						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "Cloudflare's connectivity cloud simplifies third-party access",
+						"title": "Cloudflare's connectivity cloud simplifies multi-channel phishing protection",
 						"eyebrowHeading": "WHY CLOUDFLARE",
-						"description": "Cloudflare's unified platform of cloud-native services facilitates secure access to internal resources for external users without adding management burdens.",
+						"description": "Cloudflare's unified platform of [cloud-native security](https://www.cloudflare.com/learning/cloud/cloud-native-security/) and connectivity services addresses phishing across email, instant messaging, SMS, social, and other collaboration apps.",
 						"textLayout": "left",
 						"columnsLayout": "Four Columns",
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1Ns66G4AQJrw9Z7EQKt7rc",
-								"title": "Simpler implementation",
+								"contentfulId": "2fdE7ZEGgD5P1j1wYAaLNy",
+								"title": "Composable architecture",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Add new apps and users quickly with unified management, flexible on-ramps, and intuitive automation through API and Terraform.",
+								"description": "Address a full range of security requirements by capitalizing on extensive interoperability and customization.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3436,16 +3487,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
-									"altText": "Ease of use blue",
-									"title": "Ease of use blue",
+									"id": "a710e57d-3681-55a0-89a9-25b4d73b2f9f",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/FjvoaQuOqGGvG2rtECHYW/e68da86fa3fbcae94c67bf13d640bcb2/icon_cloud_storage.png"
 										},
-										"description": "Ease of use orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3459,12 +3510,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1SKlmXFiKvDxfLWozULqcP",
-								"title": "End user experience",
+								"contentfulId": "1LIJCjhcaNgRNVIK9XmITY",
+								"title": "Performance",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Deliver consistent, low-latency performance everywhere, with security services designed to run in all Cloudflare data centers.",
+								"description": "Protect and empower employees everywhere with a global network that is approximately 50ms from 95% of Internet users.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3472,16 +3523,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket ",
-									"title": "Performance acceleration rocket",
+									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
+									"altText": "Performance intelligent routing blue",
+									"title": "Performance intelligent routing blue",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vvXmr7jmxFdYUgliFcXUh/d27e7eabc9727ba987b15d5e9ddad5e3/performance-acceleration-rocket.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3yNR9Xrke2khvXTu9Rpdc3/e659935f9bc695024b5be6fb99900dd3/performance-intelligent-routing.svg"
 										},
-										"description": "Performance acceleration rocket orange"
+										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3495,12 +3546,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "58IKGDT0xSi9myiYkCLRoB",
-								"title": "Agile architecture",
+								"contentfulId": "CE9HA86y6zcBD4uAeHfYf",
+								"title": "Threat intelligence",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Enhance your [SASE](https://www.cloudflare.com/learning/access-management/what-is-sase/) implementation more efficiently with one control plane and composable, cloud-native services that you can deploy in any order.",
+								"description": "Prevent a full range of cyber attacks with intelligence gleaned from proxying ~20% of the web and blocking billions of threats daily.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3508,16 +3559,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "0cfe36ab-abe1-5f77-965c-c24fe0837bdf",
-									"altText": "Cloud multi blue",
-									"title": "Cloud multi blue",
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LJvPVcmM6pKOS3XApXCag/35a5adb3d158b085948ff2c4217c2ff4/cloud-multi.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
 										},
-										"description": "Cloud multi orange"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3531,12 +3582,12 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3joLULq3zmBpahXtUYmbRp",
-								"title": "Converged protection",
+								"contentfulId": "58RlrYSlflp6t0Eo0tzhOG",
+								"title": "Unified interface",
 								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Consolidate existing point solutions for public and private traffic, and accelerate your efforts to modernize security and [networking](https://www.cloudflare.com/learning/network-layer/how-to-prepare-for-network-modernization-projects/).",
+								"description": "Consolidate your tools and workflows.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -3544,16 +3595,16 @@
 								"removeCardBorder": false,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "fa372958-dd78-5d13-8fe9-af92242c4f3e",
-									"altText": "Collapse - WEB APPROVED icon - orange",
-									"title": "Collapse - WEB APPROVED icon - orange",
-									"activeAsset": "Contentful Asset",
+									"id": "5846186d-fb25-5506-b82a-972643756318",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
+									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1PggnKQE49t7p6Wsw30KaP/19a3ebdb6cd99af6f693907373304652/collapse.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
 										},
-										"description": "Collapse - WEB APPROVED icon - orange"
+										"description": null
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
@@ -3571,24 +3622,156 @@
 					},
 					{
 						"contentTypeId": "bladeCardCarousel",
-						"contentfulId": "r6IGAYOkcCsAMorrR9y5r",
+						"contentfulId": "1K7eixgQoLtSGfAPVMI8gF",
 						"title": "Resources",
 						"htmlId": null,
 						"backgroundImage": null,
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "2nFxe99VURkfscyI3APUV3",
-								"heading": "Blog",
-								"description": "Learn about Cloudflare's high-performance RDP proxy that provides clientless infrastructure access for unmanaged devices.",
+								"contentfulId": "1eqvxryks78C6T4MaKEZyj",
+								"heading": "Solution brief",
+								"description": "Learn how Cloudflare delivers complete phishing protection across employees and applications with email security plus Zero Trust services.",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "1KydJwJyRHX7sYL4gqa7vP",
-									"elementName": "Browser-based RDP access - LINK",
+									"contentfulId": "EG4ttudljSlZ9XhJNl6NV",
+									"elementName": "Gain multi-channel protection - Link",
 									"standardText": null,
-									"text": "Read blog",
-									"url": "https://blog.cloudflare.com/browser-based-rdp/",
+									"text": "Get the solution brief",
+									"url": "https://cfl.re/Multi-Channel-Phishing-Protection-SB",
+									"elementModal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "46jWqAIIhqVvRriySyV4ag",
+								"heading": "Insight",
+								"description": "Discover how to preemptively protect users from phishing, BEC attacks, and link-based attacks with Cloudflare Email Security.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "2JMaWbUvluK8O5BDa1DUS0",
+									"elementName": "Strengthen email security - Link",
+									"standardText": null,
+									"text": "Visit the webpage",
+									"url": "https://www.cloudflare.com/zero-trust/products/email-security/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "00456b7e-8e75-547d-856b-baa151617622",
+									"altText": "Protecting GraphQL APIs from malicious queries - thumbnail",
+									"title": "Protecting GraphQL APIs from malicious queries - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/68KdIqAHLWwDsQjyOjKC4Q/a7a1e7c62c6233729b15274e0d3819bd/Protecting-GraphQL-APIs-from-malicious_-queries-thumbnail.png"
+										},
+										"description": "Protecting GraphQL APIs from malicious  queries - thumbnail"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "5kKhBi8gWSbKMEqs2x97E0",
+								"heading": "Insight",
+								"description": "Identify the phishing attacks that are evading your current email defenses — at no cost and with no impact to your users.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "21Npt6yetrZ2mDoG9LHGHy",
+									"elementName": "Assess your phishing risk - Link",
+									"standardText": null,
+									"text": "Request a free assessment",
+									"url": "https://www.cloudflare.com/lp/emailsecurity/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "1c0de5f1-abee-55b8-9653-945bf9480f62",
+									"altText": "Cloudflare insights",
+									"title": "Cloudflare insights",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7eD4EXWL2DPwSe5Y8ASppZ/3cf93c08e638e5f6057d6a1a7eccd9ab/Insight_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "4oLw9Ts03TP3pFehHnFs3x",
+								"heading": "Solution brief",
+								"description": "Read how Cloudflare can reduce link-based phishing risks by applying browser isolation protections and controls.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "XF0peV7TNPeRcW84bhOma",
+									"elementName": "Employ email link isolation ",
+									"standardText": null,
+									"text": "Download the brief",
+									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1mAjZlOY05JfXnSaPeaetD/459a136fb8a794b0ca43fc1d6082ce19/Email_Link_Isolation_Brief__CES_RBI__Jan_2023.pdf",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"image": {
+									"id": "db6be96f-1a36-590b-b487-e41b7bed9506",
+									"altText": "Solution brief - thumbnail",
+									"title": "Solution brief - thumbnail",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4lrrMbtnvF7cu020jaOCG7/a7fcac3993ce0c3f325963814b483713/Solution_brief_106x182.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "elementResourceCard",
+								"contentfulId": "4znVBmQJHDnZRT2LMMb53w",
+								"heading": "Case study",
+								"description": "Learn how Cloudflare thwarted a sophisticated text-based phishing attack with multi-factor authentication (MFA) that uses hard keys.",
+								"category": "None",
+								"link": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "6iL3cZ0774fzBQiiz69YWX",
+									"elementName": "Stop phishing with MFA - Link",
+									"standardText": null,
+									"text": "Read the case study",
+									"url": "http://cfl.re/targeted-SMS-phishing-attack-case-study",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"
@@ -3611,293 +3794,48 @@
 							},
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "x19AYjvzoxybajOfVerbZ",
-								"heading": "Documentation",
-								"description": "Walk through a series of modules that help you secure access to internal resources without a device client, step by step.\n",
+								"contentfulId": "6K5oOxoe1GPCwXYDF7f8wZ",
+								"heading": "Report",
+								"description": "Explore key attack patterns based on approximately 13 billion emails processed by Cloudflare over a one-year period.",
 								"category": "None",
 								"link": {
 									"contentTypeId": "elementLink",
-									"contentfulId": "5ooMTortfykVACEr578o3H",
-									"elementName": "How to deploy clientless access - LINK",
+									"contentfulId": "7AWKjSFUjWPx0swGGcHZxc",
+									"elementName": "Discover the latest phishing trends - Link",
 									"standardText": null,
-									"text": "Get implementation guide",
-									"url": "https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/",
+									"text": "Get the report",
+									"url": "https://www.cloudflare.com/lp/signals-report-2025/",
 									"elementModal": null,
 									"openInNewTab": true,
 									"locale": "en-US"
 								},
 								"image": {
-									"id": "4a1979f7-613d-5fb4-af4a-ac4fcb3c6e0e",
-									"altText": "Insight documentation illustration",
-									"title": "Insight documentation illustration",
+									"id": "197eb4d0-2c05-52bd-bc59-8b59ab0fe201",
+									"altText": null,
+									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Di6utb8PafW6HQim4yQH2/16d2c83d1220f12af1fb3db701d678dd/Insight_106x182__4_.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2dlg4oApldWlYGAWdzwN7C/3b0f1908d3e4ca00a193c2fd679981a3/Analyst_Report_B.png"
 										},
 										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1neCIiCX8vatBHuk54Aob4",
-								"heading": "Webinar",
-								"description": "See an extended demo of Cloudflare's capabilities for securing clientless remote access for third-party contractors and employee BYOD.",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "4dT9DhfTVRUUULz080fTLT",
-									"elementName": "Security Builders Workshop: Clientless access - LINK",
-									"standardText": null,
-									"text": "Watch webinar on-demand",
-									"url": "https://cloudflare.ondemand.goldcast.io/on-demand/e1bba075-5e28-4bc8-9805-7ca73eca3852",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "b6011867-5a8b-5c2f-b567-9ebfb16f9361",
-									"altText": null,
-									"title": "Webinar 106x165 - Thumbnail for mosaic card",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R68bUicgjCMdgEBXBM1ey/c350338abc119640172d8876202ffbf8/Webinar-106x165-thumbnail-card.svg"
-										},
-										"description": "Webinar 106x165 - Thumbnail for mosaic card"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeAccordion",
-						"contentfulId": "1RJ5PRY9qZaiTFnHE9rKdh",
-						"bladeName": "Secure third-party access FAQs",
-						"title": null,
-						"htmlId": null,
-						"sectionTitle": "Secure third-party access FAQs",
-						"longCopy": null,
-						"accordionElements": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "8e1aVfcEsnI28bIJtNxVr",
-								"title": "How does Cloudflare help secure third-party access?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare secures third-party access by enforcing least-privilege access to applications based on Zero Trust principles, helping to protect sensitive data and critical resources. Cloudflare does this without requiring any VPN setup or any provisioning of new identities in an SSO.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "2vohcpb06qVaB0iDySTEgS",
-								"title": "What are the benefits of using Cloudflare for third-party access management?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare's solutions streamline the onboarding and offboarding of external users and eliminate the need for VPNs or corporate devices, saving time and reducing costs for organizations that rely on contractors and other third parties.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "3k88jRsXd78EMP8VzB05NI",
-								"title": "How can external users authenticate with their existing identities when using Cloudflare for access?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare's Zero Trust Network Access (ZTNA) supports multiple identity sources, allowing contractors to use their existing LinkedIn, GitHub, Google, or other provider identities for a smooth login experience.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "6be2vdnE9kz727c92VRgcB",
-								"title": "What is clientless access, and how does it simplify third-party onboarding?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Clientless access, offered through Cloudflare's reverse proxy, removes the need for endpoint software, making onboarding simpler. It provides secure access to web applications and in-browser terminals, even from unmanaged devices.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "5zHIDyiAMHMihM5meCkvsL",
-								"title": "How does Cloudflare's platform enhance data protection for third-party access?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare enhances data protection by allowing the integration of clientless Remote Browser Isolation (RBI) and Data Loss Prevention (DLP) with third-party access implementations, which further mitigates the risk of data exfiltration.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "3Y6X7yuPiSPWs00iQShPAw",
-								"title": "How does Cloudflare simplify security management for hybrid work environments?",
-								"htmlId": null,
-								"elementPosition": "relative",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare consolidates all hybrid work security services into a single user interface, which helps to reduce tool sprawl and alert fatigue for security teams.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						],
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"textColor": "black"
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
-						"modalName": "Teams Ent Plan - Contact Us ",
-						"modalId": "teams-ent-plan-contact-us",
-						"modalType": "single-form",
+						"contentfulId": "20neOBPysp0tYdy9tgd1F9",
+						"modalName": "Multi-Channel Phishing - Contact Sales",
+						"modalId": "multi-channel-phishing-contact-sales",
+						"modalType": "split-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
 							"contentfulId": "1ujDGExdXSfyindmg265xQ",
@@ -3924,8 +3862,8 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Request a Zero Trust discussion",
-						"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
+						"title": "Request a Multi-Channel Phishing discussion",
+						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
@@ -3944,8 +3882,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/zero-trust/solutions/third-party-access/",
-			"contentfulId": "W6P7WWOOswy3Ut1w8YJfW",
+			"pathname": "/zero-trust/solutions/multi-channel-phishing/",
+			"contentfulId": "11RXb7FmyWLVEFt9vnKTPf",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -3959,6 +3897,7 @@
 				"es-ES",
 				"es-LA",
 				"ru-RU",
+				"tr-TR",
 				"zh-Hans-CN",
 				"pl-PL"
 			],
