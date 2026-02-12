@@ -5,39 +5,65 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin</p>
-<h4><strong>About the Department</strong></h4>
-<p>Security at Cloudflare is a diverse, focused team committed to helping secure both Cloudflare and our customers.&nbsp; And the Technical Program Management team is the group that helps connect the dots between threats, risk, business needs, and innovation to execute on reducing risk at Cloudflare while partnering to build the best solutions for our customers.&nbsp;&nbsp;&nbsp;</p>
-<h4><strong>About the Role</strong></h4>
-<p>We need to solve big security challenges at scale. As a Technical Program Manager on the Security team, at a high level, you will help discover, define, and drive the execution of transformational security projects to reduce risk at Cloudflare. You will work with our team and all of our stakeholders to:</p>
+<p><strong>Available Locations: Austin, TX, New York, NY, San Francisco, CA</strong></p>
+<p><strong>About the role</strong></p>
+<p>We are looking for a strategist to lead the design of our<strong> </strong>talent performance engine. In this role, you will own the end-to-end architecture for talent assessment, leadership bench-building and strategic workforce planning. You will act as the bridge between our talent philosophy and its execution, partnering with business leaders, HRBPs, Talent Acquisition, IT and Total Rewards to build a tech-enabled, AI-first ecosystem for career mobility and leadership growth. This is a strategic role for someone who is able to balance consistency and nuance for our hyper-growth environment and global scale.<br><br></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Partner with the Security Detections and Response team as their dedicated Technical Program Manager&nbsp;&nbsp;</li>
-	<li>Connect with Cloudflare's many teams through expert communication and diplomacy to maintain alignment and encourage collaboration</li>
-	<li>Support the long term program roadmap planning, manage project updates aligned with the roadmap and report on project level OKRs</li>
-	<li>Manage projects with tight deadlines and changing priorities, effectively balancing risk to achieve business objectives</li>
-	<li>Identify stakeholders and drive alignment, including dependency identification and tracking</li>
-	<li>Generate cadenced program updates, reports, and metrics that provide executive and board level summaries</li>
-	<li>Manage change to scope, timeline, key results/outcomes and budget</li>
-	<li>Maintain a project management framework using milestones, communication plans, decision logs, issues, risks, etc.</li>
-	<li>Balance the focus on long term vision and roadmap versus addressing high risk tactical security issues</li>
+	<li>Talent Management</li>
+	<ul>
+		<li>Own the design and implementation of company-wide Talent Review and Succession Planning processes to identify, assess, and develop employees for critical roles.</li>
+		<li>Develop and manage career pathing frameworks and competency models that support employee growth and organizational agility.</li>
+		<li>Architect the AI-Fluency Competency Model: Partner with key stakeholders to help define and embed the behavioral standards and technical competencies for AI fluency across the workforce (e.g., responsible use, prompt engineering).&nbsp;</li>
+		<li>Partner closely with People Analytics and HRBPs on our employee listening strategy; leverage insights to shape our learning &amp; talent strategies.</li>
+		<li>Analyze talent insights to inform workforce needs assessment, evaluate talent process effectiveness, and drive organizational decision making.</li>
+		<li>Integrate diversity and inclusion principles into all talent management and succession processes.</li>
+		<li>Embed AI into all talent workflows to elevate efficiency, accuracy, decision quality, and customer experience for employees and managers.</li>
+		<li>Own and design a comprehensive Performance Review strategy that is responsive to business needs and nuances (objective setting, check-ins, year-end reviews, calibration).</li>
+		<li>Analyze performance data to identify trends, ensure consistency, and recommend enhancements to drive higher employee engagement and productivity.</li>
+		<li>Collaborate with the People Technology team to design and implement system enhancements that streamline the talent and performance review cycle and improve the user experience.</li>
+		<li>Partner closely with Total Rewards to ensure our talent processes support pay for performance methodologies.</li>
+		<li>Facilitate sessions that feel more like conversations than presentations—engaging employees at every level.</li>
+		<li>Work directly with our Human Resource Business Partners and business leaders to identify real capability gaps—and solve them in ways that don’t always mean more training or workshops.</li>
+	</ul>
 </ul>
-<h4><strong>Examples of desirable skills, knowledge and experience.</strong></h4>
+<p>Strategic Workforce Planning (SWP)</p>
 <ul>
-	<li>8-10+ years of experience in technical program management and a desire for continuous improvement</li>
-	<li>Experience in cybersecurity or detections and response, including experience directly supporting security programs&nbsp;</li>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>Proven track record of creating realistic project plans, managing dependencies, and overseeing execution to meet commitments with predictability.</li>
-	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
-	<li>Proven ability to forge and sustain effective partnerships internally and externally</li>
-	<li>Strong competency with Confluence and JIRA and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc).</li>
-	<li>Willingness to learn and continuously improve</li>
-	<li>Embraces technology including automation and AI augmentation</li>
-	<li>Highly skilled communicator and influencer with the ability to reflect and question positively and effectively&nbsp;</li>
-	<li>Experience working with multiple time zones and cross-functional teams.</li>
+	<li>Working backwards from our internal mobility goals and philosophy, implement skill-based workforce planning solutions that enable Cloudflare to forecast capability gaps, identify skill adjacencies, and guide our talent decisions.</li>
+	<li>Introduce an AI-enabled and system-driven operating model that connects employees to roles, projects, and development opportunities.</li>
+	<li>Integrate AI skills intelligence into hiring, development, performance, and mobility to enable a more fluid and adaptive workforce.</li>
+	<li>Identify critical talent gaps, surpluses, and skill adjacencies, developing mitigation strategies (e.g., build, buy, borrow).</li>
 </ul>
+<p><strong>&nbsp;</strong></p>
+<p><strong>Skills</strong></p>
+<ul>
+	<li>You are deeply knowledgeable about the business and industry, comfortable navigating and leading others through ambiguity, pivoting quickly to address new challenges, and solving complex problems without a pre-existing playbook.</li>
+	<li>AI fluency: You’re skilled in leveraging AI and machine intelligence to build the talent ecosystem&nbsp;</li>
+	<li>Systems Thinker: You recognize the connections across the organization, and take a holistic approach to analyzing situations and developing solutions that are sustainable in the longer term and account for system interdependencies.</li>
+	<li>Strategic Acumen: You have an ability to translate long-term business strategy into concrete talent and workforce initiatives.</li>
+	<li>Data-Driven: You use data and insights to proactively diagnose issues, inform your recommendations, influence decisions, and measure the impact of your work.</li>
+	<li>Execution Excellence &amp; Resilience: You deliver high quality results through leading projects and initiatives with milestones and delivery schedules in partnership with stakeholders, and develop clear action plans with results-oriented goals for measuring success.</li>
+	<li>Consulting &amp; Partnering: You have a strong ability to build trust and credibility with business leaders as a subject matter expert, and to work effectively across multiple business areas and teams in a fast-paced environment.</li>
+	<li>Change Management: You are skilled in leading organizational change and ensuring successful adoption of new HR processes.<br><br></li>
+</ul>
+<p><strong>Desirable Qualifications</strong></p>
+<ul>
+	<li>10+ years of progressive experience in Human Resources, with a strong focus on Talent Management, Workforce Planning, and Performance Management.</li>
+	<li>Proven experience partnering directly with C-suite executives within a rapidly scaling organization.</li>
+	<li>Technology industry experience is strongly preferred.</li>
+	<li>Bachelor's degree in Human Resources (or related field) required. Advanced degree preferred.</li>
+	<li>Demonstrated success running large-scale, complex HR programs (e.g., annual performance cycle, talent review).</li>
+	<li>Highly proficient in using Workday and other HR systems/tools tools to extract, analyze, and present data-driven insights to senior leaders.</li>
+	<li>Prompt Engineering &amp; Design: Experience using LLMs to accelerate content creation and organizational research.</li>
+	<li>Exceptional verbal, written, and presentation skills, with the ability to influence and collaborate effectively across all levels of the organization.</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $154,000 - $212,000</span></li>
+	<li><span data-sheets-root="1">For New York City based hired; Estimated annual salary of $148,000 - $204,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

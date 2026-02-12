@@ -5,44 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Lisbon, Portugal</strong></p>
-<h4><strong>Technical Program Manager, FinTech - Engineering PMO</strong></h4>
-<p>Cloudflare has embarked on a transformation of our entire quote &nbsp;to cash process.<br>We are seeking a highly skilled and self-motivated Technical Program Manager to work with leads to transform FinTech portfolio of projects.<br>Your main responsibility will be to work cross functionally across Product, Engineering, Design, Revenue Ops, Finance, BI, external vendors, and more to plan and execute on the overall strategy.&nbsp;</p>
-<p>You will play an active part in collecting requirements, setting up deliverables, reporting progress, and working with various functions to deliver success. You will partner with various product and engineering counterparts to determine available options, manage stakeholder expectations, and execute against the roadmap.</p>
-<p>This job involves managing multiple projects and accommodating teams dispersed across multiple time zones. Your main responsibilities will be partnering with the engineering and product teams to reliably execute against various objectives. You will be partnered with a lead TPM who will guide you through your journey.&nbsp;&nbsp;</p>
-<p>The ideal candidate is process driven but remains flexible and iterative, someone who loves to tackle new challenges, really enjoys bringing people together as a team, and driving them towards success.&nbsp;</p>
-<p><strong>This position is based in Lisbon, Portugal. &nbsp; You will be reporting into the Engineering Program Management Organization (PMO).&nbsp;</strong></p>
-<p><strong>Major areas of responsibilities</strong></p>
+<p><strong>GTM Financial Analyst</strong></p>
+<p><strong>About the department</strong></p>
+<p>The GTM Finance team is responsible for forecasting, budgeting, planning, and performing various analyses to support our company strategy and execution.&nbsp; We are looking for an individual with strong analytical horsepower to join the team to provide actionable insights and decision-making support across Cloudflare’s GTM leadership team. The ideal candidate is passionate about problem solving and optimizing processes that scale with our rapid growth.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Organize &amp; Manage Initiatives driven by FinTech Leadership</li>
-	<ul>
-		<li>Assist lead TPM in aligning strategy to execution&nbsp;</li>
-		<li>Drive the operations of the NPI (New Product Introduction) process</li>
-	</ul>
-	<li>Support Engineering Planning Cycles&nbsp;</li>
-	<ul>
-		<li>Organize roadmap and KPI reviews</li>
-		<li>Provide line of sight on capacity/load&nbsp;</li>
-		<li>Manage dependencies and intake</li>
-	</ul>
-	<li>Understand technical requirements of products in the Opportunity to Cash lifecycle</li>
-	<li>Effectively balance risk and achieve business objectives&nbsp;</li>
-	<li>Obtain clear requirements, plans, and decisions to proactively tackle critical gaps and mitigate risk</li>
-	<li>Identify gaps and work with senior TPM to roll out of scalable processes to meet product and engineering team goals</li>
-	<li>Set up regular feedback cycles and ensure buy-in from contributors on program plan &amp; roadmap</li>
-	<li>Provide regular status updates to stakeholders and senior management</li>
+	<li>Drive and optimize monthly close process across multiple GTM departments</li>
+	<li>Collaborate with Accounting and key business stakeholders to ensure forecast accuracy for a broad range of expense types</li>
+	<li>Build, maintain, and improve various forecast models and processes to maximize efficiency and streamline workflows</li>
+	<li>Support strategic data-driven decision making through analytics and strong business acumen</li>
+	<li>Support annual planning and quarterly business reviews</li>
+	<li>Provide ad-hoc analytical support to FP&amp;A, Revenue Operations, and Executive Leadership</li>
 </ul>
-<p><strong>Desirable skills and knowledge&nbsp;</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>BS+ in Computer Science, Information Technology, Information Security or related field or equivalent experience&nbsp;</li>
-	<li>3+ years experience in technical program management and a desire for continuous improvement</li>
-	<li>Can create realistic project plans, managing dependencies, and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Excellent oral and written communication. Ability to read the room&nbsp;</li>
-	<li>Experience working with multiple time zones and multiple cross functional teams</li>
-	<li>Strong competency with Confluence, JIRA (admin-level experience strongly preferred), and various development methodologies (Agile, Waterfall, Kaizen, Scrum, etc)&nbsp;&nbsp;</li>
-	<li>A mind open to feedback and filled with curiosity,&nbsp; who has successfully gained experience with peers by demonstrating empathy, and self-starter</li>
-	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Minimum 5 years of <strong>Accounting</strong>, Business Operations, Strategic Finance, FP&amp;A, Investment Banking or Consulting experience</li>
+	<li>Bachelor’s degree, MBA a plus</li>
+	<li>Advanced / working proficiency with English mandatory, both written and verbal</li>
+	<li>Strategic thinker, balancing near term deliverables with long-term considerations&nbsp;</li>
+	<li>Experience using data and metrics to drive process improvements and decision making</li>
+	<li>Modeling: Advanced proficiency with MS Excel and Google Sheets, SQL a plus; ability to build thoughtful, complex and auditable business model and present the outcome in an easy-to-understand format&nbsp;</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable insights to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>System skills: Google Workspace, Anaplan, Oracle, Workday, Greenhouse, Salesforce, Tableau, Coupa, Zip, Uptempo, Looker, MS Office, BigQuery</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

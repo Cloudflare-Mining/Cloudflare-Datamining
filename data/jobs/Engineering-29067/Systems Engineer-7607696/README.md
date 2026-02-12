@@ -5,31 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2>This is a hybrid role with a preferred location of Austin, TX. Candidates located near our London and Lisbon hubs will also be considered.</h2>
-<p><strong>Cloudflare One GTM Strategy Manager</strong></p>
-<p>Cloudflare is looking for a Strategy Manager to support our Cloudflare One GTM function. This role is a unique opportunity to work closely with the leader of Cloudflare One GTM, serving as a thought partner on strategic initiatives that accelerate SASE revenue and improve how we operate across teams. This is a high-ownership, high-impact role where strategic thinking meets operational execution.</p>
-<p>We're looking for someone with a strong background in strategy, business ops, or revenue ops. This is an ideal opportunity for someone who thrives in fast-paced environments, loves solving ambiguous problems, and can balance multiple priorities across cross-functional teams.</p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>Available Location : </strong>Austin, TX (Hybrid)</p>
+<p><strong>Role Summary</strong></p>
+<p>As a Full Stack engineer on the Marketing Engineering team, you will be responsible for building and maintaining the systems that comprise our marketing website, marketing preferences, Lavarand, and bespoke, in-house applications. You will build Cloudflare Workers deployed on our edge network, Node.js and Golang services to Kubernetes (experience with Cloudflare product equivalents is a plus). You’ll bring industry best practices for standing up and maintaining backend services plus a solid understanding of modern website development.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Drive cross-functional initiatives across Cloudflare One GTM, ensuring teams are unblocked, aligned, and operationally efficient.</li>
-	<li>Partner with teams like Product, Sales, Support, and Professional Services to streamline workflows and improve the end to end customer experience for Cloudflare One.</li>
-	<li>Contribute to and help track key SASE growth KPIs, including revenue, market awareness and post-sales adoption.</li>
-	<li>Measure tactical and strategic campaign insights</li>
-	<li>Manage data driven signals and utilization roadmap for internal tools</li>
-	<li>Support and build new strategic programs like Cloudflare Helix and the Cloudflare One Design Partner Program</li>
-	<li>Long-term strategic vision setting for the Cloudflare One GTM team, including org design, team planning, budgeting, tracking, and process improvements.</li>
-	<li>Own and manage multiple high-priority projects simultaneously, ensuring deadlines are met and teams are aligned.</li>
+	<li>Build tools, frameworks, and libraries to help the engineering/DevOps team build and maintain a better www.cloudflare.com</li>
+	<li>Optimize our TypeScript/Astro build system</li>
+	<li>Build Workers in TypeScript</li>
+	<li>Build services and tooling in TypeScript, AstroJS, and Golang</li>
+	<li>Review work from your peers throughout all stages of the development lifecycle</li>
+	<li>Plan and contribute to engineering work on large projects</li>
+	<li>Collaborate with team members to help bring out their best work</li>
 </ul>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience:</strong></p>
+<p><strong>Role Requirements</strong></p>
 <ul>
-	<li>6+ years of experience in strategy, business operations, revenue operations, or product operations, with a track record of managing multiple high-impact initiatives.</li>
-	<li>Strong sense of ownership; someone who takes initiative, works independently, and manages time effectively.</li>
-	<li>Excellent cross-functional communication skills and the ability to influence and align stakeholders at all levels.</li>
-	<li>Highly customer-centric, with natural curiosity about technical products and a strategic mindset for solving complex problems.</li>
-	<li>Comfortable working under pressure and adjusting priorities to meet deadlines in a fast-moving environment.</li>
-	<li>Proven ability to nurture and grow customer relationships over the long term.</li>
-	<li>Data-driven, proficient in Excel/Google Sheets, and experienced in using data to inform decisions.</li>
-	<li>Prior experience with Salesforce CRM, Tableau, BigQuery, or BoostUp is a plus.</li>
+	<li>More than 2 years of experience building and managing high volume software applications;&nbsp; Golang and Typescript are a plus</li>
+	<li>Experience building, deploying, and operating services</li>
+	<li>You enjoy getting things done and have a bias for action: you're a builder and a creator and have contributed to small teams that deliver results</li>
+	<li>Experience contributing to build systems for large application projects</li>
+	<li>Strong interpersonal and communication skills. Curiosity and empathy are coveted traits here!</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

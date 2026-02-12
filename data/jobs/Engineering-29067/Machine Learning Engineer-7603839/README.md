@@ -5,28 +5,62 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available locations: London&nbsp;<br>Position Type: 12 month fixed term contract</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>As a <strong>Global Mobility Coordinator</strong>, you will play a vital role in executing the day-to-day logistics of our global relocation and immigration programs, ensuring a seamless transition for employees moving internationally. You will work closely with the People Operations team and external vendors to track visa milestones, coordinate relocation services, and maintain high standards of data integrity. We are looking for a highly organised, detail-oriented individual who possesses the empathy to support employees through major life changes and the proactivity to keep complex processes moving on schedule.</p>
-<p>&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: Austin</strong></p>
+<h2>About the Team</h2>
+<p>The Core Data team’s mission is building a centralized data platform for Cloudflare that provides&nbsp; secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We facilitate access to data from federated sources across the company for dashboarding, ad-hoc querying and in-product use cases. We power data pipelines and data products, secure and monitor data, and drive data governance at Cloudflare. Our work enables every individual at the company to act with greater information and make more informed decisions.&nbsp;</p>
+<h2>About the Role</h2>
+<p>We are looking for a Machine Learning Engineer to lead the transformation of our data lakehouse into a semantically-aware intelligence platform. Instead of traditional ETL, this role focuses on building the software layer that extracts meaning from our vast data stores. You will be responsible for developing and leveraging a Semantic Knowledge Graph to power LLM-driven applications, discovery tools, and automated reasoning systems that serve business needs across Product, Marketing, and Billing.</p>
+<h2>What You'll Do</h2>
 <ul>
-	<li><strong>Operational Support:</strong> Serve as a point of contact for employees during their relocation journey, providing initial process overviews and ensuring they feel supported from initiation to arrival.</li>
-	<li><strong>Immigration and Relocation Coordination:</strong> Initiate relevant vendors, assist in the day-to-day coordination of immigration support and relocation logistics.&nbsp;</li>
-	<li><strong>Process Administration:</strong> Partner with People Operations to execute the administrative tasks associated with permanent transfers, assignments and temporary remote work requests. You will help ensure that all internal records and payroll notifications are accurate and timely.</li>
-	<li><strong>Immigration Tracking:</strong> Support the team in monitoring global immigration compliance, specifically by tracking visa expiry dates and coordinate with external counsel to initiate renewals and extensions.</li>
-	<li><strong>Data Management:</strong> Maintain and update global mobility trackers (short-term assignments, transfers, and repatriations). You will ensure that our reports are accurate.</li>
-	<li><strong>Resource Maintenance:</strong> Assist in the upkeep of internal resources, including FAQs, intranet pages, and process maps, ensuring that our employees always have access to the most current mobility information.</li>
-	<li><strong>Vendor Liaison:</strong> Act as a junior point of contact for external relocation and immigration vendors, helping to schedule briefings and following up on pending action items to keep cases moving forward.</li>
-	<li><strong>Program Support:</strong> Provide administrative and project support to the Global Mobility Specialists on new initiatives, helping with data collection and analysis, and internal communications.</li>
+	<li>Architect Semantic Layers: Design and develop the software infrastructure to layer semantic meaning over our existing data stack, including Kubernetes, Trino, and Iceberg.</li>
+	<li>Build Knowledge Graphs: Construct and maintain large-scale knowledge graphs from unstructured and structured sources to enable advanced reasoning.</li>
+	<li>Develop AI Software: Build production-grade software and APIs that leverage LLMs and Graph RAG pipelines to solve complex business queries.</li>
+	<li>Enhance Data Intelligence: Implement embedding-based retrieval and semantic deduplication to improve the precision and reliability of AI agents.</li>
+	<li>Collaborate on AI Solutions: Work with cross-functional teams to deploy conversational agents and automated diagnostics tools that turn data into actionable business value.</li>
 </ul>
-<h3><strong>Who You Are:</strong></h3>
+<h2>Requirements</h2>
 <ul>
-	<li><strong>Experience:</strong> You have 1–2 years of experience in an HR, legal, or administrative role, ideally with some exposure to immigration or global mobility. You understand the basics of visa types or relocation logistics and are eager to grow your expertise.</li>
-	<li><strong>Detail-Oriented:</strong> You have a high degree of "operational excellence." You enjoy checking boxes, meeting deadlines, and ensuring that no detail falls through the cracks.</li>
-	<li><strong>Self-Starter:</strong> You are proactive and motivated. While you will have guidance, you are someone who looks for the next task and isn't afraid to ask questions to ensure you’re providing the best support possible.</li>
-	<li><strong>Empathetic Communicator:</strong> You recognize that moving countries is a major life event. You are a kind, clear, and professional communicator who enjoys helping people navigate complex processes.</li>
-	<li><strong>Organized:</strong> You can juggle multiple tasks at once without losing your cool. You thrive in a fast-paced environment and love using spreadsheets or tools to keep your work organized.</li>
+	<li>3-5+ years of experience in software or machine learning engineering with a focus on AI-driven applications.</li>
+	<li>Expertise in Knowledge Representation: Proven experience building knowledge graphs (e.g., HNSW, Neptune) and using graph-based reasoning for AI.</li>
+	<li>Proficiency with LLMs &amp; GenAI: Hands-on experience with RAG pipelines, fine-tuning (SFT/LoRA), and LLM-as-a-judge evaluation frameworks.</li>
+	<li>Strong Backend Skills: Proficient in Python, Go, or TypeScript, with the ability to build and debug complex software systems.</li>
+	<li>Analytical Mindset: Strong ability to understand how semantic data structures drive business value and improve user decision-making.</li>
+	<li>B.S. or M.S. in Computer Science, Engineering, Mathematics, or related fields.</li>
+	<li>Solid understanding of systems engineering principles and practices.</li>
+</ul>
+<h2>Desirable Skills</h2>
+<ul>
+	<li>Experience with Semantic Search and hybrid vector search query engines.</li>
+	<li>Familiarity with MLOps and deploying models within Kubernetes environments.</li>
+	<li>Published research or a strong background in Applied ML or Computational Intelligence.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
