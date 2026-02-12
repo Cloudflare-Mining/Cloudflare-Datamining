@@ -572,7 +572,27 @@
 		path: "Path",
 		status_code: "Status code",
 		host: "Host",
-		waf: "WAF"
+		waf: "WAF",
+		content_type: "Content type"
+	},
+	content_types: {
+		images: "Images",
+		video: "Video",
+		audio: "Audio",
+		fonts: "Fonts",
+		documents: "Documents",
+		binary: "Binary",
+		archives: "Archives",
+		serialization: "Serialization",
+		plain_text: "Plain Text",
+		empty: "Empty",
+		unknown: "Unknown",
+		other: "Other"
+	},
+	content_type_tooltips: {
+		empty: "Response had no content body (e.g., HTTP 204 No Content)",
+		unknown: "Content type could not be determined from the response",
+		other: "Content types not matching any specific category"
 	},
 	rules_engine: {
 		title: "Pay Per Crawl pricing",

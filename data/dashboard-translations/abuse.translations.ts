@@ -13,13 +13,13 @@
 			error: "Error fetching abuse reports. Please try again."
 		},
 		column_name: {
-			[r.Xt.Id]: "Report ID",
-			[r.Xt.CDate]: "Date",
-			[r.Xt.Domain]: "Domain",
-			[r.Xt.Type]: "Report type",
-			[r.Xt.Status]: "Report status",
-			[r.Xt.AcceptedUrls]: "Accepted URLs",
-			[r.Xt.MitigationSummary]: "Cloudflare mitigations"
+			[a.Xt.Id]: "Report ID",
+			[a.Xt.CDate]: "Date",
+			[a.Xt.Domain]: "Domain",
+			[a.Xt.Type]: "Report type",
+			[a.Xt.Status]: "Report status",
+			[a.Xt.AcceptedUrls]: "Accepted URLs",
+			[a.Xt.MitigationSummary]: "Cloudflare mitigations"
 		},
 		mitigation_summary: {
 			accepted_url_count: "%{smart_count} accepted",
@@ -32,9 +32,9 @@
 		},
 		view_mitigations_link: "View mitigations",
 		filter: {
-			[r.Xt.Domain]: "Domain",
-			[r.Xt.Status]: "Report status",
-			[r.Xt.Type]: "Report type",
+			[a.Xt.Domain]: "Domain",
+			[a.Xt.Status]: "Report status",
+			[a.Xt.Type]: "Report type",
 			mitigation_status: "Mitigation status"
 		}
 	},
@@ -45,45 +45,17 @@
 			error: "Error fetching mitigations. Please try again."
 		},
 		column_name: {
-			[r.on.EffectiveDate]: "Date",
-			[r.on.Type]: "Mitigation",
-			[r.on.Status]: "Status",
-			[r.on.EntityType]: "Entity type",
-			[r.on.EntityId]: "Entity name or ID"
+			[a.on.EffectiveDate]: "Date",
+			[a.on.Type]: "Mitigation",
+			[a.on.Status]: "Status",
+			[a.on.EntityType]: "Entity type",
+			[a.on.EntityId]: "Entity name or ID"
 		},
 		filter: {
-			[r.on.Status]: "Status",
-			[r.on.Type]: "Mitigation"
+			[a.on.Status]: "Status",
+			[a.on.Type]: "Mitigation"
 		},
 		not_appealable: "This mitigation type is not appealable."
-	},
-	blocked_content_tables: {
-		titles: {
-			pending: "Pending blocks",
-			pending_count: (0, a.p)(c(), "count"),
-			active: "Active blocks",
-			active_count: (0, a.p)(u(), "count")
-		},
-		empty_state: {
-			default: (0, a.p)(l(), "blockCategory"),
-			search: (0, a.p)(d(), "blockCategory"),
-			error: (0, a.p)(m(), "blockCategory")
-		},
-		column_name: {
-			[r.dS.EnforcementDate]: "Date",
-			[r.dS.BlockType]: "Block Type",
-			[r.dS.Status]: "Status",
-			[r.dS.EntityType]: "Entity type",
-			[r.dS.EntityId]: "Entity name or ID"
-		},
-		filter: {
-			[r.dS.Status]: {
-				[o.IR.Active]: "Active",
-				[o.IR.Cancelled]: "Canceled",
-				[o.IR.InReview]: "In review",
-				[o.IR.Pending]: "Pending"
-			}
-		}
 	},
 	mitigation_status: {
 		active: "Active",
@@ -121,26 +93,26 @@
 		network_block: "Network block"
 	},
 	report_type: {
-		[r.fs.EMERGENCY]: "CSAM",
-		[r.fs.DMCA]: "Copyright",
-		[r.fs.GENERAL]: "General",
-		[r.fs.NCSEI]: "NCSEI",
-		[r.fs.PHISHING]: "Phishing",
-		[r.fs.REGISTRAR_WHOIS]: "Registrar",
-		[r.fs.THREAT]: "Threat",
-		[r.fs.TRADEMARK]: "Trademark",
-		[r.fs.NETWORK]: "Network"
+		[a.fs.EMERGENCY]: "CSAM",
+		[a.fs.DMCA]: "Copyright",
+		[a.fs.GENERAL]: "General",
+		[a.fs.NCSEI]: "NCSEI",
+		[a.fs.PHISHING]: "Phishing",
+		[a.fs.REGISTRAR_WHOIS]: "Registrar",
+		[a.fs.THREAT]: "Threat",
+		[a.fs.TRADEMARK]: "Trademark",
+		[a.fs.NETWORK]: "Network"
 	},
 	report_type_long: {
-		[r.fs.EMERGENCY]: "Child Sexual Abuse Material (CSAM)",
-		[r.fs.DMCA]: "Copyright Infringement & DMCA Violations",
-		[r.fs.GENERAL]: "General",
-		[r.fs.NCSEI]: "Non-Consensual Sexually Explicit Imagery (NCSEI)",
-		[r.fs.PHISHING]: "Phishing",
-		[r.fs.REGISTRAR_WHOIS]: "Registrar",
-		[r.fs.THREAT]: "Threat",
-		[r.fs.TRADEMARK]: "Trademark",
-		[r.fs.NETWORK]: "Network"
+		[a.fs.EMERGENCY]: "Child Sexual Abuse Material (CSAM)",
+		[a.fs.DMCA]: "Copyright Infringement & DMCA Violations",
+		[a.fs.GENERAL]: "General",
+		[a.fs.NCSEI]: "Non-Consensual Sexually Explicit Imagery (NCSEI)",
+		[a.fs.PHISHING]: "Phishing",
+		[a.fs.REGISTRAR_WHOIS]: "Registrar",
+		[a.fs.THREAT]: "Threat",
+		[a.fs.TRADEMARK]: "Trademark",
+		[a.fs.NETWORK]: "Network"
 	},
 	api_handling: {
 		error: "Error",
@@ -196,12 +168,12 @@
 		submitter_telephone: "Telephone"
 	},
 	report_summary_values: {
-		active: (0, a.p)(p(), "activeCount")
+		active: (0, i.p)(s(), "activeCount")
 	},
 	breadcrumb_titles: {
 		manage_account: "Manage Account",
 		abuse: "Abuse Reports",
-		abuse_report: (0, a.p)(_(), "reportId")
+		abuse_report: (0, i.p)(c(), "reportId")
 	},
 	product_documentation: "Documentation",
 	date_range: "Date range",

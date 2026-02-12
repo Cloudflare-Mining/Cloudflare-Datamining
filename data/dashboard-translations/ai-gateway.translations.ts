@@ -875,7 +875,16 @@
 			resource_name_description: "Optional"
 		},
 		aws_bedrock: {
-			bedrock_api_key: "Bedrock API Key"
+			bedrock_api_key: "Bedrock API Key",
+			auth_mode_label: "Authentication Mode",
+			auth_mode_api_key: "Bedrock API Key",
+			auth_mode_iam: "IAM Credentials (SigV4)",
+			access_key_id: "AWS Access Key ID",
+			access_key_id_placeholder: "Enter your AWS Access Key ID",
+			secret_access_key: "AWS Secret Access Key",
+			secret_access_key_placeholder: "Enter your AWS Secret Access Key",
+			region: "AWS Region",
+			iam_description: "Use AWS IAM credentials for SigV4 authentication with Bedrock."
 		}
 	},
 	confirm_provider_config_delete_modal: {

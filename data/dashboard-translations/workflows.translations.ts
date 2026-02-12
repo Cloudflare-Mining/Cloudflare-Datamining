@@ -183,8 +183,8 @@
 			changeTimePeriod: "Change time period",
 			clearFilters: "Clear filters"
 		},
-		backgroundTime: "Background Time:",
-		backgroundTimeTooltip: "Background time can be composed by the time the instance was queued, plus the time the instance was pause."
+		backgroundTime: "Background time:",
+		backgroundTimeTooltip: "Background time includes the time that the instance was queued and paused."
 	},
 	instancePage: {
 		back: "Back",
@@ -204,7 +204,7 @@
 			cpuTime: "CPU Time",
 			avgWall: "Average Wall Time"
 		},
-		params: "Params",
+		params: "Input params",
 		input: "Input",
 		response: "Response",
 		output: "Output",
