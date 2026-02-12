@@ -256,9 +256,6 @@
 	"custom-dashboards-log-explorer": {
 		"true": 100
 	},
-	"custom-hostnames-acme-wildcard": {
-		"true": 100
-	},
 	"custom-ps-alerts": {
 		"true": 100
 	},
@@ -571,6 +568,9 @@
 	"magic-self-serve-mconn": {
 		"true": 100
 	},
+	"magic-subnet-visibility": {
+		"false": 100
+	},
 	"magic-transit-cf-site": {
 		"false": 100
 	},
@@ -593,6 +593,9 @@
 		"true": 100
 	},
 	"managed-robots-txt": {
+		"true": 100
+	},
+	"markdown-to-agents": {
 		"true": 100
 	},
 	"multi-signer-dns": {
@@ -621,9 +624,6 @@
 	},
 	"oauth-access-management": {
 		"false": 100
-	},
-	"onboarding-domain-registration": {
-		"true": 100
 	},
 	"page-rules-templates": {
 		"true": 100
@@ -690,7 +690,8 @@
 		"immediate-refresh": 100
 	},
 	"prg-dns-proxy-warning-exp": {
-		"baseline": 100
+		"baseline": 96,
+		"variant-b": 5
 	},
 	"prg-domain-success-page-experiment": {
 		"experiment": 100

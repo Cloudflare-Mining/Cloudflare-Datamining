@@ -561,9 +561,6 @@
 	"custom-dashboards-log-explorer": {
 		"enabled": true
 	},
-	"custom-hostnames-acme-wildcard": {
-		"enabled": true
-	},
 	"custom-ps-alerts": {
 		"enabled": true
 	},
@@ -760,6 +757,9 @@
 	},
 	"deseng-kumo-zones-table": {
 		"enabled": true
+	},
+	"deseng-logout-on-403-from-must-succeed-endpoints": {
+		"enabled": false
 	},
 	"deseng-workers-architecture": {
 		"enabled": true
@@ -1465,7 +1465,7 @@
 		"enabled": true
 	},
 	"magic-subnet-visibility": {
-		"enabled": false
+		"enabled": true
 	},
 	"magic-transit-cf-site": {
 		"enabled": true
@@ -1543,9 +1543,6 @@
 		"enabled": true
 	},
 	"oauth-access-management": {
-		"enabled": true
-	},
-	"onboarding-domain-registration": {
 		"enabled": true
 	},
 	"onboarding-nameserver-direction-page-updates": {
