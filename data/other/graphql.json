@@ -910,6 +910,7 @@
 		"connectionId": "Worker connection ID, when available",
 		"connectionStartTime": "When worker started devtools connection to browser session",
 		"datetime": "The time of the event",
+		"recordingMode": "Browser session recording mode: 'unknown', 'enabled', or 'disabled'",
 		"sampleInterval": "ABR sample interval",
 		"scriptName": "Name of worker who initiated the request",
 		"sessionId": "Browser session ID"
@@ -946,6 +947,7 @@
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "The date and time of the event truncated to the hour",
 		"datetimeMinute": "The date and time of the event truncated to the minute",
+		"recordingMode": "Browser session recording mode: 'unknown', 'enabled', or 'disabled'",
 		"scriptName": "Name of worker who initiated the request",
 		"sessionId": "Browser session ID"
 	},
