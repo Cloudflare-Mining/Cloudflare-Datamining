@@ -30,6 +30,7 @@
 		"allow-saas-for-access-application",
 		"allow-timeouts-0",
 		"authenticated_origin_pulls",
+		"cloudflare/workers_kv_namespace_state_upgrader",
 		"cloudflre/r2_bucket_state_upgrader",
 		"cloudflre/zero_trust_access_group_state_upgrader",
 		"cortlyons/api_shield-state-upgrader",
@@ -76,6 +77,7 @@
 		"preserve-hcl-comments",
 		"registry-docs",
 		"release-cleanup",
+		"release-please--branches--main--changes--next",
 		"remove-debug-statements",
 		"resource-resets",
 		"revathyrams/master",
@@ -112,7 +114,6 @@
 		"vaishak/undo-gateway-setting",
 		"vaishak/update-pr-template",
 		"vaishak/zones-data",
-		"vaishak/zt-access-application",
 		"workers-route-acc-test"
 	]
 }
