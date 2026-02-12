@@ -5,33 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London or Lisbon</strong></p>
-<h3><strong>About Engineering at Cloudflare</strong></h3>
-<p>Cloudflare’s Engineering team is responsible for the software platform that serves 120 million HTTP requests per second on average. We also build and run the tools that empower our colleagues to rapidly deliver products to market, as well as monitor and deploy software updates across the globe to over 200+ data centers. You’ll experience the full breadth of technologies needed to run one of the world’s largest networks serving the world's largest customers such as Shopify and VISA.</p>
-<p><strong>About The Team</strong></p>
-<p>Cloudflare’s Front Line (FL) group is responsible for maintaining and developing the main Cloudflare web server, processing over 120 million HTTP requests per second. In other words, we own the largest web server in the world.</p>
-<p>The Product Team is responsible for creating new customer-facing features, improving efficiency &amp; safety, and building the next iteration of Cloudflare products. The platform is a Rust based application and our API is mostly built on Workers or Golang.</p>
-<p><strong>What you'll do</strong></p>
-<p>You will work with a team of talented engineers to create new features to increase the availability, safety &amp; reliability of the edge ecosystem. You will improve current features, create new systems from scratch, and collaborate with platform teams to help to build the best web server in the world.&nbsp;</p>
-<p>This is a unique opportunity to be at the nexus of Cloudflare edge applications and operations and to collaborate closely with most other product and engineering teams at Cloudflare.&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>About this Role:</strong></p>
+<p>We are seeking a highly experienced Software Developer to join our team. In this role, you will be responsible for designing solutions and executing the roadmap with a particular focus on enabling Model Context Protocol (MCP) adoption across Enterprise Applications. You will play a pivotal role in connecting our AI assistants to our internal systems.</p>
+<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Experience in Rust, Golang, Kubernetes</li>
-	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
-	<li>Experience in performance engineering</li>
-	<li>Driving communication and consensus across teams</li>
-	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
+	<li>Work with leadership to organize a backlog of MCP servers needing to be built for various Enterprise Applications.</li>
+	<li>Design and develop MCP servers for both SaaS and on-premise applications, ensuring secure and efficient context retrieval.</li>
+	<li>Provide feedback and feature enhancements to improve the patterns by which we develop MCP servers. Enable other developers who may follow.</li>
+	<li>Partner closely with our internal MCP server rollout team to co-develop solutions or explore new opportunities for secure enablement.</li>
+	<li>Use your experience working cross-functionally to work closely with system owners so existing processes can be adapted to work with MCP development outcomes.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
+<p><strong>Requirements:</strong></p>
 <ul>
-	<li>Knowledge of web servers and web protocols</li>
-	<li>Distributed systems</li>
-	<li>Web security issues and industry standards</li>
-	<li>Use of Prometheus</li>
+	<li>3-5+ years of experience with design, development, and streamlining of Enterprise processes using automation and technical enablement.</li>
+	<li><strong>Specific experience in developing MCP servers for SaaS and on-prem applications.</strong></li>
+	<li>Advanced programming experience with Typescript, Python, or Go, including Microservice, REST, open API specs, and Integration design.</li>
+	<li>Strong knowledge and experience with configuration management tools and Infrastructure as Code methods, such as Terraform, Ansible, Chef, etc.</li>
+	<li>Strong knowledge and experience with build-deploy pipeline development and best practices in tools like GitLab or GitHub.</li>
+	<li>Experience and expertise in Agile methodology.</li>
+	<li>Excellent interpersonal and communication skills in written and spoken English.</li>
+	<li>Prior experience working on enterprise MCP engineering teams.</li>
 </ul>
-<p>Most importantly, we are looking for people who want to learn something new. We maintain the largest web server in the world, and we face unique challenges. You will be collaborating and designing innovative solutions to improve the life of millions of people around the globe, everywhere they are, whatever their needs are.</p>
-<p>Join and help us build a better Internet!</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
