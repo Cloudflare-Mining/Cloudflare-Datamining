@@ -46,7 +46,7 @@ The simplest way to use AI in a Cloudflare Worker. No API keys needed for Worker
 import { createWorkersAiChat } from "@cloudflare/tanstack-ai";
 import { chat, toHttpResponse } from "@tanstack/ai";
 
-const adapter = createWorkersAiChat("@cf/meta/llama-3.3-70b-instruct-fp8-fast", {
+const adapter = createWorkersAiChat("@cf/meta/llama-4-scout-17b-16e-instruct", {
 	binding: env.AI,
 });
 
@@ -62,7 +62,7 @@ return toHttpResponse(response);
 **Using REST credentials:**
 
 ```typescript
-const adapter = createWorkersAiChat("@cf/meta/llama-3.3-70b-instruct-fp8-fast", {
+const adapter = createWorkersAiChat("@cf/meta/llama-4-scout-17b-16e-instruct", {
 	accountId: "your-account-id",
 	apiKey: "your-api-key",
 });
@@ -105,7 +105,7 @@ Supported models: `@cf/openai/whisper`, `@cf/openai/whisper-tiny-en`, `@cf/opena
 import { createWorkersAiTts } from "@cloudflare/tanstack-ai";
 import { generateSpeech } from "@tanstack/ai";
 
-const adapter = createWorkersAiTts("@cf/deepgram/aura-1", {
+const adapter = createWorkersAiTts("@cf/deepgram/aura-2-en", {
 	binding: env.AI,
 });
 
@@ -169,7 +169,7 @@ const adapter = createOpenAiChat("gpt-4o", {
 ### Workers AI through Gateway
 
 ```typescript
-const adapter = createWorkersAiChat("@cf/meta/llama-3.3-70b-instruct-fp8-fast", {
+const adapter = createWorkersAiChat("@cf/meta/llama-4-scout-17b-16e-instruct", {
 	binding: env.AI.gateway("my-gateway-id"),
 	apiKey: env.WORKERS_AI_TOKEN,
 });
@@ -224,7 +224,7 @@ const openrouter = createOpenRouterChat("openai/gpt-4o", config);
 - `createWorkersAiChat(model, config)` -- chat and structured output
 - `createWorkersAiImage(model, config)` -- image generation
 - `createWorkersAiTranscription(model, config)` -- speech-to-text (Whisper, Deepgram nova-3)
-- `createWorkersAiTts(model, config)` -- text-to-speech (Deepgram aura-1)
+- `createWorkersAiTts(model, config)` -- text-to-speech (Deepgram Aura-2, Aura-1)
 - `createWorkersAiSummarize(model, config)` -- summarization (BART-large-CNN)
 
 **OpenAI:**

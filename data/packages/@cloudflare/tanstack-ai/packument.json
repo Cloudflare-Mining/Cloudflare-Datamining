@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/tanstack-ai",
 	"dist-tags": {
-		"latest": "0.1.0"
+		"latest": "0.1.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -28,21 +28,56 @@
 				"openai": "^6.16.0"
 			},
 			"devDependencies": {
-				"@microsoft/api-extractor": "^7.56.3",
+				"dotenv": "^17.2.3",
 				"@tanstack/ai": "^0.4.2",
-				"dotenv": "^17.2.3"
+				"@microsoft/api-extractor": "^7.56.3"
 			},
 			"peerDependencies": {
 				"@tanstack/ai": "^0.4.2"
 			},
 			"dist": {
-				"integrity": "sha512-pBRRBoyI0tG+TEpMXhUd3H2BEusOub7Avm+GE5j21GdBh6/wAjAW2J1hMgLas2KZeOCk/rAVAEtAINIYiwVWaA==",
 				"shasum": "24d2e341d3234236e5bf6c2be30eb2f06298dee4",
 				"tarball": "https://registry.npmjs.org/@cloudflare/tanstack-ai/-/tanstack-ai-0.1.0.tgz",
 				"fileCount": 127,
-				"unpackedSize": 486882,
+				"integrity": "sha512-pBRRBoyI0tG+TEpMXhUd3H2BEusOub7Avm+GE5j21GdBh6/wAjAW2J1hMgLas2KZeOCk/rAVAEtAINIYiwVWaA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDN39gxBQKEPUcqbdZUp+hJYEeJHyaP+iUXQixshYfWXAIgMfwghu8dVz9gFtmV+DfJsyNPSVUA5+01JOva0BSVX70=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2ftanstack-ai@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 486882
+			}
+		},
+		"0.1.1": {
+			"name": "@cloudflare/tanstack-ai",
+			"version": "0.1.1",
+			"dependencies": {
+				"openai": "^6.21.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20260212.0",
+				"@microsoft/api-extractor": "^7.56.3",
+				"@tanstack/ai": "^0.5.0",
+				"dotenv": "^17.2.4"
+			},
+			"peerDependencies": {
+				"@tanstack/ai": "^0.5.0"
+			},
+			"dist": {
+				"integrity": "sha512-lsFUPVyKSqyAYwbanTUn2I6OgL8BumAzqZf1Z5klG8z9+ymxLcgTOQ7tPu+lyaadvcrREFcBLThY8CyTIofCxg==",
+				"shasum": "02f18f8df491d452f82d6f26cb15c1fa089687dd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/tanstack-ai/-/tanstack-ai-0.1.1.tgz",
+				"fileCount": 127,
+				"unpackedSize": 511284,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2ftanstack-ai@0.1.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -50,7 +85,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDN39gxBQKEPUcqbdZUp+hJYEeJHyaP+iUXQixshYfWXAIgMfwghu8dVz9gFtmV+DfJsyNPSVUA5+01JOva0BSVX70="
+						"sig": "MEYCIQCr4RUd7tLOQzrvGIUhbCDO0pJ8NXzr9XZKNK5+QFsuawIhAKsWRDRQhHWPsurfkU0vtVsuJN6A7qE6onHdhe1RWq4/"
 					}
 				]
 			}
