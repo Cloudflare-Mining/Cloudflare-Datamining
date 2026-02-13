@@ -5,52 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Bangalore, India&nbsp;</strong></p>
-<p><strong>About the role</strong></p>
-<p>We are seeking a Senior Engineering Director to lead a team of engineers within our Cloudflare One engineering group. This role will have a strong focus on delivering our Cloudflare One Detections, Security Intelligence and Risk Scoring. As a senior leader based in Bengaluru, India, this role will also provide mentorship and guidance to other engineering teams, contributing to company-wide technical practices. The ideal candidate will have a deep technical background, proven leadership experience, and a passion for developing people and cultivating a strong engineering culture.</p>
-<h4><strong>What you'll do</strong></h4>
-<p>A qualified candidate will be equally skilled with people and technology, able to organize and inspire others while participating in technical discussions and planning.&nbsp;</p>
+<p><strong>Available Locations: Austin, TX - Hybrid</strong></p>
+<p><strong>About the Department:</strong></p>
+<p>Cloudflare’s Business Intelligence team plays a critical role in providing the advanced data analytics solution for the company’s business teams. We are responsible for building a centralized cloud data analytics platform using open source technologies that are used by our internal Business Partners and Machine Learning teams. Our goal is to democratize data, support Cloudflare’s critical business needs, and provide reporting and analytics self-service tools to fuel existing and new business critical initiatives.</p>
+<p><strong>About the Role:</strong></p>
+<p>We are looking for a self-motivated Technical Program Manager to join our Data Intelligence and Analytics (DIA) team. You will work with our technical leads in driving the delivery of various initiatives, including AI/ML projects, as well as supporting the roadmap tracking of our teams.&nbsp; This role is solely dedicated to supporting the building of internal data environments or the data products that serve internal data customers. The ideal candidate is process driven but remains flexible and iterative, able to manage internal and external stakeholders, and is able to adapt to quickly evolving situations.&nbsp;</p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li>Experience managing engineering managers.</li>
-	<li>Experience managing complex projects with external dependencies</li>
-	<li>Results and metrics driven</li>
-	<li>A strong attention to detail</li>
-	<li>Great communication skills</li>
-	<li>Experience hiring great engineers</li>
-	<li>A kind and generous attitude towards customers and coworkers alike</li>
-	<li>Ability to set technical direction and own decisions</li>
+	<li>Engage with various operations teams to plan, track, and manage the execution of programs and initiatives.</li>
+	<li>Develop clear and transparent communication channels to align with business stakeholders and other delivery teams and ensure relevant audiences receive appropriate updates on programs and projects.</li>
+	<li>Support DIA managers in requirements gathering, project tracking, meeting alignment, documentation and requisite follow-up.</li>
+	<li>Actively partner with DIA managers and team members on quarterly planning and roadmap tracking of our engineering teams.</li>
+	<li>Collaborate with team leads to develop executive reporting materials (e.g., executive steer co, weekly updates, key artifacts, etc.).</li>
+	<li>Facilitate communication between business stakeholders and the development team.</li>
+	<li>Support the management of data sourcing schedules, timelines, and milestones for the implementation and delivery of the projects and programs.</li>
+	<li>Organize daily activities: meetings, reporting, follow-up, to support the ongoing management of programs in flight.</li>
+	<li>Support the operational development of program management within the DIA team, and lend support to various operational functions.</li>
 </ul>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Required skills, knowledge, and experience:</strong></p>
 <ul>
-	<li>Lead multiple teams of engineers delivering customer facing products in our Cloudflare One suite.</li>
-	<li>Partner with Product Management to define and execute a strategy and achieve audacious goals.</li>
-	<li>Lead and mentor engineering managers and engineers across the Bengaluru office.</li>
-	<li>Work with peers around the world to drive cross organizational projects and develop best practices.</li>
-	<li>Foster a culture that is results oriented without sacrificing curiosity, kindness, and empathy for customers and co-workers alike.</li>
-	<li>Define metrics that guide the engineering teams.</li>
-	<li>Drive continuous improvement in your teams</li>
-	<li>Lead engineering recruiting efforts in Bengaluru</li>
+	<li>BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</li>
+	<li>3-5 years experience in planning and prioritization for highly cross functional teams</li>
+	<li>Excellent oral and written communication, proven track record of effective communication at various levels including executive level.</li>
+	<li>Strong competency with project management tools (Confluence, JIRA) and various development methodologies (Agile, Waterfall, Scrum, etc).</li>
+	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity.</li>
+	<li>Knowledge of technical program management and a desire for continuous improvement.</li>
+	<li>Cooperative leader who has successfully gained authority with peers by demonstrating empathy, providing support, and motivating others.&nbsp;</li>
+	<li>Role is based in Austin and you will be working with teams in various time zones.&nbsp; Expectation to be able to attend day-long in-office sessions.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
-<ul>
-	<li data-start="246" data-end="340">
-		<p data-start="248" data-end="340">Hiring &amp; Recruiting Excellence – Proven ability to attract, assess, and hire top talent.</p>
-	</li>
-	<li data-start="246" data-end="340">
-		<p data-start="248" data-end="340">Security Detection Expertise (Preferred) – Experience building, operating, or improving security detection systems.</p>
-	</li>
-	<li data-start="463" data-end="553">
-		<p data-start="465" data-end="553">Deep Technical Expertise – Demonstrates depth in at least one core technical domain.</p>
-	</li>
-	<li data-start="554" data-end="654">
-		<p data-start="556" data-end="654">High Ownership &amp; Execution Focus – Shows strong agency with a bias toward action and delivery.</p>
-	</li>
-	<li data-start="655" data-end="758">
-		<p data-start="657" data-end="758">Accountability &amp; Ownership Mindset – Takes full responsibility for outcomes and personal success.</p>
-	</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
