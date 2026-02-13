@@ -35,15 +35,8 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"ai_gateway_id": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -52,6 +45,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -104,11 +98,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"chunk": {
-											"default": true,
-											"type": "boolean",
-											"x-auditable": true
-										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
@@ -128,6 +117,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -186,11 +176,6 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
-										"engine_version": {
-											"default": 1,
-											"readOnly": true,
-											"type": "number"
-										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -205,13 +190,9 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"readOnly": true,
-											"type": "string"
-										},
 										"last_activity": {
 											"format": "date-time",
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -240,6 +221,7 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -249,6 +231,7 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -276,6 +259,10 @@
 												},
 												"mcp": {
 													"properties": {
+														"description": {
+															"default": "Finds exactly what you're looking for",
+															"type": "string"
+														},
 														"disabled": {
 															"default": false,
 															"description": "Disable MCP endpoint for this public endpoint",
@@ -346,6 +333,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -518,64 +506,6 @@
 											"readOnly": true,
 											"type": "string"
 										},
-										"summarization": {
-											"default": false,
-											"type": "boolean",
-											"x-auditable": true
-										},
-										"summarization_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
-											],
-											"x-auditable": true
-										},
-										"system_prompt_ai_search": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_index_summarization": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_rewrite_query": {
-											"type": "string",
-											"x-auditable": true
-										},
 										"token_id": {
 											"format": "uuid",
 											"type": "string",
@@ -589,10 +519,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"vectorize_active_namespace": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"vectorize_name": {
 											"readOnly": true,
 											"type": "string"
@@ -600,9 +526,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"type",
 										"source",
 										"vectorize_name",
@@ -683,7 +606,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -743,15 +666,8 @@
 								"result": {
 									"items": {
 										"properties": {
-											"account_id": {
-												"readOnly": true,
-												"type": "string"
-											},
-											"account_tag": {
-												"readOnly": true,
-												"type": "string"
-											},
 											"ai_gateway_id": {
+												"nullable": true,
 												"type": "string",
 												"x-auditable": true
 											},
@@ -760,6 +676,7 @@
 													{
 														"enum": [
 															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/zai-org/glm-4.7-flash",
 															"@cf/meta/llama-3.1-8b-instruct-fast",
 															"@cf/meta/llama-3.1-8b-instruct-fp8",
 															"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -812,11 +729,6 @@
 												"type": "string",
 												"x-auditable": true
 											},
-											"chunk": {
-												"default": true,
-												"type": "boolean",
-												"x-auditable": true
-											},
 											"chunk_overlap": {
 												"default": 10,
 												"maximum": 30,
@@ -836,6 +748,7 @@
 												"type": "string"
 											},
 											"created_by": {
+												"nullable": true,
 												"readOnly": true,
 												"type": "string"
 											},
@@ -894,11 +807,6 @@
 												"type": "boolean",
 												"x-auditable": true
 											},
-											"engine_version": {
-												"default": 1,
-												"readOnly": true,
-												"type": "number"
-											},
 											"hybrid_search_enabled": {
 												"default": false,
 												"type": "boolean",
@@ -913,13 +821,9 @@
 												"type": "string",
 												"x-auditable": true
 											},
-											"internal_id": {
-												"format": "uuid",
-												"readOnly": true,
-												"type": "string"
-											},
 											"last_activity": {
 												"format": "date-time",
+												"nullable": true,
 												"readOnly": true,
 												"type": "string"
 											},
@@ -948,6 +852,7 @@
 												"type": "string"
 											},
 											"modified_by": {
+												"nullable": true,
 												"readOnly": true,
 												"type": "string"
 											},
@@ -957,6 +862,7 @@
 												"x-auditable": true
 											},
 											"public_endpoint_id": {
+												"nullable": true,
 												"readOnly": true,
 												"type": "string"
 											},
@@ -984,6 +890,10 @@
 													},
 													"mcp": {
 														"properties": {
+															"description": {
+																"default": "Finds exactly what you're looking for",
+																"type": "string"
+															},
 															"disabled": {
 																"default": false,
 																"description": "Disable MCP endpoint for this public endpoint",
@@ -1054,6 +964,7 @@
 													{
 														"enum": [
 															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/zai-org/glm-4.7-flash",
 															"@cf/meta/llama-3.1-8b-instruct-fast",
 															"@cf/meta/llama-3.1-8b-instruct-fp8",
 															"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -1226,64 +1137,6 @@
 												"readOnly": true,
 												"type": "string"
 											},
-											"summarization": {
-												"default": false,
-												"type": "boolean",
-												"x-auditable": true
-											},
-											"summarization_model": {
-												"anyOf": [
-													{
-														"enum": [
-															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-															"@cf/meta/llama-3.1-8b-instruct-fast",
-															"@cf/meta/llama-3.1-8b-instruct-fp8",
-															"@cf/meta/llama-4-scout-17b-16e-instruct",
-															"@cf/qwen/qwen3-30b-a3b-fp8",
-															"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-															"@cf/moonshotai/kimi-k2-instruct",
-															"anthropic/claude-3-7-sonnet",
-															"anthropic/claude-sonnet-4",
-															"anthropic/claude-opus-4",
-															"anthropic/claude-3-5-haiku",
-															"cerebras/qwen-3-235b-a22b-instruct",
-															"cerebras/qwen-3-235b-a22b-thinking",
-															"cerebras/llama-3.3-70b",
-															"cerebras/llama-4-maverick-17b-128e-instruct",
-															"cerebras/llama-4-scout-17b-16e-instruct",
-															"cerebras/gpt-oss-120b",
-															"google-ai-studio/gemini-2.5-flash",
-															"google-ai-studio/gemini-2.5-pro",
-															"grok/grok-4",
-															"groq/llama-3.3-70b-versatile",
-															"groq/llama-3.1-8b-instant",
-															"openai/gpt-5",
-															"openai/gpt-5-mini",
-															"openai/gpt-5-nano"
-														],
-														"type": "string"
-													},
-													{
-														"enum": [
-															""
-														],
-														"type": "string"
-													}
-												],
-												"x-auditable": true
-											},
-											"system_prompt_ai_search": {
-												"type": "string",
-												"x-auditable": true
-											},
-											"system_prompt_index_summarization": {
-												"type": "string",
-												"x-auditable": true
-											},
-											"system_prompt_rewrite_query": {
-												"type": "string",
-												"x-auditable": true
-											},
 											"token_id": {
 												"format": "uuid",
 												"type": "string",
@@ -1297,10 +1150,6 @@
 												"type": "string",
 												"x-auditable": true
 											},
-											"vectorize_active_namespace": {
-												"readOnly": true,
-												"type": "string"
-											},
 											"vectorize_name": {
 												"readOnly": true,
 												"type": "string"
@@ -1308,9 +1157,6 @@
 										},
 										"required": [
 											"id",
-											"internal_id",
-											"account_id",
-											"account_tag",
 											"type",
 											"source",
 											"vectorize_name",
@@ -1389,7 +1235,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1435,15 +1281,8 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"ai_gateway_id": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -1452,6 +1291,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -1504,11 +1344,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"chunk": {
-											"default": true,
-											"type": "boolean",
-											"x-auditable": true
-										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
@@ -1528,6 +1363,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -1586,11 +1422,6 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
-										"engine_version": {
-											"default": 1,
-											"readOnly": true,
-											"type": "number"
-										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -1605,13 +1436,9 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"readOnly": true,
-											"type": "string"
-										},
 										"last_activity": {
 											"format": "date-time",
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -1640,6 +1467,7 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -1649,6 +1477,7 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -1676,6 +1505,10 @@
 												},
 												"mcp": {
 													"properties": {
+														"description": {
+															"default": "Finds exactly what you're looking for",
+															"type": "string"
+														},
 														"disabled": {
 															"default": false,
 															"description": "Disable MCP endpoint for this public endpoint",
@@ -1746,6 +1579,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -1918,64 +1752,6 @@
 											"readOnly": true,
 											"type": "string"
 										},
-										"summarization": {
-											"default": false,
-											"type": "boolean",
-											"x-auditable": true
-										},
-										"summarization_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
-											],
-											"x-auditable": true
-										},
-										"system_prompt_ai_search": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_index_summarization": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_rewrite_query": {
-											"type": "string",
-											"x-auditable": true
-										},
 										"token_id": {
 											"format": "uuid",
 											"type": "string",
@@ -1989,10 +1765,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"vectorize_active_namespace": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"vectorize_name": {
 											"readOnly": true,
 											"type": "string"
@@ -2000,9 +1772,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"type",
 										"source",
 										"vectorize_name",
@@ -2083,7 +1852,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2231,7 +2000,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2260,6 +2029,7 @@
 					"schema": {
 						"properties": {
 							"ai_gateway_id": {
+								"nullable": true,
 								"type": "string",
 								"x-auditable": true
 							},
@@ -2268,6 +2038,7 @@
 									{
 										"enum": [
 											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/zai-org/glm-4.7-flash",
 											"@cf/meta/llama-3.1-8b-instruct-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fp8",
 											"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -2429,6 +2200,10 @@
 									},
 									"mcp": {
 										"properties": {
+											"description": {
+												"default": "Finds exactly what you're looking for",
+												"type": "string"
+											},
 											"disabled": {
 												"default": false,
 												"description": "Disable MCP endpoint for this public endpoint",
@@ -2499,6 +2274,7 @@
 									{
 										"enum": [
 											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/zai-org/glm-4.7-flash",
 											"@cf/meta/llama-3.1-8b-instruct-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fp8",
 											"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -2698,15 +2474,8 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"ai_gateway_id": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -2715,6 +2484,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -2767,11 +2537,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"chunk": {
-											"default": true,
-											"type": "boolean",
-											"x-auditable": true
-										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
@@ -2791,6 +2556,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -2849,11 +2615,6 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
-										"engine_version": {
-											"default": 1,
-											"readOnly": true,
-											"type": "number"
-										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -2868,13 +2629,9 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"readOnly": true,
-											"type": "string"
-										},
 										"last_activity": {
 											"format": "date-time",
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -2903,6 +2660,7 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -2912,6 +2670,7 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -2939,6 +2698,10 @@
 												},
 												"mcp": {
 													"properties": {
+														"description": {
+															"default": "Finds exactly what you're looking for",
+															"type": "string"
+														},
 														"disabled": {
 															"default": false,
 															"description": "Disable MCP endpoint for this public endpoint",
@@ -3009,6 +2772,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -3181,64 +2945,6 @@
 											"readOnly": true,
 											"type": "string"
 										},
-										"summarization": {
-											"default": false,
-											"type": "boolean",
-											"x-auditable": true
-										},
-										"summarization_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
-											],
-											"x-auditable": true
-										},
-										"system_prompt_ai_search": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_index_summarization": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_rewrite_query": {
-											"type": "string",
-											"x-auditable": true
-										},
 										"token_id": {
 											"format": "uuid",
 											"type": "string",
@@ -3252,10 +2958,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"vectorize_active_namespace": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"vectorize_name": {
 											"readOnly": true,
 											"type": "string"
@@ -3263,9 +2965,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"type",
 										"source",
 										"vectorize_name",
@@ -3354,7 +3053,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -3410,6 +3109,7 @@
 													{
 														"enum": [
 															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/zai-org/glm-4.7-flash",
 															"@cf/meta/llama-3.1-8b-instruct-fast",
 															"@cf/meta/llama-3.1-8b-instruct-fp8",
 															"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -3490,101 +3190,8 @@
 												"type": "integer"
 											},
 											"filters": {
-												"anyOf": [
-													{
-														"properties": {
-															"key": {
-																"type": "string"
-															},
-															"type": {
-																"enum": [
-																	"eq",
-																	"ne",
-																	"gt",
-																	"gte",
-																	"lt",
-																	"lte"
-																],
-																"type": "string"
-															},
-															"value": {
-																"anyOf": [
-																	{
-																		"type": "string"
-																	},
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "boolean"
-																	}
-																]
-															}
-														},
-														"required": [
-															"key",
-															"type",
-															"value"
-														],
-														"type": "object"
-													},
-													{
-														"properties": {
-															"filters": {
-																"items": {
-																	"properties": {
-																		"key": {
-																			"type": "string"
-																		},
-																		"type": {
-																			"enum": [
-																				"eq",
-																				"ne",
-																				"gt",
-																				"gte",
-																				"lt",
-																				"lte"
-																			],
-																			"type": "string"
-																		},
-																		"value": {
-																			"anyOf": [
-																				{
-																					"type": "string"
-																				},
-																				{
-																					"type": "number"
-																				},
-																				{
-																					"type": "boolean"
-																				}
-																			]
-																		}
-																	},
-																	"required": [
-																		"key",
-																		"type",
-																		"value"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
-															},
-															"type": {
-																"enum": [
-																	"and",
-																	"or"
-																],
-																"type": "string"
-															}
-														},
-														"required": [
-															"type",
-															"filters"
-														],
-														"type": "object"
-													}
-												]
+												"additionalProperties": true,
+												"type": "object"
 											},
 											"match_threshold": {
 												"default": 0.4,
@@ -3605,6 +3212,10 @@
 													"hybrid"
 												],
 												"type": "string"
+											},
+											"return_on_failure": {
+												"default": true,
+												"type": "boolean"
 											}
 										},
 										"type": "object"
@@ -3645,6 +3256,7 @@
 									{
 										"enum": [
 											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/zai-org/glm-4.7-flash",
 											"@cf/meta/llama-3.1-8b-instruct-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fp8",
 											"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -3772,7 +3384,6 @@
 														"type": "number"
 													},
 													"keyword_score": {
-														"maximum": 1,
 														"minimum": 0,
 														"type": "number"
 													},
@@ -3882,7 +3493,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -3937,6 +3548,7 @@
 													{
 														"enum": [
 															"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+															"@cf/zai-org/glm-4.7-flash",
 															"@cf/meta/llama-3.1-8b-instruct-fast",
 															"@cf/meta/llama-3.1-8b-instruct-fp8",
 															"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -4017,101 +3629,8 @@
 												"type": "integer"
 											},
 											"filters": {
-												"anyOf": [
-													{
-														"properties": {
-															"key": {
-																"type": "string"
-															},
-															"type": {
-																"enum": [
-																	"eq",
-																	"ne",
-																	"gt",
-																	"gte",
-																	"lt",
-																	"lte"
-																],
-																"type": "string"
-															},
-															"value": {
-																"anyOf": [
-																	{
-																		"type": "string"
-																	},
-																	{
-																		"type": "number"
-																	},
-																	{
-																		"type": "boolean"
-																	}
-																]
-															}
-														},
-														"required": [
-															"key",
-															"type",
-															"value"
-														],
-														"type": "object"
-													},
-													{
-														"properties": {
-															"filters": {
-																"items": {
-																	"properties": {
-																		"key": {
-																			"type": "string"
-																		},
-																		"type": {
-																			"enum": [
-																				"eq",
-																				"ne",
-																				"gt",
-																				"gte",
-																				"lt",
-																				"lte"
-																			],
-																			"type": "string"
-																		},
-																		"value": {
-																			"anyOf": [
-																				{
-																					"type": "string"
-																				},
-																				{
-																					"type": "number"
-																				},
-																				{
-																					"type": "boolean"
-																				}
-																			]
-																		}
-																	},
-																	"required": [
-																		"key",
-																		"type",
-																		"value"
-																	],
-																	"type": "object"
-																},
-																"type": "array"
-															},
-															"type": {
-																"enum": [
-																	"and",
-																	"or"
-																],
-																"type": "string"
-															}
-														},
-														"required": [
-															"type",
-															"filters"
-														],
-														"type": "object"
-													}
-												]
+												"additionalProperties": true,
+												"type": "object"
 											},
 											"match_threshold": {
 												"default": 0.4,
@@ -4132,6 +3651,10 @@
 													"hybrid"
 												],
 												"type": "string"
+											},
+											"return_on_failure": {
+												"default": true,
+												"type": "boolean"
 											}
 										},
 										"type": "object"
@@ -4219,7 +3742,6 @@
 																"type": "number"
 															},
 															"keyword_score": {
-																"maximum": 1,
 																"minimum": 0,
 																"type": "number"
 															},
@@ -4333,7 +3855,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -4377,6 +3899,7 @@
 					"schema": {
 						"properties": {
 							"ai_gateway_id": {
+								"nullable": true,
 								"type": "string",
 								"x-auditable": true
 							},
@@ -4385,6 +3908,7 @@
 									{
 										"enum": [
 											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/zai-org/glm-4.7-flash",
 											"@cf/meta/llama-3.1-8b-instruct-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fp8",
 											"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -4558,6 +4082,10 @@
 									},
 									"mcp": {
 										"properties": {
+											"description": {
+												"default": "Finds exactly what you're looking for",
+												"type": "string"
+											},
 											"disabled": {
 												"default": false,
 												"description": "Disable MCP endpoint for this public endpoint",
@@ -4628,6 +4156,7 @@
 									{
 										"enum": [
 											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/zai-org/glm-4.7-flash",
 											"@cf/meta/llama-3.1-8b-instruct-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fp8",
 											"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -4801,6 +4330,7 @@
 									{
 										"enum": [
 											"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+											"@cf/zai-org/glm-4.7-flash",
 											"@cf/meta/llama-3.1-8b-instruct-fast",
 											"@cf/meta/llama-3.1-8b-instruct-fp8",
 											"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -4838,14 +4368,17 @@
 								"x-auditable": true
 							},
 							"system_prompt_ai_search": {
+								"nullable": true,
 								"type": "string",
 								"x-auditable": true
 							},
 							"system_prompt_index_summarization": {
+								"nullable": true,
 								"type": "string",
 								"x-auditable": true
 							},
 							"system_prompt_rewrite_query": {
+								"nullable": true,
 								"type": "string",
 								"x-auditable": true
 							},
@@ -4868,15 +4401,8 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"ai_gateway_id": {
+											"nullable": true,
 											"type": "string",
 											"x-auditable": true
 										},
@@ -4885,6 +4411,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -4937,11 +4464,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"chunk": {
-											"default": true,
-											"type": "boolean",
-											"x-auditable": true
-										},
 										"chunk_overlap": {
 											"default": 10,
 											"maximum": 30,
@@ -4961,6 +4483,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -5019,11 +4542,6 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
-										"engine_version": {
-											"default": 1,
-											"readOnly": true,
-											"type": "number"
-										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -5038,13 +4556,9 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"readOnly": true,
-											"type": "string"
-										},
 										"last_activity": {
 											"format": "date-time",
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -5073,6 +4587,7 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -5082,6 +4597,7 @@
 											"x-auditable": true
 										},
 										"public_endpoint_id": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -5109,6 +4625,10 @@
 												},
 												"mcp": {
 													"properties": {
+														"description": {
+															"default": "Finds exactly what you're looking for",
+															"type": "string"
+														},
 														"disabled": {
 															"default": false,
 															"description": "Disable MCP endpoint for this public endpoint",
@@ -5179,6 +4699,7 @@
 												{
 													"enum": [
 														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+														"@cf/zai-org/glm-4.7-flash",
 														"@cf/meta/llama-3.1-8b-instruct-fast",
 														"@cf/meta/llama-3.1-8b-instruct-fp8",
 														"@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -5351,64 +4872,6 @@
 											"readOnly": true,
 											"type": "string"
 										},
-										"summarization": {
-											"default": false,
-											"type": "boolean",
-											"x-auditable": true
-										},
-										"summarization_model": {
-											"anyOf": [
-												{
-													"enum": [
-														"@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fast",
-														"@cf/meta/llama-3.1-8b-instruct-fp8",
-														"@cf/meta/llama-4-scout-17b-16e-instruct",
-														"@cf/qwen/qwen3-30b-a3b-fp8",
-														"@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-														"@cf/moonshotai/kimi-k2-instruct",
-														"anthropic/claude-3-7-sonnet",
-														"anthropic/claude-sonnet-4",
-														"anthropic/claude-opus-4",
-														"anthropic/claude-3-5-haiku",
-														"cerebras/qwen-3-235b-a22b-instruct",
-														"cerebras/qwen-3-235b-a22b-thinking",
-														"cerebras/llama-3.3-70b",
-														"cerebras/llama-4-maverick-17b-128e-instruct",
-														"cerebras/llama-4-scout-17b-16e-instruct",
-														"cerebras/gpt-oss-120b",
-														"google-ai-studio/gemini-2.5-flash",
-														"google-ai-studio/gemini-2.5-pro",
-														"grok/grok-4",
-														"groq/llama-3.3-70b-versatile",
-														"groq/llama-3.1-8b-instant",
-														"openai/gpt-5",
-														"openai/gpt-5-mini",
-														"openai/gpt-5-nano"
-													],
-													"type": "string"
-												},
-												{
-													"enum": [
-														""
-													],
-													"type": "string"
-												}
-											],
-											"x-auditable": true
-										},
-										"system_prompt_ai_search": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_index_summarization": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"system_prompt_rewrite_query": {
-											"type": "string",
-											"x-auditable": true
-										},
 										"token_id": {
 											"format": "uuid",
 											"type": "string",
@@ -5422,10 +4885,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"vectorize_active_namespace": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"vectorize_name": {
 											"readOnly": true,
 											"type": "string"
@@ -5433,9 +4892,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"type",
 										"source",
 										"vectorize_name",
@@ -5566,7 +5022,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {

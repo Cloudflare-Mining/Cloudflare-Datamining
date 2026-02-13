@@ -596,6 +596,12 @@
 						"schema": {
 							"type": "object"
 						}
+					},
+					"audio/mpeg": {
+						"schema": {
+							"format": "binary",
+							"type": "string"
+						}
 					}
 				},
 				"description": "Object with user data."
@@ -804,6 +810,12 @@
 						"schema": {
 							"type": "object"
 						}
+					},
+					"audio/mpeg": {
+						"schema": {
+							"format": "binary",
+							"type": "string"
+						}
 					}
 				},
 				"description": "Object with user data."
@@ -981,6 +993,12 @@
 					"application/json": {
 						"schema": {
 							"type": "object"
+						}
+					},
+					"audio/mpeg": {
+						"schema": {
+							"format": "binary",
+							"type": "string"
 						}
 					}
 				},

@@ -8,7 +8,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -21,7 +21,7 @@
 				"name": "snippet_name",
 				"required": true,
 				"schema": {
-					"description": "The identifying name of the snippet.",
+					"description": "Identify the snippet.",
 					"example": "my_snippet",
 					"pattern": "^[A-Za-z0-9_]+$",
 					"title": "Snippet Name",
@@ -37,22 +37,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -70,19 +70,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -100,11 +100,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -124,26 +125,34 @@
 										"errors": {
 											"enum": [
 												[]
-											]
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
 										},
 										"result": {
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												true
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A null response."
+				"description": "Return a null response."
 			},
 			"4XX": {
 				"content": {
@@ -151,22 +160,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -184,19 +193,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -214,11 +223,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -239,20 +249,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -260,22 +274,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -293,19 +307,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -323,11 +337,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -348,20 +363,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [
@@ -400,7 +419,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -416,22 +435,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -449,19 +468,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -479,11 +498,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -503,16 +523,20 @@
 										"errors": {
 											"enum": [
 												[]
-											]
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
 										},
 										"result": {
-											"description": "A list of snippet rules.",
+											"description": "Lists snippet rules.",
 											"items": {
-												"description": "A snippet rule.",
+												"description": "Define a snippet rule.",
 												"properties": {
 													"description": {
 														"default": "",
-														"description": "An informative description of the rule.",
+														"description": "Provide an informative description of the rule.",
 														"example": "Execute my_snippet when IP address is 1.1.1.1.",
 														"title": "Description",
 														"type": "string",
@@ -520,14 +544,14 @@
 													},
 													"enabled": {
 														"default": false,
-														"description": "Whether the rule should be executed.",
+														"description": "Indicate whether to execute the rule.",
 														"example": true,
 														"title": "Enabled",
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"expression": {
-														"description": "The expression defining which traffic will match the rule.",
+														"description": "Define the expression that determines which traffic matches the rule.",
 														"example": "ip.src eq 1.1.1.1",
 														"minLength": 1,
 														"title": "Expression",
@@ -535,7 +559,7 @@
 														"x-auditable": true
 													},
 													"id": {
-														"description": "The unique ID of the rule.",
+														"description": "Specify the unique ID of the rule.",
 														"example": "3a03d665bac047339bb530ecb439a90d",
 														"pattern": "^[0-9a-f]{32}$",
 														"readOnly": true,
@@ -544,7 +568,7 @@
 														"x-auditable": true
 													},
 													"last_updated": {
-														"description": "The timestamp of when the rule was last modified.",
+														"description": "Specify the timestamp of when the rule was last modified.",
 														"example": "2000-01-01T00:00:00.000000Z",
 														"format": "date-time",
 														"readOnly": true,
@@ -553,7 +577,7 @@
 														"x-auditable": true
 													},
 													"snippet_name": {
-														"description": "The identifying name of the snippet.",
+														"description": "Identify the snippet.",
 														"example": "my_snippet",
 														"pattern": "^[A-Za-z0-9_]+$",
 														"title": "Snippet Name",
@@ -576,9 +600,11 @@
 										"success": {
 											"enum": [
 												true
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -592,22 +618,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -625,19 +651,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -655,11 +681,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -680,20 +707,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -701,22 +732,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -734,19 +765,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -764,11 +795,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -789,20 +821,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [
@@ -841,7 +877,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -854,7 +890,7 @@
 				"name": "page",
 				"schema": {
 					"default": 1,
-					"description": "The current page number.",
+					"description": "Specifies the current page number.",
 					"example": 1,
 					"minimum": 1,
 					"title": "Page",
@@ -867,7 +903,7 @@
 				"name": "per_page",
 				"schema": {
 					"default": 25,
-					"description": "The number of results to return per page.",
+					"description": "Specifies how many results to return per page.",
 					"example": 25,
 					"minimum": 1,
 					"title": "Per Page",
@@ -883,22 +919,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -916,19 +952,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -946,11 +982,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -970,15 +1007,19 @@
 										"errors": {
 											"enum": [
 												[]
-											]
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
 										},
 										"result": {
-											"description": "A list of snippets.",
+											"description": "Contain snippets.",
 											"items": {
-												"description": "A snippet object.",
+												"description": "Define a snippet.",
 												"properties": {
 													"created_on": {
-														"description": "The timestamp of when the snippet was created.",
+														"description": "Indicates when the snippet was created.",
 														"example": "2000-01-01T00:00:00.000000Z",
 														"format": "date-time",
 														"title": "Created On",
@@ -986,7 +1027,7 @@
 														"x-auditable": true
 													},
 													"modified_on": {
-														"description": "The timestamp of when the snippet was last modified.",
+														"description": "Indicates when the snippet was last modified.",
 														"example": "2000-01-01T00:00:00.000000Z",
 														"format": "date-time",
 														"title": "Modified On",
@@ -994,7 +1035,7 @@
 														"x-auditable": true
 													},
 													"snippet_name": {
-														"description": "The identifying name of the snippet.",
+														"description": "Identify the snippet.",
 														"example": "my_snippet",
 														"pattern": "^[A-Za-z0-9_]+$",
 														"title": "Snippet Name",
@@ -1017,7 +1058,7 @@
 											"description": "Additional information to navigate the results.",
 											"properties": {
 												"count": {
-													"description": "The number of results in the current page.",
+													"description": "Specify the number of results in the current page.",
 													"example": 25,
 													"minimum": 0,
 													"title": "Count",
@@ -1026,7 +1067,7 @@
 												},
 												"page": {
 													"default": 1,
-													"description": "The current page number.",
+													"description": "Specifies the current page number.",
 													"example": 1,
 													"minimum": 1,
 													"title": "Page",
@@ -1035,7 +1076,7 @@
 												},
 												"per_page": {
 													"default": 25,
-													"description": "The number of results to return per page.",
+													"description": "Specifies how many results to return per page.",
 													"example": 25,
 													"minimum": 1,
 													"title": "Per Page",
@@ -1043,7 +1084,7 @@
 													"x-auditable": true
 												},
 												"total_count": {
-													"description": "The total number of results.",
+													"description": "Specify the total number of results.",
 													"example": 100,
 													"minimum": 0,
 													"title": "Total Count",
@@ -1051,7 +1092,7 @@
 													"x-auditable": true
 												},
 												"total_pages": {
-													"description": "The total number of pages.",
+													"description": "Specify the total number of pages.",
 													"example": 10,
 													"minimum": 1,
 													"title": "Total Pages",
@@ -1072,9 +1113,11 @@
 										"success": {
 											"enum": [
 												true
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1088,22 +1131,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1121,19 +1164,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1151,11 +1194,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -1176,20 +1220,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -1197,22 +1245,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1230,19 +1278,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1260,11 +1308,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -1285,20 +1334,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [
@@ -1338,7 +1391,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -1351,7 +1404,7 @@
 				"name": "snippet_name",
 				"required": true,
 				"schema": {
-					"description": "The identifying name of the snippet.",
+					"description": "Identify the snippet.",
 					"example": "my_snippet",
 					"pattern": "^[A-Za-z0-9_]+$",
 					"title": "Snippet Name",
@@ -1367,22 +1420,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1400,19 +1453,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1430,11 +1483,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -1454,13 +1508,17 @@
 										"errors": {
 											"enum": [
 												[]
-											]
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
 										},
 										"result": {
-											"description": "A snippet object.",
+											"description": "Define a snippet.",
 											"properties": {
 												"created_on": {
-													"description": "The timestamp of when the snippet was created.",
+													"description": "Indicates when the snippet was created.",
 													"example": "2000-01-01T00:00:00.000000Z",
 													"format": "date-time",
 													"title": "Created On",
@@ -1468,7 +1526,7 @@
 													"x-auditable": true
 												},
 												"modified_on": {
-													"description": "The timestamp of when the snippet was last modified.",
+													"description": "Indicates when the snippet was last modified.",
 													"example": "2000-01-01T00:00:00.000000Z",
 													"format": "date-time",
 													"title": "Modified On",
@@ -1476,7 +1534,7 @@
 													"x-auditable": true
 												},
 												"snippet_name": {
-													"description": "The identifying name of the snippet.",
+													"description": "Identify the snippet.",
 													"example": "my_snippet",
 													"pattern": "^[A-Za-z0-9_]+$",
 													"title": "Snippet Name",
@@ -1495,15 +1553,17 @@
 										"success": {
 											"enum": [
 												true
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A snippet response."
+				"description": "Return a snippet response."
 			},
 			"4XX": {
 				"content": {
@@ -1511,22 +1571,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1544,19 +1604,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1574,11 +1634,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -1599,20 +1660,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -1620,22 +1685,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1653,19 +1718,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1683,11 +1748,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -1708,20 +1774,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [
@@ -1761,7 +1831,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -1774,7 +1844,7 @@
 				"name": "snippet_name",
 				"required": true,
 				"schema": {
-					"description": "The identifying name of the snippet.",
+					"description": "Identify the snippet.",
 					"example": "my_snippet",
 					"pattern": "^[A-Za-z0-9_]+$",
 					"title": "Snippet Name",
@@ -1789,9 +1859,9 @@
 					"multipart/form-data": {
 						"schema": {
 							"additionalProperties": {
-								"description": "The list of files belonging to the snippet.",
+								"description": "Contain files belonging to the snippet.",
 								"items": {
-									"description": "A file belonging to the snippet.",
+									"description": "Specify a file belonging to the snippet.",
 									"format": "binary",
 									"title": "File",
 									"type": "string",
@@ -1801,17 +1871,17 @@
 								"title": "Files",
 								"type": "array"
 							},
-							"description": "A snippet content response object.",
+							"description": "Contain the snippet content response data.",
 							"title": "Snippet Content Response",
 							"type": "object"
 						}
 					}
 				},
-				"description": "A snippet content response.",
+				"description": "Return snippet content.",
 				"headers": {
 					"cf-entrypoint": {
 						"schema": {
-							"description": "Name of the file that contains the main module of the snippet.",
+							"description": "Specify the name of the file that contains the main module of the snippet.",
 							"example": "main.js",
 							"minLength": 1,
 							"title": "Main Module",
@@ -1827,22 +1897,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1860,19 +1930,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1890,11 +1960,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -1915,20 +1986,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -1936,22 +2011,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1969,19 +2044,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -1999,11 +2074,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -2024,20 +2100,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [
@@ -2077,7 +2157,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -2093,22 +2173,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2126,19 +2206,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2156,11 +2236,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -2180,16 +2261,20 @@
 										"errors": {
 											"enum": [
 												[]
-											]
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
 										},
 										"result": {
-											"description": "A list of snippet rules.",
+											"description": "Lists snippet rules.",
 											"items": {
-												"description": "A snippet rule.",
+												"description": "Define a snippet rule.",
 												"properties": {
 													"description": {
 														"default": "",
-														"description": "An informative description of the rule.",
+														"description": "Provide an informative description of the rule.",
 														"example": "Execute my_snippet when IP address is 1.1.1.1.",
 														"title": "Description",
 														"type": "string",
@@ -2197,14 +2282,14 @@
 													},
 													"enabled": {
 														"default": false,
-														"description": "Whether the rule should be executed.",
+														"description": "Indicate whether to execute the rule.",
 														"example": true,
 														"title": "Enabled",
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"expression": {
-														"description": "The expression defining which traffic will match the rule.",
+														"description": "Define the expression that determines which traffic matches the rule.",
 														"example": "ip.src eq 1.1.1.1",
 														"minLength": 1,
 														"title": "Expression",
@@ -2212,7 +2297,7 @@
 														"x-auditable": true
 													},
 													"id": {
-														"description": "The unique ID of the rule.",
+														"description": "Specify the unique ID of the rule.",
 														"example": "3a03d665bac047339bb530ecb439a90d",
 														"pattern": "^[0-9a-f]{32}$",
 														"readOnly": true,
@@ -2221,7 +2306,7 @@
 														"x-auditable": true
 													},
 													"last_updated": {
-														"description": "The timestamp of when the rule was last modified.",
+														"description": "Specify the timestamp of when the rule was last modified.",
 														"example": "2000-01-01T00:00:00.000000Z",
 														"format": "date-time",
 														"readOnly": true,
@@ -2230,7 +2315,7 @@
 														"x-auditable": true
 													},
 													"snippet_name": {
-														"description": "The identifying name of the snippet.",
+														"description": "Identify the snippet.",
 														"example": "my_snippet",
 														"pattern": "^[A-Za-z0-9_]+$",
 														"title": "Snippet Name",
@@ -2253,9 +2338,11 @@
 										"success": {
 											"enum": [
 												true
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2269,22 +2356,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2302,19 +2389,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2332,11 +2419,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -2357,20 +2445,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -2378,22 +2470,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2411,19 +2503,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2441,11 +2533,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -2466,20 +2559,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [
@@ -2519,7 +2616,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -2532,7 +2629,7 @@
 				"name": "snippet_name",
 				"required": true,
 				"schema": {
-					"description": "The identifying name of the snippet.",
+					"description": "Identify the snippet.",
 					"example": "my_snippet",
 					"pattern": "^[A-Za-z0-9_]+$",
 					"title": "Snippet Name",
@@ -2546,9 +2643,9 @@
 				"multipart/form-data": {
 					"schema": {
 						"additionalProperties": {
-							"description": "The list of files belonging to the snippet.",
+							"description": "Contain files belonging to the snippet.",
 							"items": {
-								"description": "A file belonging to the snippet.",
+								"description": "Specify a file belonging to the snippet.",
 								"format": "binary",
 								"title": "File",
 								"type": "string",
@@ -2558,13 +2655,13 @@
 							"title": "Files",
 							"type": "array"
 						},
-						"description": "A snippet object.",
+						"description": "Define a snippet object.",
 						"properties": {
 							"metadata": {
-								"description": "Metadata about the snippet.",
+								"description": "Provide metadata about the snippet.",
 								"properties": {
 									"main_module": {
-										"description": "Name of the file that contains the main module of the snippet.",
+										"description": "Specify the name of the file that contains the main module of the snippet.",
 										"example": "main.js",
 										"minLength": 1,
 										"title": "Main Module",
@@ -2597,22 +2694,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2630,19 +2727,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2660,11 +2757,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -2684,13 +2782,17 @@
 										"errors": {
 											"enum": [
 												[]
-											]
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
 										},
 										"result": {
-											"description": "A snippet object.",
+											"description": "Define a snippet.",
 											"properties": {
 												"created_on": {
-													"description": "The timestamp of when the snippet was created.",
+													"description": "Indicates when the snippet was created.",
 													"example": "2000-01-01T00:00:00.000000Z",
 													"format": "date-time",
 													"title": "Created On",
@@ -2698,7 +2800,7 @@
 													"x-auditable": true
 												},
 												"modified_on": {
-													"description": "The timestamp of when the snippet was last modified.",
+													"description": "Indicates when the snippet was last modified.",
 													"example": "2000-01-01T00:00:00.000000Z",
 													"format": "date-time",
 													"title": "Modified On",
@@ -2706,7 +2808,7 @@
 													"x-auditable": true
 												},
 												"snippet_name": {
-													"description": "The identifying name of the snippet.",
+													"description": "Identify the snippet.",
 													"example": "my_snippet",
 													"pattern": "^[A-Za-z0-9_]+$",
 													"title": "Snippet Name",
@@ -2725,15 +2827,17 @@
 										"success": {
 											"enum": [
 												true
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A snippet response."
+				"description": "Return a snippet response."
 			},
 			"4XX": {
 				"content": {
@@ -2741,22 +2845,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2774,19 +2878,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2804,11 +2908,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -2829,20 +2934,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -2850,22 +2959,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2883,19 +2992,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -2913,11 +3022,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -2938,20 +3048,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [
@@ -2990,7 +3104,7 @@
 				"name": "zone_id",
 				"required": true,
 				"schema": {
-					"description": "The unique ID of the zone.",
+					"description": "Use this field to specify the unique ID of the zone.",
 					"example": "9f1839b6152d298aca64c4e906b6d074",
 					"pattern": "^[0-9a-f]{32}$",
 					"title": "Zone ID",
@@ -3003,16 +3117,16 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "A snippet rules object.",
+						"description": "Define a snippet rules object.",
 						"properties": {
 							"rules": {
-								"description": "A list of snippet rules.",
+								"description": "Lists snippet rules.",
 								"items": {
-									"description": "A snippet rule.",
+									"description": "Define a snippet rule.",
 									"properties": {
 										"description": {
 											"default": "",
-											"description": "An informative description of the rule.",
+											"description": "Provide an informative description of the rule.",
 											"example": "Execute my_snippet when IP address is 1.1.1.1.",
 											"title": "Description",
 											"type": "string",
@@ -3020,14 +3134,14 @@
 										},
 										"enabled": {
 											"default": false,
-											"description": "Whether the rule should be executed.",
+											"description": "Indicate whether to execute the rule.",
 											"example": true,
 											"title": "Enabled",
 											"type": "boolean",
 											"x-auditable": true
 										},
 										"expression": {
-											"description": "The expression defining which traffic will match the rule.",
+											"description": "Define the expression that determines which traffic matches the rule.",
 											"example": "ip.src eq 1.1.1.1",
 											"minLength": 1,
 											"title": "Expression",
@@ -3035,7 +3149,7 @@
 											"x-auditable": true
 										},
 										"id": {
-											"description": "The unique ID of the rule.",
+											"description": "Specify the unique ID of the rule.",
 											"example": "3a03d665bac047339bb530ecb439a90d",
 											"pattern": "^[0-9a-f]{32}$",
 											"readOnly": true,
@@ -3044,7 +3158,7 @@
 											"x-auditable": true
 										},
 										"last_updated": {
-											"description": "The timestamp of when the rule was last modified.",
+											"description": "Specify the timestamp of when the rule was last modified.",
 											"example": "2000-01-01T00:00:00.000000Z",
 											"format": "date-time",
 											"readOnly": true,
@@ -3053,7 +3167,7 @@
 											"x-auditable": true
 										},
 										"snippet_name": {
-											"description": "The identifying name of the snippet.",
+											"description": "Identify the snippet.",
 											"example": "my_snippet",
 											"pattern": "^[A-Za-z0-9_]+$",
 											"title": "Snippet Name",
@@ -3091,22 +3205,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -3124,19 +3238,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -3154,11 +3268,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -3178,16 +3293,20 @@
 										"errors": {
 											"enum": [
 												[]
-											]
+											],
+											"items": {
+												"type": "object"
+											},
+											"type": "array"
 										},
 										"result": {
-											"description": "A list of snippet rules.",
+											"description": "Lists snippet rules.",
 											"items": {
-												"description": "A snippet rule.",
+												"description": "Define a snippet rule.",
 												"properties": {
 													"description": {
 														"default": "",
-														"description": "An informative description of the rule.",
+														"description": "Provide an informative description of the rule.",
 														"example": "Execute my_snippet when IP address is 1.1.1.1.",
 														"title": "Description",
 														"type": "string",
@@ -3195,14 +3314,14 @@
 													},
 													"enabled": {
 														"default": false,
-														"description": "Whether the rule should be executed.",
+														"description": "Indicate whether to execute the rule.",
 														"example": true,
 														"title": "Enabled",
 														"type": "boolean",
 														"x-auditable": true
 													},
 													"expression": {
-														"description": "The expression defining which traffic will match the rule.",
+														"description": "Define the expression that determines which traffic matches the rule.",
 														"example": "ip.src eq 1.1.1.1",
 														"minLength": 1,
 														"title": "Expression",
@@ -3210,7 +3329,7 @@
 														"x-auditable": true
 													},
 													"id": {
-														"description": "The unique ID of the rule.",
+														"description": "Specify the unique ID of the rule.",
 														"example": "3a03d665bac047339bb530ecb439a90d",
 														"pattern": "^[0-9a-f]{32}$",
 														"readOnly": true,
@@ -3219,7 +3338,7 @@
 														"x-auditable": true
 													},
 													"last_updated": {
-														"description": "The timestamp of when the rule was last modified.",
+														"description": "Specify the timestamp of when the rule was last modified.",
 														"example": "2000-01-01T00:00:00.000000Z",
 														"format": "date-time",
 														"readOnly": true,
@@ -3228,7 +3347,7 @@
 														"x-auditable": true
 													},
 													"snippet_name": {
-														"description": "The identifying name of the snippet.",
+														"description": "Identify the snippet.",
 														"example": "my_snippet",
 														"pattern": "^[A-Za-z0-9_]+$",
 														"title": "Snippet Name",
@@ -3251,9 +3370,11 @@
 										"success": {
 											"enum": [
 												true
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3267,22 +3388,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -3300,19 +3421,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -3330,11 +3451,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -3355,20 +3477,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			},
 			"5XX": {
 				"content": {
@@ -3376,22 +3502,22 @@
 						"schema": {
 							"allOf": [
 								{
-									"description": "A response object.",
+									"description": "Return all API responses using this object.",
 									"properties": {
 										"errors": {
-											"description": "A list of error messages.",
+											"description": "Lists error messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -3409,19 +3535,19 @@
 											"type": "array"
 										},
 										"messages": {
-											"description": "A list of warning messages.",
+											"description": "Contain warning messages.",
 											"items": {
-												"description": "A message.",
+												"description": "Describes an API message.",
 												"properties": {
 													"code": {
-														"description": "A unique code for this message.",
+														"description": "Identify the message code.",
 														"example": 10000,
 														"title": "Code",
 														"type": "integer",
 														"x-auditable": true
 													},
 													"message": {
-														"description": "A text description of this message.",
+														"description": "Describes the message text.",
 														"example": "something bad happened",
 														"minLength": 1,
 														"title": "Description",
@@ -3439,11 +3565,12 @@
 											"type": "array"
 										},
 										"result": {
-											"description": "A result.",
-											"title": "Result"
+											"description": "Contain the response result.",
+											"title": "Result",
+											"type": "object"
 										},
 										"success": {
-											"description": "Whether the API call was successful.",
+											"description": "Indicate whether the API call was successful.",
 											"title": "Success",
 											"type": "boolean",
 											"x-auditable": true
@@ -3464,20 +3591,24 @@
 											"enum": [
 												null
 											],
+											"nullable": true,
+											"type": "object",
 											"x-auditable": true
 										},
 										"success": {
 											"enum": [
 												false
-											]
+											],
+											"type": "boolean"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
 					}
 				},
-				"description": "A failure response."
+				"description": "Return a failure response."
 			}
 		},
 		"security": [

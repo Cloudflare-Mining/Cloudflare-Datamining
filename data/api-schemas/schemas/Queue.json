@@ -1580,6 +1580,14 @@
 												"properties": {
 													"consumers": {
 														"items": {
+															"description": "Response body representing a consumer",
+															"discriminator": {
+																"mapping": {
+																	"http_pull": "#/components/schemas/mq_http-consumer-response",
+																	"worker": "#/components/schemas/mq_worker-consumer-response"
+																},
+																"propertyName": "type"
+															},
 															"oneOf": [
 																{
 																	"properties": {
@@ -1592,47 +1600,24 @@
 																			"x-auditable": true
 																		},
 																		"created_on": {
-																			"readOnly": true,
+																			"format": "date-time",
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"queue_id": {
-																			"description": "A Resource identifier.",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
+																		"dead_letter_queue": {
+																			"description": "Name of the dead letter queue, or empty string if not configured",
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"script": {
-																			"allOf": [
-																				{
-																					"description": "Name of a Worker",
-																					"example": "my-consumer-worker",
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				{
-																					"readOnly": true,
-																					"type": "string"
-																				}
-																			],
-																			"type": "object"
+																		"queue_name": {
+																			"example": "example-queue",
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"script_name": {
-																			"allOf": [
-																				{
-																					"description": "Name of a Worker",
-																					"example": "my-consumer-worker",
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				{
-																					"type": "string",
-																					"writeOnly": true
-																				}
-																			],
-																			"type": "object",
+																			"description": "Name of a Worker",
+																			"example": "my-consumer-worker",
+																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"settings": {
@@ -1691,15 +1676,17 @@
 																			"x-auditable": true
 																		},
 																		"created_on": {
-																			"readOnly": true,
+																			"format": "date-time",
 																			"type": "string",
 																			"x-auditable": true
 																		},
-																		"queue_id": {
-																			"description": "A Resource identifier.",
-																			"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																			"maxLength": 32,
-																			"readOnly": true,
+																		"dead_letter_queue": {
+																			"description": "Name of the dead letter queue, or empty string if not configured",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"queue_name": {
+																			"example": "example-queue",
 																			"type": "string",
 																			"x-auditable": true
 																		},
@@ -2061,6 +2048,14 @@
 											"properties": {
 												"consumers": {
 													"items": {
+														"description": "Response body representing a consumer",
+														"discriminator": {
+															"mapping": {
+																"http_pull": "#/components/schemas/mq_http-consumer-response",
+																"worker": "#/components/schemas/mq_worker-consumer-response"
+															},
+															"propertyName": "type"
+														},
 														"oneOf": [
 															{
 																"properties": {
@@ -2073,47 +2068,24 @@
 																		"x-auditable": true
 																	},
 																	"created_on": {
-																		"readOnly": true,
+																		"format": "date-time",
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"queue_id": {
-																		"description": "A Resource identifier.",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"readOnly": true,
+																	"dead_letter_queue": {
+																		"description": "Name of the dead letter queue, or empty string if not configured",
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"script": {
-																		"allOf": [
-																			{
-																				"description": "Name of a Worker",
-																				"example": "my-consumer-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			{
-																				"readOnly": true,
-																				"type": "string"
-																			}
-																		],
-																		"type": "object"
+																	"queue_name": {
+																		"example": "example-queue",
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"script_name": {
-																		"allOf": [
-																			{
-																				"description": "Name of a Worker",
-																				"example": "my-consumer-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			{
-																				"type": "string",
-																				"writeOnly": true
-																			}
-																		],
-																		"type": "object",
+																		"description": "Name of a Worker",
+																		"example": "my-consumer-worker",
+																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"settings": {
@@ -2172,15 +2144,17 @@
 																		"x-auditable": true
 																	},
 																	"created_on": {
-																		"readOnly": true,
+																		"format": "date-time",
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"queue_id": {
-																		"description": "A Resource identifier.",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"readOnly": true,
+																	"dead_letter_queue": {
+																		"description": "Name of the dead letter queue, or empty string if not configured",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"queue_name": {
+																		"example": "example-queue",
 																		"type": "string",
 																		"x-auditable": true
 																	},
@@ -2508,6 +2482,14 @@
 									"properties": {
 										"result": {
 											"items": {
+												"description": "Response body representing a consumer",
+												"discriminator": {
+													"mapping": {
+														"http_pull": "#/components/schemas/mq_http-consumer-response",
+														"worker": "#/components/schemas/mq_worker-consumer-response"
+													},
+													"propertyName": "type"
+												},
 												"oneOf": [
 													{
 														"properties": {
@@ -2520,47 +2502,24 @@
 																"x-auditable": true
 															},
 															"created_on": {
-																"readOnly": true,
+																"format": "date-time",
 																"type": "string",
 																"x-auditable": true
 															},
-															"queue_id": {
-																"description": "A Resource identifier.",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"dead_letter_queue": {
+																"description": "Name of the dead letter queue, or empty string if not configured",
 																"type": "string",
 																"x-auditable": true
 															},
-															"script": {
-																"allOf": [
-																	{
-																		"description": "Name of a Worker",
-																		"example": "my-consumer-worker",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	{
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																],
-																"type": "object"
+															"queue_name": {
+																"example": "example-queue",
+																"type": "string",
+																"x-auditable": true
 															},
 															"script_name": {
-																"allOf": [
-																	{
-																		"description": "Name of a Worker",
-																		"example": "my-consumer-worker",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	{
-																		"type": "string",
-																		"writeOnly": true
-																	}
-																],
-																"type": "object",
+																"description": "Name of a Worker",
+																"example": "my-consumer-worker",
+																"type": "string",
 																"x-auditable": true
 															},
 															"settings": {
@@ -2619,15 +2578,17 @@
 																"x-auditable": true
 															},
 															"created_on": {
-																"readOnly": true,
+																"format": "date-time",
 																"type": "string",
 																"x-auditable": true
 															},
-															"queue_id": {
-																"description": "A Resource identifier.",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
-																"readOnly": true,
+															"dead_letter_queue": {
+																"description": "Name of the dead letter queue, or empty string if not configured",
+																"type": "string",
+																"x-auditable": true
+															},
+															"queue_name": {
+																"example": "example-queue",
 																"type": "string",
 																"x-auditable": true
 															},
@@ -2870,6 +2831,14 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Response body representing a consumer",
+											"discriminator": {
+												"mapping": {
+													"http_pull": "#/components/schemas/mq_http-consumer-response",
+													"worker": "#/components/schemas/mq_worker-consumer-response"
+												},
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"properties": {
@@ -2882,47 +2851,24 @@
 															"x-auditable": true
 														},
 														"created_on": {
-															"readOnly": true,
+															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
-														"queue_id": {
-															"description": "A Resource identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"dead_letter_queue": {
+															"description": "Name of the dead letter queue, or empty string if not configured",
 															"type": "string",
 															"x-auditable": true
 														},
-														"script": {
-															"allOf": [
-																{
-																	"description": "Name of a Worker",
-																	"example": "my-consumer-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																{
-																	"readOnly": true,
-																	"type": "string"
-																}
-															],
-															"type": "object"
+														"queue_name": {
+															"example": "example-queue",
+															"type": "string",
+															"x-auditable": true
 														},
 														"script_name": {
-															"allOf": [
-																{
-																	"description": "Name of a Worker",
-																	"example": "my-consumer-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																{
-																	"type": "string",
-																	"writeOnly": true
-																}
-															],
-															"type": "object",
+															"description": "Name of a Worker",
+															"example": "my-consumer-worker",
+															"type": "string",
 															"x-auditable": true
 														},
 														"settings": {
@@ -2981,15 +2927,17 @@
 															"x-auditable": true
 														},
 														"created_on": {
-															"readOnly": true,
+															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
-														"queue_id": {
-															"description": "A Resource identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"dead_letter_queue": {
+															"description": "Name of the dead letter queue, or empty string if not configured",
+															"type": "string",
+															"x-auditable": true
+														},
+														"queue_name": {
+															"example": "example-queue",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -3858,6 +3806,14 @@
 						"properties": {
 							"consumers": {
 								"items": {
+									"description": "Response body representing a consumer",
+									"discriminator": {
+										"mapping": {
+											"http_pull": "#/components/schemas/mq_http-consumer-response",
+											"worker": "#/components/schemas/mq_worker-consumer-response"
+										},
+										"propertyName": "type"
+									},
 									"oneOf": [
 										{
 											"properties": {
@@ -3870,47 +3826,24 @@
 													"x-auditable": true
 												},
 												"created_on": {
-													"readOnly": true,
+													"format": "date-time",
 													"type": "string",
 													"x-auditable": true
 												},
-												"queue_id": {
-													"description": "A Resource identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
+												"dead_letter_queue": {
+													"description": "Name of the dead letter queue, or empty string if not configured",
 													"type": "string",
 													"x-auditable": true
 												},
-												"script": {
-													"allOf": [
-														{
-															"description": "Name of a Worker",
-															"example": "my-consumer-worker",
-															"type": "string",
-															"x-auditable": true
-														},
-														{
-															"readOnly": true,
-															"type": "string"
-														}
-													],
-													"type": "object"
+												"queue_name": {
+													"example": "example-queue",
+													"type": "string",
+													"x-auditable": true
 												},
 												"script_name": {
-													"allOf": [
-														{
-															"description": "Name of a Worker",
-															"example": "my-consumer-worker",
-															"type": "string",
-															"x-auditable": true
-														},
-														{
-															"type": "string",
-															"writeOnly": true
-														}
-													],
-													"type": "object",
+													"description": "Name of a Worker",
+													"example": "my-consumer-worker",
+													"type": "string",
 													"x-auditable": true
 												},
 												"settings": {
@@ -3969,15 +3902,17 @@
 													"x-auditable": true
 												},
 												"created_on": {
-													"readOnly": true,
+													"format": "date-time",
 													"type": "string",
 													"x-auditable": true
 												},
-												"queue_id": {
-													"description": "A Resource identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
+												"dead_letter_queue": {
+													"description": "Name of the dead letter queue, or empty string if not configured",
+													"type": "string",
+													"x-auditable": true
+												},
+												"queue_name": {
+													"example": "example-queue",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -4189,6 +4124,14 @@
 													"properties": {
 														"consumers": {
 															"items": {
+																"description": "Response body representing a consumer",
+																"discriminator": {
+																	"mapping": {
+																		"http_pull": "#/components/schemas/mq_http-consumer-response",
+																		"worker": "#/components/schemas/mq_worker-consumer-response"
+																	},
+																	"propertyName": "type"
+																},
 																"oneOf": [
 																	{
 																		"properties": {
@@ -4201,47 +4144,24 @@
 																				"x-auditable": true
 																			},
 																			"created_on": {
-																				"readOnly": true,
+																				"format": "date-time",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"queue_id": {
-																				"description": "A Resource identifier.",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
+																			"dead_letter_queue": {
+																				"description": "Name of the dead letter queue, or empty string if not configured",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"script": {
-																				"allOf": [
-																					{
-																						"description": "Name of a Worker",
-																						"example": "my-consumer-worker",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					{
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				],
-																				"type": "object"
+																			"queue_name": {
+																				"example": "example-queue",
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"script_name": {
-																				"allOf": [
-																					{
-																						"description": "Name of a Worker",
-																						"example": "my-consumer-worker",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					{
-																						"type": "string",
-																						"writeOnly": true
-																					}
-																				],
-																				"type": "object",
+																				"description": "Name of a Worker",
+																				"example": "my-consumer-worker",
+																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"settings": {
@@ -4300,15 +4220,17 @@
 																				"x-auditable": true
 																			},
 																			"created_on": {
-																				"readOnly": true,
+																				"format": "date-time",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"queue_id": {
-																				"description": "A Resource identifier.",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
+																			"dead_letter_queue": {
+																				"description": "Name of the dead letter queue, or empty string if not configured",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"queue_name": {
+																				"example": "example-queue",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -5310,6 +5232,14 @@
 											"properties": {
 												"consumers": {
 													"items": {
+														"description": "Response body representing a consumer",
+														"discriminator": {
+															"mapping": {
+																"http_pull": "#/components/schemas/mq_http-consumer-response",
+																"worker": "#/components/schemas/mq_worker-consumer-response"
+															},
+															"propertyName": "type"
+														},
 														"oneOf": [
 															{
 																"properties": {
@@ -5322,47 +5252,24 @@
 																		"x-auditable": true
 																	},
 																	"created_on": {
-																		"readOnly": true,
+																		"format": "date-time",
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"queue_id": {
-																		"description": "A Resource identifier.",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"readOnly": true,
+																	"dead_letter_queue": {
+																		"description": "Name of the dead letter queue, or empty string if not configured",
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"script": {
-																		"allOf": [
-																			{
-																				"description": "Name of a Worker",
-																				"example": "my-consumer-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			{
-																				"readOnly": true,
-																				"type": "string"
-																			}
-																		],
-																		"type": "object"
+																	"queue_name": {
+																		"example": "example-queue",
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"script_name": {
-																		"allOf": [
-																			{
-																				"description": "Name of a Worker",
-																				"example": "my-consumer-worker",
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			{
-																				"type": "string",
-																				"writeOnly": true
-																			}
-																		],
-																		"type": "object",
+																		"description": "Name of a Worker",
+																		"example": "my-consumer-worker",
+																		"type": "string",
 																		"x-auditable": true
 																	},
 																	"settings": {
@@ -5421,15 +5328,17 @@
 																		"x-auditable": true
 																	},
 																	"created_on": {
-																		"readOnly": true,
+																		"format": "date-time",
 																		"type": "string",
 																		"x-auditable": true
 																	},
-																	"queue_id": {
-																		"description": "A Resource identifier.",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
-																		"readOnly": true,
+																	"dead_letter_queue": {
+																		"description": "Name of the dead letter queue, or empty string if not configured",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"queue_name": {
+																		"example": "example-queue",
 																		"type": "string",
 																		"x-auditable": true
 																	},
@@ -5699,170 +5608,74 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"allOf": [
+						"description": "Request body for creating or updating a consumer",
+						"discriminator": {
+							"mapping": {
+								"http_pull": "#/components/schemas/mq_http-consumer-request",
+								"worker": "#/components/schemas/mq_worker-consumer-request"
+							},
+							"propertyName": "type"
+						},
+						"oneOf": [
 							{
-								"oneOf": [
-									{
+								"properties": {
+									"dead_letter_queue": {
+										"example": "example-queue",
+										"type": "string",
+										"x-auditable": true
+									},
+									"script_name": {
+										"description": "Name of a Worker",
+										"example": "my-consumer-worker",
+										"type": "string",
+										"x-auditable": true
+									},
+									"settings": {
 										"properties": {
-											"consumer_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
+											"batch_size": {
+												"description": "The maximum number of messages to include in a batch.",
+												"example": 50,
+												"type": "number",
 												"x-auditable": true
 											},
-											"created_on": {
-												"readOnly": true,
-												"type": "string",
+											"max_concurrency": {
+												"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
+												"example": 10,
+												"type": "number",
 												"x-auditable": true
 											},
-											"queue_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
+											"max_retries": {
+												"description": "The maximum number of retries",
+												"example": 3,
+												"type": "number",
 												"x-auditable": true
 											},
-											"script": {
-												"allOf": [
-													{
-														"description": "Name of a Worker",
-														"example": "my-consumer-worker",
-														"type": "string",
-														"x-auditable": true
-													},
-													{
-														"readOnly": true,
-														"type": "string"
-													}
-												],
-												"type": "object"
-											},
-											"script_name": {
-												"allOf": [
-													{
-														"description": "Name of a Worker",
-														"example": "my-consumer-worker",
-														"type": "string",
-														"x-auditable": true
-													},
-													{
-														"type": "string",
-														"writeOnly": true
-													}
-												],
-												"type": "object",
+											"max_wait_time_ms": {
+												"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
+												"example": 5000,
+												"type": "number",
 												"x-auditable": true
 											},
-											"settings": {
-												"properties": {
-													"batch_size": {
-														"description": "The maximum number of messages to include in a batch.",
-														"example": 50,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_concurrency": {
-														"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
-														"example": 10,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_retries": {
-														"description": "The maximum number of retries",
-														"example": 3,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_wait_time_ms": {
-														"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
-														"example": 5000,
-														"type": "number",
-														"x-auditable": true
-													},
-													"retry_delay": {
-														"description": "The number of seconds to delay before making the message available for another attempt.",
-														"example": 10,
-														"type": "number",
-														"x-auditable": true
-													}
-												},
-												"type": "object"
-											},
-											"type": {
-												"enum": [
-													"worker"
-												],
-												"type": "string",
+											"retry_delay": {
+												"description": "The number of seconds to delay before making the message available for another attempt.",
+												"example": 10,
+												"type": "number",
 												"x-auditable": true
 											}
 										},
 										"type": "object"
 									},
-									{
-										"properties": {
-											"consumer_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
-												"x-auditable": true
-											},
-											"created_on": {
-												"readOnly": true,
-												"type": "string",
-												"x-auditable": true
-											},
-											"queue_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
-												"x-auditable": true
-											},
-											"settings": {
-												"properties": {
-													"batch_size": {
-														"description": "The maximum number of messages to include in a batch.",
-														"example": 50,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_retries": {
-														"description": "The maximum number of retries",
-														"example": 3,
-														"type": "number",
-														"x-auditable": true
-													},
-													"retry_delay": {
-														"description": "The number of seconds to delay before making the message available for another attempt.",
-														"example": 10,
-														"type": "number",
-														"x-auditable": true
-													},
-													"visibility_timeout_ms": {
-														"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
-														"example": 6000,
-														"type": "number",
-														"x-auditable": true
-													}
-												},
-												"type": "object"
-											},
-											"type": {
-												"enum": [
-													"http_pull"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
+									"type": {
+										"enum": [
+											"worker"
+										],
+										"type": "string",
+										"x-auditable": true
 									}
+								},
+								"required": [
+									"type",
+									"script_name"
 								],
 								"type": "object"
 							},
@@ -5872,8 +5685,47 @@
 										"example": "example-queue",
 										"type": "string",
 										"x-auditable": true
+									},
+									"settings": {
+										"properties": {
+											"batch_size": {
+												"description": "The maximum number of messages to include in a batch.",
+												"example": 50,
+												"type": "number",
+												"x-auditable": true
+											},
+											"max_retries": {
+												"description": "The maximum number of retries",
+												"example": 3,
+												"type": "number",
+												"x-auditable": true
+											},
+											"retry_delay": {
+												"description": "The number of seconds to delay before making the message available for another attempt.",
+												"example": 10,
+												"type": "number",
+												"x-auditable": true
+											},
+											"visibility_timeout_ms": {
+												"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
+												"example": 6000,
+												"type": "number",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									"type": {
+										"enum": [
+											"http_pull"
+										],
+										"type": "string",
+										"x-auditable": true
 									}
 								},
+								"required": [
+									"type"
+								],
 								"type": "object"
 							}
 						],
@@ -5941,6 +5793,14 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Response body representing a consumer",
+											"discriminator": {
+												"mapping": {
+													"http_pull": "#/components/schemas/mq_http-consumer-response",
+													"worker": "#/components/schemas/mq_worker-consumer-response"
+												},
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"properties": {
@@ -5953,47 +5813,24 @@
 															"x-auditable": true
 														},
 														"created_on": {
-															"readOnly": true,
+															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
-														"queue_id": {
-															"description": "A Resource identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"dead_letter_queue": {
+															"description": "Name of the dead letter queue, or empty string if not configured",
 															"type": "string",
 															"x-auditable": true
 														},
-														"script": {
-															"allOf": [
-																{
-																	"description": "Name of a Worker",
-																	"example": "my-consumer-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																{
-																	"readOnly": true,
-																	"type": "string"
-																}
-															],
-															"type": "object"
+														"queue_name": {
+															"example": "example-queue",
+															"type": "string",
+															"x-auditable": true
 														},
 														"script_name": {
-															"allOf": [
-																{
-																	"description": "Name of a Worker",
-																	"example": "my-consumer-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																{
-																	"type": "string",
-																	"writeOnly": true
-																}
-															],
-															"type": "object",
+															"description": "Name of a Worker",
+															"example": "my-consumer-worker",
+															"type": "string",
 															"x-auditable": true
 														},
 														"settings": {
@@ -6052,15 +5889,17 @@
 															"x-auditable": true
 														},
 														"created_on": {
-															"readOnly": true,
+															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
-														"queue_id": {
-															"description": "A Resource identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"dead_letter_queue": {
+															"description": "Name of the dead letter queue, or empty string if not configured",
+															"type": "string",
+															"x-auditable": true
+														},
+														"queue_name": {
+															"example": "example-queue",
 															"type": "string",
 															"x-auditable": true
 														},
@@ -7267,6 +7106,14 @@
 													"properties": {
 														"consumers": {
 															"items": {
+																"description": "Response body representing a consumer",
+																"discriminator": {
+																	"mapping": {
+																		"http_pull": "#/components/schemas/mq_http-consumer-response",
+																		"worker": "#/components/schemas/mq_worker-consumer-response"
+																	},
+																	"propertyName": "type"
+																},
 																"oneOf": [
 																	{
 																		"properties": {
@@ -7279,47 +7126,24 @@
 																				"x-auditable": true
 																			},
 																			"created_on": {
-																				"readOnly": true,
+																				"format": "date-time",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"queue_id": {
-																				"description": "A Resource identifier.",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
+																			"dead_letter_queue": {
+																				"description": "Name of the dead letter queue, or empty string if not configured",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"script": {
-																				"allOf": [
-																					{
-																						"description": "Name of a Worker",
-																						"example": "my-consumer-worker",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					{
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				],
-																				"type": "object"
+																			"queue_name": {
+																				"example": "example-queue",
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"script_name": {
-																				"allOf": [
-																					{
-																						"description": "Name of a Worker",
-																						"example": "my-consumer-worker",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					{
-																						"type": "string",
-																						"writeOnly": true
-																					}
-																				],
-																				"type": "object",
+																				"description": "Name of a Worker",
+																				"example": "my-consumer-worker",
+																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"settings": {
@@ -7378,15 +7202,17 @@
 																				"x-auditable": true
 																			},
 																			"created_on": {
-																				"readOnly": true,
+																				"format": "date-time",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"queue_id": {
-																				"description": "A Resource identifier.",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
+																			"dead_letter_queue": {
+																				"description": "Name of the dead letter queue, or empty string if not configured",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"queue_name": {
+																				"example": "example-queue",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -7662,6 +7488,14 @@
 						"properties": {
 							"consumers": {
 								"items": {
+									"description": "Response body representing a consumer",
+									"discriminator": {
+										"mapping": {
+											"http_pull": "#/components/schemas/mq_http-consumer-response",
+											"worker": "#/components/schemas/mq_worker-consumer-response"
+										},
+										"propertyName": "type"
+									},
 									"oneOf": [
 										{
 											"properties": {
@@ -7674,47 +7508,24 @@
 													"x-auditable": true
 												},
 												"created_on": {
-													"readOnly": true,
+													"format": "date-time",
 													"type": "string",
 													"x-auditable": true
 												},
-												"queue_id": {
-													"description": "A Resource identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
+												"dead_letter_queue": {
+													"description": "Name of the dead letter queue, or empty string if not configured",
 													"type": "string",
 													"x-auditable": true
 												},
-												"script": {
-													"allOf": [
-														{
-															"description": "Name of a Worker",
-															"example": "my-consumer-worker",
-															"type": "string",
-															"x-auditable": true
-														},
-														{
-															"readOnly": true,
-															"type": "string"
-														}
-													],
-													"type": "object"
+												"queue_name": {
+													"example": "example-queue",
+													"type": "string",
+													"x-auditable": true
 												},
 												"script_name": {
-													"allOf": [
-														{
-															"description": "Name of a Worker",
-															"example": "my-consumer-worker",
-															"type": "string",
-															"x-auditable": true
-														},
-														{
-															"type": "string",
-															"writeOnly": true
-														}
-													],
-													"type": "object",
+													"description": "Name of a Worker",
+													"example": "my-consumer-worker",
+													"type": "string",
 													"x-auditable": true
 												},
 												"settings": {
@@ -7773,15 +7584,17 @@
 													"x-auditable": true
 												},
 												"created_on": {
-													"readOnly": true,
+													"format": "date-time",
 													"type": "string",
 													"x-auditable": true
 												},
-												"queue_id": {
-													"description": "A Resource identifier.",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
+												"dead_letter_queue": {
+													"description": "Name of the dead letter queue, or empty string if not configured",
+													"type": "string",
+													"x-auditable": true
+												},
+												"queue_name": {
+													"example": "example-queue",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -7993,6 +7806,14 @@
 													"properties": {
 														"consumers": {
 															"items": {
+																"description": "Response body representing a consumer",
+																"discriminator": {
+																	"mapping": {
+																		"http_pull": "#/components/schemas/mq_http-consumer-response",
+																		"worker": "#/components/schemas/mq_worker-consumer-response"
+																	},
+																	"propertyName": "type"
+																},
 																"oneOf": [
 																	{
 																		"properties": {
@@ -8005,47 +7826,24 @@
 																				"x-auditable": true
 																			},
 																			"created_on": {
-																				"readOnly": true,
+																				"format": "date-time",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"queue_id": {
-																				"description": "A Resource identifier.",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
+																			"dead_letter_queue": {
+																				"description": "Name of the dead letter queue, or empty string if not configured",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"script": {
-																				"allOf": [
-																					{
-																						"description": "Name of a Worker",
-																						"example": "my-consumer-worker",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					{
-																						"readOnly": true,
-																						"type": "string"
-																					}
-																				],
-																				"type": "object"
+																			"queue_name": {
+																				"example": "example-queue",
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"script_name": {
-																				"allOf": [
-																					{
-																						"description": "Name of a Worker",
-																						"example": "my-consumer-worker",
-																						"type": "string",
-																						"x-auditable": true
-																					},
-																					{
-																						"type": "string",
-																						"writeOnly": true
-																					}
-																				],
-																				"type": "object",
+																				"description": "Name of a Worker",
+																				"example": "my-consumer-worker",
+																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"settings": {
@@ -8104,15 +7902,17 @@
 																				"x-auditable": true
 																			},
 																			"created_on": {
-																				"readOnly": true,
+																				"format": "date-time",
 																				"type": "string",
 																				"x-auditable": true
 																			},
-																			"queue_id": {
-																				"description": "A Resource identifier.",
-																				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																				"maxLength": 32,
-																				"readOnly": true,
+																			"dead_letter_queue": {
+																				"description": "Name of the dead letter queue, or empty string if not configured",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"queue_name": {
+																				"example": "example-queue",
 																				"type": "string",
 																				"x-auditable": true
 																			},
@@ -8398,170 +8198,74 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"allOf": [
+						"description": "Request body for creating or updating a consumer",
+						"discriminator": {
+							"mapping": {
+								"http_pull": "#/components/schemas/mq_http-consumer-request",
+								"worker": "#/components/schemas/mq_worker-consumer-request"
+							},
+							"propertyName": "type"
+						},
+						"oneOf": [
 							{
-								"oneOf": [
-									{
+								"properties": {
+									"dead_letter_queue": {
+										"example": "example-queue",
+										"type": "string",
+										"x-auditable": true
+									},
+									"script_name": {
+										"description": "Name of a Worker",
+										"example": "my-consumer-worker",
+										"type": "string",
+										"x-auditable": true
+									},
+									"settings": {
 										"properties": {
-											"consumer_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
+											"batch_size": {
+												"description": "The maximum number of messages to include in a batch.",
+												"example": 50,
+												"type": "number",
 												"x-auditable": true
 											},
-											"created_on": {
-												"readOnly": true,
-												"type": "string",
+											"max_concurrency": {
+												"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
+												"example": 10,
+												"type": "number",
 												"x-auditable": true
 											},
-											"queue_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
+											"max_retries": {
+												"description": "The maximum number of retries",
+												"example": 3,
+												"type": "number",
 												"x-auditable": true
 											},
-											"script": {
-												"allOf": [
-													{
-														"description": "Name of a Worker",
-														"example": "my-consumer-worker",
-														"type": "string",
-														"x-auditable": true
-													},
-													{
-														"readOnly": true,
-														"type": "string"
-													}
-												],
-												"type": "object"
-											},
-											"script_name": {
-												"allOf": [
-													{
-														"description": "Name of a Worker",
-														"example": "my-consumer-worker",
-														"type": "string",
-														"x-auditable": true
-													},
-													{
-														"type": "string",
-														"writeOnly": true
-													}
-												],
-												"type": "object",
+											"max_wait_time_ms": {
+												"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
+												"example": 5000,
+												"type": "number",
 												"x-auditable": true
 											},
-											"settings": {
-												"properties": {
-													"batch_size": {
-														"description": "The maximum number of messages to include in a batch.",
-														"example": 50,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_concurrency": {
-														"description": "Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).",
-														"example": 10,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_retries": {
-														"description": "The maximum number of retries",
-														"example": 3,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_wait_time_ms": {
-														"description": "The number of milliseconds to wait for a batch to fill up before attempting to deliver it",
-														"example": 5000,
-														"type": "number",
-														"x-auditable": true
-													},
-													"retry_delay": {
-														"description": "The number of seconds to delay before making the message available for another attempt.",
-														"example": 10,
-														"type": "number",
-														"x-auditable": true
-													}
-												},
-												"type": "object"
-											},
-											"type": {
-												"enum": [
-													"worker"
-												],
-												"type": "string",
+											"retry_delay": {
+												"description": "The number of seconds to delay before making the message available for another attempt.",
+												"example": 10,
+												"type": "number",
 												"x-auditable": true
 											}
 										},
 										"type": "object"
 									},
-									{
-										"properties": {
-											"consumer_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
-												"x-auditable": true
-											},
-											"created_on": {
-												"readOnly": true,
-												"type": "string",
-												"x-auditable": true
-											},
-											"queue_id": {
-												"description": "A Resource identifier.",
-												"example": "023e105f4ecef8ad9ca31a8372d0c353",
-												"maxLength": 32,
-												"readOnly": true,
-												"type": "string",
-												"x-auditable": true
-											},
-											"settings": {
-												"properties": {
-													"batch_size": {
-														"description": "The maximum number of messages to include in a batch.",
-														"example": 50,
-														"type": "number",
-														"x-auditable": true
-													},
-													"max_retries": {
-														"description": "The maximum number of retries",
-														"example": 3,
-														"type": "number",
-														"x-auditable": true
-													},
-													"retry_delay": {
-														"description": "The number of seconds to delay before making the message available for another attempt.",
-														"example": 10,
-														"type": "number",
-														"x-auditable": true
-													},
-													"visibility_timeout_ms": {
-														"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
-														"example": 6000,
-														"type": "number",
-														"x-auditable": true
-													}
-												},
-												"type": "object"
-											},
-											"type": {
-												"enum": [
-													"http_pull"
-												],
-												"type": "string",
-												"x-auditable": true
-											}
-										},
-										"type": "object"
+									"type": {
+										"enum": [
+											"worker"
+										],
+										"type": "string",
+										"x-auditable": true
 									}
+								},
+								"required": [
+									"type",
+									"script_name"
 								],
 								"type": "object"
 							},
@@ -8571,8 +8275,47 @@
 										"example": "example-queue",
 										"type": "string",
 										"x-auditable": true
+									},
+									"settings": {
+										"properties": {
+											"batch_size": {
+												"description": "The maximum number of messages to include in a batch.",
+												"example": 50,
+												"type": "number",
+												"x-auditable": true
+											},
+											"max_retries": {
+												"description": "The maximum number of retries",
+												"example": 3,
+												"type": "number",
+												"x-auditable": true
+											},
+											"retry_delay": {
+												"description": "The number of seconds to delay before making the message available for another attempt.",
+												"example": 10,
+												"type": "number",
+												"x-auditable": true
+											},
+											"visibility_timeout_ms": {
+												"description": "The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.",
+												"example": 6000,
+												"type": "number",
+												"x-auditable": true
+											}
+										},
+										"type": "object"
+									},
+									"type": {
+										"enum": [
+											"http_pull"
+										],
+										"type": "string",
+										"x-auditable": true
 									}
 								},
+								"required": [
+									"type"
+								],
 								"type": "object"
 							}
 						],
@@ -8641,6 +8384,14 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Response body representing a consumer",
+											"discriminator": {
+												"mapping": {
+													"http_pull": "#/components/schemas/mq_http-consumer-response",
+													"worker": "#/components/schemas/mq_worker-consumer-response"
+												},
+												"propertyName": "type"
+											},
 											"oneOf": [
 												{
 													"properties": {
@@ -8653,47 +8404,24 @@
 															"x-auditable": true
 														},
 														"created_on": {
-															"readOnly": true,
+															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
-														"queue_id": {
-															"description": "A Resource identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"dead_letter_queue": {
+															"description": "Name of the dead letter queue, or empty string if not configured",
 															"type": "string",
 															"x-auditable": true
 														},
-														"script": {
-															"allOf": [
-																{
-																	"description": "Name of a Worker",
-																	"example": "my-consumer-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																{
-																	"readOnly": true,
-																	"type": "string"
-																}
-															],
-															"type": "object"
+														"queue_name": {
+															"example": "example-queue",
+															"type": "string",
+															"x-auditable": true
 														},
 														"script_name": {
-															"allOf": [
-																{
-																	"description": "Name of a Worker",
-																	"example": "my-consumer-worker",
-																	"type": "string",
-																	"x-auditable": true
-																},
-																{
-																	"type": "string",
-																	"writeOnly": true
-																}
-															],
-															"type": "object",
+															"description": "Name of a Worker",
+															"example": "my-consumer-worker",
+															"type": "string",
 															"x-auditable": true
 														},
 														"settings": {
@@ -8752,15 +8480,17 @@
 															"x-auditable": true
 														},
 														"created_on": {
-															"readOnly": true,
+															"format": "date-time",
 															"type": "string",
 															"x-auditable": true
 														},
-														"queue_id": {
-															"description": "A Resource identifier.",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
+														"dead_letter_queue": {
+															"description": "Name of the dead letter queue, or empty string if not configured",
+															"type": "string",
+															"x-auditable": true
+														},
+														"queue_name": {
+															"example": "example-queue",
 															"type": "string",
 															"x-auditable": true
 														},

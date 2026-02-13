@@ -1054,6 +1054,14 @@
 												"nullable": true,
 												"type": "string"
 											},
+											"keys": {
+												"items": {
+													"type": "string"
+												},
+												"maxItems": 10000,
+												"nullable": true,
+												"type": "array"
+											},
 											"pathPrefix": {
 												"nullable": true,
 												"type": "string"
@@ -1096,6 +1104,14 @@
 										"properties": {
 											"bucket": {
 												"type": "string"
+											},
+											"keys": {
+												"items": {
+													"type": "string"
+												},
+												"maxItems": 10000,
+												"nullable": true,
+												"type": "array"
 											},
 											"pathPrefix": {
 												"nullable": true,
@@ -1143,6 +1159,14 @@
 													"fedramp"
 												],
 												"type": "string"
+											},
+											"keys": {
+												"items": {
+													"type": "string"
+												},
+												"maxItems": 10000,
+												"nullable": true,
+												"type": "array"
 											},
 											"pathPrefix": {
 												"nullable": true,
@@ -2161,6 +2185,14 @@
 										"nullable": true,
 										"type": "string"
 									},
+									"keys": {
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 10000,
+										"nullable": true,
+										"type": "array"
+									},
 									"pathPrefix": {
 										"nullable": true,
 										"type": "string"
@@ -2203,6 +2235,14 @@
 								"properties": {
 									"bucket": {
 										"type": "string"
+									},
+									"keys": {
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 10000,
+										"nullable": true,
+										"type": "array"
 									},
 									"pathPrefix": {
 										"nullable": true,
@@ -2250,6 +2290,14 @@
 											"fedramp"
 										],
 										"type": "string"
+									},
+									"keys": {
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 10000,
+										"nullable": true,
+										"type": "array"
 									},
 									"pathPrefix": {
 										"nullable": true,

@@ -2065,12 +2065,14 @@
 										"type": "array"
 									},
 									"status": {
-										"default": "pending",
+										"description": "Status of the member invitation. If not provided during creation, defaults to 'pending'.\nChanging from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.\n",
 										"enum": [
 											"accepted",
 											"pending"
 										],
-										"x-auditable": true
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
 								"required": [
@@ -2169,12 +2171,14 @@
 										"type": "array"
 									},
 									"status": {
-										"default": "pending",
+										"description": "Status of the member invitation. If not provided during creation, defaults to 'pending'.\nChanging from 'accepted' back to 'pending' will trigger a replacement of the member resource in Terraform.\n",
 										"enum": [
 											"accepted",
 											"pending"
 										],
-										"x-auditable": true
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
 									}
 								},
 								"required": [

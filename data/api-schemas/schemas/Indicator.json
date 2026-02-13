@@ -185,6 +185,11 @@
 												"format": "date-time",
 												"type": "string"
 											},
+											"datasetId": {
+												"description": "The dataset ID this indicator belongs to. Included in list responses.",
+												"example": "dataset-uuid-123",
+												"type": "string"
+											},
 											"indicatorType": {
 												"example": "domain",
 												"type": "string"
@@ -344,6 +349,11 @@
 								"createdAt": {
 									"example": "2022-04-01T00:00:00Z",
 									"format": "date-time",
+									"type": "string"
+								},
+								"datasetId": {
+									"description": "The dataset ID this indicator belongs to. Included in list responses.",
+									"example": "dataset-uuid-123",
 									"type": "string"
 								},
 								"indicatorType": {
@@ -745,11 +755,11 @@
 				}
 			},
 			{
-				"description": "Whether to include full tag details for each indicator. Defaults to false for performance.",
+				"description": "Whether to include full tag details for each indicator. Defaults to true.",
 				"in": "query",
 				"name": "includeTags",
 				"schema": {
-					"description": "Whether to include full tag details for each indicator. Defaults to false for performance.",
+					"description": "Whether to include full tag details for each indicator. Defaults to true.",
 					"type": "boolean"
 				}
 			},
@@ -792,6 +802,11 @@
 														"createdAt": {
 															"example": "2022-04-01T00:00:00Z",
 															"format": "date-time",
+															"type": "string"
+														},
+														"datasetId": {
+															"description": "The dataset ID this indicator belongs to. Included in list responses.",
+															"example": "dataset-uuid-123",
 															"type": "string"
 														},
 														"indicatorType": {
@@ -1123,6 +1138,11 @@
 								"createdAt": {
 									"example": "2022-04-01T00:00:00Z",
 									"format": "date-time",
+									"type": "string"
+								},
+								"datasetId": {
+									"description": "The dataset ID this indicator belongs to. Included in list responses.",
+									"example": "dataset-uuid-123",
 									"type": "string"
 								},
 								"indicatorType": {
@@ -1566,6 +1586,11 @@
 								"createdAt": {
 									"example": "2022-04-01T00:00:00Z",
 									"format": "date-time",
+									"type": "string"
+								},
+								"datasetId": {
+									"description": "The dataset ID this indicator belongs to. Included in list responses.",
+									"example": "dataset-uuid-123",
 									"type": "string"
 								},
 								"indicatorType": {

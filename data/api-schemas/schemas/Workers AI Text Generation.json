@@ -160,8 +160,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -514,8 +535,29 @@
 															"items": {
 																"properties": {
 																	"content": {
-																		"description": "The content of the message as a string.",
-																		"type": "string"
+																		"oneOf": [
+																			{
+																				"description": "The content of the message as a string.",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Array of text content parts.",
+																				"items": {
+																					"properties": {
+																						"text": {
+																							"description": "Text content",
+																							"type": "string"
+																						},
+																						"type": {
+																							"description": "Type of the content (text)",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		]
 																	},
 																	"role": {
 																		"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -1004,8 +1046,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -1482,8 +1545,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -1960,8 +2044,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -2438,8 +2543,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -2916,8 +3042,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -3873,8 +4020,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -4351,8 +4519,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -4829,8 +5018,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -5307,8 +5517,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -5785,8 +6016,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -6263,8 +6515,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -6741,8 +7014,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -7219,8 +7513,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -7697,8 +8012,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -8175,8 +8511,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -8653,8 +9010,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -9663,8 +10041,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -10141,8 +10540,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -10619,8 +11039,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -12310,8 +12751,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -12788,8 +13250,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -13266,8 +13749,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -14252,8 +14756,29 @@
 												"items": {
 													"properties": {
 														"content": {
-															"description": "The content of the message as a string.",
-															"type": "string"
+															"oneOf": [
+																{
+																	"description": "The content of the message as a string.",
+																	"type": "string"
+																},
+																{
+																	"description": "Array of text content parts.",
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"description": "Text content",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "Type of the content (text)",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
 														},
 														"role": {
 															"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -14828,8 +15353,29 @@
 												"items": {
 													"properties": {
 														"content": {
-															"description": "The content of the message as a string.",
-															"type": "string"
+															"oneOf": [
+																{
+																	"description": "The content of the message as a string.",
+																	"type": "string"
+																},
+																{
+																	"description": "Array of text content parts.",
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"description": "Text content",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "Type of the content (text)",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
 														},
 														"role": {
 															"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -15402,8 +15948,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -15880,8 +16447,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -16358,8 +16946,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -16836,8 +17445,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -17314,8 +17944,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -18270,8 +18921,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -18624,8 +19296,29 @@
 															"items": {
 																"properties": {
 																	"content": {
-																		"description": "The content of the message as a string.",
-																		"type": "string"
+																		"oneOf": [
+																			{
+																				"description": "The content of the message as a string.",
+																				"type": "string"
+																			},
+																			{
+																				"description": "Array of text content parts.",
+																				"items": {
+																					"properties": {
+																						"text": {
+																							"description": "Text content",
+																							"type": "string"
+																						},
+																						"type": {
+																							"description": "Type of the content (text)",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		]
 																	},
 																	"role": {
 																		"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -19620,8 +20313,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -20098,8 +20812,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -20576,8 +21311,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -21054,8 +21810,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -21532,8 +22309,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -22010,8 +22808,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -22488,8 +23307,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -22966,8 +23806,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -23444,8 +24305,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -23922,8 +24804,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -24400,8 +25303,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -24878,8 +25802,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -25356,8 +26301,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
@@ -25834,8 +26800,29 @@
 										"items": {
 											"properties": {
 												"content": {
-													"description": "The content of the message as a string.",
-													"type": "string"
+													"oneOf": [
+														{
+															"description": "The content of the message as a string.",
+															"type": "string"
+														},
+														{
+															"description": "Array of text content parts.",
+															"items": {
+																"properties": {
+																	"text": {
+																		"description": "Text content",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Type of the content (text)",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													]
 												},
 												"role": {
 													"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",

@@ -14,7 +14,8 @@
 						"USER_AGENT",
 						"CRAWL_PURPOSE",
 						"INDUSTRY",
-						"VERTICAL"
+						"VERTICAL",
+						"CONTENT_TYPE"
 					],
 					"type": "string"
 				}
@@ -128,6 +129,19 @@
 				}
 			},
 			{
+				"description": "Filters results by user agent.",
+				"in": "query",
+				"name": "userAgent",
+				"schema": {
+					"description": "Filters results by user agent.",
+					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Filters results by vertical.",
 				"in": "query",
 				"name": "vertical",
@@ -148,6 +162,36 @@
 					"description": "Filters results by industry.",
 					"items": {
 						"maxLength": 2000,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filters results by content type category.",
+				"in": "query",
+				"name": "contentType",
+				"schema": {
+					"description": "Filters results by content type category.",
+					"items": {
+						"enum": [
+							"HTML",
+							"IMAGES",
+							"JSON",
+							"JAVASCRIPT",
+							"CSS",
+							"PLAIN_TEXT",
+							"FONTS",
+							"XML",
+							"YAML",
+							"VIDEO",
+							"AUDIO",
+							"MARKDOWN",
+							"DOCUMENTS",
+							"BINARY",
+							"SERIALIZATION",
+							"OTHER"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -1024,6 +1068,36 @@
 				}
 			},
 			{
+				"description": "Filters results by content type category.",
+				"in": "query",
+				"name": "contentType",
+				"schema": {
+					"description": "Filters results by content type category.",
+					"items": {
+						"enum": [
+							"HTML",
+							"IMAGES",
+							"JSON",
+							"JAVASCRIPT",
+							"CSS",
+							"PLAIN_TEXT",
+							"FONTS",
+							"XML",
+							"YAML",
+							"VIDEO",
+							"AUDIO",
+							"MARKDOWN",
+							"DOCUMENTS",
+							"BINARY",
+							"SERIALIZATION",
+							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
@@ -1347,7 +1421,7 @@
 		}
 	},
 	"GET /radar/ai/bots/timeseries_groups/{dimension}": {
-		"description": "Retrieves the distribution of HTTP requests from AI bots, grouped by chosen the specified dimension over time.",
+		"description": "Retrieves the distribution of HTTP requests from AI bots, grouped by the specified dimension over time.",
 		"operationId": "radar-get-ai-bots-timeseries-group",
 		"parameters": [
 			{
@@ -1361,7 +1435,8 @@
 						"USER_AGENT",
 						"CRAWL_PURPOSE",
 						"INDUSTRY",
-						"VERTICAL"
+						"VERTICAL",
+						"CONTENT_TYPE"
 					],
 					"type": "string"
 				}
@@ -1491,6 +1566,19 @@
 				}
 			},
 			{
+				"description": "Filters results by user agent.",
+				"in": "query",
+				"name": "userAgent",
+				"schema": {
+					"description": "Filters results by user agent.",
+					"items": {
+						"maxLength": 100,
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Filters results by industry.",
 				"in": "query",
 				"name": "industry",
@@ -1517,6 +1605,36 @@
 				}
 			},
 			{
+				"description": "Filters results by content type category.",
+				"in": "query",
+				"name": "contentType",
+				"schema": {
+					"description": "Filters results by content type category.",
+					"items": {
+						"enum": [
+							"HTML",
+							"IMAGES",
+							"JSON",
+							"JAVASCRIPT",
+							"CSS",
+							"PLAIN_TEXT",
+							"FONTS",
+							"XML",
+							"YAML",
+							"VIDEO",
+							"AUDIO",
+							"MARKDOWN",
+							"DOCUMENTS",
+							"BINARY",
+							"SERIALIZATION",
+							"OTHER"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
 				"description": "Limits the number of objects per group to the top items within the specified time range. When item count exceeds the limit, extra items appear grouped under an \"other\" category.",
 				"in": "query",
 				"name": "limitPerGroup",
@@ -1531,12 +1649,13 @@
 				"in": "query",
 				"name": "normalization",
 				"schema": {
+					"default": "PERCENTAGE",
 					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"PERCENTAGE_CHANGE",
+						"PERCENTAGE",
 						"MIN0_MAX"
 					],
-					"example": "MIN0_MAX",
+					"example": "PERCENTAGE",
 					"type": "string"
 				}
 			},

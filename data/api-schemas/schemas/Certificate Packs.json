@@ -685,6 +685,70 @@
 														"type": "boolean",
 														"x-auditable": true
 													},
+													"dcv_delegation_records": {
+														"description": "DCV Delegation records for domain validation.",
+														"items": {
+															"description": "Certificate's required validation record.",
+															"properties": {
+																"cname": {
+																	"description": "The CNAME record hostname for DCV delegation.",
+																	"example": "_acme-challenge.example.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"cname_target": {
+																	"description": "The CNAME record target value for DCV delegation.",
+																	"example": "dcv.cloudflare.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"emails": {
+																	"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																	"example": [
+																		"administrator@example.com",
+																		"webmaster@example.com"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"type": "array"
+																},
+																"http_body": {
+																	"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																	"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																	"type": "string"
+																},
+																"http_url": {
+																	"description": "The url that will be checked during domain validation.",
+																	"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																	"type": "string"
+																},
+																"status": {
+																	"description": "Status of the validation record.",
+																	"example": "pending",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"txt_name": {
+																	"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																	"example": "_acme-challenge.app.example.com",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"txt_value": {
+																	"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																	"example": "810b7d5f01154524b961ba0cd578acc2",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"readOnly": true,
+														"type": "array"
+													},
 													"hosts": {
 														"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 														"example": [
@@ -789,6 +853,20 @@
 														"items": {
 															"description": "Certificate's required validation record.",
 															"properties": {
+																"cname": {
+																	"description": "The CNAME record hostname for DCV delegation.",
+																	"example": "_acme-challenge.example.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"cname_target": {
+																	"description": "The CNAME record target value for DCV delegation.",
+																	"example": "dcv.cloudflare.com",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
 																"emails": {
 																	"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																	"example": [
@@ -809,6 +887,12 @@
 																"http_url": {
 																	"description": "The url that will be checked during domain validation.",
 																	"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																	"type": "string"
+																},
+																"status": {
+																	"description": "Status of the validation record.",
+																	"example": "pending",
+																	"readOnly": true,
 																	"type": "string"
 																},
 																"txt_name": {
@@ -1111,6 +1195,70 @@
 																"type": "boolean",
 																"x-auditable": true
 															},
+															"dcv_delegation_records": {
+																"description": "DCV Delegation records for domain validation.",
+																"items": {
+																	"description": "Certificate's required validation record.",
+																	"properties": {
+																		"cname": {
+																			"description": "The CNAME record hostname for DCV delegation.",
+																			"example": "_acme-challenge.example.com",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"cname_target": {
+																			"description": "The CNAME record target value for DCV delegation.",
+																			"example": "dcv.cloudflare.com",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"emails": {
+																			"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																			"example": [
+																				"administrator@example.com",
+																				"webmaster@example.com"
+																			],
+																			"items": {
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		},
+																		"http_body": {
+																			"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																			"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																			"type": "string"
+																		},
+																		"http_url": {
+																			"description": "The url that will be checked during domain validation.",
+																			"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																			"type": "string"
+																		},
+																		"status": {
+																			"description": "Status of the validation record.",
+																			"example": "pending",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		"txt_name": {
+																			"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																			"example": "_acme-challenge.app.example.com",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"txt_value": {
+																			"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																			"example": "810b7d5f01154524b961ba0cd578acc2",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"readOnly": true,
+																"type": "array"
+															},
 															"hosts": {
 																"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 																"example": [
@@ -1215,6 +1363,20 @@
 																"items": {
 																	"description": "Certificate's required validation record.",
 																	"properties": {
+																		"cname": {
+																			"description": "The CNAME record hostname for DCV delegation.",
+																			"example": "_acme-challenge.example.com",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"cname_target": {
+																			"description": "The CNAME record target value for DCV delegation.",
+																			"example": "dcv.cloudflare.com",
+																			"readOnly": true,
+																			"type": "string",
+																			"x-auditable": true
+																		},
 																		"emails": {
 																			"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																			"example": [
@@ -1235,6 +1397,12 @@
 																		"http_url": {
 																			"description": "The url that will be checked during domain validation.",
 																			"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																			"type": "string"
+																		},
+																		"status": {
+																			"description": "Status of the validation record.",
+																			"example": "pending",
+																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"txt_name": {
@@ -1672,6 +1840,70 @@
 													"type": "boolean",
 													"x-auditable": true
 												},
+												"dcv_delegation_records": {
+													"description": "DCV Delegation records for domain validation.",
+													"items": {
+														"description": "Certificate's required validation record.",
+														"properties": {
+															"cname": {
+																"description": "The CNAME record hostname for DCV delegation.",
+																"example": "_acme-challenge.example.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"cname_target": {
+																"description": "The CNAME record target value for DCV delegation.",
+																"example": "dcv.cloudflare.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"emails": {
+																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																"example": [
+																	"administrator@example.com",
+																	"webmaster@example.com"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"http_body": {
+																"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																"type": "string"
+															},
+															"http_url": {
+																"description": "The url that will be checked during domain validation.",
+																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																"type": "string"
+															},
+															"status": {
+																"description": "Status of the validation record.",
+																"example": "pending",
+																"readOnly": true,
+																"type": "string"
+															},
+															"txt_name": {
+																"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																"example": "_acme-challenge.app.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"txt_value": {
+																"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																"example": "810b7d5f01154524b961ba0cd578acc2",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
 												"hosts": {
 													"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 													"example": [
@@ -1776,6 +2008,20 @@
 													"items": {
 														"description": "Certificate's required validation record.",
 														"properties": {
+															"cname": {
+																"description": "The CNAME record hostname for DCV delegation.",
+																"example": "_acme-challenge.example.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"cname_target": {
+																"description": "The CNAME record target value for DCV delegation.",
+																"example": "dcv.cloudflare.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
 															"emails": {
 																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																"example": [
@@ -1796,6 +2042,12 @@
 															"http_url": {
 																"description": "The url that will be checked during domain validation.",
 																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																"type": "string"
+															},
+															"status": {
+																"description": "Status of the validation record.",
+																"example": "pending",
+																"readOnly": true,
 																"type": "string"
 															},
 															"txt_name": {
@@ -2066,6 +2318,70 @@
 															"type": "boolean",
 															"x-auditable": true
 														},
+														"dcv_delegation_records": {
+															"description": "DCV Delegation records for domain validation.",
+															"items": {
+																"description": "Certificate's required validation record.",
+																"properties": {
+																	"cname": {
+																		"description": "The CNAME record hostname for DCV delegation.",
+																		"example": "_acme-challenge.example.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"cname_target": {
+																		"description": "The CNAME record target value for DCV delegation.",
+																		"example": "dcv.cloudflare.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"emails": {
+																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																		"example": [
+																			"administrator@example.com",
+																			"webmaster@example.com"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	},
+																	"http_body": {
+																		"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																		"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																		"type": "string"
+																	},
+																	"http_url": {
+																		"description": "The url that will be checked during domain validation.",
+																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "Status of the validation record.",
+																		"example": "pending",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"txt_name": {
+																		"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																		"example": "_acme-challenge.app.example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"txt_value": {
+																		"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																		"example": "810b7d5f01154524b961ba0cd578acc2",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
 														"hosts": {
 															"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 															"example": [
@@ -2170,6 +2486,20 @@
 															"items": {
 																"description": "Certificate's required validation record.",
 																"properties": {
+																	"cname": {
+																		"description": "The CNAME record hostname for DCV delegation.",
+																		"example": "_acme-challenge.example.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"cname_target": {
+																		"description": "The CNAME record target value for DCV delegation.",
+																		"example": "dcv.cloudflare.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"emails": {
 																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																		"example": [
@@ -2190,6 +2520,12 @@
 																	"http_url": {
 																		"description": "The url that will be checked during domain validation.",
 																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "Status of the validation record.",
+																		"example": "pending",
+																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"txt_name": {
@@ -3048,6 +3384,70 @@
 													"type": "boolean",
 													"x-auditable": true
 												},
+												"dcv_delegation_records": {
+													"description": "DCV Delegation records for domain validation.",
+													"items": {
+														"description": "Certificate's required validation record.",
+														"properties": {
+															"cname": {
+																"description": "The CNAME record hostname for DCV delegation.",
+																"example": "_acme-challenge.example.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"cname_target": {
+																"description": "The CNAME record target value for DCV delegation.",
+																"example": "dcv.cloudflare.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"emails": {
+																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																"example": [
+																	"administrator@example.com",
+																	"webmaster@example.com"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"http_body": {
+																"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																"type": "string"
+															},
+															"http_url": {
+																"description": "The url that will be checked during domain validation.",
+																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																"type": "string"
+															},
+															"status": {
+																"description": "Status of the validation record.",
+																"example": "pending",
+																"readOnly": true,
+																"type": "string"
+															},
+															"txt_name": {
+																"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																"example": "_acme-challenge.app.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"txt_value": {
+																"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																"example": "810b7d5f01154524b961ba0cd578acc2",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
 												"hosts": {
 													"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 													"example": [
@@ -3152,6 +3552,20 @@
 													"items": {
 														"description": "Certificate's required validation record.",
 														"properties": {
+															"cname": {
+																"description": "The CNAME record hostname for DCV delegation.",
+																"example": "_acme-challenge.example.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"cname_target": {
+																"description": "The CNAME record target value for DCV delegation.",
+																"example": "dcv.cloudflare.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
 															"emails": {
 																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																"example": [
@@ -3172,6 +3586,12 @@
 															"http_url": {
 																"description": "The url that will be checked during domain validation.",
 																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																"type": "string"
+															},
+															"status": {
+																"description": "Status of the validation record.",
+																"example": "pending",
+																"readOnly": true,
 																"type": "string"
 															},
 															"txt_name": {
@@ -3442,6 +3862,70 @@
 															"type": "boolean",
 															"x-auditable": true
 														},
+														"dcv_delegation_records": {
+															"description": "DCV Delegation records for domain validation.",
+															"items": {
+																"description": "Certificate's required validation record.",
+																"properties": {
+																	"cname": {
+																		"description": "The CNAME record hostname for DCV delegation.",
+																		"example": "_acme-challenge.example.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"cname_target": {
+																		"description": "The CNAME record target value for DCV delegation.",
+																		"example": "dcv.cloudflare.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"emails": {
+																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																		"example": [
+																			"administrator@example.com",
+																			"webmaster@example.com"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	},
+																	"http_body": {
+																		"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																		"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																		"type": "string"
+																	},
+																	"http_url": {
+																		"description": "The url that will be checked during domain validation.",
+																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "Status of the validation record.",
+																		"example": "pending",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"txt_name": {
+																		"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																		"example": "_acme-challenge.app.example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"txt_value": {
+																		"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																		"example": "810b7d5f01154524b961ba0cd578acc2",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
 														"hosts": {
 															"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 															"example": [
@@ -3546,6 +4030,20 @@
 															"items": {
 																"description": "Certificate's required validation record.",
 																"properties": {
+																	"cname": {
+																		"description": "The CNAME record hostname for DCV delegation.",
+																		"example": "_acme-challenge.example.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"cname_target": {
+																		"description": "The CNAME record target value for DCV delegation.",
+																		"example": "dcv.cloudflare.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"emails": {
 																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																		"example": [
@@ -3566,6 +4064,12 @@
 																	"http_url": {
 																		"description": "The url that will be checked during domain validation.",
 																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "Status of the validation record.",
+																		"example": "pending",
+																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"txt_name": {
@@ -4072,6 +4576,70 @@
 													"type": "boolean",
 													"x-auditable": true
 												},
+												"dcv_delegation_records": {
+													"description": "DCV Delegation records for domain validation.",
+													"items": {
+														"description": "Certificate's required validation record.",
+														"properties": {
+															"cname": {
+																"description": "The CNAME record hostname for DCV delegation.",
+																"example": "_acme-challenge.example.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"cname_target": {
+																"description": "The CNAME record target value for DCV delegation.",
+																"example": "dcv.cloudflare.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"emails": {
+																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																"example": [
+																	"administrator@example.com",
+																	"webmaster@example.com"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															},
+															"http_body": {
+																"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																"type": "string"
+															},
+															"http_url": {
+																"description": "The url that will be checked during domain validation.",
+																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																"type": "string"
+															},
+															"status": {
+																"description": "Status of the validation record.",
+																"example": "pending",
+																"readOnly": true,
+																"type": "string"
+															},
+															"txt_name": {
+																"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																"example": "_acme-challenge.app.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"txt_value": {
+																"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																"example": "810b7d5f01154524b961ba0cd578acc2",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
 												"hosts": {
 													"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 													"example": [
@@ -4176,6 +4744,20 @@
 													"items": {
 														"description": "Certificate's required validation record.",
 														"properties": {
+															"cname": {
+																"description": "The CNAME record hostname for DCV delegation.",
+																"example": "_acme-challenge.example.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"cname_target": {
+																"description": "The CNAME record target value for DCV delegation.",
+																"example": "dcv.cloudflare.com",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
 															"emails": {
 																"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																"example": [
@@ -4196,6 +4778,12 @@
 															"http_url": {
 																"description": "The url that will be checked during domain validation.",
 																"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																"type": "string"
+															},
+															"status": {
+																"description": "Status of the validation record.",
+																"example": "pending",
+																"readOnly": true,
 																"type": "string"
 															},
 															"txt_name": {
@@ -4466,6 +5054,70 @@
 															"type": "boolean",
 															"x-auditable": true
 														},
+														"dcv_delegation_records": {
+															"description": "DCV Delegation records for domain validation.",
+															"items": {
+																"description": "Certificate's required validation record.",
+																"properties": {
+																	"cname": {
+																		"description": "The CNAME record hostname for DCV delegation.",
+																		"example": "_acme-challenge.example.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"cname_target": {
+																		"description": "The CNAME record target value for DCV delegation.",
+																		"example": "dcv.cloudflare.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"emails": {
+																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
+																		"example": [
+																			"administrator@example.com",
+																			"webmaster@example.com"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": "array"
+																	},
+																	"http_body": {
+																		"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+																		"example": "ca3-574923932a82475cb8592200f1a2a23d",
+																		"type": "string"
+																	},
+																	"http_url": {
+																		"description": "The url that will be checked during domain validation.",
+																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "Status of the validation record.",
+																		"example": "pending",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"txt_name": {
+																		"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation .",
+																		"example": "_acme-challenge.app.example.com",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"txt_value": {
+																		"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+																		"example": "810b7d5f01154524b961ba0cd578acc2",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"readOnly": true,
+															"type": "array"
+														},
 														"hosts": {
 															"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.",
 															"example": [
@@ -4570,6 +5222,20 @@
 															"items": {
 																"description": "Certificate's required validation record.",
 																"properties": {
+																	"cname": {
+																		"description": "The CNAME record hostname for DCV delegation.",
+																		"example": "_acme-challenge.example.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"cname_target": {
+																		"description": "The CNAME record target value for DCV delegation.",
+																		"example": "dcv.cloudflare.com",
+																		"readOnly": true,
+																		"type": "string",
+																		"x-auditable": true
+																	},
 																	"emails": {
 																		"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation.",
 																		"example": [
@@ -4590,6 +5256,12 @@
 																	"http_url": {
 																		"description": "The url that will be checked during domain validation.",
 																		"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt",
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "Status of the validation record.",
+																		"example": "pending",
+																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"txt_name": {

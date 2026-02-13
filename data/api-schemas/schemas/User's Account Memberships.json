@@ -545,7 +545,8 @@
 																						"default": false,
 																						"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 																						"type": "boolean",
-																						"x-auditable": true
+																						"x-auditable": true,
+																						"x-stainless-terraform-configurability": "computed_optional"
 																					}
 																				},
 																				"type": "object"
@@ -1047,7 +1048,8 @@
 																						"default": false,
 																						"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 																						"type": "boolean",
-																						"x-auditable": true
+																						"x-auditable": true,
+																						"x-stainless-terraform-configurability": "computed_optional"
 																					}
 																				},
 																				"type": "object"
@@ -1847,7 +1849,8 @@
 																			"default": false,
 																			"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object"
@@ -2665,7 +2668,8 @@
 																			"default": false,
 																			"description": "Indicates whether membership in this account requires that\nTwo-Factor Authentication is enabled",
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		}
 																	},
 																	"type": "object"

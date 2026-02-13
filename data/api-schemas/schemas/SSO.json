@@ -478,7 +478,8 @@
 														"default": false,
 														"description": "Controls the display of FedRAMP language to the user during SSO login",
 														"example": false,
-														"type": "boolean"
+														"type": "boolean",
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"verification": {
 														"properties": {
@@ -826,7 +827,8 @@
 													"default": false,
 													"description": "Controls the display of FedRAMP language to the user during SSO login",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"verification": {
 													"properties": {
@@ -1051,7 +1053,8 @@
 								"default": false,
 								"description": "Controls the display of FedRAMP language to the user during SSO login",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"type": "object"
@@ -1194,7 +1197,8 @@
 													"default": false,
 													"description": "Controls the display of FedRAMP language to the user during SSO login",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"verification": {
 													"properties": {
@@ -1395,7 +1399,8 @@
 								"default": true,
 								"description": "Begin the verification process after creation",
 								"example": true,
-								"type": "boolean"
+								"type": "boolean",
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"email_domain": {
 								"description": "Email domain of the new SSO connector",
@@ -1406,7 +1411,8 @@
 								"default": false,
 								"description": "Controls the display of FedRAMP language to the user during SSO login",
 								"example": false,
-								"type": "boolean"
+								"type": "boolean",
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -1552,7 +1558,8 @@
 													"default": false,
 													"description": "Controls the display of FedRAMP language to the user during SSO login",
 													"example": false,
-													"type": "boolean"
+													"type": "boolean",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"verification": {
 													"properties": {

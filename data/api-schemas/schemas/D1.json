@@ -1,7 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Deletes the specified D1 database.",
-		"operationId": "cloudflare-d1-delete-database",
+		"operationId": "d1-delete-database",
 		"parameters": [
 			{
 				"in": "path",
@@ -227,7 +227,7 @@
 	},
 	"GET /accounts/{account_id}/d1/database": {
 		"description": "Returns a list of D1 databases.",
-		"operationId": "cloudflare-d1-list-databases",
+		"operationId": "d1-list-databases",
 		"parameters": [
 			{
 				"in": "path",
@@ -525,7 +525,7 @@
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Returns the specified D1 database.",
-		"operationId": "cloudflare-d1-get-database",
+		"operationId": "d1-get-database",
 		"parameters": [
 			{
 				"in": "path",
@@ -820,7 +820,7 @@
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark": {
 		"description": "Retrieves the current bookmark, or the nearest bookmark at or before a provided timestamp.\nBookmarks can be used with the restore endpoint to revert the database to a previous point in time.\n",
-		"operationId": "cloudflare-d1-time-travel-get-bookmark",
+		"operationId": "d1-time-travel-get-bookmark",
 		"parameters": [
 			{
 				"in": "path",
@@ -1063,7 +1063,7 @@
 	},
 	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Updates partially the specified D1 database.",
-		"operationId": "cloudflare-d1-update-partial-database",
+		"operationId": "d1-update-partial-database",
 		"parameters": [
 			{
 				"in": "path",
@@ -1377,7 +1377,7 @@
 	},
 	"POST /accounts/{account_id}/d1/database": {
 		"description": "Returns the created D1 database.",
-		"operationId": "cloudflare-d1-create-database",
+		"operationId": "d1-create-database",
 		"parameters": [
 			{
 				"in": "path",
@@ -1694,7 +1694,7 @@
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/export": {
 		"description": "Returns a URL where the SQL contents of your D1 can be downloaded. Note: this process may take\nsome time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid\nblocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel.\n",
-		"operationId": "cloudflare-d1-export-database",
+		"operationId": "d1-export-database",
 		"parameters": [
 			{
 				"in": "path",
@@ -2133,7 +2133,7 @@
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/import": {
 		"description": "Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it\nand polling it for status updates. Imports block the D1 for their duration.\n",
-		"operationId": "cloudflare-d1-import-database",
+		"operationId": "d1-import-database",
 		"parameters": [
 			{
 				"in": "path",
@@ -2693,7 +2693,7 @@
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/query": {
 		"description": "Returns the query result as an object.",
-		"operationId": "cloudflare-d1-query-database",
+		"operationId": "d1-query-database",
 		"parameters": [
 			{
 				"in": "path",
@@ -3080,7 +3080,7 @@
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/raw": {
 		"description": "Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint.",
-		"operationId": "cloudflare-d1-raw-database-query",
+		"operationId": "d1-raw-database-query",
 		"parameters": [
 			{
 				"in": "path",
@@ -3491,7 +3491,7 @@
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
 		"description": "Restores a D1 database to a previous point in time either via a bookmark or a timestamp.\n",
-		"operationId": "cloudflare-d1-time-travel-restore",
+		"operationId": "d1-time-travel-restore",
 		"parameters": [
 			{
 				"in": "path",
@@ -3768,7 +3768,7 @@
 	},
 	"PUT /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Updates the specified D1 database.",
-		"operationId": "cloudflare-d1-update-database",
+		"operationId": "d1-update-database",
 		"parameters": [
 			{
 				"in": "path",

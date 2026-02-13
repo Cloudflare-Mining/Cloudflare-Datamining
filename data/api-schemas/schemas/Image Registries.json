@@ -131,29 +131,37 @@
 									"type": "object"
 								},
 								{
-									"description": "Credentials that can be used to interact with the requested image registry.",
 									"properties": {
-										"account_id": {
-											"description": "A unique identifier for the user's account",
-											"type": "string"
-										},
-										"password": {
-											"description": "The password to use when authenticating to the image registry.",
-											"type": "string"
-										},
-										"registry_host": {
-											"description": "The domain of the image registry the credentials are for.",
-											"type": "string"
-										},
-										"username": {
-											"description": "The username to use when authenticating to the image registry.",
-											"type": "string"
+										"result": {
+											"description": "Credentials that can be used to interact with the requested image registry.",
+											"properties": {
+												"account_id": {
+													"description": "A unique identifier for the user's account",
+													"type": "string"
+												},
+												"password": {
+													"description": "The password to use when authenticating to the image registry.",
+													"type": "string"
+												},
+												"registry_host": {
+													"description": "The domain of the image registry the credentials are for.",
+													"type": "string"
+												},
+												"username": {
+													"description": "The username to use when authenticating to the image registry.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"account_id",
+												"registry_host",
+												"username"
+											],
+											"type": "object"
 										}
 									},
 									"required": [
-										"account_id",
-										"registry_host",
-										"username"
+										"result"
 									],
 									"type": "object"
 								}

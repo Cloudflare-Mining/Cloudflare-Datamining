@@ -379,7 +379,12 @@
 																				"format": "date-time",
 																				"type": "string"
 																			},
+																			"description": {
+																				"nullable": true,
+																				"type": "string"
+																			},
 																			"enabled": {
+																				"deprecated": true,
 																				"type": "boolean"
 																			},
 																			"id": {
@@ -412,6 +417,7 @@
 																				"type": "object"
 																			},
 																			"profile_id": {
+																				"deprecated": true,
 																				"format": "uuid",
 																				"nullable": true,
 																				"type": "string"
@@ -480,6 +486,7 @@
 																				"type": "string"
 																			},
 																			"profile_id": {
+																				"deprecated": true,
 																				"format": "uuid",
 																				"nullable": true,
 																				"type": "string"
@@ -1059,7 +1066,12 @@
 																					"format": "date-time",
 																					"type": "string"
 																				},
+																				"description": {
+																					"nullable": true,
+																					"type": "string"
+																				},
 																				"enabled": {
+																					"deprecated": true,
 																					"type": "boolean"
 																				},
 																				"id": {
@@ -1092,6 +1104,7 @@
 																					"type": "object"
 																				},
 																				"profile_id": {
+																					"deprecated": true,
 																					"format": "uuid",
 																					"nullable": true,
 																					"type": "string"
@@ -1160,6 +1173,7 @@
 																					"type": "string"
 																				},
 																				"profile_id": {
+																					"deprecated": true,
 																					"format": "uuid",
 																					"nullable": true,
 																					"type": "string"
@@ -1655,6 +1669,10 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"description": {
+								"nullable": true,
+								"type": "string"
+							},
 							"enabled": {
 								"type": "boolean"
 							},
@@ -1801,7 +1819,12 @@
 													"format": "date-time",
 													"type": "string"
 												},
+												"description": {
+													"nullable": true,
+													"type": "string"
+												},
 												"enabled": {
+													"deprecated": true,
 													"type": "boolean"
 												},
 												"id": {
@@ -1834,6 +1857,7 @@
 													"type": "object"
 												},
 												"profile_id": {
+													"deprecated": true,
 													"format": "uuid",
 													"nullable": true,
 													"type": "string"
@@ -2024,6 +2048,10 @@
 										"allOf": [
 											{
 												"properties": {
+													"description": {
+														"nullable": true,
+														"type": "string"
+													},
 													"name": {
 														"type": "string"
 													},
@@ -2228,7 +2256,12 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"description": {
+																	"nullable": true,
+																	"type": "string"
+																},
 																"enabled": {
+																	"deprecated": true,
 																	"type": "boolean"
 																},
 																"id": {
@@ -2261,6 +2294,7 @@
 																	"type": "object"
 																},
 																"profile_id": {
+																	"deprecated": true,
 																	"format": "uuid",
 																	"nullable": true,
 																	"type": "string"
@@ -2329,6 +2363,7 @@
 																	"type": "string"
 																},
 																"profile_id": {
+																	"deprecated": true,
 																	"format": "uuid",
 																	"nullable": true,
 																	"type": "string"
@@ -2780,6 +2815,10 @@
 						"allOf": [
 							{
 								"properties": {
+									"description": {
+										"nullable": true,
+										"type": "string"
+									},
 									"name": {
 										"type": "string"
 									},
@@ -2931,7 +2970,12 @@
 													"format": "date-time",
 													"type": "string"
 												},
+												"description": {
+													"nullable": true,
+													"type": "string"
+												},
 												"enabled": {
+													"deprecated": true,
 													"type": "boolean"
 												},
 												"id": {
@@ -2964,6 +3008,7 @@
 													"type": "object"
 												},
 												"profile_id": {
+													"deprecated": true,
 													"format": "uuid",
 													"nullable": true,
 													"type": "string"
@@ -3287,6 +3332,7 @@
 													"type": "string"
 												},
 												"profile_id": {
+													"deprecated": true,
 													"format": "uuid",
 													"nullable": true,
 													"type": "string"

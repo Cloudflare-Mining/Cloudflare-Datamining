@@ -18,7 +18,7 @@
 				}
 			},
 			{
-				"description": "The beginning of the search date range.\nDefaults to `now - 30 days`.",
+				"description": "The beginning of the search date range.\nDefaults to `now - 30 days` if not provided.",
 				"example": "2022-06-25T14:30:00Z",
 				"in": "query",
 				"name": "start",
@@ -28,7 +28,7 @@
 				}
 			},
 			{
-				"description": "The end of the search date range.\nDefaults to `now`.",
+				"description": "The end of the search date range.\nDefaults to `now` if not provided.",
 				"example": "2022-07-25T14:30:00Z",
 				"in": "query",
 				"name": "end",
@@ -3440,7 +3440,7 @@
 				}
 			},
 			{
-				"description": "The beginning of the search date range.\nDefaults to `now - 30 days`.",
+				"description": "The beginning of the search date range.\nDefaults to `now - 30 days` if not provided.",
 				"example": "2022-06-25T14:30:00Z",
 				"in": "query",
 				"name": "start",
@@ -3450,7 +3450,7 @@
 				}
 			},
 			{
-				"description": "The end of the search date range.\nDefaults to `now`.",
+				"description": "The end of the search date range.\nDefaults to `now` if not provided.",
 				"example": "2022-07-25T14:30:00Z",
 				"in": "query",
 				"name": "end",
@@ -4380,7 +4380,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
-		"description": "Maximum batch size: 100 messages per request",
+		"description": "Maximum batch size: 1000 messages per request",
 		"operationId": "email_security_post_bulk_message_move",
 		"parameters": [
 			{

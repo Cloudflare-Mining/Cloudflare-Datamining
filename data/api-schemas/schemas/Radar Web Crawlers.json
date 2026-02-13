@@ -437,7 +437,7 @@
 		}
 	},
 	"GET /radar/bots/crawlers/timeseries_groups/{dimension}": {
-		"description": "Retrieves the distribution of HTTP requests from crawlers, grouped by chosen the specified dimension over time.",
+		"description": "Retrieves the distribution of HTTP requests from crawlers, grouped by the specified dimension over time.",
 		"operationId": "radar-get-crawlers-timeseries-group",
 		"parameters": [
 			{

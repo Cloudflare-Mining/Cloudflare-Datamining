@@ -30,20 +30,9 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"cf_api_id": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"cf_api_key": {
-											"type": "string"
 										},
 										"created_at": {
 											"format": "date-time",
@@ -51,6 +40,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -75,26 +65,19 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"synced_at": {
-											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"account_id",
-										"account_tag",
 										"name",
 										"cf_api_id",
-										"cf_api_key",
 										"created_at",
 										"modified_at"
 									],
@@ -172,7 +155,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -223,20 +206,9 @@
 								"result": {
 									"items": {
 										"properties": {
-											"account_id": {
-												"readOnly": true,
-												"type": "string"
-											},
-											"account_tag": {
-												"readOnly": true,
-												"type": "string"
-											},
 											"cf_api_id": {
 												"type": "string",
 												"x-auditable": true
-											},
-											"cf_api_key": {
-												"type": "string"
 											},
 											"created_at": {
 												"format": "date-time",
@@ -244,6 +216,7 @@
 												"type": "string"
 											},
 											"created_by": {
+												"nullable": true,
 												"readOnly": true,
 												"type": "string"
 											},
@@ -268,26 +241,19 @@
 												"type": "string"
 											},
 											"modified_by": {
+												"nullable": true,
 												"readOnly": true,
 												"type": "string"
 											},
 											"name": {
 												"type": "string",
 												"x-auditable": true
-											},
-											"synced_at": {
-												"format": "date-time",
-												"readOnly": true,
-												"type": "string"
 											}
 										},
 										"required": [
 											"id",
-											"account_id",
-											"account_tag",
 											"name",
 											"cf_api_id",
-											"cf_api_key",
 											"created_at",
 											"modified_at"
 										],
@@ -363,7 +329,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -404,20 +370,9 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"cf_api_id": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"cf_api_key": {
-											"type": "string"
 										},
 										"created_at": {
 											"format": "date-time",
@@ -425,6 +380,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -449,26 +405,19 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"synced_at": {
-											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"account_id",
-										"account_tag",
 										"name",
 										"cf_api_id",
-										"cf_api_key",
 										"created_at",
 										"modified_at"
 									],
@@ -546,7 +495,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -579,7 +528,9 @@
 								"x-auditable": true
 							},
 							"cf_api_key": {
-								"type": "string"
+								"type": "string",
+								"writeOnly": true,
+								"x-sensitive": true
 							},
 							"legacy": {
 								"default": true,
@@ -609,20 +560,9 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"cf_api_id": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"cf_api_key": {
-											"type": "string"
 										},
 										"created_at": {
 											"format": "date-time",
@@ -630,6 +570,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -654,26 +595,19 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"synced_at": {
-											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"account_id",
-										"account_tag",
 										"name",
 										"cf_api_id",
-										"cf_api_key",
 										"created_at",
 										"modified_at"
 									],
@@ -759,7 +693,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -802,7 +736,9 @@
 								"x-auditable": true
 							},
 							"cf_api_key": {
-								"type": "string"
+								"type": "string",
+								"writeOnly": true,
+								"x-sensitive": true
 							},
 							"legacy": {
 								"default": true,
@@ -832,20 +768,9 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"readOnly": true,
-											"type": "string"
-										},
-										"account_tag": {
-											"readOnly": true,
-											"type": "string"
-										},
 										"cf_api_id": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"cf_api_key": {
-											"type": "string"
 										},
 										"created_at": {
 											"format": "date-time",
@@ -853,6 +778,7 @@
 											"type": "string"
 										},
 										"created_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
@@ -877,26 +803,19 @@
 											"type": "string"
 										},
 										"modified_by": {
+											"nullable": true,
 											"readOnly": true,
 											"type": "string"
 										},
 										"name": {
 											"type": "string",
 											"x-auditable": true
-										},
-										"synced_at": {
-											"format": "date-time",
-											"readOnly": true,
-											"type": "string"
 										}
 									},
 									"required": [
 										"id",
-										"account_id",
-										"account_tag",
 										"name",
 										"cf_api_id",
-										"cf_api_key",
 										"created_at",
 										"modified_at"
 									],
@@ -1024,7 +943,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.rag"
+				"com.cloudflare.api.account.ai-search"
 			]
 		},
 		"x-cfPlanAvailability": {

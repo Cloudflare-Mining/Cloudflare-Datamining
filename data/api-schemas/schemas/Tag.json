@@ -217,6 +217,11 @@
 												"format": "date-time",
 												"type": "string"
 											},
+											"datasetId": {
+												"description": "The dataset ID this indicator belongs to. Included in list responses.",
+												"example": "dataset-uuid-123",
+												"type": "string"
+											},
 											"indicatorType": {
 												"example": "domain",
 												"type": "string"

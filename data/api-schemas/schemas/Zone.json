@@ -558,7 +558,7 @@
 														"type": "string"
 													},
 													"name": {
-														"description": "The domain name.",
+														"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
 														"example": "example.com",
 														"maxLength": 253,
 														"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
@@ -899,6 +899,9 @@
 		"summary": "List Zones",
 		"tags": [
 			"Zone"
+		],
+		"x-api-token-group": [
+			"Zone Zone Read"
 		]
 	},
 	"GET /zones/{zone_id}": {
@@ -1080,7 +1083,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The domain name.",
+													"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
 													"example": "example.com",
 													"maxLength": 253,
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
@@ -1711,7 +1714,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The domain name.",
+													"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
 													"example": "example.com",
 													"maxLength": 253,
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
@@ -2081,7 +2084,7 @@
 								"type": "object"
 							},
 							"name": {
-								"description": "The domain name.",
+								"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
 								"example": "example.com",
 								"maxLength": 253,
 								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
@@ -2274,7 +2277,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The domain name.",
+													"description": "The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment (\"label\") not exceeding 63 characters.",
 													"example": "example.com",
 													"maxLength": 253,
 													"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",

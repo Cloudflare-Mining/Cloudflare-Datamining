@@ -383,6 +383,273 @@
 			"Trust and Safety Read"
 		]
 	},
+	"GET /accounts/{account_id}/abuse-reports/{report_id}/emails": {
+		"description": "List emails sent to the customer for an abuse report. Returns all successful customer emails sent for the specified abuse report. Does not include emails sent to hosts or submitters.",
+		"operationId": "ListEmails",
+		"parameters": [
+			{
+				"description": "Cloudflare Account ID",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Abuse Report ID",
+				"in": "path",
+				"name": "report_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number to retrieve (default 1)",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of emails per page (default 20, max 100)",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"emails": {
+											"items": {
+												"description": "An email sent to the customer for an abuse report.",
+												"properties": {
+													"body": {
+														"description": "Body content of the email.",
+														"type": "string"
+													},
+													"id": {
+														"description": "Unique identifier of the email.",
+														"type": "string"
+													},
+													"recipient": {
+														"description": "Email address of the recipient.",
+														"type": "string"
+													},
+													"sent_at": {
+														"description": "When the email was sent. Time in RFC 3339 format (https://www.rfc-editor.org/rfc/rfc3339.html)",
+														"example": "2009-11-10T23:00:00Z",
+														"type": "string"
+													},
+													"subject": {
+														"description": "Subject line of the email.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"subject",
+													"body",
+													"recipient",
+													"sent_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"emails"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"page": {
+											"type": "number"
+										},
+										"per_page": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										},
+										"total_pages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"per_page",
+										"count",
+										"total_count",
+										"total_pages"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List abuse report emails successful"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request - invalid parameters or report not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failed to list abuse report emails"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List abuse report emails",
+		"tags": [
+			"tseng-abuse-complaint-processor_other"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read"
+		]
+	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/mitigations": {
 		"description": "List mitigations done to remediate the abuse report.",
 		"operationId": "ListMitigations",
