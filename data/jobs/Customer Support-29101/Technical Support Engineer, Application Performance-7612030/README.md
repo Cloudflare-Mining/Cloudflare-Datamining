@@ -5,33 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon, Portugal or London, UK&nbsp;</strong></p>
-<p><strong>What you’ll do</strong></p>
-<p>In this role, you’ll help build and maintain Data Security products as a Software Engineer. These products empower customers to gain deep visibility into Cloud/SaaS security opportunities and into trends in their network traffic and product use. As an engineer on the team, you will focus on building new functionality into our APIs and distributed code while ensuring the performance and reliability of our services which ingest millions of data points each day. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and network visibility challenges for our customers.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Locations: </strong>Hybrid - Austin, TX | Mexico City, Mexico</p>
+<p><strong>Schedule: </strong>This is a full-time, Monday–Friday role requiring a firm start time of 7:00 AM Central Time to align with our global operations. This role requires you to be able to come into our Austin/Mexico City office twice a week.</p>
+<h4>About the Department</h4>
+<p>The Customer Support Team is dedicated to resolving complex issues and providing technical assistance across various channels, including phone, email, chat, and social media. Our team passionately advocates for all customers, from individual Wordpress bloggers to Fortune 500 customers handling millions of clients daily. By actively listening to real-world pain points and use cases, we serve as the vital link between our customers and the rest of Cloudflare and play a key role in building a better Internet every day!</p>
+<h4>What You’ll do</h4>
+<p>As a Technical Support Engineer at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
+<h4>Responsibilities&nbsp;</h4>
 <ul>
-	<li>Products are written in Go, Python, and Typescript.</li>
-	<li>Code runs on Kubernetes, Cloudflare Workers, AWS, GCP, Azure.</li>
-	<li>We utilize Postgres as our data store, Redis as our cache, and Kafka as our message broker.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
-	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
+	<li>Fulfill support requests by communicating with Cloudflare customers via chat, email, and phone</li>
+	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
+	<li>Track support requests using our ticketing system</li>
+	<li>Participate in team meetings to discuss and share feedback</li>
+	<li>Help create and update technical documentation and runbooks&nbsp;</li>
+	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
+	<li>Support the team in testing new releases and reporting bugs</li>
+	<li>Perform other duties/projects as assigned&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<h4>Required Skills and Experience</h4>
 <ul>
-	<li>3+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Python, Postgres</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li>3-5 years of experience working in a technical Customer Support role, preferably as part of a team working with large enterprise customers</li>
+	<li>Self-driven and comfortable learning new technologies and systems on an ongoing basis</li>
+	<li>Excellent written and verbal communication skills</li>
+	<li>Strong understanding of how the Internet works at OSI Model layers 3, 4, and 7</li>
+	<li>Strong understanding of DNS, SSL/TLS, and HTTP(S) protocols</li>
+	<li>General understanding of HTTP reverse proxying, caching, and load balancing</li>
+	<li>Experience using Linux and associated command line tools, including curl, dig, traceroute, openssl, git, etc.</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
+	<li>Experience installing and configuring web servers like Apache, Nginx, and/or IIS</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<h4>Preferred Skills and Experience</h4>
 <ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working with third-party API integrations</li>
-	<li>Previous experience working on security products</li>
+	<li>Prior experience with the Cloudflare platform, especially for personal projects/websites</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>Experience configuring network or application firewalls</li>
+	<li>Degrees or certifications in Computer Science, Information Technology, and related fields</li>
+	<li>Fluency in Mandarin, Spanish, and/or Portuguese</li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
