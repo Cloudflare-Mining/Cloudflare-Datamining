@@ -6,6 +6,19 @@
 		robots_policy_card: {
 			title: "Robots.txt policy"
 		},
+		quick_actions_card: {
+			title: "Quick Actions",
+			managed_robots_txt: {
+				title: "Managed robots.txt"
+			}
+		},
+		markdown_conversion_card: {
+			title: "Markdown for Agents",
+			toggle: {
+				title: "Markdown for Agents",
+				description: "Automatically convert HTML to Markdown for requests that use content negotiation headers (Accept: text/markdown)"
+			}
+		},
 		violations_card: {
 			title: "Robots.txt violations",
 			no_violations: "No robots.txt violations found",
@@ -104,6 +117,7 @@
 		Testing: "Testing"
 	},
 	common: {
+		beta: "Beta",
 		allow: "Allow",
 		allowed: "Allowed",
 		allowed_by_waf: "Allowed by WAF",
