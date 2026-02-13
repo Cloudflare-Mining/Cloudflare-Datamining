@@ -7,6 +7,8 @@
 	"ColoCountry": "string; The country where the Cloudflare data center that received the packet is located (ISO 3166-1 alpha-2).",
 	"ColoGeoHash": "string; The latitude and longitude where the Cloudflare data center that received the packet is located (Geohash encoding).",
 	"ColoName": "string; The unique site identifier of the Cloudflare data center that received the packet (for example, 'ams01', 'sjc01', 'lhr01').",
+	"DNSQueryName": "string; The DNS query name (domain) that was queried, if the packet is a DNS query.",
+	"DNSQueryType": "string; The DNS query type (e.g., A, AAAA, MX, TXT), if the packet is a DNS query.",
 	"Datetime": "int or string; The date and time the event occurred at the edge.",
 	"DestinationASN": "int; The ASN associated with the destination IP of the packet.",
 	"DestinationASNName": "string; The name of the ASN associated with the destination IP of the packet.",
