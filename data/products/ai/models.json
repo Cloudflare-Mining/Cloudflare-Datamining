@@ -1159,6 +1159,44 @@
 		]
 	},
 	{
+		"id": "86b3e51a-4b05-43fa-a403-0f27821919d2",
+		"source": 1,
+		"name": "@cf/zai-org/glm-4.7-flash",
+		"description": "GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"created_at": "2026-01-28 16:04:39.346",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "context_window",
+				"value": "131072"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.06,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 0.4,
+						"currency": "USD"
+					}
+				]
+			},
+			{
+				"property_id": "function_calling",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "85c5a3c6-24b0-45e7-b23a-023182578822",
 		"source": 2,
 		"name": "@hf/thebloke/llama-2-13b-chat-awq",
