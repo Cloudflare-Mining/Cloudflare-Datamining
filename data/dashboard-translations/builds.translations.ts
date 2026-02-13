@@ -139,7 +139,8 @@
 				environment_variables: "Environment variables",
 				build_token: "Build token"
 			},
-			pull_request_toast: "You have an outstanding <0>pull request</0> to accept. Please accept the changes before your next deployment to avoid build failure."
+			pull_request_toast: "You have an outstanding <0>pull request</0> to accept. Please accept the changes before your next deployment to avoid build failure.",
+			autoconfig_command_override_toast: "This build is running on a Cloudflare autoconfig-generated branch. We adjusted your build/deploy commands for this preview to ensure successful deployment."
 		},
 		create_worker: {
 			header: "Building and deploying",

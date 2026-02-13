@@ -45,7 +45,7 @@
 		enabled: "Enabled",
 		queries: "Queries",
 		included: "Included:",
-		count_queries_shared: "%{count} queries shared across all load balancers in your account",
+		count_queries_shared: "%{count} DNS Queries/month",
 		requests_per_enabled_hostname: "requests per enabled hostname and billed at the end of each month",
 		endpoint_servers_label: "Endpoint Servers",
 		faster_checks: "Faster Checks",
