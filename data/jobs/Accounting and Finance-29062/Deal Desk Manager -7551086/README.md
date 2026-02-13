@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, TX or New York, NY</strong></p>
 <h4><strong>About the Deal Desk Team</strong></h4>
 <p>The Deal Desk team is a critical component of the Finance function, acting as a strategic partner to the global Sales organization. We are responsible for partnering with sales to structure, negotiate and close complex deals. We ensure that deals meet the requirements of "good business" (profitability, compliance, simplicity, ease of execution, scalability) while also keeping our customers’ best interest in mind. We are committed to leveraging technology and automation to improve our processes and provide a competitive advantage. We collaborate closely with Sales, Legal, and Operations to deliver innovative and effective deal structures that meet our customers' needs and align with our business and financial objectives.</p>
 <p><strong>What you’ll do</strong></p>
@@ -31,6 +31,7 @@
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
+<p>For New York City area hires: Estimated annual salary of $145,000 - $200,000.&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
