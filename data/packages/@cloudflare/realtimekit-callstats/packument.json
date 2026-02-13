@@ -1,24 +1,166 @@
 {
 	"name": "@cloudflare/realtimekit-callstats",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "7.3.0",
+		"staging": "7.3.0-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/realtimekit-callstats",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-6acbGd5ED3xaeGbjhQdfBhpVwOs65C04UP9YWxLed/TfHpVRoLsD7+ZGKWNAl/7H758QG0znCjWaDfx5nsq7CQ==",
 				"shasum": "66e6ed557315f28c835b8068922b08d871fb253a",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-callstats/-/realtimekit-callstats-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 121,
+				"integrity": "sha512-6acbGd5ED3xaeGbjhQdfBhpVwOs65C04UP9YWxLed/TfHpVRoLsD7+ZGKWNAl/7H758QG0znCjWaDfx5nsq7CQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIEwNRnmlupYEyhxuCPT+MUpNfM9dmagSPN9KSzwCZ2hWAiADlJ6t3NMCD05wWdvd4GREbra2rTsk04gEGSaU8AcjWQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 121
+			}
+		},
+		"7.2.7": {
+			"name": "@cloudflare/realtimekit-callstats",
+			"version": "7.2.7",
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"eslint": "^8.56.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"prettier": "^3.1.1",
+				"commitizen": "^4.3.1",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"eslint-plugin-import": "^2.32.0",
+				"jest-environment-jsdom": "^30.2.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.0"
+			},
+			"peerDependencies": {
+				"react": "*"
+			},
+			"dist": {
+				"shasum": "ea17f1e238cc3bafcd76830117e6b596db834ed0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-callstats/-/realtimekit-callstats-7.2.7.tgz",
+				"fileCount": 45,
+				"integrity": "sha512-HZpVpiFC2wm995m0seGSFdKSAYKH6TwQjWYtF1McxyMsI+iVAiTgAXC2IDTMSrt2Us9v9XLBjegvef+Yiu4dMA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDB1EuUArmA8T0jpx0icXM+sMRteXGvb5OJFEM9OwlsvgIgT4P10jSmfZRZRCR5IEUmWUR9OaYfQJT9gUqxxofZLzo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 240363
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"7.3.0-staging.3": {
+			"name": "@cloudflare/realtimekit-callstats",
+			"version": "7.3.0-staging.3",
+			"dependencies": {
+				"utf-8-validate": "^5.0.5"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"eslint": "^8.56.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"prettier": "^3.1.1",
+				"commitizen": "^4.3.1",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"eslint-plugin-import": "^2.32.0",
+				"jest-environment-jsdom": "^30.2.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.0"
+			},
+			"peerDependencies": {
+				"react": "*"
+			},
+			"dist": {
+				"shasum": "21e551927fe643fd8c78993ff8d61a7758a9c52f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-callstats/-/realtimekit-callstats-7.3.0-staging.3.tgz",
+				"fileCount": 45,
+				"integrity": "sha512-gDs0pInY2JbrgWuYqZQpnudHOS5K+6kcT2+sVnvFJ3y12/0tz5aHeiwGJuYtKC2QiOz0OaLePcwQJ2nYXYyBfg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDDAZDuilKT0o/2G5LLeLFVPfStXyw/BtD2RXRe42CY9AIhAPuUbYuNKkXie/vkYmJCOusjyGYHz+R4piB9LZPqSQ2m",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 240373
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"7.3.0": {
+			"name": "@cloudflare/realtimekit-callstats",
+			"version": "7.3.0",
+			"dependencies": {
+				"utf-8-validate": "^5.0.5"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@typescript-eslint/eslint-plugin": "^7.0.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"commitizen": "^4.3.1",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint": "^8.56.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"eslint-plugin-import": "^2.32.0",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"jest": "^29.7.0",
+				"jest-environment-jsdom": "^30.2.0",
+				"prettier": "^3.1.1",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"typescript": "~5.5.4"
+			},
+			"peerDependencies": {
+				"react": "*"
+			},
+			"dist": {
+				"integrity": "sha512-etZGD7AS+nDONzwmagn3vXJSi+jUJrEBJqMHtWu2mz07Ap51N8/AZP+u2aGxZ3ew+X6PiWimRX2WO/4uk3qUuQ==",
+				"shasum": "2d7d5596d4254a044a8bd5de43ca28f003c0b21e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-callstats/-/realtimekit-callstats-7.3.0.tgz",
+				"fileCount": 45,
+				"unpackedSize": 240363,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIEwNRnmlupYEyhxuCPT+MUpNfM9dmagSPN9KSzwCZ2hWAiADlJ6t3NMCD05wWdvd4GREbra2rTsk04gEGSaU8AcjWQ=="
+						"sig": "MEQCIBdsDDPNrI+Fl3tT5QeMslAPuYH0ZWU7rrCep5CXF3L5AiALrRm8HxQ7LYP24jQscBzLSlObAoodw4LE5YAp545+5Q=="
 					}
 				]
+			},
+			"engines": {
+				"node": ">=10"
 			}
 		}
 	}
