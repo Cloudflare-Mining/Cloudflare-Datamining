@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/endpoint-partners/",
+	"path": "/zero-trust/solutions/phishing-resistant-mfa/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[Tech Partners] - Endpoint Protection",
+				"pageName": "Activate phishing-resistant MFA - Solutions page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -21,40 +21,40 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
 					"ruRU": "Translated for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "Translated for Locale",
 					"arAR": "No Page for Locale"
 				},
-				"relativePath": "endpoint-partners",
+				"relativePath": "zero-trust/solutions/phishing-resistant-mfa",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Endpoint Security Partnerships",
-					"metaDescription": "Simplifying Zero Trust with endpoint integrations",
+					"metaTitle": "Phishing-resistant MFA | Zero Trust | Cloudflare",
+					"metaDescription": "Thwart phishers with security keys and a Zero Trust approach. Learn how to authenticate every access request with FIDO-compliant security keys.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/38jpapyMmkQSLzjVpdEqs7/3886a75eff4e350705d74b93ff5db828/teams-access-hero.svg"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						},
-						"description": "Illustration of a computer connecting to remote resources"
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
 					"facebookCustomImage": null,
 					"author": []
 				},
 				"sys": {
-					"createdAt": "2021-03-23T12:50:10.979Z",
-					"updatedAt": "2026-02-14T10:24:01.491Z"
+					"createdAt": "2022-09-29T00:40:58.812Z",
+					"updatedAt": "2025-11-08T00:37:55.317Z"
 				},
-				"contentfulId": "61LON8L2PckHeCJsrN8Gwp",
+				"contentfulId": "5gWAo8ZMyta4O1Gds9O80R",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -231,7 +231,7 @@
 												"locale": "en-US",
 												"title": "Secure hybrid work",
 												"description": "Secure any user accessing any application, on any device, anywhere",
-												"url": "/sase/",
+												"url": "/zero-trust",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -592,7 +592,7 @@
 														"locale": "en-US",
 														"title": "SASE & SSE platform",
 														"description": "Zero Trust security (ZTNA, SWG, CASB) & network connectivity (WANaaS, FWaaS) on one platform with Cloud Email Security, DLP, RBI, DEX, DDoS and more built in",
-														"url": "/sase/products/",
+														"url": "/zero-trust/products/",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": false,
@@ -2605,7 +2605,7 @@
 									"locale": "en-US",
 									"title": "Contact sales",
 									"description": null,
-									"url": "https://www.cloudflare.com/contact/sase",
+									"url": "https://www.cloudflare.com/products/zero-trust/plans/enterprise/",
 									"badges": null,
 									"specialLinkType": "CTA",
 									"openInNewWindow": false,
@@ -2649,122 +2649,317 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "6wBK9L5e9zf04Cwy0GvfrK",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "70Il4X62A37cPxf97qmEgo",
+						"menuTitle": "SASE & workspace security",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/zero-trust",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
+								"linkText": "Solutions",
+								"page": null,
+								"url": "/zero-trust/solutions/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
+								"linkText": "Products",
+								"page": null,
+								"url": "/zero-trust/products/",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "1MPnz4oklmxIn6d5MfI1x0",
+								"linkText": "Resources",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "3Ko7yh630HKRG9uuKTmq59",
+										"linkText": "Case studies",
+										"page": null,
+										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "559PiQrQNL0cqxI3bsLn4V",
+										"linkText": "Analyst Reports",
+										"page": null,
+										"url": "/analysts/"
+									},
+									{
+										"contentfulId": "7ypbRBFxCGM7pgGyOKj72l",
+										"linkText": "Product tour",
+										"page": null,
+										"url": "https://www.cloudflare.com/zero-trust/interactive-demo/"
+									},
+									{
+										"contentfulId": "KxYYsyoMmFhVrH8ESEj7c",
+										"linkText": "Product guides",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Solution+%26+Product+Guides"
+									},
+									{
+										"contentfulId": "43R602VwKwyMypE2ZUecIT",
+										"linkText": "Reference architecture",
+										"page": null,
+										"url": "https://developers.cloudflare.com/reference-architecture/"
+									},
+									{
+										"contentfulId": "49bw6FRI2ooFCtnnbDT8sS",
+										"linkText": "Professional Services",
+										"page": null,
+										"url": "https://cfl.re/zero-trust-quickstart-solution-brief"
+									},
+									{
+										"contentfulId": "2GCh1wGIxttSXkyn0ibU3w",
+										"linkText": "Whitepapers",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Whitepaper"
+									},
+									{
+										"contentfulId": "pwITDWH0n5Z1DjX1KLTmg",
+										"linkText": "Webinars",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce&resourcetype=Webinar"
+									},
+									{
+										"contentfulId": "1awgo4XNStilPgkAKZNekC",
+										"linkText": "Developer docs",
+										"page": null,
+										"url": "https://developers.cloudflare.com/cloudflare-one/"
+									},
+									{
+										"contentfulId": "lY4WcI9MB35bYnyiNMtuU",
+										"linkText": "Industry use case",
+										"page": null,
+										"url": "/industry-solutions/"
+									}
+								]
+							},
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
+								"subMenuItems": []
+							}
+						]
+					},
+					{
+						"contentfulId": "3Yq4CXUr4zzseYJj3XP3QD",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Endpoint Security Partnerships",
+						"title": "Activate phishing-resistant MFA with Cloudflare",
 						"titleSize": null,
-						"subtitle": "Securing sensitive resources means ensuring every connection originates from trusted devices and verified users.",
+						"subtitle": "Thwart phishing scams by enforcing strong authentication",
 						"subtitleSize": null,
-						"copy": "Cloudflare is partnering with leading endpoint security providers to make [Zero Trust security](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) seamless for organizations. Cloudflare Zero Trust customers can now configure rules to restrict access to sensitive resources based on the device posture signals from our partners' endpoint security platforms.",
+						"copy": "Phishing remains one of the most prevalent kinds of threats—and it is often just the first step in a larger attack. Implementing FIDO2-compliant multi-factor authentication (MFA) as part of a Zero Trust security approach neutralizes the threat posed by multi-channel phishing. \n",
 						"buttonColor": "orange",
-						"buttonColor2": null,
-						"buttonText1": "Contact us",
+						"buttonColor2": "orange",
+						"buttonText1": "Talk to Sales",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "#",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "endpoint-security-contact-us",
-						"buttonText2": null,
+						"button1ExtraClass": "zt-pmm-phishing-resistant-mfa-modal-form",
+						"buttonText2": "Read the solution brief",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "https://cfl.re/3TpXmFo",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
+						"button1OpenInNewTab": false,
+						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ki5myfA8igCMq7raOvMcf/82980346076d8b77ca062c7a8ecec903/EPP-hero-illustration.png"
+						"image": null,
+						"imageAssetFile": {
+							"id": "fa38e844-bcf8-547c-b571-bb3169650046",
+							"altText": "Phishing resistant MFA | Security key",
+							"title": "Phishing resistant MFA | Security key",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sBCEugXRmK2UwosqMxkvx/0d90ee65bcad756c6d8371bc28225ee8/Hardware-key.svg"
+								},
+								"description": null
 							},
-							"description": "Illustration of data flowing to a laptop and smartphone"
-						},
-						"imageAssetFile": null
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "3DtSm34PLqReuMaSzPokmq",
-						"bladeBorder": "none",
-						"textColor": null,
-						"linkText": null,
-						"linkUrl": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Our Partners",
-						"copy": null,
-						"logoList": [
+						"contentfulId": "3kY6cPczNEg9SP70O7IV8S",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": null,
+						"eyebrowHeading": "THE CLOUDFLARE DIFFERENCE",
+						"description": null,
+						"textLayout": "left",
+						"columnsLayout": "Three Columns",
+						"columnContent": [
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4VGiq4Q1uO1NYuxdXsRf9R/59d39291de0c4c6e29fe85b5fce552e7/logo_crowdstrike.svg"
+								"contentTypeId": "feature",
+								"contentfulId": "HRz9GSGCOzzSsiMcO7ypQ",
+								"title": "Reduce multi-channel phishing risk",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Stop phishing attacks with FIDO2-compliant MFA. Expand phishing protection beyond the inbox to other channels such as SMS or social media.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "1c542602-7c55-58aa-981e-acb18eb17e12",
+									"altText": "Maximize MFA impact - ICON",
+									"title": "Maximize MFA impact - ICON",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1D611fyfYBzgKwHnWyQUT8/08e1d67cfe02158450286bfb1dc53d16/Security_key_icon_SVG_1.svg"
+										},
+										"description": "Security key icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "CrowdStrike logo"
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4kO2cWBjQ01q3UVcElSPMx/94c86c2219ac10360cee19edb17ca71d/microsoft_intune.png"
+								"contentTypeId": "feature",
+								"contentfulId": "4jnMq2odGINTxNXBdD9QsN",
+								"title": "Enhance your access management",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Augment your identity provider (or multiple providers) with Zero Trust Network Access (ZTNA) to easily enforce FIDO2 MFA across more resources.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7e7d463f-0987-5271-9a49-1e1ab5cb93f9",
+									"altText": null,
+									"title": "Phishing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1d9LyCHv5R4RRxDjm7shyv/baaec3fdbd12468b4f5ee0378874855b/Phishing-Icon-orange.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "Microsoft Intune logo"
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zWPHCu7PWd0gRtSot9jS2/d19532b1095d0f86d175df77b8b913d9/SentinelOne_Logo_RGB_3c_PURP_BLK.png"
+								"contentTypeId": "feature",
+								"contentfulId": "1ENqeIQ7v5HhBZnwSA81aN",
+								"title": "Maximize MFA impact",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Avoid vulnerabilities of other authentication methods. Unlike one-time PINs, FIDO2 MFA cannot be intercepted by an attacker. Implement MFA broadly — and require it — through [Zero Trust policies](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/).",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6177f6bc-b04b-5b79-aee5-000775bda020",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y13tTigGFzx34DZk3iS9Y/5b93f092978693108467fdedd27338d4/security-shield-protection-2.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"description": "SentinelOne logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pyJA7PUWOQPOY9il7HDUb/a443fd0fdb5069ffe361744e327e7c21/logo_tanium.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Qro1cKibl6DKCLPPjZSaL/5bc28ff1f57e89464f227feb5d14df07/uptycs_logo_2C_on-light_rgb_M__1_.png"
-								},
-								"description": "Uptycs logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2sCwd7xFRIXpSf6q09IERb/59ad8bd8164055b8d84c4a654c4a2ffa/VMW_Carbon_Black_Logo-black.jpg"
-								},
-								"description": null
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						],
-						"logoListAssetFile": [],
-						"logoUrlList": [
-							"https://www.cloudflare.com/partners/technology-partners/crowdstrike/endpoint-partners/",
-							"https://www.cloudflare.com/partners/technology-partners/microsoft/intune/",
-							"https://www.cloudflare.com/partners/technology-partners/sentinelone/",
-							"https://www.cloudflare.com/partners/technology-partners/tanium/",
-							"https://www.cloudflare.com/partners/technology-partners/uptycs/",
-							"https://www.cloudflare.com/partners/technology-partners/vmware/endpoint-partners/"
-						]
+						"sectionPadding": null,
+						"htmlId": null
 					},
 					{
-						"contentfulId": "5uTxVQJ0Oz8Bs99402nK6s",
-						"title": "Never trust, always verify device posture",
-						"copy": "Add device posture signals to Cloudflare's zero trust platform to make sure every connection to corporate apps is verified for user and device posture.\n\nWhen a user logs in to an application protected by Cloudflare, we verify whether the device is managed by an endpoint security provider and also cross check the user's identity with their identity provider. The result — every connection to your corporate application gets an additional layer of identity and device assurance and users avoid having to fire up a VPN to get connected.\n",
+						"contentfulId": "4D48Swvsz794vvFvpjSxg4",
+						"title": "Defeat phishing with FIDO2 MFA and Cloudflare",
+						"copy": "Cloudflare's Zero Trust platform can enforce FIDO2 MFA consistently across SaaS, self-hosted, and non-web resources.\n\n- Implement Cloudflare's ZTNA service to apply strict contextual verification for accessing all your organization's resources.\n- Bolster security with FIDO2-compliant MFA that makes it nearly impossible to intercept or steal users' credentials.\n- Selectively enforce strong MFA, starting with sensitive apps. Go beyond just supporting FIDO2 MFA and start to require it.\n- Enable broad deployment. Not all apps support FIDO2 MFA natively. As an aggregation layer, Cloudflare's ZTNA service helps roll it out to all resources.\n",
 						"toggleText": null,
-						"button": [],
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "5V6fn8KgrvAMOIDkHzRQ5h",
+								"elementName": "[ZT PMM] Phishing resistant MFA - HOW IT WORKS - CTA",
+								"standardText": null,
+								"text": " See SASE reference architecture",
+								"url": "https://developers.cloudflare.com/reference-architecture/architectures/sase/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": true,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
@@ -2775,166 +2970,517 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69xmMNPZGeUrMrG3sKkUm0/7d932795c474e5c49c002fe5cbe569b6/After_device_posture_Transparent__1_.png"
+						"image": null,
+						"imageAssetFile": {
+							"id": "388efd8f-e74c-5862-94aa-e7e968cbca53",
+							"altText": "[ZT PMM] Phishing resistant MFA - HOW IT WORKS - Image diagram",
+							"title": "[ZT PMM] Phishing resistant MFA - HOW IT WORKS - Image diagram",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Bm0BQlUvWrKqIcpVo1YkG/b81d2336901ace6dbb2b72c6cb595bad/How-it-works-Diagram-for-FIDO2-authentication.png"
+								},
+								"description": null
 							},
-							"description": "Zero Trust device posture diagram"
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
 						},
-						"imageAssetFile": null,
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "HOW IT WORKS",
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "extra-large",
+						"imagePosition": true,
+						"imageSize": "large",
 						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "1jFJqxI1IPPc4adnJWNlPe",
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "2FogOlEZYcovMZw3A8dHMw",
+						"htmlId": null,
+						"mainHeadline": "Halting an SMS phishing attack on Cloudflare",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"columnLayout": "Half & Half",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4MTDQBePwbucO0e7MMMR50",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare security team needed to rapidly address a phishing attack that attempted to harvest and then use Okta login credentials from employees. Though the attackers successfully stole credentials and attempted to log in, they could not overcome the security key login requirement of Cloudflare's Zero Trust implementation. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Requiring FIDO2-compliant MFA, like security keys, as part of Zero Trust access policies for all users and apps can strengthen the barrier against multichannel phishing attacks. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1dD3lmufOsde9PAbBkYF8m",
+								"title": null,
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"While the attacker attempted to log in to our systems with compromised credentials, they could not get past the hard key requirement.\"",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "2xJXTUDCfdz8s9ABNVAkqw",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "2xJXTUDCfdz8s9ABNVAkqw",
+															"locale": "en-US",
+															"title": "cloudflare-logo-push-right",
+															"file": {
+																"name": "cloudflare-logo-push-right.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xJXTUDCfdz8s9ABNVAkqw/476227fc7b9cc461c6fc204c83de86b1/cloudflare-logo-push-right.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "1hzcrJGP3d6RJGf8erGuzf",
+						"title": "Ready to discuss phishing-resistant MFA?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "227XH7M550qQL3xCxkkzeH",
+							"elementName": "[ZT PMM] Phishing resistant MFA - ENABLEMENT BLADE - CTA",
+							"standardText": null,
+							"text": "Contact us ",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "1ot8RulSE52Fq2W3bcGKkc",
+								"modalName": "[ZT PMM] Phishing resistant MFA - Modal form",
+								"modalId": "zt-pmm-phishing-resistant-mfa-modal-form",
+								"modalType": "split-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "6VvW0GUAk3bP93cfg9HF3S",
+									"bladeName": "[ZT PMM] Phishing resistant MFA - Marketo modal form",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormHeaderText": "Request a phishing-resistant discussion",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": "tile--no-top-padding",
+						"eyebrow": null
+					},
+					{
+						"contentfulId": "2HJNHVFKmneJVLBIgM42hC",
+						"contentTypeId": "bladeMultipleColumnsLayout",
+						"title": "Cloudflare's connectivity cloud restores control and visibility to IT environments",
+						"eyebrowHeading": "WHY CLOUDFLARE",
+						"description": "Using Cloudflare's unified platform of cloud-native services, you can [implement a Zero Trust security model](https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust/) with strong MFA capabilities that conquer phishing schemes.",
+						"textLayout": "left",
+						"columnsLayout": "Four Columns",
+						"columnContent": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1js8f27ot3KYEYZ2rdEZX7",
+								"title": "Composable architecture",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Address diverse security and networking needs with extensive interoperability and customizable networking.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "f705f70f-6061-5494-a41c-589d683ec8a2",
+									"altText": "network-scale",
+									"title": "network-scale",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6voDUQ7XmHDJ9zX0u2IrkW/e347d8fff227565dd30e1e9c85f1fe97/network-scale__1_.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4IqeYUDAA3pXKo69oCDZJb",
+								"title": "Performance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Deliver better user experiences with a global network that is approximately %{OperationMilliseconds} ms from ~%{GlobalInternetConnectedPercent}% of Internet users.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt orange",
+									"title": "Performance acceleration bolt orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sWqRe2bVBkaYdFk0OapeM/7104c2a5381e49f73144e8a6e1095b53/performance-acceleration-bolt.svg"
+										},
+										"description": "Lightning bolt icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4cWsn8LnyWwPNuFG4YAYsl",
+								"title": "Threat intelligence",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Prevent more attacks with intelligence gleaned from proxying ~20% of the web and blocking %{ThreatsBlockedPerDay} billion threats daily.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "746c8e68-0542-59e1-a219-d6a178c3543e",
+									"altText": null,
+									"title": "Threat intelligence radar icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Yx4fQ4JQKWiXHNopSEGHV/ab0d928d56a15ae462f4bfd09e1bcf93/cloudflare-radar.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3D2ej6gr4bs6m5s9z6uJj",
+								"title": "Unified interface",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Reduce tool sprawl and alert fatigue by uniting every hybrid work security service in one UI.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "9a20c38e-607d-5d1f-80bc-05dc54dd769b",
+									"altText": "Mobile Interface Icon - Orange",
+									"title": "Mobile Interface Icon - Orange",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3NB3y8KzQdu3DK9Fm3JQia/1af7bbd168d821522e4d8779ba0a48bc/device-mobile.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"htmlId": null
+					},
+					{
+						"contentfulId": "E9p51qUIgvCViDK5lJxvv",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Benefits",
+						"title": "Resources",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 2 columns",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3QXZfMhTFdfph78jhSiTeP",
-								"title": "Global reach",
-								"makeTitleLink": null,
+								"contentfulId": "Q0J3aGHwgA8IMKEgVZSaW",
+								"title": "How Cloudflare stopped a targeted phishing attack",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Bring enforcement decisions within approximately %{OperationMilliseconds} ms of about 95% of the world's Internet-connected population.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5H4T6ndYBoJmUEN0AsA1CI/98fc06d928bb2986b683e94c63a603f6/icon-global-blue.png"
-									},
-									"description": "icon global blue"
-								},
-								"iconAssetFile": {
-									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-									"altText": "Internet globe orange",
-									"title": "Internet globe orange",
+								"description": "Read how Cloudflare's Zero Trust approach, including security keys, helped thwart a targeted phishing attack.",
+								"learnMoreUrl": "http://cfl.re/targeted-SMS-phishing-attack-case-study",
+								"learnMoreText": "Read the case study",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "a618b9ad-2541-5737-86a8-b0f45ac90847",
+									"altText": "Thin top orange line - image",
+									"title": "Resources card 2 elements - Thin top orange line - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xSE1zk7R4ynGwaEPLhmN2/c99cea3b8ad205cac6c93f5ac2fdf2a0/element-feature-topbar-two-reources_.png"
 										},
 										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7HkpOHohnYRnMYTj6iqT6v",
-								"title": "Easy setup",
-								"makeTitleLink": null,
+								"contentfulId": "4haiBiYWsjuucWYLl1XhV8",
+								"title": "How Cloudflare implemented security keys",
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
-								"description": "Add device posture signals into Cloudflare Zero Trust policies with just a few clicks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1ymGzpUdibg8BUc9tbqzBz/c20f4391d97db438b9c5db85f2fabc5e/icon-easy-on-and-off-blue.png"
-									},
-									"description": "icon easy on and off blue"
-								},
-								"iconAssetFile": {
-									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
-									"altText": "Ease of use blue",
-									"title": "Ease of use blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/447d1f23d1b8ac77e61e2819465f58fe/ease-of-use-toggle.svg"
-										},
-										"description": "Ease of use orange"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"description": "Learn the steps Cloudflare took to roll out FIDO2 security keys and Zero Trust to all apps and employees.",
+								"learnMoreUrl": "https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7Cfamvwf17APnoVEHpY7WN",
-								"title": "Integration with multiple providers",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Mix and match across endpoint security and identity providers.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5CQQRmvFozC1wtQt0qDO4n/32854da28425da396db573c5f6fb5126/icon-platforms-blue.png"
-									},
-									"description": "icon platforms blue"
-								},
-								"iconAssetFile": {
-									"id": "820783b8-d1ce-54db-8426-9c694fefd544",
-									"altText": "Process stack ",
-									"title": "Process stack ",
+								"imageAssetFile": {
+									"id": "a618b9ad-2541-5737-86a8-b0f45ac90847",
+									"altText": "Thin top orange line - image",
+									"title": "Resources card 2 elements - Thin top orange line - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XwC1sNwbO5CFo9p4gxhd6/028d560b5444d56fec012c86338d065b/process-stack.svg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7xSE1zk7R4ynGwaEPLhmN2/c99cea3b8ad205cac6c93f5ac2fdf2a0/element-feature-topbar-two-reources_.png"
 										},
 										"description": ""
 									},
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -2942,174 +3488,202 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "3S2KNLCjgPMNJMU84Q0FMl",
-						"quote": "\"In today's work-from-anywhere business culture, the risk of compromise has substantially increased as employees and their devices are continuously surrounded by a hostile threat environment outside the office walls. Through our integration with Cloudflare, organizations can leverage the power of the CrowdStrike Falcon platform to accurately allow dynamic conditional access to applications, delivering end-to-end Zero Trust protection across endpoints, workloads, and applications to stop attacks in real-time.\"",
-						"quoteAuthor": "Patrick McCormack",
-						"quoteTitle": "Senior Vice President, Cloud Engineering",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "7fh3hk32wOBGFrY2GDpRQ8",
+						"bladeName": "Phishing-resistant MFA FAQs",
+						"title": "Phishing-resistant MFA FAQs",
 						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5N2wEnYe1CDI60sV5qcfdL/f0fcb8ed029c966398e66f81f06fbd82/crowdstrike_logo_high_res.png"
-							},
-							"description": "CrowdStrike logo"
-						},
-						"imageAssetFile": null,
-						"imageLinkUrl": "https://www.cloudflare.com/partners/technology-partners/crowdstrike/endpoint-partners/",
-						"logoList": [],
-						"logoListAssetFile": [],
-						"quoteCarousel": [
+						"sectionTitle": null,
+						"longCopy": null,
+						"accordionElements": [
 							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "1PnnGqggqHoznjh9BgVwkw",
-								"quote": "\"Enterprises have come to terms with the notion of a disintegrating traditional perimeter. The distributed and dynamic perimeter of today requires a fundamentally new approach to security. In partnership with Cloudflare, our AI-powered cybersecurity platform offers modern enterprises a more robust Zero Trust security solution that spans the devices, the network, and the mission-critical applications enterprises rely on.\"",
-								"quoteAuthor": "Chuck Fontana",
-								"quoteTitle": "Senior Vice President, Business & Corporate Development, SentinelOne",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3zWPHCu7PWd0gRtSot9jS2/d19532b1095d0f86d175df77b8b913d9/SentinelOne_Logo_RGB_3c_PURP_BLK.png"
-									},
-									"description": "SentinelOne logo"
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1sl1PqzOBQm2PEQyIPyPZS",
+								"title": "What is phishing-resistant MFA?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Phishing-resistant multi-factor authentication (MFA) is the use of FIDO2-compliant security keys to authenticate access requests. This approach it nearly impossible for attackers to intercept or steal user credentials due to the difficulty of obtaining a legitimate key. It effectively neutralizes the threat posed by credential theft via phishing.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
 								}
 							},
 							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "5v55is7veoG0lPShwQ49sV",
-								"quote": "\"The VMware Carbon Black Cloud consolidates multiple endpoint and workload security offerings into a single, cloud native platform. Leveraging VMware Carbon Black Cloud, Cloudflare can help customers secure and manage devices connecting to their cloud and Zero Trust networks.\"",
-								"quoteAuthor": "Tom Corn",
-								"quoteTitle": "Senior Vice President, Security, VMWare Carbon Black",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6p0UmRBBt3ORRIMGeuYovz/f1232fc4579b361d019808fee46841c0/logo_vmware-carbon-black_gray.svg"
-									},
-									"description": "VMware Carbon Black logo"
+								"contentTypeId": "elementRichText",
+								"contentfulId": "vWISQtxFSqUVFZM5ikhX6",
+								"title": "How does Cloudflare help to defeat phishing attacks?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's Zero Trust platform enforces FIDO2 MFA consistently across various types of resources like SaaS, self-hosted applications, and non-web applications. This allows organizations to require strong authentication methods, even for applications that don't natively support FIDO2 MFA.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
 								}
 							},
 							{
-								"contentTypeId": "bladeQuote",
-								"contentfulId": "4kJ8ASZZCGoY0kWrMBxppu",
-								"quote": "\"Zero Trust security architectures started at the network level with segmentation and enforcement, but as corporate resources and data increasingly live on endpoints, a Zero Trust architecture must take both the endpoint and the network into consideration. Knowing the identity of the endpoint, as well as knowing that it's up-to-date, hardened against security threats and hasn't been compromised, is paramount in ensuring secure access to an organization's resources.\"",
-								"quoteAuthor": "Pete Constantine",
-								"quoteTitle": "Chief Product Officer, Tanium",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": null,
-								"image": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6PWet5EUuobyxYZEiNj7C7/afdbc67bf06e7c64a8983e1ec98367b2/Tanium_logo.png"
-									},
-									"description": "Tanium logo"
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4hxZ2QXCghyHz37igHUgeT",
+								"title": "What are the benefits of using FIDO2 MFA with Cloudflare?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Implementing FIDO2 MFA with Cloudflare significantly reduces the risk of multi-channel phishing by preventing attackers from intercepting credentials. It also enhances access management by augmenting existing identity providers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
 								}
-							}
-						]
-					},
-					{
-						"contentfulId": "3bctmxMAGz5G3lnwlSQS2U",
-						"contentTypeId": "bladeResourceGrid",
-						"title": "Learn More",
-						"description": null,
-						"sectionPadding": null,
-						"bladeBorder": "none",
-						"textColor": "black",
-						"backgroundColor": "blue5",
-						"htmlId": null,
-						"resourceList": [
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Endpoint Protection: Announcement Blog",
-								"callToAction": "Learn More",
-								"id": "c52a9540-d02d-5dd2-b819-6a58044dc404",
-								"resourceTitle": "New device security partnerships for Cloudflare One",
-								"resourceType": "Blog",
-								"topic": [
-									"Enable Zero Trust Security for Workforce",
-									"Secure Teams, Devices, and Internal Applications"
-								],
-								"orderDate": "2022-04-01",
-								"industry": null,
-								"description": "Learn how Cloudflare's integrations with leading endpoint providers helped Cloudflare Zero Trust customers restrict access to applications based on security signals from their devices.",
-								"externalLinkUrl": "https://blog.cloudflare.com/endpoint-partnerships/",
-								"hideFromResourceHub": null
 							},
 							{
-								"resourceMedia": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4GZx3lifmkUSVF72q9ZSrW/ef020bb8dcbfa421900e44e30d328a2e/Cloudflare_Zero_Trust_Integrations_Brief.pdf"
-									},
-									"description": "Cloudflare empowers your organization with flexibility to build on the providers you already use and avoid vendor lock-in."
-								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "Zero Trust Integrations Solution Brief [ZT PMM] [JCC]",
-								"callToAction": "Download PDF",
-								"id": "6aaa7795-8337-5630-80cf-6a03d8671b31",
-								"resourceTitle": "Cloudflare's Zero Trust Integrations",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Enable Zero Trust Security for Workforce"
-								],
-								"orderDate": "2021-08-09",
-								"industry": null,
-								"description": "Cloudflare empowers your organization with flexibility to build on the identity, endpoint protection, and cloud providers you already use and avoid vendor lock-in. Learn how we approach technology integrations and partnerships for our Zero Trust platform, Teams.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": null
+								"contentTypeId": "elementRichText",
+								"contentfulId": "48WIJUshB49XyYuVz4P0aB",
+								"title": "Can you provide an example of how Cloudflare's phishing-resistant MFA works in a real-world scenario?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare's own security team experienced a phishing attack where employee login credentials were stolen. However, due to the mandatory security key login requirement enforced by Cloudflare's Zero Trust implementation, the attackers were unable to gain access to their systems.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							},
 							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[ZT PMM] Introducing Cloudflare One",
-								"callToAction": "Learn More",
-								"id": "22754271-42bf-5919-85b2-0cf96446b2dc",
-								"resourceTitle": "Introducing Cloudflare One",
-								"resourceType": "Blog",
-								"topic": [
-									"Enable Zero Trust Security for Workforce",
-									"Secure Teams, Devices, and Internal Applications"
-								],
-								"orderDate": "2020-10-12",
-								"industry": null,
-								"description": "Cloudflare One is a Zero Trust network-as-a-service platform that dynamically connects users to enterprise resources, with identity-based security controls delivered close to users, wherever they are. Read the blog post that first articulated Cloudflare's vision for SASE transformation.",
-								"externalLinkUrl": "https://blog.cloudflare.com/introducing-cloudflare-one/",
-								"hideFromResourceHub": null
+								"contentTypeId": "elementRichText",
+								"contentfulId": "7mboQHkgoNxl7neMTRLiaR",
+								"title": "What types of attacks does Cloudflare's phishing-resistant MFA help mitigate?",
+								"htmlId": null,
+								"elementPosition": "relative",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enforcing FIDO2-compliant MFA with Cloudflare helps to mitigate account takeovers, supply chain attacks, data exfiltration, and ransomware, in addition to containing the fallout from phishing attacks.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							}
 						],
-						"filterMenu": null
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black"
 					}
 				],
 				"noindex": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "3SL0bMNdALUO1cVP3ufM0q",
-						"modalName": "Endpoint Protection - Contact Us",
-						"modalId": "endpoint-security-contact-us",
-						"modalType": "single-form",
+						"contentfulId": "1ot8RulSE52Fq2W3bcGKkc",
+						"modalName": "[ZT PMM] Phishing resistant MFA - Modal form",
+						"modalId": "zt-pmm-phishing-resistant-mfa-modal-form",
+						"modalType": "split-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "6sVT6VItMLI9iRHRFpIJMr",
-							"bladeName": "Endpoint Protection Partnerships Program Contact Us",
+							"contentfulId": "6VvW0GUAk3bP93cfg9HF3S",
+							"bladeName": "[ZT PMM] Phishing resistant MFA - Marketo modal form",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[PAR] Q1'21 WEB - GBL - Endpoint Security Partner Page End User Contact Form",
-							"marketoFormHeaderText": null,
+							"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+							"marketoFormHeaderText": "Request a phishing-resistant discussion",
 							"marketoFormDefaultComment": null,
 							"showCommentBox": null,
 							"marketoFormThankYouText": null,
@@ -3127,47 +3701,7 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Cloudflare Endpoint Security Partnerships",
-						"regularCopy": null,
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					},
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "2SMdlOJ68wdo7fSNye6j0",
-						"modalName": "Endpoint Protection— Become a partner",
-						"modalId": "endpoint-security-become-a-partner",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "45yk9QWvMfJRmoiK0SUEnH",
-							"bladeName": "Endpoint Protection Partnerships Program— Become a partner",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Partner - Become a Reseller",
-							"marketoFormLeadSourceDetail": "[PAR] Q1'21 WEB - GBL - Endpoint Security Partner Page Become a Partner Form",
-							"marketoFormHeaderText": "Become a partner",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": "Become a partner",
+						"title": null,
 						"regularCopy": null,
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
@@ -3176,7 +3710,7 @@
 						"enterpriseCopy": null
 					}
 				],
-				"keepHashUrlSyncedWithScrollPosition": null
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -3187,8 +3721,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/endpoint-partners/",
-			"contentfulId": "61LON8L2PckHeCJsrN8Gwp",
+			"pathname": "/zero-trust/solutions/phishing-resistant-mfa/",
+			"contentfulId": "5gWAo8ZMyta4O1Gds9O80R",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
