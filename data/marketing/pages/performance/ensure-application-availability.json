@@ -279,9 +279,9 @@
 						]
 					},
 					{
-						"contentfulId": "axFMx60fct8F7QxzhoePq",
-						"title": "Challenges Affecting Application Availability",
-						"copy": null,
+						"contentfulId": "2q1FdwRqNacAY8kIkiGcYA",
+						"title": "Traffic Overload",
+						"copy": "Both expected and unexpected network congestion or overloaded infrastructure can degrade performance to a point where websites or applications stop responding.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -300,14 +300,36 @@
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3L6dGGnkZiwOUyiQekAIAG/ff0b34273c76ffcf309817ceccaf19d2/diagram-traffic-overloading.svg"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "231de692-0960-57d6-bc94-ee83f8140ba6",
+							"altText": "Ensure application traffic overload spot illustration",
+							"title": "Ensure application traffic overload spot illustration",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 29337,
+								"height": 641,
+								"width": 4000,
+								"filename": "ensure-application-traffic-overload-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/ensure-application-traffic-overload-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
 						"htmlId": null,
-						"titleSize": "large",
-						"sectionPadding": "tile--no-bottom-padding",
+						"titleSize": null,
+						"sectionPadding": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"imagePosition": false,
@@ -1217,7 +1239,46 @@
 							"text": "Contact sales",
 							"url": "#",
 							"loggedInUrl": null,
-							"buttonModal": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5jvoeyYXCOHnP8mxETWHKY",
+								"modalName": "Performance - Ensure Application Availability: Form Modal",
+								"modalId": "performance-ensure-application-availability-contact-sales",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "2aUO3LPNEfWeOmxcVreNUr",
+									"bladeName": "Performance - Ensure Application Availability: Marketo Form (1341)",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Contact Us Performance: Ensure Application Availability",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Contact Sales",
+								"regularCopy": "Improve the availability of applications affected by overloaded or unavailable infrastructure.",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
 							"openInNewTab": false,
 							"locale": "en-US"
 						},
@@ -1232,7 +1293,48 @@
 					}
 				],
 				"noindex": false,
-				"formModal": null,
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "5jvoeyYXCOHnP8mxETWHKY",
+						"modalName": "Performance - Ensure Application Availability: Form Modal",
+						"modalId": "performance-ensure-application-availability-contact-sales",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "2aUO3LPNEfWeOmxcVreNUr",
+							"bladeName": "Performance - Ensure Application Availability: Marketo Form (1341)",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Contact Us Performance: Ensure Application Availability",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Contact Sales",
+						"regularCopy": "Improve the availability of applications affected by overloaded or unavailable infrastructure.",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
