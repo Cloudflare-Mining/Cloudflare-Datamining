@@ -464,6 +464,7 @@
 			authorized_hosts: "Authorized hosts",
 			mcp_server: "MCP Server",
 			mcp_server_description: "Expose this AI Search as an MCP (Model Context Protocol) server.",
+			mcp_tool_description: "Tool Description",
 			search_endpoint: "Search endpoint",
 			search_endpoint_description: "Enable the /search endpoint for direct search queries.",
 			chat_completions_endpoint: "Chat completions endpoint",
