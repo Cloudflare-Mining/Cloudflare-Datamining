@@ -1799,6 +1799,84 @@
 													],
 													"type": "object"
 												},
+												"robotsTxt": {
+													"properties": {
+														"data": {
+															"items": {
+																"properties": {
+																	"hash": {
+																		"type": "string"
+																	},
+																	"rules": {
+																		"properties": {
+																			"*": {
+																				"properties": {
+																					"allow": {
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"contentSignal": {
+																						"properties": {
+																							"ai-input": {
+																								"example": "no",
+																								"type": "string"
+																							},
+																							"ai-train": {
+																								"example": "yes",
+																								"type": "string"
+																							},
+																							"search": {
+																								"example": "yes",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"crawlDelay": {
+																						"type": "number"
+																					},
+																					"disallow": {
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"allow",
+																					"disallow"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"*"
+																		],
+																		"type": "object"
+																	},
+																	"sitemaps": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"rules",
+																	"sitemaps"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"data"
+													],
+													"type": "object"
+												},
 												"urlCategories": {
 													"properties": {
 														"data": {
