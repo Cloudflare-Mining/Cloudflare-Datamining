@@ -1014,15 +1014,29 @@
 																									"params": {
 																										"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																										"items": {
-																											"example": "url",
-																											"type": "string",
-																											"x-auditable": true
+																											"properties": {
+																												"name": {
+																													"description": "Name of the parameter.",
+																													"example": "customer_name",
+																													"type": "string",
+																													"x-auditable": true
+																												}
+																											},
+																											"required": [
+																												"name"
+																											],
+																											"type": "object"
 																										},
 																										"type": "array"
 																									},
 																									"worker": {
 																										"description": "Outbound worker.",
 																										"properties": {
+																											"entrypoint": {
+																												"description": "Entrypoint to invoke on the outbound worker.",
+																												"type": "string",
+																												"x-auditable": true
+																											},
 																											"environment": {
 																												"description": "Environment of the outbound worker.",
 																												"type": "string",
@@ -1207,8 +1221,8 @@
 																						"properties": {
 																							"json": {
 																								"description": "JSON data to use.",
-																								"example": "{ \"message\": \"Hello, world!\" }",
-																								"type": "string"
+																								"type": "object",
+																								"x-stainless-any": true
 																							},
 																							"name": {
 																								"description": "A JavaScript variable name for the binding.",
@@ -2473,15 +2487,29 @@
 																											"params": {
 																												"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																												"items": {
-																													"example": "url",
-																													"type": "string",
-																													"x-auditable": true
+																													"properties": {
+																														"name": {
+																															"description": "Name of the parameter.",
+																															"example": "customer_name",
+																															"type": "string",
+																															"x-auditable": true
+																														}
+																													},
+																													"required": [
+																														"name"
+																													],
+																													"type": "object"
 																												},
 																												"type": "array"
 																											},
 																											"worker": {
 																												"description": "Outbound worker.",
 																												"properties": {
+																													"entrypoint": {
+																														"description": "Entrypoint to invoke on the outbound worker.",
+																														"type": "string",
+																														"x-auditable": true
+																													},
 																													"environment": {
 																														"description": "Environment of the outbound worker.",
 																														"type": "string",
@@ -2666,8 +2694,8 @@
 																								"properties": {
 																									"json": {
 																										"description": "JSON data to use.",
-																										"example": "{ \"message\": \"Hello, world!\" }",
-																										"type": "string"
+																										"type": "object",
+																										"x-stainless-any": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
@@ -3941,15 +3969,29 @@
 																"params": {
 																	"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																	"items": {
-																		"example": "url",
-																		"type": "string",
-																		"x-auditable": true
+																		"properties": {
+																			"name": {
+																				"description": "Name of the parameter.",
+																				"example": "customer_name",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"name"
+																		],
+																		"type": "object"
 																	},
 																	"type": "array"
 																},
 																"worker": {
 																	"description": "Outbound worker.",
 																	"properties": {
+																		"entrypoint": {
+																			"description": "Entrypoint to invoke on the outbound worker.",
+																			"type": "string",
+																			"x-auditable": true
+																		},
 																		"environment": {
 																			"description": "Environment of the outbound worker.",
 																			"type": "string",
@@ -4134,8 +4176,8 @@
 													"properties": {
 														"json": {
 															"description": "JSON data to use.",
-															"example": "{ \"message\": \"Hello, world!\" }",
-															"type": "string"
+															"type": "object",
+															"x-stainless-any": true
 														},
 														"name": {
 															"description": "A JavaScript variable name for the binding.",
@@ -5284,15 +5326,29 @@
 																											"params": {
 																												"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																												"items": {
-																													"example": "url",
-																													"type": "string",
-																													"x-auditable": true
+																													"properties": {
+																														"name": {
+																															"description": "Name of the parameter.",
+																															"example": "customer_name",
+																															"type": "string",
+																															"x-auditable": true
+																														}
+																													},
+																													"required": [
+																														"name"
+																													],
+																													"type": "object"
 																												},
 																												"type": "array"
 																											},
 																											"worker": {
 																												"description": "Outbound worker.",
 																												"properties": {
+																													"entrypoint": {
+																														"description": "Entrypoint to invoke on the outbound worker.",
+																														"type": "string",
+																														"x-auditable": true
+																													},
 																													"environment": {
 																														"description": "Environment of the outbound worker.",
 																														"type": "string",
@@ -5477,8 +5533,8 @@
 																								"properties": {
 																									"json": {
 																										"description": "JSON data to use.",
-																										"example": "{ \"message\": \"Hello, world!\" }",
-																										"type": "string"
+																										"type": "object",
+																										"x-stainless-any": true
 																									},
 																									"name": {
 																										"description": "A JavaScript variable name for the binding.",
@@ -6760,15 +6816,29 @@
 																													"params": {
 																														"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters.",
 																														"items": {
-																															"example": "url",
-																															"type": "string",
-																															"x-auditable": true
+																															"properties": {
+																																"name": {
+																																	"description": "Name of the parameter.",
+																																	"example": "customer_name",
+																																	"type": "string",
+																																	"x-auditable": true
+																																}
+																															},
+																															"required": [
+																																"name"
+																															],
+																															"type": "object"
 																														},
 																														"type": "array"
 																													},
 																													"worker": {
 																														"description": "Outbound worker.",
 																														"properties": {
+																															"entrypoint": {
+																																"description": "Entrypoint to invoke on the outbound worker.",
+																																"type": "string",
+																																"x-auditable": true
+																															},
 																															"environment": {
 																																"description": "Environment of the outbound worker.",
 																																"type": "string",
@@ -6953,8 +7023,8 @@
 																										"properties": {
 																											"json": {
 																												"description": "JSON data to use.",
-																												"example": "{ \"message\": \"Hello, world!\" }",
-																												"type": "string"
+																												"type": "object",
+																												"x-stainless-any": true
 																											},
 																											"name": {
 																												"description": "A JavaScript variable name for the binding.",
