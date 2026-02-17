@@ -426,15 +426,19 @@
 														"x-auditable": true
 													},
 													"hostnames": {
-														"description": "Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.",
+														"description": "Array of hostnames or wildcard names bound to the certificate.\nHostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
 														"example": [
 															"example.com",
-															"*.example.com"
+															"*.example.com",
+															"sub.example.com"
 														],
 														"items": {
+															"minLength": 1,
 															"type": "string",
 															"x-auditable": true
 														},
+														"maxItems": 100,
+														"minItems": 1,
 														"type": "array"
 													},
 													"id": {
@@ -639,15 +643,19 @@
 																"x-auditable": true
 															},
 															"hostnames": {
-																"description": "Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.",
+																"description": "Array of hostnames or wildcard names bound to the certificate.\nHostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
 																"example": [
 																	"example.com",
-																	"*.example.com"
+																	"*.example.com",
+																	"sub.example.com"
 																],
 																"items": {
+																	"minLength": 1,
 																	"type": "string",
 																	"x-auditable": true
 																},
+																"maxItems": 100,
+																"minItems": 1,
 																"type": "array"
 															},
 															"id": {
@@ -965,15 +973,19 @@
 													"x-auditable": true
 												},
 												"hostnames": {
-													"description": "Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.",
+													"description": "Array of hostnames or wildcard names bound to the certificate.\nHostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
 													"example": [
 														"example.com",
-														"*.example.com"
+														"*.example.com",
+														"sub.example.com"
 													],
 													"items": {
+														"minLength": 1,
 														"type": "string",
 														"x-auditable": true
 													},
+													"maxItems": 100,
+													"minItems": 1,
 													"type": "array"
 												},
 												"id": {
@@ -1145,15 +1157,19 @@
 															"x-auditable": true
 														},
 														"hostnames": {
-															"description": "Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.",
+															"description": "Array of hostnames or wildcard names bound to the certificate.\nHostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
 															"example": [
 																"example.com",
-																"*.example.com"
+																"*.example.com",
+																"sub.example.com"
 															],
 															"items": {
+																"minLength": 1,
 																"type": "string",
 																"x-auditable": true
 															},
+															"maxItems": 100,
+															"minItems": 1,
 															"type": "array"
 														},
 														"id": {
@@ -1350,15 +1366,19 @@
 								"type": "string"
 							},
 							"hostnames": {
-								"description": "Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.",
+								"description": "Array of hostnames or wildcard names bound to the certificate.\nHostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
 								"example": [
 									"example.com",
-									"*.example.com"
+									"*.example.com",
+									"sub.example.com"
 								],
 								"items": {
+									"minLength": 1,
 									"type": "string",
 									"x-auditable": true
 								},
+								"maxItems": 100,
+								"minItems": 1,
 								"type": "array"
 							},
 							"request_type": {
@@ -1516,15 +1536,19 @@
 													"x-auditable": true
 												},
 												"hostnames": {
-													"description": "Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.",
+													"description": "Array of hostnames or wildcard names bound to the certificate.\nHostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
 													"example": [
 														"example.com",
-														"*.example.com"
+														"*.example.com",
+														"sub.example.com"
 													],
 													"items": {
+														"minLength": 1,
 														"type": "string",
 														"x-auditable": true
 													},
+													"maxItems": 100,
+													"minItems": 1,
 													"type": "array"
 												},
 												"id": {
@@ -1696,15 +1720,19 @@
 															"x-auditable": true
 														},
 														"hostnames": {
-															"description": "Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.",
+															"description": "Array of hostnames or wildcard names bound to the certificate.\nHostnames must be fully qualified domain names (FQDNs) belonging to zones on your account (e.g., `example.com` or `sub.example.com`). Wildcards are supported only as a `*.` prefix for a single level (e.g., `*.example.com`). Double wildcards (`*.*.example.com`) and interior wildcards (`foo.*.example.com`) are not allowed. The wildcard suffix must be a multi-label domain (`*.example.com` is valid, but `*.com` is not). Unicode/IDN hostnames are accepted and automatically converted to punycode.",
 															"example": [
 																"example.com",
-																"*.example.com"
+																"*.example.com",
+																"sub.example.com"
 															],
 															"items": {
+																"minLength": 1,
 																"type": "string",
 																"x-auditable": true
 															},
+															"maxItems": 100,
+															"minItems": 1,
 															"type": "array"
 														},
 														"id": {

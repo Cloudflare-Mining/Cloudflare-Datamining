@@ -367,7 +367,18 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"masking_level": {
+													"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+													"enum": [
+														"full",
+														"partial",
+														"clear",
+														"default"
+													],
+													"type": "string"
+												},
 												"public_key": {
+													"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -377,6 +388,7 @@
 												}
 											},
 											"required": [
+												"masking_level",
 												"updated_at"
 											],
 											"type": "object"
@@ -820,8 +832,24 @@
 			"content": {
 				"application/json": {
 					"schema": {
+						"description": "Request model for updating payload log settings - supports partial updates.",
 						"properties": {
+							"masking_level": {
+								"allOf": [
+									{
+										"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+										"enum": [
+											"full",
+											"partial",
+											"clear",
+											"default"
+										],
+										"type": "string"
+									}
+								]
+							},
 							"public_key": {
+								"description": "Base64-encoded public key for encrypting payload logs.\n\n- Set to null or empty string to disable payload logging.\n- Set to a non-empty base64 string to enable payload logging with the given key.\n\nFor customers with configurable payload masking feature rolled out:\n- If the field is missing, the existing setting will be kept. Note that this is different from setting to null or empty string.\n\nFor all other customers:\n- If the field is missing, the existing setting will be cleared.",
 								"nullable": true,
 								"type": "string"
 							}
@@ -930,7 +958,18 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"masking_level": {
+													"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+													"enum": [
+														"full",
+														"partial",
+														"clear",
+														"default"
+													],
+													"type": "string"
+												},
 												"public_key": {
+													"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
 													"nullable": true,
 													"type": "string"
 												},
@@ -940,6 +979,7 @@
 												}
 											},
 											"required": [
+												"masking_level",
 												"updated_at"
 											],
 											"type": "object"

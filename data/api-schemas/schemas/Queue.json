@@ -6253,6 +6253,7 @@
 			"Queues Write",
 			"Workers Scripts Write"
 		],
+		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
@@ -6498,6 +6499,7 @@
 			"Queues Write",
 			"Workers Scripts Write"
 		],
+		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
@@ -6735,7 +6737,8 @@
 		"x-api-token-group": [
 			"Queues Write",
 			"Workers Scripts Write"
-		]
+		],
+		"x-auditable": false
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
 		"description": "Pull a batch of messages from a Queue",
@@ -6988,6 +6991,7 @@
 			"Queues Write",
 			"Workers Scripts Write"
 		],
+		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"

@@ -26639,7 +26639,7 @@
 								"type": "array"
 							},
 							"cloud_asn": {
-								"description": "the ASN to use on the cloud side. If unset or zero, the cloud's default will be used.",
+								"description": "Sets the cloud-side ASN. If unset or zero, the cloud's default ASN takes effect.",
 								"format": "uint32",
 								"type": "integer",
 								"x-auditable": true
@@ -26657,7 +26657,7 @@
 								"type": "string"
 							},
 							"dynamic_routing": {
-								"description": "if set to true, install_routes_in_cloud and install_routes_in_magic_wan should be set to false",
+								"description": "Enables BGP routing. When enabling this feature, set both install_routes_in_cloud and install_routes_in_magic_wan to false.",
 								"type": "boolean",
 								"x-auditable": true
 							},
