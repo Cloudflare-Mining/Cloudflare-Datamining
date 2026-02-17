@@ -238,7 +238,7 @@
 				title: "Chunking",
 				size: {
 					title: "Chunk size",
-					description: "Controls the number of tokens per chunk. Affects search precision and context. Min 64 tokens - Max 512 tokens."
+					description: "Controls the number of tokens per chunk. Affects search precision and context. Min %{min} tokens - Max %{max} tokens."
 				},
 				overlap: {
 					title: "Chunk overlap",
@@ -396,7 +396,7 @@
 			},
 			chunk_size: {
 				title: "Chunk size",
-				description: "Controls the number of tokens per chunk. Affects search precision and context. Min 64 tokens - 512 tokens."
+				description: "Controls the number of tokens per chunk. Affects search precision and context. Min %{min} tokens - Max %{max} tokens."
 			},
 			chunk_overlap: {
 				title: "Chunk overlap",

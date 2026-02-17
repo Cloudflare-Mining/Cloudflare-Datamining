@@ -150,6 +150,11 @@
 		feature_custom_nameservers: "Custom Nameservers",
 		feature_custom_nameservers_description: "Use your own nameservers",
 		feature_email_forwarding: "Email Forwarding",
-		feature_email_forwarding_description: "Create email aliases"
+		feature_email_forwarding_description: "Create email aliases",
+		redemption_fee: "Restore fee",
+		restore_fee: "Restore fee",
+		renewal_fee: "Renewal fee",
+		restore_renewal: "%{years} year .%{tld} renewal |||| %{years} years .%{tld} renewal",
+		domain_restore: "Restore domain"
 	}
 }

@@ -95,7 +95,8 @@
 				blocked_requests: "Blocked requests",
 				violations: "Robots.txt violations",
 				action: "Action",
-				action_header_tooltip: "Sets a <0>custom WAF rule</0>. Crawlers set to <b>Allow</b> may still be affected by other rules."
+				action_header_tooltip: "Sets a <0>custom WAF rule</0>. Crawlers set to <b>Allow</b> may still be affected by other rules.",
+				block_toggle_tooltip: "<b>Off</b>: Using Targeted Pricing Rules<br><b>On</b>: Blocked (overrides pricing rules)"
 			},
 			more_actions: {
 				view_metrics: "View Metrics",
@@ -519,9 +520,6 @@
 			},
 			signed_contract: {
 				download: "Terms and conditions"
-			},
-			errors: {
-				disable_global_pricing: "Failed to disable global pricing"
 			}
 		},
 		custom_response: {
@@ -624,8 +622,7 @@
 			view_worker: "View worker"
 		},
 		menu: {
-			view_worker: "View worker",
-			view_waf: "View WAF rule"
+			view_worker: "View worker"
 		},
 		summary_card: {
 			title: "Pay Per Crawl pricing",

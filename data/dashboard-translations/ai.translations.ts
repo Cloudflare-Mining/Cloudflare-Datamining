@@ -9,7 +9,7 @@
 	browse_model_catalog: "Browse Model Catalog",
 	authors: "Authors",
 	task_types: "Task Types",
-	capabilities: "Capabilites",
+	capabilities: "Capabilities",
 	clear_all: "Clear All",
 	search_not_found: "No models match your search criteria. Try adjusting your filters.",
 	browse_model_catalog_description: "Browse all models available through Workers AI via Workers, Pages or REST API ",
