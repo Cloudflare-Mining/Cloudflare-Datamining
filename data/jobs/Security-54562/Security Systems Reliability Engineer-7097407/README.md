@@ -5,35 +5,54 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Lisbon</p>
-<h4>About the Role</h4>
-<p>Cloudflare is seeking highly skilled, autonomous, and detail-oriented Video Producer Interns to join our Product Content Experience (PCX) team. This is not a shadowing role—it is a launchpad designed for students ready to own their outcomes and drive the visual excellence of our developer experience.<br><br>You will be embedded within a team committed to excellence, partnering directly with world-class engineers, product managers, and scriptwriters to solve the fundamental challenge of translating complex cloud and security technology into visually dynamic and accessible educational videos. Your expertise in cutting, visual pacing, and designing custom motion graphics is central to this role. Your initiative and creativity are not just valued—they are rewarded with the trust to lead projects from raw footage to polished final delivery. This role offers you the unique chance to learn the mechanics of enterprise-level content strategy while simultaneously building a public-facing portfolio of visually compelling work that helps millions of developers around the globe.</p>
-<h4>Responsibilities</h4>
+<p><strong>Available Location</strong></p>
+<p>Lisbon, Portugal</p>
+<p><strong>Job Title&nbsp;</strong></p>
+<p>Security Systems Reliability Engineer</p>
+<p><strong>About the Department</strong></p>
+<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Systems Reliability Engineering team supports tooling and infrastructure across the Security team.</p>
+<p><strong>About the Role</strong></p>
+<p>As a Security Systems Reliability Engineer, you will play a key role in designing, implementing, managing, and supporting infrastructure and security technologies.&nbsp; You will be responsible for ensuring systems are secure, highly available, fault tolerant, and scale to meet business needs.&nbsp;</p>
+<p>Work may include documenting new standard operating procedures, ensuring vendor recommended security baseline configurations are implemented, designing repeatable deployment patterns, performing disaster recovery testing, performing chaos testing, configuring new integrations, implementing new technologies, patching applications and operating systems, performing upgrades and other maintenance tasks, establishing integrations, documenting the as-built architecture, establishing monitoring and logging, and participating in investigations and service restorations.</p>
+<p>As part of our team, you will be expected to:</p>
 <ul>
-	<li><strong>Content Creation &amp; Editing:</strong> Create and edit new videos—ranging from technical walkthroughs to conceptual explanations—while adhering to company guidelines.</li>
-	<li><strong>Technical Translation:</strong> Collaborate with content experts, project managers, and video producers to distill complex product concepts into usable and accurate videos.</li>
-	<li><strong>Cross-Functional Documentation:</strong> Work closely with product, engineering, and customer-facing teams to document how to use new product features for both technical and non-technical users.</li>
-	<li><strong>Project Ownership:</strong> <strong>Own, create, and help manage all aspects of video production and strategy</strong> for specific user needs.</li>
-	<li><strong>Independence &amp; Management:</strong> Work independently and efficiently manage multiple simultaneous video projects.</li>
-	<li><strong>Strategy &amp; Impact:</strong> Partner with the broader content strategy team to define success metrics and track the impact of your work.</li>
+	<li>Design, implement, and maintain secure infrastructure across various environments (non-production and production).</li>
+	<li>Ensure resilient and secure designs are implemented and maintained.</li>
+	<li>Drive continuous improvement while maintaining multiple environments.&nbsp;</li>
+	<li>Ensure systems meet performance expectations.</li>
+	<li>Engage in proactive risk management and incident response planning.</li>
+	<li>Develop or utilize automation to streamline repeatable tasks.</li>
+	<li>Ensure company data is managed in a secure and scalable manner.</li>
+	<li>Contribute to the creation and dissemination of knowledge about the designs within the company.</li>
 </ul>
-<h4>Requirements</h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>Security Systems Reliability Engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
 <ul>
-	<li>Currently pursuing a degree in Technical Communication, Video Production, Journalism, or a related multimedia field.</li>
-	<li>A portfolio or video samples demonstrating experience in creating and editing content. Independent projects or course work is acceptable.&nbsp;</li>
-	<li>Ability to commit to a minimum 12 week summer internship.</li>
-	<li>In office 3-5 days a week in Lisbon.</li>
-	<li>Proficiency with video editing software (e.g., Adobe Premiere Pro) and demonstrable skills in applying animation or motion graphics to enhance visual storytelling.</li>
-	<li>Strong eagerness to learn new video production workflows, developer concepts, and content strategy best practices.</li>
-	<li>Proven proactive and responsible attitude with the willingness to partner in leading projects and owning outcomes from concept to completion.</li>
-	<li>Excellent ability to translate complex information clearly through both written and verbal communication.</li>
-	<li>Demonstrated capacity for self-management, organization, and a positive response to feedback as a tool for growth.</li>
+	<li>Bachelor's degree in Computer Science, Information Systems, Cybersecurity, related technical field, or equivalent practical experience</li>
+	<li>Experience performing the functions of a Site Reliability Engineer (SRE).</li>
+	<li>Ability to clearly communicate complex security requirements to stakeholders at all levels</li>
+	<li>Ability to navigate ambiguity, and provide clarity to complex situations</li>
+	<li>Extensive experience with deploying and administering Kubernetes in an enterprise environment.&nbsp;</li>
+	<li>Extensive experience developing and utilizing Terraform to deploy and update environments through infrastructure as code (IaC).&nbsp;</li>
+	<li>Extensive experience with deploying and administering Linux systems in an enterprise environment.&nbsp;</li>
+	<li>Extensive experience deploying and administering enterprise solutions in GCP, AWS or Azure.</li>
+	<li>Experience implementing, integrating, and supporting application security tools within a CI/CD pipeline environment.</li>
+	<li>Solid understanding of reliability engineering principles and a commitment to continuous improvement.</li>
+	<li>Experience writing scripts, leveraging automation, and creating infrastructure as code to streamline processes.</li>
+	<li>Advanced programming experience (Python, Golang, Bash, etc.)</li>
+	<li>Strong analytical skills focused on service availability with curiosity and thoroughness in problem-solving.</li>
+	<li>Ability to navigate ambiguity, bring clarity to complex situations, and collaborate effectively with various stakeholders.</li>
+	<li>Experience working with different security functions as part of a wider team</li>
 </ul>
-<h4>Bonus Points</h4>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Direct experience playing with developer platforms, working with APIs, or hands-on experience building and deploying your own websites or applications.</li>
-	<li>Familiarity with modern AI tools, including prompt engineering and leveraging generative AI for scripting, content ideation, or production efficiencies.</li>
-	<li>Willingness and confidence to perform professional voice-over work for the video content you produce.</li>
+	<li>Strong Linux system experience from user-space to kernel-space</li>
+	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
+	<li>Proficient in managing Application Security related technologies like Veracode, Checkmarx, SonarQube, Snyk, Semgrep, Fortify, or Coverity integrated into CI/CD pipelines.</li>
+	<li>Experience with deploying and administering Cloudflare products (access, tunnels, waf)&nbsp;</li>
+	<li>Experience working with large data platforms</li>
+	<li>Experience working with data classification schemas at scale</li>
+	<li>Experience working with organization wide business ecosystems (Google, Microsoft)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
