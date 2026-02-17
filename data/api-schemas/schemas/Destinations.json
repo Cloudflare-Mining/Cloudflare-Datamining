@@ -1,6 +1,6 @@
 {
-	"DELETE /accounts/{account_id}/workers/observability/destinations/{slug}": {
-		"description": "Delete a Workers Observability Telemetry Destination",
+	"DELETE /destinations/{slug}": {
+		"description": "Delete a Workers Observability Telemetry Destination.",
 		"operationId": "destinations.delete",
 		"parameters": [
 			{
@@ -313,13 +313,10 @@
 		"summary": "Delete Destination",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	},
-	"GET /accounts/{account_id}/workers/observability/destinations": {
-		"description": "List your Workers Observability Telemetry Destinations",
+	"GET /destinations": {
+		"description": "List your Workers Observability Telemetry Destinations.",
 		"operationId": "destination.list",
 		"parameters": [
 			{
@@ -412,9 +409,7 @@
 														"type": "string"
 													},
 													"headers": {
-														"additionalProperties": {
-															"type": "string"
-														},
+														"additionalProperties": {},
 														"type": "object"
 													},
 													"jobStatus": {
@@ -694,14 +689,10 @@
 		"summary": "Get Destinations",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write",
-			"Workers Observability Read"
 		]
 	},
-	"PATCH /accounts/{account_id}/workers/observability/destinations/{slug}": {
-		"description": "Update an existing Workers Observability Telemetry Destination",
+	"PATCH /destinations/{slug}": {
+		"description": "Update an existing Workers Observability Telemetry Destination.",
 		"operationId": "destination.update",
 		"parameters": [
 			{
@@ -721,9 +712,7 @@
 							"configuration": {
 								"properties": {
 									"headers": {
-										"additionalProperties": {
-											"type": "string"
-										},
+										"additionalProperties": {},
 										"type": "object"
 									},
 									"type": {
@@ -1115,13 +1104,10 @@
 		"summary": "Update Destination",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	},
-	"POST /accounts/{account_id}/workers/observability/destinations": {
-		"description": "Create a new Workers Observability Telemetry Destination",
+	"POST /destinations": {
+		"description": "Create a new Workers Observability Telemetry Destination.",
 		"operationId": "destination.create",
 		"requestBody": {
 			"content": {
@@ -1131,9 +1117,7 @@
 							"configuration": {
 								"properties": {
 									"headers": {
-										"additionalProperties": {
-											"type": "string"
-										},
+										"additionalProperties": {},
 										"type": "object"
 									},
 									"logpushDataset": {
@@ -1176,6 +1160,9 @@
 							"name": {
 								"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
 								"type": "string"
+							},
+							"skipPreflightCheck": {
+								"type": "boolean"
 							}
 						},
 						"required": [
@@ -1490,9 +1477,6 @@
 		"summary": "Create Destination",
 		"tags": [
 			"Destinations"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	}
 }

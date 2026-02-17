@@ -1,6 +1,6 @@
 {
-	"POST /accounts/{account_id}/workers/observability/telemetry/query": {
-		"description": "Runs a temporary or saved query",
+	"POST /telemetry/query": {
+		"description": "Run a temporary or saved query.",
 		"operationId": "telemetry.query",
 		"requestBody": {
 			"content": {
@@ -381,7 +381,7 @@
 					}
 				}
 			},
-			"description": "Query your observability events, requests, and traces. Build visualizations and identify insights.",
+			"description": "Query your observability events, requests, and traces to build visualizations and identify insights.",
 			"required": true
 		},
 		"responses": {
@@ -1753,6 +1753,7 @@
 												"query": {
 													"properties": {
 														"created": {
+															"format": "date-time",
 															"type": "string"
 														},
 														"description": {
@@ -2069,6 +2070,7 @@
 															"type": "object"
 														},
 														"updated": {
+															"format": "date-time",
 															"type": "string"
 														},
 														"userId": {
@@ -2453,9 +2455,6 @@
 		"summary": "Run a query",
 		"tags": [
 			"Query run"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	}
 }

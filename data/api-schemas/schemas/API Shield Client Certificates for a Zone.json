@@ -127,7 +127,7 @@
 											"properties": {
 												"certificate": {
 													"description": "The Client Certificate PEM",
-													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -163,7 +163,7 @@
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
-													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICY....\n-----END CERTIFICATE REQUEST-----",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -901,7 +901,7 @@
 												"properties": {
 													"certificate": {
 														"description": "The Client Certificate PEM",
-														"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+														"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 														"readOnly": true,
 														"type": "string"
 													},
@@ -937,7 +937,7 @@
 													},
 													"csr": {
 														"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
-														"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+														"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICY....\n-----END CERTIFICATE REQUEST-----",
 														"type": "string",
 														"x-auditable": true
 													},
@@ -1323,7 +1323,7 @@
 											"properties": {
 												"certificate": {
 													"description": "The Client Certificate PEM",
-													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -1359,7 +1359,7 @@
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
-													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICY....\n-----END CERTIFICATE REQUEST-----",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -1755,7 +1755,7 @@
 											"properties": {
 												"certificate": {
 													"description": "The Client Certificate PEM",
-													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -1791,7 +1791,7 @@
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
-													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICY....\n-----END CERTIFICATE REQUEST-----",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -2066,7 +2066,7 @@
 						"properties": {
 							"csr": {
 								"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
-								"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+								"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICY....\n-----END CERTIFICATE REQUEST-----",
 								"type": "string",
 								"x-auditable": true
 							},
@@ -2186,7 +2186,7 @@
 											"properties": {
 												"certificate": {
 													"description": "The Client Certificate PEM",
-													"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -2222,7 +2222,7 @@
 												},
 												"csr": {
 													"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
-													"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+													"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICY....\n-----END CERTIFICATE REQUEST-----",
 													"type": "string",
 													"x-auditable": true
 												},
@@ -2431,7 +2431,7 @@
 													"properties": {
 														"certificate": {
 															"description": "The Client Certificate PEM",
-															"example": "-----BEGIN CERTIFICATE-----\\nMIIDmDCCAoC...dhDDE\\n-----END CERTIFICATE-----",
+															"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -2467,7 +2467,7 @@
 														},
 														"csr": {
 															"description": "The Certificate Signing Request (CSR). Must be newline-encoded.",
-															"example": "-----BEGIN CERTIFICATE REQUEST-----\\nMIICY....\\n-----END CERTIFICATE REQUEST-----\\n",
+															"example": "-----BEGIN CERTIFICATE REQUEST-----\nMIICY....\n-----END CERTIFICATE REQUEST-----",
 															"type": "string",
 															"x-auditable": true
 														},

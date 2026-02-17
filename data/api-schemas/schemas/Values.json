@@ -1,6 +1,6 @@
 {
-	"POST /accounts/{account_id}/workers/observability/telemetry/values": {
-		"description": "List unique values found in your events",
+	"POST /telemetry/values": {
+		"description": "List unique values found in your events.",
 		"operationId": "telemetry.values.list",
 		"requestBody": {
 			"content": {
@@ -161,7 +161,7 @@
 					}
 				}
 			},
-			"description": "Get Values",
+			"description": "Retrieve values from your telemetry events.",
 			"required": true
 		},
 		"responses": {
@@ -379,9 +379,6 @@
 		"summary": "List values",
 		"tags": [
 			"Values"
-		],
-		"x-api-token-group": [
-			"Workers Observability Write"
 		]
 	}
 }

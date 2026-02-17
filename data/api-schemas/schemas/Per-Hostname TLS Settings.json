@@ -20,7 +20,7 @@
 				"name": "setting_id",
 				"required": true,
 				"schema": {
-					"description": "The TLS Setting name.",
+					"description": "The TLS Setting name. The value type depends on the setting:\n- `ciphers`: value is an array of cipher suite strings (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: value is a TLS version string (`\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"`)\n- `http2`: value is `\"on\"` or `\"off\"`",
 					"enum": [
 						"ciphers",
 						"min_tls_version",
@@ -168,26 +168,41 @@
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The tls setting value.",
-															"example": [
-																"ECDHE-RSA-AES128-GCM-SHA256",
-																"AES128-GCM-SHA256"
-															],
+															"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 															"oneOf": [
 																{
-																	"type": "number",
+																	"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																	"example": [
+																		"ECDHE-RSA-AES128-GCM-SHA256",
+																		"AES128-GCM-SHA256"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
 																	"x-auditable": true
 																},
 																{
+																	"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																	"enum": [
+																		"1.0",
+																		"1.1",
+																		"1.2",
+																		"1.3"
+																	],
+																	"example": "1.2",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																{
-																	"items": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": "array"
+																	"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"example": "on",
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														}
@@ -331,26 +346,41 @@
 																	"x-auditable": true
 																},
 																"value": {
-																	"description": "The tls setting value.",
-																	"example": [
-																		"ECDHE-RSA-AES128-GCM-SHA256",
-																		"AES128-GCM-SHA256"
-																	],
+																	"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 																	"oneOf": [
 																		{
-																			"type": "number",
+																			"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																			"example": [
+																				"ECDHE-RSA-AES128-GCM-SHA256",
+																				"AES128-GCM-SHA256"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
 																			"x-auditable": true
 																		},
 																		{
+																			"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																			"enum": [
+																				"1.0",
+																				"1.1",
+																				"1.2",
+																				"1.3"
+																			],
+																			"example": "1.2",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		{
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": "array"
+																			"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	]
 																}
@@ -525,7 +555,7 @@
 				"name": "setting_id",
 				"required": true,
 				"schema": {
-					"description": "The TLS Setting name.",
+					"description": "The TLS Setting name. The value type depends on the setting:\n- `ciphers`: value is an array of cipher suite strings (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: value is a TLS version string (`\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"`)\n- `http2`: value is `\"on\"` or `\"off\"`",
 					"enum": [
 						"ciphers",
 						"min_tls_version",
@@ -691,26 +721,41 @@
 														"x-auditable": true
 													},
 													"value": {
-														"description": "The tls setting value.",
-														"example": [
-															"ECDHE-RSA-AES128-GCM-SHA256",
-															"AES128-GCM-SHA256"
-														],
+														"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 														"oneOf": [
 															{
-																"type": "number",
+																"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																"example": [
+																	"ECDHE-RSA-AES128-GCM-SHA256",
+																	"AES128-GCM-SHA256"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
 																"x-auditable": true
 															},
 															{
+																"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																"enum": [
+																	"1.0",
+																	"1.1",
+																	"1.2",
+																	"1.3"
+																],
+																"example": "1.2",
 																"type": "string",
 																"x-auditable": true
 															},
 															{
-																"items": {
-																	"type": "string",
-																	"x-auditable": true
-																},
-																"type": "array"
+																"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																"enum": [
+																	"on",
+																	"off"
+																],
+																"example": "on",
+																"type": "string",
+																"x-auditable": true
 															}
 														]
 													}
@@ -908,26 +953,41 @@
 																"x-auditable": true
 															},
 															"value": {
-																"description": "The tls setting value.",
-																"example": [
-																	"ECDHE-RSA-AES128-GCM-SHA256",
-																	"AES128-GCM-SHA256"
-																],
+																"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 																"oneOf": [
 																	{
-																		"type": "number",
+																		"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																		"example": [
+																			"ECDHE-RSA-AES128-GCM-SHA256",
+																			"AES128-GCM-SHA256"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
 																		"x-auditable": true
 																	},
 																	{
+																		"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																		"enum": [
+																			"1.0",
+																			"1.1",
+																			"1.2",
+																			"1.3"
+																		],
+																		"example": "1.2",
 																		"type": "string",
 																		"x-auditable": true
 																	},
 																	{
-																		"items": {
-																			"type": "string",
-																			"x-auditable": true
-																		},
-																		"type": "array"
+																		"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																		"enum": [
+																			"on",
+																			"off"
+																		],
+																		"example": "on",
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																]
 															}
@@ -1128,7 +1188,7 @@
 				"name": "setting_id",
 				"required": true,
 				"schema": {
-					"description": "The TLS Setting name.",
+					"description": "The TLS Setting name. The value type depends on the setting:\n- `ciphers`: value is an array of cipher suite strings (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: value is a TLS version string (`\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"`)\n- `http2`: value is `\"on\"` or `\"off\"`",
 					"enum": [
 						"ciphers",
 						"min_tls_version",
@@ -1150,45 +1210,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"value": {
-								"description": "The tls setting value.",
-								"example": [
-									"ECDHE-RSA-AES128-GCM-SHA256",
-									"AES128-GCM-SHA256"
-								],
-								"oneOf": [
-									{
-										"type": "number",
-										"x-auditable": true
-									},
-									{
-										"type": "string",
-										"x-auditable": true
-									},
-									{
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
-									}
-								]
-							}
-						},
-						"required": [
-							"value"
-						],
-						"type": "object"
-					}
-				}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -1315,26 +1336,41 @@
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The tls setting value.",
-															"example": [
-																"ECDHE-RSA-AES128-GCM-SHA256",
-																"AES128-GCM-SHA256"
-															],
+															"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 															"oneOf": [
 																{
-																	"type": "number",
+																	"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																	"example": [
+																		"ECDHE-RSA-AES128-GCM-SHA256",
+																		"AES128-GCM-SHA256"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
 																	"x-auditable": true
 																},
 																{
+																	"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																	"enum": [
+																		"1.0",
+																		"1.1",
+																		"1.2",
+																		"1.3"
+																	],
+																	"example": "1.2",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																{
-																	"items": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": "array"
+																	"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"example": "on",
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														}
@@ -1478,26 +1514,41 @@
 																	"x-auditable": true
 																},
 																"value": {
-																	"description": "The tls setting value.",
-																	"example": [
-																		"ECDHE-RSA-AES128-GCM-SHA256",
-																		"AES128-GCM-SHA256"
-																	],
+																	"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 																	"oneOf": [
 																		{
-																			"type": "number",
+																			"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																			"example": [
+																				"ECDHE-RSA-AES128-GCM-SHA256",
+																				"AES128-GCM-SHA256"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
 																			"x-auditable": true
 																		},
 																		{
+																			"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																			"enum": [
+																				"1.0",
+																				"1.1",
+																				"1.2",
+																				"1.3"
+																			],
+																			"example": "1.2",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		{
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": "array"
+																			"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	]
 																}
@@ -1664,7 +1715,7 @@
 				"name": "setting_id",
 				"required": true,
 				"schema": {
-					"description": "The TLS Setting name.",
+					"description": "The TLS Setting name. The value type depends on the setting:\n- `ciphers`: value is an array of cipher suite strings (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: value is a TLS version string (`\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"`)\n- `http2`: value is `\"on\"` or `\"off\"`",
 					"enum": [
 						"ciphers",
 						"min_tls_version",
@@ -1692,26 +1743,41 @@
 					"schema": {
 						"properties": {
 							"value": {
-								"description": "The tls setting value.",
-								"example": [
-									"ECDHE-RSA-AES128-GCM-SHA256",
-									"AES128-GCM-SHA256"
-								],
+								"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 								"oneOf": [
 									{
-										"type": "number",
+										"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+										"example": [
+											"ECDHE-RSA-AES128-GCM-SHA256",
+											"AES128-GCM-SHA256"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array",
 										"x-auditable": true
 									},
 									{
+										"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+										"enum": [
+											"1.0",
+											"1.1",
+											"1.2",
+											"1.3"
+										],
+										"example": "1.2",
 										"type": "string",
 										"x-auditable": true
 									},
 									{
-										"items": {
-											"type": "string",
-											"x-auditable": true
-										},
-										"type": "array"
+										"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+										"enum": [
+											"on",
+											"off"
+										],
+										"example": "on",
+										"type": "string",
+										"x-auditable": true
 									}
 								]
 							}
@@ -1851,26 +1917,41 @@
 															"x-auditable": true
 														},
 														"value": {
-															"description": "The tls setting value.",
-															"example": [
-																"ECDHE-RSA-AES128-GCM-SHA256",
-																"AES128-GCM-SHA256"
-															],
+															"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 															"oneOf": [
 																{
-																	"type": "number",
+																	"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																	"example": [
+																		"ECDHE-RSA-AES128-GCM-SHA256",
+																		"AES128-GCM-SHA256"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
 																	"x-auditable": true
 																},
 																{
+																	"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																	"enum": [
+																		"1.0",
+																		"1.1",
+																		"1.2",
+																		"1.3"
+																	],
+																	"example": "1.2",
 																	"type": "string",
 																	"x-auditable": true
 																},
 																{
-																	"items": {
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"type": "array"
+																	"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																	"enum": [
+																		"on",
+																		"off"
+																	],
+																	"example": "on",
+																	"type": "string",
+																	"x-auditable": true
 																}
 															]
 														}
@@ -2014,26 +2095,41 @@
 																	"x-auditable": true
 																},
 																"value": {
-																	"description": "The tls setting value.",
-																	"example": [
-																		"ECDHE-RSA-AES128-GCM-SHA256",
-																		"AES128-GCM-SHA256"
-																	],
+																	"description": "The TLS setting value. The type depends on the `setting_id` used in the request path:\n- `ciphers`: an array of allowed cipher suite strings in BoringSSL format (e.g., `[\"ECDHE-RSA-AES128-GCM-SHA256\", \"AES128-GCM-SHA256\"]`)\n- `min_tls_version`: a string indicating the minimum TLS version — one of `\"1.0\"`, `\"1.1\"`, `\"1.2\"`, or `\"1.3\"` (e.g., `\"1.2\"`)\n- `http2`: a string indicating whether HTTP/2 is enabled — `\"on\"` or `\"off\"` (e.g., `\"on\"`)",
 																	"oneOf": [
 																		{
-																			"type": "number",
+																			"description": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
+																			"example": [
+																				"ECDHE-RSA-AES128-GCM-SHA256",
+																				"AES128-GCM-SHA256"
+																			],
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
 																			"x-auditable": true
 																		},
 																		{
+																			"description": "Used when `setting_id` is `min_tls_version`. The minimum TLS version.",
+																			"enum": [
+																				"1.0",
+																				"1.1",
+																				"1.2",
+																				"1.3"
+																			],
+																			"example": "1.2",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		{
-																			"items": {
-																				"type": "string",
-																				"x-auditable": true
-																			},
-																			"type": "array"
+																			"description": "Used when `setting_id` is `http2`. Whether HTTP/2 is enabled.",
+																			"enum": [
+																				"on",
+																				"off"
+																			],
+																			"example": "on",
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	]
 																}
