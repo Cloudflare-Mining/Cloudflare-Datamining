@@ -605,7 +605,8 @@
 																"x-auditable": true
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"longitude": {
 														"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -680,8 +681,10 @@
 																	"disable": {
 																		"default": false,
 																		"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																		"nullable": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"healthy": {
 																		"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -699,8 +702,10 @@
 																	"disable": {
 																		"default": false,
 																		"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																		"nullable": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"healthy": {
 																		"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -712,7 +717,8 @@
 																"type": "object"
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"origin_steering": {
 														"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -731,7 +737,8 @@
 																"x-auditable": true
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"origins": {
 														"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -748,7 +755,8 @@
 																	"format": "date-time",
 																	"readOnly": true,
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"enabled": {
 																	"default": true,
@@ -801,7 +809,8 @@
 															},
 															"type": "object"
 														},
-														"type": "array"
+														"type": "array",
+														"x-stainless-collection-type": "set"
 													}
 												},
 												"type": "object"
@@ -1041,7 +1050,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"longitude": {
 																"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -1116,8 +1126,10 @@
 																			"disable": {
 																				"default": false,
 																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																				"nullable": true,
 																				"type": "boolean",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "optional"
 																			},
 																			"healthy": {
 																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -1135,8 +1147,10 @@
 																			"disable": {
 																				"default": false,
 																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																				"nullable": true,
 																				"type": "boolean",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "optional"
 																			},
 																			"healthy": {
 																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -1148,7 +1162,8 @@
 																		"type": "object"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"origin_steering": {
 																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -1167,7 +1182,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"origins": {
 																"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -1184,7 +1200,8 @@
 																			"format": "date-time",
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enabled": {
 																			"default": true,
@@ -1237,7 +1254,8 @@
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-collection-type": "set"
 															}
 														},
 														"type": "object"
@@ -1585,7 +1603,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -1660,8 +1679,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -1679,8 +1700,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -1692,7 +1715,8 @@
 															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -1711,7 +1735,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -1728,7 +1753,8 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"enabled": {
 																"default": true,
@@ -1781,7 +1807,8 @@
 														},
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"type": "object"
@@ -1997,7 +2024,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -2072,8 +2100,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -2091,8 +2121,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -2104,7 +2136,8 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -2123,7 +2156,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -2140,7 +2174,8 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"enabled": {
 																		"default": true,
@@ -2193,7 +2228,8 @@
 																},
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"type": "object"
@@ -3437,7 +3473,8 @@
 																"x-auditable": true
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"longitude": {
 														"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -3512,8 +3549,10 @@
 																	"disable": {
 																		"default": false,
 																		"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																		"nullable": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"healthy": {
 																		"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -3531,8 +3570,10 @@
 																	"disable": {
 																		"default": false,
 																		"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																		"nullable": true,
 																		"type": "boolean",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"healthy": {
 																		"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -3544,7 +3585,8 @@
 																"type": "object"
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"origin_steering": {
 														"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -3563,7 +3605,8 @@
 																"x-auditable": true
 															}
 														},
-														"type": "object"
+														"type": "object",
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"origins": {
 														"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -3580,7 +3623,8 @@
 																	"format": "date-time",
 																	"readOnly": true,
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																},
 																"enabled": {
 																	"default": true,
@@ -3633,7 +3677,8 @@
 															},
 															"type": "object"
 														},
-														"type": "array"
+														"type": "array",
+														"x-stainless-collection-type": "set"
 													}
 												},
 												"type": "object"
@@ -3873,7 +3918,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"longitude": {
 																"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -3948,8 +3994,10 @@
 																			"disable": {
 																				"default": false,
 																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																				"nullable": true,
 																				"type": "boolean",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "optional"
 																			},
 																			"healthy": {
 																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -3967,8 +4015,10 @@
 																			"disable": {
 																				"default": false,
 																				"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																				"nullable": true,
 																				"type": "boolean",
-																				"x-auditable": true
+																				"x-auditable": true,
+																				"x-stainless-terraform-configurability": "optional"
 																			},
 																			"healthy": {
 																				"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -3980,7 +4030,8 @@
 																		"type": "object"
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"origin_steering": {
 																"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -3999,7 +4050,8 @@
 																		"x-auditable": true
 																	}
 																},
-																"type": "object"
+																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"origins": {
 																"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -4016,7 +4068,8 @@
 																			"format": "date-time",
 																			"readOnly": true,
 																			"type": "string",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
 																		},
 																		"enabled": {
 																			"default": true,
@@ -4069,7 +4122,8 @@
 																	},
 																	"type": "object"
 																},
-																"type": "array"
+																"type": "array",
+																"x-stainless-collection-type": "set"
 															}
 														},
 														"type": "object"
@@ -4316,7 +4370,8 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"longitude": {
 								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -4371,8 +4426,10 @@
 											"disable": {
 												"default": false,
 												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"nullable": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"healthy": {
 												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -4390,8 +4447,10 @@
 											"disable": {
 												"default": false,
 												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"nullable": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"healthy": {
 												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -4403,7 +4462,8 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -4422,7 +4482,8 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -4439,7 +4500,8 @@
 											"format": "date-time",
 											"readOnly": true,
 											"type": "string",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"enabled": {
 											"default": true,
@@ -4492,7 +4554,8 @@
 									},
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"type": "object"
@@ -4702,7 +4765,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -4777,8 +4841,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -4796,8 +4862,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -4809,7 +4877,8 @@
 															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -4828,7 +4897,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -4845,7 +4915,8 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"enabled": {
 																"default": true,
@@ -4898,7 +4969,8 @@
 														},
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"type": "object"
@@ -5114,7 +5186,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -5189,8 +5262,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -5208,8 +5283,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -5221,7 +5298,8 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -5240,7 +5318,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -5257,7 +5336,8 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"enabled": {
 																		"default": true,
@@ -5310,7 +5390,8 @@
 																},
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"type": "object"
@@ -5508,7 +5589,8 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"longitude": {
 								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -5563,8 +5645,10 @@
 											"disable": {
 												"default": false,
 												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"nullable": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"healthy": {
 												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -5582,8 +5666,10 @@
 											"disable": {
 												"default": false,
 												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"nullable": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"healthy": {
 												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -5595,7 +5681,8 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -5614,7 +5701,8 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -5631,7 +5719,8 @@
 											"format": "date-time",
 											"readOnly": true,
 											"type": "string",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"enabled": {
 											"default": true,
@@ -5684,7 +5773,8 @@
 									},
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -5898,7 +5988,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -5973,8 +6064,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -5992,8 +6085,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -6005,7 +6100,8 @@
 															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -6024,7 +6120,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -6041,7 +6138,8 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"enabled": {
 																"default": true,
@@ -6094,7 +6192,8 @@
 														},
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"type": "object"
@@ -6310,7 +6409,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -6385,8 +6485,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -6404,8 +6506,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -6417,7 +6521,8 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -6436,7 +6541,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -6453,7 +6559,8 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"enabled": {
 																		"default": true,
@@ -6506,7 +6613,8 @@
 																},
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"type": "object"
@@ -6745,7 +6853,8 @@
 										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 										"nullable": true,
 										"type": "integer",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "optional"
 									},
 									"probe_zone": {
 										"default": "",
@@ -7265,7 +7374,8 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"longitude": {
 								"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -7320,8 +7430,10 @@
 											"disable": {
 												"default": false,
 												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"nullable": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"healthy": {
 												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -7339,8 +7451,10 @@
 											"disable": {
 												"default": false,
 												"description": "If set true, disable notifications for this type of resource (pool or origin).",
+												"nullable": true,
 												"type": "boolean",
-												"x-auditable": true
+												"x-auditable": true,
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"healthy": {
 												"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -7352,7 +7466,8 @@
 										"type": "object"
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"origin_steering": {
 								"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -7371,7 +7486,8 @@
 										"x-auditable": true
 									}
 								},
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"origins": {
 								"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -7388,7 +7504,8 @@
 											"format": "date-time",
 											"readOnly": true,
 											"type": "string",
-											"x-auditable": true
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
 										},
 										"enabled": {
 											"default": true,
@@ -7441,7 +7558,8 @@
 									},
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -7655,7 +7773,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"longitude": {
 													"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -7730,8 +7849,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -7749,8 +7870,10 @@
 																"disable": {
 																	"default": false,
 																	"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																	"nullable": true,
 																	"type": "boolean",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"healthy": {
 																	"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -7762,7 +7885,8 @@
 															"type": "object"
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origin_steering": {
 													"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -7781,7 +7905,8 @@
 															"x-auditable": true
 														}
 													},
-													"type": "object"
+													"type": "object",
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"origins": {
 													"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -7798,7 +7923,8 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"enabled": {
 																"default": true,
@@ -7851,7 +7977,8 @@
 														},
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"type": "object"
@@ -8067,7 +8194,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"longitude": {
 															"description": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.",
@@ -8142,8 +8270,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -8161,8 +8291,10 @@
 																		"disable": {
 																			"default": false,
 																			"description": "If set true, disable notifications for this type of resource (pool or origin).",
+																			"nullable": true,
 																			"type": "boolean",
-																			"x-auditable": true
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"healthy": {
 																			"description": "If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events).",
@@ -8174,7 +8306,8 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origin_steering": {
 															"description": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.",
@@ -8193,7 +8326,8 @@
 																	"x-auditable": true
 																}
 															},
-															"type": "object"
+															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"origins": {
 															"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
@@ -8210,7 +8344,8 @@
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string",
-																		"x-auditable": true
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
 																	},
 																	"enabled": {
 																		"default": true,
@@ -8263,7 +8398,8 @@
 																},
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-stainless-collection-type": "set"
 														}
 													},
 													"type": "object"
