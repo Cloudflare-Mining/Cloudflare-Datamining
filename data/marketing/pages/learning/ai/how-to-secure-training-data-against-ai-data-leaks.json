@@ -40,14 +40,14 @@
 						{
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-							"displayText": "What is a large language model (LLM)?",
+							"displayText": "What is an LLM?",
 							"url": "/learning/ai/what-is-large-language-model/"
 						},
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "41JHcwdZJopZYPQOHjdkkE",
-							"name": "Machine learning",
-							"displayText": "Machine learning",
+							"name": "Types of AI",
+							"displayText": "Types of AI",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -87,15 +87,71 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
-									"displayText": "What is big data?",
-									"url": "/learning/ai/big-data/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "1MP0vEt5FzyhNppPMZqEHp",
 									"displayText": "What is agentic AI?",
 									"url": "/learning/ai/what-is-agentic-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
+									"displayText": "Third wave of AI",
+									"url": "/learning/ai/evolution-of-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
+									"displayText": "What is natural language processing (NLP)?",
+									"url": "/learning/ai/natural-language-processing-nlp/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7fuOeU3OT7lKfaawhXBUuL",
+							"name": "How to secure AI",
+							"displayText": "How to secure AI",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "qwHqeq4VedN29rZ0SP2dw",
+									"displayText": "Security for AI",
+									"url": "/learning/ai/what-is-ai-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+									"displayText": "OWASP Top 10 for LLMs",
+									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
+									"displayText": "AI data poisoning",
+									"url": "/learning/ai/data-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6xy4UeqPN2cEgZ5ALiqvTs",
+									"displayText": "Prompt injection",
+									"url": "/learning/ai/prompt-injection/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3K1kMMUXxDtJq3yQJyNs7b",
+									"displayText": "Shadow AI",
+									"url": "/learning/ai/what-is-shadow-ai/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5KGGCoBgenwdvUomxu9p34",
+									"displayText": "How to secure AI systems",
+									"url": "/learning/ai/how-to-secure-ai-systems/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6EYLgrBEjKBwQRbu7qpAxu",
+									"displayText": "How to secure AI training data",
+									"url": "/learning/ai/how-to-secure-training-data-against-ai-data-leaks/"
 								}
 							]
 						},
@@ -125,12 +181,6 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "2pLwK8cnRhtcrFR53cRAME",
-									"displayText": "What is natural language processing (NLP)?",
-									"url": "/learning/ai/natural-language-processing-nlp/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "4bUf7y8NP577uqtWUkgSwW",
 									"displayText": "Low-rank adaptation (LoRA)",
 									"url": "/learning/ai/what-is-lora/"
@@ -149,18 +199,6 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
-									"displayText": "OWASP Top 10 for LLMs",
-									"url": "/learning/ai/owasp-top-10-risks-for-llms/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "28O79uvws5OhhzxUUPMr8z",
-									"displayText": "AI data poisoning",
-									"url": "/learning/ai/data-poisoning/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7uV0UxfanyoFf3Xrjnp2fk",
 									"displayText": "Retrieval augmented generation (RAG)",
 									"url": "/learning/ai/retrieval-augmented-generation-rag/"
@@ -170,6 +208,12 @@
 									"contentfulId": "13XGjbidrGmhw6y7WyyG4F",
 									"displayText": "Model Context Protocol (MCP)",
 									"url": "/learning/ai/what-is-model-context-protocol-mcp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2TrEokuHIpngkSA4Hti24T",
+									"displayText": "MCP clients and servers",
+									"url": "/learning/ai/mcp-client-and-server/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -188,12 +232,6 @@
 									"contentfulId": "1lT8d5JbDfSf5rPbTWrrRZ",
 									"displayText": "How to start vibe coding",
 									"url": "/learning/ai/how-to-get-started-with-vibe-coding/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "1MZdfQqWrwJ7KJel7rp6d2",
-									"displayText": "Third wave of AI",
-									"url": "/learning/ai/evolution-of-ai/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -227,39 +265,15 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "5KGGCoBgenwdvUomxu9p34",
-									"displayText": "How to secure AI systems",
-									"url": "/learning/ai/how-to-secure-ai-systems/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "6EYLgrBEjKBwQRbu7qpAxu",
-									"displayText": "How to secure AI training data",
-									"url": "/learning/ai/how-to-secure-training-data-against-ai-data-leaks/"
+									"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+									"displayText": "What is big data?",
+									"url": "/learning/ai/big-data/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
 									"displayText": "ChatGPT plugins",
 									"url": "/learning/ai/chatgpt-plugins/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "qwHqeq4VedN29rZ0SP2dw",
-									"displayText": "Security for AI",
-									"url": "/learning/ai/what-is-ai-security/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "3K1kMMUXxDtJq3yQJyNs7b",
-									"displayText": "Shadow AI",
-									"url": "/learning/ai/what-is-shadow-ai/"
-								},
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "6xy4UeqPN2cEgZ5ALiqvTs",
-									"displayText": "Prompt injection",
-									"url": "/learning/ai/prompt-injection/"
 								}
 							]
 						}
@@ -318,7 +332,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-								"displayText": "What is a large language model (LLM)?",
+								"displayText": "What is an LLM?",
 								"url": "/learning/ai/what-is-large-language-model/"
 							},
 							{
@@ -518,6 +532,12 @@
 								"contentfulId": "6xy4UeqPN2cEgZ5ALiqvTs",
 								"displayText": "Prompt injection",
 								"url": "/learning/ai/prompt-injection/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2TrEokuHIpngkSA4Hti24T",
+								"displayText": "MCP clients and servers",
+								"url": "/learning/ai/mcp-client-and-server/"
 							}
 						]
 					},
@@ -652,7 +672,7 @@
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-						"displayText": "What is a large language model (LLM)?",
+						"displayText": "What is an LLM?",
 						"url": "/learning/ai/what-is-large-language-model/"
 					},
 					{
