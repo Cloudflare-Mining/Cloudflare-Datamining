@@ -129,30 +129,6 @@
 														],
 														"type": "object"
 													},
-													"egress": {
-														"description": "Egress settings for an application",
-														"properties": {
-															"bandwidth_limit_mbps": {
-																"description": "The bandwidth limit for egress traffic in Megabits per second (Mbps).\n\"unlimited\" when no throttling is applied.\nA number when throttling is enabled, calculated as max(vCPUs * 1000, 100).\n",
-																"oneOf": [
-																	{
-																		"enum": [
-																			"unlimited"
-																		],
-																		"type": "string"
-																	},
-																	{
-																		"minimum": 100,
-																		"type": "integer"
-																	}
-																]
-															}
-														},
-														"required": [
-															"bandwidth_limit_mbps"
-														],
-														"type": "object"
-													},
 													"health": {
 														"description": "Shows a count of application instance states.",
 														"properties": {
@@ -234,6 +210,20 @@
 													"name": {
 														"description": "The name of the application.",
 														"type": "string"
+													},
+													"network": {
+														"description": "Network settings for an application",
+														"properties": {
+															"bandwidth_limit_mbps": {
+																"description": "The network bandwidth limit per container in Megabits per second (Mbps).\n",
+																"minimum": 1,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"bandwidth_limit_mbps"
+														],
+														"type": "object"
 													},
 													"observability": {
 														"description": "Settings for observability such as logging.",
