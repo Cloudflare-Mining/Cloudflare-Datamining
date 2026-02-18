@@ -21,9 +21,6 @@
 	"account-brand-protection-abuse-reports-enabled": {
 		"enabled": true
 	},
-	"account-load-balancing": {
-		"enabled": true
-	},
 	"account-logpush": {
 		"enabled": true
 	},
@@ -54,9 +51,6 @@
 		]
 	},
 	"active-billing-alert": {
-		"enabled": true
-	},
-	"add-kind-for-verified-bots": {
 		"enabled": true
 	},
 	"advanced-authz": {
@@ -240,12 +234,6 @@
 		"enabled": true
 	},
 	"app-security-default-for-all": {
-		"enabled": true
-	},
-	"app-security-navigation-mvp": {
-		"enabled": true
-	},
-	"appsec-overview": {
 		"enabled": true
 	},
 	"appsec-overview-insights": {
@@ -455,9 +443,6 @@
 	},
 	"cf-one-incident-response": {
 		"enabled": false
-	},
-	"cf-robots-variants": {
-		"enabled": true
 	},
 	"cfone-abuse-reports-service-outage-banner": {
 		"enabled": false
@@ -671,9 +656,6 @@
 	"dde-workflows-landing": {
 		"enabled": true
 	},
-	"ddos-advanced-ddos-protection": {
-		"enabled": true
-	},
 	"ddos-rulesets-l7-override-all-allowed": {
 		"enabled": true
 	},
@@ -695,9 +677,6 @@
 			"current"
 		]
 	},
-	"deprecate-security-level": {
-		"enabled": true
-	},
 	"deprecate-workers-usage-models": {
 		"enabled": true
 	},
@@ -712,6 +691,9 @@
 	},
 	"deseng-create-mfe": {
 		"enabled": true
+	},
+	"deseng-developer-home": {
+		"enabled": false
 	},
 	"deseng-kumo-user-dropdown-menu": {
 		"enabled": true
@@ -1301,9 +1283,6 @@
 	"lb-dns-check": {
 		"enabled": true
 	},
-	"lb-moving-banner": {
-		"enabled": true
-	},
 	"lb-select-zone-at-account-level": {
 		"enabled": false
 	},
@@ -1318,9 +1297,6 @@
 	},
 	"lmm-fields": {
 		"enabled": false
-	},
-	"load-balancing-endpoint-port": {
-		"enabled": true
 	},
 	"load-balancing-least-connections": {
 		"enabled": true
@@ -1441,9 +1417,6 @@
 	"managed-challenge-ui": {
 		"enabled": true
 	},
-	"managed-robots-txt": {
-		"enabled": true
-	},
 	"mapbox-removal": {
 		"enabled": true
 	},
@@ -1454,9 +1427,6 @@
 		"enabled": false
 	},
 	"moq-relay-nav": {
-		"enabled": true
-	},
-	"multi-signer-dns": {
 		"enabled": true
 	},
 	"multiple-policies": {
@@ -2120,9 +2090,6 @@
 	"self-serve-plan-turnstile": {
 		"enabled": false
 	},
-	"sequences-in-rule-builder": {
-		"enabled": true
-	},
 	"session-id-breakdown-per-endpoint": {
 		"enabled": true
 	},
@@ -2190,9 +2157,6 @@
 	},
 	"slurper-simple-auth": {
 		"enabled": false
-	},
-	"smart-hints-toggle-card": {
-		"enabled": true
 	},
 	"smart-shield": {
 		"enabled": true
@@ -2527,9 +2491,6 @@
 	"waf-alerts-filtering-by-actions": {
 		"enabled": true
 	},
-	"waf-attack-score-class": {
-		"enabled": true
-	},
 	"waf-attack-score-class-waf-filter": {
 		"enabled": true
 	},
@@ -2654,12 +2615,6 @@
 		"enabled": false
 	},
 	"wr-analytics-ga": {
-		"enabled": true
-	},
-	"wr-analytics-turnstile-and-session-revocation": {
-		"enabled": true
-	},
-	"wr-origin-commands-allowed": {
 		"enabled": true
 	},
 	"wr-turnstile-widget-allowed": {
