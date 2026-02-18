@@ -677,5 +677,219 @@
 			"free": true,
 			"pro": true
 		}
+	},
+	"PUT /accounts/{account_id}/ai-search/instances/{id}/items": {
+		"operationId": "ai-search-instance-create-or-update-item",
+		"parameters": [
+			{
+				"description": "Use your AI Search ID.",
+				"in": "path",
+				"name": "id",
+				"required": true,
+				"schema": {
+					"description": "Use your AI Search ID.",
+					"example": "my-ai-search",
+					"maxLength": 32,
+					"minLength": 1,
+					"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "c3dc5f0b34a14ff8e1b3ec04895e1b22",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"key": {
+								"type": "string"
+							},
+							"next_action": {
+								"enum": [
+									"INDEX"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"key",
+							"next_action"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"error": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"key": {
+											"type": "string"
+										},
+										"last_seen_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"next_action": {
+											"type": "string"
+										},
+										"status": {
+											"enum": [
+												"queued",
+												"running",
+												"completed",
+												"error",
+												"skipped"
+											],
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"key",
+										"status"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a AI Search Item detail."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"example": 7000,
+												"type": "number"
+											},
+											"message": {
+												"example": "Internal Error",
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create or Update Item.",
+		"tags": [
+			"AI Search Instances Items"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai-search"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
 	}
 }
