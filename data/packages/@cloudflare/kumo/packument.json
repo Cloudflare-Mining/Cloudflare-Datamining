@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kumo",
 	"dist-tags": {
-		"latest": "1.5.1"
+		"latest": "1.6.0"
 	},
 	"versions": {
 		"1.0.0": {
@@ -479,8 +479,78 @@
 			"name": "@cloudflare/kumo",
 			"version": "1.5.1",
 			"dependencies": {
+				"clsx": "^2.1.1",
+				"@base-ui/react": "^1.0.0",
+				"tailwind-merge": "^3.4.0"
+			},
+			"devDependencies": {
+				"tsx": "^4.19.2",
+				"zod": "^4.0.0",
+				"glob": "13.0.0",
+				"plop": "4.0.4",
+				"vite": "^7.1.7",
+				"eslint": "^9.17.0",
+				"oxlint": "1.42.0",
+				"vitest": "^3.2.4",
+				"esbuild": "0.27.2",
+				"wrangler": "^4.59.1",
+				"happy-dom": "^20.0.2",
+				"@vitest/ui": "^3.2.4",
+				"playwright": "^1.57.0",
+				"typescript": "^5.9.2",
+				"@types/glob": "9.0.0",
+				"@types/node": "^22.10.2",
+				"tailwindcss": "^4.1.17",
+				"@types/react": "19.2.4",
+				"@vitest/browser": "^3.2.4",
+				"oxlint-tsgolint": "0.11.3",
+				"vite-plugin-dts": "^4.3.0",
+				"@tailwindcss/cli": "^4.1.17",
+				"@types/react-dom": "19.2.3",
+				"@tailwindcss/vite": "^4.1.17",
+				"typescript-eslint": "^8.18.1",
+				"@testing-library/react": "16.3.1",
+				"eslint-plugin-jsx-a11y": "^6.10.2",
+				"ts-json-schema-generator": "2.4.0",
+				"@testing-library/user-event": "14.6.1",
+				"rollup-plugin-preserve-directives": "0.4.0"
+			},
+			"peerDependencies": {
+				"zod": "^4.0.0",
+				"react": "^18.0.0 || ^19.0.0",
+				"react-dom": "^18.0.0 || ^19.0.0",
+				"@phosphor-icons/react": "^2.1.10"
+			},
+			"bin": {
+				"kumo": "bin/kumo.js"
+			},
+			"dist": {
+				"shasum": "c4ff1b9207ae4d46b4c06789a38ad20c76d5689b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.5.1.tgz",
+				"fileCount": 584,
+				"integrity": "sha512-2GA+BM3GwJTsLLFjNtnSl7NuZDQWNeIDKtlhI8rfvp5hm7fejCIATsN3K5dFKB4CAnqWRE9V+VFP10H3cmIW3A==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDT4ijm66H9yVzJY4xA4vbbmF58qmfTfaUBEYfAV3cRRAIgQ/TmE/Ft1EoY4INrGqQQRwNg0b4ytMm+cVk9/e7HVBk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.5.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5759024
+			}
+		},
+		"1.6.0": {
+			"name": "@cloudflare/kumo",
+			"version": "1.6.0",
+			"dependencies": {
 				"@base-ui/react": "^1.0.0",
 				"clsx": "^2.1.1",
+				"react-day-picker": "^9.13.2",
 				"tailwind-merge": "^3.4.0"
 			},
 			"devDependencies": {
@@ -525,13 +595,13 @@
 				"kumo": "bin/kumo.js"
 			},
 			"dist": {
-				"integrity": "sha512-2GA+BM3GwJTsLLFjNtnSl7NuZDQWNeIDKtlhI8rfvp5hm7fejCIATsN3K5dFKB4CAnqWRE9V+VFP10H3cmIW3A==",
-				"shasum": "c4ff1b9207ae4d46b4c06789a38ad20c76d5689b",
-				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.5.1.tgz",
-				"fileCount": 584,
-				"unpackedSize": 5759024,
+				"integrity": "sha512-1Sy8kgfHNkze+NEfu/6cNzwOb0hemGm1mUNGU9GVmAnHemLOaXixosslM/o38TbUTEEs48yTRrDy0WFGgSTFWg==",
+				"shasum": "f0e4cbcb3c463f28284ab86fb815d545f0f81fd5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kumo/-/kumo-1.6.0.tgz",
+				"fileCount": 592,
+				"unpackedSize": 6362866,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.5.1",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fkumo@1.6.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -539,7 +609,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDT4ijm66H9yVzJY4xA4vbbmF58qmfTfaUBEYfAV3cRRAIgQ/TmE/Ft1EoY4INrGqQQRwNg0b4ytMm+cVk9/e7HVBk="
+						"sig": "MEQCIDKsxzZWyZWkQLvy+Jr+aUscxM9OvazQV5iZxMX8vX0GAiBFlEwCgUTZ1GJOHQXC9TVQqtn8VnXZ8ILqujtoC9Gihg=="
 					}
 				]
 			}
