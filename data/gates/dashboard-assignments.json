@@ -140,8 +140,8 @@
 		"true": 100
 	},
 	"billing-apple-pay-gate": {
-		"false": 68,
-		"true": 32
+		"true": 50,
+		"false": 50
 	},
 	"billing-cancel-delayed-downgrade": {
 		"true": 100
@@ -176,9 +176,6 @@
 	},
 	"billing-turnstile-captcha-gate": {
 		"true": 100
-	},
-	"block-ai-bots-setting": {
-		"false": 100
 	},
 	"block-digicert-acm-new-account": {
 		"true": 100
@@ -238,9 +235,6 @@
 	"control-plane-large-orgs-memberships": {
 		"false": 100
 	},
-	"control-rum-in-configuration-rules": {
-		"true": 100
-	},
 	"converged-usage-model": {
 		"true": 100
 	},
@@ -260,9 +254,6 @@
 		"true": 100
 	},
 	"d1-jurisdiction-ui": {
-		"true": 100
-	},
-	"dashboard-change-notifications-starred-zones": {
 		"true": 100
 	},
 	"data-access-account-check": {
@@ -355,9 +346,6 @@
 	"dx-consent-to-crawl-toggle": {
 		"experiment": 100
 	},
-	"dx-discover-page": {
-		"experiment-personalised": 100
-	},
 	"dx-discover-page-flipper": {
 		"true": 100
 	},
@@ -415,9 +403,6 @@
 	},
 	"enterprise-readiness-org-closed-beta": {
 		"false": 100
-	},
-	"entrypoint-ruleset-responsive-table": {
-		"true": 100
 	},
 	"event-hub-ui": {
 		"true": 100
@@ -794,9 +779,6 @@
 	"realtimekit-dashboard-redirect": {
 		"false": 100
 	},
-	"regional-tiered-cache": {
-		"true": 100
-	},
 	"registrar-account-home-copy-experiment": {
 		"registrar": 100
 	},
@@ -810,9 +792,6 @@
 		"true": 100
 	},
 	"rule-builder-ai-assistant": {
-		"true": 100
-	},
-	"rules-overview": {
 		"true": 100
 	},
 	"saas-dns-info": {
@@ -1015,9 +994,6 @@
 		"true": 100
 	},
 	"turnstile-advanced-analytics-enable": {
-		"true": 100
-	},
-	"turnstile-advanced-analytics-filters-enabled": {
 		"true": 100
 	},
 	"turnstile-enable-table-widgets": {

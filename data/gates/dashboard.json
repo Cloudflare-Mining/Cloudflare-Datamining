@@ -384,14 +384,14 @@
 	"billing-unified-checkout-workers": {
 		"enabled": false
 	},
+	"billing-unified-checkout-zone-plan": {
+		"enabled": false
+	},
 	"billing-usage-modern-enabled": {
 		"enabled": true
 	},
 	"billing-workers-ff-v2": {
 		"enabled": false
-	},
-	"block-ai-bots-setting": {
-		"enabled": true
 	},
 	"block-digicert-acm": {
 		"enabled": false
@@ -517,9 +517,6 @@
 	"control-plane-large-orgs-v1": {
 		"enabled": false
 	},
-	"control-rum-in-configuration-rules": {
-		"enabled": true
-	},
 	"converged-usage-model": {
 		"enabled": true
 	},
@@ -551,9 +548,6 @@
 		"enabled": true
 	},
 	"dashboard-canary": {
-		"enabled": true
-	},
-	"dashboard-change-notifications-starred-zones": {
 		"enabled": true
 	},
 	"dashnav-318-top-nav-right-side-changes-part-2": {
@@ -946,14 +940,6 @@
 			"experiment"
 		]
 	},
-	"dx-discover-page": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment-baseline",
-			"experiment-personalised"
-		]
-	},
 	"dx-discover-page-flipper": {
 		"enabled": true
 	},
@@ -1122,9 +1108,6 @@
 	},
 	"enterprise-readiness-org-private-beta": {
 		"enabled": false
-	},
-	"entrypoint-ruleset-responsive-table": {
-		"enabled": true
 	},
 	"environments-in-deploy-to-cloudflare": {
 		"enabled": false
@@ -2023,9 +2006,6 @@
 	"realtimekit-dashboard-redirect": {
 		"enabled": true
 	},
-	"regional-tiered-cache": {
-		"enabled": true
-	},
 	"registrar-account-home-copy-experiment": {
 		"enabled": true,
 		"branches": [
@@ -2071,9 +2051,6 @@
 	},
 	"rules-analytics-survey": {
 		"enabled": false
-	},
-	"rules-overview": {
-		"enabled": true
 	},
 	"saas-dns-info": {
 		"enabled": true
@@ -2502,9 +2479,6 @@
 	"turnstile-advanced-analytics-enable": {
 		"enabled": true
 	},
-	"turnstile-advanced-analytics-filters-enabled": {
-		"enabled": true
-	},
 	"turnstile-enable-filter-widget-table": {
 		"enabled": false
 	},
@@ -2594,6 +2568,9 @@
 	},
 	"web-analytics-in-speed-site-recommendations": {
 		"enabled": true
+	},
+	"web-analytics-kumo": {
+		"enabled": false
 	},
 	"web-analytics-refactor": {
 		"enabled": true
