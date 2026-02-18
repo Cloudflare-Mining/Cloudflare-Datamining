@@ -287,7 +287,12 @@
 			cta: "Upgrade your plan"
 		},
 		actions: {
-			download_csv: "Download CSV"
+			download_csv: "Download CSV",
+			screenshot: "Screenshot",
+			screenshot_error: "Failed to capture screenshot",
+			copy_image: "Copy to clipboard",
+			download_image: "Download",
+			copy_error: "Failed to copy to clipboard"
 		},
 		allowed_requests_chart: {
 			title: "Allowed requests over time",
@@ -307,14 +312,18 @@
 			requests: "%{smart_count} Request |||| %{smart_count} Requests"
 		},
 		operator_summary: {
-			title: "Top referrers",
-			description: "View AI operators that refer traffic to your site, ranked by total requests and top referring domains.",
+			title: "AI Referral Traffic",
+			description: "Analyze traffic referred by AI operators—track where visitors come from and which content they visit.",
 			no_referral_data: "No referral data available",
 			others: "Others",
 			referrals: "referrals",
 			tabs: {
-				destination: "Referral destination",
-				source: "Referral source"
+				destination: "Destinations",
+				source: "Sources"
+			},
+			view: {
+				list: "List view",
+				chart: "Chart view"
 			}
 		},
 		referrals_over_time_chart: {
