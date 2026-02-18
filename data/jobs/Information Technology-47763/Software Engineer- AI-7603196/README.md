@@ -5,32 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Location: Bengaluru, India</strong></p>
 <p><strong>About the Team:</strong></p>
 <div>As customer zero, we evangelize our products to drive maximum business value while serving as the "glue" that aligns cross-functional stakeholders with our technical ecosystem. We operate with an <strong>automation-first mindset</strong>, purposefully outgrowing yesterday’s processes to create the headspace needed to solve tomorrow’s problems. On this team, you won't just maintain the status quo—you'll foster the collaboration and innovation necessary to ensure our products and people work better together.</div>
 <div><strong>&nbsp;</strong></div>
 <div><strong>Enablement</strong>: We evangelize and elevate awareness around our product offerings and opportunities to leverage our own product for business value capabilities<br><br><strong>Be the glue</strong>: Like the many products we have, it only works if it all works well together.&nbsp; Finding common ground to enhanced cross-functional collaboration and alignment with business stakeholders will strengthen customer and product common ground.<br><br><strong>Automation First mindset:</strong>&nbsp; We can only truly do our best work when we have the space to reimagine how we solve tomorrow's problems today.&nbsp; It's okay that what worked well yesterday may not be what we need for tomorrow.</div>
 <div>&nbsp;</div>
-<div>&nbsp;</div>
 <p><strong>About this Role:</strong></p>
-<p>We are seeking a highly experienced Software Developer to join our team. In this role, you will be responsible for designing solutions and executing the roadmap with a particular focus on enabling Model Context Protocol (MCP) adoption across Enterprise Applications. You will play a pivotal role in connecting our AI assistants to our internal systems.</p>
+<p>We are seeking a highly experienced LLM Developer to join our team. In this role, you will lead the development of our internal AI initiatives, starting with taking ownership of the Cloudflare IT support chatbot. You will be responsible for designing and executing new AI use cases that directly improve employee experience and productivity across the organization. You will leverage Cloudflare’s own ecosystem, including AI Gateway, to build scalable, production-ready AI applications.</p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Work with leadership to organize a backlog of MCP servers needing to be built for various Enterprise Applications.</li>
-	<li>Design and develop MCP servers for both SaaS and on-premise applications, ensuring secure and efficient context retrieval.</li>
-	<li>Provide feedback and feature enhancements to improve the patterns by which we develop MCP servers. Enable other developers who may follow.</li>
-	<li>Partner closely with our internal MCP server rollout team to co-develop solutions or explore new opportunities for secure enablement.</li>
-	<li>Use your experience working cross-functionally to work closely with system owners so existing processes can be adapted to work with MCP development outcomes.</li>
+	<li>Take ownership of the development and maintenance of the internally built Cloudflare IT support chatbot, ensuring high availability and continuous improvement of response quality.</li>
+	<li>Identify, design, and build new AI-driven use cases and tools to enhance employee productivity and streamline internal workflows.</li>
+	<li>Develop and deploy AI applications at scale, ensuring reliability, performance, and security.</li>
+	<li>Integrate and optimize AI applications using Cloudflare’s AI Gateway to manage and monitor model usage effectively.</li>
+	<li>Partner closely with internal teams to understand their pain points and translate them into technical AI solutions.</li>
+	<li>Stay up-to-date with the latest advancements in LLMs and Generative AI to continuously innovate our internal toolset.</li>
 </ul>
 <p><strong>Requirements:</strong></p>
 <ul>
-	<li>3-5+ years of experience with design, development, and streamlining of Enterprise processes using automation and technical enablement.</li>
-	<li><strong>Specific experience in developing MCP servers for SaaS and on-prem applications.</strong></li>
-	<li>Advanced programming experience with Typescript, Python, or Go, including Microservice, REST, open API specs, and Integration design.</li>
-	<li>Strong knowledge and experience with configuration management tools and Infrastructure as Code methods, such as Terraform, Ansible, Chef, etc.</li>
-	<li>Strong knowledge and experience with build-deploy pipeline development and best practices in tools like GitLab or GitHub.</li>
+	<li>5+ years of experience in software development, with a strong focus on AI, Machine Learning, or Agentic applications.</li>
+	<li>Proven experience in the development and deployment of AI applications at scale in a production environment with focus on strong authorization and data privacy.</li>
+	<li>Familiarity with Cloudflare AI Gateway and experience managing API traffic for LLMs.</li>
+	<li>Strong proficiency in TypeScript and experience with relevant AI/ML libraries and frameworks (e.g., PyTorch, TensorFlow, LangChain).</li>
+	<li>Experience with observability and configuration management, Infrastructure as Code (Terraform), and CI/CD pipelines (GitLab/GitHub), Grafana, OTEL, K8s etc.</li>
 	<li>Experience and expertise in Agile methodology.</li>
 	<li>Excellent interpersonal and communication skills in written and spoken English.</li>
-	<li>Prior experience working on enterprise MCP engineering teams.</li>
+	<li>Prior experience working on enterprise engineering teams or building internal developer tools is a plus.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
