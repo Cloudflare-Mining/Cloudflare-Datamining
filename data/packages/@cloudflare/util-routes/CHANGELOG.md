@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.4.1
+
+### Patch Changes
+
+- 8c2729a131: Support `PathPattern` options in `useMatchRoute` for caseSensitive and end matching
+
 ## 5.4.0
 
 ### Minor Changes
