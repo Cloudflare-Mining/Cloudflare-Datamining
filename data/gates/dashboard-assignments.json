@@ -137,8 +137,7 @@
 		"true": 100
 	},
 	"billing-google-pay-gate": {
-		"false": 68,
-		"true": 32
+		"true": 100
 	},
 	"billing-on-session-payment": {
 		"true": 100
@@ -168,9 +167,6 @@
 		"true": 100
 	},
 	"brand-protection-edit-query": {
-		"true": 100
-	},
-	"cache-reserve-2": {
 		"true": 100
 	},
 	"cache-reserve-show-potential-savings": {
@@ -246,6 +242,9 @@
 	"deseng-api-token": {
 		"false": 100
 	},
+	"deseng-kumo-user-dropdown-menu": {
+		"true": 100
+	},
 	"deseng-members-ui": {
 		"false": 100
 	},
@@ -293,9 +292,6 @@
 	},
 	"domain-connect-sig-and-key-fix": {
 		"false": 100
-	},
-	"domain-connect-streamlined-flow": {
-		"true": 100
 	},
 	"domain-transfer-state-refactor": {
 		"true": 100
@@ -395,9 +391,6 @@
 		"true": 50
 	},
 	"gurjinder-feature-test": {
-		"false": 100
-	},
-	"hostname-lists": {
 		"false": 100
 	},
 	"http-2-multiplexing": {
@@ -538,12 +531,6 @@
 	"page-rules-templates": {
 		"true": 100
 	},
-	"page-shield-connection-monitor": {
-		"true": 100
-	},
-	"page-shield-csv": {
-		"true": 100
-	},
 	"page-shield-free-tier": {
 		"true": 100
 	},
@@ -585,8 +572,8 @@
 		"immediate-refresh": 100
 	},
 	"prg-dns-proxy-warning-exp": {
-		"baseline": 76,
-		"variant-b": 24
+		"variant-b": 50,
+		"baseline": 50
 	},
 	"prg-domain-success-page-experiment": {
 		"experiment": 100
@@ -754,9 +741,6 @@
 	"security-overview-v-25": {
 		"false": 100
 	},
-	"security-txt-enabled": {
-		"true": 100
-	},
 	"selective-migration": {
 		"true": 100
 	},
@@ -780,9 +764,6 @@
 	},
 	"sign-in-with-git-hub": {
 		"true": 100
-	},
-	"sign-up-headline": {
-		"build-protect-connect": 100
 	},
 	"speculation-beta-message": {
 		"true": 100
@@ -921,9 +902,6 @@
 		"true": 100
 	},
 	"waf-alerts-filtering-by-actions": {
-		"true": 100
-	},
-	"waf-attack-score-class-waf-filter": {
 		"true": 100
 	},
 	"web-analytics-in-speed-site-recommendations": {

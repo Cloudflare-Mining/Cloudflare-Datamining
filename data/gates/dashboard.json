@@ -408,9 +408,6 @@
 	"buy-apple-domain-glowup": {
 		"enabled": false
 	},
-	"cache-reserve-2": {
-		"enabled": true
-	},
 	"cache-reserve-analytics": {
 		"enabled": false
 	},
@@ -659,6 +656,9 @@
 	"deseng-agent-sidebar": {
 		"enabled": true
 	},
+	"deseng-aig-kumo-logs": {
+		"enabled": false
+	},
 	"deseng-api-token": {
 		"enabled": true
 	},
@@ -813,9 +813,6 @@
 			"google",
 			"other"
 		]
-	},
-	"domain-connect-streamlined-flow": {
-		"enabled": true
 	},
 	"domain-connect-test-flow": {
 		"enabled": false
@@ -1165,9 +1162,6 @@
 			"hide-quick-start-guide"
 		]
 	},
-	"hostname-lists": {
-		"enabled": true
-	},
 	"http-2-multiplexing": {
 		"enabled": true
 	},
@@ -1415,12 +1409,6 @@
 		"enabled": false
 	},
 	"page-rules-templates": {
-		"enabled": true
-	},
-	"page-shield-connection-monitor": {
-		"enabled": true
-	},
-	"page-shield-csv": {
 		"enabled": true
 	},
 	"page-shield-free-tier": {
@@ -2012,9 +2000,6 @@
 	"security-overview-v2-5": {
 		"enabled": false
 	},
-	"security-txt-enabled": {
-		"enabled": true
-	},
 	"selective-migration": {
 		"enabled": true
 	},
@@ -2053,17 +2038,6 @@
 		"branches": [
 			"control",
 			"variant-image"
-		]
-	},
-	"sign-up-headline": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"sign-up-for-cf",
-			"create-your-cf-account",
-			"create-your-account",
-			"lets-get-started",
-			"build-protect-connect"
 		]
 	},
 	"signup-form-background-illustration": {
@@ -2411,9 +2385,6 @@
 		"enabled": true
 	},
 	"waf-alerts-filtering-by-actions": {
-		"enabled": true
-	},
-	"waf-attack-score-class-waf-filter": {
 		"enabled": true
 	},
 	"waf-disposable-email-check-allowed": {
