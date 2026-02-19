@@ -2069,7 +2069,8 @@
 																"description": "The action to take if the expression matches",
 																"enum": [
 																	"allow",
-																	"log"
+																	"log",
+																	"add_reporting_directives"
 																],
 																"example": "allow",
 																"type": "string",
@@ -2364,7 +2365,8 @@
 															"description": "The action to take if the expression matches",
 															"enum": [
 																"allow",
-																"log"
+																"log",
+																"add_reporting_directives"
 															],
 															"example": "allow",
 															"type": "string",
@@ -3536,7 +3538,8 @@
 								"description": "The action to take if the expression matches",
 								"enum": [
 									"allow",
-									"log"
+									"log",
+									"add_reporting_directives"
 								],
 								"example": "allow",
 								"type": "string",
@@ -3666,7 +3669,8 @@
 															"description": "The action to take if the expression matches",
 															"enum": [
 																"allow",
-																"log"
+																"log",
+																"add_reporting_directives"
 															],
 															"example": "allow",
 															"type": "string",
@@ -4162,7 +4166,8 @@
 								"description": "The action to take if the expression matches",
 								"enum": [
 									"allow",
-									"log"
+									"log",
+									"add_reporting_directives"
 								],
 								"example": "allow",
 								"type": "string",
@@ -4285,7 +4290,8 @@
 															"description": "The action to take if the expression matches",
 															"enum": [
 																"allow",
-																"log"
+																"log",
+																"add_reporting_directives"
 															],
 															"example": "allow",
 															"type": "string",
