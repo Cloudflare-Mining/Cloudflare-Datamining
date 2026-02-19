@@ -177,6 +177,15 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"fusion_method": {
+											"default": "max",
+											"enum": [
+												"max",
+												"rrf"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -389,9 +398,7 @@
 											"x-auditable": true
 										},
 										"source_params": {
-											"default": {
-												"r2_jurisdiction": "default"
-											},
+											"nullable": true,
 											"properties": {
 												"exclude_items": {
 													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
@@ -401,7 +408,7 @@
 														"**\\temp\\**"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
@@ -415,7 +422,7 @@
 														"**\\blog\\**.html"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
@@ -810,6 +817,15 @@
 												"type": "boolean",
 												"x-auditable": true
 											},
+											"fusion_method": {
+												"default": "max",
+												"enum": [
+													"max",
+													"rrf"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
 											"hybrid_search_enabled": {
 												"default": false,
 												"type": "boolean",
@@ -1022,9 +1038,7 @@
 												"x-auditable": true
 											},
 											"source_params": {
-												"default": {
-													"r2_jurisdiction": "default"
-												},
+												"nullable": true,
 												"properties": {
 													"exclude_items": {
 														"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
@@ -1034,7 +1048,7 @@
 															"**\\temp\\**"
 														],
 														"items": {
-															"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+															"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 															"type": "string"
 														},
 														"maxItems": 10,
@@ -1048,7 +1062,7 @@
 															"**\\blog\\**.html"
 														],
 														"items": {
-															"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+															"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 															"type": "string"
 														},
 														"maxItems": 10,
@@ -1427,6 +1441,15 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"fusion_method": {
+											"default": "max",
+											"enum": [
+												"max",
+												"rrf"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -1639,9 +1662,7 @@
 											"x-auditable": true
 										},
 										"source_params": {
-											"default": {
-												"r2_jurisdiction": "default"
-											},
+											"nullable": true,
 											"properties": {
 												"exclude_items": {
 													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
@@ -1651,7 +1672,7 @@
 														"**\\temp\\**"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
@@ -1665,7 +1686,7 @@
 														"**\\blog\\**.html"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
@@ -2150,6 +2171,15 @@
 								],
 								"x-auditable": true
 							},
+							"fusion_method": {
+								"default": "max",
+								"enum": [
+									"max",
+									"rrf"
+								],
+								"type": "string",
+								"x-auditable": true
+							},
 							"hybrid_search_enabled": {
 								"default": false,
 								"type": "boolean",
@@ -2336,9 +2366,7 @@
 								"x-auditable": true
 							},
 							"source_params": {
-								"default": {
-									"r2_jurisdiction": "default"
-								},
+								"nullable": true,
 								"properties": {
 									"exclude_items": {
 										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
@@ -2348,7 +2376,7 @@
 											"**\\temp\\**"
 										],
 										"items": {
-											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
 										"maxItems": 10,
@@ -2362,7 +2390,7 @@
 											"**\\blog\\**.html"
 										],
 										"items": {
-											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
 										"maxItems": 10,
@@ -2624,6 +2652,15 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"fusion_method": {
+											"default": "max",
+											"enum": [
+												"max",
+												"rrf"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -2836,9 +2873,7 @@
 											"x-auditable": true
 										},
 										"source_params": {
-											"default": {
-												"r2_jurisdiction": "default"
-											},
+											"nullable": true,
 											"properties": {
 												"exclude_items": {
 													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
@@ -2848,7 +2883,7 @@
 														"**\\temp\\**"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
@@ -2862,7 +2897,7 @@
 														"**\\blog\\**.html"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
@@ -3204,6 +3239,13 @@
 												"additionalProperties": true,
 												"type": "object"
 											},
+											"fusion_method": {
+												"enum": [
+													"max",
+													"rrf"
+												],
+												"type": "string"
+											},
 											"match_threshold": {
 												"default": 0.4,
 												"maximum": 1,
@@ -3396,6 +3438,11 @@
 														"type": "number"
 													},
 													"keyword_score": {
+														"minimum": 0,
+														"type": "number"
+													},
+													"reranking_score": {
+														"maximum": 1,
 														"minimum": 0,
 														"type": "number"
 													},
@@ -3645,6 +3692,13 @@
 												"additionalProperties": true,
 												"type": "object"
 											},
+											"fusion_method": {
+												"enum": [
+													"max",
+													"rrf"
+												],
+												"type": "string"
+											},
 											"match_threshold": {
 												"default": 0.4,
 												"maximum": 1,
@@ -3755,6 +3809,11 @@
 																"type": "number"
 															},
 															"keyword_score": {
+																"minimum": 0,
+																"type": "number"
+															},
+															"reranking_score": {
+																"maximum": 1,
 																"minimum": 0,
 																"type": "number"
 															},
@@ -4043,6 +4102,15 @@
 								],
 								"x-auditable": true
 							},
+							"fusion_method": {
+								"default": "max",
+								"enum": [
+									"max",
+									"rrf"
+								],
+								"type": "string",
+								"x-auditable": true
+							},
 							"hybrid_search_enabled": {
 								"default": false,
 								"type": "boolean",
@@ -4221,9 +4289,7 @@
 								"x-auditable": true
 							},
 							"source_params": {
-								"default": {
-									"r2_jurisdiction": "default"
-								},
+								"nullable": true,
 								"properties": {
 									"exclude_items": {
 										"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
@@ -4233,7 +4299,7 @@
 											"**\\temp\\**"
 										],
 										"items": {
-											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
 										"maxItems": 10,
@@ -4247,7 +4313,7 @@
 											"**\\blog\\**.html"
 										],
 										"items": {
-											"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+											"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 											"type": "string"
 										},
 										"maxItems": 10,
@@ -4559,6 +4625,15 @@
 											"type": "boolean",
 											"x-auditable": true
 										},
+										"fusion_method": {
+											"default": "max",
+											"enum": [
+												"max",
+												"rrf"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"hybrid_search_enabled": {
 											"default": false,
 											"type": "boolean",
@@ -4771,9 +4846,7 @@
 											"x-auditable": true
 										},
 										"source_params": {
-											"default": {
-												"r2_jurisdiction": "default"
-											},
+											"nullable": true,
 											"properties": {
 												"exclude_items": {
 													"description": "List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced)",
@@ -4783,7 +4856,7 @@
 														"**\\temp\\**"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
@@ -4797,7 +4870,7 @@
 														"**\\blog\\**.html"
 													],
 													"items": {
-														"pattern": "^[*/\\\\]?[\\w\\-\\/.\\\\?*:=&%]+$",
+														"pattern": "^[*/\\\\]?[\\w\\-/.\\\\?*:=&%]+$",
 														"type": "string"
 													},
 													"maxItems": 10,
