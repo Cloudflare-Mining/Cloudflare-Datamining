@@ -1,22 +1,67 @@
 {
 	"name": "@cloudflare/realtimekit-device-emulator",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.0.1"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/realtimekit-device-emulator",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-SRo8IiuShTvuMsS26w+f3AyKCKev+yoLY0eKShWSH+f5wKTdaxFfsOKVFJ4fl2vPaXYPRO+Ofi9qxe+TSPNyyA==",
 				"shasum": "a0e4dbb6c06f4af5f6e3ba267759ef598b47f09f",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-device-emulator/-/realtimekit-device-emulator-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 127,
+				"integrity": "sha512-SRo8IiuShTvuMsS26w+f3AyKCKev+yoLY0eKShWSH+f5wKTdaxFfsOKVFJ4fl2vPaXYPRO+Ofi9qxe+TSPNyyA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCqAdb/Ah8YSdIR6tjoghcJzD2NQGSZTAFXVnZ6cmBQ4QIgfLYh6Oz0SslWgwJdX7pxIm4Taa7OAC/aHSXby39Kyk4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 127
+			}
+		},
+		"0.0.1": {
+			"name": "@cloudflare/realtimekit-device-emulator",
+			"version": "0.0.1",
+			"dependencies": {
+				"deepmerge": "^4.2.2",
+				"worker-timers": "^7.0.73"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@types/jest": "^29.5.11",
+				"@typescript-eslint/eslint-plugin": "^7.0.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"commitizen": "^4.3.1",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint": "^8.56.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-import": "^2.32.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"jest": "^29.7.0",
+				"lint-staged": "^12.3.3",
+				"prettier": "^3.1.1",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"typescript": "~5.5.4",
+				"vite": "^2.9.14"
+			},
+			"dist": {
+				"integrity": "sha512-/OlG693laxT/ckyMyIKSmxfryusi9L9CyU/i9sEUVtHX7GyWrBqgbhSI4LaK5Jf7VU91NYwyXB0vu8gAfqBxqg==",
+				"shasum": "53d8146a241b005ced019a60e7307956b9e9c965",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-device-emulator/-/realtimekit-device-emulator-0.0.1.tgz",
+				"fileCount": 22,
+				"unpackedSize": 56237,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCqAdb/Ah8YSdIR6tjoghcJzD2NQGSZTAFXVnZ6cmBQ4QIgfLYh6Oz0SslWgwJdX7pxIm4Taa7OAC/aHSXby39Kyk4="
+						"sig": "MEYCIQD0JBBoXYITyuk25KBHdr6sMcNLKf/wSUHBIkH083nv5QIhAL2fIUDcHDUtd7OQlmtpPcLScFXMiH6Br27PIbEjdk9h"
 					}
 				]
 			}
