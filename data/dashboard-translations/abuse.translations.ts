@@ -168,12 +168,12 @@
 		submitter_telephone: "Telephone"
 	},
 	report_summary_values: {
-		active: (0, i.p)(s(), "activeCount")
+		active: (0, o.p)(s(), "activeCount")
 	},
 	breadcrumb_titles: {
 		manage_account: "Manage Account",
 		abuse: "Abuse Reports",
-		abuse_report: (0, i.p)(c(), "reportId")
+		abuse_report: (0, o.p)(c(), "reportId")
 	},
 	product_documentation: "Documentation",
 	date_range: "Date range",

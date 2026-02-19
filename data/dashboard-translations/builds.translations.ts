@@ -186,7 +186,7 @@
 		use_existing_token_toast: (0, i.p)(u(), "tokenName"),
 		create_new_token_toast: "A new token will be created automatically",
 		create_new_token_toast_expanded: (0, i.p)(c(), "accountName"),
-		create_new_token_toast_expanded_account_permissions: "<0>Account</0>: Account Settings (read), Workers Scripts (edit), Workers KV Storage (edit), Workers R2 Storage (edit), D1 Storage (edit), Vectorize (edit), Queues (edit), Workers Pipelines (edit), Containers (edit), Cloudchamber (edit)",
+		create_new_token_toast_expanded_account_permissions: "<0>Account</0>: Account Settings (read), Workers Scripts (edit), Workers KV Storage (edit), Workers R2 Storage (edit), D1 Storage (edit), Vectorize (edit), Queues (edit), Workers Pipelines (edit), Containers (edit), Cloudchamber (edit), Connectivity Directory (read, bind)",
 		create_new_token_toast_expanded_zone_permissions: "<0>Zone</0>: Workers Routes (edit) for all zones on the account",
 		create_new_token_toast_expanded_user_permissions: "<0>User</0>: User Details (read), Memberships (read)",
 		build_caching_enabled: "Build Cache Enabled",

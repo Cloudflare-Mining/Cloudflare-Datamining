@@ -11,7 +11,18 @@
 	banners: {
 		logs_limit: "Logs now persist and you can store up to 10M logs per gateway. See docs to <0>learn more</0>.",
 		no_secret_quota: "You have crossed the quota for the number of secrets you can create on Secrets Store. Please remove existing secrets to create new ones. <0>Learn More</0>",
-		no_secrets_store_permission: "You do not have permissions to create and deploy secrets on Secrets Store. Please contact your account administrator to grant you the necessary permissions. <0>Learn More</0>"
+		no_secrets_store_permission: "You do not have permissions to create and deploy secrets on Secrets Store. Please contact your account administrator to grant you the necessary permissions. <0>Learn More</0>",
+		unified_billing_explainer: {
+			title: "Choose how to authenticate with AI providers",
+			unified_billing_title: "Unified Billing",
+			unified_billing_description: "Pay through Cloudflare. No API keys needed.",
+			unified_billing: "Pay through Cloudflare and skip API key management. Load credits and start making requests immediately.",
+			unified_billing_providers: "Currently supports OpenAI, Anthropic, Google AI Studio, xAI, and Groq.",
+			byok_title: "BYOK (Stored Keys)",
+			byok_description: "Store your own provider API keys securely.",
+			byok: "Securely store your own provider API keys in Cloudflare. Keys are included automatically at runtime.",
+			learn_more: "<0>Learn more</0>"
+		}
 	},
 	tabs: {
 		overview: "Overview",
@@ -308,7 +319,7 @@
 			configuration_1: "Limit requests when rate exceeds",
 			configuration_2: "requests over a",
 			configuration_3: "period.",
-			resume: (0, i.p)(g())
+			resume: (0, i.p)(_())
 		},
 		rename_gateway: {
 			title: "Edit Gateway",
@@ -462,7 +473,7 @@
 			limit: "Limit requests when rate exceeds",
 			interval: "requests over a",
 			technique: "period",
-			cache_custom: (0, i.p)(_()),
+			cache_custom: (0, i.p)(g()),
 			ratelimiting_fixed: "Fixed",
 			ratelimiting_sliding: "Sliding",
 			change: "Change"
@@ -639,6 +650,41 @@
 				native: "Native",
 				native_curl: "Native cURL"
 			}
+		},
+		gateway_endpoint: {
+			title: "Your Gateway Endpoint",
+			description: "The easiest way to get started with AI Gateway is through our OpenAI-compatible endpoint. This allows you to use existing OpenAI SDKs and tools with minimal code changes while gaining access to multiple AI providers.",
+			learn_more: "<0>Get started with AI Gateway</0>",
+			supported_providers: "Supported with Unified Billing:"
+		},
+		quick_start: {
+			title: "Quick Start with Unified Billing",
+			no_api_key_needed: "No provider API key needed - charges deducted from your Cloudflare credits.",
+			more_options: "More integration options:",
+			link_byok: "Use BYOK (stored keys)",
+			link_native_sdks: "Use native provider SDKs",
+			link_dynamic_routing: "Set up dynamic routing",
+			link_pricing: "View pricing"
+		},
+		code_examples: {
+			title: "Code Examples",
+			make_request: "Make a request",
+			make_request_via: "Make a request via",
+			to: "to",
+			using: "using",
+			with: "with",
+			api_type_unified: "Unified API",
+			api_type_native: "Native API/SDK",
+			sdk_openai: "OpenAI JS SDK",
+			sdk_ai_sdk: "AI SDK",
+			sdk_curl: "cURL",
+			sdk_native: "Native SDK",
+			auth_key_in_request: "Key in Request",
+			auth_unified_billing: "Unified Billing",
+			auth_byok: "Stored Key (BYOK)",
+			enable_auth: "Enable authentication",
+			enable_auth_suffix: "on your gateway to use",
+			no_snippet: "There is no code snippet available for the selected options."
 		}
 	},
 	toast: {

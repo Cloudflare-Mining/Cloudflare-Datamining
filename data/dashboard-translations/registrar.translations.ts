@@ -40,7 +40,9 @@
 		field_invalid_postal_code_ca_error: "Canada postal code must be in format A1A 1A1",
 		field_invalid_postal_code_gb_error: "United Kingdom postal code must be in format AA1A 1AA",
 		field_invalid_postal_code_us_error: "United States postal code must be in format 12345 or 12345-6789",
-		field_must_be_canada_error: "Country must be Canada for .ca domains"
+		field_must_be_canada_error: "Country must be Canada for .ca domains",
+		field_invalid_uk_company_number_error: "Company number must be 6-8 digits, optionally preceded by a 2-letter prefix (e.g., SC123456 or 12345678)",
+		field_invalid_uk_company_number_sch_error: "UK school number must consist of seven numbers.  For English school numbers, you should also separate the third digit from the fourth with a hyphen."
 	},
 	billing: {
 		customer_action: {
@@ -185,12 +187,12 @@
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, n.p)(I(), "expired_on", "purchaseable_on"),
+		pending_deletion: (0, n.p)(N(), "expired_on", "purchaseable_on"),
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Automatic renewal is on",
 		auto_renew_off: "Automatic renewal is off",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, n.p)(N(), "expires_on"),
+		expires_on: (0, n.p)(I(), "expires_on"),
 		billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 		grace_period: {
 			title: "Domain expired",
@@ -315,6 +317,7 @@
 		is_required: "This field is required.",
 		whois_visibility: "WHOIS visibility",
 		uk_registrant_type: "UK registrant type",
+		company_number: "Company registration number",
 		whois_visibility_organization: "Display organization in WHOIS",
 		whois_visibility_enabled: "Enabled",
 		whois_visibility_disabled: "Disabled",
@@ -1264,7 +1267,10 @@
 			update_notification_success: "The registrant type for %{domainName} was successfully updated."
 		},
 		validation_error: "UK Registrant Type field is required",
-		readonly_prompt: "Please select a type"
+		readonly_prompt: "Please select a type",
+		company_number: "Companies House Registration Number",
+		charity_number: "Registered Charity Number",
+		school_number: "UK School Number"
 	},
 	centralnic_reseller_notice: "This registration will be managed by Cloudflare Registrar but fulfilled by a trusted third party. In addition to communication from Cloudflare, you may receive a separate email to verify your email address with our trusted third party. It is imperative that you follow the steps in that email.",
 	missing_billing_email_error: {
