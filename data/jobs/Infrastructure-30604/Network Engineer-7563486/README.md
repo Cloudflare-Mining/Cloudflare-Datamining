@@ -5,62 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<h2>About the Team</h2>
-<p>The Core Data team’s mission is building a centralized data platform for Cloudflare that provides&nbsp; secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We facilitate access to data from federated sources across the company for dashboarding, ad-hoc querying and in-product use cases. We power data pipelines and data products, secure and monitor data, and drive data governance at Cloudflare. Our work enables every individual at the company to act with greater information and make more informed decisions.&nbsp;</p>
-<h2>About the Role</h2>
-<p>We are looking for a Machine Learning Engineer to lead the transformation of our data lakehouse into a semantically-aware intelligence platform. Instead of traditional ETL, this role focuses on building the software layer that extracts meaning from our vast data stores. You will be responsible for developing and leveraging a Semantic Knowledge Graph to power LLM-driven applications, discovery tools, and automated reasoning systems that serve business needs across Product, Marketing, and Billing.</p>
-<h2>What You'll Do</h2>
+<p><strong>Available Locations: Lisbon or London</strong></p>
+<p><strong>Responsibilities</strong>:</p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 335 cities spread across all regions and we plan to continue our expansion at a rapid pace. You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
+<p>This position will be responsible for :&nbsp;</p>
 <ul>
-	<li>Architect Semantic Layers: Design and develop the software infrastructure to layer semantic meaning over our existing data stack, including Kubernetes, Trino, and Iceberg.</li>
-	<li>Build Knowledge Graphs: Construct and maintain large-scale knowledge graphs from unstructured and structured sources to enable advanced reasoning.</li>
-	<li>Develop AI Software: Build production-grade software and APIs that leverage LLMs and Graph RAG pipelines to solve complex business queries.</li>
-	<li>Enhance Data Intelligence: Implement embedding-based retrieval and semantic deduplication to improve the precision and reliability of AI agents.</li>
-	<li>Collaborate on AI Solutions: Work with cross-functional teams to deploy conversational agents and automated diagnostics tools that turn data into actionable business value.</li>
+	<li>Technical operation and engineering of the Cloudflare network, including the provisioning and management of the network hardware and software,</li>
+	<li>Day to day network operations and monitoring, working closely with internal teams such as System Reliability Engineering, Infrastructure Engineering and Customer Support teams,</li>
+	<li>Creating and maintaining documentation,&nbsp; SOP’s, knowledge base,</li>
+	<li>Interacting with our network peers to assist with their inquiries, and subsequently provide meaningful data on performance degradation.</li>
 </ul>
-<h2>Requirements</h2>
+<p><strong>Requirements</strong>:</p>
 <ul>
-	<li>3-5+ years of experience in software or machine learning engineering with a focus on AI-driven applications.</li>
-	<li>Expertise in Knowledge Representation: Proven experience building knowledge graphs (e.g., HNSW, Neptune) and using graph-based reasoning for AI.</li>
-	<li>Proficiency with LLMs &amp; GenAI: Hands-on experience with RAG pipelines, fine-tuning (SFT/LoRA), and LLM-as-a-judge evaluation frameworks.</li>
-	<li>Strong Backend Skills: Proficient in Python, Go, or TypeScript, with the ability to build and debug complex software systems.</li>
-	<li>Analytical Mindset: Strong ability to understand how semantic data structures drive business value and improve user decision-making.</li>
-	<li>B.S. or M.S. in Computer Science, Engineering, Mathematics, or related fields.</li>
-	<li>Solid understanding of systems engineering principles and practices.</li>
+	<li>Capable of learning new technologies / systems / features under guidance of mentors,</li>
+	<li>Proficient in multiple network vendor operating systems , Associate level network certification(s) (JNCIA , CCNA , etc) or higher,</li>
+	<li>Understanding of BGP, Knowledge of the OSI-model and experience isolating network, hardware and software issues,</li>
+	<li>Experience writing scripts in Bash, Python, or other scripting language,</li>
+	<li>Experience in working as part of a team in a customer-facing role,</li>
+	<li>Ability to prioritise when faced with high pressure scenarios.</li>
 </ul>
-<h2>Desirable Skills</h2>
+<p><strong>Bonus Points but not required:</strong></p>
 <ul>
-	<li>Experience with Semantic Search and hybrid vector search query engines.</li>
-	<li>Familiarity with MLOps and deploying models within Kubernetes environments.</li>
-	<li>Published research or a strong background in Applied ML or Computational Intelligence.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Understanding of anycast routing,</li>
+	<li>Good working knowledge of&nbsp; Junos, IOS-XR, NX-OS, EOS and SONIC,</li>
+	<li>Experience writing network configuration and design documentation,</li>
+	<li>Experience solving problems through automation,</li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM,</li>
+	<li>Linux system administration,</li>
+	<li>Multilingual.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

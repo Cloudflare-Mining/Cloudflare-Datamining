@@ -14,8 +14,8 @@
 <p>This role orchestrates activities across the entire lifecycle of our product, including:&nbsp;</p>
 <ul>
 	<li>Act as a strategic partner for leaders within the Product organization, translating business goals into concrete technical requirements and operational self-service tooling that track progress and drive their business forward.&nbsp;</li>
+	<li><strong>Build automations and workflows that reduce manual work and power our planning rhythm, roadmapping, and launch readiness. Know when to leverage LLMs, AI agents, workflow automation, and dynamic data integration.&nbsp;</strong></li>
 </ul>
-<p><strong>Build automations and workflows that reduce manual work and power our planning rhythm, roadmapping, and launch readiness. Know when to leverage LLMs, AI agents, workflow automation, and dynamic data integration.&nbsp;</strong></p>
 <ul>
 	<li>Identify operational bottlenecks and rapidly build solutions to remove them,&nbsp; whether that’s a scripted workflow, dynamic integration into a system, or an AI-driven process.</li>
 	<li>Engage cross-functionally with engineering, support, customer success, support, marketing, legal, pricing, product marketing, solutions engineering, and sales.</li>

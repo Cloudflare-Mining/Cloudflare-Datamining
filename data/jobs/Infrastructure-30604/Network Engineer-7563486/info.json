@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7603839?gh_jid=7603839",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7563486?gh_jid=7563486",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3359059,
+	"internal_job_id": 3346024,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,14 +18,15 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4300 - Systems Engineering",
+			"value": "4100 - Infrastructure Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Lisbon, Portugal",
+				"London, UK"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,33 +34,40 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Engineering"
+				"Infrastructure"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7603839,
-	"updated_at": "2026-02-12T17:49:52-05:00",
-	"requisition_id": "789",
-	"title": "Machine Learning Engineer",
+	"id": 7563486,
+	"updated_at": "2026-02-19T12:04:54-05:00",
+	"requisition_id": null,
+	"title": "Network Engineer",
 	"company_name": "Cloudflare",
-	"first_published": "2026-02-12T17:49:52-05:00",
+	"first_published": "2026-01-26T12:03:46-05:00",
 	"language": "en",
 	"departments": [
 		{
-			"id": 29067,
-			"name": "Engineering",
+			"id": 30604,
+			"name": "Infrastructure",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"location": "Austin, TX, United States",
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
 			"child_ids": [],
-			"parent_id": 48752
+			"parent_id": 74843
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
 		}
 	]
 }
