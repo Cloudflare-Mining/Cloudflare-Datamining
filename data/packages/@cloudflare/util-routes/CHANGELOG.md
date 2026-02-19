@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.4.0
+
+### Minor Changes
+
+- 3f146fca1c: Add useMatchRoute hook; fix optional parameter handling in useRoute
+
 ## 5.3.0
 
 ### Minor Changes
