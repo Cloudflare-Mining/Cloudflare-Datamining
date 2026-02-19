@@ -46,21 +46,21 @@
 	<p>To take you through this, we will use a contrived application I’ve written in Node.js to illustrate the steps we would take with a real, and far more complex, example. The goal is to show the different tools and features you can use at each step; and how our platform design supports development and cutover of an application. &nbsp;We’ll use four key Cloudflare technologies, as we see how to move this Application off of my Laptop and into the Cloud:</p>
 	<ol>
 		<li>
-			<p><b><b><b>Serverless Compute</b></b></b><b><b> through </b></b><b><b><b>Workers</b></b></b></p>
+			<p><b>Serverless Compute through Workers</b></p>
 		</li>
 		<li>
-			<p><b><b><b>Robust Developer-focused Tooling</b></b></b><b><b> for Workers via </b></b><b><b><b>Wrangler</b></b></b></p>
+			<p><b>Robust Developer-focused Tooling for Workers via Wrangler</b></p>
 		</li>
 		<li>
-			<p><b><b><b>Zero-Trust security</b></b></b><b><b> through </b></b><b><b><b>Access</b></b></b></p>
+			<p><b>Zero-Trust security through Access</b></p>
 		</li>
 		<li>
-			<p><b><b><b>Instant, Secure Origin Tunnels</b></b></b><b><b> through </b></b><b><b><b>Argo Tunnels</b></b></b></p>
+			<p><b>Instant, Secure Origin Tunnels through Argo Tunnels</b></p>
 		</li>
 	</ol>
 	<p>Our example application for today is called Post Process, and it performs business logic on input provided in an HTTP POST body. It takes the input data from authenticated clients, performs a processing task, and responds with the result in the body of an HTTP response. The server runs in Node.js on my laptop.</p>
 	<p>Since the example application is written in Node.js; we will be able to directly copy some of the JavaScript assets for our new application. You could follow this “direct port” method not only for JavaScript applications, <a href="https://github.com/cloudflare/worker-emscripten-template">but even applications in our other WASM-supported languages.</a> For other languages, you first need to rewrite or transpile into one with WASM support.</p>
-	<p><b>Into our Application</b>Our basic example will perform only simple text processing, so that we can focus on the broad features of the migration. I’ve set up an unauthenticated copy (using Workers, to give us a scalable and reliable place to host it) at <a href="https://postprocess-workers.kirk.workers.dev/postprocess">https://postprocess-workers.kirk.workers.dev/postprocess</a> where you can see how it operates. Here is an example cURL:</p>
+	<p><b>Into our Application</b>Our basic example will perform only simple text processing, so that we can focus on the broad features of the migration. I’ve set up an unauthenticated copy (using Workers, to give us a <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">scalable and reliable place to host</a> it) at <a href="https://postprocess-workers.kirk.workers.dev/postprocess">https://postprocess-workers.kirk.workers.dev/postprocess</a> where you can see how it operates. Here is an example cURL:</p>
 	<pre class="language-bash"><code class="language-bash">curl -X POST https://postprocess-workers.kirk.workers.dev/postprocess --data '{"operation":"2","data":"Data-Gram!"}'</code></pre>
 	<p>The relevant takeaways from the code itself are pretty simple:</p>
 	<ul>

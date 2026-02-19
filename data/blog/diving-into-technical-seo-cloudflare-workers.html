@@ -99,7 +99,7 @@ interface ChunkChain {
 interface BodyFilter extends MutableFilterExecutor&lt;ChunkChain | null, BodyFilterContext, ChunkChain | null&gt; { };</code></pre>
 	<p>Request filter — Simple Redirects</p>
 	<hr>
-	<p>Firstly, we would like to point out that this is very niche use case, if your platform supports redirects natively, you should absolutely do it through your platform, but there are a number of limited, legacy or bespoke platforms, where redirects are not supported or are limited, or are charged for (per line) by your hosting or platform. For example, Github Pages only support redirects via HTML refresh meta tag.</p>
+	<p>Firstly, we would like to point out that this is very niche use case, if your platform supports redirects natively, you should absolutely do it through your platform, but there are a number of limited, legacy or bespoke platforms, where redirects are not supported or are limited, or are charged for (per line) by your <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">hosting</a> or platform. For example, Github Pages only support redirects via HTML refresh meta tag.</p>
 	<p>The most basic redirect filter, would look like this:</p>
 	<pre class="language-javascript"><code class="language-javascript">class RedirectRequestFilter {
     constructor(redirects) {

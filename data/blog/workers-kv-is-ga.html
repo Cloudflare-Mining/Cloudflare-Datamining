@@ -43,7 +43,7 @@ async function handleOneRedirect(request) {
   // Otherwise, send request to the original hostname.
   return await fetch(request)
 }</code></pre>
-	<p>Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <b><b>billions</b></b> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change — yikes! That’s why we built Workers KV.</p>
+	<p>Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <b>billions</b> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change — yikes! That’s why we built Workers KV.</p>
 	<pre class="language-javascript"><code class="language-javascript">// A Worker that can handle billions of redirects,
 // now that's more like it!
 addEventListener("fetch", event =&gt; {
@@ -76,16 +76,16 @@ async function handleBillionsOfRedirects(request) {
 			</svg>
 		</a>
 	</div>
-	<p>Distributed data stores are often modeled using the <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP Theorem</a>, which states that distributed systems can only pick between <b><b>2 out of the 3</b></b> following guarantees:</p>
+	<p>Distributed data stores are often modeled using the <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP Theorem</a>, which states that distributed systems can only pick between <b>2 out of the 3</b> following guarantees:</p>
 	<ul>
 		<li>
-			<p><b><b>C</b></b>onsistency - is my data the same everywhere?</p>
+			<p><b>C</b>onsistency - is my data the same everywhere?</p>
 		</li>
 		<li>
-			<p><b><b>A</b></b>vailability - is my data accessible all the time?</p>
+			<p><b>A</b>vailability - is my data accessible all the time?</p>
 		</li>
 		<li>
-			<p><b><b>P</b></b>artition tolerance - is my data resilient to regional outages?</p>
+			<p><b>P</b>artition tolerance - is my data resilient to regional outages?</p>
 		</li>
 	</ul>
 	<figure class="kg-card kg-image-card ">
@@ -93,7 +93,7 @@ async function handleBillionsOfRedirects(request) {
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2q0UXWQCbVcPVUX9nrkB88/2c384717f1db76f9ecdf7065c08b770f/workers-kv-venn-diagram_2x-1.png" alt="" class="kg-image" width="1204" height="924" loading="lazy">
 
 	</figure>
-	<p>Workers KV chooses to guarantee <b><b>A</b></b>vailability and <b><b>P</b></b>artition tolerance. This combination is known as <a href="https://en.wikipedia.org/wiki/Eventual_consistency">eventual consistency</a>, which presents Workers KV with two unique competitive advantages:</p>
+	<p>Workers KV chooses to guarantee <b>A</b>vailability and <b>P</b>artition tolerance. This combination is known as <a href="https://en.wikipedia.org/wiki/Eventual_consistency">eventual consistency</a>, which presents Workers KV with two unique competitive advantages:</p>
 	<ul>
 		<li>
 			<p>Reads are ultra fast (median of 12 ms) since its powered by our caching technology.</p>
@@ -129,7 +129,7 @@ async function handleBillionsOfRedirects(request) {
 		</a>
 	</div>
 	<p>Now that you understand the benefits and tradeoffs of using eventual consistency, how do you determine if it's the right storage solution for your application? Simply put, if you want global availability with ultra-fast reads, Workers KV is right for you.</p>
-	<p>However, if your application is <b><b>frequently</b></b> writing to the <b><b>same</b></b> key, there is an additional consideration. We call it "the Matthew question": Are you okay with the Matthews of the world <b>occasionally</b> going to the wrong restaurant?</p>
+	<p>However, if your application is <b>frequently</b> writing to the <b>same</b> key, there is an additional consideration. We call it "the Matthew question": Are you okay with the Matthews of the world <b>occasionally</b> going to the wrong restaurant?</p>
 	<p>You can imagine use cases (like our redirect Worker example) where this doesn't make any material difference. But if you decide to keep track of a user’s bank account balance, you would not want the possibility of two balances existing at once, since they could purchase something with money they’ve already spent.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-can-i-build-with-it">What can I build with it?</h3>
@@ -157,7 +157,7 @@ async function handleBillionsOfRedirects(request) {
 			<p>Step functions - sync state data between multiple APIs functions.</p>
 		</li>
 		<li>
-			<p>Edge file store - host large amounts of small files.</p>
+			<p>Edge file store - <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">host</a> large amounts of small files.</p>
 		</li>
 	</ul>
 	<p>We’ve highlighted several of those <a href="https://blog.cloudflare.com/building-with-workers-kv">use cases</a> in our previous blog post. We also have some more in-depth code walkthroughs, including a recently published blog post on how to build an online <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-do list with Workers KV</a>.</p>
