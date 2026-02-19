@@ -1053,7 +1053,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " last year using MFA with hardware security keys as part of our multi-layered zero trust approach. The attack began when a number of employees received a text message that led them to an authentic-looking Okta login page, which was designed for credential harvesting. The attacker attempted to log in to Cloudflare systems using those stolen credentials along with time-based one-time password (TOTP) codes—the attack required that employees participate in the authentication process. Unfortunately for the attacker, Cloudflare had previously transitioned from TOTP to hard keys.\n\nIf the hard keys hadn't been in place, other security measures would have prevented the attack from reaching its objective but, fortunately, the threat didn't get that far. Our Security Incident Response team quickly blocked access to the domain used for the fake login page and then killed active, compromised sessions using our zero trust network access service. If the attacker had somehow reached the point of installing malicious software, the endpoint security we use would have stopped the installation. A multi-layered strategy like this one helps to ensure that even if one aspect of an attack is successful, the attack itself won't cause substantial damage.",
+													"value": " last year using MFA with hardware security keys as part of our multi-layered zero trust approach. The attack began when a number of employees received a text message that led them to an authentic-looking Okta login page, which was designed for credential harvesting. The attacker attempted to log in to Cloudflare systems using those stolen credentials along with time-based one-time password (TOTP) codes—the attack required that employees participate in the authentication process. Unfortunately for the attacker, Cloudflare had previously transitioned from TOTP to hard keys.\n\nIf the hard keys hadn't been in place, other security measures would have prevented the attack from reaching its objective but, fortunately, the threat didn't get that far. Our Security Incident Response team quickly blocked access to the domain used for the fake login page and then killed active, compromised sessions using our ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/sase/use-cases/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "zero trust network access service",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". If the attacker had somehow reached the point of installing malicious software, the endpoint security we use would have stopped the installation. A multi-layered strategy like this one helps to ensure that even if one aspect of an attack is successful, the attack itself won't cause substantial damage.",
 													"marks": [],
 													"content": null
 												}
