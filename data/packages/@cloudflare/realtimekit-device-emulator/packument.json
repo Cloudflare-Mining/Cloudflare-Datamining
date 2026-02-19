@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-device-emulator",
 	"dist-tags": {
-		"latest": "0.0.1"
+		"latest": "0.0.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -24,6 +24,51 @@
 		"0.0.1": {
 			"name": "@cloudflare/realtimekit-device-emulator",
 			"version": "0.0.1",
+			"dependencies": {
+				"deepmerge": "^4.2.2",
+				"worker-timers": "^7.0.73"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"vite": "^2.9.14",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"eslint": "^8.56.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"prettier": "^3.1.1",
+				"commitizen": "^4.3.1",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"lint-staged": "^12.3.3",
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"eslint-plugin-import": "^2.32.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "53d8146a241b005ced019a60e7307956b9e9c965",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-device-emulator/-/realtimekit-device-emulator-0.0.1.tgz",
+				"fileCount": 22,
+				"integrity": "sha512-/OlG693laxT/ckyMyIKSmxfryusi9L9CyU/i9sEUVtHX7GyWrBqgbhSI4LaK5Jf7VU91NYwyXB0vu8gAfqBxqg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD0JBBoXYITyuk25KBHdr6sMcNLKf/wSUHBIkH083nv5QIhAL2fIUDcHDUtd7OQlmtpPcLScFXMiH6Br27PIbEjdk9h",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 56237
+			}
+		},
+		"0.0.2": {
+			"name": "@cloudflare/realtimekit-device-emulator",
+			"version": "0.0.2",
 			"dependencies": {
 				"deepmerge": "^4.2.2",
 				"worker-timers": "^7.0.73"
@@ -53,15 +98,15 @@
 				"vite": "^2.9.14"
 			},
 			"dist": {
-				"integrity": "sha512-/OlG693laxT/ckyMyIKSmxfryusi9L9CyU/i9sEUVtHX7GyWrBqgbhSI4LaK5Jf7VU91NYwyXB0vu8gAfqBxqg==",
-				"shasum": "53d8146a241b005ced019a60e7307956b9e9c965",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-device-emulator/-/realtimekit-device-emulator-0.0.1.tgz",
+				"integrity": "sha512-0fIkoghN31TfxcFHBX829Yv5DkHS2x0dfyZIRtRwjLvF3qcr82S8zxLyos6lSOT5u9KNOEza/fSL8LsWwPvw5w==",
+				"shasum": "95353992f4a1172692eb46952f013b43d23fdb7a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-device-emulator/-/realtimekit-device-emulator-0.0.2.tgz",
 				"fileCount": 22,
-				"unpackedSize": 56237,
+				"unpackedSize": 54659,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQD0JBBoXYITyuk25KBHdr6sMcNLKf/wSUHBIkH083nv5QIhAL2fIUDcHDUtd7OQlmtpPcLScFXMiH6Br27PIbEjdk9h"
+						"sig": "MEQCIA+Qedx0iog7sXGWebuzxvz3FZ9mOhOC3j30RWvtoU5bAiBVlPE8CauRx7D6SGAH6gfeX5lKsXqWCLH7uaSric4bdA=="
 					}
 				]
 			}
