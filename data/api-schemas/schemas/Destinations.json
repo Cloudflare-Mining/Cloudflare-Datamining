@@ -1,5 +1,5 @@
 {
-	"DELETE /destinations/{slug}": {
+	"DELETE /accounts/{account_id}/workers/observability/destinations/{slug}": {
 		"description": "Delete a Workers Observability Telemetry Destination.",
 		"operationId": "destinations.delete",
 		"parameters": [
@@ -313,9 +313,12 @@
 		"summary": "Delete Destination",
 		"tags": [
 			"Destinations"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	},
-	"GET /destinations": {
+	"GET /accounts/{account_id}/workers/observability/destinations": {
 		"description": "List your Workers Observability Telemetry Destinations.",
 		"operationId": "destination.list",
 		"parameters": [
@@ -409,7 +412,9 @@
 														"type": "string"
 													},
 													"headers": {
-														"additionalProperties": {},
+														"additionalProperties": {
+															"type": "string"
+														},
 														"type": "object"
 													},
 													"jobStatus": {
@@ -689,9 +694,13 @@
 		"summary": "Get Destinations",
 		"tags": [
 			"Destinations"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
 		]
 	},
-	"PATCH /destinations/{slug}": {
+	"PATCH /accounts/{account_id}/workers/observability/destinations/{slug}": {
 		"description": "Update an existing Workers Observability Telemetry Destination.",
 		"operationId": "destination.update",
 		"parameters": [
@@ -712,7 +721,9 @@
 							"configuration": {
 								"properties": {
 									"headers": {
-										"additionalProperties": {},
+										"additionalProperties": {
+											"type": "string"
+										},
 										"type": "object"
 									},
 									"type": {
@@ -1104,9 +1115,12 @@
 		"summary": "Update Destination",
 		"tags": [
 			"Destinations"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	},
-	"POST /destinations": {
+	"POST /accounts/{account_id}/workers/observability/destinations": {
 		"description": "Create a new Workers Observability Telemetry Destination.",
 		"operationId": "destination.create",
 		"requestBody": {
@@ -1117,7 +1131,9 @@
 							"configuration": {
 								"properties": {
 									"headers": {
-										"additionalProperties": {},
+										"additionalProperties": {
+											"type": "string"
+										},
 										"type": "object"
 									},
 									"logpushDataset": {
@@ -1477,6 +1493,9 @@
 		"summary": "Create Destination",
 		"tags": [
 			"Destinations"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	}
 }

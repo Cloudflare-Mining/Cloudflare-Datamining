@@ -1,5 +1,5 @@
 {
-	"POST /telemetry/keys": {
+	"POST /accounts/{account_id}/workers/observability/telemetry/keys": {
 		"description": "List all the keys in your telemetry events.",
 		"operationId": "telemetry.keys.list",
 		"requestBody": {
@@ -375,6 +375,9 @@
 		"summary": "List keys",
 		"tags": [
 			"Keys"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	}
 }

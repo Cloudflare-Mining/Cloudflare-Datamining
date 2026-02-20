@@ -1,5 +1,5 @@
 {
-	"POST /telemetry/query": {
+	"POST /accounts/{account_id}/workers/observability/telemetry/query": {
 		"description": "Run a temporary or saved query.",
 		"operationId": "telemetry.query",
 		"requestBody": {
@@ -1753,7 +1753,6 @@
 												"query": {
 													"properties": {
 														"created": {
-															"format": "date-time",
 															"type": "string"
 														},
 														"description": {
@@ -2070,7 +2069,6 @@
 															"type": "object"
 														},
 														"updated": {
-															"format": "date-time",
 															"type": "string"
 														},
 														"userId": {
@@ -2455,6 +2453,9 @@
 		"summary": "Run a query",
 		"tags": [
 			"Query run"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write"
 		]
 	}
 }
