@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: </strong>Lisbon, Portugal&nbsp;</p>
+<p><strong>Available Location: </strong>Lisbon, Portugal or London, the UK</p>
 <p><strong>Role Summary</strong></p>
 <p>Cloudflare is looking for a high-energy, collaborative Senior Partner Marketing Manager to lead and scale our growth across Southern Europe, Middle East and Africa regions. You will be responsible for building and executing integrated marketing plans with our key regional partners to drive partner initiated pipeline and revenue growth.&nbsp;</p>
 <p>The ideal candidate will be a seasoned self-starter with a proven track record of driving high-impact campaigns with key partners, partner sales, and internal marketing teams to deliver measurable results.&nbsp;</p>

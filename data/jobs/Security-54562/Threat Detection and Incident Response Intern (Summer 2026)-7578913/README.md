@@ -5,36 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Bengaluru, India</strong></p>
-<p><strong>About the Role</strong></p>
-<p>The Response Senior Engineer - CMDC serves as a high-tier technical lead within the proactive security team. This position is built for a practitioner who thrives at the intersection of deep protocol-level investigation and strategic technical partnership. The role is responsible for architecting responses to sophisticated threats across OSI Layers 3, 4, and 7, ensuring global customers remain resilient against large-scale DDoS attacks and complex application-layer anomalies.</p>
-<p>Acting as a primary technical anchor, this individual provides advanced assistance and strategic intelligence across Cloudflare’s most sophisticated customer environments. This involves deep mastery of the full security stack from Magic Transit (Infrastructure Protection), Advanced TCP/DNS Protection, and Magic Firewall, to application-layer defenses including the WAF, Bot Management, API Security, and Rate Limiting. The role focuses on:</p>
+<p><strong>Available Locations: Singapore</strong></p>
+<p><strong>About Cloudflare's Security Team</strong></p>
+<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
+<p>The Threat Detection and Security Incident Response teams are responsible for identifying, understanding, detecting, and responding to threats targeting Cloudflare.</p>
+<p><strong>About the Internship Program</strong></p>
+<p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
+<p>What would you do as a Cloudflare intern?</p>
 <ul>
-	<li>Technical Mentorship: Elevating the team’s collective skill set by acting as a "player-coach," providing hands-on technical guidance during live incidents and reviewing complex mitigation strategies.</li>
-	<li>Deep-Dive Investigation: Analyzing threats using advanced internal telemetry and dashboards to engineer informed mitigation strategies, often implementing these directly on the edge for mission-critical customer traffic.</li>
-	<li>Infrastructure &amp; Tooling Evolution: Partnering closely with Product and Engineering teams to transform real-world attack data into automated defenses and enhanced platform capabilities.</li>
-	<li>Strategic Technical Communication: Serving as the authoritative technical voice during active attacks, providing clarity and architectural guidance to stakeholders.</li>
+	<li>Execute a specialised security project over 12-16 weeks that directly improves Cloudflare’s defensive posture.</li>
+	<li>With a focus on threats and how they operate, work to build and improve systems that are the front lines of protecting Cloudflare from malicious attacks.</li>
+	<li>Work with Incident Response Engineers to triage and respond to security alerts and incidents.</li>
+	<li>Use the latest technologies and techniques to engineer solutions to enhance incident response and security operations. Including automation, agentic AI and others</li>
+	<li>Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company.</li>
+	<li>Work closely with a mentor who will provide hands-on guidance in your specific security domain.</li>
+	<li>Present your security project to the entire company at the end of the internship.</li>
+	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
+	<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
 </ul>
-<p>The ideal candidate would move beyond following runbooks to creating them, transforming raw security telemetry into actionable mitigation strategies and automated defenses.</p>
-<h3>Key Responsibilities</h3>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Technical Escalation: Acting as the technical authority for the CMDC during complex security incidents, providing hands-on intervention when standard protocols are exceeded.</li>
-	<li>Technical Coaching: Mentoring the CMDC team on advanced traffic analysis and security best practices, ensuring a high technical bar across the CMDC.</li>
-	<li>Incident Architecture: Leading the technical response to large-scale, sophisticated threats (e.g., volumetric DDoS and protocol-based attacks) and validating the efficacy of mitigation rules.</li>
-	<li>Technical Communications: Driving high-touch technical dialogue with customer engineering teams during critical incidents, translating complex attack data into actionable architectural advice.</li>
-	<li>Operational Engineering: Designing and refining technical CMDC workflows, playbooks, and alerting thresholds to improve the team's detection and response capabilities.</li>
-	<li>Forensics &amp; Analysis: Utilizing internal telemetry, GraphQL, and specialized monitoring tools to perform deep-dive forensics on novel attack vectors.</li>
+	<li>Understanding of attacker Tools, Techniques, and Procedures (TTPs)</li>
+	<li>Understanding of operating systems, SaaS applications, CI/CD, and common security tools.</li>
+	<li>Understanding of the Incident Response Lifecycle.</li>
+	<li>Proficiency in at least one scripting/programming language for automation.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt new technologies.</li>
+	<li>Curiosity, empathy and ability to get things done.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in the location of the internship</li>
 </ul>
-<p><strong>Qualifications</strong></p>
-<ul>
-	<li>Experience: A minimum of 8 years of relevant hands-on experience in a Security Operations, Infrastructure Security, or a highly technical incident response environment.</li>
-	<li>Protocol Sovereignty: A profound understanding of internet protocols (TCP/IP, UDP, ICMP, BGP, and GRE) and the ability to deconstruct anycast traffic flows.</li>
-	<li>Security Mastery: Proven ability to mitigate complex attacks (e.g., volumetric DDoS, slowloris, SQLi, and Credential Stuffing) using edge-based security controls.</li>
-	<li>Tooling &amp; Automation: Proficiency in Python, Go, or Bash to automate security workflows and integrate security monitoring tools via APIs.</li>
-	<li>Technical Writing: The ability to produce high-fidelity Root Cause Analysis (RCA) reports and technical briefings for sophisticated engineering audiences.</li>
-	<li>System Literacy: Experience with Prometheus/Grafana monitoring and querying large datasets via GraphQL or similar APIs to operationalize contextual security data.</li>
-	<li>Certifications: Advanced security credentials such as CISSP, CISM, or GIAC (GCIH, GCIA) are highly valued.</li>
-</ul>
+<p><strong>Bonus:</strong> Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
