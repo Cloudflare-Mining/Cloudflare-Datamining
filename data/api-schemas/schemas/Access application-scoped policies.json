@@ -2413,6 +2413,40 @@
 																"example": false,
 																"type": "boolean"
 															},
+															"mfa_config": {
+																"description": "Configures multi-factor authentication (MFA) settings.",
+																"properties": {
+																	"allowed_authenticators": {
+																		"description": "Lists the MFA methods that users can authenticate with.",
+																		"example": [
+																			"totp",
+																			"biometrics",
+																			"security_key"
+																		],
+																		"items": {
+																			"enum": [
+																				"totp",
+																				"biometrics",
+																				"security_key"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"mfa_bypass": {
+																		"description": "Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"session_duration": {
+																		"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+																		"example": "24h",
+																		"type": "string"
+																	}
+																},
+																"type": "object",
+																"x-auditable": true
+															},
 															"purpose_justification_prompt": {
 																"description": "A custom message that will appear on the purpose justification screen.",
 																"example": "Please enter a justification for entering this protected domain.",
@@ -4675,6 +4709,40 @@
 															"example": false,
 															"type": "boolean"
 														},
+														"mfa_config": {
+															"description": "Configures multi-factor authentication (MFA) settings.",
+															"properties": {
+																"allowed_authenticators": {
+																	"description": "Lists the MFA methods that users can authenticate with.",
+																	"example": [
+																		"totp",
+																		"biometrics",
+																		"security_key"
+																	],
+																	"items": {
+																		"enum": [
+																			"totp",
+																			"biometrics",
+																			"security_key"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"mfa_bypass": {
+																	"description": "Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"session_duration": {
+																	"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+																	"example": "24h",
+																	"type": "string"
+																}
+															},
+															"type": "object",
+															"x-auditable": true
+														},
 														"purpose_justification_prompt": {
 															"description": "A custom message that will appear on the purpose justification screen.",
 															"example": "Please enter a justification for entering this protected domain.",
@@ -6825,6 +6893,40 @@
 										"example": false,
 										"type": "boolean"
 									},
+									"mfa_config": {
+										"description": "Configures multi-factor authentication (MFA) settings.",
+										"properties": {
+											"allowed_authenticators": {
+												"description": "Lists the MFA methods that users can authenticate with.",
+												"example": [
+													"totp",
+													"biometrics",
+													"security_key"
+												],
+												"items": {
+													"enum": [
+														"totp",
+														"biometrics",
+														"security_key"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"mfa_bypass": {
+												"description": "Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.",
+												"example": false,
+												"type": "boolean"
+											},
+											"session_duration": {
+												"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+												"example": "24h",
+												"type": "string"
+											}
+										},
+										"type": "object",
+										"x-auditable": true
+									},
 									"purpose_justification_prompt": {
 										"description": "A custom message that will appear on the purpose justification screen.",
 										"example": "Please enter a justification for entering this protected domain.",
@@ -8896,6 +8998,40 @@
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
+														},
+														"mfa_config": {
+															"description": "Configures multi-factor authentication (MFA) settings.",
+															"properties": {
+																"allowed_authenticators": {
+																	"description": "Lists the MFA methods that users can authenticate with.",
+																	"example": [
+																		"totp",
+																		"biometrics",
+																		"security_key"
+																	],
+																	"items": {
+																		"enum": [
+																			"totp",
+																			"biometrics",
+																			"security_key"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"mfa_bypass": {
+																	"description": "Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"session_duration": {
+																	"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+																	"example": "24h",
+																	"type": "string"
+																}
+															},
+															"type": "object",
+															"x-auditable": true
 														},
 														"purpose_justification_prompt": {
 															"description": "A custom message that will appear on the purpose justification screen.",
@@ -11060,6 +11196,40 @@
 										"example": false,
 										"type": "boolean"
 									},
+									"mfa_config": {
+										"description": "Configures multi-factor authentication (MFA) settings.",
+										"properties": {
+											"allowed_authenticators": {
+												"description": "Lists the MFA methods that users can authenticate with.",
+												"example": [
+													"totp",
+													"biometrics",
+													"security_key"
+												],
+												"items": {
+													"enum": [
+														"totp",
+														"biometrics",
+														"security_key"
+													],
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"mfa_bypass": {
+												"description": "Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.",
+												"example": false,
+												"type": "boolean"
+											},
+											"session_duration": {
+												"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+												"example": "24h",
+												"type": "string"
+											}
+										},
+										"type": "object",
+										"x-auditable": true
+									},
 									"purpose_justification_prompt": {
 										"description": "A custom message that will appear on the purpose justification screen.",
 										"example": "Please enter a justification for entering this protected domain.",
@@ -13131,6 +13301,40 @@
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
+														},
+														"mfa_config": {
+															"description": "Configures multi-factor authentication (MFA) settings.",
+															"properties": {
+																"allowed_authenticators": {
+																	"description": "Lists the MFA methods that users can authenticate with.",
+																	"example": [
+																		"totp",
+																		"biometrics",
+																		"security_key"
+																	],
+																	"items": {
+																		"enum": [
+																			"totp",
+																			"biometrics",
+																			"security_key"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"mfa_bypass": {
+																	"description": "Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"session_duration": {
+																	"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+																	"example": "24h",
+																	"type": "string"
+																}
+															},
+															"type": "object",
+															"x-auditable": true
 														},
 														"purpose_justification_prompt": {
 															"description": "A custom message that will appear on the purpose justification screen.",
@@ -15421,6 +15625,40 @@
 																"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 																"example": false,
 																"type": "boolean"
+															},
+															"mfa_config": {
+																"description": "Configures multi-factor authentication (MFA) settings.",
+																"properties": {
+																	"allowed_authenticators": {
+																		"description": "Lists the MFA methods that users can authenticate with.",
+																		"example": [
+																			"totp",
+																			"biometrics",
+																			"security_key"
+																		],
+																		"items": {
+																			"enum": [
+																				"totp",
+																				"biometrics",
+																				"security_key"
+																			],
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"mfa_bypass": {
+																		"description": "Indicates whether to bypass MFA for this resource. This option is available at the application and policy level.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"session_duration": {
+																		"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+																		"example": "24h",
+																		"type": "string"
+																	}
+																},
+																"type": "object",
+																"x-auditable": true
 															},
 															"purpose_justification_prompt": {
 																"description": "A custom message that will appear on the purpose justification screen.",

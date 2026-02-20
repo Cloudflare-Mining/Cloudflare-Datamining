@@ -217,6 +217,49 @@
 													},
 													"type": "object"
 												},
+												"mfa_config": {
+													"description": "Configures multi-factor authentication (MFA) settings for an organization.",
+													"properties": {
+														"allowed_authenticators": {
+															"description": "Lists the MFA methods that users can authenticate with.",
+															"example": [
+																"totp",
+																"biometrics",
+																"security_key"
+															],
+															"items": {
+																"enum": [
+																	"totp",
+																	"biometrics",
+																	"security_key"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"session_duration": {
+															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+															"example": "24h",
+															"type": "string"
+														}
+													},
+													"type": "object",
+													"x-auditable": true
+												},
+												"mfa_configuration_allowed": {
+													"default": false,
+													"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"mfa_required_for_all_apps": {
+													"default": false,
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
+												},
 												"name": {
 													"description": "The name of your Zero Trust organization.",
 													"example": "Widget Corps Internal Applications",
@@ -849,6 +892,49 @@
 								},
 								"type": "object"
 							},
+							"mfa_config": {
+								"description": "Configures multi-factor authentication (MFA) settings for an organization.",
+								"properties": {
+									"allowed_authenticators": {
+										"description": "Lists the MFA methods that users can authenticate with.",
+										"example": [
+											"totp",
+											"biometrics",
+											"security_key"
+										],
+										"items": {
+											"enum": [
+												"totp",
+												"biometrics",
+												"security_key"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"session_duration": {
+										"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+										"example": "24h",
+										"type": "string"
+									}
+								},
+								"type": "object",
+								"x-auditable": true
+							},
+							"mfa_configuration_allowed": {
+								"default": false,
+								"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"mfa_required_for_all_apps": {
+								"default": false,
+								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"name": {
 								"description": "The name of your Zero Trust organization.",
 								"example": "Widget Corps Internal Applications",
@@ -1088,6 +1174,49 @@
 														}
 													},
 													"type": "object"
+												},
+												"mfa_config": {
+													"description": "Configures multi-factor authentication (MFA) settings for an organization.",
+													"properties": {
+														"allowed_authenticators": {
+															"description": "Lists the MFA methods that users can authenticate with.",
+															"example": [
+																"totp",
+																"biometrics",
+																"security_key"
+															],
+															"items": {
+																"enum": [
+																	"totp",
+																	"biometrics",
+																	"security_key"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"session_duration": {
+															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+															"example": "24h",
+															"type": "string"
+														}
+													},
+													"type": "object",
+													"x-auditable": true
+												},
+												"mfa_configuration_allowed": {
+													"default": false,
+													"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"mfa_required_for_all_apps": {
+													"default": false,
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of your Zero Trust organization.",
@@ -1604,6 +1733,49 @@
 								},
 								"type": "object"
 							},
+							"mfa_config": {
+								"description": "Configures multi-factor authentication (MFA) settings for an organization.",
+								"properties": {
+									"allowed_authenticators": {
+										"description": "Lists the MFA methods that users can authenticate with.",
+										"example": [
+											"totp",
+											"biometrics",
+											"security_key"
+										],
+										"items": {
+											"enum": [
+												"totp",
+												"biometrics",
+												"security_key"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"session_duration": {
+										"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+										"example": "24h",
+										"type": "string"
+									}
+								},
+								"type": "object",
+								"x-auditable": true
+							},
+							"mfa_configuration_allowed": {
+								"default": false,
+								"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
+								"example": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"mfa_required_for_all_apps": {
+								"default": false,
+								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
+								"example": false,
+								"type": "boolean",
+								"x-auditable": true
+							},
 							"name": {
 								"description": "The name of your Zero Trust organization.",
 								"example": "Widget Corps Internal Applications",
@@ -1839,6 +2011,49 @@
 														}
 													},
 													"type": "object"
+												},
+												"mfa_config": {
+													"description": "Configures multi-factor authentication (MFA) settings for an organization.",
+													"properties": {
+														"allowed_authenticators": {
+															"description": "Lists the MFA methods that users can authenticate with.",
+															"example": [
+																"totp",
+																"biometrics",
+																"security_key"
+															],
+															"items": {
+																"enum": [
+																	"totp",
+																	"biometrics",
+																	"security_key"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"session_duration": {
+															"description": "Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.",
+															"example": "24h",
+															"type": "string"
+														}
+													},
+													"type": "object",
+													"x-auditable": true
+												},
+												"mfa_configuration_allowed": {
+													"default": false,
+													"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"mfa_required_for_all_apps": {
+													"default": false,
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
+													"example": false,
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "The name of your Zero Trust organization.",
