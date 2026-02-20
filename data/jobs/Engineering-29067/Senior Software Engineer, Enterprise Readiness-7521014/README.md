@@ -5,53 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, Denver, Toronto, Atlanta, Washington DC, Seattle, New York</p>
-<h3>&nbsp;</h3>
-<div><strong>About the team</strong><br>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.<br><br><strong>What you’ll do</strong><br>You’ll build and operate secure and resilient distributed systems for secrets and key management, running across our network that spans more than 310 cities in over 120 countries. Our focus is strengthening/re-architecting internal PKI and machine/workload identity. You’ll run and support the systems we build, both in an operational sense and by helping other internal developers use them. You’ll consult on the design and architecture of new systems and products to ensure they are built securely and use our services correctly.<br><br><strong>Required skills</strong></div>
-<div>
-	<ul>
-		<li>Software development and distributed systems design expertise.</li>
-		<li>Strong security background with a focus on implementation, not policy/compliance.</li>
-	</ul>
-</div>
-<div><strong>Bonus nice-to-have skills</strong></div>
-<div>
-	<ul>
-		<li>Track record of contributing to open source security or distributed systems projects.</li>
-		<li>Cryptography background and ability to work with cryptosystems at the primitives level.</li>
-		<li>Experience with HSMs, TPMs, or other platform TEEs (e.g. AMD SEV, Intel SGX, Apple Secure Enclave).</li>
-		<li>Familiarity with HashiCorp Vault or OpenBao, or similar.</li>
-		<li>Linux/UNIX system administration proficiency.</li>
-		<li>Familiarity with Go and/or Python + Salt specifically</li>
-	</ul>
-</div>
-<h3>&nbsp;</h3>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Available Locations:</strong> Hybrid - Austin</p>
+<h4><strong>About the Department</strong></h4>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles about 10% of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</p>
+<h4><strong>What you’ll do</strong></h4>
+<p>As a Senior Software Engineer on the team, you will build the foundational services that enable the world’s largest organizations to run on Cloudflare. You will be responsible for the APIs, UIs, internal tooling, and admin platforms that help manage complex enterprise logic at scale.&nbsp; More specifically, there will be a heavy focus on scaling and extending our <a href="https://developers.cloudflare.com/fundamentals/organizations/">Organizations model</a> - the new abstraction for our largest customers and partners to manage Cloudflare.</p>
+<p>While this is a full-stack role, our roadmap for the coming year is weighted toward backend architecture and systems design<strong>.</strong> You will spend your time helping design our data models, architecting high-performance services in <strong>Go</strong>, optimizing our <strong>PostgreSQL</strong> layer, and ensuring our services are resilient within our <strong>Kubernetes</strong> ecosystem.</p>
+<p>You won't just ship features; you will also own the "operational excellence" of your services. You’ll use tools like <strong>Jaeger, Sentry, and Kibana</strong> to troubleshoot complex distributed traces and ensure our platform remains highly available for our external and internal customers.</p>
+<p>You will also rapidly expand your domain knowledge and ability to deliver change through AI tooling.&nbsp; Cloudflare is ramping up its support and infrastructure for AI development tools like <strong>OpenCode.</strong>&nbsp; Which, connected to everything safely possible with MCPs, is enabling engineers to have greater impact, faster than ever.</p>
+<h4><strong>Core Technologies</strong></h4>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li><strong>Backend:</strong> Go, PostgreSQL, Redis, PHP</li>
+	<li><strong>Infrastructure:</strong> Kubernetes, Docker, Kafka</li>
+	<li><strong>Frontend:</strong> React, TypeScript</li>
+	<li><strong>Observability:</strong> Kibana, Elasticsearch, Jaeger, Sentry</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h4><strong>Examples of desirable skills, knowledge, and experience</strong></h4>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li><strong>Senior-Level Backend Expertise:</strong> 5+ years of experience building and scaling production-grade applications. Deep proficiency in a typed language like <strong>Go, PHP</strong>, <strong>Rust</strong>, or<strong> Typescript </strong>for APIs is a plus, but our primary language Go can be learned on the job.</li>
+	<li><strong>Systems Architecture:</strong> Proven experience designing distributed systems that are scalable, maintainable, and fault-tolerant. You understand how to manage state, concurrency, and data consistency.</li>
+	<li><strong>Pragmatic Full Stack Ability:</strong> While your work will be weighted toward the backend, you are comfortable navigating a <strong>React/TypeScript</strong> codebase to build or improve UI components.</li>
+	<li><strong>Agentic AI Development: </strong>You are excited about exploring and adopting the rapidly advancing AI tooling in your workflows.</li>
+	<li><strong>Databases:</strong> Experience with <strong>SQL</strong>, including schema design, query optimization, and serving globally distributed actors.</li>
+	<li><strong>Observability-First Mindset:</strong> You don't consider a feature "done" until it's monitored. Experience using distributed tracing (<strong>Jaeger</strong>), error tracking (<strong>Sentry</strong>), and log analysis (<strong>Kibana/Elasticsearch</strong>) to debug production issues.</li>
+	<li><strong>Cloud &amp; Containers:</strong> Practical experience deploying and managing services in <strong>Kubernetes</strong> and <strong>Docker</strong>.</li>
+	<li><strong>Operational Ownership:</strong> You are comfortable participating in an on-call rotation and feel a sense of pride in maintaining high-uptime services.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
