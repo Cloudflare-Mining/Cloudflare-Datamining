@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.4.2
+
+### Patch Changes
+
+- f7160f3680: Fix options type
+
 ## 5.4.1
 
 ### Patch Changes
