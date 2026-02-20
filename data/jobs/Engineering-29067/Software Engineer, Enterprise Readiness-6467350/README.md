@@ -9,9 +9,9 @@
 <h4><strong>About the Department</strong></h4>
 <p>Cloudflare’s Engineering Team builds and runs the software that handles about 10% of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</p>
 <h4><strong>What you’ll do</strong></h4>
-<p>As a Senior Software Engineer on the team, you will build the foundational services that enable the world’s largest organizations to run on Cloudflare. You will be responsible for the APIs, UIs, internal tooling, and admin platforms that help manage complex enterprise logic at scale.&nbsp; More specifically, there will be a heavy focus on scaling and extending our <a href="https://developers.cloudflare.com/fundamentals/organizations/">Organizations model</a> - the new abstraction for our largest customers and partners to manage Cloudflare.</p>
-<p>While this is a full-stack role, our roadmap for the coming year is weighted toward backend architecture and systems design<strong>.</strong> You will spend your time helping design our data models, architecting high-performance services in <strong>Go</strong>, optimizing our <strong>PostgreSQL</strong> layer, and ensuring our services are resilient within our <strong>Kubernetes</strong> ecosystem.</p>
-<p>You won't just ship features; you will also own the "operational excellence" of your services. You’ll use tools like <strong>Jaeger, Sentry, and Kibana</strong> to troubleshoot complex distributed traces and ensure our platform remains highly available for our external and internal customers.</p>
+<p>As a <strong>Full Stack Engineer</strong> on the team, you will build the foundational services that enable the world’s largest organizations to run on Cloudflare. You will be responsible for the APIs, UIs, internal tooling, and admin platforms that help manage complex enterprise logic at scale.&nbsp; More specifically, there will be a heavy focus on scaling and extending our <a href="https://developers.cloudflare.com/fundamentals/organizations/">Organizations model</a> - the new abstraction for our largest customers and partners to manage Cloudflare.</p>
+<p>While this is a full-stack role, our roadmap is currently weighted toward <strong>backend development and systems implementation.</strong> You will work closely with senior engineers to implement robust data models, build high-performance services in <strong>Go</strong>, and ensure our deployments are stable within our <strong>Kubernetes</strong> ecosystem.</p>
+<p>You won't just ship features; you will also own the "operational excellence" of your services. You’ll use tools like <strong>Jaeger, Sentry, and Kibana</strong> to troubleshoot complex distributed traces and ensure our platform remains highly available for our partners and customers.</p>
 <p>You will also rapidly expand your domain knowledge and ability to deliver change through AI tooling.&nbsp; Cloudflare is ramping up its support and infrastructure for AI development tools like <strong>OpenCode.</strong>&nbsp; Which, connected to everything safely possible with MCPs, is enabling engineers to have greater impact, faster than ever.</p>
 <h4><strong>Core Technologies</strong></h4>
 <ul>
@@ -22,15 +22,46 @@
 </ul>
 <h4><strong>Examples of desirable skills, knowledge, and experience</strong></h4>
 <ul>
-	<li><strong>Senior-Level Backend Expertise:</strong> 5+ years of experience building and scaling production-grade applications. Deep proficiency in a typed language like <strong>Go, PHP</strong>, <strong>Rust</strong>, or<strong> Typescript </strong>for APIs is a plus, but our primary language Go can be learned on the job.</li>
-	<li><strong>Systems Architecture:</strong> Proven experience designing distributed systems that are scalable, maintainable, and fault-tolerant. You understand how to manage state, concurrency, and data consistency.</li>
-	<li><strong>Pragmatic Full Stack Ability:</strong> While your work will be weighted toward the backend, you are comfortable navigating a <strong>React/TypeScript</strong> codebase to build or improve UI components.</li>
+	<li><strong>Professional Backend Experience:</strong> 3+ years of experience building and maintaining production applications. You have a solid grasp of at least one typed language (like Go, PHP, Rust, or TypeScript) and are excited to master&nbsp;<strong>Go</strong>.</li>
+	<li><strong>Systems Thinking:</strong> Experience working within distributed systems. You understand core concepts like concurrency, data consistency, and how to write code that scales.</li>
+	<li><strong>Full Stack Versatility:</strong> You are comfortable jumping into a <strong>React/TypeScript</strong> codebase to build UI components, but you enjoy the challenge of backend logic and API design.</li>
 	<li><strong>Agentic AI Development: </strong>You are excited about exploring and adopting the rapidly advancing AI tooling in your workflows.</li>
-	<li><strong>Databases:</strong> Experience with <strong>SQL</strong>, including schema design, query optimization, and serving globally distributed actors.</li>
-	<li><strong>Observability-First Mindset:</strong> You don't consider a feature "done" until it's monitored. Experience using distributed tracing (<strong>Jaeger</strong>), error tracking (<strong>Sentry</strong>), and log analysis (<strong>Kibana/Elasticsearch</strong>) to debug production issues.</li>
-	<li><strong>Cloud &amp; Containers:</strong> Practical experience deploying and managing services in <strong>Kubernetes</strong> and <strong>Docker</strong>.</li>
-	<li><strong>Operational Ownership:</strong> You are comfortable participating in an on-call rotation and feel a sense of pride in maintaining high-uptime services.</li>
+	<li><strong>Data Proficiency:</strong> Strong experience with <strong>SQL</strong> and relational databases. You understand schema design, how to write efficient queries, and the importance of data integrity.</li>
+	<li><strong>Observability &amp; Debugging:</strong> Experience using logging and monitoring tools (like <strong>Kibana, Sentry, or Grafana</strong>) to diagnose issues. You believe that "tested and monitored" is the definition of "done."</li>
+	<li><strong>Cloud Fundamentals:</strong> Familiarity with <strong>Docker and Kubernetes</strong>. You understand how containers work and how to deploy services in a cloud-native environment.</li>
 </ul>
+<p><strong>Collaborative Ownership</strong></p>
+<p>You enjoy peer reviews, documentation, and participating in an on-call rotation. You take pride in the reliability of the features you ship.</p>
+<h4><strong>Compensation</strong></h4>
+<p>Compensation may be adjusted depending on work location.</p>
+<h4><strong>Equity</strong></h4>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<h4><strong>Benefits</strong></h4>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<h4><strong>Health &amp; Welfare Benefits</strong></h4>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<h4><strong>Financial Benefits</strong></h4>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<h4><strong>Time Off</strong></h4>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
