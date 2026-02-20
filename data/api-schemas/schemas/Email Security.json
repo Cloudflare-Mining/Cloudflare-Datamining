@@ -3141,22 +3141,42 @@
 				}
 			},
 			{
+				"deprecated": true,
 				"example": "2020-08-01",
 				"in": "query",
 				"name": "from_date",
-				"required": true,
 				"schema": {
 					"format": "date",
 					"type": "string"
 				}
 			},
 			{
+				"deprecated": true,
 				"example": "2020-09-01",
 				"in": "query",
 				"name": "to_date",
-				"required": true,
 				"schema": {
 					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The beginning of the search date range (RFC3339 format).",
+				"example": "2020-08-01T00:00:00Z",
+				"in": "query",
+				"name": "start",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The end of the search date range (RFC3339 format).",
+				"example": "2020-09-01T23:59:59Z",
+				"in": "query",
+				"name": "end",
+				"schema": {
+					"format": "date-time",
 					"type": "string"
 				}
 			}
@@ -3229,6 +3249,10 @@
 											"items": {
 												"properties": {
 													"content": {
+														"type": "string"
+													},
+													"created_at": {
+														"format": "date-time",
 														"type": "string"
 													},
 													"disposition": {
@@ -3305,10 +3329,16 @@
 													"ts": {
 														"format": "date-time",
 														"type": "string"
+													},
+													"updated_at": {
+														"format": "date-time",
+														"type": "string"
 													}
 												},
 												"required": [
 													"id",
+													"created_at",
+													"updated_at",
 													"ts",
 													"title",
 													"content",
