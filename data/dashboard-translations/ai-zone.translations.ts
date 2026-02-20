@@ -154,6 +154,7 @@
 		enable: "Enable",
 		enabled: "Enabled",
 		errors: {
+			crawlers_failed: "Failed to load AI Crawl Control crawler data",
 			no_data: "No request data found.",
 			no_data_referral: "No referral data found.",
 			no_data_or_dns: "No request data found. Make sure your <0>DNS records</0> are set to <1>proxied</1> or try refreshing the page.",
@@ -188,18 +189,11 @@
 				label: "Filter",
 				placeholder: "Filter crawlers"
 			},
-			search_paths: {
-				placeholder: "Filter paths"
-			},
 			crawler: {
 				label: "Crawler",
 				all: "All crawlers",
-				placeholder: "Select crawler"
-			},
-			mime_type: {
-				label: "Content type",
-				all: "All content types",
-				placeholder: "Select content type"
+				placeholder: "Select crawler",
+				emptyState: "No crawler data"
 			},
 			operator: {
 				label: "Operator",
@@ -229,8 +223,7 @@
 			},
 			path: {
 				label: "Path",
-				placeholder: "Search paths (e.g. /api)",
-				exact_match: "Exact match"
+				placeholder: "Search paths (e.g. /api)"
 			},
 			advanced: {
 				clear: "Clear all",
@@ -258,9 +251,6 @@
 		optional_field: "(optional)",
 		pay_per_crawl: "Pay Per Crawl",
 		pending: "Pending",
-		policies: "policies",
-		policy: "policy",
-		policy_filter: "Policy",
 		request: "Request",
 		requests: "Requests",
 		robots_txt: "Robots.txt",
@@ -338,26 +328,21 @@
 		},
 		table: {
 			tabs: {
-				all: "All",
-				patterns: "Patterns",
-				content: "Content",
-				media: "Media"
+				paths: "Paths",
+				patterns: "Patterns"
 			},
 			title: {
-				all: "Most crawled paths",
-				patterns: "Path patterns",
-				content: "Most crawled content",
-				media: "Most crawled media"
+				paths: "Most crawled paths",
+				patterns: "Path patterns"
 			},
 			description: {
-				all: "View all paths crawled by AI crawlers, regardless of content type.",
-				patterns: "Analyze path patterns to identify which sections of your site are most crawled.",
-				content: "View the most requested content pages (HTML, JSON, Markdown, etc.) by AI crawlers.",
-				media: "View the most requested media files (images, videos, audio) by AI crawlers."
+				paths: "View the most crawled paths by AI crawlers.",
+				patterns: "Analyze path patterns to identify which sections of your site are most crawled."
 			},
 			columns: {
 				path: "Path",
 				host: "Host",
+				content_type: "Content type",
 				requests: "Allowed requests"
 			}
 		},

@@ -337,15 +337,22 @@
 			title: "Delete Alert",
 			description: 'Are you sure you want to delete "%{name}"? This action cannot be undone.'
 		},
-		observedValue: "Observed Value",
 		status: {
 			normal: "Normal",
 			firing: "Firing",
-			monitoring: "Monitoring",
+			pendingFire: "Pending Fire",
+			pendingResolve: "Pending Resolve",
 			paused: "Paused"
 		},
+		transition: {
+			fired: "Fired",
+			resolved: "Resolved"
+		},
 		currentState: "Current State",
-		nextCheck: "Next Check",
+		nextCheck: "Next check",
+		checkedAt: "Checked At",
+		dataStart: "Data Start",
+		dataEnd: "Data End",
 		checkFrequency: "Check Frequency",
 		window: "Window",
 		timeBeforeFired: "Time Before Fired",
@@ -354,7 +361,64 @@
 		editingAlert: "Editing '%{name}'",
 		newAlert: "New Alert",
 		checkNow: "Check Now",
-		manageNotifications: "Manage Notifications"
+		manageNotifications: "Manage Notifications",
+		table: {
+			name: "Name",
+			status: "Status",
+			latestChecks: "Latest Checks",
+			notifiers: "Notifiers",
+			notifierCount: "%{count} policies"
+		},
+		actions: {
+			edit: "Edit",
+			duplicate: "Duplicate",
+			delete: "Delete"
+		},
+		views: {
+			metrics: "Metrics",
+			checks: "Checks",
+			incidents: "Incidents"
+		},
+		toggles: {
+			state: "State",
+			thresholds: "Thresholds"
+		},
+		checksTable: {
+			failingGroups: "Failing Groups",
+			failingMetrics: "Failing Metrics",
+			noMoreChecks: "No more checks to load"
+		},
+		incidents: {
+			id: "ID",
+			started: "Started",
+			ended: "Ended",
+			duration: "Duration",
+			active: "Active",
+			timeline: "Timeline",
+			firstFailed: "First Failed",
+			lastFailed: "Last Failed",
+			latestCheck: "Latest Check",
+			ongoing: "(ongoing)",
+			fullMetricsView: "Full Metrics",
+			empty: {
+				title: "No incidents found",
+				description: "When your alert fires, incidents will appear here."
+			}
+		},
+		checkDetails: {
+			noResults: "No detailed results available for this check type.",
+			dataWindow: "Data Window",
+			outcome: "Outcome",
+			passed: "Passed",
+			failed: "Failed",
+			transition: "Transition"
+		},
+		resultsTable: {
+			group: "Group",
+			results: "Results",
+			failingTotal: "(%{failingCount} failing / %{totalCount} total)",
+			loadMore: "Load More (%{remaining} remaining)"
+		}
 	},
 	usage: {
 		optIn: {

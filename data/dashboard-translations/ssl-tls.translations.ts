@@ -781,7 +781,7 @@
 		title: "Client Certificates",
 		status: "Status",
 		page_description: "Create client certificates using Cloudflare public key infrastructure (PKI).",
-		documentation_label: "Client certificates documentation",
+		documentation_label: "Documentation",
 		description: "Secure and authenticate your APIs and web applications with client certificates.\nBlock traffic from devices that do not have a valid client SSL/TLS certificate with mTLS rules.",
 		create_cert: "Create Certificate",
 		create_client_cert_title: "Create client certificate",
@@ -845,7 +845,13 @@
 		success_message_added: "Successfully added %{added}",
 		success_message_removed: "Successfully removed %{removed}",
 		create_mTLS_rule: "Create mTLS Rule",
-		no_client_certificates: "No Client Certificates Created"
+		no_client_certificates: "No Client Certificates Created",
+		restore_button: "Restore",
+		more_options: "More options",
+		cloudflare_issued: {
+			title: "Cloudflare-issued Client Certificates",
+			tab_label: "Cloudflare-issued"
+		}
 	},
 	staging_certificates: {
 		title: "Staging Certificates",

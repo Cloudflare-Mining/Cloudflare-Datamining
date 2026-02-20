@@ -60,6 +60,7 @@
 	"account_home.overview.http_requests": "HTTP requests",
 	"account_home.overview.http_requests_tooltip": "Requests for your web content (pages, files). A single visit requires many HTTP requests to load your website or app. Cloudflare caches this content to load your site faster, and shields your origin server from malicious or unwanted requests.",
 	"account_home.overview.metrics.active_users": "Active users",
+	"account_home.overview.metrics.api_failure": "API failure",
 	"account_home.overview.metrics.ai_requests": "AI requests",
 	"account_home.overview.metrics.app_load_times": "App load times",
 	"account_home.overview.metrics.app_logins": "App logins",
@@ -81,6 +82,8 @@
 	"account_home.overview.metrics.devices_protected": "Devices protected",
 	"account_home.overview.metrics.dns_speed": "DNS speed",
 	"account_home.overview.metrics.dns_speed_tooltip": "Median (P50) time for DNS requests to resolve",
+	"account_home.overview.metrics.error_code": "Code %{code}",
+	"account_home.overview.metrics.error_default_message": "<b>Unable to load data.</b> Please try again later.",
 	"account_home.overview.metrics.gateway_requests": "Gateway requests",
 	"account_home.overview.metrics.logins_blocked": "Logins blocked",
 	"account_home.overview.metrics.network_threats_stopped": "Network threats stopped",
@@ -159,5 +162,6 @@
 	"account_overview.workers_widget.view.pages_only": "Pages only",
 	"account_overview.workers_widget.view.workers_only": "Workers only",
 	"account_overview.workers_widget.worker_label": "Worker",
-	"account_overview.zero_trust_widget.description": "Overview of Zero Trust security posture, connectivity, and risk indicators."
+	"account_overview.zero_trust_widget.description": "Overview of Zero Trust security posture, connectivity, and risk indicators.",
+	"account_home.zero_trust_widget.onboarding": "Get started"
 }
