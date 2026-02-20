@@ -21649,6 +21649,1901 @@
 			"pro": true
 		}
 	},
+	"POST /accounts/{account_id}/ai/run/@cf/zai-org/glm-4.7-flash": {
+		"operationId": "workers-ai-post-run-cf-zai-org-glm-4-7-flash",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "queueRequest",
+				"schema": {
+					"example": "true",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "tags",
+				"schema": {
+					"example": "tag1,tag2,tag3",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"audio": {
+										"anyOf": [
+											{
+												"description": "Parameters for audio output. Required when modalities includes 'audio'.",
+												"properties": {
+													"format": {
+														"enum": [
+															"wav",
+															"aac",
+															"mp3",
+															"flac",
+															"opus",
+															"pcm16"
+														],
+														"type": "string"
+													},
+													"voice": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"required": [
+													"voice",
+													"format"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"chat_template_kwargs": {
+										"properties": {
+											"clear_thinking": {
+												"default": false,
+												"description": "If false, preserves reasoning context between turns.",
+												"type": "boolean"
+											},
+											"enable_thinking": {
+												"default": true,
+												"description": "Wether to enable reasoning, enabled by default.",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"frequency_penalty": {
+										"maximum": 2,
+										"minimum": -2,
+										"nullable": true,
+										"type": "number"
+									},
+									"function_call": {
+										"anyOf": [
+											{
+												"enum": [
+													"none",
+													"auto"
+												],
+												"type": "string"
+											},
+											{
+												"properties": {
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"description": {
+													"description": "A description of what the function does.",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the function to be called.",
+													"type": "string"
+												},
+												"parameters": {
+													"description": "The parameters the function accepts, described as a JSON Schema object.",
+													"type": "object"
+												},
+												"strict": {
+													"nullable": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"maxItems": 128,
+										"minItems": 1,
+										"type": "array"
+									},
+									"logit_bias": {
+										"nullable": true,
+										"type": "object"
+									},
+									"logprobs": {
+										"nullable": true,
+										"type": "boolean"
+									},
+									"max_completion_tokens": {
+										"nullable": true,
+										"type": "integer"
+									},
+									"max_tokens": {
+										"nullable": true,
+										"type": "integer"
+									},
+									"metadata": {
+										"nullable": true,
+										"type": "object"
+									},
+									"modalities": {
+										"items": {
+											"enum": [
+												"text",
+												"audio"
+											],
+											"type": "string"
+										},
+										"nullable": true,
+										"type": "array"
+									},
+									"model": {
+										"description": "ID of the model to use (e.g. '@cf/zai-org/glm-4.7-flash, etc').",
+										"type": "string"
+									},
+									"n": {
+										"maximum": 128,
+										"minimum": 1,
+										"nullable": true,
+										"type": "integer"
+									},
+									"parallel_tool_calls": {
+										"default": true,
+										"description": "Whether to enable parallel function calling during tool use.",
+										"type": "boolean"
+									},
+									"prediction": {
+										"anyOf": [
+											{
+												"properties": {
+													"content": {
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"items": {
+																	"properties": {
+																		"text": {
+																			"type": "string"
+																		},
+																		"type": {
+																			"enum": [
+																				"text"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"text"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														]
+													},
+													"type": {
+														"enum": [
+															"content"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type",
+													"content"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"presence_penalty": {
+										"maximum": 2,
+										"minimum": -2,
+										"nullable": true,
+										"type": "number"
+									},
+									"prompt": {
+										"description": "The input text prompt for the model to generate a response.",
+										"minLength": 1,
+										"type": "string"
+									},
+									"reasoning_effort": {
+										"enum": [
+											"low",
+											"medium",
+											"high"
+										],
+										"nullable": true,
+										"type": "string"
+									},
+									"response_format": {
+										"anyOf": [
+											{
+												"description": "Specifies the format the model must output.",
+												"oneOf": [
+													{
+														"properties": {
+															"type": {
+																"enum": [
+																	"text"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"type": {
+																"enum": [
+																	"json_object"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"json_schema": {
+																"properties": {
+																	"description": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"schema": {
+																		"type": "object"
+																	},
+																	"strict": {
+																		"nullable": true,
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"json_schema"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"json_schema"
+														],
+														"type": "object"
+													}
+												]
+											}
+										]
+									},
+									"seed": {
+										"nullable": true,
+										"type": "integer"
+									},
+									"service_tier": {
+										"enum": [
+											"auto",
+											"default",
+											"flex",
+											"scale",
+											"priority"
+										],
+										"nullable": true,
+										"type": "string"
+									},
+									"stop": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"items": {
+													"type": "string"
+												},
+												"maxItems": 4,
+												"minItems": 1,
+												"type": "array"
+											}
+										]
+									},
+									"store": {
+										"nullable": true,
+										"type": "boolean"
+									},
+									"stream": {
+										"nullable": true,
+										"type": "boolean"
+									},
+									"stream_options": {
+										"anyOf": [
+											{
+												"properties": {
+													"include_obfuscation": {
+														"type": "boolean"
+													},
+													"include_usage": {
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										]
+									},
+									"temperature": {
+										"maximum": 2,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number"
+									},
+									"tool_choice": {
+										"anyOf": [
+											{
+												"description": "Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.",
+												"oneOf": [
+													{
+														"enum": [
+															"none",
+															"auto",
+															"required"
+														],
+														"type": "string"
+													},
+													{
+														"description": "Force a specific function tool.",
+														"properties": {
+															"function": {
+																"properties": {
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"function"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"function"
+														],
+														"type": "object"
+													},
+													{
+														"description": "Force a specific custom tool.",
+														"properties": {
+															"custom": {
+																"properties": {
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"custom"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"custom"
+														],
+														"type": "object"
+													},
+													{
+														"description": "Constrain to an allowed subset of tools.",
+														"properties": {
+															"allowed_tools": {
+																"properties": {
+																	"mode": {
+																		"enum": [
+																			"auto",
+																			"required"
+																		],
+																		"type": "string"
+																	},
+																	"tools": {
+																		"items": {
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"mode",
+																	"tools"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"allowed_tools"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"allowed_tools"
+														],
+														"type": "object"
+													}
+												]
+											}
+										]
+									},
+									"tools": {
+										"description": "A list of tools the model may call.",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"function": {
+															"properties": {
+																"description": {
+																	"description": "A description of what the function does.",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the function to be called.",
+																	"type": "string"
+																},
+																"parameters": {
+																	"description": "The parameters the function accepts, described as a JSON Schema object.",
+																	"type": "object"
+																},
+																"strict": {
+																	"nullable": true,
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": {
+															"enum": [
+																"function"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"custom": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"format": {
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"text"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"grammar": {
+																					"properties": {
+																						"definition": {
+																							"type": "string"
+																						},
+																						"syntax": {
+																							"enum": [
+																								"lark",
+																								"regex"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"definition",
+																						"syntax"
+																					],
+																					"type": "object"
+																				},
+																				"type": {
+																					"enum": [
+																						"grammar"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"grammar"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": {
+															"enum": [
+																"custom"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"custom"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"top_logprobs": {
+										"maximum": 20,
+										"minimum": 0,
+										"nullable": true,
+										"type": "integer"
+									},
+									"top_p": {
+										"maximum": 1,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number"
+									},
+									"user": {
+										"description": "A unique identifier representing your end-user, for abuse monitoring.",
+										"type": "string"
+									},
+									"web_search_options": {
+										"anyOf": [
+											{
+												"description": "Options for the web search tool (when using built-in web search).",
+												"properties": {
+													"search_context_size": {
+														"default": "medium",
+														"enum": [
+															"low",
+															"medium",
+															"high"
+														],
+														"type": "string"
+													},
+													"user_location": {
+														"properties": {
+															"approximate": {
+																"properties": {
+																	"city": {
+																		"type": "string"
+																	},
+																	"country": {
+																		"type": "string"
+																	},
+																	"region": {
+																		"type": "string"
+																	},
+																	"timezone": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"approximate"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"approximate"
+														],
+														"type": "object"
+													}
+												},
+												"type": "object"
+											}
+										]
+									}
+								},
+								"required": [
+									"prompt"
+								],
+								"title": "Prompt"
+							},
+							{
+								"properties": {
+									"audio": {
+										"anyOf": [
+											{
+												"description": "Parameters for audio output. Required when modalities includes 'audio'.",
+												"properties": {
+													"format": {
+														"enum": [
+															"wav",
+															"aac",
+															"mp3",
+															"flac",
+															"opus",
+															"pcm16"
+														],
+														"type": "string"
+													},
+													"voice": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"properties": {
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id"
+																],
+																"type": "object"
+															}
+														]
+													}
+												},
+												"required": [
+													"voice",
+													"format"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"chat_template_kwargs": {
+										"properties": {
+											"clear_thinking": {
+												"default": false,
+												"description": "If false, preserves reasoning context between turns.",
+												"type": "boolean"
+											},
+											"enable_thinking": {
+												"default": true,
+												"description": "Wether to enable reasoning, enabled by default.",
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"frequency_penalty": {
+										"maximum": 2,
+										"minimum": -2,
+										"nullable": true,
+										"type": "number"
+									},
+									"function_call": {
+										"anyOf": [
+											{
+												"enum": [
+													"none",
+													"auto"
+												],
+												"type": "string"
+											},
+											{
+												"properties": {
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"functions": {
+										"items": {
+											"properties": {
+												"description": {
+													"description": "A description of what the function does.",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the function to be called.",
+													"type": "string"
+												},
+												"parameters": {
+													"description": "The parameters the function accepts, described as a JSON Schema object.",
+													"type": "object"
+												},
+												"strict": {
+													"nullable": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"maxItems": 128,
+										"minItems": 1,
+										"type": "array"
+									},
+									"logit_bias": {
+										"nullable": true,
+										"type": "object"
+									},
+									"logprobs": {
+										"nullable": true,
+										"type": "boolean"
+									},
+									"max_completion_tokens": {
+										"nullable": true,
+										"type": "integer"
+									},
+									"max_tokens": {
+										"nullable": true,
+										"type": "integer"
+									},
+									"messages": {
+										"description": "A list of messages comprising the conversation so far.",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"content": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"text"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
+														},
+														"name": {
+															"type": "string"
+														},
+														"role": {
+															"enum": [
+																"developer"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"role",
+														"content"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"content": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"text"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
+														},
+														"name": {
+															"type": "string"
+														},
+														"role": {
+															"enum": [
+																"system"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"role",
+														"content"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"content": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"items": {
+																		"properties": {
+																			"file": {
+																				"properties": {
+																					"file_data": {
+																						"type": "string"
+																					},
+																					"file_id": {
+																						"type": "string"
+																					},
+																					"filename": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"image_url": {
+																				"properties": {
+																					"detail": {
+																						"default": "auto",
+																						"enum": [
+																							"auto",
+																							"low",
+																							"high"
+																						],
+																						"type": "string"
+																					},
+																					"url": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"input_audio": {
+																				"properties": {
+																					"data": {
+																						"type": "string"
+																					},
+																					"format": {
+																						"enum": [
+																							"wav",
+																							"mp3"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"text",
+																					"image_url",
+																					"input_audio",
+																					"file"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	"minItems": 1,
+																	"type": "array"
+																}
+															]
+														},
+														"name": {
+															"type": "string"
+														},
+														"role": {
+															"enum": [
+																"user"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"role",
+														"content"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"audio": {
+															"anyOf": [
+																{
+																	"properties": {
+																		"id": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"content": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"items": {
+																		"properties": {
+																			"refusal": {
+																				"type": "string"
+																			},
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"text",
+																					"refusal"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
+														},
+														"function_call": {
+															"anyOf": [
+																{
+																	"properties": {
+																		"arguments": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"arguments"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"name": {
+															"type": "string"
+														},
+														"refusal": {
+															"nullable": true,
+															"type": "string"
+														},
+														"role": {
+															"enum": [
+																"assistant"
+															],
+															"type": "string"
+														},
+														"tool_calls": {
+															"items": {
+																"oneOf": [
+																	{
+																		"properties": {
+																			"function": {
+																				"properties": {
+																					"arguments": {
+																						"description": "JSON-encoded arguments string.",
+																						"type": "string"
+																					},
+																					"name": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"arguments"
+																				],
+																				"type": "object"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"function"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"type",
+																			"function"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"custom": {
+																				"properties": {
+																					"input": {
+																						"type": "string"
+																					},
+																					"name": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"name",
+																					"input"
+																				],
+																				"type": "object"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"custom"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"type",
+																			"custom"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"role"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"content": {
+															"anyOf": [
+																{
+																	"type": "string"
+																},
+																{
+																	"items": {
+																		"properties": {
+																			"text": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type",
+																			"text"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
+														},
+														"role": {
+															"enum": [
+																"tool"
+															],
+															"type": "string"
+														},
+														"tool_call_id": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"role",
+														"content",
+														"tool_call_id"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"content": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"role": {
+															"enum": [
+																"function"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"role",
+														"content",
+														"name"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"minItems": 1,
+										"type": "array"
+									},
+									"metadata": {
+										"nullable": true,
+										"type": "object"
+									},
+									"modalities": {
+										"items": {
+											"enum": [
+												"text",
+												"audio"
+											],
+											"type": "string"
+										},
+										"nullable": true,
+										"type": "array"
+									},
+									"model": {
+										"description": "ID of the model to use (e.g. '@cf/zai-org/glm-4.7-flash, etc').",
+										"type": "string"
+									},
+									"n": {
+										"maximum": 128,
+										"minimum": 1,
+										"nullable": true,
+										"type": "integer"
+									},
+									"parallel_tool_calls": {
+										"default": true,
+										"description": "Whether to enable parallel function calling during tool use.",
+										"type": "boolean"
+									},
+									"prediction": {
+										"anyOf": [
+											{
+												"properties": {
+													"content": {
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"items": {
+																	"properties": {
+																		"text": {
+																			"type": "string"
+																		},
+																		"type": {
+																			"enum": [
+																				"text"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"text"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														]
+													},
+													"type": {
+														"enum": [
+															"content"
+														],
+														"type": "string"
+													}
+												},
+												"required": [
+													"type",
+													"content"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"presence_penalty": {
+										"maximum": 2,
+										"minimum": -2,
+										"nullable": true,
+										"type": "number"
+									},
+									"reasoning_effort": {
+										"enum": [
+											"low",
+											"medium",
+											"high"
+										],
+										"nullable": true,
+										"type": "string"
+									},
+									"response_format": {
+										"anyOf": [
+											{
+												"description": "Specifies the format the model must output.",
+												"oneOf": [
+													{
+														"properties": {
+															"type": {
+																"enum": [
+																	"text"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"type": {
+																"enum": [
+																	"json_object"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													{
+														"properties": {
+															"json_schema": {
+																"properties": {
+																	"description": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"schema": {
+																		"type": "object"
+																	},
+																	"strict": {
+																		"nullable": true,
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"json_schema"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"json_schema"
+														],
+														"type": "object"
+													}
+												]
+											}
+										]
+									},
+									"seed": {
+										"nullable": true,
+										"type": "integer"
+									},
+									"service_tier": {
+										"enum": [
+											"auto",
+											"default",
+											"flex",
+											"scale",
+											"priority"
+										],
+										"nullable": true,
+										"type": "string"
+									},
+									"stop": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"items": {
+													"type": "string"
+												},
+												"maxItems": 4,
+												"minItems": 1,
+												"type": "array"
+											}
+										]
+									},
+									"store": {
+										"nullable": true,
+										"type": "boolean"
+									},
+									"stream": {
+										"nullable": true,
+										"type": "boolean"
+									},
+									"stream_options": {
+										"anyOf": [
+											{
+												"properties": {
+													"include_obfuscation": {
+														"type": "boolean"
+													},
+													"include_usage": {
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										]
+									},
+									"temperature": {
+										"maximum": 2,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number"
+									},
+									"tool_choice": {
+										"anyOf": [
+											{
+												"description": "Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.",
+												"oneOf": [
+													{
+														"enum": [
+															"none",
+															"auto",
+															"required"
+														],
+														"type": "string"
+													},
+													{
+														"description": "Force a specific function tool.",
+														"properties": {
+															"function": {
+																"properties": {
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"function"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"function"
+														],
+														"type": "object"
+													},
+													{
+														"description": "Force a specific custom tool.",
+														"properties": {
+															"custom": {
+																"properties": {
+																	"name": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"custom"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"custom"
+														],
+														"type": "object"
+													},
+													{
+														"description": "Constrain to an allowed subset of tools.",
+														"properties": {
+															"allowed_tools": {
+																"properties": {
+																	"mode": {
+																		"enum": [
+																			"auto",
+																			"required"
+																		],
+																		"type": "string"
+																	},
+																	"tools": {
+																		"items": {
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"mode",
+																	"tools"
+																],
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"allowed_tools"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"allowed_tools"
+														],
+														"type": "object"
+													}
+												]
+											}
+										]
+									},
+									"tools": {
+										"description": "A list of tools the model may call.",
+										"items": {
+											"oneOf": [
+												{
+													"properties": {
+														"function": {
+															"properties": {
+																"description": {
+																	"description": "A description of what the function does.",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the function to be called.",
+																	"type": "string"
+																},
+																"parameters": {
+																	"description": "The parameters the function accepts, described as a JSON Schema object.",
+																	"type": "object"
+																},
+																"strict": {
+																	"nullable": true,
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": {
+															"enum": [
+																"function"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"function"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"custom": {
+															"properties": {
+																"description": {
+																	"type": "string"
+																},
+																"format": {
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"type": {
+																					"enum": [
+																						"text"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"grammar": {
+																					"properties": {
+																						"definition": {
+																							"type": "string"
+																						},
+																						"syntax": {
+																							"enum": [
+																								"lark",
+																								"regex"
+																							],
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"definition",
+																						"syntax"
+																					],
+																					"type": "object"
+																				},
+																				"type": {
+																					"enum": [
+																						"grammar"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"grammar"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"name": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name"
+															],
+															"type": "object"
+														},
+														"type": {
+															"enum": [
+																"custom"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type",
+														"custom"
+													],
+													"type": "object"
+												}
+											]
+										},
+										"type": "array"
+									},
+									"top_logprobs": {
+										"maximum": 20,
+										"minimum": 0,
+										"nullable": true,
+										"type": "integer"
+									},
+									"top_p": {
+										"maximum": 1,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number"
+									},
+									"user": {
+										"description": "A unique identifier representing your end-user, for abuse monitoring.",
+										"type": "string"
+									},
+									"web_search_options": {
+										"anyOf": [
+											{
+												"description": "Options for the web search tool (when using built-in web search).",
+												"properties": {
+													"search_context_size": {
+														"default": "medium",
+														"enum": [
+															"low",
+															"medium",
+															"high"
+														],
+														"type": "string"
+													},
+													"user_location": {
+														"properties": {
+															"approximate": {
+																"properties": {
+																	"city": {
+																		"type": "string"
+																	},
+																	"country": {
+																		"type": "string"
+																	},
+																	"region": {
+																		"type": "string"
+																	},
+																	"timezone": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": {
+																"enum": [
+																	"approximate"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"approximate"
+														],
+														"type": "object"
+													}
+												},
+												"type": "object"
+											}
+										]
+									}
+								},
+								"required": [
+									"messages"
+								],
+								"title": "Messages"
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Object with user data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/zai-org/glm-4.7-flash model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-api-token-group": [
+			"Workers AI Write",
+			"Workers AI Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/ai/run/@hf/google/gemma-7b-it": {
 		"operationId": "workers-ai-post-run-hf-google-gemma-7b-it",
 		"parameters": [

@@ -882,8 +882,42 @@
 					"schema": {
 						"properties": {
 							"audio": {
-								"description": "Base64 encoded value of the audio data.",
-								"type": "string"
+								"anyOf": [
+									{
+										"description": "Base64 encoded value of the audio data.",
+										"type": "string"
+									},
+									{
+										"properties": {
+											"body": {
+												"type": "object"
+											},
+											"contentType": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								]
+							},
+							"beam_size": {
+								"default": 5,
+								"description": "The number of beams to use in beam search decoding. Higher values may improve accuracy at the cost of speed.",
+								"type": "integer"
+							},
+							"compression_ratio_threshold": {
+								"default": 2.4,
+								"description": "Threshold for filtering out segments with high compression ratio, which often indicate repetitive or hallucinated text.",
+								"type": "number"
+							},
+							"condition_on_previous_text": {
+								"default": true,
+								"description": "Whether to condition on previous text during transcription. Setting to false may help prevent hallucination loops.",
+								"type": "boolean"
+							},
+							"hallucination_silence_threshold": {
+								"description": "Optional threshold (in seconds) to skip silent periods that may cause hallucinations.",
+								"type": "number"
 							},
 							"initial_prompt": {
 								"description": "A text prompt to help provide context to the model on the contents of the audio.",
@@ -893,8 +927,18 @@
 								"description": "The language of the audio being transcribed or translated.",
 								"type": "string"
 							},
+							"log_prob_threshold": {
+								"default": -1,
+								"description": "Threshold for filtering out segments with low average log probability, indicating low confidence.",
+								"type": "number"
+							},
+							"no_speech_threshold": {
+								"default": 0.6,
+								"description": "Threshold for detecting no-speech segments. Segments with no-speech probability above this value are skipped.",
+								"type": "number"
+							},
 							"prefix": {
-								"description": "The prefix it appended the the beginning of the output of the transcription and can guide the transcription result.",
+								"description": "The prefix appended to the beginning of the output of the transcription and can guide the transcription result.",
 								"type": "string"
 							},
 							"task": {

@@ -1503,8 +1503,45 @@
 												"items": {
 													"properties": {
 														"content": {
-															"description": "The content of the message as a string.",
-															"type": "string"
+															"anyOf": [
+																{
+																	"description": "The content of the message as a string.",
+																	"type": "string"
+																},
+																{
+																	"description": "Array of content parts (text, image_url, etc.).",
+																	"items": {
+																		"properties": {
+																			"image_url": {
+																				"description": "Image URL object (when type is 'image_url').",
+																				"properties": {
+																					"url": {
+																						"description": "Image URI with data (e.g. data:image/jpeg;base64,/9j/...).",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"url"
+																				],
+																				"type": "object"
+																			},
+																			"text": {
+																				"description": "Text content (when type is 'text').",
+																				"type": "string"
+																			},
+																			"type": {
+																				"description": "Type of the content part (e.g. 'text', 'image_url').",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"type"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															]
 														},
 														"role": {
 															"description": "The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool').",
