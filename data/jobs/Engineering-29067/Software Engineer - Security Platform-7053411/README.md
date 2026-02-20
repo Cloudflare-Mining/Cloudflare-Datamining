@@ -6,27 +6,26 @@
 	</div>
 </div>
 <p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
-<h3>About the team</h3>
-<p>The Security Platform team is responsible for secrets and internal certificate management at Cloudflare, and has the mandate of building powerful and robust infrastructure and tools that enable other engineering teams to deliver secure products to our customers without sacrificing development velocity.&nbsp;</p>
-<h3>What you’ll do</h3>
-<ul>
-	<li>Build secure and resilient distributed systems for secrets and key management that runs across our edge network spanning more than 310 cities in over 120 countries</li>
-	<li>Design and benchmark proposals; identify bottlenecks in existing systems</li>
-	<li>Work with and contribute to open source projects that help accelerate our delivery</li>
-</ul>
-<h3>What you’ll need</h3>
-<ul>
-	<li>Familiarity with gossip, consensus and WAL system design and protocols</li>
-	<li>Experience working with large-scale systems (&gt;10,000 nodes) and solving associated challenges</li>
-	<li>Strong technical problem-solving skills and ability to work under design constraints</li>
-	<li>Worked with codebases and developed in Go or Rust</li>
-</ul>
-<h3>Bonus points</h3>
-<ul>
-	<li>Track record of contributing to open source distributed systems projects</li>
-	<li>Strong cryptography background and able to work with cryptosystems at the primitives level</li>
-	<li>Worked with HSMs, TPMs, or other platform TEEs (AMD SEV, Intel SGX, Apple Secure Enclave)</li>
-</ul>
+<h3>&nbsp;</h3>
+<div><strong>About the team</strong><br>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.<br><br><strong>What you’ll do</strong><br>You’ll build and operate secure and resilient distributed systems for secrets and key management, running across our network that spans more than 310 cities in over 120 countries. Our focus is strengthening/re-architecting internal PKI and machine/workload identity. You’ll run and support the systems we build, both in an operational sense and by helping other internal developers use them. You’ll consult on the design and architecture of new systems and products to ensure they are built securely and use our services correctly.<br><br><strong>Required skills</strong></div>
+<div>
+	<ul>
+		<li>Software development and distributed systems design expertise.</li>
+		<li>Strong security background with a focus on implementation, not policy/compliance.</li>
+	</ul>
+</div>
+<div><strong>Bonus nice-to-have skills</strong></div>
+<div>
+	<ul>
+		<li>Track record of contributing to open source security or distributed systems projects.</li>
+		<li>Cryptography background and ability to work with cryptosystems at the primitives level.</li>
+		<li>Experience with HSMs, TPMs, or other platform TEEs (e.g. AMD SEV, Intel SGX, Apple Secure Enclave).</li>
+		<li>Familiarity with HashiCorp Vault or OpenBao, or similar.</li>
+		<li>Linux/UNIX system administration proficiency.</li>
+		<li>Familiarity with Go and/or Python + Salt specifically</li>
+	</ul>
+</div>
+<h3>&nbsp;</h3>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
