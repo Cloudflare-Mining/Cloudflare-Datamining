@@ -536,6 +536,28 @@
 										"planValues": [
 											{
 												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1LK9fF82own6GiNvfBLvY8",
+												"textValue": "Webinar",
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "3On7RHHe8aoegfMQ6cYLVR",
 												"textValue": "Focused sessions",
 												"plan": {
@@ -1442,6 +1464,58 @@
 											{
 												"contentTypeId": "planElementFeatureValueBoolean",
 												"contentfulId": "lhVOh8P2FIi0Kp3Zv2qdF",
+												"value": true,
+												"plan": {
+													"contentfulId": "340voCDNPomfIrJeJLp8MC",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Premium Success",
+													"name": "Premium success",
+													"description": "> ",
+													"pricingDescription": "Optional upgrade, tiered by annual contract value",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "5FsD038EOH5mygYiTeUhsb",
+										"contentTypeId": "planElementFeatures",
+										"name": "Analytics and value reporting",
+										"description": "Available for highest Premium package tier only.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6ZGIGut7mBXtNn2Lu9prIV",
+												"value": false,
+												"plan": {
+													"contentfulId": "5FjS0AD9W1kke1zhsrm16Q",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Standard Success",
+													"name": "Standard success",
+													"description": "> ",
+													"pricingDescription": "Included with Enterprise plans",
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "06xeFhoHDA6lZZ8fbWL13",
 												"value": true,
 												"plan": {
 													"contentfulId": "340voCDNPomfIrJeJLp8MC",
