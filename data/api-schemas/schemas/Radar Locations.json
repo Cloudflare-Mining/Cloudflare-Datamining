@@ -37,6 +37,46 @@
 				}
 			},
 			{
+				"description": "Filters results by region.",
+				"in": "query",
+				"name": "region",
+				"schema": {
+					"description": "Filters results by region.",
+					"example": "Middle East",
+					"maxLength": 100,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by subregion.",
+				"in": "query",
+				"name": "subregion",
+				"schema": {
+					"description": "Filters results by subregion.",
+					"example": "Southern Europe",
+					"maxLength": 100,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by continent code.",
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Filters results by continent code.",
+					"enum": [
+						"AF",
+						"AS",
+						"EU",
+						"NA",
+						"OC",
+						"SA"
+					],
+					"example": "EU",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Format in which results will be returned.",
 				"in": "query",
 				"name": "format",
@@ -66,6 +106,10 @@
 														"example": "AF",
 														"type": "string"
 													},
+													"continent": {
+														"example": "AS",
+														"type": "string"
+													},
 													"latitude": {
 														"description": "A numeric string.",
 														"example": "10",
@@ -81,10 +125,21 @@
 													"name": {
 														"example": "Afghanistan",
 														"type": "string"
+													},
+													"region": {
+														"example": "Middle East",
+														"type": "string"
+													},
+													"subregion": {
+														"example": "Southern Asia",
+														"type": "string"
 													}
 												},
 												"required": [
 													"name",
+													"region",
+													"subregion",
+													"continent",
 													"latitude",
 													"longitude",
 													"alpha2"
@@ -225,6 +280,10 @@
 													"example": 5,
 													"type": "integer"
 												},
+												"continent": {
+													"example": "AS",
+													"type": "string"
+												},
 												"latitude": {
 													"description": "A numeric string.",
 													"example": "10",
@@ -254,6 +313,7 @@
 												"name",
 												"region",
 												"subregion",
+												"continent",
 												"latitude",
 												"longitude",
 												"alpha2",

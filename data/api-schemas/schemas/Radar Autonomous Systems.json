@@ -799,6 +799,269 @@
 			"pro": true
 		}
 	},
+	"GET /radar/entities/asns/botnet_threat_feed": {
+		"description": "Retrieves a ranked list of Autonomous Systems based on their presence in the Cloudflare Botnet Threat Feed. Rankings can be sorted by offense count or number of bad IPs. Optionally compare to a previous date to see rank changes.",
+		"operationId": "radar-get-as-botnet-threat-feed",
+		"parameters": [
+			{
+				"description": "Limits the number of objects returned in the response.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 5,
+					"description": "Limits the number of objects returned in the response.",
+					"example": 5,
+					"exclusiveMinimum": true,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Skips the specified number of objects before fetching the results.",
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"description": "Skips the specified number of objects before fetching the results.",
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Metric to rank ASNs by.",
+				"in": "query",
+				"name": "metric",
+				"schema": {
+					"default": "NUMBER_OF_OFFENDING_IPS",
+					"description": "Metric to rank ASNs by.",
+					"enum": [
+						"OFFENSE_COUNT",
+						"NUMBER_OF_OFFENDING_IPS"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The date to retrieve (YYYY-MM-DD format). If not specified, returns the most recent available data. Note: This is the date the report was generated. The report is generated from information collected from the previous day (e.g., the 2026-02-23 entry contains data from 2026-02-22).",
+				"in": "query",
+				"name": "date",
+				"schema": {
+					"description": "The date to retrieve (YYYY-MM-DD format). If not specified, returns the most recent available data. Note: This is the date the report was generated. The report is generated from information collected from the previous day (e.g., the 2026-02-23 entry contains data from 2026-02-22).",
+					"example": "2026-02-04",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Relative date range for rank change comparison (e.g., \"1d\", \"7d\", \"30d\").",
+				"in": "query",
+				"name": "compareDateRange",
+				"schema": {
+					"description": "Relative date range for rank change comparison (e.g., \"1d\", \"7d\", \"30d\").",
+					"example": "7d",
+					"pattern": "^([1-9][0-9]?|[1-9][0-9]{1,2}|3[0-5][0-9]|36[0-4])d|([1-9]|[1-4][0-9]|5[0-2])w$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by location. Specify an alpha-2 location code.",
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Filters results by location. Specify an alpha-2 location code.",
+					"example": "US",
+					"maxLength": 2,
+					"minLength": 2,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Filters results by Autonomous System. Specify one or more Autonomous System Numbers (ASNs) as a comma-separated list. Prefix with `-` to exclude ASNs from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Sort order.",
+				"in": "query",
+				"name": "sortOrder",
+				"schema": {
+					"description": "Sort order.",
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"example": "desc",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Format in which results will be returned.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format in which results will be returned.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"ases": {
+											"items": {
+												"properties": {
+													"asn": {
+														"example": 4134,
+														"type": "integer"
+													},
+													"country": {
+														"example": "CN",
+														"type": "string"
+													},
+													"name": {
+														"example": "CHINANET-BACKBONE",
+														"type": "string"
+													},
+													"rank": {
+														"example": 1,
+														"type": "integer"
+													},
+													"rankChange": {
+														"example": -2,
+														"type": "integer"
+													}
+												},
+												"required": [
+													"asn",
+													"name",
+													"country",
+													"rank"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"meta": {
+											"properties": {
+												"compareDate": {
+													"example": "2026-01-28",
+													"type": "string"
+												},
+												"date": {
+													"example": "2026-02-04",
+													"type": "string"
+												},
+												"total": {
+													"example": 50,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"date",
+												"total"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"ases",
+										"meta"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get AS rankings by botnet threat feed activity",
+		"tags": [
+			"Radar Autonomous Systems"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/entities/asns/ip": {
 		"description": "Retrieves the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 		"operationId": "radar-get-entities-asn-by-ip",
