@@ -9,11 +9,11 @@
 <p><strong><span class="il">About The Team</span></strong></p>
 <p><span class="il">Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</span></p>
 <p><strong>About The Role&nbsp;</strong></p>
-<p>As a Senior Engineer: Resiliency, you will be part of a team responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. You will work on expanding and evolving the suite of automations that allow our Infrastructure Operations partners to provision, expand, repair, and decommission our rapidly growing fleet of servers. Your work will contribute to an increasingly autonomous system that reduces manual effort and supports Cloudflare’s growth. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
+<p>As a Engineer: Resiliency, you will be part of a team responsible for developing and maintaining the systems that manage Cloudflare’s infrastructure at scale. You will work on expanding and evolving the suite of automations that allow our Infrastructure Operations partners to provision, expand, repair, and decommission our rapidly growing fleet of servers. Your work will contribute to an increasingly autonomous system that reduces manual effort and supports Cloudflare’s growth. You will play a key role in the development of the infrastructure that powers Cloudflare’s scale.</p>
 <p>You will collaborate with the team to understand business needs and develop technical solutions. You will thrive in a fast-paced iterative engineering environment and work closely with internal customers to understand their requirements.</p>
 <p><strong>Examples of desirable skills, knowledge and experience.</strong></p>
 <ul>
-	<li>At least 8+ years of hands-on software development experience on meaningfully complex systems.</li>
+	<li>At least 5+ years of hands-on software development experience on meaningfully complex systems.</li>
 	<li>Excellent proficiency in one of Python, Go, or Rust, with deep understanding of the language and its best practices.</li>
 	<li>Experience working with Linux systems</li>
 	<li>Basic networking knowledge, like VLAN, Routing, DNS, etc</li>
