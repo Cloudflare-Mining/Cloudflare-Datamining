@@ -5,36 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About the Team</strong></h3>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>Location :- Bengaluru</strong></h3>
-<h3><strong>What You'll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced&nbsp;<strong>Technical&nbsp;</strong><strong>Support Engineer</strong><strong>&nbsp;</strong>to join our team. You will work with our broad customer base on a variety of technical support issues ranging from troubleshooting network performance and security concerns to providing guidance on product configurations and best practices.&nbsp;</p>
+<p><strong>Available Locations: </strong>Bengaluru, India</p>
+<p><strong>About the Role:</strong></p>
+<p>The Oracle Finance Functional Consultant will be a primary functional expert responsible for the configuration, validation, and optimization of the <strong>Oracle Fusion Cloud ERP Financials</strong> modules. This role is critical for the company-wide Oracle migration, focusing on configuring systems to accurately reflect accounting policies and compliance standards across General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Serve as a trusted technical advisor, providing advanced support for enterprise customers using Cloudflare’s suite of products.</li>
-	<li>Engage with customers through email, phone, and chat, providing clear, concise, and empathetic communication to effectively address their technical needs and ensure a positive support experience.</li>
-	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>Partner with Cloudflare’s Product, Engineering, and Security teams to escalate and resolve advanced customer issues.</li>
-	<li>Provide feedback based on customer interactions to drive product improvements and ensure alignment with user needs.</li>
-	<li>Assist customers in identifying and responding to security incidents, leveraging Cloudflare’s threat intelligence and security tools.</li>
-	<li>This role requires working in rotational shifts, including evenings, weekends, and public holidays, to support our global customer base.</li>
+	<li><strong>Financial Module Ownership:</strong> Define and own the functional configuration roadmap for key financial modules, including General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing<strong>.</strong></li>
+	<li><strong>Compliance and System Configuration:</strong> Directly design and configure Oracle Fusion to ensure enforcement of critical financial compliance standards (e.g., ASC 606/IFRS 15, SOX).</li>
+	<li><strong>Reporting Design:</strong> Define and develop robust financial reports and dashboards that meet the needs of internal and external stakeholders using Oracle Fusion reporting tools (e.g., OTBI, FRS, Smartview).</li>
+	<li><strong>Implementation &amp; Data Migration:</strong> Lead the configuration, unit testing, and cutover activities for financial modules, including defining the strategy and execution for data conversion of critical master and transactional data (e.g., customers, open invoices).</li>
+	<li><strong>Process Alignment:</strong> Partner with Finance Business Users and Business Systems Analysts to ensure system configurations align with corporate policy and drive process efficiency.</li>
 </ul>
-<h3><strong>What We're Looking For</strong></h3>
+<p><strong>Required Qualifications</strong></p>
 <ul>
-	<li>Minimum 8 years experience working as a Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
-	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal, and you are fluent in English.</li>
-	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>You are a motivated self-starter who always looking to expand your skill sets, you take initiatives and capable of learning new technologies / systems / features with little guidance</li>
-	<li>You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</li>
-	<li>You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</li>
-	<li>You have experience installing and configuring web servers like Apache, Nginx, and IIS</li>
-	<li>Proficiency in networking fundamentals, including DNS, VPNs, firewalls, and traffic routing.</li>
-	<li>Experience supporting cloud platforms (AWS, Azure, GCP) and SaaS application integrations.</li>
-	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers.</li>
-	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience).</li>
-	<li>Relevant certifications such as CISSP, CCSP, GCIA, GCIH, GCFA or equivalent.</li>
+	<li>10+ years of progressive experience as a Consultant, specifically supporting financial ERP systems.</li>
+	<li>5+ years of hands-on, end-to-end implementation and <strong>configuration experience with Oracle Fusion Cloud Financials</strong>, focusing on the General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</li>
+	<li>Deep functional understanding of core accounting principles.</li>
+	<li>Proven ability to create/translate detailed functional design documents and author system configuration from design through deployment.</li>
+</ul>
+<p><strong>Preferred Qualifications</strong></p>
+<ul>
+	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
+	<li>Hands-on experience with other Oracle EPM modules like EDMCS, FCCS and ARCS.</li>
+	<li>Third-party supporting software experience like Avalara, Kyriba, Zip, etc.</li>
+	<li>Exposure to the Data Center Infrastructure industry</li>
+	<li>Relevant professional product/functional certifications (e.g., CPA, PMP, Oracle Cloud certifications)</li>
+	<li>Working knowledge of various AI Agents within Oracle Fusion Cloud Applications</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
