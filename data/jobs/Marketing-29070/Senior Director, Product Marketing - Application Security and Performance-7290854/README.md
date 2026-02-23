@@ -5,49 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin TX, Washington DC, Denver CO</strong></p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p><strong>About the Department</strong></p>
-<p>The Growth Engineering team is responsible for building world-class experiences that help the millions of Cloudflare self-service customers get what they need faster, from acquisition and onboarding all the way through to adoption and scale up. Our team is focused on high velocity experimentation and thoughtful optimizations to that experience on Cloudflare’s properties.</p>
-<p>This team has a dual mandate, also focusing on evolving our current marketing attribution, customer event ingress and experimentation capabilities that process billions of events across those properties to drive data-driven decision making.&nbsp;</p>
-<p>As the manager of the team responsible for Product Growth and Experimentation, your job will be to deliver on those growth-driven features and experiences while evolving our current marketing attribution, consumer event ingress and experimentation setup across these experiences, and partner with many teams on implementations, and make those capabilities more generally available across Cloudflare’s customer-facing properties.</p>
-<p><strong>About the Role</strong></p>
-<p>The Experimentation and Data Capture Engineering Manager will be responsible for the following:</p>
+<p><strong>Available Locations: Austin, TX (Preferred), San Francisco, CA, New York, NY</strong></p>
+<p><strong>Role</strong></p>
+<p>Are you a seasoned product marketing leader with a passion for cybersecurity and a drive transformation in the marketplace.&nbsp; Cloudflare is seeking an experienced and results-oriented individual to lead our application security and performance product marketing team. This high-impact role offers the opportunity to directly influence pipeline and revenue growth for our App services, introduce innovative use cases and products to market, and develop compelling messaging that drives new customer acquisition and expansion.</p>
+<p>The application security and performance portfolio includes our full stack of app security and performance services from web application firewall, API Security, Bot Management, rate limiting, DDOS and client-side protection products. Successful candidates will have a passion for helping to build a better Internet by enabling new applications, including AI-enabled services and web properties to improve their security posture and provide excellent user performance and experience. You will have a drive to understand customer needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives.&nbsp; You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</p>
+<p>This role is a part of our Product Marketing team and reports into our Vice President of Solutions, Product and Technical&nbsp; Marketing.&nbsp; This will be a highly visible leadership role within the organization, which will have a significant impact on the long-term growth of the fast-growing Cloudflare business.</p>
+<p><strong>What You’ll Get To Do In This Role</strong></p>
 <ul>
-	<li>Manage the engineering team and drive technical delivery for Experimentation and Product Growth capabilities intended for all of our customer-facing UI properties, driving user acquisition, engagement, and retention through data-driven strategies and technical implementations</li>
-	<li>Lead the team who work with a cross-functional team of engineers, data scientists, marketers, and product managers to design, implement, and optimize growth initiatives that scale our customer tools and maximize their impact</li>
-	<li>Executing as a ‘player-coach’, spending at least 20% of your time delivering alongside the team</li>
-	<li>Collaborate with product, design and stakeholders to establish outcome measurements, roadmaps and key deliverables</li>
-	<li>Own and lead execution of engineering projects in the area of web data acquisition and experimentation</li>
-	<li>Work across the entire product lifecycle from conceptualization through production</li>
-	<li>Build features end-to-end: front-end, back-end, IaC, system design, debugging and testing, engaging with feature teams and data processing teams</li>
-	<li>Inspire and mentor less experienced engineers</li>
-	<li>Work closely with the trust and safety team to handle any compliance or data privacy-related matters</li>
-	<li>Analytically driven to co-own and drive up product adoption KPIs</li>
+	<li>Own go-to-market strategy and activities for application security and performance products.&nbsp;</li>
+	<li>Lead and manage a small team of PMMs to execute the GTM plan for App Services.</li>
+	<li>Understand and exploit the weaknesses of App Sec and Performance vendors as well as cloud providers,</li>
+	<li>Evangelize Cloudflare products to analysts, prospects, and customers—in customer meetings, webinars, conferences and tradeshows.</li>
+	<li>Be the voice of the product to the entire marketing team. Be the voice of the marketing team to the product management and CTO organization.</li>
+	<li>Develop differentiated messaging for our application security and performance portfolio, and platform.</li>
+	<li>Develop and execute integrated marketing campaigns to drive demand for application security and performance products, solutions and use cases.</li>
+	<li>Provide support for the field sales teams in the form of sales plays and enablement for both mid-market and enterprise field and partner teams.&nbsp;</li>
+	<li>Partner with our Analyst Relations and product management teams to establish Cloudflare as a security leader and application platform of choice for developing and delivering applications globally.&nbsp;</li>
 </ul>
-<p>We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access, Cloudflare Workers, and Zaraz, these are all tools in our engineer's tool belt, so it is a plus if you have been a customer of ours, even as a free user.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Qualifications</strong></p>
+<p>What we’re looking for In you</p>
 <ul>
-	<li>At least 6 years of relevant experience and at least 3 years of experience managing engineers is preferred</li>
-	<li>Track record of shipping high-quality products and features at scale</li>
-	<li>Specific experience with client-side consumer data capture platforms (Google Tag Manager, Adobe Launch, etc) ideal</li>
-	<li>Familiarity with event driven architectures and high-scale data processing using open-source or commercial systems</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Comfort with TypeScript/JavaScript in a full-stack context required, familiarity with other languages (Go/Rust/Python) a plus</li>
-	<li>Familiarity with global data privacy requirements governed by laws like GDPR/CCPA/etc and how it affects data capture, modeling and analysis</li>
-	<li>Experience with data lake/warehouse products like Clickhouse, Apache Iceberg, etc, and some familiarity with commercial analytics systems (Adobe Analytics, Google BigQuery, etc)</li>
-	<li>Desire to work in a very fast-paced environment</li>
-	<li>Ability to turn business and product ideas into engineering solutions</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
-	<li>Excellent problem-solving skills, and ability to work independently or as part of a team.</li>
+	<li>8+ years of experience in product marketing/product management with at least 5 years in a security-focused role.&nbsp;</li>
+	<li>Experience at one or more cyber security vendors. Knowledge of HTTP, OWASP, Bots, APIs..</li>
+	<li>Success in positioning technical products to both technical users and economic decision makers.</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including product management, sales, comms, and marketing.</li>
+	<li>Management experience, team building and development skills.</li>
+	<li>Ability to manage ambiguity and navigate unforeseen obstacles gracefully.</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
+	<li>BS/BA degree in Marketing, Business, Engineering, or related field.</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $200,000 - $275,,000</span></li>
-	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $170,000 - $233,000</span></li>
+	<li>For San Francisco/ Bay Area hires salary range: $254,000 -$310,000</li>
+	<li>For New York City hires salary range: $241,000 -$295,000</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

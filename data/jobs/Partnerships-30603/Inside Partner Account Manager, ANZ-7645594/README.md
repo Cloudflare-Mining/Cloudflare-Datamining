@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Singapore</strong></p>
+<p><strong>Available Locations: Sydney, Australia</strong></p>
 <p><strong>About The Role</strong></p>
 <p>We are seeking a high-energy, execution-focused <strong data-start="171" data-end="212">Inside Partner Account Manager (iPAM)</strong> to join our Partner Sales Organization. This role serves as a critical frontline sales support function across the Partner Account Management team aligned to Cloudflare’s strategic and focused Power Up partner community.</p>
 <p>The iPAM will play a dual role:</p>

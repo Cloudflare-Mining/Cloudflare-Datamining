@@ -26,7 +26,7 @@
 <p><strong>Experiences might include a combination of the skills below:</strong></p>
 <ul>
 	<li style="font-weight: bold;">Fluency in English and Mandarin is required. Proficiency in Cantonese is considered an advantage.</li>
-	<li>5+ years of prior post-sales customer relationship management</li>
+	<li>3+ years of prior post-sales customer relationship management</li>
 	<li>Deep understanding of how the internet works and the desire to expand that knowledge. For example:</li>
 	<ul>
 		<li>Layers and protocols of the OSI model, such as TCP/IP, TLS, DNS, HTTP</li>
