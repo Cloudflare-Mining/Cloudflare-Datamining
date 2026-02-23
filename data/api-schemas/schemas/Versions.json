@@ -434,19 +434,22 @@
 																"description": "Human-readable message about the version.",
 																"example": "Fixed bug.",
 																"maxLength": 100,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"workers/tag": {
 																"description": "User-provided identifier for the version.",
 																"example": "v1.0.1",
 																"maxLength": 25,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"workers/triggered_by": {
 																"description": "Operation that triggered the creation of the version.",
 																"example": "upload",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -467,7 +470,8 @@
 																			"none"
 																		],
 																		"example": "auto-trailing-slash",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"not_found_handling": {
 																		"default": "none",
@@ -478,7 +482,8 @@
 																			"single-page-application"
 																		],
 																		"example": "404-page",
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"run_worker_first": {
 																		"default": false,
@@ -1633,13 +1638,15 @@
 														"description": "When the version was created.",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Version identifier.",
 														"format": "uuid",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"limits": {
 														"description": "Resource limits enforced at runtime.",
@@ -1659,7 +1666,8 @@
 													"main_module": {
 														"description": "The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).",
 														"example": "index.js",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"migrations": {
 														"description": "Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.",
@@ -1911,7 +1919,8 @@
 													"number": {
 														"description": "The integer version number, starting from one.",
 														"readOnly": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"placement": {
 														"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
@@ -2130,13 +2139,15 @@
 														"description": "The client used to create the version.",
 														"example": "wrangler",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"startup_time_ms": {
 														"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
 														"example": 10,
 														"readOnly": true,
-														"type": "integer"
+														"type": "integer",
+														"x-auditable": true
 													},
 													"usage_model": {
 														"default": "standard",
@@ -2148,7 +2159,8 @@
 															"unbound"
 														],
 														"example": "standard",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2450,19 +2462,22 @@
 															"description": "Human-readable message about the version.",
 															"example": "Fixed bug.",
 															"maxLength": 100,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"workers/tag": {
 															"description": "User-provided identifier for the version.",
 															"example": "v1.0.1",
 															"maxLength": 25,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"workers/triggered_by": {
 															"description": "Operation that triggered the creation of the version.",
 															"example": "upload",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -2483,7 +2498,8 @@
 																		"none"
 																	],
 																	"example": "auto-trailing-slash",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"not_found_handling": {
 																	"default": "none",
@@ -2494,7 +2510,8 @@
 																		"single-page-application"
 																	],
 																	"example": "404-page",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"run_worker_first": {
 																	"default": false,
@@ -3649,13 +3666,15 @@
 													"description": "When the version was created.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Version identifier.",
 													"format": "uuid",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"limits": {
 													"description": "Resource limits enforced at runtime.",
@@ -3675,7 +3694,8 @@
 												"main_module": {
 													"description": "The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).",
 													"example": "index.js",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"migrations": {
 													"description": "Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.",
@@ -3927,7 +3947,8 @@
 												"number": {
 													"description": "The integer version number, starting from one.",
 													"readOnly": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"placement": {
 													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
@@ -4146,13 +4167,15 @@
 													"description": "The client used to create the version.",
 													"example": "wrangler",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"startup_time_ms": {
 													"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
 													"example": 10,
 													"readOnly": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"usage_model": {
 													"default": "standard",
@@ -4164,7 +4187,8 @@
 														"unbound"
 													],
 													"example": "standard",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -4365,19 +4389,22 @@
 										"description": "Human-readable message about the version.",
 										"example": "Fixed bug.",
 										"maxLength": 100,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"workers/tag": {
 										"description": "User-provided identifier for the version.",
 										"example": "v1.0.1",
 										"maxLength": 25,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"workers/triggered_by": {
 										"description": "Operation that triggered the creation of the version.",
 										"example": "upload",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"type": "object"
@@ -4398,7 +4425,8 @@
 													"none"
 												],
 												"example": "auto-trailing-slash",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"not_found_handling": {
 												"default": "none",
@@ -4409,7 +4437,8 @@
 													"single-page-application"
 												],
 												"example": "404-page",
-												"type": "string"
+												"type": "string",
+												"x-auditable": true
 											},
 											"run_worker_first": {
 												"default": false,
@@ -5564,13 +5593,15 @@
 								"description": "When the version was created.",
 								"format": "date-time",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"id": {
 								"description": "Version identifier.",
 								"format": "uuid",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"limits": {
 								"description": "Resource limits enforced at runtime.",
@@ -5590,7 +5621,8 @@
 							"main_module": {
 								"description": "The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).",
 								"example": "index.js",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"migrations": {
 								"description": "Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.",
@@ -5842,7 +5874,8 @@
 							"number": {
 								"description": "The integer version number, starting from one.",
 								"readOnly": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"placement": {
 								"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
@@ -6061,13 +6094,15 @@
 								"description": "The client used to create the version.",
 								"example": "wrangler",
 								"readOnly": true,
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							},
 							"startup_time_ms": {
 								"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
 								"example": 10,
 								"readOnly": true,
-								"type": "integer"
+								"type": "integer",
+								"x-auditable": true
 							},
 							"usage_model": {
 								"default": "standard",
@@ -6079,7 +6114,8 @@
 									"unbound"
 								],
 								"example": "standard",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -6193,19 +6229,22 @@
 															"description": "Human-readable message about the version.",
 															"example": "Fixed bug.",
 															"maxLength": 100,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"workers/tag": {
 															"description": "User-provided identifier for the version.",
 															"example": "v1.0.1",
 															"maxLength": 25,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"workers/triggered_by": {
 															"description": "Operation that triggered the creation of the version.",
 															"example": "upload",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -6226,7 +6265,8 @@
 																		"none"
 																	],
 																	"example": "auto-trailing-slash",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"not_found_handling": {
 																	"default": "none",
@@ -6237,7 +6277,8 @@
 																		"single-page-application"
 																	],
 																	"example": "404-page",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"run_worker_first": {
 																	"default": false,
@@ -7392,13 +7433,15 @@
 													"description": "When the version was created.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Version identifier.",
 													"format": "uuid",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"limits": {
 													"description": "Resource limits enforced at runtime.",
@@ -7418,7 +7461,8 @@
 												"main_module": {
 													"description": "The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).",
 													"example": "index.js",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"migrations": {
 													"description": "Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.",
@@ -7670,7 +7714,8 @@
 												"number": {
 													"description": "The integer version number, starting from one.",
 													"readOnly": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"placement": {
 													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
@@ -7889,13 +7934,15 @@
 													"description": "The client used to create the version.",
 													"example": "wrangler",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"startup_time_ms": {
 													"description": "Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time).",
 													"example": 10,
 													"readOnly": true,
-													"type": "integer"
+													"type": "integer",
+													"x-auditable": true
 												},
 												"usage_model": {
 													"default": "standard",
@@ -7907,7 +7954,8 @@
 														"unbound"
 													],
 													"example": "standard",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [

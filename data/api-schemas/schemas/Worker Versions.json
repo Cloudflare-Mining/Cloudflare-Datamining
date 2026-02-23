@@ -152,7 +152,8 @@
 																"description": "Unique identifier for the version.",
 																"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"metadata": {
 																"example": {
@@ -167,19 +168,22 @@
 																		"description": "Email of the user who created the version.",
 																		"example": "user@example.com",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"author_id": {
 																		"description": "Identifier of the user who created the version.",
 																		"example": "408cbcdfd4dda4617efef40b04d168a1",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"created_on": {
 																		"description": "When the version was created.",
 																		"example": "2022-11-08T17:19:29.176266Z",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"hasPreview": {
 																		"description": "Whether the version can be previewed.",
@@ -190,7 +194,8 @@
 																		"description": "When the version was last modified.",
 																		"example": "2022-11-08T17:19:29.176266Z",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"source": {
 																		"description": "The source of the version upload.",
@@ -208,7 +213,8 @@
 																		],
 																		"example": "api",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	}
 																},
 																"readOnly": true,
@@ -218,7 +224,8 @@
 																"description": "Sequential version number.",
 																"example": 1,
 																"readOnly": true,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -340,7 +347,8 @@
 																		"description": "Unique identifier for the version.",
 																		"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-auditable": true
 																	},
 																	"metadata": {
 																		"example": {
@@ -355,19 +363,22 @@
 																				"description": "Email of the user who created the version.",
 																				"example": "user@example.com",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"author_id": {
 																				"description": "Identifier of the user who created the version.",
 																				"example": "408cbcdfd4dda4617efef40b04d168a1",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"created_on": {
 																				"description": "When the version was created.",
 																				"example": "2022-11-08T17:19:29.176266Z",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"hasPreview": {
 																				"description": "Whether the version can be previewed.",
@@ -378,7 +389,8 @@
 																				"description": "When the version was last modified.",
 																				"example": "2022-11-08T17:19:29.176266Z",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			},
 																			"source": {
 																				"description": "The source of the version upload.",
@@ -396,7 +408,8 @@
 																				],
 																				"example": "api",
 																				"readOnly": true,
-																				"type": "string"
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"readOnly": true,
@@ -406,7 +419,8 @@
 																		"description": "Sequential version number.",
 																		"example": 1,
 																		"readOnly": true,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -692,7 +706,8 @@
 															"description": "Unique identifier for the version.",
 															"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"metadata": {
 															"example": {
@@ -707,19 +722,22 @@
 																	"description": "Email of the user who created the version.",
 																	"example": "user@example.com",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"author_id": {
 																	"description": "Identifier of the user who created the version.",
 																	"example": "408cbcdfd4dda4617efef40b04d168a1",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"created_on": {
 																	"description": "When the version was created.",
 																	"example": "2022-11-08T17:19:29.176266Z",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"hasPreview": {
 																	"description": "Whether the version can be previewed.",
@@ -730,7 +748,8 @@
 																	"description": "When the version was last modified.",
 																	"example": "2022-11-08T17:19:29.176266Z",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"source": {
 																	"description": "The source of the version upload.",
@@ -748,7 +767,8 @@
 																	],
 																	"example": "api",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"readOnly": true,
@@ -758,7 +778,8 @@
 															"description": "Sequential version number.",
 															"example": 1,
 															"readOnly": true,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														}
 													},
 													"type": "object"
@@ -1913,7 +1934,8 @@
 																			"description": "Hashed script content",
 																			"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"handlers": {
 																			"description": "The names of handlers exported as part of the default export.",
@@ -1933,7 +1955,8 @@
 																			"description": "The client most recently used to deploy this Worker.",
 																			"example": "api",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"named_handlers": {
 																			"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
@@ -1992,7 +2015,8 @@
 																			"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																			"example": "2022-11-08",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"compatibility_flags": {
 																			"description": "Flags that enable or disable certain features in the Workers runtime.",
@@ -2025,7 +2049,8 @@
 																			"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																			"example": "v1",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"usage_model": {
 																			"description": "Usage model for the Worker invocations.",
@@ -2036,7 +2061,8 @@
 																			],
 																			"example": "standard",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -2165,7 +2191,8 @@
 																	"description": "Unique identifier for the version.",
 																	"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"example": {
@@ -2180,19 +2207,22 @@
 																			"description": "Email of the user who created the version.",
 																			"example": "user@example.com",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"author_id": {
 																			"description": "Identifier of the user who created the version.",
 																			"example": "408cbcdfd4dda4617efef40b04d168a1",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"created_on": {
 																			"description": "When the version was created.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"hasPreview": {
 																			"description": "Whether the version can be previewed.",
@@ -2203,7 +2233,8 @@
 																			"description": "When the version was last modified.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"source": {
 																			"description": "The source of the version upload.",
@@ -2221,7 +2252,8 @@
 																			],
 																			"example": "api",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -2231,7 +2263,8 @@
 																	"description": "Sequential version number.",
 																	"example": 1,
 																	"readOnly": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3386,7 +3419,8 @@
 																					"description": "Hashed script content",
 																					"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"handlers": {
 																					"description": "The names of handlers exported as part of the default export.",
@@ -3406,7 +3440,8 @@
 																					"description": "The client most recently used to deploy this Worker.",
 																					"example": "api",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"named_handlers": {
 																					"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
@@ -3465,7 +3500,8 @@
 																					"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																					"example": "2022-11-08",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"compatibility_flags": {
 																					"description": "Flags that enable or disable certain features in the Workers runtime.",
@@ -3498,7 +3534,8 @@
 																					"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																					"example": "v1",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"usage_model": {
 																					"description": "Usage model for the Worker invocations.",
@@ -3509,7 +3546,8 @@
 																					],
 																					"example": "standard",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -5004,7 +5042,8 @@
 																	"description": "Unique identifier for the version.",
 																	"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"metadata": {
 																	"example": {
@@ -5019,19 +5058,22 @@
 																			"description": "Email of the user who created the version.",
 																			"example": "user@example.com",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"author_id": {
 																			"description": "Identifier of the user who created the version.",
 																			"example": "408cbcdfd4dda4617efef40b04d168a1",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"created_on": {
 																			"description": "When the version was created.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"hasPreview": {
 																			"description": "Whether the version can be previewed.",
@@ -5042,7 +5084,8 @@
 																			"description": "When the version was last modified.",
 																			"example": "2022-11-08T17:19:29.176266Z",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"source": {
 																			"description": "The source of the version upload.",
@@ -5060,7 +5103,8 @@
 																			],
 																			"example": "api",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		}
 																	},
 																	"readOnly": true,
@@ -5070,7 +5114,8 @@
 																	"description": "Sequential version number.",
 																	"example": 1,
 																	"readOnly": true,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -6225,7 +6270,8 @@
 																					"description": "Hashed script content",
 																					"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"handlers": {
 																					"description": "The names of handlers exported as part of the default export.",
@@ -6245,7 +6291,8 @@
 																					"description": "The client most recently used to deploy this Worker.",
 																					"example": "api",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"named_handlers": {
 																					"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
@@ -6304,7 +6351,8 @@
 																					"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																					"example": "2022-11-08",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"compatibility_flags": {
 																					"description": "Flags that enable or disable certain features in the Workers runtime.",
@@ -6337,7 +6385,8 @@
 																					"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																					"example": "v1",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"usage_model": {
 																					"description": "Usage model for the Worker invocations.",
@@ -6348,7 +6397,8 @@
 																					],
 																					"example": "standard",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -6494,7 +6544,8 @@
 																			"description": "Unique identifier for the version.",
 																			"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
 																			"readOnly": true,
-																			"type": "string"
+																			"type": "string",
+																			"x-auditable": true
 																		},
 																		"metadata": {
 																			"example": {
@@ -6509,19 +6560,22 @@
 																					"description": "Email of the user who created the version.",
 																					"example": "user@example.com",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"author_id": {
 																					"description": "Identifier of the user who created the version.",
 																					"example": "408cbcdfd4dda4617efef40b04d168a1",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"created_on": {
 																					"description": "When the version was created.",
 																					"example": "2022-11-08T17:19:29.176266Z",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"hasPreview": {
 																					"description": "Whether the version can be previewed.",
@@ -6532,7 +6586,8 @@
 																					"description": "When the version was last modified.",
 																					"example": "2022-11-08T17:19:29.176266Z",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				},
 																				"source": {
 																					"description": "The source of the version upload.",
@@ -6550,7 +6605,8 @@
 																					],
 																					"example": "api",
 																					"readOnly": true,
-																					"type": "string"
+																					"type": "string",
+																					"x-auditable": true
 																				}
 																			},
 																			"readOnly": true,
@@ -6560,7 +6616,8 @@
 																			"description": "Sequential version number.",
 																			"example": 1,
 																			"readOnly": true,
-																			"type": "number"
+																			"type": "number",
+																			"x-auditable": true
 																		}
 																	},
 																	"type": "object"
@@ -7715,7 +7772,8 @@
 																							"description": "Hashed script content",
 																							"example": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
 																							"readOnly": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"handlers": {
 																							"description": "The names of handlers exported as part of the default export.",
@@ -7735,7 +7793,8 @@
 																							"description": "The client most recently used to deploy this Worker.",
 																							"example": "api",
 																							"readOnly": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"named_handlers": {
 																							"description": "Named exports, such as Durable Object class implementations and named entrypoints.",
@@ -7794,7 +7853,8 @@
 																							"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																							"example": "2022-11-08",
 																							"readOnly": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"compatibility_flags": {
 																							"description": "Flags that enable or disable certain features in the Workers runtime.",
@@ -7827,7 +7887,8 @@
 																							"description": "The tag of the Durable Object migration that was most recently applied for this Worker.",
 																							"example": "v1",
 																							"readOnly": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						},
 																						"usage_model": {
 																							"description": "Usage model for the Worker invocations.",
@@ -7838,7 +7899,8 @@
 																							],
 																							"example": "standard",
 																							"readOnly": true,
-																							"type": "string"
+																							"type": "string",
+																							"x-auditable": true
 																						}
 																					},
 																					"readOnly": true,

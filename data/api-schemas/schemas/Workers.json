@@ -1600,24 +1600,28 @@
 														"description": "When the Worker was created.",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"id": {
 														"description": "Immutable ID of the Worker.",
 														"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"logpush": {
 														"default": false,
 														"description": "Whether logpush is enabled for the Worker.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"name": {
 														"description": "Name of the Worker.",
 														"example": "my-worker",
 														"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													},
 													"observability": {
 														"description": "Observability settings for the Worker.",
@@ -1625,13 +1629,15 @@
 															"enabled": {
 																"default": false,
 																"description": "Whether observability is enabled for the Worker.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"head_sampling_rate": {
 																"default": 1,
 																"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 																"example": 1,
-																"type": "number"
+																"type": "number",
+																"x-auditable": true
 															},
 															"logs": {
 																"description": "Log settings for the Worker.",
@@ -1639,18 +1645,21 @@
 																	"enabled": {
 																		"default": false,
 																		"description": "Whether logs are enabled for the Worker.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	},
 																	"head_sampling_rate": {
 																		"default": 1,
 																		"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 																		"example": 1,
-																		"type": "number"
+																		"type": "number",
+																		"x-auditable": true
 																	},
 																	"invocation_logs": {
 																		"default": true,
 																		"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-																		"type": "boolean"
+																		"type": "boolean",
+																		"x-auditable": true
 																	}
 																},
 																"type": "object"
@@ -1840,11 +1849,13 @@
 															"enabled": {
 																"default": false,
 																"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-auditable": true
 															},
 															"previews_enabled": {
 																"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 																"type": "boolean",
+																"x-auditable": true,
 																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
@@ -1874,7 +1885,8 @@
 																"name": {
 																	"description": "Name of the consumer Worker.",
 																	"example": "my-tail-consumer",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"required": [
@@ -1889,7 +1901,8 @@
 														"description": "When the Worker was most recently updated.",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -2358,24 +2371,28 @@
 													"description": "When the Worker was created.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",
 													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpush": {
 													"default": false,
 													"description": "Whether logpush is enabled for the Worker.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the Worker.",
 													"example": "my-worker",
 													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"observability": {
 													"description": "Observability settings for the Worker.",
@@ -2383,13 +2400,15 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether observability is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"head_sampling_rate": {
 															"default": 1,
 															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 															"example": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -2397,18 +2416,21 @@
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"head_sampling_rate": {
 																	"default": 1,
 																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -2598,11 +2620,13 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"previews_enabled": {
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 															"type": "boolean",
+															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
@@ -2632,7 +2656,8 @@
 															"name": {
 																"description": "Name of the consumer Worker.",
 																"example": "my-tail-consumer",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -2647,7 +2672,8 @@
 													"description": "When the Worker was most recently updated.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3188,24 +3214,28 @@
 										"description": "When the Worker was created.",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"id": {
 										"description": "Immutable ID of the Worker.",
 										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"logpush": {
 										"default": false,
 										"description": "Whether logpush is enabled for the Worker.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "Name of the Worker.",
 										"example": "my-worker",
 										"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"observability": {
 										"description": "Observability settings for the Worker.",
@@ -3213,13 +3243,15 @@
 											"enabled": {
 												"default": false,
 												"description": "Whether observability is enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"head_sampling_rate": {
 												"default": 1,
 												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 												"example": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											},
 											"logs": {
 												"description": "Log settings for the Worker.",
@@ -3227,18 +3259,21 @@
 													"enabled": {
 														"default": false,
 														"description": "Whether logs are enabled for the Worker.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"head_sampling_rate": {
 														"default": 1,
 														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 														"example": 1,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"invocation_logs": {
 														"default": true,
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -3428,11 +3463,13 @@
 											"enabled": {
 												"default": false,
 												"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"previews_enabled": {
 												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 												"type": "boolean",
+												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
@@ -3462,7 +3499,8 @@
 												"name": {
 													"description": "Name of the consumer Worker.",
 													"example": "my-tail-consumer",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -3477,7 +3515,8 @@
 										"description": "When the Worker was most recently updated.",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -3600,24 +3639,28 @@
 													"description": "When the Worker was created.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",
 													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpush": {
 													"default": false,
 													"description": "Whether logpush is enabled for the Worker.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the Worker.",
 													"example": "my-worker",
 													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"observability": {
 													"description": "Observability settings for the Worker.",
@@ -3625,13 +3668,15 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether observability is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"head_sampling_rate": {
 															"default": 1,
 															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 															"example": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -3639,18 +3684,21 @@
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"head_sampling_rate": {
 																	"default": 1,
 																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -3840,11 +3888,13 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"previews_enabled": {
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 															"type": "boolean",
+															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
@@ -3874,7 +3924,8 @@
 															"name": {
 																"description": "Name of the consumer Worker.",
 																"example": "my-tail-consumer",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -3889,7 +3940,8 @@
 													"description": "When the Worker was most recently updated.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -5050,24 +5102,28 @@
 										"description": "When the Worker was created.",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"id": {
 										"description": "Immutable ID of the Worker.",
 										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"logpush": {
 										"default": false,
 										"description": "Whether logpush is enabled for the Worker.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "Name of the Worker.",
 										"example": "my-worker",
 										"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"observability": {
 										"description": "Observability settings for the Worker.",
@@ -5075,13 +5131,15 @@
 											"enabled": {
 												"default": false,
 												"description": "Whether observability is enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"head_sampling_rate": {
 												"default": 1,
 												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 												"example": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											},
 											"logs": {
 												"description": "Log settings for the Worker.",
@@ -5089,18 +5147,21 @@
 													"enabled": {
 														"default": false,
 														"description": "Whether logs are enabled for the Worker.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"head_sampling_rate": {
 														"default": 1,
 														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 														"example": 1,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"invocation_logs": {
 														"default": true,
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -5290,11 +5351,13 @@
 											"enabled": {
 												"default": false,
 												"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"previews_enabled": {
 												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 												"type": "boolean",
+												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
@@ -5324,7 +5387,8 @@
 												"name": {
 													"description": "Name of the consumer Worker.",
 													"example": "my-tail-consumer",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -5339,7 +5403,8 @@
 										"description": "When the Worker was most recently updated.",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -5465,24 +5530,28 @@
 													"description": "When the Worker was created.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",
 													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpush": {
 													"default": false,
 													"description": "Whether logpush is enabled for the Worker.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the Worker.",
 													"example": "my-worker",
 													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"observability": {
 													"description": "Observability settings for the Worker.",
@@ -5490,13 +5559,15 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether observability is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"head_sampling_rate": {
 															"default": 1,
 															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 															"example": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -5504,18 +5575,21 @@
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"head_sampling_rate": {
 																	"default": 1,
 																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -5705,11 +5779,13 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"previews_enabled": {
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 															"type": "boolean",
+															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
@@ -5739,7 +5815,8 @@
 															"name": {
 																"description": "Name of the consumer Worker.",
 																"example": "my-tail-consumer",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -5754,7 +5831,8 @@
 													"description": "When the Worker was most recently updated.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -6758,24 +6836,28 @@
 										"description": "When the Worker was created.",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"id": {
 										"description": "Immutable ID of the Worker.",
 										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"logpush": {
 										"default": false,
 										"description": "Whether logpush is enabled for the Worker.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-auditable": true
 									},
 									"name": {
 										"description": "Name of the Worker.",
 										"example": "my-worker",
 										"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"observability": {
 										"description": "Observability settings for the Worker.",
@@ -6783,13 +6865,15 @@
 											"enabled": {
 												"default": false,
 												"description": "Whether observability is enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"head_sampling_rate": {
 												"default": 1,
 												"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 												"example": 1,
-												"type": "number"
+												"type": "number",
+												"x-auditable": true
 											},
 											"logs": {
 												"description": "Log settings for the Worker.",
@@ -6797,18 +6881,21 @@
 													"enabled": {
 														"default": false,
 														"description": "Whether logs are enabled for the Worker.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													},
 													"head_sampling_rate": {
 														"default": 1,
 														"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 														"example": 1,
-														"type": "number"
+														"type": "number",
+														"x-auditable": true
 													},
 													"invocation_logs": {
 														"default": true,
 														"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-														"type": "boolean"
+														"type": "boolean",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -6998,11 +7085,13 @@
 											"enabled": {
 												"default": false,
 												"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-												"type": "boolean"
+												"type": "boolean",
+												"x-auditable": true
 											},
 											"previews_enabled": {
 												"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 												"type": "boolean",
+												"x-auditable": true,
 												"x-stainless-terraform-configurability": "computed_optional"
 											}
 										},
@@ -7032,7 +7121,8 @@
 												"name": {
 													"description": "Name of the consumer Worker.",
 													"example": "my-tail-consumer",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -7047,7 +7137,8 @@
 										"description": "When the Worker was most recently updated.",
 										"format": "date-time",
 										"readOnly": true,
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"required": [
@@ -7173,24 +7264,28 @@
 													"description": "When the Worker was created.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",
 													"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"logpush": {
 													"default": false,
 													"description": "Whether logpush is enabled for the Worker.",
-													"type": "boolean"
+													"type": "boolean",
+													"x-auditable": true
 												},
 												"name": {
 													"description": "Name of the Worker.",
 													"example": "my-worker",
 													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"observability": {
 													"description": "Observability settings for the Worker.",
@@ -7198,13 +7293,15 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether observability is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"head_sampling_rate": {
 															"default": 1,
 															"description": "The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 															"example": 1,
-															"type": "number"
+															"type": "number",
+															"x-auditable": true
 														},
 														"logs": {
 															"description": "Log settings for the Worker.",
@@ -7212,18 +7309,21 @@
 																"enabled": {
 																	"default": false,
 																	"description": "Whether logs are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																},
 																"head_sampling_rate": {
 																	"default": 1,
 																	"description": "The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).",
 																	"example": 1,
-																	"type": "number"
+																	"type": "number",
+																	"x-auditable": true
 																},
 																"invocation_logs": {
 																	"default": true,
 																	"description": "Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.",
-																	"type": "boolean"
+																	"type": "boolean",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -7413,11 +7513,13 @@
 														"enabled": {
 															"default": false,
 															"description": "Whether the *.workers.dev subdomain is enabled for the Worker.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-auditable": true
 														},
 														"previews_enabled": {
 															"description": "Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.",
 															"type": "boolean",
+															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
@@ -7447,7 +7549,8 @@
 															"name": {
 																"description": "Name of the consumer Worker.",
 																"example": "my-tail-consumer",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -7462,7 +7565,8 @@
 													"description": "When the Worker was most recently updated.",
 													"format": "date-time",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [

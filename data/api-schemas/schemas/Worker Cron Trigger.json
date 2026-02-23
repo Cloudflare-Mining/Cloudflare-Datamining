@@ -135,7 +135,8 @@
 															},
 															"modified_on": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [
@@ -342,7 +343,8 @@
 								},
 								"modified_on": {
 									"readOnly": true,
-									"type": "string"
+									"type": "string",
+									"x-auditable": true
 								}
 							},
 							"required": [
@@ -463,7 +465,8 @@
 															},
 															"modified_on": {
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"required": [

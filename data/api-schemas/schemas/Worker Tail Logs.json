@@ -390,7 +390,8 @@
 											"properties": {
 												"expires_at": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"allOf": [
@@ -406,7 +407,8 @@
 												},
 												"url": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -689,7 +691,8 @@
 											"properties": {
 												"expires_at": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												},
 												"id": {
 													"allOf": [
@@ -705,7 +708,8 @@
 												},
 												"url": {
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [

@@ -262,7 +262,8 @@
 											"properties": {
 												"subdomain": {
 													"example": "my-subdomain",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -438,7 +439,8 @@
 						"properties": {
 							"subdomain": {
 								"example": "my-subdomain",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -544,7 +546,8 @@
 											"properties": {
 												"subdomain": {
 													"example": "my-subdomain",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
