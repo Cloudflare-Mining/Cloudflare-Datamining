@@ -338,6 +338,22 @@
 											],
 											"x-auditable": true
 										},
+										"retrieval_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_match_mode": {
+													"default": "exact_match",
+													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"enum": [
+														"exact_match",
+														"fuzzy_match"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
+											"x-auditable": true
+										},
 										"rewrite_model": {
 											"anyOf": [
 												{
@@ -978,6 +994,22 @@
 												],
 												"x-auditable": true
 											},
+											"retrieval_options": {
+												"nullable": true,
+												"properties": {
+													"keyword_match_mode": {
+														"default": "exact_match",
+														"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+														"enum": [
+															"exact_match",
+															"fuzzy_match"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object",
+												"x-auditable": true
+											},
 											"rewrite_model": {
 												"anyOf": [
 													{
@@ -1600,6 +1632,22 @@
 													"type": "string"
 												}
 											],
+											"x-auditable": true
+										},
+										"retrieval_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_match_mode": {
+													"default": "exact_match",
+													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"enum": [
+														"exact_match",
+														"fuzzy_match"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
 											"x-auditable": true
 										},
 										"rewrite_model": {
@@ -2306,6 +2354,22 @@
 								],
 								"x-auditable": true
 							},
+							"retrieval_options": {
+								"nullable": true,
+								"properties": {
+									"keyword_match_mode": {
+										"default": "exact_match",
+										"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+										"enum": [
+											"exact_match",
+											"fuzzy_match"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object",
+								"x-auditable": true
+							},
 							"rewrite_model": {
 								"anyOf": [
 									{
@@ -2813,6 +2877,22 @@
 											],
 											"x-auditable": true
 										},
+										"retrieval_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_match_mode": {
+													"default": "exact_match",
+													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"enum": [
+														"exact_match",
+														"fuzzy_match"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
+											"x-auditable": true
+										},
 										"rewrite_model": {
 											"anyOf": [
 												{
@@ -3243,6 +3323,15 @@
 												"enum": [
 													"max",
 													"rrf"
+												],
+												"type": "string"
+											},
+											"keyword_match_mode": {
+												"default": "exact_match",
+												"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+												"enum": [
+													"exact_match",
+													"fuzzy_match"
 												],
 												"type": "string"
 											},
@@ -3696,6 +3785,15 @@
 												"enum": [
 													"max",
 													"rrf"
+												],
+												"type": "string"
+											},
+											"keyword_match_mode": {
+												"default": "exact_match",
+												"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+												"enum": [
+													"exact_match",
+													"fuzzy_match"
 												],
 												"type": "string"
 											},
@@ -4231,6 +4329,22 @@
 										"type": "string"
 									}
 								],
+								"x-auditable": true
+							},
+							"retrieval_options": {
+								"nullable": true,
+								"properties": {
+									"keyword_match_mode": {
+										"default": "exact_match",
+										"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+										"enum": [
+											"exact_match",
+											"fuzzy_match"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object",
 								"x-auditable": true
 							},
 							"rewrite_model": {
@@ -4784,6 +4898,22 @@
 													"type": "string"
 												}
 											],
+											"x-auditable": true
+										},
+										"retrieval_options": {
+											"nullable": true,
+											"properties": {
+												"keyword_match_mode": {
+													"default": "exact_match",
+													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
+													"enum": [
+														"exact_match",
+														"fuzzy_match"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object",
 											"x-auditable": true
 										},
 										"rewrite_model": {

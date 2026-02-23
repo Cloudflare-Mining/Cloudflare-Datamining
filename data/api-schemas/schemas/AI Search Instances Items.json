@@ -76,20 +76,59 @@
 								"result": {
 									"items": {
 										"properties": {
-											"error": {
+											"checksum": {
+												"readOnly": true,
 												"type": "string"
+											},
+											"chunks_count": {
+												"nullable": true,
+												"readOnly": true,
+												"type": "integer",
+												"x-auditable": true
+											},
+											"created_at": {
+												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"error": {
+												"readOnly": true,
+												"type": "string"
+											},
+											"file_size": {
+												"nullable": true,
+												"readOnly": true,
+												"type": "number",
+												"x-auditable": true
 											},
 											"id": {
-												"type": "string"
+												"readOnly": true,
+												"type": "number"
 											},
 											"key": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"last_seen_at": {
 												"format": "date-time",
+												"readOnly": true,
+												"type": "string"
+											},
+											"namespace": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"next_action": {
+												"enum": [
+													"INDEX",
+													"DELETE"
+												],
+												"nullable": true,
+												"readOnly": true,
+												"type": "string"
+											},
+											"public_id": {
+												"readOnly": true,
 												"type": "string"
 											},
 											"status": {
@@ -100,13 +139,21 @@
 													"error",
 													"skipped"
 												],
+												"readOnly": true,
 												"type": "string"
 											}
 										},
 										"required": [
 											"id",
 											"key",
-											"status"
+											"status",
+											"next_action",
+											"checksum",
+											"namespace",
+											"chunks_count",
+											"file_size",
+											"last_seen_at",
+											"created_at"
 										],
 										"type": "object"
 									},
@@ -306,20 +353,59 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"error": {
+										"checksum": {
+											"readOnly": true,
 											"type": "string"
+										},
+										"chunks_count": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"created_at": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"error": {
+											"readOnly": true,
+											"type": "string"
+										},
+										"file_size": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "number",
+											"x-auditable": true
 										},
 										"id": {
-											"type": "string"
+											"readOnly": true,
+											"type": "number"
 										},
 										"key": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_seen_at": {
 											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"next_action": {
+											"enum": [
+												"INDEX",
+												"DELETE"
+											],
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"public_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"status": {
@@ -330,13 +416,21 @@
 												"error",
 												"skipped"
 											],
+											"readOnly": true,
 											"type": "string"
 										}
 									},
 									"required": [
 										"id",
 										"key",
-										"status"
+										"status",
+										"next_action",
+										"checksum",
+										"namespace",
+										"chunks_count",
+										"file_size",
+										"last_seen_at",
+										"created_at"
 									],
 									"type": "object"
 								},
@@ -524,20 +618,59 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"error": {
+										"checksum": {
+											"readOnly": true,
 											"type": "string"
+										},
+										"chunks_count": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"created_at": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"error": {
+											"readOnly": true,
+											"type": "string"
+										},
+										"file_size": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "number",
+											"x-auditable": true
 										},
 										"id": {
-											"type": "string"
+											"readOnly": true,
+											"type": "number"
 										},
 										"key": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_seen_at": {
 											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"next_action": {
+											"enum": [
+												"INDEX",
+												"DELETE"
+											],
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"public_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"status": {
@@ -548,13 +681,21 @@
 												"error",
 												"skipped"
 											],
+											"readOnly": true,
 											"type": "string"
 										}
 									},
 									"required": [
 										"id",
 										"key",
-										"status"
+										"status",
+										"next_action",
+										"checksum",
+										"namespace",
+										"chunks_count",
+										"file_size",
+										"last_seen_at",
+										"created_at"
 									],
 									"type": "object"
 								},
@@ -738,20 +879,59 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"error": {
+										"checksum": {
+											"readOnly": true,
 											"type": "string"
+										},
+										"chunks_count": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"created_at": {
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"error": {
+											"readOnly": true,
+											"type": "string"
+										},
+										"file_size": {
+											"nullable": true,
+											"readOnly": true,
+											"type": "number",
+											"x-auditable": true
 										},
 										"id": {
-											"type": "string"
+											"readOnly": true,
+											"type": "number"
 										},
 										"key": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"last_seen_at": {
 											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"namespace": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"next_action": {
+											"enum": [
+												"INDEX",
+												"DELETE"
+											],
+											"nullable": true,
+											"readOnly": true,
+											"type": "string"
+										},
+										"public_id": {
+											"readOnly": true,
 											"type": "string"
 										},
 										"status": {
@@ -762,13 +942,21 @@
 												"error",
 												"skipped"
 											],
+											"readOnly": true,
 											"type": "string"
 										}
 									},
 									"required": [
 										"id",
 										"key",
-										"status"
+										"status",
+										"next_action",
+										"checksum",
+										"namespace",
+										"chunks_count",
+										"file_size",
+										"last_seen_at",
+										"created_at"
 									],
 									"type": "object"
 								},
