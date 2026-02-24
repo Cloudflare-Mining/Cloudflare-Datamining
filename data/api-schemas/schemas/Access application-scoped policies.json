@@ -2408,6 +2408,50 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"connection_rules": {
+																"description": "The rules that define how users may connect to targets secured by your application.",
+																"properties": {
+																	"rdp": {
+																		"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+																		"properties": {
+																			"allowed_clipboard_local_to_remote_formats": {
+																				"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
+																				"example": [
+																					"text"
+																				],
+																				"items": {
+																					"description": "Clipboard format for RDP connections.",
+																					"enum": [
+																						"text"
+																					],
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"type": "array"
+																			},
+																			"allowed_clipboard_remote_to_local_formats": {
+																				"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
+																				"example": [
+																					"text"
+																				],
+																				"items": {
+																					"description": "Clipboard format for RDP connections.",
+																					"enum": [
+																						"text"
+																					],
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"title": "RDP Connection Rules",
+																		"type": "object"
+																	}
+																},
+																"title": "Connection Rules",
+																"type": "object"
+															},
 															"isolation_required": {
 																"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 																"example": false,
@@ -4704,6 +4748,50 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"connection_rules": {
+															"description": "The rules that define how users may connect to targets secured by your application.",
+															"properties": {
+																"rdp": {
+																	"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+																	"properties": {
+																		"allowed_clipboard_local_to_remote_formats": {
+																			"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
+																			"example": [
+																				"text"
+																			],
+																			"items": {
+																				"description": "Clipboard format for RDP connections.",
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		},
+																		"allowed_clipboard_remote_to_local_formats": {
+																			"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
+																			"example": [
+																				"text"
+																			],
+																			"items": {
+																				"description": "Clipboard format for RDP connections.",
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"title": "RDP Connection Rules",
+																	"type": "object"
+																}
+															},
+															"title": "Connection Rules",
+															"type": "object"
+														},
 														"isolation_required": {
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
@@ -6888,6 +6976,50 @@
 										"example": true,
 										"type": "boolean"
 									},
+									"connection_rules": {
+										"description": "The rules that define how users may connect to targets secured by your application.",
+										"properties": {
+											"rdp": {
+												"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+												"properties": {
+													"allowed_clipboard_local_to_remote_formats": {
+														"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
+														"example": [
+															"text"
+														],
+														"items": {
+															"description": "Clipboard format for RDP connections.",
+															"enum": [
+																"text"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													},
+													"allowed_clipboard_remote_to_local_formats": {
+														"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
+														"example": [
+															"text"
+														],
+														"items": {
+															"description": "Clipboard format for RDP connections.",
+															"enum": [
+																"text"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													}
+												},
+												"title": "RDP Connection Rules",
+												"type": "object"
+											}
+										},
+										"title": "Connection Rules",
+										"type": "object"
+									},
 									"isolation_required": {
 										"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 										"example": false,
@@ -8993,6 +9125,50 @@
 															"description": "Requires the user to request access from an administrator at the start of each session.",
 															"example": true,
 															"type": "boolean"
+														},
+														"connection_rules": {
+															"description": "The rules that define how users may connect to targets secured by your application.",
+															"properties": {
+																"rdp": {
+																	"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+																	"properties": {
+																		"allowed_clipboard_local_to_remote_formats": {
+																			"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
+																			"example": [
+																				"text"
+																			],
+																			"items": {
+																				"description": "Clipboard format for RDP connections.",
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		},
+																		"allowed_clipboard_remote_to_local_formats": {
+																			"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
+																			"example": [
+																				"text"
+																			],
+																			"items": {
+																				"description": "Clipboard format for RDP connections.",
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"title": "RDP Connection Rules",
+																	"type": "object"
+																}
+															},
+															"title": "Connection Rules",
+															"type": "object"
 														},
 														"isolation_required": {
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
@@ -11191,6 +11367,50 @@
 										"example": true,
 										"type": "boolean"
 									},
+									"connection_rules": {
+										"description": "The rules that define how users may connect to targets secured by your application.",
+										"properties": {
+											"rdp": {
+												"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+												"properties": {
+													"allowed_clipboard_local_to_remote_formats": {
+														"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
+														"example": [
+															"text"
+														],
+														"items": {
+															"description": "Clipboard format for RDP connections.",
+															"enum": [
+																"text"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													},
+													"allowed_clipboard_remote_to_local_formats": {
+														"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
+														"example": [
+															"text"
+														],
+														"items": {
+															"description": "Clipboard format for RDP connections.",
+															"enum": [
+																"text"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													}
+												},
+												"title": "RDP Connection Rules",
+												"type": "object"
+											}
+										},
+										"title": "Connection Rules",
+										"type": "object"
+									},
 									"isolation_required": {
 										"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 										"example": false,
@@ -13296,6 +13516,50 @@
 															"description": "Requires the user to request access from an administrator at the start of each session.",
 															"example": true,
 															"type": "boolean"
+														},
+														"connection_rules": {
+															"description": "The rules that define how users may connect to targets secured by your application.",
+															"properties": {
+																"rdp": {
+																	"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+																	"properties": {
+																		"allowed_clipboard_local_to_remote_formats": {
+																			"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
+																			"example": [
+																				"text"
+																			],
+																			"items": {
+																				"description": "Clipboard format for RDP connections.",
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		},
+																		"allowed_clipboard_remote_to_local_formats": {
+																			"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
+																			"example": [
+																				"text"
+																			],
+																			"items": {
+																				"description": "Clipboard format for RDP connections.",
+																				"enum": [
+																					"text"
+																				],
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"title": "RDP Connection Rules",
+																	"type": "object"
+																}
+															},
+															"title": "Connection Rules",
+															"type": "object"
 														},
 														"isolation_required": {
 															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
@@ -15620,6 +15884,50 @@
 																"description": "Requires the user to request access from an administrator at the start of each session.",
 																"example": true,
 																"type": "boolean"
+															},
+															"connection_rules": {
+																"description": "The rules that define how users may connect to targets secured by your application.",
+																"properties": {
+																	"rdp": {
+																		"description": "The RDP-specific rules that define clipboard behavior for RDP connections.",
+																		"properties": {
+																			"allowed_clipboard_local_to_remote_formats": {
+																				"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
+																				"example": [
+																					"text"
+																				],
+																				"items": {
+																					"description": "Clipboard format for RDP connections.",
+																					"enum": [
+																						"text"
+																					],
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"type": "array"
+																			},
+																			"allowed_clipboard_remote_to_local_formats": {
+																				"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
+																				"example": [
+																					"text"
+																				],
+																				"items": {
+																					"description": "Clipboard format for RDP connections.",
+																					"enum": [
+																						"text"
+																					],
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"title": "RDP Connection Rules",
+																		"type": "object"
+																	}
+																},
+																"title": "Connection Rules",
+																"type": "object"
 															},
 															"isolation_required": {
 																"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",

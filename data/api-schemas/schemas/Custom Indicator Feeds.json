@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/intel/indicator-feeds": {
+		"description": "Retrieves details for all accessible custom threat indicator feeds.",
 		"operationId": "custom-indicator-feeds-get-indicator-feeds",
 		"parameters": [
 			{
@@ -466,6 +467,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
+		"description": "Retrieves details for a specific custom threat indicator feed.",
 		"operationId": "custom-indicator-feeds-get-indicator-feed-metadata",
 		"parameters": [
 			{
@@ -963,6 +965,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/data": {
+		"description": "Retrieves the raw data entries in a custom threat indicator feed.",
 		"operationId": "custom-indicator-feeds-get-indicator-feed-data",
 		"parameters": [
 			{
@@ -1113,6 +1116,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/download": {
+		"description": "Downloads the content of a custom threat indicator feed.",
 		"operationId": "custom-indicator-feeds-download-indicator-feed-data",
 		"parameters": [
 			{
@@ -1377,6 +1381,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/intel/indicator-feeds/permissions/view": {
+		"description": "Lists current access permissions for custom threat indicator feeds.",
 		"operationId": "custom-indicator-feeds-view-permissions",
 		"parameters": [
 			{
@@ -1803,6 +1808,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/intel/indicator-feeds": {
+		"description": "Creates a new custom threat indicator feed for sharing threat intelligence data.",
 		"operationId": "custom-indicator-feeds-create-indicator-feeds",
 		"parameters": [
 			{
@@ -2262,6 +2268,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
+		"description": "Revises details for a specific custom threat indicator feed.",
 		"operationId": "custom-indicator-feeds-update-indicator-feed-metadata",
 		"parameters": [
 			{
@@ -2748,6 +2755,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot": {
+		"description": "Revises the raw data entries in a custom threat indicator feed.",
 		"operationId": "custom-indicator-feeds-update-indicator-feed-data",
 		"parameters": [
 			{
@@ -3025,6 +3033,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/add": {
+		"description": "Grants access permissions for a custom threat indicator feed to other accounts.",
 		"operationId": "custom-indicator-feeds-add-permission",
 		"parameters": [
 			{
@@ -3388,6 +3397,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/remove": {
+		"description": "Revokes access permissions for a custom threat indicator feed.",
 		"operationId": "custom-indicator-feeds-remove-permission",
 		"parameters": [
 			{
