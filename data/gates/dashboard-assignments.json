@@ -157,6 +157,9 @@
 	"billing-stripe-paypal-payment": {
 		"true": 100
 	},
+	"billing-unified-checkout-zone-plan": {
+		"false": 100
+	},
 	"block-digicert-acm-new-account": {
 		"true": 100
 	},
@@ -324,8 +327,8 @@
 		"experiment": 100
 	},
 	"dx-new-transfer-page": {
-		"false": 86,
-		"true": 14
+		"true": 50,
+		"false": 50
 	},
 	"dx-product-catalogue": {
 		"false": 100
