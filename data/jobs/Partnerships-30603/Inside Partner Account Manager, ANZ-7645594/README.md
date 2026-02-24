@@ -7,45 +7,39 @@
 </div>
 <p><strong>Available Locations: Sydney, Australia</strong></p>
 <p><strong>About The Role</strong></p>
-<p>We are seeking a high-energy, execution-focused <strong data-start="171" data-end="212">Inside Partner Account Manager (iPAM)</strong> to join our Partner Sales Organization. This role serves as a critical frontline sales support function across the Partner Account Management team aligned to Cloudflare’s strategic and focused Power Up partner community.</p>
-<p>The iPAM will play a dual role:</p>
-<ol data-start="468" data-end="738">
-	<li data-start="468" data-end="576">Act as the frontline sales engine supporting Partner Account Managers (PAMs) across strategic partners.</li>
-	<li data-start="577" data-end="738">Directly manage and develop a defined subset of Distribution Managed Partners (DMP), while providing deal and opportunity support to Cloudflare’s distributor.</li>
-</ol>
 <p>You will be responsible for driving incremental partner-initiated pipeline and revenue by activating partners, accelerating deal cycles, and ensuring strong execution across enablement, demand generation, and distributor collaboration.</p>
+<ol>
+	<li><strong>Partner Sales:</strong> Serve as the primary sales engine working with Partner Account Managers (PAMs) across focus partners.</li>
+	<li><strong>Partner Management &amp; Development:</strong> Directly manage and develop a specific group of Distribution Managed Partners (DMP) while assisting Cloudflare’s distributor with deal and opportunity support.</li>
+</ol>
+<p>The iPAM will be instrumental in driving incremental partner-initiated pipeline and revenue. Key to this will be activating partners, accelerating deal cycles, and ensuring robust execution in enablement, demand generation, and collaboration with our distributor.</p>
+<p>This position is an excellent stepping stone and development pathway toward Senior Partner Account Management roles.</p>
 <h3 data-start="1080" data-end="1103">Key Responsibilities</h3>
-<h3 data-start="1105" data-end="1142">Frontline Sales &amp; Partner Support</h3>
-<ul data-start="1144" data-end="1572">
-	<li data-start="1144" data-end="1282">Provide proactive frontline sales support to Partner Account Managers aligned to Cloudflare’s strategic and focused Power Up partners.</li>
-	<li data-start="1283" data-end="1405">Drive deal acceleration by supporting partner deal registrations, opportunity qualification, and pipeline progression.</li>
-	<li data-start="1406" data-end="1493">Assist in account mapping, pipeline reviews, and joint territory planning sessions.</li>
-	<li data-start="1494" data-end="1572">Track, report, and drive accountability against pipeline and revenue KPIs.</li>
+<p><span style="text-decoration: underline;"><strong>Partner Management and Development</strong></span></p>
+<ul>
+	<li>Manage and cultivate a specific subset of Distribution Managed Partners (DMPs).</li>
+	<li>Drive the recruitment, onboarding, and activation of new partners within the DMP segment.</li>
+	<li>Establish and maintain a consistent engagement framework, including:</li>
+	<ul>
+		<li>Goal setting</li>
+		<li>Partner business planning</li>
+		<li>Performance reviews</li>
+		<li>Pipeline tracking</li>
+	</ul>
+	<li>Increase deal registrations, partner-initiated opportunities, and partner-sourced revenue across the assigned partner portfolio.</li>
 </ul>
-<hr data-start="1574" data-end="1577">
-<h3 data-start="1579" data-end="1627">Distribution Managed Partner (DMP) Ownership</h3>
-<ul data-start="1629" data-end="2031">
-	<li data-start="1629" data-end="1708">Manage and develop a defined subset of Distribution Managed Partners (DMP).</li>
-	<li data-start="1709" data-end="1780">Recruit, onboard, and activate new partners within the DMP segment.</li>
-	<li data-start="1781" data-end="1918">Establish a consistent engagement cadence including goal setting, partner business plans, performance reviews, and pipeline tracking.</li>
-	<li data-start="1919" data-end="2031">Grow deal registrations, partner-initiated opportunities, and partner-sourced revenue across your portfolio.</li>
+<p><span style="text-decoration: underline;"><strong>Distributor Management and Enablement</strong></span></p>
+<ul>
+	<li>Oversee the Distributor relationship, managing processes and coordinating activities such as business plans and enablement initiatives.</li>
+	<li>Support and collaborate on joint campaigns and demand generation activities with the Distributor and the DMP ecosystem.</li>
+	<li>Coordinate and facilitate monthly sales and technical enablement sessions.</li>
 </ul>
-<hr data-start="2033" data-end="2036">
-<h3 data-start="2038" data-end="2082">Distributor Collaboration &amp; Deal Support</h3>
-<ul data-start="2084" data-end="2503">
-	<li data-start="2084" data-end="2165">Provide structured sales and opportunity support to Cloudflare’s distributor.</li>
-	<li data-start="2166" data-end="2311">Collaborate closely with distributor partner managers to drive pipeline generation, deal registration compliance, and opportunity visibility.</li>
-	<li data-start="2312" data-end="2413">Support joint campaigns and demand generation initiatives with the distributor and DMP ecosystem.</li>
-	<li data-start="2414" data-end="2503">Ensure distributor-led opportunities are effectively routed, tracked, and progressed.</li>
-</ul>
-<hr data-start="2505" data-end="2508">
-<h3 data-start="2510" data-end="2544">Enablement &amp; Demand Generation</h3>
-<ul data-start="2546" data-end="3085">
-	<li data-start="2546" data-end="2663">Lead demand generation initiatives in collaboration with sales and marketing to drive partner-initiated pipeline.</li>
-	<li data-start="2664" data-end="2742">Coordinate and facilitate monthly sales and technical enablement sessions.</li>
-	<li data-start="2743" data-end="2885">Train partners on Cloudflare’s technology, value proposition, go-to-market strategy, deal registration processes, and rules of engagement.</li>
-	<li data-start="2886" data-end="3001">Reinforce understanding of marketing assets, SPIFFs, incentives, and promotions to maximize partner engagement.</li>
-	<li data-start="3002" data-end="3085">Follow up on enablement activities to ensure execution and measurable outcomes.</li>
+<p><span style="text-decoration: underline;"><strong>Driving Partner-Initiated Pipeline</strong></span></p>
+<ul>
+	<li><strong>Lead Demand Generation:</strong> Collaborate with sales and marketing teams to execute demand generation initiatives that result in a measurable partner-initiated pipeline.</li>
+	<li><strong>Enablement &amp; Training:</strong> Equip partners with the knowledge of Cloudflare’s technology, value proposition, and go-to-market strategy, along with clear guidance on deal registration and rules of engagement.</li>
+	<li><strong>Maximizing Engagement:</strong> Promote understanding and utilization of available marketing assets, SPIFFs, incentives, and promotions to ensure maximum partner participation and motivation.</li>
+	<li><strong>Performance Follow-up:</strong> Monitor and track the execution of enablement activities to ensure they translate into concrete, measurable business outcomes.</li>
 </ul>
 <hr data-start="3087" data-end="3090">
 <h3 data-start="3092" data-end="3110">Success Metrics</h3>
