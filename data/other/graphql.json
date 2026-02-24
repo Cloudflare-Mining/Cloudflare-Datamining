@@ -2078,7 +2078,8 @@
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string",
 		"scriptName": "The name of the script",
-		"status": "Status of the worker invocation"
+		"status": "Status of the worker invocation",
+		"type": "Type of invocation"
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -2129,12 +2130,14 @@
 	"AccountDurableObjectsPeriodicGroups": {
 		"__description": "Durable Objects periodic metrics",
 		"confidence": "ALPHA - DO NOT USE",
+		"count": "Count of periodic metric events",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountDurableObjectsPeriodicGroupsConfidence": {
 		"__description": "",
+		"count": "Count of periodic metric events, with confidence intervals",
 		"level": "Confidence level that was requested",
 		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
@@ -2352,6 +2355,8 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.custom_topic_categories.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -2393,6 +2398,11 @@
 	},
 	"AccountFirewallEventsAdaptiveFilter_InputObject": {
 		"__description": ""
+	},
+	"AccountFirewallEventsAdaptiveFirewallForAiCustomTopicCategoriesElem": {
+		"__description": "",
+		"score": "Topic score",
+		"topicLabel": "Topic label"
 	},
 	"AccountFirewallEventsAdaptiveGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling",
@@ -2453,6 +2463,7 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -3417,6 +3428,8 @@
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.custom_topic_categories.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -3460,6 +3473,11 @@
 	},
 	"AccountHttpRequestsAdaptiveFilter_InputObject": {
 		"__description": ""
+	},
+	"AccountHttpRequestsAdaptiveFirewallForAiCustomTopicCategoriesElem": {
+		"__description": "",
+		"score": "Topic score",
+		"topicLabel": "Topic label"
 	},
 	"AccountHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
@@ -3531,6 +3549,7 @@
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -8973,6 +8992,7 @@
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -9778,6 +9798,8 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.custom_topic_categories.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -9851,6 +9873,7 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"description": "The description of the rule triggered by this request",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -9894,6 +9917,11 @@
 	},
 	"ZoneFirewallEventsAdaptiveFilter_InputObject": {
 		"__description": ""
+	},
+	"ZoneFirewallEventsAdaptiveFirewallForAiCustomTopicCategoriesElem": {
+		"__description": "",
+		"score": "Topic score",
+		"topicLabel": "Topic label"
 	},
 	"ZoneFirewallEventsAdaptiveGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling",
@@ -9954,6 +9982,7 @@
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -10519,6 +10548,8 @@
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.custom_topic_categories.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
@@ -10561,6 +10592,11 @@
 	},
 	"ZoneHttpRequestsAdaptiveFilter_InputObject": {
 		"__description": ""
+	},
+	"ZoneHttpRequestsAdaptiveFirewallForAiCustomTopicCategoriesElem": {
+		"__description": "",
+		"score": "Topic score",
+		"topicLabel": "Topic label"
 	},
 	"ZoneHttpRequestsAdaptiveGroups": {
 		"__description": "Aggregated HTTP requests data with adaptive sampling",
@@ -10632,6 +10668,7 @@
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
 		"firewallForAiAnyPiiCategory": "Whether firewallForAiPiiCategories is non empty. 0 if empty, 1 if not empty.",
+		"firewallForAiCustomTopicCategoriesScoresMin": "Minimum score across all the defined firewall for ai custom topics; 100 if empty.",
 		"firewallForAiInjectionScore": "Corresponds to the Ruleset field cf.llm.prompt.injection_score.",
 		"firewallForAiPiiCategories": "Corresponds to the Ruleset field cf.llm.prompt.pii_categories.",
 		"firewallForAiUnsafeTopicCategories": "Corresponds to the Ruleset field cf.llm.prompt.unsafe_data_categories.",
