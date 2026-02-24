@@ -23,8 +23,7 @@
 	"branches": [
 		"cloudflare/add-throttle-prevention",
 		"cloudflare_zero_trust_gateway_policy",
-		"cortlyons/notification_policy-state-upgrader",
-		"cortlyons/zero_trust_device_managed_networks-state-upgrader",
+		"cortlyons/cloudflare_zero_trust_device_posture_integration-state-upgrader",
 		"custom-pages",
 		"fix-e2e",
 		"legacy_migrations",
@@ -47,6 +46,7 @@
 		"ssicard/byo-ip",
 		"ssicard/logpull-retention",
 		"ssicard/stateupgrader/zone-setting",
+		"ssicard/stateupgrader/zt_tunnel_config",
 		"ssicard/stateupgrader/zt-tunnel-route-2",
 		"ssicard/workers-script-update",
 		"tamas/framework",
