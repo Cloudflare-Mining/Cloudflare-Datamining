@@ -34,6 +34,8 @@
 		noWorkflowTriggers: "Never",
 		emptyStateDescription: "Create a Workflow and start building. You can create them via the CLI.",
 		copyBindings: "Copy bindings",
+		viewMetrics: "View metrics",
+		viewSettings: "View settings",
 		search: "Search workflows...",
 		stats: {
 			totalCpu: "Total CPU time",
@@ -211,8 +213,19 @@
 		config: "Config",
 		attempts: "Attempts",
 		stepHistory: "Step History",
+		searchSteps: "Search steps...",
+		searchCaseSensitive: "Match case",
+		searchRegex: "Use regular expression",
+		stepTypeFilter: {
+			all: "All types",
+			do: "Do",
+			sleep: "Sleep",
+			waitForEvent: "Wait for event"
+		},
 		visualization: "Workflow Visualization",
 		noSteps: "No steps found",
+		noStepsMatchingSearch: "No steps found matching",
+		invalidRegex: "Invalid regular expression",
 		table: {
 			columns: {
 				status: "Status",
@@ -345,7 +358,7 @@
 			modal: {
 				title: "Delete workflow?",
 				body1: "Deleting **%{name}** is permanent and cannot be undone. This will permanently delete all files, configurations, versions, instances, data and caches associated with this workflow.",
-				body2: "Any Workers on your account using this workflow may be affected.",
+				body2: "Any Workers on your account using this workflow may be affected. Deleting this workflow does not delete the bound Worker script. Re-uploading the bound Worker script will re-create the workflow.",
 				error: "There was a problem deleting your workflow, please try again later."
 			}
 		}

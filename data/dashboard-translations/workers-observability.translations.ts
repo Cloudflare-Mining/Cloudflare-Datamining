@@ -459,5 +459,72 @@
 	emptyState: {
 		title: "Enable %{product} Observability",
 		description: "Automatically collect, search, filter, and analyze logs emitted by %{product}"
+	},
+	querySearch: {
+		placeholder: "Search with query language...",
+		placeholderMobile: "Query...",
+		helpTooltip: "Query language help",
+		validationError: "Invalid query",
+		suggestions: {
+			loading: "Loading suggestions...",
+			count: "%{count} suggestion",
+			countPlural: "%{count} suggestions",
+			accept: "accept",
+			dismiss: "dismiss"
+		},
+		helpModal: {
+			title: "Query Language Help",
+			description: "Use the query language to build powerful filters in a single search input.",
+			closeButton: "Got it",
+			closeButtonAriaLabel: "Close",
+			sections: {
+				basicSearch: "Basic Search",
+				fieldQueries: "Field Queries",
+				operators: "Operators",
+				functions: "Functions",
+				booleanLogic: "Boolean Logic",
+				examples: "Examples",
+				keyboard: "Keyboard Shortcuts"
+			},
+			basicSearch: {
+				text: "Search everywhere",
+				phrase: "Exact phrase match"
+			},
+			fieldQueries: {
+				equals: "Field equals value",
+				comparison: "Comparison operators",
+				contains: "Field contains value",
+				metadata: "Access metadata fields"
+			},
+			operators: {
+				equals: "equals",
+				notEquals: "not equals",
+				greaterThan: "greater than",
+				greaterOrEqual: "greater or equal",
+				lessThan: "less than",
+				lessOrEqual: "less or equal",
+				contains: "contains (has)"
+			},
+			functions: {
+				contains: "Field contains value",
+				startsWith: "Field starts with prefix",
+				regex: "Field matches regex pattern",
+				exists: "Field exists"
+			},
+			booleanLogic: {
+				and: "Both conditions must match",
+				or: "Either condition must match",
+				not: "Negate condition",
+				notShorthand: "Shorthand for NOT",
+				implicitAnd: "Note: Space between clauses implies AND"
+			},
+			keyboard: {
+				executeQuery: "Execute query",
+				acceptSuggestion: "Accept suggestion",
+				closeSuggestions: "Close suggestions",
+				navigateSuggestions: "Navigate suggestions",
+				showSuggestions: "Show suggestions"
+			}
+		}
 	}
 }

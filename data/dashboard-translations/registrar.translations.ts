@@ -1269,6 +1269,7 @@
 		validation_error: "UK Registrant Type field is required",
 		readonly_prompt: "Please select a type",
 		company_number: "Companies House Registration Number",
+		company_number_generic: "Company Number",
 		charity_number: "Registered Charity Number",
 		school_number: "UK School Number"
 	},

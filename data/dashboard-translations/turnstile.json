@@ -169,10 +169,10 @@
 	"turnstile.add_turnstile_widget_page.form_field.clearance_level.label.description": "Choose which types of <0>security challenges</0> users with this clearance level can bypass.",
 	"turnstile.widget.clearance_level.no_clearance.label": "No pre-clearance",
 	"turnstile.widget.clearance_level.js_challenge.label": "Non-interactive (low)",
-	"turnstile.widget.clearance_level.js_challenge.description": "Bypass JavaScript Challenge security rules only.",
+	"turnstile.widget.clearance_level.js_challenge.description": "Bypass Non-Interactive Challenge security rules only.",
 	"turnstile.widget.clearance_level.managed.label": "Managed (medium)",
-	"turnstile.widget.clearance_level.managed.description": "Bypass Managed Challenge and JavaScript Challenge security rules.",
+	"turnstile.widget.clearance_level.managed.description": "Bypass Non-Interactive and Managed Challenge security rules.",
 	"turnstile.widget.clearance_level.interactive.label": "Interactive (high)",
-	"turnstile.widget.clearance_level.interactive.description": "Bypass Interactive, Managed, and JavaScript Challenge security rules.",
+	"turnstile.widget.clearance_level.interactive.description": "Bypass Non-Interactive, Managed, and Interactive Challenge security rules.",
 	"turnstile.widget.clearance_level.invalid.error_message": "Invalid clearance level"
 }

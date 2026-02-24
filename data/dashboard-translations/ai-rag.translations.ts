@@ -813,6 +813,21 @@
 			}
 		}
 	},
+	tokens_page: {
+		title: "API Tokens",
+		description: "Manage the API tokens used by AI Search to access resources in your account.",
+		existing_token: "You already have an API token.",
+		no_tokens: "No API tokens found",
+		no_tokens_description: "Create an API token to allow AI Search to access resources in your account.",
+		create_token: "Create Token",
+		creating_token: "Creating...",
+		token_created: "API Token created successfully",
+		token_created_note: "Copy this token now. For security, it will not be shown again.",
+		token_created_continue: "Continue",
+		error_title: "Failed to load tokens",
+		error_description: "An error occurred while loading your API tokens. Please try again.",
+		retry: "Retry"
+	},
 	r2_required: {
 		title: "R2 Subscription Required",
 		description: "AI Search requires an R2 subscription to store and manage the data for your AI Search pipelines. Please enable R2 to continue.",
