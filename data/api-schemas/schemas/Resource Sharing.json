@@ -4273,6 +4273,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/shares": {
+		"description": "Creates a new resource share for sharing Cloudflare resources with other accounts or organizations.",
 		"operationId": "share-create",
 		"parameters": [
 			{
@@ -4787,6 +4788,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
+		"description": "Adds a recipient to a resource share, granting them access to the shared resources.",
 		"operationId": "share-recipient-create",
 		"parameters": [
 			{
@@ -5143,6 +5145,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/resources": {
+		"description": "Adds a resource to an existing share, making it available to share recipients.",
 		"operationId": "share-resource-create",
 		"parameters": [
 			{
