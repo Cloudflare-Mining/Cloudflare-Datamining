@@ -851,19 +851,6 @@
 		cloudflare_issued: {
 			title: "Cloudflare-issued Client Certificates",
 			tab_label: "Cloudflare-issued"
-		},
-		byo: {
-			tab_label: "BYO",
-			title: "BYO Client Certificates",
-			description: "Manage certificates uploaded from your own Certificate Authority.",
-			no_certificates: "No BYO Certificates",
-			table_header_certificate_subject: "Certificate Subject",
-			table_header_authority: "Authority",
-			table_header_expires_on: "Expires On",
-			table_header_status: "Status",
-			edit_hostnames: "Edit hostnames",
-			revoke_certificate: "Revoke certificate",
-			more_options: "More options"
 		}
 	},
 	staging_certificates: {

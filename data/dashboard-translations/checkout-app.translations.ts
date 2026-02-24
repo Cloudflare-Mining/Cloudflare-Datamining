@@ -47,11 +47,6 @@
 			cancel: "No, stay here",
 			warning: "You are about to exit checkout. Your order will not be saved. Are you sure you want to do this?"
 		},
-		frequency: {
-			monthly: "Monthly",
-			annual: "Annual",
-			save_percent: "Save %{percent}%"
-		},
 		summary: {
 			due_today: "Due today",
 			plus_taxes: "Plus any applicable taxes and fees listed on your invoice, including state taxes, local taxes, VAT and GST.",
@@ -61,11 +56,7 @@
 			price_year: "%{price}/year",
 			price_per_month: "%{price} / month",
 			price_per_year: "%{price} / year",
-			view_details: "View details",
-			annual_subscription: "Annual subscription",
-			monthly_subscription: "Monthly subscription",
-			you_save: "You save",
-			savings_per_year: "%{amount}/year (%{percent}%)"
+			view_details: "View details"
 		}
 	},
 	error: {
