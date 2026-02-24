@@ -1,6 +1,6 @@
 <div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64oL10LCSz30EiEHWVdJPG/aeaed48a681ec3d5bc9d8cb6e5e30a96/BLOG-3194_1.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p><sup><i>*This post was updated at 12:35 pm PT to fix a typo in the build time benchmarks.</i></sup></p>
+	<p><sub><i>*This post was updated at 12:35 pm PT to fix a typo in the build time benchmarks.</i></sub></p>
 	<p>Last week, one engineer and an AI model rebuilt the most popular front-end framework from scratch. The result, <a href="https://github.com/cloudflare/vinext"><u>vinext</u></a> (pronounced "vee-next"), is a drop-in replacement for Next.js, built on <a href="https://vite.dev"><u>Vite</u></a>, that deploys to Cloudflare Workers with a single command. In early benchmarks, it builds production apps up to 4x faster and produces client bundles up to 57% smaller. And we already have customers running it in production.&nbsp;</p>
 	<p>The whole thing cost about $1,100 in tokens.</p>
 	<div class="flex anchor relative">
@@ -12,7 +12,7 @@
 		</a>
 	</div>
 	<p><a href="https://nextjs.org"><u>Next.js</u></a> is the most popular React framework. Millions of developers use it. It powers a huge chunk of the production web, and for good reason. The developer experience is top-notch.</p>
-	<p>But Next.js has a deployment problems when used in the broader serverless ecosystem. The tooling is entirely bespoke: Next.js has invested heavily in Turbopack but if you want to deploy it to Cloudflare, Netlify, or AWS Lambda, you have to take that build output and reshape it into something the target platform can actually run.</p>
+	<p>But Next.js has a deployment problem when used in the broader serverless ecosystem. The tooling is entirely bespoke: Next.js has invested heavily in Turbopack but if you want to deploy it to Cloudflare, Netlify, or AWS Lambda, you have to take that build output and reshape it into something the target platform can actually run.</p>
 	<p>If you’re thinking: “Isn’t that what OpenNext does?”, you are correct.&nbsp;</p>
 	<p>That is indeed the problem <a href="https://opennext.js.org"><u>OpenNext</u></a> was built to solve. And a lot of engineering effort has gone into OpenNext from multiple providers, including us at Cloudflare. It works, but quickly runs into limitations and becomes a game of whack-a-mole.&nbsp;</p>
 	<p>Building on top of Next.js output as a foundation has proven to be a difficult and fragile approach. Because OpenNext has to reverse-engineer Next.js's build output, this results in unpredictable changes between versions that take a lot of work to correct.&nbsp;</p>
@@ -268,7 +268,7 @@ setCacheHandler(new KVCacheHandler(env.MY_KV_NAMESPACE));</code></pre>
 			<p><a href="https://pages-router-cloudflare.vinext.workers.dev"><u>Pages Router minimal</u></a></p>
 		</li>
 	</ul>
-	<p>We also have <a href="https://next-agents.threepointone.workers.dev"><u>a live example</u></a> of Cloudflare Agents running in a Next.js app, without the need for workarounds like <a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy"><u>getPlatformProxy</u></a>, since the entire app now runs in workerd, during both dev and deploy phases. This means being able to use Durable Objects, AI bindings, and every other Cloudflare-specific service without compromise. <a href="https://github.com/threepointone/next-agents"><u>Have a look here.</u></a></p>
+	<p>We also have <a href="https://next-agents.threepointone.workers.dev"><u>a live example</u></a> of Cloudflare Agents running in a Next.js app, without the need for workarounds like <a href="https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy"><u>getPlatformProxy</u></a>, since the entire app now runs in workerd, during both dev and deploy phases. This means being able to use Durable Objects, AI bindings, and every other Cloudflare-specific service without compromise. <a href="https://github.com/cloudflare/vinext-agents-example"><u>Have a look here.</u></a> </p>
 	<div class="flex anchor relative">
 		<h2 id="frameworks-are-a-team-sport">Frameworks are a team sport</h2>
 		<a href="https://blog.cloudflare.com/#frameworks-are-a-team-sport" aria-hidden="true" class="relative sm:absolute sm:-left-5">
