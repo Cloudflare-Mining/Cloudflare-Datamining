@@ -1,13 +1,33 @@
 # Change Log
 
-## 4.2.10
+## 5.0.0
+
+### Major Changes
+
+- 4c5f843023e: **BREAKING:** Remove `nextBillingReducer` from exports. This reducer is no longer used as it was only needed for Stripe migration (which is complete) and always returned true.
+
+  **Migration:** If you're importing `nextBillingReducer` from `@cloudflare/component-payment-form`, you can safely remove it:
+
+  ```diff
+  - import { nextBillingReducer as billingNextBillingReducer } from '@cloudflare/component-payment-form'
+  ```
+
+  Remove the import and any code that dispatches or uses this reducer.
+
+### Minor Changes
+
+- 3e2649246bb: Add React 18-19 and react-redux 9.x support. Fixes infinite re-renders by using shallowEqual from react-redux. Updates peer dependencies to support React 18-19, react-redux 9.x, and redux 5.x.
 
 ### Patch Changes
 
+- 0fbd4b10733: Trigger publish for v4.3.1
 - 0a304bd113c: update publish configs to not manually set registry, set appropriate targets
+- Updated dependencies [c6a81a7cc2f]
+- Updated dependencies [a42ac7fb801]
+- Updated dependencies [693870bf9c4]
 - Updated dependencies [0a304bd113c]
-  - @cloudflare/redux-fields@2.5.5
-  - @cloudflare/types@6.29.1
+  - @cloudflare/types@7.0.0
+  - @cloudflare/redux-fields@2.5.6
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.

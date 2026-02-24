@@ -1,7 +1,7 @@
 {
 	"name": "chanfana",
 	"dist-tags": {
-		"latest": "3.0.0"
+		"latest": "3.1.0"
 	},
 	"versions": {
 		"2.0.0": {
@@ -1220,40 +1220,91 @@
 			"name": "chanfana",
 			"version": "3.0.0",
 			"dependencies": {
-				"@asteasolutions/zod-to-openapi": "^8.1.0",
+				"zod": "^4.1.12",
 				"js-yaml": "^4.1.0",
 				"openapi3-ts": "^4.5.0",
 				"yargs-parser": "^22.0.0",
-				"zod": "^4.1.12"
+				"@asteasolutions/zod-to-openapi": "^8.1.0"
 			},
 			"devDependencies": {
-				"@biomejs/biome": "2.3.5",
-				"@cloudflare/vitest-pool-workers": "^0.10.5",
-				"@cloudflare/workers-types": "4.20251111.0",
-				"@types/js-yaml": "^4.0.9",
-				"@types/node": "24.10.0",
-				"@types/service-worker-mock": "^2.0.4",
 				"hono": "4.10.4",
-				"itty-router": "5.0.22",
-				"pkg-pr-new": "^0.0.60",
 				"tsup": "8.5.0",
-				"typescript": "5.9.3",
-				"vitepress": "^1.6.4",
 				"vitest": "^3.2.4",
+				"wrangler": "4.46.0",
+				"vitepress": "^1.6.4",
+				"pkg-pr-new": "^0.0.60",
+				"typescript": "5.9.3",
+				"@types/node": "24.10.0",
+				"itty-router": "5.0.22",
+				"@biomejs/biome": "2.3.5",
+				"@types/js-yaml": "^4.0.9",
 				"vitest-openapi": "^1.0.3",
-				"wrangler": "4.46.0"
+				"@cloudflare/workers-types": "4.20251111.0",
+				"@types/service-worker-mock": "^2.0.4",
+				"@cloudflare/vitest-pool-workers": "^0.10.5"
 			},
 			"bin": {
 				"chanfana": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-O143r9g6HlFeIdk05hEQyRIQEXTV+tjjF8fmOvByNT6zqKIzFbrs+IqnZ6reC/2s3j0XHzYZ38FE9qfTlR1PMw==",
 				"shasum": "c9ffc502371ed256a0421438dc1b2f3ba8f0213f",
 				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-3.0.0.tgz",
 				"fileCount": 29,
-				"unpackedSize": 410202,
+				"integrity": "sha512-O143r9g6HlFeIdk05hEQyRIQEXTV+tjjF8fmOvByNT6zqKIzFbrs+IqnZ6reC/2s3j0XHzYZ38FE9qfTlR1PMw==",
+				"signatures": [
+					{
+						"sig": "MEQCIFIXZhX5NdgJYElxSOAY8iGMDE86btTek0uTSEroiNkMAiBvEf2teft6q2TED0kwFRixDYBHz+vK7O4+KCzv3rbXgw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/chanfana@3.0.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 410202
+			}
+		},
+		"3.1.0": {
+			"name": "chanfana",
+			"version": "3.1.0",
+			"dependencies": {
+				"@asteasolutions/zod-to-openapi": "^8.4.1",
+				"js-yaml": "^4.1.1",
+				"openapi3-ts": "^4.5.0",
+				"yargs-parser": "^22.0.0",
+				"zod": "^4.3.6"
+			},
+			"devDependencies": {
+				"@biomejs/biome": "2.4.4",
+				"@changesets/changelog-github": "^0.5.2",
+				"@changesets/cli": "^2.29.8",
+				"@cloudflare/vitest-pool-workers": "^0.12.17",
+				"@cloudflare/workers-types": "4.20260303.0",
+				"@types/js-yaml": "^4.0.9",
+				"@types/node": "25.3.0",
+				"@vitest/coverage-istanbul": "^3.2.4",
+				"hono": "4.12.2",
+				"itty-router": "5.0.22",
+				"pkg-pr-new": "^0.0.63",
+				"tsup": "8.5.1",
+				"typescript": "5.9.3",
+				"vitepress": "^1.6.4",
+				"vitest-openapi": "^1.0.3",
+				"wrangler": "4.68.1"
+			},
+			"bin": {
+				"chanfana": "dist/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-veX6CMVK6jQrs0+I7IDSh9KdA04RTBOeNTVehOU/uvO2AkPoSRpq6Cyw8ErsleQ8EB+3GjxGfBQFyAOIDpoSjg==",
+				"shasum": "9cf5f7af7e803a64f176eb255728c82719294c4f",
+				"tarball": "https://registry.npmjs.org/chanfana/-/chanfana-3.1.0.tgz",
+				"fileCount": 58,
+				"unpackedSize": 642166,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/chanfana@3.1.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -1261,9 +1312,12 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFIXZhX5NdgJYElxSOAY8iGMDE86btTek0uTSEroiNkMAiBvEf2teft6q2TED0kwFRixDYBHz+vK7O4+KCzv3rbXgw=="
+						"sig": "MEYCIQD4LeQiqjTBs+ZjgfR2WSq6cAPOvuRrx3r3Kfh3MkmBhgIhAKhehQIXPAKcyNFdW0wiKCA9SL+R1CEzPVdox384mwRl"
 					}
 				]
+			},
+			"engines": {
+				"node": ">=18"
 			}
 		}
 	}
