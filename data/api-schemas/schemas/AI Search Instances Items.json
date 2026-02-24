@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai-search/instances/{id}/items": {
+		"description": "Lists indexed items in an AI Search instance.",
 		"operationId": "ai-search-instance-list-items",
 		"parameters": [
 			{
@@ -310,6 +311,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/items/{item_id}": {
+		"description": "Retrieves a specific indexed item from an AI Search instance.",
 		"operationId": "ai-search-instance-get-item",
 		"parameters": [
 			{
@@ -555,6 +557,7 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/instances/{id}/items/{item_id}": {
+		"description": "Syncs an item to an AI Search instance index.",
 		"operationId": "ai-search-instance-sync-item",
 		"parameters": [
 			{
@@ -820,6 +823,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/instances/{id}/items": {
+		"description": "Creates or updates an indexed item in an AI Search instance.",
 		"operationId": "ai-search-instance-create-or-update-item",
 		"parameters": [
 			{

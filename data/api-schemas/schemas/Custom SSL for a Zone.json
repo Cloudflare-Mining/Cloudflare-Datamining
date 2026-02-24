@@ -1382,6 +1382,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/custom_certificates/{custom_certificate_id}": {
+		"description": "Retrieves details for a specific custom SSL certificate, including certificate metadata, bundle method, geographic restrictions, and associated keyless server configuration.",
 		"operationId": "custom-ssl-for-a-zone-ssl-configuration-details",
 		"parameters": [
 			{

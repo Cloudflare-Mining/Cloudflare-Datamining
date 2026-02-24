@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/instances/{id}": {
+		"description": "Delete instances.",
 		"operationId": "ai-search-delete-instances",
 		"parameters": [
 			{
@@ -642,6 +643,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/instances": {
+		"description": "List instances.",
 		"operationId": "ai-search-list-instances",
 		"parameters": [
 			{
@@ -1296,6 +1298,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}": {
+		"description": "Read instances.",
 		"operationId": "ai-search-fetch-instances",
 		"parameters": [
 			{
@@ -1938,6 +1941,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/stats": {
+		"description": "Retrieves usage statistics for AI Search instances.",
 		"operationId": "ai-search-stats",
 		"parameters": [
 			{
@@ -2086,6 +2090,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/instances": {
+		"description": "Create a new instances.",
 		"operationId": "ai-search-create-instances",
 		"parameters": [
 			{
@@ -3189,6 +3194,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/chat/completions": {
+		"description": "Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses.",
 		"operationId": "ai-search-instance-chat-completion",
 		"parameters": [
 			{
@@ -3652,6 +3658,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/search": {
+		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.",
 		"operationId": "ai-search-instance-search",
 		"parameters": [
 			{
@@ -4036,6 +4043,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
+		"description": "Update instances.",
 		"operationId": "ai-search-update-instances",
 		"parameters": [
 			{

@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/origin_tls_client_auth/{certificate_id}": {
+		"description": "Removes a client certificate used for zone-level authenticated origin pulls.",
 		"operationId": "zone-level-authenticated-origin-pulls-delete-certificate",
 		"parameters": [
 			{
@@ -567,6 +568,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth": {
+		"description": "Lists all client certificates configured for zone-level authenticated origin pulls.",
 		"operationId": "zone-level-authenticated-origin-pulls-list-certificates",
 		"parameters": [
 			{
@@ -1188,6 +1190,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/{certificate_id}": {
+		"description": "Retrieves details for a specific client certificate used in zone-level authenticated origin pulls.",
 		"operationId": "zone-level-authenticated-origin-pulls-get-certificate-details",
 		"parameters": [
 			{

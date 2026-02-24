@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}": {
+		"description": "Removes a client certificate used for authenticated origin pulls on a specific hostname.\nNote: Before deleting the certificate, you must first invalidate the hostname for client authentication by sending a PUT request with `enabled` set to null. After invalidating the association, the certificate can be safely deleted.\n",
 		"operationId": "per-hostname-authenticated-origin-pull-delete-hostname-client-certificate",
 		"parameters": [
 			{
@@ -513,6 +514,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}": {
+		"description": "Retrieves the client certificate authentication status for a specific hostname, showing whether authenticated origin pulls are enabled.",
 		"operationId": "per-hostname-authenticated-origin-pull-get-the-hostname-status-for-client-authentication",
 		"parameters": [
 			{
@@ -1129,6 +1131,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates": {
+		"description": "Lists all client certificates configured for per-hostname authenticated origin pulls on the zone.",
 		"operationId": "per-hostname-authenticated-origin-pull-list-certificates",
 		"parameters": [
 			{

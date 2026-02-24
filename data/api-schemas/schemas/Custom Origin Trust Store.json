@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}": {
+		"description": "Removes a CA certificate from the custom origin trust store. Origins using certificates signed by this CA will no longer be trusted.",
 		"operationId": "custom-origin-trust-store-delete",
 		"parameters": [
 			{
@@ -924,6 +925,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}": {
+		"description": "Retrieves details about a specific certificate in the custom origin trust store, including expiration and subject information.",
 		"operationId": "custom-origin-trust-store-details",
 		"parameters": [
 			{

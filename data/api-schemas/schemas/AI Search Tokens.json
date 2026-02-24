@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/tokens/{id}": {
+		"description": "Delete tokens.",
 		"operationId": "ai-search-delete-tokens",
 		"parameters": [
 			{
@@ -166,6 +167,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/tokens": {
+		"description": "List tokens.",
 		"operationId": "ai-search-list-tokens",
 		"parameters": [
 			{
@@ -340,6 +342,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/tokens/{id}": {
+		"description": "Read tokens.",
 		"operationId": "ai-search-fetch-tokens",
 		"parameters": [
 			{
@@ -506,6 +509,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/tokens": {
+		"description": "Create a new tokens.",
 		"operationId": "ai-search-create-tokens",
 		"parameters": [
 			{
@@ -704,6 +708,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-search/tokens/{id}": {
+		"description": "Update tokens.",
 		"operationId": "ai-search-update-tokens",
 		"parameters": [
 			{

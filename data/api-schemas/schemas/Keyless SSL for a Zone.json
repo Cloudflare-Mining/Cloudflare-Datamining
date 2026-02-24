@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
+		"description": "Removes a Keyless SSL configuration. SSL connections will no longer use the keyless server for cryptographic operations.",
 		"operationId": "keyless-ssl-for-a-zone-delete-keyless-ssl-configuration",
 		"parameters": [
 			{
@@ -2410,6 +2411,7 @@
 		}
 	},
 	"POST /zones/{zone_id}/keyless_certificates": {
+		"description": "Creates a Keyless SSL configuration that allows SSL/TLS termination without exposing private keys to Cloudflare. Keys remain on your infrastructure.",
 		"operationId": "keyless-ssl-for-a-zone-create-keyless-ssl-configuration",
 		"parameters": [
 			{

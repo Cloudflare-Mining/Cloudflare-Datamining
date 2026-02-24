@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/custom_hostnames/fallback_origin": {
+		"description": "Removes the fallback origin configuration for custom hostnames on a zone. Custom hostnames without specific origins will no longer have a fallback.",
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-delete-fallback-origin-for-custom-hostnames",
 		"parameters": [
 			{
@@ -466,6 +467,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/custom_hostnames/fallback_origin": {
+		"description": "Retrieves the current fallback origin configuration for custom hostnames on a zone. The fallback origin handles traffic when specific custom hostname origins are unavailable.",
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-get-fallback-origin-for-custom-hostnames",
 		"parameters": [
 			{
@@ -927,6 +929,7 @@
 		}
 	},
 	"PUT /zones/{zone_id}/custom_hostnames/fallback_origin": {
+		"description": "Updates the fallback origin configuration for custom hostnames on a zone. Sets the default origin server for custom hostname traffic.",
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-update-fallback-origin-for-custom-hostnames",
 		"parameters": [
 			{

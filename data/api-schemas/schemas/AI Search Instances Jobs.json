@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs": {
+		"description": "Lists indexing jobs for an AI Search instance.",
 		"operationId": "ai-search-instance-list-jobs",
 		"parameters": [
 			{
@@ -233,6 +234,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
+		"description": "Retrieves details for a specific AI Search indexing job.",
 		"operationId": "ai-search-instance-get-job",
 		"parameters": [
 			{
@@ -428,6 +430,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs": {
+		"description": "Lists log entries for an AI Search indexing job.",
 		"operationId": "ai-search-instance-list-job-logs",
 		"parameters": [
 			{
@@ -659,6 +662,7 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
+		"description": "Updates the status of an AI Search indexing job.",
 		"operationId": "ai-search-instance-change-job-status",
 		"parameters": [
 			{
@@ -874,6 +878,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/jobs": {
+		"description": "Creates a new indexing job for an AI Search instance.",
 		"operationId": "ai-search-instance-create-job",
 		"parameters": [
 			{

@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
+		"description": "Permanently deletes a custom hostname and revokes any SSL certificates that were issued for it. This action cannot be undone.",
 		"operationId": "custom-hostname-for-a-zone-delete-custom-hostname-(-and-any-issued-ssl-certificates)",
 		"parameters": [
 			{
@@ -2717,6 +2718,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
+		"description": "Retrieves detailed information about a specific custom hostname, including SSL certificate status, ownership verification, and origin configuration.",
 		"operationId": "custom-hostname-for-a-zone-custom-hostname-details",
 		"parameters": [
 			{
