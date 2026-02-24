@@ -25,7 +25,10 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"Denver, US",
+				"San Francisco, US",
+				"Seattle, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -39,7 +42,7 @@
 		}
 	],
 	"id": 7600080,
-	"updated_at": "2026-02-23T20:48:38-05:00",
+	"updated_at": "2026-02-24T13:15:26-05:00",
 	"requisition_id": "810",
 	"title": "Senior Product Manager",
 	"company_name": "Cloudflare",
@@ -58,6 +61,27 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 65527,
+			"name": "Denver, CO",
+			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 72960,
+			"name": "Seattle, WA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}

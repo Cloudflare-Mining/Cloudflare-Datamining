@@ -5,38 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Lisbon or London (Hybrid)</strong></p>
-<p><strong>About Product Management at Cloudflare&nbsp;</strong></p>
-<p><strong>As Product Manager for Cloudflare Spectrum</strong>, you will drive the strategy and roadmap for Cloudflare's industry-leading TCP/UDP proxy and Layer 4 security offering. Spectrum extends the power of our global network to protocols beyond HTTP/S, enabling customers to securely and reliably accelerate non-web applications like SSH, gaming servers, custom financial protocols, and IoT devices.&nbsp;</p>
-<p>You will be responsible for identifying high-growth use cases, prioritizing features that enhance performance, security, and developer experience, and ensuring Spectrum remains the most flexible and robust solution for proxying arbitrary TCP/UDP traffic at scale.</p>
-<p><strong>About the role</strong></p>
-<p>As Product Manager <strong>on the Spectrum team</strong>, you’ll help shape a key part of our core product experience. This role requires a candidate who can navigate complex technical domains—from TCP/IP protocols and caching architectures to data analytics and user experience—and translate those into clear, marketable features. You will define the roadmap for one or more core services that impact every byte of traffic processed by Cloudflare. You will collaborate closely with engineering teams to leverage our massive network footprint and unique traffic insights to deliver features that fundamentally change how the internet operates, ultimately accelerating adoption for customers ranging from individual developers to the world's largest enterprises.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: Austin, TX; Mexico City, MX; Lisbon, Portugal;&nbsp; London, UK</strong></p>
+<p><strong>About the Role</strong></p>
+<p>As Senior Director of Product Management, Data Security, you will guide product development through all stages of the product life cycle: identifying customer needs and developing, launching, and sustaining products, shaping the next generation of Cloudflare’s offerings. You will represent Cloudflare to customers, vendors, and partners, synthesizing information and communicating what you learn to internal stakeholders. You will build, maintain, and develop a world class team of product managers and leaders who deeply care about Cloudflare’s role in helping build a better Internet.</p>
+<p>You will be responsible for defining the roadmap, driving the development, and ensuring the successful delivery of innovative data security capabilities that integrate seamlessly into Cloudflare One, Cloudflare’s SASE platform. This role demands a leader who understands the nuances of data protection, from regulatory compliance to practical implementation, and is ready to challenge conventional thinking with fresh, AI-driven approaches.&nbsp;</p>
+<p>This position requires you to be a self-starter with the ability to take ownership, work with tight timelines, handle various tasks simultaneously while maintaining a positive attitude. You are able to have deep technical discussions with internal and external engineering stakeholders. You also have the soft skills necessary to navigate organizational dependencies and promote your team. In addition, great oral communication and written documentation skills are valuable for this role for promoting ideas throughout the company.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>You will be responsible for defining the roadmap, driving the development, and ensuring the successful delivery of innovative data security capabilities that integrate seamlessly into Cloudflare One, Cloudflare’s SASE platform. This role demands a leader who understands the nuances of data protection, from regulatory compliance to practical implementation, and is ready to challenge conventional thinking with fresh, AI-driven approaches.&nbsp;</p>
+<p>This position requires you to be a self-starter with the ability to take ownership, work with tight timelines, handle various tasks simultaneously while maintaining a positive attitude. You are able to have deep technical discussions with internal and external engineering stakeholders. You also have the soft skills necessary to navigate organizational dependencies and promote your team. In addition, great oral communication and written documentation skills are valuable for this role for promoting ideas throughout the company.</p>
+<h4><strong>Responsibilities (Must Haves)</strong></h4>
 <ul>
-	<li>Own your space. You will own the priorities and scope, partnering with a high performing engineering team focused on one of Cloudflare’s Application Performance products.&nbsp;</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.&nbsp;</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.&nbsp;</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.</li>
+	<li style="line-height: 2;">10+ years of experience in product management or a closely related role, with a focus on data security technologies (e.g., DLP, DSPM, CASB, data encryption, data classification, data privacy).</li>
+	<li style="line-height: 2;">Owns the data security roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
+	<li style="line-height: 2;">Partner with leaders in other departments such as Product Marketing, Marketing, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
+	<li style="line-height: 2;">Develop and nurture relationships with engineering leadership and coordinate closely to ensure successful delivery of product</li>
+	<li style="line-height: 2;">Deep understanding of the data security landscape, including current threats, regulatory requirements, and emerging technologies.</li>
+	<li style="line-height: 2;">A strong passion for and a clear vision for how AI and Machine Learning can fundamentally transform data security solutions in the modern era</li>
+	<li style="line-height: 2;">Exceptional empathy, curiosity, attention to detail, and problem solving abilities. Experience building and leading high-performing product teams.</li>
+	<li style="line-height: 2;">Excellent communication, presentation, and interpersonal skills, with the ability to articulate complex technical concepts to both technical and non-technical audiences</li>
+	<li style="line-height: 2;">Strategic thinker with a hands-on approach, capable of driving initiatives from conception to launch. Able to be a player-coach as the situation arises: you are capable of wading into the details and understanding Engineering decisions’ impact on the product, but can also drive the 30k foot view.</li>
 </ul>
-<h4>Examples of desirable skills, knowledge and experience</h4>
-<p>At Cloudflare, Product Managers are measured both on outcomes (“the what”) and how they accomplish results. Examples of desirable skills, knowledge and experience:</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>5+ years of experience in product management, solutions engineering, or related roles</li>
-	<li>Familiarity with designing or contributing to habit-forming product experiences</li>
-	<li>Experience defining and tracking KPIs to measure product or user behavior impact</li>
-	<li>Strong collaboration skills and experience working with engineering and design teams</li>
-	<li>Comfort operating in fast-paced, evolving environments</li>
-	<li>A passion for user empathy and delivering customer-centric solutions</li>
-	<li>Excellent communication skills and attention to detail</li>
-	<li>Curiosity and a strong desire to learn technical topics, especially in security or observability</li>
-	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen is a key part of the role.</li>
-</ul>
-<h4><strong>Bonus points</strong></h4>
-<ul>
-	<li>Prior experience as a Product Manager driving the roadmap for products focused on Edge infrastructure, high-performance web delivery, or network optimization</li>
-	<li>Prior experience delivering cloud infrastructure products at global scale.</li>
-	<li>Data fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>Experience with large-scale distributed systems and cloud-native architectures.<br><br></li>
+	<li>Familiarity with Zero Trust principles and architectures.<br><br></li>
+	<li>Active participation in industry conferences, publications, or open-source projects related to data security or AI in security.<br><br></li>
+	<li>Bachelor's degree in Computer Science, Engineering, or a related technical field; advanced degree (MBA, Master's) welcomed but not required</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">

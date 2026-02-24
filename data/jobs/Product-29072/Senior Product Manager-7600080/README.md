@@ -5,10 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location</strong></p>
-<p>Remote, US&nbsp;</p>
-<p><strong>Job Title&nbsp;</strong></p>
-<p>Senior Product Manager, Cloudflare WAN</p>
+<p><strong>Available Location: Austin or SF or Seattle or Denver (Hybrid</strong></p>
 <p><strong>Role Summary</strong></p>
 <p>We are looking for an experienced, empathetic, and highly technical Senior Product Manager to join our Network Services team. Working alongside Product Managers in the same space, you’ll join a growing team to own the core routing functionality that powers the heart of Cloudflare One, Cloudflare’s SASE/SSE solution.&nbsp;</p>
 <p>Cloudflare provides a full stack of networking-as-a-service (NaaS) products that allow customers to build and operate secure, reliable, and fast networks without purchasing traditional network hardware. Cloudflare’s network underpins mission-critical infrastructure, always-on applications, small businesses, and everything in between. Our customers rely on the performance, security, reliability, and visibility provided by our network to power their business.&nbsp;</p>
@@ -23,7 +20,6 @@
 	<li>Measuring success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
 	<li>Supporting a global team with a flexible schedule. Our customers are everywhere and we need to be everywhere. Expect occasional later than normal or earlier than normal calls to effectively engage with customers and co-workers.&nbsp;</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <p><strong>Must-Have Skills</strong></p>
 <ul>
 	<li>5-10 years working as a Product Manager or Technical Product Manager shipping enterprise class software, or relevant experience</li>
@@ -39,31 +35,6 @@
 	<li>Experience with modern SASE or SSE solutions (either building or implementing)</li>
 	<li>Experience with large-scale distributed systems and cloud-native architectures</li>
 	<li>Active participation in industry conferences, publications, or open-source projects related to networking or security</li>
-</ul>
-<p><strong>Available Locations: Austin TX; Champaign IL</strong></p>
-<h4><strong>About the Team</strong></h4>
-<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks. We’re looking for curious, empathetic engineers who are excited to join us in changing the way networking is done!</p>
-<p>The Cloudflare Network Interconnect (CNI) team works with Rust, Linux, and cloud technologies to build and manage servers and high speed networking switches at Cloudflare locations, supporting our public CNI product. We are looking for engineers who are equally as interested in building their own Linux-based operating systems as they are in building user-friendly HTTP APIs, and equally as interested in high speed networking as they are in writing good Rust code.</p>
-<h4><strong>About the Role</strong></h4>
-<p>As a software engineer on the CNI team, you will be a key technical contributor to the control and data planes of custom network infrastructure, operating systems, and APIs supporting our product. You will enable customers of Magic Transit, Magic WAN, and other Cloudflare products to connect with Cloudflare over private and high speed data center interconnects.</p>
-<p>You will build software on top of one of the largest edge networks in the world, and partner with some of the best engineers and product managers to build robust, automated systems driving hundreds of gigs of customer traffic.</p>
-<p><strong>Desired skills, knowledge, and experience</strong></p>
-<ul>
-	<li>3 years of relevant Software Engineering or SRE experience</li>
-	<li>BS/MS in Computer Science or equivalent experience</li>
-	<li><strong>Rust</strong> programming</li>
-	<li>Experience building on top of <strong>Linux networking</strong> primitives - e.g. ip, tc, network namespaces, etc</li>
-	<li>Familiarity with network engineering tools and protocols used in data center switching and routing - e.g. BGP, BFD, VXLAN, etc</li>
-	<li>Experience designing and integrating <strong>RESTful APIs</strong> and backend systems, especially asynchronous architectures and those deployed onto serverless platforms like Cloudflare Workers</li>
-	<li>Experience with running virtual machines on Linux</li>
-	<li>Able to <strong>work across teams</strong> and level common, sustainable solutions</li>
-	<li>Focus on clarity in <strong>written and verbal communication</strong></li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with Linux <strong>Switchdev</strong>, or network OSes like <strong>Cumulus</strong> or <strong>SONiC</strong></li>
-	<li>Developing, working on, or modifying the&nbsp;<strong>Linux kernel</strong></li>
-	<li>Experience maintaining asynchronous and distributed HTTP backends for infrastructure and/or network configuration</li>
 </ul>
 <p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
 <p>For Colorado, Hawaii, and Illinois &nbsp;based hires: Estimated annual salary of $156,000 - $215,000<br>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $172,000 - $237,000<br>For Bay Area-based hires: Estimated annual salary of $179,000 - $246,000</p>
