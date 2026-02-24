@@ -3731,6 +3731,17 @@
 					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 					"type": "string"
 				}
+			},
+			{
+				"description": "When set to \"strict\", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.",
+				"in": "query",
+				"name": "bindings_inherit",
+				"schema": {
+					"enum": [
+						"strict"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"requestBody": {
