@@ -109,7 +109,13 @@
 			all_models: "All Models",
 			all_active_models: "Active Models (Last 30 days)",
 			all_tags: "All Tags"
-		}
+		},
+		search_placeholder: "Search models",
+		search_filter_placeholder: "Search...",
+		no_results_found: "No results found",
+		sort_by_name: "Name",
+		sort_by_date_added: "Date added",
+		models_found: (0, o.p)(v(), "count")
 	},
 	create_ai_worker: "Create an AI Model Worker",
 	create_ai_worker_description: "Choose an AI application template.",
@@ -131,9 +137,9 @@
 	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
-	using_workers_ai_rest_api_description: (0, o.p)(v()),
+	using_workers_ai_rest_api_description: (0, o.p)(y()),
 	product_title: "Workers AI",
-	provided_by: (0, o.p)(y(), "provider"),
+	provided_by: (0, o.p)(w(), "provider"),
 	request_access: "Request access",
 	reserve_a_full_access_seat: "Reserve spot on waitlist",
 	reserve_a_full_access_seat_description: "Join the waitlist for access to production scale Workers AI ",
@@ -184,7 +190,7 @@
 	use_rest_api: "{ } REST API",
 	using_templates: "Build and deploy a Llama 3 Worker",
 	using_templates_description: "Get started with everything you need to run a Llama 3 model from a Worker.",
-	workers_ai_pricing_default: (0, o.p)(w(), "neurons_coefficient", "neurons_daily_total"),
+	workers_ai_pricing_default: (0, o.p)(b(), "neurons_coefficient", "neurons_daily_total"),
 	learn_more: "Learn More",
 	modelTasks: {
 		"Feature Extraction": "Feature Extraction",
