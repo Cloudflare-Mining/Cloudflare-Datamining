@@ -1631,44 +1631,7 @@
 												"name": "AI",
 												"description": null,
 												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "cV6TIgA5iVpDToSOaKYmS",
-														"locale": "en-US",
-														"title": "AI Gateway",
-														"description": null,
-														"url": "https://developers.cloudflare.com/ai-gateway/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4ed9qTNFECVl2E8KOVpDc4",
-														"locale": "en-US",
-														"title": "Vectorize",
-														"description": null,
-														"url": "https://developers.cloudflare.com/vectorize/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": true
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "4veP3pkVzZNagUz7RKpZ7d",
-														"locale": "en-US",
-														"title": "Workers AI",
-														"description": null,
-														"url": "https://developers.cloudflare.com/workers-ai/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": true
-													}
-												],
+												"navigationLinks": null,
 												"navIcon": null,
 												"showIconOnly": false,
 												"hideOnChinaSite": false,
@@ -1691,18 +1654,6 @@
 												"title": "Learning Center",
 												"description": "Explore our resources on cybersecurity & the Internet",
 												"url": "https://www.cloudflare.com/learning/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5V31VX1s6xNOuaBnoelRC7",
-												"locale": "en-US",
-												"title": "AI",
-												"description": "Learn about predictive and generative AI",
-												"url": "https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -2110,18 +2061,6 @@
 												"title": "Partner network",
 												"description": "Join our partner network and see the opportunities available",
 												"url": "https://www.cloudflare.com/partners/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "5HXFKPs9ATkyVUfBiGjyJV",
-												"locale": "en-US",
-												"title": "Partner portal",
-												"description": "Locate resources, and register deals with ease",
-												"url": "https://portal.cloudflarepartners.com/English/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -2816,6 +2755,47 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3QXZfMhTFdfph78jhSiTeP",
+								"title": "Global reach",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Bring enforcement decisions within approximately %{OperationMilliseconds} ms of about 95% of the world's Internet-connected population.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5H4T6ndYBoJmUEN0AsA1CI/98fc06d928bb2986b683e94c63a603f6/icon-global-blue.png"
+									},
+									"description": "icon global blue"
+								},
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe orange",
+									"title": "Internet globe orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "7HkpOHohnYRnMYTj6iqT6v",
