@@ -40,7 +40,10 @@
 	},
 	mitigations_table: {
 		empty_state: {
-			default: "This report has no mitigations.",
+			default: {
+				title: "This report has no mitigations",
+				description: "For more information on the report, check the details tab."
+			},
 			search: "There are no matching mitigations.",
 			error: "Error fetching mitigations. Please try again."
 		},
@@ -57,12 +60,37 @@
 		},
 		not_appealable: "This mitigation type is not appealable."
 	},
+	emails_table: {
+		title: "Customer emails",
+		description: "Emails sent to the customer regarding this abuse report.",
+		empty_state: {
+			default: {
+				title: "No emails have been sent for this report",
+				description: "For more information on the report, check the details and mitigations tabs."
+			},
+			error: "Error fetching emails. Please try again."
+		},
+		column_name: {
+			sent_at: "Date",
+			subject: "Subject",
+			recipient: "Recipient"
+		},
+		view_body: "View email",
+		to: "To:"
+	},
 	mitigation_status: {
 		active: "Active",
 		cancelled: "Canceled",
 		in_review: "In review",
 		pending: "Pending",
 		removed: "Removed"
+	},
+	mitigation_status_description: {
+		active: "This mitigation is currently in effect.",
+		cancelled: "This mitigation was canceled before taking effect. It has no impact on the resource it targets.",
+		in_review: "This mitigation is currently in effect, and being reviewed by Cloudflare.",
+		pending: "This mitigation is scheduled to take effect.",
+		removed: "This mitigation has been removed. It no longer has an impact on the resource it targets."
 	},
 	report_status: {
 		accepted: "Accepted",
@@ -126,12 +154,14 @@
 		blocked_content: "Blocked content",
 		mitigations: "Cloudflare mitigations",
 		streaming_mitigations: "Streaming mitigations",
-		report_details: "Report details"
+		report_details: "Report details",
+		emails: "Email correspondence"
 	},
 	tab_descriptions: {
 		blocked_content: "View blocked content mitigations that Cloudflare will take or has taken against your domain for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
 		mitigations: "View mitigations that Cloudflare will take or has taken against your account for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare’s Trust & Safety team.",
-		streaming_mitigations: "View streaming mitigations that Cloudflare will take or has taken against your account for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team."
+		streaming_mitigations: "View streaming mitigations that Cloudflare will take or has taken against your account for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
+		emails: "View emails sent to the customer regarding this abuse report."
 	},
 	report_summary_titles: {
 		report_summary: "Report summary",
@@ -168,12 +198,12 @@
 		submitter_telephone: "Telephone"
 	},
 	report_summary_values: {
-		active: (0, o.p)(s(), "activeCount")
+		active: (0, o.p)(i(), "activeCount")
 	},
 	breadcrumb_titles: {
 		manage_account: "Manage Account",
 		abuse: "Abuse Reports",
-		abuse_report: (0, o.p)(c(), "reportId")
+		abuse_report: (0, o.p)(l(), "reportId")
 	},
 	product_documentation: "Documentation",
 	date_range: "Date range",

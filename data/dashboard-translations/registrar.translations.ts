@@ -669,7 +669,7 @@
 		not_ready_for_transfer_table: {
 			title: "Not ready for transfer",
 			status: "Status",
-			locked_status: "Locked at current registrar",
+			locked_status: "Locked at current registrar. Disable transfer lock, then recheck.",
 			cor_locked_status: "Locked due to recent registrant change",
 			cor_locked_status_with_days: "Transfer available in %{days} days (registrant change lock)",
 			recheck: "Recheck",
@@ -684,6 +684,7 @@
 			registry_status_clienttransferprohibited: "Transfer prohibited by registrar. Contact your registrar to unlock.",
 			registry_status_pendingdelete: "Domain is pending deletion. Contact the registry to prevent deletion.",
 			registry_status_pendingtransfer: "Domain has a pending transfer. Wait for it to complete or cancel it.",
+			registry_status_transferperiod: "Transfer temporarily unavailable. Domain was recently transferred.",
 			registry_status_serverrenewprohibited: "Renewal prohibited by registry. Contact the registry to resolve.",
 			registry_status_serverupdateprohibited: "Updates prohibited by registry. Contact the registry to resolve.",
 			zone_status_pending: "Update nameservers to Cloudflare.",
@@ -798,7 +799,8 @@
 		servertransferprohibited: "A registry status (server transfer prohibited) currently blocks transfer. Please contact your current registrar if this cannot be resolved.",
 		pendingdelete: "A registry status (pending delete) currently blocks transfer. Please contact your current registrar if this cannot be resolved.",
 		pendingtransfer: "A registry status (pending transfer) currently blocks transfer. Please wait for the ongoing transfer to complete before trying again.",
-		clienttransferprohibited: "Domain is locked. Please unlock it at your current registrar, then try again."
+		clienttransferprohibited: "Domain is locked. Please unlock it at your current registrar, then try again.",
+		transferperiod: "A registry status (transfer period) currently blocks transfer. Please wait for the transfer period to end before trying again."
 	},
 	wizard_two_title: "Enter authorization codes",
 	wizard_two_description: "Validate the transfer with an authorization code (also known as a transfer code) from your previous registrar.",

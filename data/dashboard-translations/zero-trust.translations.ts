@@ -8,7 +8,7 @@
 		subheading: "Replace legacy security perimeters with Cloudflare's global network. Zero Trust tools help make the Internet faster and safer for both teams and home networks."
 	},
 	zeroTrustView: {
-		teamName: (0, o.p)(i(), "teamName"),
+		teamName: (0, o.p)(s(), "teamName"),
 		zeroTrustHomeLink: "Go to Zero Trust",
 		zeroTrustUsersLink: "Manage active users",
 		zeroTrustAnalyticsLink: "View detailed analytics",
@@ -66,9 +66,9 @@
 	},
 	plans: {
 		categories: {
-			zeroTrust: (0, o.p)(s(), "plan"),
-			access: (0, o.p)(c(), "plan"),
-			gateway: (0, o.p)(l(), "plan")
+			zeroTrust: (0, o.p)(i(), "plan"),
+			access: (0, o.p)(l(), "plan"),
+			gateway: (0, o.p)(c(), "plan")
 		},
 		basic: "Basic",
 		premium: "Premium",

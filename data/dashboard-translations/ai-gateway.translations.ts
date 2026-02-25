@@ -123,6 +123,9 @@
 		search_button: "Search",
 		stream: "Stream",
 		live: "Live",
+		stop: "Stop",
+		live_waiting: "Waiting for logs...",
+		live_waiting_description: "New logs will appear here automatically as requests come in.",
 		cached: "Cached Response",
 		table: {
 			header: {

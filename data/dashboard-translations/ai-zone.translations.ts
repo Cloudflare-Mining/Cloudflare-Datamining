@@ -37,7 +37,8 @@
 			decrease: "This is a <b>%{percentage}% decrease</b> compared to the previous period.",
 			crawler_requests: "<b>%{count}</b> request was from <b>%{crawler}</b>. |||| <b>%{count}</b> requests were from <b>%{crawler}</b>.",
 			operator_referrals: "<b>%{operator}</b> referred <b>%{count}</b> visitor to <b>%{zone}</b>. |||| <b>%{operator}</b> referred <b>%{count}</b> visitors to <b>%{zone}</b>.",
-			most_crawled_path: "<b>%{path}</b> is the most crawled path with <b>%{count}</b> successful requests. |||| <b>%{path}</b> is the most crawled path with <b>%{count}</b> successful requests."
+			most_crawled_path: "<b>%{path}</b> is the most crawled path with <b>%{count}</b> successful requests. |||| <b>%{path}</b> is the most crawled path with <b>%{count}</b> successful requests.",
+			operator_data_transfer: "Crawlers from <b>%{operator}</b> accessed <b>%{bytes}</b> of <b>%{contentType}</b>."
 		}
 	},
 	bots_page: {
