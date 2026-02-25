@@ -1,5 +1,17 @@
 # Change Log
 
+## 5.0.1
+
+### Patch Changes
+
+- 0a304bd113c: update publish configs to not manually set registry, set appropriate targets
+- Updated dependencies [c6a81a7cc2f]
+- Updated dependencies [a42ac7fb801]
+- Updated dependencies [693870bf9c4]
+- Updated dependencies [0a304bd113c]
+  - @cloudflare/types@7.0.0
+  - @cloudflare/redux-fields@2.5.6
+
 ## 5.0.0
 
 ### Major Changes
@@ -21,13 +33,6 @@
 ### Patch Changes
 
 - 0fbd4b10733: Trigger publish for v4.3.1
-- 0a304bd113c: update publish configs to not manually set registry, set appropriate targets
-- Updated dependencies [c6a81a7cc2f]
-- Updated dependencies [a42ac7fb801]
-- Updated dependencies [693870bf9c4]
-- Updated dependencies [0a304bd113c]
-  - @cloudflare/types@7.0.0
-  - @cloudflare/redux-fields@2.5.6
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
