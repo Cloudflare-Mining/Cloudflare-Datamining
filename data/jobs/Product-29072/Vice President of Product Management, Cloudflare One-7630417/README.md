@@ -6,44 +6,40 @@
 	</div>
 </div>
 <p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the Department</strong></p>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality, objective, and independent assurance over the Company’s key business and financial risks to the Audit Committee and Management in a cost-effective manner and in alignment with professional standards. In addition to managing the Company’s SOX compliance program, the function is expanding its focus to include broader operational and strategic risks. Reflecting the Company’s core value of continuous improvement, Internal Audit is also exploring more efficient audit approaches and adopting industry best practices where appropriate.</p>
-<p><strong>About the Role</strong></p>
-<p>We’re looking for a highly motivated, collaborative, and detail-oriented Senior Internal Auditor to join our Internal Audit team. In this role, you’ll perform risk-based audits across business functions, helping evaluate the efficiency and effectiveness of processes, controls, and operations. You’ll work closely with stakeholders to identify improvement opportunities that drive value—not just compliance. The ideal candidate has a strong background in risk and operations, and is able to perform high-quality audits to help the business improve.&nbsp;This is a great opportunity for someone who thrives in a fast-paced environment and wants to make a visible impact. This role will report directly to the Senior Director, Internal Audit.</p>
-<p><strong>&nbsp;</strong></p>
-<p><strong>What you'll do</strong></p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>Cloudflare One is our SASE platform that is redefining how the world’s most sophisticated organizations secure and connect their global workforce. By unifying Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Wide Area Network (WAN) and Cloud Access Security Broker (CASB) as well as Email Security into a single, seamless SASE architecture, we are moving the industry beyond the legacy "castle-and-moat" era.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>We are looking for a product leader to lead the Cloudflare One portfolio. You are not someone to simply manage a steady ship; you are someone to invent the next generation of Access, Gateway, and WAN, unlocking new Total Addressable Markets (TAM) in the SASE space while executing your way into being the market leader for the current Service Addressable Market (SAM). You will operate as a ‘General Manager’ of your domain, equally formidable across Product, Engineering, Sales, and Strategy. You are deeply empathetic and entrepreneurial minded, translating market signals into a strategic, evolving organization.&nbsp;</p>
+<p>In this role, you will provide the vision and leadership to redefine how Cloudflare engages CIO’s and CISO’s to protect the data, devices, employees and networks that power their business - from teams of 50 to the Fortune 50. You will also act as a key evangelist and storyteller, articulating a compelling and optimistic vision for the future of development on Cloudflare while cultivating a passionate, hard-working, and collaborative culture, inspiring your team to overcome challenges and innovate.</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>We are looking for a leader who is more of a founder than a manager.<strong><br></strong></p>
 <ul>
-	<li>Assist in executing the Internal Audit plan under the supervision of Internal Auditor senior team members. This includes operational audit planning, risk assessment, fieldwork, issues validation, and reporting.</li>
-	<li>Deliver high quality, efficient and timely audit work in accordance with the Internal Audit charter, IIA standards and professional best practices</li>
-	<li>Assist in designing testing procedures relevant to risk and test objectives.</li>
-	<li>Execute audit procedures, including process walkthroughs, data analysis, testing, and documentation.</li>
-	<li>Document audit observations, identify potential control gaps, and contribute to the development of practical recommendations.</li>
-	<li>Draft clear and concise audit deliverables, including working papers and audit reports.</li>
-	<li>Participate in presenting audit findings to various levels of stakeholders.</li>
-	<li>Leverage data analysis tools, automation, or AI where appropriate to support audit procedures and enhance insights.</li>
-	<li>Stay informed about company operations and emerging risks relevant to internal audit work.</li>
-	<li>Contribute to process improvements within the Internal Audit function.</li>
-	<li>May perform other duties and responsibilities as assigned.</li>
-	<li>Report to the Internal Audit Senior Director.</li>
+	<li>A deep empathy for customers and an understanding of the fundamental shifts happening in technology, the SSE and SASE space, especially around AI</li>
+	<li>Proven experience in a senior leadership role (e.g., former founder, Sr. Director, VP, CTO), having built and scaled both products and teams.</li>
+	<li>An entrepreneurial spirit with enterprise etiquette and a history of building things, whether in a successful venture or a passionate side project</li>
+	<li>Proven ability to pivot instantly from technical deep-dives to high-level strategic discussions. You have a track record of partnering with Sales to close Fortune 50 CIOs and presenting complex roadmaps to the Board of Directors with confidence</li>
+	<li>Exceptional storytelling ability with the passion and excitement to inspire internal teams, new customers, analysis and everyone in between</li>
+	<li>The ability to thrive in an autonomous environment, comfortable with ambiguity and defining your own path forward for the product and the team</li>
+	<li>A genuine optimism yet realistic view of things with resilience to navigate challenges and lead with a can-do attitude on all stages</li>
+	<li>You can synthesize complex information for diverse audiences - from the code-level details for developers to the ROI analysis for enterprise buyers.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4>Must-Have Skills</h4>
 <ul>
-	<li>
-		<ul>
-			<li>5+ years of auditing, accounting, or finance experience</li>
-			<li>Strong knowledge and proven track record in applying internal auditing and accounting principles and practices, specifically audit methodologies, risk assessment, sampling techniques, audit documentation and report writing.</li>
-			<li>Strong analytical and problem-solving skills, with an ability to quickly understand complex processes.</li>
-			<li>Exceptional written and verbal communication skills, with the ability to present complex information clearly and concisely.</li>
-			<li>Comfort working both independently and as part of a team.</li>
-			<li>Proven ability to build and maintain effective working relationships with stakeholders at all levels.</li>
-			<li>High level of integrity, professionalism, and attention to detail.</li>
-			<li>Prior experience with data analytics and continuous auditing techniques.</li>
-			<li>Bachelor's degree in accounting, finance, business, or related field.</li>
-			<li>CPA or CIA certification (or progress toward) is a plus.</li>
-		</ul>
-	</li>
+	<li>12+ years of experience in product management or a closely related role, with a focus on network and data security technologies (e.g., ZTNA, Gateways, DLP, CASB, data encryption, data classification, data privacy).</li>
+	<li>Own the SASE product roadmap. Make tough tactical prioritization decisions while helping the company think long-term. Build trust with stakeholders by maintaining an understandable, accurate roadmap.</li>
+	<li>Partner with leaders in other departments such as Product Marketing, Marketing, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects.</li>
+	<li>Develop and nurture relationships with engineering leadership and coordinate closely to ensure successful delivery of product</li>
+	<li>Deep understanding of the network and security landscapes, including current trends and threats, regulatory requirements, and emerging technologies.</li>
+	<li>A strong passion for and a clear vision for how AI and Machine Learning can fundamentally transform current SASE solutions in the modern era and in the future</li>
 </ul>
-<p>&nbsp;</p>
+<h4>Nice to haves</h4>
+<ul>
+	<li>An understanding and real-world experience working with all types of channel partners (VARs, MSP, MSSP, etc)</li>
+	<li>A Computer Science degree or equivalent in-seat experience in product roles for technical products is highly preferred.</li>
+	<li>Experience leading product integrations during post-merger acquisitions (M&amp;A).</li>
+	<li>Deep familiarity with Zero Trust architecture and SD-WAN markets.</li>
+</ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

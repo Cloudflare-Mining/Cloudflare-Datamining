@@ -5,32 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Lisbon, Portugal&nbsp;</p>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles about 10% of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</span></p>
+<p><strong>Available location: Austin, TX</strong></p>
+<p><strong>About the role</strong></p>
+<p>As an intern on the Internal Audit (IA) team, you will be a part of a data-driven team that will work with the Internal Audit team as well as Business and Technology partners to perform analysis with the dual purpose of (1) executing an independent assessment of a target area following Internal Audit’s methodology and (2) delivering insights to the business on potential improvements that leverage AI/ML and may include data analytics, automation, dashboarding, and process improvements.&nbsp;&nbsp;</p>
 <p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">We’re looking to grow our front-end product team with highly motivated individuals who are excited to work with product owners, designers, and systems engineers to build new and, in some cases, rebuild existing products and features. You should have experience working with large-scale JavaScript applications and a track record of building great products. You must care deeply not only about the quality of your and the team's code, but also the product functionality and user experience.&nbsp;</span></p>
-<p><span style="font-weight: 400;">We believe that great design is at the heart of any successful product. You will work closely with our design/UX team and must be comfortable seeking feedback from non-technical sources. We work iteratively and deploy often (can be several times a day). We build and maintain the Cloudflare Dashboard, a large TypeScript / React application, maintain a suite of common components published on npm, and build/package with Webpack. Other technologies we use include Redux, Fela, GraphQL, Apollo, Jest, Enzyme, Cypress, D3 and more.&nbsp;</span></p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum of 2 years experience building product</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of HTML, CSS, and TypeScript</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of React.js</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with JS frameworks and writing reusable/modular code</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of building great interfaces and being detail oriented</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work in cross-functional teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentoring other team members to help bring out their best work</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness to dive deep and understand product internals</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent debugging skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Unit/integration testing experience</span></li>
+	<li>Operating under the supervision of an Internal Audit Leader, the intern will execute through the full lifecycle of an audit project applying a data-driven approach that will include planning, risk assessment, fieldwork, code development, data analysis, visualization and reporting.</li>
+	<li>While the project will be performed in accordance with department and professional standards, opportunities to challenge our process and propose new audit and analytics approach will be expected.</li>
+	<li>Help design testing procedures relevant to risk and test objectives applying a data-driven approach.</li>
+	<li>Gain an understanding of the target area of your project including operations, systems, data and risk.</li>
+	<li>Prepare audit workpapers and reports with direct supervision.</li>
+	<li>Build relationships with key stakeholders and business owners to understand pain points and opportunities to enhance existing program, processes and controls.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team, including our co-founders.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity building products with design systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working alongside user researchers to build products</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in interviewing engineering candidates</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">History of building products in complex systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of the networking stack (such as DNS, firewalls, etc.)</span></li>
+	<li>Currently pursuing a degree or program in Accounting, Finance, Business, Engineering, Computer Science, Data Analytics, or related field</li>
+	<li>Expected graduation date between: 12/2026 - 12/2027</li>
+	<li>Coding skills desired (Python, R, SQL, Tableau, Power BI)</li>
+	<li>Critical thinking decision making/problem solving skills</li>
+	<li>Curious mindset &amp; initiative</li>
+	<li>Effective communicator, ability to build relations &amp; manage expectations&nbsp;</li>
+	<li>Time management skills and ability to plan and prioritize effectively</li>
+	<li>Proficiency in Microsoft Excel/Google Sheets required&nbsp;</li>
+	<li>Ability to work effectively in a team environment</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In office 3-5 days a week in Austin, TX.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

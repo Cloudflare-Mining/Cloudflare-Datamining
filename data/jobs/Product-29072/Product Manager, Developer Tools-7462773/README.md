@@ -5,38 +5,54 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX OR New York, NY</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>As a Strategic M&amp;A Integration Lead, you will manage overall integration efforts, ensuring all workstreams remain aligned with business decisions. You will act as a primary liaison between business owners and cross-functional teams, translating high-level strategy into operational reality for customers and vendors. Beyond managing the current deal, you will partner with functional leaders to codify best practices into a repeatable M&amp;A playbook. We are seeking a proactive, intellectually curious leader who can drive accountability across the organization while maintaining a clear view of how individual tasks connect to the broader strategic "forest”.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: Atlanta, Austin, Denver, Toronto, Washington DC, Lisbon, London</strong></p>
+<p><strong>About Product Management at Cloudflare</strong></p>
+<p>As a Product Manager at Cloudflare, you will be responsible for building products and workflows that help us improve the way the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with other PMs, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
+<p><strong>About the Role</strong></p>
+<p>As a Senior Product Manager for Developer Tools, your primary goal is to help improve the efficiency and happiness of Cloudflare’s internal engineering teams. You’ll work closely with a strong team of Engineers to build tools and processes that make developers' lives better.</p>
+<p>You’ll be responsible for the long-term strategy, roadmap, and delivery of internal developer tools and platforms. You will give our developers the firepower they need to improve the 20% of the web that runs on Cloudflare products. This includes areas such as:</p>
 <ul>
-	<li><strong>Drive Program Accountability: </strong>You will lead the overall integration program, establishing a cadence for status updates, tracking milestones, and ensuring all cross-functional leads are held accountable for their deliverables.</li>
-	<li><strong>Develop M&amp;A Playbooks: </strong>You will partner with functional teams (GTM, Finance, People, etc.) to capture lessons learned and build a repeatable M&amp;A integration playbook, ensuring the organization matures with every deal.</li>
-	<li><strong>Translate Strategy into Plans: </strong>You will convert complex business decisions into actionable, cross-functional support plans that protect customer and vendor stability throughout the integration process.</li>
-	<li><strong>Orchestrate Cross-Functional Alignment: </strong>You will facilitate regular synchronization meetings across cross-functional teams to identify dependencies and ensure no department operates in a vacuum.</li>
-	<li><strong>Synthesize Executive Reporting:</strong> You are responsible for distilling project updates from various workstreams into clear, strategic insights for C-suite stakeholders, highlighting risks and required decisions.</li>
+	<li><strong>Developer productivity:</strong> Identifying and removing friction in the development workflow—from code commit to production deployment</li>
+	<li><strong>Developer insights and SDLC:</strong> Metrics, dashboards, and tooling that help teams understand their own velocity, quality, and bottlenecks</li>
+	<li><strong>Developer infrastructure:</strong> Build systems, CI/CD pipelines, source control workflows, and deployment automation</li>
+	<li><strong>AI-assisted development:</strong> Enabling engineers with AI tooling—code generation, automated code review, intelligent debugging, and workflow automation</li>
+	<li><strong>Cloudflare on Cloudflare:</strong> Championing the use of our own customer-facing developer platform for internal use, and improving those products through dogfooding</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>You must have 5+ years of experience in M&amp;A Integration, Strategic Operations, or Management Consulting.</li>
-	<li>You possess a demonstrated ability to translate abstract strategy into detailed, cross-functional project plans that have successfully guided teams through change.</li>
-	<li>You have a proven track record of driving alignment between teams to solve typical M&amp;A friction points.</li>
-	<li>You must exhibit high business acumen and critical thinking skills, specifically the ability to connect disparate "dots" across an organization.</li>
-	<li>You are required to have expert-level soft skills and the ability to influence without formal authority to gain cross-functional buy-in.</li>
-	<li>You must be curious and willing to "dig in" further to understand root causes rather than just managing a high-level status report.</li>
+	<li><strong>Own the DevTools roadmap:</strong> Define priorities, make tradeoffs, and maintain a clear view of what we’re building and why.</li>
+	<li><strong>Run discovery with engineering teams:</strong> Conduct regular research with internal developers to identify pain points, validate solutions, and measure adoption.</li>
+	<li><strong>Define and track success metrics:</strong> Establish measurable outcomes for developer productivity initiatives—build times, deployment frequency, developer satisfaction, etc.</li>
+	<li><strong>Write PRDs and specs:</strong> Author clear product documentation that frames the problem, success criteria, and constraints—while leaving room for engineering to determine the best approach.</li>
+	<li><strong>Partner with engineering leadership:</strong> Collaborate on quarterly planning, staffing allocation, and cross-team dependencies.</li>
+	<li><strong>Communicate across the org:</strong> Keep stakeholders informed on progress, decisions, and upcoming changes. Evangelize new tools and drive adoption.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<p><strong>Key Competencies</strong></p>
 <ul>
-	<li>Experience leading Quote to Cash (Q2C) or Procure to Pay (P2P) initiatives, especially during organizational transitions.</li>
-	<li>A background in Computer Science or a technical field to speak the same language as business stakeholders.</li>
-	<li>Experience in Change Management.</li>
-	<li>Experience in cross-functional transformation initiatives</li>
+	<li><strong>Problem-first thinking:</strong> You understand problems deeply before jumping to solutions. You bring the team along on the journey—sharing context, inviting input, and building shared understanding before arriving at a solution.</li>
+	<li><strong>Outcomes orientation:</strong> You define success in terms of measurable impact, not activities or deliverables. You ask “How will we know it worked?” before building.</li>
+	<li><strong>Cross-functional partnership:</strong> You collaborate effectively with engineering, design, and other product teams. You work well asynchronously and respect people’s time.</li>
+	<li><strong>Data-informed decision making:</strong> You use data to inform product decisions and measure impact—but you know when data is insufficient and judgment is required.</li>
+	<li><strong>Technical credibility:</strong> You can hold your own in conversations with engineers about architecture, tradeoffs, and implementation approaches.</li>
+	<li><strong>AI fluency:</strong> You actively use AI tools in your own work and stay current on how AI is changing software development. You can separate signal from hype and focus on what actually improves developer outcomes.</li>
+	<li><strong>Clear communication:</strong> You write and speak with precision. You prefer outcomes over activities, and direct feedback over hedging.</li>
 </ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>An engineering background or experience building software yourself. This gives you credibility with engineering teams and helps you understand their world.</li>
+	<li>Experience with developer productivity tools, build systems, or CI/CD pipelines—either as a PM or as a user.</li>
+	<li>Comfort with ambiguity. Internal platform work often lacks the clear market signals of customer-facing products. You’ll need to define success criteria and prioritize without perfect information.</li>
+	<li>Experience thoughtfully applying Generative AI to improve developer workflows—not just hype, but real impact on efficiency or quality.</li>
+	<li>Familiarity with how the Internet works (layers 2–7). If not, be prepared to speak with depth about another domain of similar complexity.</li>
+</ul>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p style="padding-left: 40px;">For New York City based hires: Estimated annual salary of $137,000 - $167,000</p>
+<ul>
+	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $156,000- $215,000.</li>
+	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $172,000 - $237,000.</li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

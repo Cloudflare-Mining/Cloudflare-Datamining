@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7600080?gh_jid=7600080",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7462773?gh_jid=7462773",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3357862,
+	"internal_job_id": 3315972,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -25,9 +25,13 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
 				"Denver, US",
-				"Seattle, US"
+				"Lisbon, Portugal",
+				"London, UK",
+				"Toronto, Canada",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -40,12 +44,12 @@
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7600080,
-	"updated_at": "2026-02-25T11:34:03-05:00",
-	"requisition_id": "810",
-	"title": "Senior Product Manager",
+	"id": 7462773,
+	"updated_at": "2026-02-25T14:11:47-05:00",
+	"requisition_id": "732",
+	"title": "Product Manager, Developer Tools",
 	"company_name": "Cloudflare",
-	"first_published": "2026-02-10T10:50:44-05:00",
+	"first_published": "2025-12-11T17:42:08-05:00",
 	"language": "en",
 	"departments": [
 		{
@@ -64,6 +68,27 @@
 			"parent_id": 48752
 		},
 		{
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
 			"id": 65527,
 			"name": "Denver, CO",
 			"location": "Denver, Colorado, United States",
@@ -71,11 +96,18 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 72960,
-			"name": "Seattle, WA",
+			"id": 66815,
+			"name": "Atlanta, GA",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 73335,
+			"name": "Toronto, ON",
+			"location": "Toronto, Ontario, Canada",
+			"child_ids": [],
+			"parent_id": 75883
 		}
 	]
 }
