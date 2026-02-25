@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: London, UK&nbsp;</strong></p>
 <p><strong>What You’ll Do:</strong></p>
-<p>Cloudflare is looking for a bright, proactive and detail-oriented Executive Assistant&nbsp;to support the VP, Product Management &amp; VP, Product Engineering.</p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Executive Assistant to support the VP, Product Management &amp; VP, Product Engineering. This individual will also provide secondary and more limited support to 3 additional leaders as well.&nbsp;</p>
 <p>Your job is to keep our leaders organized, prioritized and productive while Cloudflare continues to grow and scale. This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude.The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves on being a career EA.&nbsp;</p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
