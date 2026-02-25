@@ -665,6 +665,9 @@
 	"deseng-aig-kumo-logs": {
 		"enabled": true
 	},
+	"deseng-aig-kumo-provider-keys": {
+		"enabled": false
+	},
 	"deseng-api-token": {
 		"enabled": true
 	},
@@ -836,8 +839,7 @@
 		"enabled": false,
 		"branches": [
 			"sequenced-onboarding",
-			"wireframe-grid-onboarding",
-			"card-based-onboarding"
+			"wireframe-grid-onboarding"
 		]
 	},
 	"dx-account-overview-audit-logs-widget": {

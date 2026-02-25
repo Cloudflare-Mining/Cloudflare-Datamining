@@ -143,9 +143,6 @@
 	"dex-endpoint-monitoring": {
 		"enabled": true
 	},
-	"dex-fleet-status-v2": {
-		"enabled": true
-	},
 	"dex-granular-rbac-q42025": {
 		"enabled": true
 	},
@@ -289,6 +286,9 @@
 	},
 	"mon-authenticated-tests-q12026": {
 		"enabled": true
+	},
+	"monitoring-magic-merge": {
+		"enabled": false
 	},
 	"onedash-gateway-scheduled-policies-ui-q32025": {
 		"enabled": true
