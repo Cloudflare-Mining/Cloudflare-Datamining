@@ -8,7 +8,7 @@
 	<p>In preparation of Cloudflare Speed Week 2023, we spent the last few weeks benchmarking the performance of a Cloudflare product that has gone through many transformations throughout the years: the Cloudflare dashboard itself!</p>
 	<div class="flex anchor relative">
 		<h2 id="limitations-and-scope">Limitations and scope</h2>
-		<a href="https://blog.cloudflare.com/#limitations-and-scope" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#limitations-and-scope" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p>Finally, throughout this exercise, it was important to keep in mind that our overall goal was to improve the user experience of the dashboard, with regards to loading performance. We chose to use a Lighthouse Performance score as a metric to measure performance, but we were careful to not set a target score. <i>Once a measure becomes a target, it ceases to be a good measure.</i></p>
 	<div class="flex anchor relative">
 		<h2 id="initial-benchmarks">Initial Benchmarks</h2>
-		<a href="https://blog.cloudflare.com/#initial-benchmarks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#initial-benchmarks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="improving-what-weve-measured">Improving what we've measured</h2>
-		<a href="https://blog.cloudflare.com/#improving-what-weve-measured" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#improving-what-weve-measured" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -54,7 +54,7 @@
 	<p>So what did we do?</p>
 	<div class="flex anchor relative">
 		<h3 id="shipped-less-javascript">Shipped less JavaScript</h3>
-		<a href="https://blog.cloudflare.com/#shipped-less-javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#shipped-less-javascript" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -65,7 +65,7 @@
 	<p>The result was a reduction in total assets being served to the user, going from 10MB (2.7MB gzipped) to 6.5MB (1.7MB gzipped). Lighthouse performance score improved to about 70. This was a good first step, but we could do better.</p>
 	<div class="flex anchor relative">
 		<h3 id="identified-and-code-split-top-level-boundaries">Identified and code split top-level boundaries</h3>
-		<a href="https://blog.cloudflare.com/#identified-and-code-split-top-level-boundaries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#identified-and-code-split-top-level-boundaries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -98,7 +98,7 @@ const Root: React.FC = () =&gt; {
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="optimized-dead-code-elimination">Optimized dead-code elimination</h3>
-		<a href="https://blog.cloudflare.com/#optimized-dead-code-elimination" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#optimized-dead-code-elimination" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -108,7 +108,7 @@ const Root: React.FC = () =&gt; {
 	<p>We had to go through each individual JavaScript import to identify modules that didn’t produce side-effects so they could be marked by the transpiler to be removed. We were able to optimize “tree-shaking” for the majority of the modules, but this will be an ongoing process as we make more performance improvements.</p>
 	<div class="flex anchor relative">
 		<h2 id="key-results">Key results</h2>
-		<a href="https://blog.cloudflare.com/#key-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#key-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -129,7 +129,7 @@ const Root: React.FC = () =&gt; {
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="whats-next">What’s next</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

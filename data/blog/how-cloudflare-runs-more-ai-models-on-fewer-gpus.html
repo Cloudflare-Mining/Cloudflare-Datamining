@@ -20,7 +20,7 @@
 	<p>Here’s how.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="omnis-architecture-at-a-glance">Omni’s architecture – at a glance</h2>
-		<a href="https://blog.cloudflare.com/#omnis-architecture-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#omnis-architecture-at-a-glance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -33,7 +33,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="elastic-scaling-by-spawning-multiple-models-from-a-single-control-plane">Elastic scaling by spawning multiple models from a single control plane</h2>
-		<a href="https://blog.cloudflare.com/#elastic-scaling-by-spawning-multiple-models-from-a-single-control-plane" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#elastic-scaling-by-spawning-multiple-models-from-a-single-control-plane" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@
 	<p>The scheduler and the child processes communicate by passing messages over Inter-Process Communication (IPC). Usually the inference request is buffered in the scheduler for applying features, like prompt templating or tool calling, before the request is passed to the child process. For potentially large binary requests, the scheduler hands over the underlying TCP connection to the child process for consuming the request body directly.</p>
 	<div class="flex anchor relative">
 		<h2 id="implementing-lightweight-process-and-python-isolation">Implementing lightweight process and Python isolation</h2>
-		<a href="https://blog.cloudflare.com/#implementing-lightweight-process-and-python-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementing-lightweight-process-and-python-isolation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@ MemAvailable:     7316388 kB</code></pre>
 	<p>Also separated processes for models allows to have different CUDA contexts and isolation for error recovery.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="over-committing-memory-to-run-more-models-on-a-single-gpu">Over-committing memory to run more models on a single GPU</h2>
-		<a href="https://blog.cloudflare.com/#over-committing-memory-to-run-more-models-on-a-single-gpu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#over-committing-memory-to-run-more-models-on-a-single-gpu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -119,7 +119,7 @@ MemAvailable:     7316388 kB</code></pre>
 	<p>Rather than allowing the model to choose how much GPU memory it uses, AI frameworks tend to pre-allocate as much GPU memory as possible for performance reasons, making co-locating models more complicated. Omni allows us to control how much memory is actually exposed to any given model to prevent a greedy model from over-using the GPU allocated to it. We do this by overriding the CUDA runtime and driver APIs (<a href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__MEMORY.html#group__CUDART__MEMORY_1g376b97f5ab20321ca46f7cfa9511b978"><u>cudaMemGetInfo</u></a> and <a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MEM.html#group__CUDA__MEM_1g808f555540d0143a331cc42aa98835c0"><u>cuMemGetInfo</u></a>). Instead of exposing the entire GPU memory, we only expose a subset of memory to each model.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-omni-runs-multiple-models-for-workers-ai">How Omni runs multiple models for Workers AI&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#how-omni-runs-multiple-models-for-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-omni-runs-multiple-models-for-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -164,7 +164,7 @@ def test_basic():
 
 	<div class="flex anchor relative">
 		<h2 id="whats-next">What’s next&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

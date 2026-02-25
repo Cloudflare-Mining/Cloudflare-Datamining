@@ -11,7 +11,7 @@
 	<p>Today, we’re excited to announce that we have integrated Turnstile with the <a href="https://www.cloudflare.com/application-services/products/waf">Cloudflare Web Application Firewall (WAF)</a>. This means that web admins can add the Turnstile code snippet to their websites, and then configure the Cloudflare WAF to manage these requests. This is completely customizable using WAF Rules; for instance, you can allow a user authenticated by Turnstile to interact with all of an application’s API endpoints without facing any further challenges, or you can configure certain sensitive endpoints, like Login, to always issue a challenge.</p>
 	<div class="flex anchor relative">
 		<h3 id="challenging-fetch-requests-in-the-cloudflare-waf">Challenging fetch requests in the Cloudflare WAF</h3>
-		<a href="https://blog.cloudflare.com/#challenging-fetch-requests-in-the-cloudflare-waf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#challenging-fetch-requests-in-the-cloudflare-waf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>This is where Turnstile can help. Turnstile allows anyone on the Internet to embed a Cloudflare challenge anywhere on their website. Before today, the output of Turnstile was only a one-time use token. To enable customers to issue challenges for these fetch requests, Turnstile can now issue a clearance cookie for the domain that it's embedded on. Customers can issue their challenge within the HTML page before a fetch request, <i>pre-clearing</i> the visitor to interact with the Payment API.</p>
 	<div class="flex anchor relative">
 		<h3 id="turnstile-pre-clearance-mode">Turnstile Pre-Clearance mode</h3>
-		<a href="https://blog.cloudflare.com/#turnstile-pre-clearance-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#turnstile-pre-clearance-mode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -54,7 +54,7 @@
 	<p>A Turnstile widget with Pre-Clearance enabled will still issue turnstile tokens, which gives customers the flexibility to decide if an endpoint is critical enough to require a security check on every request to it, or just once a session. Clearance cookies issued by a Turnstile widget are automatically applied to the Cloudflare zone the Turnstile widget is embedded on, with no configuration necessary. The clearance time the token is valid for is still controlled by the zone specific “Challenge Passage” time.</p>
 	<div class="flex anchor relative">
 		<h3 id="implementing-turnstile-with-pre-clearance">Implementing Turnstile with Pre-Clearance</h3>
-		<a href="https://blog.cloudflare.com/#implementing-turnstile-with-pre-clearance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementing-turnstile-with-pre-clearance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -192,7 +192,7 @@ turnstileLoad = function () {
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="pre-clearance-is-available-to-all-cloudflare-customers">Pre-Clearance is available to all Cloudflare customers</h3>
-		<a href="https://blog.cloudflare.com/#pre-clearance-is-available-to-all-cloudflare-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#pre-clearance-is-available-to-all-cloudflare-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

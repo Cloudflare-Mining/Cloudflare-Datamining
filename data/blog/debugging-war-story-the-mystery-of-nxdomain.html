@@ -4,7 +4,7 @@
 	<p>The problem encountered didn't have any effect on our customers, but did have engineers scratching their heads...</p>
 	<div class="flex anchor relative">
 		<h3 id="the-problem">The Problem</h3>
-		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -18,7 +18,7 @@
 	<p>Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for “no such host” and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
 	<div class="flex anchor relative">
 		<h3 id="into-the-rabbit-hole">Into the rabbit hole</h3>
-		<a href="https://blog.cloudflare.com/#into-the-rabbit-hole" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#into-the-rabbit-hole" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@ func main() {
 	<p>We started to suspect that packet loss was the issue, but why would “no such host” occur? It should only happen when an NXDOMAIN error is in a DNS response, but our theory was that replies didn’t come back at all.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-missing">The Missing</h3>
-		<a href="https://blog.cloudflare.com/#the-missing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-missing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -107,7 +107,7 @@ sudo tcpdump -w /state/wtf.cap port 53</code></pre>
 	<p>Two queries time out without any answer, but the third one gets lucky and succeeds. Naturally, we don’t have cloudflare.com in our internal domain, so Unbound rightfully gives NXDOMAIN in reply, 10s after the lookup was initiated.</p>
 	<div class="flex anchor relative">
 		<h3 id="bingo">Bingo</h3>
-		<a href="https://blog.cloudflare.com/#bingo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#bingo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -168,7 +168,7 @@ func main() {
 	<p>Finally, we found what was going on and had a way of reliably replicating that behaviour.</p>
 	<div class="flex anchor relative">
 		<h3 id="solutions">Solutions</h3>
-		<a href="https://blog.cloudflare.com/#solutions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -189,7 +189,7 @@ func main() {
 	<p>As you know many system libraries that provide DNS resolution like glibc, nscd, systemd-resolved are not hardened to handle being on the internet or in a environment with packet losses. We have faced the challenge of creating a reliable and fast DNS resolution environment a number of times as we have grown, only to later discover that the solution is not perfect.</p>
 	<div class="flex anchor relative">
 		<h3 id="over-to-you">Over to you</h3>
-		<a href="https://blog.cloudflare.com/#over-to-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#over-to-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -4,7 +4,7 @@
 	<p>Today, we’re excited to talk about <a href="https://radar.cloudflare.com/scan">URL Scanner</a>, a tool that helps everyone from security teams to everyday users to detect and safeguard against malicious websites by scanning and analyzing them. URL Scanner has executed almost a million scans since its <a href="https://blog.cloudflare.com/radar-url-scanner-early-access">launch</a> last March on <a href="https://radar.cloudflare.com/scan">Cloudflare Radar</a>, driving us to continuously innovate and enhance its capabilities. Since that time, we have introduced unlisted scans, detailed malicious verdicts, enriched search functionality, and now, integration with Security Center and an official API, all built upon the robust foundation of <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>, and the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="integration-with-the-security-center-in-the-cloudflare-dashboard">Integration with the Security Center in the Cloudflare Dashboard</h2>
-		<a href="https://blog.cloudflare.com/#integration-with-the-security-center-in-the-cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#integration-with-the-security-center-in-the-cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -20,7 +20,7 @@
 	<p><i>Security Center in the Cloudflare Dashboard</i></p>
 	<div class="flex anchor relative">
 		<h2 id="unlocking-the-potential-of-the-url-scanner-api">Unlocking the potential of the URL Scanner API</h2>
-		<a href="https://blog.cloudflare.com/#unlocking-the-potential-of-the-url-scanner-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#unlocking-the-potential-of-the-url-scanner-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -29,7 +29,7 @@
 	<p>The <a href="https://developers.cloudflare.com/radar/investigate/url-scanner">URL Scanner API</a> is a powerful asset for developers, enabling custom scans to detect <a href="https://www.cloudflare.com/learning/access-management/phishing-attack">phishing</a> or <a href="https://www.cloudflare.com/learning/ddos/glossary/malware">malware</a> risks, analyze website technologies, and much more. With new features like custom HTTP headers and multi-device screenshots, developers gain a comprehensive toolkit for thorough website assessment.</p>
 	<div class="flex anchor relative">
 		<h3 id="submitting-a-scan-request">Submitting a scan request</h3>
-		<a href="https://blog.cloudflare.com/#submitting-a-scan-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#submitting-a-scan-request" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -46,7 +46,7 @@
 	<p>New features include the option to set custom HTTP headers, like <a href="https://developer.mozilla.org/en-US/docs/Glossary/User_agent">User-Agent</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization</a>, request multiple target device screenshots, like mobile and desktop, as well as set the visibility level to “unlisted”. This essentially marks the scan as private and was often requested by developers who wanted to keep their investigations confidential. Public scans, on the other hand, can be found by anyone through search and are useful to share results with the wider community. You can find more details in our <a href="https://developers.cloudflare.com/radar/investigate/url-scanner">developer documentation</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="exploring-the-scan-results">Exploring the scan results</h3>
-		<a href="https://blog.cloudflare.com/#exploring-the-scan-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#exploring-the-scan-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -62,7 +62,7 @@
 	<p>Once a scan concludes, fetch the final <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan">report</a> and the full <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan-har">network log</a>. Recently added features include the `verdict` property, indicating the site’s malicious status, and the `securityViolations` section detailing <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">CSP</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">SRI</a> policy breaches — as a developer, you can also scan your own website and see our recommendations. Expect improvements on verdict accuracy over time, as this is an area we’re focusing on.</p>
 	<div class="flex anchor relative">
 		<h3 id="enhanced-search-functionality">Enhanced search functionality</h3>
-		<a href="https://blog.cloudflare.com/#enhanced-search-functionality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#enhanced-search-functionality" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -72,7 +72,7 @@
 	<p>The URL Scanner can be used for a diverse range of applications. These include capturing a website's evolving state over time (such as tracking changes to the front page of an online newspaper), analyzing technologies employed by a website, preemptively assessing potential risks (as when scrutinizing shortened URLs), and supporting the investigation of persistent cybersecurity threats (such as identifying affected websites hosting a malicious JavaScript file).</p>
 	<div class="flex anchor relative">
 		<h2 id="how-we-built-the-url-scanner-api">How we built the URL Scanner API</h2>
-		<a href="https://blog.cloudflare.com/#how-we-built-the-url-scanner-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-we-built-the-url-scanner-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -88,7 +88,7 @@
 	<p>As seen above, Cloudflare’s runtime infrastructure is the foundation the system runs on. <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> serves the public API, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a> handles orchestration, <a href="https://developers.cloudflare.com/r2">R2</a> acts as the primary storage solution, and <a href="https://developers.cloudflare.com/queues">Queues</a> efficiently handles batch operations, all at the edge. However, what truly enables the URL Scanner’s capabilities is the <a href="https://developers.cloudflare.com/browser-rendering">Browser Rendering API</a>. It’s what initially allowed us to release in such a short time frame, since we didn’t have to build and manage an entire fleet of Chrome browsers from scratch. We simply request a browser, and then using the well known <a href="https://pptr.dev">Puppeteer</a> library, instruct it to fetch the webpage and process it in the way we want. This API is at the heart of the entire system.</p>
 	<div class="flex anchor relative">
 		<h3 id="scanning-a-website">Scanning a website</h3>
-		<a href="https://blog.cloudflare.com/#scanning-a-website" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#scanning-a-website" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -161,7 +161,7 @@
 	<p>Launching a browser (Step 6) and maintaining a connection to it is abstracted away from us thanks to the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a>. This API is responsible for all the infrastructure required to maintain a fleet of Chrome browsers, and led to a much quicker development and release of the URL Scanner. It also allowed us to use a well-known library, <a href="https://pptr.dev">Puppeteer</a>, to communicate with Google Chrome via the <a href="https://chromedevtools.github.io/devtools-protocol">DevTools</a> protocol.</p>
 	<p>The initial report is made up of the network log of all requests, captured in <a href="https://en.wikipedia.org/wiki/HAR_(file_format)">HAR</a> (HTTP Archive) format. HAR files, essentially JSON files, provide a detailed record of all interactions between a web browser and a website. As an established standard in the industry, HAR files can be easily <a href="https://developers.cloudflare.com/api/operations/urlscanner-get-scan-har">shared</a> and analyzed using specialized <a href="https://toolbox.googleapps.com/apps/har_analyzer">tools</a>. In addition to this network log, we augment our dataset with an array of other metadata, including base64-encoded screenshots which provide a snapshot of the website at the moment of the scan.</p>
 	<p>Having this data, we transition to phase 3, where the Scanner Durable Object initiates a series of interactions with a few other Cloudflare APIs in order to collect additional information, like running a phishing scanner over the web page's Document Object Model (DOM), fetching <a href="https://www.cloudflare.com/learning/dns/dns-records">DNS records</a>, and extracting information about <a href="https://developers.cloudflare.com/api/operations/domain-intelligence-get-domain-details">categories</a> and <a href="https://developers.cloudflare.com/api/operations/radar-get-ranking-domain-details">Radar rank</a> associated with the main hostname.</p>
-	<p>This process ensures that the final report is enriched with insights coming from different sources, making the URL Scanner more efficient in assessing websites. Once all the necessary information is collected, we compile the final report and store it as a JSON file within <a href="https://developers.cloudflare.com/r2">R2</a>, Cloudflare’s object storage solution. To empower users with efficient scan searches, we use Postgres.</p>
+	<p>This process ensures that the final report is enriched with insights coming from different sources, making the URL Scanner more efficient in assessing websites. Once all the necessary information is collected, we compile the final report and store it as a JSON file within <a href="https://developers.cloudflare.com/r2">R2</a>, Cloudflare’s <a href="https://www.cloudflare.com/developer-platform/products/r2">object storage solution</a>. To empower users with efficient scan searches, we use Postgres.</p>
 	<p>While the initial approach involved sending each completed scan promptly to the core API for immediate storage in Postgres, we realized that, as the rate of scans grew, a more efficient strategy would be to batch those operations, and for that, we use Worker Queues:</p>
 	<figure class="kg-card kg-image-card kg-width-wide">
 
@@ -172,7 +172,7 @@
 	<p>In short, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a> together with the <a href="https://blog.cloudflare.com/browser-rendering-open-beta">Browser Rendering API</a> power the entire scanning process. Once that’s finished, the Cloudflare Worker serving the API will simply fetch it from <a href="https://developers.cloudflare.com/r2">R2</a> by ID. All together, Workers, Durable Objects, and R2 scale seamlessly and will allow us to grow as demand evolves.</p>
 	<div class="flex anchor relative">
 		<h3 id="last-but-not-least">Last but not least</h3>
-		<a href="https://blog.cloudflare.com/#last-but-not-least" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#last-but-not-least" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -227,7 +227,7 @@ export default {
 	<p>You can learn more about the project on its <a href="https://github.com/cloudflare/itty-router-openapi">GitHub page</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="future-plans-and-new-features">Future plans and new features</h2>
-		<a href="https://blog.cloudflare.com/#future-plans-and-new-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#future-plans-and-new-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

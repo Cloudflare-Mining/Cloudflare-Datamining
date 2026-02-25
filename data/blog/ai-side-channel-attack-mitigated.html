@@ -13,7 +13,7 @@
 	<p>Since being notified about this vulnerability, we've implemented a mitigation to help secure all Workers AI and AI Gateway customers. As far as we could assess, there was no outstanding risk to Workers AI and AI Gateway customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-the-side-channel-attack-work">How does the side-channel attack work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-the-side-channel-attack-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-the-side-channel-attack-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -42,7 +42,7 @@ https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta
 	<p>This method requires that the attacker is on the same network or in a position to observe the communication traffic and its accuracy depends on knowing the target LLM’s writing style. In ideal conditions, the researchers claim that their system “can reconstruct 29% of an AI assistant’s responses and successfully infer the topic from 55% of them”. It’s also important to note that unlike other side-channel attacks, in this case the attacker has no way of evaluating its prediction against the ground truth. That means that we are as likely to get a sentence with near perfect accuracy as we are to get one where only things that match are conjunctions.</p>
 	<div class="flex anchor relative">
 		<h3 id="mitigating-llm-side-channel-attacks">Mitigating LLM side-channel attacks</h3>
-		<a href="https://blog.cloudflare.com/#mitigating-llm-side-channel-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mitigating-llm-side-channel-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -52,7 +52,7 @@ https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta
 	<p>As of today, all users of Workers AI and AI Gateway are now automatically protected from this side-channel attack.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-we-did">What we did</h3>
-		<a href="https://blog.cloudflare.com/#what-we-did" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-we-did" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@ https://api.cloudflare.com/client/v4/accounts/&lt;account-id&gt;/ai/run/@cf/meta
 	<p>We decided to incorporate the first mitigation suggestion in the paper: including random padding to each message to hide the actual length of tokens in the stream, thereby complicating attempts to infer information based solely on network packet size.</p>
 	<div class="flex anchor relative">
 		<h3 id="workers-ai-our-inference-product-is-now-protected">Workers AI, our inference product, is now protected</h3>
-		<a href="https://blog.cloudflare.com/#workers-ai-our-inference-product-is-now-protected" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#workers-ai-our-inference-product-is-now-protected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -82,7 +82,7 @@ data: {"response":" located","p":"abcdefghijklmnopqrstuvwxyz012345678"}</code></
 	<p>This has the advantage that no modifications are required in the SDK or the client code, the changes are invisible to the end-users, and no action is required from our customers. By adding random variable length to the JSON objects, we introduce the same network-level variability, and the attacker essentially loses the required input signal. Customers can continue using Workers AI as usual while benefiting from this protection.</p>
 	<div class="flex anchor relative">
 		<h3 id="one-step-further-ai-gateway-protects-users-of-any-inference-provider">One step further: AI Gateway protects users of any inference provider</h3>
-		<a href="https://blog.cloudflare.com/#one-step-further-ai-gateway-protects-users-of-any-inference-provider" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#one-step-further-ai-gateway-protects-users-of-any-inference-provider" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -92,7 +92,7 @@ data: {"response":" located","p":"abcdefghijklmnopqrstuvwxyz012345678"}</code></
 	<p>Our AI Gateway customers are now automatically protected against this side-channel attack, even if the upstream inference providers have not yet mitigated the vulnerability. If you are unsure if your inference provider has patched this vulnerability yet, use AI Gateway to proxy your requests and ensure that you are protected.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

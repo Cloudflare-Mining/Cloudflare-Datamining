@@ -6,7 +6,7 @@
 	<p>In this blog post we discuss our Kubernetes architecture, why we needed virtualization, and how we’re using it today.</p>
 	<div class="flex anchor relative">
 		<h2 id="multi-tenant-clusters">Multi-tenant clusters</h2>
-		<a href="https://blog.cloudflare.com/#multi-tenant-clusters" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#multi-tenant-clusters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p><a href="https://kubernetes.io/docs/concepts/workloads/pods"><u>Pods</u></a> are secured using the latest standards recommended by the Kubernetes project. We use <a href="https://kubernetes.io/docs/concepts/security/pod-security-admission"><u>Pod Security Admission</u></a> (PSA) and <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards"><u>Pod Security Standards</u></a> to ensure all workloads are following best practices. By default, all namespaces use the most <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted"><u>restrictive</u></a> profile, and only a few Kubernetes control plane namespaces are granted <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/#privileged"><u>privileged</u></a> access. For additional policies not covered by PSA, we built custom <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#validatingadmissionwebhook"><u>Validating Webhooks</u></a> on top of the <a href="https://github.com/kubernetes-sigs/controller-runtime/tree/main/pkg/webhook/admission"><u>controller-runtime</u></a> framework. PSA and our custom policies ensure clusters are secure and workloads are isolated.</p>
 	<div class="flex anchor relative">
 		<h2 id="our-need-for-virtualization">Our need for virtualization</h2>
-		<a href="https://blog.cloudflare.com/#our-need-for-virtualization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#our-need-for-virtualization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>We then looked for solutions that run virtual machines within Kubernetes. Teams could already manually deploy <a href="https://www.qemu.org"><u>QEMU</u></a> pods, but this was not an elegant solution. We needed a better way. There were several other options, but <a href="https://kubevirt.io"><u>KubeVirt</u></a> was the tool that met the majority of our requirements. Other solutions required a privileged container to run a virtual machine, but KubeVirt did not – this was a crucial requirement in our goal of creating a more secure multi-tenant cluster. KubeVirt also uses a feature of the Kubernetes API called <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources"><u>Custom Resource Definitions</u></a> (CRDs), which extends the Kubernetes API with new objects, increasing the flexibility of Kubernetes beyond its built-in types. For KubeVirt, this includes objects such as VirtualMachine and VirtualMachineInstanceReplicaSet. We felt the use of CRDs would allow KubeVirt to grow as more features were added.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-kubevirt">What is KubeVirt?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-kubevirt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-kubevirt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -37,7 +37,7 @@
 	<p>KubeVirt is a virtualization platform that enables users to run virtual machines within Kubernetes. With KubeVirt, <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine"><u>virtual machines</u></a> run alongside containerized workloads on the same platform. Kubernetes primitives such as <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies"><u>network policies</u></a>, <a href="https://kubernetes.io/docs/concepts/configuration/configmap"><u>configmaps</u></a>, and <a href="https://kubernetes.io/docs/concepts/services-networking/service"><u>services</u></a> all integrate with virtual machines. KubeVirt scales with our needs and is successfully running hundreds of virtual machines across several clusters. We frequently <a href="https://blog.cloudflare.com/automatic-remediation-of-kubernetes-nodes"><u>remediate Kubernetes nodes</u></a>, so virtual machines and pods are always exercising their startup/shutdown processes.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-cloudflare-uses-kubevirt">How Cloudflare uses KubeVirt</h2>
-		<a href="https://blog.cloudflare.com/#how-cloudflare-uses-kubevirt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-cloudflare-uses-kubevirt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -61,7 +61,7 @@
 	<div class="flex anchor relative">
 		<h3 id="kubernetes-scalability-testing">
 			Kubernetes scalability testing</h3>
-		<a href="https://blog.cloudflare.com/#kubernetes-scalability-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#kubernetes-scalability-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -70,7 +70,7 @@
 
 	<div class="flex anchor relative">
 		<h4 id="setup-process">Setup process</h4>
-		<a href="https://blog.cloudflare.com/#setup-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#setup-process" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -116,7 +116,7 @@
 	<p>Once each node has completed its individual playbook, we can <a href="http://ools/kubeadm/kubeadm-init"><u>initialize</u></a> and <a href="https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join"><u>join</u></a> nodes to the cluster using another playbook that runs kubeadm. From there the cluster can be accessed by logging into a control plane node using kubectl.</p>
 	<div class="flex anchor relative">
 		<h4 id="simulating-at-scale">Simulating at scale</h4>
-		<a href="https://blog.cloudflare.com/#simulating-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#simulating-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -135,7 +135,7 @@
 	<p>This framework allows us to exercise the code in <a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager"><u>controller-manager</u></a>, Kubernetes’s daemon that reconciles the fundamental state of the system (Nodes, Pods, etc). Our simulation platform helped us drastically shorten full traffic recovery time when a large number of Kubernetes nodes <a href="https://blog.cloudflare.com/major-data-center-power-failure-again-cloudflare-code-orange-tested"><u>become unreachable</u></a>. We upstreamed our <a href="https://github.com/kubernetes/kubernetes/pull/114296"><u>changes</u></a> to Kubernetes and more controller-manager speed improvements are coming soon.</p>
 	<div class="flex anchor relative">
 		<h3 id="development-environments">Development environments</h3>
-		<a href="https://blog.cloudflare.com/#development-environments" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#development-environments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -161,7 +161,7 @@ spec:
 	<p><sup><i>A PersistentVolumeClaim that clones data from another volume using CSI Volume Cloning</i></sup></p>
 	<div class="flex anchor relative">
 		<h3 id="kernel-and-ipxe-testing">Kernel and iPXE testing</h3>
-		<a href="https://blog.cloudflare.com/#kernel-and-ipxe-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#kernel-and-ipxe-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -197,7 +197,7 @@ root@linux:~# </code></pre>
 	<p>Custom kernels can be copied to the nginx pod via <code>kubectl cp</code>. Restarting the virtual machine will load that new kernel for testing. When a kernel panic occurs, the virtual machine can quickly be restarted with <code>virtctl restart linux</code> and it will go through the iPXE boot process again.</p>
 	<div class="flex anchor relative">
 		<h3 id="build-pipelines">Build pipelines</h3>
-		<a href="https://blog.cloudflare.com/#build-pipelines" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#build-pipelines" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -207,7 +207,7 @@ root@linux:~# </code></pre>
 	<p>To scale efficiently, we leverage <a href="https://kubevirt.io/user-guide/storage/disks_and_volumes/#containerdisk"><u>container disks</u></a> to store our agent virtual machine images. Container disks allow us to store the virtual machine image (for example, a <a href="https://en.wikipedia.org/wiki/Qcow"><u>qcow</u></a> image) in our container registry. This strategy works well when the state in virtual machines is ephemeral. <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command"><u>Liveness probes</u></a> detect unhealthy or broken agents, shutting down the virtual machine and replacing them with a fresh instance. Other automation limits virtual machine uptime, capping it to 3–4 hours to keep build agents fresh.</p>
 	<div class="flex anchor relative">
 		<h2 id="next-steps">Next steps</h2>
-		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -217,7 +217,7 @@ root@linux:~# </code></pre>
 	<p>Projects like <a href="https://kubevirt.io/user-guide/operations/containerized_data_importer"><u>KubeVirt CDI</u></a> (Containerized Data Importer) will streamline our user’s virtual machine experience. Instead of users manually building container disks, we can provide a catalog of virtual machine images. It also allows us to copy virtual machine disks between namespaces.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

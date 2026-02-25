@@ -5,7 +5,7 @@
 	<p>In this post, we’ll discuss the history, evolution, and future of the CT ecosystem. We’ll cover some of the challenges we and others have faced in operating CT logs, and how the new <a href="https://c2sp.org/static-ct-api"><u>static CT API</u></a> log design lowers the bar for operators, helping to ensure that this critical infrastructure keeps up with the fast growth and changing landscape of the Internet and WebPKI. We’re excited to open source our <a href="https://github.com/cloudflare/azul"><u>Rust implementation</u></a> of the new log design, built for deployment on Cloudflare’s Developer Platform, and to announce <a href="https://github.com/cloudflare/azul/tree/main/crates/ct_worker#test-logs"><u>test logs</u></a> deployed using this infrastructure.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-certificate-transparency">What is Certificate Transparency?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-certificate-transparency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-certificate-transparency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p><i>Monitors</i> are third parties that continuously crawl CT logs and check that their behavior is correct. For instance, they verify that a log is self-consistent and append-only by ensuring that when new entries are added to the log, no previous entries are deleted or modified. Monitors may also examine logged certificates to help website operators detect mis-issuance.</p>
 	<div class="flex anchor relative">
 		<h2 id="challenges-in-operating-a-ct-log">Challenges in operating a CT log</h2>
-		<a href="https://blog.cloudflare.com/#challenges-in-operating-a-ct-log" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#challenges-in-operating-a-ct-log" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	<p>The high bar for log operation has limited the organizations operating CT logs to only <a href="https://ct.cloudflare.com/logs"><u>Cloudflare and five others</u></a>! Losing one or two logs is enough to compromise the stability of the CT ecosystem. Clearly, a change is needed.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-next-generation-ct-log-design">A next-generation CT log design</h2>
-		<a href="https://blog.cloudflare.com/#a-next-generation-ct-log-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-next-generation-ct-log-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -50,7 +50,7 @@
 	<p>Since it was announced, the static CT API has taken the CT ecosystem by storm. Aside from <a href="https://github.com/FiloSottile/sunlight"><u>Sunlight</u></a> and our brand new <a href="https://github.com/cloudflare/azul"><u>Azul</u></a> (discussed below), there are at least two other independent implementations, <a href="https://blog.transparency.dev/i-built-a-new-certificate-transparency-log-in-2024-heres-what-i-learned"><u>Itko</u></a> and <a href="https://blog.transparency.dev/introducing-trillian-tessera"><u>Trillian Tessera</u></a>. Several CT monitors (including <a href="https://crt.sh"><u>crt.sh</u></a>, <a href="https://sslmate.com/certspotter"><u>certspotter</u></a>, <a href="https://censys.com"><u>Censys</u></a>, and our own <a href="https://ct.cloudflare.com"><u>Merkle Town</u></a>) have added support for the new log format, and as of April 1, 2025, Chrome has begun accepting submissions for <a href="https://groups.google.com/a/chromium.org/g/ct-policy/c/HBFZHG0TCsY/m/HAaVRK6MAAAJ"><u>static CT API logs</u></a> into their CT log program.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-static-ct-api-implementation-on-workers">A static CT API implementation on Workers</h2>
-		<a href="https://blog.cloudflare.com/#a-static-ct-api-implementation-on-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-static-ct-api-implementation-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -60,7 +60,7 @@
 	<p>Our two prototype logs, <a href="https://static-ct.cloudflareresearch.com/logs/cftest2025h1a/metadata"><u>Cloudflare Research 2025h1a</u></a> and <a href="https://static-ct.cloudflareresearch.com/logs/cftest2025h2a/metadata"><u>Cloudflare Research 2025h2a</u></a> (accepting certificates expiring in the first and second half of 2025, respectively), are available for testing.</p>
 	<div class="flex anchor relative">
 		<h3 id="design-decisions-and-goals">Design decisions and goals</h3>
-		<a href="https://blog.cloudflare.com/#design-decisions-and-goals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#design-decisions-and-goals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -74,7 +74,7 @@
 	<p>For the new logs to be deployable, they needed to be at least as performant as existing CT logs. As a point of reference, the <a href="https://ct.cloudflare.com/logs/nimbus2025"><u>Nimbus2025</u></a> log currently handles just over 33 million requests per day (~380/s) across the read APIs, and about 6 million per day (~70/s) across the write APIs.</p>
 	<div class="flex anchor relative">
 		<h3 id="implementation">Implementation&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#implementation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -109,13 +109,13 @@
 	<p>Next, let’s look at how we can translate these components into ones suitable for deployment on Workers.</p>
 	<div class="flex anchor relative">
 		<h4 id="making-it-work">Making it work</h4>
-		<a href="https://blog.cloudflare.com/#making-it-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
 		</a>
 	</div>
-	<p>Let’s start with the easy choices. The static CT <a href="https://github.com/C2SP/C2SP/blob/main/static-ct-api.md#monitoring-apis"><u>monitoring APIs</u></a> are designed to serve static, cacheable, compressible assets from object storage. The API should be highly available and have the capacity to serve any number of CT clients. The natural choice is <a href="https://developers.cloudflare.com/r2"><u>Cloudflare R2</u></a>, which provides globally consistent storage with capacity for <a href="https://developers.cloudflare.com/r2/platform/limits"><u>large data volumes</u></a>, customizability to configure caching and compression, and unbounded read operations.</p>
+	<p>Let’s start with the easy choices. The static CT <a href="https://github.com/C2SP/C2SP/blob/main/static-ct-api.md#monitoring-apis"><u>monitoring APIs</u></a> are designed to serve static, cacheable, compressible assets from object storage. The API should be highly available and have the capacity to serve any number of CT clients. The natural choice is <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>Cloudflare R2</u></a>, which provides globally consistent storage with capacity for <a href="https://developers.cloudflare.com/r2/platform/limits"><u>large data volumes</u></a>, customizability to configure caching and compression, and unbounded read operations.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/qsC1dO8blS1eGOysu9WQa/75da37719be35824a7533dbbd62bede3/image4.png" alt="" class="kg-image" width="1032" height="606" loading="lazy">
 	</figure>
@@ -127,7 +127,7 @@
 	<p>With this architecture, it was <a href="https://blog.cloudflare.com/#developing-a-workers-application-in-rust"><u>relatively straightforward</u></a> to port the Go code to Rust, and to bring up a functional static CT log up on Workers. We’re done then, right? Not quite. Performance tests showed that the log was only capable of sequencing 20-30 new entries per second, well under the 70 per second target of existing logs. We could work around this by simply <a href="https://letsencrypt.org/2024/03/14/introducing-sunlight/#running-more-logs"><u>running more logs</u></a>, but that puts strain on other parts of the CT ecosystem — namely on TLS clients and monitors, which need to keep state for each log. Additionally, the alarm used to trigger sequencing would often be delayed by multiple seconds, meaning that the log was failing to produce new tree heads at consistent intervals. Time to go back to the drawing board.</p>
 	<div class="flex anchor relative">
 		<h4 id="making-it-fast">Making it fast</h4>
-		<a href="https://blog.cloudflare.com/#making-it-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-it-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -142,7 +142,7 @@
 	<p>By limiting the scope of the critical block of code that needed to be run synchronously in a single DO, and leaning on the strengths of DOs by scaling horizontally where the workload allows it, we were able to drastically improve application performance. With this new architecture, the CT log application can handle upwards of 500 requests per second to the submission APIs to add new log entries, while maintaining a consistent sequencing tempo to keep per-request latency low (typically 1-2 seconds).</p>
 	<div class="flex anchor relative">
 		<h3 id="developing-a-workers-application-in-rust">Developing a Workers application in Rust</h3>
-		<a href="https://blog.cloudflare.com/#developing-a-workers-application-in-rust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#developing-a-workers-application-in-rust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -153,7 +153,7 @@
 	<p>To be clear, these rough edges are expected! The Workers platform is continuously gaining new features, and it’s natural that the Rust bindings would fall behind. As more developers rely on (and contribute to, <i>hint hint</i>) the Rust bindings, the developer experience will continue to improve.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-next-for-certificate-transparency">What is next for Certificate Transparency</h2>
-		<a href="https://blog.cloudflare.com/#what-is-next-for-certificate-transparency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-next-for-certificate-transparency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

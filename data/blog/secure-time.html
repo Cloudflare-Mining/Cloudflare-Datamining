@@ -11,7 +11,7 @@
 	<p>You can use time.cloudflare.com as the source of time for all your devices today with <a href="https://cloudflare.com/time">NTP</a>, while NTS clients are still under development. <a href="https://blog.ntpsec.org/2019/01/02/starting-nts.html">NTPsec</a> includes experimental support for NTS. If you’d like to get updates about NTS client development, email us asking to join at <a href="mailto:time-services@cloudflare.com">time-services@cloudflare.com</a>. To use NTS to secure time synchronization, reach out to your vendors and inquire about NTS support.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-small-tale-of-time-first">A small tale of “time” first</h3>
-		<a href="https://blog.cloudflare.com/#a-small-tale-of-time-first" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-small-tale-of-time-first" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	<p>In our attack, the attacker exploits this feature to make the NTP server fragment its NTP response packet for the victim NTP client. The attacker then spoofs carefully crafted overlapping response fragments from off-path that contain the attacker’s timestamp values. By further exploiting the reassembly policies for overlapping fragments the attacker fools the client into assembling a packet with legitimate fragments and the attacker’s insertions. This evades the authenticity checks that rely on values in the original parts of the packet.</p>
 	<div class="flex anchor relative">
 		<h3 id="ntps-past-and-future">NTP’s past and future</h3>
-		<a href="https://blog.cloudflare.com/#ntps-past-and-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ntps-past-and-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -67,7 +67,7 @@
 	<p>Timeline of NTP development</p>
 	<div class="flex anchor relative">
 		<h3 id="fixing-the-problem">Fixing the problem</h3>
-		<a href="https://blog.cloudflare.com/#fixing-the-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fixing-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -77,7 +77,7 @@
 	<p>In a nutshell, the NTS protocol is divided into two-phases. The first phase is the NTS key exchange that establishes the necessary key material between the NTP client and the server. This phase uses the Transport Layer Security (TLS) handshake and relies on the same public key infrastructure as the web. Once the keys are exchanged, the TLS channel is closed and the protocol enters the second phase. In this phase the results of that TLS handshake are used to authenticate NTP time synchronization packets via extension fields. The interested reader can find more information in the Internet <a href="https://datatracker.ietf.org/doc/draft-ietf-ntp-using-nts-for-ntp">draft</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflares-new-service">Cloudflare’s new service</h3>
-		<a href="https://blog.cloudflare.com/#cloudflares-new-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflares-new-service" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -90,7 +90,7 @@
 	<p>Most NTP implementations are currently working on NTS support, and we expect that the next few months will see broader introduction as well as advancement of the current draft protocol to an RFC. Currently we have interoperability with NTPsec who have implemented <a href="https://tools.ietf.org/html/draft-ietf-ntp-using-nts-for-ntp-18">draft 18</a> of NTS. We hope that our service will spur faster adoption of this important improvement to Internet security. Because this is a new service with no backwards compatibility requirements, we are requiring the use of TLS v1.3 with it to promote adoption of the most secure version of TLS.</p>
 	<div class="flex anchor relative">
 		<h3 id="use-it">Use it</h3>
-		<a href="https://blog.cloudflare.com/#use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@
 	<p>If you have an NTS client, point it at time.cloudflare.com:1234. Otherwise point your NTP client at time.cloudflare.com. More details on configuration are available in the <a href="https://developers.cloudflare.com/time-services">developer docs</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

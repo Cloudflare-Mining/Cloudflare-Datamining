@@ -4,7 +4,7 @@
 	<p>Yesterday I posted a post mortem on an outage we had Saturday. The outage was caused when we applied an overly aggressive rate limit to traffic on our network while battling a determined DDoS attacker. In the process of writing it I mentioned that we'd seen a 65Gbps DDoS earlier on Saturday. I've received several questions since that all go something like: "65Gbps DDoS!? Who launches such an attack and how do you defend yourself against it?!" So I thought I'd give a bit more detail.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-constitutes-a-big-ddos">What Constitutes a Big DDoS?</h3>
-		<a href="https://blog.cloudflare.com/#what-constitutes-a-big-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-constitutes-a-big-ddos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -20,7 +20,7 @@ One" class="kg-image" width="120" height="192" loading="lazy">
 	<p>At CloudFlare, an attack needs to get over about 5Gbps to set off alarms with our ops team. Even then, our automated network defenses usually stop attacks without the need of any manual intervention. When an attack gets up in the tens of Gigabits of data per second, our ops team starts monitoring the attack: applying filters and shifting traffic to ensure the attacked customer's site stays online and none of the rest of our network is affected.</p>
 	<div class="flex anchor relative">
 		<h3 id="so-you-want-to-launch-a-ddos">So You Want to Launch a DDoS</h3>
-		<a href="https://blog.cloudflare.com/#so-you-want-to-launch-a-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#so-you-want-to-launch-a-ddos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -31,7 +31,7 @@ One" class="kg-image" width="120" height="192" loading="lazy">
 	<p>To launch a 65Gbps attack, you'd need a botnet with at least 65,000 compromised machines each capable of sending 1Mbps of upstream data. Given that many of these compromised computers are in the developing world where connections are slower, and many of the machines that make up part of a botnet may not be online at any given time, the actual size of the botnet necessary to launch that attack would likely need to be at least 10x that size. While by no means unheard of, that's a large botnetand using all its resources to launch a DDoS risks ISPs detecting many of the compromised machines and taking them offline.</p>
 	<div class="flex anchor relative">
 		<h3 id="amplifying-the-attacks">Amplifying the Attacks</h3>
-		<a href="https://blog.cloudflare.com/#amplifying-the-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#amplifying-the-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -50,7 +50,7 @@ One" class="kg-image" width="500" height="281" loading="lazy">
 	<p>To amplify an attack, the attacker asks a question that will result in a very large response. For example, the attacker may request all the DNS records for a particular zone. Or they may request the DNSSEC records which, often, are extremely large. Since resolvers typically have relatively high bandwidth connections to the Internet, they have no problem pumping out tons of bytes. In other words, the attacker can send a relatively small UDP request and use open resolvers to fire back at an intended target with a crippling amount of traffic.</p>
 	<div class="flex anchor relative">
 		<h3 id="mitigating-dns-reflection-attacks">Mitigating DNS Reflection Attacks</h3>
-		<a href="https://blog.cloudflare.com/#mitigating-dns-reflection-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mitigating-dns-reflection-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

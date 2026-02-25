@@ -5,7 +5,7 @@
 	<p>In this blog post, I will explain the details of the full-stack take home exercise that we sent out to our 2020 internship applicants. We asked participants to spend no more than an afternoon working on it, and because it was a take home project, developers were able to look at documentation, copy-paste code, and generally solve it however they would like. I'll show <i>how</i> to solve the project, as well as some common mistakes and some of the implementations that came from reviewing submissions. If you're interested in checking out the exercise, or want to attempt it yourself, <a href="https://github.com/cloudflare-internship-2020/internship-application-fullstack">the code is open-source on GitHub</a>. Note that applications for our internship program this year are closed, but it's still a fun exercise, and if you're interested in Cloudflare Workers, you should give it a shot!</p>
 	<div class="flex anchor relative">
 		<h3 id="what-the-project-was-a-b-test-application">What the project was: A/B Test Application</h3>
-		<a href="https://blog.cloudflare.com/#what-the-project-was-a-b-test-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-the-project-was-a-b-test-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -67,7 +67,7 @@ async function handleRequest(request) {
 	<p>When an applicant completed the exercise, they needed to use wrangler to deploy their project to a registered <a href="https://blog.cloudflare.com/announcing-workers-dev">Workers.dev subdomain</a>. This falls under the free tier of Workers, so it was a great way to get people exploring <a href="https://github.com/cloudflare/wrangler">wrangler</a>, our documentation, and the deploy process. We saw a number of GitHub issues filed on our docs and in the wrangler repo from people attempting to install wrangler and deploy their code, so it was great feedback on a number of things across the Workers ecosystem!</p>
 	<div class="flex anchor relative">
 		<h3 id="extra-credit-using-the-workers-apis">Extra credit: using the Workers APIs</h3>
-		<a href="https://blog.cloudflare.com/#extra-credit-using-the-workers-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#extra-credit-using-the-workers-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -76,7 +76,7 @@ async function handleRequest(request) {
 	<p>In addition to the main portion of the exercise, I added a few extra credit sections to the project. These were explicitly not required to submit the project (though the existence <i>of</i> the extra credit had an impact on submissions: see the next section of the blog post), but if you were able to quickly finish the initial part of the exercise, you could dive deeper into some more advanced topics (and advanced Workers runtime APIs) to build a more interesting submission.</p>
 	<div class="flex anchor relative">
 		<h3 id="changing-contents-on-the-page">Changing contents on the page</h3>
-		<a href="https://blog.cloudflare.com/#changing-contents-on-the-page" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#changing-contents-on-the-page" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -156,7 +156,7 @@ async function handleRequestWithRewrite(request) {
 
 	<div class="flex anchor relative">
 		<h3 id="persisting-variants">Persisting variants</h3>
-		<a href="https://blog.cloudflare.com/#persisting-variants" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#persisting-variants" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -196,7 +196,7 @@ async function handleRequestWithPersistence(request) {
 
 	<div class="flex anchor relative">
 		<h3 id="deploying-to-a-domain">Deploying to a domain</h3>
-		<a href="https://blog.cloudflare.com/#deploying-to-a-domain" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#deploying-to-a-domain" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -212,7 +212,7 @@ zone_id = "9f7e1af6b59f99f2fa4478a159a4"</code></pre>
 
 	<div class="flex anchor relative">
 		<h3 id="where-people-went-wrong">Where people went wrong</h3>
-		<a href="https://blog.cloudflare.com/#where-people-went-wrong" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#where-people-went-wrong" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -223,7 +223,7 @@ zone_id = "9f7e1af6b59f99f2fa4478a159a4"</code></pre>
 	<p>On the topic of incorrect implementations, the most common mistake was misunderstanding or incorrectly implementing the solution to the exercise. A common version of this was hard-coding URLs as I mentioned above, but I also saw people copying the entire JSON array, misunderstanding how to randomly pick between two values in the array, or not preparing for a circumstance in which a <i>third</i> value could be added to that array. In addition, the second most common mistake around implementation was excessive bandwidth usage: instead of looking at the JSON response and picking a URL <i>before</i> fetching it, many people opted to get <i>both</i> URLs, and then return one of the two responses to the user. In a small serverless application, this isn't a huge deal, but in a larger application, excessive bandwidth usage or being wasteful with request time can be a huge problem!</p>
 	<div class="flex anchor relative">
 		<h3 id="finding-the-solution-and-next-steps">Finding the solution and next steps</h3>
-		<a href="https://blog.cloudflare.com/#finding-the-solution-and-next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#finding-the-solution-and-next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

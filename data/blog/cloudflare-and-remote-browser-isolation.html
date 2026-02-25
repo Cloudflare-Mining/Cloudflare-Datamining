@@ -4,7 +4,7 @@
 	<p>Cloudflare announced today that it has purchased S2 Systems Corporation, a Seattle-area startup that has built an innovative remote browser isolation solution unlike any other currently in the market. The majority of endpoint compromises involve web browsers — by putting space between users’ devices and where web code executes, browser isolation makes endpoints substantially more <a href="https://www.cloudflare.com/network-services/solutions/enterprise-network-security">secure</a>. In this blog post, I’ll discuss what browser isolation is, why it is important, how the S2 Systems cloud browser works, and how it fits with Cloudflare’s mission to help build a better Internet.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-wrong-with-web-browsing">What’s wrong with web browsing?</h3>
-		<a href="https://blog.cloudflare.com/#whats-wrong-with-web-browsing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-wrong-with-web-browsing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>The very structure and underlying technologies that power the web are inherently difficult to secure. Some browser vulnerabilities result from <i>illegitimate use of legitimate functionality</i>: enabling browsers to download files and documents is good, but allowing downloading of files infected with malware is bad; dynamic loading of content across multiple sites within a single webpage is good, but cross-site scripting is bad; enabling an extensive advertising ecosystem is good, but the inability to detect hijacked links or malicious redirects to malware or phishing sites is bad; etc.</p>
 	<div class="flex anchor relative">
 		<h3 id="enterprise-browsing-issues">Enterprise Browsing Issues</h3>
-		<a href="https://blog.cloudflare.com/#enterprise-browsing-issues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#enterprise-browsing-issues" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -41,7 +41,7 @@
 	<p>While these approaches certainly prevent some attacks, the growing number of incidents and severity of security breaches clearly indicate more effective alternatives are needed.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-browser-isolation">What is browser isolation?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@
 	<p>Given the inherent advantages, most browser isolation solutions – including S2 Systems – leverage cloud-based remote isolation. Properly <a href="https://www.cloudflare.com/learning/access-management/how-to-implement-zero-trust">implemented</a>, remote browser isolation can <a href="https://www.cloudflare.com/products/zero-trust/threat-defense">protect the organization</a> from browser exploits, plug-ins, zero-day vulnerabilities, malware and other attacks embedded in web content.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-remote-browser-isolation-rbi-work">How does Remote Browser Isolation (RBI) work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-remote-browser-isolation-rbi-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-remote-browser-isolation-rbi-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -116,7 +116,7 @@
 	<p>Unfortunately, the largest “gap” created by current remote browser isolation systems is the void between the potential of the underlying isolation concept and the implementation reality of currently available RBI systems.</p>
 	<div class="flex anchor relative">
 		<h3 id="s2-systems-remote-browser-isolation">S2 Systems Remote Browser Isolation</h3>
-		<a href="https://blog.cloudflare.com/#s2-systems-remote-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#s2-systems-remote-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -151,7 +151,7 @@
 	<p>S2 Systems Remote Browser Isolation Service and underlying NVR technology eliminates the disconnect between the conceptual potential and promise of browser isolation and the unsatisfying reality of current RBI technologies.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-s2-systems-remote-browser-isolation">Cloudflare + S2 Systems Remote Browser Isolation</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-s2-systems-remote-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-s2-systems-remote-browser-isolation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

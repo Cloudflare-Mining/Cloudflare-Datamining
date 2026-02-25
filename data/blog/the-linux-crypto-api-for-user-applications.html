@@ -76,7 +76,7 @@ AES(AESNI) CTR(G) 128   |e|	1024 bytes|          	172.94 MB/s|177054 ops/s</code
 	<p>This brief introduction can be rephrased as: “I can ask the kernel to encrypt or decrypt data from my application”. But, why do I need it?</p>
 	<div class="flex anchor relative">
 		<h2 id="why-do-i-need-it">Why do I need it?</h2>
-		<a href="https://blog.cloudflare.com/#why-do-i-need-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-do-i-need-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -87,7 +87,7 @@ AES(AESNI) CTR(G) 128   |e|	1024 bytes|          	172.94 MB/s|177054 ops/s</code
 	<p>But nothing is free. There will be some overhead for the system calls and data copying between user and kernel spaces. So, the next question is how fast it is.</p>
 	<div class="flex anchor relative">
 		<h2 id="is-it-fast">Is it fast?</h2>
-		<a href="https://blog.cloudflare.com/#is-it-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#is-it-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -97,7 +97,7 @@ AES(AESNI) CTR(G) 128   |e|	1024 bytes|          	172.94 MB/s|177054 ops/s</code
 	<p>So, the task: write a benchmark for AES-CTR-128 encrypting data split in chunks. Make implementations for the Kernel Crypto API and OpenSSL.</p>
 	<div class="flex anchor relative">
 		<h3 id="about-aes-ctr-128">About AES-CTR-128</h3>
-		<a href="https://blog.cloudflare.com/#about-aes-ctr-128" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#about-aes-ctr-128" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -107,7 +107,7 @@ AES(AESNI) CTR(G) 128   |e|	1024 bytes|          	172.94 MB/s|177054 ops/s</code
 	<p>AES is a secure cipher, but there is one nuance - the same plaintext/block of text will produce the same result. Look at <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)">Linux’s mascot Tux</a>. To avoid this, a <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation">mode of operation</a> (or just mode) has to be applied. It determines how the text changes, so the same input doesn't result in the same output. Tux was encrypted using ECB mode, there is no text transformation at all. Another mode example is CBC, where the ciphertext from the previously encrypted block is added to the next block, for the first block an initial value (IV) is added. This mode guarantees that for the same input and different IV the output will be different. However, this mode is slow as each block depends on the previous one and so encryption can’t be parallelized. CTR is a counter mode, instead of using previously encrypted blocks it uses a counter and a nonce. A counter is an integer which is incremented for each block. A nonce is just a random number similar to the IV. The nonce, and IV, should be different for each message and can be transferred openly with the encrypted text. So, the title AES-CTR-128 means AES used in CTR mode with the key size of 128 bits.</p>
 	<div class="flex anchor relative">
 		<h3 id="implementing-aes-ctr-128-with-the-kernel-crypto-api">Implementing AES-CTR-128 with the Kernel Crypto API</h3>
-		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-the-kernel-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-the-kernel-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -236,7 +236,7 @@ Kernel: 2112.49 Mb/s</code></pre>
 
 	<div class="flex anchor relative">
 		<h3 id="implementing-aes-ctr-128-with-openssl">Implementing AES-CTR-128 with OpenSSL</h3>
-		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-openssl" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-openssl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -310,7 +310,7 @@ OpenSSL: 3758.60 Mb/s</code></pre>
 
 	<div class="flex anchor relative">
 		<h3 id="results-of-openssl-vs-crypto-api">Results of OpenSSL vs Crypto API</h3>
-		<a href="https://blog.cloudflare.com/#results-of-openssl-vs-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#results-of-openssl-vs-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -341,7 +341,7 @@ Kernel: 1971.63 Mb/s
 	<p>It would be fair to say that <code>bpftrace</code> adds some overhead and our numbers for the kernel are less than they could be. So, we can safely say that while the Kernel Crypto API is two times slower than OpenSSL, the crypto part itself is almost equal.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

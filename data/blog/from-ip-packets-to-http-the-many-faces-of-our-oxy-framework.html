@@ -8,7 +8,7 @@
 	<p>We have recently <a href="https://blog.cloudflare.com/introducing-oxy">introduced Oxy</a>, our Rust-based framework for proxies powering many Cloudflare services and products. Today, we will explain why and how it spans various layers of the <a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a>, by handling directly raw IP packets, TCP connections and UDP payloads, all the way up to application protocols such as HTTP and <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="on-ramping-ip-packets">On-ramping IP packets</h3>
-		<a href="https://blog.cloudflare.com/#on-ramping-ip-packets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#on-ramping-ip-packets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p>To effectively extend our customer’s private network into ours, we need to support arbitrary protocols that rely on the Internet Protocol (IP). Hence, we on-ramp Cloudflare One customers’ traffic at (OSI model) layer 3, as a stream of IP packets. Naturally, those will often encapsulate TCP streams and UDP sessions. But nothing precludes other traffic from flowing through.</p>
 	<div class="flex anchor relative">
 		<h3 id="ip-tunneling">IP tunneling</h3>
-		<a href="https://blog.cloudflare.com/#ip-tunneling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ip-tunneling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -43,7 +43,7 @@
 	<p>Encapsulating every IP packet comes at the cost of extra CPU usage. But moving the packet around to and from an Oxy instance does not change much regardless of the encapsulation, as we do not have <a href="https://www.cloudflare.com/learning/network-layer/what-is-mtu">MTU limitations</a> inside our data centers. This way we avoid causing IP packet fragmentation, whose reassembly takes a toll on CPU and Memory usage.</p>
 	<div class="flex anchor relative">
 		<h3 id="tracking-ip-flows">Tracking IP flows</h3>
-		<a href="https://blog.cloudflare.com/#tracking-ip-flows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tracking-ip-flows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -68,7 +68,7 @@
 	</ul>
 	<div class="flex anchor relative">
 		<h3 id="from-an-ip-flow-to-a-tcp-stream">From an IP flow to a TCP stream</h3>
-		<a href="https://blog.cloudflare.com/#from-an-ip-flow-to-a-tcp-stream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#from-an-ip-flow-to-a-tcp-stream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -112,7 +112,7 @@
 	<p>This way, the Oxy process will now have a TCP listener, to obtain the upgraded IP flow connections from, while running in the default namespace and despite that TCP listener — and any connections accepted from it — operating in an unnamed dynamically created namespace.</p>
 	<div class="flex anchor relative">
 		<h3 id="from-a-tcp-stream-to-http">From a TCP stream to HTTP</h3>
-		<a href="https://blog.cloudflare.com/#from-a-tcp-stream-to-http" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#from-a-tcp-stream-to-http" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -121,7 +121,7 @@
 	<p>Once Oxy has a TCP stream, it may also <i>upgrade</i> it, in a sense, to be handled as HTTP traffic. Again, the framework provides the capabilities, but it is up to the application (built on top of Oxy) to make the decision. Analogously to the IP flow, the TCP stream start also triggers a hook to let the application know about a new connection, and to let it decide what to do with it. One of the choices is to treat it as HTTP(S) traffic, at which point Oxy will pass the connection through a <a href="https://crates.io/crates/hyper">Hyper server</a> (possibly also doing TLS if necessary). If you are curious about this part, then rest assured we will have a blog post focused just on that soon.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-about-udp">What about UDP</h3>
-		<a href="https://blog.cloudflare.com/#what-about-udp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-about-udp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -130,7 +130,7 @@
 	<p>While we have been focusing on TCP so far, all of the capabilities implemented for TCP are also supported for UDP as well. We’ve glossed over it so far because it is easier to handle, since converting an IP packet to UDP payloads requires only stripping the IP and UDP headers. We do this in Oxy logic, in user space, thereby replacing the idea employed for TCP that relies on the TUN interface. Everything else works the same way across TCP and UDP, with UDP traffic potentially being HTTPS for the case of QUIC-based HTTP/3.</p>
 	<div class="flex anchor relative">
 		<h3 id="from-tcp-udp-back-to-ip-flow">From TCP/UDP back to IP flow</h3>
-		<a href="https://blog.cloudflare.com/#from-tcp-udp-back-to-ip-flow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#from-tcp-udp-back-to-ip-flow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -183,7 +183,7 @@
 	<p>Despite being elaborate, this is quite intuitive, particularly if you’ve read through the upgrade section earlier that is a simpler version of this idea.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-overall-picture">The overall picture</h3>
-		<a href="https://blog.cloudflare.com/#the-overall-picture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-overall-picture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -202,7 +202,7 @@
 	<p>Therefore, our tests talk normal TCP against a TCP downgrader running together with the tests, which outputs raw IP packets that we pipe to the Oxy instance being tested. It is an elegant and simple way to work around the challenge while battle testing further the TUN interface logic.</p>
 	<div class="flex anchor relative">
 		<h3 id="wrapping-up">Wrapping up</h3>
-		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

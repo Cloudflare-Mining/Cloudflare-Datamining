@@ -9,7 +9,7 @@
 	<p>It’s been a while since we published the first blog post and it’s time for an update on what we’ve been working on. In this post we’ll be talking about some of the architecture improvements we’ve made so far and what we’re working on now.</p>
 	<div class="flex anchor relative">
 		<h2 id="cache-purge-end-to-end">Cache Purge end to end</h2>
-		<a href="https://blog.cloudflare.com/#cache-purge-end-to-end" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cache-purge-end-to-end" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="step-1-request-received-locally">Step 1: Request received locally</h3>
-		<a href="https://blog.cloudflare.com/#step-1-request-received-locally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-1-request-received-locally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>An API request to Cloudflare is routed to the nearest Cloudflare data center and passed to an <b>API Gateway worker</b>. This worker looks at the request URL to see which service it should be sent to and forwards the request to the appropriate upstream backend. Most endpoints of the Cloudflare API are currently handled by centralized services, so the <b>API Gateway worker</b> is often just proxying requests to the nearest “core” data center which have their own gateway services to handle authentication, authorization, and further routing. But for endpoints which aren’t handled centrally the <b>API Gateway worker</b> must handle <a href="https://www.cloudflare.com/learning/access-management/what-is-authentication">authentication</a> and route authorization, and then proxy to an appropriate upstream. For cache purge requests that upstream is a <b>Purge Ingest worker</b> in the same data center.</p>
 	<div class="flex anchor relative">
 		<h3 id="step-2-purges-tested-locally">Step 2: Purges tested locally</h3>
-		<a href="https://blog.cloudflare.com/#step-2-purges-tested-locally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-2-purges-tested-locally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -43,7 +43,7 @@
 	<p>On top of that, generating the cache key for a file isn’t free; we need to load zone configuration options that might affect the cache key, apply various transformations, et cetera. The cache key for a given file is the same in every data center though, so when we purge the file locally we now return the generated cache key to the <b>Purge Ingest worker</b> and broadcast that key to other data centers instead of making each data center generate it themselves.</p>
 	<div class="flex anchor relative">
 		<h3 id="step-3-purges-queued-for-broadcasting">Step 3: Purges queued for broadcasting</h3>
-		<a href="https://blog.cloudflare.com/#step-3-purges-queued-for-broadcasting" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-3-purges-queued-for-broadcasting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -61,7 +61,7 @@
 	<p>While benchmarking our performance we found our particular workload exhibited a “goldilocks zone” of throughput to a given Durable Object. On script startup we have to load all sorts of data like network topology and data center health–then refresh it continuously in the background–and as long as the Durable Object sees steady traffic it stays active and we amortize those startup costs. But if you ask a single Durable Object to do too much at once like send or receive too many requests, the single-threaded runtime won’t keep up. Regional purge traffic fluctuates a lot depending on local time of day, so there wasn’t a static quantity of Durable Objects per region that would let us stay within the goldilocks zone of enough requests to each to keep them active but not too many to keep them efficient. So we built load monitoring into our Durable Objects, and a <b>Regional Autoscaler worker</b> to aggregate that data and adjust load balancing pools when we start approaching the upper or lower edges of our efficiency goldilocks zone.</p>
 	<div class="flex anchor relative">
 		<h3 id="step-4-purges-broadcast-globally">Step 4: Purges broadcast globally</h3>
-		<a href="https://blog.cloudflare.com/#step-4-purges-broadcast-globally" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-4-purges-broadcast-globally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -79,7 +79,7 @@
 	<p>The introduction of the <b>Purge Fanout worker</b> was a massive improvement to our distribution system, reducing our end-to-end purge latency by 50% on its own and increasing our throughput threefold.</p>
 	<div class="flex anchor relative">
 		<h2 id="current-status-of-coreless-purge">Current status of coreless purge</h2>
-		<a href="https://blog.cloudflare.com/#current-status-of-coreless-purge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#current-status-of-coreless-purge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -90,7 +90,7 @@
 	<p>This is not to say that the flexible purges haven’t benefited from the coreless purge project. Our cache purge API lets users bundle single file and flexible purges in one request, so the <b>API Gateway worker</b> and <b>Purge Ingest worker</b> handle authorization, authentication and payload validation for flexible purges too. Those flexible purges get forwarded directly to our services in core data centers pre-authorized and validated which reduces load on those core data center auth services. As an added benefit, because authorization and validity checks all happen at the edge for all purge types users get much faster feedback when their requests are malformed.</p>
 	<div class="flex anchor relative">
 		<h2 id="next-steps">Next steps</h2>
-		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

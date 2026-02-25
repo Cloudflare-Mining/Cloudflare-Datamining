@@ -18,7 +18,7 @@
 	<p>So I set out to build such a system! The end result is called UtahFS, and the <a href="https://github.com/cloudflare/utahfs">code for it is available here</a>. Keep in mind that this system is not used in production at Cloudflare: it’s a proof-of-concept that I built while working on our <a href="https://blog.cloudflare.com/cloudflares-approach-to-research">Research Team</a>. The rest of this blog post describes why I built it as I did, but there’s documentation in the repository on actually using it if you <a href="https://github.com/cloudflare/utahfs/tree/master/docs">want to skip to that</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="storage-layer">Storage Layer</h3>
-		<a href="https://blog.cloudflare.com/#storage-layer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#storage-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -27,7 +27,7 @@
 	<p>The first and most important part of a storage system is… the storage. For this, I used <a href="https://en.wikipedia.org/wiki/Object_storage">Object Storage</a>, because it’s one of the cheapest and most reliable ways to store data on somebody else’s hard drives. Object storage is nothing more than a key-value database hosted by a cloud provider, often tuned for storing values around a few kilobytes in size. There are a ton of different providers with different pricing schemes like <a href="https://aws.amazon.com/free/storage">Amazon S3</a>, <a href="https://www.backblaze.com/b2/cloud-storage.html">Backblaze B2</a>, and <a href="https://wasabi.com">Wasabi</a>. All of them are capable of storing terabytes of data, and many also offer geographic redundancy.</p>
 	<div class="flex anchor relative">
 		<h3 id="data-layer">Data Layer</h3>
-		<a href="https://blog.cloudflare.com/#data-layer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#data-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	<p>The reason for using Linked Allocation is fundamentally that it’s the most efficient for most operations. But also, it’s the approach for allocating memory that’s going to be most compatible with the cryptography we talk about in the next three sections.</p>
 	<div class="flex anchor relative">
 		<h3 id="encryption-layer">Encryption Layer</h3>
-		<a href="https://blog.cloudflare.com/#encryption-layer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#encryption-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -57,7 +57,7 @@
 	<p>I'm definitely open to improving the encryption scheme in the future, but considered the security properties listed above too difficult and fragile for the initial release.</p>
 	<div class="flex anchor relative">
 		<h3 id="integrity-layer">Integrity Layer</h3>
-		<a href="https://blog.cloudflare.com/#integrity-layer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#integrity-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@
 	<p>The one thing our use of Merkle Trees doesn’t protect against is <i>forking</i>, where the storage provider shows different versions of the archive to different users. However, detecting forks would require some kind of gossip between users, which is beyond the scope of the initial implementation for now.</p>
 	<div class="flex anchor relative">
 		<h3 id="hiding-access-patterns">Hiding Access Patterns</h3>
-		<a href="https://blog.cloudflare.com/#hiding-access-patterns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#hiding-access-patterns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -84,7 +84,7 @@
 	<p>This construction is great because we’ve only had to touch the memory assigned to a single random path in a binary tree, which is a logarithmic amount of work relative to the total size of our memory. But even if we read the same value again and again, we’ll touch completely random paths from the tree each time! There’s still a performance penalty caused by the additional memory lookups though, which is why ORAM support is optional.</p>
 	<div class="flex anchor relative">
 		<h3 id="wrapping-up">Wrapping Up</h3>
-		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

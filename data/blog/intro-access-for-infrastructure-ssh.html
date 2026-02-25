@@ -3,7 +3,7 @@
 	<p><a href="https://blog.cloudflare.com/cloudflare-acquires-bastionzero"><u>BastionZero joined Cloudflare</u></a> in May 2024. We are thrilled to announce Access for Infrastructure as BastionZero’s native integration into our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase"><u>SASE</u></a> platform, Cloudflare One. Access for Infrastructure will enable organizations to apply Zero Trust controls in front of their servers, databases, network devices, Kubernetes clusters, and more. Today, we’re announcing <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#_top"><u>short-lived SSH access</u></a> as the first available feature. Over the coming months we will announce support for other popular infrastructure access target types like <a href="https://www.cloudflare.com/learning/access-management/what-is-the-remote-desktop-protocol"><u>Remote Desktop Protocol (RDP)</u></a>, Kubernetes, and databases.</p>
 	<div class="flex anchor relative">
 		<h2 id="applying-zero-trust-principles-to-infrastructure">Applying Zero Trust principles to infrastructure</h2>
-		<a href="https://blog.cloudflare.com/#applying-zero-trust-principles-to-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#applying-zero-trust-principles-to-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -37,7 +37,7 @@
 	<p>At Cloudflare, we are big believers that unified experiences produce the best security outcomes, and because of that, we are natively rebuilding each BastionZero feature into Cloudflare’s ZTNA service. Today, we will cover the recently-released feature for short-lived SSH access.</p>
 	<div class="flex anchor relative">
 		<h2 id="secure-shell-ssh-and-its-security-risks">Secure Shell (SSH) and its security risks</h2>
-		<a href="https://blog.cloudflare.com/#secure-shell-ssh-and-its-security-risks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#secure-shell-ssh-and-its-security-risks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -48,7 +48,7 @@
 	<p>Although many organizations will gate access to their servers to users that are inside their corporate network, this is no longer enough to protect against modern attackers. Today, the principles of Zero Trust demand that an organization also tracks who exactly is accessing their servers with SSH, and what commands they are running on those servers once they have access. In fact, the elevated privileges that come along with SSH access mean that compliance frameworks like <a href="https://www.cloudflare.com/en-gb/trust-hub/compliance-resources/soc-2"><u>SOC2</u></a>, <a href="https://www.cloudflare.com/en-gb/trust-hub/compliance-resources/iso-certifications"><u>ISO27001</u></a>, <a href="https://www.cloudflare.com/en-gb/trust-hub/compliance-resources/fedramp"><u>FedRAMP</u></a> and others have criteria that require monitoring who has access with SSH and what exactly they are doing with that access.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="introducing-ssh-with-access-for-infrastructure">Introducing SSH with Access for Infrastructure</h2>
-		<a href="https://blog.cloudflare.com/#introducing-ssh-with-access-for-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#introducing-ssh-with-access-for-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -76,7 +76,7 @@
 	<p>Cloudflare One already offers multiple ways to secure organizations' SSH traffic through network controls. This new SSH with Access for Infrastructure aims to incorporate the strengths of those existing solutions together with additional controls to authorize ports, protocols, and specific users as well as a much improved deployment workflow and audit logging capabilities.</p>
 	<div class="flex anchor relative">
 		<h2 id="eliminating-ssh-credentials-using-an-ssh-ca">Eliminating SSH credentials using an SSH CA</h2>
-		<a href="https://blog.cloudflare.com/#eliminating-ssh-credentials-using-an-ssh-ca" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#eliminating-ssh-credentials-using-an-ssh-ca" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -88,7 +88,7 @@
 	<p>The 3-minute time window on the SSH certificate only applies to the time window during which the user has to authenticate to the target server; it does not apply to the length of the SSH session, which can be arbitrarily longer than 3 minutes. This 3-minute window was chosen because it was short enough to reduce the risk of security compromise and long enough to ensure that we don’t miss the time window of the user’s authentication to the server, especially if the user is on a slow connection.</p>
 	<div class="flex anchor relative">
 		<h2 id="centrally-managing-policies-down-to-the-specific-linux-user">Centrally managing policies down to the specific Linux user</h2>
-		<a href="https://blog.cloudflare.com/#centrally-managing-policies-down-to-the-specific-linux-user" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#centrally-managing-policies-down-to-the-specific-linux-user" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -103,7 +103,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="how-does-cloudflare-capture-ssh-command-logs">How does Cloudflare capture SSH command logs?</h2>
-		<a href="https://blog.cloudflare.com/#how-does-cloudflare-capture-ssh-command-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-capture-ssh-command-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -116,7 +116,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="how-the-ssh-interception-works-under-the-hood">How the SSH interception works under the hood</h2>
-		<a href="https://blog.cloudflare.com/#how-the-ssh-interception-works-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-the-ssh-interception-works-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -125,7 +125,7 @@
 
 	<div class="flex anchor relative">
 		<h3 id="how-does-generic-ssh-work">How does generic SSH work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-generic-ssh-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-generic-ssh-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -139,7 +139,7 @@
 	<p>Finally, the client needs to authenticate itself to the server. This can be done using SSH passwords, SSH keys, or SSH certificates (as described above). SSH also has a mode called <i>none</i>, which means that the client does NOT need to authenticate itself to the server at all.</p>
 	<div class="flex anchor relative">
 		<h3 id="so-how-does-cloudflares-ssh-proxy-work">So how does Cloudflare’s SSH proxy work?&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#so-how-does-cloudflares-ssh-proxy-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#so-how-does-cloudflares-ssh-proxy-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -172,7 +172,7 @@
 	<p>Put this all together, and we have accomplished our goal of having end users authenticate to target servers without any SSH keys or passwords, using Cloudflare’s SSH CA instead. Moreover, we also preserve the desired behaviors of the TOFU notifications and warnings built into native SSH clients!</p>
 	<div class="flex anchor relative">
 		<h2 id="all-the-keys">All the keys</h2>
-		<a href="https://blog.cloudflare.com/#all-the-keys" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#all-the-keys" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -190,7 +190,7 @@
 	<p>That’s it! No other keys, passwords, or credentials to manage!</p>
 	<div class="flex anchor relative">
 		<h2 id="try-it-out-today">Try it out today</h2>
-		<a href="https://blog.cloudflare.com/#try-it-out-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#try-it-out-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

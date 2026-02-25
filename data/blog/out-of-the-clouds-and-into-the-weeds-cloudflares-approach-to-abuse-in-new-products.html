@@ -5,7 +5,7 @@
 	<p>In a <a href="https://blog.cloudflare.com/unpacking-the-stack-and-addressing-complaints-about-content">blogpost</a> yesterday, we addressed the principles we rely upon when faced with numerous and various requests to address the content of websites that use our services. We believe the building blocks that we provide for other people to share and access content online should be provided in a content-neutral way. We also believe that our users should understand the policies we have in place to address complaints and law enforcement requests, the type of requests we receive, and the way we respond to those requests. In this post, we do the dirty work of addressing how those principles are put into action, specifically with regard to Cloudflare’s expanding set of features and products.</p>
 	<div class="flex anchor relative">
 		<h3 id="abuse-reports-and-new-products">Abuse reports and new products</h3>
-		<a href="https://blog.cloudflare.com/#abuse-reports-and-new-products" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#abuse-reports-and-new-products" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -16,7 +16,7 @@
 	<p>There is no one-size-fits-all solution to address possible abuse of our products. Different types of services come with different expectations, as well as different legal and contractual obligations. Yet as we discussed in relation to our focus on transparency on <a href="https://blog.cloudflare.com/cloudflare-transparency-update-joining-cloudflares-flock-of-warrant-canaries-2">Monday</a>, being fully transparent means being consistent and predictable so our users can anticipate how we will respond to new situations.</p>
 	<div class="flex anchor relative">
 		<h3 id="developing-an-approach-to-abuse">Developing an approach to abuse</h3>
-		<a href="https://blog.cloudflare.com/#developing-an-approach-to-abuse" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#developing-an-approach-to-abuse" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	<p>Although those preliminary questions help us determine what actions we must take, we also do our best to think about the broader implications on the Internet of any steps we might take to address complaints.</p>
 	<div class="flex anchor relative">
 		<h2 id="so-how-does-this-work-in-practice">So how does this work in practice?</h2>
-		<a href="https://blog.cloudflare.com/#so-how-does-this-work-in-practice" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#so-how-does-this-work-in-practice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 
 	<div class="flex anchor relative">
 		<h3 id="response-to-abuse-complaints-for-customers-using-our-proxy-and-cdn-services">Response to abuse complaints for customers using our proxy and CDN services</h3>
-		<a href="https://blog.cloudflare.com/#response-to-abuse-complaints-for-customers-using-our-proxy-and-cdn-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#response-to-abuse-complaints-for-customers-using-our-proxy-and-cdn-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -70,7 +70,7 @@
 	<p>In the case of intentional phishing attacks, such a domain like &nbsp;my-totally-secure-login-page{.}com in combination with our Trust &amp; Safety team being able to confirm the presence of phishing content on the website, we take broader action including a domain-wide interstitial warning page (effectively *my-totally-secure-login-page{.}com/*), and in some cases we may terminate our services to the intentionally malicious domain. To be clear though, this does not remove the phishing content that remains hosted by the website’s hosting provider. Ultimately, action still needs to be taken by the website owner or hosting provider to fully remove the underlying issue.</p>
 	<div class="flex anchor relative">
 		<h3 id="response-to-complaints-about-content-stored-definitively-on-our-network">Response to complaints about content stored definitively on our network</h3>
-		<a href="https://blog.cloudflare.com/#response-to-complaints-about-content-stored-definitively-on-our-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#response-to-complaints-about-content-stored-definitively-on-our-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -87,7 +87,7 @@
 	<p>We haven’t received any government requests yet to take down content stored on our network. Given the significant potential impact on freedom of expression from a government ordering that content be removed, if we do receive those requests in the future, we will carefully analyze the factual basis and legal authority for the request. &nbsp;If we determine that the order is valid and requires Cloudflare action, we will do our best to address the request as narrowly as possible, for example, by clarifying overbroad requests or limiting blocking of access to the content to those areas where it violates local law, a practice known as “geo-blocking”. We will also update our transparency report on any government requests that we receive in the future and any actions we take.</p>
 	<div class="flex anchor relative">
 		<h3 id="response-to-complaints-about-our-registrar-service">Response to complaints about our registrar service</h3>
-		<a href="https://blog.cloudflare.com/#response-to-complaints-about-our-registrar-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#response-to-complaints-about-our-registrar-service" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -104,7 +104,7 @@
 	<p>Running a registrar service comes with other legal obligations. As an ICANN accredited registrar, part of our contractual obligations include adhering to third party dispute resolution processes regarding trademark disputes, as handled by providers such as the World Intellectual Property Organization (WIPO) and the National Arbitration &nbsp;Forum. Also, we continue to be part of the ICANN community discussions on how best to handle the collection, publication and provision of access to personal data in the WHOIS database in a manner consistent with the EU’s General Data Protection Regulation (GDPR) and other privacy frameworks. We will provide more updates on that front when the discussions have ripened.</p>
 	<div class="flex anchor relative">
 		<h3 id="response-to-complaints-about-ipfs">Response to complaints about IPFS</h3>
-		<a href="https://blog.cloudflare.com/#response-to-complaints-about-ipfs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#response-to-complaints-about-ipfs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -122,7 +122,7 @@
 	<p>For the time being, our plan is to respond to U.S. court orders that require us to clear our cache of content stored on IPFS. More importantly, however, we intend to report in future transparency reports on any law enforcement requests we receive to clear our IPFS cache, to ensure continued public discussion.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-resolvers-1-1-1-1-and-resolver-for-firefox">Cloudflare Resolvers: 1.1.1.1 and Resolver for Firefox</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-resolvers-1-1-1-1-and-resolver-for-firefox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-resolvers-1-1-1-1-and-resolver-for-firefox" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -139,7 +139,7 @@
 	<p>Similarly, Cloudflare has not received any government requests for data about the users of our resolvers, and would fight such a request if necessary. Given our public commitment not to retain any personally identifiable information for more than 24 hours, we believe it is unlikely that we would have any information even if asked. Nonetheless, if we were to receive a government request for data about a resolver user, we would document the request in our transparency report, unless legally prohibited from doing so. &nbsp; &nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="the-long-road-ahead">The long road ahead</h3>
-		<a href="https://blog.cloudflare.com/#the-long-road-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-long-road-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

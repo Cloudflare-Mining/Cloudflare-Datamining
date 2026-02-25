@@ -12,7 +12,7 @@
 	<p>DAP takes a significant step in the right direction, but private aggregation alone is often not sufficient to protect privacy. In this post, we explain the shortcomings of DAP, and how we can improve it by adding differential privacy.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-problem-private-aggregation-is-not-enough">The problem: private aggregation is not enough</h3>
-		<a href="https://blog.cloudflare.com/#the-problem-private-aggregation-is-not-enough" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-problem-private-aggregation-is-not-enough" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>These attacks suggest that private aggregation (with DAP or by some other means) is not sufficient for privacy. Luckily there is a way forward: a variety of organizations, including <a href="https://machinelearning.apple.com/research/scenes-differential-privacy">Apple</a>, and <a href="https://blog.research.google/2022/02/federated-learning-with-formal.html">Google</a>, the <a href="https://www2.census.gov/library/publications/decennial/2020/census-briefs/c2020br-03.pdf">U.S. Census Bureau</a> and a <a href="https://desfontain.es/privacy/real-world-differential-privacy.html">growing set of industry and government actors</a>, now use <b>differential privacy</b> to protect their data.</p>
 	<div class="flex anchor relative">
 		<h3 id="differential-privacy">Differential privacy</h3>
-		<a href="https://blog.cloudflare.com/#differential-privacy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#differential-privacy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -61,7 +61,7 @@
 	<p>Fundamentally, differential privacy transforms the cat-and-mouse game of privacy engineering into a rigorous, mathematical framework in which privacy is proven, not merely claimed.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-science-of-privacy-engineering-making-dap-differentially-private">The science of privacy engineering: Making DAP differentially private</h3>
-		<a href="https://blog.cloudflare.com/#the-science-of-privacy-engineering-making-dap-differentially-private" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-science-of-privacy-engineering-making-dap-differentially-private" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -90,7 +90,7 @@
 	<p>Luckily, other protocols combining differential privacy with multiparty computation have been studied in the past, and there are suitable definitions under the umbrella of <a href="https://privacytools.seas.harvard.edu/files/privacytools/files/cdp.pdf"><b>Computational Differential Privacy</b></a><b>.</b> This definition of DP makes it possible to model a computationally bounded adversary interacting with a real-world protocol containing cryptographic components. However, more work needs to be done to build a generic framework for composing DP mechanisms with existing DAP subroutines (that already come with proven security guarantees).</p>
 	<div class="flex anchor relative">
 		<h3 id="example-making-network-error-logging-private">Example: Making Network Error Logging private</h3>
-		<a href="https://blog.cloudflare.com/#example-making-network-error-logging-private" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#example-making-network-error-logging-private" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -108,7 +108,7 @@
 	<p><a href="https://github.com/divviup/libprio-rs">libprio-rs</a> is a widely-used Rust implementation of the cryptographic primitives used in DAP. To add DP, we started by <a href="https://github.com/divviup/libprio-rs/pull/607">designing</a> a general API that any Aggregator Randomization scheme should satisfy, with objects to represent privacy budget and noise addition. Then, we <a href="https://github.com/divviup/libprio-rs/pull/578">implemented</a> the DP API for concrete statistical aggregates. After reviewing various DP mechanisms, we settled on the discrete Gaussian and the discrete Laplace mechanisms, because of their clear guarantees and their suitability for modular ring arithmetic. We leveraged a secure noise sampler written in Rust by the <a href="https://github.com/opendp/opendp">OpenDP</a> library. After adapting the <a href="https://github.com/cloudflare/daphne">Daphne</a> implementation of DAP, we were able to run a toy deployment of DAP with differential privacy on network error logging data!</p>
 	<div class="flex anchor relative">
 		<h3 id="the-art-of-privacy-engineering-exploring-the-privacy-utility-trade-off">The art of privacy engineering: Exploring the privacy-utility trade-off</h3>
-		<a href="https://blog.cloudflare.com/#the-art-of-privacy-engineering-exploring-the-privacy-utility-trade-off" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-art-of-privacy-engineering-exploring-the-privacy-utility-trade-off" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -141,7 +141,7 @@
 	<p>There are <a href="https://git.gnunet.org/bibliography.git/plain/docs/Choosing-%CE%B5-2011Lee.pdf">additional</a> <a href="https://haeberlen.cis.upenn.edu/papers/epsilon-csf2014.pdf">strategies</a> to set or evaluate the <a href="https://arxiv.org/pdf/2006.07709.pdf">empirical guarantees</a> of 𝜖. A complementary approach is to determine the maximum error you are willing to accept (e.g. 5% relative error on a count) and use simple properties of standard DP mechanisms to find the corresponding value of 𝜖 and check that it falls within an acceptable range.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -153,7 +153,7 @@
 	<p>If you're interested in getting hands on with differential privacy, DAP, or any of Cloudflare's other privacy-focused projects, consider applying for <a href="https://research.cloudflare.com/outreach/academic-programs/interns">an internship on the Research team</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="acknowledgements">Acknowledgements</h3>
-		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#acknowledgements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

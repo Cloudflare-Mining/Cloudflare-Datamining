@@ -5,7 +5,7 @@
 	<p>In this post, we’ll explain how the Images binding works, as well as the decisions behind <a href="https://developers.cloudflare.com/workers/local-development"><u>local development support</u></a>. We’ll also walk through an example app that watermarks and encodes a user-uploaded image, then uploads the output directly to an <a href="https://developers.cloudflare.com/r2"><u>R2</u></a> bucket.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-challenges-of-fetch">The challenges of <code>fetch()</code></h2>
-		<a href="https://blog.cloudflare.com/#the-challenges-of-fetch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-challenges-of-fetch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p>But complex workflows shouldn’t require complex logic. In February, we <a href="https://developers.cloudflare.com/changelog/2025-02-21-images-bindings-in-workers"><u>released the Images binding in Workers</u></a> to make the development experience more accessible, intuitive, and user-friendly. The binding helps you work more productively by simplifying how you connect the Images API to your Worker and providing more fine-grained control over how images are optimized.</p>
 	<div class="flex anchor relative">
 		<h2 id="extending-the-images-workflow">Extending the Images workflow</h2>
-		<a href="https://blog.cloudflare.com/#extending-the-images-workflow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#extending-the-images-workflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -48,7 +48,7 @@
 	</ul>
 	<div class="flex anchor relative">
 		<h2 id="the-life-of-a-binding-request">The life of a binding request</h2>
-		<a href="https://blog.cloudflare.com/#the-life-of-a-binding-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-life-of-a-binding-request" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -74,7 +74,7 @@
 	<p>To communicate with the backend, we chose to send multipart forms. Each binding request is inherently expensive, as it can involve decoding, transforming, and encoding. Binary formats may offer slightly lower overhead per request, but given the bulk of the work in each request is the image processing itself, any gains would be nominal. Instead, we stuck with a well-supported, safe approach that our team had successfully implemented in the past.</p>
 	<div class="flex anchor relative">
 		<h2 id="meeting-developers-where-they-are">Meeting developers where they are</h2>
-		<a href="https://blog.cloudflare.com/#meeting-developers-where-they-are" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#meeting-developers-where-they-are" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -86,7 +86,7 @@
 	<p>Instead, we focused our efforts on targeting individual use cases by providing two different methods. In <a href="https://developers.cloudflare.com/workers/wrangler"><u>Wrangler</u></a>, Cloudflare’s command-line tool, developers can choose between an online and offline mode of the Images binding. The online mode makes requests to the real Images API; this requires Internet access and authentication to the Cloudflare API. Meanwhile, the offline mode requests a lower fidelity <a href="https://testing.googleblog.com/2013/06/testing-on-toilet-fake-your-way-to.html"><u>fake</u></a>, which is a mock API implementation that supports a limited subset of features. This is primarily used for <a href="https://developers.cloudflare.com/workers/testing/vitest-integration"><u>unit tests</u></a>, as it doesn’t require Internet access or authentication. By default, <code>wrangler dev</code> uses the online mode, mirroring the same version that Cloudflare runs in production.</p>
 	<div class="flex anchor relative">
 		<h2 id="see-the-binding-in-action">See the binding in action</h2>
-		<a href="https://blog.cloudflare.com/#see-the-binding-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#see-the-binding-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -5,7 +5,7 @@
 	<p>As of today, we’ve removed this beta flag and all users are welcome to add CAA records as they see fit—without having to first contact support. Note that if you’ve got Universal SSL enabled, we’ll automatically augment your CAA records to allow issuance from our CA partners; if you’d like to disable Universal SSL and provide your own certificates, you’re welcome to do that too.Below are some additional details on CAA, the purpose of this record type, and how its use has evolved since it was first introduced. If you’d rather just jump to the details of our implementation, <a href="https://blog.cloudflare.com/#caa-and-cloudflare">click here</a> and we’ll take you to the relevant section of the post.</p>
 	<div class="flex anchor relative">
 		<h4 id="the-publicly-trusted-pki-ecosystem-abridged">The Publicly-Trusted PKI Ecosystem — Abridged</h4>
-		<a href="https://blog.cloudflare.com/#the-publicly-trusted-pki-ecosystem-abridged" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-publicly-trusted-pki-ecosystem-abridged" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>Before placing this stamp of approval, CAs are supposed to take steps to ensure that the certificate requester can demonstrate control over the hostname. (In some cases, as you’ll learn below, this is not always the case, and is one of the reasons that CAA was introduced.)</p>
 	<div class="flex anchor relative">
 		<h4 id="anthropogenic-threats">Anthropogenic Threats</h4>
-		<a href="https://blog.cloudflare.com/#anthropogenic-threats" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#anthropogenic-threats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -34,7 +34,7 @@
 	<p>Of these many problems (most of which have already been addressed or are in the process of being resolved), perhaps the most unsettling is the willful mis-issuance of certificates by trusted CAs. Knowingly issuing certificates to parties who haven't demonstrated ownership, or issuance outside the parameters defined by the <a href="https://cabforum.org/about-us">CA/Browser Forum</a> (a voluntary and democratic governing body for publicly-trusted certificates) by CAs who have certificates present in trust stores severely undermines the value of that trust store, all certificates issued by that CA, and the publicly-trusted PKI ecosystem as a whole.</p>
 	<div class="flex anchor relative">
 		<h4 id="solving-one-problem">Solving One Problem...</h4>
-		<a href="https://blog.cloudflare.com/#solving-one-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#solving-one-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@
 	<p>As of 8 September 2017, all publicly-trusted CAs are now required to check CAA at issuance time for all certificates issued, thereby enabling certificate requestors (domain owners) to dictate which CAs can issue certificates for their domain.</p>
 	<div class="flex anchor relative">
 		<h4 id="with-more-problems">... with More Problems.</h4>
-		<a href="https://blog.cloudflare.com/#with-more-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#with-more-problems" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -162,7 +162,7 @@
 	<p>There’s an additional security gap in that neither the RFC nor the BR indicate where the issuing CA should query for CAA records. It is acceptable within the current standards to query any DNS recursor for these records as well as the authoritative DNS provider for a domain. For example, an issuing CA could query <a href="https://www.cloudflare.com/cloudflare-vs-google-dns">Google’s Public DNS</a> or a DNS recursor provided by their ISP for these responses. This enables compromised DNS recursors or one run by a rogue operator to alter these responses, either denying issuance or allowing issuance by a CA not approved by the domain owner. The RFC and BR should be amended so that an issuing CA must always query these records at the authoritative provider to close this gap.</p>
 	<div class="flex anchor relative">
 		<h4 id="caa-and-cloudflare">CAA and Cloudflare</h4>
-		<a href="https://blog.cloudflare.com/#caa-and-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#caa-and-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -176,7 +176,7 @@
 	<p>When Universal SSL is disabled, the CAA records added to allow our partner CAs to issue certificates are deleted and all Universal SSL certificates available for the zone are removed from our edge. Dedicated certificates, custom certificates, as well as SSL for SaaS certificates are all individually managed by each customer and can be added or removed as needed.</p>
 	<div class="flex anchor relative">
 		<h4 id="a-bright-and-hopefully-not-too-distant-future">A Bright and Hopefully Not-Too-Distant Future</h4>
-		<a href="https://blog.cloudflare.com/#a-bright-and-hopefully-not-too-distant-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-bright-and-hopefully-not-too-distant-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

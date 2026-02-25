@@ -12,7 +12,7 @@
 	<p>In this blog post we’ll explain what Certificate Transparency is and how it will become a critical tool for ensuring user safety online. It’s important for website operators and certificate authorities to learn about CT as soon as possible, because participating in CT becomes mandatory in Chrome for all certificates issued after April 2018. We’ll also explain how Nimbus works and how CT uses a structure called a Merkle tree to scale to the point of supporting all trusted certificates on the Internet. For more about Merkle Town, read the <a href="https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard">follow up post</a> by my colleague Patrick Donahue.</p>
 	<div class="flex anchor relative">
 		<h3 id="trust-and-accountability">Trust and Accountability</h3>
-		<a href="https://blog.cloudflare.com/#trust-and-accountability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#trust-and-accountability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	<p>If key pinning is not the solution, what can be done to detect CA malfeasance? This is where Certificate Transparency comes in. The goal of CT is to make all certificates public so that mis-issued certificates can be detected and appropriate action taken. This helps bring accountability to balance the trust we collectively place in the fragile web PKI.</p>
 	<div class="flex anchor relative">
 		<h3 id="shining-a-light">Shining a light</h3>
-		<a href="https://blog.cloudflare.com/#shining-a-light" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#shining-a-light" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@
 	<p>A <i>monitor</i> is a service that helps alert websites of mis-issuance. It crawls logs for new certificates and alerts website owners if a new certificate is found for their domain. Popular monitors include SSLMate’s <a href="https://sslmate.com/certspotter">CertSpotter</a> and Facebook’s <a href="https://developers.facebook.com/tools/ct">Certificate Transparency Monitoring</a>. Cloudflare is planning on offering a free log monitoring service integrated into the Cloudflare dashboard for customers by the end of the year.</p>
 	<div class="flex anchor relative">
 		<h4 id="letting-browsers-know-that-certificates-are-logged">Letting browsers know that certificates are logged</h4>
-		<a href="https://blog.cloudflare.com/#letting-browsers-know-that-certificates-are-logged" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#letting-browsers-know-that-certificates-are-logged" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -93,7 +93,7 @@
 	<p>A certificate with embedded SCTs</p>
 	<div class="flex anchor relative">
 		<h4 id="browser-ct-requirements">Browser CT requirements</h4>
-		<a href="https://blog.cloudflare.com/#browser-ct-requirements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#browser-ct-requirements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -119,7 +119,7 @@
 	<p>The full policy is <a href="https://github.com/chromium/ct-policy/blob/master/log_policy.md">here</a>. The complete list of vetted logs is available <a href="https://www.gstatic.com/ct/log_list/log_list.json">here</a>. Nimbus, Cloudflare’s family of CT logs, was included in Chrome 65, which is the current stable version of the Browser.</p>
 	<div class="flex anchor relative">
 		<h4 id="all-or-nothing">All or nothing</h4>
-		<a href="https://blog.cloudflare.com/#all-or-nothing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#all-or-nothing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -137,7 +137,7 @@
 	<p>This isn’t enough. As long as there are certificates that are trusted by browsers that are not required to be CT Qualified, then users are at risk. This is why the Chrome team announced that they will require Certificate Transparency for all newly issued, publicly trusted certificates starting in <a href="https://groups.google.com/a/chromium.org/forum/#!topic/ct-policy/sz_3W_xKBNY">April 2018</a>.</p>
 	<div class="flex anchor relative">
 		<h4 id="changes-for-certificate-authorities">Changes for Certificate Authorities</h4>
-		<a href="https://blog.cloudflare.com/#changes-for-certificate-authorities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#changes-for-certificate-authorities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -158,7 +158,7 @@
 	<p>If you’re a CA operator and are struggling to implement this or worried about the additional delay caused by submitting pre-certificates to logs, Cloudflare can help. We’re offering an experimental API for CAs that takes pre-certificates and returns a valid set of SCTs for a given certificate. This API handles sorting out the browser policies and leverages <a href="https://www.cloudflare.com/argo">Argo Smart Routing</a> to return SCTs with as little delay as possible. Please contact our CT team at <a href="mailto:ct-logs@cloudflare.com">ct-logs@cloudflare.com</a> if you have any interest in this offering.</p>
 	<div class="flex anchor relative">
 		<h3 id="building-a-verifiable-globally-consistent-log">Building a verifiable globally consistent log</h3>
-		<a href="https://blog.cloudflare.com/#building-a-verifiable-globally-consistent-log" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#building-a-verifiable-globally-consistent-log" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -201,7 +201,7 @@
 	<p>A certificate transparency log is a Merkle tree where the leaf elements are certificates. Each log has a private key that it uses to sign the current tree head at regular intervals. Some CT logs are huge with over a hundred million entries, but because of the efficiency of Merkle trees, inclusion proofs only require around 30 hashes. This structure provides a good balance between the cost to the log operator of adding certificates and the cost to the auditor of validating its consistency.</p>
 	<div class="flex anchor relative">
 		<h3 id="nimbus">Nimbus</h3>
-		<a href="https://blog.cloudflare.com/#nimbus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#nimbus" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

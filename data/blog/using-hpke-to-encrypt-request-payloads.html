@@ -20,7 +20,7 @@
 	<p>Here's how we made those decisions.</p>
 	<div class="flex anchor relative">
 		<h3 id="algorithm-requirements">Algorithm Requirements</h3>
-		<a href="https://blog.cloudflare.com/#algorithm-requirements" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#algorithm-requirements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@
 	<p>HPKE is an emerging standard developed by the Crypto Forum Research Group (CFRG), the research body that supports the development of Internet standards at the <a href="http://ietf.org">IETF. The CFRG</a> produces specifications called RFCs (such as <a href="https://tools.ietf.org/html/rfc7748">RFC 7748</a> for elliptic curves) that are then used in higher level protocols including two we talked about previously: <a href="https://blog.cloudflare.com/oblivious-dns">ODoH</a> and <a href="https://blog.cloudflare.com/encrypted-client-hello">ECH</a>. Cloudflare has long been a supporter of Internet standards, so HPKE was a natural choice to use for this feature. Additionally, HPKE was co-authored by one of our colleagues at Cloudflare.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-hpke-works">How HPKE Works</h3>
-		<a href="https://blog.cloudflare.com/#how-hpke-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-hpke-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -48,7 +48,7 @@
 	<p>The specification for HPKE is open and available on the <a href="https://tools.ietf.org/html/draft-irtf-cfrg-hpke-06">IETF website</a>. It is on its way to becoming an RFC after passing multiple rounds of review and analysis by cryptography experts at the CFRG. HPKE is already gaining adoption in IETF protocols like ODoH, ECH, and the new <a href="https://messaginglayersecurity.rocks">Messaging Layer Security (MLS)</a> protocol. HPKE is also designed with the <a href="https://blog.cloudflare.com/securing-the-post-quantum-world">post-quantum future</a> since it is built to work with any KEM, including <a href="https://csrc.nist.gov/News/2020/pqc-third-round-candidate-announcement">all the NIST finalists for post-quantum</a> public-key encryption.</p>
 	<div class="flex anchor relative">
 		<h3 id="implementation-language">Implementation Language</h3>
-		<a href="https://blog.cloudflare.com/#implementation-language" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementation-language" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -60,7 +60,7 @@
 	<p>The HPKE implementation we decided on comes with the caveat of not yet being formally audited, so we performed our own internal security review. We analyzed the cryptography primitives being used and the corresponding libraries. Between the composition of said primitives and secure programming practices like correctly zeroing memory and safe usage of random number generators, we found no security issues.</p>
 	<div class="flex anchor relative">
 		<h3 id="making-it-secure-for-users">Making It Secure For Users</h3>
-		<a href="https://blog.cloudflare.com/#making-it-secure-for-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-it-secure-for-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@
 	<p>For the dashboard, once the user provides the private key for decryption, the key is held in a temporary JavaScript variable and used for the in-browser decryption. This allows the user to not constantly have to provide the key while browsing the Firewall event logs. The private key is also not persisted in any way in the browser, so any action that refreshes the page such as refreshing or navigating away will require the user to provide the key again. We believe this is an acceptable usability compromise for better security.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-payload-extraction-works">How Payload Extraction Works</h3>
-		<a href="https://blog.cloudflare.com/#how-payload-extraction-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-payload-extraction-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -115,7 +115,7 @@ $ matched-data-cli decrypt -d $MATCHED_DATA -k $PRIVATE_KEY
 	<p>Since our CLI tool is open-source and HPKE is interoperable, it can also be used in other tooling as part of a user's logging pipeline, for example in security information and event management (SIEM) software.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -125,7 +125,7 @@ $ matched-data-cli decrypt -d $MATCHED_DATA -k $PRIVATE_KEY
 	<p>We're very pleased with how HPKE has worked out for us from an ease-of-implementation and performance standpoint. It was also an easy choice for us to make due to its impending standardization and best-of-both-worlds approach to security.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-it-on-cloudflare-tv">Watch it on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-it-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#watch-it-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -5,7 +5,7 @@
 	<p>Recently, I was trying to get <i>Cloudflare Tunnel</i> to connect to the Cloudflare network using a UDP protocol, QUIC. While doing this, I ran into an interesting connectivity problem unique to UDP. In this post I will talk about how I went about debugging this connectivity issue beyond the land of firewalls, and how some interesting differences between UDP and TCP came into play when sending network packets.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-cloudflare-tunnel-work">How does Cloudflare Tunnel work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-cloudflare-tunnel-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-cloudflare-tunnel-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>Naturally, QUIC required a UDP-based listener on our edge servers which <i>cloudflared</i> could connect to. We already connect to a TCP-based listener for the existing protocols, so this should be nice and easy, right?</p>
 	<div class="flex anchor relative">
 		<h3 id="failed-to-dial-to-the-edge">Failed to dial to the edge</h3>
-		<a href="https://blog.cloudflare.com/#failed-to-dial-to-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#failed-to-dial-to-the-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	<p><i>cloudflared</i> wasn’t even establishing a connection to the edge. I started looking at the obvious places first. <i>Did I add a firewall rule allowing traffic to this port?</i> Check_. Did I have iptables rules ACCEPTing or DROPping appropriate traffic for this port?_ Check_._ They seemed to be in order. So what else could I do?</p>
 	<div class="flex anchor relative">
 		<h3 id="tcpdump-all-the-packets">tcpdump all the packets</h3>
-		<a href="https://blog.cloudflare.com/#tcpdump-all-the-packets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tcpdump-all-the-packets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@ default via 203.0.113.0 dev eth0</code></pre>
 	<p>So this was clearly why the server was working fine on my machine but not on the Cloudflare edge servers. It looks like I have multiple IPs on the interface my service is bound to. The IP that is the default route is being sent back as the source address of the packet.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-does-this-work-for-tcp-but-not-udp">Why does this work for TCP but not UDP?</h3>
-		<a href="https://blog.cloudflare.com/#why-does-this-work-for-tcp-but-not-udp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-does-this-work-for-tcp-but-not-udp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@ default via 203.0.113.0 dev eth0</code></pre>
 	<p>Because UDP (unless SOCK_SEQPACKET is involved) is connectionless, the kernel cannot maintain state like TCP does. The <a href="https://man7.org/linux/man-pages/man3/recvfrom.3p.html"><i>recvfrom</i></a> &nbsp;system call is invoked from the server side and tells who the data comes from. Unfortunately, <i>recvfrom</i> &nbsp;does not tell us which IP this data is addressed for. Therefore, when the UDP server invokes the <code>[sendto](https://man7.org/linux/man-pages/man3/sendto.3p.html) system call</code> to respond to the client, we can only tell it which address to send the data to. The responsibility of determining the source-address IP then falls to the kernel. The kernel has certain <a href="http://linux-ip.net/html/routing-selection.html">heuristics</a> that it uses to determine the source address. This may or may not work, and in the <i>ip routes</i> example above, these heuristics did not work. The kernel naturally (and wrongly) picks the address of the default route to respond with.</p>
 	<div class="flex anchor relative">
 		<h3 id="telling-the-kernel-what-to-do">Telling the kernel what to do</h3>
-		<a href="https://blog.cloudflare.com/#telling-the-kernel-what-to-do" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#telling-the-kernel-what-to-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -94,7 +94,7 @@ struct msghdr {
 	<p>So I had to see for myself if these system calls were being made.</p>
 	<div class="flex anchor relative">
 		<h3 id="strace-all-the-system-calls">strace all the system calls</h3>
-		<a href="https://blog.cloudflare.com/#strace-all-the-system-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#strace-all-the-system-calls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -143,7 +143,7 @@ ipi_spec_dst=inet_addr("198.41.200.200"),ipi_addr=inet_addr("0.0.0.0")}}
 	<p>While the programmatic bug causing this issue was a trivial one, the journey into systematically discovering the issue and understanding how Linux internals worked for UDP along the way turned out to be very rewarding for me. It also reiterated my belief that <i>tcpdump</i> and <i>strace</i> are indeed invaluable tools in anybody’s arsenal when debugging network problems.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

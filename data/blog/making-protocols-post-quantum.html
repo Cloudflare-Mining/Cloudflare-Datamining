@@ -13,7 +13,7 @@
 	<p>In this blog post, we will discuss how one might upgrade cryptographic protocols to make them secure against quantum computers. We will focus on the cryptography that they use and see what the challenges are in making them secure against quantum computers. We will show how trade-offs might motivate completely new protocols for some applications. We will use TLS here as a stand-in for other protocols, as it is one of the most deployed protocols.</p>
 	<div class="flex anchor relative">
 		<h3 id="making-tls-post-quantum">Making TLS post-quantum</h3>
-		<a href="https://blog.cloudflare.com/#making-tls-post-quantum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-tls-post-quantum" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -29,7 +29,7 @@
 	<p>Upgrading the cryptography in TLS seems as easy as scribbling in “PQ-”.</p>
 	<div class="flex anchor relative">
 		<h3 id="key-exchange">Key exchange</h3>
-		<a href="https://blog.cloudflare.com/#key-exchange" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#key-exchange" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -187,7 +187,7 @@
 	<p>Fortunately, once we make this table the landscape for KEMs that are suitable for use in TLS quickly becomes clear. We will have to sacrifice an additional 1,400 - 2,000 bytes, assuming SIKE’s slow runtime is a bigger penalty to the connection establishment (<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">see our previous work here</a>). So we can choose one of the lattice-based finalists (Kyber, SABER or NTRU) and call it a day.<sup>1</sup></p>
 	<div class="flex anchor relative">
 		<h3 id="signature-schemes">Signature schemes</h3>
-		<a href="https://blog.cloudflare.com/#signature-schemes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#signature-schemes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -344,7 +344,7 @@
 	<p>Picking and choosing specific algorithms for particular use cases, such as using a scheme with short signatures for root certificates, OCSP Stapling, and CT might help to alleviate the problems a bit. We might use Rainbow for the CA root, OCSP staples, and CT logs, which would mean we only need 66 bytes for each signature. It is very nice that Rainbow signatures are only very slightly larger than 64-byte ed25519 elliptic curve signatures, and they are significantly smaller than 256-byte RSA-2048 signatures. This gives us a lot of space to absorb the impact of the larger handshake signatures required. For intermediate certificates, where both the public key and the signature are transmitted, we might use Falcon because it’s nice and small, and the client only needs to do signature verification.</p>
 	<div class="flex anchor relative">
 		<h3 id="using-kems-for-authentication">Using KEMs for authentication</h3>
-		<a href="https://blog.cloudflare.com/#using-kems-for-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#using-kems-for-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -377,7 +377,7 @@ Authentication via KEM in TLS from the AuthKEM proposal</code></pre>
 	<p>What this proposal illustrates is that the transition to post-quantum cryptography might motivate, or even require, us to have a brand-new look at what the desired characteristics of our protocol are and what properties we need, like what budget we have for round-trips versus the budget for data transmitted. We might even pick up some properties, like deniability, along the way. For some protocols this is somewhat easy, like TLS; in other protocols there isn’t even a clear idea of where to start (<a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec">DNSSEC</a> has very tight limits).</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusions">Conclusions</h3>
-		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -387,7 +387,7 @@ Authentication via KEM in TLS from the AuthKEM proposal</code></pre>
 	<p>If you want to be a part of the future of cryptography on the Internet, either as an academic or an engineer, be sure to check out our <a href="https://research.cloudflare.com/outreach">academic outreach</a> or <a href="https://www.cloudflare.com/careers/jobs">jobs</a> pages.</p>
 	<div class="flex anchor relative">
 		<h3 id="reference">Reference</h3>
-		<a href="https://blog.cloudflare.com/#reference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

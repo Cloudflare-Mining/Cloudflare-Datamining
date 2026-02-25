@@ -7,7 +7,7 @@
 	<p>How does internet infrastructure like Cloudflare’s contribute to power consumption? Computing power resources are split into end users (like your phone or computer displaying this page) and network infrastructure. That infrastructure likewise splits into “network services” like content delivery and “compute services” like database queries. Cloudflare offers both types of services, and has a sustainability impact in both -- this post describes how we think about it.</p>
 	<div class="flex anchor relative">
 		<h3 id="our-network">Our Network</h3>
-		<a href="https://blog.cloudflare.com/#our-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#our-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p>Our breadth on the Internet also means the performance optimizations we are able to perform have a disproportionate impact. When we <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">speed up TLS</a> or <a href="https://blog.cloudflare.com/tracing-system-cpu-on-debian-stretch">fix CPU stalls</a> we are shaving off milliseconds of CPU from requests traveling to 13 million different websites. It would be virtually impossible to get all of these performance improvements integrated into every one of those origins, but with Cloudflare they simply see fewer requests and energy is saved.</p>
 	<div class="flex anchor relative">
 		<h3 id="our-platform">Our Platform</h3>
-		<a href="https://blog.cloudflare.com/#our-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#our-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -31,7 +31,7 @@
 	<p>Additionally, by being able to start our isolates using just a few milliseconds of CPU time rather than the hundreds required by conventional processes we are able to dynamically scale rapidly, more efficiently using the hardware we do have. Isolates allow us to spend CPU cycles on only the code customers actually wish to execute, not wasteful overhead. These effects are in fact so dramatic that we have begun to rebuild parts of our own internal infrastructure as isolate-powered Cloudflare Workers in part to save energy for ourselves and our customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="offsetting-whats-left">Offsetting What’s Left</h3>
-		<a href="https://blog.cloudflare.com/#offsetting-whats-left" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#offsetting-whats-left" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

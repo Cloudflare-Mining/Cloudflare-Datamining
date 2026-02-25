@@ -4,7 +4,7 @@
 	<p>(Imagecourtesy of ferelswirl)At CloudFlare, we're always looking for ways to eliminate bottlenecks. We're only able to deal with the very large amount of traffic that we handle, especially during large denial of service attacks, because we've built a network that can efficiently handle an extremely high volume of network requests. This post is about the nitty gritty of port bonding, one of the technologies we use, and how it allows us to get the maximum possible network throughput out of our servers.</p>
 	<div class="flex anchor relative">
 		<h3 id="generation-three">Generation Three</h3>
-		<a href="https://blog.cloudflare.com/#generation-three" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#generation-three" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>When we originally started deploying our G3 servers in early 2012, we treated each 1Gbps port on the switches and routers discretely. While each server could, in theory, handle 6Gbps of traffic, each port could only handle 1Gbps. Usually this was no big deal because we load balanced customers across multiple servers in multiple data centers so on no individual server port was a customer likely to burst over 1Gbps. However, we found that, from time to time, when a customer would come under attack, traffic to individual machines could exceed 1Gbps and overwhelm a port.</p>
 	<div class="flex anchor relative">
 		<h3 id="when-a-problem-comes-along">When A Problem Comes Along...</h3>
-		<a href="https://blog.cloudflare.com/#when-a-problem-comes-along" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#when-a-problem-comes-along" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	<p>Both these problems are annoying if it affects the customer under attack, but it is unacceptable it spills over and affects customers who are not under attack. To ensure that would never happen, we needed to find a way to both increase network capacity and ensure that customer attacks were isolated from one another. To accomplish this we launched what we affectionately refer to in the office as "Project Bondage."</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-into-bondage">Getting Into Bondage</h3>
-		<a href="https://blog.cloudflare.com/#getting-into-bondage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#getting-into-bondage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -73,7 +73,7 @@
 	<p>We use mode 4, 802.3ad Dynamic Link Aggregation. This requires switches that support 802.3ad (our workhorse switch is a Juniper 4200, which does). Our switches are configured to send packets from each stream to the same network interface. If you want to experiment with port bonding yourself, the next section covers the technical details of exactly how we set it up.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-nitty-gritty">The Nitty Gritty</h3>
-		<a href="https://blog.cloudflare.com/#the-nitty-gritty" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-nitty-gritty" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -107,7 +107,7 @@
 	<p>From an application perspective, bonded ports appear as a single logical network interface with a higher maximum throughput. Since our switch recognizes and supports 802.3ad Dynamic Link Aggregation, we don't have to make any changes to its configuration in order for port bonding to work. In our case, we aggregate three ports (3Gbps) for handling external traffic and the remaining three ports (3Gbps) for handling intra-server traffic across our LAN.</p>
 	<div class="flex anchor relative">
 		<h3 id="working-out-the-kinks">Working Out the Kinks</h3>
-		<a href="https://blog.cloudflare.com/#working-out-the-kinks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#working-out-the-kinks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -125,7 +125,7 @@
 	<p>Each port on our NICs has a number of queues to handle incoming requests. These are known as RSS (Receive Side Scaling) queues. Each port has 8 RSS queues, we have 6 1Gbps NIC ports per server, so a total of 48 RSS queues. These 48 RSS queues are allocated to the 24 cores, with 2 RSS queues per core. We divide the RSS queues between internal (LAN) traffic and external traffic and bind each type of traffic to one of the two server CPUs. This ensures that even large SYN floods that may affect a machine's ability to handle more external requests won't keep it from handling requests from other servers in the data center.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-results">The Results</h3>
-		<a href="https://blog.cloudflare.com/#the-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

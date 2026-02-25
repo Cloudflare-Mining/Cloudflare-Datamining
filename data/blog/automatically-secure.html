@@ -6,7 +6,7 @@
 	<p>Now, a year after we started enabling Automatic SSL/TLS, we want to talk about these results, why they matter, and how we’re preparing for the next leap in Internet security.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-basics-tls-protocol">The Basics: TLS protocol</h2>
-		<a href="https://blog.cloudflare.com/#the-basics-tls-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-basics-tls-protocol" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>Once both sides agree, the chosen keyshare is used to create a shared secret that encrypts the messages they exchange and allows only the right parties to decrypt them.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-nitty-gritty-details-of-key-agreement">The nitty-gritty details of key agreement</h3>
-		<a href="https://blog.cloudflare.com/#the-nitty-gritty-details-of-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-nitty-gritty-details-of-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -31,7 +31,7 @@
 	<p>The TLS handshake model is the foundation for how we encrypt web communications today. The history of TLS is really the story of <i>iteration under pressure</i>. It’s a protocol that had to keep evolving, so trust on the web could keep pace with how Internet traffic has changed. It’s also what makes technologies like <b>Cloudflare’s Automatic SSL/TLS</b> possible, by abstracting decades of protocol battles and crypto engineering into a single click, so customer websites can be secured by default without requiring every operator to be a cryptography expert.</p>
 	<div class="flex anchor relative">
 		<h2 id="history-lesson-stumbles-and-standards">History Lesson: Stumbles and Standards</h2>
-		<a href="https://blog.cloudflare.com/#history-lesson-stumbles-and-standards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#history-lesson-stumbles-and-standards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -42,7 +42,7 @@
 	<p>All of this momentum led to <a href="https://datatracker.ietf.org/doc/html/rfc8446"><u>TLS 1.3</u></a> (2018), which cut away legacy baggage, locked in modern cipher suites, and made encrypted connections nearly as fast as the underlying transport protocols like TCP—and sometimes even faster with <a href="https://en.wikipedia.org/wiki/QUIC"><u>QUIC</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-cdn-twist">The CDN Twist</h2>
-		<a href="https://blog.cloudflare.com/#the-cdn-twist" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-cdn-twist" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -65,7 +65,7 @@
 	<p>This is where Automatic SSL/TLS sits in the story of how we secure Internet communications.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="automatic-ssl-tls">Automatic SSL/TLS&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#automatic-ssl-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#automatic-ssl-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -151,7 +151,7 @@
 	<p>We were seeing sub-optimal settings that our customers could upgrade from without risk of breaking their site, but for various reasons, our users did not follow through with the recommendations. So we pushed forward by building a system that worked with Recommender and actioned the recommendations by default.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="how-does-automatic-ssl-tls-work">How does Automatic SSL/TLS work?&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#how-does-automatic-ssl-tls-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-automatic-ssl-tls-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -202,7 +202,7 @@
 	<p>In short, Automatic SSL/TLS automates what used to be trial and error: finding the strongest SSL/TLS mode your site can support while keeping everything working smoothly.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-are-we-doing-so-far">How are we doing so far?&nbsp;&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#how-are-we-doing-so-far" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-are-we-doing-so-far" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -285,7 +285,7 @@
 	<p>Today, SSL/TLS mode works on a domain-wide level, which can feel blunt. This means that one suboptimal subdomain can keep the entire domain in a less secure TLS setting, to ensure availability. Our long-term goal is to make these controls more precise, so that Automatic SSL/TLS and encryption modes can optimize security per origin or subdomain, rather than treating every hostname the same.</p>
 	<div class="flex anchor relative">
 		<h2 id="impact-on-origin-facing-connections">Impact on origin-facing connections</h2>
-		<a href="https://blog.cloudflare.com/#impact-on-origin-facing-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#impact-on-origin-facing-connections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -306,7 +306,7 @@
 	<p>The decline in plaintext connections is encouraging, but it also highlights a long tail of servers still relying on outdated packages or configurations. Sites like <a href="https://www.ssllabs.com/ssltest"><u>SSL Labs</u></a> can be used, for instance, to check a server’s TLS configuration. However, simply copy-pasting settings to achieve a high rating can be risky, so we encourage customers to review their origin TLS configurations carefully. In addition, <a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca"><u>Cloudflare origin CA</u></a> or <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks"><u>Cloudflare Tunnel</u></a> can help provide guidance for upgrading origin security.</p>
 	<div class="flex anchor relative">
 		<h3 id="upgraded-domain-results">Upgraded domain results</h3>
-		<a href="https://blog.cloudflare.com/#upgraded-domain-results" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#upgraded-domain-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -329,7 +329,7 @@
 	<p>We’ve seen a largely successful rollout of Automatic SSL/TLS so far, with millions of domains upgraded to stronger encryption by default. We’ve seen help Automatic SSL/TLS improve origin-facing security, safely pushing connections to stronger modes whenever possible, without risking site breakage. Looking ahead, we’ll continue to expand this capability to more customer use cases as we help to build a more encrypted Internet.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-will-we-build-next-for-automatic-ssl-tls">What will we build next for Automatic SSL/TLS?&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#what-will-we-build-next-for-automatic-ssl-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-will-we-build-next-for-automatic-ssl-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -340,7 +340,7 @@
 	<p>Finally, for <b>newly onboarded domains</b>, we plan to add clearer guidance on when to finish configuring the origin before Cloudflare runs its first scan and sets an encryption mode. Together, these improvements are designed to reduce surprises, give customers more agency, and ensure smoother upgrades. We expect all three features to roll out by June 2026.</p>
 	<div class="flex anchor relative">
 		<h2 id="post-quantum-era">Post Quantum Era</h2>
-		<a href="https://blog.cloudflare.com/#post-quantum-era" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#post-quantum-era" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -7,7 +7,7 @@
 	<p>Today, we are introducing <a href="https://developer.chrome.com/blog/webgpu-release">WebGPU</a> support to Cloudflare Workers. This blog will explain why it's important, why we did it, how you can use it, and what comes next.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-history-of-the-gpu-in-the-browser">The history of the GPU in the browser</h3>
-		<a href="https://blog.cloudflare.com/#the-history-of-the-gpu-in-the-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-history-of-the-gpu-in-the-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>With this in mind, in the native desktop and mobile operating system worlds, developers started using more advanced frameworks like <a href="https://en.wikipedia.org/wiki/CUDA">CUDA</a>, <a href="https://developer.apple.com/metal">Metal</a>, <a href="https://en.wikipedia.org/wiki/DirectX#DirectX_12">DirectX 12</a>, or <a href="https://www.vulkan.org/learn#key-resources">Vulkan</a>. WebGL stayed behind. To fill this void and bring the browser up to date, in 2017, companies like Google, Apple, Intel, Microsoft, Kronos, and Mozilla created the <a href="https://www.w3.org/community/gpu">GPU for Web Community Working Group</a> to collaboratively design the successor of WebGL and create the next modern 3D graphics and computation capabilities APIs for the Web.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-webgpu">What is WebGPU</h3>
-		<a href="https://blog.cloudflare.com/#what-is-webgpu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-webgpu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -58,7 +58,7 @@
 	<p>If these aren't reasons enough to get excited, developers are also looking at WebGPU as an option for native platforms, not just the Web. For instance, you can use this <a href="https://github.com/webgpu-native/webgpu-headers/blob/main/webgpu.h">C API</a> that mimics the JavaScript specification. If you think about this and the power of WebAssembly, you can effectively have a truly platform-agnostic GPU hardware layer that you can use to <a href="https://developer.chrome.com/blog/webgpu-cross-platform">develop</a> platforms for any operating system or browser.</p>
 	<div class="flex anchor relative">
 		<h3 id="more-than-just-graphics">More than just graphics</h3>
-		<a href="https://blog.cloudflare.com/#more-than-just-graphics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#more-than-just-graphics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -79,7 +79,7 @@
 	<p><a href="https://gpuweb.github.io/gpuweb/wgsl">WGSL</a>, the shader language for WebGPU, is what enables the general-purpose compute feature. Shaders, or more precisely, <a href="https://www.khronos.org/opengl/wiki/Compute_Shader">compute shaders</a>, have no user-defined inputs or outputs and are used for computing arbitrary information. Here are <a href="https://webgpufundamentals.org/webgpu/lessons/webgpu-compute-shaders.html">some examples</a> of simple WebGPU compute shaders if you want to learn more.</p>
 	<div class="flex anchor relative">
 		<h3 id="webgpu-in-workers">WebGPU in Workers</h3>
-		<a href="https://blog.cloudflare.com/#webgpu-in-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#webgpu-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -92,7 +92,7 @@
 	<p>But before we dig into code examples, let's explain how we built it.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-we-built-webgpu-on-top-of-workers">How we built WebGPU on top of Workers</h3>
-		<a href="https://blog.cloudflare.com/#how-we-built-webgpu-on-top-of-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-we-built-webgpu-on-top-of-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -134,7 +134,7 @@
 	<p>Using Durable Objects instead of regular Workers allow us to address both of these issues.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-webgpu-hello-world-in-workers">The WebGPU Hello World in Workers</h3>
-		<a href="https://blog.cloudflare.com/#the-webgpu-hello-world-in-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-webgpu-hello-world-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -228,7 +228,7 @@ console.log(new Float32Array(mappedBuffer.getMappedRange()));
 	<p>Now that we covered the basics of WebGPU and compute shaders, let's move to something more demanding. What if we could perform machine learning inference using Workers and GPUs?</p>
 	<div class="flex anchor relative">
 		<h3 id="onnx-webgpu-demo">ONNX WebGPU demo</h3>
-		<a href="https://blog.cloudflare.com/#onnx-webgpu-demo" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#onnx-webgpu-demo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -313,7 +313,7 @@ n02051845 pelican</code></pre>
 	<p>If everything goes according to plan the result of the curl command will be the most likely class of the image.</p>
 	<div class="flex anchor relative">
 		<h3 id="next-steps-and-final-words">Next steps and final words</h3>
-		<a href="https://blog.cloudflare.com/#next-steps-and-final-words" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-steps-and-final-words" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

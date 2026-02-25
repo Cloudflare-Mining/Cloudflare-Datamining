@@ -7,7 +7,7 @@
 	<p>But sometimes we try to push well beyond the design intentions of Linux’s networking stack. This is a story about one of those attempts.</p>
 	<div class="flex anchor relative">
 		<h2 id="hard-solutions-for-soft-problems">Hard solutions for soft problems</h2>
-		<a href="https://blog.cloudflare.com/#hard-solutions-for-soft-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#hard-solutions-for-soft-problems" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>Our first attempt was to use distinct per-client addresses in fish and continue to let Netfilter/conntrack apply SNAT rules. However, we discovered an unfortunate interaction between Linux’s socket subsystem and the Netfilter conntrack module that reveals itself starkly when you use packet rewriting.</p>
 	<div class="flex anchor relative">
 		<h2 id="collision-avoidance">Collision avoidance</h2>
-		<a href="https://blog.cloudflare.com/#collision-avoidance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#collision-avoidance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 	<p>Crucially for soft-unicast, it means conntrack may rewrite our connection to have a source port outside of the port slice assigned to our machine. This will silently break the connection, causing unnecessary delays and false reports of connection timeouts. We need another solution.</p>
 	<div class="flex anchor relative">
 		<h2 id="taking-a-breather">Taking a breather</h2>
-		<a href="https://blog.cloudflare.com/#taking-a-breather" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#taking-a-breather" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -58,7 +58,7 @@
 	<p>For WARP, the solution we chose was to stop rewriting and forwarding IP packets, instead to terminate all TCP connections within the server and proxy them to a locally-created TCP socket with the correct soft-unicast address. This was an easy and viable solution that we already employed for a portion of our connections, such as those directed at the CDN, or intercepted as part of the Zero Trust Secure Web Gateway. However, it does introduce additional resource usage and potentially increased latency compared to the status quo. We wanted to find another way (to) forward.</p>
 	<div class="flex anchor relative">
 		<h2 id="an-inefficient-interface">An inefficient interface</h2>
-		<a href="https://blog.cloudflare.com/#an-inefficient-interface" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#an-inefficient-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@
 	<p>There is one problem with this — it’s not terribly efficient. Netlink is slow compared to the bind/connect socket dance, and when creating conntrack entries you have to specify a timeout for the flow and delete the entry if your connection attempt fails, to ensure that the connection table doesn’t fill up too quickly for a given 5-tuple. In other words, you have to manually reimplement <a href="https://sysctl-explorer.net/net/ipv4/tcp_tw_reuse"><u>tcp_tw_reuse</u></a> option to support high-traffic destinations with limited resources. In addition, a stray RST packet can erase your connection tracking entry. At our scale, anything like this that can happen, will happen. It is not a place for fragile solutions.</p>
 	<div class="flex anchor relative">
 		<h2 id="socket-to-em">Socket to ‘em</h2>
-		<a href="https://blog.cloudflare.com/#socket-to-em" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#socket-to-em" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -89,7 +89,7 @@ s.connect(('1.1.1.1', 53))</code></pre>
 	<p>Binding a “connected” socket that nevertheless corresponds to no actual socket has one important feature: if other processes attempt to bind to the same addresses as the socket, they will fail to do so. This satisfies the problem we had at the beginning to make packet forwarding coexist with socket usage.</p>
 	<div class="flex anchor relative">
 		<h2 id="jumping-the-queue">Jumping the queue</h2>
-		<a href="https://blog.cloudflare.com/#jumping-the-queue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#jumping-the-queue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -112,7 +112,7 @@ s.connect(('1.1.1.1', 53))</code></pre>
 	<p>As with WARP, we simplify connection management by assigning a mark to packets coming from the “fishtun” interface, which we can use to route them back there. To prevent locally-originated TCP sockets from having this same mark applied, we assign the IP to the loopback interface instead of fishtun, leaving fishtun with no assigned address. But it doesn’t need one, as we have explicit routing rules now.</p>
 	<div class="flex anchor relative">
 		<h2 id="uncharted-territory">Uncharted territory</h2>
-		<a href="https://blog.cloudflare.com/#uncharted-territory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#uncharted-territory" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -129,7 +129,7 @@ s.connect(('1.1.1.1', 53))</code></pre>
 	<p>It turns out that part of the ‘routing decision’ involves some protocol-specific processing. For IP packets, <a href="https://github.com/torvalds/linux/blob/89be9a83ccf1f88522317ce02f854f30d6115c41/net/ipv4/ip_input.c#L317"><u>routing decisions can be cached</u></a>, and some basic address validation is performed. In 2012, an additional feature was added: <a href="https://lore.kernel.org/all/20120619.163911.2094057156011157978.davem@davemloft.net"><u>early demux</u></a>. The rationale being, at this point in packet processing we are already looking up something, and the majority of packets received are expected to be for local sockets, rather than an unknown packet or one that needs to be forwarded somewhere. In this case, why not look up the socket directly here and save yourself an extra route lookup?</p>
 	<div class="flex anchor relative">
 		<h2 id="the-workaround-at-the-end-of-the-universe">The workaround at the end of the universe</h2>
-		<a href="https://blog.cloudflare.com/#the-workaround-at-the-end-of-the-universe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-workaround-at-the-end-of-the-universe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -149,7 +149,7 @@ s.connect(('1.1.1.1', 53))</code></pre>
 	<p>The key metrics are CPU usage from /proc/stat. If there is a performance degradation, we would expect to see higher CPU usage allocated to “softirq” — the context in which Linux network processing occurs — with little change to either userspace (top) or kernel time (bottom). The observed difference is slight, and mostly appears to reduce efficiency during off-peak hours.</p>
 	<div class="flex anchor relative">
 		<h2 id="swimming-upstream">Swimming upstream</h2>
-		<a href="https://blog.cloudflare.com/#swimming-upstream" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#swimming-upstream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

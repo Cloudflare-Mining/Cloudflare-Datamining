@@ -4,7 +4,7 @@
 	<p>HPKE was made to be simple, reusable, and future-proof by building upon knowledge from prior PKE schemes and software implementations. It is already in use in a large assortment of emerging Internet standards, including TLS <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni">Encrypted Client Hello</a> and <a href="https://datatracker.ietf.org/doc/draft-pauly-dprive-oblivious-doh">Oblivious DNS-over-HTTPS</a>, and has a large assortment of interoperable implementations, including one in <a href="https://github.com/cloudflare/circl/tree/master/hpke">CIRCL</a>. This article provides an overview of this new standard, going back to discuss its motivation, design goals, and development process.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-primer-on-public-key-encryption">A primer on public-key encryption</h3>
-		<a href="https://blog.cloudflare.com/#a-primer-on-public-key-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-primer-on-public-key-encryption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -65,7 +65,7 @@
 	<p>When designing protocols and applications that need a simple, reusable, and agile abstraction for public-key encryption, existing standards are not fit for purpose. That’s where HPKE comes into play.</p>
 	<div class="flex anchor relative">
 		<h3 id="construction-and-design-goals">Construction and design goals</h3>
-		<a href="https://blog.cloudflare.com/#construction-and-design-goals" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#construction-and-design-goals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -82,7 +82,7 @@
 	<p>This simple construction was driven by several high-level design goals and principles. We will discuss these goals and how they were met below.</p>
 	<div class="flex anchor relative">
 		<h3 id="algorithm-agility">Algorithm agility</h3>
-		<a href="https://blog.cloudflare.com/#algorithm-agility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#algorithm-agility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -92,7 +92,7 @@
 	<p>One important point worth noting here is that HPKE is not a <i>protocol</i>, and therefore does nothing to ensure that sender and receiver agree on the HPKE ciphersuite or shared context information. Applications and protocols that use HPKE are responsible for choosing or negotiating a specific HPKE ciphersuite that fits their purpose. This allows applications to be opinionated about their choice of algorithms to simplify implementation and analysis, as is common with protocols like <a href="https://www.wireguard.com">WireGuard</a>, or be flexible enough to support choice and agility, as is the approach taken with TLS.</p>
 	<div class="flex anchor relative">
 		<h3 id="authentication-modes">Authentication modes</h3>
-		<a href="https://blog.cloudflare.com/#authentication-modes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#authentication-modes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -109,7 +109,7 @@
 	<p>These modes come at a price, however: not all KEM algorithms will work with all authentication modes. For example, for most post-quantum KEM algorithms there isn’t a private key authentication variant known.</p>
 	<div class="flex anchor relative">
 		<h3 id="reusability">Reusability</h3>
-		<a href="https://blog.cloudflare.com/#reusability" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reusability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -118,7 +118,7 @@
 	<p>The core of HPKE’s construction is its key schedule. It allows secrets produced and shared with KEMs and pre-shared keys to be mixed together to produce additional shared secrets between sender and receiver for performing authenticated encryption and decryption. HPKE allows applications to build on this key schedule without using the corresponding AEAD functionality, for example, by <a href="https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hpke-12#section-5.3">exporting a shared application-specific secret</a>. Using HPKE in an “export-only” fashion allows applications to use other, non-standard AEAD algorithms for encryption, should that be desired. It also allows applications to use a KEM different from those specified in the standard, as is done in the proposed <a href="https://claucece.github.io/draft-celi-wiggers-tls-authkem/draft-celi-wiggers-tls-authkem.html">TLS AuthKEM draft</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="interface-simplicity">Interface simplicity</h3>
-		<a href="https://blog.cloudflare.com/#interface-simplicity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#interface-simplicity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -135,7 +135,7 @@ ciphertext = senderContext.Seal(aad, message)</code></pre>
 	<p>Consider what would be necessary if HPKE delegated nonce management to the application. The sending application using HPKE would need to communicate the nonce along with each ciphertext value for the receiver to successfully decrypt the message. If this nonce was ever reused, then security of the <a href="https://eprint.iacr.org/2016/475">AEAD may fall apart</a>. Thus, a sending application would necessarily need some way to ensure that nonces were never reused. Moreover, by sending the nonce to the receiver, the application is effectively implementing a message sequencer. The application could just as easily implement and use this sequencer to ensure in-order message delivery and processing. Thus, at the end of the day, exposing the nonce seemed both harmful and, ultimately, redundant.</p>
 	<div class="flex anchor relative">
 		<h3 id="wire-format">Wire format</h3>
-		<a href="https://blog.cloudflare.com/#wire-format" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#wire-format" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -144,7 +144,7 @@ ciphertext = senderContext.Seal(aad, message)</code></pre>
 	<p>Another hallmark of HPKE is that all messages that do not contain application data are fixed length. This means that serializing and deserializing HPKE messages is trivial and there is no room for application choice. In contrast, some implementations of hybrid PKE deferred choice of wire format details, such as whether to use elliptic curve point compression, to applications. HPKE handles this under the KEM abstraction.</p>
 	<div class="flex anchor relative">
 		<h3 id="development-process">Development process</h3>
-		<a href="https://blog.cloudflare.com/#development-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#development-process" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -162,7 +162,7 @@ ciphertext = senderContext.Seal(aad, message)</code></pre>
 	<p>From a formal analysis perspective, HPKE brought novel work to the community. Unlike protocol design efforts like those around TLS and QUIC, HPKE was simpler, but still came with plenty of sharp edges. As a new cryptographic construction, analysis was needed to ensure that it was sound and, importantly, to understand its limits. This analysis led to a number of important contributions to the community, including a <a href="https://eprint.iacr.org/2020/1499.pdf">formal analysis of HPKE</a>, new understanding of the <a href="https://dl.acm.org/doi/abs/10.1145/3460120.3484814">limits of ChaChaPoly1305 in a multi-user security setting</a>, as well as a new CFRG specification documenting <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-aead-limits">limits for AEAD algorithms</a>. For more information about the analysis effort that went into HPKE, check out this <a href="https://www.benjaminlipp.de/p/hpke-cryptographic-standard">companion blog</a> by Benjamin Lipp, an HPKE co-author.</p>
 	<div class="flex anchor relative">
 		<h3 id="hpkes-future">HPKE’s future</h3>
-		<a href="https://blog.cloudflare.com/#hpkes-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#hpkes-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -10,7 +10,7 @@
 	<p><a href="https://www.deviantart.com/qubodup/art/Tux-Flat-SVG-607655623">Tux by Iwan Gabovitch, GPL</a><a href="https://pixabay.com/vectors/sandpit-sandbox-container-sand-35536">Sandbox, Simplified Pixabay License</a></p>
 	<div class="flex anchor relative">
 		<h2 id="linux-system-calls">Linux system calls</h2>
-		<a href="https://blog.cloudflare.com/#linux-system-calls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#linux-system-calls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>Apart from providing a generic high level way for applications to interact with the low level hardware, the system call architecture allows the OS kernel to manage available resources between applications as well as enforce policies, like application permissions, networking access control lists etc.</p>
 	<div class="flex anchor relative">
 		<h2 id="linux-seccomp">Linux seccomp</h2>
-		<a href="https://blog.cloudflare.com/#linux-seccomp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#linux-seccomp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -60,7 +60,7 @@
 	<p>Imagine our image format converter is written in some unsafe language and <a href="https://imagetragick.com">an attacker was able to take control of the application by making it process some malformed image</a>. What the attacker might do is to try to steal some sensitive information from the machine running our converter and send it to themselves via the network. By default, the OS kernel will most likely allow it and a data leak will happen. But if our image converter “confined” (or sandboxed) itself beforehand to only read and write local data the kernel will terminate the application when the latter tries to leak the data over the network thus preventing the leak and locking out the attacker from our system!</p>
 	<div class="flex anchor relative">
 		<h2 id="integrating-seccomp-into-the-application">Integrating seccomp into the application</h2>
-		<a href="https://blog.cloudflare.com/#integrating-seccomp-into-the-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#integrating-seccomp-into-the-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -173,7 +173,7 @@ uname failed: Network is down</code></pre>
 	<p>We can also verify the other part of our “contract” works as expected. We told the kernel to allow any other system call, remember? In our program, when uname fails, we convert the error code to a human readable message and print it on the screen with the <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html">perror</a> function. To print on the screen <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html">perror</a> uses the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write system call</a> under the hood and since we can actually see the printed error message, we know that the kernel allowed our program to make the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html">write system call</a> in the first place.</p>
 	<div class="flex anchor relative">
 		<h3 id="seccomp-with-libseccomp">seccomp with libseccomp</h3>
-		<a href="https://blog.cloudflare.com/#seccomp-with-libseccomp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#seccomp-with-libseccomp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -248,7 +248,7 @@ Bad system call</code></pre>
 	<p>Notice that we need to link against <a href="https://github.com/seccomp/libseccomp">libseccomp</a> when compiling the application. Also, when we run the application, we don’t see the <code>uname failed: Operation not permitted</code> error output anymore, because we don’t give the application the ability to even print a failure message. Instead, we see a <code>Bad system call</code> message from the shell, which tells us that the application was terminated with a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html">signal</a>. Great!</p>
 	<div class="flex anchor relative">
 		<h2 id="zero-code-seccomp">zero code seccomp</h2>
-		<a href="https://blog.cloudflare.com/#zero-code-seccomp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#zero-code-seccomp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -280,7 +280,7 @@ Service runtime: 6ms</code></pre>
 	<p></p>
 	<div class="flex anchor relative">
 		<h3 id="systemd-small-print">systemd small print</h3>
-		<a href="https://blog.cloudflare.com/#systemd-small-print" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#systemd-small-print" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -294,7 +294,7 @@ Service runtime: 6ms</code></pre>
 	<p>But what if we want to explicitly prohibit some of these system calls? If we continue with the <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a> as an example, that can actually be a dangerous system call most applications would want to prohibit. Seccomp is an effective tool to protect the code from arbitrary code execution exploits, remember? If a malicious actor takes over our code, most likely the first thing they will try is to get a shell (or replace our code with any other application which is easier to control) by directing our code to call <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a> with the desired binary. So, if our code does not need <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html">execve</a> for its main functionality, it would be a good idea to prohibit it. Unfortunately, it is not possible with the systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter="><code>SystemCallFilter=</code></a> approach...</p>
 	<div class="flex anchor relative">
 		<h2 id="introducing-cloudflare-sandbox">Introducing Cloudflare sandbox</h2>
-		<a href="https://blog.cloudflare.com/#introducing-cloudflare-sandbox" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#introducing-cloudflare-sandbox" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -303,7 +303,7 @@ Service runtime: 6ms</code></pre>
 	<p>We really liked the “zero code seccomp” approach with systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter="><code>SystemCallFilter=</code></a> directive, but were not satisfied with its limitations. We decided to take it one step further and make it possible to prohibit any system call in any process externally without touching its source code, so came up with the <a href="https://github.com/cloudflare/sandbox">Cloudflare sandbox</a>. It’s a simple standalone toolkit consisting of a shared library and an executable. The shared library is supposed to be used with dynamically linked applications and the executable is for statically linked applications.</p>
 	<div class="flex anchor relative">
 		<h3 id="sandboxing-dynamically-linked-executables">sandboxing dynamically linked executables</h3>
-		<a href="https://blog.cloudflare.com/#sandboxing-dynamically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#sandboxing-dynamically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -361,7 +361,7 @@ Bad system call</code></pre>
 	<p></p>
 	<div class="flex anchor relative">
 		<h3 id="sandboxing-statically-linked-executables">sandboxing statically linked executables</h3>
-		<a href="https://blog.cloudflare.com/#sandboxing-statically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#sandboxing-statically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -390,7 +390,7 @@ I will try to execve something...</code></pre>
 	<p></p>
 	<div class="flex anchor relative">
 		<h3 id="sandboxify-vs-libsandbox-so">sandboxify vs libsandbox.so</h3>
-		<a href="https://blog.cloudflare.com/#sandboxify-vs-libsandbox-so" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#sandboxify-vs-libsandbox-so" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -447,7 +447,7 @@ My OS is Linux!</code></pre>
 	<p>It is 13 syscalls vs 4 syscalls, if we’re using the <code>libsandbox.so</code> approach!</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusions">Conclusions</h2>
-		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

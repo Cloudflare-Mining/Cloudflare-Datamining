@@ -7,7 +7,7 @@
 	<p>At 1:19pm (PDT) today, a researcher <a href="https://twitter.com/mattblaze/status/372450278705860608">noticed</a> that the New York Times' website wasn't loading. We know the New York Times tech team, so we sent an email to check in. A few minutes later, the CTO of the NYT called us back. Since then, a handful of the CloudFlare team has been holed up in a conference room playing a small part in cleaning up this hack.</p>
 	<div class="flex anchor relative">
 		<h3 id="registrars-and-registries">Registrars and Registries</h3>
-		<a href="https://blog.cloudflare.com/#registrars-and-registries" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#registrars-and-registries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p>Recursive DNS providers follow the DNS chain, starting at the root, then the TLD registry, then ultimately to whatever is listed as the authoritative name server for the domain. In order to lighten the load upstream, recursive DNS providers cache results for a limited period of time known as a TTL. Compromising any step in the DNS chain would allow an attacker to take over some or all traffic destined for a site. That's exactly what happened today.</p>
 	<div class="flex anchor relative">
 		<h3 id="registrar-compromise">Registrar Compromise</h3>
-		<a href="https://blog.cloudflare.com/#registrar-compromise" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#registrar-compromise" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -37,7 +37,7 @@
 	<p>The OpenDNS team was also able to look for other domains that had been updated recently to name servers controlled by the Syrian Electronic Army. We discovered several domains that had been updated, including several belonging to Twitter and the Huffington Post. As mentioned above, these organizations also used MelbourneIT, suggesting that the compromise was more than just the NYT's account.</p>
 	<div class="flex anchor relative">
 		<h3 id="cleaning-up-the-mess">Cleaning Up the Mess</h3>
-		<a href="https://blog.cloudflare.com/#cleaning-up-the-mess" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cleaning-up-the-mess" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>The registrar of the primary domain the Syrian Electronic Army was using as a name server for the domains they hacked revoked the domain's registration this afternoon. Since the cache TTL on the domain was relatively short, shortly after the domain was revoked traffic largely stopped flowing to the malware infected sites. That did not mean all hacked sites came back online. In some places, DNS recursors continue to have the cached bad records. They will expire over the next 24 hours and traffic to sites will return to normal.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-to-protect-yourself">How to Protect Yourself</h3>
-		<a href="https://blog.cloudflare.com/#how-to-protect-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-to-protect-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

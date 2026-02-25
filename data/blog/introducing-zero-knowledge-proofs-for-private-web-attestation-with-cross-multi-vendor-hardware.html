@@ -11,7 +11,7 @@
 	<p><a href="https://blog.cloudflare.com/next-generation-privacy-protocols">This is part of our work to improve privacy across the Internet.</a> We’ve yet to put this proof of personhood in production, but you can see a <a href="https://zkp.cloudflarechallenge.com">demonstration of the technique in action.</a> We’ve seen it work with YubiKeys among others. Most importantly, we’re <a href="https://github.com/cloudflare/zkp-ecdsa">open-sourcing the code</a> so everyone can benefit and contribute. Read through below for details, as well as next steps.</p>
 	<div class="flex anchor relative">
 		<h2 id="introduction">Introduction</h2>
-		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -33,7 +33,7 @@
 	<p>However, these schemes typically require that the hardware or software that implements the credential attestation was designed with the specific scheme in mind. We can’t go out and convince manufacturers to add features in a few months, let alone replace all the hardware authentication security keys in the world. We have to instead search for solutions that work with existing hardware.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-high-level-introduction-to-zero-knowledge-proof">A high-level introduction to Zero-Knowledge Proof</h2>
-		<a href="https://blog.cloudflare.com/#a-high-level-introduction-to-zero-knowledge-proof" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-high-level-introduction-to-zero-knowledge-proof" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -53,7 +53,7 @@
 	<p>Commitments are like wires that tie zero-knowledge proofs together, making bigger and more complicated ones from simple ones. By proving that a value in a commitment has two different properties with different zero-knowledge proofs we can prove both properties hold for the value. This lets us link together proofs for statements like “the value in a commitment is a sum of values in two other commitments” and “the value in a commitment appears in a list” into much more complicated and useful statements. &nbsp;Since we know how to prove statements like “this commitment is one if and only if both of these other commitments are one” and “this commitment is one if either of these two commitments is one” we have the building blocks to prove any statement. These generic techniques can produce a zero-knowledge proof for any statement in NP, although it will be quite slow and complicated by default.</p>
 	<div class="flex anchor relative">
 		<h2 id="our-zero-knowledge-proof-system-for-the-browser">Our Zero-Knowledge Proof system for the browser</h2>
-		<a href="https://blog.cloudflare.com/#our-zero-knowledge-proof-system-for-the-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#our-zero-knowledge-proof-system-for-the-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -76,7 +76,7 @@
 	<p>The verifier then checks the Groth-Kohlweiss proof that the committed key is on the list, and then makes sure the message that was signed is what it should be. This is a very efficient proof, even as the list size grows: the work done per list element is a multiplication. If all matches, then we know that the signature was generated by a sufficiently secure security key, and nothing else. If it does not match we know that something is wrong.</p>
 	<div class="flex anchor relative">
 		<h2 id="engineering-a-more-efficient-curve">Engineering a more efficient curve</h2>
-		<a href="https://blog.cloudflare.com/#engineering-a-more-efficient-curve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#engineering-a-more-efficient-curve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -88,7 +88,7 @@
 	<p>But here we wanted a curve with a given number of points, and so we would have to use some fairly advanced number theoretic machinery to determine this curve. Our doing so was a big part in getting our zero-knowledge attestation as efficient as it is.</p>
 	<div class="flex anchor relative">
 		<h3 id="elliptic-curves-and-the-complex-plane">Elliptic Curves and the Complex Plane</h3>
-		<a href="https://blog.cloudflare.com/#elliptic-curves-and-the-complex-plane" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#elliptic-curves-and-the-complex-plane" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -113,7 +113,7 @@
 	<p><a href="https://dlmf.nist.gov/23.15#E7">https://dlmf.nist.gov/23.15#E7</a></p>
 	<div class="flex anchor relative">
 		<h3 id="complex-multiplication-and-class-number">Complex multiplication and class number</h3>
-		<a href="https://blog.cloudflare.com/#complex-multiplication-and-class-number" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#complex-multiplication-and-class-number" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -128,7 +128,7 @@
 	<p>When we consider binary quadratic forms as the lengths of vectors in a plane, each lattice gives a binary quadratic form up to equivalence. The elliptic curves with complex multiplication by a given discriminant thus correspond to the classes of binary quadratic forms with a given discriminant, which connects to the arithmetic in the quadratic field. Three very different looking questions thus all have the same answer.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-complex-multiplication-matters-for-finding-curves">Why complex multiplication matters for finding curves</h3>
-		<a href="https://blog.cloudflare.com/#why-complex-multiplication-matters-for-finding-curves" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-complex-multiplication-matters-for-finding-curves" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -148,7 +148,7 @@
 	<p>All a website that uses our technique learns is whether or not the signature was generated by a token whose attestation key is on the list they provided. Unlike using WebAuthn directly they do not get any more detailed information, even if the manufacturer has accidentally made the batch too small. Instead of having a policy-based approach to guarding user privacy, we’ve removed the troublesome information.</p>
 	<div class="flex anchor relative">
 		<h2 id="next-steps-a-community-effort">Next steps — a community effort!</h2>
-		<a href="https://blog.cloudflare.com/#next-steps-a-community-effort" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-steps-a-community-effort" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

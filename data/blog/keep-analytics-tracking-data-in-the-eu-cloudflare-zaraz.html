@@ -11,7 +11,7 @@
 	<p>But before we get into just how Cloudflare Zaraz can help, we need to explain a bit of the background for the Datenschutzbehörde’s ruling, and why it’s a big deal.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-are-the-privacy-and-data-localization-issues">What are the privacy and data localization issues?</h3>
-		<a href="https://blog.cloudflare.com/#what-are-the-privacy-and-data-localization-issues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-are-the-privacy-and-data-localization-issues" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>That issue of supplementary measures figured prominently in the Austrian data regulator’s decision. In its decision, the Datenschutzbehörde said that a European company could not use Google Analytics on its Austrian website because Google Analytics was sending the IP addresses of visitors to that website to Google’s servers in the United States. The Datenschutzbehörde reiterated earlier case law out of the EU that IP addresses can be sufficiently linked to individuals and therefore constitute personal data, so the GDPR applies. The regulator also found that IP addresses are not pseudonymous, and that Google doesn’t have sufficient supplementary measures in place to prevent US government authorities from accessing the data. As a result, the regulator found the use of Google Analytics and the transmission of IP addresses to the United States in this case violated the GDPR as interpreted by the Schrems II case.</p>
 	<div class="flex anchor relative">
 		<h3 id="google-analytics-decision-sets-worrisome-precedent">Google Analytics decision sets worrisome precedent</h3>
-		<a href="https://blog.cloudflare.com/#google-analytics-decision-sets-worrisome-precedent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#google-analytics-decision-sets-worrisome-precedent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	<p>While we can envision this future, our customers need immediate ways to address regulators’ concerns. The <a href="https://almanac.httparchive.org/en/2021/third-parties#fig-4">median website in 2021</a> used 21 third-party solutions on mobile and 23 on desktop. At the <a href="https://almanac.httparchive.org/en/2021/third-parties#fig-4">90th percentile</a>, these numbers climbed to 89 third-party solutions on mobile, and 91 on desktop. Taking into account the Austrian DPA ruling, according to which the EU company itself is responsible for making sure no personal data is transmitted to the United States without proper handling, we can conclude that companies may soon become responsible for every one of their third-party solutions implemented on their website. And since this is a staggering amount of tools, it demands a scalable solution. Luckily, that is exactly what we have built.</p>
 	<div class="flex anchor relative">
 		<h3 id="zarazs-solution-leverages-cloudflares-global-network-and-workers-platform">Zaraz’s solution leverages Cloudflare’s global network and Workers platform</h3>
-		<a href="https://blog.cloudflare.com/#zarazs-solution-leverages-cloudflares-global-network-and-workers-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#zarazs-solution-leverages-cloudflares-global-network-and-workers-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -66,7 +66,7 @@
 	<p>A somewhat similar feature Zaraz offers is the Zaraz Data Loss Prevention (DLP) feature, currently used by several of our Enterprise customers. The DLP feature scans every request going to a third-party endpoint to make sure it doesn’t include sensitive information such as names, email addresses, social &nbsp;security number, credit card numbers, IP addresses, and more. Using this feature, customers can either mask the data or simply be alerted when a tool is collecting such personal data. It gives full visibility and control over the information shared with third parties.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-zaraz-can-help-with-data-localization">How Zaraz Can Help with Data Localization</h3>
-		<a href="https://blog.cloudflare.com/#how-zaraz-can-help-with-data-localization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-zaraz-can-help-with-data-localization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -79,7 +79,7 @@
 	<p>And what about the end user’s personal data handled by Zaraz? By default, Zaraz doesn’t log or save any piece of information about the end user, with one exception in the case of error logging. To make our service better, we are saving logs of errors, so we can fix any issues. For customers that are using the Data Localisation Suite, this is something we can toggle off, which means that no log data whatsoever will be saved by Zaraz.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-does-the-future-hold-for-privacy-features">What Does the Future Hold for Privacy Features?</h3>
-		<a href="https://blog.cloudflare.com/#what-does-the-future-hold-for-privacy-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-does-the-future-hold-for-privacy-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

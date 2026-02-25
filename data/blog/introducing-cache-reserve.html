@@ -6,7 +6,7 @@
 	<p>Today, I’m delighted to announce a massive extension of the benefits of caching with Cache Reserve: a new way to <i>persistently</i> serve all static content from Cloudflare’s global cache. By using Cache Reserve, customers can see higher cache hit ratios and lower egress bills.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-is-getting-a-100-cache-ratio-difficult">Why is getting a 100% cache ratio difficult?</h3>
-		<a href="https://blog.cloudflare.com/#why-is-getting-a-100-cache-ratio-difficult" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-is-getting-a-100-cache-ratio-difficult" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>Cache Reserve removes customer content from this popularity contest and ensures that even if the specific content hasn’t been requested in months, it can still be served from Cloudflare’s cache - avoiding the need to pull it from the origin and saving the customer money on egress. <b>Cache Reserve helps get customers closer to that 100% cache ratio and helps serve all of their content from our global CDN, forever.</b> &nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="why-is-cache-eviction-needed">Why is cache eviction needed?</h3>
-		<a href="https://blog.cloudflare.com/#why-is-cache-eviction-needed" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-is-cache-eviction-needed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	<p>That’s where Cache Reserve comes in. Cache Reserve is not an alternative to our popularity-based cache but a complement to it. By backstopping all cacheable content in Cache Reserve customers don't have to worry about unwanted cache eviction any longer. &nbsp; &nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="cache-reserve">Cache Reserve</h3>
-		<a href="https://blog.cloudflare.com/#cache-reserve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cache-reserve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>Cache Reserve is a large, persistent data store that is <a href="https://blog.cloudflare.com/r2-open-beta">implemented on top of R2</a>. By pushing a single button in the dashboard, all of your website’s cacheable content will be written to Cache Reserve. In the same way that <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Tiered Cache</a> builds a hierarchy of caches between your visitors and your origin, Cache Reserve serves as the ultimate <a href="https://developers.cloudflare.com/cache/about/tiered-cache">upper-tier cache</a> that will reserve storage space for your assets for as long as you want. This ensures that your content is always served from cache, shielding your origin from unneeded egress fees, and improving response performance.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-cache-reserve-work">How Does Cache Reserve Work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-cache-reserve-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-cache-reserve-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -66,7 +66,7 @@
 	<p>When your content does need updating, Cache Reserve will respect cache-control headers and purge requests. This means that if you want to control how long something remains fresh in Cache Reserve, before Cloudflare goes back to your origin to revalidate the content, set it as a cache-control header and it will be respected without risk of early eviction. Or if you want to update content on the fly, you can send a purge request which will be respected in both Cloudflare’s cache and in Cache Reserve.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-do-you-use-cache-reserve">How do you use Cache Reserve?</h3>
-		<a href="https://blog.cloudflare.com/#how-do-you-use-cache-reserve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-do-you-use-cache-reserve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -90,7 +90,7 @@
 	<p>The Cache Reserve Plan will mimic the low cost of R2. Storage will be \$0.015 per GB per month and operations will be \$0.36 per million reads, and \$4.50 per million writes. For more information about pricing, please refer to the R2 <a href="https://developers.cloudflare.com/r2/platform/pricing">page</a> to get a general idea (Cache Reserve pricing page will be out soon). &nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="try-it-out">Try it out!</h3>
-		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

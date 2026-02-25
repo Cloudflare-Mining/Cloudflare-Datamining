@@ -5,7 +5,7 @@
 	<p>The size of these packets and the number of packets in flight can be dynamic and adjusted based on what is known as the Congestion Control Algorithm. While the late United States Senator Ted Stevens got a lot of flack for saying it, the Internet really is akin to a series of tubes. Sometimes these tubes fill up (i.e., a network port fills to its maximum capacity). When that happens, the network is said to be congested and some packets can be lost. It's a lot like a virtual traffic jam.</p>
 	<div class="flex anchor relative">
 		<h3 id="traditional-congestion-control">Traditional Congestion Control</h3>
-		<a href="https://blog.cloudflare.com/#traditional-congestion-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#traditional-congestion-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>To minimize the impact of congestion, the TCP Congestion Control Algorithm on servers adjust the size of the packets and also the number of packets that are "in-flight" across the network (known as the Congestion Window) depending on whether loss is detected. Historically, loss was most common because some network link would be over saturated. The default algorithms in most OS kernels rapidly shrinks the size of the congestion window at the first sign of loss and then slowly ramp it back up as the loss on the network diminishes.</p>
 	<div class="flex anchor relative">
 		<h3 id="mobile-changes-everything">Mobile Changes Everything</h3>
-		<a href="https://blog.cloudflare.com/#mobile-changes-everything" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mobile-changes-everything" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -24,7 +24,7 @@
 	<p>The problem is that the default response to congestion, which assumes a longer-term, latent problem, ends up often being the wrong response in a world where congestion can be random and sporadic. In other words, you need a modern Congestion Control Algorithm that is tuned to take into account the behavior of both traditional wire-line network transactions as well as new wireless connections.</p>
 	<div class="flex anchor relative">
 		<h3 id="better-congestion-control-from-real-network-data">Better Congestion Control From Real Network Data</h3>
-		<a href="https://blog.cloudflare.com/#better-congestion-control-from-real-network-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#better-congestion-control-from-real-network-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

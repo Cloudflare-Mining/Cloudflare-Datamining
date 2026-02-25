@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h2 id="introduction">Introduction</h2>
-		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>In this blog post, we are going to describe how we customized and extended the OpenBMC firmware to better monitor our servers’ boot-up processes to start more reliably and allow better diagnostics in the event that an issue happens during server boot-up.</p>
 	<div class="flex anchor relative">
 		<h2 id="server-subsystems">Server subsystems</h2>
-		<a href="https://blog.cloudflare.com/#server-subsystems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#server-subsystems" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>When the power state of the subsystems, handshakes, and synchronization are not properly managed, there may be race conditions that would result in failures during the boot process of the host. Cloudflare experienced some of these boot-related failures while rolling out open source firmware (<a href="https://en.wikipedia.org/wiki/OpenBMC"><u>OpenBMC</u></a>) to the Baseboard Management Controllers (BMCs) of our servers.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="baseboard-management-controller-bmc-as-a-manager-of-the-host">Baseboard Management Controller (BMC) as a manager of the host</h2>
-		<a href="https://blog.cloudflare.com/#baseboard-management-controller-bmc-as-a-manager-of-the-host" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#baseboard-management-controller-bmc-as-a-manager-of-the-host" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -100,7 +100,7 @@ CPU_POWER        | 0 Watts           | ok</code></pre>
 	<p><b><i>Thermal telemetry:</i></b> During the boot-up process of some of our servers, some temperature devices, such as the temperature sensors of the memory modules, would show up as failed, thereby causing some of the fans to enter a fail-safe <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation"><u>Pulse Width Modulation (PWM)</u></a> mode. <a href="https://en.wikipedia.org/wiki/Pulse-width_modulation"><u>PWM</u></a> is a technique to encode information delivered to electronic devices by adjusting the frequency of the waveform signal to the device. It is used in this case to control fan speed by adjusting the frequency of the power signal delivered to the fan. When a fan enters a fail-safe mode, PWM is used to set the fan speeds to a preset value, irrespective of what the optimized PWM setting of the fans should be, and this could negatively affect the cooling of the server and power consumption.</p>
 	<div class="flex anchor relative">
 		<h2 id="implementing-host-acpi-state-on-openbmc">Implementing host ACPI state on OpenBMC</h2>
-		<a href="https://blog.cloudflare.com/#implementing-host-acpi-state-on-openbmc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementing-host-acpi-state-on-openbmc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -318,7 +318,7 @@ WantedBy=host-s0-state.target
 	<p>In the event of an immediate power cycle (i.e. host reboots without operating system shutdown), the host is unable to send its S5_G2 state to the BMC. For this case, we created a patch to OpenBMC’s <a href="https://github.com/openbmc/x86-power-control/tree/master"><u>x86-power-control</u></a> to let the BMC become aware that the host has entered the ACPI S5_G2 state (i.e. soft-off). When the host comes out of the power off state, the UEFI performs the Power On Self Test (POST) and sends the S2_D2 to the BMC, and after the UEFI has loaded the OS on the host, it notifies the BMC by sending the ACPI S0_G0_D0 state.</p>
 	<div class="flex anchor relative">
 		<h2 id="fixing-the-issues">Fixing the issues</h2>
-		<a href="https://blog.cloudflare.com/#fixing-the-issues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fixing-the-issues" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -330,7 +330,7 @@ WantedBy=host-s0-state.target
 	<p><b>Thermal telemetry:</b> In S0_G0 power state, when sensors are not reporting values back to the BMC, the BMC assumes that devices may be overheating and puts the fan controller into fail-safe mode where fan speeds are ramped up to maximum speed. However, in S5_G2 state, some thermal sensors like CPU temperature, NIC temperature, etc. are not powered and not available. Our solution is to set these thermal sensors as non-functional in their exported configuration when in S5_G2 state and during the transition from S5_G2 state to S2_D2 state. Setting the affected devices as non-functional in their configuration, instead of waiting for thermal sensor read commands to error out, prevents the controller from entering the fail-safe mode.</p>
 	<div class="flex anchor relative">
 		<h2 id="moving-forward">Moving forward</h2>
-		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

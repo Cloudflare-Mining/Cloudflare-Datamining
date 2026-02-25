@@ -8,7 +8,7 @@
 	<p>ECH is the product of close collaboration, facilitated by the IETF, between academics and the tech industry leaders, including Cloudflare, our friends at Fastly and Mozilla (both of whom are the affiliations of co-authors of the standard), and many others. This feature represents a significant upgrade to the TLS protocol, one that builds on bleeding edge technologies, like <a href="https://blog.cloudflare.com/dns-encryption-explained">DNS-over-HTTPS</a>, that are only now coming into their own. As such, the protocol is not yet ready for Internet-scale deployment. This article is intended as a sign post on the road to full handshake encryption.</p>
 	<div class="flex anchor relative">
 		<h2 id="background">Background</h2>
-		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>In order to understand ECH and the design decisions underpinning it, it helps to understand a little bit about the history of handshake encryption in TLS.</p>
 	<div class="flex anchor relative">
 		<h3 id="handshake-encryption-in-tls">Handshake encryption in TLS</h3>
-		<a href="https://blog.cloudflare.com/#handshake-encryption-in-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#handshake-encryption-in-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@
 	<p>Nevertheless, this scheme is notable as the forerunner of other handshake encryption mechanisms, like ECH, that use public key encryption to protect sensitive ClientHello parameters. The main problem these mechanisms must solve is <i>key distribution</i>.</p>
 	<div class="flex anchor relative">
 		<h3 id="before-ech-there-was-and-is-esni">Before ECH there was (and is!) ESNI</h3>
-		<a href="https://blog.cloudflare.com/#before-ech-there-was-and-is-esni" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#before-ech-there-was-and-is-esni" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@
 	<p><b>The future of ESNI.</b> In the next section, we'll describe the ECH specification and how it addresses the shortcomings of ESNI. Despite its limitations, however, the practical privacy benefit that ESNI provides is significant. Cloudflare intends to continue its support for ESNI until ECH is production-ready.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-ins-and-outs-of-ech">The ins and outs of ECH</h2>
-		<a href="https://blog.cloudflare.com/#the-ins-and-outs-of-ech" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-ins-and-outs-of-ech" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -90,7 +90,7 @@
 	<p>The second is the CFRG's <a href="https://tools.ietf.org/html/draft-irtf-cfrg-hpke-06"><i>Hybrid Public Key Encryption</i> (HPKE)</a> standard, which specifies an extensible framework for building public key encryption schemes suitable for a wide variety of applications. In particular, ECH delegates all of the details of its handshake encryption mechanism to HPKE, resulting in a much simpler and easier-to-analyze specification. (Incidentally, HPKE is also one of the main ingredients of <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS</a>.)</p>
 	<div class="flex anchor relative">
 		<h2 id="the-road-ahead">The road ahead</h2>
-		<a href="https://blog.cloudflare.com/#the-road-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-road-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@
 	<p>The current ECH specification is the culmination of a multi-year collaboration. At this point, the overall design of the protocol is fairly stable. In fact, the next draft of the specification will be the first to be targeted for interop testing among implementations. Still, there remain a number of details that need to be sorted out. Let's end this post with a brief overview of the road ahead.</p>
 	<div class="flex anchor relative">
 		<h3 id="resistance-to-traffic-analysis">Resistance to traffic analysis</h3>
-		<a href="https://blog.cloudflare.com/#resistance-to-traffic-analysis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#resistance-to-traffic-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -109,7 +109,7 @@
 	<p>Encrypting the ClientHello is an important step towards achieving this goal, but we need to do a bit more. An important attack vector we haven't discussed yet is <a href="https://tools.ietf.org/html/draft-irtf-pearg-website-fingerprinting-01"><i>traffic analysis</i></a>. This refers to the collection and analysis of properties of the communication channel that betray part of the ciphertext's contents, but without cracking the underlying encryption scheme. For example, the <i>length</i> of the encrypted ClientHello might leak enough information about the SNI for the adversary to make an educated guess as to its value (this risk is especially high for domain names that are either particularly short or particularly long). It is therefore crucial that the length of each ciphertext is independent of the values of privacy-sensitive parameters. The current ECH specification provides some mitigations, but their coverage is incomplete. Thus, improving ECH's resistance to traffic analysis is an important direction for future work.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-spectre-of-ossification">The spectre of ossification</h3>
-		<a href="https://blog.cloudflare.com/#the-spectre-of-ossification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-spectre-of-ossification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -122,7 +122,7 @@
 	<p>It remains to be seen whether this strategy will be enough to ensure the wide-scale deployment of ECH. If so, it is notable that this new feature will help to mitigate the impact of future TLS upgrades on network operations. Encrypting the full handshake reduces the risk of ossification since it means that there are less visible protocol features for software to ossify on. We believe this will be good for the health of the Internet overall.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

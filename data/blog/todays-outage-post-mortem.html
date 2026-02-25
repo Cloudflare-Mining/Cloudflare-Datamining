@@ -3,7 +3,7 @@
 	<p>CloudFlare had an outage across much of our network today. The outage began at 20:19 (GMT). It affected approximately 75% of traffic to CloudFlare's network. The length of time for the outage varied depending on region, but the maximum period of downtime was approximately 15 minutes. I wanted to quickly get information out about what happened, why it happened, and what we're doing to ensure it never happens again.</p>
 	<div class="flex anchor relative">
 		<h3 id="routes-routers-and-routing">Routes, Routers and Routing</h3>
-		<a href="https://blog.cloudflare.com/#routes-routers-and-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#routes-routers-and-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -13,7 +13,7 @@
 	<p>Routers exchange routes between each other using something called Border Gateway Protocol (BGP). When two networks interconnect, they generally trust each other's routes. If a routing change is announced by one router, the immediately connected upstream routers will pickup the routing change. They will subsequently pass the change on to other routers that are further upstream.</p>
 	<div class="flex anchor relative">
 		<h3 id="bad-route-to-hong-kong">Bad Route to Hong Kong</h3>
-		<a href="https://blog.cloudflare.com/#bad-route-to-hong-kong" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#bad-route-to-hong-kong" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -24,7 +24,7 @@
 	<p>Our upstream provider trusts our routes so, via BGP, they were quickly relayed throughout their network and to their upstreams. The result was traffic from around the world was directed to the Hong Kong data center, which was offline. We realized the issue and announced the corrected routes. It took approximately 15 minutes from the beginning of the problem to when the routes were corrected network wide. About 25% of CloudFlare's in-bound traffic comes from direct peers. This traffic was not affected by the routing because the direct peers trusted our routes more than the ones they were receiving from other upstreams.</p>
 	<div class="flex anchor relative">
 		<h3 id="future-prevention">Future Prevention</h3>
-		<a href="https://blog.cloudflare.com/#future-prevention" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#future-prevention" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

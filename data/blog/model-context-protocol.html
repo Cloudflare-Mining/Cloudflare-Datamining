@@ -3,7 +3,7 @@
 	<p>In late November 2024, Anthropic <a href="https://www.anthropic.com/news/model-context-protocol"><u>announced</u></a> a new way to interact with AI, called Model Context Protocol (MCP). Today, we’re excited to show you how to use MCP in combination with Cloudflare to extend the capabilities of Claude to build applications, generate images and more. You’ll learn how to build an MCP server on Cloudflare to make any service accessible through an AI assistant like Claude with just a few lines of code using Cloudflare Workers.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="a-quick-primer-on-the-model-context-protocol-mcp">A quick primer on the Model Context Protocol (MCP)</h2>
-		<a href="https://blog.cloudflare.com/#a-quick-primer-on-the-model-context-protocol-mcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-quick-primer-on-the-model-context-protocol-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -34,7 +34,7 @@
 	<p>Imagine you ask Claude to send a message in a Slack channel. Before Claude can do this, Slack must communicate which tools are available. It does this by defining tools — such as “list channels”, “post messages”, and “reply to thread” — in the MCP server. Once the MCP client knows what tools it should invoke, it can complete the task. All you have to do is tell it what you need, and it will get it done.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="allowing-ai-to-not-just-generate-but-deploy-applications-for-you">Allowing AI to not just generate, but deploy applications for you</h2>
-		<a href="https://blog.cloudflare.com/#allowing-ai-to-not-just-generate-but-deploy-applications-for-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#allowing-ai-to-not-just-generate-but-deploy-applications-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -50,7 +50,7 @@
 	<p>But that’s just one example. Today, we’re excited to show you how you can build and deploy your own MCP server to allow your users to interact with your application directly from an LLM like Claude, and how you can do that just by writing a Cloudflare Worker.</p>
 	<div class="flex anchor relative">
 		<h2 id="simplifying-your-mcp-server-deployment-with-workers-mcp">Simplifying your MCP Server deployment with workers-mcp</h2>
-		<a href="https://blog.cloudflare.com/#simplifying-your-mcp-server-deployment-with-workers-mcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#simplifying-your-mcp-server-deployment-with-workers-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -80,7 +80,7 @@ export default class MyWorker extends WorkerEntrypoint&lt;Env&gt; {
 	<p>It also provides tool definition with <a href="https://jsdoc.app"><u>JSDoc</u></a>. You’ll notice that the `sayHello` method is annotated with JSDoc comments describing what it does, what arguments it takes, and what it returns. These comments aren’t just for human readers, but they’re also used to generate documentation that your AI assistant (Claude) can understand.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="adding-image-generation-to-claude">Adding image generation to Claude</h2>
-		<a href="https://blog.cloudflare.com/#adding-image-generation-to-claude" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#adding-image-generation-to-claude" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -143,7 +143,7 @@ export default class ClaudeImagegen extends WorkerEntrypoint&lt;Env&gt; {
 	</ul>
 	<div class="flex anchor relative">
 		<h2 id="why-use-workers-for-building-your-mcp-server">Why use Workers for building your MCP server?</h2>
-		<a href="https://blog.cloudflare.com/#why-use-workers-for-building-your-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-use-workers-for-building-your-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

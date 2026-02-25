@@ -4,7 +4,7 @@
 	<p>Cloudflare has a large base of Software-as-a-Service (SaaS) customers who manage thousands or millions of their customers’ domains that use their SaaS service. We have helped those SaaS providers grow by extending our infrastructure and services to their customer’s domains through a product called <a href="https://blog.cloudflare.com/cloudflare-for-saas">Cloudflare for SaaS</a>. Today, we’re excited to give our SaaS providers a new tool that will help their customers add an extra layer of security: they can now enable mutual TLS authentication on their customer’s domains through our Access product.</p>
 	<div class="flex anchor relative">
 		<h3 id="primer-on-mutual-tls">Primer on Mutual TLS</h3>
-		<a href="https://blog.cloudflare.com/#primer-on-mutual-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#primer-on-mutual-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="mtls-access-zero-trust">mTLS + Access = Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#mtls-access-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mtls-access-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	<p>A few years ago, we added mTLS support to our <a href="https://developers.cloudflare.com/cloudflare-one">Access</a> product, allowing customers to enable a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> policy on their applications. Access customers can deploy a policy that dictates that all clients must present a valid certificate when making a request. That means that requests made without a valid certificate — usually from unauthorized clients — will be blocked, adding an extra layer of protection. Cloudflare has allowed customers to configure mTLS on their Cloudflare domains by setting up Access policies. The only caveat was that to use this feature, you had to be the owner of the domain. Now, what if you’re not the owner of a domain, but you do manage that domain’s origin? This is the case for a large base of our customers, the SaaS providers that extend their services to their customers’ domains that they do not own.</p>
 	<div class="flex anchor relative">
 		<h3 id="extending-cloudflare-benefits-through-saas-providers">Extending Cloudflare benefits through SaaS providers</h3>
-		<a href="https://blog.cloudflare.com/#extending-cloudflare-benefits-through-saas-providers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#extending-cloudflare-benefits-through-saas-providers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -51,7 +51,7 @@
 	<p>Since then, our SaaS customers have come to us with a new request: extend the mTLS support that we built out for our direct customers, but to their customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-would-saas-providers-want-to-use-mtls">Why would SaaS providers want to use mTLS?</h3>
-		<a href="https://blog.cloudflare.com/#why-would-saas-providers-want-to-use-mtls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-would-saas-providers-want-to-use-mtls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@
 	<p>To recap, by doing this, as a SaaS provider, your customers can now ensure that requests bound for their payment processing API endpoint only come from valid devices. In addition, by deploying individual Root CAs for each customer, you also prevent clients that are authorized to make requests to one customers’ API endpoint from making requests to another customers’ API endpoint when they are not authorized to do so.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-can-you-set-this-up-with-cloudflare">How can you set this up with Cloudflare?</h3>
-		<a href="https://blog.cloudflare.com/#how-can-you-set-this-up-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-can-you-set-this-up-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

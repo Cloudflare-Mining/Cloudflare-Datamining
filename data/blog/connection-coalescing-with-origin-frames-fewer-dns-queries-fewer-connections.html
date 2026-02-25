@@ -13,7 +13,7 @@
 	<p>All told, there are opportunities being missed by many large providers. We hope that this blog (and our <a href="https://research.cloudflare.com/publications/Singanamalla2022">publication</a> at ACM IMC 2022 with full details) offers a first step that helps servers and clients take advantage of the ORIGIN Frame standard.</p>
 	<div class="flex anchor relative">
 		<h3 id="setting-the-stage">Setting the stage</h3>
-		<a href="https://blog.cloudflare.com/#setting-the-stage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#setting-the-stage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -37,7 +37,7 @@
 	<p>With connection coalescing&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="connection-coalescing-in-principle">Connection coalescing in principle</h3>
-		<a href="https://blog.cloudflare.com/#connection-coalescing-in-principle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#connection-coalescing-in-principle" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -52,7 +52,7 @@
 	<p>We have experimented with <a href="https://blog.cloudflare.com/connection-coalescing-experiments">IP-based coalescing previously</a>; for the purpose of this blog we will take a deeper look at ORIGIN Frame-based coalescing.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-the-origin-frame-standard">What is the ORIGIN Frame standard?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-the-origin-frame-standard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-the-origin-frame-standard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -73,7 +73,7 @@
 	<p>Unfortunately, there has been no way to turn the possibilities enabled by ORIGIN Frame into practice. To the best of our knowledge, until today, there has been no server implementation that supports ORIGIN Frames. Among browsers, only Firefox supports ORIGIN Frames. Since IP coalescing is challenging and ORIGIN Frame has no deployed support, is the engineering time and energy to better support coalescing worth the investment? We decided to find out with a large-scale Internet-wide measurement to understand the opportunities and predict the possibilities, and then implemented the ORIGIN Frame to experiment on production traffic.</p>
 	<div class="flex anchor relative">
 		<h3 id="experiment-1-what-is-the-scale-of-required-changes">Experiment #1: What is the scale of required changes?</h3>
-		<a href="https://blog.cloudflare.com/#experiment-1-what-is-the-scale-of-required-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#experiment-1-what-is-the-scale-of-required-changes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -103,7 +103,7 @@
 	<p>We identify that over 60% of the certificates served by websites do not need any modifications and could benefit from ORIGIN Frames, while with no more than 10 additions to the DNS SAN names in certificates we’re able to successfully coalesce connections to over 92% of the websites in our measurement. The most effective changes could be made by CDN providers by adding three or four of their most popular requested hostnames into each certificate.</p>
 	<div class="flex anchor relative">
 		<h3 id="experiment-2-origin-frames-in-action">Experiment #2: ORIGIN Frames in action</h3>
-		<a href="https://blog.cloudflare.com/#experiment-2-origin-frames-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#experiment-2-origin-frames-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -119,7 +119,7 @@
 	<p>Sampling 1% of the requests we received from Firefox to the websites in the experiment, we identified over <b>50% reduction in new TLS connections per second</b> indicating a lesser number of cryptographic verification operations done by both the client and reduced server compute overheads. As expected there were no differences in the control set indicating the effectiveness of connection re-use as seen by the CDN or server operators.</p>
 	<div class="flex anchor relative">
 		<h3 id="discussion-and-insights">Discussion and insights</h3>
-		<a href="https://blog.cloudflare.com/#discussion-and-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#discussion-and-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -130,7 +130,7 @@
 	<p>While the browsers benefit from reduced cryptographic computations needed to verify multiple certificates, a major advantage comes from the fact that it opens up very interesting future opportunities for resource scheduling at the endpoints (the browsers, and the origin servers) such as <a href="https://blog.cloudflare.com/better-http-3-prioritization-for-a-faster-web">prioritization</a>, or recent proposals like <a href="https://blog.cloudflare.com/early-hints">HTTP early hints</a> to provide clients experiences where connections are not overloaded or competing for those resources. When coupled with <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-http2-secondary-certs-06#section-3.4">CERTIFICATE Frames</a> IETF draft, we can further eliminate the need for manual certificate modifications as a server can prove its authority of hostnames after connection establishment without any additional SAN entries on the website’s TLS certificate.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion-and-call-to-action">Conclusion and call to action</h3>
-		<a href="https://blog.cloudflare.com/#conclusion-and-call-to-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion-and-call-to-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

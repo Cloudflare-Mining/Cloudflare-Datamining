@@ -29,7 +29,7 @@
 	<p><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liamq/5719368307/in/photolist-9HpfWp-7vpC9Y-7nQmx5-q1mALK-2NP1Dj-9tSNAV-fs6aGK-9YGHL4-a2MX7m-pdavta-9YG3s2-9HMRfG-vyBqdd-57eEb7-nVMdGs-9XmtSF-9LzUNq-9Hsn2o-ijY6d-stqR-9s2yQP-9UQ1he-9HsbT7-9USt79-8rJpfT-zRD2us-q1fiy4-vReb9v-87zVLF-dix1Mc-bkvWid-9YGk6z-8rVUX-ibFyKE-JNes5-4ZTY63-9Hpsuk-ak22cF-8AYnAR-9rCCPK-7wLkFs-9LzY73-oG2GwQ-3YN2wN-9UQ1Zx-2VDgHs-rgq9Tv-9pTXeC-vQB1HW-pkU3qT">image</a> by <a href="https://www.flickr.com/photos/liamq">Liam Quinn</a></p>
 	<div class="flex anchor relative">
 		<h3 id="the-conversation-in-the-dns-community">The Conversation in the DNS Community</h3>
-		<a href="https://blog.cloudflare.com/#the-conversation-in-the-dns-community" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-conversation-in-the-dns-community" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	<p>While ANY can be a nice tool to debug and expose inconsistencies in resolver caches, it’s still not a great tool: with more and more Anycast resolver clusters, there is no guarantee that two subsequent queries will hit the same resolver.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-is-answering-any-expensive-for-some-dns-providers-like-cloudflare">Why is answering ANY expensive for some DNS providers like CloudFlare?</h3>
-		<a href="https://blog.cloudflare.com/#why-is-answering-any-expensive-for-some-dns-providers-like-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-is-answering-any-expensive-for-some-dns-providers-like-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -50,7 +50,7 @@
 	<p>Beyond that, our DNSSEC implementation signs answers on-the-fly. Thus, returning an answer with many different types of DNS records in the answer requires signing all of them at the edge. Thus providing support for ANY in the “traditional” sense had serious computational and response time implications. This is not unique to CloudFlare; we are not the only DNS implementation that has this high cost factor in answering ANY queries.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-use-of-any-queries-in-ddos-attacks">The use of ANY queries in DDoS attacks</h3>
-		<a href="https://blog.cloudflare.com/#the-use-of-any-queries-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-use-of-any-queries-in-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -66,7 +66,7 @@
 	<p>We regularly see attacks that attempt to use our powerful DNS system as a source of reflection. We have in response to this created sophisticated systems to detect the attacks and mitigate them in a responsible manner. Our deprecation of ANY is a key part of those protections. One of our main mantra is “<i>do not return larger than needed answers</i>”, exactly to help protect others on the Internet from amplification attacks.</p>
 	<div class="flex anchor relative">
 		<h3 id="evolution-of-suppress-any-in-the-dns-protocol-community">Evolution of “Suppress ANY” in the DNS protocol community</h3>
-		<a href="https://blog.cloudflare.com/#evolution-of-suppress-any-in-the-dns-protocol-community" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#evolution-of-suppress-any-in-the-dns-protocol-community" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -149,7 +149,7 @@ cloudflare.com.		3789	IN	RRSIG	HINFO 13 2 3789 20160414100147 20160412080147 352
 	<p>A few other DNS server vendors and DNS operators have followed our lead or adopted a similar line of defense. The latest example is the <a href="http://fanf.livejournal.com/140566.html">University of Cambridge</a> which modified their BIND implementation to only return a single RRset for an <a href="https://git.csx.cam.ac.uk/x/ucs/ipreg/bind9.git/commitdiff/f8c420dd8e">ANY query</a>. A common DNS server (NSD) has also been limiting ANY responses to only A+AAAA+MX types and/or CNAME, and a <a href="https://gist.github.com/hdais/25cb3fc86335026d40f0">patch to return an even smaller answer</a> has been proposed.</p>
 	<div class="flex anchor relative">
 		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

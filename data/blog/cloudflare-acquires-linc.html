@@ -9,7 +9,7 @@
 	<p>Linc and the Frontend Application Bundle (FAB) specification were designed with a single goal in mind: to give frontend developers the best possible tools to build, review, refine, and deploy their applications. An important piece of that is making server-side logic and rendering much more accessible, regardless of what type of app you're building.</p>
 	<div class="flex anchor relative">
 		<h3 id="static-vs-dynamic-frontends">Static vs Dynamic frontends</h3>
-		<a href="https://blog.cloudflare.com/#static-vs-dynamic-frontends" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#static-vs-dynamic-frontends" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>FABs took a different approach: a deployment artefact that could support the full range of server-side needs, from entirely static sites, apps with some API routes or cloud functions, all the way to full server-side streaming rendering. We also made it compatible with all the cloud hosting providers you might want, so that deploying becomes as easy as uploading a ZIP file. Then, as your needs change, as dynamic content becomes more important, as new frameworks arise that offer increasing performance or you look at moving which provider you're hosting with, you never need to change your tooling and deployment processes.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-fab-approach">The FAB approach</h3>
-		<a href="https://blog.cloudflare.com/#the-fab-approach" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-fab-approach" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iIRJAFAloTN8spJ8zbEIT/082f423dc57e5a03ba6a312e6675cbd7/image5-27.png" alt="" class="kg-image" width="1998" height="895" loading="lazy">
 
 	</figure>
-	<p>When a FAB is deployed, it's often split into these component parts and deployed separately. Assets are sent to a low-cost object storage platform with a CDN in front of it, and the server component is sent to dedicated serverless hosting. It's all deployed in an atomic, idempotent manner that feels as simple as uploading static files, but completely unlocks dynamic server-side code as part of your architecture.</p>
+	<p>When a FAB is deployed, it's often split into these component parts and deployed separately. Assets are sent to a <a href="https://www.cloudflare.com/developer-platform/products/r2">low-cost object storage platform</a> with a CDN in front of it, and the server component is sent to dedicated serverless hosting. It's all deployed in an atomic, idempotent manner that feels as simple as uploading static files, but completely unlocks dynamic server-side code as part of your architecture.</p>
 	<p>That generic architecture works great and is compatible with virtually every hosting platform around, but it works slightly differently on Cloudflare Workers.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -56,7 +56,7 @@
 	<p>What we've found is that Cloudflare offered the most "FAB-native" hosting option, and so it's very exciting to have the opportunity to further develop what they can do.</p>
 	<div class="flex anchor relative">
 		<h3 id="linc-cloudflare">Linc + Cloudflare</h3>
-		<a href="https://blog.cloudflare.com/#linc-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#linc-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

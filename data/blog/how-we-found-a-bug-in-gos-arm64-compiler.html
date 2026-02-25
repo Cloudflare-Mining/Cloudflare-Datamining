@@ -5,7 +5,7 @@
 	<p>This post breaks down how we first encountered the bug, investigated it, and ultimately drove to the root cause.</p>
 	<div class="flex anchor relative">
 		<h2 id="investigating-a-strange-panic">Investigating a strange panic</h2>
-		<a href="https://blog.cloudflare.com/#investigating-a-strange-panic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#investigating-a-strange-panic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -16,7 +16,7 @@
 	<p>And then it kept happening.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="coredumps-per-hour">Coredumps per hour</h4>
-		<a href="https://blog.cloudflare.com/#coredumps-per-hour" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#coredumps-per-hour" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -51,7 +51,7 @@
 	<p>We saw two classes of this bug -- a crash while accessing invalid memory and an explicitly checked fatal error.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="fatal-error">Fatal Error</h4>
-		<a href="https://blog.cloudflare.com/#fatal-error" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fatal-error" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -86,7 +86,7 @@ runtime: g8221077: frame.sp=0x4015d784c0 top=0x4015d89fd0</code></pre>
 	<p></p>
 	<div class="flex anchor relative">
 		<h4 id="segmentation-fault">Segmentation fault</h4>
-		<a href="https://blog.cloudflare.com/#segmentation-fault" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#segmentation-fault" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -118,7 +118,7 @@ SIGSEGV: segmentation violation</code></pre>
 	<p>Now we could observe some clear patterns. Both errors occur when unwinding the stack in <code>(*unwinder).next</code>. In one case we saw an intentional<a href="https://github.com/golang/go/blob/b3251514531123d7fd007682389bce7428d159a0/src/runtime/traceback.go#L566"> <u>fatal error</u></a> as the runtime identified that unwinding could not complete and the stack was in a bad state. In the other case there was a direct memory access error that happened while trying to unwind the stack. The segfault was discussed in the <a href="https://github.com/golang/go/issues/73259#issuecomment-2786818812"><u>GitHub issue</u></a> and a Go engineer identified it as dereference of a go scheduler struct, <a href="https://github.com/golang/go/blob/924fe98902cdebf20825ab5d1e4edfc0fed2966f/src/runtime/runtime2.go#L536"><u>m</u></a>, when<a href="https://github.com/golang/go/blob/b3251514531123d7fd007682389bce7428d159a0/src/runtime/traceback.go#L458"> <u>unwinding</u></a>.&nbsp; </p>
 	<div class="flex anchor relative">
 		<h3 id="a-review-of-go-scheduler-structs">A review of Go scheduler structs</h3>
-		<a href="https://blog.cloudflare.com/#a-review-of-go-scheduler-structs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-review-of-go-scheduler-structs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -140,7 +140,7 @@ github.com/vishvananda/netlink/nl.(*NetlinkSocket).Receive(0x14360300000000?)
 	<p>We spot-checked a few stack traces and confirmed the presence of this Netlink library. Querying our logs showed that not only did we share a library – every single segmentation fault we observed had happened while preempting<a href="https://github.com/vishvananda/netlink/blob/e1e260214862392fb28ff72c9b11adc84df73e2c/nl/nl_linux.go#L880"> <code><u>NetlinkSocket.Receive</u></code></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-async-preemption">What’s (async) preemption?</h3>
-		<a href="https://blog.cloudflare.com/#whats-async-preemption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-async-preemption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -160,7 +160,7 @@ github.com/vishvananda/netlink/nl.(*NetlinkSocket).Receive(0x14360300000000?)
 	<p>After an unsuccessful code audit we had hit a wall. The crashes were rare and remote from the root cause. Maybe these crashes were caused by a runtime bug, maybe they were caused by a Go Netlink bug. It seemed clear that there was something wrong with this area of the code, but code auditing wasn’t going anywhere. </p>
 	<div class="flex anchor relative">
 		<h2 id="breakthrough">Breakthrough</h2>
-		<a href="https://blog.cloudflare.com/#breakthrough" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#breakthrough" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -195,7 +195,7 @@ TEXT github.com/vishvananda/netlink/nl.(*NetlinkSocket).Receive(SB) /vendor/gith
 	<p>We queried the service logs to confirm our theory. This wasn’t isolated – the majority of stack traces showed that this same opcode was preempted. This was no longer a weird production crash we couldn’t reproduce. A crash happened when the Go runtime preempted between these two stack pointer adjustments. We had our smoking gun.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="building-a-minimal-reproducer">Building a minimal reproducer</h2>
-		<a href="https://blog.cloudflare.com/#building-a-minimal-reproducer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#building-a-minimal-reproducer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -285,7 +285,7 @@ sys     0m43.212s</code></pre>
 	<p>This was an extremely particular reproducer! Even now with a good understanding of the bug and its fix, some of the behavior is still puzzling. It's a one-instruction race condition, so it’s unsurprising that small changes could have large impact. For example, this reproducer was originally written and tested on Go 1.23.4, but did not crash when compiled with 1.23.9 (the version in production), even though we could objdump the binary and see the split ADD still present! We don’t have a definite explanation for this behavior – even with the bug present there remain a few unknown variables which affect the likelihood of hitting the race condition.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="a-single-instruction-race-condition-window">A single-instruction race condition window</h2>
-		<a href="https://blog.cloudflare.com/#a-single-instruction-race-condition-window" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-single-instruction-race-condition-window" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

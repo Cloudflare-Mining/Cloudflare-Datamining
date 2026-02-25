@@ -14,7 +14,7 @@
 	<p>In the sections below, “likely automated” and “automated” traffic based on <a href="https://developers.cloudflare.com/bots/concepts/bot-score">Cloudflare bot score</a> has been filtered out for desktop and mobile browser analysis to restrict analysis to “likely human” traffic, but it is included for the search engine and social media bot analysis. In addition, references to HTTP requests or HTTP traffic below include requests made over both HTTP and HTTPS.</p>
 	<div class="flex anchor relative">
 		<h3 id="overall-request-distribution-by-http-version">Overall request distribution by HTTP version</h3>
-		<a href="https://blog.cloudflare.com/#overall-request-distribution-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#overall-request-distribution-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -29,7 +29,7 @@
 	<p>Aggregating global web traffic to Cloudflare on a daily basis, we can observe usage trends for HTTP/1.1, HTTP/2, and HTTP/3 across the surveyed one year period. The share of traffic over HTTP/1.1 declined from 8% to 7% between May and the end of September, but grew rapidly to over 11% through October. It stayed elevated into the new year and through January, dropping back down to 9% by May 2023. Interestingly, the weekday/weekend traffic pattern became more pronounced after the October increase, and remained for the subsequent six months. HTTP/2 request share saw nominal change over the year, beginning around 68% in May 2022, but then starting to decline slightly in June. After that, its share didn’t see a significant amount of change, ending the period just shy of 64%. No clear weekday/weekend pattern was visible for HTTP/2. Starting with just over 23% share in May 2022, the percentage of requests over HTTP/3 grew to just over 30% by August and into September, but dropped to around 26% by November. After some nominal loss and growth, it ended the surveyed time period at 28% share. (Note that this graph begins in late May due to data retention limitations encountered when generating the graph in early June.)</p>
 	<div class="flex anchor relative">
 		<h3 id="api-request-distribution-by-http-version">API request distribution by HTTP version</h3>
-		<a href="https://blog.cloudflare.com/#api-request-distribution-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#api-request-distribution-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	<p>Although <a href="https://blog.cloudflare.com/application-security-2023">API traffic</a> makes up a significant amount of Cloudflare’s request volume, only a small fraction of those requests are made over HTTP/3. Approximately half of such requests are made over HTTP/1.1, with another third over HTTP/2. However, HTTP/3 usage for APIs grew from around 6% in May 2022 to over 12% by May 2023. HTTP/3’s smaller share of traffic is likely due in part to support for HTTP/3 in key tools like <a href="https://curl.se/docs/http3.html">curl</a> still being considered as “experimental”. Should this change in the future, with HTTP/3 gaining first-class support in such tools, we expect that this will accelerate growth in HTTP/3 usage, both for <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api">APIs</a> and overall as well.</p>
 	<div class="flex anchor relative">
 		<h3 id="mitigated-request-distribution-by-http-version">Mitigated request distribution by HTTP version</h3>
-		<a href="https://blog.cloudflare.com/#mitigated-request-distribution-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mitigated-request-distribution-by-http-version" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@
 	<p>The analyses presented above consider all HTTP requests made to Cloudflare, but we also thought that it would be interesting to look at HTTP version usage by potentially malicious traffic, so we broke out just those requests that were mitigated by one of Cloudflare’s application security solutions. The graph above shows that the vast majority of mitigated requests are made over HTTP/1.1 and HTTP/2, with generally less than 5% made over HTTP/3. Mitigated requests appear to be most frequently made over HTTP/1.1, although HTTP/2 accounted for a larger share between early August and late November. These observations suggest that attackers don’t appear to be investing the effort to upgrade their tools to take advantage of the newest version of HTTP, finding the older versions of the protocol sufficient for their needs. (Note that this graph begins in late May 2022 due to data retention limitations encountered when generating the graph in early June 2023.)</p>
 	<div class="flex anchor relative">
 		<h3 id="http-3-use-by-desktop-browser">HTTP/3 use by desktop browser</h3>
-		<a href="https://blog.cloudflare.com/#http-3-use-by-desktop-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#http-3-use-by-desktop-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -103,7 +103,7 @@
 	<p>HTTP/3 share on Safari grew from under 3% to nearly 18% over the course of the year, while its share on the other browsers was more consistent, with Chrome and Edge hovering around 40% and Firefox around 35%, and both showing pronounced weekday/weekend traffic patterns. (That pattern is arguably the most pronounced for Edge.) Such a pattern becomes more, yet still barely, evident with Safari in late 2022, although it tends to vary by less than a percent.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-3-usage-by-mobile-browser">HTTP/3 usage by mobile browser</h3>
-		<a href="https://blog.cloudflare.com/#http-3-usage-by-mobile-browser" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#http-3-usage-by-mobile-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -124,7 +124,7 @@
 	<p>Perhaps unsurprisingly, the usage patterns for Mobile Safari and Mobile Safari Webview closely mirror those seen with desktop Safari. HTTP/1.1 share increases in October, and HTTP/3 sees strong growth, from under 3% to nearly 18%.</p>
 	<div class="flex anchor relative">
 		<h3 id="search-indexing-bots">Search indexing bots</h3>
-		<a href="https://blog.cloudflare.com/#search-indexing-bots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#search-indexing-bots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -156,7 +156,7 @@
 	<p>Looking at indexing bots from search engines based outside of the United States, Russia’s YandexBot appears to use HTTP/1.1 almost exclusively, with HTTP/2 usage generally around 1%, although there was a period of increased usage between late August and mid-November. It isn’t clear what ultimately caused this increase. There was no meaningful request volume seen over HTTP/3. The indexing bot used by Chinese search engine Baidu also appears to strongly prefer HTTP/1.1, generally used for over 85% of requests. However, the percentage of requests over HTTP/2 saw a number of spikes, briefly reaching over 60% on days in July, November, and December 2022, as well as January 2023, with several additional spikes in the 30% range. Again, it isn’t clear what caused this spiky behavior. HTTP/3 usage by BaiduBot is effectively non-existent as well.</p>
 	<div class="flex anchor relative">
 		<h3 id="social-media-bots">Social media bots</h3>
-		<a href="https://blog.cloudflare.com/#social-media-bots" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#social-media-bots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -183,7 +183,7 @@
 	<p>In contrast to Facebook’s and Twitter’s site crawling bots, HTTP/3 actually accounts for a noticeable, and growing, volume of requests made by LinkedIn’s bot, increasing from just under 1% in May 2022 to just over 10% in April 2023. We noted last year that LinkedIn’s use of HTTP/2 began to take off in March 2022, growing to approximately 5% of requests. Usage of this version gradually increased over this year’s surveyed period to 15%, although the growth was particularly erratic and spiky, as opposed to a smooth, consistent increase. HTTP/1.1 remained the dominant protocol used by LinkedIn’s bots, although its share dropped from around 95% in May 2022 to 75% in April 2023.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -5,7 +5,7 @@
 	<p>To understand all these problems and how we solved them we first need to give you some background on how the Cloudflare network works:</p>
 	<div class="flex anchor relative">
 		<h2 id="how-our-network-works">How Our Network Works</h2>
-		<a href="https://blog.cloudflare.com/#how-our-network-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-our-network-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@ forwarding-table {
 	<p>Since the ‘next-hop’ is our server, traffic will be split across multiple machines very efficiently.</p>
 	<div class="flex anchor relative">
 		<h2 id="tcp-ip-and-ecmp">TCP, IP, and ECMP</h2>
-		<a href="https://blog.cloudflare.com/#tcp-ip-and-ecmp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tcp-ip-and-ecmp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -75,7 +75,7 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>We can now return to ECMP! It could be theoretically possible to use ECMP to balance packets between servers randomly, but you would almost never want to do that. A message over the Internet is generally composed of multiple TCP packets. If each packet were sent to a different server it would be impossible to reconstruct the original message in any one place and act on it. Even beyond that, it would be terrible for performance: we rely on being able to maintain long-lived TCP and TLS sessions which require a persistent connection to a single server. To provide that persistence, our routers don’t balance traffic randomly, they use a combination of four values: the source address, the source port, the destination address, and the destination port. Traffic with the same combination of those four values will always make it to the same server. In the case of my example above, all of my messages destined to cloudflare.com will make it to a single server which can reconstruct the TCP packets into my request and return packets in a response.</p>
 	<div class="flex anchor relative">
 		<h2 id="enter-warp">Enter WARP</h2>
-		<a href="https://blog.cloudflare.com/#enter-warp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#enter-warp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -88,7 +88,7 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>The port changes occurred even more frequently than could be explained by network switches however. For an understanding of why we need to introduce one more component of Internet lore: Network Address Translation.</p>
 	<div class="flex anchor relative">
 		<h2 id="nat">NAT</h2>
-		<a href="https://blog.cloudflare.com/#nat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#nat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -148,7 +148,7 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>The load balancing system now uses a hash of the <code>clientid</code> to identify which machine a packet should be routed to, meaning &nbsp;WARP messages always arrive at the same machine even as you change networks or move from Wi-Fi to cellular, and the problem was eliminated.</p>
 	<div class="flex anchor relative">
 		<h2 id="client-software">Client Software</h2>
-		<a href="https://blog.cloudflare.com/#client-software" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#client-software" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -163,7 +163,7 @@ Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
 	<p>Unfortunately, at a certain point code actually gets deployed, and bug reports begin flowing in. The first issue was the simplicity of the API made it impossible for us to process more than a single UDP packet at a time. We commonly use packets of up to 1500 bytes, running a speed test on my Google Fiber connection currently results in a speed of 370 Mbps, or almost thirty-one thousand packets per second. Attempting to process each packet individually was slowing down connections by as much as 40%. According <a href="https://forums.developer.apple.com/message/360236#360236">to Apple</a>, the best solution to get the performance we needed was to fallback to the older <a href="https://developer.apple.com/documentation/networkextension/nwudpsession">NWUDPSession</a> API, introduced in iOS 9.</p>
 	<div class="flex anchor relative">
 		<h2 id="ipv6">IPv6</h2>
-		<a href="https://blog.cloudflare.com/#ipv6" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ipv6" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -258,7 +258,7 @@ let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="dying-connections">Dying Connections</h2>
-		<a href="https://blog.cloudflare.com/#dying-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#dying-connections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -295,7 +295,7 @@ func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; 
 	<p>Truthfully, this is just one of a <a href="https://forums.developer.apple.com/thread/121648">long</a> <a href="https://forums.developer.apple.com/thread/95387">list</a> <a href="https://openradar.appspot.com/39743361">of</a> platform-specific bugs we ran into building WARP. We hope to continue working with device vendors to get them fixed. There are an unimaginable number of device and connection combinations, and each connection doesn’t just exist at one moment in time, they are always changing, entering and leaving broken states almost faster than we can track. Even now, getting WARP to work on every device and connection on Earth is not a solved problem, we still get daily bug reports which we work to triage and resolve.</p>
 	<div class="flex anchor relative">
 		<h2 id="warp">WARP+</h2>
-		<a href="https://blog.cloudflare.com/#warp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#warp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -344,7 +344,7 @@ Application: warp\r\n
 	<p>Smart routing is just the beginning of WARP+; We have a long list of projects and plans which are all aimed at making your Internet faster, and couldn’t be more thrilled to finally have a platform to test them with.</p>
 	<div class="flex anchor relative">
 		<h2 id="our-mission">Our Mission</h2>
-		<a href="https://blog.cloudflare.com/#our-mission" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#our-mission" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -13,7 +13,7 @@
 	<p>Unfortunately, if for any reason the Lua code using the FFI library has to run under the interpreter, it takes a very heavy performance hit. As it happens, under the interpreter the FFI is usually much slower than the Lua C API or the basic operations. For many people, this means either avoiding the FFI or committing to a permanent vigilance to maintain the code from falling back to the interpreter.</p>
 	<div class="flex anchor relative">
 		<h3 id="optimizing-luajit-code">Optimizing LuaJIT Code</h3>
-		<a href="https://blog.cloudflare.com/#optimizing-luajit-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#optimizing-luajit-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/kevandotorg/6353190489/in/photolist-aFpLc4-6Rorty-gvhKC9-8UEeqU-aBoHof-9qr8bs-9qo6Ai-9qrafb-FhYA4L-CH4r5G-8HZcMK-pX32R-6SJMc6-pX39e-oXee8D-aBoHBJ-cLgitL-cLgeKY-3THPb-hzKrGL-cLggDJ-6Rh35p-dqkQyJ-7Ey5Pz-6RkwNh-6RgYDe-7C7F9S-6RgxKH-6RkLFN-i4HqqU-6Rktx9-6RkXKQ-6RgRqD-6RkmBs-6RgML2-6RkE4j-6Rg5nT-6RjKkq-6RfDK2-6RfRRc-6RfYfK-6RfUT8-6RjN4d-hzMBtc-hzNnyN-hzJiM8-hzJVpv-hzLE56-hzKU4c-9mQrRy">image</a> by <a href="https://www.flickr.com/photos/kevandotorg">Kevan</a></p>
 	<div class="flex anchor relative">
 		<h3 id="introducing-loom">Introducing Loom</h3>
-		<a href="https://blog.cloudflare.com/#introducing-loom" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#introducing-loom" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -111,7 +111,7 @@ end</code></pre>
 	<p>Writing it was a great learning experience, I had to read the dump script’s Lua sources and went much deeper in the LuaJIT sources than ever before. And then, I was able to use loom not only to analyze and optimize Cloudflare’s Lua code, but also to watch the steps the compiler goes through to make it run fast, and also what happens when it’s not happy.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-code-is-the-code-is-the-code-is-the-code">The code is the code is the code is the code</h3>
-		<a href="https://blog.cloudflare.com/#the-code-is-the-code-is-the-code-is-the-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-code-is-the-code-is-the-code-is-the-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -124,7 +124,7 @@ end</code></pre>
 	<p>A trace is finished when it hits a loop or a recursion, returns to a lower level than when started, hits a NYI operation, or simply becomes too long. At this point, it can be either compiled into machine language, or aborted if it has reached some code that can’t be correctly translated. If successful, the bytecode is patched with an entry to the machine code, or “mcode”. If aborted, the initial trace point is “penalized” or even “blocklisted” to avoid wasting time trying to compile it again.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s <code>next()</code>?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -144,7 +144,7 @@ end</code></pre>
 	<p>This sad news creates a tradeoff: for performance sensitive parts of the code, don’t use the most Lua-like code style. That motivates people to come up with several contortions to be able to use numerical iteration (which is compiled, and very efficient), like replacing any key with a number, storing all the keys in a numbered array, or store both keys and values at even/odd numeric indices.</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-next-out-of-the-nyi-list">Getting <code>next()</code> out of the NYI list</h3>
-		<a href="https://blog.cloudflare.com/#getting-next-out-of-the-nyi-list" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#getting-next-out-of-the-nyi-list" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -154,7 +154,7 @@ end</code></pre>
 	<p>The purpose of the IR is to provide a representation of the execution path so it can be quickly optimized to generate the final mcode. For that, the IR traces are linear and type-specific; creating some interesting challenges for iteration on a generic container.</p>
 	<div class="flex anchor relative">
 		<h3 id="traces-are-linear">Traces are linear</h3>
-		<a href="https://blog.cloudflare.com/#traces-are-linear" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#traces-are-linear" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -165,7 +165,7 @@ end</code></pre>
 	<p>The solution is to do that slot skipping in C. Not using the Lua C API, of course, but the inner IR CALL instruction that is compiled into a "fast" call, using CPU registers for arguments as much as possible.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-ir-is-in-type-specific-ssa-form">The IR is in Type-specific SSA form</h3>
-		<a href="https://blog.cloudflare.com/#the-ir-is-in-type-specific-ssa-form" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-ir-is-in-type-specific-ssa-form" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -251,7 +251,7 @@ end
 	<p>Of course, this would happen only on very simple and regular patterns. In general, it's wiser to avoid unpredictable type mixing; but polymorphic code will be optimized for each type that it's actually used with.</p>
 	<div class="flex anchor relative">
 		<h3 id="back-to-next">Back to <code>next()</code></h3>
-		<a href="https://blog.cloudflare.com/#back-to-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#back-to-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -333,7 +333,7 @@ typedef struct Node {
 	<p>The return value of <code>lj_tab_next()</code> is a <code>Node</code> pointer, which can likewise be implicitly cast by <code>HLOAD</code> to get the value. To get the key, I added the <code>HKLOAD</code> instruction. Both are guarding for the expected types of the value and key, respectively.</p>
 	<div class="flex anchor relative">
 		<h3 id="lets-take-it-for-a-spin">Let's take it for a spin</h3>
-		<a href="https://blog.cloudflare.com/#lets-take-it-for-a-spin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#lets-take-it-for-a-spin" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

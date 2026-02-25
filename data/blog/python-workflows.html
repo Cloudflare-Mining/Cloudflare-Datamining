@@ -6,7 +6,7 @@
 	<p>Over the years, we’ve been giving developers the tools to build these applications in Python, on Cloudflare. In 2020, we brought <a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support"><u>Python to Workers via Transcrypt</u></a> before directly integrating Python into <a href="https://github.com/cloudflare/workerd?cf_target_id=33101FA5C99A5BD54E7D452C9B282CD8"><u>workerd</u></a> in 2024. Earlier this year, we built support for <a href="https://developers.cloudflare.com/workers/languages/python/stdlib"><u>CPython</u></a> along with <a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html"><u>any packages built in Pyodide</u></a>, like matplotlib and pandas, in Workers. Now, Python Workflows are supported as well, so developers can create robust applications using the language they know best.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-python-for-workflows">Why Python for Workflows?</h2>
-		<a href="https://blog.cloudflare.com/#why-python-for-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-python-for-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	<p>Using workflows as a tool to <a href="https://agents.cloudflare.com"><u>build agents on Cloudflare</u></a> can simplify agents’ architecture and improve their odds for reaching completion through individual step retries and state persistence. Support for Python Workflows means building agents with Python is easier than ever.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-python-workflows-work">How Python Workflows work</h3>
-		<a href="https://blog.cloudflare.com/#how-python-workflows-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-python-workflows-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	<p>Cloudflare Workflows uses the underlying infrastructure that we created for durable execution, while providing an idiomatic way for Python users to write their workflows. In addition, we aimed for complete feature parity between the Javascript and the Python SDK. This is possible because Cloudflare Workers support Python directly in the runtime itself.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="creating-a-python-workflow">Creating a Python Workflow</h4>
-		<a href="https://blog.cloudflare.com/#creating-a-python-workflow" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#creating-a-python-workflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@
 	<p>All of this is true for both Python and JavaScript Workflows, since we don’t really change how the user Worker is called from the Workflows side. However, in the Python case, there is another barrier – language bridging between Python and the JavaScript module. When an RPC request targets a Python Worker, there is a Javascript entrypoint module responsible for proxying the request to be handled by the Python script, and then returned to the caller. This process typically involves type translation before and after handling the request.</p>
 	<div class="flex anchor relative">
 		<h4 id="overcoming-the-language-barrier">Overcoming the language barrier</h4>
-		<a href="https://blog.cloudflare.com/#overcoming-the-language-barrier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#overcoming-the-language-barrier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -72,7 +72,7 @@
 	<p>Python workers rely on <a href="https://pyodide.org/en/stable"><u>Pyodide</u></a>, which is a port of CPython to WebAssembly. Pyodide provides a foreign function interface (FFI) to JavaScript which allows for calling into JavaScript methods from Python. This is the mechanism that allows other bindings and Python packages to work within the Workers platform. Therefore, we use this FFI layer not only to allow using the Workflow binding directly, but also to provide <code>WorkflowStep</code> methods in Python. In other words, by considering that <code>WorkflowEntrypoint</code> is a special class for the runtime, the run method is manually wrapped so that <code>WorkflowStep</code> is exposed as a <a href="https://pyodide.org/en/stable/usage/api/python-api/ffi.html?cf_target_id=B32B42023AAEDEF833BCC2D9FD6096A3#pyodide.ffi.JsProxy"><u>JsProxy</u></a> instead of being type translated like other JavaScript objects. Moreover, by wrapping the APIs from the perspective of the user Worker, we allow ourselves to make some adjustments to the overall development experience, instead of simply exposing a JavaScript SDK to a different language with different semantics.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="making-the-python-workflows-sdk-pythonic">Making the Python Workflows SDK Pythonic</h4>
-		<a href="https://blog.cloudflare.com/#making-the-python-workflows-sdk-pythonic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-the-python-workflows-sdk-pythonic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -129,7 +129,7 @@ class MyWorkflow(WorkflowEntrypoint):
 
 	<div class="flex anchor relative">
 		<h4 id="dag-workflows">DAG Workflows</h4>
-		<a href="https://blog.cloudflare.com/#dag-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#dag-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -162,7 +162,7 @@ class PythonWorkflowDAG(WorkflowEntrypoint):
 	<p>This kind of approach makes the Workflow declaration much cleaner, leaving state management to the Workflows engine data plane, as well as the Python workers Workflow wrapper. Note that even though multiple steps can run with the same name, the engine will slightly modify the name of each step to ensure uniqueness. In Python Workflows, a dependency is considered resolved once the initial step involving it has been successfully completed.</p>
 	<div class="flex anchor relative">
 		<h3 id="try-it-out">Try it out</h3>
-		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

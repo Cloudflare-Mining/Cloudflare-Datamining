@@ -5,7 +5,7 @@
 	<p>We made Universal SSL free so that everyone can use modern, strong encryption tools to protect their web traffic. More encrypted traffic helps build a safer, better Internet. In keeping with CloudFlare’s goal to help build a better Internet, we have some tips on how to upgrade your site from Flexible SSL to Full or Strict SSL.</p>
 	<div class="flex anchor relative">
 		<h3 id="option-1-full-ssl-create-a-self-signed-certificate">Option 1: Full SSL: create a self-signed certificate</h3>
-		<a href="https://blog.cloudflare.com/#option-1-full-ssl-create-a-self-signed-certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#option-1-full-ssl-create-a-self-signed-certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>Keep in mind that a self-signed certificate is not signed by a trusted CA. This means that you can change your SSL setting from Flexible SSL to Full, but not Full (strict). Full SSL won’t be able to provide authentication, but it will make sure the connection to the origin is encrypted and protected from passive snoopers.</p>
 	<div class="flex anchor relative">
 		<h3 id="option-2-strict-ssl-get-a-certificate-from-trusted-ca">Option 2: Strict SSL: get a certificate from trusted CA</h3>
-		<a href="https://blog.cloudflare.com/#option-2-strict-ssl-get-a-certificate-from-trusted-ca" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#option-2-strict-ssl-get-a-certificate-from-trusted-ca" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>Once you have a certificate installed on your origin server, you can change your SSL setting from Flexible to Full (strict) and have the added benefit of an authenticated and encrypted connection to your origin server.</p>
 	<div class="flex anchor relative">
 		<h3 id="option-3-sneak-preview-the-cloudflare-origin-ca-certificate-pinning">Option 3: (sneak preview) The CloudFlare Origin CA/Certificate Pinning</h3>
-		<a href="https://blog.cloudflare.com/#option-3-sneak-preview-the-cloudflare-origin-ca-certificate-pinning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#option-3-sneak-preview-the-cloudflare-origin-ca-certificate-pinning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

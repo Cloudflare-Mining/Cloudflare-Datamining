@@ -16,7 +16,7 @@
 	<p>If you’re a VeloCloud customer, we are here to help you with your transition to Magic WAN, with planning, products and services. You’ve experienced the turbulence, and that’s why we are taking steps to help. First, it’s necessary to illustrate what’s fundamentally wrong with the architecture by acquisition model in order to define the right path forward. Second, we document the steps involved for making a transition from VeloCloud to Cloudflare. Third, we are offering a helping hand to help VeloCloud customers to get their SASE strategies back on track.</p>
 	<div class="flex anchor relative">
 		<h2 id="architecture-is-the-key-to-sase">Architecture is the key to SASE</h2>
-		<a href="https://blog.cloudflare.com/#architecture-is-the-key-to-sase" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#architecture-is-the-key-to-sase" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>If organizations are new to SASE, then it can be difficult to know what to look for. However, one clear sign of trouble is taking an SSE designed by one vendor and combining it with SD-WAN from another. Because you can’t get a converged platform out of two fundamentally incongruent technologies.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-sase-math-doesnt-work">Why SASE Math Doesn’t Work</h2>
-		<a href="https://blog.cloudflare.com/#why-sase-math-doesnt-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-sase-math-doesnt-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	<p>In practice, networking and network security do not exist in separate universes, but SD-WAN and SSE implementations do, especially when they were designed by different vendors. That’s why the math doesn’t work, because even with the requisite SASE functionality, the implementation of the functionality doesn’t fit. <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan">SD-WAN</a> is designed for network connectivity between sites over the SD-WAN fabric, whereas <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse">SSE</a> largely focuses on the enforcement of security policy for user-&gt;application traffic from remote users or traffic leaving (rather than traversing) the SD-WAN fabric. Therefore, to bring these two worlds together, you end up with security inconsistency, proxy chains which create a burden on latency, or implementing security at the edge rather than in the cloud.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-cloudflare-is-different">Why Cloudflare is different</h2>
-		<a href="https://blog.cloudflare.com/#why-cloudflare-is-different" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-cloudflare-is-different" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 	<p>From the perspective of branch connectivity, use Magic WAN for the connectivity that ties your business together, no matter which way traffic passes. That’s because we don’t treat the directions of your network traffic as independent problems. We solve for consistency by on-ramping all traffic through one of Cloudflare’s 310+ anycasted data centers (whether inbound, outbound, or east-west) for enforcement of security policy. We solve for latency by eliminating the need to forward traffic to a compute location by providing full compute services in every data center. We implement SASE using a light edge / heavy cloud model, with services delivered within the Cloudflare connectivity cloud rather than on-prem.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-to-transition-from-velocloud-to-cloudflare">How to transition from VeloCloud to Cloudflare</h2>
-		<a href="https://blog.cloudflare.com/#how-to-transition-from-velocloud-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-to-transition-from-velocloud-to-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -61,7 +61,7 @@
 	<p>For services, our <a href="https://www.cloudflare.com/success-offerings">customer success teams</a> are ready to support your transition, with services that are tailored specifically for Magic WAN migrations both large and small.</p>
 	<div class="flex anchor relative">
 		<h2 id="your-next-move">Your next move</h2>
-		<a href="https://blog.cloudflare.com/#your-next-move" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#your-next-move" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

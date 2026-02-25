@@ -8,7 +8,7 @@
 	<p>In this blog post, we move in another direction by sharing aggregate insights about connections established through our global CDN. We present characteristics of <a href="https://developers.cloudflare.com/fundamentals/reference/tcp-connections"><u>TCP</u></a> connections—which account for about <a href="https://radar.cloudflare.com/adoption-and-usage"><u>70% of HTTP requests</u></a> to Cloudflare—providing empirical insights that are difficult to obtain from client-side measurements alone.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-connection-characteristics-matter">Why connection characteristics matter</h2>
-		<a href="https://blog.cloudflare.com/#why-connection-characteristics-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-connection-characteristics-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p>To run a useful simulation, we need it to behave like the real system we’re studying. That means generating synthetic data that mimics real-world behavior. Often, we do this by using statistical distributions — mathematical descriptions of how the real data behaves. But before we can create those distributions, we first need to characterize the data — to measure and understand its key properties. Only then can our simulation produce realistic results.</p>
 	<div class="flex anchor relative">
 		<h2 id="unpacking-the-dataset">Unpacking the dataset</h2>
-		<a href="https://blog.cloudflare.com/#unpacking-the-dataset" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#unpacking-the-dataset" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	<p>If you’re curious, we’ve also previously blogged about the details of Cloudflare’s <a href="https://blog.cloudflare.com/how-we-make-sense-of-too-much-data"><u>overall logging mechanism</u></a> and <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse"><u>post-processing pipeline</u></a>.&nbsp;&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="visualizing-connection-characteristics">Visualizing connection characteristics</h2>
-		<a href="https://blog.cloudflare.com/#visualizing-connection-characteristics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#visualizing-connection-characteristics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 	<p>A long-standing question about Internet connections relates to “<a href="https://en.wikipedia.org/wiki/Elephant_flow"><u>Elephants and Mice</u></a>”; practitioners and researchers are entirely aware that most flows are small and some are huge, yet little data exists to inform the lines that divide them. This is where our presentation begins.</p>
 	<div class="flex anchor relative">
 		<h3 id="packet-counts">Packet Counts</h3>
-		<a href="https://blog.cloudflare.com/#packet-counts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#packet-counts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -74,7 +74,7 @@
 	<p>The mean ratio is higher, at 1.28, due to a long tail of client-heavy connections, such as large downloads typical of CDN workloads. Most connections fall within a relatively narrow range: 10% of connections have a ratio below 0.67, and 90% are below 1.85. However, the long-tailed behavior highlights the diversity of Internet traffic: extreme values arise from both upload-heavy and download-heavy connections. The variance of 3.71 reflects these asymmetric flows, while the bulk of connections maintain a roughly balanced upload-to-download exchange.</p>
 	<div class="flex anchor relative">
 		<h3 id="bytes-sent">Bytes sent</h3>
-		<a href="https://blog.cloudflare.com/#bytes-sent" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#bytes-sent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -92,7 +92,7 @@
 	<p>By making use of the tcpi_bytes_received metric, we can now look at the ratio of bytes sent to bytes received per connection to better understand the balance of data exchange. This ratio captures how asymmetric each connection is — essentially, how much data our servers send compared to what they receive from clients. Across all connections, the median ratio is 3.78, meaning that in half of all cases, servers send nearly four times more data than they receive. The average is far higher at 81.06, showing a strong long tail driven by download-heavy flows. Again we see the heavy long-tailed distribution, a small fraction of extreme cases push the ratio into the millions, with more extreme values of data transfers towards clients.</p>
 	<div class="flex anchor relative">
 		<h3 id="connection-duration">Connection duration</h3>
-		<a href="https://blog.cloudflare.com/#connection-duration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#connection-duration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -105,7 +105,7 @@
 	<p>The CDF above shows the distribution of connection durations (lifetimes) in seconds. A reminder that the x-axis is log-scale. Across all connections, the median duration is just 4.7 seconds, meaning half of connections complete in under five seconds. The mean is much higher at 96 seconds, reflecting a small number of long-lived connections that skew the average. Most connections fall within a window of 0.1 seconds (10th percentile) to 300 seconds (90th percentile). We also observe some extremely long-lived connections lasting multiple days, possibly maintained via <a href="https://developers.cloudflare.com/fundamentals/reference/tcp-connections/#tcp-connections-and-keep-alives"><u>keep-alives</u></a> for connection reuse without hitting <a href="https://developers.cloudflare.com/fundamentals/reference/connection-limits"><u>our default idle timeout limits</u></a>. These long-lived connections typically represent persistent sessions or multimedia traffic, while the majority of web traffic remains short, bursty, and transient.</p>
 	<div class="flex anchor relative">
 		<h3 id="request-counts">Request counts</h3>
-		<a href="https://blog.cloudflare.com/#request-counts" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#request-counts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -123,7 +123,7 @@
 	<p>The plot above shows that non-DC (user-driven) traffic has slightly higher request counts per connection, consistent with browsers or apps fetching multiple resources over a single persistent connection, with a mean of 5 requests and a 90th percentile of 5 requests per connection. In contrast, DC-originated traffic has a mean of roughly 3 requests and a 90th percentile of 2, validating our expectation. Despite these differences, the median number of requests remains 1 for both groups highlighting that, regardless of origin of connections, most are genuinely brief.</p>
 	<div class="flex anchor relative">
 		<h2 id="inferring-path-characteristics-from-connection-level-data">Inferring path characteristics from connection-level data</h2>
-		<a href="https://blog.cloudflare.com/#inferring-path-characteristics-from-connection-level-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#inferring-path-characteristics-from-connection-level-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -132,7 +132,7 @@
 	<p>Connection-level measurements can also provide insights into underlying path characteristics. Let’s examine this in more detail.</p>
 	<div class="flex anchor relative">
 		<h3 id="path-mtu">Path MTU</h3>
-		<a href="https://blog.cloudflare.com/#path-mtu" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#path-mtu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -142,7 +142,7 @@
 	<p>From that data we saw that the median (and the 90th percentile!) PMTU was 1500 bytes, which aligns with the typical Ethernet MTU and is <a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit"><u>considered standard</u></a> for most Internet paths. Interestingly, the 10th percentile sits at 1,420 bytes, reflecting cases where paths include network links with slightly smaller MTUs—common in some <a href="https://blog.cloudflare.com/migrating-from-vpn-to-access"><u>VPNs</u></a>, <a href="https://blog.cloudflare.com/increasing-ipv6-mtu"><u>IPv6tov4 tunnels</u></a>, or older networking equipment that impose stricter limits to avoid fragmentation. At the extreme, we have seen MTU as small as 552 bytes for IPv4 connections which relates to the minimum allowed PMTU value <a href="https://www.kernel.org/doc/html/v6.5/networking/ip-sysctl.html#:~:text=Default%3A%20FALSE-,min_pmtu,-%2D%20INTEGER"><u>by the Linux kernel</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="initial-congestion-window">Initial congestion window</h3>
-		<a href="https://blog.cloudflare.com/#initial-congestion-window" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#initial-congestion-window" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -163,7 +163,7 @@
 	<p>We are using these insights to help identify reasonable initial congestion window sizes and the circumstances for them. Our own experiments internally make clear that ICWND sizes can affect performance by as much as 30-40% for smaller connections. Such insights will potentially help to revisit efforts to find better initial congestion window values, which has been a default of <a href="https://datatracker.ietf.org/doc/html/rfc6928"><u>10 packets</u></a> for more than a decade.</p>
 	<div class="flex anchor relative">
 		<h3 id="deeper-understanding-better-performance">Deeper understanding, better performance</h3>
-		<a href="https://blog.cloudflare.com/#deeper-understanding-better-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#deeper-understanding-better-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -7,7 +7,7 @@
 	<p>When AI services are distributed away from centralized data centers and closer to the service edge, it becomes possible to enhance the overall application speed without moving data unnecessarily. &nbsp;However, there are still challenges to make AI from the deep-cloud run efficiently on edge hardware. Here, we use the term deep-cloud to refer to highly centralized, massively-sized data centers. Deploying edge AI services can be hard because AI is both computational and memory bandwidth intensive. We need to tune the AI models so the computational latency and bandwidth can be radically reduced for the edge.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-case-for-distributed-ai-services">The Case for Distributed AI Services</h3>
-		<a href="https://blog.cloudflare.com/#the-case-for-distributed-ai-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-case-for-distributed-ai-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>We at Latent AI are exploring ways to deploy AI at the edge, with technology that transforms and compresses AI models for the edge. The size of our edge AI model is many orders of magnitudes smaller than the sensor data (e.g., kilobytes or megabytes for the edge AI model, compared to petabytes of edge data). We are exploring using WebAssembly (WASM) within the Cloudflare Workers environment. We want to identify possible operating points for the distributed AI services by exploring achievable performance on the available edge infrastructure.</p>
 	<div class="flex anchor relative">
 		<h3 id="architectural-approach-for-exploration">Architectural Approach for Exploration</h3>
-		<a href="https://blog.cloudflare.com/#architectural-approach-for-exploration" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#architectural-approach-for-exploration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -27,7 +27,7 @@
 	<p>AI models have notoriously large memory usage demands because configuring them requires high parameter counts. Cloudflare already extends support for WASM using their <a href="https://developers.cloudflare.com/workers/quickstart">Wrangler CLI</a>, and we chose to use it for our exploration. <a href="https://blog.cloudflare.com/improving-the-wrangler-startup-experience">Wrangler</a> is the open-source CLI tool used to manage Workers, and is designed to enable a smooth developer experience.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-latent-ai-accelerates-distributed-ai-services">How Latent AI Accelerates Distributed AI Services</h3>
-		<a href="https://blog.cloudflare.com/#how-latent-ai-accelerates-distributed-ai-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-latent-ai-accelerates-distributed-ai-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	<p>Optimized AI services can process data closest to the source and perform inferences at the distributed edge.</p>
 	<div class="flex anchor relative">
 		<h3 id="selecting-real-world-wasm-neural-network-examples">Selecting Real-World WASM Neural Network Examples</h3>
-		<a href="https://blog.cloudflare.com/#selecting-real-world-wasm-neural-network-examples" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#selecting-real-world-wasm-neural-network-examples" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@
 	<p>Comparison of memory and inference processing times for large and small DNNs.</p>
 	<div class="flex anchor relative">
 		<h3 id="learning-from-real-world-wasm-neural-network-example">Learning from Real-World WASM Neural Network Example</h3>
-		<a href="https://blog.cloudflare.com/#learning-from-real-world-wasm-neural-network-example" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#learning-from-real-world-wasm-neural-network-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -75,7 +75,7 @@
 	<p>Finally, we suggest the use of a smart cache for AI models so that Workers can essentially reduce memory load times and focus solely on neural network inferences at runtime. Again, 8-bit models allow more AI models to be hosted and ready for inference. Referring to our exploratory results, hosted small AI models can be served at approximately 15ms inference time, offering a very compelling user experience with low latency and local processing. The WASM API provides a significant performance increase over pure-JS toolchains like Tensorflow.js. For example, for inference time for the large AI model of 189ms on WASM, we have observed a range of 1500ms on Tensorflow.js workflow, which is approximately an 8X difference in compute latency.</p>
 	<div class="flex anchor relative">
 		<h3 id="unlocking-the-future-of-the-distributed-edge">Unlocking the Future of the Distributed Edge</h3>
-		<a href="https://blog.cloudflare.com/#unlocking-the-future-of-the-distributed-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#unlocking-the-future-of-the-distributed-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -92,7 +92,7 @@
 	<p>Application developers can now offer AI services with neural networks trained, compressed, and compiled natively as a WASM neural network. Latent AI developer tools can compress WASM neural networks and provide WASM runtimes offering blazingly fast inferences for the device and infrastructure edge. &nbsp;With scale and speed baked in, developers can easily create high-performance experiences for their users, wherever they are, at any scale. More importantly, we can scale enterprise applications on the edge, while offering the desired return on investments using edge networks.</p>
 	<div class="flex anchor relative">
 		<h3 id="about-latent-ai">About Latent AI</h3>
-		<a href="https://blog.cloudflare.com/#about-latent-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#about-latent-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

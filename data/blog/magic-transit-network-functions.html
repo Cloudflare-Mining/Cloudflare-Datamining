@@ -6,7 +6,7 @@
 	<p>Magic Transit is built on the same network using the same techniques, meaning our customers can now run their network functions at Cloudflare scale. Our fast, secure, reliable global edge becomes our customers’ edge. To explore how this works, let’s follow the journey of a packet from a user on the Internet to a Magic Transit customer’s network.</p>
 	<div class="flex anchor relative">
 		<h2 id="putting-our-dos-mitigation-to-work-for-you">Putting our DoS mitigation to work… for you!</h2>
-		<a href="https://blog.cloudflare.com/#putting-our-dos-mitigation-to-work-for-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#putting-our-dos-mitigation-to-work-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="network-namespaces-for-isolation-and-control">Network namespaces for isolation and control</h2>
-		<a href="https://blog.cloudflare.com/#network-namespaces-for-isolation-and-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#network-namespaces-for-isolation-and-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@ $ sudo ip netns exec acme_namespace nft add rule inet filter prerouting ip daddr
 	<p>Network namespaces provide a lightweight environment where a Magic Transit customer can run and manage network functions in isolation, letting us put full control in the customer’s hands.</p>
 	<div class="flex anchor relative">
 		<h2 id="gre-anycast-magic">GRE + anycast = magic</h2>
-		<a href="https://blog.cloudflare.com/#gre-anycast-magic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#gre-anycast-magic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@ $ sudo ip netns exec acme_namespace nft add rule inet filter prerouting ip daddr
 	<p>One very powerful consequence of Anycast GRE is that it eliminates single points of failure. Traditionally, GRE-over-Internet can be problematic because an Internet outage between the two GRE endpoints fully breaks the “tunnel”. This means reliable data delivery requires going through the headache of setting up and maintaining redundant GRE tunnels terminating at different physical sites and rerouting traffic when one of the tunnels breaks. But because Cloudflare is encapsulating and delivering customer traffic from every server in every data center, there is no single “tunnel” to break. This means Magic Transit customers can enjoy the redundancy and reliability of terminating tunnels at multiple physical sites while only setting up and maintaining a single GRE endpoint, making their jobs simpler.</p>
 	<div class="flex anchor relative">
 		<h2 id="our-scale-is-now-your-scale">Our scale is now your scale</h2>
-		<a href="https://blog.cloudflare.com/#our-scale-is-now-your-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#our-scale-is-now-your-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

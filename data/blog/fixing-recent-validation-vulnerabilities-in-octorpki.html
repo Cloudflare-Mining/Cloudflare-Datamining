@@ -5,7 +5,7 @@
 	<p>We have not seen any attempted exploitation of these vulnerabilities described in the advisory. We use OctoRPKI to perform Border Gateway Protocol (BGP) route validation so that our routers know where to direct IP packets at Layer 3 of the TCP/IP stack. TLS provides additional security at the TCP layer to ensure the integrity and confidentiality of customer data going over the Internet in the event of BGP hijacking.</p>
 	<div class="flex anchor relative">
 		<h2 id="rpki-and-the-discovered-vulnerabilities">RPKI and the discovered vulnerabilities</h2>
-		<a href="https://blog.cloudflare.com/#rpki-and-the-discovered-vulnerabilities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#rpki-and-the-discovered-vulnerabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	<p>Compounding this issue is the fact that any single repository in the chain of trust could introduce undefined behavior. Imagine a scenario where a malicious entity is able to compromise a single repository (there can be hundreds) within a trusted organization, or is able to introduce a malicious Trust Anchor Locator (TAL) file onto the host machine that is running OctoRPKI. In both cases, bad actors can attempt to trigger undefined behavior on machines running OctoRPKI by leveraging the fact that OctoRPKI will attempt to process arbitrary input. Our mitigations were primarily to fail closed whenever these events occurred as there is no other guidance in the RFC.</p>
 	<div class="flex anchor relative">
 		<h2 id="undefined-behavior">Undefined Behavior</h2>
-		<a href="https://blog.cloudflare.com/#undefined-behavior" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#undefined-behavior" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>There were two classes of attacks disclosed in the NSCS advisory that affected OctoRPKI:</p>
 	<div class="flex anchor relative">
 		<h3 id="arbitrary-file-writes">Arbitrary File Writes</h3>
-		<a href="https://blog.cloudflare.com/#arbitrary-file-writes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#arbitrary-file-writes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -64,7 +64,7 @@
 	<p>In <a href="https://github.com/cloudflare/cfrpki/releases/tag/v1.4.0">v1.4.0</a> we now filter URIs and force them to remain in the cache folder by overriding any upwards directory traversal.</p>
 	<div class="flex anchor relative">
 		<h3 id="crash-or-uncontrolled-resource-consumption">Crash or uncontrolled resource consumption</h3>
-		<a href="https://blog.cloudflare.com/#crash-or-uncontrolled-resource-consumption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#crash-or-uncontrolled-resource-consumption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -93,7 +93,7 @@
 	<p>We implemented bounds checking across many components within OctoRPKI. These include adding instances of checking array length before attempting to index specific locations, or other cases where we utilized built in controls that Go provides when using an HTTP client. Repositories that attempt to abuse bounds checks are either skipped or included in an error message presented to the user.</p>
 	<div class="flex anchor relative">
 		<h2 id="on-our-commitment-to-rpki-security">On our commitment to RPKI security</h2>
-		<a href="https://blog.cloudflare.com/#on-our-commitment-to-rpki-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#on-our-commitment-to-rpki-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

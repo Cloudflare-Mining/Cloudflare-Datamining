@@ -4,7 +4,7 @@
 	<p>More than a year ago, Ryan Kirkman and Thomas Davis approached us about a project they were working on. Dubbed <a href="https://www.cdnjs.com">CDNJS</a>, the project had a noble goal: make the world's Javascript resources load as fast as possible. They had been hosting the service on Amazon's CloudFront CDN, but as it got more popular the costs started to be significant. They approached us about whether we'd mind them using CloudFlare. We thought it was a great idea and we've been working together ever since. Today they just sent us data that shows CDNJS is the fastest Javascript repository on the Internet. More on that in a second, but first a bit about why CDNJS is so cool.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-do-you-need-a-cdn-for-javascript">Why Do You Need a CDN for Javascript</h3>
-		<a href="https://blog.cloudflare.com/#why-do-you-need-a-cdn-for-javascript" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-do-you-need-a-cdn-for-javascript" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>The other benefit involves browser caching. If two sites use jQuery, ideally your browser only needs to download it once and then use the same code across both sites. In order to take advantage of this browser caching, both sites need to reference the same code via the same URL. As a result, it not only makes sense to reference a CDN for your Javascript code, but for you to use the same CDN as other sites are also using.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-big-boys">The Big Boys</h3>
-		<a href="https://blog.cloudflare.com/#the-big-boys" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-big-boys" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@ Web" class="kg-image" width="500" height="251" loading="lazy">
 	<p>Everything so far is what Ryan and Thomas from CDNJS explained to us. They wanted to build a central repository for Javascript that was fast and reliable. They wanted to make sure it contained a wide range of the web's Javascript resources. They wanted to ensure that the latest versions would always be available. And they wanted to provide it to the web for free. We thought that sounded great, so we took over the job of serving the CDNJS resources from CloudFlare's <a href="https://www.cloudflare.com/network-map">global network</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="fast-wins">Fast Wins</h3>
-		<a href="https://blog.cloudflare.com/#fast-wins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fast-wins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

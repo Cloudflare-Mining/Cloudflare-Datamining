@@ -5,7 +5,7 @@
 	<p>Pages has superpowers like these that Workers does not have, and vice versa. Today you have to choose upfront whether to build a Worker or a Pages project, even though the two products largely overlap. That’s why during 2023’s <a href="https://blog.cloudflare.com/pages-and-workers-are-converging-into-one-experience">Developer Week</a>, we started bringing both products together to give developers the benefit of the best of both worlds. And it’s why we announced that like Workers, Pages projects can now directly access <a href="https://developers.cloudflare.com/workers/configuration/bindings">bindings</a> to Cloudflare services — using <a href="https://github.com/cloudflare/workerd">workerd</a> under-the-hood — even when using the local development server provided by a full-stack framework like <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site">Astro,</a> <a href="https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site">Next.js,</a> <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site">Nuxt,</a> <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site">Qwik,</a> <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site">Remix,</a> <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-solid-site">SolidStart, or</a> <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site">SvelteKit</a>. Today, we’re thrilled to be launching some new improvements to Pages that bring functionality previously restricted to Workers. Welcome to the stage: monorepos, wrangler.toml, new additions to Next.js support, and database integrations!</p>
 	<div class="flex anchor relative">
 		<h3 id="pages-now-supports-monorepos">Pages now supports monorepos</h3>
-		<a href="https://blog.cloudflare.com/#pages-now-supports-monorepos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#pages-now-supports-monorepos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>Whatever your tooling and however you’re set up, check out our <a href="https://developers.cloudflare.com/pages/configuration/monorepos">documentation</a> to get started with your monorepo right out of the box.</p>
 	<div class="flex anchor relative">
 		<h3 id="configure-pages-projects-with-wrangler-toml">Configure Pages projects with wrangler.toml</h3>
-		<a href="https://blog.cloudflare.com/#configure-pages-projects-with-wrangler-toml" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#configure-pages-projects-with-wrangler-toml" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -55,7 +55,7 @@
 	<p>Refer to the <a href="https://developers.cloudflare.com/pages/functions/wrangler-configuration">documentation</a> for more information on exactly what’s supported and how to leverage wrangler.toml in your development workflows.</p>
 	<div class="flex anchor relative">
 		<h3 id="integrate-pages-projects-with-your-favorite-database">Integrate Pages projects with your favorite database</h3>
-		<a href="https://blog.cloudflare.com/#integrate-pages-projects-with-your-favorite-database" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#integrate-pages-projects-with-your-favorite-database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -74,7 +74,7 @@
 	<p>Not only are we looking for <a href="https://docs.google.com/forms/d/e/1FAIpQLScUzm1bpWzR0SlJLGI80HchcAz9emPWG2lIXO107KNZTcfo-w/viewform">user input on new integrations</a> to add, but we’re also opening up the integrations platform to builders who want to submit their own products! We’ll be releasing step-by-step documentation and tooling to easily build and publish your own integration. If you’re interested in submitting your own integration, please fill out our <a href="https://docs.google.com/forms/d/e/1FAIpQLScUzm1bpWzR0SlJLGI80HchcAz9emPWG2lIXO107KNZTcfo-w/viewform">integration intake form</a> and we’ll be in touch!</p>
 	<div class="flex anchor relative">
 		<h3 id="improved-next-js-support-for-pages">Improved Next.js Support for Pages</h3>
-		<a href="https://blog.cloudflare.com/#improved-next-js-support-for-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#improved-next-js-support-for-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -87,7 +87,7 @@
 	<p>To learn more about our Next.js integration, check out our <a href="https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-nextjs-site">Next.js framework guide</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next-for-the-convergence-of-workers-and-pages">What’s next for the convergence of Workers and Pages?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next-for-the-convergence-of-workers-and-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next-for-the-convergence-of-workers-and-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

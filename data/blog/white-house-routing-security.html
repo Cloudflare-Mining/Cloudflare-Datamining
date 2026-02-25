@@ -5,7 +5,7 @@
 	<p>Today, the <a href="https://bidenwhitehouse.archives.gov/oncd"><u>White House Office of the National Cyber Director</u></a> issued the <a href="https://bidenwhitehouse.archives.gov/oncd/briefing-room/2024/09/03/fact-sheet-biden-harris-administration-releases-roadmap-to-enhance-internet-routing-security"><u>Roadmap to Enhancing Internet Routing Security</u></a>, and we’re excited to highlight their recommendations. But before we get into that, let’s provide a quick refresher on what BGP is and why routing security is so important.</p>
 	<div class="flex anchor relative">
 		<h2 id="bgp-pathways-through-the-internet">BGP: pathways through the Internet</h2>
-		<a href="https://blog.cloudflare.com/#bgp-pathways-through-the-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#bgp-pathways-through-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -18,7 +18,7 @@
 	<p>In either of these examples, the actor can manipulate the Internet traffic of unsuspecting end users and potentially steal passwords, cryptocurrency, or any other data that can be of value. While transport security (<a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls"><u>TLS</u></a> for HTTP/1.x and HTTP/2, <a href="https://blog.cloudflare.com/the-road-to-quic"><u>QUIC</u></a> for HTTP/3) has reduced this risk significantly, there’s still ways this can be bypassed. Over time, the Internet community has acknowledged the security concerns with BGP, and has built infrastructure to mitigate some of these problems. </p>
 	<div class="flex anchor relative">
 		<h3 id="bgp-security-the-rpki-is-born">BGP security: The RPKI is born</h3>
-		<a href="https://blog.cloudflare.com/#bgp-security-the-rpki-is-born" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#bgp-security-the-rpki-is-born" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>Through the RPKI, it’s possible for an operator to establish a cryptographically secure relationship between the IP prefixes they originate, and their ASN, through the issuance of <a href="https://www.arin.net/resources/manage/rpki/roa_request"><u>Route Origin Authorization records (ROAs)</u></a>. These ROAs can be used by all other networks on the Internet to validate that the IP prefix update they just received for a given origin network actually belongs to that origin network, a process called <a href="https://blog.cloudflare.com/rpki-updates-data"><u>Route Origin Validation (ROV)</u></a>. If a malicious party tries to hijack an IP prefix that has a ROA to their (different) origin network, validating networks would know this update is invalid and reject it, maintaining the origin security and ensuring reachability.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-does-bgp-security-matter-examples-of-route-hijacks-and-leaks">Why does BGP security matter? Examples of route hijacks and leaks</h2>
-		<a href="https://blog.cloudflare.com/#why-does-bgp-security-matter-examples-of-route-hijacks-and-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-does-bgp-security-matter-examples-of-route-hijacks-and-leaks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -41,7 +41,7 @@
 	<p>The types of routing security measures in the White House roadmap can prevent these issues. In the case of 1.1.1.1, <a href="https://rpki.cloudflare.com/?view=explorer&amp;prefix=1.1.1.0%2F24"><u>Cloudflare has ROAs in place</u></a> that tell the Internet that we originate the IP prefix that contains 1.1.1.1. If someone else on the Internet is advertising 1.1.1.1, that’s an invalid route, and other networks should stop accepting it. In the case of KLAYswap, had there been ROAs in place, other networks could have used common filtering techniques to filter out the routes pointing to the attackers malicious JavaScript. So now let’s talk more about the plan the White House has to improve routing security on the Internet, and how the US government developed its recommendations.</p>
 	<div class="flex anchor relative">
 		<h2 id="work-leading-to-the-roadmap">Work leading to the roadmap</h2>
-		<a href="https://blog.cloudflare.com/#work-leading-to-the-roadmap" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#work-leading-to-the-roadmap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -54,7 +54,7 @@
 	<p>The White House has been involved as well. In March 2023, they cited the need to secure the technical foundation of the Internet, from issued such as BGP vulnerabilities, as one of the strategic objectives of the <a href="https://www.whitehouse.gov/wp-content/uploads/2023/03/National-Cybersecurity-Strategy-2023.pdf"><u>National Cybersecurity Strategy</u></a>. Citing those efforts, in May 2024, the Department of Commerce <a href="https://www.commerce.gov/news/press-releases/2024/05/us-department-commerce-implements-internet-routing-security"><u>issued</u></a> <a href="https://rpki.cloudflare.com/?view=explorer&amp;asn=3477"><u>ROAs signing some of its IP space</u></a>, and this roadmap strongly encourages other departments and agencies to do the same. All of those efforts and the focus on routing security have resulted in increased adoption of routing security measures.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="report-observations-and-recommendations">Report observations and recommendations</h2>
-		<a href="https://blog.cloudflare.com/#report-observations-and-recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#report-observations-and-recommendations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -78,7 +78,7 @@
 	<p>The roadmap doesn’t only cover well-established best practices, but also highlights emerging security technologies, such as <a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-profile"><u>Autonomous System Provider Authorization (ASPA)</u></a> and <a href="https://datatracker.ietf.org/doc/html/rfc8205"><u>BGPsec</u></a>. ROAs only cover part of the BGP routing ecosystem, so additional work is needed to ensure we secure everything. It’s encouraging to see the work being done by the wider community to address these concerns is acknowledged, and more importantly, actively followed.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-next-for-the-internet-community">What’s next for the Internet community</h2>
-		<a href="https://blog.cloudflare.com/#whats-next-for-the-internet-community" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next-for-the-internet-community" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -91,7 +91,7 @@
 	<p>Outside the RPKI, the community has also ratified the formalization of customer roles through <a href="https://datatracker.ietf.org/doc/rfc9234"><u>RFC9234: Route Leak Prevention and Detection Using Roles in UPDATE and OPEN Messages</u></a>. As this new BGP feature gains support, we’re hopeful that this will be another helpful tool in the operator toolbox in preventing route leaks of any kind.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-you-can-help-keep-the-internet-secure">How you can help keep the Internet secure</h2>
-		<a href="https://blog.cloudflare.com/#how-you-can-help-keep-the-internet-secure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-you-can-help-keep-the-internet-secure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -101,7 +101,7 @@
 	<p>If you’re not a network operator, head to <a href="http://isbgpsafeyet.com"><u>isbgpsafeyet.com</u></a>, and test your ISP. If your ISP is not keeping BGP safe, be sure to let them know how important it is. If the government has pointed out prioritization is a consistent problem, let’s help increase the priority of routing security.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-secure-internet-is-an-open-internet">A secure Internet is an open Internet</h2>
-		<a href="https://blog.cloudflare.com/#a-secure-internet-is-an-open-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-secure-internet-is-an-open-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

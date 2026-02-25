@@ -9,7 +9,7 @@
 	<p>We dedicated several months of work to make this happen without negative impact on customer traffic. We had a few bumps along the way, and had to overcome some challenges, but we ended up in a better place than we were in a few months ago.</p>
 	<div class="flex anchor relative">
 		<h3 id="tls-1-3">TLS 1.3</h3>
-		<a href="https://blog.cloudflare.com/#tls-1-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tls-1-3" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -20,7 +20,7 @@
 	<p>As it happens, BoringSSL has supported TLS 1.3 for quite a long time (it was one the first open source SSL implementations to work on this feature), so now all of our edge SSL traffic (including TLS 1.3 connections) is handled by the same system, with no duplication, no added complexity, and no increased latency. Yay!</p>
 	<div class="flex anchor relative">
 		<h3 id="fancy-new-crypto-part-1-x25519-for-tls-1-2-and-earlier">Fancy new crypto, part 1: X25519 for TLS 1.2 (and earlier)</h3>
-		<a href="https://blog.cloudflare.com/#fancy-new-crypto-part-1-x25519-for-tls-1-2-and-earlier" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fancy-new-crypto-part-1-x25519-for-tls-1-2-and-earlier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -37,7 +37,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="fancy-new-crypto-part-2-rsa-pss-for-tls-1-2">Fancy new crypto, part 2: RSA-PSS for TLS 1.2</h3>
-		<a href="https://blog.cloudflare.com/#fancy-new-crypto-part-2-rsa-pss-for-tls-1-2" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fancy-new-crypto-part-2-rsa-pss-for-tls-1-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -51,7 +51,7 @@
 	<p>With the switch to BoringSSL we made RSA PSS available to TLS 1.2 connections as well. This is already supported "in the wild", and is the preferred scheme by modern browsers like Chrome when dealing with RSA server certificates.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-dark-side-of-the-moon">The dark side of the moon</h3>
-		<a href="https://blog.cloudflare.com/#the-dark-side-of-the-moon" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-dark-side-of-the-moon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -62,7 +62,7 @@
 	<p>Some examples include its <a href="https://github.com/google/boringssl/blob/b2c312d670b9967cf881419758f0ec286b66a25f/include/openssl/ssl.h#L1123">private key callback</a> support that we now use to implement <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a>, its <a href="https://github.com/google/boringssl/blob/b2c312d670b9967cf881419758f0ec286b66a25f/include/openssl/ssl.h#L2004">asynchronous session lookup callback</a> that we use to support <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure">distributed session ID caches</a> (for session resumption with clients that, for whatever reason, don't support session tickets), its <a href="https://github.com/google/boringssl/blob/b2c312d670b9967cf881419758f0ec286b66a25f/include/openssl/ssl.h#L1385">equal-preference cipher grouping</a> that allows us to offer <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20-Poly1305 ciphers</a> alongside AES GCM ones and let clients decide which they prefer, or its <a href="https://github.com/google/boringssl/blob/b2c312d670b9967cf881419758f0ec286b66a25f/include/openssl/ssl.h#L3353">"select_certificate" callback</a> that we use for inspecting and logging ClientHellos, and for dynamically enabling features depending on the user’s configuration (we were previously using the “cert_cb” callback for the latter, which is also supported by OpenSSL, but we ran into some limitations like the fact that you can’t dynamically change the supported protocol versions with it, or the fact that it is not executed during session resumption).</p>
 	<div class="flex anchor relative">
 		<h3 id="the-case-of-the-missing-ocsp">The case of the missing OCSP</h3>
-		<a href="https://blog.cloudflare.com/#the-case-of-the-missing-ocsp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-case-of-the-missing-ocsp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -72,7 +72,7 @@
 	<p>However one of the features that also got the axe was OCSP. We relied heavily on this feature at our edge to offer OCSP stapling to all clients automatically. So in order to avoid losing this functionality we spent a few weeks working on a replacement, and, surprise! we ended up with a far more reliable OCSP pipeline than when we started. You can read more about the work we did in <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">this blog post</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="chacha20-poly1305-draft">ChaCha20-Poly1305 draft</h3>
-		<a href="https://blog.cloudflare.com/#chacha20-poly1305-draft" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#chacha20-poly1305-draft" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -88,7 +88,7 @@
 	<p>We decided to add support for these ciphers back to our own internal BoringSSL fork so that those older clients could still take advantage of them. We will keep monitoring our metrics and decide whether to remove them once the usage drops significantly.</p>
 	<div class="flex anchor relative">
 		<h3 id="slow-base64-veni-vidi-vici">Slow Base64: veni, vidi, vici</h3>
-		<a href="https://blog.cloudflare.com/#slow-base64-veni-vidi-vici" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#slow-base64-veni-vidi-vici" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@
 	<p>Of course the astute reader might ask, why were you loading those certificates from disk multiple times in the first place? And indeed there was no particular reason, other than the fact that the problem went unnoticed until it actually became a problem. So we fixed our configuration to only load the certificates from disk in the configuration sections where they are actually needed, and lived happily ever after.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -5,7 +5,7 @@
 	<p>As a step towards addressing this limitation, we’ve introduced a new level of flexibility: customers can now use parts of any prefix — whether it’s bound to Cloudflare CDN, Spectrum, or Magic Transit — for additional use with CDN or Spectrum. This enhancement provides much-needed flexibility, enabling businesses to optimize their IP address usage while keeping costs under control.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="the-challenges-of-moving-onboarded-byoip-prefixes-between-services">The challenges of moving onboarded BYOIP prefixes between services</h2>
-		<a href="https://blog.cloudflare.com/#the-challenges-of-moving-onboarded-byoip-prefixes-between-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-challenges-of-moving-onboarded-byoip-prefixes-between-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>Migrating BYOIP prefixes dynamically between Cloudflare services is no trivial task, especially with thousands of servers capable of accepting and processing connections. The problem required overcoming several technical challenges related to IP address management, kernel-level bindings, and orchestration.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="dynamic-reallocation-of-prefixes-across-services">Dynamic reallocation of prefixes across services</h3>
-		<a href="https://blog.cloudflare.com/#dynamic-reallocation-of-prefixes-across-services" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#dynamic-reallocation-of-prefixes-across-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>As prefixes shift between services, it is critical that servers update their IP sets and iptable rules dynamically to ensure traffic is correctly routed. Failure to do so could lead to routing loops or dropped connections.&nbsp;&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="updating-tubular-an-ebpf-based-ip-and-port-binding-service">Updating Tubular – an eBPF-based IP and port binding service</h3>
-		<a href="https://blog.cloudflare.com/#updating-tubular-an-ebpf-based-ip-and-port-binding-service" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#updating-tubular-an-ebpf-based-ip-and-port-binding-service" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	<p>The final challenge was deploying the Tubular-ingress proxy integration across the fleet of servers without disrupting active connections. As of April 2025, Cloudflare handles an average of 71 million HTTP requests per second, peaking at 100 million. To safely deploy at this scale, the necessary Tubular and ingress proxy configuration changes were staged across all Cloudflare servers without disrupting existing connections. The final step involved adding bindings — IP addresses and ports corresponding to Cloudflare CDN prefixes — to the Tubular configuration. These bindings direct connections through Tubular via the Unix sockets registered during the previous integration step. To minimize risk, bindings were gradually enabled in a controlled rollout across the global fleet.</p>
 	<div class="flex anchor relative">
 		<h4 id="tubular-data-plane-in-action">Tubular data plane in action</h4>
-		<a href="https://blog.cloudflare.com/#tubular-data-plane-in-action" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tubular-data-plane-in-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -55,7 +55,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h4 id="coordination-and-orchestration-at-scale">Coordination and orchestration at scale&nbsp;</h4>
-		<a href="https://blog.cloudflare.com/#coordination-and-orchestration-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#coordination-and-orchestration-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -64,7 +64,7 @@
 	<p>Our goal is to achieve a quick transition of IP address prefixes between services when initiated by customers, which requires a high level of coordination. We need to ensure that changes propagate correctly across all servers to maintain stability. Currently, when a customer migrates a prefix between services, there is a 4-6 hour window of uncertainty where incoming packets may be dropped due to a lack of guaranteed routing. To address this, we are actively implementing systems that will reduce this transition time from hours to just a matter of minutes, significantly improving reliability and minimizing disruptions.</p>
 	<div class="flex anchor relative">
 		<h2 id="smarter-ip-address-management">Smarter IP address management</h2>
-		<a href="https://blog.cloudflare.com/#smarter-ip-address-management" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#smarter-ip-address-management" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -93,7 +93,7 @@
 	<p>As you can see in this example, this approach provides customers with greater control and agility over how their IP address space is allocated. Instead of rigidly assigning an entire prefix to a single service, users can now tailor their IP address usage to match specific workloads or deployment needs. Setting this up is straightforward — all it takes is a few HTTP requests to the <a href="https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service_bindings"><u>Cloudflare API</u></a>. You can define service bindings by specifying which IP addresses or subnets should be routed to CDN, Spectrum, or Magic Transit. This allows you to tailor traffic routing to match your architecture without needing to restructure your entire IP address allocation. The process remains consistent whether you're configuring a single IP address or splitting up larger subnets, making it easy to apply across different parts of your network. The foundational technical work addressing the underlying architectural challenges outlined above made it possible to streamline what could have been a complex setup into a straightforward series of API interactions.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

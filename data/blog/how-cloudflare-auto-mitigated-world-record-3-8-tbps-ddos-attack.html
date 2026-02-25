@@ -12,7 +12,7 @@
 	<p><sup><i>A mitigated 2.14 billion packet per second DDoS attack that lasted 60 seconds</i></sup></p>
 	<div class="flex anchor relative">
 		<h2 id="cloudflare-customers-are-protected">Cloudflare customers are protected</h2>
-		<a href="https://blog.cloudflare.com/#cloudflare-customers-are-protected" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-customers-are-protected" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>Cloudflare customers using <a href="https://developers.cloudflare.com/spectrum"><u>Spectrum</u></a> and <a href="https://developers.cloudflare.com/magic-transit"><u>Magic Transit</u></a> are also automatically protected. Magic Transit customers can further optimize their protection by deploying <a href="https://developers.cloudflare.com/magic-firewall"><u>Magic Firewall</u></a> rules to enforce a strict positive and negative security model at the packet layer.</p>
 	<div class="flex anchor relative">
 		<h2 id="other-internet-properties-may-not-be-safe">Other Internet properties may not be safe</h2>
-		<a href="https://blog.cloudflare.com/#other-internet-properties-may-not-be-safe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#other-internet-properties-may-not-be-safe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -33,7 +33,7 @@
 	<p>In this blog post, we will review the attack campaign and why its attacks are so severe. We will describe the anatomy of a Layer 3/4 DDoS attack, its objectives, and how attacks are generated. We will then proceed to detail how Cloudflare’s systems were able to autonomously detect and mitigate these monstrous attacks without impacting performance for our customers. We will describe the key aspects of our defenses, starting with how our systems generate real-time (dynamic) signatures to match the attack traffic all the way to how we leverage kernel features to drop packets at wire-speed.</p>
 	<div class="flex anchor relative">
 		<h2 id="campaign-analysis">Campaign analysis</h2>
-		<a href="https://blog.cloudflare.com/#campaign-analysis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#campaign-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -137,7 +137,7 @@
 	<p><sup><i>Share of packets observed by source location</i></sup></p>
 	<div class="flex anchor relative">
 		<h2 id="anatomy-of-ddos-attacks">Anatomy of DDoS attacks</h2>
-		<a href="https://blog.cloudflare.com/#anatomy-of-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#anatomy-of-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -151,7 +151,7 @@
 	<p>The goal of a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack"><u>Distributed Denial of Service (DDoS) attack</u></a> is to deny legitimate users access to a service. This is usually done by exhausting resources needed to provide the service. In the context of these recent Layer 3/4 DDoS attacks, that resource is CPU cycles and network bandwidth.</p>
 	<div class="flex anchor relative">
 		<h3 id="exhausting-cpu-cycles">Exhausting CPU cycles</h3>
-		<a href="https://blog.cloudflare.com/#exhausting-cpu-cycles" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#exhausting-cpu-cycles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -164,7 +164,7 @@
 	<p>To defend against high packet rate attacks, you need to be able to inspect and discard the bad packets using as few CPU cycles as possible, leaving enough CPU to process the good packets. You can additionally acquire more, or faster, CPUs to perform the processing — but that can be a very lengthy process that bears high costs.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="exhausting-network-bandwidth">Exhausting network bandwidth</h3>
-		<a href="https://blog.cloudflare.com/#exhausting-network-bandwidth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#exhausting-network-bandwidth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -178,7 +178,7 @@
 		Defending against attacks that can saturate network bandwidth can be difficult because there is very little that can be done if you are on the downstream side of the saturated pipe. There are really only a few choices: you can get a bigger pipe, you can potentially find a way to move the good traffic to a new pipe that isn’t saturated, or you can hopefully ask the upstream side of the pipe to stop sending some or all of the data into the pipe.</p>
 	<div class="flex anchor relative">
 		<h2 id="generating-ddos-attacks">Generating DDoS attacks</h2>
-		<a href="https://blog.cloudflare.com/#generating-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#generating-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -189,7 +189,7 @@
 	<p>In both scenarios, the attacker needs to acquire or gain access to many devices to generate the attack. These devices can be acquired in a number of different ways. They may be server class machines from cloud providers or hosting services, or they can be compromised devices like DVRs, routers, and webcams that have been infected with the attacker’s malware. These machines together form the botnet.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-cloudflare-defends-against-large-attacks">How Cloudflare defends against large attacks</h2>
-		<a href="https://blog.cloudflare.com/#how-cloudflare-defends-against-large-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-cloudflare-defends-against-large-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -198,7 +198,7 @@
 	<p>Now that we understand the fundamentals of how DDoS attacks work, we can explain how Cloudflare can defend against these attacks.</p>
 	<div class="flex anchor relative">
 		<h3 id="spreading-the-attack-surface-using-global-anycast">Spreading the attack surface using global anycast</h3>
-		<a href="https://blog.cloudflare.com/#spreading-the-attack-surface-using-global-anycast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#spreading-the-attack-surface-using-global-anycast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -213,7 +213,7 @@
 	<p>Additionally, for high bandwidth attacks, Cloudflare’s network has another advantage. A large proportion of traffic on the Cloudflare network does not consume bandwidth in a symmetrical manner. For example, an HTTP request to get a webpage from a site behind Cloudflare will be a relatively small incoming packet, but produce a larger amount of outgoing traffic back to the client. This means that the Cloudflare network tends to egress far more legitimate traffic than we receive. However, the network links and bandwidth allocated are symmetrical, meaning there is an abundance of ingress bandwidth available to receive volumetric attack traffic.</p>
 	<div class="flex anchor relative">
 		<h3 id="generating-real-time-signatures">Generating real-time signatures</h3>
-		<a href="https://blog.cloudflare.com/#generating-real-time-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#generating-real-time-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -230,7 +230,7 @@
 	<p>The detection and mitigation of attacks by dosd is done at the server level, at the data center level and at the global level — and it’s all software defined. This makes our network extremely resilient and leads to almost instant mitigation. There are no out-of-path “scrubbing centers” or “scrubbing devices”. Instead, each server runs the full stack of the Cloudflare product suite including the DDoS detection and mitigation component. And it is all done autonomously. Each server also <i>gossips (multicasts)</i> mitigation instructions within a data center between servers, and globally between data centers. This ensures that whether an attack is localized or globally distributed, dosd will have already installed mitigation rules inline to ensure a robust mitigation.</p>
 	<div class="flex anchor relative">
 		<h2 id="strong-defenses-against-strong-attacks">Strong defenses against strong attacks</h2>
-		<a href="https://blog.cloudflare.com/#strong-defenses-against-strong-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#strong-defenses-against-strong-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

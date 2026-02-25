@@ -29,7 +29,7 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>The ZSK (Zone Signing Key) has been rolled religiously every quarter since 2010, however rolling the Key Signing Key is a much scarier operation. If it goes wrong it could leave the root zone signing invalid, meaning a large part of the internet would not trust any of the content, effectively knocking DNS offline for validating resolvers. After DNSSEC was designed, a mechanism was devised for rolling out a new Key Signing Key in RFC5011, this operation is commonly known as the 5011 roll-over.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-a-key-rollover">What is a KEY rollover?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-a-key-rollover" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-a-key-rollover" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>Different keys move through the states in different ways depending on the usage, for example some keys are never revoked, just removing them is sufficient, for example the root ZSK’s are never revoked. When rolled, the root KSK will pass through all states.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-is-the-root-ksk-different">Why is the Root KSK different ?</h3>
-		<a href="https://blog.cloudflare.com/#why-is-the-root-ksk-different" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-is-the-root-ksk-different" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -51,7 +51,7 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>After the key has been in PendingAddtional for 30 consecutive days it is accepted into Active state and will be trusted to sign the DNSKEY set for the root. From this point onwards, the new key can be used to sign the Zone Signing Key, and in turn the root zone content itself.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-are-we-rolling-the-root-key-trust-anchor">Why are we rolling the root key trust anchor?</h3>
-		<a href="https://blog.cloudflare.com/#why-are-we-rolling-the-root-key-trust-anchor" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-are-we-rolling-the-root-key-trust-anchor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>Some people advocated rolling the key and changing the algorithm at the same time but that was deemed too risky. The right time to start talking about that is after the current roll concludes successfully.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-has-happened-so-far">What has happened so far?</h3>
-		<a href="https://blog.cloudflare.com/#what-has-happened-so-far" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-has-happened-so-far" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -90,7 +90,7 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>Rolling the KSK at this point would have resulted in the remaining resolvers not trusting the content of the root zone, ultimately breaking all DNS resolution through them.</p>
 	<div class="flex anchor relative">
 		<h3 id="operational-reality-vs-the-protocol-design">Operational reality vs the protocol design</h3>
-		<a href="https://blog.cloudflare.com/#operational-reality-vs-the-protocol-design" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#operational-reality-vs-the-protocol-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -116,7 +116,7 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>Back to what happened at Cloudflare? In our case the issue was a combination of upgrades and container issues. We were upgrading software on all our nodes and our resolver processes were allocated to different computers. Our fix was to quickly upgrade to a software version that knew about the new trust anchor, so future restarts/migrations would not cause loss in trust.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-next-for-the-ksk-rollover">What is next for the KSK rollover</h3>
-		<a href="https://blog.cloudflare.com/#what-is-next-for-the-ksk-rollover" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-next-for-the-ksk-rollover" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -128,7 +128,7 @@ www.cloudflare.com.	4	IN	RRSIG	A 13 3 5 20180207170906 20180205150906 35273 clou
 	<p>If you speak languages other than English and you worry about your local operators should know about the DNSSEC Key Rollover failure modes, feel free to republish this blog or parts of it in your language.</p>
 	<div class="flex anchor relative">
 		<h3 id="hsm-destruction-at-the-next-ksk-ceremony-feb-7th-2018">HSM destruction at the next KSK ceremony Feb 7th 2018</h3>
-		<a href="https://blog.cloudflare.com/#hsm-destruction-at-the-next-ksk-ceremony-feb-7th-2018" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#hsm-destruction-at-the-next-ksk-ceremony-feb-7th-2018" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -3,7 +3,7 @@
 	<p>On Friday, we <a href="https://blog.cloudflare.com/dns-analytics">announced DNS analytics</a> for all Cloudflare customers. Because of our scale –– by the time you’ve finished reading this, Cloudflare DNS will have handled millions of DNS queries –– we had to be creative in our implementation. In this post, we’ll describe the systems that make up DNS Analytics which help us comb through trillions of these logs each month.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-logs-come-in-from-the-edge">How logs come in from the edge</h3>
-		<a href="https://blog.cloudflare.com/#how-logs-come-in-from-the-edge" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-logs-come-in-from-the-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>Having a queue with structured logs has allowed us to investigate issues retrospectively without requiring access to production nodes, but it has proven to be quite laborious at times. In the early days of the project we would skim the queue to find offsets for the rough timespan we needed, and then extract the data into HDFS in <a href="https://parquet.apache.org">Parquet</a> format for offline analysis.</p>
 	<div class="flex anchor relative">
 		<h3 id="about-aggregations">About aggregations</h3>
-		<a href="https://blog.cloudflare.com/#about-aggregations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#about-aggregations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -43,7 +43,7 @@
 	<p>So we started looking into several OLAP (Online Analytical Processing) systems. The first system we looked into was <a href="http://druid.io">Druid</a>. We were really impressed with the capabilities and how the front-end (Pivot and formerly Caravel) is able to slice and dice the data, allowing us to generate reports with arbitrary dimensions. Druid has already been deployed in similar environments with over 100B events/day, so we were confident it could work, but after testing on sampled data we couldn’t justify the hardware costs of hundreds of nodes. Around the same time Yandex open-sourced their OLAP system, <a href="https://clickhouse.yandex">ClickHouse</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="and-then-it-clicked">And then it Clicked</h3>
-		<a href="https://blog.cloudflare.com/#and-then-it-clicked" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#and-then-it-clicked" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -57,7 +57,7 @@
 	<p>One such specialisation are tables with aggregations over zones. Queries across all rows are significantly more expensive, as there is no opportunity to exclude data from scanning. This makes it less practical for analysts to compute basic aggregations on long periods of time, so we decided to use <a href="https://clickhouse.yandex/reference_en.html#CREATE%20VIEW">materialized views</a> to incrementally compute predefined aggregations, such as counters, uniques, and quantiles. The materialized views leverage the sort phase on batch insertion to do productive work - computing aggregations. So after the newly inserted segment is sorted, it also produces a table with rows representing dimensions, and columns representing <a href="https://github.com/yandex/ClickHouse/blob/master/doc/developers/architecture.md#aggregate-functions">aggregation function state</a>. The difference between aggregation state and final result is that we can generate reports using an arbitrary time resolution without actually storing the precomputed data in multiple resolutions. In some cases the state and result can be the same - for example basic counters, where hourly counts can be produced by summing per-minute counts, however it doesn’t make sense to sum unique visitors or latency quantiles. This is when aggregation state is much more useful, as it allows meaningful merging of more complicated states, such as <a href="https://en.wikipedia.org/wiki/HyperLogLog">HyperLogLog (HLL)</a> bitmap to produce hourly unique visitors estimate from minutely aggregations. The downside is that storing state can be much more expensive than final values - the aforementioned HLL state tends to be 20-100 bytes / row when compressed, while a counter is only 8 bytes (1 byte compressed on average). These tables are then used to quickly visualise general trends across zones or sites, and also by our API service that uses them opportunistically for simple queries. Having both incrementally aggregated and unaggregated data in the same place allowed us simplify the architecture by deprecating stream processing altogether.</p>
 	<div class="flex anchor relative">
 		<h3 id="infrastructure-and-data-integrity">Infrastructure and data integrity</h3>
-		<a href="https://blog.cloudflare.com/#infrastructure-and-data-integrity" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#infrastructure-and-data-integrity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -67,7 +67,7 @@
 	<p>Another disk failure <a href="https://github.com/yandex/ClickHouse/issues/520">highlighted a problem</a> with the filesystem we used. Initially we used XFS, but it started to lock up during replication from 2 peers at the same time, thus breaking replication of segments before it completed. This issue has manifested itself with a lot of I/O activity with little disk usage increase as broken parts were deleted, so we gradually migrated to ext4 that didn’t have the same issue.</p>
 	<div class="flex anchor relative">
 		<h3 id="visualizing-data">Visualizing Data</h3>
-		<a href="https://blog.cloudflare.com/#visualizing-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#visualizing-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

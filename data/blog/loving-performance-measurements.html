@@ -6,7 +6,7 @@
 	<p>This post is a collection of things I've learned working on customer performance escalations within Cloudflare and analyzing existing tools (both internal and commercial) that we use when evaluating our own performance.&nbsp; A lot of this information also comes from Gil Tene's talk, <a href="https://youtu.be/lJ8ydIuPFeU"><u>How NOT to Measure Latency</u></a>. You should definitely watch that too (but maybe after reading this, so you don't spoil the ending). I was surprised by my own blind spots and which assumptions turned out to be wrong, even though they seemed "obviously true" at the start. I expect I am not alone in these regards. For that reason this journey starts by establishing fundamental definitions and ends with some new tools and techniques that we will be sharing as well as the surprising results that those tools uncovered.</p>
 	<div class="flex anchor relative">
 		<h2 id="check-your-verbiage">Check your verbiage</h2>
-		<a href="https://blog.cloudflare.com/#check-your-verbiage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#check-your-verbiage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>There is a very useful and common metric that is used to measure web requests, and I’m sure lots of you have been screaming it in your brains from the second you read the title of this post. ✨Time to first byte✨. Clearly this is the answer, right?!&nbsp; But ... what is “Time to first byte”?</p>
 	<div class="flex anchor relative">
 		<h2 id="ttfb-mine">TTFB mine</h2>
-		<a href="https://blog.cloudflare.com/#ttfb-mine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ttfb-mine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>One common place <i>we</i> see TTFB used is our customers’ analysis comparing Cloudflare's performance to our competitors through <a href="https://www.catchpoint.com"><u>Catchpoint</u></a>. Customers, as you might imagine, have a vested interest in measuring our latency, as it affects theirs. Catchpoint provides several tools built on their global Internet probe network for measuring HTTP request latency (among other things) and visualizing it in their web interface. In an effort to align better with our customers, we decided to adopt Catchpoint’s terminology for talking about latency, both internally and externally.</p>
 	<div class="flex anchor relative">
 		<h2 id="catchpoint-catch-up">Catchpoint catch-up</h2>
-		<a href="https://blog.cloudflare.com/#catchpoint-catch-up" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#catchpoint-catch-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -54,7 +54,7 @@
 	<p>Now that we, our customers, and our browsers (with data coming from <a href="https://en.wikipedia.org/wiki/Real_user_monitoring"><u>RUM</u></a>) have a common and well-defined language to talk about the phases of a request, we can start to measure, visualize, and compare the components that make up the network latency of a request.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="visual-basics">Visual basics</h2>
-		<a href="https://blog.cloudflare.com/#visual-basics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#visual-basics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@
 	<p>ms) for multiple minutes while the p50 jumped by more than 13600% (4.4ms to 600ms). It is a clear signal, so something must have happened, but what was it? Let me keep you in suspense for a second while we talk about statistics and probability.</p>
 	<div class="flex anchor relative">
 		<h2 id="uncooked-math">Uncooked math</h2>
-		<a href="https://blog.cloudflare.com/#uncooked-math" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#uncooked-math" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -87,7 +87,7 @@
 	<p>Viewed like this, the spike in latency no longer looks so remarkable. Without seeing more of the picture, we could easily believe something was wrong when in reality, even if something is wrong, it is not localized to that moment. In this case, it's like we are using our own statistics to lie to ourselves.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="the-top-1-of-requests-have-99-of-the-latency">The top 1% of requests have 99% of the latency</h2>
-		<a href="https://blog.cloudflare.com/#the-top-1-of-requests-have-99-of-the-latency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-top-1-of-requests-have-99-of-the-latency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -128,7 +128,7 @@
 	<p>This seems a little too perfect, but I am not making this up. For <a href="https://www.cloudflare.com"><u>www.cloudflare.com</u></a>, if you want to capture a value that's representative of what the median user can expect, you need to look at $p99$ request latency. Extending this even further, if you want a value that's representative of what 99% of users will experience, you need to look at the <b>99.99th</b> <b>percentile</b>!</p>
 	<div class="flex anchor relative">
 		<h2 id="spherical-latency-in-a-vacuum">Spherical latency in a vacuum</h2>
-		<a href="https://blog.cloudflare.com/#spherical-latency-in-a-vacuum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#spherical-latency-in-a-vacuum" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -141,7 +141,7 @@
 	<p>With everything we have discussed in this post, it seems like we can devise a better method for doing this comparison. We saw how exposing more of the percentile spectrum can provide a new perspective on existing data, and how impactful higher percentile statistics can be when looking at a more complete user experience. Let me close this post with an example of how putting those two concepts together yields some intriguing results.</p>
 	<div class="flex anchor relative">
 		<h2 id="one-last-thing">One last thing</h2>
-		<a href="https://blog.cloudflare.com/#one-last-thing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#one-last-thing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

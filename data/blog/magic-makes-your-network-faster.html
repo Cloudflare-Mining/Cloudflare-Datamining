@@ -4,7 +4,7 @@
 	<p>We <a href="https://blog.cloudflare.com/magic-transit">launched Magic Transit</a> two years ago, followed more recently by its siblings <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN</a> and <a href="https://blog.cloudflare.com/introducing-magic-firewall">Magic Firewall</a>, and have talked at length about how this suite of products helps security teams sleep better at night by protecting entire networks from malicious traffic. Today, as part of <a href="https://blog.cloudflare.com/fastest-internet">Speed Week</a>, we’ll break down the other side of the Magic: how using Cloudflare can automatically make your entire network faster. Our scale and interconnectivity, use of data to make more intelligent routing decisions, and inherent architecture differences versus traditional networks all contribute to performance improvements across all IP traffic.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-magic">What is Magic?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-magic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-magic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -13,7 +13,7 @@
 	<p>Cloudflare’s <a href="https://www.cloudflare.com/network-services">“Magic” services</a> help customers connect and secure their networks without the cost and complexity of maintaining legacy hardware. Magic Transit provides connectivity and DDoS protection for Internet-facing networks; Magic WAN enables customers to replace legacy <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan">WAN architectures</a> by routing private traffic through Cloudflare; and Magic Firewall protects all connected traffic with a built-in <a href="https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall">firewall-as-a-service</a>. All three share underlying architecture principles that form the basis of the performance improvements we’ll dive deeper into below.</p>
 	<div class="flex anchor relative">
 		<h3 id="anycast-everything">Anycast everything</h3>
-		<a href="https://blog.cloudflare.com/#anycast-everything" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#anycast-everything" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -27,7 +27,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="every-service-everywhere">Every service everywhere</h3>
-		<a href="https://blog.cloudflare.com/#every-service-everywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#every-service-everywhere" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -36,7 +36,7 @@
 	<p>In addition to being able to send and receive traffic from anywhere, Cloudflare’s edge network is also designed to run every service on every server in every location. This means that incoming traffic can be processed wherever it lands, which allows us to <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">block DDoS attacks</a> and other malicious traffic within seconds, apply firewall rules, and route traffic efficiently and without bouncing traffic around between different servers or even different locations before it’s dispatched to its destination.</p>
 	<div class="flex anchor relative">
 		<h3 id="zero-trust-magic-the-next-gen-network-of-the-future">Zero Trust + Magic: the next-gen network of the future</h3>
-		<a href="https://blog.cloudflare.com/#zero-trust-magic-the-next-gen-network-of-the-future" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#zero-trust-magic-the-next-gen-network-of-the-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@
 	<p>With <a href="https://www.cloudflare.com/cloudflare-one">Cloudflare One</a>, customers can seamlessly combine <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> and network connectivity to build a faster, more secure, more reliable experience for their entire corporate network. Everything we’ll talk about today applies even more to customers using the entire Cloudflare One platform - stacking these products together means the performance benefits multiply (check out <a href="https://blog.cloudflare.com/the-zero-trust-platform-built-for-speed">our post on Zero Trust and speed</a> from today for more on this).</p>
 	<div class="flex anchor relative">
 		<h3 id="more-connectivity-faster-traffic">More connectivity = faster traffic</h3>
-		<a href="https://blog.cloudflare.com/#more-connectivity-faster-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#more-connectivity-faster-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -130,7 +130,7 @@
 	<p>All of these results were collected <i>without</i> the use of Argo Smart Routing for Packets, which we announced on Tuesday. Early data indicates that networks using Smart Routing will see even more substantial gains.</p>
 	<div class="flex anchor relative">
 		<h3 id="modern-architecture-eliminates-traffic-trombones">Modern architecture eliminates traffic trombones</h3>
-		<a href="https://blog.cloudflare.com/#modern-architecture-eliminates-traffic-trombones" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#modern-architecture-eliminates-traffic-trombones" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -147,7 +147,7 @@
 	<p>Network and security teams have tried to combat this issue by installing hardware at more locations to establish smaller, regional hubs, but this quickly becomes prohibitively expensive and hard to manage. The price of purchasing multiple hardware boxes and dedicated private links adds up quickly, both in network gear and connectivity itself as well as the effort required to maintain additional infrastructure. Ultimately, this cost usually outweighs the benefit of the seconds regained with shorter network paths.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-hub-is-everywhere">The “hub” is everywhere</h3>
-		<a href="https://blog.cloudflare.com/#the-hub-is-everywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-hub-is-everywhere" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -201,7 +201,7 @@
 	<p>This effect can be amplified for networks with globally distributed locations — imagine the benefits for customers who are used to delays from backhauling traffic between different regions across the world.</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-smarter">Getting smarter</h3>
-		<a href="https://blog.cloudflare.com/#getting-smarter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#getting-smarter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -210,7 +210,7 @@
 	<p>Adding more connectivity options and removing traffic trombones provide a performance boost for all Magic traffic, but we’re not stopping there. In the same way we leverage insights from hundreds of billions of requests per day to block new types of malicious traffic, we’re also using our unique perspective on Internet traffic to make more intelligent decisions about routing customer traffic versus relying on BGP alone. Earlier this week, we announced <a href="https://blog.cloudflare.com/argo-v2">updates to Argo Smart Routing</a> including the brand-new Argo Smart Routing for Packets. Customers using Magic products can enable it to automatically boost performance for any IP traffic routed through Cloudflare (by 10% on average according to results so far, and potentially more depending on the individual customer’s network topology) — read more on this in the <a href="https://blog.cloudflare.com/argo-v2">announcement blog</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -219,7 +219,7 @@
 	<p>The modern architecture, well-connected network, and intelligent optimizations we’ve talked about today are just the start. Our vision is for any customer using Magic to connect and protect their network to have the best performance possible for all of their traffic, automatically. We’ll keep investing in expanding our presence, interconnections, and backbone, as well as continuously improving Smart Routing — but we’re also already cooking up brand-new products in this space to deliver optimizations in new ways, including WAN Optimization and Quality of Service functions. Stay tuned for more Magic coming soon, and get in touch with your account team to learn more about how we can help make your network faster starting today.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

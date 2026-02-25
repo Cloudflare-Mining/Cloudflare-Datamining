@@ -6,7 +6,7 @@
 	<p>It’s a quality that goes far beyond simple "uptime." True resilience is a multi-layered capability, built on everything from the diversity of physical subsea cables to the security of BGP routing and the health of a competitive market. It's an emergent property much like <a href="https://en.wikipedia.org/wiki/Psychological_resilience"><u>psychological resilience</u></a>: while each individual network must be robust, true resilience only arises from the collective, interoperable actions of the entire ecosystem. In this post, we'll introduce a data-driven framework to move beyond abstract definitions and start quantifying what makes a network resilient. All of our work is based on public data sources, and we're sharing our metrics to help the entire community build a more reliable and secure Internet for everyone.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-internet-resilience">What is Internet resilience?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-internet-resilience" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-internet-resilience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>This definition links the abstract goal of resilience to the concrete, measurable metrics that form the basis of our analysis.</p>
 	<div class="flex anchor relative">
 		<h3 id="local-decisions-have-global-impact">Local decisions have global impact</h3>
-		<a href="https://blog.cloudflare.com/#local-decisions-have-global-impact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#local-decisions-have-global-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@
 	<p>This perspective shapes how we design and interpret resilience metrics. Rather than treating countries as isolated units, we look at how well their networks are woven into the global fabric: the number and diversity of upstream providers, the extent of international peering, and the richness of local interconnections. These are the building blocks of a resilient Internet.</p>
 	<div class="flex anchor relative">
 		<h3 id="route-hygiene-keeping-the-internet-healthy">Route hygiene: Keeping the Internet healthy</h3>
-		<a href="https://blog.cloudflare.com/#route-hygiene-keeping-the-internet-healthy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#route-hygiene-keeping-the-internet-healthy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@
 	<p>The more networks adopt these practices, the stronger and more resilient the Internet becomes. We actively support the deployment of RPKI, ROV, and diverse routing to keep the global Internet healthy.</p>
 	<div class="flex anchor relative">
 		<h2 id="measuring-resilience-is-harder-than-it-sounds">Measuring resilience is harder than it sounds</h2>
-		<a href="https://blog.cloudflare.com/#measuring-resilience-is-harder-than-it-sounds" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#measuring-resilience-is-harder-than-it-sounds" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -56,7 +56,7 @@
 	<p>Projects like RouteViews and RIPE RIS collect BGP routing data that shows how networks connect. <a href="https://www.cloudflare.com/en-in/learning/network-layer/what-is-mtr"><u>Traceroute</u></a> measurements reveal paths at the router level. IXP and submarine cable maps give partial views of the physical layer. But each of these sources has blind spots: peering links often don’t appear in BGP data, backup paths may remain hidden, and physical routes are hard to map precisely. This lack of a single, complete dataset means that resilience measurement relies on combining many partial perspectives, a bit like reconstructing a city map from scattered satellite images, traffic reports, and public utility filings. It’s challenging, but it’s also what makes this field so interesting.</p>
 	<div class="flex anchor relative">
 		<h3 id="translating-resilience-into-quantifiable-metrics">Translating resilience into quantifiable metrics</h3>
-		<a href="https://blog.cloudflare.com/#translating-resilience-into-quantifiable-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#translating-resilience-into-quantifiable-metrics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -65,7 +65,7 @@
 	<p>Once we understand why resilience matters and what makes it hard to measure, the next step is to translate these ideas into concrete metrics. These metrics give us a way to evaluate how well different parts of the Internet can withstand disruptions and to identify where the weak points are. No single metric can capture Internet resilience on its own. Instead, we look at it from multiple angles: physical infrastructure, network topology, interconnection patterns, and routing behavior. Below are some of the key dimensions we use. Some of these metrics are inspired from existing research, like the <a href="https://pulse.internetsociety.org/en/resilience"><u>ISOC Pulse</u></a> framework. All described methods rely on public data sources and are fully reproducible. As a result, in our visualizations we intentionally omit country and region names to maintain focus on the methodology and interpretation of the results.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="ixps-and-colocation-facilities">IXPs and colocation facilities</h3>
-		<a href="https://blog.cloudflare.com/#ixps-and-colocation-facilities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ixps-and-colocation-facilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -110,7 +110,7 @@
 	<p>For example, the figure above represents US states where a region hosts more or less infrastructure that is expected for its population, based on its LQ score. This statistic illustrates how even for the states with the highest number of facilities this number is <i>still</i> lower than would be expected given the population size of those states.</p>
 	<div class="flex anchor relative">
 		<h4 id="economic-weighted-metrics">Economic-weighted metrics</h4>
-		<a href="https://blog.cloudflare.com/#economic-weighted-metrics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#economic-weighted-metrics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -136,7 +136,7 @@
 	<p>The chart on the left suggests substantial geographical inequality in colocation facility distribution across the US states. However, the population-weighted analysis in the chart on the right demonstrates that much of that geographic concentration can be explained by population distribution.</p>
 	<div class="flex anchor relative">
 		<h3 id="submarine-cables">Submarine cables</h3>
-		<a href="https://blog.cloudflare.com/#submarine-cables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#submarine-cables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -156,7 +156,7 @@
 	</ul>
 	<div class="flex anchor relative">
 		<h3 id="inter-domain-routing">Inter-domain routing</h3>
-		<a href="https://blog.cloudflare.com/#inter-domain-routing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#inter-domain-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -198,7 +198,7 @@
 	<p><b>Customer cone size</b> developed by <a href="https://asrank.caida.org/about#customer-cone"><u>CAIDA</u></a> offers another perspective, capturing an AS’s economic and routing influence via the set of networks it serves through customer links. Large cones indicate major transit hubs whose failure affects many downstream networks. However, global cone rankings can obscure regional importance, so <a href="https://www.caida.org/catalog/papers/2023_on_importance_being_as/on_importance_being_as.pdf"><u>country-level adaptations</u></a> give more accurate resilience assessments.</p>
 	<div class="flex anchor relative">
 		<h4 id="impact-weighted-resilience-assessment">Impact-Weighted Resilience Assessment</h4>
-		<a href="https://blog.cloudflare.com/#impact-weighted-resilience-assessment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#impact-weighted-resilience-assessment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -208,7 +208,7 @@
 	<p>This approach helps separate theoretical resilience from practical resilience. A country might have many multi-homed networks, but if most users rely on just one single-homed ISP, its resilience is weaker than it looks. Impact weighting helps surface these kinds of structural risks so that operators and policymakers can prioritize improvements where they matter most.</p>
 	<div class="flex anchor relative">
 		<h3 id="metrics-of-network-hygiene">Metrics of network hygiene</h3>
-		<a href="https://blog.cloudflare.com/#metrics-of-network-hygiene" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#metrics-of-network-hygiene" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -231,7 +231,7 @@
 	<p>Another critical aspect of Internet hygiene is mitigating DDoS attacks, which often rely on IP address spoofing to amplify traffic and obscure the attacker’s origin. <a href="https://datatracker.ietf.org/doc/bcp38"><u>BCP-38</u></a>, the IETF’s network ingress filtering recommendation, addresses this by requiring operators to block packets with spoofed source addresses, reducing a region’s role as a launchpad for global attacks. While BCP-38 does not prevent a network from being targeted, its deployment is a key indicator of collective security responsibility. Measuring compliance requires active testing from inside networks, which is carried out by the <a href="https://spoofer.caida.org/summary.php"><u>CAIDA Spoofer Project</u></a>. Although the global sample remains limited, these metrics offer valuable insight into both the technical effectiveness and the security engagement of a nation’s network community, complementing RPKI in strengthening the overall routing security posture.</p>
 	<div class="flex anchor relative">
 		<h3 id="measuring-the-collective-security-posture">Measuring the collective security posture</h3>
-		<a href="https://blog.cloudflare.com/#measuring-the-collective-security-posture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#measuring-the-collective-security-posture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -242,7 +242,7 @@
 	<p>Additionally, a region’s participation in public measurement platforms reflects its Internet observability, which is essential for fault detection, impact assessment, and incident response. <a href="https://atlas.ripe.net"><u>RIPE Atlas</u></a> and <a href="https://www.caida.org/projects/ark"><u>CAIDA Ark</u></a> provide dense data-plane measurements; <a href="https://www.routeviews.org/routeviews"><u>RouteViews</u></a> and <a href="https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris"><u>RIPE RIS</u></a> collect BGP routing data to detect anomalies; and <a href="https://www.peeringdb.com"><u>PeeringDB</u></a> documents interconnection details, reflecting operational maturity and integration into the global peering fabric. Together, these platforms underpin observatories like <a href="https://ioda.inetintel.cc.gatech.edu"><u>IODA</u></a> and <a href="https://grip.oie.gatech.edu/home"><u>GRIP</u></a>, which combine BGP and active data to detect outages and routing incidents in near real time, offering critical visibility into Internet health and security.</p>
 	<div class="flex anchor relative">
 		<h2 id="building-a-more-resilient-internet-together">Building a more resilient Internet, together</h2>
-		<a href="https://blog.cloudflare.com/#building-a-more-resilient-internet-together" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#building-a-more-resilient-internet-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -4,7 +4,7 @@
 	<p><a href="https://1.1.1.1">1.1.1.1</a> sees approximately 600 billion queries per day. However, proportionally, most queries sent to this resolver are over cleartext: 89% over UDP and TCP combined, and the remaining 11% are encrypted. We care about end-user privacy and would prefer to see all of these queries sent to us over an encrypted transport using DNS-over-TLS or DNS-over-HTTPS. Having a mechanism by which clients could discover support for encrypted protocols such as DoH or DoT will help drive this number up and lead to more name encryption on the Internet. That’s where <a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-03">DDR</a> – or Discovery of Designated Resolvers – comes into play. As of today, 1.1.1.1 supports the latest version of <a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-03">DDR</a> so clients can automatically upgrade non-secure UDP and TCP connections to secure connections. In this post, we’ll describe the motivations for DDR, how the mechanism works, and, importantly, how you can test it out as a client.</p>
 	<div class="flex anchor relative">
 		<h3 id="dns-transports-and-public-resolvers">DNS transports and public resolvers</h3>
-		<a href="https://blog.cloudflare.com/#dns-transports-and-public-resolvers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#dns-transports-and-public-resolvers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -31,7 +31,7 @@
 	<p>As the answer to question (2) is purely technical and not a matter of policy, the ADD Working Group was able to specify a workable solution that we’ve implemented and tested with existing clients. Before getting into the details of how it works, let’s dig into the problem statement here and see what’s required to address it.</p>
 	<div class="flex anchor relative">
 		<h3 id="threat-model-and-problem-statement">Threat model and problem statement</h3>
-		<a href="https://blog.cloudflare.com/#threat-model-and-problem-statement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#threat-model-and-problem-statement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -60,7 +60,7 @@
 	<p>So how does this work, exactly?</p>
 	<div class="flex anchor relative">
 		<h3 id="ddr-mechanics">DDR mechanics</h3>
-		<a href="https://blog.cloudflare.com/#ddr-mechanics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ddr-mechanics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -105,7 +105,7 @@
 	<p>This demonstrates that the encrypted DNS resolver is authoritative for the client’s original DNS resolver. Or, in other words, that the original resolver and the encrypted resolver are effectively &nbsp;“the same.” An encrypted resolver that does not include the originally requested resolver IP address on its certificate would fail the validation, and clients are not expected to follow the designated upgrade path. This entire process is referred to as “<a href="https://datatracker.ietf.org/doc/html/draft-ietf-add-ddr-05#section-4.2">Verified Discovery</a>” in the DDR specification.</p>
 	<div class="flex anchor relative">
 		<h3 id="experimental-deployment-and-next-steps">Experimental deployment and next steps</h3>
-		<a href="https://blog.cloudflare.com/#experimental-deployment-and-next-steps" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#experimental-deployment-and-next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -131,7 +131,7 @@ one.one.one.one.                              300    IN A     1.0.0.1</code></pr
 	<p>This says that the DoH target one.one.one.one is accessible over port 443 (port=”443”) using either HTTP/2 or HTTP/3 (alpn=”h2,h3”), and the DoH path (key7) for queries is “/dns-query{?dns}”.</p>
 	<div class="flex anchor relative">
 		<h3 id="moving-forward">Moving forward</h3>
-		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

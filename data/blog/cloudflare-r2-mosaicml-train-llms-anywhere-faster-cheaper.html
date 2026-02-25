@@ -8,7 +8,7 @@
 
 	</figure>
 	<p>Building the large language models (LLMs) and diffusion models that power <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai">generative AI</a> requires massive infrastructure. The most obvious component is compute – hundreds to thousands of GPUs – but an equally critical (and often overlooked) component is the <b>data storage infrastructure.</b> Training datasets can be terabytes to petabytes in size, and this data needs to be read in parallel by thousands of processes. In addition, model checkpoints need to be saved frequently throughout a training run, and for LLMs these checkpoints can each be hundreds of gigabytes!</p>
-	<p>To <a href="https://r2-calculator.cloudflare.com">manage storage costs</a> and scalability, many machine learning teams have been moving to <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> to host their datasets and checkpoints. Unfortunately, most object store providers use egress fees to “lock in” users to their platform. This makes it very difficult to leverage GPU capacity across multiple cloud providers, or take advantage of lower / dynamic pricing elsewhere, since the data and model checkpoints are too expensive to move. At a time when cloud GPUs are scarce, and new hardware options are entering the market, it’s more important than ever to stay flexible.</p>
+	<p>To <a href="https://r2-calculator.cloudflare.com">manage storage costs</a> and scalability, many machine learning teams have been moving to <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> to host their datasets and checkpoints. Unfortunately, most <a href="https://www.cloudflare.com/developer-platform/products/r2">object store providers</a> use egress fees to “lock in” users to their platform. This makes it very difficult to leverage GPU capacity across multiple cloud providers, or take advantage of lower / dynamic pricing elsewhere, since the data and model checkpoints are too expensive to move. At a time when cloud GPUs are scarce, and new hardware options are entering the market, it’s more important than ever to stay flexible.</p>
 	<p>In addition to high egress fees, there is a technical barrier to object-store-centric machine learning training. Reading and writing data between object storage and compute clusters requires high throughput, efficient use of network bandwidth, determinism, and elasticity (the ability to train on different #s of GPUs). Building training software to handle all of this correctly and reliably is hard!</p>
 	<p>Today, we’re excited to show how MosaicML’s tools and Cloudflare R2 can be used together to address these challenges. First, with MosaicML’s open source <a href="https://github.com/mosaicml/streaming">StreamingDataset</a> and <a href="https://github.com/mosaicml/composer">Composer</a> libraries, you can easily stream in training data and read/write model checkpoints back to R2. All you need is an Internet connection. Second, thanks to R2’s zero-egress pricing, you can start/stop/move/resize jobs in response to GPU availability and prices across compute providers, without paying any data transfer fees. The MosaicML training platform makes it dead simple to orchestrate such training jobs across multiple clouds.</p>
 	<p>Together, Cloudflare and MosaicML give you the freedom to train LLMs on <i>any</i> compute, <i>anywhere</i> in the world, with zero switching costs. That means faster, cheaper training runs, and no vendor lock in :)</p>
@@ -17,7 +17,7 @@
 	</blockquote>
 	<div class="flex anchor relative">
 		<h3 id="reading-data-from-r2-using-streamingdataset">Reading data from R2 using StreamingDataset</h3>
-		<a href="https://blog.cloudflare.com/#reading-data-from-r2-using-streamingdataset" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reading-data-from-r2-using-streamingdataset" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -76,7 +76,7 @@ dataloader = DataLoader(dataset)</code></pre>
 	<p>StreamingDataset comes out of the box with high performance, elastic determinism, fast resumption, and multi-worker support. It also uses smart shuffling and distribution to ensure that download bandwidth is minimized. Across a variety of workloads such as LLMs and diffusion models, we find that there is no impact on training throughput (no dataloader bottleneck) when training from object stores like R2. For more information, check out the StreamingDataset <a href="https://www.mosaicml.com/blog/mosaicml-streamingdataset">announcement blog</a>!</p>
 	<div class="flex anchor relative">
 		<h3 id="reading-writing-model-checkpoints-to-r2-using-composer">Reading/writing model checkpoints to R2 using Composer</h3>
-		<a href="https://blog.cloudflare.com/#reading-writing-model-checkpoints-to-r2-using-composer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reading-writing-model-checkpoints-to-r2-using-composer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -101,7 +101,7 @@ trainer = Trainer(
 	<p>Composer uses asynchronous uploads to minimize wait time as checkpoints are being saved during training. It also works out of the box with multi-GPU and multi-node training, and <b>does not require a shared file system.</b> This means you can skip setting up an expensive EFS/NFS system for your compute cluster, saving thousands of dollars or more per month on public clouds. All you need is an Internet connection and appropriate credentials – your checkpoints arrive safely in your R2 bucket giving you scalable and secure storage for your private models.</p>
 	<div class="flex anchor relative">
 		<h3 id="using-mosaicml-and-r2-to-train-anywhere-efficiently">Using MosaicML and R2 to train anywhere efficiently</h3>
-		<a href="https://blog.cloudflare.com/#using-mosaicml-and-r2-to-train-anywhere-efficiently" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#using-mosaicml-and-r2-to-train-anywhere-efficiently" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -168,7 +168,7 @@ cluster: oci-1  # can be any compute cluster!</code></pre>
 	<p><i>An MCLI job template. Specify a run name, a Docker image, a set of commands, and a compute cluster to run on.</i></p>
 	<div class="flex anchor relative">
 		<h3 id="get-started-today">Get started today!</h3>
-		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -178,7 +178,7 @@ cluster: oci-1  # can be any compute cluster!</code></pre>
 	<p>To learn more about using MosaicML to train custom state-of-the-art AI on your own data visit <a href="https://www.mosaicml.com">here</a> or <a href="https://docs.google.com/forms/d/e/1FAIpQLSepW7QB3Xkv6T7GJRwrR9DmGAEjm5G2lBxJC7PUe3JXcBZYbw/viewform">get in touch</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

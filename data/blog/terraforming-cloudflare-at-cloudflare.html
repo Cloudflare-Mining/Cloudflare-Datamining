@@ -5,7 +5,7 @@
 	<p>This is where <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs">Cloudflare's Terraform provider</a> can come in handy. Built as a layer on top of the <a href="https://github.com/cloudflare/cloudflare-go">cloudflare-go</a> library, the provider allows users to interface with the Cloudflare API using stateful <a href="https://developer.hashicorp.com/terraform">Terraform</a> resource declarations. Not only do we actively support this provider for customers, we make extensive use of it internally! In this post, we hope to provide some best practices we've learned about managing complex Cloudflare configurations in Terraform.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-terraform">Why Terraform</h2>
-		<a href="https://blog.cloudflare.com/#why-terraform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-terraform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	</ul>
 	<div class="flex anchor relative">
 		<h2 id="terraform-in-ci-cd">Terraform in CI/CD</h2>
-		<a href="https://blog.cloudflare.com/#terraform-in-ci-cd" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#terraform-in-ci-cd" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -78,7 +78,7 @@
 	<p>With this button, we're able to politely prevent manual changes to your Cloudflare account’s Zero Trust configuration without removing permissions from the set of users who can fix settings manually in a break-glass emergency scenario. <a href="https://api.cloudflare.com/#zero-trust-organization-update-your-zero-trust-organization">Check out how you can enable this setting in your Zero Trust organization</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="slick-snippets-and-terraforming-recommendations">Slick Snippets and Terraforming Recommendations</h2>
-		<a href="https://blog.cloudflare.com/#slick-snippets-and-terraforming-recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#slick-snippets-and-terraforming-recommendations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -87,7 +87,7 @@
 	<p>As our Terraform repository has matured, we've refined how we define Cloudflare resources in code. By finding a sweet spot between code reuse and readability, we've been able to minimize operational overhead and generally let users get their work done. Here's a couple of useful snippets that have been particularly valuable to us.</p>
 	<div class="flex anchor relative">
 		<h3 id="account-membership">Account Membership</h3>
-		<a href="https://blog.cloudflare.com/#account-membership" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#account-membership" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -140,7 +140,7 @@ resource "cloudflare_account_member" "account_member" {
 
 	<div class="flex anchor relative">
 		<h3 id="defining-auto-refreshing-access-service-tokens">Defining Auto-Refreshing Access Service Tokens</h3>
-		<a href="https://blog.cloudflare.com/#defining-auto-refreshing-access-service-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#defining-auto-refreshing-access-service-tokens" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -197,7 +197,7 @@ resource "cloudflare_access_policy" "super_cool_hostname_service_access" {
 
 	<div class="flex anchor relative">
 		<h3 id="mtls-authenticated-origin-pulls-certificate-creation-and-rotation">mTLS (Authenticated Origin Pulls) certificate creation and rotation</h3>
-		<a href="https://blog.cloudflare.com/#mtls-authenticated-origin-pulls-certificate-creation-and-rotation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mtls-authenticated-origin-pulls-certificate-creation-and-rotation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -244,7 +244,7 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
 
 	<div class="flex anchor relative">
 		<h3 id="terraform-recommendations">Terraform recommendations</h3>
-		<a href="https://blog.cloudflare.com/#terraform-recommendations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#terraform-recommendations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -253,7 +253,7 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
 	<p>The comfortable automation that we've achieved thus far did not come without some hair-pulling. Below are a few of the learnings that have allowed us to maintain the repository as a side project run by two engineers (shoutout <a href="https://github.com/dhaynespls">David</a>).</p>
 	<div class="flex anchor relative">
 		<h4 id="store-your-state-somewhere-safe"><b>Store your state somewhere safe</b></h4>
-		<a href="https://blog.cloudflare.com/#store-your-state-somewhere-safe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#store-your-state-somewhere-safe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -262,7 +262,7 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
 	<p>It feels worth repeating that the tfstate <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration#credentials-and-sensitive-data"><b>contains secrets</b></a> <b>including any API keys you're using with providers</b> and <b>the default location of the tfstate is in the current working directory.</b> It's very easy to accidentally commit this to source control. By defining a <a href="https://developer.hashicorp.com/terraform/language/settings/backends/configuration">backend</a>, the state can be stored with a cloud storage provider, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/local">in a secure location on a filesystem</a>, <a href="https://developer.hashicorp.com/terraform/language/settings/backends/pg">in a database</a>, or even <a href="https://mirio.dev/2022/09/18/implementing-a-terraform-state-backend">Cloudflare Workers</a>! Wherever the state is stored, make sure it is encrypted.</p>
 	<div class="flex anchor relative">
 		<h5 id="choose-simplicity-avoid-modules"><b>Choose simplicity, avoid modules</b></h5>
-		<a href="https://blog.cloudflare.com/#choose-simplicity-avoid-modules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#choose-simplicity-avoid-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -273,7 +273,7 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
 	<p>A few well-designed <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/for_each">for_each</a> loops (we're obviously fans) can achieve similar objectives as modules without the complexity. It's fine to use plain old resources too! Especially when there are more than a handful of varying arguments, it's more valuable for the configuration to be clear than to be eloquent. For example: an <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member">account_member</a> resource makes sense to be in a for_loop, but a <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/page_rule">page_rule</a> probably doesn't.</p>
 	<div class="flex anchor relative">
 		<h5 id="keep-tfstates-small"><b>Keep tfstates small</b></h5>
-		<a href="https://blog.cloudflare.com/#keep-tfstates-small" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#keep-tfstates-small" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -283,7 +283,7 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
 	<p>However, after noticing slow-downs coming from the large number of AOP certificate configurations in a big zone, we moved that code to a separate tfstate. We were able to make this change because AOP configuration is fairly self-contained. To ensure there would be no fighting between the states, we kept the API token permissions for each tfstate mutually exclusive of each other. Our Atlantis Terraform plans typically finish under five minutes. If it feels impossible to keep the size of a tfstate down to a reasonable amount of time, it may be worth considering a different tool for that bit of configuration management.</p>
 	<div class="flex anchor relative">
 		<h5 id="know-when-to-use-a-different-tool"><b>Know when to use a Different tool</b></h5>
-		<a href="https://blog.cloudflare.com/#know-when-to-use-a-different-tool" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#know-when-to-use-a-different-tool" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -293,7 +293,7 @@ resource "cloudflare_authenticated_origin_pulls" "aop_config" {
 	<p>We also haven't figured out a maintainable way of managing Workers scripts in Terraform. When a .js script in the Terraform directory changes, Terraform isn't aware of it. This means a change needs to occur somewhere else in a .tf file before the plan diff is generated. It likely isn't an unsolvable issue, but doesn't seem particularly worth cramming into Terraform when there are better options for Worker management like <a href="https://developers.cloudflare.com/workers/wrangler">Wrangler</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="looking-forward">Looking forward</h2>
-		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

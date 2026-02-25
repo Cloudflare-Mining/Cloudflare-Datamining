@@ -8,7 +8,7 @@
 	<p>Today we are announcing the general availability of Zone Versioning for enterprise customers. Zone Versioning allows you to safely manage zone configuration by versioning changes and choosing how and when to deploy those changes to defined environments of traffic. Previously announced as <a href="https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications">HTTP Applications</a>, we have redesigned the experience based on testing and feedback to provide a seamless experience for customers looking to safely rollout configuration changes.</p>
 	<div class="flex anchor relative">
 		<h3 id="problems-with-making-configuration-changes">Problems with making configuration changes</h3>
-		<a href="https://blog.cloudflare.com/#problems-with-making-configuration-changes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#problems-with-making-configuration-changes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>Altogether, this means customers are more reluctant to make changes to configuration or turn on new features that may benefit them because they do not feel confident in the ability to validate the changes safely.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-zone-versioning-solves-those-problems">How Zone Versioning solves those problems</h3>
-		<a href="https://blog.cloudflare.com/#how-zone-versioning-solves-those-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-zone-versioning-solves-those-problems" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -60,7 +60,7 @@
 	<p>You can create additional environments or modify the pre-defined environments except for Production. Any newly created environment will begin in an unassigned state meaning traffic will fall back to the baseline configuration of the zone. In the above image, we have deployed Version 2 to both the Development and Staging environments. Once we have tested Version 2 in staging, then we can ‘Promote’ Version 2 to Production which means all traffic on the zone will receive the configuration in Version 2 except for Development and Staging traffic. If something goes wrong after deploying to Production, then we can use the ‘Rollback’ action to revert to the configuration of Version 1.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-promotion-and-rollbacks-work">How promotion and rollbacks work</h3>
-		<a href="https://blog.cloudflare.com/#how-promotion-and-rollbacks-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-promotion-and-rollbacks-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@
 	<p>This means that promotions and more importantly rollbacks occur as quickly as you are used to with any configuration change in Cloudflare. No need to wait five or ten minutes for us to roll back a bad deployment, if something goes wrong you can return to a last known good configuration in seconds. Slow rollbacks can make ongoing incidents drag on leading to extended customer impact, so the ability to quickly execute a rollback was a critical capability.</p>
 	<div class="flex anchor relative">
 		<h3 id="get-started-with-zone-versioning-today">Get started with Zone Versioning today</h3>
-		<a href="https://blog.cloudflare.com/#get-started-with-zone-versioning-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#get-started-with-zone-versioning-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

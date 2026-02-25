@@ -5,7 +5,7 @@
 	<p>We recently migrated the CAPTCHA provider we use from Google's reCAPTCHA to a service provided by the independent hCaptcha. We're excited about this change because it helps address a privacy concern inherent to relying on a Google service that we've had for some time and also gives us more flexibility to customize the CAPTCHAs we show. Since this change potentially impacts all Cloudflare customers, we wanted to walk through the rationale in more detail.</p>
 	<div class="flex anchor relative">
 		<h3 id="captchas-at-cloudflare">CAPTCHAs at Cloudflare</h3>
-		<a href="https://blog.cloudflare.com/#captchas-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#captchas-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -27,7 +27,7 @@
 	<p>Since Cloudflare's earliest days, we have used Google's reCAPTCHA service. ReCAPTCHA started as a research project out of Carnegie Mellon University in 2007. Google acquired the project in 2009, around the same time that Cloudflare was first getting started. Google provided reCAPTCHA for free in exchange for data from the service being used to train its visual identification systems. When we were looking for a CAPTCHA for Cloudflare, we chose reCAPTCHA because it was effective, could scale, and was offered for free — which was important since so many of Cloudflare's customers use our free service.</p>
 	<div class="flex anchor relative">
 		<h3 id="privacy-and-blocking-concerns">Privacy and Blocking Concerns</h3>
-		<a href="https://blog.cloudflare.com/#privacy-and-blocking-concerns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#privacy-and-blocking-concerns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	<p>Over the years, the privacy and blocking concerns were enough to cause us to think about switching from reCAPTCHA. But, like most technology companies, it was difficult to prioritize removing something that was largely working instead of brand-new features and functionality for our customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="googles-changing-business-model">Google's Changing Business Model</h3>
-		<a href="https://blog.cloudflare.com/#googles-changing-business-model" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#googles-changing-business-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -48,7 +48,7 @@
 	<p>Again, this is entirely rational for Google. If the value of the image classification training did not exceed those costs, it makes perfect sense for Google to ask for payment for the service they provide. In our case, that would have added millions of dollars in annual costs just to continue to use reCAPTCHA for our free users. That was finally enough of an impetus for us to look for a better alternative.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-better-captcha">A Better CAPTCHA</h3>
-		<a href="https://blog.cloudflare.com/#a-better-captcha" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-better-captcha" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@
 	<p>We worked with hCaptcha in two ways. First, we are in the process of leveraging our <a href="https://www.cloudflare.com/plans/developer-platform">Workers platform</a> to bear much of the technical load of the CAPTCHAs and, in doing so, reduce their costs. And, second, we proposed that rather than them paying us we pay them. This ensured they had the resources to scale their service to meet our needs. While that has imposed some additional costs, those costs were a fraction of what reCAPTCHA would have. And, in exchange, we have a much more flexible CAPTCHA platform and a much more responsive team.</p>
 	<div class="flex anchor relative">
 		<h3 id="when-do-customers-serve-captchas">When do Customers Serve CAPTCHAs?</h3>
-		<a href="https://blog.cloudflare.com/#when-do-customers-serve-captchas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#when-do-customers-serve-captchas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -143,7 +143,7 @@
 	<p>We also took a look at which types of customers were serving the CAPTCHAs. Over a week’s period of time (normalizing for attacks), our free customers configured their zones to serve roughly 40-60% of the total CAPTCHAs served by Cloudflare. Of our paying customers, there is a generally even split between our pay-as-you-go and our enterprise customers. Overall, we have measured that Cloudflare will show multiple millions of CAPTCHAs per second when one or more of our customers are under attack.</p>
 	<div class="flex anchor relative">
 		<h3 id="fixing-challenges">Fixing Challenges</h3>
-		<a href="https://blog.cloudflare.com/#fixing-challenges" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fixing-challenges" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

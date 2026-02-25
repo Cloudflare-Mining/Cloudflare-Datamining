@@ -21,7 +21,7 @@
 	<p>Unlike the local MCP servers you may have previously used, remote MCP servers are accessible on the Internet. People simply sign in and grant permissions to MCP clients using familiar authorization flows. We think this is going to be a massive deal — connecting coding agents to MCP servers has blown developers’ minds over the past few months, and remote MCP servers have the same potential to open up similar new ways of working with LLMs and agents to a much wider audience, including more everyday consumer use cases.</p>
 	<div class="flex anchor relative">
 		<h2 id="from-local-to-remote-bringing-mcp-to-the-masses">From local to remote —&nbsp;bringing MCP to the masses</h2>
-		<a href="https://blog.cloudflare.com/#from-local-to-remote-bringing-mcp-to-the-masses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#from-local-to-remote-bringing-mcp-to-the-masses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="making-authentication-and-authorization-just-work-with-mcp">Making authentication and authorization just work with MCP</h2>
-		<a href="https://blog.cloudflare.com/#making-authentication-and-authorization-just-work-with-mcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-authentication-and-authorization-just-work-with-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -48,7 +48,7 @@
 	<p>MCP does this with <a href="https://oauth.net/2"><u>OAuth</u></a>, which has been the standard protocol that allows users to grant applications to access their information or services, without sharing passwords. Here, the MCP Server itself acts as the OAuth Provider. However, OAuth with MCP is hard to implement yourself, so when you build MCP servers on Cloudflare we provide it for you.</p>
 	<div class="flex anchor relative">
 		<h3 id="workers-oauth-provider-an-oauth-2-1-provider-library-for-cloudflare-workers">workers-oauth-provider — an OAuth 2.1 Provider library for Cloudflare Workers</h3>
-		<a href="https://blog.cloudflare.com/#workers-oauth-provider-an-oauth-2-1-provider-library-for-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#workers-oauth-provider-an-oauth-2-1-provider-library-for-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@
 	<p>Here, your MCP server acts as both an OAuth client to your upstream service, <i>and</i> as an OAuth server (also referred to as an OAuth “provider”) to MCP clients. You can use any upstream authentication flow you want, but workers-oauth-provider guarantees that your MCP server is <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/authorization"><u>spec-compliant</u></a> and able to work with the full range of client apps &amp; websites. This includes support for Dynamic Client Registration (<a href="https://datatracker.ietf.org/doc/html/rfc7591"><u>RFC 7591</u></a>) and Authorization Server Metadata (<a href="https://datatracker.ietf.org/doc/html/rfc8414"><u>RFC 8414</u></a>).</p>
 	<div class="flex anchor relative">
 		<h3 id="a-simple-pluggable-interface-for-oauth">A simple, pluggable interface for OAuth</h3>
-		<a href="https://blog.cloudflare.com/#a-simple-pluggable-interface-for-oauth" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-simple-pluggable-interface-for-oauth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -85,7 +85,7 @@ export default new OAuthProvider({
 	<p>This abstraction lets you easily plug in your own authentication. Take a look at <a href="https://github.com/cloudflare/ai/blob/main/demos/remote-mcp-github-oauth/src/github-handler.ts"><u>this example</u></a> that uses GitHub as the identity provider for an MCP server, in less than 100 lines of code, by implementing /callback and /authorize routes.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-do-mcp-servers-issue-their-own-tokens">Why do MCP servers issue their own tokens?</h3>
-		<a href="https://blog.cloudflare.com/#why-do-mcp-servers-issue-their-own-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-do-mcp-servers-issue-their-own-tokens" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -149,7 +149,7 @@ export class MyMCP extends McpAgent&lt;Props, Env&gt; {
 
 	<div class="flex anchor relative">
 		<h2 id="introducing-mcpagent-remote-transport-support-that-works-today-and-will-work-with-the-revision-to-the-mcp-spec">Introducing McpAgent: remote transport support that works today, and will work with the revision to the MCP spec</h2>
-		<a href="https://blog.cloudflare.com/#introducing-mcpagent-remote-transport-support-that-works-today-and-will-work-with-the-revision-to-the-mcp-spec" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#introducing-mcpagent-remote-transport-support-that-works-today-and-will-work-with-the-revision-to-the-mcp-spec" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -176,7 +176,7 @@ export class MyMCP extends McpAgent {
 	<p>This applies to future iterations of transport as well. Today, the vast majority of MCP servers only expose tools, which are simple <a href="https://en.wikipedia.org/wiki/Remote_procedure_call"><u>remote procedure call (RPC)</u></a> methods that can be provided by a stateless transport. But more complex human-in-the-loop and agent-to-agent interactions will need <a href="https://modelcontextprotocol.io/docs/concepts/prompts"><u>prompts</u></a> and <a href="https://modelcontextprotocol.io/docs/concepts/sampling"><u>sampling</u></a>. We expect these types of chatty, two-way interactions will need to be real-time, which will be challenging to do well without a bidirectional transport layer. When that time comes, Cloudflare, the <a href="https://developers.cloudflare.com/agents"><u>Agents SDK</u></a>, and Durable Objects all natively support <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets"><u>WebSockets</u></a>, which enable full-duplex, bidirectional real-time communication.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="stateful-agentic-mcp-servers">Stateful, agentic MCP servers</h2>
-		<a href="https://blog.cloudflare.com/#stateful-agentic-mcp-servers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#stateful-agentic-mcp-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -226,7 +226,7 @@ export class MyMCP extends McpAgent&lt;Env, State, {}&gt; {
 	<p>From within an MCP server, you can use Cloudflare’s whole developer platform, and have your MCP server <a href="https://developers.cloudflare.com/agents/api-reference/browse-the-web"><u>spin up its own web browser</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows"><u>trigger a Workflow</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/using-ai-models"><u>call AI models</u></a>, and more. We’re excited to see the MCP ecosystem evolve into more advanced use cases.</p>
 	<div class="flex anchor relative">
 		<h2 id="connect-to-remote-mcp-servers-from-mcp-clients-that-today-only-support-local-mcp">Connect to remote MCP servers from MCP clients that today only support local MCP</h2>
-		<a href="https://blog.cloudflare.com/#connect-to-remote-mcp-servers-from-mcp-clients-that-today-only-support-local-mcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#connect-to-remote-mcp-servers-from-mcp-clients-that-today-only-support-local-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -256,7 +256,7 @@ export class MyMCP extends McpAgent&lt;Env, State, {}&gt; {
 
 	<div class="flex anchor relative">
 		<h2 id="1800-mcp-cloudflare-com-start-building-remote-mcp-servers-today">1800-mcp@cloudflare.com — start building remote MCP servers today</h2>
-		<a href="https://blog.cloudflare.com/#1800-mcp-cloudflare-com-start-building-remote-mcp-servers-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#1800-mcp-cloudflare-com-start-building-remote-mcp-servers-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -4,7 +4,7 @@
 	<p>We’re excited to announce the availability of Network Analytics Logs. <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a>, <a href="https://www.cloudflare.com/magic-firewall">Magic Firewall</a>, <a href="https://www.cloudflare.com/magic-wan">Magic WAN</a>, and <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> customers on the Enterprise plan can feed packet samples directly into storage services, <a href="https://www.cloudflare.com/network-services/solutions/network-monitoring-tools">network monitoring tools</a> such as Kentik, or their <a href="https://www.cloudflare.com/learning/security/what-is-siem">Security Information Event Management (SIEM)</a> systems such as Splunk to gain near real-time visibility into network traffic and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">DDoS attacks</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-included-in-the-logs">What’s included in the logs</h2>
-		<a href="https://blog.cloudflare.com/#whats-included-in-the-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-included-in-the-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -113,7 +113,7 @@
 	<p>All the available log fields are documented here: <a href="https://developers.cloudflare.com/logs/reference/log-fields/account/network_analytics_logs">https://developers.cloudflare.com/logs/reference/log-fields/account/network_analytics_logs/</a></p>
 	<div class="flex anchor relative">
 		<h2 id="setting-up-the-logs">Setting up the logs</h2>
-		<a href="https://blog.cloudflare.com/#setting-up-the-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#setting-up-the-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -134,7 +134,7 @@
 	<p>Let’s get started!</p>
 	<div class="flex anchor relative">
 		<h3 id="1-create-a-cloudflare-api-token">1) Create a Cloudflare API token</h3>
-		<a href="https://blog.cloudflare.com/#1-create-a-cloudflare-api-token" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#1-create-a-cloudflare-api-token" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -169,7 +169,7 @@
 	<p>Read more about creating an API token on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/api/tokens/create">https://developers.cloudflare.com/api/tokens/create/</a></p>
 	<div class="flex anchor relative">
 		<h3 id="2-create-a-splunk-token-for-an-http-event-collector">2) Create a Splunk token for an HTTP Event Collector</h3>
-		<a href="https://blog.cloudflare.com/#2-create-a-splunk-token-for-an-http-event-collector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#2-create-a-splunk-token-for-an-http-event-collector" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -202,7 +202,7 @@
 	<p>Read more about creating an HTTP Event Collector token on Splunk’s website: <a href="https://docs.splunk.com/Documentation/Splunk/8.2.6/Data/UsetheHTTPEventCollector">https://docs.splunk.com/Documentation/Splunk/8.2.6/Data/UsetheHTTPEventCollector</a></p>
 	<div class="flex anchor relative">
 		<h3 id="3-create-a-cloudflare-logpush-job">3) Create a Cloudflare Logpush job</h3>
-		<a href="https://blog.cloudflare.com/#3-create-a-cloudflare-logpush-job" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#3-create-a-cloudflare-logpush-job" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -269,7 +269,7 @@
 	<p>Read more about enabling Logpush on the Cloudflare Developers website: <a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl">https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl/</a></p>
 	<div class="flex anchor relative">
 		<h2 id="reduce-costs-with-r2-storage">Reduce costs with R2 storage</h2>
-		<a href="https://blog.cloudflare.com/#reduce-costs-with-r2-storage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reduce-costs-with-r2-storage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -279,7 +279,7 @@
 	<p>To learn more about the <a href="https://www.cloudflare.com/developer-platform/r2">R2 features and pricing</a>, check out the <a href="https://blog.cloudflare.com/r2-open-beta">full blog post</a>. To enable R2, contact your account team.</p>
 	<div class="flex anchor relative">
 		<h2 id="cloudflare-logs-for-maximum-visibility">Cloudflare logs for maximum visibility</h2>
-		<a href="https://blog.cloudflare.com/#cloudflare-logs-for-maximum-visibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-logs-for-maximum-visibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

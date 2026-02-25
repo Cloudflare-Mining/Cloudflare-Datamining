@@ -10,7 +10,7 @@
 	<p>In this post, we’ll explain how website operators can ensure the best possible experience for end users using iCloud Private Relay. Additional material is available from Apple, including “<a href="https://support.apple.com/guide/icloud/set-up-icloud-private-relay-mm7dc25cb68f/icloud">Set up iCloud Private Relay on all your devices</a>”, and <a href="https://developer.apple.com/support/prepare-your-network-for-icloud-private-relay">“Prepare Your Network or Web Server for iCloud Private Relay”</a> which covers network operator scenarios in detail.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-browsing-works-using-icloud-private-relay">How browsing works using iCloud Private Relay</h2>
-		<a href="https://blog.cloudflare.com/#how-browsing-works-using-icloud-private-relay" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-browsing-works-using-icloud-private-relay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	<p>Much more extensive information on how Private Relay works is available from Apple, including in the whitepaper “<a href="https://www.apple.com/privacy/docs/iCloud_Private_Relay_Overview_Dec2021.PDF">iCloud Private Relay Overview</a>” (pdf).</p>
 	<div class="flex anchor relative">
 		<h2 id="cloudflares-role-as-a-second-relay">Cloudflare’s role as a ‘second relay’</h2>
-		<a href="https://blog.cloudflare.com/#cloudflares-role-as-a-second-relay" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflares-role-as-a-second-relay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -55,7 +55,7 @@
 	<p>The same building blocks that power Cloudflare products were used to build support for Private Relay: our <a href="https://www.cloudflare.com/network">network</a>, 1.1.1.1, <a href="https://workers.cloudflare.com">Cloudflare Workers</a>, and software like <a href="https://github.com/cloudflare/quiche">quiche</a>, our <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">open-source</a> QUIC (and now MASQUE) protocol handling library, which now includes proxy support.</p>
 	<div class="flex anchor relative">
 		<h2 id="im-a-website-operator-what-do-i-need-to-do-to-properly-handle-icloud-private-relay-traffic">I’m a website operator. What do I need to do to properly handle iCloud Private Relay traffic?</h2>
-		<a href="https://blog.cloudflare.com/#im-a-website-operator-what-do-i-need-to-do-to-properly-handle-icloud-private-relay-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#im-a-website-operator-what-do-i-need-to-do-to-properly-handle-icloud-private-relay-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -64,7 +64,7 @@
 	<p>We’ve gone out of our way to ensure the use of iCloud Private Relay does not have any noticeable impact on your websites, APIs, and other content you serve on the web.</p>
 	<div class="flex anchor relative">
 		<h3 id="ensuring-geolocation-accuracy">Ensuring geolocation accuracy</h3>
-		<a href="https://blog.cloudflare.com/#ensuring-geolocation-accuracy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ensuring-geolocation-accuracy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@
 	<p><b>If you’re a website operator using Cloudflare to protect and accelerate your site, no action is needed from you</b>. Our geolocation feeds used to enrich client requests with location metadata are kept up-to-date and include the information needed to geolocate users using iCloud Private Relay.</p>
 	<div class="flex anchor relative">
 		<h3 id="delivering-high-performance-user-experiences">Delivering high performance user experiences</h3>
-		<a href="https://blog.cloudflare.com/#delivering-high-performance-user-experiences" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#delivering-high-performance-user-experiences" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -110,7 +110,7 @@
 	<p>Using Private Relay to reach websites instead of going directly to the origin server can result in significant, <b>measured decreases in page load time for clients using Private Relay vs those that are not</b>. That’s pretty neat: increased privacy does <b>not</b> come at the price of reduced page load and render performance when using Private Relay.</p>
 	<div class="flex anchor relative">
 		<h3 id="limiting-reliance-on-ip-addresses-in-fraud-and-bot-management-systems">Limiting reliance on IP addresses in fraud and bot management systems</h3>
-		<a href="https://blog.cloudflare.com/#limiting-reliance-on-ip-addresses-in-fraud-and-bot-management-systems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#limiting-reliance-on-ip-addresses-in-fraud-and-bot-management-systems" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -123,7 +123,7 @@
 	<p>For Cloudflare customers, our rate limiting and bot management capabilities are well suited to handle traffic from systems like Private Relay. Cloudflare <a href="https://blog.cloudflare.com/multi-user-ip-address-detection">automatically detects</a> when IP addresses are likely to be used by multiple users, tuning our <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning">machine learning</a> and other security heuristics accordingly. Additionally, our WAF <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting/parameters">includes functionality</a> specifically designed to manage traffic originating from shared IP addresses.</p>
 	<div class="flex anchor relative">
 		<h3 id="understanding-traffic-flows">Understanding traffic flows</h3>
-		<a href="https://blog.cloudflare.com/#understanding-traffic-flows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#understanding-traffic-flows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -133,7 +133,7 @@
 	<p>In the case of Cloudflare customers, traffic traversing our network to reach your Cloudflare proxied property is included in all usage and billing metrics as traffic from any Internet user would be.</p>
 	<div class="flex anchor relative">
 		<h2 id="i-operate-a-corporate-or-school-network-and-id-like-to-know-more-about-icloud-private-relay">I operate a corporate or school network and I’d like to know more about iCloud Private Relay</h2>
-		<a href="https://blog.cloudflare.com/#i-operate-a-corporate-or-school-network-and-id-like-to-know-more-about-icloud-private-relay" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#i-operate-a-corporate-or-school-network-and-id-like-to-know-more-about-icloud-private-relay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -144,7 +144,7 @@
 	<p>Corporate customers of Cloudflare One services can put in place the name resolution blocks needed to disable Private Relay through their DNS filtering dashboard. Cloudflare One, Cloudflare’s <a href="https://www.cloudflare.com/network-security">corporate network security suite</a>, includes Gateway, built on the same network and codebase that powers iCloud Private Relay.</p>
 	<div class="flex anchor relative">
 		<h2 id="icloud-private-relay-makes-browsing-the-internet-more-private-and-secure">iCloud Private Relay makes browsing the Internet more private and secure</h2>
-		<a href="https://blog.cloudflare.com/#icloud-private-relay-makes-browsing-the-internet-more-private-and-secure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#icloud-private-relay-makes-browsing-the-internet-more-private-and-secure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

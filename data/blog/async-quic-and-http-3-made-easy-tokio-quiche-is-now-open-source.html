@@ -5,7 +5,7 @@
 	<p>quiche was developed as a <a href="https://sans-io.readthedocs.io/how-to-sans-io.html"><u>sans-io</u></a> library, meaning that it implements the state machine required to handle the QUIC transport protocol while not making any assumptions about how its user intends to perform IO. This means that, with enough elbow grease, anyone can write an IO integration with quiche! This entails <code>connect</code>ing or <code>listen</code>ing on a UDP socket, managing sending and receiving UDP datagrams on that socket while feeding all network information to quiche. Given we need this integration to be async, we’d have to do all this while integrating with an async Rust runtime. tokio-quiche does all of that for you, no grease required.</p>
 	<div class="flex anchor relative">
 		<h3 id="lowering-the-barrier-to-entry">Lowering the barrier to entry</h3>
-		<a href="https://blog.cloudflare.com/#lowering-the-barrier-to-entry" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#lowering-the-barrier-to-entry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>tokio-quiche has been used internally for some years now. This gave us time to refine and battle-test it, demonstrating that it can handle millions of RPS. tokio-quiche is <b>not intended</b> to be a standalone HTTP/3 client or server, but implements low-level protocols and allows for higher-level projects in the future. The README contains examples of <a href="https://github.com/cloudflare/quiche/tree/master/tokio-quiche#starting-an-http3-server"><u>server</u></a> and <a href="https://github.com/cloudflare/quiche/tree/master/tokio-quiche#sending-an-http3-request"><u>client</u></a> event loops.</p>
 	<div class="flex anchor relative">
 		<h3 id="its-actors-all-the-way-down">It’s actors all the way down</h3>
-		<a href="https://blog.cloudflare.com/#its-actors-all-the-way-down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#its-actors-all-the-way-down" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	<p>More blog posts on the creation of tokio-quiche are coming soon. We’ll discuss actor models and mutexes, UDP GRO and GSO, tokio task coop budgeting, and more.</p>
 	<div class="flex anchor relative">
 		<h3 id="next-up-more-on-quic-and-beyond">Next up: more on QUIC and beyond!</h3>
-		<a href="https://blog.cloudflare.com/#next-up-more-on-quic-and-beyond" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-up-more-on-quic-and-beyond" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -5,7 +5,7 @@
 	<p>Last year, we demonstrated what we meant by “lightning fast”, <a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast">showing Pages' first-class performance</a> in all parts of the world, and today, we’re thrilled to announce an integration that takes this commitment to speed even further – introducing Pages support for Early Hints! Early Hints allow you to unblock the loading of page critical resources, ahead of any slow-to-deliver HTML pages. Early Hints can be used to improve the loading experience for your visitors by significantly reducing key performance metrics such as the largest contentful paint (LCP).</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-early-hints">What is Early Hints?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-early-hints" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-early-hints" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p><a href="https://blog.cloudflare.com/early-hints">Early Hints</a> is a new feature of the Internet which is <a href="https://developer.chrome.com/blog/early-hints/#implementing-early-hints">supported in Chrome since version 103</a>, and that <a href="https://blog.cloudflare.com/early-hints-performance">Cloudflare made generally available</a> for websites using our network. Early Hints supersedes <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/K3rYLvmQUBY/m/vOWBKZGoAQAJ">Server Push</a> as a mechanism to "hint" to a browser about critical resources on your page (e.g. fonts, CSS, and above-the-fold images). The browser can immediately start loading these resources before waiting for a full HTML response. This uses time that was otherwise previously wasted! Before Early Hints, no work could be started until the browser received the first byte of the response. Now, the browser can fill this time usefully when it was previously sat waiting. Early Hints can bring significant improvements to the performance of your website, particularly for metrics such as LCP.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-early-hints-works">How Early Hints works</h3>
-		<a href="https://blog.cloudflare.com/#how-early-hints-works" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-early-hints-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 
 	<div class="flex anchor relative">
 		<h2 id="early-hints-on-cloudflare-pages">Early Hints on Cloudflare Pages</h2>
-		<a href="https://blog.cloudflare.com/#early-hints-on-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#early-hints-on-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -48,7 +48,7 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 	<p>Websites hosted on Cloudflare Pages can particularly benefit from Early Hints. If you're using <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Pages Functions</a> to generate dynamic server-side rendered (SSR) pages, there's a good chance that Early Hints will make a significant improvement on your website.</p>
 	<div class="flex anchor relative">
 		<h3 id="performance-testing">Performance Testing</h3>
-		<a href="https://blog.cloudflare.com/#performance-testing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#performance-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -96,7 +96,7 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style
 	<p>We already serve Cloudflare Pages from <a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast">one of the fastest networks in the world</a> — Early Hints simply allows developers to take advantage of our global network even further.</p>
 	<div class="flex anchor relative">
 		<h2 id="using-early-hints-and-cloudflare-pages">Using Early Hints and Cloudflare Pages</h2>
-		<a href="https://blog.cloudflare.com/#using-early-hints-and-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#using-early-hints-and-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -127,7 +127,7 @@ Link: &lt;/styles.css&gt;; rel=preload; as=style</code></pre>
 	<p>In the meantime, try out <a href="https://developers.cloudflare.com/pages/platform/early-hints">Early Hints on Pages</a> today! Let us know how much of a loading improvement you see in <a href="https://discord.com/invite/cloudflaredev">our Discord server</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h2>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

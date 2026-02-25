@@ -4,7 +4,7 @@
 	<p>CloudFlare had an <a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515">hour-long outage</a> this last weekend. Thankfully, outages like this have been a relatively rare occurrance for our service. This is in spite of hundreds of thousands of customers, the enormous volume of legitimate traffic they generate, and the barrage of large denial of service attacks we are constantly <a href="https://blog.cloudflare.com/65gbps-ddos-no-problem">mitigating on their behalf</a>. While last weekend's outage exposed a flaw in our architecture that we're working to fully eliminate, largely our systems have been designed to be balanced and have no single points of failure. We haven't talked much about the architecture of CloudFlare's systems but thought the rest of the community might benefit from seeing some of the choices we've made, how we load balance our systems, and how this has allowed us to scale quickly and efficiently.</p>
 	<div class="flex anchor relative">
 		<h3 id="failure-isnt-an-option-its-a-fact">Failure Isn't an Option, It's a Fact</h3>
-		<a href="https://blog.cloudflare.com/#failure-isnt-an-option-its-a-fact" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#failure-isnt-an-option-its-a-fact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>Those are the four components you'll find in the racks that we run in locations around the world. You'll notice some things from a typical hardware stack seem to be missing. For example, there's no hardware load balancer. The problem with hardware load balancers (and hardware firewalls, for that matter) is that they often become the bottleneck and create a single point of failure themselves. Instead of relying on a piece of hardware to load balance across our network, we use routing protocols to spread traffic and handle failure.</p>
 	<div class="flex anchor relative">
 		<h3 id="anycast-is-your-friend">Anycast Is Your Friend</h3>
-		<a href="https://blog.cloudflare.com/#anycast-is-your-friend" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#anycast-is-your-friend" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@ Balancers" class="kg-image" width="250" height="167" loading="lazy">
 	<p>Unicast and Anycast are one-to-one routing schemes. In both, there is one sender and one recipient of the packet. The difference between the two is that while there is only one possible destination on the entire network for a packet sent over Unicast, with Anycast there are multiple possible destinations and the network itself picks the route that is most preferential. On the wide area network (WAN) -- aka. the Internet -- this preference is for the shortest path from the sender to the recipient. On the LAN, the preferences can be set with weights that are honored by the router.</p>
 	<div class="flex anchor relative">
 		<h3 id="anycast-at-the-wan">Anycast at the WAN</h3>
-		<a href="https://blog.cloudflare.com/#anycast-at-the-wan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#anycast-at-the-wan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -78,7 +78,7 @@ Balancers" class="kg-image" width="250" height="167" loading="lazy">
 	<p>Since packets will follow the shortest path, if a particular path is withdrawn then packets will find their way to the next shortest available route. For simple protocols like UDP that don't maintain state, Anycast is ideal and it has been used widely to load balance DNS for some time. At CloudFlare, we've done a significant amount of engineering to allow TCP to run across Anycast without flapping. This involves carefully adjusting routes in order to get optimal routing and also adjusting the way we handle protocol negotiation itself. While more complex to maintain than a Unicast network, the benefit is we can lose an entire data center and packets flow to the next closest facility without anyone noticing and hiccup.</p>
 	<div class="flex anchor relative">
 		<h3 id="anycast-in-the-lan">Anycast in the LAN</h3>
-		<a href="https://blog.cloudflare.com/#anycast-in-the-lan" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#anycast-in-the-lan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -96,7 +96,7 @@ Balancers" class="kg-image" width="275" height="183" loading="lazy">
 	<p>Beyond failover, we are beginning to experiment with BGP to do true load balancing. In this case, the weights to multiple servers are the same and the router hashes the source IP, destination IP, and port in order to consistently route traffic to the same server. The hash mapping table can be adjusted to increase or decrease load to any machine in the cluster. This is relatively easy with simple protocols like UDP, so we're playing with it for DNS. It's trickier with protocols that need to maintain some session state, like TCP, and gets trickier still when you throw in SSL, but we have some cool things in our lab that will help us better spread load across all the available resources.</p>
 	<div class="flex anchor relative">
 		<h3 id="failure-scenarios">Failure Scenarios</h3>
-		<a href="https://blog.cloudflare.com/#failure-scenarios" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#failure-scenarios" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

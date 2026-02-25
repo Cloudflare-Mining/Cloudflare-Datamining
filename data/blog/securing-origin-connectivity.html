@@ -13,7 +13,7 @@
 	<p>Today, we’re going even further. Cloudflare will shortly find the most secure connection possible to our customers’ origin servers and use it, automatically. Doing this correctly, at scale, while not breaking a customer’s service is very complicated. This blog post explains how we are automatically achieving that highest level of security possible for those customers who don’t want to spend time configuring their SSL/TLS set up manually.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-configuring-origin-ssl-automatically-is-so-hard">Why configuring origin SSL automatically is so hard</h3>
-		<a href="https://blog.cloudflare.com/#why-configuring-origin-ssl-automatically-is-so-hard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-configuring-origin-ssl-automatically-is-so-hard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -58,7 +58,7 @@
 	<p>Re-evaluating default SSL/TLS modes is only the beginning. Not only will we automatically upgrade sites to their best security setting, <b>we will also open up all SSL/TLS modes to all plan levels</b>. Historically, Strict mode was reserved for enterprise customers only. This was because we released this mode in 2014 when few people had origins that were able to communicate over SSL/TLS, and we were nervous about customers breaking their configurations. But this is 2022, and we think that Strict mode should be available to anyone who wants to use it. So we will be opening it up to everyone with the launch of the automatic upgrades.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-will-automatic-upgrading-work">How will automatic upgrading work?</h3>
-		<a href="https://blog.cloudflare.com/#how-will-automatic-upgrading-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-will-automatic-upgrading-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -92,7 +92,7 @@
 	<p>The goal of this is to maximize the origin-facing security of everything on Cloudflare. However, if any origin that we attempt to scan blocks the SSL recommender, has a non-functional origin, or opts-out of this service, we will not complete the scans and will not be able to upgrade security. Details on how to opt-out will be provided via email announcements soon.</p>
 	<div class="flex anchor relative">
 		<h3 id="opting-out">Opting out</h3>
-		<a href="https://blog.cloudflare.com/#opting-out" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#opting-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -101,7 +101,7 @@
 	<p>There are a number of reasons why someone might want to configure a lower-than-optimal security setting for their website. One common reason customers provide is a fear that having higher security settings will negatively impact the performance of their site. Others may want to set a suboptimal security setting for testing purposes or to debug some behavior. Whatever the reason, we will provide the tools needed to continue to configure the SSL/TLS mode you want, even if that’s different from what we think is the best.</p>
 	<div class="flex anchor relative">
 		<h3 id="when-is-this-going-to-happen">When is this going to happen?</h3>
-		<a href="https://blog.cloudflare.com/#when-is-this-going-to-happen" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#when-is-this-going-to-happen" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

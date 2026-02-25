@@ -4,7 +4,7 @@
 	<p>Last December, we <a href="https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications-in-beta">announced</a> a closed beta of a new product, HTTP Applications, giving customers the ability to better control their L7 Cloudflare configuration with versioning and staging capabilities. Today, we are expanding this beta to all enterprise customers who want to participate. In this post, I will talk about some of the improvements that have landed and go into more detail about how this product works.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-applications">HTTP Applications</h3>
-		<a href="https://blog.cloudflare.com/#http-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#http-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>Each HTTP Application is sourced from an existing zone. That zone’s current configuration will be copied to instantiate the first version of the HTTP Application. After that any changes made to the zone or version 1 will be independent of the other. Versions themselves don’t affect any traffic for a zone until they are deployed via the use of Routing Rules.</p>
 	<div class="flex anchor relative">
 		<h3 id="routing-rules">Routing Rules</h3>
-		<a href="https://blog.cloudflare.com/#routing-rules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#routing-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@ Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 	<p>The combination of Routing Rules and HTTP Applications means you can ‘stage’ a set of changes, via a version, without requiring a separate staging zone as has been required in the past. Cloudflare will provide you with specific IPs that can be used to test the configuration before rolling it out to production. This means you can catch misconfigurations in rules or other settings before it impacts your customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-http-applications-and-routing-rules-work">How HTTP Applications and Routing Rules work</h3>
-		<a href="https://blog.cloudflare.com/#how-http-applications-and-routing-rules-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-http-applications-and-routing-rules-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -65,7 +65,7 @@ Then use configuration of HTTP Application id: xyz, version 2</code></pre>
 	<p>This is what enables you to safely test a set of changes and then simultaneously deploy the exact same configuration to all traffic. If anything goes wrong when testing in staging or rolling out to production, you can simply roll back the configuration to the previous version that was deployed. No need to try and hunt down what settings may have changed. That investigation can be done after the issue has been resolved through a quick, one-click rollback.</p>
 	<div class="flex anchor relative">
 		<h3 id="now-available-for-enterprise-customers">Now available for Enterprise Customers</h3>
-		<a href="https://blog.cloudflare.com/#now-available-for-enterprise-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#now-available-for-enterprise-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

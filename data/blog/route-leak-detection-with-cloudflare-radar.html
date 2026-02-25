@@ -11,7 +11,7 @@
 	<p>This blog post is in two parts. There’s a discussion of BGP and route leaks followed by details of our route leak detection system and how it feeds Cloudflare Radar.</p>
 	<div class="flex anchor relative">
 		<h2 id="about-bgp-and-route-leaks">About BGP and route leaks</h2>
-		<a href="https://blog.cloudflare.com/#about-bgp-and-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#about-bgp-and-route-leaks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="route-leak-definition-and-types">Route leak definition and types</h2>
-		<a href="https://blog.cloudflare.com/#route-leak-definition-and-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#route-leak-definition-and-types" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@
 	<p>In RFC7908, <a href="https://www.rfc-editor.org/rfc/rfc7908.html"><i>"Problem Definition and Classification of BGP Route Leaks"</i></a>, the authors define six types of route leaks, and we refer to these definitions in our system design. Here are illustrations of each of the route leak types.</p>
 	<div class="flex anchor relative">
 		<h3 id="type-1-hairpin-turn-with-full-prefix">Type 1: Hairpin Turn with Full Prefix</h3>
-		<a href="https://blog.cloudflare.com/#type-1-hairpin-turn-with-full-prefix" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#type-1-hairpin-turn-with-full-prefix" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -86,7 +86,7 @@
 	<p>In June 2015, Telekom Malaysia (<a href="https://radar.cloudflare.com/traffic/as4788">AS4788</a>), a regional ISP, <a href="https://www.bgpmon.net/massive-route-leak-cause-internet-slowdown">leaked over 170,000 routes</a> learned from its providers and peers to its other provider Level3 (<a href="https://radar.cloudflare.com/traffic/as3549">AS3549</a>, now Lumen). Level3 accepted the routes and further propagated them to its downstream networks, which in turn caused significant network issues globally.</p>
 	<div class="flex anchor relative">
 		<h3 id="type-2-lateral-isp-isp-isp-leak">Type 2: Lateral ISP-ISP-ISP Leak</h3>
-		<a href="https://blog.cloudflare.com/#type-2-lateral-isp-isp-isp-leak" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#type-2-lateral-isp-isp-isp-leak" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -103,7 +103,7 @@
 	<p>However, in the real world, it is not unusual to see multiple small peering networks exchanging routes and passing on to each other. Legit business reasons exist for having this type of network path. We are less concerned about this type of route leak as compared to type 1.</p>
 	<div class="flex anchor relative">
 		<h3 id="type-3-and-4-provider-routes-to-peer-peer-routes-to-provider">Type 3 and 4: Provider routes to peer; peer routes to provider</h3>
-		<a href="https://blog.cloudflare.com/#type-3-and-4-provider-routes-to-peer-peer-routes-to-provider" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#type-3-and-4-provider-routes-to-peer-peer-routes-to-provider" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -123,7 +123,7 @@
 	<p>As in the <a href="https://blog.cloudflare.com/how-a-nigerian-isp-knocked-google-offline">previously mentioned example</a>, a Nigerian ISP who peers with Google accidentally leaked its route to its provider <a href="https://radar.cloudflare.com/traffic/as4809">AS4809</a>, and thus generated a type 4 route leak. Because routes via customers are usually preferred to others, the large provider (AS4809) rerouted its traffic to Google via its customer, i.e. the leaking ASN, overwhelmed the small ISP and took down Google for over one hour.</p>
 	<div class="flex anchor relative">
 		<h2 id="route-leak-summary">Route leak summary</h2>
-		<a href="https://blog.cloudflare.com/#route-leak-summary" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#route-leak-summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -164,7 +164,7 @@
 	<p><i>Note: Type 5 and type 6 route leaks are defined as prefix re-origination and announcing of private prefixes. Type 5 is more closely related to</i> <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking"><i>prefix hijackings</i></a><i>, which we plan to expand our system to as the next steps, while type 6 leaks are outside the scope of this work. Interested readers can refer to sections 3.5 and 3.6 of</i> <a href="https://www.rfc-editor.org/rfc/rfc7908.html"><i>RFC7908</i></a> <i>for more information.</i></p>
 	<div class="flex anchor relative">
 		<h2 id="the-cloudflare-radar-route-leak-system">The Cloudflare Radar route leak system</h2>
-		<a href="https://blog.cloudflare.com/#the-cloudflare-radar-route-leak-system" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-cloudflare-radar-route-leak-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -185,7 +185,7 @@
 	</ol>
 	<div class="flex anchor relative">
 		<h3 id="data-collection-module">Data collection module</h3>
-		<a href="https://blog.cloudflare.com/#data-collection-module" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#data-collection-module" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -212,7 +212,7 @@
 	<p>For data files indexing and processing, we deployed an on-premises <a href="https://github.com/bgpkit/bgpkit-broker-backend">BGPKIT Broker instance</a> with Kafka feature enabled for message passing, and a custom concurrent <a href="https://www.rfc-editor.org/rfc/rfc6396.html">MRT</a> data processing pipeline based on <a href="https://github.com/bgpkit/bgpkit-parser">BGPKIT Parser</a> Rust SDK. The data collection module processes MRT files and converts results into a BGP messages stream at over two billion BGP messages per day (roughly 30,000 messages per second).</p>
 	<div class="flex anchor relative">
 		<h3 id="route-leak-detection">Route leak detection</h3>
-		<a href="https://blog.cloudflare.com/#route-leak-detection" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#route-leak-detection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -228,7 +228,7 @@
 	<p>While state-of-the-art relationship inference algorithms have been shown to be <a href="https://dl.acm.org/doi/10.1145/2504730.2504735">highly accurate</a>, even a small margin of errors can still incur inaccuracies in the detection of route leaks. To alleviate such artifacts, we synthesize multiple data sources for inferring AS-level relationships, including <a href="https://www.caida.org">CAIDA/UCSD</a>’s <a href="https://www.caida.org/catalog/datasets/as-relationships">AS relationship</a> data and our in-house built AS relationship dataset. Building on top of the two AS-level relationships, we create a much more granular dataset at the per-prefix and per-peer levels. The improved dataset allows us to answer the question like what is the relationship between AS1 and AS2 with respect to prefix P observed by collector peer X. This eliminates much of the ambiguity for cases where networks have multiple different relationships based on prefixes and geo-locations, and thus helps us reduce the number of false positives in the system. Besides the AS-relationships datasets, we also apply the <a href="https://ihr.iijlab.net/ihr/en-us/documentation#AS_dependency">AS Hegemony dataset</a> from <a href="https://ihr.iijlab.net/ihr/en-us">IHR IIJ</a> to further reduce false positives.</p>
 	<div class="flex anchor relative">
 		<h3 id="route-leak-storage-and-presentation">Route leak storage and presentation</h3>
-		<a href="https://blog.cloudflare.com/#route-leak-storage-and-presentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#route-leak-storage-and-presentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -242,7 +242,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="route-leaks-on-cloudflare-radar">Route leaks on Cloudflare Radar</h2>
-		<a href="https://blog.cloudflare.com/#route-leaks-on-cloudflare-radar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#route-leaks-on-cloudflare-radar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -264,7 +264,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="more-to-come-on-routing-security">More to come on routing security</h2>
-		<a href="https://blog.cloudflare.com/#more-to-come-on-routing-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#more-to-come-on-routing-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

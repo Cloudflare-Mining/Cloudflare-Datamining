@@ -8,7 +8,7 @@
 	<p>I'd love to explain all the details of this new approach to HTTP prioritization but the truth is I expect the standardization process to refine the design and for things to go stale quickly. However, it doesn't hurt to give a taste of what's in store, just be aware that it is all subject to change.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-recap-on-priorities">A recap on priorities</h2>
-		<a href="https://blog.cloudflare.com/#a-recap-on-priorities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-recap-on-priorities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -50,7 +50,7 @@
 	<p>Because not all clients send the most optimal priority signals we were motivated to develop <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">Cloudflare's Enhanced HTTP/2 Prioritization</a>, announced last May during <a href="https://blog.cloudflare.com/tag/speed-week">Speed Week</a>. This was a joint project between the Speed team (Andrew Galloni, Pat Meenan, Kornel Lesiński) and Protocols team (Nick Jones, Shih-Chiang Chien) and others. It replaces the complicated priority tree with a simpler scheme that is well suited to web resources. Because the feature is implemented on the server side, we avoid requiring any modification of clients or the HTTP/2 protocol itself. Be sure to check out my colleague Nick's blog post that details some of the <a href="https://blog.cloudflare.com/nginx-structural-enhancements-for-http-2-performance">technical challenges and changes</a> needed to let our servers deliver smarter priorities.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-extensible-prioritization-scheme-proposal">The Extensible Prioritization Scheme proposal</h2>
-		<a href="https://blog.cloudflare.com/#the-extensible-prioritization-scheme-proposal" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-extensible-prioritization-scheme-proposal" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -64,7 +64,7 @@
 	<p>While Kazuho and I are the main authors of this specification, we were inspired by several ideas in the Internet community, and we have incorporated feedback or direct input from many of our peers in the Internet community over several drafts. The text today reflects the efforts-so-far of cross-industry work involving many engineers and researchers including organizations such Adobe, Akamai, Apple, Cloudflare, Fastly, Facebook, Google, Microsoft, Mozilla and UHasselt. Adoption in the HTTP Working Group means that we can help improve the design and specification by spending some IETF time and resources for broader discussion, feedback and implementation experience.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-backstory">The backstory</h2>
-		<a href="https://blog.cloudflare.com/#the-backstory" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-backstory" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -89,7 +89,7 @@
 	<p>And so started a very interesting year of cross-industry discussion on the future of HTTP prioritization.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-year-of-prioritization">A year of prioritization</h2>
-		<a href="https://blog.cloudflare.com/#a-year-of-prioritization" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-year-of-prioritization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -98,7 +98,7 @@
 	<p>The following is an account of my personal experiences during 2019. It's been a busy year and there may be unintentional errors or omissions, please let me know if you think that is the case. But I hope it gives you a taste of the standardization process and a look behind the scenes of how new Internet protocols that benefit everyone come to life.</p>
 	<div class="flex anchor relative">
 		<h3 id="january">January</h3>
-		<a href="https://blog.cloudflare.com/#january" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#january" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -107,7 +107,7 @@
 	<p>Pat's email came at the same time that I was attending the QUIC WG Tokyo interim meeting hosted at Akamai (thanks to Mike Bishop for arrangements). So I was able to speak to a few people face-to-face on the topic. There was a bit of mailing list chatter but it tailed off after a few days.</p>
 	<div class="flex anchor relative">
 		<h3 id="february-to-april">February to April</h3>
-		<a href="https://blog.cloudflare.com/#february-to-april" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#february-to-april" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -117,7 +117,7 @@
 	<p>During the presentation I recounted the history of HTTP prioritization. The great thing about working on open standards is that many email threads, presentation materials and meeting materials are publicly archived. It's fun digging through this history. Did you know: HTTP/2 is based on SPDY and inherited its weight-based prioritization scheme, the tree-based scheme we are familiar with today was only introduced in <a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-11">draft-ietf-httpbis-http2-11</a>? One of the reasons for the more-complicated tree was to help HTTP intermediaries (a.k.a. proxies) implement clever resource management. However, it became clear during the discussion that no intermediaries implement this, and none seem to plan to. I also explained a bit more about Pat's alternative scheme and Nick described his implementation experiences. Despite some interesting discussion around the topic however, we didn't come to any definitive solution. There were a lot of other <a href="https://github.com/HTTPWorkshop/workshop2019/blob/master/talks/pardue-pcaps.pdf">interesting topics</a> to discover <a href="https://daniel.haxx.se/blog/2019/04/02/the-http-workshop-2019-begins">that week</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="may">May</h3>
-		<a href="https://blog.cloudflare.com/#may" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#may" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -138,7 +138,7 @@
 	<p>An overview of HTTP/3 prioritization issues, fixes and possible alternatives. Presented by Ian Swett at the QUIC Interim Meeting May 2019.</p>
 	<div class="flex anchor relative">
 		<h3 id="june-and-july">June and July</h3>
-		<a href="https://blog.cloudflare.com/#june-and-july" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#june-and-july" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -154,7 +154,7 @@
 	<p>To round off the week, in the second HTTP session it was decided that there was sufficient interest in resolving the prioritization debate via the creation of a design team. I joined the team led by Ian Swett along with others from Adobe, Akamai, Apple, Cloudflare, Fastly, Facebook, Google, Microsoft, and UHasselt.</p>
 	<div class="flex anchor relative">
 		<h3 id="august-to-october">August to October</h3>
-		<a href="https://blog.cloudflare.com/#august-to-october" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#august-to-october" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -165,7 +165,7 @@
 	<p>In October most of us travelled to Cupertino, CA to attend another QUIC interim meeting hosted at Apple's Infinite Loop (Eric Kinnear helping with arrangements). &nbsp;The first two days of the meeting were used for interop testing and were loosely structured, so the design team took the opportunity to hold the first face-to-face meeting. We made some progress and helped Ian to form up some <a href="https://github.com/quicwg/wg-materials/blob/master/interim-19-10/HTTP%20Priorities%20Update.pdf">new slides to present</a> later in the week. Again, there was some useful discussion and signs that we should put some time in the agenda in IETF 106.</p>
 	<div class="flex anchor relative">
 		<h3 id="november">November</h3>
-		<a href="https://blog.cloudflare.com/#november" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#november" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -180,7 +180,7 @@
 	<p>The design team held another face-to-face during a Hackathon lunch break and decided that we wanted to make some tweaks to the design written up in draft 03. Unfortunately the freeze was still in effect so we could not issue a new draft. Instead, we presented the most recent thinking to the HTTP session on Monday where Ian put forward draft-kazuho-httpbis-priority as the group's proposed design solution. Ian and Robin also shared results of <a href="https://github.com/httpwg/wg-materials/blob/gh-pages/ietf106/priorities.pdf">prioritization experiments</a>. We received some great feedback in the meeting and during the week pulled out all the stops to issue a new draft <a href="https://tools.ietf.org/html/draft-kazuho-httpbis-priority-04">04</a> before the next HTTP session on Thursday. The question now was: Did the WG think this was suitable to adopt as the basis of an alternative prioritization scheme? I think we addressed a lot of the feedback in this draft and there was a general feeling of support in the room. However, in the IETF consensus is declared via mailing lists and so Tommy Pauly, co-chair of the HTTP WG, put out a <a href="https://lists.w3.org/Archives/Public/ietf-http-wg/2019OctDec/0125.html">Call for Adoption</a> on November 21st.</p>
 	<div class="flex anchor relative">
 		<h3 id="december">December</h3>
-		<a href="https://blog.cloudflare.com/#december" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#december" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -191,7 +191,7 @@
 	<p>On December 13th Tommy <a href="https://lists.w3.org/Archives/Public/ietf-http-wg/2019OctDec/0181.html">announced</a> that the group had decided to adopt our document and assign Kazuho and I as editors. The header/frame divide was noted as something that needed to be resolved.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-next-step-of-the-journey">The next step of the journey</h2>
-		<a href="https://blog.cloudflare.com/#the-next-step-of-the-journey" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-next-step-of-the-journey" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

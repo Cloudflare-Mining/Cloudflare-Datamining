@@ -4,7 +4,7 @@
 	<p>In this post, we’ll explain what the vulnerability was, how it relates to previous attacks of this sort, what mitigation measures we have taken to protect our users, and future directions the industry should consider to prevent this class of attacks from being a problem in the future.</p>
 	<div class="flex anchor relative">
 		<h3 id="dns-basics">DNS Basics</h3>
-		<a href="https://blog.cloudflare.com/#dns-basics" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#dns-basics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>DNS is both a system and a protocol. It refers to the hierarchical system of computers that manage the data related to naming on a network and it refers to the language these computers use to speak to each other to communicate answers about naming. The DNS protocol consists of pairs of messages that correspond to questions and responses. Each DNS question (query) and answer (reply) follows a standard format and contains a set of parameters that contain relevant information such as the name of interest (such as blog.cloudflare.com) and the type of response record desired (such as A for IPv4 or AAAA for IPv6).</p>
 	<div class="flex anchor relative">
 		<h3 id="the-dns-protocol-and-spoofing">The DNS Protocol and Spoofing</h3>
-		<a href="https://blog.cloudflare.com/#the-dns-protocol-and-spoofing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-dns-protocol-and-spoofing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>Those paying close attention to the diagram may notice that the amount of entropy introduced by this measure is only around 16 bits, which means that there are fewer than a hundred thousand possibilities to go through to find the matching reply to a given query. More on this later.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-dns-ecosystem">The DNS Ecosystem</h3>
-		<a href="https://blog.cloudflare.com/#the-dns-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-dns-ecosystem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -42,7 +42,7 @@
 	<p>Each of the participants in DNS (client, resolver, nameserver) uses the DNS protocol to communicate with each other. Most of the latest innovations in DNS revolve around <a href="https://blog.cloudflare.com/dns-encryption-explained">upgrading the transport</a> between users and recursive resolvers to use encryption. Upgrading the transport protocol between resolvers and authoritative servers is a bit more complicated as it requires a new discovery mechanism to instruct the resolver when to (and when not to use) a more secure channel. &nbsp;Aside from a few examples like <a href="https://blog.cloudflare.com/encrypting-dns-end-to-end">our work with Facebook</a> to encrypt recursive-to-authoritative traffic with DNS-over-TLS, most of these exchanges still happen over UDP. This is the core issue that enables this new attack on DNS, and one that we’ve seen before.</p>
 	<div class="flex anchor relative">
 		<h3 id="kaminskys-attack">Kaminsky’s Attack</h3>
-		<a href="https://blog.cloudflare.com/#kaminskys-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#kaminskys-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@
 	<p>It should be noted that this attack did not work for DNSSEC-signed domains since their answers are digitally signed. However, even now in 2020, DNSSEC is far from universal.</p>
 	<div class="flex anchor relative">
 		<h3 id="defeating-source-port-randomization-with-fragmentation">Defeating Source Port Randomization with Fragmentation</h3>
-		<a href="https://blog.cloudflare.com/#defeating-source-port-randomization-with-fragmentation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#defeating-source-port-randomization-with-fragmentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -81,7 +81,7 @@
 	<p>We explored this risk in a previous blog post in the context of certificate issuance last year when we introduced our <a href="https://blog.cloudflare.com/secure-certificate-issuance">multi-path DCV service</a>, which mitigates this risk in the context of certificate issuance by making DNS queries from multiple vantage points. Nevertheless, fragmentation-based attacks are proving less and less effective as DNS providers move to eliminate support for fragmented DNS packets (one of the major goals of <a href="https://dnsflagday.net/2020">DNS Flag Day 2020</a>).</p>
 	<div class="flex anchor relative">
 		<h3 id="defeating-source-port-randomization-via-icmp-error-messages">Defeating Source Port Randomization via ICMP error messages</h3>
-		<a href="https://blog.cloudflare.com/#defeating-source-port-randomization-via-icmp-error-messages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#defeating-source-port-randomization-via-icmp-error-messages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -118,7 +118,7 @@
 	<p>We’ve implemented an additional mitigation to 1.1.1.1 to prevent message ID guessing - if the resolver detects an ID enumeration attempt, it will stop accepting any more guesses and switches over to TCP. This reduces the number of attempts for the attacker even if it guesses the IP address and port correctly, similarly to how the number of password login attempts is limited.</p>
 	<div class="flex anchor relative">
 		<h3 id="outlook">Outlook</h3>
-		<a href="https://blog.cloudflare.com/#outlook" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#outlook" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -9,7 +9,7 @@
 	<p>Now, when connecting to PlanetScale databases, your connections are automatically configured for optimal performance with <a href="https://www.cloudflare.com/developer-platform/products/hyperdrive"><u>Hyperdrive</u></a>, ensuring that you have the fastest access from your Workers to your databases, regardless of where your Workers are running.</p>
 	<div class="flex anchor relative">
 		<h3 id="building-full-stack">Building full-stack</h3>
-		<a href="https://blog.cloudflare.com/#building-full-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#building-full-stack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>Importantly, all of this builds on <a href="https://blog.cloudflare.com/it-it/how-hyperdrive-speeds-up-database-access"><u>Hyperdrive</u></a>, our distributed connection pooler and query caching infrastructure. Hyperdrive keeps connections to your databases warm to avoid incurring latency penalties for every new request, reduces the CPU load on your database by managing a connection pool, and can cache the results of your most frequent queries, removing load from your database altogether. Given that about 80% of queries for a typical transactional database are read-only, this can be substantial — we’ve observed this in reality!</p>
 	<div class="flex anchor relative">
 		<h3 id="no-more-copying-credentials-around">No more copying credentials around</h3>
-		<a href="https://blog.cloudflare.com/#no-more-copying-credentials-around" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#no-more-copying-credentials-around" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -41,7 +41,7 @@
 	<p>This is a peek under the hood of how Hyperdrive makes access to PlanetScale as fast as possible. We’ve previously blogged about <a href="https://blog.cloudflare.com/it-it/how-hyperdrive-speeds-up-database-access"><u>Hyperdrive’s technical underpinnings</u></a> — it’s worth a read. And with this integration with Hyperdrive, you can easily connect to your databases across different Workers applications or environments, without having to reconfigure your credentials. All in all, a perfect match.</p>
 	<div class="flex anchor relative">
 		<h3 id="get-started-with-planetscale-and-workers">Get started with PlanetScale and Workers</h3>
-		<a href="https://blog.cloudflare.com/#get-started-with-planetscale-and-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#get-started-with-planetscale-and-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

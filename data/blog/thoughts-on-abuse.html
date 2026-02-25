@@ -5,7 +5,7 @@
 	<p>CloudFlare sits in front of nearly a half a million websites. Those websites include banks, national governments, Fortune 500 companies, universities, media publications, blogs, <a href="https://www.cloudflare.com/ecommerce">ecommerce companies</a>, and just about everything else you can find online. Every day we process more page views through our network than Amazon.com, Wikipedia, Twitter, Zynga, Aol, eBay, PayPal, Apple, and Instagram — combined. That's dumbfounding given that CloudFlare is only a year and a half old from our public launch.</p>
 	<div class="flex anchor relative">
 		<h3 id="problem-sites">Problem Sites</h3>
-		<a href="https://blog.cloudflare.com/#problem-sites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#problem-sites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>Today there are hundreds of thousands of sites using CloudFlare and we remain concerned about the slippery slope. To be clear, this isn't a financial decision for us. LulzSec and other problematic customers tend to sign up for our free service and we don't make a dime off of them. When they upgrade they usually pay with stolen credit cards, which causes us significant headaches. The decision to err on the side of not terminating sites is a philosophical one: we are rebuilding the Internet, and we don't believe that we or anyone else should have the right to tell people what content they can and cannot publish online.</p>
 	<div class="flex anchor relative">
 		<h3 id="who-we-terminate">Who We Terminate</h3>
-		<a href="https://blog.cloudflare.com/#who-we-terminate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#who-we-terminate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -42,7 +42,7 @@
 	<p>This sounds easy — and, as a matter of policy, it was easy — but, technically, it was actually extremely tricky to implement. To give you some sense, we average about 150,000 requests per second through our network and we're doubling every 3 months or so. To make the block pages work, we needed to check every one of those requests against regular expressions that match known phishing or malware sites. All without slowing down requests. It took us longer than I would have liked to find a solution that could scale, but now that it is in place we are actively adding data sources to ensure we promptly remediate any malware and phishing sites on our network.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-rock-and-the-hard-place">The Rock and the Hard Place</h3>
-		<a href="https://blog.cloudflare.com/#the-rock-and-the-hard-place" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-rock-and-the-hard-place" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

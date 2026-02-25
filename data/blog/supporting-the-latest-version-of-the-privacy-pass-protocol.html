@@ -73,7 +73,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="new-integrations">New Integrations</h3>
-		<a href="https://blog.cloudflare.com/#new-integrations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#new-integrations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@
 	<p>This hCaptcha integration with the Privacy Pass browser extension acts as a proof-of-concept in establishing support for new services. Any new providers that would like to integrate with the Privacy Pass browser extension can do so simply by making a PR to the <a href="https://github.com/privacypass/challenge-bypass-extension">open-source repository</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="improved-cryptographic-functionality">Improved cryptographic functionality</h2>
-		<a href="https://blog.cloudflare.com/#improved-cryptographic-functionality" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#improved-cryptographic-functionality" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -116,7 +116,7 @@
 	<p>These changes have a dual advantage, firstly ensuring that the P-256 hash-to-curve specification is compliant with the draft specification. Secondly this ciphersuite removes the necessity for using probabilistic methods, such as <a href="https://tools.ietf.org/html/draft-irtf-cfrg-vrf-05#section-5.4.1.1">hash-and-increment</a>. The hash-and-increment method has a non-negligible chance of failure, and the running time is highly dependent on the hidden client input. While it is not clear how to abuse timing attack vectors currently, using the SSWU method should reduce the potential for attacking the implementation, and learning the client input.</p>
 	<div class="flex anchor relative">
 		<h2 id="key-rotation">Key rotation</h2>
-		<a href="https://blog.cloudflare.com/#key-rotation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#key-rotation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -140,7 +140,7 @@
 	<p>Our server will run at <a href="https://privacypass.cloudflare.com">https://privacypass.cloudflare.com</a>, and all Privacy Pass requests sent to the Cloudflare edge are handled by Worker scripts that run on this domain. Our implementation has been rewritten using Javascript, with cryptographic operations running in the <a href="https://v8.dev">V8 engine</a> that powers Cloudflare Workers. This means that we are able to run highly efficient and constant-time cryptographic operations. On top of this, we benefit from the enhanced performance provided by running our code in the Workers Platform, as close to the user as possible.</p>
 	<div class="flex anchor relative">
 		<h2 id="webcrypto-support">WebCrypto support</h2>
-		<a href="https://blog.cloudflare.com/#webcrypto-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#webcrypto-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -158,7 +158,7 @@
 	<p>The Privacy Pass WebCrypto interface is not currently available for public usage. If it turns out there is enough interest in using this additional algorithm in the Workers platform, then we will consider making it public.</p>
 	<div class="flex anchor relative">
 		<h3 id="applications">Applications</h3>
-		<a href="https://blog.cloudflare.com/#applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -167,7 +167,7 @@
 	<p>In recent times, VOPRFs have been shown to be a highly useful primitive in establishing many cryptographic tools. Aside from Privacy Pass, they are also essential for constructing password-authenticated key exchange protocols such as <a href="https://datatracker.ietf.org/doc/draft-krawczyk-cfrg-opaque">OPAQUE</a>. They have also been used in designs of <a href="https://eprint.iacr.org/2016/799">private set intersection</a>, <a href="https://eprint.iacr.org/2014/650">password-protected secret-sharing</a> protocols, and <a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae">privacy-preserving access-control</a> for private data storage.</p>
 	<div class="flex anchor relative">
 		<h2 id="public-redemption-api">Public redemption API</h2>
-		<a href="https://blog.cloudflare.com/#public-redemption-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#public-redemption-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -188,7 +188,7 @@
 	<p>Standardizing protocols and functionality is an important way of providing interoperable, secure, and performant interfaces for running protocols on the Internet. This makes it easier for developers to write their own implementations of this complex functionality. The process also provides helpful peer reviews from experts in the community, which can lead to better surfacing of potential security risks that should be mitigated in any implementation. Other benefits include coming to a consensus on the most reliable, scalable and performant protocol designs for all possible applications.</p>
 	<div class="flex anchor relative">
 		<h2 id="oblivious-pseudorandom-functions">Oblivious pseudorandom functions</h2>
-		<a href="https://blog.cloudflare.com/#oblivious-pseudorandom-functions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#oblivious-pseudorandom-functions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -198,7 +198,7 @@
 	<p>One of the recent changes that we've made in the draft is to increase the size of the key that we consider for performing OPRF operations on the server-side. Existing research suggests that it is possible to create specific queries that can lead to small amounts of the key being leaked. For keys that provide only 128 bits of security this can be a problem as leaking too many bits would reduce security <a href="https://www.keylength.com/en/4">beyond currently accepted levels</a>. To counter this, we have effectively increased the minimum key size to 192 bits. This prevents this leakage becoming an attack vector using any practical methods. We discuss these attacks in more detail later on when discussing our future plans for VOPRF development.</p>
 	<div class="flex anchor relative">
 		<h2 id="recent-applications-and-standardizing-the-protocol">Recent applications and standardizing the protocol</h2>
-		<a href="https://blog.cloudflare.com/#recent-applications-and-standardizing-the-protocol" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#recent-applications-and-standardizing-the-protocol" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -214,7 +214,7 @@
 	<p>A <a href="https://engineering.fb.com/security/partially-blind-signatures">separate piece of work from Facebook</a> details a similar application for preventing fraudulent behavior that may also be compatible with the Privacy Pass protocol. Finally, other applications have arisen in the areas of providing access to <a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae">private storage</a> and <a href="https://github.com/brave/brave-browser/wiki/Security-and-privacy-model-for-ad-confirmations">establishing security and privacy models in advertisement confirmations</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-new-draft">A new draft</h3>
-		<a href="https://blog.cloudflare.com/#a-new-draft" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-new-draft" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -226,7 +226,7 @@
 	<p>Finally, while we are actively working on a number of different pathways in the present, the future directions for the project are still open. We believe that there are many applications out there that we have not considered yet and we are excited to see where the protocol is used in the future. Here are some other ideas we have for novel applications and security properties that we think might be worth pursuing in future.</p>
 	<div class="flex anchor relative">
 		<h2 id="publicly-verifiable-tokens">Publicly verifiable tokens</h2>
-		<a href="https://blog.cloudflare.com/#publicly-verifiable-tokens" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#publicly-verifiable-tokens" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -235,7 +235,7 @@
 	<p>One of the disadvantages of using a VOPRF is that redemption tokens are only verifiable by the original issuing server. If we used an underlying primitive that allowed public verification of redemption tokens, then anyone could verify that the issuing server had issued the particular token. Such a protocol could be constructed on top of so-called blind signature schemes, such as <a href="https://en.wikipedia.org/wiki/Blind_signature#Blind_RSA_signatures">Blind RSA</a>. Unfortunately, there are performance and security concerns arising from the usage of blind signature schemes in a browser environment. Existing schemes (especially RSA-based variants) require cryptographic computations that are much heavier than the construction used in our VOPRF protocol.</p>
 	<div class="flex anchor relative">
 		<h2 id="post-quantum-voprf-alternatives">Post-quantum VOPRF alternatives</h2>
-		<a href="https://blog.cloudflare.com/#post-quantum-voprf-alternatives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#post-quantum-voprf-alternatives" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -245,7 +245,7 @@
 	<p>Recent developments suggest that quantum computing may arrive <a href="https://www.nature.com/articles/s41586-019-1666-5">sooner than previously thought</a>. As such, we believe that investigating the possibility of <a href="http://staging.blog.mrk.cfdata.org/introducing-circl">constructing practical post-quantum alternatives</a> for our current cryptographic toolkit is a task of great importance for ourselves and the wider community. In this case, devising performant post-quantum alternatives for VOPRF constructions would be an important theoretical advancement. Eventually this would lead to a Privacy Pass protocol that still provides privacy-preserving authorization in a post-quantum world.</p>
 	<div class="flex anchor relative">
 		<h2 id="voprf-security-and-larger-ciphersuites">VOPRF security and larger ciphersuites</h2>
-		<a href="https://blog.cloudflare.com/#voprf-security-and-larger-ciphersuites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#voprf-security-and-larger-ciphersuites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -260,7 +260,7 @@
 	<p>In the near future, it will be necessary to upgrade the ciphersuites that are used in our support of the Privacy Pass browser extension to the recommendations made in the current VOPRF draft. In general, with a more iterative release process, we hope that the Privacy Pass implementation will be able to follow the current draft standard more closely as it evolves during the standardization process.</p>
 	<div class="flex anchor relative">
 		<h2 id="get-in-touch">Get in touch!</h2>
-		<a href="https://blog.cloudflare.com/#get-in-touch" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#get-in-touch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -278,7 +278,7 @@
 	<p>Here are some extra details related to the topics that we covered above.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-commitment-format-for-key-rotations">A. Commitment format for key rotations</h2>
-		<a href="https://blog.cloudflare.com/#a-commitment-format-for-key-rotations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-commitment-format-for-key-rotations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -296,7 +296,7 @@
 	<p>When a server wants to rotate the key, it simply generates a new key <code>k2</code> and appends a new commitment to <code>k2</code> with a new identifier such as <code>2.01</code>. It can then use <code>k2</code> as the secret for the VOPRF operations that it needs to compute.</p>
 	<div class="flex anchor relative">
 		<h2 id="b-example-redemption-api-request">B. Example Redemption API request</h2>
-		<a href="https://blog.cloudflare.com/#b-example-redemption-api-request" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#b-example-redemption-api-request" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -330,7 +330,7 @@
 	<p>Currently the only supported ciphersuites are the example above, or the same except with <code>method</code> equal to <code>increment</code> for the hash-and-increment method of hashing to a curve. This is the original method used in v1.0 of Privacy Pass, and is supported for backwards-compatibility only. See the <a href="https://privacypass.github.io/api-redeem">provided documentation</a> for more details.</p>
 	<div class="flex anchor relative">
 		<h3 id="example-response">Example response</h3>
-		<a href="https://blog.cloudflare.com/#example-response" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#example-response" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

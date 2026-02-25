@@ -31,7 +31,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="tls-to-the-max">TLS to the max</h3>
-		<a href="https://blog.cloudflare.com/#tls-to-the-max" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tls-to-the-max" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -61,7 +61,7 @@
 	<p>Having the option to choose a secure stream cipher in TLS is a good thing for mobile performance. Adding cipher diversity is also good insurance. If someone finds a flaw in one of the AES-based cipher suites sometime in the future, it gives a safe and fast option to fall back to.</p>
 	<div class="flex anchor relative">
 		<h3 id="security">Security</h3>
-		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -78,7 +78,7 @@ The Poly1305 authenticator is designed to ensure that forged messages are reject
 	<p>ChaCha20-Poly1305 also uses the current recommended construction for combining encryption and authentication. It’s built using an Authenticated Encryption with Associated Data (AEAD) construction. AEAD is a way of combining a cipher and an authenticator together to get the combined properties of encryption and authentication. This would be done previously with two different algorithms, typically a block cipher and an HMAC. Authenticated encryption makes it impossible to decrypt a ciphertext out of order which helps rule out a whole class of problems including <a href="https://code.google.com/p/go/source/detail?r=3ac4616250ed">BEAST</a>, <a href="http://www.isg.rhul.ac.uk/tls/Lucky13.html">Lucky 13</a> and <a href="https://blog.cloudflare.com/sslv3-support-disabled-by-default-due-to-vulnerability">POODLE</a>. AEAD also makes the age-old discussion of <a href="http://crypto.stackexchange.com/questions/202/should-we-mac-then-encrypt-or-encrypt-then-mac">MAC-then-encrypt vs encrypt-then-MAC</a> obsolete by combining the two in the same operation. Our other preferred TLS 1.2 encryption algorithm, AES-GCM, is also an AEAD.</p>
 	<div class="flex anchor relative">
 		<h3 id="performance">Performance</h3>
-		<a href="https://blog.cloudflare.com/#performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -93,7 +93,7 @@ ChaCha20-Poly1305: 	13.2ms</code></pre>
 	<p>In order to support over a million HTTPS sites on our servers, we have to make sure CPU usage is low. To help improve performance we are using <a href="http://openssl.6102.n7.nabble.com/openssl-org-3615-PATCH-ChaCha20-with-Poly1305-TLS-Cipher-Suites-via-the-EVP-interface-td55120.html">an open source assembly code version of ChaCha/Poly</a> by CloudFlare engineer Vlad Krasnov and others that has been optimized for our servers’ Intel CPUs. This keeps the cost of encrypting data with this new cipher to a minimum.</p>
 	<div class="flex anchor relative">
 		<h3 id="browser-support-and-future-directions">Browser support and future directions</h3>
-		<a href="https://blog.cloudflare.com/#browser-support-and-future-directions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#browser-support-and-future-directions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -103,7 +103,7 @@ ChaCha20-Poly1305: 	13.2ms</code></pre>
 	<p>One thing to note is that the version of ChaCha/Poly implemented by both CloudFlare and Chrome is not the final version that will be standardized by the IETF. A <a href="https://tools.ietf.org/html/draft-mavrogiannopoulos-chacha-tls-03">more recent draft</a> with slight modifications has been published and is on the road to standardization. We plan on adopting this new version of the cipher once it has been finalized.</p>
 	<div class="flex anchor relative">
 		<h3 id="looking-ahead">Looking Ahead</h3>
-		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

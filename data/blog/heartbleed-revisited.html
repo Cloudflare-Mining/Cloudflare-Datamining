@@ -6,7 +6,7 @@
 	<p>As much as Heartbleed and <a href="https://www.bankinfosecurity.com/private-keys-for-23000-digital-certificates-leaked-a-10689">other key compromise events</a> were painful for security and operations teams around the world, they also provided a learning opportunity for the industry. Over the past seven years, Cloudflare has taken the lessons of Heartbleed and applied them to improve the design of our systems and the resiliency of the Internet overall. Read on to learn how using Cloudflare reduces the risk of key compromise and reduces the cost of recovery if it happens.</p>
 	<div class="flex anchor relative">
 		<h3 id="keeping-keys-safe">Keeping keys safe</h3>
-		<a href="https://blog.cloudflare.com/#keeping-keys-safe" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#keeping-keys-safe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -36,7 +36,7 @@
 	<p>Keyless SSL is a great security solution, but depending on where keys are stored it can introduce some latency. Because of this, we worked with the IETF to develop a new standard called <a href="https://blog.cloudflare.com/keyless-delegation">Delegated Credentials</a>, which allows connections to use short-lived keys that are signed by the certificate instead of the certificate itself in TLS. This eliminates the additional latency introduced by Keyless SSL. We support Delegated Credentials for all Keyless SSL and Geo Key Manager customers; and Firefox 89 (May 2021) will enable Delegated Credential support by default.</p>
 	<div class="flex anchor relative">
 		<h3 id="making-revocation-work">Making revocation work</h3>
-		<a href="https://blog.cloudflare.com/#making-revocation-work" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-revocation-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -96,7 +96,7 @@
 	<p>Cloudflare has supported best-effort OCSP stapling <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">since 2012</a>. In 2017, we set out to improve the reliability of our OCSP stapling so that we could support OCSP must-staple certificates. The result of this work was <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling">High-reliability OCSP</a> stapling and a research study published <a href="https://dl.acm.org/doi/10.1145/3278532.3278543">in IMC</a> that demonstrated the feasibility of OCSP must-staple more broadly on the Internet. Cloudflare now supports OCSP must-staple certificates, providing an additional safety net in case of a future key compromise.</p>
 	<div class="flex anchor relative">
 		<h3 id="2014-vs-now">2014 vs. now</h3>
-		<a href="https://blog.cloudflare.com/#2014-vs-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#2014-vs-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

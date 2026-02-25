@@ -5,7 +5,7 @@
 	<p>Cloudflare Pages started its journey as a platform for static websites, but with <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">last year's addition of Pages Functions</a> powered by Cloudflare Workers, the platform has progressed to support an even more diverse range of use cases. Pages Functions allows developers to sprinkle in small pieces of server-side code with its simple file-based routing, or, as we've seen with the adoption from other frameworks (namely <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-site">SvelteKit</a>, <a href="https://developers.cloudflare.com/pages/framework-guides/remix">Remix</a> and <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site">Qwik</a>), Pages Functions can be used to power your entire full-stack app. The folks behind <a href="https://blog.cloudflare.com/remix-on-cloudflare-pages">Remix previously talked about the advantages of adopting open standards</a>, and we've seen this again with Next.js' Edge Runtime.</p>
 	<div class="flex anchor relative">
 		<h2 id="next-js-edge-runtime">Next.js' Edge Runtime</h2>
-		<a href="https://blog.cloudflare.com/#next-js-edge-runtime" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-js-edge-runtime" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>However, we see the migration to the Edge Runtime as an effort that's worthy of investment, to run your applications, well, on the edge! These applications are cheaper to run, respond faster to users and have the latest features that full-stack frameworks offer. We're seeing increased interest in third-party npm packages and libraries that support standardized runtimes, and in combination with Cloudflare's data products (e.g. <a href="https://www.cloudflare.com/products/workers-kv">KV</a>, <a href="https://www.cloudflare.com/products/durable-objects">Durable Objects</a> and <a href="https://blog.cloudflare.com/whats-new-with-d1">D1</a>), we're confident that the edge is going to be the first place that people will want to deploy applications going forward.</p>
 	<div class="flex anchor relative">
 		<h2 id="deploy-your-next-js-app-to-cloudflare-pages">Deploy your Next.js app to Cloudflare Pages</h2>
-		<a href="https://blog.cloudflare.com/#deploy-your-next-js-app-to-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#deploy-your-next-js-app-to-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -61,7 +61,7 @@ module.exports = nextConfig</code></pre>
 	<p>Finally, we're ready to deploy the project. Publish it to a GitHub or GitLab repository, create a new Pages project, and select "Next.js" from the list of framework presets. This will configure your project to use <a href="https://github.com/cloudflare/next-on-pages">the <code>@cloudflare/next-on-pages</code> CLI</a> which builds and transforms your project into something we can deploy on Pages. Navigate to the project settings and add an environment variable, <code>NODE_VERSION</code> set to <code>14</code> or greater, as well as the following compatibility flags: <code>streams_enable_constructors</code> and <code>transformstream_enable_standard_constructor</code>. You should now be able to deploy your Next.js application. If you want to read more, you can find a detailed guide in <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site">our documentation</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-it-runs-on-cloudflare-pages">How it runs on Cloudflare Pages</h2>
-		<a href="https://blog.cloudflare.com/#how-it-runs-on-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-it-runs-on-cloudflare-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -70,7 +70,7 @@ module.exports = nextConfig</code></pre>
 
 	<div class="flex anchor relative">
 		<h3 id="compatibility-dates-and-compatibility-flags">Compatibility Dates and Compatibility Flags</h3>
-		<a href="https://blog.cloudflare.com/#compatibility-dates-and-compatibility-flags" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#compatibility-dates-and-compatibility-flags" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -86,7 +86,7 @@ module.exports = nextConfig</code></pre>
 	<p>We've been working on adding more support for the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API">Streams API</a> to the Workers Runtime, and some of this functionality is gated behind the flags we added to the project earlier. <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/#change-history">These flags are currently scheduled to graduate</a> and become on-by-default on a future compatibility date, 2022-11-30.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-cloudflare-next-on-pages-cli">The <code>@cloudflare/next-on-pages</code> CLI</h3>
-		<a href="https://blog.cloudflare.com/#the-cloudflare-next-on-pages-cli" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-cloudflare-next-on-pages-cli" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@ module.exports = nextConfig</code></pre>
 	<p>Additionally, if more full-stack frameworks do adopt Vercel's Build Output API, we may have automatic support for them running on Pages with this CLI. We've only been experimenting with Next.js here so far (and SvelteKit, Remix and Qwik all have their own way of building their projects on Pages at the moment), but it's possible that in the future we may converge on a standard approach which could be shared between frameworks and platforms. We're excited to see how this might transpire. Again, <a href="https://discord.com/channels/595317990191398933/910978223968518144">let us know</a> if you have thoughts!</p>
 	<div class="flex anchor relative">
 		<h3 id="experimental-webpack-minification">Experimental webpack minification</h3>
-		<a href="https://blog.cloudflare.com/#experimental-webpack-minification" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#experimental-webpack-minification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -138,7 +138,7 @@ export default {
 	<p>Our <code>@cloudflare/next-on-pages --experimental-minify</code> CLI argument deals with this problem by analyzing webpack chunks which are re-used in multiple places in this <code>.vercel/output/functions</code> directory and extracts out that code to a common place. This allows our compiler (esbuild) to efficiently combine this code, without duplicating it in all of these places. This process is experimental for the time being, while we look to make this as efficient as possible, without introducing any bugs as a result. Please <a href="https://github.com/cloudflare/next-on-pages/issues">file an issue on GitHub</a> if you notice any difference in behavior when using <code>--experimental-minify</code>.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-next">What's next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

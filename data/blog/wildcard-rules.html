@@ -11,7 +11,7 @@
 	<p>Today we are excited to announce that wildcard support is now available across our Ruleset Engine-based products, including <a href="https://developers.cloudflare.com/cache/how-to/cache-rules"><u>Cache Rules</u></a>, <a href="https://developers.cloudflare.com/rules/compression-rules"><u>Compression Rules</u></a>, <a href="https://developers.cloudflare.com/rules/configuration-rules"><u>Configuration Rules</u></a>, <a href="https://developers.cloudflare.com/rules/custom-error-responses"><u>Custom Errors</u></a>, <a href="https://developers.cloudflare.com/rules/origin-rules"><u>Origin Rules</u></a>, <a href="https://developers.cloudflare.com/rules/url-forwarding"><u>Redirect Rules</u></a>, <a href="https://developers.cloudflare.com/rules/snippets"><u>Snippets</u></a>, <a href="https://developers.cloudflare.com/rules/transform"><u>Transform Rules</u></a>, <a href="https://developers.cloudflare.com/waf"><u>Web Application Firewall (WAF)</u></a>, <a href="https://developers.cloudflare.com/waiting-room"><u>Waiting Room</u></a>, and more.</p>
 	<div class="flex anchor relative">
 		<h3 id="understanding-wildcards">Understanding wildcards</h3>
-		<a href="https://blog.cloudflare.com/#understanding-wildcards" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#understanding-wildcards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>Once a segment is captured, it can be used in another expression by referencing the matched wildcard with the <code>${&lt;X&gt;}</code> syntax, where <code>&lt;X&gt;</code> indicates the index of a matched pattern. This is particularly useful in URL forwarding. For instance, the URL pattern <code>https://example.com/*/t*st</code> can redirect to <code>https://${1}.example.com/t${2}st</code>, allowing dynamic and flexible URL redirection. This setup ensures that <code>https://example.com/uk/test</code> is forwarded to <code>https://uk.example.com/test</code>, <code>https://example.com/images/toast</code> to <code>https://images.example.com/toast</code>, and so on.</p>
 	<div class="flex anchor relative">
 		<h3 id="challenges-with-single-redirects">Challenges with Single Redirects</h3>
-		<a href="https://blog.cloudflare.com/#challenges-with-single-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#challenges-with-single-redirects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -48,7 +48,7 @@
 	<p>This complexity created unnecessary overhead and difficulty, especially for users without access to regular expressions (regex) or the technical expertise to come up with expressions that use nested functions.</p>
 	<div class="flex anchor relative">
 		<h3 id="wildcard-support-in-ruleset-engine">Wildcard support in Ruleset Engine</h3>
-		<a href="https://blog.cloudflare.com/#wildcard-support-in-ruleset-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#wildcard-support-in-ruleset-engine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -57,7 +57,7 @@
 	<p>With the introduction of wildcard support across our Ruleset Engine-based products, users can now take advantage of the power and flexibility of the Ruleset Engine through simpler and more intuitive configurations. This enhancement ensures high performance while making it easier to create dynamic and flexible URL patterns and beyond.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-new">What’s new?</h3>
-		<a href="https://blog.cloudflare.com/#whats-new" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-new" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -66,7 +66,7 @@
 
 	<div class="flex anchor relative">
 		<h4 id="1-operators-wildcard-and-strict-wildcard-in-ruleset-engine">1) Operators "wildcard" and "strict wildcard" in Ruleset Engine:</h4>
-		<a href="https://blog.cloudflare.com/#1-operators-wildcard-and-strict-wildcard-in-ruleset-engine" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#1-operators-wildcard-and-strict-wildcard-in-ruleset-engine" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -88,7 +88,7 @@
 	<p>This example demonstrates the use of the "wildcard" operator in a <a href="https://developers.cloudflare.com/waf"><u>Web Application Firewall (WAF)</u></a> rule applied to the User Agent field. This rule matches any incoming request where the User Agent string contains patterns starting with "Mozilla/" and includes specific elements like "Macintosh; Intel Mac OS ", "Gecko/", and "Firefox/". Importantly, the wildcard operator is case insensitive, so it captures variations like "mozilla" and "Mozilla" without requiring exact matches.</p>
 	<div class="flex anchor relative">
 		<h4 id="2-function-wildcard_replace-in-single-redirects">2) Function <code>wildcard_replace()</code> in Single Redirects:</h4>
-		<a href="https://blog.cloudflare.com/#2-function-wildcard_replace-in-single-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#2-function-wildcard_replace-in-single-redirects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -102,7 +102,7 @@
 	<p>Consider the URL pattern <code>https://example.com/*/t*st</code> mentioned earlier. Using <code>wildcard_replace()</code>, you can now set the target URL to <code>https://${1}.example.com/t${2}st</code> and dynamically redirect URLs like <code>https://example.com/uk/test</code> to <code>https://uk.example.com/test</code> and <code>https://example.com/images/toast</code> to <code>https://images.example.com/toast</code>.</p>
 	<div class="flex anchor relative">
 		<h4 id="3-simplified-ui-in-single-redirects">3) Simplified UI in Single Redirects:</h4>
-		<a href="https://blog.cloudflare.com/#3-simplified-ui-in-single-redirects" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#3-simplified-ui-in-single-redirects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -115,7 +115,7 @@
 	<p></p>
 	<div class="flex anchor relative">
 		<h3 id="how-we-built-it">How we built it</h3>
-		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -137,7 +137,7 @@ http.request.full_uri,
 	<p>Cloudflare’s <a href="https://crates.io/crates/wildcard"><code><u>wildcard crate</u></code></a> is now available and is open-source. You can find the source repository <a href="https://github.com/cloudflare/wildcard"><u>here</u></a>. Contributions are welcome!</p>
 	<div class="flex anchor relative">
 		<h3 id="faqs-and-resources">FAQs and resources</h3>
-		<a href="https://blog.cloudflare.com/#faqs-and-resources" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#faqs-and-resources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -156,7 +156,7 @@ http.request.full_uri,
 	<p>Additionally, check out our <a href="https://crates.io/crates/wildcard"><code><u>wildcard crate</u></code></a> implementation and <a href="https://github.com/cloudflare/wildcard"><u>contribute to its development</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

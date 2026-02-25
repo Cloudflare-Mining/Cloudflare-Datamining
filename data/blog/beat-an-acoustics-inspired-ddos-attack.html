@@ -8,7 +8,7 @@
 	<p>On the week of Black Friday, Cloudflare automatically detected and mitigated a unique ACK DDoS attack, which we’ve codenamed “Beat”, that targeted a <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customer. Usually, when attacks make headlines, it’s because of their size. However, in this case, it’s not the size that is unique but the method that appears to have been borrowed from the world of acoustics.</p>
 	<div class="flex anchor relative">
 		<h3 id="acoustic-inspired-attack">Acoustic inspired attack</h3>
-		<a href="https://blog.cloudflare.com/#acoustic-inspired-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#acoustic-inspired-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@
 	<p>Source: <a href="https://academo.org/demos/wave-interference-beat-frequency">https://academo.org/demos/wave-interference-beat-frequency/</a>&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="reverse-engineering-the-attack">Reverse engineering the attack</h3>
-		<a href="https://blog.cloudflare.com/#reverse-engineering-the-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reverse-engineering-the-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -73,7 +73,7 @@
 	<p>In the screenshot below, g = f<sub>1</sub>. You can view this graph <a href="https://www.desmos.com/calculator/7j86q3x9xd">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="beating-the-drum">Beating the drum</h3>
-		<a href="https://blog.cloudflare.com/#beating-the-drum" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#beating-the-drum" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -83,7 +83,7 @@
 	<p>The attacker was beating the drum for over 19 hours with an <a href="https://en.wikipedia.org/wiki/Amplitude">amplitude</a> of ~7 Mpps, a <a href="https://en.wikipedia.org/wiki/Wavelength">wavelength</a> of ~4 hours, and peaking at ~42 Mpps. During the two days in which the attack took place, Cloudflare systems automatically detected and mitigated over 700 DDoS attacks that targeted this customer. The attack traffic accumulated at almost 500 Terabytes out of a total of 3.6 Petabytes of attack traffic that targeted this single customer in November alone. During those two days, the attackers utilized mainly ACK floods, UDP floods, SYN floods, Christmas floods (where all of the TCP flags are ‘lit’), ICMP floods, and RST floods.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-challenge-of-tcp-based-attacks">The challenge of TCP based attacks</h3>
-		<a href="https://blog.cloudflare.com/#the-challenge-of-tcp-based-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-challenge-of-tcp-based-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

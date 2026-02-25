@@ -8,7 +8,7 @@
 	<p>The logic to handle this is contained in a static NGINX module, and runs in the <a href="http://nginx.org/en/docs/dev/development_guide.html#http_response_body_filters">Response Body Filters</a> &nbsp;phase in NGINX, as chunks of the HTTP response body are streamed through. Over time, more features were added, and the system became known as cf-html. cf-html uses a streaming HTML parser to match on specific HTML tags and content, called <a href="https://github.com/cloudflare/lazyhtml">Lazy HTML</a> or lhtml, with much of the logic for both it and the cf-html features written using the <a href="http://www.colm.net/open-source/ragel">Ragel</a> state machine engine.</p>
 	<div class="flex anchor relative">
 		<h3 id="memory-safety">Memory safety</h3>
-		<a href="https://blog.cloudflare.com/#memory-safety" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#memory-safety" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>So we started working on a new framework, written in Rust, that would incorporate lol-html and allow other teams to write response body parsing features without the threat of causing massive security issues. The new system is called ROFL or Response Overseer for FL, and it’s a brand-new NGINX module written completely in Rust. As of now, ROFL is running in production on millions of responses a second, with comparable performance to cf-html. In building ROFL, we’ve been able to deprecate one of the scariest bits of code in Cloudflare’s entire codebase, while providing teams at Cloudflare with a robust system they can use to write features which need to parse and rewrite response body data.</p>
 	<div class="flex anchor relative">
 		<h3 id="writing-an-nginx-module-in-rust">Writing an NGINX module in Rust</h3>
-		<a href="https://blog.cloudflare.com/#writing-an-nginx-module-in-rust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#writing-an-nginx-module-in-rust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -210,7 +210,7 @@ unsafe extern "C" fn cleanup_handler&lt;T&gt;(data: *mut c_void) {
 	<p>It is regrettable that we have to write a lot of <code>unsafe</code> blocks when dealing with NGINX’s interface in Rust. Although we’ve done a lot of work to minimise them where possible, unfortunately this is often the case with writing Rust code which has to manipulate C constructs through FFI. We have plans to do more work on this in the future, and remove as many lines as possible from <code>unsafe</code>.</p>
 	<div class="flex anchor relative">
 		<h3 id="challenges-encountered">Challenges encountered</h3>
-		<a href="https://blog.cloudflare.com/#challenges-encountered" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#challenges-encountered" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -252,7 +252,7 @@ pub struct Chains {
 	<p>Effectively we’re ‘queueing’ the data for a short period of time so that we don’t overwhelm the other modules by feeding them data faster than they can handle it. The <a href="https://nginx.org/en/docs/dev/development_guide.html">NGINX Developer Guide</a> has a lot of great information, but many of its examples are trivial to the point where issues like this don’t come up. Things such as this are the result of working in a complex NGINX-based environment, and need to be discovered independently.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-future-without-nginx">A future without NGINX</h3>
-		<a href="https://blog.cloudflare.com/#a-future-without-nginx" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-future-without-nginx" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

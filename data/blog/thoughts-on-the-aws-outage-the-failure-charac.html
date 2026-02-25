@@ -5,7 +5,7 @@
 	<p>My favorite comment on the incident came from Phil Kaplan (<a href="https://twitter.com/pud">@pud</a>) who <a href="https://twitter.com/pud/status/218952182182064128">tweeted</a>: "The cloud is no match for the clouds." It got me thinking about the different types of "cloud" services, their different sensitivities to failure, and how they can be made more resilient.</p>
 	<div class="flex anchor relative">
 		<h3 id="cumulus-stratus-cirrus-nimbus">Cumulus, Stratus, Cirrus, Nimbus</h3>
-		<a href="https://blog.cloudflare.com/#cumulus-stratus-cirrus-nimbus" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cumulus-stratus-cirrus-nimbus" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>I'd add a further distinction: the three cloud services I've mentioned so far are all what I'd call Data &amp; Application (D&amp;A) cloud service. In one way or another, they let you store data and process without having to think about the underlying hardware. They may all be cloud services, but they are very different from what we're building at CloudFlare (more on that in a bit).</p>
 	<div class="flex anchor relative">
 		<h3 id="servers-all-the-way-down">Servers All the Way Down</h3>
-		<a href="https://blog.cloudflare.com/#servers-all-the-way-down" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#servers-all-the-way-down" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	<p>While it's easy to forget with the abstractions provided by these services, under all these clouds are servers, switches, and routers. If you're using Salesforce.com for CRM and your company adds a large number of new customers, you don't need to think about adding more drives or servers to scale up. Instead, Salesforce.com handles the process of adding capacity across its hardware. If you're developing on top of a cloud service like AWS's EC2, as your application scales you can "spin up" new instances to provide more computational power. These instances are fractions of the capacity on a physical server which may be shared with other EC2 users. Because each EC2 customer only uses whatever isnecessary for their application, the utilization rates across the servers is very high.</p>
 	<div class="flex anchor relative">
 		<h3 id="when-clouds-go-boom">When Clouds Go Boom</h3>
-		<a href="https://blog.cloudflare.com/#when-clouds-go-boom" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#when-clouds-go-boom" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -52,7 +52,7 @@ failure" class="kg-image" width="500" height="333" loading="lazy">
 	<p>Replicating data is relatively easy. Replicating data and keeping it in sync is hard. The problem becomes harder if the locations are geographically separated. The speed of light is very fast, but it still takes a photon of light traveling under perfect conditions nearly <a href="http://www.wolframalpha.com/input/?i=2+*+%28distance+from+Amsterdam+to+san+francisco+in+kilometers+%2F+%28speed+of+light+in+kilometers+per+millisecond%29%29">60ms to roundtrip from San Francisco to Amsterdam</a>. It's slower through the actual fiber and copper cables that make up the Internet, and much, much slower when you take into account the <a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact">real world performance of the Internet</a>. If two people change the same piece of data in two locations during the latency window between updates, very unpredictable bad things can happen.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-challenge-of-being-in-sync">The Challenge of Being in Sync</h3>
-		<a href="https://blog.cloudflare.com/#the-challenge-of-being-in-sync" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-challenge-of-being-in-sync" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -68,7 +68,7 @@ failure" class="kg-image" width="500" height="333" loading="lazy">
 	<p>Twitter, Facebook, Google (with their new emphasis on products that require more data synchronization), and a lot of other smart people are working ways to mitigate the problem of data replication and synchronization but the speed of light is only so fast and at some level you'll always bump into the laws of physics. What is key, however, is that choosing to host in the cloud alone is not sufficient to ensure your application is fault tolerant. The data and application layer remain difficult to scale, and even with a service like AWS creating resiliency still requires programmers to make their application servers redundant and replicate their data to the extent possible and practical.</p>
 	<div class="flex anchor relative">
 		<h3 id="front-end-layer-scaling">Front End Layer Scaling</h3>
-		<a href="https://blog.cloudflare.com/#front-end-layer-scaling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#front-end-layer-scaling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -79,7 +79,7 @@ failure" class="kg-image" width="500" height="333" loading="lazy">
 	<p>The Front End layer can also shield the Data &amp; Application layer from potential threats and attacks. In fact, if you use a protocol like Anycast to route requests geographically, you can isolate attacks or any network problems to only impact a small part of the overall system.</p>
 	<div class="flex anchor relative">
 		<h3 id="front-end-in-the-cloud-ftw">Front End In the Cloud FTW</h3>
-		<a href="https://blog.cloudflare.com/#front-end-in-the-cloud-ftw" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#front-end-in-the-cloud-ftw" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

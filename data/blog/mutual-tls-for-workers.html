@@ -5,7 +5,7 @@
 	<p>When making outbound requests from a Worker, TLS is always used on the server side, so that the client can validate that the information is being sent to the right destination. But in the same way, the server may want to authenticate the client to ensure that the request is coming from an authorized client. This two-way street of authentication is called Mutual TLS. In this blog, we’re going to talk through the importance of mutual TLS authentication, what it means to use mutual TLS within Workers, and how in a few months you’ll be able to use it to send information through an authenticated channel — adding a layer of security to your application!</p>
 	<div class="flex anchor relative">
 		<h3 id="mtls-between-cloudflare-and-an-origin">mTLS between Cloudflare and an Origin</h3>
-		<a href="https://blog.cloudflare.com/#mtls-between-cloudflare-and-an-origin" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mtls-between-cloudflare-and-an-origin" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -16,7 +16,7 @@
 	<p>Doing this brings a big security boost because it allows the origin to only accept traffic from Cloudflare and drop any unexpected external traffic.</p>
 	<div class="flex anchor relative">
 		<h3 id="digging-up-problems-with-dogfooding">Digging up problems with dogfooding</h3>
-		<a href="https://blog.cloudflare.com/#digging-up-problems-with-dogfooding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#digging-up-problems-with-dogfooding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -26,7 +26,7 @@
 	<p>Whenever one service needs to talk to another, the <code>fetch()</code> function is used to request or send information. This can be object data that we send to upstream providers, it can be a read or write to a database, or service to service communication. In most regards, the information that’s going to the origin is sensitive and requires a layer of authentication. Without proper authentication, any client would be able to access the data, removing a layer of security.</p>
 	<div class="flex anchor relative">
 		<h3 id="implementing-service-to-service-authentication">Implementing service to service authentication</h3>
-		<a href="https://blog.cloudflare.com/#implementing-service-to-service-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementing-service-to-service-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	<p>Now, there’s another solution that you can use. You can make use of Access and set up <a href="https://support.cloudflare.com/hc/en-us/articles/115001376488-Configuring-Token-Authentication">Token Authentication</a> by using a pre-shared key and <a href="https://developers.cloudflare.com/workers/examples/auth-with-headers">configuring your Worker</a> to allow or deny access based on the pre-shared key, presented in the header. While this does allow you to lock down authentication on a per-Worker or per-service basis, the feedback that we’ve gotten from our internal teams who have implemented this is that it’s 1) cumbersome to manage and 2) requires the two service to speak over HTTP, and 3) doesn’t expose the client’s identity. And so, with these limitations in mind, we’re excited to bring mutual TLS authentication to Workers — an easy, scalable way to manage authentication and identity for anyone building on Workers.</p>
 	<div class="flex anchor relative">
 		<h3 id="coming-soon-mutual-tls-for-workers">Coming soon: Mutual TLS for Workers</h3>
-		<a href="https://blog.cloudflare.com/#coming-soon-mutual-tls-for-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#coming-soon-mutual-tls-for-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

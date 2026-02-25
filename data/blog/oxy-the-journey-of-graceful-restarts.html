@@ -5,7 +5,7 @@
 	<p>At Cloudflare we have to take this seriously. Our software is in constant use and cannot simply be stopped abruptly. A dropped HTTP request can cause an entire webpage to load incorrectly, and a broken connection can kick you out of a video call. Taking away reliability creates a vacuum filled only by user frustration.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-limitations-of-the-typical-upgrade-process">The limitations of the typical upgrade process</h3>
-		<a href="https://blog.cloudflare.com/#the-limitations-of-the-typical-upgrade-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-limitations-of-the-typical-upgrade-process" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>Despite this challenge, we have to start somewhere. You rarely arrive at the perfect solution in your first try.</p>
 	<div class="flex anchor relative">
 		<h3 id=""><a href="https://knowyourmeme.com/memes/flipping-tables-%E2%95%AF%E2%96%A1%E2%95%AF%EF%B8%B5-%E2%94%BB%E2%94%81%E2%94%BB">(╯°□°）╯︵ ┻━┻</a></h3>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	<p>Oxy is a Rust project, so we can’t reuse tableflip. We rewrote the spawning/signaling section in Rust, but not the socket code. For that we had an alternative approach.</p>
 	<div class="flex anchor relative">
 		<h3 id="socket-management-with-systemd">Socket management with systemd</h3>
-		<a href="https://blog.cloudflare.com/#socket-management-with-systemd" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#socket-management-with-systemd" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -56,7 +56,7 @@
 	<p>Using systemd decouples the lifetime of sockets from the lifetime of the Oxy application. When Oxy creates its sockets on startup, if you restart or temporarily stop the Oxy application the sockets are closed. When clients attempt to connect to the proxy during this time, they will get a very unfriendly “connection refused” error. If, however, systemd manages the socket, that socket remains open even while the Oxy application is stopped. Clients can still connect to the socket and those connections will be served as soon as the Oxy application starts up successfully.</p>
 	<div class="flex anchor relative">
 		<h3 id="channeling-your-inner-waitgroup">Channeling your inner WaitGroup</h3>
-		<a href="https://blog.cloudflare.com/#channeling-your-inner-waitgroup" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#channeling-your-inner-waitgroup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -72,7 +72,7 @@
 	<p>To start, we create an MPSC channel. Each task takes a clone of the producer end of the channel, and when that task completes it closes its instance of the producer. When we want to wait for all of the tasks to complete, we await a result on the consumer end of the MPSC channel. When every instance of the producer channel is closed - i.e. all tasks have completed - the consumer receives a notification that all of the channels are closed. Closing the channel when a task completes is an automatic consequence of Rust’s <a href="https://doc.rust-lang.org/rust-by-example/scope/raii.html">RAII</a> rules. Because the language enforces this rule it is harder to write incorrect code, though in fact we need to write very little code at all.</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-feedback-on-failure">Getting feedback on failure</h3>
-		<a href="https://blog.cloudflare.com/#getting-feedback-on-failure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#getting-feedback-on-failure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -117,7 +117,7 @@
 	<p>This technique is described more generally in a coworker’s blog, <a href="https://blog.adamchalmers.com/signals-vs-servers/#a-better-way-control-servers">using an internal HTTP endpoint instead</a>. Yet HTTP is missing one important property of Unix sockets for the purpose of replacing signals. A user may only send a signal to a process if the process belongs to them - i.e. they started it - or if the user is root. This prevents another user logged into the same machine from you from terminating all of your processes. As Unix sockets are files, they also follow the Unix permission model. <a href="https://man7.org/linux/man-pages/man7/unix.7.html">Write permissions are required to connect to a socket</a>. Thus we can trivially reproduce the signals security model by making the restart coordination socket user writable only. (Root, as always, bypasses all permission checks.)</p>
 	<div class="flex anchor relative">
 		<h3 id="leave-no-connection-behind">Leave no connection behind</h3>
-		<a href="https://blog.cloudflare.com/#leave-no-connection-behind" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#leave-no-connection-behind" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

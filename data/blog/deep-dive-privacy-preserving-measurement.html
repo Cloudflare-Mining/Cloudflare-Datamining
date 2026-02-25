@@ -10,7 +10,7 @@
 	<p>In this blog post, we’ll do a deep dive into the fundamental concepts behind the DAP protocol and give an example of how we’ve implemented it into <a href="https://github.com/cloudflare/daphne">Daphne</a>, our open source aggregator server. We hope this will inspire others to collaborate with us and get involved in this space!</p>
 	<div class="flex anchor relative">
 		<h3 id="the-principles-behind-dap-an-open-standard-for-privacy-preserving-measurement">The principles behind DAP, an open standard for privacy preserving measurement</h3>
-		<a href="https://blog.cloudflare.com/#the-principles-behind-dap-an-open-standard-for-privacy-preserving-measurement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-principles-behind-dap-an-open-standard-for-privacy-preserving-measurement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -46,7 +46,7 @@
 	<p>Instead, what we do in DAP is <i>distribute</i> the computation across the servers such that no single server has a complete measurement. The key idea that makes this possible is <i>secret sharing</i>.</p>
 	<div class="flex anchor relative">
 		<h2 id="computing-on-secret-shared-data">Computing on secret shared data</h2>
-		<a href="https://blog.cloudflare.com/#computing-on-secret-shared-data" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#computing-on-secret-shared-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@
 	<p>\( r = m_{1} + \cdots + m_{N} \) // by definition\( r = (m_{1} - R_{1}) + R_{1} + \cdots (m_{N} - R_{N}) + R_{N} \) // apply sharding\( r = (m_{1} - R_{1}) + \cdots + (m_{N} - R_{N}) + R_{1} + \cdots R_{N} \) // rearrange the sum\( r = X + Y \) // apply aggregation</p>
 	<div class="flex anchor relative">
 		<h3 id="rich-data-types">Rich data types</h3>
-		<a href="https://blog.cloudflare.com/#rich-data-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#rich-data-types" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -96,7 +96,7 @@
 	<p>This degree of flexibility is essential for wide-spread adoption because it allows us to get the most value we can out of a relatively small amount of software. However, there are a couple problems we still need to overcome, both of which entail the need for some form of interaction.</p>
 	<div class="flex anchor relative">
 		<h3 id="input-validation">Input validation</h3>
-		<a href="https://blog.cloudflare.com/#input-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#input-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -108,7 +108,7 @@
 	<p>A happy consequence of working with secret shared data is that proof generation and verification are much faster than for committed (or encrypted) data. This is mainly because we avoid the use of public-key cryptography (i.e., <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">elliptic curves</a>) and are less constrained in how we choose cryptographic parameters. (We require the modulus \( q \) to be a prime number with a particular structure, but such primes are not hard to find.)</p>
 	<div class="flex anchor relative">
 		<h3 id="non-linear-aggregation">Non-linear aggregation</h3>
-		<a href="https://blog.cloudflare.com/#non-linear-aggregation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#non-linear-aggregation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -125,7 +125,7 @@
 	<p>In order to enable non-linear computation on secret shared data, it is necessary to introduce some form of interaction. There are a few possibilities. For the heavy hitters problem in particular, Henry Corrigan-Gibbs and others devised a protocol called <a href="https://ieeexplore.ieee.org/document/9519492">Poplar</a> (IEEE Security &amp; Privacy 2021) in which several rounds of aggregation and unsharding are performed, where in each round, information provided by the collector is used to "query" the measurements to obtain a refined aggregate result.</p>
 	<div class="flex anchor relative">
 		<h3 id="helping-to-build-a-world-of-multi-party-computation">Helping to build a world of multi-party computation</h3>
-		<a href="https://blog.cloudflare.com/#helping-to-build-a-world-of-multi-party-computation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#helping-to-build-a-world-of-multi-party-computation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -147,7 +147,7 @@
 	<p>The IETF is working on its first set of drafts (DAP/VDAF). These drafts are mature enough to deploy, and a number of deployments are scaling up as we speak. Our hope is that we have initiated positive feedback between theorists and practitioners: as new cryptographic techniques emerge, more practitioners will begin to work with them, which will lead to identifying new problems to solve, leading to new techniques, and so on.</p>
 	<div class="flex anchor relative">
 		<h3 id="daphne-cloudflares-implementation-of-a-dap-aggregation-server">Daphne: Cloudflare’s implementation of a DAP Aggregation Server</h3>
-		<a href="https://blog.cloudflare.com/#daphne-cloudflares-implementation-of-a-dap-aggregation-server" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#daphne-cloudflares-implementation-of-a-dap-aggregation-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

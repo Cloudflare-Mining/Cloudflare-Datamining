@@ -12,7 +12,7 @@
 	<p>This article is about the challenges mobile devices present, how the default TCP configuration is ill-suited for optimal mobile performance, and what you can do to improve performance for visitors connecting via mobile networks. Before diving into the details, a quick technical note. At CloudFlare, we've build most of our systems on top of a custom version of Linux so, while the underlying technologies can apply to other operating systems, the examples I'll use are from Linux.</p>
 	<div class="flex anchor relative">
 		<h3 id="tcp-congestion-control">TCP Congestion Control</h3>
-		<a href="https://blog.cloudflare.com/#tcp-congestion-control" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tcp-congestion-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>But figuring out what packet loss means on a mobile network is a different matter. Radio networks are inherently susceptible to interference which results in packet loss. If packets are being dropped does that mean a switch is overburdened, like we can infer on a wired network? Or did someone travel from an undersubscribed wireless cell to an oversubscribed one? Or did someone just turn on a microwave? Or maybe it was just a random solar flare? Since it's not as clear what packet loss means on a mobile network, it's not clear what action a TCP Congestion Control algorithm should take.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-series-of-leaky-tubes">A Series of Leaky Tubes</h3>
-		<a href="https://blog.cloudflare.com/#a-series-of-leaky-tubes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-series-of-leaky-tubes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -41,7 +41,7 @@ Performance" class="kg-image" width="383" height="284" loading="lazy">
 	<p>Imagine, however, that there's some exogenous factor that could decrease the pressure in the pipe without actually indicating a pipe had burst. What if, for example, Crazy Arty ran a pump that he only turned on randomly from time to time and you didn't know about. If the only signal you have is observing a loss in pressure, you'd have no way of knowing whether you'd burst a pipe or if Crazy Arty had just plugged in the pump. The effect would be that you'd likely record a pressure level much less than the amount the pipes could actually withstand — leading to all your customers on the network potentially having lower water pressure than they should.</p>
 	<div class="flex anchor relative">
 		<h3 id="optimizing-for-congestion-or-loss">Optimizing for Congestion or Loss</h3>
-		<a href="https://blog.cloudflare.com/#optimizing-for-congestion-or-loss" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#optimizing-for-congestion-or-loss" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@ Performance" class="kg-image" width="383" height="284" loading="lazy">
 	<p>At companies that see a significant amount of network traffic, like CloudFlare or Google, it is possible to map the characteristics of the Internet's networks and choose a specific congestion control algorithm in order to maximize performance for that network. Unfortunately, unless you are seeing the large amounts of traffic as we do and can record data on network performance, the ability to instrument your congestion control or build a "weather forecast" is usually impossible. Fortunately, there are still several things you can do to make your server more responsive to visitors even when they're coming from lossy, mobile devices.</p>
 	<div class="flex anchor relative">
 		<h3 id="compelling-reasons-to-upgrade-you-kernel">Compelling Reasons to Upgrade You Kernel</h3>
-		<a href="https://blog.cloudflare.com/#compelling-reasons-to-upgrade-you-kernel" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#compelling-reasons-to-upgrade-you-kernel" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -81,7 +81,7 @@ Performance" class="kg-image" width="383" height="284" loading="lazy">
 	<p>The good news is that Linux 3.2 implements PRR, which decreases the amount of time that a lossy connection will impact TCP performance. If you can upgrade, it may be one of the most significant things you can do in order to increase your web performance.</p>
 	<div class="flex anchor relative">
 		<h3 id="more-improvements-ahead">More Improvements Ahead</h3>
-		<a href="https://blog.cloudflare.com/#more-improvements-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#more-improvements-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -95,7 +95,7 @@ Performance" class="kg-image" width="383" height="284" loading="lazy">
 	<p><code>sysctl -w tcp_slow_start_after_idle=0</code></p>
 	<div class="flex anchor relative">
 		<h3 id="the-missing-congestion-control-algorithm">The Missing Congestion Control Algorithm</h3>
-		<a href="https://blog.cloudflare.com/#the-missing-congestion-control-algorithm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-missing-congestion-control-algorithm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -18,7 +18,7 @@
 	<p>Workers VPC is now available to everyone using Workers, at no additional cost during the beta, as is Cloudflare Tunnels. <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fvpc%2Fservices"><u>Try it out now.</u></a> And read on to learn more about how it works under the hood.</p>
 	<div class="flex anchor relative">
 		<h2 id="connecting-the-networks-you-trust-securely">Connecting the networks you trust, securely</h2>
-		<a href="https://blog.cloudflare.com/#connecting-the-networks-you-trust-securely" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#connecting-the-networks-you-trust-securely" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -57,7 +57,7 @@
 	<p>Notably, the binding model is also important when considering what Workers are: scripts running on Cloudflare’s global network. They are not, in contrast to traditional clouds, individual machines with IP addresses, and do not exist within networks. Bindings provide secure access to other resources within your Cloudflare account – and the same applies to Workers VPC Services.</p>
 	<div class="flex anchor relative">
 		<h2 id="a-peek-under-the-hood">A peek under the hood</h2>
-		<a href="https://blog.cloudflare.com/#a-peek-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-peek-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -80,7 +80,7 @@
 	<p>Finally, the Cloudflare Tunnel will send the DNS resolution questions to the DNS resolver of the network it belongs to. It will then send the original HTTP Request from its own IP address to the destination IP and port (Step 7). The results of the request are then relayed all the way back to the original Worker, from the datacenter closest to the tunnel all the way to the original Cloudflare datacenter executing the Worker request.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-vpc-service-allows-you-to-build">What VPC Service allows you to build</h2>
-		<a href="https://blog.cloudflare.com/#what-vpc-service-allows-you-to-build" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-vpc-service-allows-you-to-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -94,7 +94,7 @@
 	<p>It also means you can connect to your on-premise networks from Workers, allowing you to modernize legacy applications with the performance and infinite scale of Workers. More interesting still are some emerging use cases for developer workflows. We’ve seen developers run <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel"><code><u>cloudflared</u></code></a> on their laptops to connect a deployed Worker back to their local machine for real-time debugging. The full flexibility of Cloudflare Tunnels is now a programmable primitive accessible directly from your Worker, opening up a world of possibilities.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-path-ahead-of-us">The path ahead of us</h2>
-		<a href="https://blog.cloudflare.com/#the-path-ahead-of-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-path-ahead-of-us" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -106,7 +106,7 @@
 	<p><b>Ecosystem compatibility. </b>We want to make connecting to a private service feel as natural as connecting to a public one. To do so, we will be providing a unique autogenerated hostname for each Workers VPC Service, similar to <a href="https://developers.cloudflare.com/hyperdrive/get-started/#write-a-worker"><u>Hyperdrive’s connection strings</u></a>. This will make it easier to use Workers VPC with existing libraries and object–relational mapping libraries that may require a hostname (e.g., in a global ‘<code>fetch()</code>’ call or a MongoDB connection string). Workers VPC Service hostname will automatically resolve and route to the correct VPC Service, just as the ‘<code>fetch()</code>’ command does.</p>
 	<div class="flex anchor relative">
 		<h2 id="get-started-with-workers-vpc">Get started with Workers VPC</h2>
-		<a href="https://blog.cloudflare.com/#get-started-with-workers-vpc" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#get-started-with-workers-vpc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

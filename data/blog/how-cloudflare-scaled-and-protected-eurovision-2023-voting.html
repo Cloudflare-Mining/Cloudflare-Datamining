@@ -11,7 +11,7 @@
 	<p>In this blog we will cover how <a href="https://once.net">once.net</a> built their platform <a href="https://www.based.io">based.io</a> to monitor, manage and scale the Eurovision voting application to handle all traffic using many Cloudflare services. The speed with which DNS changes made through the Cloudflare API propagate globally allowed them to scale their backend within seconds. At the same time, Cloudflare Pages was ready to serve any amount of traffic to the voting landing page so fans didn’t miss a beat. And to cap it off, by combining Cloudflare CDN, <a href="https://www.cloudflare.com/ddos">DDoS protection</a>, WAF, and Turnstile, they made sure that attackers didn’t steal any of the limelight.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-unsung-heroes">The unsung heroes</h3>
-		<a href="https://blog.cloudflare.com/#the-unsung-heroes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-unsung-heroes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>Although the based.io platform on its own is currently in closed beta, it is already serving a few flagship customers in production assisted by the software and services of the once.net team. One such customer is Tally, a platform used by multiple broadcasters in Europe to add live interaction to traditional television. Over 100 live shows have been performed using the platform. Another is Airhub, a startup that handles and logs automatic drone flights. And of course the star of this blog post, the Eurovision Song Contest.</p>
 	<div class="flex anchor relative">
 		<h3 id="setting-the-stage">Setting the stage</h3>
-		<a href="https://blog.cloudflare.com/#setting-the-stage" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#setting-the-stage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>To prepare for these spikes in demand and determined adversaries, once.net needed a platform that isn’t only resilient and highly scalable, but could also act as a mitigation layer in front of it. once.net selected Cloudflare for this functionality and integrated Cloudflare deeply with its <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring">real-time monitoring</a> and management platform. To understand how and why, it’s essential to understand based.io underlying architecture.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-based-io-platform">The based.io platform</h3>
-		<a href="https://blog.cloudflare.com/#the-based-io-platform" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-based-io-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -68,7 +68,7 @@
 	<p>once.net also used <a href="https://blog.cloudflare.com/turnstile-private-captcha-alternative">Cloudflare Turnstile</a> to protect their payment <a href="https://www.cloudflare.com/learning/security/api/what-is-api-endpoint">API endpoints</a> that were used to validate online votes. They used the invisible Turnstile widget to make sure the request was not coming from emulated browsers (e.g. Selenium). And best of all, using the invisible Turnstile widget the user did not have to go through extra steps, which allowed for a better user experience and better conversion.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-pages-stealing-the-show">Cloudflare Pages stealing the show!</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-pages-stealing-the-show" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-pages-stealing-the-show" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -84,7 +84,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="get-in-touch-with-us">Get in touch with us</h3>
-		<a href="https://blog.cloudflare.com/#get-in-touch-with-us" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#get-in-touch-with-us" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

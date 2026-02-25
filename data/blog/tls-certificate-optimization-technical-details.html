@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<div class="flex anchor relative">
 		<h3 id="overview">Overview</h3>
-		<a href="https://blog.cloudflare.com/#overview" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#overview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -12,7 +12,7 @@
 	<p>Shortly after we announced these new benefits for our paid Universal SSL customers, we started hearing from other technology leaders who were implementing (or already had implemented) similar functionality. At first glance, the logic to identify incoming connections that only support SHA-1 seems straightforward, but as we spoke with our friends at Facebook, Twitter, and Mozilla, I realized that everyone was taking a slightly different approach. Complicating the matter even further was the fact that at CloudFlare we not only wanted to optimize between SHA-1 and SHA-2, but also between RSA and the newer, but less universally supported <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet">ECDSA certificates</a>. Solve the "optimal certificate" question incorrectly, and the TLS handshake will fail — or get explicitly aborted by browsers that have deprecated SHA-1 entirely; solve it correctly, and the client and server will establish the most performant, secure connection available between the two endpoints.</p>
 	<div class="flex anchor relative">
 		<h3 id="certificate-optimization-logic">Certificate Optimization Logic</h3>
-		<a href="https://blog.cloudflare.com/#certificate-optimization-logic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#certificate-optimization-logic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>After several trillion requests, we’re confident that our approach works quite well for CloudFlare’s customers and their visitors. If you have taken an alternative approach to implementation, or have found any exceptions/potential refinements to our logic, please chime in below. We remain committed to withdrawing SHA-1 support if, <a href="https://blog.cloudflare.com/sha-1-deprecation-no-browser-left-behind">as our CEO said</a>, "a vulnerability is discovered [in our certificate optimization logic] which allows some form of downgrade attack—where a modern browser can be tricked into receiving a certificate signed with an insecure protocol—and the vulnerability cannot be patched".</p>
 	<div class="flex anchor relative">
 		<h4 id="tls-handshake">TLS Handshake</h4>
-		<a href="https://blog.cloudflare.com/#tls-handshake" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tls-handshake" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@
 	<p>Before your web browser can securely exchange "application data" such as HTTP GET or POST requests and responses with a web server, it must first establish the cryptographic parameters of the secure session. This well-choreographed dance, known as the SSL/TLS handshake, commences as soon as you click, type, or get redirected to a URL containing the "https://" scheme. (The process described below also applies to connections from any user agent — not just browsers—so substitute "mobile app", "command-line utility", or anything else that can communicate via HTTPS.)</p>
 	<div class="flex anchor relative">
 		<h5 id="note-on-embedded-traversable-packet-captures">Note on embedded, traversable packet captures</h5>
-		<a href="https://blog.cloudflare.com/#note-on-embedded-traversable-packet-captures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#note-on-embedded-traversable-packet-captures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	<p>Each figure below contains an actual SSL/TLS record embedded from <a href="https://www.cloudshark.org">CloudShark</a>, a browser based version of WireShark. To view details of the handshake, expand the bottom-most row labeled "Secure Sockets Layer" and drill down until you see, e.g., "Handshake Protocol: Client Hello". Note that some extensions will render as "Unknown" due to CloudShark using an old version of WireShark, but these are immaterial to understanding our certificate switching logic.</p>
 	<div class="flex anchor relative">
 		<h4 id="step-1-client-hello">Step 1 - Client Hello</h4>
-		<a href="https://blog.cloudflare.com/#step-1-client-hello" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-1-client-hello" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -50,7 +50,7 @@
 	<p>_Figure 1 - ClientHello message sent by Chrome to <a href="https://www.cloudflare.com">www.cloudflare.com\</a>_</p>
 	<div class="flex anchor relative">
 		<h4 id="step-2-server-hello">Step 2 - Server Hello</h4>
-		<a href="https://blog.cloudflare.com/#step-2-server-hello" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-2-server-hello" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -60,7 +60,7 @@
 	<p>_Figure 2 - ServerHello message sent by <a href="https://www.cloudflare.com">www.cloudflare.com</a> to Chrome_</p>
 	<div class="flex anchor relative">
 		<h4 id="step-3-server-certificate">Step 3 - (Server) Certificate</h4>
-		<a href="https://blog.cloudflare.com/#step-3-server-certificate" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-3-server-certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@
 	<p><i>Figure 3 - Certificate message sent by </i><a href="https://www.cloudflare.com"><i>www.cloudflare.com</i></a><i> to Chrome</i></p>
 	<div class="flex anchor relative">
 		<h4 id="step-4-certificate-chain-validation">Step 4 - Certificate Chain Validation</h4>
-		<a href="https://blog.cloudflare.com/#step-4-certificate-chain-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#step-4-certificate-chain-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -88,7 +88,7 @@
 	<p><i>Figure 4 - Validating a certificate signature</i></p>
 	<div class="flex anchor relative">
 		<h4 id="remaining-steps-5">Remaining Steps (5+)</h4>
-		<a href="https://blog.cloudflare.com/#remaining-steps-5" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#remaining-steps-5" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -97,7 +97,7 @@
 	<p>The handshake steps remaining after certificate verification—<b>ClientKeyExchange</b>, <b>ChangeCipherSpec</b> and <b>Finished</b>, followed by <b>ChangeCipherSpec</b> and <b>Finished</b> from the server—are not important to our certificate optimization logic, so they are not discussed here in detail. To summarize, the same primary key is generated on either end (<b>ClientKeyExchange</b>) and is used to encrypt traffic (<b>ChangeCipherSpec</b>) with a fast, symmetric, block cipher algorithm such as AES.</p>
 	<div class="flex anchor relative">
 		<h3 id="logic-tree">Logic Tree</h3>
-		<a href="https://blog.cloudflare.com/#logic-tree" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#logic-tree" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -113,7 +113,7 @@
 	<p><i>Figure 5 - Certificate Optimization Logic for Paid plans</i></p>
 	<div class="flex anchor relative">
 		<h4 id="decision-0-plan-type">Decision #0: Plan type</h4>
-		<a href="https://blog.cloudflare.com/#decision-0-plan-type" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#decision-0-plan-type" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -122,7 +122,7 @@
 	<p>The first check is quite simple: if the zone is using the <a href="https://www.cloudflare.com/plans/free">Free plan</a>, we abort the rest of the checks and immediately return the SHA-256/ECDSA certificate. The reason we take this shortcut is that only one certificate is generated for free zones during onboarding, so there are no other candidates to consider besides SHA-256/ECDSA.</p>
 	<div class="flex anchor relative">
 		<h4 id="decision-1-presence-of-signature_algorithm-extension">Decision #1: Presence of signature_algorithm extension</h4>
-		<a href="https://blog.cloudflare.com/#decision-1-presence-of-signature_algorithm-extension" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#decision-1-presence-of-signature_algorithm-extension" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -135,7 +135,7 @@
 	<p>While many clients appear to support only the default set of signature algorithms ("sigalgs"), we have yet to see one TLS 1.2 ClientHello omit this extension (perhaps because the RFC is unclear on the default enumerations of hashes and signatures). If we don't see any sigalgs, we head to decision #5, while we head to #2 if we do.</p>
 	<div class="flex anchor relative">
 		<h4 id="decisions-2-4-inclusion-of-specific-signature_algorithms-and-shared-cipher-suites">Decisions #2-4: Inclusion of specific signature_algorithms and shared cipher suites</h4>
-		<a href="https://blog.cloudflare.com/#decisions-2-4-inclusion-of-specific-signature_algorithms-and-shared-cipher-suites" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#decisions-2-4-inclusion-of-specific-signature_algorithms-and-shared-cipher-suites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -146,7 +146,7 @@
 	<p>Note that adhering to this §7.4.2 check has helped us work around bugs in popular browsers such as Google Chrome. For example, during our implementation <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=409901">we discovered that Chrome incorrectly reports it supports SHA-2/ECDSA</a> on Windows XP, even though that operating system has zero support for ECDSA signatures nor can it use the SHA-2 family of hashing algorithms without SP3 installed. (While Google acknowledged and initially committed code to fix the bug, they later determined that because i) cipher suites were still adjusted accordingly and ii) Windows XP support will be removed in the not too distant future, the fix was not worth merging.)</p>
 	<div class="flex anchor relative">
 		<h4 id="decision-5-presence-of-server_name_indication-extension">Decision #5: Presence of server_name_indication extension</h4>
-		<a href="https://blog.cloudflare.com/#decision-5-presence-of-server_name_indication-extension" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#decision-5-presence-of-server_name_indication-extension" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -157,7 +157,7 @@
 	<p>Outside of some extreme corner cases, we have been <a href="https://support.cloudflare.com/hc/en-us/articles/217484398">unable to find any instances</a> of user agents that support SNI—defined in RFC 3546 in 2003, but not shipped by most major browsers until they added TLS 1.1 after 2006—but not SHA-2, which was published by NIST in 2001. Therefore, if we see SNI in the inbound request, we are confident that the user agent can validate a SHA-2/RSA signed certificate, so send it along with a compatible cipher suite. If we don’t, we’ve exhausted all of our signals that indicate the capability to use SHA-2, and move onto decision #6.</p>
 	<div class="flex anchor relative">
 		<h4 id="decision-6-setting-of-legacy-browser-support-in-cloudflare-dashboard">Decision #6: Setting of Legacy Browser Support in CloudFlare dashboard</h4>
-		<a href="https://blog.cloudflare.com/#decision-6-setting-of-legacy-browser-support-in-cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#decision-6-setting-of-legacy-browser-support-in-cloudflare-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -167,7 +167,7 @@
 	<p>While the vast majority of our customers are happy to support as many browsers as possible and thus leave this support on by default, some may be prohibited from doing so by their own information security policies. It is for reasons like this that we built a switch in the CloudFlare dashboard so customers can prevent our certificate optimization logic from falling all the way back to SHA-1 certificates. In the future, we plan to expand this UI control to allow clients to disable (or warn on) other protocols, such as TLS 1.0, 1.1, etc.</p>
 	<div class="flex anchor relative">
 		<h3 id="verifying-your-uploaded-or-cloudflare-generated-certificates">Verifying your uploaded or CloudFlare-generated certificates</h3>
-		<a href="https://blog.cloudflare.com/#verifying-your-uploaded-or-cloudflare-generated-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#verifying-your-uploaded-or-cloudflare-generated-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -176,7 +176,7 @@
 	<p>If you’d like to verify that the certificates you’ve uploaded are optimized appropriately for the browser’s cryptographic capabilities, you can run the following commands. Before doing so, verify that you have a version of OpenSSL that supports TLS 1.2 (i.e., at least 1.0.1).</p>
 	<div class="flex anchor relative">
 		<h4 id="emulating-a-modern-browser-that-supports-tls-1-2-with-sha-2-ecdsa-certificates">Emulating a modern browser that supports TLS 1.2 with SHA-2 ECDSA certificates</h4>
-		<a href="https://blog.cloudflare.com/#emulating-a-modern-browser-that-supports-tls-1-2-with-sha-2-ecdsa-certificates" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#emulating-a-modern-browser-that-supports-tls-1-2-with-sha-2-ecdsa-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -190,7 +190,7 @@ DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>
 
 	<div class="flex anchor relative">
 		<h4 id="emulating-a-browser-that-supports-tls-1-2-and-sha-2-but-only-rsa-not-ecdsa">Emulating a browser that supports TLS 1.2 and SHA-2 but only RSA (not ECDSA)</h4>
-		<a href="https://blog.cloudflare.com/#emulating-a-browser-that-supports-tls-1-2-and-sha-2-but-only-rsa-not-ecdsa" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#emulating-a-browser-that-supports-tls-1-2-and-sha-2-but-only-rsa-not-ecdsa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -204,7 +204,7 @@ DNS:cloudflare.com, DNS:www.cloudflare.com`</code></pre>
 
 	<div class="flex anchor relative">
 		<h4 id="emulating-a-legacy-browser-that-supports-tls-1-1-sha-2-and-sni">Emulating a legacy browser that supports TLS 1.1, SHA-2, and SNI</h4>
-		<a href="https://blog.cloudflare.com/#emulating-a-legacy-browser-that-supports-tls-1-1-sha-2-and-sni" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#emulating-a-legacy-browser-that-supports-tls-1-1-sha-2-and-sni" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -218,7 +218,7 @@ DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>
 
 	<div class="flex anchor relative">
 		<h4 id="emulating-a-legacy-browser-that-supports-only-tls-1-0-and-sha-1-no-sni">Emulating a legacy browser that supports only TLS 1.0 and SHA-1 (no SNI)</h4>
-		<a href="https://blog.cloudflare.com/#emulating-a-legacy-browser-that-supports-only-tls-1-0-and-sha-1-no-sni" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#emulating-a-legacy-browser-that-supports-only-tls-1-0-and-sha-1-no-sni" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -232,7 +232,7 @@ DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>
 
 	<div class="flex anchor relative">
 		<h3 id="special-thanks">Special Thanks</h3>
-		<a href="https://blog.cloudflare.com/#special-thanks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#special-thanks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -241,7 +241,7 @@ DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>
 	<p>Thank you to Zi Lin and Nick Sullivan for their assistance in designing, implementing, deploying, and testing our certificate optimization logic.</p>
 	<div class="flex anchor relative">
 		<h2 id="were-hiring">We're Hiring</h2>
-		<a href="https://blog.cloudflare.com/#were-hiring" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#were-hiring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -250,7 +250,7 @@ DNS:cloudflare.com, DNS:www.cloudflare.com</code></pre>
 	<p>Would you like to work on solving interesting problems like this for hundreds of millions of website visitors? If so, you're in luck: we're hiring for a wide range of engineering and product management positions and welcome you to apply through the <a href="https://www.cloudflare.com/join-our-team">CloudFlare Careers</a> page.</p>
 	<div class="flex anchor relative">
 		<h3 id="endnotes">Endnotes</h3>
-		<a href="https://blog.cloudflare.com/#endnotes" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#endnotes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

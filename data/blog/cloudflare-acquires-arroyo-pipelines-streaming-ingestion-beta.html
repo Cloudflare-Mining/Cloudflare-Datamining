@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vpFmGVqolJDm5PbgMWd2z/6f664899bc3f26019deee5805008612d/Feature_Image.png" alt="">
 <div class="post-content lh-copy gray1">
-	<p>Today, we’re launching the open beta of Pipelines, our streaming ingestion product. Pipelines allows you to ingest high volumes of structured, real-time data, and load it into our <a href="https://developers.cloudflare.com/r2"><u>object storage service, R2</u></a>. You don’t have to manage any of the underlying infrastructure, worry about scaling shards or metadata services, and you pay for the data processed (and not by the hour). Anyone on a Workers paid plan can start using it to ingest and batch data — at tens of thousands of requests per second (RPS) — directly into R2.</p>
+	<p>Today, we’re launching the open beta of Pipelines, our streaming ingestion product. Pipelines allows you to ingest high volumes of structured, real-time data, and load it into our <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>object storage service, R2</u></a>. You don’t have to manage any of the underlying infrastructure, worry about scaling shards or metadata services, and you pay for the data processed (and not by the hour). Anyone on a Workers paid plan can start using it to ingest and batch data — at tens of thousands of requests per second (RPS) — directly into R2.</p>
 	<p>But this is just the tip of the iceberg: you often want to transform the data you’re ingesting, hydrate it on-the-fly from other sources, and write it to an open table format (such as Apache Iceberg), so that you can efficiently query that data once you’ve landed it in object storage.</p>
 	<p>The good news is that we’ve thought about that too, and we’re excited to announce that we’ve acquired <a href="https://www.arroyo.dev"><u>Arroyo</u></a>, a cloud-native, distributed stream processing engine, to make that happen.</p>
 	<p>With Arroyo <i>and </i>our just announced <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta">R2 Data Catalog</a>, we’re getting increasingly serious about building a data platform that allows you to ingest data across the planet, store it at scale, and <i>run compute over it</i>.&nbsp;</p>
@@ -16,7 +16,7 @@
 	<p>This is where Arroyo comes in, and we’re going to be bringing the best parts of Arroyo into Pipelines and deeply integrate it with Workers, R2, and the rest of our Developer Platform.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-arroyo-origin-story">The Arroyo origin story&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#the-arroyo-origin-story" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-arroyo-origin-story" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -31,7 +31,7 @@
 	<p>That’s why we’re incredibly excited to join with the Cloudflare team to make this vision a reality.</p>
 	<div class="flex anchor relative">
 		<h2 id="ingestion-at-scale">Ingestion at scale</h2>
-		<a href="https://blog.cloudflare.com/#ingestion-at-scale" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ingestion-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -78,7 +78,7 @@ curl "https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/" -d '
 	<p>Output files are stored as new-line delimited JSON (NDJSON) — which makes it easy to materialize a stream from these files (hint: in the future you’ll be able to use R2 as a pipeline source too). Finally, the file names are <a href="https://github.com/ulid/spec"><u>ULIDs</u></a> - so they’re sorted by time by default.</p>
 	<div class="flex anchor relative">
 		<h2 id="first-you-shard-then-you-shard-some-more">First you shard, then you shard some more</h2>
-		<a href="https://blog.cloudflare.com/#first-you-shard-then-you-shard-some-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#first-you-shard-then-you-shard-some-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -121,7 +121,7 @@ curl "https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/" -d '
 	<p>You’ll notice there’s one interesting part in here — the Transform Workers — which we haven’t yet exposed. As we work to integrate Arroyo’s streaming engine with Pipelines, this will be a key part of how we hand over data for Arroyo to process.</p>
 	<div class="flex anchor relative">
 		<h2 id="so-whats-it-cost">So, what’s it cost?</h2>
-		<a href="https://blog.cloudflare.com/#so-whats-it-cost" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#so-whats-it-cost" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -164,7 +164,7 @@ curl "https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/" -d '
 	<p>We’ll be sharing more as we bring transformations and additional sinks to Pipelines. We’ll provide at least 30 days notice before we make any changes or start charging for usage, which we expect to do by September 15, 2025.</p>
 	<div class="flex anchor relative">
 		<h2 id="whats-next">What’s next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

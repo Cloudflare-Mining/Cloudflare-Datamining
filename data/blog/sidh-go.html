@@ -3,7 +3,7 @@
 	<p><i>This blog post presents a new cryptography primitive that we open sourced: </i><a href="https://github.com/cloudflare/p751sidh"><i>p751sidh</i></a><i>.</i></p>
 	<div class="flex anchor relative">
 		<h3 id="the-quantum-threat">The Quantum Threat</h3>
-		<a href="https://blog.cloudflare.com/#the-quantum-threat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-quantum-threat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@
 	<p>TLS 1.3 is the latest version of the TLS protocol. This summer, I've been working at Cloudflare on an experiment for a <i>quantum-resistant</i> version of TLS 1.3 using a hybrid key agreement combining X25519 and supersingular isogeny Diffie-Hellman (SIDH). To achieve this, I implemented a TLS 1.3 client in Go (as part of Cloudflare's <a href="https://github.com/cloudflare/tls-tris">tls-tris</a>), implemented SIDH in Go for the <code>amd64</code> architecture, and combined the SIDH implementation with the TLS 1.3 key agreement mechanism to perform a quantum-resistant TLS 1.3 handshake. This extends previous work by Microsoft Research on a SIDH-based key exchange for TLS 1.2, discussed below.</p>
 	<div class="flex anchor relative">
 		<h3 id="diffie-hellman-key-agreement-in-tls-1-3">Diffie-Hellman key agreement in TLS 1.3</h3>
-		<a href="https://blog.cloudflare.com/#diffie-hellman-key-agreement-in-tls-1-3" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#diffie-hellman-key-agreement-in-tls-1-3" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 	<p>Application data is later encrypted with a key derived from the handshake secret, as well as other data, so the security of the application data depends on the security of the key agreement. However, all existing DH groups in TLS are vulnerable to quantum algorithms.</p>
 	<div class="flex anchor relative">
 		<h3 id="supersingular-isogeny-diffie-hellman">Supersingular-isogeny Diffie-Hellman</h3>
-		<a href="https://blog.cloudflare.com/#supersingular-isogeny-diffie-hellman" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#supersingular-isogeny-diffie-hellman" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -74,7 +74,7 @@
 	<p>They also published a constant-time, optimized <a href="https://github.com/Microsoft/PQCrypto-SIDH">implementation</a> written in C and assembly, and a <a href="https://github.com/dconnolly/sidh-for-openssl-patch">patch to OpenSSL</a> to create SIDH ciphersuites for TLS 1.2. My Go implementation builds on their work (both algorithms and code), as discussed below.</p>
 	<div class="flex anchor relative">
 		<h3 id="sidh-key-agreement-in-go-tls">SIDH key agreement in Go TLS</h3>
-		<a href="https://blog.cloudflare.com/#sidh-key-agreement-in-go-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#sidh-key-agreement-in-go-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -97,7 +97,7 @@ BenchmarkSharedSecretBob         	     12,984,817 ns/op</code></pre>
 	<p>The entire SIDH integration takes <a href="https://github.com/cloudflare/tls-tris/commit/e47a4e7e1a5e11d1a3adab392248399ae7426695">less than 100 lines of code.</a></p>
 	<div class="flex anchor relative">
 		<h3 id="misassembly-hazards-in-go-assembly">Misassembly hazards in Go assembly</h3>
-		<a href="https://blog.cloudflare.com/#misassembly-hazards-in-go-assembly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#misassembly-hazards-in-go-assembly" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -128,7 +128,7 @@ BenchmarkSharedSecretBob         	     12,984,817 ns/op</code></pre>
 	<p>to insert the bytes encoding the <code>mov eax, 0</code> instruction, which leaves the carry flag intact.</p>
 	<div class="flex anchor relative">
 		<h3 id="source-code">Source Code</h3>
-		<a href="https://blog.cloudflare.com/#source-code" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#source-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

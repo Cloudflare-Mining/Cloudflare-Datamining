@@ -4,7 +4,7 @@
 	<p>We <a href="https://blog.cloudflare.com/killing-rc4">recently</a> removed support for RC4 for browsers using TLS 1.1+. Now we are removing RC4 as the preferred cipher. Servers behind CloudFlare will prefer AES-based cipher suites for all HTTPS connections and only use RC4 as a cipher as a last resort. We believe this is the right choice for the safety and security of our customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-change-now">Why change now?</h3>
-		<a href="https://blog.cloudflare.com/#why-change-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-change-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>Publicly known attacks are often discovered years in advance by government researchers. If the public is five years away from breaking a cipher, the intelligence community probably has already broken it. In part because of this, <a href="https://www.schneier.com/blog/archives/2013/09/how_to_remain_s.html">Bruce Schneier</a> (<a href="https://twitter.com/ioerror/status/398059565947699200">and others</a>) believe that it’s plausible that RC4 encryption can currently be removed in real time by a three letter agency with the right resources. RC4 is likely not the best way to encrypt our data if we want it to be private for years and years.</p>
 	<div class="flex anchor relative">
 		<h3 id="active-attacks-vs-passive-attacks">Active attacks vs passive attacks</h3>
-		<a href="https://blog.cloudflare.com/#active-attacks-vs-passive-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#active-attacks-vs-passive-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	<p>It is widely believed that AES-CBC is a secure cipher for the long term, unlike RC4. Choosing AES-CBC provides our customers with long-term forward secrecy, even if it could open them up to a rarely executed noisy active attack if they are using an out of date browser and OS. Choosing RC4 exposes our customers’ data to any government who has advanced enough cryptographic techniques to break it. When faced with this choice, we would rather protect our customers from long term threats by choosing AES-CBC. <a href="https://community.qualys.com/blogs/securitylabs/2013/09/17/updated-ssltls-deployment-best-practices-deprecate-rc4">Experts</a> <a href="https://community.qualys.com/blogs/securitylabs/2013/03/19/rc4-in-tls-is-broken-now-what">agree,</a> it’s time to move on from RC4.</p>
 	<div class="flex anchor relative">
 		<h3 id="who-uses-rc4">Who uses RC4?</h3>
-		<a href="https://blog.cloudflare.com/#who-uses-rc4" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#who-uses-rc4" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -51,7 +51,7 @@
 	<p>After this change, only 0.0009% of visitors connected to our servers with RC4. Taking a close look at the data we found some interesting results. A small proportion of visitors were using candybar phones running custom mobile-optimized browsers. Most logs we saw were from individuals using browsers that support AES but who manually changed their cipher suite selections to remove it. They might be doing this to optimize client performance. Although AES is faster than RC4 on recent Intel processors, RC4 is less computationally intensive on old computers and mobile devices that do not have cryptographic acceleration in hardware. We do not recommend choosing RC4 for performance reasons just yet as there are interesting new alternatives coming soon, watch this blog for more details.</p>
 	<div class="flex anchor relative">
 		<h3 id="now-what">Now what?</h3>
-		<a href="https://blog.cloudflare.com/#now-what" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#now-what" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

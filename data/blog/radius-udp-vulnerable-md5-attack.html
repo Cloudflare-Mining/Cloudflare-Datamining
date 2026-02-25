@@ -29,7 +29,7 @@
 	<p>This Blast-RADIUS attack was devised in collaboration with researchers at the <a href="https://cryptosec.ucsd.edu">University of California San Diego (UCSD)</a>, <a href="https://www.cwi.nl/en/groups/cryptology">CWI Amsterdam</a>, <a href="https://www.microsoft.com/en-us/research/group/security-and-cryptography">Microsoft</a>, and <a href="https://www.bastionzero.com">BastionZero</a>. In response, CERT has assigned <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-3596">CVE-2024-3596</a> and <a href="https://kb.cert.org/vuls/id/456537">VU#456537</a> and worked with RADIUS vendors and developers to coordinate disclosure.</p>
 	<div class="flex anchor relative">
 		<h3 id="radius-udp-and-its-ad-hoc-use-of-md5">RADIUS/UDP and its ad hoc use of MD5</h3>
-		<a href="https://blog.cloudflare.com/#radius-udp-and-its-ad-hoc-use-of-md5" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#radius-udp-and-its-ad-hoc-use-of-md5" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -42,7 +42,7 @@
 	<p>In this post, we’ll describe our improved attack on MD5 as it is used in the RADIUS <i>Response Authenticator</i>.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-radius-response-authenticator">The RADIUS Response Authenticator</h3>
-		<a href="https://blog.cloudflare.com/#the-radius-response-authenticator" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-radius-response-authenticator" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -73,7 +73,7 @@
 	<p>Nevertheless, the RADIUS specifications state that <i>Message-Authenticator</i> is optional for all modes of RADIUS/UDP apart from those that use EAP (<a href="https://datatracker.ietf.org/doc/html/rfc3748">Extensible Authentication Protocol</a>). Our attack is for non-EAP authentication modes of RADIUS/UDP using default setups that do not use <i>Message-Authenticator</i>. We further discuss <i>Message-Authenticator</i> and EAP later in this post.</p>
 	<div class="flex anchor relative">
 		<h3 id="blast-radius-attack">Blast-RADIUS attack</h3>
-		<a href="https://blog.cloudflare.com/#blast-radius-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#blast-radius-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -116,7 +116,7 @@
 	<p>The attacker has successfully logged into the device.</p>
 	<div class="flex anchor relative">
 		<h3 id="but-the-attack-has-to-be-fast">But, the attack has to be fast.</h3>
-		<a href="https://blog.cloudflare.com/#but-the-attack-has-to-be-fast" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#but-the-attack-has-to-be-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -130,7 +130,7 @@
 	<p>It was late January 2024. We had an attack that allows an attacker with MitM access to RADIUS/UDP traffic in PAP mode to gain unauthorized access to devices that use RADIUS to decide who should have administrative access to the device. We stopped our work, wrote up a <a href="https://www.blastradius.fail/pdf/radius.pdf">paper</a>, and got in touch with CERT to coordinate disclosure. In response, CERT has assigned <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-3596">CVE-2024-3596</a> and <a href="https://kb.cert.org/vuls/id/456537">VU#456537</a> to this vulnerability, which affects all authentication modes of RADIUS/UDP apart from those that use EAP.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -161,7 +161,7 @@
 	<p><b>Non-mitigations.</b> While it is possible to use TCP as transport for RADIUS, RADIUS/TCP is experimental, and offers no benefit over RADIUS/UDP or RADIUS/TLS. (Confusingly, RADIUS/TCP is sometimes also called <a href="https://en.wikipedia.org/wiki/RadSec">RADSEC</a>; but in this post we only use RADSEC to describe RADIUS/TLS.) We discuss other non-mitigations in our <a href="https://www.blastradius.fail/pdf/radius.pdf">paper</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-side-note-about-eap-tls">A side note about EAP-TLS</h3>
-		<a href="https://blog.cloudflare.com/#a-side-note-about-eap-tls" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-side-note-about-eap-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -210,7 +210,7 @@
 	<p>As a final note, we mentioned that the Cloudflare’s office routers that were using EAP-TLS were not vulnerable to the Blast-RADIUS attack. This is because these routers were set to run with local authentication, where both the RADIUS client and the RADIUS server are confined inside the router (thus preventing a MitM from gaining access to the traffic sent between RADIUS client and RADIUS server, preventing our attack). Nevertheless, we should note that this vendor’s routers have many settings, some of which involve using an external RADIUS server. Fortunately, this vendor is one of many that have recently released support for RADIUS/TLS (also called RADSEC).</p>
 	<div class="flex anchor relative">
 		<h3 id="work-in-the-ietf">Work in the IETF</h3>
-		<a href="https://blog.cloudflare.com/#work-in-the-ietf" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#work-in-the-ietf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -5,7 +5,7 @@
 	<p>We are finally happy to report that a recent collaboration between multiple CDN providers (including Cloudflare) has led to a new <a href="https://datatracker.ietf.org/doc/draft-ietf-httpbis-cdn-loop">mechanism for loop protection</a>. This now runs at the Cloudflare edge and is compliant with other CDNs, allowing us to provide protection against loops. The loop protection mechanism is currently a draft item being worked on by the HTTPbis working group. It will be published as an RFC in the standards track in the near future.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-original-problem">The original problem</h3>
-		<a href="https://blog.cloudflare.com/#the-original-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-original-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>Then any request sent to the origin would get caught in a loop between the two Proxies (see above). If such a loop goes undetected, then this can quickly eat the computing resources of the two proxies, especially if the request requires a lot of processing at the edge. In these cases, it is conceivable that such an attack could lead to a DoS on one or both of the proxy services. Indeed, a <a href="http://www.icir.org/vern/papers/cdn-loops.NDSS16.pdf">research paper from NDSS 2016</a> showed that such an attack was practical when leveraging multiple CDN providers (including Cloudflare) in the way method shown above.</p>
 	<div class="flex anchor relative">
 		<h4 id="the-original-solution">The original solution</h4>
-		<a href="https://blog.cloudflare.com/#the-original-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-original-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>Nick’s previous <a href="https://blog.cloudflare.com/preventing-malicious-request-loops">post</a> finished with a call-to-arms for all services proxying requests to be compliant with the standard.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-problem-with-via">The problem with Via</h3>
-		<a href="https://blog.cloudflare.com/#the-problem-with-via" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-problem-with-via" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 	<p>Secondly, there are some valid reasons that Cloudflare customers may require requests to loop through the edge more than once.While such reasons are usually quite esoteric, customers with such a need had to manually modify such requests so that they did not fall foul of the loop protection mechanism. For example, workflows that include usage of Cloudflare Workers can send requests through the edge more than once via subrequests for returning custom content to clients. The headers that are currently used mean that requests are dropped as soon as a request loops once. This can add noticeable friction to using CDN services and it would be preferable to have a more granular solution to loop detection.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-new-solution">A new solution</h3>
-		<a href="https://blog.cloudflare.com/#a-new-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-new-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -84,7 +84,7 @@ CDN-Loop: cdn-info(A)</code></pre>
 	<p>The ability to use different parameters in the header allows for much more granular loop detection and protection. For example, a CDN could drop requests that had previously looped N&gt;1 times, rather than just once. In addition, the advantage of using the CDN-Loop header is that it does not come with legacy baggage. &nbsp;As we experienced previously, loop detection based on the Via header can conflict with existing usage of the header in web server implementations that eventually lead to compression issues and performance degradation. This makes CDN-Loop a viable and effective solution for detecting loop-protection attacks and applying preventions where needed.</p>
 	<div class="flex anchor relative">
 		<h4 id="implementing-cdn-loop-at-cloudflare">Implementing CDN-Loop at Cloudflare</h4>
-		<a href="https://blog.cloudflare.com/#implementing-cdn-loop-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#implementing-cdn-loop-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@ CDN-Loop: cdn-info(A)</code></pre>
 	<p>The Cloudflare edge drops any requests that have been processed multiple times to prevent malicious loop attacks. In the diagram above, requests that have looped more times than is allowed by a given CDN (red arrows) are dropped and an error is returned to the client. The edge can decide to allow requests to loop more than once in certain situations, rather than dropping immediately after the first loop.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-second-call-to-arms">A (second) call-to-arms</h3>
-		<a href="https://blog.cloudflare.com/#a-second-call-to-arms" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-second-call-to-arms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -9,7 +9,7 @@
 	<p>So up until recently, you had to make a tough choice. You could use the framework-specific dev server to develop your application, but forgo access to many of Cloudflare’s features. Alternatively, you could take full advantage of Cloudflare’s platform including various resources like D1 or R2<a href="https://developers.cloudflare.com/workers/configuration/bindings">, but you would have to give up using the framework specific developer tooling. In that case, your iteration cycle would slow down, and it would take seconds rather than milliseconds for you to see results of your code changes in the browser.</a> But not anymore! Let’s take a look.</p>
 	<div class="flex anchor relative">
 		<h3 id="lets-build-an-application">Let’s build an application</h3>
-		<a href="https://blog.cloudflare.com/#lets-build-an-application" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#lets-build-an-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -80,7 +80,7 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
 	<p>Now that you know how to access Cloudflare’s resources in the framework of your choice, everything else you know about your framework remains the same. You can now develop your application locally, using the development server optimized for your framework, which often includes support for hot module replacement (HMR), custom dev tools, enhanced debugging support and more, all while still benefiting from Cloudflare-specific APIs and features. Win-win!</p>
 	<div class="flex anchor relative">
 		<h3 id="what-has-actually-changed-to-enable-these-development-workflows">What has actually changed to enable these development workflows?</h3>
-		<a href="https://blog.cloudflare.com/#what-has-actually-changed-to-enable-these-development-workflows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-has-actually-changed-to-enable-these-development-workflows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -110,7 +110,7 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
 	<p>With the <code>getPlatformProxy()</code> API available, the remaining work was all about updating all framework adapters, plugins, and in some cases frameworks themselves to make use of this API. We are grateful for the support we received from framework teams on this journey, especially <a href="https://github.com/alexanderniebuhr">Alex</a> from Astro, <a href="https://github.com/pi0">pi0</a> from Nuxt, <a href="https://github.com/pcattori">Pedro</a> from Remix, <a href="https://github.com/ryansolid">Ryan</a> from Solid, <a href="https://github.com/benmccann">Ben</a> and <a href="https://github.com/Rich-Harris">Rich</a> from Svelte, and our collaborator on the <a href="https://github.com/cloudflare/next-on-pages">next-on-pages</a> project, <a href="https://github.com/james-elicx">James Anderson</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="future-improvements-to-development-workflows-with-vite">Future improvements to development workflows with Vite</h3>
-		<a href="https://blog.cloudflare.com/#future-improvements-to-development-workflows-with-vite" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#future-improvements-to-development-workflows-with-vite" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -128,7 +128,7 @@ INSERT INTO products (product_id, name, price) VALUES (1, 'Apple', 250), (2, 'Ba
 	<p>Sounds too good to be true? Maybe. We are very stoked to be working with the Vite team on the <a href="https://github.com/vitejs/vite/pull/16089">Vite environments</a> proposal, which could enable just that. This proposal is still evolving, so stay tuned for updates.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-will-you-build-today">What will you build today?</h3>
-		<a href="https://blog.cloudflare.com/#what-will-you-build-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-will-you-build-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -23,7 +23,7 @@
 	<p>In the remaining sections of this post, we’ll explore the threat that quantum computing poses and the challenges organizations face in transitioning to post-quantum cryptography. We’ll also dive into the technical details of how our Zero Trust platform supports post-quantum cryptography today and share some plans for the future.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-transition-to-post-quantum-cryptography-and-why-now">Why transition to post-quantum cryptography and why now?&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#why-transition-to-post-quantum-cryptography-and-why-now" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-transition-to-post-quantum-cryptography-and-why-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>There are two key reasons to adopt post-quantum cryptography now:</p>
 	<div class="flex anchor relative">
 		<h4 id="1-the-challenge-of-deprecating-cryptography">1. The challenge of deprecating cryptography</h4>
-		<a href="https://blog.cloudflare.com/#1-the-challenge-of-deprecating-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#1-the-challenge-of-deprecating-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -41,7 +41,7 @@
 	<p>History shows that updating or removing outdated cryptographic algorithms from live systems is extremely difficult. For example, although the MD5 hash function was <a href="https://iacr.org/archive/eurocrypt2005/34940019/34940019.pdf"><u>deemed insecure in 2004</u></a> and long since deprecated, it was still in use with the RADIUS enterprise authentication protocol as recently as 2024. In July 2024, Cloudflare contributed to research revealing an <a href="https://blog.cloudflare.com/radius-udp-vulnerable-md5-attack"><u>attack on RADIUS</u></a> that exploited its reliance on MD5. This example underscores the enormous challenge of updating legacy systems — this difficulty in achieving <a href="https://en.wikipedia.org/wiki/Cryptographic_agility"><i><u>crypto-agility</u></i></a> — which will be just as demanding when it’s time to transition to post-quantum cryptography. So it makes sense to start this process now.</p>
 	<div class="flex anchor relative">
 		<h4 id="2-the-harvest-now-decrypt-later-threat">2. The “harvest now, decrypt later” threat</h4>
-		<a href="https://blog.cloudflare.com/#2-the-harvest-now-decrypt-later-threat" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#2-the-harvest-now-decrypt-later-threat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -54,7 +54,7 @@
 	<p>Let’s take a closer look at how the migration to post-quantum cryptography is taking shape at Cloudflare.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-two-phase-migration-to-post-quantum-cryptography">A two-phase migration to post-quantum cryptography</h3>
-		<a href="https://blog.cloudflare.com/#a-two-phase-migration-to-post-quantum-cryptography" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-two-phase-migration-to-post-quantum-cryptography" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -64,7 +64,7 @@
 	<p>The migration involves updating two critical components of TLS 1.3: <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate"><u>digital signatures used in certificates</u></a> and <a href="https://blog.cloudflare.com/post-quantum-key-encapsulation"><u>key agreement mechanisms</u></a>. We’ve made significant progress on key agreement, but the migration to post-quantum digital signatures is still in its early stages.</p>
 	<div class="flex anchor relative">
 		<h4 id="phase-1-migrating-key-agreement">Phase 1: Migrating key agreement</h4>
-		<a href="https://blog.cloudflare.com/#phase-1-migrating-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#phase-1-migrating-key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -90,7 +90,7 @@
 	<p>This indicates that your browser is using key-agreement protocol ML-KEM <i>in combination with</i> conventional <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography"><u>elliptic curve cryptography</u></a> on curve <a href="https://en.wikipedia.org/wiki/Curve25519"><u>X25519</u></a>. This provides the protection of the tried-and-true conventional cryptography (<a href="https://en.wikipedia.org/wiki/Curve25519"><u>X25519</u></a>) alongside the new post-quantum key agreement (<a href="https://blog.cloudflare.com/nists-first-post-quantum-standards"><u>ML-KEM</u></a>).</p>
 	<div class="flex anchor relative">
 		<h4 id="phase-2-migrating-digital-signatures">Phase 2: Migrating digital signatures</h4>
-		<a href="https://blog.cloudflare.com/#phase-2-migrating-digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#phase-2-migrating-digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -102,7 +102,7 @@
 	<p>Nevertheless, Cloudflare is actively <a href="https://datatracker.ietf.org/doc/draft-ietf-lamps-dilithium-certificates/07"><u>involved in standardizing</u></a> post-quantum signatures for TLS certificates. We are also experimenting with their deployment on long-lived TLS connections and exploring <a href="https://datatracker.ietf.org/doc/draft-davidben-tls-merkle-tree-certs"><u>new approaches</u></a> to achieve post-quantum authentication without sacrificing performance. Our goal is to ensure that post-quantum digital signatures are ready for widespread use when quantum computers are able to actively attack live TLS connections.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-zero-trust-pqc-future-proofing-security">Cloudflare Zero Trust + PQC: future-proofing security</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-zero-trust-pqc-future-proofing-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-zero-trust-pqc-future-proofing-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -111,7 +111,7 @@
 	<p>The Cloudflare Zero Trust platform replaces legacy corporate security perimeters with Cloudflare's global network, making access to the Internet and to corporate resources faster and safer for teams around the world. Today, we’re thrilled to announce that Cloudflare's Zero Trust platform protects your data from quantum threats as it travels over the public Internet.&nbsp; There are three key quantum-safe use cases supported by our Zero Trust platform in this first phase of quantum readiness.</p>
 	<div class="flex anchor relative">
 		<h4 id="quantum-safe-clientless-access">Quantum-safe clientless Access</h4>
-		<a href="https://blog.cloudflare.com/#quantum-safe-clientless-access" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#quantum-safe-clientless-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -139,7 +139,7 @@
 	<p>Putting it together, clientless Access provides <b>end-to-end</b> quantum safety for accessing corporate HTTPS applications, without requiring customers to upgrade the security of corporate web applications.</p>
 	<div class="flex anchor relative">
 		<h4 id="quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement">Quantum-safe Zero Trust with Cloudflare’s WARP Client-to-Tunnel configuration (as a VPN replacement)</h4>
-		<a href="https://blog.cloudflare.com/#quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#quantum-safe-zero-trust-with-cloudflares-warp-client-to-tunnel-configuration-as-a-vpn-replacement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -168,7 +168,7 @@
 	<p>Once the upcoming post-quantum enhancements to the WARP device client are complete, customers can encapsulate their traffic in quantum-safe tunnels, effectively mitigating the risk of harvest-now-decrypt-later attacks without any heavy lifting to individually upgrade their networks or applications.&nbsp; And this provides comprehensive protection for any protocol that can be sent through these tunnels, not just for HTTPS!</p>
 	<div class="flex anchor relative">
 		<h4 id="quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications">Quantum-safe SWG (end-to-end PQC for access to third-party web applications)</h4>
-		<a href="https://blog.cloudflare.com/#quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#quantum-safe-swg-end-to-end-pqc-for-access-to-third-party-web-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -193,7 +193,7 @@
 	<p>Put together, Cloudflare’s SWG is quantum-ready to support secure access to any third-party website that is quantum ready today or in the future. And this is true regardless of the onramp used to get end users' traffic into Cloudflare's global network!</p>
 	<div class="flex anchor relative">
 		<h3 id="the-post-quantum-future-cloudflares-zero-trust-platform-leads-the-way">The post-quantum future: Cloudflare’s Zero Trust platform leads the way</h3>
-		<a href="https://blog.cloudflare.com/#the-post-quantum-future-cloudflares-zero-trust-platform-leads-the-way" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-post-quantum-future-cloudflares-zero-trust-platform-leads-the-way" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -204,7 +204,7 @@
 	<p>To learn more about how Cloudflare’s built-in crypto-agility can future-proof your business, visit our <a href="https://cloudflare.com/pqc"><u>Post-Quantum Cryptography</u></a> webpage.</p>
 	<div class="flex anchor relative">
 		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

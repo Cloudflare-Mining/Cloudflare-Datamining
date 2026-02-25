@@ -8,7 +8,7 @@
 	<p>This blog post introduces a new, free tool Cloudflare offers to CAs so they can further secure certificate issuance. But before we dive in too deep, let’s talk about where certificates come from.</p>
 	<div class="flex anchor relative">
 		<h3 id="certificate-authorities">Certificate Authorities</h3>
-		<a href="https://blog.cloudflare.com/#certificate-authorities" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#certificate-authorities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>For example, an adversary that tricks a CA into mis-issuing a certificate for gmail.com could then perform TLS handshakes while pretending to be Google, and exfiltrate cookies and login information to gain access to the victim’s Gmail account. The risks of certificate mis-issuance are clearly severe.</p>
 	<div class="flex anchor relative">
 		<h3 id="domain-control-validation">Domain Control Validation</h3>
-		<a href="https://blog.cloudflare.com/#domain-control-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#domain-control-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -41,7 +41,7 @@
 	<p>To prevent attacks like this, CAs only issue a certificate after performing DCV. One way of validating domain ownership is through HTTP validation, done by uploading a text file to a specific HTTP endpoint on the webserver they want to secure. &nbsp;Another DCV method is done using email verification, where an email with a validation code link is sent to the administrative contact for the domain.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-validation">HTTP Validation</h3>
-		<a href="https://blog.cloudflare.com/#http-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#http-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@ YnV0dHNz.TEST_CLIENT_KEY</code></pre>
 	<p>The CA instructs them to use the Base64 token <code>YnV0dHNz</code>. <code>TEST_CLIENT_KEY</code> in an account-linked key that only the certificate requestor and the CA know. The CA uses this field combination to verify that the certificate requestor actually owns the domain. Afterwards, Alice can get her certificate for her website!</p>
 	<div class="flex anchor relative">
 		<h3 id="dns-validation">DNS Validation</h3>
-		<a href="https://blog.cloudflare.com/#dns-validation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#dns-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -75,7 +75,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>Here, Alice chooses to create a TXT DNS resource record with a specific token value. A Google CA can verify the presence of this token to validate that Alice actually owns her website.</p>
 	<div class="flex anchor relative">
 		<h3 id="types-of-bgp-hijacking-attacks">Types of BGP Hijacking Attacks</h3>
-		<a href="https://blog.cloudflare.com/#types-of-bgp-hijacking-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#types-of-bgp-hijacking-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -86,7 +86,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p><a href="https://www.princeton.edu/~pmittal/publications/bgp-tls-usenix18.pdf"><i>Bamboozling Certificate Authorities with BGP</i></a> highlights five types of attacks that can be orchestrated during the DCV process to obtain a certificate for a domain the adversary does not own. After implementing these attacks, the authors were able to (ethically) obtain certificates for domains they did not own from the top five CAs: Let’s Encrypt, GoDaddy, Comodo, Symantec, and GlobalSign. But how did they do it?</p>
 	<div class="flex anchor relative">
 		<h3 id="attacking-the-domain-control-validation-process">Attacking the Domain Control Validation Process</h3>
-		<a href="https://blog.cloudflare.com/#attacking-the-domain-control-validation-process" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#attacking-the-domain-control-validation-process" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -110,7 +110,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>Every device on the Internet uses an IP (Internet Protocol) address as a numerical identifier. IPv6 addresses contain 128 bits and follow a slash notation to indicate the size of the prefix. So, in the network address <b>2001:DB8:1000::/48</b>, “<b>/48</b>” refers to how many bits the network contains. This means that there are 80 bits left that contain the host addresses, for a total of 10,240 host addresses. The smaller the prefix number, the more host addresses remain in the network. With this knowledge, let’s jump into the attacks!</p>
 	<div class="flex anchor relative">
 		<h4 id="attack-one-sub-prefix-attack">Attack one: Sub-Prefix Attack</h4>
-		<a href="https://blog.cloudflare.com/#attack-one-sub-prefix-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#attack-one-sub-prefix-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -125,7 +125,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	</figure>
 	<div class="flex anchor relative">
 		<h4 id="attack-two-equally-specific-prefix-attack">Attack two: Equally-Specific-Prefix Attack</h4>
-		<a href="https://blog.cloudflare.com/#attack-two-equally-specific-prefix-attack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#attack-two-equally-specific-prefix-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -141,7 +141,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>Once an attacker has successfully obtained a bogus certificate for a domain that they do not own, they can perform a convincing attack where they pose as the victim’s domain and are able to decrypt and intercept the victim’s TLS traffic. The ability to decrypt the TLS traffic allows the adversary to completely Monster-in-the-Middle (MITM) encrypted TLS traffic and reroute Internet traffic destined for the victim’s domain to the adversary. To increase the stealthiness of the attack, the adversary will continue to forward traffic through the victim’s domain to perform the attack in an undetected manner.</p>
 	<div class="flex anchor relative">
 		<h3 id="dns-spoofing">DNS Spoofing</h3>
-		<a href="https://blog.cloudflare.com/#dns-spoofing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#dns-spoofing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -159,7 +159,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="solution">Solution</h3>
-		<a href="https://blog.cloudflare.com/#solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -194,7 +194,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>Our DCV checker follows our belief that trust on the Internet must be distributed, and vetted through third-party analysis (like that provided by Cloudflare) to ensure consistency and security. This tool joins our <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">pre-existing Certificate Transparency monitor</a> as a set of services CAs are welcome to use in improving the accountability of certificate issuance.</p>
 	<div class="flex anchor relative">
 		<h3 id="an-opportunity-to-dogfood">An Opportunity to Dogfood</h3>
-		<a href="https://blog.cloudflare.com/#an-opportunity-to-dogfood" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#an-opportunity-to-dogfood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -205,7 +205,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>We use <a href="https://developers.cloudflare.com/argo-tunnel">Argo Tunnel</a> to allow Cloudflare Workers to contact DCV agents. Argo Tunnel allows us to easily and securely expose our DCV agents to the Workers environment. Since Cloudflare has approximately 175 datacenters running DCV agents, we expose many services through Argo Tunnel, and have had the opportunity to load test Argo Tunnel as a power user with a wide variety of origins. Argo Tunnel readily handled this influx of new origins!</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-access-to-the-multipath-dcv-checker">Getting Access to the Multipath DCV Checker</h3>
-		<a href="https://blog.cloudflare.com/#getting-access-to-the-multipath-dcv-checker" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#getting-access-to-the-multipath-dcv-checker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -5,7 +5,7 @@
 	<p>Note that while we refer to “HTTP request traffic” in this post and on Radar, the term encompasses requests made in the clear over HTTP <b>and</b> over encrypted connections using HTTPS – the latter accounts for <a href="https://radar.cloudflare.com/adoption-and-usage?dateStart=2024-07-01&amp;dateEnd=2024-07-31"><u>~95% of all requests to Cloudflare during July 2024</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="new-and-updated-graphs">New and updated graphs</h2>
-		<a href="https://blog.cloudflare.com/#new-and-updated-graphs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#new-and-updated-graphs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -46,7 +46,7 @@
 	<p>As always, the underlying data is also available through the Radar API. The <a href="https://developers.cloudflare.com/api/operations/radar-get-http-timeseries"><u>“HTTP requests Time Series” API endpoint</u></a> returns normalized HTTP request time series data across the specified time period for the requested location or <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u>autonomous system (ASN)</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-http-request-traffic">What is HTTP request traffic?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-http-request-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-http-request-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -56,7 +56,7 @@
 	<p>Cloudflare temporarily logs HTTP requests received by our network, including associated <a href="https://developer.mozilla.org/en-US/docs/Glossary/Request_header"><u>header</u></a> information and “metadata” about the request, such as the <a href="https://developers.cloudflare.com/bots/concepts/bot-score"><u>bot score</u></a> computed for the request and the associated <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests/#cachecachestatus"><u>cache status</u></a>. Request logs for a customer’s web properties are <a href="https://developers.cloudflare.com/logs"><u>available for them to download</u></a>, and after processing and analysis, this data is also presented in the <a href="https://developers.cloudflare.com/analytics/account-and-zone-analytics"><u>Analytics</u></a> section of the Cloudflare dashboard. The HTTP request data now available on Radar is based on a sample of this log data, aggregated across Cloudflare’s global customer base.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-value-of-request-based-traffic-insights">The value of request-based traffic insights</h2>
-		<a href="https://blog.cloudflare.com/#the-value-of-request-based-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-value-of-request-based-traffic-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -68,7 +68,7 @@
 	<p>Finally, incorporating request-based traffic insights into Radar is simply extending the way that the data is already being used on the site. All of the graphs, maps, and tables presented on Radar’s <a href="https://radar.cloudflare.com/adoption-and-usage"><u>Adoption &amp; Usage</u></a> page, are based on analysis of HTTP request traffic, making use of information contained within request headers (such as HTTP version or user agent) or characteristics of the underlying connection (such as IP version).</p>
 	<div class="flex anchor relative">
 		<h2 id="bytes-vs-requests-whats-the-difference">Bytes vs requests – what’s the difference?</h2>
-		<a href="https://blog.cloudflare.com/#bytes-vs-requests-whats-the-difference" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#bytes-vs-requests-whats-the-difference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -84,7 +84,7 @@
 	<p>It is important to remember that in looking at the “HTTP requests &amp; bytes” graphs on Radar that they are showing two different metrics, and as such, only their shape over time is comparable, not their relative sizes. (As both metrics are normalized on a 0 to 1 (Max) scale, the lines on the graph are scaled relative to the maximum normalized value of each metric, including the previous period.)</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

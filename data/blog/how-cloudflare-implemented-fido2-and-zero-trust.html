@@ -6,7 +6,7 @@
 	<p>The solution to the phishing problem is through a <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication">multi-factor &nbsp;authentication (MFA)</a> protocol called <i>FIDO2/WebAuthn</i>. Today, all Cloudflare employees log in with FIDO2 as their secure multi-factor and authenticate to our systems using our own <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> products. Our newer architecture is phish proof and allows us to more easily enforce the least privilege access control.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-little-about-the-terminology-of-security-keys-and-what-we-use">A little about the terminology of security keys and what we use</h3>
-		<a href="https://blog.cloudflare.com/#a-little-about-the-terminology-of-security-keys-and-what-we-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-little-about-the-terminology-of-security-keys-and-what-we-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>In late 2018 we distributed security keys at a whole company event. We asked all employees to enroll their keys, authenticate with them, and ask questions about the devices during a short workshop. The program was a huge success, but there were still rough edges and applications that didn’t work with WebAuthn. We weren’t ready for full enforcement of security keys and needed some middle-ground solution while we worked through the issues.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-beginning-selective-security-key-enforcement-with-cloudflare-zero-trust">The beginning: selective security key enforcement with Cloudflare Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#the-beginning-selective-security-key-enforcement-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-beginning-selective-security-key-enforcement-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -58,7 +58,7 @@
 	<p>Here’s a site where only members of the ACL-CFA-CFDATA-argo-config-admin-svc group have access. It enforces that the employee used their security key when logging in, and no complicated OAuth or SAML integration was needed for this. We have over 600 internal sites using this same pattern and all of them enforce security keys.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-end-of-optional-the-day-cloudflare-dropped-totp-completely">The end of optional: the day Cloudflare dropped TOTP completely</h3>
-		<a href="https://blog.cloudflare.com/#the-end-of-optional-the-day-cloudflare-dropped-totp-completely" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-end-of-optional-the-day-cloudflare-dropped-totp-completely" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -74,7 +74,7 @@
 	<p>Now that all employees are using their YubiKeys for phishing-resistant MFA are we finished? Well, what about <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh">SSH</a> and non-HTTP protocols? We wanted a single unified approach to <a href="https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management">identity and access management</a> so bringing security keys to arbitrary other protocols was our next consideration.</p>
 	<div class="flex anchor relative">
 		<h3 id="using-security-keys-with-ssh">Using security keys with SSH</h3>
-		<a href="https://blog.cloudflare.com/#using-security-keys-with-ssh" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#using-security-keys-with-ssh" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -95,7 +95,7 @@ ingress:
 	<p>It’s worth noting that OpenSSH has supported FIDO2 since <a href="https://www.openssh.com/txt/release-8.2">version 8.2</a>, but we’ve found there are benefits to having a unified approach to access control where all access control lists are maintained in a single place.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-weve-learned-and-how-our-experience-can-help-you">What we’ve learned and how our experience can help you</h3>
-		<a href="https://blog.cloudflare.com/#what-weve-learned-and-how-our-experience-can-help-you" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-weve-learned-and-how-our-experience-can-help-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

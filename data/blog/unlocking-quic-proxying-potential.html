@@ -5,7 +5,7 @@
 	<p>For instance, <a href="https://www.cloudflare.com/learning/performance/what-is-http3">HTTP/3</a> is based on QUIC, which runs on top of UDP. What if we wanted to speak HTTP/3 to a target server? That requires two things: (1) the means to encapsulate a UDP payload between client and proxy (which the proxy decapsulates and forward to the target in an actual UDP datagram), and (2) a way to instruct the proxy to open a UDP association to a target so that it knows where to forward the decapsulated payload. In this post, we’ll discuss answers to these two questions, starting with encapsulation.</p>
 	<div class="flex anchor relative">
 		<h3 id="encapsulating-datagrams">Encapsulating datagrams</h3>
-		<a href="https://blog.cloudflare.com/#encapsulating-datagrams" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#encapsulating-datagrams" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -36,7 +36,7 @@
 	<p>Now that QUIC has primitives that support sending unreliable messages, we have a standard way to effectively tunnel UDP inside it. QUIC provides the STREAM and DATAGRAM transport primitives that support our proxying goals. Now it is the application layer responsibility to describe <b>how</b> to use them for proxying. Enter MASQUE.</p>
 	<div class="flex anchor relative">
 		<h3 id="masque-unlocking-quics-potential-for-proxying">MASQUE: Unlocking QUIC’s potential for proxying</h3>
-		<a href="https://blog.cloudflare.com/#masque-unlocking-quics-potential-for-proxying" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#masque-unlocking-quics-potential-for-proxying" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -57,7 +57,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="anatomy-of-encapsulation">Anatomy of Encapsulation</h3>
-		<a href="https://blog.cloudflare.com/#anatomy-of-encapsulation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#anatomy-of-encapsulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -74,7 +74,7 @@
 	<p>If a sender has a message that is too big to fit inside the tunnel, there are only two options: discard the message or fragment it. Neither of these are good options. Clients create the UDP tunnel and are more likely to accurately calculate the real size of encapsulated UDP datagram payload, thus avoiding the problem. However, a target server is most likely unaware that a client is behind a proxy, so it cannot accommodate the tunneling overhead. It might send a UDP datagram payload that is too big for the proxy to encapsulate. This conundrum is common to all proxy protocols! There's an art in picking the right MTU size for UDP-based traffic in the face of tunneling overheads. While approaches like path MTU discovery can help, they are <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">not a silver bullet</a>. Choosing conservative maximum sizes can reduce the chances of tunnel-related problems. However, this needs to be weighed against being too restrictive. Given a theoretical path MTU of 1,500, once we consider QUIC encapsulation overheads, tunneled messages with a limit between 1,200 and 1,300 bytes can be effective.This is especially important when we think about tunneling QUIC itself. <a href="https://datatracker.ietf.org/doc/html/rfc9000#section-8.1">RFC 9000 Section 8.1</a> details how clients that initiate new QUIC connections must send UDP datagrams of at least 1,200 bytes. If a proxy can't support that, then QUIC will not work in a tunnel.</p>
 	<div class="flex anchor relative">
 		<h3 id="nested-tunneling-for-improved-privacy-proxying">Nested tunneling for Improved Privacy Proxying</h3>
-		<a href="https://blog.cloudflare.com/#nested-tunneling-for-improved-privacy-proxying" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#nested-tunneling-for-improved-privacy-proxying" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -89,7 +89,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="towards-a-full-tunnel-with-ip-tunneling">Towards a full tunnel with IP tunneling</h3>
-		<a href="https://blog.cloudflare.com/#towards-a-full-tunnel-with-ip-tunneling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#towards-a-full-tunnel-with-ip-tunneling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -100,7 +100,7 @@
 	<p>In general, comparing these protocols is like comparing apples and oranges – they’re fit for different purposes, have different implementation requirements, and assume different ecosystem participants and threat models. At the end of the day, CONNECT-based proxies are better suited to an ecosystem and environment that is already heavily invested in TLS and the existing WebPKI, so we expect CONNECT-based solutions for IP tunnels to become the norm in the future. Nevertheless, it's early days, so be sure to watch this space if you’re interested in learning more!</p>
 	<div class="flex anchor relative">
 		<h3 id="looking-ahead">Looking ahead</h3>
-		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#looking-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

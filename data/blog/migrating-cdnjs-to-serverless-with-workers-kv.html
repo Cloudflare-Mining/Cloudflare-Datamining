@@ -4,7 +4,7 @@
 	<p>Cloudflare powers <a href="https://cdnjs.com">cdnjs</a>, an open-source project that accelerates websites by delivering popular JavaScript libraries and resources via <a href="https://www.cloudflare.com/cdn">Cloudflare’s network</a>. Since <a href="https://blog.cloudflare.com/an-update-on-cdnjs">our major update in December</a>, we focused on remodelling cdnjs for scalability and resilience. Today, we are excited to announce how Cloudflare delivers cdnjs—a migration to a serverless infrastructure using <a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> and its distributed key-value store <a href="https://developers.cloudflare.com/workers/reference/storage">Workers KV</a>!</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-cdnjs">What is cdnjs?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>While cdnjs operates behind the scenes, it is used by <a href="https://w3techs.com/technologies/overview/content_delivery">over 11%</a> of websites, making the Internet a much faster and more reliable place. In July, cdnjs served almost <a href="https://github.com/cdnjs/cf-stats/blob/master/2020/cdnjs_July_2020.md">190 billion requests</a>—an enormous 3.46PB of data.</p>
 	<div class="flex anchor relative">
 		<h3 id="where-are-the-files-stored">Where are the files stored?</h3>
-		<a href="https://blog.cloudflare.com/#where-are-the-files-stored" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#where-are-the-files-stored" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -36,7 +36,7 @@
 	<p>This blog post will explain why we changed the infrastructure behind cdnjs to make it faster, more reliable, and easier to maintain. First, we will discuss how the community used to contribute to cdnjs, outlining the pains and concerns of the old system. Then, we will explore the benefits of migrating to Workers KV. After, we will dive into the new architecture, as well as upgrades to the website and cdnjs API. Finally, we will review the history of cdnjs, and where it is headed in the future.</p>
 	<div class="flex anchor relative">
 		<h3 id="if-you-think-you-know-how-to-make-a-pr-think-again">If you think you know how to make a PR, think again</h3>
-		<a href="https://blog.cloudflare.com/#if-you-think-you-know-how-to-make-a-pr-think-again" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#if-you-think-you-know-how-to-make-a-pr-think-again" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -55,7 +55,7 @@
 	<p>However, updating cdnjs was not only difficult for the contributors, but also the maintainers. Historically, the community was able to contribute version files directly, which could potentially be malicious. This created lots of work for maintainers, requiring them to inspect each file manually, <a href="https://man7.org/linux/man-pages/man1/diff.1.html">diffing</a> files against the official library source and running malware checks.So how did packages update once they were in cdnjs? In the JSON file describing each package, there was an optional auto-update definition telling the bot where to look for new versions of the library. If present, when your package released a new version from npm or GitHub, the bot would download it, pushing the files to <a href="https://github.com/cdnjs/cdnjs">cdnjs/cdnjs</a> and computed <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">Subresource Integrity</a> (SRI) hashes to <a href="https://github.com/cdnjs/SRIs">cdnjs/SRIs</a>. If the auto-update property was missing, it would be your responsibility to make manual PRs to update cdnjs with any future versions.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-wake-up-call-for-cdnjs">A wake-up call for cdnjs</h3>
-		<a href="https://blog.cloudflare.com/#a-wake-up-call-for-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-wake-up-call-for-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -72,7 +72,7 @@
 	<p>We put two and two together, realizing that instead of pulling the <a href="https://github.com/cdnjs/cdnjs">cdnjs/cdnjs</a> repository and serving files from disk, we could cut the physical machines out entirely, distributing the data around the world and serving files straight from the edge. That way, cdnjs would be able to recover from any origin data center failure, while also increasing its scalability.</p>
 	<div class="flex anchor relative">
 		<h3 id="workers-kv-to-the-rescue">Workers KV to the rescue</h3>
-		<a href="https://blog.cloudflare.com/#workers-kv-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#workers-kv-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -91,7 +91,7 @@
 	<p>This means we now serve cdnjs files faster and smaller!</p>
 	<div class="flex anchor relative">
 		<h3 id="a-complete-makeover-for-cdnjs">A complete makeover for cdnjs</h3>
-		<a href="https://blog.cloudflare.com/#a-complete-makeover-for-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-complete-makeover-for-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -106,7 +106,7 @@
 	<p>At the moment, there are still a handful of files exceeding Workers KV’s size limit. Consequently, if the Cloudflare Worker fails to retrieve a file from Workers KV, it is fetched from the origin backed by the original git repo. In the coming months, we plan on gradually removing this infrastructure.</p>
 	<div class="flex anchor relative">
 		<h3 id="scaling-the-website-and-api">Scaling the website and API</h3>
-		<a href="https://blog.cloudflare.com/#scaling-the-website-and-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#scaling-the-website-and-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -126,7 +126,7 @@
 	<p>Similar to cdnjs’s serverless design, a Cloudflare Worker sits on top of <a href="http://metadata.speedcdnjs.com/packages">metadata.speedcdnjs.com</a>, serving data from Workers KV using several public endpoints. Currently, the cdnjs API is fully integrated with these endpoints, which provide an elegant solution as cdnjs continues to scale.</p>
 	<div class="flex anchor relative">
 		<h3 id="transparency-and-the-future-of-cdnjs">Transparency and the future of cdnjs</h3>
-		<a href="https://blog.cloudflare.com/#transparency-and-the-future-of-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#transparency-and-the-future-of-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -138,7 +138,7 @@
 	<p>However, as we remove our reliance on the legacy system and store files in Workers KV, there are concerns that cdnjs will become proprietary. Don’t worry, we are working hard to ensure that cdnjs remains as transparent and open-source as possible. To help the community audit updates to Workers KV, there is a new repository, <a href="https://github.com/cdnjs/logs">cdnjs/logs</a>, which is used by the bot to log all Workers KV-related events. Furthermore, anyone can validate the integrity of cdnjs files by fetching SRIs from the cdnjs API.</p>
 	<div class="flex anchor relative">
 		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

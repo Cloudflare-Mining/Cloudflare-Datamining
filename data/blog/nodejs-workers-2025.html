@@ -150,7 +150,7 @@
 	<p>Most importantly, <b>all of these implementations are done natively in the Workers runtime</b>, using a combination of TypeScript and C++. Whereas our earlier Node.js compatibility efforts relied heavily on polyfills and shims injected at deployment time by developer tooling such as <a href="https://developers.cloudflare.com/workers/wrangler"><u>Wrangler</u></a>, we are moving towards a model where future Workers will have these APIs available natively, without need for any additional dependencies. This not only improves performance and reduces memory usage, but also ensures that the behavior is as close to Node.js as possible.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-networking-stack">The networking stack</h2>
-		<a href="https://blog.cloudflare.com/#the-networking-stack" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-networking-stack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -160,7 +160,7 @@
 	<p>Let's start with the HTTP APIs.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-client-and-server-support">HTTP client and server support</h3>
-		<a href="https://blog.cloudflare.com/#http-client-and-server-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#http-client-and-server-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -206,7 +206,7 @@ export default httpServerHandler(server);
 	<p>The <code>httpServerHandler()</code> function from the <code>cloudflare:nod</code>e module integrates the HTTP <code>server</code> with the Workers fetch event, allowing it to handle incoming requests.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-node-dns-module">The <code>node:dns</code> module</h3>
-		<a href="https://blog.cloudflare.com/#the-node-dns-module" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-node-dns-module" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -216,7 +216,7 @@ export default httpServerHandler(server);
 	<p>At Cloudflare, we happen to have a <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https"><u>DNS-over-HTTPS (DoH)</u></a> service and our own <a href="https://one.one.one.one"><u>DNS service called 1.1.1.1</u></a>. We took advantage of this when exposing <code>node:dns</code> in Workers. When you use this module to perform a query, it will just make a subrequest to 1.1.1.1 to resolve the query. This way the user doesn’t have to think about DNS servers, and the query will just work.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-node-net-and-node-tls-modules">The <code>node:net</code> and <code>node:tls</code> modules</h3>
-		<a href="https://blog.cloudflare.com/#the-node-net-and-node-tls-modules" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-node-net-and-node-tls-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -244,7 +244,7 @@ export default {
 
 	<div class="flex anchor relative">
 		<h2 id="a-new-virtual-file-system-and-the-node-fs-module">A new virtual file system and the <code>node:fs</code> module</h2>
-		<a href="https://blog.cloudflare.com/#a-new-virtual-file-system-and-the-node-fs-module" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-new-virtual-file-system-and-the-node-fs-module" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -269,10 +269,10 @@ export default {
 }
 </code></pre>
 	<p>The virtual file system supports a wide range of file operations, including reading and writing files, creating and removing directories, and working with file descriptors. It also supports standard input/output/error streams via <code>process.stdin</code>, <code>process.stdout</code>, and <code>process.stderr</code>, symbolic links, streams, and more.</p>
-	<p>While the current implementation of the virtual file system is in-memory only, we are exploring options for adding persistent storage in the future that would link to existing Cloudflare storage solutions like R2 or Durable Objects. But you don't have to wait on us! When combined with powerful tools like Durable Objects and <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc"><u>JavaScript RPC</u></a>, it's certainly possible to create your own general purpose, durable file system abstraction backed by sqlite storage.</p>
+	<p>While the current implementation of the virtual file system is in-memory only, we are exploring options for adding persistent storage in the future that would link to existing Cloudflare storage solutions like <a href="https://www.cloudflare.com/developer-platform/products/r2">R2</a> or Durable Objects. But you don't have to wait on us! When combined with powerful tools like Durable Objects and <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc"><u>JavaScript RPC</u></a>, it's certainly possible to create your own general purpose, durable file system abstraction backed by sqlite storage.</p>
 	<div class="flex anchor relative">
 		<h2 id="cryptography-with-node-crypto">Cryptography with <code>node:crypto</code></h2>
-		<a href="https://blog.cloudflare.com/#cryptography-with-node-crypto" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cryptography-with-node-crypto" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -339,7 +339,7 @@ export default {
 	</ul>
 	<div class="flex anchor relative">
 		<h2 id="process-environment">Process &amp; Environment</h2>
-		<a href="https://blog.cloudflare.com/#process-environment" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#process-environment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -350,7 +350,7 @@ export default {
 	<p>Let's take a look at the <code>process</code> APIs that do make sense in Workers, and that have been fully implemented, starting with <code>process.env</code>.</p>
 	<div class="flex anchor relative">
 		<h3 id="environment-variables">Environment variables</h3>
-		<a href="https://blog.cloudflare.com/#environment-variables" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#environment-variables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -398,7 +398,7 @@ export default {
 	<p>Because <code>process.env</code> is accessible at the global scope, it is important to note that environment variables are accessible from anywhere in your Worker script, including third-party libraries that you may be using. This is consistent with Node.js behavior, but it is something to be aware of from a security and configuration management perspective. The <a href="https://developers.cloudflare.com/secrets-store"><u>Cloudflare Secrets Store</u></a> can provide enhanced handling around secrets within Workers as an alternative to using environment variables.</p>
 	<div class="flex anchor relative">
 		<h4 id="importable-environment-and-waituntil">Importable environment and waitUntil</h4>
-		<a href="https://blog.cloudflare.com/#importable-environment-and-waituntil" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#importable-environment-and-waituntil" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -426,7 +426,7 @@ function doSomething() {
 	<p>One important note about <code>process.env</code>: changes to environment variables via <code>process.env</code> will not be reflected in the <code>env</code> argument passed to the Worker function, and vice versa. The <code>process.env</code> is populated at the start of the Worker execution and is not updated dynamically. This is consistent with Node.js behavior, where changes to <code>process.env</code> do not affect the actual environment variables of the running process. We did this to minimize the risk that a third-party library, originally meant to run in Node.js, could inadvertently modify the environment assumed by the rest of the Worker code.</p>
 	<div class="flex anchor relative">
 		<h3 id="stdin-stdout-stderr">Stdin, stdout, stderr</h3>
-		<a href="https://blog.cloudflare.com/#stdin-stdout-stderr" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#stdin-stdout-stderr" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -462,7 +462,7 @@ export default {
 
 	<div class="flex anchor relative">
 		<h3 id="other-process-apis">Other process APIs</h3>
-		<a href="https://blog.cloudflare.com/#other-process-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#other-process-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -482,7 +482,7 @@ export default {
 	</ul>
 	<div class="flex anchor relative">
 		<h2 id="compression-with-node-zlib">Compression with <code>node:zlib</code></h2>
-		<a href="https://blog.cloudflare.com/#compression-with-node-zlib" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#compression-with-node-zlib" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -504,7 +504,7 @@ export default {
 	<p>While Workers has had built-in support for gzip and deflate compression via the <a href="https://compression.spec.whatwg.org"><u>Web Platform Standard Compression API</u></a>, the <code>node:zlib</code> module support brings additional support for the Brotli compression algorithm, as well as a more familiar API for Node.js developers.</p>
 	<div class="flex anchor relative">
 		<h2 id="timing-scheduling">Timing &amp; scheduling</h2>
-		<a href="https://blog.cloudflare.com/#timing-scheduling" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#timing-scheduling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -534,7 +534,7 @@ export default {
 	<p>The Node.js implementations of the timers APIs are very similar to the standard Web Platform with one key difference: the Node.js timers APIs return <code>Timeout</code> objects that can be used to manage the timers after they have been created. We have implemented the <code>Timeout</code> class in Workers to provide this functionality, allowing you to clear or re-fire timers as needed.</p>
 	<div class="flex anchor relative">
 		<h2 id="console">Console</h2>
-		<a href="https://blog.cloudflare.com/#console" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#console" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -543,7 +543,7 @@ export default {
 	<p>The <code>node:console</code> module provides a set of console logging APIs that are similar to the standard <code>console</code> global, but with some additional features. We have implemented the <code>node:console</code> module as a thin wrapper around the existing <code>globalThis.console</code> that is already available in Workers.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-to-enable-the-node-js-compatibility-features">How to enable the Node.js compatibility features</h2>
-		<a href="https://blog.cloudflare.com/#how-to-enable-the-node-js-compatibility-features" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-to-enable-the-node-js-compatibility-features" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -699,7 +699,7 @@ export default {
 	<p>But, to keep things simple, <b>we recommend starting with the </b><code><b>nodejs_compat</b></code><b> flag, which will enable everything. You can always disable individual features later if needed.</b> There is no performance penalty to having the additional features enabled.</p>
 	<div class="flex anchor relative">
 		<h3 id="handling-end-of-lifed-apis">Handling end-of-life'd APIs</h3>
-		<a href="https://blog.cloudflare.com/#handling-end-of-lifed-apis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#handling-end-of-lifed-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -734,7 +734,7 @@ export default {
 	<p>If you look at the date for <code>remove_nodejs_compat_eol_v23</code> you'll notice that it is the same as the date for <code>remove_nodejs_compat_eol_v24</code>. That is not a typo! Node.js v23 is not an LTS release, and as such it has a very short support window. It was released in October 2023 and reached EOL in May 2024. Accordingly, we have decided to group the end-of-life handling of non-LTS releases into the next LTS release. This means that when you set your compatibility date to a date after the EOL date for Node.js v24, you will also be opting out of the APIs that reached EOL in Node.js v23. Importantly, these flags will not be automatically enabled until your compatibility date is set to a date after the relevant Node.js version's EOL date, ensuring that existing Workers will have plenty of time to migrate before any APIs are removed, or can choose to just simply keep using the older APIs indefinitely by using the reverse compatibility flags like <code>add_nodejs_compat_eol_v24</code>.</p>
 	<div class="flex anchor relative">
 		<h2 id="giving-back">Giving back</h2>
-		<a href="https://blog.cloudflare.com/#giving-back" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#giving-back" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -899,7 +899,7 @@ export default {
 	<p>Cloudflare is also proud to continue supporting critical infrastructure for the Node.js project through its <a href="https://openjsf.org/blog/openjs-cloudflare-partnership"><u>ongoing strategic partnership</u></a> with the OpenJS Foundation, providing free access to the project to services such as Workers, R2, DNS, and more.</p>
 	<div class="flex anchor relative">
 		<h2 id="give-it-a-try">Give it a try!</h2>
-		<a href="https://blog.cloudflare.com/#give-it-a-try" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#give-it-a-try" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

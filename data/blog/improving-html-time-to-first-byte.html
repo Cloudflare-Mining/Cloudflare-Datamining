@@ -27,7 +27,7 @@
 	<p>A huge portion of the site owners I have worked with don’t have the resources or expertise to handle that kind of an investigation. More often than not, they paid someone a one-time development fee to build their site or built it themselves on WordPress and are hosting it on the lowest-cost hosting they could find. The hosting is generally designed to run as many sites as possible, not necessarily for the highest performance.</p>
 	<div class="flex anchor relative">
 		<h3 id="edge-caching-of-html">Edge Caching of HTML</h3>
-		<a href="https://blog.cloudflare.com/#edge-caching-of-html" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#edge-caching-of-html" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@
 	<p>Cloudflare supports <a href="https://support.cloudflare.com/hc/en-us/articles/236166048-Caching-Static-HTML-with-WordPress-WooCommerce">caching static HTML</a>, and business and enterprise customers can enable logged-in users to skip the cache by enabling “bypass cache on cookies”. It works in tandem with the <a href="https://wordpress.org/plugins/cloudflare">Cloudflare plugin for WordPress</a> so the cache can be cleared whenever content is updated. There are also several other caching plugins that integrate with various CDN’s but in all of the cases they need to be configured with API keys for the CDN and the implementations are specific for each <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="zero-config-edge-caching-of-html">Zero-Config Edge Caching of HTML</h3>
-		<a href="https://blog.cloudflare.com/#zero-config-edge-caching-of-html" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#zero-config-edge-caching-of-html" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -105,7 +105,7 @@
 	<p>With this simple header-based command and control interface we can eliminate the need for an origin to talk to an API and for any explicit configuration. It also makes the logic on the origin significantly easier to implement as there is no configuration (or UI) and no need to make any outbound requests to a vendor-specific API. The <a href="https://github.com/cloudflare/worker-examples/blob/master/examples/edge-cache-html/WordPress%20Plugin/cloudflare-page-cache/cloudflare-page-cache.php">example WordPress plugin</a> is less than 50 lines of code and the vast majority of that is hooking up callbacks for all of the events that change content.</p>
 	<div class="flex anchor relative">
 		<h3 id="start-caching-today-with-wordpress-and-workers">Start Caching today with WordPress and Workers</h3>
-		<a href="https://blog.cloudflare.com/#start-caching-today-with-wordpress-and-workers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#start-caching-today-with-wordpress-and-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -116,7 +116,7 @@
 	<p>Using the new <a href="https://developers.cloudflare.com/workers/kv">Workers KV store</a> we can purge the cache a different way. The Worker script uses a versioning scheme for the cache where every URL gets a version number appended to it (i.e. <a href="http://www.example.com/?cf_edge_cache_ver=32">http://www.example.com/?cf_edge_cache_ver=32</a>). The modified URL is only ever used locally by the worker as a key for the cached responses and the current version number is stored in KV which is a global store. When the cache is purged, the version number is incremented which changes the URL for all of the resources. Old entries will age out of the cache normally since they will no longer be accessed. It requires a little configuration to set up KV for the worker but hopefully at some point in the future that can also be automatic.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-next">What Next?</h3>
-		<a href="https://blog.cloudflare.com/#what-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

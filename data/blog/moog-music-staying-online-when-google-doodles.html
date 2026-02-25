@@ -4,7 +4,7 @@
 	<p>Today Google celebrated the birthday of Bob Moog, the creator of the Moog keyboard, with an interactive doodle. If you haven't played with it, it's pretty cool. Check out, for example, this version of the <a href="https://www.google.com/webhp?doodle=6201726XWhA74MzMMlMzN0pmZthmZn8AAAMRmZnyAAANQAAB6pmZs3__-3-2E8aZmbTPP__9lPUzMz2n7___YzzpmZh2Fx5IRZBcYYhcIZBSIZBaIZBGIZBOGYhOYYROYZBeYZBRYZBZBYhRUZheIZBREYReYZBOeYhOcYhGYZhGIYhOIZBeeZBOEYhGEYhKYZhKIYhGYTgWIRhGISmGEUiGUUiGIWmGQVkUFZOEZBIYYhIQYhIQZRIYYRIIYRIIZBIIYhIQYxIIZ1rAQO-DMzDJTMzdKZmbYZmZ_AAADEZmZ8gAADUAAAeqZmbN___t_thPGmZm0zz___ZT1AAANp-___2M86ZmYcRcJ1CNhdKYwktwrSIxGmQSBeeYwEDvgzMwyUzM3SmZm2GZmfwAAAxGZmfIAAA1AAAHqmZmzf__7f7YTxpmZtM8___2U9QAADafv__9jPMAAAHYWic5DGQ0UN4LOK1hMFJOF5Dg&amp;hl=en&amp;nord=1">Legend of Zelda theme music</a> composed with today's doodle.</p>
 	<div class="flex anchor relative">
 		<h3 id="youre-going-to-see-some-traffic">You're Going to See Some Traffic</h3>
-		<a href="https://blog.cloudflare.com/#youre-going-to-see-some-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#youre-going-to-see-some-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>That presented a bit of a conundrum. Moog Music turned to their web developers, a technically savvy shop called <a href="http://purplecat.net">PurpleCat.net</a>. The site was designed to handle half a million hits a day, so the team at PurpleCat spent the next threedays making several improvements to the site to increase its capacity. They migrated the site to new hardware, secured a dedicated gigabit port, migrated the mysql database to its own server, upgraded the backend of the site replacing Apache with NGINX and added layers of caching and optimizations. Needless to say, it was a busy three days for the PurpleCat team while they did all the upgrades to prepare for the traffic surge. The site, however, was on a single virtual private server (VPS) with limited resources and it didn't make sense to upgrade the whole infrastructure for a one-day spike in traffic.</p>
 	<div class="flex anchor relative">
 		<h3 id="turning-to-cloudflare-to-help">Turning to CloudFlare to Help</h3>
-		<a href="https://blog.cloudflare.com/#turning-to-cloudflare-to-help" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#turning-to-cloudflare-to-help" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -29,7 +29,7 @@
 	<p>Things were ok at first, but as the sun rose in Asia, errors started to be returned from the stressed MoogMusic.com VPS. CloudFlare's Always Online technology kicked in and served cached versions of the page, but the dynamic portions were at times inaccessible and the pages loaded slowly as our servers waited for a response or timeout from the backend. It wasn't ideal.</p>
 	<div class="flex anchor relative">
 		<h3 id="page-rules-and-advanced-caching-to-the-rescue">Page Rules and Advanced Caching to the Rescue</h3>
-		<a href="https://blog.cloudflare.com/#page-rules-and-advanced-caching-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#page-rules-and-advanced-caching-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="focus-on-great-content-well-keep-it-online">Focus On Great Content, We'll Keep It Online</h3>
-		<a href="https://blog.cloudflare.com/#focus-on-great-content-well-keep-it-online" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#focus-on-great-content-well-keep-it-online" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

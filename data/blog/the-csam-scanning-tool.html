@@ -5,7 +5,7 @@
 	<p>The most repugnant cases, in some ways, are the easiest for us to address. While Cloudflare is not able to remove content hosted by others, we will take steps to terminate services to a website when it becomes clear that the site is dedicated to sharing CSAM or if the operators of the website and its host fail to take appropriate steps to take down CSAM content. When we terminate websites, we purge our caches — something that takes effect within seconds globally — and we block the website from ever being able to use Cloudflare's network again.</p>
 	<div class="flex anchor relative">
 		<h3 id="addressing-the-hard-cases">Addressing the Hard Cases</h3>
-		<a href="https://blog.cloudflare.com/#addressing-the-hard-cases" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#addressing-the-hard-cases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>It has been a long journey to get to the point where we could commit to offering this service to our millions of users. To understand what we're doing and why it has been challenging from a technical and policy perspective, you need to understand a bit about the state of the art of tracking CSAM.</p>
 	<div class="flex anchor relative">
 		<h3 id="finding-similar-images">Finding Similar Images</h3>
-		<a href="https://blog.cloudflare.com/#finding-similar-images" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#finding-similar-images" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>This is great for some uses of hashing where you want to definitively identify if the document you're looking at is exactly the same as the one you've seen before. For example, if an extra zero is added to a digital contract, you want the hash of the document used in its signature to no longer be valid.</p>
 	<div class="flex anchor relative">
 		<h3 id="fuzzy-hashing">Fuzzy Hashing</h3>
-		<a href="https://blog.cloudflare.com/#fuzzy-hashing" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fuzzy-hashing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -109,7 +109,7 @@ d36fff4561aebb2f088a891208134202
 	<p>The distance between the two hashes is calculated as 713,061. Through experimentation, it's possible to set a distance threshold under which you can consider two photographs to be likely related.</p>
 	<div class="flex anchor relative">
 		<h3 id="fuzzy-hashings-intentionally-black-box">Fuzzy Hashing's Intentionally Black Box</h3>
-		<a href="https://blog.cloudflare.com/#fuzzy-hashings-intentionally-black-box" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#fuzzy-hashings-intentionally-black-box" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -118,7 +118,7 @@ d36fff4561aebb2f088a891208134202
 	<p>How does it work? While there has been lots of work on fuzzy hashing published, the innards of the process are intentionally a bit of a mystery. The New York Times recently <a href="https://www.nytimes.com/interactive/2019/11/09/us/internet-child-sex-abuse.html">wrote a story</a> that was probably the most public discussion of how such technology works. The challenge was if criminal producers and distributors of CSAM knew exactly how such tools worked then they might be able to craft how they alter their images in order to beat it. To be clear, Cloudflare will be running the CSAM Screening Tool on behalf of the website operator from within our secure points of presence. We will not be distributing the software directly to users. We will remain vigilant for potential attempted abuse of the platform, and will take prompt action as necessary.</p>
 	<div class="flex anchor relative">
 		<h3 id="tradeoff-between-false-negatives-and-false-positives">Tradeoff Between False Negatives and False Positives</h3>
-		<a href="https://blog.cloudflare.com/#tradeoff-between-false-negatives-and-false-positives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#tradeoff-between-false-negatives-and-false-positives" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -128,7 +128,7 @@ d36fff4561aebb2f088a891208134202
 	<p>If the threshold is too strict — meaning that it's closer to a traditional hash and two images need to be virtually identical to trigger a match — then you're more likely to have have many false negatives (i.e., CSAM that isn't flagged). If the threshold is too loose, then it's possible to have many false positives. False positives may seem like the lesser evil, but there are legitimate concerns that increasing the possibility of false positives at scale could waste limited resources and further <a href="https://www.nytimes.com/interactive/2019/09/28/us/child-sex-abuse.html">overwhelm the existing ecosystem</a>. &nbsp;We will work to iterate the CSAM Scanning Tool to provide more granular control to the website owner while supporting the ongoing effectiveness of the ecosystem. Today, we believe we can offer a good first set of options for our customers that will allow us to more quickly flag CSAM without overwhelming the resources of the ecosystem.</p>
 	<div class="flex anchor relative">
 		<h3 id="different-thresholds-for-different-customers">Different Thresholds for Different Customers</h3>
-		<a href="https://blog.cloudflare.com/#different-thresholds-for-different-customers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#different-thresholds-for-different-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -140,7 +140,7 @@ d36fff4561aebb2f088a891208134202
 	<p>A commercial financial institution may want to set the threshold quite strict because they're less likely to have user generated content and would have a low tolerance for false positives, but then automatically block anything that's detected because if somehow their systems are compromised to host known CSAM they want to stop it immediately.</p>
 	<div class="flex anchor relative">
 		<h3 id="different-requirements-for-different-jurisdictions">Different Requirements for Different Jurisdictions</h3>
-		<a href="https://blog.cloudflare.com/#different-requirements-for-different-jurisdictions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#different-requirements-for-different-jurisdictions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -150,7 +150,7 @@ d36fff4561aebb2f088a891208134202
 	<p>In other words, one size does not fit all and, ideally, we believe allowing individual site owners to set the parameters that make the most sense for their particular site will result in lower false negative rates (i.e., more CSAM being flagged) than if we try and set one global standard for every one of our customers.</p>
 	<div class="flex anchor relative">
 		<h3 id="improving-the-tool-over-time">Improving the Tool Over Time</h3>
-		<a href="https://blog.cloudflare.com/#improving-the-tool-over-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#improving-the-tool-over-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -160,7 +160,7 @@ d36fff4561aebb2f088a891208134202
 	<p>Finally, we believe there may be an opportunity to help build the next generation of fuzzy hashing. For example, the software can only scan images that are at rest in memory on a machine, not those that are streaming. We're talking with Hany Farid, the former Dartmouth professor who now teaches at Berkeley California, about ways that we may be able to build a more flexible fuzzy hashing system in order to flag images before they're even posted.</p>
 	<div class="flex anchor relative">
 		<h3 id="concerns-and-responsibility">Concerns and Responsibility</h3>
-		<a href="https://blog.cloudflare.com/#concerns-and-responsibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#concerns-and-responsibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

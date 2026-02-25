@@ -7,7 +7,7 @@
 	<p>Before we talk about how we did it, and how you can help, let's first start with a simple question.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-in-the-world-is-captcha-still-used-anyway">Why in the world is CAPTCHA still used anyway?</h3>
-		<a href="https://blog.cloudflare.com/#why-in-the-world-is-captcha-still-used-anyway" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-in-the-world-is-captcha-still-used-anyway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -20,7 +20,7 @@
 	<p>Many alternatives to CAPTCHA have been tried, including our own <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood">Cryptographic Attestation</a>. However, to date, none have seen the amount of widespread adoption of CAPTCHAs. We believe attempting to replace CAPTCHA with a single alternative is the main reason why. When you replace CAPTCHA, you lose the stable history of the solve rate, and making decisions becomes more difficult. If you switch from deciphering text to picking images, you will get vastly different results. How do you know if those results are good or bad? So, we took a different approach.</p>
 	<div class="flex anchor relative">
 		<h3 id="many-solutions-not-one">Many solutions, not one</h3>
-		<a href="https://blog.cloudflare.com/#many-solutions-not-one" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#many-solutions-not-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	<p>We started testing Managed Challenge last year, and initially, we chose from a rotating subset of challenges, one of them being CAPTCHA. At the start, CAPTCHA was still used in the vast majority of cases. We compared the solve rate for the new challenge in question, with the existing, stable solve rate for CAPTCHA. We thus used CAPTCHA solve rate as a goal to work towards as we improved our CAPTCHA alternatives, getting better and better over time. The challenge platform allows our engineers to easily create, deploy, and test new types of challenges without impacting customers. When a challenge turns out to not be useful, we simply deprecate it. When it proves to be useful, we increase how often it is used. In order to preserve ground-truth, we also randomly choose a small subset of visitors to always solve a visual puzzle to validate our signals.</p>
 	<div class="flex anchor relative">
 		<h3 id="managed-challenge-performs-better-than-captcha">Managed Challenge performs better than CAPTCHA</h3>
-		<a href="https://blog.cloudflare.com/#managed-challenge-performs-better-than-captcha" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#managed-challenge-performs-better-than-captcha" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -56,7 +56,7 @@
 	<p>Today, the Managed Challenge platform rotates between many challenges. A Managed Challenge instance consists of many sub-challenges: some of them are established and effective, whereas others are new challenges we are experimenting with. All of them are much, much faster and easier for humans to complete than CAPTCHA, and almost always require no interaction from the visitor.</p>
 	<div class="flex anchor relative">
 		<h3 id="managed-challenge-replaces-captcha-for-cloudflare">Managed Challenge replaces CAPTCHA for Cloudflare</h3>
-		<a href="https://blog.cloudflare.com/#managed-challenge-replaces-captcha-for-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#managed-challenge-replaces-captcha-for-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

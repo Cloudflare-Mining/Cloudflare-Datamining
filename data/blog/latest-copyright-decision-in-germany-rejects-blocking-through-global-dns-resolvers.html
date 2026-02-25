@@ -10,7 +10,7 @@
 	<p>A recent decision from the Higher Regional Court of Cologne in Germany marked important progress for Cloudflare and the Internet in pushing back against misguided attempts to address online copyright infringement through the DNS system. In early November, the Court in Universal v. Cloudflare issued its decision rejecting a request to require public DNS resolvers like Cloudflare’s 1.1.1.1. to block websites based on allegations of online copyright infringement. That’s a position we’ve long advocated, because blocking through public resolvers is ineffective and disproportionate, and it does not allow for much-needed transparency as to what is blocked and why.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-is-a-dns-resolver">What is a DNS resolver?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-a-dns-resolver" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-a-dns-resolver" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>Cloudflare <a href="https://blog.cloudflare.com/announcing-1111">launched its public DNS resolver, 1.1.1.1</a> in April 2018, because we wanted to provide a fast and private way to navigate the Internet. While Cloudflare’s resolver regularly <a href="https://www.dnsperf.com/#!dns-resolvers">scores as the fastest around</a>, it is one of a number of options. Other well known public resolvers include Google’s 8.8.8.8, Cisco’s OpenDNS, and Quad9. Users might choose a public DNS resolver for privacy reasons, for added safety or security, or simply because they want the best performing option available. Whatever their reason, individuals can switch their DNS resolver at any time.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-does-it-mean-to-block-through-a-dns-resolver">What does it mean to block through a DNS resolver?</h2>
-		<a href="https://blog.cloudflare.com/#what-does-it-mean-to-block-through-a-dns-resolver" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-does-it-mean-to-block-through-a-dns-resolver" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -33,7 +33,7 @@
 	<p>The way DNS blocking works — declining to return an IP address — also means there is no explanation provided to an individual as to why they were unable to access the website at issue. There is no notice or transparency. &nbsp;Although there have been proposals for protocols that would allow an error code to be returned in such cases, nothing has yet been implemented.</p>
 	<div class="flex anchor relative">
 		<h2 id="distinguishing-public-and-private-resolvers">Distinguishing public and private resolvers</h2>
-		<a href="https://blog.cloudflare.com/#distinguishing-public-and-private-resolvers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#distinguishing-public-and-private-resolvers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@
 	<p>These core features of public resolvers present fundamental obstacles to using such resolvers to block content.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-blocking-through-public-resolvers-is-not-the-solution-to-online-abuse">Why blocking through public resolvers is not the solution to online abuse</h2>
-		<a href="https://blog.cloudflare.com/#why-blocking-through-public-resolvers-is-not-the-solution-to-online-abuse" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-blocking-through-public-resolvers-is-not-the-solution-to-online-abuse" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@
 	<p>And it’s not even effective. Traditionally, website operators or hosting providers are ordered to remove infringing or illegal content, which is an effective way to make sure that information is no longer available. A DNS block works only as long as the individual continues to use the resolver, and the content remains available and will become accessible again as soon as they switch to another resolver, or build their own.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-court-in-universal-rejects-dns-blocking">The court in Universal rejects DNS blocking</h2>
-		<a href="https://blog.cloudflare.com/#the-court-in-universal-rejects-dns-blocking" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-court-in-universal-rejects-dns-blocking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@
 	<p>Importantly, the court held that DNS services are protected by the EU’s Digital Services Act (DSA), which was enacted last year. Like the e-Commerce Directive before it, the DSA recognizes that different types of services have different abilities to address content issues, and it distinguishes “mere conduit” and “caching” services from “hosting” services in their roles in addressing infringing content. Helpfully, the DSA expressly lists DNS and CDN services as non-hosting services subject to different obligations than hosting services. The Higher Regional Court recognized that DNS resolvers are entitled to the same protections from liability as other “mere conduits,” &nbsp;and it rejected the plaintiff's request for DNS blocking in this case.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-battle-continues">The battle continues</h2>
-		<a href="https://blog.cloudflare.com/#the-battle-continues" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-battle-continues" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

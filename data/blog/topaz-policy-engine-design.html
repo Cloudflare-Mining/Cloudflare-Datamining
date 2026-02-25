@@ -7,7 +7,7 @@
 	<p>Topaz’s full technical details have been peer-reviewed and published in <a href="https://conferences.sigcomm.org/sigcomm/2024"><u>ACM SIGCOMM 2024</u></a>, with both a <a href="https://research.cloudflare.com/publications/Larisch2024"><u>paper</u></a> and short <a href="https://www.youtube.com/watch?v=hW7RjXVx7_Q"><u>video</u></a> available online.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="addressing-how-ip-addresses-are-chosen">Addressing: how IP addresses are chosen</h2>
-		<a href="https://blog.cloudflare.com/#addressing-how-ip-addresses-are-chosen" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#addressing-how-ip-addresses-are-chosen" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	</ul>
 	<div class="flex anchor relative">
 		<h2 id="topaz-executes-dns-objectives">Topaz executes DNS objectives</h2>
-		<a href="https://blog.cloudflare.com/#topaz-executes-dns-objectives" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#topaz-executes-dns-objectives" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -149,7 +149,7 @@
 	<p>Now let’s look at the response function. We define three local variables. The first is a hash of the domain. The second is an IPv4 address selected from the configured IPv4 prefix. <code>select_from</code> always chooses the same IP address given the same prefix and hash — this ensures that queries for a given domain always receive the same IP address (which makes it easier to correlate queries for a single domain), but that queries for different domains can receive different IP addresses within the configured prefix. The third local variable is an IPv6 address selected similarly. The response function returns these IP addresses and a TTL of value 1 (second).</p>
 	<div class="flex anchor relative">
 		<h2 id="topaz-programs-are-executed-on-the-hot-path">Topaz programs are executed on the hot path</h2>
-		<a href="https://blog.cloudflare.com/#topaz-programs-are-executed-on-the-hot-path" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#topaz-programs-are-executed-on-the-hot-path" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -174,7 +174,7 @@
 	<p>When our nameserver service receives a DNS query, it augments the query with additional metadata (e.g., tags) and then forwards the query to the Topaz service (both services run on every Cloudflare server) via Inter-Process Communication (IPC). Topaz, upon receiving a DNS query from the nameserver, walks through its program list, executing each program’s match function (using the topaz-lang interpreter) with the DNS query in scope (with values prefixed with <code>query_</code>). It walks the list until a match function returns <code>true</code>. It then executes that program’s response function, and returns the resulting IP addresses and TTL to our nameserver. The nameserver packages these addresses and TTL in valid DNS format, and then returns them to the resolver.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h2 id="topaz-programs-are-formally-verified">Topaz programs are formally verified</h2>
-		<a href="https://blog.cloudflare.com/#topaz-programs-are-formally-verified" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#topaz-programs-are-formally-verified" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -232,7 +232,7 @@ NOTE: the queries below (if any) are just examples. Other such queries may exist
 	<p>While not exhaustive, this information helps operators understand whether their changes are doing what they intend or not, <i>before</i> deployment. We look forward to expanding our verifier’s diff capabilities going forward.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-topazs-verifier-works-and-its-tradeoffs">How Topaz’s verifier works, and its tradeoffs</h2>
-		<a href="https://blog.cloudflare.com/#how-topazs-verifier-works-and-its-tradeoffs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-topazs-verifier-works-and-its-tradeoffs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -248,7 +248,7 @@ NOTE: the queries below (if any) are just examples. Other such queries may exist
 	<p>We also ran microbenchmarks to determine how fast the verifier can check more programs — we found that, for instance, it would take the verifier about 300 seconds to verify 50 programs. While 300 seconds is still acceptable, we are looking into verifier optimizations that will reduce the time further.</p>
 	<div class="flex anchor relative">
 		<h2 id="bringing-formal-verification-from-research-to-production">Bringing formal verification from research to production</h2>
-		<a href="https://blog.cloudflare.com/#bringing-formal-verification-from-research-to-production" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#bringing-formal-verification-from-research-to-production" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

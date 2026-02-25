@@ -8,7 +8,7 @@
 	<p>To <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks">prevent</a> any domain on CloudFlare being abused for a DNS amplification attack in this way, we took precautions to make sure most DNS answers we send fit in a 512 byte UDP packet, even when the zone is signed with DNSSEC. To do this, we had to be creative in our DNSSEC implementation. We chose a rarely-used-for-DNSSEC signature algorithm and even deprecated a DNS record type along the way.</p>
 	<div class="flex anchor relative">
 		<h3 id="elliptic-curves-keeping-it-tight">Elliptic Curves: Keeping It Tight</h3>
-		<a href="https://blog.cloudflare.com/#elliptic-curves-keeping-it-tight" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#elliptic-curves-keeping-it-tight" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -24,7 +24,7 @@
 	<p>As a side benefit, ECDSA is lightning fast, and our engineer Vlad Krasnov actually helped make it even faster. By implementing ECDSA natively in assembler, he was able to <a href="https://blog.cloudflare.com/go-crypto-bridging-the-performance-gap">speed up signing</a> by 21x. His optimizations are <a href="https://go-review.googlesource.com/#/c/8968">now part of the standard Go crypto library</a> as of Go version 1.6. It now only takes us a split of a second, 0.0001 of a second, to sign records for a DNS answer.</p>
 	<div class="flex anchor relative">
 		<h3 id="deprecating-any-the-obituary-of-a-dns-record-type">Deprecating ANY: The Obituary Of A DNS Record Type</h3>
-		<a href="https://blog.cloudflare.com/#deprecating-any-the-obituary-of-a-dns-record-type" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#deprecating-any-the-obituary-of-a-dns-record-type" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -40,7 +40,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="ecdsa-any">ECDSA + ANY</h3>
-		<a href="https://blog.cloudflare.com/#ecdsa-any" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#ecdsa-any" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

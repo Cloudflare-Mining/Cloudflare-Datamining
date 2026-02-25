@@ -5,7 +5,7 @@
 	<p>Today, we’re excited to introduce speculative decoding to bring you faster inference, an asynchronous batch API for large workloads, and expanded LoRA support for more customized responses. Lastly, we’ll be recapping some of our newly added models, updated pricing, and unveiling a new dashboard to round out the usability of the platform.</p>
 	<div class="flex anchor relative">
 		<h2 id="speeding-up-inference-by-2-4x-with-speculative-decoding-and-more">Speeding up inference by 2-4x with speculative decoding and more</h2>
-		<a href="https://blog.cloudflare.com/#speeding-up-inference-by-2-4x-with-speculative-decoding-and-more" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#speeding-up-inference-by-2-4x-with-speculative-decoding-and-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>We’re excited to roll out speed improvements to models in our catalog, starting with the Llama 3.3 70b model. These improvements include speculative decoding, prefix caching, an updated inference backend, and more. We’ve previously done a technical deep dive on speculative decoding and how we’re making Workers AI faster, which <a href="https://blog.cloudflare.com/making-workers-ai-faster"><u>you can read about here</u></a>. With these changes, we’ve been able to improve inference times by 2-4x, without any significant change to the quality of answers generated. We’re planning to incorporate these improvements into more models in the future as we release them. Today, we’re starting to roll out these changes so all Workers AI users of <code>@cf/meta/llama-3.3-70b-instruct-fp8-fast</code> will enjoy this automatic speed boost.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-speculative-decoding">What is speculative decoding?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-speculative-decoding" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-speculative-decoding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -29,7 +29,7 @@
 	<p>What makes speculative decoding particularly efficient is that it’s able to use unused GPU compute left behind due to the GPU memory bottleneck LLMs create. Speculative decoding takes advantage of the unused compute by squeezing in a draft model to generate tokens faster. This means we’re able to improve the utilization of our GPUs by using them to their full extent without having parts of the GPU sit idle.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-prefix-caching">What is prefix caching?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-prefix-caching" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-prefix-caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	<p>With LLMs, there are usually two stages of generation – the first is known as “pre-fill”, which processes the user’s input tokens such as the prompt and context. Prefix caching is aimed at reducing the pre-fill time of a request. As an example, if you were asking a model to generate code based on a given file, you might insert the whole file into the context window of a request. Then, if you want to make a second request to generate the next line of code, you might send us the whole file again in the second request. Prefix caching allows us to cache the pre-fill tokens so we don’t have to process the context twice. With the same example, we would only do the pre-fill stage once for both requests, rather than doing it per request. This method is especially useful for requests that reuse the same context, such as <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag"><u>Retrieval Augmented Generation (RAG)</u></a>, code generation, chatbots with memory, and more. Skipping the pre-fill stage for similar requests means faster responses for our users and more efficient usage of resources.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="how-did-you-validate-that-quality-is-preserved-through-these-optimizations">How did you validate that quality is preserved through these optimizations?</h3>
-		<a href="https://blog.cloudflare.com/#how-did-you-validate-that-quality-is-preserved-through-these-optimizations" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-did-you-validate-that-quality-is-preserved-through-these-optimizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>Since this is an in-place update to an existing model, we were particularly cautious in ensuring that we would not break any existing applications with this update. We did extensive A/B testing through a blind arena with internal employees to validate the model quality, and we asked internal and external customers to test the new version of the model to ensure that response formats were compatible and model quality was acceptable. Our testing concluded that the model performed up to standards, with people being extremely excited about the speed of the model. Most LLMs are not perfectly deterministic even with the same set of inputs, but if you do notice something off, please let us know through <a href="https://discord.com/invite/cloudflaredev"><u>Discord</u></a> or <a href="http://x.com/cloudflaredev"><u>X</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="asynchronous-batch-api">Asynchronous batch API</h2>
-		<a href="https://blog.cloudflare.com/#asynchronous-batch-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#asynchronous-batch-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -57,7 +57,7 @@
 	<p>An example use case of batch workloads is people generating summaries of a large number of documents. You probably don’t need to use those summaries immediately, as you’ll likely use them once the whole document is complete versus one paragraph at a time. For these use cases, we’ve made it super simple for you to start sending us these requests in batches.</p>
 	<div class="flex anchor relative">
 		<h3 id="why-batch-requests">Why batch requests?</h3>
-		<a href="https://blog.cloudflare.com/#why-batch-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-batch-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -84,7 +84,7 @@
 	</ul>
 	<div class="flex anchor relative">
 		<h3 id="how-can-i-use-the-batch-api">How can I use the batch API?</h3>
-		<a href="https://blog.cloudflare.com/#how-can-i-use-the-batch-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-can-i-use-the-batch-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -104,7 +104,7 @@
 	<p>Today, our batch API can be used by sending us an array of requests, and we’ll return your responses in an array.&nbsp; This is helpful for use cases like summarizing large amounts of data that you know beforehand. This means you can send us a single HTTP request with all of your requests, and receive a single HTTP request back with your responses. You can check on the status of the batch by polling it with the request ID we return when your batch is submitted. For the next iteration of our async API, we plan to allow queue-based inputs and outputs, where you push requests and pull responses from a queue. This will integrate tightly with <a href="https://developers.cloudflare.com/r2/buckets/event-notifications"><u>Event Notifications</u></a> and <a href="https://developers.cloudflare.com/workflows"><u>Workflows</u></a>, so you can execute subsequent actions upon receiving a response.</p>
 	<div class="flex anchor relative">
 		<h2 id="expanded-lora-support">Expanded LoRA support</h2>
-		<a href="https://blog.cloudflare.com/#expanded-lora-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#expanded-lora-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -143,7 +143,7 @@
 	</ul>
 	<div class="flex anchor relative">
 		<h3 id="what-is-lora">What is LoRA?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-lora" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-lora" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -152,7 +152,7 @@
 	<p>In essence, a Low Rank Adaptation (LoRA) adapter allows people to take a trained adapter file and use it in conjunction with a model to alter the response of a model. We did a<a href="https://blog.cloudflare.com/fine-tuned-inference-with-loras"><u> deep dive on LoRAs</u></a> in our Birthday Week blog post, which goes into further technical detail. LoRA adapters are great alternatives to fine-tuning a model, as it isn’t as expensive to train and adapters are much smaller and more portable. They are also effective enough to tweak the output of a model to fit a certain style of response.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-do-i-get-started">How do I get started?</h3>
-		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -170,7 +170,7 @@
 
 	<div class="flex anchor relative">
 		<h2 id="quality-of-life-improvements-updated-pricing-and-a-new-dashboard-for-workers-ai">Quality of life improvements: updated pricing and a new dashboard for Workers AI</h2>
-		<a href="https://blog.cloudflare.com/#quality-of-life-improvements-updated-pricing-and-a-new-dashboard-for-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#quality-of-life-improvements-updated-pricing-and-a-new-dashboard-for-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -183,7 +183,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="new-models-available-in-workers-ai">New models available in Workers AI</h2>
-		<a href="https://blog.cloudflare.com/#new-models-available-in-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#new-models-available-in-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -234,7 +234,7 @@
 	<p>As we release these new models, we’ll be deprecating old models to encourage use of the state-of-the-art models and make room in our catalog. We will send out an email notice on this shortly. Stay up to date with our model releases and deprecation announcements by <a href="https://developers.cloudflare.com/changelog"><u>subscribing to our Developer Docs changelog</u></a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="were-still-just-getting-started">We’re (still) just getting started</h2>
-		<a href="https://blog.cloudflare.com/#were-still-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#were-still-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

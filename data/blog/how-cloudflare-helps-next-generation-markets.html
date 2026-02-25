@@ -10,7 +10,7 @@
 	<p>One of the many magical things about the Internet is that it doesn’t have a country. The Internet doesn’t go through customs, it doesn’t need a visa, and it doesn’t speak any one language. To reach the world’s greatest information innovation, a user – no matter what country they’re in – only needs a device with a connection. The Internet will take care of the rest. At Cloudflare, part of our role is to make sure every person on the planet with an Internet connection has a good experience, whether they’re in a next-generation market or a current-gen market. In this blog we’re going to talk about how we define next-generation markets, how we help people in these markets get faster access to the websites and applications they use on a daily basis, and how we make it easy for developers to deploy services geographically close to users in next-generation markets.</p>
 	<div class="flex anchor relative">
 		<h2 id="what-are-next-generation-markets">What are next-generation markets?</h2>
-		<a href="https://blog.cloudflare.com/#what-are-next-generation-markets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-are-next-generation-markets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -73,7 +73,7 @@
 	<p>In these markets there are two groups who have similar concerns but are different enough that we need to address them separately: users, and the application developers who build the apps for users. They both want one thing: to be fast. But being fast manifests itself in slightly different ways for users versus application developers. Let’s talk about each group and how Cloudflare helps solve their problems.</p>
 	<div class="flex anchor relative">
 		<h2 id="next-generation-users">Next-generation users</h2>
-		<a href="https://blog.cloudflare.com/#next-generation-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-generation-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -96,7 +96,7 @@
 	<p>Retransmission rates are impacted by something called packet loss, when some packets don’t make it to the receiver end due to things like poor signal transmission, or errors on devices in the path between sender and receiver. When packet loss occurs, protocols on the Internet like the <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">Transmission Control Protocol (TCP)</a> will reduce the amount of data that can be transmitted over the connection. The amount of data that can be sent at one time is called the congestion window, and the protocol will shrink the congestion window to help preserve the connection until TCP is sure that the connection won’t drop packets again. This process of shrinking the congestion window is called backoff, and the congestion window will shrink exponentially when packet loss is first detected, and then will increase linearly over time. This means that connections and networks with high retransmission rates can seriously impact how users interact with websites and applications on the Internet.</p>
 	<div class="flex anchor relative">
 		<h2 id="the-edge-partner-program-gets-us-closer-to-users">The Edge Partner Program gets us closer to users</h2>
-		<a href="https://blog.cloudflare.com/#the-edge-partner-program-gets-us-closer-to-users" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-edge-partner-program-gets-us-closer-to-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -121,7 +121,7 @@
 	<p>Now that we’ve talked about why the Edge Partner Program is important and how it can theoretically help users, let’s talk about one set of those deployments in Saudi Arabia to show you how it actually helps users.</p>
 	<div class="flex anchor relative">
 		<h3 id="edge-partner-program-in-saudi-arabia">Edge Partner Program in Saudi Arabia</h3>
-		<a href="https://blog.cloudflare.com/#edge-partner-program-in-saudi-arabia" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#edge-partner-program-in-saudi-arabia" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -149,7 +149,7 @@
 	<p>Users in Jeddah have a much lower, more constant retransmission rate because users on Mobily are terminating their connections closer to their devices. By being embedded in Mobily’s network, we decrease the number of hops that are needed and also make the hops that travel over less reliable paths shorter. Initial requests are more likely to succeed the first time and don’t need multiple tries to succeed.</p>
 	<div class="flex anchor relative">
 		<h2 id="warp-in-next-generation-markets">WARP in next-generation markets</h2>
-		<a href="https://blog.cloudflare.com/#warp-in-next-generation-markets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#warp-in-next-generation-markets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -165,7 +165,7 @@
 	<p>WARP pairs well with the Cloudflare network to ensure a fast, private Internet experience. In a growing number of networks in next-generation markets, WARP users will connect to Cloudflare in the same location as their ISP before going out to the rest of the Internet. If the websites they are trying to connect to are protected by Cloudflare, then they get a fast path to the websites they care about through Cloudflare. If not, then the users can still get sent out through Cloudflare to the websites they need while preserving their privacy throughout the connection.</p>
 	<div class="flex anchor relative">
 		<h2 id="next-generation-developers">Next-generation developers</h2>
-		<a href="https://blog.cloudflare.com/#next-generation-developers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#next-generation-developers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -177,7 +177,7 @@
 	<p>For example, localizing in the Middle East can be very costly compared to farther away options. Developers in the Middle East may be able to save 30% or more on their monthly data transfer costs simply by moving to Frankfurt; a region that is farther away from their users but is cheaper for them to serve out of. Application developers are constantly trying to balance cost with user experience, and may make some tradeoffs for user experience that allow them to optimize costs in the short term. So even though Cloudflare-protected developers are taking advantage of the local peering from the Edge Partner Program, developers in Oman may end up sending their users to Frankfurt anyways because that’s where they chose to host their services to save costs. In many cases, this is a tradeoff developers in these markets have to make: making your service slightly less performant to enable it to run more cheaply.</p>
 	<div class="flex anchor relative">
 		<h2 id="cloudflare-workers-in-country">Cloudflare Workers in country</h2>
-		<a href="https://blog.cloudflare.com/#cloudflare-workers-in-country" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-workers-in-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -216,7 +216,7 @@
 	<p>This means that operations and functions that get built into Cloudflare get executed closer to the user, ensuring better end-to-end performance. The Lambda@Edge scenarios are bad enough on their own, but &nbsp;consider that not everything can be done in Lambda@Edge and may need to reach AWS instances that may sit even farther away than the AWS edge. Cloudflare’s supercloud looks especially attractive because we allow you to build everything you need in an application entirely local to end-users. This helps ensure next-generation markets see the same performance as the rest of the world for the applications they care about.</p>
 	<div class="flex anchor relative">
 		<h2 id="making-everyone-faster-everywhere">Making everyone faster everywhere</h2>
-		<a href="https://blog.cloudflare.com/#making-everyone-faster-everywhere" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#making-everyone-faster-everywhere" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

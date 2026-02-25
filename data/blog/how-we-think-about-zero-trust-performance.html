@@ -13,7 +13,7 @@
 	<p>There are many ways to view network performance. However, at Cloudflare we believe the best way to measure performance is to use end-to-end HTTP response measurements. In this blog, we’re going to talk about why end-to-end performance is the most important thing to look at, why other methods like proxy latency and decrypted latency SLAs are insufficient for performance evaluations, and how you can measure your Zero Trust performance like we do.</p>
 	<div class="flex anchor relative">
 		<h2 id="lets-start-at-the-very-beginning">Let’s start at the very beginning</h2>
-		<a href="https://blog.cloudflare.com/#lets-start-at-the-very-beginning" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#lets-start-at-the-very-beginning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -25,7 +25,7 @@
 	<p>Fortunately for us, we know exactly how to simulate user requests hitting websites. We have a lot of experience measuring performance for our <a href="https://blog.cloudflare.com/r2-is-faster-than-s3">Developer Platform</a>, and for our <a href="https://blog.cloudflare.com/network-performance-update-security-week">Network Benchmarking analysis</a>. By framing Zero Trust performance in the context of our other performance analysis initiatives, it’s easy to make performance better and ensure that all of our efforts are focused on making the most people as fast as possible. Just like our analyses of other Cloudflare products, this approach puts customers and users first and ensures they get the best performance.</p>
 	<div class="flex anchor relative">
 		<h2 id="challenges-of-the-open-internet">Challenges of the open Internet</h2>
-		<a href="https://blog.cloudflare.com/#challenges-of-the-open-internet" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#challenges-of-the-open-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -36,7 +36,7 @@
 	<p>But as we showed with our blog back in January, the time spent on a machine in a Zero Trust network is only a small portion of the request time experienced by the end user. The majority of a requests’ time is spent on the wire between machines. When you look at performance, you need to look at it holistically and not at a single element, like on-box processing latency. So by scoping performance down to only looking at on-box processing latencies, you’re not actually looking at anything close to the full picture of performance. To be fast, providers need to look at every aspect of the network and how they function. So let’s talk about all the elements needed to make zero trust service performance better.</p>
 	<div class="flex anchor relative">
 		<h2 id="how-do-you-get-better-zero-trust-performance">How do you get better Zero Trust performance?</h2>
-		<a href="https://blog.cloudflare.com/#how-do-you-get-better-zero-trust-performance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-do-you-get-better-zero-trust-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -46,7 +46,7 @@
 	<p>Based on this analogy, in addition to having good processing times, the best ways to improve &nbsp;Zero Trust performance are to be well peered on the last mile, be well peered with networks that host important applications, and have diverse paths on the Internet to steer traffic around should things go wrong. Let’s go over each of those and why they’re important.</p>
 	<div class="flex anchor relative">
 		<h3 id="last-mile-peering">Last mile peering</h3>
-		<a href="https://blog.cloudflare.com/#last-mile-peering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#last-mile-peering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -62,7 +62,7 @@
 	<p>The closer your Zero Trust provider is to you, the easier keeping the path small is to achieve. This challenge is something <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets">we’re really good at</a>, as we’re always investing to get closer to users no matter where they are by leveraging our over <a href="https://blog.cloudflare.com/cloudflare-connected-in-over-300-cities">12,000 peered networks</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloud-peering">Cloud peering</h3>
-		<a href="https://blog.cloudflare.com/#cloud-peering" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloud-peering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -72,7 +72,7 @@
 	<p>Cloudflare helps out here by being peered with these major cloud providers where they are, ensuring that the handoff between Cloudflare and the respective cloud is short and seamless. Cloudflare has peering with the major cloud providers in over 40 different metros around the world, ensuring that wherever applications may be hosted, Cloudflare is there to connect to them.</p>
 	<div class="flex anchor relative">
 		<h3 id="alternative-paths-for-everything-in-between">Alternative paths for everything in between</h3>
-		<a href="https://blog.cloudflare.com/#alternative-paths-for-everything-in-between" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#alternative-paths-for-everything-in-between" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -81,7 +81,7 @@
 	<p>If a Zero Trust network has good connectivity on the last mile and good connectivity to the clouds, the only thing left is being able to pass traffic between the two. Having diverse network paths within the Zero Trust network is incredibly valuable for being able to shift traffic around networking issues and provide private connectivity on the Zero Trust network that is reliable and performant. Cloudflare leverages <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane">our own private backbone</a> for this purpose, and that backbone is what helps us deliver next-level performance for all scenario types.</p>
 	<div class="flex anchor relative">
 		<h2 id="getting-the-measurements-that-matter">Getting the measurements that matter</h2>
-		<a href="https://blog.cloudflare.com/#getting-the-measurements-that-matter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#getting-the-measurements-that-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -91,7 +91,7 @@
 	<p>As we discussed before, Response is the time it takes for a user to send a packet to the Zero Trust proxy which receives, forwards, and inspects the packet, then sends it to the destination website which processes the packet and returns a response all the way back to the user. This measurement is valuable because it allows us to focus specifically on network performance and not necessarily the ability of a web application to load and render content. We don’t measure things like Largest Contentful Paint because those have dependencies on the software stack on the destination, whether the destination is fronted by a CDN and how their performance is, or even the browser making the request. We want to measure how well the Zero Trust service can deliver packets from a device to a website and back. Our current measurement methodology is focused on the time to deliver a response to the client and ignores some client side processing like browser render time (Largest Contentful Paint) and application specific metrics like UDP Video delivery.</p>
 	<div class="flex anchor relative">
 		<h2 id="you-can-do-it-too">You can do it too</h2>
-		<a href="https://blog.cloudflare.com/#you-can-do-it-too" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#you-can-do-it-too" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

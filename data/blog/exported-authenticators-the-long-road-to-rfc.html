@@ -9,7 +9,7 @@
 	<p>What we’d like to be able to do is serve as much content as possible down a single connection. When a user requests a resource from a different domain they need to perform a new TLS handshake, <a href="https://blog.cloudflare.com/how-expensive-is-crypto-anyway">costing valuable time and resources</a>. Our connection coalescing experiment showed the benefits when we know in advance what resources are likely to be requested, but most of the time we don’t know what subresources are going to be requested until the requests actually arrive. What we’d rather do is attach extra identities to a connection after it’s been established, and we know what extra domains the client actually wants. Because the TLS connection is just a transport mechanism and doesn’t understand the information being sent across it, it doesn’t actually know what domains might subsequently be requested. This is only available to higher-layer protocols such as HTTP. However, we don’t want any website to be able to impersonate another, so we still need to have strong authentication.</p>
 	<div class="flex anchor relative">
 		<h3 id="exported-authenticators">Exported Authenticators</h3>
-		<a href="https://blog.cloudflare.com/#exported-authenticators" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#exported-authenticators" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -46,7 +46,7 @@
 	<p>EAs therefore have an extra security feature. They use the fact that every TLS connection is guaranteed to produce a unique set of keys. EAs take one of these keys and use it to construct the EA. This means that if some malicious third-party copies an EA from one TLS session to another, the recipient wouldn’t be able to validate it. This technique is called <a href="https://datatracker.ietf.org/doc/html/rfc5056">channel binding</a>, and is another fascinating topic, but this post is already getting a bit long, so we’ll have to revisit channel binding in a future blog post.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-the-sausage-is-made">How the sausage is made</h3>
-		<a href="https://blog.cloudflare.com/#how-the-sausage-is-made" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-the-sausage-is-made" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -56,7 +56,7 @@
 	<p>The first step in producing a new IETF standard is coming up with a proposal. Designing security protocols is a very conservative business, firstly because it’s very easy to introduce really subtle bugs, and secondly, because if you do introduce a security issue, things can go very wrong, very quickly. A flaw in the design of a protocol can be especially problematic as it can be replicated across multiple independent implementations — for example the <a href="https://kryptera.se/Renegotiating%20TLS.pdf">TLS renegotiation vulnerabilities reported in 2009</a> and the <a href="https://dl.acm.org/doi/10.1145/2382196.2382206">custom EC(DH) parameters vulnerability from 2012</a>. To minimise the risks of design issues, EAs hew closely to the design of the TLS 1.3 handshake.</p>
 	<div class="flex anchor relative">
 		<h3 id="security-and-assurance">Security and Assurance</h3>
-		<a href="https://blog.cloudflare.com/#security-and-assurance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#security-and-assurance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -67,7 +67,7 @@
 	<p>As we just mentioned, the WG has to come to a consensus on the design of the protocol. One thing that can hold up achieving consensus are worries about security. After the Snowden revelations there was a <a href="https://www.mitls.org/downloads/tlsauth.pdf">barrage</a> <a href="https://heartbleed.com">of</a> <a href="https://www.openssl.org/~bodo/ssl-poodle.pdf">attacks</a> <a href="https://freakattack.com">on</a> <a href="https://www.imperva.com/docs/HII_Attacking_SSL_when_using_RC4.pdf">TLS 1.2</a>, not to mention some even earlier attacks from academia. Changing how trust works on the Internet can be pretty scary, and the TLS WG didn’t want to be caught flat-footed. Luckily this coincided with the maturation of some tools and techniques we can use to get mathematical guarantees that a protocol is secure. This class of techniques is known as <a href="https://en.wikipedia.org/wiki/Formal_methods">formal methods</a>. To help ensure that people are confident in the security of EAs I performed a formal analysis.</p>
 	<div class="flex anchor relative">
 		<h3 id="formal-analysis">Formal Analysis</h3>
-		<a href="https://blog.cloudflare.com/#formal-analysis" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#formal-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

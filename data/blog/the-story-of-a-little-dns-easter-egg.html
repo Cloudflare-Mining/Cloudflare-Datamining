@@ -5,7 +5,7 @@
 	<p>While PowerDNS got us a long way, it started to run into issues as we scaled and dealt with an increasing number of large denial of service attacks. There were three main challenges. First, PowerDNS when under large in-bound DDoS loads would consume excessive resources and occasionally fall over. Second, and more&nbsp;insidious, because the version of PowerDNS we were using did not have abuse detection and rate limiting, we were increasingly seeing attempts at using CloudFlare authoritative DNS network to launch reflection attacks against others. And, third, it was very difficult to extend PowerDNS and add any sort of application logic which kept us from doing interesting things... like adding Easter Eggs.</p>
 	<div class="flex anchor relative">
 		<h3 id="enter-rrdns">Enter RRDNS</h3>
-		<a href="https://blog.cloudflare.com/#enter-rrdns" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#enter-rrdns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -15,7 +15,7 @@
 	<p>Today, every DNS query to CloudFlare runs through RRDNS, and we have eliminated PowerDNS from our stack. We're planning a more significant blog post on the technical details of RRDNS and how we build its attack detection and prevention. This, however, is a quick story of how the ease of adding application logic to RRDNS allowed us to create a couple fun Easter Eggs.</p>
 	<div class="flex anchor relative">
 		<h3 id="easter-eggs">Easter Eggs</h3>
-		<a href="https://blog.cloudflare.com/#easter-eggs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#easter-eggs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -62,7 +62,7 @@ jobs.cloudflare. &gt; 86400 &gt; CH &gt; TXT &gt; "Technical Support Engineer, S
 	<p>The power of this isn't a new way for you to tell what job listings we have. Instead, it is that we can easily embed dynamic application logic into our DNS system. For an even more useless, albeit fun Easter Egg, try querying for the CH record for whois.cloudflare against one of our name servers. You may need to expand the size of your terminal window for full effect.</p>
 	<div class="flex anchor relative">
 		<h3 id="all-fun-games-until-someone-gets-hurt">All Fun &amp; Games Until Someone Gets Hurt</h3>
-		<a href="https://blog.cloudflare.com/#all-fun-games-until-someone-gets-hurt" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#all-fun-games-until-someone-gets-hurt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

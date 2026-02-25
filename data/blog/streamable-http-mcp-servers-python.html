@@ -13,7 +13,7 @@
 	<p></p>
 	<div class="flex anchor relative">
 		<h3 id="streamable-http-a-simpler-way-for-ai-agents-to-communicate-with-services-via-mcp">Streamable HTTP: A simpler way for AI agents to communicate with services via MCP</h3>
-		<a href="https://blog.cloudflare.com/#streamable-http-a-simpler-way-for-ai-agents-to-communicate-with-services-via-mcp" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#streamable-http-a-simpler-way-for-ai-agents-to-communicate-with-services-via-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p><a href="https://spec.modelcontextprotocol.io/specification/2025-03-26"><u>The MCP spec</u></a> was <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports"><u>updated</u></a> on March 26 to introduce a new transport mechanism for remote MCP, called <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http"><u>Streamable HTTP</u></a>. The new transport simplifies how <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai">AI agents</a> can interact with services by using a single HTTP endpoint for sending and receiving responses between the client and the server, replacing the need to implement separate endpoints for initializing the connection and for sending messages.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="upgrading-your-mcp-server-to-use-the-new-transport-method">Upgrading your MCP server to use the new transport method</h4>
-		<a href="https://blog.cloudflare.com/#upgrading-your-mcp-server-to-use-the-new-transport-method" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#upgrading-your-mcp-server-to-use-the-new-transport-method" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -66,7 +66,7 @@ export default app</code></pre>
 	<p>That's it! With these few lines of code, your MCP server will support both transport methods, making it compatible with both existing and new clients.</p>
 	<div class="flex anchor relative">
 		<h4 id="using-streamable-http-from-an-mcp-client">Using Streamable HTTP from an MCP client</h4>
-		<a href="https://blog.cloudflare.com/#using-streamable-http-from-an-mcp-client" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#using-streamable-http-from-an-mcp-client" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -75,7 +75,7 @@ export default app</code></pre>
 	<p>While most MCP clients haven’t yet adopted the new Streamable HTTP transport, you can start testing it today using<a href="https://www.npmjs.com/package/mcp-remote"> mcp-remote</a>, an adapter that lets MCP clients like Claude Desktop that otherwise only support local connections work with remote MCP servers. This tool allows any MCP client to connect to remote MCP servers via either SSE or Streamable HTTP, even if the client doesn't natively support remote connections or the new transport method.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="so-whats-new-with-streamable-http">So, what’s new with Streamable HTTP?&nbsp;</h4>
-		<a href="https://blog.cloudflare.com/#so-whats-new-with-streamable-http" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#so-whats-new-with-streamable-http" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -99,7 +99,7 @@ export default app</code></pre>
 	<p>Our current implementation of Streamable HTTP provides feature parity with the previous SSE transport. We're actively working to implement the full capabilities defined in the specification, including <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#resumability-and-redelivery"><u>resumability</u></a>, cancellability, and <a href="https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#session-management"><u>session management</u></a> to enable more complex, reliable, and scalable agent-to-agent interactions.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h4 id="whats-coming-next">What’s coming next?&nbsp;</h4>
-		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -120,7 +120,7 @@ export default app</code></pre>
 	</ul>
 	<div class="flex anchor relative">
 		<h3 id="deploying-python-mcp-servers-on-cloudflare">Deploying Python MCP Servers on Cloudflare</h3>
-		<a href="https://blog.cloudflare.com/#deploying-python-mcp-servers-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#deploying-python-mcp-servers-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -163,7 +163,7 @@ async def on_fetch(request, env):
 	<p>With recent updates like <a href="https://blog.cloudflare.com/python-workers"><u>support for Durable Objects</u></a> and <a href="https://developers.cloudflare.com/changelog/2025-04-22-python-worker-cron-triggers"><u>Cron Triggers in Python Workers</u></a>, it’s now easier to run stateful logic and scheduled tasks directly in your MCP server.&nbsp;</p>
 	<div class="flex anchor relative">
 		<h3 id="start-building-a-remote-mcp-server-today">Start building a remote MCP server today!&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#start-building-a-remote-mcp-server-today" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#start-building-a-remote-mcp-server-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

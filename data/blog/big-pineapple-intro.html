@@ -12,7 +12,7 @@
 	<p>Knot Resolver is quite flexible in terms of its Lua-based plugin system. It allowed us to quickly extend the core functionality to support various product features, like DoH/DoT, logging, BPF-based attack mitigation, cache sharing, and iteration logic override. As the <a href="https://mobile.twitter.com/eastdakota/status/1103800276102729729">traffic grew</a>, we reached certain limitations.</p>
 	<div class="flex anchor relative">
 		<h2 id="lessons-we-learned">Lessons we learned</h2>
-		<a href="https://blog.cloudflare.com/#lessons-we-learned" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#lessons-we-learned" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -28,7 +28,7 @@
 	<p>The resolver runs as a daemon process, kresd, and it doesn’t work alone. Requests, specifically DNS requests, are load-balanced to the servers inside a data center by <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">Unimog</a>. DoH requests are terminated at our TLS terminator. Configs and other small pieces of data can be delivered worldwide by <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> in seconds. With all the help, the resolver can concentrate on its own goal - resolving DNS queries, and not worrying about transport protocol details. Now let’s talk about 3 key areas we wanted to improve here - blocking I/O in plugins, a more efficient use of cache space, and plugin isolation.</p>
 	<div class="flex anchor relative">
 		<h3 id="callbacks-blocking-the-event-loop">Callbacks blocking the event loop</h3>
-		<a href="https://blog.cloudflare.com/#callbacks-blocking-the-event-loop" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#callbacks-blocking-the-event-loop" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -38,7 +38,7 @@
 	<p>The setup worked well enough for us until we needed to do blocking operations, for example, to pull data from Quicksilver before responding to the client.</p>
 	<div class="flex anchor relative">
 		<h3 id="cache-efficiency">Cache efficiency</h3>
-		<a href="https://blog.cloudflare.com/#cache-efficiency" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cache-efficiency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -49,7 +49,7 @@
 	<p>Furthermore, our multicast cache module made it worse by amplifying the less useful data to all the nodes, and led them to the cache high watermark at the same time. Then we saw a latency spike because all the nodes dropped the cache and started over around the same time.</p>
 	<div class="flex anchor relative">
 		<h3 id="module-isolation">Module isolation</h3>
-		<a href="https://blog.cloudflare.com/#module-isolation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#module-isolation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -58,7 +58,7 @@
 	<p>With the list of Lua modules increasing, debugging issues became increasingly difficult. This is because a single Lua state is shared among all the modules, so one misbehaving module could affect another. For example, when something went wrong inside the Lua state, like having too many coroutines, or being out of memory, we got lucky if the program just crashed, but the resulting stack traces were hard to read. It is also difficult to forcibly tear down, or upgrade, a running module as it not only has state in the Lua runtime, but also FFI, so memory safety is not guaranteed.</p>
 	<div class="flex anchor relative">
 		<h2 id="hello-bigpineapple">Hello BigPineapple</h2>
-		<a href="https://blog.cloudflare.com/#hello-bigpineapple" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#hello-bigpineapple" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -79,7 +79,7 @@
 	<p>Let’s look at some of them in more detail, and see how they helped us overcome the problems we had before.</p>
 	<div class="flex anchor relative">
 		<h3 id="updated-i-o-architecture">Updated I/O architecture</h3>
-		<a href="https://blog.cloudflare.com/#updated-i-o-architecture" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#updated-i-o-architecture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -98,7 +98,7 @@
 	<p>Figure 3 shows a simplified data flow about the conductor. It is called by the exchanger mentioned above, with upstream requests as input. The requests will be deduplicated first: meaning in a small window, if a lot of requests come to the conductor and ask for the same question, only one of them will pass, the others are put into a waiting queue. This is common when a cache entry expires, and can reduce unnecessary network traffic. Then based on the request and upstream metrics, the connection instructor either picks an open connection if available, or generates a set of parameters. With these parameters, the I/O executor is able to connect to the upstream directly, or even take a route via another Cloudflare data center using our <a href="https://blog.cloudflare.com/argo">Argo Smart Routing technology</a>!</p>
 	<div class="flex anchor relative">
 		<h3 id="the-cache">The cache</h3>
-		<a href="https://blog.cloudflare.com/#the-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-cache" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -114,7 +114,7 @@
 	<p>Figure 4 Updated data center layout</p>
 	<div class="flex anchor relative">
 		<h3 id="async-recursive-library">Async recursive library</h3>
-		<a href="https://blog.cloudflare.com/#async-recursive-library" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#async-recursive-library" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -129,7 +129,7 @@
 	<p>In December 2019, we finally enabled the new service on a public test endpoint (see the <a href="https://community.cloudflare.com/t/help-us-test-a-new-version-of-1-1-1-1-public-dns-resolver/137078">announcement</a>) to iron out remaining issues before slowly migrating the production endpoints to the new service. Even after all that, we continued to find edge cases with the DNS recursion (and DNSSEC validation in particular), but fixing and reproducing these issues has become much easier due to the new architecture of the library.</p>
 	<div class="flex anchor relative">
 		<h3 id="sandboxed-plugins">Sandboxed plugins</h3>
-		<a href="https://blog.cloudflare.com/#sandboxed-plugins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#sandboxed-plugins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -165,7 +165,7 @@
 	<p>It is called <a href="https://en.wikipedia.org/wiki/Trampoline_(computing)">trampoline</a> because it is used to invoke a function or a closure inside a guest instance that’s not exported. The phase callbacks are one example of why we need a trampoline function: each callback returns a closure, and therefore can’t be exported on instantiation. So a guest app wants to register a callback, it calls a host call with the callback address “<code>hostcall_register_callback(pre_cache, #30987)</code>”, when the callback needs to be invoked, the host cannot just call that pointer as it’s pointing to the guest’s memory space. What it can do instead is, to leverage one of the aforementioned trampolines, and give it the address of the callback closure: “<code>trampoline_call(#30987)</code>”.</p>
 	<div class="flex anchor relative">
 		<h4 id="isolation-overhead">Isolation overhead</h4>
-		<a href="https://blog.cloudflare.com/#isolation-overhead" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#isolation-overhead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -176,7 +176,7 @@
 	<p>Another issue we ran into was when we wanted to add support for a modern protocol, <a href="https://blog.cloudflare.com/oblivious-dns">oDoH</a>, into BigPineapple. The main job of it is to decrypt the client query, resolve it, then encrypt the answers before sending it back. By design, this doesn’t belong to core DNS, and should instead be extended with a Wasm app. However, the WebAssembly instruction set doesn’t provide some crypto primitives, such as AES and SHA-2, which prevents it from getting the benefit of host hardware. There is ongoing work to bring this functionality to Wasm with <a href="https://github.com/WebAssembly/wasi-crypto">WASI-crypto</a>. Until then, our solution for this is to simply delegate the <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">HPKE</a> to the host via host calls, and we already saw 4x performance improvements, compared to doing it inside Wasm.</p>
 	<div class="flex anchor relative">
 		<h4 id="async-in-wasm">Async in Wasm</h4>
-		<a href="https://blog.cloudflare.com/#async-in-wasm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#async-in-wasm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -195,7 +195,7 @@
 	<p>All of these complicated things are encapsulated in our guest async runtime, with easy to use API, so the guest apps get access to regular async functions without having to worry about the underlying details.</p>
 	<div class="flex anchor relative">
 		<h2 id="not-the-end">(Not) The End</h2>
-		<a href="https://blog.cloudflare.com/#not-the-end" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#not-the-end" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -4,7 +4,7 @@
 	<p>CloudFlare provides a broad level of protection from a wide range of attacks. We do this while minimizing false positives or annoyances to legitimate customers. CloudFlare didn't begin as a DDoS mitigation service, but we've rapidly found that we are good at protecting sites from these attacks. Today we're offering a new security mode to make our DDoS protection even better.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-brief-history-of-ddos">A Brief History of DDoS</h3>
-		<a href="https://blog.cloudflare.com/#a-brief-history-of-ddos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-brief-history-of-ddos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -14,7 +14,7 @@
 	<p>CloudFlare has largely mitigated these attacks by building out significant capacity across our network. We have fat pipes and lots of machines to absorb floods of traffic. We also make broad use of the <a href="https://blog.cloudflare.com/a-brief-anycast-primer">Anycast protocol</a> which has the effect of scattering the load of a distributed attack across multiple data centers, reducing the exposure of potential single point of failure. The result is that no packets from a traditional Layer 4 attack will ever reach a site behind CloudFlare.</p>
 	<div class="flex anchor relative">
 		<h3 id="http-based-attacks">HTTP-Based Attacks</h3>
-		<a href="https://blog.cloudflare.com/#http-based-attacks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#http-based-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -24,7 +24,7 @@
 	<p>CloudFlare has protections in place against many of these attacks, and in real world experiences we generally reduce the HTTP attack traffic by about 90%. For most attacks and most of our customers, this has been enough to keep them online. However, the 10% of traffic that gets through our traditional protections can still be overwhelming to either customers with limited resources or in the face of very large attacks. We wanted to help in these cases too, so today we're announcing something new.</p>
 	<div class="flex anchor relative">
 		<h3 id="im-under-attack-mode">I'm Under Attack Mode</h3>
-		<a href="https://blog.cloudflare.com/#im-under-attack-mode" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#im-under-attack-mode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

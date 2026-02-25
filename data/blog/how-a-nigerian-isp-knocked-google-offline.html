@@ -5,7 +5,7 @@
 	<p>You might be surprised to learn that an error by an ISP somewhere in the world could result in Google and other services going offline. This blog post explains how that can happen and what the Internet community is doing to try to fix this fragility.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-a-route-leak-and-how-does-one-happen">What Is A Route Leak, And How Does One Happen?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-a-route-leak-and-how-does-one-happen" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-is-a-route-leak-and-how-does-one-happen" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>During the incident, MainOne misconfigured their routing as reflected in the AS Path : “20485 4809 37282 15169”. As a result of this misconfiguration, any networks that MainOne peered with (i.e. were directly connected to) potentially had their routes leaked through this erroneous path. For example, the Cogent customer in the paragraph above (AS 174) wouldn’t have gone via Tata (AS 6453) as they should have. Instead, they were routed first through TransTelecom (a Russian Carrier, AS 20485), then to China Telecom CN2 (a cross border Chinese carrier, AS 4809), then on to MainOne (the Nigerian ISP that misconfigured everything, AS 37282), and only then were they finally handed off to Google (AS 15169). In other words, &nbsp;a user in London could have had their traffic go from Russia to China to Nigeria — and only then got to Google.</p>
 	<div class="flex anchor relative">
 		<h3 id="but-why-did-this-impact-so-many-people">But… Why Did This Impact So Many People?</h3>
-		<a href="https://blog.cloudflare.com/#but-why-did-this-impact-so-many-people" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#but-why-did-this-impact-so-many-people" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -36,7 +36,7 @@
 	<p>It is worth explicitly stating: the fact that Google traffic was routed through Russia and China before going getting to Nigeria and only then hitting the correct destination made it appear to some people that the misconfiguration was nefarious. We do not believe this to be the case. Instead, this incident reflects a mistake that was not caught by appropriate network filtering. There was too much trust and not enough verification across a number of networks: this is a systemic problem that makes the Internet more vulnerable to mistakes than it should be.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-to-mitigate-route-leaks-like-these">How to Mitigate Route Leaks Like These</h3>
-		<a href="https://blog.cloudflare.com/#how-to-mitigate-route-leaks-like-these" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-to-mitigate-route-leaks-like-these" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -52,7 +52,7 @@
 	<p>Some more information about Cloudflare’s Auto Remediation system: <a href="https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network">https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network/</a></p>
 	<div class="flex anchor relative">
 		<h3 id="looking-forward">Looking Forward</h3>
-		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

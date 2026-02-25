@@ -10,7 +10,7 @@
 	<p>In the children’s book <a href="https://en.wikipedia.org/wiki/The_Snail_and_the_Whale">The Snail and Whale</a>, after an unexpectedly far-flung adventure, the principal character returns to declarations of “How time’s flown” and “Haven’t you grown?” It has been about four years since we last wrote about LavaRand and during that time the story of how Cloudflare uses physical sources of entropy to add to the security of the Internet has continued to travel and be a source of interest to many. What was initially just a single species of physical entropy source – lava lamps – has grown and diversified. We want to catch you up a little on the story of LavaRand. This blog post will cover the new sources of “chaos” that have been added to LavaRand and how you can make use of that harnessed chaos in your next application. We’ll cover how public randomness can open up uses of publicly trusted randomness — imagine not needing to take the holders of a “random draw” at their word when they claim the outcome is not manipulated in some way. And finally we’ll discuss timelock encryption which is a way to ensure that a message cannot be decrypted until some chosen time in the future.</p>
 	<div class="flex anchor relative">
 		<h2 id="lavarand-origins">LavaRand origins</h2>
-		<a href="https://blog.cloudflare.com/#lavarand-origins" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#lavarand-origins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -35,7 +35,7 @@
 	<p>Lava lamps in Cloudflare’s San Francisco office.</p>
 	<div class="flex anchor relative">
 		<h2 id="adding-to-the-office-chaos">Adding to the office chaos</h2>
-		<a href="https://blog.cloudflare.com/#adding-to-the-office-chaos" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#adding-to-the-office-chaos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	<p>Our lava lamps in San Francisco have been working tirelessly for years to supply fresh entropy to our systems, but they now have siblings across the world to help with their task! As Cloudflare has grown, so has the variety of entropy sources found in and sourced from our offices. <a href="https://blog.cloudflare.com/cloudflare-top-100-most-loved-workplaces-in-2022">Cloudflare’s Places team works hard</a> to ensure that our offices reflect aspects of our values and culture. Several of our larger office locations include installations of physical systems of entropy, and it is these installations that we have worked to incorporate into LavaRand over time. The tangible and exciting draw of these systems is their basis in physical mechanics that we intuitively consider random. The gloops of warmed ascending “lava” floating past cooler sinking blobs within lava lamps attract our attention just as other unpredictable (and often beautiful) dynamic systems capture our interest.</p>
 	<div class="flex anchor relative">
 		<h3 id="londons-unpredictable-pendulums">London’s unpredictable pendulums</h3>
-		<a href="https://blog.cloudflare.com/#londons-unpredictable-pendulums" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#londons-unpredictable-pendulums" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -67,7 +67,7 @@
 	<p>Indeed, even with these arms restricted to motion in two dimensions, the path traced by the arms is mesmerizingly varied, and can be shown to be <a href="https://en.wikipedia.org/wiki/Double_pendulum">mathematically chaotic</a>. Even if we forget air resistance, temperature, and the environment, and then assume that the mutation is completely deterministic, still the resulting long-term motion is hard to predict. In particular the system is very sensitive to initial conditions, this initial state – how they are set in motion – paired with deterministic behavior produces a unique path that is traced until the pendulum comes to rest, and the system is set in motion by a Cloudflare employee in London once again.</p>
 	<div class="flex anchor relative">
 		<h3 id="austins-mesmerizing-mobiles">Austin’s mesmerizing mobiles</h3>
-		<a href="https://blog.cloudflare.com/#austins-mesmerizing-mobiles" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#austins-mesmerizing-mobiles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -82,7 +82,7 @@
 	<p>Hanging rainbow mobiles in Cloudflare’s Austin office.</p>
 	<div class="flex anchor relative">
 		<h2 id="mixing-new-sources-into-lavarand">Mixing new sources into LavaRand</h2>
-		<a href="https://blog.cloudflare.com/#mixing-new-sources-into-lavarand" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#mixing-new-sources-into-lavarand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -112,7 +112,7 @@ rand2 = rng.random()</code></pre>
 
 	<div class="flex anchor relative">
 		<h2 id="how-can-i-use-lavarand">How can I use LavaRand?</h2>
-		<a href="https://blog.cloudflare.com/#how-can-i-use-lavarand" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-can-i-use-lavarand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -125,7 +125,7 @@ rand2 = rng.random()</code></pre>
 	<p>A fundamental challenge of public randomness is that one must trust the authority producing the random outputs. Trusting a well-known authority like <a href="https://beacon.nist.gov/home">NIST</a> may suffice for many applications, but could be problematic for others (especially for applications where decentralization is important).</p>
 	<div class="flex anchor relative">
 		<h2 id="drand-distributed-and-verifiable-public-randomness">drand: distributed and verifiable public randomness</h2>
-		<a href="https://blog.cloudflare.com/#drand-distributed-and-verifiable-public-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#drand-distributed-and-verifiable-public-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -137,7 +137,7 @@ rand2 = rng.random()</code></pre>
 	<p>We give a brief overview of how drand achieves these properties using distributed key generation and threshold signatures below, but for an in-depth dive see our <a href="https://blog.cloudflare.com/inside-the-entropy">previous blog post</a> and some of the <a href="https://drand.love/blog">excellent posts</a> from the drand team.</p>
 	<div class="flex anchor relative">
 		<h3 id="distributed-key-generation-and-threshold-signatures">Distributed key generation and threshold signatures</h3>
-		<a href="https://blog.cloudflare.com/#distributed-key-generation-and-threshold-signatures" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#distributed-key-generation-and-threshold-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -167,7 +167,7 @@ rand2 = rng.random()</code></pre>
 	<p>The group signature for a round <i>is</i> the randomness (in the output above, the randomness value is simply the sha256 hash of the signature, for applications that prefer a shorter, fixed-sized output). The signature is unpredictable in advance as long as enough (at least a majority, but can be configured to be higher) of the nodes in the drand network are honest and do not collude. Further, anyone can validate the signature for a given round using the beacon’s group public key. It’s recommended that developers use the drand client <a href="https://drand.love/developer/clients">libraries</a> or <a href="https://drand.love/developer/drand-client">CLI</a> to perform verification on every value obtained from the beacon.</p>
 	<div class="flex anchor relative">
 		<h3 id="chained-vs-unchained-randomness">Chained vs unchained randomness</h3>
-		<a href="https://blog.cloudflare.com/#chained-vs-unchained-randomness" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#chained-vs-unchained-randomness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -190,7 +190,7 @@ signature = group_sign(round)</code></pre>
 	<p>Rotating double pendulums.</p>
 	<div class="flex anchor relative">
 		<h2 id="timelock-encryption">Timelock encryption</h2>
-		<a href="https://blog.cloudflare.com/#timelock-encryption" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#timelock-encryption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -204,7 +204,7 @@ signature = group_sign(round)</code></pre>
 	<p>The drand network is a group of independent agents using secret sharing for trustworthiness, and the ‘certain information’ not to be revealed until a specified date sounds a lot like the per-round randomness! We describe next how timelock encryption can be implemented on top of a drand network with unchained randomness, and finish with a practical demonstration. While we don’t delve into the bilinear groups and pairings-based cryptography that make this possible, if you’re interested we encourage you to read <a href="https://eprint.iacr.org/2023/189">tlock: Practical Timelock Encryption from Threshold BLS</a> by Nicolas Gailly, Kelsey Melissaris, and Yolan Romailler.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-to-timelock-your-secrets">How to timelock your secrets</h3>
-		<a href="https://blog.cloudflare.com/#how-to-timelock-your-secrets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-to-timelock-your-secrets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -233,7 +233,7 @@ curl -X POST --data-binary @encrypted.pem --fail --show-error https://tlock-work
 
 	<div class="flex anchor relative">
 		<h2 id="whats-next">What’s next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

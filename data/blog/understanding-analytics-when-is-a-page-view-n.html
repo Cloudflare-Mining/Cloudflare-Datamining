@@ -5,7 +5,7 @@
 	<p>The Anaytics Dashboard is clean and easy to use and, when we first started showing it to people a year ago, many suggested that we should set out to disrupt services like Google Analytics. Analytics is core to what we do, but we most certainly aren't trying to replace Google Analytics or other services people use to understand the traffic to their site. We track data in a different way than a service like Google Analytics and, as a result, we're better at some things and not as good at some others.</p>
 	<div class="flex anchor relative">
 		<h3 id="beacons-vs-raw-logs">Beacons vs. Raw Logs</h3>
-		<a href="https://blog.cloudflare.com/#beacons-vs-raw-logs" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#beacons-vs-raw-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -16,7 +16,7 @@
 	<p>CloudFlare's goal is to make sites faster and safer. This means we're concerned about things like the hits your server is actually serving, the bandwidth it's using, and all the visitors to your site -- especially the nasty crawlers that don't trigger Javascript. As a result, we gather raw data about every request as it passes through our network and report that on the Analytics page. The Hits / Bandwidth numbers in particular are metrics you can't get through Google Analytics because services that use Javascript-based beacons have no way to track them.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-problem-with-page-views">The Problem with Page Views</h3>
-		<a href="https://blog.cloudflare.com/#the-problem-with-page-views" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-problem-with-page-views" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -27,7 +27,7 @@
 	<p>Facebook follows the most commonly accepted industry standard which counts most of these AJAX requests as "page views" (which partially explains their 1 trillion+ page views per month). That's not entirely satisfying, but the alternative isn't either. If Facebook installed Google Analytics then they would have a much lower page view count. CloudFlare follows the same industry standard and so our reported page views is usually higher than what you're see in Google Analytics. This is especially pronounced for AJAX-driven sites. This doesn't mean you can go to your advertisers and start demanding more ad revenue. It should, however, mean that you now have a more accurate picture into the actual resource demands required to run your site.</p>
 	<div class="flex anchor relative">
 		<h3 id="so-who-is-right">So Who Is Right?</h3>
-		<a href="https://blog.cloudflare.com/#so-who-is-right" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#so-who-is-right" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

@@ -6,7 +6,7 @@
 	<p>Since the New York Times domain hijack, a number of other sites have had their domains stolen. We ourselves have seen multiple attempts to take control of CloudFlare’s registrar account. Thankfully, none have been successful—but some have gotten closer than we were comfortable with. Given the risk, we began looking for a registrar with security protocols that we could trust.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-brief-history-of-registries-and-registrars">A Brief History of Registries and Registrars</h3>
-		<a href="https://blog.cloudflare.com/#a-brief-history-of-registries-and-registrars" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#a-brief-history-of-registries-and-registrars" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -31,7 +31,7 @@
 	<p>There are a couple of registrars that have tried to differentiate themselves with security services. Generally, their primary business is not security; It’s something else, like intellectual property theft detection. In our search for a high-security registrar for CloudFlare’s domains, we didn’t find any that met our standards. And, it’s worth noting, the New York Times was using one of the supposedly security-focused registrars when their domain was hijacked.</p>
 	<div class="flex anchor relative">
 		<h3 id="domain-hijacking-at-the-registrar">Domain Hijacking at the Registrar</h3>
-		<a href="https://blog.cloudflare.com/#domain-hijacking-at-the-registrar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#domain-hijacking-at-the-registrar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -47,7 +47,7 @@
 	<p>This means <i>anyone</i> with access to your registrar account can hijack your domain and point it to any IP address they want, be it an attacker that compromised your account or a rogue employee. Once a domain hijack occurs, your only recourse is to appeal to your registrar (and, if the attacker managed to switch registrars, the registrar that now controls the domain) and hope they do the right thing. If that doesn’t work, you’re stuck filing a legal complaint directly with ICANN. That process can take anywhere from weeks to months, all the while, visitors to your domain are being directed to a web server that you don’t control.</p>
 	<div class="flex anchor relative">
 		<h3 id="raising-the-bar-for-registrar-security">Raising the Bar for Registrar Security</h3>
-		<a href="https://blog.cloudflare.com/#raising-the-bar-for-registrar-security" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#raising-the-bar-for-registrar-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -75,7 +75,7 @@
 	<p>Registry Lock prevents changes by <i>any</i> registrar until the lock is removed. Unlocking at the registry level requires out-of-band communication between the registrar and Verisign (the global registry operator for several top-level domains), and is thus very manual. Since most registrars are volume operations, it’s very difficult to find one that takes the time to literally pick up the phone and call Verisign every time someone makes a change to their DNS settings.</p>
 	<div class="flex anchor relative">
 		<h3 id="becoming-an-icann-accredited-registrar">Becoming an ICANN Accredited Registrar</h3>
-		<a href="https://blog.cloudflare.com/#becoming-an-icann-accredited-registrar" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#becoming-an-icann-accredited-registrar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -85,7 +85,7 @@
 	<p>Today, we are opening CloudFlare Registrar to our enterprise-level customers. The service is available to all enterprise customers that care about the highest level of domain registrar security. The first users of our domain registrar service include dwolla.com and nasdaqprivatemarket.com.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-registrar-security-and-peace-of-mind">CloudFlare Registrar: Security and Peace of Mind</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-registrar-security-and-peace-of-mind" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-registrar-security-and-peace-of-mind" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -96,7 +96,7 @@
 	<p>In addition, we will automatically renew all CloudFlare Registrar domains when they have less than one year left on their registration term. This means the domains will never expire, no matter what.</p>
 	<div class="flex anchor relative">
 		<h3 id="cloudflare-registrar-and-universal-dnssec">CloudFlare Registrar and Universal DNSSEC</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-registrar-and-universal-dnssec" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#cloudflare-registrar-and-universal-dnssec" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -105,7 +105,7 @@
 	<p>CloudFlare Registrar <a href="https://www.cloudflare.com/application-services/solutions/domain-protection-services">protects domains</a> from being hijacked at the registry, but they’re still vulnerable to DNS on-path attacks. <a href="https://www.cloudflare.com/dnssec">Universal DNSSEC</a> adds an additional layer of security by authenticating all DNS queries for your domains with cryptographic signatures. In cases where CloudFlare is both the registrar and the DNS provider of a domain, we can seamlessly deliver DNSSEC. As a result, all CloudFlare Registrar customers will have DNSSEC automatically enabled by default.</p>
 	<div class="flex anchor relative">
 		<h3 id="domain-and-registrar-security-tool">Domain and Registrar Security Tool</h3>
-		<a href="https://blog.cloudflare.com/#domain-and-registrar-security-tool" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#domain-and-registrar-security-tool" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -119,7 +119,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="for-the-security-conscious-not-the-masses">For the Security Conscious, Not the Masses</h3>
-		<a href="https://blog.cloudflare.com/#for-the-security-conscious-not-the-masses" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#for-the-security-conscious-not-the-masses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

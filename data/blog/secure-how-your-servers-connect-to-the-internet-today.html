@@ -9,7 +9,7 @@
 	<p>The vulnerability disclosed yesterday in the Java-based logging package, <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228">log4j</a>, allows attackers to execute code on a remote server. We’ve <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation">updated Cloudflare’s WAF</a> to defend your infrastructure against this 0-day attack. The attack also relies on exploiting servers that are allowed unfettered connectivity to the public Internet. To help solve that challenge, your team can deploy Cloudflare One today to filter and log how your infrastructure connects to any destination.</p>
 	<div class="flex anchor relative">
 		<h3 id="securing-traffic-inbound-and-outbound">Securing traffic inbound and outbound</h3>
-		<a href="https://blog.cloudflare.com/#securing-traffic-inbound-and-outbound" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#securing-traffic-inbound-and-outbound" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -20,7 +20,7 @@
 	<p>At the time of this blog, it does not appear any consistent patterns of malicious hostnames exist like those analyzed in the SUNBURST <a href="https://blog.cloudflare.com/a-quirk-in-the-sunburst-dga-algorithm">attack</a>. However, any server or network with unrestricted connectivity to the public Internet is a risk for this specific vulnerability and others that rely on exploiting that open window.</p>
 	<div class="flex anchor relative">
 		<h3 id="first-filter-and-log-dns-queries-with-two-clicks">First, filter and log DNS queries with two-clicks</h3>
-		<a href="https://blog.cloudflare.com/#first-filter-and-log-dns-queries-with-two-clicks" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#first-filter-and-log-dns-queries-with-two-clicks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -45,7 +45,7 @@
 	<p>&gt; Ready to get started today? You can begin filtering and logging all of the DNS queries made by your servers or your entire network with these instructions <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/secure-dns-network">here</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="second-secure-network-traffic-leaving-your-infrastructure">Second, secure network traffic leaving your infrastructure</h3>
-		<a href="https://blog.cloudflare.com/#second-secure-network-traffic-leaving-your-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#second-secure-network-traffic-leaving-your-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -63,7 +63,7 @@
 	<p>&gt; Ready to get started securing your network? Follow the guide <a href="https://blog.cloudflare.com/replace-your-hardware-firewalls-with-cloudflare-one/#:~:text=Protecting%20a%20high%2Dtraffic%20data%20center%20or%20VPC">here</a> and <a href="https://www.cloudflare.com/magic-firewall">tell us</a> you’d like to get started and we’ll be ready to help your team.</p>
 	<div class="flex anchor relative">
 		<h3 id="third-inspect-and-filter-http-traffic">Third, inspect and filter HTTP traffic</h3>
-		<a href="https://blog.cloudflare.com/#third-inspect-and-filter-http-traffic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#third-inspect-and-filter-http-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -80,7 +80,7 @@
 	<p>&gt; Ready to begin inspecting and filtering HTTP traffic? Follow the instructions <a href="https://developers.cloudflare.com/cloudflare-one/setup">here</a> to get started today.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

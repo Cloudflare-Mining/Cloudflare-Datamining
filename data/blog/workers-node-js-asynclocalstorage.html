@@ -6,7 +6,7 @@
 	<p>These new APIs are available today — start using them by enabling the <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flag</a> in your Workers.</p>
 	<div class="flex anchor relative">
 		<h3 id="async-context-tracking-with-the-asynclocalstorage-api">Async Context Tracking with the AsyncLocalStorage API</h3>
-		<a href="https://blog.cloudflare.com/#async-context-tracking-with-the-asynclocalstorage-api" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#async-context-tracking-with-the-asynclocalstorage-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -149,7 +149,7 @@ resource2.doSomething();  // prints 321</code></pre>
 	<p>The proposal for AsyncContext provides an excellent set of examples and <a href="https://github.com/tc39/proposal-async-context#motivation">description of the motivation</a> of why async context tracking is useful.</p>
 	<div class="flex anchor relative">
 		<h3 id="events-with-eventemitter">Events with EventEmitter</h3>
-		<a href="https://blog.cloudflare.com/#events-with-eventemitter" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#events-with-eventemitter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -175,7 +175,7 @@ emitter.on('error', (err) =&gt; {
 	<p>Please refer to the Node.js documentation for more details on the use of the <code>EventEmitter</code> API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events">https://nodejs.org/dist/latest-v19.x/docs/api/events.html#events</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="buffer">Buffer</h3>
-		<a href="https://blog.cloudflare.com/#buffer" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#buffer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -199,7 +199,7 @@ writer.write(Buffer.from("hello world"));</code></pre>
 	<p>Please refer to the Node.js documentation for more details on the use of the Buffer API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html">https://nodejs.org/dist/latest-v19.x/docs/api/buffer.html</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="assertions">Assertions</h3>
-		<a href="https://blog.cloudflare.com/#assertions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#assertions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -228,7 +228,7 @@ await doesNotReject(async () =&gt; { throw new Error('boom') }); // fails! throw
 	<p>Please refer to the Node.js documentation for more details on the use of the assertion API: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/assert.html">https://nodejs.org/dist/latest-v19.x/docs/api/assert.html</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="promisify-callbackify">Promisify/Callbackify</h3>
-		<a href="https://blog.cloudflare.com/#promisify-callbackify" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#promisify-callbackify" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -265,7 +265,7 @@ callbackifiedFoo(args, (err, value) =&gt; {
 	<p>Please refer to the Node.js documentation for more information on how to use these APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal</a>, <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="type-brand-checking-with-util-types">Type brand-checking with util.types</h3>
-		<a href="https://blog.cloudflare.com/#type-brand-checking-with-util-types" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#type-brand-checking-with-util-types" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -289,7 +289,7 @@ types.isAsyncFunction(async function foo() {});  // Returns true
 	<p>Please refer to the Node.js documentation for more information on how to use the type check APIs: <a href="https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes">https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes</a>. The workers implementation currently does not provide implementations of the <code>util.types.isExternal()</code>, <code>util.types.isProxy()</code>, <code>util.types.isKeyObject()</code>, or <code>util.type.isWebAssemblyCompiledModule()</code> APIs.</p>
 	<div class="flex anchor relative">
 		<h3 id="whats-next">What's next</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

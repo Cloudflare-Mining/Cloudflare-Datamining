@@ -5,7 +5,7 @@
 	<p>I thought it was a good time to talk about how Cloudflare's architecture is different than most legacy DNS and DDoS-mitigation services and how that's helped us keep our customers online in the face of these extremely high volume attacks.</p>
 	<div class="flex anchor relative">
 		<h3 id="analogy-how-databases-scaled">Analogy: How Databases Scaled</h3>
-		<a href="https://blog.cloudflare.com/#analogy-how-databases-scaled" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#analogy-how-databases-scaled" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>So, rather than going the traditional route, Google wrote software that allowed many cheap, commodity servers to work together as if they were one large database. Over time, as Google developed more services, the software became efficient at distributing load across all the machines in Google's network to maximize utilization of network, compute, and storage. And, as Google's needs grew, they just added more commodity servers — allowing them to linearly scale resources to meet their needs.</p>
 	<div class="flex anchor relative">
 		<h3 id="legacy-dns-and-ddos-mitigation">Legacy DNS and DDoS Mitigation</h3>
-		<a href="https://blog.cloudflare.com/#legacy-dns-and-ddos-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#legacy-dns-and-ddos-mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	<p>The expense of the equipment meant that it is not cost effective to distribute scrubbing hardware broadly. If you were a DNS provider, how often would you really get attacked? How could you justify investing in expensive mitigation hardware in every one of your data centers? Even if you were a legacy DDoS vendor, typically your service was only provisioned when a customer came under attack so it never made sense to have capacity much beyond a certain margin over the largest attack you'd previously seen. It seemed rational that any investment beyond that was a waste, but that conclusion is proving ultimately fatal to the traditional model.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-future-doesnt-come-in-a-box">The Future Doesn't Come in a Box</h3>
-		<a href="https://blog.cloudflare.com/#the-future-doesnt-come-in-a-box" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-future-doesnt-come-in-a-box" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -58,7 +58,7 @@
 	<p>Since every core in every server in every data center can help mitigate attacks, it means that with each new data center we bring online we get better and better at stopping attacks nearer the source. In other words, the solution to a massively distributed botnet is a <a href="https://www.cloudflare.com/network">massively distributed network</a>. This is actually how the Internet was meant to work: distributed strength, not focused brawn within a few scrubbing locations.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-we-made-ddos-mitigation-essentially-free">How We Made DDoS Mitigation Essentially Free</h3>
-		<a href="https://blog.cloudflare.com/#how-we-made-ddos-mitigation-essentially-free" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-we-made-ddos-mitigation-essentially-free" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -71,7 +71,7 @@
 	<p>As use of our services increases, the amount of capacity to stop attacks increases proportionately. People wonder how we can provide DDoS mitigation at a fixed fee regardless of the size of the attack; the answer is because attacks don't increase the biggest of our unit costs. And, while legacy providers have stated that their offering pro bono DDoS mitigation would cost them millions, we’re able to protect politically and artistically important sites against huge attacks for free through <a href="https://www.cloudflare.com/galileo">Project Galileo</a> without it breaking the bank.</p>
 	<div class="flex anchor relative">
 		<h3 id="winning-the-arms-race">Winning the Arms Race</h3>
-		<a href="https://blog.cloudflare.com/#winning-the-arms-race" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#winning-the-arms-race" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

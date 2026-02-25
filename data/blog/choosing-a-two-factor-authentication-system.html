@@ -6,7 +6,7 @@
 	<p>We also considered some sort of fob-based two-factor system. Unfortunately, these are generally very expensive and therefore prohibitive for us to offer all our customers. We also considered solutions like Google's Authenticator. It's a well thought out system, and we have a ton of respect for the Google team, but we were nervous about handing another key to identity over to a company whose primary business is search and advertising. Not to mention a bit of a bad taste after a <a href="https://blog.cloudflare.com/the-four-critical-security-flaws-that-resulte">flaw in Google's own implementation of their two-factor authentication system</a> contributed to my hack.</p>
 	<div class="flex anchor relative">
 		<h3 id="totp-open-authentication">TOTP: Open Authentication</h3>
-		<a href="https://blog.cloudflare.com/#totp-open-authentication" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#totp-open-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -19,7 +19,7 @@
 	<p>What is powerful about this scheme is that if an attacker steals the authorization code then, within 30 seconds, it will be useless. This is typically insufficient time for the attacker to gain access to the account. This is particularly effective against phishing attacks, where an attacker convinces a user to reveal their login credentials on a fake website.</p>
 	<div class="flex anchor relative">
 		<h3 id="authy">Authy</h3>
-		<a href="https://blog.cloudflare.com/#authy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#authy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -34,7 +34,7 @@
 	<p>We've been using the Authy app internally for all of our administrative systems for the last three months. The Authy team has worked with us to refine their app to make it as simple and elegant as possible. After months of our own tests, and spurred on by a phishing attack that targeted CloudFlare accounts, we decided to open up two-factor authentication as a feature for all our customers. If you're interested, you can read about how to implement it on your account with <a href="https://blog.cloudflare.com/2-factor-authentication-now-available">just a few easy steps</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="but-ive-already-installed-google-authenticator-on-my-phone">But... I've Already Installed Google Authenticator on My Phone!</h3>
-		<a href="https://blog.cloudflare.com/#but-ive-already-installed-google-authenticator-on-my-phone" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#but-ive-already-installed-google-authenticator-on-my-phone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

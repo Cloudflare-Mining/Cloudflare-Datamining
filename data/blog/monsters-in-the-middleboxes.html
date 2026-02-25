@@ -13,7 +13,7 @@
 	<p>In a basic HTTPS connection, a browser (client) establishes a TLS connection directly to an origin server to send requests and download content. However, many connections on the Internet are not directly from a browser to the server serving the website, but instead traverse through some type of proxy or middlebox (a “monster-in-the-middle” or MITM). There are many reasons for this behavior, both malicious and benign.</p>
 	<div class="flex anchor relative">
 		<h3 id="types-of-https-interception-as-demonstrated-by-various-monsters-in-the-middle">Types of HTTPS Interception, as Demonstrated by Various Monsters in the Middle</h3>
-		<a href="https://blog.cloudflare.com/#types-of-https-interception-as-demonstrated-by-various-monsters-in-the-middle" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#types-of-https-interception-as-demonstrated-by-various-monsters-in-the-middle" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -22,7 +22,7 @@
 	<p>One common HTTPS interceptor is TLS-terminating forward proxies. (These are a subset of all forward proxies; non-TLS-terminating forward proxies forward TLS connections without any ability to inspect encrypted traffic). A TLS-terminating forward proxy sits in front of a client in a TLS connection, transparently forwarding and possibly modifying traffic from the browser to the destination server. To do this, the proxy must terminate the TLS connection from the client, and then (hopefully) re-encrypt and forward the payload to the destination server over a new TLS connection. To allow the connection to be intercepted without a browser certificate warning appearing at the client, forward proxies often require users to install a root certificate on their machine so that the proxy can generate and present a trusted certificate for the destination to the browser. These root certificates are often installed for corporate managed devices, done by network administrators without user intervention.</p>
 	<div class="flex anchor relative">
 		<h2 id="antivirus-and-corporate-proxies">Antivirus and Corporate Proxies</h2>
-		<a href="https://blog.cloudflare.com/#antivirus-and-corporate-proxies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#antivirus-and-corporate-proxies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -37,7 +37,7 @@
 	<p>Some legitimate reasons for a client to connect through a forward proxy would be to allow antivirus software or a corporate proxy to inspect otherwise encrypted data entering and leaving a local network in order to detect inappropriate content, malware, and data breaches. The Blue Coat data loss prevention tools offered by Symantec are one example. In this case, HTTPS interception occurs to check if an employee is leaking sensitive information before sending the request to the intended destination.</p>
 	<div class="flex anchor relative">
 		<h2 id="malware-proxies">Malware Proxies</h2>
-		<a href="https://blog.cloudflare.com/#malware-proxies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#malware-proxies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -52,7 +52,7 @@
 	<p>Malicious forward proxies, however, might insert advertisements into web pages or <a href="https://www.cloudflare.com/learning/security/what-is-data-exfiltration">exfiltrate private user information</a>. Malware like <a href="https://www.us-cert.gov/ncas/alerts/TA15-051A">Superfish</a> insert targeted ads into encrypted traffic, which requires intercepting HTTPS traffic and modifying the content in the response given to a client.</p>
 	<div class="flex anchor relative">
 		<h2 id="leaky-proxies">Leaky Proxies</h2>
-		<a href="https://blog.cloudflare.com/#leaky-proxies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#leaky-proxies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@
 	<p>TLS-terminating forward proxies could even trust root certificates considered insecure, like Symantec’s CA. If poorly implemented, any TLS-terminating forward proxy can become a widespread attack vector, leaking private information or allowing for response spoofing.</p>
 	<div class="flex anchor relative">
 		<h2 id="reverse-proxies">Reverse Proxies</h2>
-		<a href="https://blog.cloudflare.com/#reverse-proxies" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reverse-proxies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -84,7 +84,7 @@
 	<p>Reverse proxies also sit between users and origin servers. Reverse proxies (such as Cloudflare and <a href="https://www.cloudflare.com/cloudflare-vs-akamai">Akamai</a>) act on behalf of origin servers, caching static data to improve the speed of content delivery and offering security services such as DDoS mitigation. Critically, reverse proxies do not require special root certificates to be installed on user devices, since browsers establish connections directly to the reverse proxy to download content that is hosted at the origin server. Reverse proxies are often used by origin servers to improve the security of client HTTPS connections (for example, by enforcing strict security policies and using the <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3">newest security protocols like TLS 1.3</a>). In this case, reverse proxies are intermediaries that provide better performance and security to TLS connections.</p>
 	<div class="flex anchor relative">
 		<h2 id="why-continue-examining-https-interception">Why Continue Examining HTTPS Interception?</h2>
-		<a href="https://blog.cloudflare.com/#why-continue-examining-https-interception" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#why-continue-examining-https-interception" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -95,7 +95,7 @@
 	<p>Second, the presence of content inspection systems can not only weaken the security of TLS connections, but it can hinder the <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">adoption of new innovations and improvements to TLS</a>. &nbsp;Users connecting through older middleboxes may have their connections downgraded to older versions of TLS the middleboxes still support, and may not receive the security, privacy, and performance benefits of new TLS versions, even if newer versions are supported by both the browser and the server.</p>
 	<div class="flex anchor relative">
 		<h2 id="introducing-mitmengine-cloudflares-https-interception-detector">Introducing MITMEngine: Cloudflare’s HTTPS Interception Detector</h2>
-		<a href="https://blog.cloudflare.com/#introducing-mitmengine-cloudflares-https-interception-detector" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#introducing-mitmengine-cloudflares-https-interception-detector" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -164,7 +164,7 @@ TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc13)</code></pre>
 	<p>We welcome contributions to MITMEngine. We are particularly interested in collecting more fingerprints of MITM software and browser TLS Client Hellos, because MITMEngine depends on these reference fingerprints to detect HTTPS interception. Contributing these fingerprints is as simple as opening <a href="https://www.wireshark.org">Wireshark</a>, capturing a pcap file with a TLS Client Hello, and submitting the pcap file in a PR. More instructions on how to contribute can be found in the <a href="https://github.com/cloudflare/mitmengine">MITMEngine documentation</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="observing-https-interception-on-cloudflares-network-with-malcolm">Observing HTTPS Interception on Cloudflare’s Network with MALCOLM</h2>
-		<a href="https://blog.cloudflare.com/#observing-https-interception-on-cloudflares-network-with-malcolm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#observing-https-interception-on-cloudflares-network-with-malcolm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -216,7 +216,7 @@ TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcc13)</code></pre>
 	<p>As more of the world’s Internet consumption occurs through mobile devices, it’s important to acknowledge that simply changing platforms and browsers has not impacted the prevalence of HTTPS interception.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

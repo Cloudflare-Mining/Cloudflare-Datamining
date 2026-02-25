@@ -13,7 +13,7 @@
 	<p>During those four days, the attack utilized a combination of three attack vectors over the <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP</a> protocol: <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack">SYN floods</a>, <a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood">ACK floods</a> and SYN-ACK floods. The attack campaign sustained for multiple hours at rates exceeding 400-600 million packets per second and peaked multiple times above 700 million packets per second, with a top peak of 754 million packets per second. Despite the high and sustained packet rates, our edge continued serving our customers during the attack without impacting performance at all</p>
 	<div class="flex anchor relative">
 		<h3 id="the-three-types-of-ddos-bits-packets-requests">The Three Types of DDoS: Bits, Packets &amp; Requests</h3>
-		<a href="https://blog.cloudflare.com/#the-three-types-of-ddos-bits-packets-requests" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-three-types-of-ddos-bits-packets-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@
 	<p>Another form of DDoS attack is one with a high HTTP request per second rate. An HTTP request intensive DDoS attack aims to overwhelm a web server’s resources with more HTTP requests per second than the server can handle. The goal of a DDoS attack with a high request per second rate is to max out the CPU and memory utilization of the server in order to crash it or prevent it from being able to respond to legitimate requests. Request intensive DDoS attacks allow the attacker to generate much less bandwidth, as opposed to bit intensive attacks, and still cause a denial of service.</p>
 	<div class="flex anchor relative">
 		<h3 id="automated-ddos-detection-mitigation">Automated DDoS Detection &amp; Mitigation</h3>
-		<a href="https://blog.cloudflare.com/#automated-ddos-detection-mitigation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#automated-ddos-detection-mitigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -56,7 +56,7 @@
 	<p>To complement Gatebot, last year we released a new system codenamed dosd (denial of service daemon) which runs in every one of our data centers around the world in over 200 cities. Similarly to Gatebot, dosd detects and mitigates attacks autonomously but in the scope of a single server or data center. You can read more about dosd in our <a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge">recent blog</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-ddos-landscape">The DDoS Landscape</h3>
-		<a href="https://blog.cloudflare.com/#the-ddos-landscape" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-ddos-landscape" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

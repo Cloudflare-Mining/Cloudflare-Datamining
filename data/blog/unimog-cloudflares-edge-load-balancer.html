@@ -9,7 +9,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="the-role-of-unimog-in-our-edge-network">The role of Unimog in our edge network</h3>
-		<a href="https://blog.cloudflare.com/#the-role-of-unimog-in-our-edge-network" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#the-role-of-unimog-in-our-edge-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h2 id="how-unimog-compares-to-other-load-balancers">How Unimog compares to other load balancers</h2>
-		<a href="https://blog.cloudflare.com/#how-unimog-compares-to-other-load-balancers" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-unimog-compares-to-other-load-balancers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -72,7 +72,7 @@
 	<p>It’s also not enough to give each server a fixed share of connections based on static estimates of their capacity. Not all connections consume the same amount of CPU. And there are other activities running on our servers and consuming CPU that are not directly driven by connections from clients. So in order to accurately balance load across servers, Unimog does <i>dynamic load balancing</i>: it takes regular measurements of the load on each of our servers, and uses a control loop that increases or decreases the number of connections going to each server so that their loads converge to an appropriate value.</p>
 	<div class="flex anchor relative">
 		<h2 id="refresher-tcp-connections">Refresher: TCP connections</h2>
-		<a href="https://blog.cloudflare.com/#refresher-tcp-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#refresher-tcp-connections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -91,7 +91,7 @@
 	<p>Cloudflare handles a wide variety of connections on behalf of our customers. Many of these connections carry HTTP, and are typically short lived. But some HTTP connections are used for websockets, and can remain established for hours or days. Our Spectrum product supports arbitrary TCP connections. TCP connections can be terminated or stall for <a href="https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die">many reasons</a>, and ideally all applications that use long-lived connections would be able to reconnect transparently, and applications would be designed to support such reconnections. But not all applications and protocols meet this ideal, so we strive to maintain long-lived connections. Unimog can maintain connections that last for many days.</p>
 	<div class="flex anchor relative">
 		<h3 id="forwarding-packets">Forwarding packets</h3>
-		<a href="https://blog.cloudflare.com/#forwarding-packets" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#forwarding-packets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -125,7 +125,7 @@
 	<p>The second reason relates to stopping attacks. Cloudflare’s edge network is the target of incessant attacks. Some of these attacks are volumetric - large packet floods which attempt to overwhelm the ability of our data centers to process network traffic from the Internet, and so impact our ability to service legitimate traffic. To successfully mitigate such attacks, it’s important to filter out attack packets as early as possible, minimising the resources they consume. This means that our attack mitigation system needs to occur <i>before</i> the forwarding done by Unimog. That mitigation system is called l4drop, and <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">we’ve written about it before</a>. l4drop and Unimog are closely integrated. Because l4drop runs on all of our servers, and because l4drop comes before Unimog, it’s natural for Unimog to run on all of our servers too.</p>
 	<div class="flex anchor relative">
 		<h3 id="xdp-and-xdpd">XDP and xdpd</h3>
-		<a href="https://blog.cloudflare.com/#xdp-and-xdpd" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#xdp-and-xdpd" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -182,7 +182,7 @@
 	<p>Unimog is not the first L4LB to use XDP. In 2018, <a href="https://engineering.fb.com/open-source/open-sourcing-katran-a-scalable-network-load-balancer">Facebook open sourced Katran</a>, their XDP-based L4LB data plane. We considered the possibility of reusing code from Katran. But it would not have been worthwhile: the core C code needed to implement an XDP-based L4LB is relatively modest (about 1000 lines of C, both for Unimog and Katran). Furthermore, we had requirements that were not met by Katran, and we also needed to integrate with existing components and systems at Cloudflare (particularly l4drop). So very little of the code could have been reused as-is.</p>
 	<div class="flex anchor relative">
 		<h2 id="encapsulation">Encapsulation</h2>
-		<a href="https://blog.cloudflare.com/#encapsulation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#encapsulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -201,7 +201,7 @@
 	<p>An issue that can arise with encapsulation is hitting limits on the maximum packet size, because the encapsulation process makes packets larger. The de-facto maximum packet size on the Internet is 1500 bytes, and not coincidentally this is also the maximum packet size on ethernet networks. For Unimog, encapsulating a 1500-byte packet results in a 1536-byte packet. To allow for these enlarged encapsulated packets, we have enabled jumbo frames on the networks inside our data centers, so that the 1500-byte limit only applies to packets headed out to the Internet.</p>
 	<div class="flex anchor relative">
 		<h2 id="forwarding-logic">Forwarding logic</h2>
-		<a href="https://blog.cloudflare.com/#forwarding-logic" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#forwarding-logic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -234,7 +234,7 @@
 	<p>But as mentioned, there is a problem with this scheme as presented so far. Updating a forwarding table, and changing the DIPs in some buckets, would break connections that hash to those buckets (because packets on those connections would get forwarded to a different server after the update). But one of the requirements for Unimog is to allow us to change which servers get new connections without impacting the existing connections. For example, sometimes we want to drain the connections to a server, maintaining the existing connections to that server but not forwarding new connections to it, in the expectation that many of the existing connections will terminate of their own accord. The next section explains how we fix this scheme to allow such changes.</p>
 	<div class="flex anchor relative">
 		<h2 id="maintaining-established-connections">Maintaining established connections</h2>
-		<a href="https://blog.cloudflare.com/#maintaining-established-connections" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#maintaining-established-connections" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -286,7 +286,7 @@
 	<p>Furthermore, when updating the forwarding table to adjust the balance of load between servers, Unimog often uses a novel trick: due to the redirector logic, exchanging the first-hop and second-hop DIPs for a bucket only affects which server receives new connections for that bucket, and never impacts any established connections. Unimog is able to achieve load balancing in our edge data centers largely through forwarding table changes of this type.</p>
 	<div class="flex anchor relative">
 		<h2 id="control-plane">Control plane</h2>
-		<a href="https://blog.cloudflare.com/#control-plane" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#control-plane" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -331,7 +331,7 @@
 	<p>Unimog also forms a complex system with feedback loops: The conductor reacts to its observations of behaviour of the servers, and the servers react to the control information they receive from the conductor. This can lead to behaviours of the overall system that are hard to anticipate or test for. For instance, not long after we deployed Unimog we encountered surprising behaviour when data centers became overloaded. This is of course a scenario that we strive to avoid, and we have automated systems to remove traffic from overloaded data centers if it does. But if a data center became sufficiently overloaded, then health information from its servers would indicate that many servers were degraded to the point that Unimog would stop sending new connections to those servers. Under normal circumstances, this is the correct reaction to a degraded server. But if enough servers become degraded, diverting new connections to other servers would mean those servers became degraded, while the original servers were able to recover. So it was possible for a data center that became temporarily overloaded to get stuck in a state where servers oscillated between healthy and degraded, even after the level of demand on the data center had returned to normal. To correct this issue, the conductor now has logic to distinguish between isolated degraded servers and such data center-wide problems. We have continued to improve Unimog in response to operational experience, ensuring that it behaves in a predictable manner over a wide range of conditions.</p>
 	<div class="flex anchor relative">
 		<h2 id="udp-support">UDP Support</h2>
-		<a href="https://blog.cloudflare.com/#udp-support" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#udp-support" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -340,7 +340,7 @@
 	<p>So far, we have described Unimog’s support for directing TCP connections. But Unimog also supports UDP traffic. UDP does not have explicit connections between clients and servers, so how it works depends upon how the UDP application exchanges packets between the client and server. There are a few cases of interest:</p>
 	<div class="flex anchor relative">
 		<h3 id="request-response-udp-applications">Request-response UDP applications</h3>
-		<a href="https://blog.cloudflare.com/#request-response-udp-applications" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#request-response-udp-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -350,7 +350,7 @@
 	<p>To cater to this case, Unimog operates as described in previous sections, hashing the 4-tuple from the packet headers (the source and destination IP addresses and ports). But the Beamer daisy-chaining technique that allows connections to be maintained does not apply here, and so the buckets in the forwarding table only have a single slot.</p>
 	<div class="flex anchor relative">
 		<h3 id="udp-applications-with-flows">UDP applications with flows</h3>
-		<a href="https://blog.cloudflare.com/#udp-applications-with-flows" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#udp-applications-with-flows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -372,7 +372,7 @@
 	<p>The UDP logic also places a requirement on services. The redirector must be able to match packets to the corresponding sockets on a server according to their 4-tuple. This is not a problem in the TCP case, because all TCP connections are represented by connected sockets in the BSD sockets API (these sockets are obtained from an accept system call, so that they have a local address and a peer address, determining the 4-tuple). But for UDP, unconnected sockets (lacking a declared peer address) can be used to send and receive packets. So some UDP services only use unconnected sockets. For the redirector logic above to work, services must create connected UDP sockets in order to expose their flows to the redirector.</p>
 	<div class="flex anchor relative">
 		<h3 id="udp-applications-with-sessions">UDP applications with sessions</h3>
-		<a href="https://blog.cloudflare.com/#udp-applications-with-sessions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#udp-applications-with-sessions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -383,7 +383,7 @@
 	<p>We have used this functionality in our WARP product. We extended the Wireguard protocol used by WARP in a backwards-compatible way to include a session identifier, and added a flow dissector to Unimog to exploit it. There are more details in <a href="https://blog.cloudflare.com/warp-technical-challenges">our post on the technical challenges of WARP</a>.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

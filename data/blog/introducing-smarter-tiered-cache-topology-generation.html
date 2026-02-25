@@ -8,7 +8,7 @@
 	<p>Today, I’m thrilled to announce a fundamental improvement to Argo Tiered Cache we’re calling Smart Tiered Cache Topology. When enabled, Argo Tiered Cache will now dynamically select the <b>single</b> best upper tier for each of your website’s origins while providing tiered cache analytics showing how your custom topology is performing.</p>
 	<div class="flex anchor relative">
 		<h3 id="smarter-tiered-cache-topology-generation">Smarter Tiered Cache Topology Generation</h3>
-		<a href="https://blog.cloudflare.com/#smarter-tiered-cache-topology-generation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#smarter-tiered-cache-topology-generation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -17,7 +17,7 @@
 	<p>Tiered Cache is part of <a href="https://blog.cloudflare.com/argo">Argo</a>, a constellation of products that analyzes and optimizes routing decisions across the global Internet in real-time by processing information from every Cloudflare request to determine which routes to an origin are fast, which are slow, and what the optimum path from visitor to content is at any given moment. Previously, Argo Tiered Cache would use a static collection of upper-tier data centers to communicate with the origin. With the improvements we’re announcing today, Tiered Cache can now dynamically find the single best upper tier for an origin using Argo performance and routing data. When Argo is enabled and a request for particular content is made, we collect latency data for each request to pick the optimal path. Using this latency data, we can determine how well any upper-tier data center is connected with an origin and can empirically select the best data center with the lowest latency to be the upper tier for an origin.</p>
 	<div class="flex anchor relative">
 		<h3 id="argo-tiered-cache">Argo Tiered Cache</h3>
-		<a href="https://blog.cloudflare.com/#argo-tiered-cache" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#argo-tiered-cache" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>Previously, when Argo Tiered Cache was enabled for a website, several of Cloudflare’s largest and most-connected data centers were determined to be upper tiers and could pull content from an origin on a cache MISS. While utilizing a topology consisting of numerous upper-tier data centers may be globally performant, we found that cost-sensitive customers generally wanted to find the single best upper tier for their origin to ensure efficient data transfer of their content to Cloudflare’s network. We built Smart Tiered Cache Topology for this reason.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-to-enable-smart-tiered-cache-topology">How to enable Smart Tiered Cache Topology</h3>
-		<a href="https://blog.cloudflare.com/#how-to-enable-smart-tiered-cache-topology" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-to-enable-smart-tiered-cache-topology" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -68,7 +68,7 @@
 	<p>Enterprise customers can determine the tiered cache topology that works best for them.</p>
 	<div class="flex anchor relative">
 		<h3 id="more-data-fewer-problems">More data, fewer problems</h3>
-		<a href="https://blog.cloudflare.com/#more-data-fewer-problems" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#more-data-fewer-problems" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

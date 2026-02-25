@@ -4,7 +4,7 @@
 	<p>If your customers interact with your app on your domain and don’t care about branding under their custom or “vanity” domain (or aren’t paying you for the ability to do so), the solution is straightforward: <a href="https://www.cloudflare.com/products/registrar">onboard your domain to Cloudflare</a> and serve the app at either <code>https://app.yourcompany.ltd</code> or <code>https://yourcustomer.yourcompany.ltd</code>. But if your customers want to <a href="https://www.cloudflare.com/developer-platform/solutions/hosting">host your application</a>, portal, content management solution, etc. on their own domain for improved SEO and discoverability, e.g., <code>https://app.yourcustomer.site</code> the solution is not so easy.</p>
 	<div class="flex anchor relative">
 		<h3 id="easily-extend-the-benefits-of-cloudflare-to-your-customers-one-hostname-at-a-time">Easily extend the benefits of Cloudflare to your customers, one hostname at a time</h3>
-		<a href="https://blog.cloudflare.com/#easily-extend-the-benefits-of-cloudflare-to-your-customers-one-hostname-at-a-time" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#easily-extend-the-benefits-of-cloudflare-to-your-customers-one-hostname-at-a-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -21,7 +21,7 @@
 	<p>Once the CNAME is in place and the API call is made, Cloudflare takes care of the rest. We’ll provision the hostname at our edge for forwarding on to your specified origin, acquire SSL certificates to enable HTTPS and HTTP/2, and sit in front of any DDoS or L7 attacks that may target your customers. All the benefits of Cloudflare, including CDN and content optimization, are extended to your customers’ hostnames without them having to do anything other than adding a DNS record.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-does-it-work-what-will-my-customer-onboarding-flow-look-like">How does it work? What will my customer onboarding flow look like?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-it-work-what-will-my-customer-onboarding-flow-look-like" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-does-it-work-what-will-my-customer-onboarding-flow-look-like" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -32,7 +32,7 @@
 	<p>In the example below, we show how support.yourcustomer.site, a hostname of your customer with a CNAME pointing to whitelabel.yourcompany.ltd, can be provisioned and live at our edge with SSL certificates in just a couple of minutes.</p>
 	<div class="flex anchor relative">
 		<h4 id="confirm-the-customers-cname-is-in-place">Confirm the customer's CNAME is in place</h4>
-		<a href="https://blog.cloudflare.com/#confirm-the-customers-cname-is-in-place" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#confirm-the-customers-cname-is-in-place" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -44,7 +44,7 @@ whitelabel.yourcompany.ltd.</code></pre>
 	<p>Alternatively, you can add the CNAME after requesting certificate issuance, but it’s faster if you have it in place to begin with. If you need the certificates issued and live prior to your customer pointing their hostname over, consider using email-based validation.</p>
 	<div class="flex anchor relative">
 		<h4 id="demonstrate-basic-http-connectivity-and-show-expected-https-error">Demonstrate basic HTTP connectivity (and show expected HTTPS error)</h4>
-		<a href="https://blog.cloudflare.com/#demonstrate-basic-http-connectivity-and-show-expected-https-error" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#demonstrate-basic-http-connectivity-and-show-expected-https-error" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@ curl: (60) SSL certificate problem: Invalid certificate chain</code></pre>
 
 	<div class="flex anchor relative">
 		<h4 id="make-single-api-call-to-request-ssl-certificate-issuance">Make single API call to request SSL certificate issuance</h4>
-		<a href="https://blog.cloudflare.com/#make-single-api-call-to-request-ssl-certificate-issuance" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#make-single-api-call-to-request-ssl-certificate-issuance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -77,7 +77,7 @@ curl: (60) SSL certificate problem: Invalid certificate chain</code></pre>
 
 	<div class="flex anchor relative">
 		<h4 id="demonstrate-your-customers-site-is-accessible-over-https">Demonstrate your customer’s site is accessible over HTTPS</h4>
-		<a href="https://blog.cloudflare.com/#demonstrate-your-customers-site-is-accessible-over-https" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#demonstrate-your-customers-site-is-accessible-over-https" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -94,7 +94,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="how-is-my-customers-traffic-sent-to-my-origin-is-it-secured">How is my customers’ traffic sent to my origin? Is it secured?</h3>
-		<a href="https://blog.cloudflare.com/#how-is-my-customers-traffic-sent-to-my-origin-is-it-secured" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-is-my-customers-traffic-sent-to-my-origin-is-it-secured" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -103,7 +103,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	<p>Yes, we encourage you to use the <a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-">Full or Strict SSL mode</a> so that traffic sent to your origin utilizes HTTPS. This option can be configured in the Crypto tab of your zone. If you’re using Strict mode, you must ensure that the certificates on your origin contain a Subject Alternative Names (SAN) that matches your customer’s hostname, e.g. support.yourcustomer.site. Our Origin CA product can be used to generate these certificates for use with Strict mode.</p>
 	<div class="flex anchor relative">
 		<h3 id="how-long-does-it-take-to-issue-a-certificate-and-have-it-ready-for-use">How long does it take to issue a certificate and have it ready for use?</h3>
-		<a href="https://blog.cloudflare.com/#how-long-does-it-take-to-issue-a-certificate-and-have-it-ready-for-use" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#how-long-does-it-take-to-issue-a-certificate-and-have-it-ready-for-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -128,7 +128,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 
 	<div class="flex anchor relative">
 		<h3 id="what-about-renewals-or-reissuances-do-i-or-my-customers-have-to-do-anything">What about renewals or reissuances? Do I or my customers have to do anything?</h3>
-		<a href="https://blog.cloudflare.com/#what-about-renewals-or-reissuances-do-i-or-my-customers-have-to-do-anything" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-about-renewals-or-reissuances-do-i-or-my-customers-have-to-do-anything" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -137,7 +137,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	<p>No, we take care of all of this for you. The certificates we issue are valid for one full year (365 days) and will be renewed automatically at least 30 days prior to expiration. These certificates are uniquely issued in your customer’s hostname and, so as long as the CNAME is still in place, we can continue to easily renew by demonstrating “domain validation control” of that hostname. If the customer has churned, we encourage you to send us a DELETE request so we can pull the certificate from the edge and not attempt to renew.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-benefits-of-cloudflare-will-my-customers-enjoy">What benefits of Cloudflare will my customers enjoy?</h3>
-		<a href="https://blog.cloudflare.com/#what-benefits-of-cloudflare-will-my-customers-enjoy" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-benefits-of-cloudflare-will-my-customers-enjoy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -148,7 +148,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	<p>Additionally, because SSL for SaaS is built on Cloudflare’s industry leading SSL/TLS implementation, your customers will benefit from all of the work we’ve done to <a href="https://istlsfastyet.com/#cdn-paas">make HTTPS fast</a>, secure, and reliable such as deploying <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30">OCSP stapling</a>, implementing <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a> (and <a href="https://blog.cloudflare.com/introducing-0-rtt">0-RTT</a>), and <a href="https://blog.cloudflare.com/optimizing-tls-over-tcp-to-reduce-latency">optimizing TLS over TCP</a>. Most importantly, by terminating these TLS connections as physically close to your customers as possible (as opposed to directly on your origin), your customers will benefit from the <a href="http://bgp.he.net/report/exchanges#_participants">most interconnected network</a> on the internet.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-if-my-customer-is-already-using-https-on-their-custom-hostname-is-there-a-way-to-avoid-downtime-while-migrating">What if my customer is already using HTTPS on their custom hostname? Is there a way to avoid downtime while migrating?</h3>
-		<a href="https://blog.cloudflare.com/#what-if-my-customer-is-already-using-https-on-their-custom-hostname-is-there-a-way-to-avoid-downtime-while-migrating" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-if-my-customer-is-already-using-https-on-their-custom-hostname-is-there-a-way-to-avoid-downtime-while-migrating" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -161,7 +161,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	<p>Lastly, you are free to serve the HTTP token returned by the “http” validation method on your origin (instead of letting us insert it during the reverse proxy) and our automated retry queue will detect it once it is in place. If you’d like to tell us once it’s in place and have us retry immediately, you can always send a PATCH to the endpoint with the same SSL body as you sent during POST and we’ll immediately check for it.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-types-of-saas-applications-can-utilize-this-solution">What types of SaaS applications can utilize this solution?</h3>
-		<a href="https://blog.cloudflare.com/#what-types-of-saas-applications-can-utilize-this-solution" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#what-types-of-saas-applications-can-utilize-this-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -184,7 +184,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	</ul>
 	<div class="flex anchor relative">
 		<h3 id="i-was-thinking-about-building-this-myself-what-do-i-need-to-consider">I was thinking about building this myself. What do I need to consider?</h3>
-		<a href="https://blog.cloudflare.com/#i-was-thinking-about-building-this-myself-what-do-i-need-to-consider" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#i-was-thinking-about-building-this-myself-what-do-i-need-to-consider" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -200,7 +200,7 @@ Hello, app.yourcustomer.site! This response is being served from whitelabel.your
 	<p><b>What is my plan for reissuing en masse if the next Heartbleed occurs?</b> Related to renewals are reissuances in light of security concerns. If you were running an OpenSSL-based crypto stack when Heartbleed occurred, you needed to regenerate all of your keys and request reissuance of certificates.</p>
 	<div class="flex anchor relative">
 		<h3 id="im-interested-in-learning-more-how-can-i-get-started-using-ssl-for-saas">I’m interested in learning more. How can I get started using SSL for SaaS?</h3>
-		<a href="https://blog.cloudflare.com/#im-interested-in-learning-more-how-can-i-get-started-using-ssl-for-saas" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#im-interested-in-learning-more-how-can-i-get-started-using-ssl-for-saas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

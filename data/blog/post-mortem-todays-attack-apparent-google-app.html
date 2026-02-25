@@ -3,7 +3,7 @@
 	<p>This morning a hacker was able to access a customer's account on CloudFlare and change that customer's DNS records. The attack was the result a compromise of Google's account security procedures that allowed the hacker to eventually access to my CloudFlare.com email addresses, which runs on Google Apps. While we are still working with Google to investigate the details, we wanted to highlight it here to make people aware that they too may be <a href="https://www.cloudflare.com/learning/email-security/what-is-email-fraud">vulnerable to similar attacks</a> and provide a full accounting of what happened.</p>
 	<div class="flex anchor relative">
 		<h3 id="hack-a-long-time-coming">Hack a Long Time Coming</h3>
-		<a href="https://blog.cloudflare.com/#hack-a-long-time-coming" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#hack-a-long-time-coming" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -13,7 +13,7 @@
 	<p>Once the recovery email address was added, the hacker could then reinitiate the password recovery process and get reset instructions sent to the fraudulent email address. Those instructions were then used to reset my personal email this morning.</p>
 	<div class="flex anchor relative">
 		<h3 id="google-apps-and-privilege-escalation">Google Apps and Privilege Escalation</h3>
-		<a href="https://blog.cloudflare.com/#google-apps-and-privilege-escalation" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#google-apps-and-privilege-escalation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -23,7 +23,7 @@
 	<p>Once the attacker had access to my CloudFlare.com email account, the hacker was able to access our Google Apps administrative panel. The hacker appears to have targeted a particular customer, and initiated a password reset request for the customer's CloudFlare.com account. We sent a copy of these requests to an administrative email account for debugging purposes and, ironically, to watch for invalid password reset requests. The hacker was able to access this account in Google Apps and verify the password reset. At that point, the attacker was able to log into the customer's CloudFlare account and change DNS settings to temporarily redirect the site.</p>
 	<div class="flex anchor relative">
 		<h3 id="working-with-google-to-resolve">Working With Google to Resolve</h3>
-		<a href="https://blog.cloudflare.com/#working-with-google-to-resolve" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#working-with-google-to-resolve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -33,7 +33,7 @@
 	<p>To ensure that no other accounts can be compromised, we have invalidated all the password reset logs. We have also removed copies of password reset requests from being set to any administrative email accounts in case our Google Apps account is compromised in the future. From our investigations, it appears that at no time was our database accessed or any additional client data exposed. It appears this was, in effect, a very elaborate and sophisticated attack targeting one particular customer's login information.</p>
 	<div class="flex anchor relative">
 		<h3 id="protecting-yourself">Protecting Yourself</h3>
-		<a href="https://blog.cloudflare.com/#protecting-yourself" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#protecting-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

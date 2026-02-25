@@ -10,7 +10,7 @@
 	<p>Like many products at Cloudflare, we’re offering this first as a free, consumer offering. Once we’ve had an opportunity to learn from what it’s like to operate MASQUE on mobile devices, at scale, we plan to integrate it into our <a href="https://www.cloudflare.com/zero-trust">Zero Trust</a> enterprise product suite.</p>
 	<div class="flex anchor relative">
 		<h3 id="were-not-saying-goodbye-to-wireguard">We’re not saying goodbye to WireGuard</h3>
-		<a href="https://blog.cloudflare.com/#were-not-saying-goodbye-to-wireguard" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#were-not-saying-goodbye-to-wireguard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -20,7 +20,7 @@
 	<p>That being said, the protocol is not without its issues. Like many tradeoffs in technology, WireGuard’s strengths are also its drawbacks. While simple, it is also rigid: it’s not possible to extend it easily, for example, for session management, congestion control, or to recover more quickly from error-state behaviors we’re familiar with. Finally, neither the protocol nor the cryptography it uses are standards-based, making it difficult to keep up with the strongest known cryptography (<a href="https://blog.cloudflare.com/post-quantum-for-all">post-quantum crypto</a>, for example).</p>
 	<div class="flex anchor relative">
 		<h3 id="we-want-to-move-quic-ly">We want to move QUIC-ly</h3>
-		<a href="https://blog.cloudflare.com/#we-want-to-move-quic-ly" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#we-want-to-move-quic-ly" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -39,7 +39,7 @@
 	<p>Naturally, we’d want the proxying protocol we use for so many people’s everyday browsing to take advantage of these benefits. For example, the QUIC unreliable datagram extension doesn't help much for standard web traffic but it's ideal for tunneling UDP or IP packets that expect an unreliable substrate beneath them. Without the unreliable aspect, the protocols on top can get upset and start to perform badly. Datagrams help <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">unlock QUIC's proxying potential</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="masque-a-new-era-for-vpn-performance-and-flexibility">MASQUE: A new era for VPN performance and flexibility</h3>
-		<a href="https://blog.cloudflare.com/#masque-a-new-era-for-vpn-performance-and-flexibility" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#masque-a-new-era-for-vpn-performance-and-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -69,7 +69,7 @@
 	<p>The magic of supporting MASQUE is that it combines some pretty cool (and very Cloudflare-y!) elements: a standards-based proxying protocol that provides real user-facing performance benefits, built upon Cloudflare’s widely available Anycast network, and encryption of that last-mile between that network and your phone.</p>
 	<div class="flex anchor relative">
 		<h3 id="so-how-can-i-use-it">So how can I use it?</h3>
-		<a href="https://blog.cloudflare.com/#so-how-can-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#so-how-can-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -85,7 +85,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="protocols-come-and-go-but-our-privacy-promise-remains-the-same">Protocols come and go, but our privacy promise remains the same</h3>
-		<a href="https://blog.cloudflare.com/#protocols-come-and-go-but-our-privacy-promise-remains-the-same" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#protocols-come-and-go-but-our-privacy-promise-remains-the-same" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

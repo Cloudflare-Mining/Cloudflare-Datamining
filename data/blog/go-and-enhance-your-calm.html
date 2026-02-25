@@ -7,7 +7,7 @@
 	</figure>
 	<div class="flex anchor relative">
 		<h3 id="http-2-is-powerful-but-it-can-be-easy-to-misuse">HTTP/2 is powerful – but it can be easy to misuse</h3>
-		<a href="https://blog.cloudflare.com/#http-2-is-powerful-but-it-can-be-easy-to-misuse" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#http-2-is-powerful-but-it-can-be-easy-to-misuse" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -24,7 +24,7 @@
 	<p>A client that PINGs the Cloudflare edge too frequently will trigger our <a href="https://www.cve.org/CVERecord?id=CVE-2019-9512"><u>CVE-2019-9512</u></a> mitigations, causing us to close the connection. Shortly after we <a href="https://blog.cloudflare.com/road-to-grpc"><u>launched support for gRPC</u></a> in 2020, we encountered interoperability issues with some gRPC clients that sent many PINGs as part of a <a href="https://grpc.io/blog/grpc-go-perf-improvements/#bdp-estimation-and-dynamic-flow-control-window"><u>performance optimization for window tuning</u></a>. We also discovered that the Rust Hyper crate had a feature called Adaptive Window that emulated the design and triggered a similar <a href="https://github.com/hyperium/hyper/issues/2526"><u>problem</u></a> until Hyper made a <a href="https://github.com/hyperium/hyper/pull/2550"><u>fix</u></a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="solving-a-microservice-miscommunication-mystery">Solving a microservice miscommunication mystery</h3>
-		<a href="https://blog.cloudflare.com/#solving-a-microservice-miscommunication-mystery" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#solving-a-microservice-miscommunication-mystery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -80,7 +80,7 @@ t2.ReadIdleTimeout = 5 * time.Second</code></pre>
 	<p>To prove we had fixed the root cause, the production client was updated with a similar fix. A few hours later, all the ENHANCE_YOUR_CALM closures were eliminated.</p>
 	<div class="flex anchor relative">
 		<h3 id="reading-bodies-in-go-can-be-unintuitive">Reading bodies in Go can be unintuitive</h3>
-		<a href="https://blog.cloudflare.com/#reading-bodies-in-go-can-be-unintuitive" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#reading-bodies-in-go-can-be-unintuitive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -113,7 +113,7 @@ if err := json.NewDecoder(resp.Body).Decode(&amp;respBody); err != nil {
 
 	<div class="flex anchor relative">
 		<h2 id="actions-to-take-if-you-encounter-enhance_your_calm">Actions to take if you encounter ENHANCE_YOUR_CALM</h2>
-		<a href="https://blog.cloudflare.com/#actions-to-take-if-you-encounter-enhance_your_calm" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#actions-to-take-if-you-encounter-enhance_your_calm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>

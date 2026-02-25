@@ -19,7 +19,7 @@
 	<p>At Cloudflare, our <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Gen 9 server</a> was based on Intel Skylake 6162 with a TDP of 150W, our <a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">Gen 10 server</a> was based on AMD Rome 7642 at 240W, and our <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">Gen 11 server</a> was based on AMD Milan 7713 at 240W. Today, <a href="https://www.amd.com/system/files/documents/epyc-9004-series-processors-data-sheet.pdf">AMD EPYC 9004 Series SKU Stack</a> default TDP goes up to 360W and is configurable up to 400W. <a href="https://ark.intel.com/content/www/us/en/ark/products/codename/126212/products-formerly-sapphire-rapids.html#@Server">Intel Sapphire Rapid SKU stack</a> default TDP goes up to 350W. This trend of rising TDP is expected to continue with the next generation of x86 CPU offerings.</p>
 	<div class="flex anchor relative">
 		<h2 id="designing-multi-generational-cooling-solutions">Designing multi-generational cooling solutions</h2>
-		<a href="https://blog.cloudflare.com/#designing-multi-generational-cooling-solutions" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#designing-multi-generational-cooling-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -30,7 +30,7 @@
 	<p>This poses a challenge, because the next generation of AMD CPUs, while being socket compatible with the current gen, rise up to 500W TDP and we expect other vendors to follow a similar trend in subsequent generations. In order to future-proof, and re-use as much of Gen 12 design as possible for future generations across all x86 CPU products, we will need a scalable thermal solution. Moreover, many co-location facilities where Cloudflare deploys servers have a rack power limit. With total system power consumption at north of 750 Watt per node, and after accounting for space utilized by networking gear, we would have been underutilizing rack space by as much as 50%.</p>
 	<div class="flex anchor relative">
 		<h3 id="we-have-a-problem">We have a problem!</h3>
-		<a href="https://blog.cloudflare.com/#we-have-a-problem" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#we-have-a-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
@@ -59,7 +59,7 @@
 	<p>Thermal simulations provided by Cloudflare vendors showed that 4x 60mm fans or 4x 80mm fans at less than 40 Watt per fan is sufficient to cool the system. That is a theoretical savings of at least 150 Watt compared to 8x 40mm fans in a 1U design, which would result in significant Operational Expenditure (OPEX) savings and a boost to TCO improvement. Switching to a 2U form factor also gives us the benefit of fully utilizing our rack power budget and our rack space, and provides ample room for the addition of PCIe attached accelerators / GPUs, including dual-slot form factor options.</p>
 	<div class="flex anchor relative">
 		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-left-5">
+		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
 			<svg width="16" height="16" viewBox="0 0 24 24">
 				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
 			</svg>
