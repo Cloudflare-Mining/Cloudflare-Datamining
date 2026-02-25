@@ -32,6 +32,7 @@
 	"RegistrationID": "string; Identifier of the client registration which initiated the network session, if applicable (for example, WARP Registration ID).",
 	"ResolvedFQDN": "string; The fully qualified domain name of the destination.",
 	"RuleEvaluationDurationMs": "int; The duration taken by Secure Web Gateway applying applicable Network, HTTP, and Egress rules to the network session in milliseconds.",
+	"SNI": "string; The server name indication (SNI) value from the TLS handshake, if applicable.",
 	"SessionEndTime": "int or string; The network session end timestamp with nanosecond precision.",
 	"SessionID": "string; The identifier of this network session.",
 	"SessionStartTime": "int or string; The network session start timestamp with nanosecond precision.",
