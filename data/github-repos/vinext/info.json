@@ -21,8 +21,11 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
-		"fix/create-next-app-missing-rsdw",
+		"ci/commit-version-bump",
+		"ci/publish-chat-notification",
+		"fix/cli-version",
 		"fix/rsc-optimizedeps-react-server",
-		"main"
+		"main",
+		"opencode/mighty-mountain"
 	]
 }
