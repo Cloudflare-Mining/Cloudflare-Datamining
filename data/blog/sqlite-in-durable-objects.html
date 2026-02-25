@@ -341,7 +341,7 @@ new_sqlite_classes = ["FlightSeating"]
 	<p>For SQLite-backed Durable Objects, we have completely replaced the persistence layer with a new system built from scratch, called Storage Relay Service, or SRS. SRS has already been powering D1 for over a year, and can now be used more directly by applications through Durable Objects.</p>
 	<p>SRS is based on a simple idea:</p>
 	<blockquote>
-		<p><i>Local disk is fast and randomly-accessible, but expensive and prone to disk failures. Object storage (like </i><a href="https://developers.cloudflare.com/r2"><i><u>R2</u></i></a><i>) is cheap and durable, but much slower than local disk and not designed for database-like access patterns. Can we get the best of both worlds by using a local disk as a cache on top of object storage?</i></p>
+		<p><i>Local disk is fast and randomly-accessible, but expensive and prone to disk failures. Object storage (like </i><a href="https://www.cloudflare.com/developer-platform/products/r2"><i><u>R2</u></i></a><i>) is cheap and durable, but much slower than local disk and not designed for database-like access patterns. Can we get the best of both worlds by using a local disk as a cache on top of object storage?</i></p>
 	</blockquote>
 	<p>So, how does it work?</p>
 	<div class="flex anchor relative">

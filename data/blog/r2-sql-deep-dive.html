@@ -3,7 +3,7 @@
 <div class="post-content lh-copy gray1">
 	<p>How do you run SQL queries over petabytes of data… without a server?</p>
 	<p>We have an answer for that: <a href="https://developers.cloudflare.com/r2-sql"><u>R2 SQL</u></a>, a serverless query engine that can sift through enormous datasets and return results in seconds.</p>
-	<p>This post details the architecture and techniques that make this possible. We'll walk through our Query Planner, which uses <a href="https://developers.cloudflare.com/r2/data-catalog"><u>R2 Data Catalog</u></a> to prune terabytes of data before reading a single byte, and explain how we distribute the work across Cloudflare’s <a href="https://www.cloudflare.com/network"><u>global network</u></a>, <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a> and <a href="https://developers.cloudflare.com/r2"><u>R2</u></a> for massively parallel execution.</p>
+	<p>This post details the architecture and techniques that make this possible. We'll walk through our Query Planner, which uses <a href="https://developers.cloudflare.com/r2/data-catalog"><u>R2 Data Catalog</u></a> to prune terabytes of data before reading a single byte, and explain how we distribute the work across Cloudflare’s <a href="https://www.cloudflare.com/network"><u>global network</u></a>, <a href="https://developers.cloudflare.com/workers"><u>Workers</u></a> and <a href="https://www.cloudflare.com/developer-platform/products/r2"><u>R2</u></a> for massively parallel execution.</p>
 	<div class="flex anchor relative">
 		<h3 id="from-catalog-to-query">From catalog to query</h3>
 		<a href="https://blog.cloudflare.com/#from-catalog-to-query" aria-hidden="true" class="relative sm:absolute sm:-start-5">

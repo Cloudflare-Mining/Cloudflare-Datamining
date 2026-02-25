@@ -14,7 +14,7 @@
 	</figure>
 	<p>
 		Cloudflare’s network serves millions of requests per second across diverse geographies. How do we know that HMD will react quickly the next time we accidentally release code that contains a bug? HMD performs a testing strategy called <a href="https://en.wikipedia.org/wiki/Backtesting"><u>backtesting</u></a>, outside the release process, which uses historical incident data to test how long it would take to react to degrading signals in a future release.</p>
-	<p>We use Thanos to join thousands of small Prometheus deployments into a single unified query layer while keeping our monitoring reliable and cost-efficient. To backfill historical incident metric data that has fallen out of Prometheus’ retention period, we use our object storage solution, <a href="https://blog.cloudflare.com/tag/cloudflare-r2"><u>R2</u></a>.</p>
+	<p>We use Thanos to join thousands of small Prometheus deployments into a single unified query layer while keeping our monitoring reliable and cost-efficient. To backfill historical incident metric data that has fallen out of Prometheus’ retention period, we use our <a href="https://www.cloudflare.com/developer-platform/products/r2">object storage solution</a>, R2.</p>
 	<p>Today, we store 4.5 billion distinct time series for a year of retention, which results in roughly 8 petabytes of data in 17 million objects distributed all over the globe.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TlfqQIPqS7TVxFB38PztG/65dc562db7af5304562b3fed9ab6486d/3.png" alt="" class="kg-image" width="1366" height="498" loading="lazy">
