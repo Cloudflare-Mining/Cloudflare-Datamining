@@ -167,6 +167,18 @@
 			"type": "containers_security_alert",
 			"description": "Get notifications when a potential threat has been identified in Containers",
 			"filter_options": []
+		},
+		{
+			"display_name": "Cloudforce One Threat Events Saved Query Daily Digest Alert",
+			"type": "stakeout_saved_query_daily_digest_alert",
+			"description": "Get daily notifications with new threat events that were detected for your saved queries",
+			"filter_options": []
+		},
+		{
+			"display_name": "Cloudforce One Threat Events Saved Query Immediate Alert",
+			"type": "stakeout_saved_query_immediate_alert",
+			"description": "Get immediate notifications when new threat events for your saved queries are detected",
+			"filter_options": []
 		}
 	],
 	"DoS Protection": [
