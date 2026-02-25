@@ -135,33 +135,6 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3E2iS7ZDPxHu8uWll4UcGV",
-								"title": "Keep your site online 24/7/365",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare's unmetered DDoS protection ensures uninterrupted online presence, with 24/7 expert support—safeguarding your site from attacks of any size, type, or duration. Plus, rate limit specific IPs by deploying up to 5 custom rate limiting rules.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3Y3kSXK7xp7Cjdqe9IBsNB/f4d127e723cd1e68383cf0d19c0ee76f/security-shield-protection-1__1_.svg"
-									},
-									"description": "Shield icon"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "7al6cYr6CGo47pMXlamXio",
 								"title": "Defend against website attacks",
 								"makeTitleLink": null,
@@ -178,33 +151,6 @@
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5b3ukfoY9BpcbnxK1cEvJs/78b3069991fa76f7b062113f6db17576/internet-globe.svg"
 									},
 									"description": "Orange icon of a globe"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "18EXmijQdN9vyUMs1h8wbb",
-								"title": "Reduce the risk of reputation damage from a cyber attack",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare safeguards your reputation from cyber threats by effectively blocking or challenging sophisticated bots (highly variable traffic signatures and novel bot attacks) using machine learning. Unlock protection along with basic analytics for the last 7 days by deploying the Business plan version of Super Bot Fight Mode.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ekrF3dQ9wlkBCY0Km9Rsw/2c6f76a6e909a6bec5d42ef5e83366e9/security-waf.svg"
-									},
-									"description": ""
 								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -368,38 +314,6 @@
 								"featureList3": null
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "45aFuwWHXJOvl1bKAjiDqy",
-						"title": "Ready to use Cloudflare?",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "large",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "2XT8dzpI6vVeVOJZlgAxjm",
-							"elementName": "Get Business business plan cta btn",
-							"standardText": null,
-							"text": "Get Business",
-							"url": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_biz",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
 					},
 					{
 						"locale": "en-US",
@@ -842,7 +756,20 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"callToAction": null
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "BzhTYyTCjQM2igJSZ7Nhm",
+									"elementName": "AddOns-Video Streaming-Activate Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/stream",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							},
 							{
 								"locale": "en-US",
@@ -913,6 +840,81 @@
 									"standardText": null,
 									"text": "Activate",
 									"url": "https://dash.cloudflare.com/firewall",
+									"loggedInUrl": null,
+									"buttonModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOns-Stream",
+								"contentfulId": "1udBthnD2b2GpVgVvIE44G",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "354f7679-9260-56e3-8424-c7ab413df9c4",
+									"altText": "Browser video ",
+									"title": "Browser video ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5d6MBxb68TRVNSdYh7HvEC/f0975c8b91fa63e0b1f324c48b88b963/video-browser.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Stream",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Stream makes video storage, encoding, and playback easy. Start for $5 per month for 1,000 minutes of video stored. Or, with a Pro or Business Plan, you get 100 free minutes of video storage and 10,000 minutes of video delivery every month included with your plan.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Performance",
+								"pricingText": "Starting at $5 per month. 100 minutes of video stored included with Pro and Business plans",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3BAVogjsFzWGBzfg9smGKJ",
+									"elementName": "AddOns-Image Resizing-Learn more",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/developer-platform/products/cloudflare-stream/",
+									"elementModal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "4wLwslDqtSnbo9koSomzpl",
+									"elementName": "AddOns-Stream-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/?to=/:account/stream",
 									"loggedInUrl": null,
 									"buttonModal": null,
 									"openInNewTab": false,
@@ -995,94 +997,6 @@
 								}
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "6MHM7AtVM1rChtdHz7hgCa",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": null,
-						"linkUrl": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "light-blue",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17ovo10a1mEsAZ7ZwFKfFl/d0d561ddb71ecdb723357bb2f79bc979/logo_mars_gray_32px-wrapper.svg"
-								},
-								"description": "Mars logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pVS5WdHv30fvQQjL9ShmS/73f3d8dab084401767f1d35c8911cb86/l-oreal-3-logo-png-transparent__1_.png"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Gps1TUuUvlobFOEXbnJlI/df914dce0414a8cfccb70c090f271304/logo_doordash_gray_32px-wrapper.svg"
-								},
-								"description": "Doordash logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67NI5PUHwR6yUSWHGPL1rM/1a2179da46b2df3eb6d8c4435bafeaa4/logo_garmin_gray_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4XvU5jUDORLwd0GPHpGjGz/8afefcaa6cc4bceb070a68275f32f330/logo_ibm.svg"
-								},
-								"description": "IBM logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2TfcZ86qvZor2xtI2z4Vvr/ef54112582296119f4296869c34ba025/logo_23andme_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mhur0vl8q716TyGFZuCIG/acb851172c83f325ae99e527ef4c216e/logo_shopify_color_32px-wrapper.svg"
-								},
-								"description": "Shopify logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7lhZTNuuLxtB38r8n1VORb/9fbfad924669a02deb97668b9c8d163b/logo_lending-tree_color_32px-wrapper.svg"
-								},
-								"description": null
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/47baOjkvX7lLtmTdWvCYI9/009360a8301d33def2ea3ffe22a922df/logo_labcorp_color_32px-wrapper.svg"
-								},
-								"description": "LabCorp logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/26kszL2y2X7zTR2edZPDUY/1a9d00bc8c441346e6dd06bd82204972/logo_ncr_gray_32px-wrapper.svg"
-								},
-								"description": "NCR logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JniCZlkcKI9iHgormG8j3/b94cf97c93844f2db74d566fc512aef1/logo_thomson-reuters_gray_32px-wrapper.svg"
-								},
-								"description": "Thomson Reuters logo"
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5YRPa33UFrfL2zoZd2AXTq/658995f16c7ee4818875c254c18573d3/logo_zendesk_gray_32px-wrapper.svg"
-								},
-								"description": null
-							}
-						],
-						"logoListAssetFile": [],
-						"logoUrlList": null
 					},
 					{
 						"contentTypeId": "bladeEnablement",
