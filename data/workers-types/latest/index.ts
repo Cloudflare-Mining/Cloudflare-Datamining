@@ -9596,7 +9596,7 @@ export declare abstract class Ai<
    * });
    * ```
    */
-  aiSearch: AiSearchAccountService;
+  aiSearch(): AiSearchAccountService;
   /**
    * @deprecated AutoRAG has been replaced by AI Search.
    * Use `env.AI.aiSearch` instead for better API design and new features.
