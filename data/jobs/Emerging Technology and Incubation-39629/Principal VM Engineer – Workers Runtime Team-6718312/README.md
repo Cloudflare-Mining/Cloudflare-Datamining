@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Available Locations: Aarhus, Denmark | Austin, TX | Lisbon, Portugal | London, UK | Munich, Germany</strong></h3>
+<h3><strong>Available Locations: Remote in US and Europe</strong></h3>
 <h3><strong>Principal VM Engineer – Workers Runtime Team</strong></h3>
 <h4><strong>About the Department</strong></h4>
 <p>The <strong>Emerging Technologies &amp; Incubation (ETI)</strong> team at Cloudflare builds and launches bold, new products that push the boundaries of what’s possible on the internet. By leveraging Cloudflare’s massive network and edge computing capabilities, we solve complex problems at a scale few others can achieve.</p>

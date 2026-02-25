@@ -13,7 +13,7 @@
 	"education": "education_optional",
 	"internal_job_id": 3099306,
 	"location": {
-		"name": "Hybrid"
+		"name": "Distributed"
 	},
 	"metadata": [
 		{
@@ -26,7 +26,10 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Munich, Germany"
+				"Austin, US",
+				"Germany",
+				"Lisbon, Portugal",
+				"London, UK"
 			],
 			"value_type": "multi_select"
 		},
@@ -40,7 +43,7 @@
 		}
 	],
 	"id": 6718312,
-	"updated_at": "2026-02-12T07:05:58-05:00",
+	"updated_at": "2026-02-25T05:44:22-05:00",
 	"requisition_id": "559",
 	"title": "Principal VM Engineer – Workers Runtime Team",
 	"company_name": "Cloudflare",
@@ -56,15 +59,69 @@
 	],
 	"offices": [
 		{
-			"id": 48350,
-			"name": "Munich, Germany",
-			"location": "München, Bayern, Germany",
+			"id": 74843,
+			"name": "EMEA",
+			"location": "Dubai, United Arab Emirates",
+			"child_ids": [
+				82439,
+				86073,
+				78483,
+				82452,
+				77970,
+				82454,
+				82455,
+				82456,
+				89601,
+				114974,
+				265930,
+				84343,
+				69464,
+				63782,
+				84344,
+				19988,
+				48350,
+				48758
+			],
+			"parent_id": null
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 82439,
+			"name": "Remote Germany",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82455,
+			"name": "Remote Portugal",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82456,
+			"name": "Remote UK",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
 		},
 		{
 			"id": 86073,
 			"name": "Remote Denmark",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 89601,
+			"name": "Remote Poland",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
