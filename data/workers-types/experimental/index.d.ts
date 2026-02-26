@@ -635,10 +635,16 @@ type DurableObjectRoutingMode = "primary-only";
 interface DurableObjectNamespaceGetDurableObjectOptions {
   locationHint?: DurableObjectLocationHint;
   routingMode?: DurableObjectRoutingMode;
+  version?: {
+    cohort?: string;
+  };
 }
 interface DurableObjectClass<
   _T extends Rpc.DurableObjectBranded | undefined = undefined,
 > {}
+interface DurableObjectNamespaceGetDurableObjectOptionsVersionOptions {
+  cohort?: string;
+}
 interface DurableObjectState<Props = unknown> {
   waitUntil(promise: Promise<any>): void;
   readonly exports: Cloudflare.Exports;
@@ -647,6 +653,7 @@ interface DurableObjectState<Props = unknown> {
   readonly storage: DurableObjectStorage;
   container?: Container;
   facets: DurableObjectFacets;
+  version?: DurableObjectStateVersion;
   blockConcurrencyWhile<T>(callback: () => Promise<T>): Promise<T>;
   acceptWebSocket(ws: WebSocket, tags?: string[]): void;
   getWebSockets(tag?: string): WebSocket[];
@@ -780,6 +787,9 @@ interface FacetStartupOptions<
 > {
   id?: DurableObjectId | string;
   class: DurableObjectClass<T>;
+}
+interface DurableObjectStateVersion {
+  cohort?: string;
 }
 interface AnalyticsEngineDataset {
   writeDataPoint(event?: AnalyticsEngineDataPoint): void;
@@ -4089,8 +4099,18 @@ type LoopbackServiceStub<
   T extends Rpc.WorkerEntrypointBranded | undefined = undefined,
 > = Fetcher<T> &
   (T extends CloudflareWorkersModule.WorkerEntrypoint<any, infer Props>
-    ? (opts: { props?: Props }) => Fetcher<T>
-    : (opts: { props?: any }) => Fetcher<T>);
+    ? (opts: {
+        props?: Props;
+        version?: {
+          cohort?: string | null;
+        };
+      }) => Fetcher<T>
+    : (opts: {
+        props?: any;
+        version?: {
+          cohort?: string | null;
+        };
+      }) => Fetcher<T>);
 type LoopbackDurableObjectClass<
   T extends Rpc.DurableObjectBranded | undefined = undefined,
 > = DurableObjectClass<T> &
@@ -11917,6 +11937,86 @@ type ImageOutputOptions = {
   background?: string;
   anim?: boolean;
 };
+interface ImageMetadata {
+  id: string;
+  filename?: string;
+  uploaded?: string;
+  requireSignedURLs: boolean;
+  meta?: Record<string, unknown>;
+  variants: string[];
+  draft?: boolean;
+  creator?: string;
+}
+interface ImageUploadOptions {
+  id?: string;
+  filename?: string;
+  requireSignedURLs?: boolean;
+  metadata?: Record<string, unknown>;
+  creator?: string;
+  encoding?: "base64";
+}
+interface ImageUpdateOptions {
+  requireSignedURLs?: boolean;
+  metadata?: Record<string, unknown>;
+  creator?: string;
+}
+interface ImageListOptions {
+  limit?: number;
+  cursor?: string;
+  sortOrder?: "asc" | "desc";
+  creator?: string;
+}
+interface ImageList {
+  images: ImageMetadata[];
+  cursor?: string;
+  listComplete: boolean;
+}
+interface HostedImagesBinding {
+  /**
+   * Get detailed metadata for a hosted image
+   * @param imageId The ID of the image (UUID or custom ID)
+   * @returns Image metadata, or null if not found
+   */
+  details(imageId: string): Promise<ImageMetadata | null>;
+  /**
+   * Get the raw image data for a hosted image
+   * @param imageId The ID of the image (UUID or custom ID)
+   * @returns ReadableStream of image bytes, or null if not found
+   */
+  image(imageId: string): Promise<ReadableStream<Uint8Array> | null>;
+  /**
+   * Upload a new hosted image
+   * @param image The image file to upload
+   * @param options Upload configuration
+   * @returns Metadata for the uploaded image
+   * @throws {@link ImagesError} if upload fails
+   */
+  upload(
+    image: ReadableStream<Uint8Array> | ArrayBuffer,
+    options?: ImageUploadOptions,
+  ): Promise<ImageMetadata>;
+  /**
+   * Update hosted image metadata
+   * @param imageId The ID of the image
+   * @param options Properties to update
+   * @returns Updated image metadata
+   * @throws {@link ImagesError} if update fails
+   */
+  update(imageId: string, options: ImageUpdateOptions): Promise<ImageMetadata>;
+  /**
+   * Delete a hosted image
+   * @param imageId The ID of the image
+   * @returns True if deleted, false if not found
+   */
+  delete(imageId: string): Promise<boolean>;
+  /**
+   * List hosted images with pagination
+   * @param options List configuration
+   * @returns List of images with pagination info
+   * @throws {@link ImagesError} if list fails
+   */
+  list(options?: ImageListOptions): Promise<ImageList>;
+}
 interface ImagesBinding {
   /**
    * Get image metadata (type, width and height)
@@ -11936,6 +12036,10 @@ interface ImagesBinding {
     stream: ReadableStream<Uint8Array>,
     options?: ImageInputOptions,
   ): ImageTransformer;
+  /**
+   * Access hosted images CRUD operations
+   */
+  readonly hosted: HostedImagesBinding;
 }
 interface ImageTransformer {
   /**
