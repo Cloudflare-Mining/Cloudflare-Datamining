@@ -7,33 +7,31 @@
 </div>
 <p><strong>Available Locations: Atlanta, US, Austin, US, Denver, US, New York, US, Seattle, US, Toronto, Canada, Washington DC, US, Lisbon, Portugal, London, UK</strong></p>
 <p><strong>About the role</strong></p>
-<p>Cloudflare’s dashboard is the gateway to our mission of building a better Internet. As the Senior Product Manager for Growth and Adoption, you will lead the charge in defining the "Aha" moment for every user—from individual developers to Fortune 500 enterprises. Your goal is to move users from "idea" to "deployed product" in a single, seamless workflow.</p>
-<p>This is an AI-first role where you are expected to do the majority of your work—prototyping, bug fixing, and building—leveraging AI coding agents to achieve maximum velocity. You will focus on the end-to-end user experience (UX) and optimize for high-velocity learning with the goal of showing users the magic of Cloudflare ASAP to drive long-term retention.</p>
-<p>This role sits on the platform product team.</p>
+<p>Cloudflare's dashboard is how millions of customers experience our network — from their first deployment to managing global infrastructure at scale. As the Senior Product Manager for Dashboard Growth and Adoption, you will lead the reinvention of this experience for an AI-first world.</p>
+<p>This isn't a role about adding AI features to an existing product. It's about rethinking the dashboard from first principles: What does a great customer experience look like when AI can understand intent, take action, and handle complexity on behalf of the user? How does the interface evolve when agents — not just humans — will eventually be the primary actors? Your job is to answer those questions by shipping, measuring, and iterating fast.</p>
+<p>You will use AI tools for the majority of your own work — prototyping, debugging, writing specs, analyzing experiments — and you will build products that bring that same leverage to our customers. This role sits on the Platform Product team.</p>
+<p><br><br></p>
 <h3><strong>Problems you may face:</strong></h3>
 <ul>
-	<li>The "Aha" Moment: How do we shorten the path from sign-up to a user’s first successful deployment across dozens of complex use cases?</li>
-	<li>Natural Language UX: To what extent do we transition the dashboard from a traditional UI to a natural language interface where users can manage their entire infrastructure via a chatbot? And how do we do that?</li>
-	<li>AI-Driven Velocity: How do you use AI agents to prototype and ship experiments faster than traditional development cycles while maintaining the "elegance of implementation" and high craft standards?</li>
-	<li>How can the dashboard provide individual product teams at Cloudflare with a powerful canvas to deliver world-class experiences? Can we maintain a tech stack and common design language that empowers teams to build great experiences rather than constrain them?</li>
-	<li>Human Connection: As you automate tedious tasks with AI, how will you use that saved time to connect deeper with our customers on Discord, X, and in person to understand their evolving challenges?</li>
+	<li>Time to value: How do we get users — from solo developers to enterprise teams — from sign-up to their first successful outcome as fast as possible, across dozens of complex use cases?</li>
+	<li>Natural language as interface: To what extent do we evolve the dashboard from a traditional UI to one where users can manage their entire infrastructure through conversation? Where does natural language win, and where does it get in the way? How to maximize customer outcomes by partnering with other teams?</li>
+	<li>AI-first (and soon, Agent-first) design: How do we redesign the dashboard for humans who direct and supervise AI and agents to act on their behalf, not just humans who click through forms?</li>
+	<li>AI-powered velocity: How do you use AI coding agents to prototype, ship experiments faster than traditional development cycles, and to make better decisions to take customer experience to the next level?</li>
+	<li>Platform as canvas: How can the dashboard give Cloudflare's internal product teams a powerful, flexible foundation to deliver great experiences — without the platform becoming a constraint?</li>
 </ul>
 <h3><strong>Key Competencies:</strong></h3>
 <ul>
-	<li>AI-first + world-class execution: You start every task with AI tools. You are comfortable feeding error logs into agents, building your own internal tools, and acting as a "serious reviewer" for AI-generated code and content.</li>
-	<li>A/B experimentation &amp; high-velocity learnings: You thrive on A/B testing and rapid prototyping. You use data-informed decisions to iterate on onboarding flows, constantly measuring impact on customer retention and adoption metrics.</li>
-	<li>UX mastery: You prioritize <em>how it works</em> over <em>how it looks</em>. You are committed to ending "shipping the org chart" and instead building workflows centered on user intent.</li>
-	<li>Technical taste &amp; discretion: You understand that while AI can build quickly, you ensure every feature shipped is elegant and actually solves a customer problem. Have world-class UX sense and a high bar for craft. Define and communicate the vision and strategic direction for the Cloudflare customer experience.</li>
-	<li>Roadmap prioritization: Develop and maintain a product roadmap that balances short-term dashboard improvements with projects that contribute to the long-term strategic vision</li>
-	<li>Cross-functional partnership: Collaborate with engineering, product design, and context experience design to draft and review product requirement documents, design specs, and engineering specs. Also, partner with marketing, sales, customer support, business intelligence, and other cross-functional teams to ensure successful product launches, user adoption, and experiment analysis</li>
+	<li>AI-first builder. You start every task with AI tools. You're comfortable feeding error logs into agents, building your own internal tools, and acting as a rigorous reviewer for AI-generated code and content. You use AI to move faster — and you hold the output to a high standard.</li>
+	<li>Agent-first product thinking. You don't just think about what users do today — you think about what happens when agents do it for them. You have a point of view on how interfaces, workflows, and trust models change in an agentic world, and you can translate that into a concrete roadmap.</li>
+	<li>UX for AI interfaces. You know the difference between a natural language interface that feels magical and one that feels like a chatbot bolted onto a form. You prioritize how it works over how it looks. You are committed to ending "shipping the org chart" and instead building workflows centered on user intent.</li>
+	<li>Experimentation and velocity. You thrive on A/B testing and rapid prototyping. You make data-informed decisions and constantly measure impact on retention and adoption. You don't wait for perfect — you ship, learn, and iterate.</li>
+	<li>Data fluency: You can build your own dashboards and write your own SQL. You don't wait for an analyst to tell you if an experiment worked.</li>
+	<li>Technical taste and discretion. You understand that AI can build quickly, but you ensure every feature shipped is elegant and actually solves a customer problem. You have a high bar for craft and can define and communicate a clear UX vision to engineers and designers.</li>
 </ul>
 <h3>Bonus Points:</h3>
 <ul>
-	<li>Coding Proficiency: You are comfortable using coding agents (like OpenCode) to build functional prototypes or fix bugs yourself, rather than just documenting them in tickets.</li>
-	<li>Data Fluency: You can build your own dashboards and run your own SQL; you don't wait for an analyst to tell you if an experiment was successful.</li>
-	<li>Codex Contributor: Experience or interest in contributing to an Engineering Codex that defines the best practices used to train our internal coding agents</li>
-	<li>UX chops: Understanding the modern UX stack with enough fidelity to hold your own with engineers will be highly beneficial. An engineering background would be helpful. An alternate source of credibility on this front might come from having developed a web property yourself.</li>
-	<li>Data-fluency: There is no team of analysts at Cloudflare. Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?&nbsp;&nbsp;</li>
+	<li>Coding proficiency: You're comfortable using coding agents to build functional prototypes or fix bugs yourself, rather than just filing tickets.&nbsp;</li>
+	<li>UX credibility: You understand the modern frontend stack well enough to hold your own with engineers. An engineering background or experience shipping your own web product is a strong signal.</li>
 	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
