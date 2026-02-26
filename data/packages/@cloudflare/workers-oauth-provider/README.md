@@ -81,6 +81,12 @@ export default new OAuthProvider({
   // Defaults to false.
   allowImplicitFlow: false,
 
+  // Optional: Controls whether the plain PKCE code_challenge_method is allowed.
+  // OAuth 2.1 recommends using S256 exclusively as plain offers no cryptographic protection.
+  // When false, only S256 is accepted and advertised in the metadata endpoint.
+  // Defaults to true for backward compatibility.
+  allowPlainPKCE: true,
+
   // Optional: Controls whether public clients (clients without a secret, like SPAs)
   // can register via the dynamic client registration endpoint.
   // When true, only confidential clients can register.
@@ -303,6 +309,18 @@ new OAuthProvider({
 ```
 
 By default, the `onError` callback is set to ``({ status, code, description }) => console.warn(`OAuth error response: ${status} ${code} - ${description}`)``.
+
+## Standards Compliance
+
+This library implements the following OAuth and MCP specifications:
+
+- [OAuth 2.1 (draft-ietf-oauth-v2-1-13)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13) — Core authorization framework with PKCE
+- [OAuth 2.0 Authorization Server Metadata (RFC 8414)](https://datatracker.ietf.org/doc/html/rfc8414) — `/.well-known/oauth-authorization-server` discovery endpoint
+- [OAuth 2.0 Protected Resource Metadata (RFC 9728)](https://datatracker.ietf.org/doc/html/rfc9728) — `/.well-known/oauth-protected-resource` discovery endpoint
+- [OAuth 2.0 Dynamic Client Registration (RFC 7591)](https://datatracker.ietf.org/doc/html/rfc7591) — Dynamic client registration endpoint
+- [OAuth Client ID Metadata Documents (draft-ietf-oauth-client-id-metadata-document)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-client-id-metadata-document) — HTTPS URLs as client IDs
+
+These are the specifications required by the [MCP authorization specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization).
 
 ## Implementation Notes
 
