@@ -239,6 +239,7 @@
 			}
 		},
 		running: "Running",
+		success: "Success",
 		complete: "Completed",
 		error: "Errored",
 		sleep: "Sleep",

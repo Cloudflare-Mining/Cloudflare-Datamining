@@ -232,7 +232,11 @@
 			},
 			hybrid_search: {
 				title: "Hybrid Search",
-				description: "Enable hybrid search to combine vector and keyword search for improved results."
+				description: "Enable hybrid search to combine vector and keyword search for improved results.",
+				fusion_method: {
+					title: "Fusion method",
+					description: "Select how vector and keyword search scores are combined."
+				}
 			},
 			chunking: {
 				title: "Chunking",
@@ -454,7 +458,8 @@
 		},
 		hybrid_search: {
 			title: "Hybrid search",
-			description: "Enable hybrid search to combine vector and keyword search for improved results."
+			description: "Enable hybrid search to combine vector and keyword search for improved results.",
+			fusion_method: "Fusion method"
 		},
 		public_url: {
 			title: "Public URL",
@@ -754,6 +759,16 @@
 		anything_goes: {
 			title: "Loose",
 			description: "Low similarity, max reuse"
+		}
+	},
+	fusion_method: {
+		rrf: {
+			title: "Reciprocal Rank Fusion",
+			description: "Combines results by merging rankings from both search methods."
+		},
+		max: {
+			title: "Maximum score",
+			description: "Uses the highest score from either vector or keyword search."
 		}
 	},
 	errors: {

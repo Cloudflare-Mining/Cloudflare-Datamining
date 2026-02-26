@@ -3746,6 +3746,8 @@
 	"alerts.security_insights.issue_class.clearance_cookie_rate_limit_not_enabled": "Prevent attackers from reusing clearance cookies",
 	"alerts.security_insights.issue_class.skip_above_threshold": "Reduce skip rules for improved protection",
 	"alerts.security_insights.issue_class.mr_log_mode": "Managed Rules not enforced",
+	"alerts.security_insights.issue_class.upgrade_to_lcc": "Upgrade to improved leaked credentials detection",
+	"alerts.security_insights.issue_class.stale_bot_settings": "Stale bot settings",
 	"analytics.common.based_sample_rate_tooltip": "Based on sample data",
 	"analytics.common.export_csv": "Export as CSV",
 	"analytics.common.export_json": "Export as JSON",
@@ -7126,6 +7128,7 @@
 	"filter_editor.value_in_creatable_placeholder": "Enter multiple values",
 	"filter_editor.value_in_select_placeholder": "Select multiple values",
 	"filter_editor.value_placeholder": "e.g. %{example}",
+	"filter_editor.value_select_placeholder": "Search and select a value",
 	"filter_editor.warnings.javascript_detection_disabled": "Bots JavaScript Detection must be enabled. <0>Learn more</0>",
 	"filter_editor.warnings.javascript_detection_enabled": "Warning: Please ensure your rule expression only captures traffic from devices that have already submitted a JavaScript Detection response. <0>Learn more</0>",
 	"filter_editor.warnings.waf_content_scanning": "Content scanning fields only apply to hostnames or zones on ENT plans.",
@@ -8618,5 +8621,12 @@
 	"common.cloud_provider.azure": "Microsoft Azure",
 	"magic.nav_announcement.title": "The 'Networking' navigation structure is changing",
 	"magic.nav_announcement.description": "We're updating your navigation to focus on common tasks and solutions instead of product names.",
-	"magic.nav_announcement.button": "Got it"
+	"magic.nav_announcement.button": "Got it",
+	"magic.remaining_percentage": "%{percentage}% remaining",
+	"magic.completed_percentage": "%{percentage}% complete",
+	"magic.common.na": "N/A",
+	"magic.common.go_back": "Go Back",
+	"magic.common.done": "Done",
+	"magic.common.skip": "Skip",
+	"magic.common.continue": "Continue"
 }

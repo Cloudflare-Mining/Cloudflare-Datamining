@@ -344,7 +344,9 @@
 				path: "Path",
 				host: "Host",
 				content_type: "Content type",
-				requests: "Allowed requests"
+				requests: "Allowed requests",
+				referral_traffic: "Referral Traffic",
+				bytes_transferred: "Bytes Transferred"
 			}
 		},
 		stats: {

@@ -6,6 +6,7 @@
 		description: "We are currently performing maintenance on the Abuse Reports page. If you expect to see a block but can't find it on this page, please visit the Blocked Content page to view any blocks against your account.",
 		view_blocked_content: "View Blocked Content →"
 	},
+	suspended_account_banner: "Cloudflare Trust & Safety has suspended your account. You cannot request review on mitigations while it is suspended.",
 	reports_table: {
 		empty_state: {
 			default: "You have no abuse reports.",

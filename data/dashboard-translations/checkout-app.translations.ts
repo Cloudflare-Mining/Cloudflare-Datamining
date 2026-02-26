@@ -54,6 +54,7 @@
 		},
 		summary: {
 			due_today: "Due today",
+			included_features: "Included features",
 			plus_taxes: "Plus any applicable taxes and fees listed on your invoice, including state taxes, local taxes, VAT and GST.",
 			base_fee_charged_today_usage_monthly: "Base fee charged today. Additional usage beyond included allowance billed monthly.",
 			charged_monthly_for_usage: "Your account will only be charged for usage beyond the included free tier. Billing is calculated monthly based on actual usage.",

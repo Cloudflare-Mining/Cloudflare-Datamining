@@ -863,7 +863,22 @@
 			table_header_status: "Status",
 			edit_hostnames: "Edit hostnames",
 			revoke_certificate: "Revoke certificate",
-			more_options: "More options"
+			more_options: "More options",
+			hostname_drawer_title: "Certificate Details",
+			hostname_input_label: "Associated Hostnames",
+			hostname_count_singular: "%{count} hostname",
+			hostname_count_plural: "%{count} hostnames",
+			hostname_input_placeholder: "Enter a hostname (e.g. api.example.com)",
+			hostname_add_button: "Add",
+			hostname_list_label: "Hostnames",
+			status_active: "Active",
+			status_expired: "Expired",
+			hostname_no_hostnames: "No hostnames associated with this certificate.",
+			hostname_save_error: "Failed to update hostname associations. Please try again.",
+			hostname_fetch_error: "Failed to load hostname associations. Please try again.",
+			hostname_remove_aria: "Remove hostname %{hostname}",
+			hostname_duplicate_error: "This hostname is already in the list.",
+			hostname_invalid_error: "Please enter a valid hostname."
 		}
 	},
 	staging_certificates: {

@@ -52,9 +52,12 @@
 		check_from: "Check From"
 	},
 	prod_log_explorer: {
+		log_explorer: "Log Explorer",
 		eos_ingestion: "EOS Ingestion",
-		ingestion_usage_pricing: "Ingestion usage pricing",
-		gb_of_data_ingested: "GB of data ingested"
+		ingestion_usage_pricing: "%{price} per GB ingested",
+		gb_of_data_ingested: "GB of data ingested",
+		usage_based_analytics: "Usage-based analytics and logging",
+		data_ingestion: "Data Ingestion"
 	},
 	prod_r2: {
 		title: "R2",
