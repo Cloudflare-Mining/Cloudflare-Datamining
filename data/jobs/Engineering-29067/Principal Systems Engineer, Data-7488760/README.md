@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
+<p><strong>Available Locations: Austin, Denver, Washington DC, Atlanta</strong></p>
 <h2>About the Team</h2>
 <p>The Core Data team’s mission is building a centralized data platform for Cloudflare that provides&nbsp; secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We facilitate access to data from federated sources across the company for dashboarding, ad-hoc querying and in-product use cases. We power data pipelines and data products, secure and monitor data, and drive data governance at Cloudflare. Our work enables every individual at the company to act with greater information and make more informed decisions.&nbsp;</p>
 <h2>About the Role</h2>
