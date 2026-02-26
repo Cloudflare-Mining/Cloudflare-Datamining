@@ -57,7 +57,7 @@
   unless on (instance) (machine_in_maintenance == 1)
   unless on (datacenter) (datacenter_disabled == 1)
 )</code></pre>
-	<p>Most of these series have a cardinality of approximately the number of machines in our fleet. That’s a substantial amount of data we need to fetch from object storage and transmit home for query evaluation, as well as a significant number of series we need to decode and join together.</p>
+	<p>Most of these series have a cardinality of approximately the number of machines in our fleet. That’s a substantial amount of data we need to fetch from <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a> and transmit home for query evaluation, as well as a significant number of series we need to decode and join together.</p>
 	<p>Since this is a fairly common query that is issued in every HMD run, it makes sense to precompute it. In the Prometheus ecosystem, this is commonly done with <a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules"><u>recording rules</u></a>:</p>
 	<pre class="language-Rust"><code class="language-Rust">hmd:release_scopes:info{tier="tier3", color="green"}</code></pre>
 	<p>Aside from looking much cleaner, this also reduces the load at query time significantly. Since all the joins involved can only have matches within a data center, it is well-defined to evaluate those rules directly in the Prometheus instances inside the data center itself.</p>

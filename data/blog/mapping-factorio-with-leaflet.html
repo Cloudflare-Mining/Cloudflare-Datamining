@@ -29,7 +29,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>Leaflet maps contain thousands of small images for X/Y/Z coordinates. Amazon S3 and Google Cloud Storage are the obvious choices for <a href="https://www.cloudflare.com/developer-platform/products/r2">low-latency object storage.</a> However, after 3.5 &nbsp;months in operation, FactorioMaps.com contains 17 million map images (&gt;1TB). For this use-case, $0.05 per 10,000 upload API calls and $0.08 to 0.12/GB for egress would add up quickly. Backblaze B2 is a better fit because upload API calls are free, <a href="https://blog.cloudflare.com/bandwidth-alliance">egress bandwidth is $0.00/GB to Cloudflare</a>, and storage is 1/4th the price of the competition.</p>
+	<p>Leaflet maps contain thousands of small images for X/Y/Z coordinates. Amazon S3 and Google Cloud Storage are the obvious choices for <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">low-latency object storage</a>. However, after 3.5 &nbsp;months in operation, FactorioMaps.com contains 17 million map images (&gt;1TB). For this use-case, $0.05 per 10,000 upload API calls and $0.08 to 0.12/GB for egress would add up quickly. Backblaze B2 is a better fit because upload API calls are free, <a href="https://blog.cloudflare.com/bandwidth-alliance">egress bandwidth is $0.00/GB to Cloudflare</a>, and storage is 1/4th the price of the competition.</p>
 	<p>Backblaze B2 requires a prefix of /file/bucketName on all public files, which I don’t want. To remove it, I added a VPS proxy to rewrite paths and add a few 301 redirects. Unfortunately, the latency from the user -&gt; VPS -&gt; B2 was sub-par averaging 800-1200ms in the US.</p>
 	<div class="flex anchor relative">
 		<h3 id="a-closer-look-at-leaflet">A Closer Look At Leaflet</h3>
