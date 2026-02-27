@@ -1,0 +1,1198 @@
+<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PmvEMAT9O9baPCM6c10L/f0545638b5eea241968bb490f73c7dbd/image5.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>At 3 AM, a single IP requested a login page. Harmless. But then, across several hosts and paths, the same source began appending <code>?debug=true</code> — the sign of an attacker probing the environment to assess the technology stack and plan a breach.</p>
+	<p>Minor misconfigurations, overlooked firewall events, or request anomalies feel harmless on their own. But when these small signals converge, they can explode into security incidents known as “toxic combinations.” These are exploits where an attacker discovers and compounds many minor issues — such as a debug flag left on a web application or an unauthenticated application path — to breach systems or exfiltrate data.</p>
+	<p>Cloudflare’s network observes requests to your stack, and as a result, has the data to identify these toxic combinations as they form. In this post, we’ll show you how we surface these signals from our application security data. We’ll go over the most common types of toxic combinations and the dangerous vulnerabilities they present. We will also provide details on how you can use this intelligence to identify and address weaknesses in your stack.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="how-we-define-toxic-combinations">How we define toxic combinations</h2>
+		<a href="https://blog.cloudflare.com/#how-we-define-toxic-combinations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>You could define a "toxic combination" in a few different ways, but here is a practical one based on how we look at our own datasets. Most web attacks eventually scale through automation; once an attacker finds a viable exploit, they'll usually script it into a bot to finish the job. <b>By looking at the intersection of bot traffic, specific application paths, request anomalies and misconfigurations, we can spot a potential breach.</b> We use this framework to reason through millions of requests per second.&nbsp;</p>
+	<p>While point defenses like Web Application Firewalls (WAF), bot detection, and API protection have evolved to incorporate behavioral patterns and reputation signals, they still primarily focus on evaluating the risk of an individual request. In contrast, Cloudflare’s detections for "toxic combinations" shift the lens toward the broader intent, analyzing the confluence of context surrounding multiple signals to identify a brewing incident.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OpmbSTqET3QnkdoHXJeim/882c3385ad8e172bfbec3dafffe7477e/image2.png" alt="" class="kg-image" width="1936" height="434" loading="lazy">
+	</figure>
+	<p><sup><i>Toxic combinations as contextualized detections</i></sup></p>
+	<p>That shift in perspective matters because many real incidents have no obvious exploit payload, no clean signatures, and no single event that screams “attack.” So, in what follows, we combine the following context to construct several toxic combinations:</p>
+	<ul>
+		<li>
+			<p><b>Bot signals</b></p>
+		</li>
+		<li>
+			<p><b>Application paths</b>, especially sensitivity ones: admin, debug, metrics, search, payment flows</p>
+		</li>
+		<li>
+			<p><b>Anomalies</b> including: unexpected http codes, geo jumps, identity mismatch, high ID churn, rate-limit evasion (distributed IPs doing the same thing), request or success rate spikes&nbsp;</p>
+		</li>
+		<li>
+			<p><b>Vulnerabilities or misconfigurations</b>: missing session cookies or auth headers, predictable identifiers</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="examples-of-toxic-combinations-on-popular-application-stacks">Examples of toxic combinations on popular application stacks</h2>
+		<a href="https://blog.cloudflare.com/#examples-of-toxic-combinations-on-popular-application-stacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We looked at a 24-hour window of Cloudflare data to see how often these patterns actually appear in popular application stacks. As shown in the table below, about 11% of the hosts we analyzed were susceptible to these combinations, skewed by vulnerable WordPress websites. Excluding WordPress sites, only 0.25% of hosts show signs of exploitable toxic combinations. While rare, they represent hosts that are vulnerable to compromise.</p>
+	<p>To make sense of the data, we broke it down into three stages of an attack:</p>
+	<ul>
+		<li>
+			<p><b>Estimated hosts probed:</b> This is the "wide net." It counts unique hosts where we saw HTTP requests targeting specific sensitive paths (like <code>/wp-admin</code>).</p>
+		</li>
+		<li>
+			<p><b>Estimated hosts filtered by toxic combination:</b> Here, we narrowed the list down to the specific hosts that actually met our criteria for a toxic combination.</p>
+		</li>
+		<li>
+			<p><b>Estimated reachable hosts:</b> Unique hosts that responded successfully to an exploit attempt—the "smoking gun" of an attack. A simple <code>200 OK</code> response (such as one triggered by appending <code>?debug=true</code>) could be a false positive. We validated paths to filter out noise caused by authenticated paths that require credentials despite the 200 status code, redirects that mask the true exploit path, and origin misconfigurations that serve success codes for unreachable paths.</p>
+		</li>
+	</ul>
+	<p>In the next sections, we’ll dig into the specific findings and the logic behind the combinations that drove them. The detection queries provided are necessary but not sufficient without testing for reachability; it is possible that the findings might be false positives. In some cases, <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a> allows these queries to be executed on unsampled Cloudflare logs.&nbsp;</p>
+	<p><code>Table 1. Summary of Toxic Combinations</code></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SKPqWjxWQQ0FTBnuVxWjh/a72acfa372fc7838b69b30ab63147bd5/image3.png" alt="" class="kg-image" width="1999" height="420" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pOvYlwo3LqNp02WayM1xh/b4d8b9405cdda1475f013a2c000f17d4/image6.png" alt="" class="kg-image" width="1999" height="755" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="probing-of-sensitive-administrative-endpoints-across-multiple-application-hosts">Probing of sensitive administrative endpoints across multiple application hosts</h2>
+		<a href="https://blog.cloudflare.com/#probing-of-sensitive-administrative-endpoints-across-multiple-application-hosts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect"><b>What did we detect?&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We observed automated tools scanning common administrative login pages — like WordPress admin panels (/wp-admin), database managers, and server dashboards. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+	<pre class="language-Rust"><code class="language-Rust">SELECT
+  clientRequestHTTPHost,
+  COUNT(*) AS request_count
+FROM
+  http_requests 
+WHERE
+  timestamp &gt;= '{{START_DATE}}'
+  AND timestamp &lt;= '{{END_DATE}}'
+  AND edgeResponseStatus = 200
+  AND clientRequestPath LIKE '{{PATH_PATTERN}}' //e.g. '%/wp-admin/%'
+  AND NOT match( extract(clientRequestHTTPHost, '^[^:/]+'), '^\\d{1,3}(\\.\\d{1,3}){3}(:\\d+)?$') // comment this line for Cloudflare Log Explorer
+  AND botScore &lt; {{BOT_THRESHOLD}} // we used botScore &lt; 30
+GROUP BY
+  clientRequestHTTPHost
+ORDER BY
+  request_count DESC;</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="why-is-this-serious"><b>Why is this serious?</b></h3>
+		<a href="https://blog.cloudflare.com/#why-is-this-serious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Publicly accessible admin panels can enable <a href="https://www.cloudflare.com/learning/bots/brute-force-attack"><u>brute force attacks</u></a>. If successful, an attacker can further compromise the host by adding it to a botnet that probes additional websites for similar vulnerability. In addition, this toxic combination can lead to:</p>
+	<ul>
+		<li>
+			<p><b>Exploit scanning:</b> Attackers identify the specific software version you're running (like Tomcat or WordPress) and launch targeted exploits for known vulnerabilities (CVEs).</p>
+		</li>
+		<li>
+			<p><b>User enumeration:</b> Many admin panels accidentally reveal valid usernames, which helps attackers craft more convincing phishing or login attacks.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it"><b>What evidence supports it?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toxic combination of bots automation and exposed management interfaces like<b>: /wp-admin/</b>,<b> /admin/</b>,<b> /administrator/</b>, <b>/actuator/*</b>,<b> /_search/</b>,<b> /phpmyadmin/</b>,<b> /manager/html/</b>, and<b> /app/kibana/</b>.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Bot activity</b></p>
+				</td>
+				<td>
+					<p><b>Bot Score &lt; 30</b></p>
+				</td>
+				<td>
+					<p>Bot signatures typical of vulnerability scanners</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Anomaly</b></p>
+				</td>
+				<td>
+					<p><b>Repeated Probing</b></p>
+				</td>
+				<td>
+					<p>Unusual hits on admin endpoints</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Vulnerability</b></p>
+				</td>
+				<td>
+					<p><b>Publicly accessible endpoint</b></p>
+				</td>
+				<td>
+					<p>Successful requests to admin endpoints</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this-finding"><b>How do I mitigate this finding?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this-finding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p><b>Implement </b><a href="https://www.cloudflare.com/sase/products/access"><b><u>Zero Trust Access</u></b></a>.<b>&nbsp;</b></p>
+		</li>
+		<li>
+			<p>If for any reason the endpoint has to remain public, implement<b> </b><a href="https://www.cloudflare.com/application-services/products/turnstile"><b><u>a challenge platform to add friction to bots</u></b></a>.</p>
+		</li>
+		<li>
+			<p><b>Implement IP allowlist:</b> Use your <a href="https://blog.cloudflare.com/wildcard-rules"><u>WAF</u></a> or server configuration to ensure that administrative paths are only reachable from your corporate VPN or specific office IP addresses.</p>
+		</li>
+		<li>
+			<p><b>Cloak admin paths:</b> If your platform allows it, rename default admin URLs (e.g., change <code>/wp-admin</code> to a unique, non-guessable string).</p>
+		</li>
+		<li>
+			<p><b>Deploy geo-blocking:</b> If your administrators only operate from specific countries, block all traffic to these sensitive paths coming from outside those regions.</p>
+		</li>
+		<li>
+			<p><b>Enforce multi-factor authentication (MFA):</b> Ensure every administrative entry point requires a second factor; a password alone is not enough to stop a dedicated crawler.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="unauthenticated-public-api-endpoints-allowing-mass-data-exposure-via-predictable-identifiers">Unauthenticated public API endpoints allowing mass data exposure via predictable identifiers</h2>
+		<a href="https://blog.cloudflare.com/#unauthenticated-public-api-endpoints-allowing-mass-data-exposure-via-predictable-identifiers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect"><b>What did we detect?&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We found API endpoints that are accessible to anyone on the Internet without a password or login (see <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication"><u>OWASP: API2:2023 – Broken Authentication</u></a>). Even worse, the way it identifies records (using simple, predictable ID numbers,see <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization"><u>OWASP: API1:2023- Broken Object Level Authorization</u></a>) allows anyone to simply "count" through your database — making it much simpler for attackers to enumerate and “scrape” your business records, without even visiting your website directly.</p>
+	<pre class="language-Rust"><code class="language-Rust">SELECT
+  uniqExact(clientRequestHTTPHost) AS unique_host_count
+FROM  http_requests
+WHERE timestamp &gt;= '2026-02-13'
+  AND timestamp &lt;= '2026-02-14'
+  AND edgeResponseStatus = 200
+  AND bmScore &lt; 30
+  AND (
+       match(extract(clientRequestQuery, '(?i)(?:^|[&amp;?])uid=([^&amp;]+)'),  '^[0-9]{3,10}$')
+    OR match(extract(clientRequestQuery, '(?i)(?:^|[&amp;?])user=([^&amp;]+)'), '^[0-9]{3,10}$')
+    OR length(extract(clientRequestQuery, '(?i)(?:^|[&amp;?])uid=([^&amp;]+)'))  BETWEEN 3 AND 8
+    OR length(extract(clientRequestQuery, '(?i)(?:^|[&amp;?])user=([^&amp;]+)')) BETWEEN 3 AND 8
+  )</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="why-is-this-serious"><b>Why is this serious?</b></h3>
+		<a href="https://blog.cloudflare.com/#why-is-this-serious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This is a "zero-exploit" vulnerability, meaning an attacker doesn't need to be a hacker to steal your data; they just need to change a number in a web link. This leads to:</p>
+	<ul>
+		<li>
+			<p><b>Mass Data Exposure:</b> Large-scale scraping of your entire customer dataset.</p>
+		</li>
+		<li>
+			<p><b>Secondary Attacks:</b> Stolen data is used for targeted phishing or account takeovers.</p>
+		</li>
+		<li>
+			<p><b>Regulatory Risk:</b> Severe privacy violations (GDPR/CCPA) due to exposing sensitive PII.</p>
+		</li>
+		<li>
+			<p><b>Fraud:</b> Competitors or malicious actors gaining insight into your business volume and customer base.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it"><b>What evidence supports it?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toxic combination of missing security controls and automation targeting particular API endpoints.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bot activity</p>
+				</td>
+				<td>
+					<p>Bot Score &lt; 30</p>
+				</td>
+				<td>
+					<p>High volume of requests from a single client fingerprint iterating through different IDs.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>High Cardinality of tid</p>
+				</td>
+				<td>
+					<p>A single visitor accessing hundreds or thousands of unique resource IDs in a short window.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Stable Response Size</p>
+				</td>
+				<td>
+					<p>Consistent JSON structures and file sizes, indicating successful data retrieval for each guessed ID.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vulnerability</p>
+				</td>
+				<td>
+					<p>Missing Auth Signals</p>
+				</td>
+				<td>
+					<p>Requests lack session cookies, Bearer tokens, or Authorization headers entirely.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Misconfiguration</p>
+				</td>
+				<td>
+					<p>Predictable Identifiers</p>
+				</td>
+				<td>
+					<p>The <code>tid</code> parameter uses low-entropy, predictable integers (e.g., 1001, 1002, 1003).</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>While the query checked for bot score and predictable identifiers, signals like high cardinality, stable response sizes and missing authentication were tested on a sample of traffic matching the query.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this-finding"><b>How do I mitigate this finding?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this-finding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p><b>Enforce authentication:</b> Immediately require a valid session or API key for the affected endpoint. Do not allow "Anonymous" access to data containing PII or business secrets.</p>
+		</li>
+		<li>
+			<p><b>Implement authorization (IDOR check):</b> Ensure the backend checks that the authenticated user actually has permission to view the specific <code>tid</code> they are requesting.</p>
+		</li>
+		<li>
+			<p><b>Use UUIDs:</b> Replace predictable, sequential integer IDs with long, random strings (UUIDs) to make "guessing" identifiers computationally impossible.</p>
+		</li>
+		<li>
+			<p><b>Deploy API Shield:</b> Enable Cloudflare <a href="https://blog.cloudflare.com/api-abuse-detection"><u>API Shield</u></a> with features like <b>Schema Validation</b> (to block unexpected inputs) and <b>BOLA Detection</b>.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="debug-parameter-probing-revealing-system-details">Debug parameter probing revealing system details</h2>
+		<a href="https://blog.cloudflare.com/#debug-parameter-probing-revealing-system-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect"><b>What did we detect?&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We found evidence of <code>debug=true</code> appended to web paths to reveal system details. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+	<pre class="language-Rust"><code class="language-Rust">SELECT
+  clientRequestHTTPHost,
+  COUNT(rayId) AS request_count
+FROM
+  http_requests
+WHERE
+  timestamp &gt;= '{{START_TIMESTAMP}}'
+  AND timestamp &lt; '{{END_TIMESTAMP}}'
+  AND edgeResponseStatus = 200
+  AND clientRequestQuery LIKE '%debug=false%'
+  AND botScore &lt; {{BOT_THRESHOLD}}
+GROUP BY
+  clientRequestHTTPHost
+ORDER BY
+  request_count DESC;</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="why-is-this-serious"><b>Why is this serious?</b></h3>
+		<a href="https://blog.cloudflare.com/#why-is-this-serious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While this doesn't steal data instantly, it provides an attacker with a high-definition map of your internal infrastructure. This "reconnaissance" makes their next attack much more likely to succeed because they can see:</p>
+	<ul>
+		<li>
+			<p><b>Hidden data fields:</b> Sensitive internal information that isn't supposed to be visible to users.</p>
+		</li>
+		<li>
+			<p><b>Technology stack details:</b> Specific software versions and server types, allowing them to look up known vulnerabilities for those exact versions.</p>
+		</li>
+		<li>
+			<p><b>Logic hints:</b> Error messages or stack traces that explain exactly how your code works, helping them find ways to break it.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it"><b>What evidence supports it?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toxic combination of automated probing and misconfigured diagnostic flags targeting the <b>Multiple Hosts and Application Paths.</b></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bot activity</p>
+				</td>
+				<td>
+					<p>Bot Score &lt; 30</p>
+				</td>
+				<td>
+					<p>Vulnerability scanner activity</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Response Size Increase</p>
+				</td>
+				<td>
+					<p>Significant jumps in data volume when a debug flag is toggled, indicating details or stack traces are being leaked. Add these additional conditions, if needed:</p>
+					<p><code>SELECT</code></p>
+					<p><code>AVG(edgeResponseBytes) AS avg_payload_size,&nbsp;</code></p>
+					<p><code>WHERE</code></p>
+					<p><code>edgeResponseBytes &gt; {{your baseline response size}}</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Repeated Path Probing</p>
+				</td>
+				<td>
+					<p>Rapid-fire requests across diverse endpoints (e.g., <b>/api, /login, /search</b>) specifically testing for the same diagnostic triggers. Add these conditions, if needed:
+
+						<code>SELECT</code>
+					</p>
+					<p><code>APPROX_DISTINCT(clientRequestPath) AS unique_endpoints_tested&nbsp;</code></p>
+					<p><code>HAVING&nbsp;</code></p>
+					<p><code>unique_endpoints_tested &gt; 1</code></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Misconfiguration</p>
+				</td>
+				<td>
+					<p>Debug Parameter Allowed</p>
+				</td>
+				<td>
+					<p>The presence of active "debug," "test," or "dev" flags in production URLs that change application behavior.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vulnerability</p>
+				</td>
+				<td>
+					<p>Schema disclosure</p>
+				</td>
+				<td>
+					<p>The appearance of internal-only JSON fields or "Firebase-style" .json dumps that reveal the underlying structure.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>While the query checked for bot score and paths with debug parameters, signals like repeated probing, response sizes and schema disclosure were tested on a sample of traffic matching the query.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this-finding"><b>How do I mitigate this finding?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this-finding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p><b>Disable debugging in production:</b> Ensure that all "debug" or "development" environment variables are strictly set to <code>false</code> in your production deployment configurations.</p>
+		</li>
+		<li>
+			<p><b>Filter parameters at the edge:</b> Use your <a href="https://blog.cloudflare.com/wildcard-rules"><u>WAF</u></a> or API Gateway to strip out known debug parameters (like <code>?debug=</code>, <code>?test=</code>,<code> ?trace=</code>) before they ever reach your application servers.</p>
+		</li>
+		<li>
+			<p><b>Sanitize error responses:</b> Configure your web servers (Nginx, Apache, etc.) to show generic error pages instead of detailed stack traces or internal system messages.</p>
+		</li>
+		<li>
+			<p><b>Audit firebase/DB rules:</b> If you are using Firebase or similar NoSQL databases, ensure that /<code>.json</code> path access is restricted via strict security rules, so public users cannot dump the entire schema or data.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="publicly-exposed-monitoring-endpoints-providing-internal-infrastructure-visibility">Publicly exposed monitoring endpoints providing internal infrastructure visibility</h2>
+		<a href="https://blog.cloudflare.com/#publicly-exposed-monitoring-endpoints-providing-internal-infrastructure-visibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect"><b>What did we detect?&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We discovered "health check" and monitoring dashboards are visible to the entire Internet. Specifically, paths like <code>/actuator/metrics</code> are responding to anyone who asks. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below::</p>
+	<pre class="language-Rust"><code class="language-Rust">SELECT
+  clientRequestHTTPHost,
+  count() AS request_count
+FROM http_requests
+WHERE timestamp &gt;= toDateTime('{{START_DATE}}')
+  AND timestamp &lt;  toDateTime('{{END_DATE}}')
+  AND botScore &lt; 30
+  AND edgeResponseStatus = 200
+  AND clientRequestPath LIKE '%/actuator/metrics%' // an example
+GROUP BY
+  clientRequestHTTPHost
+ORDER BY request_count DESC</code></pre>
+	<p><b>Why is this serious?</b></p>
+	<p>While these endpoints don't usually leak customer passwords directly, they provide the "blueprints" for a sophisticated attack. Exposure leads to:</p>
+	<ul>
+		<li>
+			<p><b>Strategic timing:</b> Attackers can monitor your CPU and memory usage in real-time to launch a <a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service"><u>Denial of Service (DoS) attack</u></a> exactly when your systems are already stressed.</p>
+		</li>
+		<li>
+			<p><b>Infrastructure mapping:</b> These logs often reveal the names of internal services, dependencies, and version numbers, helping attackers find known vulnerabilities to exploit.</p>
+		</li>
+		<li>
+			<p><b>Exploitation chaining:</b> Information about thread counts and environment hints can be used to bypass security layers or escalate privileges within your network.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it"><b>What evidence supports it?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Toxic combination of misconfigured access controls and automated reconnaissance targeting the <b>Asset/Path: /actuator/metrics, /actuator/prometheus, and /health</b>.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bot activity</p>
+				</td>
+				<td>
+					<p>Bot Score &lt; 30</p>
+				</td>
+				<td>
+					<p>Automated scanning tools are systematically checking for specific paths</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Monitoring Fingerprint</p>
+				</td>
+				<td>
+					<p>The response body matches known formats (Prometheus, Micrometer, or Spring Boot), confirming the system is leaking live data.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>HTTP 200 Status</p>
+				</td>
+				<td>
+					<p>Successful data retrieval from endpoints that should ideally return a 403 Forbidden or 404 Not Found to the public.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Misconfiguration</p>
+				</td>
+				<td>
+					<p>Public Monitoring Path</p>
+				</td>
+				<td>
+					<p>Public accessibility of internal-only endpoints like <code>/actuator/*</code> that are intended for private observability.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vulnerability</p>
+				</td>
+				<td>
+					<p>Missing Auth</p>
+				</td>
+				<td>
+					<p>These endpoints are reachable without a session token, API key, or IP-based restriction.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this-finding"><b>How do I mitigate this finding?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this-finding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p><b>Restrict access via WAF:</b> Immediately create a <a href="https://blog.cloudflare.com/wildcard-rules"><u>firewall rule</u></a> to block any external traffic requesting paths containing <code>/actuator/</code> or <code>/prometheus</code>.</p>
+		</li>
+		<li>
+			<p><b>Bind to localhost:</b> Reconfigure your application frameworks to only serve these monitoring endpoints on <code>localhost</code> (127.0.0.1) or a private management network.</p>
+		</li>
+		<li>
+			<p><b>Enforce basic auth:</b> If these must be accessed over the web, ensure they are protected by strong authentication (at a minimum, complex Basic Auth or mTLS).</p>
+		</li>
+		<li>
+			<p><b>Disable unnecessary endpoints:</b> In Spring Boot or similar frameworks, disable any "Actuator" features that are not strictly required for production monitoring.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="unauthenticated-search-endpoints-allowing-direct-index-dumping">Unauthenticated search endpoints allowing direct index dumping</h2>
+		<a href="https://blog.cloudflare.com/#unauthenticated-search-endpoints-allowing-direct-index-dumping" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect"><b>What did we detect?&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Search endpoints (like Elasticsearch or OpenSearch) that are usually meant for internal use are wide open to the public. The templatized query is:</p>
+	<pre class="language-Rust"><code class="language-Rust">SELECT
+  clientRequestHTTPHost,
+  count() AS request_count
+FROM http_requests
+WHERE timestamp &gt;= toDateTime('{{START_DATE}}')
+  AND timestamp &lt;  toDateTime('{{END_DATE}}')
+  AND botScore &lt; 30
+  AND edgeResponseStatus = 200
+AND clientRequestPath like '%/\_search%'
+AND NOT match(extract(clientRequestHTTPHost, '^[^:/]+'), '^\\d{1,3}(\\.\\d{1,3}){3}(:\\d+)?$')
+GROUP BY
+  clientRequestHTTPHost</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="why-is-this-serious"><b>Why is this serious?</b></h3>
+		<a href="https://blog.cloudflare.com/#why-is-this-serious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This is a critical vulnerability because it requires zero technical skill to exploit, yet the damage is extensive:</p>
+	<ul>
+		<li>
+			<p><b>Mass data theft:</b> Attackers can "dump" entire indices, stealing millions of records in minutes.</p>
+		</li>
+		<li>
+			<p><b>Internal reconnaissance:</b> By viewing your "indices" (the list of what you store), attackers can identify other high-value targets within your network.</p>
+		</li>
+		<li>
+			<p><b>Data sabotage:</b> Depending on the setup, an attacker might not just read data — they could potentially modify or delete your entire search index, causing a massive service outage.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it"><b>What evidence supports it?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are seeing a toxic combination of misconfigured exposure and automated traffic and data enumeration targeting <b>&nbsp;/_search, /_cat/indices, and /_cluster/health</b>.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bot activity</p>
+				</td>
+				<td>
+					<p>Bot Score &lt; 30</p>
+				</td>
+				<td>
+					<p>High-velocity automation signatures attempting to paginate through large datasets and "scrape" the entire index.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Unexpected&nbsp; Response Size</p>
+				</td>
+				<td>
+					<p>Large JSON response sizes consistent with bulk data retrieval rather than simple status checks.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Repeated Query Patterns</p>
+				</td>
+				<td>
+					<p>Systematic "enumeration" behavior where the attacker is cycling through every possible index name to find sensitive data.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vulnerability</p>
+				</td>
+				<td>
+					<p>/_search or /_cat/ Patterns</p>
+				</td>
+				<td>
+					<p>Direct exposure of administrative and query-level paths that should never be reachable via a public URL.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Misconfiguration</p>
+				</td>
+				<td>
+					<p>HTTP 200 Status</p>
+				</td>
+				<td>
+					<p>The endpoint is actively fulfilling requests from unauthorized external IPs instead of rejecting them at the network or application level.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>While the query checked for bot score and paths, signals like repeated query patterns, response sizes, and schema disclosure were tested on a sample of traffic matching the query.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this-finding"><b>How do I mitigate this finding?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this-finding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p><b>Restrict network access:</b> Immediately update your Firewall/Security Groups to ensure that search ports (e.g., 9200, 9300) and paths are only accessible from specific internal IP addresses.</p>
+		</li>
+		<li>
+			<p><b>Enable authentication:</b> Turn on "Security" features for your search cluster (like Shield or Search Guard) to require valid credentials for every API call.</p>
+		</li>
+		<li>
+			<p><b>WAF blocking:</b> Deploy a WAF rule to immediately block any request containing <code>/_search</code>, <code>/_cat</code>, or <code>/_cluster</code> coming from the public Internet.</p>
+		</li>
+		<li>
+			<p><b>Audit for data loss:</b> Review your database logs for large "Scroll" or "Search" queries from unknown IPs to determine exactly how much data was exfiltrated.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="successful-sql-injection-attempt-on-application-paths">Successful SQL injection attempt on application paths&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#successful-sql-injection-attempt-on-application-paths" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect"><b>What did we detect?&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’ve identified attackers who sent a malicious request—specifically a <a href="https://www.cloudflare.com/learning/security/threats/sql-injection"><u>SQL injection</u></a> designed to trick databases. A templatized version of the query, executable in <a href="https://www.cloudflare.com/application-services/products/log-explorer"><u>Cloudflare Log Explorer</u></a>, is below:</p>
+	<pre class="language-Rust"><code class="language-Rust">SELECT
+  clientRequestHTTPHost,
+  count() AS request_count
+FROM http_requests
+WHERE timestamp &gt;= toDateTime('{{START_DATE}}')
+  AND timestamp &lt;  toDateTime('{{END_DATE}}')
+  AND botScore &lt; 30
+AND wafmlScore&lt;30
+  AND edgeResponseStatus = 200
+AND LOWER(clientRequestQuery) LIKE '%sleep(%'
+GROUP BY
+  clientRequestHTTPHost
+ORDER BY request_count DESC</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="why-is-this-serious"><b>Why is this serious?</b></h3>
+		<a href="https://blog.cloudflare.com/#why-is-this-serious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This is the "quiet path" to a data breach. Because the system returned a successful status code (<b>HTTP 200</b>), these attacks often blend in with legitimate traffic. If left unaddressed, an attacker can:</p>
+	<ul>
+		<li>
+			<p><b>Refine their methods:</b> Use trial and error to find the exact payload that bypasses your filters.</p>
+		</li>
+		<li>
+			<p><b>Exfiltrate data:</b> Slowly drain database contents or leak sensitive secrets (like API keys) passed in URLs.</p>
+		</li>
+		<li>
+			<p><b>Stay invisible:</b> Most automated alerts look for "denied" attempts; a "successful" exploit is much harder to spot in a sea of logs.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it"><b>What evidence supports it?</b></h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are seeing a toxic combination of automated bot signals, anomalies and application-layer vulnerabilities targeting many application paths.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Bot</p>
+				</td>
+				<td>
+					<p>Bot Score &lt; 30</p>
+				</td>
+				<td>
+					<p>High probability of automated traffic; signatures and timing consistent with exploit scripts.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>HTTP 200 on sensitive path</p>
+				</td>
+				<td>
+					<p>Successful responses returning from a login endpoint that should have triggered a WAF block.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Repeated Mutations</p>
+				</td>
+				<td>
+					<p>High-frequency variations of the same request, indicating an attacker "tuning" their payload.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Vulnerability</p>
+				</td>
+				<td>
+					<p>Suspicious Query Patterns</p>
+				</td>
+				<td>
+					<p>Use of <code>SLEEP</code> commands and time-based patterns designed to probe database responsiveness.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this-finding"><b>How do I mitigate this finding?</b></h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this-finding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<ol>
+		<li>
+			<p><b>Immediate virtual patching:</b> Update your WAF rules to specifically block the SQL patterns identified (e.g., time-based probes).</p>
+		</li>
+		<li>
+			<p><b>Sanitize inputs:</b> Review the backend code for this path to ensure it uses prepared statements or parameterized queries.</p>
+		</li>
+		<li>
+			<p><b>Remediate secret leakage:</b> Move any sensitive data from URL parameters to the request body or headers. Rotate any keys flagged as leaked.</p>
+		</li>
+		<li>
+			<p><b>Audit logs:</b> Check database logs for the timeframe of the "HTTP 200" responses to see if any data was successfully extracted.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="examples-of-toxic-combinations-on-payment-flows">Examples of toxic combinations on payment flows</h2>
+		<a href="https://blog.cloudflare.com/#examples-of-toxic-combinations-on-payment-flows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Card testing and card draining are some of the most common fraud tactics. An attacker might buy a large batch of credit cards from the dark web. Then, to verify how many cards are still valid, they might test the card on a website by making small transactions. Once validated, they might use such cards to make purchases, such as gift cards, on popular shopping destinations.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="suspected-card-testing-on-payment-flows">Suspected card testing on payment flows</h2>
+		<a href="https://blog.cloudflare.com/#suspected-card-testing-on-payment-flows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect">What did we detect?</h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>On payment flows (<code>/payment</code>, <code>/checkou</code>t, <code>/cart)</code>, we found certain hours of the day when either the hourly request volume from bots or hourly payment success ratio spiked by more than <b>3 standard deviations</b> from their hourly baselines over the prior 30 days. This could be related to card testing where an attacker is trying to validate lots of stolen credits. Of course, marketing campaigns might cause request spikes while payment outages might cause sudden drops in success ratios.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1H3wKai5QCHPx0ukBHkjQp/5352f4cdd33a48148f401f450477c593/image4.png" alt="" class="kg-image" width="1999" height="642" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="why-is-this-serious">Why is this serious?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-this-serious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Payment success ratio drops coinciding with request spikes, in the absence of marketing campaigns or payment outages or other factors, <b>could</b> mean bots are in the middle of a massive card-testing run.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it">What evidence supports it?</h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We used a combination of bot signals and anomalies on <code>/payment</code>, <code>/checkout</code>, <code>/cart</code>:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Bot</b></p>
+				</td>
+				<td>
+					<p>Bot Score &lt; 30</p>
+				</td>
+				<td>
+					<p>High probability of automated traffic rather than humans making mistakes</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Volume Z-Score<b> </b>&gt; 3.0, calculated from request volume baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
+				</td>
+				<td>
+					<p>Scaling Event: The attacker is testing a batch of cards</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p>Success ratio Z<b> </b>&gt; 3.0, calculated from success ratio baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
+				</td>
+				<td>
+					<p>Sudden drops in success ratio may mean cards being declined as they are reported lost or stolen</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this">How do I mitigate this?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Use the 30-day payment paths hourly request volume baseline as the hourly rate limit for all requests with bot scores &lt; 30 on payment paths.&nbsp;&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="suspected-card-draining-on-payment-flows">Suspected card draining on payment flows</h2>
+		<a href="https://blog.cloudflare.com/#suspected-card-draining-on-payment-flows" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="what-did-we-detect">What did we detect?</h3>
+		<a href="https://blog.cloudflare.com/#what-did-we-detect" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>On payment flows (<code>/</code>payment, <code>/checkout</code>, <code>/cart)</code>, we found certain hours of the day when either the hourly request volume from humans (or bots impersonating humans) or hourly payment success ratio spiked by more than <b>3 standard deviations</b> from their hourly baselines over the prior 30 days. This could be related to card draining where an attacker (either humans or bots impersonating humans) is trying to purchase goods using valid but stolen credits. Of course, marketing campaigns might also cause request and success ratio spikes, so additional context in the form of typical payment requests from a given IP address is essential context, as shown in the figure.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dlOEPUAbCpazjvKJj2lzA/72342a72f7d0c9e3f350e44310aeeb70/image1.png" alt="" class="kg-image" width="1999" height="911" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="why-is-this-serious">Why is this serious?</h3>
+		<a href="https://blog.cloudflare.com/#why-is-this-serious" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Payment success ratio spikes coinciding with request spikes and high density of requests per IP address, in the absence of marketing campaigns or payment outages or other factors, <b>could</b> mean humans (or bots pretending to be humans) are making fraudulent purchases. Every successful transaction here could be a direct revenue loss or a chargeback in the making.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-evidence-supports-it">What evidence supports it?</h3>
+		<a href="https://blog.cloudflare.com/#what-evidence-supports-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We used a combination of bot signals and anomalies on <code>/payment</code>, <code>/checkout</code>, <code>/cart</code>:</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Ingredient</b></p>
+				</td>
+				<td>
+					<p><b>Signal</b></p>
+				</td>
+				<td>
+					<p><b>Description</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Bot</b></p>
+				</td>
+				<td>
+					<p>Bot Score &gt;= 30</p>
+				</td>
+				<td>
+					<p>High probability of human traffic which is expected to be allowed</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p><b>Volume Z-Score </b>&gt; 3.0, calculated from request volume baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
+				</td>
+				<td>
+					<p>The attacker is making purchases at higher rates than normal shoppers</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p><b>Success ratio Z </b>&gt; 3.0, calculated from success ratio baseline for a given hour based on the past 30 days and evaluated each hour. This factors daily seasonality as well.&nbsp;</p>
+				</td>
+				<td>
+					<p>Sudden increases in success ratio may mean valid cards being approved for purchase</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p><b>IP density </b>&gt; 5, calculated from payment requests per IP in any given hour divided by the average payment requests for that hour based on the past 30 days&nbsp;</p>
+				</td>
+				<td>
+					<p>Humans with 5X more purchases than typical humans in the past 30 days is a red flag</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Anomaly</p>
+				</td>
+				<td>
+					<p><b>JA4 diversity </b>&lt; 0.1, calculated from JA4s per payment requests in any given hour</p>
+				</td>
+				<td>
+					<p>JA4s with unusual hourly purchases are likely bots pretending to be humans</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="how-do-i-mitigate-this">How do I mitigate this?</h3>
+		<a href="https://blog.cloudflare.com/#how-do-i-mitigate-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>Identity-Based Rate Limiting:</b> Use IP density to implement rate limits for requests with bot score &gt;=30 on payment endpoints.</p>
+	<p><b>Monitor success ratio:</b> Alert on any hour when the <b>success ratio</b> for "human" traffic, with bot score &gt;=30 on payment endpoints, deviates by more than 3 standard deviations from its 30-day baseline.</p>
+	<p><b>Challenge:</b> If a high bot score request (likely human) hits <code>payment flows</code> more than 3 times in 10 minutes, trigger a challenge to slow them down</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-detections-in-the-dashboard-ai-powered-remediation">What’s next: detections in the dashboard, AI-powered remediation&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-detections-in-the-dashboard-ai-powered-remediation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are currently working on integrating these "toxic combination" detections directly into the Security Insights dashboard to provide immediate visibility for such risks. Our roadmap includes building AI-assisted remediation paths — where the dashboard doesn't just show you a toxic combination, but proposes the specific WAF rule or <a href="https://blog.cloudflare.com/api-abuse-detection"><u>API Shield</u></a> configuration required to neutralize it.</p>
+	<p>We would love to have you try our Security Insights featuring toxic combinations. You can <a href="https://www.cloudflare.com/lp/toxic-combinations-security"><u>join the waitlist here</u></a>.&nbsp;</p>
+</div>

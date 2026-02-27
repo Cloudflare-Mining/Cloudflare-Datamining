@@ -1,9 +1,9 @@
 <div class="mb2 gray5">24 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qjBI2UpJXcpCqgAY4SJkH/9e6489cd148e2c74d1bdd25dd08e6db5/image7.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>Handling data in streams is fundamental to how we build applications. To make streaming work everywhere, the <a href="https://streams.spec.whatwg.org"><u>WHATWG Streams Standard</u></a> (informally known as "Web streams") was designed to establish a common API to work across browsers and servers. It shipped in browsers, was adopted by Cloudflare Workers, Node.js, Deno, and Bun, and became the foundation for APIs like <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"><u>fetch()</u></a>. It's a significant undertaking, and the people who designed it were solving hard problems with the constraints and tools they had at the time.</p>
-	<p>But after years of building on Web streams — implementing them in both Node.js and Cloudflare Workers, debugging production issues for customers and runtimes, and helping developers work through far too many common pitfalls — I've come to believe that the standard API has fundamental usability and performance issues that cannot be fixed easily with incremental improvements alone. The problems aren't bugs; they're consequences of design decisions that may have made sense a decade ago, but don't align with how JavaScript developers write code today.</p>
+	<p>But after years of building on Web streams – implementing them in both Node.js and Cloudflare Workers, debugging production issues for customers and runtimes, and helping developers work through far too many common pitfalls – I've come to believe that the standard API has fundamental usability and performance issues that cannot be fixed easily with incremental improvements alone. The problems aren't bugs; they're consequences of design decisions that may have made sense a decade ago, but don't align with how JavaScript developers write code today.</p>
 	<p>This post explores some of the fundamental issues I see with Web streams and presents an alternative approach built around JavaScript language primitives that demonstrate something better is possible.&nbsp;</p>
-	<p>In benchmarks, this alternative can run anywhere between 2x to <i>120x</i> faster than Web streams in every runtime I've tested it on (including Cloudflare Workers, Node.js, Deno, Bun, and every major browser). The improvements are not due to clever optimizations, but fundamentally different design choices that more effectively leverage modern JavaScript language features. I'm not here to disparage the work that came before — I'm here to start a conversation about what can potentially come next.</p>
+	<p>In benchmarks, this alternative can run anywhere between 2x to <i>120x</i> faster than Web streams in every runtime I've tested it on (including Cloudflare Workers, Node.js, Deno, Bun, and every major browser). The improvements are not due to clever optimizations, but fundamentally different design choices that more effectively leverage modern JavaScript language features. I'm not here to disparage the work that came before; I'm here to start a conversation about what can potentially come next.</p>
 	<div class="flex anchor relative">
 		<h2 id="where-were-coming-from">Where we're coming from</h2>
 		<a href="https://blog.cloudflare.com/#where-were-coming-from" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -14,7 +14,7 @@
 	</div>
 	<p>The Streams Standard was developed between 2014 and 2016 with an ambitious goal to provide "APIs for creating, composing, and consuming streams of data that map efficiently to low-level I/O primitives." Before Web streams, the web platform had no standard way to work with streaming data.</p>
 	<p>Node.js already had its own <a href="https://nodejs.org/api/stream.html"><u>streaming API</u></a> at the time that was ported to also work in browsers, but WHATWG chose not to use it as a starting point given that it is chartered to only consider the needs of Web browsers. Server-side runtimes only adopted Web streams later, after Cloudflare Workers and Deno each emerged with first-class Web streams support and cross-runtime compatibility became a priority.</p>
-	<p>The design of Web streams predates async iteration in JavaScript. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of"><code><u>for await...of</u></code></a> syntax didn't land until <a href="https://262.ecma-international.org/9.0"><u>ES2018</u></a>, two years after the Streams Standard was initially finalized. This timing meant the API couldn't initially leverage what would eventually become the idiomatic way to consume asynchronous sequences in JavaScript. Instead, the spec introduced its own reader/writer acquisition model — and that decision rippled through every aspect of the API.</p>
+	<p>The design of Web streams predates async iteration in JavaScript. The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of"><code><u>for await...of</u></code></a> syntax didn't land until <a href="https://262.ecma-international.org/9.0"><u>ES2018</u></a>, two years after the Streams Standard was initially finalized. This timing meant the API couldn't initially leverage what would eventually become the idiomatic way to consume asynchronous sequences in JavaScript. Instead, the spec introduced its own reader/writer acquisition model, and that decision rippled through every aspect of the API.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X0niHShBlgF4LlpWYB7eC/f0bbf35f12ecc98a3888e6e3835acf3a/1.png" alt="" class="kg-image" width="1042" height="421" loading="lazy">
 	</figure>
@@ -59,7 +59,7 @@ for await (const chunk of stream) {
 			</svg>
 		</a>
 	</div>
-	<p>Web streams use a locking model to prevent multiple consumers from interleaving reads. When you call <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader"><code><u>getReader()</u></code></a>, the stream becomes locked. While locked, nothing else can read from the stream directly, pipe it, or even cancel it — only the code that is actually holding the reader can.</p>
+	<p>Web streams use a locking model to prevent multiple consumers from interleaving reads. When you call <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader"><code><u>getReader()</u></code></a>, the stream becomes locked. While locked, nothing else can read from the stream directly, pipe it, or even cancel it – only the code that is actually holding the reader can.</p>
 	<p>This sounds reasonable until you see how easily it goes wrong:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">async function peekFirstChunk(stream) {
   const reader = stream.getReader();
@@ -73,7 +73,7 @@ const first = await peekFirstChunk(stream);
 // TypeError: Cannot obtain lock — stream is permanently locked
 for await (const chunk of stream) { /* never runs */ }</code></pre>
 	<p>Forgetting <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/releaseLock"><code><u>releaseLock()</u></code></a> permanently breaks the stream. The <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked"><code><u>locked</u></code></a><code> </code>property tells you that a stream is locked, but not why, by whom, or whether the lock is even still usable. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo"><u>Piping</u></a> internally acquires locks, making streams unusable during pipe operations in ways that aren't obvious.</p>
-	<p>The semantics around releasing locks with pending reads were also unclear for years. If you called read() but didn't await it, then called releaseLock(), what happened? The spec was recently clarified to cancel pending reads on lock release — but implementations varied, and code that relied on the previous unspecified behavior can break.</p>
+	<p>The semantics around releasing locks with pending reads were also unclear for years. If you called read() but didn't await it, then called releaseLock(), what happened? The spec was recently clarified to cancel pending reads on lock release – but implementations varied, and code that relied on the previous unspecified behavior can break.</p>
 	<p>That said, it's important to recognize that locking in itself is not bad. It does, in fact, serve an important purpose to ensure that applications properly and orderly consume or produce data. The key challenge is with the original manual implementation of it using APIs like <code>getReader() </code>and <code>releaseLock()</code>. With the arrival of automatic lock and reader management with async iterables, dealing with locks from the users point of view became a lot easier.</p>
 	<p>For implementers, the locking model adds a fair amount of non-trivial internal bookkeeping. Every operation must check lock state, readers must be tracked, and the interplay between locks, cancellation, and error states creates a matrix of edge cases that must all be handled correctly.</p>
 	<div class="flex anchor relative">
@@ -84,8 +84,8 @@ for await (const chunk of stream) { /* never runs */ }</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader"><u>BYOB (bring your own buffer)</u></a> reads were designed to let developers reuse memory buffers when reading from streams — an important optimization intended for high-throughput scenarios. The idea is sound: instead of allocating new buffers for each chunk, you provide your own buffer and the stream fills it.</p>
-	<p>In practice, (and yes, there are always exceptions to be found) BYOB is rarely used to any measurable benefit. The API is substantially more complex than default reads, requiring a separate reader type (<code>ReadableStreamBYOBReader</code>) and other specialized classes (e.g. <code>ReadableStreamBYOBRequest</code>), careful buffer lifecycle management, and understanding of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer#transferring_arraybuffers"><code><u>ArrayBuffer</u></code><u> detachment</u></a> semantics. When you pass a buffer to a BYOB read, the buffer becomes detached — transferred to the stream — and you get back a different view over potentially different memory. This transfer-based model is error-prone and confusing:</p>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader"><u>BYOB (bring your own buffer)</u></a> reads were designed to let developers reuse memory buffers when reading from streams, an important optimization intended for high-throughput scenarios. The idea is sound: instead of allocating new buffers for each chunk, you provide your own buffer and the stream fills it.</p>
+	<p>In practice, (and yes, there are always exceptions to be found) BYOB is rarely used to any measurable benefit. The API is substantially more complex than default reads, requiring a separate reader type (<code>ReadableStreamBYOBReader</code>) and other specialized classes (e.g. <code>ReadableStreamBYOBRequest</code>), careful buffer lifecycle management, and understanding of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer#transferring_arraybuffers"><code><u>ArrayBuffer</u></code><u> detachment</u></a> semantics. When you pass a buffer to a BYOB read, the buffer becomes detached – transferred to the stream – and you get back a different view over potentially different memory. This transfer-based model is error-prone and confusing:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">const reader = stream.getReader({ mode: 'byob' });
 const buffer = new ArrayBuffer(1024);
 let view = new Uint8Array(buffer);
@@ -166,7 +166,7 @@ view = result.value; // Must reassign</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Backpressure — the ability for a slow consumer to signal a fast producer to slow down — is a first-class concept in Web streams. In theory. In practice, the model has some serious flaws.</p>
+	<p>Backpressure – the ability for a slow consumer to signal a fast producer to slow down – is a first-class concept in Web streams. In theory. In practice, the model has some serious flaws.</p>
 	<p>The primary signal is <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/desiredSize"><code><u>desiredSize</u></code></a> on the controller. It can be positive (wants data), zero (at capacity), negative (over capacity), or null (closed). Producers are supposed to check this value and stop enqueueing when it's not positive. But there's nothing enforcing this: <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultController/enqueue"><code><u>controller.enqueue()</u></code></a> always succeeds, even when desiredSize is deeply negative.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">new ReadableStream({
   start(controller) {
@@ -176,7 +176,7 @@ view = result.value; // Must reassign</code></pre>
     }
   }
 });</code></pre>
-	<p>Stream implementations can and do ignore backpressure; and some spec-defined features explicitly break backpressure. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee"><code><u>tee()</u></code></a>, for instance, creates two branches from a single stream. If one branch reads faster than the other, data accumulates in an internal buffer with no limit. A fast consumer can cause unbounded memory growth while the slow consumer catches up — and there's no way to configure this or opt out beyond canceling the slower branch.</p>
+	<p>Stream implementations can and do ignore backpressure; and some spec-defined features explicitly break backpressure. <a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee"><code><u>tee()</u></code></a>, for instance, creates two branches from a single stream. If one branch reads faster than the other, data accumulates in an internal buffer with no limit. A fast consumer can cause unbounded memory growth while the slow consumer catches up, and there's no way to configure this or opt out beyond canceling the slower branch.</p>
 	<p>Web streams do provide clear mechanisms for tuning backpressure behavior in the form of the <code>highWaterMark</code> option and customizable size calculations, but these are just as easy to ignore as <code>desiredSize</code>, and many applications simply fail to pay attention to them.</p>
 	<p>The same issues exist on the <code>WritableStream</code> side. A <code>WritableStream</code> has a <code>highWaterMark</code> and <code>desiredSize</code>. There is a <code>writer.ready</code> promise that producers of data are supposed to pay attention but often don't.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">const writable = getWritableStreamSomehow();
@@ -197,8 +197,8 @@ await writer.write(...);</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>The Web streams spec requires promise creation at numerous points — often in hot paths and often invisible to users. Each <code>read()</code> call doesn't just return a promise; internally, the implementation creates additional promises for queue management, <code>pull()</code> coordination, and backpressure signaling.</p>
-	<p>This overhead is mandated by the spec's reliance on promises for buffer management, completion, and backpressure signals. While some of it is implementation-specific, much of it is unavoidable if you're following the spec as written. For high-frequency streaming — video frames, network packets, real-time data — this overhead is significant.</p>
+	<p>The Web streams spec requires promise creation at numerous points, often in hot paths and often invisible to users. Each <code>read()</code> call doesn't just return a promise; internally, the implementation creates additional promises for queue management, <code>pull()</code> coordination, and backpressure signaling.</p>
+	<p>This overhead is mandated by the spec's reliance on promises for buffer management, completion, and backpressure signals. While some of it is implementation-specific, much of it is unavoidable if you're following the spec as written. For high-frequency streaming – video frames, network packets, real-time data – this overhead is significant.</p>
 	<p>The problem compounds in pipelines. Each <code>TransformStream</code> adds another layer of promise machinery between source and sink. The spec doesn't define synchronous fast paths, so even when data is available immediately, the promise machinery still runs.</p>
 	<p>For implementers, this promise-heavy design constrains optimization opportunities. The spec mandates specific promise resolution ordering, making it difficult to batch operations or skip unnecessary async boundaries without risking subtle compliance failures. There are many hidden internal optimizations that implementers do make but these can be complicated and difficult to get right.</p>
 	<p>While I was writing this blog post, Vercel's Malte Ubl published their own <a href="https://vercel.com/blog/we-ralph-wiggumed-webstreams-to-make-them-10x-faster"><u>blog post</u></a> describing some research work Vercel has been doing around improving the performance of Node.js' Web streams implementation. In that post they discuss the same fundamental performance optimization problem that every implementation of Web streams face:</p>
@@ -237,8 +237,8 @@ await writer.write(...);</code></pre>
 for (const url of urls) {
   await checkEndpoint(url);
 }</code></pre>
-	<p>This pattern has caused connection pool exhaustion in Node.js applications using <a href="https://nodejs.org/api/globals.html#fetch"><u>undici</u></a> (the <code>fetch() </code>implementation built into Node.js), and similar issues have appeared in other runtimes. The stream holds a reference to the underlying connection, and without explicit consumption or cancellation, the connection may linger until garbage collection — which may not happen soon enough under load.</p>
-	<p>The problem is compounded by APIs that implicitly create stream branches. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone"><code><u>Request.clone()</u></code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone"><code><u>Response.clone()</u></code></a> perform implicit <code>tee()</code> operations on the body stream — a detail that's easy to miss. Code that clones a request for logging or retry logic may unknowingly create branched streams that need independent consumption, multiplying the resource management burden.</p>
+	<p>This pattern has caused connection pool exhaustion in Node.js applications using <a href="https://nodejs.org/api/globals.html#fetch"><u>undici</u></a> (the <code>fetch() </code>implementation built into Node.js), and similar issues have appeared in other runtimes. The stream holds a reference to the underlying connection, and without explicit consumption or cancellation, the connection may linger until garbage collection – which may not happen soon enough under load.</p>
+	<p>The problem is compounded by APIs that implicitly create stream branches. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone"><code><u>Request.clone()</u></code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/clone"><code><u>Response.clone()</u></code></a> perform implicit <code>tee()</code> operations on the body stream – a detail that's easy to miss. Code that clones a request for logging or retry logic may unknowingly create branched streams that need independent consumption, multiplying the resource management burden.</p>
 	<p>Now, to be certain, these types of issues <i>are</i> implementation bugs. The connection leak was definitely something that undici needed to fix in its own implementation, but the complexity of the specification does not make dealing with these types of issues easy.</p>
 	<blockquote>
 		<p>"Cloning streams in Node.js's fetch() implementation is harder than it looks. When you clone a request or response body, you're calling tee() - which splits a single stream into two branches that both need to be consumed. If one consumer reads faster than the other, data buffers unbounded in memory waiting for the slow branch. If you don't properly consume both branches, the underlying connection leaks. The coordination required between two readers sharing one source makes it easy to accidentally break the original request or exhaust connection pools. It's a simple API call with complex underlying mechanics that are difficult to get right." - Matteo Collina, Ph.D. - Platformatic Co-Founder &amp; CTO, Node.js Technical Steering Committee Chair</p>
@@ -298,7 +298,7 @@ fastSource
   }
 });</code></pre>
 	<p>A difficulty here, however, is that the <code>TransformStreamDefaultController</code> does not have a ready promise mechanism like Writers do; so the <code>TransformStream</code> implementation would need to implement a polling mechanism to periodically check when <code>controller.desiredSize</code>&nbsp;becomes positive again.</p>
-	<p>The problem gets worse in pipelines. When you chain multiple transforms — say, parse, transform, then serialize — each <code>TransformStream</code> has its own internal readable and writable buffers. If implementers follow the spec strictly, data cascades through these buffers in a push-oriented fashion: the source pushes to transform A, which pushes to transform B, which pushes to transform C, each accumulating data in intermediate buffers before the final consumer has even started pulling. With three transforms, you can have six internal buffers filling up simultaneously.</p>
+	<p>The problem gets worse in pipelines. When you chain multiple transforms – say, parse, transform, then serialize – each <code>TransformStream</code> has its own internal readable and writable buffers. If implementers follow the spec strictly, data cascades through these buffers in a push-oriented fashion: the source pushes to transform A, which pushes to transform B, which pushes to transform C, each accumulating data in intermediate buffers before the final consumer has even started pulling. With three transforms, you can have six internal buffers filling up simultaneously.</p>
 	<p>Developers using the streams API are expected to remember to use options like <code>highWaterMark</code> when creating their sources, transforms, and writable destinations but often they either forget or simply choose to ignore it.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">source
   .pipeThrough(parse)      // buffers filling...
@@ -328,9 +328,9 @@ function renderComponent(controller) {
 for (const component of components) {
   renderComponent(controller);  // Promises created, objects allocated
 }</code></pre>
-	<p>Every fragment means promises created for <code>read()</code> calls, promises for backpressure coordination, intermediate buffer allocations, and <code>{ value, done } </code>result objects — most of which become garbage almost immediately.</p>
-	<p>Under load, this creates GC pressure that can devastate throughput. The JavaScript engine spends significant time collecting short-lived objects instead of doing useful work. Latency becomes unpredictable as GC pauses interrupt request handling. I've seen SSR workloads where garbage collection accounts for a substantial portion (up to and beyond 50%) of total CPU time per request — time that could be spent actually rendering content.</p>
-	<p>The irony is that streaming SSR is supposed to improve performance by sending content incrementally. But the overhead of the streams machinery can negate those gains, especially for pages with many small components. Developers sometimes find that buffering the entire response is actually faster than streaming through Web streams — defeating the purpose entirely.</p>
+	<p>Every fragment means promises created for <code>read()</code> calls, promises for backpressure coordination, intermediate buffer allocations, and <code>{ value, done } </code>result objects – most of which become garbage almost immediately.</p>
+	<p>Under load, this creates GC pressure that can devastate throughput. The JavaScript engine spends significant time collecting short-lived objects instead of doing useful work. Latency becomes unpredictable as GC pauses interrupt request handling. I've seen SSR workloads where garbage collection accounts for a substantial portion (up to and beyond 50%) of total CPU time per request. That's time that could be spent actually rendering content.</p>
+	<p>The irony is that streaming SSR is supposed to improve performance by sending content incrementally. But the overhead of the streams machinery can negate those gains, especially for pages with many small components. Developers sometimes find that buffering the entire response is actually faster than streaming through Web streams, defeating the purpose entirely.</p>
 	<div class="flex anchor relative">
 		<h3 id="the-optimization-treadmill">The optimization treadmill</h3>
 		<a href="https://blog.cloudflare.com/#the-optimization-treadmill" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -360,7 +360,7 @@ for (const component of components) {
 			<p>Prototype pollution defense: One test patches <code>Object.prototype.</code>then to intercept promise resolutions, then verifies that <code>pipeTo()</code> and <code>tee()</code> operations don't leak internal values through the prototype chain. This tests a security property that only exists because the spec's promise-heavy internals create an attack surface.</p>
 		</li>
 		<li>
-			<p>WebAssembly memory rejection: BYOB reads must explicitly reject ArrayBuffers backed by WebAssembly memory, which look like regular buffers but can't be transferred. This edge case exists because of the spec's buffer detachment model — a simpler API wouldn't need to handle it.</p>
+			<p>WebAssembly memory rejection: BYOB reads must explicitly reject ArrayBuffers backed by WebAssembly memory, which look like regular buffers but can't be transferred. This edge case exists because of the spec's buffer detachment model – a simpler API wouldn't need to handle it.</p>
 		</li>
 		<li>
 			<p>Crash regression for state machine conflicts: A test specifically checks that calling <code>byobRequest.respond()</code> after <code>enqueue()</code> doesn't crash the runtime. This sequence creates a conflict in the internal state machine — the <code>enqueue()</code> fulfills the pending read and should invalidate the <code>byobRequest</code>, but implementations must gracefully handle the subsequent <code>respond()</code> rather than corrupting memory in order to cover the very likely possibility that developers are not using the complex API correctly.</p>
@@ -387,7 +387,7 @@ for (const component of components) {
 		</a>
 	</div>
 	<p>After implementing the Web streams spec multiple times across different runtimes and seeing the pain points firsthand, I decided it was time to explore what a better, alternative streaming API could look like if designed from first principles today.</p>
-	<p>What follows is a proof of concept — not a finished standard, not a production-ready library, not even necessarily a concrete proposal for something new, but a starting point for discussion that demonstrates the problems with Web streams aren't inherent to streaming itself; they're consequences of specific design choices that could be made differently. Whether this exact API is the right answer is less important than whether it sparks a productive conversation about what we actually need from a streaming primitive.</p>
+	<p>What follows is a proof of concept: it's not a finished standard, not a production-ready library, not even necessarily a concrete proposal for something new, but a starting point for discussion that demonstrates the problems with Web streams aren't inherent to streaming itself; they're consequences of specific design choices that could be made differently. Whether this exact API is the right answer is less important than whether it sparks a productive conversation about what we actually need from a streaming primitive.</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-a-stream">What is a stream?</h3>
 		<a href="https://blog.cloudflare.com/#what-is-a-stream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -403,7 +403,7 @@ for (const component of components) {
 	<p>
 		Data flows left to right. Each stage reads input, does its work, writes output. There's no pipe reader to acquire, no controller lock to manage. If a downstream stage is slow, upstream stages naturally slow down as well. Backpressure is implicit in the model, not a separate mechanism to learn (or ignore).</p>
 	<p>In JavaScript, the natural primitive for "a sequence of things that arrive over time" is already in the language: the async iterable. You consume it with <code>for await...of</code>. You stop consuming by stopping iteration.</p>
-	<p>This is the intuition the new API tries to preserve: streams should feel like iteration, because that's what they are. The complexity of Web streams — readers, writers, controllers, locks, queuing strategies — obscures this fundamental simplicity. A better API should make the simple case simple and only add complexity where it's genuinely needed.</p>
+	<p>This is the intuition the new API tries to preserve: streams should feel like iteration, because that's what they are. The complexity of Web streams – readers, writers, controllers, locks, queuing strategies – obscures this fundamental simplicity. A better API should make the simple case simple and only add complexity where it's genuinely needed.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AUAA4bitbTOVSQg7Pd7fv/0856b44d78899dcffc4493f4146fb64f/4.png" alt="" class="kg-image" width="892" height="626" loading="lazy">
 	</figure>
@@ -445,7 +445,7 @@ for (const component of components) {
 			</svg>
 		</a>
 	</div>
-	<p>Backpressure is strict by default. When a buffer is full, writes reject rather than silently accumulating. You can configure alternative policies — block until space is available, drop oldest, drop newest — but you have to choose explicitly. No more silent memory growth.</p>
+	<p>Backpressure is strict by default. When a buffer is full, writes reject rather than silently accumulating. You can configure alternative policies – block until space is available, drop oldest, drop newest – but you have to choose explicitly. No more silent memory growth.</p>
 	<div class="flex anchor relative">
 		<h4 id="batched-chunks">Batched chunks</h4>
 		<a href="https://blog.cloudflare.com/#batched-chunks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -454,7 +454,7 @@ for (const component of components) {
 			</svg>
 		</a>
 	</div>
-	<p>Instead of yielding one chunk per iteration, streams yield <code>Uint8Array[]</code> — arrays of chunks. This amortizes the async overhead across multiple chunks, reducing promise creation and microtask latency in hot paths.</p>
+	<p>Instead of yielding one chunk per iteration, streams yield <code>Uint8Array[]:</code> arrays of chunks. This amortizes the async overhead across multiple chunks, reducing promise creation and microtask latency in hot paths.</p>
 	<div class="flex anchor relative">
 		<h4 id="bytes-only">Bytes only</h4>
 		<a href="https://blog.cloudflare.com/#bytes-only" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -555,7 +555,7 @@ function createBufferWriter() {
 const writer = createBufferWriter();
 await Stream.pipeTo(source, writer);
 const allData = writer.getChunks();</code></pre>
-	<p>No base class to extend, no abstract methods to implement, no controller to coordinate with — just an object with the right shape.</p>
+	<p>No base class to extend, no abstract methods to implement, no controller to coordinate with. Just an object with the right shape.</p>
 	<div class="flex anchor relative">
 		<h4 id="pull-through-transforms">Pull-through transforms</h4>
 		<a href="https://blog.cloudflare.com/#pull-through-transforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -657,7 +657,7 @@ function createGzipCompressor() {
     }
   };
 }</code></pre>
-	<p>For implementers, there's no Transformer protocol with <code>start()</code>, <code>transform()</code>, <code>flush()</code> methods and controller coordination passed into a <code>TransformStream</code> class that has its own hidden state machine and buffering mechanisms. Transforms are just functions or simple objects — far simpler to implement and test.</p>
+	<p>For implementers, there's no Transformer protocol with <code>start()</code>, <code>transform()</code>, <code>flush()</code> methods and controller coordination passed into a <code>TransformStream</code> class that has its own hidden state machine and buffering mechanisms. Transforms are just functions or simple objects: far simpler to implement and test.</p>
 	<div class="flex anchor relative">
 		<h4 id="explicit-backpressure-policies">Explicit backpressure policies</h4>
 		<a href="https://blog.cloudflare.com/#explicit-backpressure-policies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -669,16 +669,16 @@ function createGzipCompressor() {
 	<p>When a bounded buffer fills up and a producer wants to write more, there are only a few things you can do:</p>
 	<ol>
 		<li>
-			<p>Reject the write — refuse to accept more data</p>
+			<p>Reject the write: refuse to accept more data</p>
 		</li>
 		<li>
-			<p>Wait — block until space becomes available</p>
+			<p>Wait: block until space becomes available</p>
 		</li>
 		<li>
-			<p>Discard old data — evict what's already buffered to make room</p>
+			<p>Discard old data: evict what's already buffered to make room</p>
 		</li>
 		<li>
-			<p>Discard new data — drop what's incoming</p>
+			<p>Discard new data: drop what's incoming</p>
 		</li>
 	</ol>
 	<p>That's it. Any other response is either a variation of these (like "resize the buffer," which is really just deferring the choice) or domain-specific logic that doesn't belong in a general streaming primitive. Web streams currently always choose Wait by default.</p>
@@ -752,7 +752,7 @@ const shared = Stream.share(source, {
 const consumer1 = shared.pull();
 const consumer2 = shared.pull(decompress);</code></pre>
 	<p>Instead of <code>tee()</code> with its hidden unbounded buffer, you get explicit multi-consumer primitives. <code>Stream.share()</code> is pull-based: consumers pull from a shared source, and you configure the buffer limits and backpressure policy upfront.</p>
-	<p>There's also <code>Stream.broadcast()</code> for push-based multi-consumer scenarios. Both require you to think about what happens when consumers run at different speeds — because that's a real concern that shouldn't be hidden.</p>
+	<p>There's also <code>Stream.broadcast()</code> for push-based multi-consumer scenarios. Both require you to think about what happens when consumers run at different speeds, because that's a real concern that shouldn't be hidden.</p>
 	<div class="flex anchor relative">
 		<h4 id="sync-async-separation">Sync/async separation</h4>
 		<a href="https://blog.cloudflare.com/#sync-async-separation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -761,14 +761,14 @@ const consumer2 = shared.pull(decompress);</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>Not all streaming workloads involve I/O. When your source is in-memory and your transforms are pure functions, async machinery adds overhead without benefit — you're paying for coordination of "waiting" that adds no benefit.</p>
+	<p>Not all streaming workloads involve I/O. When your source is in-memory and your transforms are pure functions, async machinery adds overhead without benefit. You're paying for coordination of "waiting" that adds no benefit.</p>
 	<p>The new API has complete parallel sync versions: <code>Stream.pullSync()</code>, <code>Stream.bytesSync()</code>, <code>Stream.textSync()</code>, and so on. If your source and transforms are all synchronous, you can process the entire pipeline without a single promise.</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">// Async — when source or transforms may be asynchronous
 const textAsync = await Stream.text(source);
 
 // Sync — when all components are synchronous
 const textSync = Stream.textSync(source);</code></pre>
-	<p>Here's a complete synchronous pipeline — compression, transformation, and consumption with zero async overhead:</p>
+	<p>Here's a complete synchronous pipeline – compression, transformation, and consumption with zero async overhead:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">// Synchronous source from in-memory data
 const source = Stream.fromSync([inputBuffer]);
 
@@ -778,7 +778,7 @@ const encrypted = Stream.pullSync(compressed, aesEncryptSync);
 
 // Synchronous consumption — no promises, no event loop trips
 const result = Stream.bytesSync(encrypted);</code></pre>
-	<p>The entire pipeline executes in a single call stack. No promises are created, no microtask queue scheduling occurs, and no GC pressure from short-lived async machinery. For CPU-bound workloads like parsing, compression, or transformation of in-memory data, this can be significantly faster than the equivalent Web streams code — which would force async boundaries even when every component is synchronous.</p>
+	<p>The entire pipeline executes in a single call stack. No promises are created, no microtask queue scheduling occurs, and no GC pressure from short-lived async machinery. For CPU-bound workloads like parsing, compression, or transformation of in-memory data, this can be significantly faster than the equivalent Web streams code – which would force async boundaries even when every component is synchronous.</p>
 	<p>Web streams has no synchronous path. Even if your source has data ready and your transform is a pure function, you still pay for promise creation and microtask scheduling on every operation. Promises are fantastic for cases in which waiting is actually necessary, but they aren't always necessary. The new API lets you stay in sync-land when that's what you need.</p>
 	<div class="flex anchor relative">
 		<h4 id="bridging-the-gap-between-this-and-web-streams">Bridging the gap between this and web streams</h4>
@@ -816,10 +816,10 @@ const readable = ReadableStream.from(adapt(input));</code></pre>
 	</div>
 	<ul>
 		<li>
-			<p>Unconsumed bodies: Pull semantics mean nothing happens until you iterate. No hidden resource retention — if you don't consume a stream, there's no background machinery holding connections open.</p>
+			<p>Unconsumed bodies: Pull semantics mean nothing happens until you iterate. No hidden resource retention. If you don't consume a stream, there's no background machinery holding connections open.</p>
 		</li>
 		<li>
-			<p>The <code>tee()</code> memory cliff: <code>Stream.share()</code> requires explicit buffer configuration. You choose the <code>highWaterMark</code> and backpressure policy upfront — no more silent unbounded growth when consumers run at different speeds.</p>
+			<p>The <code>tee()</code> memory cliff: <code>Stream.share()</code> requires explicit buffer configuration. You choose the <code>highWaterMark</code> and backpressure policy upfront: no more silent unbounded growth when consumers run at different speeds.</p>
 		</li>
 		<li>
 			<p>Transform backpressure gaps: Pull-through transforms execute on-demand. Data doesn't cascade through intermediate buffers; it flows only when the consumer pulls. Stop iterating, stop processing.</p>
@@ -1030,8 +1030,8 @@ const readable = ReadableStream.from(adapt(input));</code></pre>
 			</tr>
 		</tbody>
 	</table>
-	<p>These benchmarks measure throughput in controlled scenarios — real-world performance depends on your specific use case. The difference between Node.js and browser gains reflects the distinct optimization paths each environment takes for Web streams.</p>
-	<p>It's worth noting that these benchmarks compare a pure TypeScript/JavaScript implementation of the new API against the native (JavaScript/C++/Rust) implementations of Web streams in each runtime. The new API's reference implementation has had no performance optimization work — the gains come entirely from the design. A native implementation would likely show further improvement.</p>
+	<p>These benchmarks measure throughput in controlled scenarios; real-world performance depends on your specific use case. The difference between Node.js and browser gains reflects the distinct optimization paths each environment takes for Web streams.</p>
+	<p>It's worth noting that these benchmarks compare a pure TypeScript/JavaScript implementation of the new API against the native (JavaScript/C++/Rust) implementations of Web streams in each runtime. The new API's reference implementation has had no performance optimization work; the gains come entirely from the design. A native implementation would likely show further improvement.</p>
 	<p>The gains illustrate how fundamental design choices compound: batching amortizes async overhead, pull semantics eliminate intermediate buffering, and the freedom for implementations to use synchronous fast paths when data is available immediately all contribute.</p>
 	<blockquote>
 		<p>"We’ve done a lot to improve performance and consistency in Node streams, but there’s something uniquely powerful about starting from scratch. New streams’ approach embraces modern runtime realities without legacy baggage, and that opens the door to a simpler, performant and more coherent streams model."
@@ -1064,7 +1064,7 @@ const readable = ReadableStream.from(adapt(input));</code></pre>
 		</li>
 	</ul>
 	<p>I welcome issues, discussions, and pull requests. If you've run into Web streams problems I haven't covered, or if you see gaps in this approach, let me know. But again, the idea here is not to say "Let's all use this shiny new object!"; it is to kick off a discussion that looks beyond the current status quo of Web Streams and returns back to first principles.</p>
-	<p>Web streams was an ambitious project that brought streaming to the web platform when nothing else existed. The people who designed it made reasonable choices given the constraints of 2014 — before async iteration, before years of production experience revealed the edge cases.</p>
-	<p>But we've learned a lot since then. JavaScript has evolved. A streaming API designed today can be simpler, more aligned with the language, and more explicit about the things that matter — like backpressure and multi-consumer behavior.</p>
+	<p>Web streams was an ambitious project that brought streaming to the web platform when nothing else existed. The people who designed it made reasonable choices given the constraints of 2014 – before async iteration, before years of production experience revealed the edge cases.</p>
+	<p>But we've learned a lot since then. JavaScript has evolved. A streaming API designed today can be simpler, more aligned with the language, and more explicit about the things that matter, like backpressure and multi-consumer behavior.</p>
 	<p>We deserve a better stream API. So let's talk about what that could look like.</p>
 </div>
