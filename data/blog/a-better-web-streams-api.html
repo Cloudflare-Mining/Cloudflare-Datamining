@@ -45,7 +45,7 @@ try {
   reader.releaseLock();
 }</code></pre>
 	<p>You might assume this pattern is inherent to streaming. It isn't. The reader acquisition, the lock management, and the <code>{ value, done }</code> protocol are all just design choices, not requirements. They are artifacts of how and when the Web streams spec was written. Async iteration exists precisely to handle sequences that arrive over time, but async iteration did not yet exist when the streams specification was written. The complexity here is pure API overhead, not fundamental necessity.</p>
-	<p>Consider the alternative approach now that Web streams now do support <code>for await...of</code>:</p>
+	<p>Consider the alternative approach now that Web streams do support <code>for await...of</code>:</p>
 	<pre class="language-JavaScript"><code class="language-JavaScript">const chunks = [];
 for await (const chunk of stream) {
   chunks.push(chunk);
