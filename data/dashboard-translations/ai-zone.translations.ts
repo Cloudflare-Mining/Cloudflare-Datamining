@@ -120,6 +120,8 @@
 	},
 	common: {
 		beta: "Beta",
+		group_by_label: "Group by:",
+		more_items: "+%{count} More",
 		allow: "Allow",
 		allowed: "Allowed",
 		allowed_by_waf: "Allowed by WAF",
@@ -288,14 +290,12 @@
 		allowed_requests_chart: {
 			title: "Allowed requests over time",
 			description: "Review successful AI crawler requests over time for your domain.",
-			no_data_available: "No allowed requests data found",
-			more_items: "+%{count} More",
-			metric_label: "Metric:",
-			group_by_label: "Group by:",
-			view_mode: {
-				requests: "Requests",
-				bytes: "Bytes"
-			}
+			no_data_available: "No allowed requests data found"
+		},
+		data_transfer_chart: {
+			title: "Data transfer over time",
+			description: "Review data transferred by AI crawlers over time for your domain.",
+			no_data_available: "No data transfer data found"
 		},
 		status_code_chart: {
 			title: "Status code distribution",

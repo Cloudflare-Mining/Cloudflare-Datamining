@@ -3,6 +3,18 @@
 	"edgeauth.subscription.help": "Understanding Subscriptions and Billing for Cloudflare Access",
 	"edgeauth.setup.subscription.launch_teams": "Launch Zero Trust",
 	"edgeauth.setup.subscription.free_promo.title": "Configuration for Access has moved to Cloudflare Zero Trust as of May 25, 2022. This page has been deprecated. All existing functionality, as well as new features, is available in Zero Trust.",
-	"access.page.description": "Protect self-hosted, SaaS and private applications with Zero Trust policies. Only users who match your policies will have access to your configured applications.",
-	"access.page.documentation": "Access documentation"
+	"access.page.description": "Put your applications behind a login screen.",
+	"access.page.documentation": "Documentation",
+	"access.landingPage.header.title": "Cloudflare Access",
+	"access.landingPage.actions.get_started": "Get started",
+	"access.landingPage.sections.why_use.title": "Verify identity before anyone reaches your app",
+	"access.landingPage.sections.why_use.description": "Add an authentication layer in front of your applications. When someone tries to reach your app, Access presents a login screen and checks their identity against your policies before letting them through. Only verified users get in. Everyone else is blocked before they ever reach your origin.",
+	"access.landingPage.sections.capabilities.title": "Key capabilities",
+	"access.landingPage.sections.capabilities.require_login": "Require login via your identity provider (Okta, Azure AD, Google, etc.) before users can reach your app",
+	"access.landingPage.sections.capabilities.enforce_mfa": "Enforce multi-factor authentication and device posture checks on every access attempt",
+	"access.landingPage.sections.capabilities.protect_apps": "Protect self-hosted web apps, SaaS apps, private network resources, and infrastructure like SSH, RDP, and databases",
+	"access.landingPage.sections.capabilities.no_vpn": "Grant access without a VPN or code changes to your applications",
+	"access.landingPage.sections.vs_waf.title": "How Access is different from Web Application Firewall (WAF)",
+	"access.landingPage.sections.vs_waf.description": "WAF inspects and filters traffic that's already reaching your application from the Internet, blocking attacks like SQL injection and XSS. Access works at a different level: it decides who gets to your application at all. WAF protects against malicious requests. Access ensures only the right people can make requests in the first place.",
+	"access.landingPage.heroImage.alt": "Cloudflare Access illustration"
 }

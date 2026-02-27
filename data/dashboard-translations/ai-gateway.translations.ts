@@ -322,7 +322,7 @@
 			configuration_1: "Limit requests when rate exceeds",
 			configuration_2: "requests over a",
 			configuration_3: "period.",
-			resume: (0, i.p)(_())
+			resume: (0, i.p)(g())
 		},
 		rename_gateway: {
 			title: "Edit Gateway",
@@ -476,7 +476,7 @@
 			limit: "Limit requests when rate exceeds",
 			interval: "requests over a",
 			technique: "period",
-			cache_custom: (0, i.p)(g()),
+			cache_custom: (0, i.p)(_()),
 			ratelimiting_fixed: "Fixed",
 			ratelimiting_sliding: "Sliding",
 			change: "Change"
@@ -642,6 +642,11 @@
 			dynamic_route: {
 				title: "Create a dynamic route",
 				description: "Setup custom rate limits, budget limits and more with Dynamic Routes"
+			},
+			create_another: {
+				title: "Create another gateway",
+				description: "Add more gateways to organize your AI traffic by use case or environment",
+				button: "Create gateway"
 			}
 		},
 		usage_examples: {

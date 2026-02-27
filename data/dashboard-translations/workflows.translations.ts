@@ -67,7 +67,9 @@
 		graphFallbackLoading: "The latest version graph is being generated. Showing the previous version.",
 		diagram: {
 			expand: "Expand diagram",
-			collapse: "Collapse diagram"
+			collapse: "Collapse diagram",
+			copyToClipboard: "Copy to clipboard",
+			downloadAsPng: "Download as PNG"
 		},
 		charts: {
 			cpuTime: {

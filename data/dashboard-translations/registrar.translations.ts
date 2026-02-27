@@ -228,7 +228,9 @@
 			cancel_button: "Cancel",
 			continue_button: "Continue to checkout",
 			billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
-			grace_period_message: "This domain expired on %{gracePeriodStart}, and you have a 40-day grace period to renew it, ending %{gracePeriodEnd}."
+			grace_period_message: "This domain expired on %{gracePeriodStart}, and you have a 40-day grace period to renew it, ending %{gracePeriodEnd}.",
+			continue_to_domain: "Continue to Domain",
+			back_to_domain: "Back to Domain Management"
 		},
 		redemption_period: {
 			title: "Domain in Redemption Period",
