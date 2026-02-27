@@ -1,0 +1,185 @@
+<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LzMhLvkCbegyTQUNorwM6/1a5818020a0f7b0e069cea1326fd58b9/image2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Internet traffic relies on the <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp"><u>Border Gateway Protocol (BGP)</u></a> to find its way between networks. However, this traffic can sometimes be misdirected due to configuration errors or malicious actions. When traffic is routed through networks it was not intended to pass through, it is known as a <a href="https://datatracker.ietf.org/doc/html/rfc7908"><u>route leak</u></a>. We have <a href="https://blog.cloudflare.com/bgp-route-leak-venezuela"><u>written on our blog</u></a> <a href="https://blog.cloudflare.com/cloudflare-1111-incident-on-june-27-2024"><u>multiple times</u></a> about <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar"><u>BGP route leaks</u></a> and the impact they have on Internet routing, and a few times we have even alluded to a future of path verification in BGP.&nbsp;</p>
+	<p>While the network community has made significant progress in verifying the final destination of Internet traffic, securing the actual path it takes to get there remains a key challenge for maintaining a reliable Internet. To address this, the industry is adopting a new cryptographic standard called <a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification"><u>ASPA (Autonomous System Provider Authorization)</u></a>, which is designed to validate the entire path of network traffic and prevent route leaks.</p>
+	<p>To help the community track the rollout of this standard, Cloudflare Radar has introduced a new ASPA deployment monitoring feature. This view allows users to observe ASPA adoption trends over time across the five<a href="https://en.wikipedia.org/wiki/Regional_Internet_registry"><u> Regional Internet Registries (RIRs)</u></a>, and view ASPA records and changes over time at the<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system"><u> Autonomous System (AS)</u></a> level.</p>
+	<div class="flex anchor relative">
+		<h2 id="what-is-aspa">What is ASPA?</h2>
+		<a href="https://blog.cloudflare.com/#what-is-aspa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To understand how ASPA works, it is helpful to look at how the Internet currently secures traffic destinations.</p>
+	<p>Today, networks use a secure infrastructure system called <a href="https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure"><u>RPKI (Resource Public Key Infrastructure)</u></a>, which has seen <a href="https://blog.apnic.net/2026/02/20/rpkis-2025-year-in-review"><u>significant deployment growth</u></a> over the past few years. Within RPKI, networks publish specific cryptographic records called ROAs (Route Origin Authorizations). A ROA acts as a verifiable digital ID card, confirming that an Autonomous System (AS) is officially authorized to announce specific IP addresses. This addresses the "origin hijacks" issue, where one network attempts to impersonate another.</p>
+	<p><a href="https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification"><u>ASPA (Autonomous System Provider Authorization)</u></a> builds directly on this foundation. While a ROA verifies the <i>destination</i>, an ASPA record verifies the <i>journey</i>.</p>
+	<p>When data travels across the Internet, it keeps a running log of every network it passes through. In BGP, this log is known as the <a href="https://datatracker.ietf.org/doc/html/rfc4271#section-5.1.2"><code><u>AS_PATH</u></code></a> (Autonomous System Path). ASPA provides networks with a way to officially publish a list of their authorized upstream providers within the RPKI system. This allows any receiving network to look at the <code>AS_PATH</code>, check the associated ASPA records, and verify that the traffic only traveled through an approved chain of networks.</p>
+	<p>A ROA helps ensure the traffic arrives at the correct destination, ASPA ensures the traffic takes an intended, authorized route to get there. Let’s take a look at how path evaluation actually works in practice.</p>
+	<div class="flex anchor relative">
+		<h2 id="route-leak-detection-with-aspa">Route leak detection with ASPA</h2>
+		<a href="https://blog.cloudflare.com/#route-leak-detection-with-aspa" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>How does ASPA know if a route is a <i>detour</i>? It relies on the hierarchy of the Internet.</p>
+	<p>In a healthy Internet routing topology (e.g. <a href="https://ieeexplore.ieee.org/document/6363987"><u>“valley-free” routing</u></a>), traffic generally follows a specific path: it travels "up" from a customer to a large provider (like a major ISP), optionally crosses over to another big provider, and then flows "down" to the destination. You can visualize this as a “mountain” shape:</p>
+	<ol>
+		<li>
+			<p><b>The Up-Ramp:</b> Traffic starts at a Customer and travels "up" through larger and larger Providers (ISPs), where ISPs pay other ISPs to transit traffic for them.</p>
+		</li>
+		<li>
+			<p><b>The Apex:</b> It reaches the top tier of the Internet backbone and may cross a single peering link.</p>
+		</li>
+	</ol>
+	<p><b>The Down-Ramp:</b> It travels "down" through providers to reach the destination Customer.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VGuSHfq6GcQZUYLGmoDH3/a1486f40c16e568f32ca2fa81d58ac41/1.png" alt="" class="kg-image" width="1540" height="636" loading="lazy">
+	</figure>
+	<p><sup><i>A visualization of "valley-free" routing. Routes propagate up to a provider, optionally across one peering link, and down to a customer.</i></sup></p>
+	<p>In this model, a route leak is like a valley, or dip. One type of such leak happens when traffic goes down to a customer and then unexpectedly tries to go back <i>up</i> to another provider. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eoaEpdIJpCCLbMnNZD5ob/7ceca2a98f2252e8161915b942bf7dbd/2.png" alt="" class="kg-image" width="1548" height="706" loading="lazy">
+	</figure>
+	<p>This "down-and-up" movement is undesirable as customers aren't intended nor equipped to transit traffic between two larger network providers.</p>
+	<div class="flex anchor relative">
+		<h4 id="how-aspa-validation-works">How ASPA validation works</h4>
+		<a href="https://blog.cloudflare.com/#how-aspa-validation-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPA gives network operators a cryptographic way to declare their <i>authorized providers,</i> enabling receiving networks to verify that an AS path follows this expected structure.</p>
+	<p>ASPA validates AS paths by checking the “chain of relationships” from both ends of the routes propagation:</p>
+	<ul>
+		<li>
+			<p><b>Checking the Up-Ramp:</b> The check starts at the origin and moves forward. At every hop, it asks: <i>"Did this network authorize the next network as a Provider?"</i> It keeps going until the chain stops.</p>
+		</li>
+		<li>
+			<p><b>Checking the Down-Ramp:</b> It does the same thing from the destination of a BGP update, moving backward.</p>
+		</li>
+	</ul>
+	<p>If the "Up" path and the "Down" path overlap or meet at the top, the route is <b>Valid</b>. The mountain shape is intact.</p>
+	<p>However, if the two valid paths <b>do not meet</b>, i.e. there is a gap in the middle where authorization is missing or invalid, ASPA reports such paths as problematic. That gap represents the "valley" or the leak.</p>
+	<div class="flex anchor relative">
+		<h4 id="validation-process-example">Validation process example</h4>
+		<a href="https://blog.cloudflare.com/#validation-process-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Let’s look at a scenario where a network (AS65539) receives a bad route from a customer (AS65538).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kn8W6c7CaPcMLMycjS5NO/59036dc52a942870e9bb0e377f235dd4/3.png" alt="" class="kg-image" width="1122" height="890" loading="lazy">
+	</figure>
+	<p>The customer (AS65538) is trying to send traffic received from one provider (AS65537) "up" to another provider (AS65538), acting like a bridge between providers. This is a <a href="https://datatracker.ietf.org/doc/html/rfc7908#autoid-4"><u>classic route leak</u></a>. Now let’s walk the ASPA validation process.</p>
+	<ol>
+		<li>
+			<p>We check the <b>Up-Ramp</b>: The original source (AS65536) authorizes its provider. (Check passes).</p>
+		</li>
+		<li>
+			<p>We check the <b>Down-Ramp</b>: We start from the destination and look back. We see the customer (AS65538).</p>
+		</li>
+		<li>
+			<p><b>The Mismatch:</b> The up-ramp ends at AS65537, while the down-ramp ends at 65538. The two ramps do not connect.</p>
+		</li>
+	</ol>
+	<p>Because the "Up" path and "Down" path fail to connect, the system flags this as ASPA <b>Invalid</b>. ASPA is required to do this path validation, as without signed ASPA objects in RPKI, we cannot find which networks are authorized to advertise which prefixes to whom. By signing a list of provider networks for each AS, we know which networks should be able to propagate prefixes laterally or upstream.</p>
+	<div class="flex anchor relative">
+		<h3 id="aspa-against-forged-origin-hijacks">ASPA against forged-origin hijacks</h3>
+		<a href="https://blog.cloudflare.com/#aspa-against-forged-origin-hijacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>ASPA can serve as an effective defense against <a href="https://www.usenix.org/conference/nsdi24/presentation/holterbach"><u>forged-origin hijacks</u></a>, where an attacker bypasses Route Origin Validation (ROV) by pretending and advertising a BGP path to a real origin prefix. Although the origin AS remains correct, the relationship between the hijacker and the victim is fabricated.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MNVRoNDzxlHDVGTP2nRPw/87485ad246baa734eef3192fd48012a8/4.png" alt="" class="kg-image" width="1402" height="862" loading="lazy">
+	</figure>
+	<p>ASPA exposes this deception by allowing the victim network to cryptographically declare its actual authorized providers; because the hijacker is not on that authorized list, the path is rejected as invalid, effectively preventing the malicious redirection.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KGtsKWBdlNFySIswRb5rD/d26b266c2dc942be9b9f6c6ec383843b/5.png" alt="" class="kg-image" width="1159" height="862" loading="lazy">
+	</figure>
+	<p>ASPA cannot fully protect against forged-origin hijacks, however. There is still at least one case where not even ASPA validation can fully prevent this type of attack on a network. An example of a forged-origin hijack that ASPA cannot account for is when a provider forges a path advertisement <i>to their customer.</i></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DPYEXwSUPmWUWvsyxFJHX/b059dae85cf764fdcd5a5257f5ebc373/6.png" alt="" class="kg-image" width="1999" height="1795" loading="lazy">
+	</figure>
+	<p>Essentially, a provider could “fake” a peering link with another AS to attract traffic from a customer with a short AS_PATH length, even when no such peering link exists. ASPA does not prevent this path forgery by the provider, because ASPA only works off of provider information and knows nothing specific about peering relationships.</p>
+	<p>So while ASPA can be an effective means of rejecting forged-origin hijack routes, there are still some rare cases where it will be ineffective, and those are worth noting.</p>
+	<div class="flex anchor relative">
+		<h2 id="creating-aspa-objects-just-a-few-clicks-away">Creating ASPA objects: just a few clicks away</h2>
+		<a href="https://blog.cloudflare.com/#creating-aspa-objects-just-a-few-clicks-away" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Creating an ASPA object for your network (or Autonomous System) is now a simple process in registries like <a href="https://labs.ripe.net/author/tim_bruijnzeels/aspa-in-the-rpki-dashboard-a-new-layer-of-routing-security"><u>RIPE</u></a> and <a href="https://www.arin.net/announcements/20260120"><u>ARIN</u></a>. All you need is your AS number and the AS numbers of the providers you purchase Internet transit service from. These are the authorized upstream networks you trust to announce your IP addresses to the wider Internet. In the opposite direction, these are also the networks you authorize to send you a full routing table, which acts as the complete map of how to reach the rest of the Internet.</p>
+	<p>We’d like to show you just how easy creating an ASPA object is with a quick example.&nbsp;</p>
+	<p>Say we need to create the ASPA object for AS203898, an AS we use for our Cloudflare London office Internet. At the time of writing we have three Internet providers for the office: AS8220, AS2860, and AS1273. This means we will create an ASPA object for AS203898 with those three provider members in a list.</p>
+	<p>First, we log into the RIPE <a href="https://dashboard.rpki.ripe.net/#overview"><u>RPKI dashboard</u></a> and navigate to the <a href="https://dashboard.rpki.ripe.net/#aspa"><u>ASPA</u></a> section:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3CCFItZpP8JbYCotDGfuM3/c7ad0041ceea4f48c37ff59f416f8242/7.png" alt="" class="kg-image" width="1999" height="946" loading="lazy">
+	</figure>
+	<p>Then, we click on “Create ASPA” for the object we want to create an ASPA object for. From there, we just fill in the providers for that AS. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ABmfhRQQRbLhMat6Ug01K/3a9d73ad8ade315416c4cc6eb9073ada/8.png" alt="" class="kg-image" width="1999" height="946" loading="lazy">
+	</figure>
+	<p>It’s as simple as that. After just a short period of waiting, we can query the global RPKI ecosystem and find our ASPA object for AS203898 with the providers we defined.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xAKD1b704fg7SMxeg867P/59ce564867565331e2d531de15dc7e87/Screenshot_2026-02-27_at_11.09.55.png" alt="" class="kg-image" width="1666" height="304" loading="lazy">
+	</figure>
+	<p>It’s a similar story with <a href="https://www.arin.net"><u>ARIN</u></a>, the only other <a href="https://en.wikipedia.org/wiki/Regional_Internet_registry"><u>Regional Internet Registries (RIRs)</u></a> that currently supports the creation of ASPA objects. Log in to <a href="https://account.arin.net/public/login"><u>ARIN online,</u></a> then navigate to Routing Security, and click “Manage RPKI”.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PTCdyldcTc1Uc0iazZlg4/51ed97a8ef0d095b947f7ab2bf4b1fd3/9.png" alt="" class="kg-image" width="1966" height="748" loading="lazy">
+	</figure>
+	<p>From there, you’ll be able to click on “Create ASPA”. In this example, we will create an object for another one of our ASNs, AS400095.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4bLLHAeU4Eaz6RPgSPDzn9/a482b6c7ed4ef78f7346ca80c9a5ba46/10.png" alt="" class="kg-image" width="1928" height="900" loading="lazy">
+	</figure>
+	<p>And that’s it – now we have created our ASPA object for AS40095 with provider AS0.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9yOZPpMH4olQXu2DNpJPO/cca432fd82e61c6492987b7ccedbdc57/11.png" alt="" class="kg-image" width="1966" height="972" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6emDXxMbU0BSKk5BVXUdJ6/132b9a7279b93e3ae0329dec83a9bfac/Screenshot_2026-02-27_at_11.11.31.png" alt="" class="kg-image" width="1676" height="296" loading="lazy">
+	</figure>
+	<p>The “AS0” provider entry is special when used, and means the AS owner attests there are <b>no</b> valid upstream providers for their network. By definition this means every transit-free Tier-1 network should eventually sign an ASPA with only “AS0” in their object, if they truly only have peer and customer relationships.</p>
+	<div class="flex anchor relative">
+		<h2 id="new-aspa-features-in-cloudflare-radar">New ASPA features in Cloudflare Radar&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#new-aspa-features-in-cloudflare-radar" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We have added a new ASPA deployment monitoring feature to <a href="https://radar.cloudflare.com"><u>Cloudflare Radar</u></a>. The new ASPA deployment view allows users to examine the growth of ASPA adoption over time, with the ability to visualize trends across the five <a href="https://en.wikipedia.org/wiki/Regional_Internet_registry"><u>Regional Internet Registries</u></a> (RIRs) based on AS registration. </p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7FoW86CVloqBqZO7wcOiq8/f5f2973db227b8184127f76fdad64dc4/12.png" alt="" class="kg-image" width="1600" height="876" loading="lazy">
+	</figure>
+	<p>We have also integrated ASPA data directly into the country/region and ASN routing pages. Users can now track how different locations are progressing in securing their infrastructure, based on the associated ASPA records from the customer ASNs registered locally.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tBhOpIxc6tNOJXWPPAk4U/7c334c9ddb089eb823ce23eb49ddbdc3/13.png" alt="" class="kg-image" width="1848" height="1456" loading="lazy">
+	</figure>
+	<p>There are also new features when you zoom into a particular Autonomous System (AS), for example <a href="https://radar.cloudflare.com/routing/AS203898#connectivity"><u>AS203898</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nTBPD0PgzPOS0eOxpG3rW/65d9b312be2e81e4c59164c98b7b6276/14.png" alt="" class="kg-image" width="1999" height="837" loading="lazy">
+	</figure>
+	<p>We can see whether a network’s observed BGP upstream providers are ASPA authorized, their full list of providers in their ASPA object, and the timeline of ASPA changes that involve their AS.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-road-to-better-routing-security">The road to better routing security</h2>
+		<a href="https://blog.cloudflare.com/#the-road-to-better-routing-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>With ASPA finally becoming a reality, we have our cryptographic upgrade for Internet path validation. However, those who have been around since the start of RPKI for route origin validation know <a href="https://manrs.org/2023/05/estimating-the-timeline-for-aspa-deployment"><u>this will be a long road</u></a> to actually providing significant value on the Internet. Changes are needed to RPKI Relaying Party (RP) packages, signer implementations, RTR (RPKI-to-Router protocol) software, and BGP implementations to actually use ASPA objects and validate paths with them.</p>
+	<p>In addition to ASPA adoption, operators should also configure BGP roles as described within <a href="https://datatracker.ietf.org/doc/rfc9234"><u>RFC9234</u></a>. The BGP roles configured on BGP sessions will help future ASPA implementations on routers <a href="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-24#section-6.3"><u>decide which algorithm to apply</u></a>: <i>upstream</i> or <i>downstream</i>. In other words, BGP roles give us the power as operators to directly tie our intended BGP relationships with another AS to sessions with those neighbors. Check with your routing vendors and make sure they support <a href="https://datatracker.ietf.org/doc/rfc9234"><u>RFC9234 BGP roles and OTC</u></a> (Only-to-Customer) attribute implementation.</p>
+	<p>To get the most out of ASPA, we encourage everyone to create their ASPA objects for their AS<i>. </i>Creating and maintaining these ASPA objects requires careful attention. In the future, as networks use these records to actively block invalid paths, omitting a legitimate provider could cause traffic to be dropped. However, managing this risk is no different from how networks already handle Route Origin Authorizations (ROAs) today. ASPA is the necessary cryptographic upgrade for Internet path validation, and we’re happy it’s here!</p>
+</div>
