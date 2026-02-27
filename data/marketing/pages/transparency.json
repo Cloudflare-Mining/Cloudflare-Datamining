@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2025-02-27T13:10:05.982Z",
-					"updatedAt": "2025-12-19T15:30:24.577Z"
+					"updatedAt": "2026-02-27T19:22:54.935Z"
 				},
 				"contentfulId": "3da8LM5pDy2jBygiGdpLg3",
 				"contentTypeId": "page",
@@ -84,6 +84,12 @@
 								"page": null,
 								"url": null,
 								"subMenuItems": [
+									{
+										"contentfulId": "6YqxIuwWVpCeQLeNoxFzh7",
+										"linkText": "H1 2025",
+										"page": null,
+										"url": "/transparency/h1-2025/"
+									},
 									{
 										"contentfulId": "2HuqKkEn618HAkw5PkvM1W",
 										"linkText": "H2 2024",
@@ -161,9 +167,9 @@
 						]
 					},
 					{
-						"contentfulId": "1R6hapJA5jUjNI1MNRK85z",
+						"contentfulId": "1UspTAtFJnxJgH4oLRSTOR",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare transparency report - H1 2025",
+						"title": "Cloudflare Transparency Report - H2 2025",
 						"titleSize": null,
 						"subtitle": null,
 						"subtitleSize": null,
@@ -172,12 +178,12 @@
 						"buttonColor2": "orange",
 						"buttonText1": "Legal requests for information report",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://cfl.re/h1-2025-transparency-report-legal",
+						"buttonUrl1": "https://cfl.re/h2-2025-transparency-report-legal",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
 						"buttonText2": "Abuse processes report",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "https://cfl.re/h1-2025-transparency-report-abuse",
+						"buttonUrl2": "https://cfl.re/h2-2025-transparency-report-abuse",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
@@ -200,7 +206,7 @@
 						"imageSize": "Regular",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "[Legal requests for information (xlsx)](https://cfl.re/H1-2025-legal-requests-csv)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Abuse processes (xlsx)](https://cfl.re/H1-2025-abuse-processes-data-csv)",
+						"leftLink": null,
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
@@ -542,7 +548,7 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "4buvRSy4FwWJiaPGEF4K5J",
+						"contentfulId": "K5XSGmace2cxgZfBJZfXg",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
@@ -552,7 +558,7 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "5Ks0dh0fupRYNxZTOjN36x",
+								"contentfulId": "1Q7Wxfy64YREKJmdjfp2mq",
 								"title": null,
 								"htmlId": null,
 								"elementPosition": "relative",
@@ -595,7 +601,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The data above covers the period from January 1, 2025 to June 30, 2025. For data covering prior periods, see previous reports available under the Archives tab. For more information about how Cloudflare approaches the issues addressed in these reports, see the Trust & Safety section of Cloudflare's",
+													"value": "The data above covers the period from ",
 													"marks": [],
 													"content": null
 												},
@@ -605,7 +611,17 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " ",
+													"value": "July 1, 2025 to December 31, 2025",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". For data covering prior periods, see previous reports available under the Archives tab. For more information about how Cloudflare approaches the issues addressed in these reports, see the Trust & Safety section of Cloudflare's ",
 													"marks": [],
 													"content": null
 												},
