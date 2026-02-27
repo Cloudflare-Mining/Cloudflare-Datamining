@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, Denver, Toronto, Atlanta, Washington DC, Seattle, New York</p>
-<h3>&nbsp;</h3>
+<p><strong>Available Locations:</strong>&nbsp;Any of Austin, Denver, Atlanta, Washington DC, Seattle, New York, Toronto Canada preferred; other locations in North America also possible.</p>
 <div><strong>About the team</strong><br>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.<br><br><strong>What you’ll do</strong><br>You’ll build and operate secure and resilient distributed systems for secrets and key management, running across our network that spans more than 310 cities in over 120 countries. Our focus is strengthening/re-architecting internal PKI and machine/workload identity. You’ll run and support the systems we build, both in an operational sense and by helping other internal developers use them. You’ll consult on the design and architecture of new systems and products to ensure they are built securely and use our services correctly.<br><br><strong>Required skills</strong></div>
 <div>
 	<ul>
@@ -25,7 +24,6 @@
 		<li>Familiarity with Go and/or Python + Salt specifically</li>
 	</ul>
 </div>
-<h3>&nbsp;</h3>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
