@@ -1,15 +1,15 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/ai/what-is-predictive-ai/",
+	"path": "/learning/ai/ai-misuse/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "HgqVKL2eqNz8UuhXmGZWm",
-				"urlSlug": "ai/what-is-predictive-ai",
+				"contentfulId": "2gS2kaGgpGg25pWCwxdvN2",
+				"urlSlug": "ai/ai-misuse",
 				"metaTags": {
-					"metaTitle": "What is predictive AI?",
-					"metaDescription": "Learn how predictive artificial intelligence (AI) uses statistical analysis to anticipate behaviors and predict future events.",
+					"metaTitle": "How to prevent misuse of AI",
+					"metaDescription": "AI misuse can compromise applications and infrastructure. Learn how to use guardrails, access control, and prompt validation to prevent the misuse of AI.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -17,12 +17,7 @@
 						},
 						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
-						},
-						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
-					}
+					"facebookCustomImage": null
 				},
 				"metaTitle": null,
 				"metaDescription": null,
@@ -653,63 +648,62 @@
 						]
 					}
 				},
-				"header": "What is predictive AI?",
-				"blurbSubHeader": "Predictive artificial intelligence (AI) refers to the use of machine learning to identify patterns in past events and make predictions about future events.",
-				"objectivesHeader": "Predictive AI",
+				"header": "How to prevent misuse of AI",
+				"blurbSubHeader": "Preventing the misuse of AI models starts with architectural security measures like guardrails, data validation, prompt validation, and data loss prevention (DLP).",
+				"objectivesHeader": "AI Misuse",
 				"objectivesList": [
-					"Define predictive AI",
-					"Explain the core concepts that make predictive AI possible",
-					"Contrast predictive AI vs. generative AI"
+					"Describe the impacts of AI misuse",
+					"List some of the technologies that can prevent AI misuse"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3QYEJFeqaOx0hUjaQCkI4v",
+						"displayText": "OWASP Top 10 for LLMs",
+						"url": "/learning/ai/owasp-top-10-risks-for-llms/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6xy4UeqPN2cEgZ5ALiqvTs",
+						"displayText": "Prompt injection",
+						"url": "/learning/ai/prompt-injection/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5KGGCoBgenwdvUomxu9p34",
+						"displayText": "How to secure AI systems",
+						"url": "/learning/ai/how-to-secure-ai-systems/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6EYLgrBEjKBwQRbu7qpAxu",
+						"displayText": "How to secure AI training data",
+						"url": "/learning/ai/how-to-secure-training-data-against-ai-data-leaks/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "7HZD3CNwacCcZXLQxHtX8k",
 						"displayText": "What is artificial intelligence (AI)?",
 						"url": "/learning/ai/what-is-artificial-intelligence/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
-						"displayText": "What is machine learning?",
-						"url": "/learning/ai/what-is-machine-learning/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-						"displayText": "What is an LLM?",
-						"url": "/learning/ai/what-is-large-language-model/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
-						"displayText": "What are embeddings?",
-						"url": "/learning/ai/what-are-embeddings/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1rU1Ipdjz9cDWMUQYOjsCe",
-						"displayText": "Vector database",
-						"url": "/learning/ai/what-is-vector-database/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is predictive AI?</h2>\n\n<p>Predictive <a href='/learning/ai/what-is-artificial-intelligence/'>artificial intelligence (AI)</a> is a computer program's ability to use statistical analysis to identify patterns, anticipate behaviors, and forecast future events. The field of statistics has long been used to make predictions about the future; predictive AI makes statistical analysis faster and (theoretically) more accurate via <a href='/learning/ai/what-is-machine-learning/'>machine learning</a> and access to vast amounts of data. While its predictions are not guaranteed to be correct, predictive AI can help businesses prepare for the future and personalize experiences for their customers.</p>\n\n<p>Imagine Joey is a fisherman who needs to know what the weather will be before setting out on his boat. Over the last few months, every time Joey sees a red sky in the morning, he has experienced a storm. Joey begins to conclude that whenever he sees a red sky, he should take it as a warning that a storm is coming. Predictive AI reaches similar conclusions, but by analyzing thousands of factors (instead of just the color of the sky) and decades' worth of data (instead of just several months).</p>\n\n<p>Predictive AI is just one of many capabilities offered by AI, which refers to a set of abilities computers can have that imitate human cognition.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does predictive AI work?</h2>\n\n<h4 class=\"learning-content-h4\">'Big data'</h4>\n\n<p>In statistics more data generally results in more accurate analysis. For example, an opinion poll must have a minimum number of respondents to be considered reliable, and scientific studies need to be repeated several times to be considered statistically significant.</p>\n\n<p>Similarly, predictive AI requires access to vast quantities of data — \"<a href='/learning/ai/big-data/'>big data</a>,\" as it is often called. The more data provided, the better the predictions. An opinion poll may have a few thousands respondents. A predictive AI model could take into account thousands or millions of opinion polls that have been conducted in the past in order to make predictions about public opinion or upcoming elections.</p>\n\n<h4 class=\"learning-content-h4\">Machine learning</h4>\n\n<p>Machine learning is a subset of AI. It is a method for training a computer program to identify data without human intervention. Given enough examples of user behavior on a website, for example, a machine learning model could learn to sort automated <a href='/learning/bots/what-is-a-bot/'>bot</a> traffic from human traffic on the website. Or, given enough photos of a sky and information about weather, a machine learning model could learn to identify a \"red\" sky and associate certain kinds of skies with stormy weather.</p>\n\n<p>In predictive AI, machine learning is applied to the vast data collections described earlier. A predictive AI model can process huge data sets without human supervision.</p>\n\n<h4 class=\"learning-content-h4\">Identifying patterns</h4>\n\n<p>Just as Joey the fisherman identified the pattern of red skies in the morning being associated with a storm coming, predictive AI learns to associate certain types of data or certain occurrences. Predictive AI can look at hundreds or thousands of factors to identify patterns — which indicate events that can recur in the future.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are some use cases for predictive AI?</h2>\n\n<p>The applications for predictive AI are vast and wide-ranging. Having some idea of what is coming in the future can be a huge advantage for a business, even if such predictions are not always accurate. Some of the possible predictive AI use cases include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Inventory management:</strong> Predictive AI can help identify times when consumer demand is likely to be higher and a brand or a store should have more items in stock.</li>\n  <li><strong>Supply chain management:</strong> Similarly, predictive AI can help determine when times of road congestion will occur or when more trucks are needed to meet spikes in user demand.</li>\n  <li><strong>Personalized user experiences:</strong> Predictive AI can help anticipate user behavior based on past activity.</li>\n  <li><strong>Healthcare:</strong> Given enough data, predictive AI could help forecast potential future health conditions based on a person's medical history. (Health data, of course, is subject to strict regulatory frameworks like <a href='/learning/privacy/what-is-hipaa-compliance/'>HIPAA</a>.)</li>\n  <li><strong>Marketing campaigns:</strong> Just as predictive AI can anticipate user or customer behavior, it can help prognosticate what kinds of content or products that prospective customers may be interested in.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Predictive AI vs. generative AI</h2>\n\n<p>Predictive and <a href='/learning/ai/what-is-generative-ai/'>generative AI</a> both use machine learning, combined with access to lots of data, in order to produce their outputs. However, predictive AI uses machine learning to extrapolate the future. Generative AI uses machine learning to create content. The predictive-AI version of Joey the fisherman tells his fellow fishers when a storm is coming. The generative-AI version of Joey writes a novel that imagines various interactions between weather and fishing voyages.</p>\n\n<p>In a sense, generative AI is similar to predictive AI, as it uses statistical analysis to \"predict\" which words and concepts belong together. But the goals for generative and predictive AI are different, the machine learning models they use are different, and the use cases are different.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does predictive AI use embeddings?</h2>\n\n<p>Like most types of AI, predictive AI requires the ability to query databases quickly and efficiently, and to find relationships between similar items of data. A database of <a href='/learning/ai/what-are-embeddings/'>embeddings</a> makes similarity queries possible.</p>\n\n<p>Embeddings are a way to store information in a form that allows for the identification of similarities and relationships. Created by unsupervised <a href='/learning/ai/what-is-neural-network/'>neural network</a> layers, embeddings turn items of information into <a href='/learning/ai/what-is-vector-database/'>vectors</a>, placing them within a mathematical space in relation to the other items of information in the data set.</p>\n\n<p>Embeddings that end up clustered together can be considered relevant to each other, and this allows for rapid pattern identification. If \"red sky\", \"storm clouds\", and \"rough weather\" are all close to each other in an embeddings database, a predictive AI model can begin to identify when a storm is coming.</p>\n\n<p><a href='/learning/ai/what-is-artificial-intelligence/'>Read more about AI</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How to prevent misuse of AI</h2>\n\n<p><a href='/learning/ai/what-is-artificial-intelligence/'>Artificial intelligence (AI)</a> systems are powerful, and many are embedded into essential business processes. Consequently, AI misuse can compromise applications and infrastructure, expose organizations to <a href='/learning/privacy/what-is-data-compliance/'>compliance</a> and reputational risks, and in extreme cases even endanger lives. To prevent their misuse, AI models must have guardrails, access control, prompt validation, and other security measures in place. Architectural choices, such as incorporating human-in-the-loop (HITL) in AI-based application infrastructure, can also mitigate the risks of misuse.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is AI misuse?</h2>\n\n<p>AI misuse is the use of AI models for purposes other than the model architects' intended purposes, especially for malicious or fraudulent purposes. As AI models continue to become more effective, preventing AI misuse increases in importance. Many AI experts are concerned about AI's potential uses by rogue states and terrorists (parties that are likely already using AI to further their causes).</p>\n\n<p>The <a href='/learning/ai/owasp-top-10-risks-for-llms/'>OWASP Top 10 Risks for Large Language Models (LLMs)</a> lists some of the ways AI models can be misused, such as <a href='/learning/ai/prompt-injection/'>prompt injection</a> to manipulate their behavior, sensitive data disclosure, and introducing supply chain vulnerabilities by compromising an <a href='/learning/ai/what-is-large-language-model/'>LLM</a> that downstream applications rely on.</p>\n\n<p>Beyond these risks, individuals might attempt to use AI models to access or generate dangerous or illegal content, from instructions for building a weapon to harmful explicit content.</p>\n\n<p>For everyday users and businesses that rely on AI, preventing AI misuse is important for the sake of protecting their data, their brand, and their customers, as well as maintaining compliance with <a href='/learning/privacy/what-is-data-privacy/'>data privacy</a> regulations.</p>\n\n<h4 class=\"learning-content-h4\">How can generative AI be misused in social engineering and other attacks?</h4>\n\n<p>Attackers can use AI models to aid in many types of cyber attacks. <a href='/learning/ai/what-is-generative-ai/'>Generative AI models</a> and <a href='/learning/ai/what-is-agentic-ai/'>AI agents</a> can find software vulnerabilities, including, in some cases, <a href='/learning/security/threats/zero-day-exploit/'>zero day exploits</a>. They can write <a href='/learning/ddos/glossary/malware/'>malware</a> programs. They can assist in <a href='/learning/security/threats/social-engineering-attack/'>social engineering</a> campaigns by crafting <a href='/learning/access-management/phishing-attack/'>phishing</a> messages, and they may be able to identify phishing targets. Agentic AI applications could autonomously operate long-term phishing campaigns, <a href='/learning/security/ransomware/what-is-ransomware/'>ransomware</a> campaigns, and other cyber attacks, empowering Advanced Persistent Threats (APTs) and organized criminal groups.</p>\n\n<p>Even generative AI models with security guardrails in place can be misused in this way, thanks to techniques like prompt injection and jailbreaking that enable malicious parties to leverage the models for their own purposes.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Strategies for preventing the misuse of AI</h2>\n\n<p>To prevent individuals and groups from using AI applications for purposes other than their intended purpose, AI application and model developers should integrate a number of security measures throughout the development and deployment process.</p>\n\n<h4 class=\"learning-content-h4\">Training data validation</h4>\n\n<p>Before a model is in production, it is trained. Preventing AI misuse starts with validating the training data to ensure a model's training data does not contain any biased data, any private data, or any hidden backdoors that allow for unexpected unauthorized behavior.</p>\n\n<p>Because so much training data is needed to refine a model, it tends to come from a variety of sources, leaving training data vulnerable to <a href='/learning/security/what-is-a-supply-chain-attack/'>supply chain attacks</a>. But malicious parties might also use <a href='/learning/ai/data-poisoning/'>data poisoning</a> attacks to corrupt training data, with the goal of introducing bias or backdoors on purpose. Data poisoners may also break directly into databases from outside the organization, or insider threats may corrupt training data.</p>\n\n<p>Beyond data validation, these security measures help prevent data poisoning attacks:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/access-management/principle-of-least-privilege/'>Principle of least privilege</a>: Applying this <a href='/learning/security/glossary/what-is-zero-trust/'>zero trust</a> principle to stores of training data helps to ensure that only those persons and systems that absolutely need access, have access. This lowers the risk that training data will be broken into by outside attackers.</li>\n  <li>Diverse data sources: Drawing from multiple sources of training data helps to correct for bias that may be present in data from a single source.</li>\n  <li>Monitoring and auditing: Tracking changes to stored training data allows organizations to trace suspicious activity and identify if a set of training data has been compromised.</li>\n  <li>Adversarial training: This technique involves training an AI model to recognize intentionally misleading inputs.</li>\n</ul>\n\n<p>Many organizations are not training LLMs themselves. For businesses that are downstream from LLM providers, it is important to understand what security measures they have taken to defend their models from data poisoning.</p>\n\n<p>Customers of LLM providers typically use <a href='/learning/ai/retrieval-augmented-generation-rag/'>retrieval augmented generation (RAG)</a> to <a href='/learning/ai/how-to-build-rag-pipelines/'>optimize LLM performance</a> for their use cases. Validating and securing the internal data sets used for RAG is essential as well.</p>\n\n<h4 class=\"learning-content-h4\">AI guardrails</h4>\n\n<p>AI guardrails are policies and controls that ensure AI models stay within predefined boundaries. Guardrails, for instance, can allow a model to write an <a href='/learning/email-security/what-is-email/'>email</a> but stop it from writing a phishing email. Or, they can allow a model to code a function, but stop it from writing a vulnerability exploit.</p>\n\n<p>Guardrails should defend AI models across all aspects, from training data (as described above) to application infrastructure.</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Infrastructure guardrails:</strong> This involves protecting AI workloads in the cloud with effective <a href='/learning/cloud/cloud-native-security/'>cloud-native security</a> measures like <a href='/learning/security/api/what-is-api-security/'>API protection</a>, <a href='/learning/network-layer/network-security/'>network security</a>, <a href='/learning/ssl/what-is-encryption/'>encryption</a>, and <a href='/learning/access-management/what-is-identity-and-access-management/'>identity and access management (IAM)</a>.</li>\n  <li><strong>Application guardrails:</strong> AI models are usually integrated into user-facing applications via <a href='/learning/security/api/what-is-an-api/'>API</a>, and APIs can apply policies for blocking harmful or dangerous content that gets past model guardrails.</li>\n  <li><strong>Model guardrails:</strong> This is fine-tuning a model for accuracy and optimizing it for its intended purpose. Models should be trained on what kinds of responses are undesirable so that they avoid producing those responses during <a href='/learning/ai/inference-vs-training/'>inference</a>.</li>\n</ul>\n\n<p>Most organizations building AI into their public-facing applications are integrating preexisting AI models. Application and infrastructure guardrails, in these cases, are the areas in which they have the most direct control. They should also seek to understand the guardrails that the model providers have built into their models.</p>\n\n<h4 class=\"learning-content-h4\">Prompt validation</h4>\n\n<p>AI models are uniquely vulnerable to prompt injection attacks: deceptive prompts that trick a model into going outside of its guardrails. Aside from deliberate attacks, some user prompts might violate the model's Terms of Service, such as requests for illegal, dangerous, or explicit content.</p>\n\n<p>Prompt validation helps ensure that prompts do not contain harmful or deceptive requests. Just as API schema validation blocks illegitimate requests that do not conform to the API's schema, prompt validation identifies and blocks unsafe content in prompts before they reach the AI model.</p>\n\n<h4 class=\"learning-content-h4\">Human-in-the-loop (HITL)</h4>\n\n<p>Human-in-the-loop (HITL) is one possible architectural approach to reduce the risks of unsupervised AI model decision-making. HITL keeps human managers part of the AI workflow so they can approve decisions made by AI models. Models can be trained with direct human feedback, or models may be configured to request human assistance when it can only make low-confidence predictions about the appropriate response to a prompt.</p>\n\n<h4 class=\"learning-content-h4\">Data loss prevention (DLP)</h4>\n\n<p><a href='/learning/access-management/what-is-dlp/'>Data loss prevention (DLP)</a> refers to a category of technologies that can stop confidential data from leaving secured environments. DLP can look at individual API requests and AI prompts, and using a multitude of techniques, including data fingerprinting, keyword matching, and pattern matching, DLP can identify sensitive and confidential data, and block requests where necessary.</p>\n\n<p>DLP can also restrict copying and pasting from certain webpages or apps to prevent insiders from feeding internal information into external LLMs.</p>\n\n<h4 class=\"learning-content-h4\">Shadow AI detection</h4>\n\n<p>AI misuse can only be prevented if organizations have a complete view of where such misuse might be possible and might have an impact. AI models often end up embedded in application infrastructure in unexpected or unauthorized places, similar to the <a href='/learning/security/api/what-is-shadow-api/'>shadow API</a> challenge faced by many app developers. <a href='/learning/ai/what-is-shadow-ai/'>Shadow AI detection</a> helps organizations determine where the AI misuse risks are so that they can put appropriate guardrails and safety measures in place.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to prevent AI misuse with Cloudflare</h2>\n\n<p>The <a href='/ai-security/'>Cloudflare AI Security Suite</a> allows organizations to discover shadow AI, protect models from abuse, secure AI agent access, and block data exposure. This enables organizations to accelerate their rate of AI adoption while maintaining security. Learn more about the <a href='/ai-security/'>AI Security Suite</a>.</p>\n\n<p>&nbsp;</p>\n\n<h2>FAQs</h2>\n<h4>What constitutes the misuse of artificial intelligence?</h4>\n<p>AI misuse occurs when individuals or groups employ models for activities outside the models' original design, particularly for deceptive, illegal, or harmful goals. This includes using these tools to create dangerous or restricted content, or to facilitate fraudulent schemes.</p>\n\n<h4>In what ways can attackers use generative AI models to compromise cybersecurity?</h4>\n<p>Malicious parties can leverage generative AI to write malware, pinpoint software flaws, and discover zero-day exploits. They also use these tools to automate social engineering by generating convincing phishing messages and identifying potential targets for long-term spear phishing campaigns. Additionally, prompt injection attacks against generative AI models can allow attackers to discover confidential information.</p>\n\n<h4>How can developers secure a model before it reaches the production phase?</h4>\n<p>Security begins during the training phase by validating data to ensure it is free from bias, private information, or hidden backdoors. AI model developers should also use diverse data sources, apply the principle of least privilege to data access, and utilize adversarial training to help the model recognize deceptive inputs.</p>\n\n<h4>What are AI guardrails?</h4>\n<p>Guardrails are essential policies and controls that keep AI behavior within safe, predefined limits.</p>\n\n<h4>How does prompt validation prevent security breaches?</h4>\n<p>Prompt validation acts as a filter that identifies and blocks deceptive or harmful requests before they reach the AI model. This process helps stop prompt injection attacks, where users try to trick the system into bypassing its safety measures.</p>\n\n<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What constitutes the misuse of artificial intelligence?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"AI misuse occurs when individuals or groups employ models for activities outside the models' original design, particularly for deceptive, illegal, or harmful goals. This includes using these tools to create dangerous or restricted content, or to facilitate fraudulent schemes.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"In what ways can attackers use generative AI models to compromise cybersecurity?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Malicious parties can leverage generative AI to write malware, pinpoint software flaws, and discover zero-day exploits. They also use these tools to automate social engineering by generating convincing phishing messages and identifying potential targets for long-term spear phishing campaigns. Additionally, prompt injection attacks against generative AI models can allow attackers to discover confidential information.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How can developers secure a model before it reaches the production phase?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Security begins during the training phase by validating data to ensure it is free from bias, private information, or hidden backdoors. AI model developers should also use diverse data sources, apply the principle of least privilege to data access, and utilize adversarial training to help the model recognize deceptive inputs.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"What are AI guardrails?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Guardrails are essential policies and controls that keep AI behavior within safe, predefined limits.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How does prompt validation prevent security breaches?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Prompt validation acts as a filter that identifies and blocks deceptive or harmful requests before they reach the AI model. This process helps stop prompt injection attacks, where users try to trick the system into bypassing its safety measures.\"\n      }\n    }\n  ]\n}\n</script>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"esLA": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"esLA": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -721,100 +715,20 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
-					"headerText": "Subscribe to theNET",
-					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
-						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
-						"backgroundColor": "white",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
-						"marketoFormDefaultComment": null,
-						"showCommentBox": false,
-						"marketoFormThankYouText": null,
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": "orange",
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 1500,
-					"ctaButton": null
-				},
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "4ad3l3edBzH8KRefyi225g",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Subscribe to theNET, Cloudflare's monthly recap of the Internet's most popular insights!",
-					"postSubmissionDescription": "We're looking forward to sharing content with you.",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2459,
-						"marketoFormLeadSource": "Inbound - Blog Subscriber",
-						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
-						"marketoFormAssetName": null,
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe  to theNET",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"proactivePopup": null,
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "HgqVKL2eqNz8UuhXmGZWm",
-			"pathname": "/learning/ai/what-is-predictive-ai/",
+			"contentfulId": "2gS2kaGgpGg25pWCwxdvN2",
+			"pathname": "/learning/ai/ai-misuse/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"es-LA",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
