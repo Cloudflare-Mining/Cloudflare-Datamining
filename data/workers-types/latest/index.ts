@@ -3890,6 +3890,12 @@ export declare abstract class Performance {
   get timeOrigin(): number;
   /* [Cloudflare Docs Reference](https://developers.cloudflare.com/workers/runtime-apis/performance/#performancenow) */
   now(): number;
+  /**
+   * The **`toJSON()`** method of the Performance interface is a Serialization; it returns a JSON representation of the Performance object.
+   *
+   * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/toJSON)
+   */
+  toJSON(): object;
 }
 // AI Search V2 API Error Interfaces
 export interface AiSearchInternalError extends Error {}

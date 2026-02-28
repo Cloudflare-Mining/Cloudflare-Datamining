@@ -4242,6 +4242,12 @@ declare abstract class Performance extends EventTarget {
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/setResourceTimingBufferSize)
    */
   setResourceTimingBufferSize(size: number): void;
+  /**
+   * The **`toJSON()`** method of the Performance interface is a Serialization; it returns a JSON representation of the Performance object.
+   *
+   * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/toJSON)
+   */
+  toJSON(): object;
   get nodeTiming(): PerformanceNodeTiming;
   eventLoopUtilization(): PerformanceEventLoopUtilization;
   markResourceTiming(): void;
@@ -4261,7 +4267,7 @@ interface PerformanceNodeTiming extends PerformanceEntry {
   readonly loopExit: number;
   readonly idleTime: number;
   readonly uvMetricsInfo: UvMetricsInfo;
-  toJSON(): any;
+  toJSON(): object;
 }
 interface UvMetricsInfo {
   loopCount: number;
@@ -4281,7 +4287,7 @@ declare class PerformanceMark extends PerformanceEntry {
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark/detail)
    */
   get detail(): any;
-  toJSON(): any;
+  toJSON(): object;
 }
 /**
  * **`PerformanceMeasure`** is an _abstract_ interface for PerformanceEntry objects with an PerformanceEntry.entryType of `'measure'`.
@@ -4295,7 +4301,7 @@ declare abstract class PerformanceMeasure extends PerformanceEntry {
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure/detail)
    */
   get detail(): any;
-  toJSON(): any;
+  toJSON(): object;
 }
 interface PerformanceMarkOptions {
   detail?: any;
@@ -4367,7 +4373,7 @@ declare abstract class PerformanceEntry {
    *
    * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/toJSON)
    */
-  toJSON(): any;
+  toJSON(): object;
 }
 /**
  * The **`PerformanceResourceTiming`** interface enables retrieval and analysis of detailed network timing data regarding the loading of an application's resources.
