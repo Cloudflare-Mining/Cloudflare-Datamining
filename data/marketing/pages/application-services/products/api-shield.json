@@ -312,7 +312,20 @@
 						"bladeSizeType": "small",
 						"htmlId": null,
 						"bladeBorder": "none",
-						"buttonOne": null,
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "fK8FDobQ2KrQDkDpZt9j3",
+							"elementName": "Get the report",
+							"standardText": null,
+							"text": "Get the report",
+							"url": "https://www.cloudflare.com/lp/api-security-report/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
 						"buttonTwo": null,
 						"sectionPadding": null,
 						"eyebrow": null
@@ -734,39 +747,6 @@
 						"cards": [
 							{
 								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6OoEA8jAklUgQN1ilqdkAn",
-								"heading": "Product brief",
-								"description": "How our API Shield works",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "35BE3czhyZIfwxretEII8P",
-									"elementName": "API Shield - Resources cards carousel - How our API Shield works - Link",
-									"standardText": null,
-									"text": "Get the product brief",
-									"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35K29X2CAwMZW8ixSrlI5E/21f24de64554f0f30c564ae0b31a2034/API_Shield_Datasheet_2025.pdf",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "3b7d1ba1-b13a-521a-90cb-cc3cd98a6e12",
-									"altText": "Product brief thumbnail",
-									"title": "Product brief thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2lUAsz5YsJICKhBWy6Rl9v/2e039f96c66c926b60c9c9668377ab47/Product_brief_99x180.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
 								"contentfulId": "lrEIe8WfrIzDutzSnE551",
 								"heading": "Solution brief",
 								"description": "Harness the power of consolidated API protection",
@@ -865,6 +845,78 @@
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "67xgDAzT2QrmZeAjZXmwSG",
+						"title": "Interested in API Shield for your enterprise?",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1FLF41PSDewRjeHPYgggPL",
+							"elementName": "Get in touch",
+							"standardText": null,
+							"text": "Get in touch",
+							"url": "#",
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "R3Gu4KmqKeM9Kc0ybV8Dk",
+								"modalName": "API Gateway - Get in touch",
+								"modalId": "api-gateway-get-in-touch",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "7aikiryD5sDQGo9ttBEecW",
+									"bladeName": "API Gateway - Get in touch - Marketo",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "Web Form - Enterprise General Sales Inquiry",
+									"marketoFormAssetName": null,
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Get in touch",
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
