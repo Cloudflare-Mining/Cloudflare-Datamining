@@ -37,22 +37,10 @@
 				"topNavButtonText": "Cloudflare",
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": {
-					"metaTitle": "Cloudflare for Campaigns",
-					"metaDescription": "Cloudflare for Campaigns is a free service that protects political campaigns from cyber attacks. Keep your candidate's website secure from malicious attacks.",
-					"twitterCustomImage": null,
-					"metaImage": {
-						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/0OCDtNPKA2ctXP6YANVgk/a25b4a985eb1639b79392adc8f264fb5/CloudflareforCampaigns_Social_-_1200x627.png"
-						},
-						"description": null
-					},
-					"facebookCustomImage": null,
-					"author": []
-				},
+				"metaTags": null,
 				"sys": {
 					"createdAt": "2020-01-15T12:29:14.345Z",
-					"updatedAt": "2026-02-25T05:57:14.529Z"
+					"updatedAt": "2026-02-28T09:04:26.309Z"
 				},
 				"contentfulId": "5O6igPpQER2PNmjJaGgUeh",
 				"contentTypeId": "page",
@@ -267,47 +255,6 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "15ciEVxvWQBKuAiJhVDAop",
-								"title": "Block malicious attacks",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Prevent attackers and nation-state actors from bringing your site down, with the same protection leveraged by many of the world's biggest companies.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1qyDEBnfSjGjDAj5V6Zo1g/f8c8126789bc16fa0329943b0d414433/security-lock.svg"
-									},
-									"description": "Orange padlock icon"
-								},
-								"iconAssetFile": {
-									"id": "c6776679-e543-5a80-9232-26ab70198b70",
-									"altText": "Security lock Orange",
-									"title": "Security lock Orange",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
-										},
-										"description": "Padlock icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "26YYoV3Wt0hefRWgMNB11R",
@@ -585,28 +532,6 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6jSfzHgB4GfrQeQXSH2jWu",
-								"title": "Protect your account with two-factor authentication (2FA)",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Requiring a second piece of information to validate your identity when logging in prevents unauthorized users from accessing sensitive data on your account. ",
-								"learnMoreUrl": "https://support.cloudflare.com/hc/en-us/articles/200167906-Securing-user-access-with-two-factor-authentication-2FA-",
-								"learnMoreText": "Enable 2FA",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "4F0TRcmbVKMvKEdseJV4dr",
 								"title": "Orange cloud your DNS records ",
 								"makeTitleLink": null,
@@ -733,62 +658,6 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
-					},
-					{
-						"contentTypeId": "bladeSignUpForm",
-						"contentfulId": "17Fk5U3qr5xPTtrkQiOW2H",
-						"bladeName": "Cloudflare for Campaigns - General Form",
-						"formType": "formRight",
-						"formTitle": "Get started",
-						"buttonText": "Submit",
-						"buttonColor": "blue",
-						"htmlId": "campaign-form",
-						"marketoEmbeddedForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "589zND8OSqmyfxtvFdlotW",
-							"bladeName": "Cloudflare for Campaigns - Top-level Site - Embedded Form",
-							"backgroundColor": "blue",
-							"marketoFormId": 1748,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Q1'20 WEB - NAMER - Cloudflare for Campaigns",
-							"marketoFormAssetName": null,
-							"marketoFormHeaderText": "Talk to an Expert <span id=\"campaign-form\" style=\"display: block;  position: relative;  top: -200px;  visibility: hidden;\"></span>",
-							"marketoFormDefaultComment": null,
-							"showCommentBox": null,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": "Thank you! A Cloudflare representative will be in touch soon.",
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": [],
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": "white",
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"title": "Solutions for every campaign",
-						"subtitle": null,
-						"copy": "Rely on Cloudflare for Campaigns to meet the needs of your campaign, including securing your candidate's web presence and safeguarding your internal network and data:\n\n- Protect your website from hostile actors with our web application firewall, DDoS mitigation, and custom blocking rules\n\n- Improve site speed and reliability by leveraging the Cloudflare global network, spanning %{DataCenterCount} cities in over %{CountryCount} countries\n- Monitor all traffic passing through your network and secure internal applications with Cloudflare Zero Trust\n\nTalk to a Cloudflare representative today to learn more. ",
-						"iconList": [],
-						"iconTitleList": null,
-						"iconCopyList": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamOptions": null,
-						"rightSideCopy": null,
-						"rightSideCopyPosition": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"textColor": "white",
-						"extraClass": null,
-						"sectionPadding": null,
-						"customPrivacyPolicy": null,
-						"customPrivacyPolicyText": null,
-						"featureList": null
 					}
 				],
 				"noindex": false,
