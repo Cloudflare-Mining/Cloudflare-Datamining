@@ -340,8 +340,8 @@
 		price: "Price",
 		price_per_year: "%{domainRenewalFee}/year",
 		billing: (0, o.p)(H(), "last4"),
-		billing_paypal: (0, o.p)(V(), "email"),
-		billing_cloud: (0, o.p)(G(), "last4"),
+		billing_paypal: (0, o.p)(G(), "email"),
+		billing_cloud: (0, o.p)(V(), "last4"),
 		fees: "Domain fees subject to change."
 	},
 	domain_page_sidebar_domain_details: "Domain details",
@@ -1210,6 +1210,7 @@
 				[n.BA.GAINING_ACCOUNT_NO_ZONE]: "Gaining account must first add the domain as a website.",
 				[n.BA.GAINING_ACCOUNT_ZONE_INITIALIZING]: "Gaining account must first select a plan for the website.",
 				[n.BA.GAINING_ACCOUNT_SERVER_ERROR]: "Server error while determining gaining account eligibility.",
+				[n.BA.GAINING_ACCOUNT_NO_VERIFIED_SUPER_ADMIN]: "Gaining account Super Admin email has not been verified.",
 				[n.BA.API_PAYLOAD_VALIDATION_FEATURE_FLAG_DISABLED]: "Feature is not currently available.",
 				[n.BA.API_PAYLOAD_VALIDATION_INVALID_DOMAIN]: "Domain is invalid.",
 				[n.BA.API_PAYLOAD_VALIDATION_DOMAIN_DOES_NOT_BELONG_TO_ACCOUNT]: "Domain does not belong to this account.",

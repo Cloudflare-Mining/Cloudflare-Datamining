@@ -7,7 +7,8 @@
 	keyboard: {
 		navigate: "to navigate",
 		select: "to select",
-		back: "to go back"
+		back: "to go back",
+		ask_ai: "to ask AI"
 	},
 	placeholder: {
 		default: "Search products, pages, and features…",
@@ -62,6 +63,10 @@
 		workers_and_pages: "Workers & Pages",
 		workflows: "Workflows",
 		tagged_resources: "Tagged Resources"
+	},
+	ask_ai: {
+		label: "Ask AI",
+		description: (0, n.p)(d(), "query")
 	},
 	tip: {
 		access_description: "Search Access applications",

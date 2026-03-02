@@ -95,6 +95,24 @@
 			active_tooltip: "Request received in the last 30 days"
 		}
 	},
+	model_detail: {
+		no_description: "No description available.",
+		model_identifier: "Model Identifier",
+		model_identifier_description: "Use this identifier when making API requests to Workers AI.",
+		api_schema: "API Schema",
+		input: "Input",
+		output: "Output",
+		model_details: "Model Details",
+		context_window: "Context Window",
+		tokens: "tokens",
+		unit_pricing: "Unit Pricing",
+		terms: "Terms",
+		view_terms: "View Terms",
+		resources: "Resources",
+		documentation: "Documentation",
+		pricing_details: "Pricing Details",
+		copy_id: "Copy ID"
+	},
 	common: {
 		no_data: "No data available"
 	},
@@ -139,6 +157,8 @@
 	using_workers_ai_rest_api: "Using Workers AI REST API",
 	using_workers_ai_rest_api_description: (0, o.p)(y()),
 	product_title: "Workers AI",
+	models_title: "Models",
+	models_tagline: "Browse and discover AI models available through Cloudflare",
 	provided_by: (0, o.p)(w(), "provider"),
 	request_access: "Request access",
 	reserve_a_full_access_seat: "Reserve spot on waitlist",

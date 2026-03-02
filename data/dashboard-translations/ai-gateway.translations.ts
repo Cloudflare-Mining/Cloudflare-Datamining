@@ -3,10 +3,45 @@
 	description: "Observe and control your AI applications",
 	parent: "AI",
 	onboarding: {
-		title: "Get started with AI Gateway",
-		description: "Gain visibility and control over your AI apps by creating and connecting to an AI Gateway.",
-		button: "Create Gateway",
-		link: "Learn more"
+		link: "Learn more",
+		hero: {
+			title: "AI Gateway",
+			subtitle: "One place to observe, control, and optimize all your AI applications. Connect any provider, track every request, and reduce costs.",
+			cta: "Create your first gateway"
+		},
+		features: {
+			analytics: {
+				title: "Unified Analytics",
+				description: "See all your AI spend and usage across providers in one dashboard. Track costs by model, monitor token usage, and identify optimization opportunities."
+			},
+			logging: {
+				title: "Request Logging",
+				description: "Store and search through prompts, responses, and metadata. Debug issues faster with full visibility into every request."
+			},
+			control: {
+				title: "Rate Limiting & Caching",
+				description: "Control costs with rate limits and serve repeated requests from cache. Reduce latency and provider spend without changing your code."
+			},
+			providers: {
+				title: "Any Provider, One API",
+				description: "Works with OpenAI, Anthropic, Google, Azure, AWS Bedrock, and 20+ other providers. Switch between providers without code changes."
+			}
+		}
+	},
+	gettingStarted: {
+		title: "Send your first request",
+		description: "Get started with our OpenAI-compatible endpoint. Use existing OpenAI SDKs with minimal code changes while accessing multiple AI providers.",
+		codeExample: "Replace your OpenAI base URL with this endpoint:",
+		collapse: "Hide getting started",
+		expand: "Show getting started",
+		features: {
+			title: "What you get with AI Gateway:",
+			analytics: "Real-time cost and usage analytics across all providers",
+			logging: "Full request logging with prompt and response storage",
+			caching: "Response caching to reduce latency and costs",
+			rateLimit: "Rate limiting to control spend and prevent abuse"
+		},
+		docsLink: "View full documentation"
 	},
 	banners: {
 		logs_limit: "Logs now persist and you can store up to 10M logs per gateway. See docs to <0>learn more</0>.",

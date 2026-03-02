@@ -207,7 +207,8 @@
 			description: "Use an AI Gateway to track and manage model usage. All gateways will have access to <b>Workers AI</b>. To use other providers, select a gateway with your API keys added.",
 			create_default: {
 				title: "Create a new AI Gateway",
-				description: "This action will create one AI Gateway in your account"
+				description: "A new AI Gateway will be deployed as part of this instance creation.",
+				action: 'Press "Next" to continue the process.'
 			},
 			gateway: {
 				byok_use: "Available providers:"
@@ -236,6 +237,10 @@
 				fusion_method: {
 					title: "Fusion method",
 					description: "Select how vector and keyword search scores are combined."
+				},
+				keyword_match_mode: {
+					title: "Keyword match mode",
+					description: "Select how keywords are matched during hybrid search."
 				}
 			},
 			chunking: {
@@ -459,7 +464,8 @@
 		hybrid_search: {
 			title: "Hybrid search",
 			description: "Enable hybrid search to combine vector and keyword search for improved results.",
-			fusion_method: "Fusion method"
+			fusion_method: "Fusion method",
+			keyword_match_mode: "Keyword match mode"
 		},
 		public_url: {
 			title: "Public URL",
@@ -769,6 +775,16 @@
 		max: {
 			title: "Maximum score",
 			description: "Uses the highest score from either vector or keyword search."
+		}
+	},
+	keyword_match_mode: {
+		exact_match: {
+			title: "Exact match",
+			description: "Only matches results that contain <b>all</b> keywords in the query."
+		},
+		fuzzy_match: {
+			title: "Fuzzy match",
+			description: "Matches results that contain <b>one or more</b> keywords from the query."
 		}
 	},
 	errors: {
