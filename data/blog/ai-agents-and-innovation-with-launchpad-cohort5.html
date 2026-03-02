@@ -20,7 +20,7 @@
 	<p>To scale out their platform, Lamatic.ai built their architecture isolating serverless and AI logic on a per-customer basis. Rather than batching requests into a centralized cluster, Lamatic.ai distributes workloads across Cloudflare’s global network, ensuring each customer and endpoint is served by its own Worker executing dedicated logic. This per-customer deployment model — enabled by <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms"><b><u>Workers for Platforms</u></b></a><b> </b>— allows Lamatic.ai to deliver customer-specific serverless functions at scale, and reduces technical overhead as they onboard additional customers. Each customer gets a dedicated Worker whose request and rate limits are enabled based on their level of subscription.&nbsp;</p>
 	<p>Beyond request processing, Lamatic uses <b>Cloudflare </b><a href="https://developers.cloudflare.com/kv"><b><u>Workers KV</u></b></a> as a distributed config store to ensure high availability and security. All values are encrypted at rest with <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode"><u>AES-256-GCM</u></a> and decrypted only at runtime, keeping operations both secure and low-latency. Tokens and user credentials are encrypted and stored in the database and KV.&nbsp;</p>
 	<p>To further enhance performance, Cloudflare <b>Queues</b> plays a key role in orchestrating task completion. Lamatic uses Queues to offload work from Workers requests, and handle tasks such as webhooks and coordinating distributed processes, both essential for maintaining system consistency and reliability at scale. While Workers handle sync requests at point of execution, longer running jobs process via Queues. For example, during a scheduled ETL sync, new data records generated are stored as a message queue on Cloudflare <a href="https://developers.cloudflare.com/pub-sub"><b><u>Pub/Sub</u></b></a>. A consumer Worker collects these messages and makes an API request to the pod using the Workers Queue. The consumer Worker consumes more messages as each queue is finished processing.</p>
-	<p>Another example of where this has been optimal is for managing AI workflows. Many AI workflows involve concurrent requests to multiple data sources, Queues streamlines data processing and efficiently feeds information into customers’ <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag"><u>Retrieval Augmented Generation (RAG)</u></a> workflows. This approach smooths out workload spikes, reduces bottlenecks, and ensures that AI agents can reliably aggregate and process data without delays.</p>
+	<p>Another example of where this has been optimal is for managing AI workflows. Many AI workflows involve concurrent requests to multiple data sources, Queues <a href="https://www.cloudflare.com/learning/ai/how-to-build-rag-pipelines">streamlines data processing and efficiently feeds information</a> into customers’ <a href="https://www.cloudflare.com/learning/ai/retrieval-augmented-generation-rag"><u>Retrieval Augmented Generation (RAG)</u></a> workflows. This approach smooths out workload spikes, reduces bottlenecks, and ensures that AI agents can reliably aggregate and process data without delays.</p>
 	<p>Beyond this, Lamatic.ai offers <b>Workers AI</b> as one of the support inference providers that customers can use across their platform. Customers can choose to run one of the many open source models hosted on Workers AI, depending on their use case (chatbot, image generation, voice, etc.). Together, these layers solve the challenges of scaling AI agents by handling high volumes of data, maintaining low-latency responses, and ensuring robust security. With Cloudflare’s infrastructure as its backbone, Lamatic.ai has built a resilient and high-performing platform that meets the rigorous demands of modern AI applications, making it an ideal choice for startups embedding AI-driven features into their products.</p>
 	<div class="flex anchor relative">
 		<h2 id="skyward-ai-automates-compliance-using-ai-agents-with-durable-objects-and-agents">Skyward AI automates compliance using AI agents with Durable Objects and <code>agents</code></h2>
@@ -95,6 +95,14 @@
 				</td>
 				<td>
 					<p>Building an MCP for identity verification &amp; fraud prevention</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><a href="https://dreamlit.ai"><b>Dreamlit AI</b></a></p>
+				</td>
+				<td>
+					<p>Add transactional notifications into your app in minutes with no engineers required</p>
 				</td>
 			</tr>
 			<tr>
@@ -195,18 +203,10 @@
 			</tr>
 			<tr>
 				<td>
-					<p><a href="http://www.nordcraft.com"><b><u>Nordcraft</u></b></a></p>
+					<p><a href="http://www.nordcraft.com"><b>Nordcraft</b></a></p>
 				</td>
 				<td>
 					<p>Web development engine that lets product teams build beautiful interactive web applications</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p><a href="http://www.notika.ai"><b>Notika AI</b></a></p>
-				</td>
-				<td>
-					<p>Add transactional notifications into your app in minutes with no engineers required</p>
 				</td>
 			</tr>
 			<tr>
@@ -279,6 +279,14 @@
 				</td>
 				<td>
 					<p>Increase test coverage with Computer-Use agents</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+				</td>
+				<td>
+					<p></p>
 				</td>
 			</tr>
 			<tr>
