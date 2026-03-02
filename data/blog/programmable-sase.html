@@ -70,7 +70,7 @@
 	</div>
 	<p>The problem: A customer wanted to enforce periodic re-authentication for their Cloudflare One Client users, similar to how traditional VPNs require users to re-authenticate every few hours. Cloudflare's pre-defined session controls are designed around per-application policies, not global time-based expiration.</p>
 	<p>The solution: A scheduled Cloudflare Worker that queries the Devices API, identifies devices that have been inactive longer than a specified threshold, and revokes their registrations, forcing users to re-authenticate via their identity provider.</p>
-	<pre class="language-Rust"><code class="language-Rust">export default {
+	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
   async scheduled(event, env, ctx) {
     const API_TOKEN = env.API_TOKEN;
     const ACCOUNT_ID = env.ACCOUNT_ID;
@@ -132,8 +132,7 @@
       }
     }
   }
-};
-</code></pre>
+};</code></pre>
 	<p>Configure the Worker with environment secrets (<code>API_TOKEN, ACCOUNT_ID</code>, <code>REVOKE_INTERVAL_MINUTES</code>) and a cron trigger (<code>0 */4 * * *</code> for every 4 hours), and you have automated session management. Just getting a simple feature like this into a vendor’s roadmap could take months, and even longer to move into a management interface.</p>
 	<p>But with automated device session revocation, our technical specialist deployed this policy with the customer in an afternoon. It's been running in production for months.</p>
 	<p>We’ve observed countless implementations like this across Cloudflare One deployments. We’ve seen users implement coaching pages and purpose justification workflows by using our existing <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#redirect"><u>redirect policies</u></a> and Workers. Other users have built custom logic that evaluates browser attributes before making policy or routing decisions. Each solves a unique problem that would otherwise require waiting for a vendor to build a specific, niche integration with a third-party system. Instead, customers are building exactly what they need, on their timeline, with logic they own.</p>
