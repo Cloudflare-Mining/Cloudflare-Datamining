@@ -1,0 +1,45 @@
+<div class="content-intro">
+	<div><strong>About Us</strong></div>
+	<div>
+		<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
+	</div>
+</div>
+<p><strong>Available Location: Lisbon&nbsp;</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>As a Senior Jira Systems Administrator, you will serve as the primary architect and guardian of our Atlassian Data Center environment, ensuring peak performance, security, and scalability. You will collaborate closely with cross-functional internal teams to translate complex business needs into streamlined workflows while leveraging Groovy and ScriptRunner to automate advanced logic. We are looking for a meticulous, "uptime-focused" technical expert who balances deep infrastructure knowledge with a commitment to maintaining a clean, well-governed instance.</p>
+<p><strong>Role Responsibilities:</strong><strong><br></strong></p>
+<ul>
+	<li><strong>System Maintenance &amp; Security:</strong> Lead the end-to-end patching process for Jira Data Center/Server instances. Monitor Atlassian Security Advisories and perform version upgrades to ensure the environment is secure and performant.</li>
+	<li><strong>Instance Governance:</strong> Serve as the primary gatekeeper for the Jira configuration. Manage global settings, including workflows, permission schemes, screen schemes, and custom field consolidation.</li>
+	<li><strong>Automation &amp; Customization:</strong> Develop and maintain complex scripts using <strong>ScriptRunner (Groovy)</strong> to automate business logic, extend Jira’s native capabilities, and integrate with external APIs.</li>
+	<li><strong>Performance Monitoring:</strong> Conduct regular health checks, JVM tuning, and re-indexing. Troubleshoot system-level issues (logs, database connectivity, or plugin conflicts) to minimize downtime.</li>
+	<li><strong>User Support &amp; Training:</strong> Provide "Tier 3" support for internal teams, helping them translate business requirements into efficient Jira projects without creating "configuration bloat."</li>
+</ul>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
+<ul>
+	<li><strong>Atlassian Expertise:</strong> 3–5+ years of experience as a Jira Systems Administrator, with specific experience both in<strong> </strong>On-Prem (Data Center or Server) environments AND cloud migration experience.&nbsp;</li>
+	<li><strong>Scripting Proficiency:</strong> Advanced knowledge of Groovy and the ScriptRunner plugin. You should be comfortable writing scripts that interact with the Jira API.</li>
+	<li><strong>Infrastructure Knowledge:</strong> Strong understanding of the underlying tech stack: Linux/Windows servers, SQL databases (PostgreSQL/SQL Server), and SSL/Certificate management.</li>
+	<li><strong>Technical Troubleshooting:</strong> Ability to analyze log files (atlassian-jira.log) and thread dumps to identify the root cause of system instability.</li>
+	<li><strong>Change Management:</strong> Experience operating in a production environment where "uptime is king," following strict change-control processes for all patches and updates.</li>
+</ul>
+<p><strong>Nice-to-Have Skills</strong></p>
+<ul>
+	<li><strong>Atlassian Certified Professional (ACP):</strong> Current certifications such as ACP-100 (Jira Admin for Data Center) or ACP-120 (Jira Admin for Cloud).</li>
+	<li><strong>Identity Management:</strong> Experience with Atlassian Guard (Access) and configuring SSO/SAML (e.g., Okta, Azure AD) for user provisioning.</li>
+	<li><strong>Ecosystem Breadth:</strong> Familiarity with administering other Atlassian tools like Confluence, Bitbucket, or Jira Service Management (JSM).</li>
+	<li><strong>Project Management Savvy:</strong> Experience with Agile methodologies (Scrum/Kanban) to help teams optimize their boards and reporting.</li>
+</ul>
+<div class="content-conclusion">
+	<p><strong>What Makes Cloudflare Special?</strong></p>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>
