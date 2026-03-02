@@ -1,0 +1,90 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mojbLCZu1rEEn6Mjbj7t9/90a617aaa5e9442fafab0edb63e98359/image6.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>In the world of cybersecurity, "starting from scratch" is a double-edged sword. On one hand, you have a clean slate; on the other, you face a mountain of configurations, best practices, and potential "gotchas."</p>
+	<p>While <a href="https://www.cloudflare.com/zero-trust"><u>Cloudflare One</u></a> has been often cited as one of the easiest-to-use SASE platforms, there is no magic without proper configuration. And while Cloudflare has been striving to simplify complex networking concepts by creating products such as <a href="https://www.cloudflare.com/network-services/products/magic-wan"><u>Cloudflare WAN</u></a>, <a href="https://www.cloudflare.com/network-services/products/magic-transit"><u>Magic Transit</u></a>, and <a href="https://www.cloudflare.com/network-services/products/magic-firewall"><u>Cloudflare Network Firewall</u></a>, which simplify and reduce the typical complexity associated with deploying comparable functions from other vendors, the breadth of capabilities provided by Cloudflare One require creation of best-practice policies and templates to achieve the most optimal outcomes.</p>
+	<p>To make it easy to start taking advantage of Cloudflare’s powerful SASE platform, we have developed a method that ensures customers get the right configuration quickly and easily. We call it Project Helix.&nbsp;</p>
+	<p>In this post, we’ll dig into the problem of getting the correct customization, and how we built Project Helix to make it simple. That means our customers have access to the most powerful SASE platform out there — and the easiest to onboard.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-complexity-barrier-why-a-blank-slate-can-slow-zero-trust-adoption">The complexity barrier: Why a 'blank slate' can slow Zero Trust adoption</h2>
+		<a href="https://blog.cloudflare.com/#the-complexity-barrier-why-a-blank-slate-can-slow-zero-trust-adoption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare One is the world’s largest composable platform, and we enable our product teams to release different capabilities when they are ready. That means customers get access to cutting-edge features as soon as possible, but sometimes these features require tweaking settings or attributes that are set in the platform by default.&nbsp;</p>
+	<p>For example, Cloudflare One provides comprehensive DNS protection, Network Protection, Secure Web Gateway, and Zero Trust Access to any private application included in all of our comprehensive <a href="https://www.cloudflare.com/plans/enterprise/interna/#why-cloudflare-interna-packages"><u>Interna</u></a> packages. But deploying advanced security capabilities such as Secure Web Gateway, TLS inspection, DLP, AV scanning, etc. may be too disruptive right out of the gate — so a Cloudflare One tenant is typically provisioned with a blank slate. That means that there are many switches one must flip to enable the full power of Cloudflare One.</p>
+	<p>So we faced a dilemma: How can we help our customers get the right settings, right away?</p>
+	<p>We started by releasing guides to help administrators get started quickly, wherein they could select a scenario that matches their goals and outcomes.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01zYmAkjofG6lVx5Ped3IO/62e0817816463fd1144b665f014a338a/image5.png" alt="" class="kg-image" width="1999" height="776" loading="lazy">
+	</figure>
+	<p>But we soon realized that that approach did not accomplish the frictionless nirvana we were after. For example, customers who wanted to take advantage of all four scenarios described in the “Get Started” guide would need to step through each of those wizards individually.&nbsp;</p>
+	<p>In another instance, we released a highly-anticipated capability to <a href="https://blog.cloudflare.com/tunnel-hostname-routing"><u>connect and secure any private app by hostname</u></a>. But it was tricky to enable: in addition to flipping a switch in the Cloudflare One settings page, it required customers to change their default split tunnel configuration to include a specific CGNAT range designated for this functionality to be sent to Cloudflare via Cloudflare One Client. We couldn’t easily make this change a default Cloudflare One Client profile, as any change affecting traffic routing on a customer’s network could potentially break existing environments.&nbsp;</p>
+	<p>For greenfield deployments, we want to be easily able to enable any customer to benefit from this capability without introducing a bunch of friction.</p>
+	<p>We needed a way to engage the knowledge we have, and use it to navigate the numerous knobs, switches, and policies on behalf of our customers — so they can take advantage of the full breadth of innovation.</p>
+	<div class="flex anchor relative">
+		<h2 id="project-helix-codifying-expertise-and-automation">Project Helix: Codifying expertise and automation</h2>
+		<a href="https://blog.cloudflare.com/#project-helix-codifying-expertise-and-automation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To achieve this goal, we needed to find a reliable way of taking the amazing brainpower of our Solutions Engineers, Professional Service Engineers, and Partners and enable them to share the best practices they encountered deploying Cloudflare One, whether for production, demos, or proof-of-concepts.&nbsp;</p>
+	<p>Sharing this knowledge had to be as easy as a push of a button and in a codified format — otherwise we knew it wouldn’t be done consistently. We decided to call it Project Helix, for the way in which it weaves together expertise and automation.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4VkCzbtFn0VKI5LtEwUPWo/52ab2fd075995a62d09a6dc20909d37f/image4.png" alt="" class="kg-image" width="1200" height="409" loading="lazy">
+	</figure>
+	<p>We kicked off the knowledge gathering by asking ourselves what we want customers to experience during the proof of concepts, and we documented all those outcomes. These included enabling baseline security best practice protections across DNS, Network, and HTTP protocols, enabling TLS inspection, QUIC/HTTP3 security for customers (a Cloudflare-exclusive capability for over 3 years now!), deploying Remote Browser Isolation for risky domain categories (such as newly-registered domains), deploying visibility and controls over AI applications the users can access, and elevating the visibility and configuration of the Tenant Control policies that allow customers to restrict their users to accessing only their own instance of SaaS applications such as Office 365, Google Workspace, Dropbox, Box, etc.&nbsp;</p>
+	<p>We also noted that a frequent point of friction for our customers was splitting out traffic for popular real-time communication apps such as Zoom to go directly to the Internet. And for customers whose users are often traveling, the team assembled a list of widely used captive portals across airlines, hotels, etc., to help ensure a smoother experience for users accessing resources on those private networks in conjunction with the Cloudflare One client.</p>
+	<p>The old way — manual deployment — has significant drawbacks. Deploying all those policies and configurations manually on a brand-new tenant would take several hours. It would also require copious documentation that would need to be manually maintained and updated. And manual configuration and execution of all these steps is subject to human error, raising questions of consistency.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-technology-behind-helix-terraform-and-workers">The technology behind Helix: Terraform and Workers</h2>
+		<a href="https://blog.cloudflare.com/#the-technology-behind-helix-terraform-and-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When we learned that our in-house Cloudflare teams had <a href="https://blog.cloudflare.com/shift-left-enterprise-scale"><u>embraced Terraform</u></a> to manage the ever-growing number of accounts used to support Cloudflare internal users, we decided to use a similar approach to solve our own dilemma.</p>
+	<p>We architected scalable and flexible Terraform templates that were programmed to deliver all these settings, configuration snippets, and policies. Once we saw how amazing that outcome was, we wanted to make this easier and more user-friendly for the broader user base.</p>
+	<p>So the team created a web-based user interface, hosted in Cloudflare Workers and leveraging <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable"><u>Cloudflare Containers</u></a>, to take input parameters and execute Terraform templates in an ephemeral fashion. As there’s no persistent storage used for this solution, it eliminates any potential security risk of storing logs or tokens used in the Terraform provisioning process. This allows anyone, from the most seasoned Solution Engineer to someone who is brand new to Cloudflare One, to deploy the full-functioning baseline configuration with a push a button.
+
+		Within a couple of minutes of entering some basic information, the Cloudflare One tenant is fully configured and enabled with advanced security features and most optimal settings. Helix also surfaces a comprehensive list of security policies that we recommend the customer enable –- with a flip of the switch.</p>
+	<p>We start by deploying a set of robust DNS-based security settings, surfacing policies that allow corporate DNS for zero trust, while blocking security risks and questionable categories from ever being resolved by the DNS.&nbsp; So when you log in to Cloudflare Dash interface, you will see the following DNS policies preconfigured:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7L9HjaIQmALkMhvcDL974E/80cfda0ebbb4f853831615f25fe3832f/image2.png" alt="" class="kg-image" width="1152" height="512" loading="lazy">
+	</figure>
+	<p>We then layer it with robust network policies that protect users and stop malicious traffic across all ports and protocols that you can observe by going to the Network Policies tab in the Dash UI</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2kD8g4UvGApHq8fPhoiCPG/1f299d6170cc48ae312bcfd6b5303fa0/image1.png" alt="" class="kg-image" width="1164" height="527" loading="lazy">
+	</figure>
+	<p>And finally, we finish this with a broad set of robust HTTP security policies, featuring granular enterprise application tenant controls, securing of AI prompts, and isolating risky domains via <a href="https://www.cloudflare.com/sase/products/browser-isolation"><u>Browser Isolation</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2kViSELKjsezICQo3R5mnj/a29132e225a03d321a2dc5ab4d3caa27/image3.png" alt="" class="kg-image" width="1150" height="682" loading="lazy">
+	</figure>
+	<p>All of this is achieved in a matter of minutes, with 100% consistency and immunity to human data-entry errors. All you have to do is to turn these policies on or off to suit your particular needs.</p>
+	<p>To top it off, the deployment is optimized for maximum interoperability with leading captive portals across airlines and hotels, while also providing an option to easily break out traffic to Zoom to avoid performance issues of tunnelling.&nbsp;</p>
+	<p>But wait — there was one more thing! Cloudflare <a href="https://blog.cloudflare.com/internationalizing-the-cloudflare-dashboard"><u>internationalized its UI</u></a> back in 2020, and we wanted to bring the same language-friendliness to all customers and partners across the globe. So we templatized all the object names, policy names, user interactions, etc., within Terraform, and delivered the ability to internationalize deployment of these core best practices and policies in any language.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-impact">The impact</h2>
+		<a href="https://blog.cloudflare.com/#the-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The impact of this initiative has been massive. According to Bob Percciacante, a very seasoned Cloudflare One Solutions Engineer, using Helix for one of his proof-of-concepts saved 2–3 weeks of start-up and prep time to configure and verify all the necessary settings and features. He was able to demonstrate all the essential Cloudflare One features to the customer within 15 minutes of deploying a Helix-based configuration.</p>
+	<p>For the customer, it means they can start enjoying the security of Zero Trust from day one.&nbsp;</p>
+	<p><b>Ready to go beyond the blank slate and accelerate your own Zero Trust deployment?</b></p>
+	<ul>
+		<li>
+			<p><b>Explore Cloudflare One:</b> Learn more about the Cloudflare One platform and its comprehensive SASE capabilities on our<a href="https://www.cloudflare.com/sase"><u> Cloudflare One page</u></a>.</p>
+		</li>
+		<li>
+			<p>Contact your Cloudflare account team to experience the best of Cloudflare One deployment at lightning speed!</p>
+		</li>
+	</ul>
+	<p></p>
+</div>
