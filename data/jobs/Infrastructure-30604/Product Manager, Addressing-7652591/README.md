@@ -5,54 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, US, New York, US</strong></p>
+<p><strong>Available Locations: Austin TX, Denver CO</strong></p>
 <p><strong>About the role</strong></p>
-<p>The GTM Enterprise Applications is looking for a seasoned and certified Senior Salesforce Business Systems Analyst (BSA) to join our team and serve as a key techno-functional bridge between our Salesforce engineering team and our business stakeholders. The role of Senior Salesforce BSA entails utilizing the candidate's deep understanding of Sales and Marketing business processes to gather and evaluate user requirements, with the aim of providing comprehensive technology solutions that align with the business objectives of the revenue teams at Cloudflare. As a valued member of the core team, your responsibilities will involve document, synthesize requirements, solution design, development, and upkeep of the Salesforce platform and its associated technologies for the IT - GTM Enterprise Application’s department.</p>
-<p><strong>Key responsibilities</strong></p>
+<p>Cloudflare’s network protects over 20% of the Internet which translates to over trillions of requests per month. We’re looking for a product manager who will help build the systems and processes that allow us to manage the IP address space for our customers, how to configure services using these IP addresses, and also manage Cloudflare IP addresses to enable our customers to leverage our infrastructure as much as possible.</p>
+<h4><strong>What you'll do</strong></h4>
+<p>As a Product Manager for IP Addressing at Cloudflare, you will own the strategy and execution for how customers interact with IP addresses on our network, from initial onboarding to ongoing management and security. This includes defining and driving the roadmap for Bring Your Own IP (BYOIP) to make it a truly enterprise-grade offering, focusing on key areas like enhanced monitoring, full self-service provisioning, and easy integration of modern security protocols like RPKI. A critical component of this role will be the evolution of our Internet Protocol Address Management (IPAM) solution, determining how Cloudflare can provide industry-leading flexibility and customizability for binding services to IP addresses. You will be responsible for understanding customer needs around IP lifecycle management and defining the features that make Cloudflare the premier platform for managing customer IP space.</p>
+<p>Beyond customer-facing features, you will also be a champion for the health of Cloudflare's own IP space. This includes deep analysis and strategic initiatives to monitor how traffic impacts our IP ranges. This role is highly cross-functional, requiring close collaboration with engineering, policy, and sales teams to advance Cloudflare's vision for how IPs should be used on the Internet, ultimately helping us drive better deliverability, reliability, and security for all Cloudflare customers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Manage Sales and Marketing technology projects and related impacts on GTM systems: developing requirements, designing functional solutions, prototypes &amp; facilitate solution documentations. Ensure projects are completed with agreed upon scope, on time.</li>
-	<li>Collaborate with business partners to establish and document user stories, current and desired business processes, and functional requirements.</li>
-	<li>Deep experience in Solution design of Campaign to Order processes, Lead Generation and Management, Campaign attribution tracking, Sales Path/Process management.</li>
-	<li>Advance understanding of Salesforce automations such as Flow and overall point to click platform capabilities, Hands-on exposure related to Salesforce platform configurations with clear vision on how to design solutions for complex business use cases.</li>
-	<li>Effectively convey business requirements to technical teams to facilitate custom development and Unit and Smoke testing.</li>
-	<li>Contribute to cross-functional projects involving technical development, including Salesforce integration with native or 3rd &amp; 4th party applications.</li>
-	<li>Foster collaboration with other Business Systems Analysts to review and identify overlaps in requirements internally with other BSA’s, and propose relevant technical solutions.</li>
-	<li>Be a trusted advisor and consultant to the business stakeholders and make recommendations for improvements to systems and processes to make processes and workflows more efficient and automated.</li>
-	<li>Create, maintain, and prioritize the Jira backlog according to business value through the life of the projects.</li>
-	<li>Assisting with the elaboration of epics, themes, and features into user stories that are small enough, or granular enough, to be achieved in a single sprint.</li>
-	<li>Participating in Daily scrum, Sprint ceremonies, reveals, retrospectives and CAB’s – inspecting the product progress at the end of every sprint to accept or reject the work that has been done by the team</li>
-	<li>Demonstrate leadership and technical expertise by presenting tailored solutions to solve complex business requirements on the Salesforce platform and ecosystem</li>
-	<li>Design, prototype, and deploy scalable solutions using Salesforce AI capabilities (Einstein, GPT) and Agentforce automations, ensuring responsible governance, cross-functional alignment, and measurable improvements in workflow efficiency, data quality, and end-user productivity.</li>
-	<li>Create and maintain detailed technical documentation based on design specifications.</li>
-	<li>Take ownership of functional tasks and deliverables for the Salesforce Sales Cloud application, encompassing areas such as testing, training, reporting, support, and ongoing enhancements.</li>
-	<li>Use and recommend best practices while delivering scalable high quality solutions.</li>
-	<li>Providing support for production issues, including fixes across platforms and on-call responsibilities working with the production support team to ensure 24x7 availability of production systems.</li>
-	<li>Ensure adherence to IT General controls, including Change Advisory Boards (CABs), Documentation protocols, peer reviews, and CI/CD tooling such as Copado.</li>
-	<li>Collaborate closely with Sales, RevOps, Data Insights, Finance, Legal, and Security teams to deliver comprehensive solutions.</li>
-	<li>Foster collaboration with internal Business Systems Analysts to review and identify overlaps in requirements internally with other BSA’s, and propose relevant technical solutions.</li>
-	<li>Be a trusted advisor and make recommendations for improvements to systems and processes to make processes and workflows more scalable, efficient and automated.</li>
+	<li>Represent the customer, be it internal or external. Be the champion and voice of customers. Build intimate, personal customer relationships. Bring the customer's voice into the creation process.</li>
+	<li>Develop the platform vision for your area. Ensure that your vision can work not just for your current set of customers, but for 10 or even 100 times your current set.&nbsp;</li>
+	<li>Evangelize the vision so that all stakeholders are aligned, have context and understand where we are going.</li>
+	<li>Make data-driven roadmap decisions.&nbsp; Make tough tactical prioritization decisions based off of data you collect, curate, and disseminate.&nbsp; Build trust with stakeholders by ensuring that your roadmap is understandable and sensible based on the data you present.</li>
+	<li>Measure success. Own the measures used to define success for your product. Success measures must be defined at the inception of a product and tracked throughout its lifecycle. Make measures visible to all stakeholders and interpret them into actionable conclusions and new hypotheses.</li>
+	<li>Author use cases and prioritize requirements. Translate observations and customer feedback into a prioritized product backlog.&nbsp; Author use cases based on specific real-world product applications and extrapolate detailed product requirements for the scenarios.</li>
+	<li>Collaborate across teams. We win or lose as a team. Product managers play a critical role in creating alignment between engineering teams and stakeholders. A collaborative attitude is essential to the job.</li>
 </ul>
-<p><strong>Qualifications</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<p>The ideal candidate is customer-focused, data-driven, methodical and thrives in a goal-oriented and data-driven environment.&nbsp; You have a deep technical understanding of the observability space and outstanding communication and collaboration skills.&nbsp; You are able to work with a diverse group, get consensus, and drive the product forward.&nbsp; You are execution focused, you emphasize getting things done while paying attention to important details. You have a passion for building frameworks that scale massively and make it easy for all teams to get the most out of data as you.&nbsp;&nbsp;</p>
 <ul>
-	<li>Minimum 5 years of experience implementing, configuring and administering Salesforce and SaaS business systems with at least 3 years of Salesforce Sales and/or Marketing Cloud experience.</li>
-	<li>Proficient in the use of Salesforce Data Loader, Workbench and Excel to support data analysis &amp; quality initiatives.</li>
-	<li>Detail-oriented, organized, self-motivated, hard working, and a great team player with excellent interpersonal skills</li>
-	<li>Excellent written and verbal communication skills required, including experience meeting with and presenting information to senior leadership</li>
-	<li>Salesforce.com certifications (Administrator, Advanced Administrator, Sales Cloud Consultant)</li>
-	<li>Passion for creating a frictionless end-user experience</li>
-	<li>Proven ability to work creatively and analytically in a problem-solving scenario</li>
-	<li>Strong knowledge and understanding of the Salesforce.com ecosystem and best-practices</li>
-	<li>Salesforce certifications strongly preferred.</li>
-	<li>Strong familiarity with GTM technologies, Salesforce &amp; Integration Security best practices, and platform governance.</li>
-	<li>Excellent communication, presentation, and documentation skills with the ability to translate business needs into technical requirements.</li>
+	<li>8+ years of previous product management experience</li>
+	<li>Domain expertise in infrastructure operations or procurement.&nbsp; You have been there, done that as either an architect or product owner for operational and financial tooling and consolidation</li>
+	<li>Distributed systems experience that allows you to drive the scaling strategy for deployment as our scale grows both on volume and number of internal customers supporting.</li>
+	<li>Experience presenting new products and features to customers – whether as a developer, analyst or product manager. You are enthusiastic about taking something you have helped build and sharing it with the world</li>
+	<li>Strong customer and stakeholder empathy. You must be the voice of engineering, customers, support, or ops at any given time. You must be able to channel many points of view into a strategic roadmap and deliverables that provide elegant solutions to all requirements.</li>
+	<li>Exceptional communication, presentation, organizational and analytical skills</li>
+	<li>Demonstrated ability to lead, drive consensus and deliver in a matrixed organization with multiple stakeholders</li>
+	<li>Experience working with large and complex data sets (SQL, Postgres, Prometheus, etc.).&nbsp; You are skilled at proving points with data and can quickly show others how to do so.</li>
+	<li>Ability to communicate complex technical concepts to all audiences</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>BS/MS in a technology- or business-related field</li>
+	<li>Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</li>
+	<li>Scripting/programming experience (Python, Go, etc.) and/or experience with web frameworks</li>
 </ul>
 <p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
-<p><strong><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $152,000 - $186,000.</span></li>
+	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $128,000 - $176,000</span></li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -80,7 +73,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
