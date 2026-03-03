@@ -1,0 +1,156 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19ADYZGXk4bL6me6OIoqhu/6de609943882939d7779ab90b1116b12/image2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Starting today, Cloudflare CASB customers can do more than see risky file-sharing across their SaaS apps: they can fix it, directly from the Cloudflare One dashboard.</p>
+	<p>This launch marks a huge advancement for Cloudflare’s <a href="https://www.cloudflare.com/zero-trust/products/casb"><u>Cloud Access Security Broker</u></a> (CASB). Since its release, Cloudflare’s API-based CASB has focused on providing robust, comprehensive visibility and detection. It also connects to the SaaS tools your business runs on, surfacing misconfigurations, and flagging overshared data before it becomes tomorrow’s incident.</p>
+	<p>With today’s release of Remediation – a new way to fix problems with just a click, right from the CASB Findings page – CASB begins its next chapter, and moves from telling you what’s wrong to helping you make it right.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3sl5Cse8hP3nZwE1deik09/1ee2d7d9f61eceb4a23868b9dab7bbbc/image4.png" alt="" class="kg-image" width="1181" height="873" loading="lazy">
+	</figure>
+	<p><sub><i>An example of a Remediation Action (Remove Public File Sharing) in a CASB Finding.</i></sub></p>
+	<div class="flex anchor relative">
+		<h2 id="casb-101-a-single-place-to-see-saas-risk">CASB 101: A single place to see SaaS risk</h2>
+		<a href="https://blog.cloudflare.com/#casb-101-a-single-place-to-see-saas-risk" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Inside <a href="https://www.cloudflare.com/zero-trust"><u>Cloudflare One</u></a>, our SASE platform, CASB connects to the SaaS and cloud tools your teams already use. By talking to providers over API, CASB gives security and IT teams:</p>
+	<ul>
+		<li>
+			<p>A consolidated view of misconfigurations, overshared files, and risky access patterns across apps like Microsoft 365, Google Workspace, Slack, Salesforce, Box, GitHub, Jira, and Confluence (<a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations"><u>CASB Integrations</u></a>).</p>
+		</li>
+		<li>
+			<p>Continuous scanning for new issues as users collaborate, share, and adopt new tools.</p>
+		</li>
+		<li>
+			<p>Findings that are organized, searchable, and exportable for triage and reporting.</p>
+		</li>
+	</ul>
+	<p>But until now, the actual fixing usually happened somewhere else, whether it’s inside each app’s admin UI, or through a ticket to the team that owns that tool. Remediation closes that loop.</p>
+	<div class="flex anchor relative">
+		<h2 id="remediation-casbs-next-chapter">Remediation: CASB’s next chapter</h2>
+		<a href="https://blog.cloudflare.com/#remediation-casbs-next-chapter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The launch of CASB Remediation marks a major shift forward for the product and Cloudflare One, and we have a ton of big updates planned for the next year.&nbsp;</p>
+	<p>With today’s release, we focused on fixing file-share issues in <a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/#file-sharing"><u>Microsoft 365</u></a> and <a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/#file-sharing"><u>Google Workspace</u></a>.</p>
+	<p>With Remediation, you can fix the highest-impact, most common file risks we see across customers, including:</p>
+	<ul>
+		<li>
+			<p>Public links that let anyone on the Internet view or edit a file.</p>
+		</li>
+		<li>
+			<p>Files shared company-wide across your tenant or domain, even when just a handful of people should have access.</p>
+		</li>
+		<li>
+			<p>Files shared outside your organization to personal accounts and external domains.</p>
+		</li>
+		<li>
+			<p>All of the above, when they also match a DLP Profile. For example, a document full of customer records, credentials, or financial details.</p>
+		</li>
+	</ul>
+	<p>When you trigger the ‘Remove sharing’ Remediation action on a supported finding, CASB immediately moves to remove the risky sharing configuration (for example, the public link or organization-wide access) from the file in question. And crucially, Remediation only removes risky sharing; it doesn’t delete files or change who owns them.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Te9jeJnI3TRXdxbyT19cf/9f429b27cfd5a6e9fe39b69656cc723c/image3.png" alt="" class="kg-image" width="1253" height="823" loading="lazy">
+	</figure>
+	<p><sub><i>A new page to track the progress and success of Remediated CASB findings.</i></sub></p>
+	<div class="flex anchor relative">
+		<h2 id="two-starting-points-microsoft-365-and-google-workspace">Two starting points: Microsoft 365 and Google Workspace</h2>
+		<a href="https://blog.cloudflare.com/#two-starting-points-microsoft-365-and-google-workspace" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We chose to start with Microsoft 365 and Google Workspace because, for many organizations, that’s where the bulk of their business-critical documents live: internal financials, product roadmaps, customer contracts, HR notes, and more.</p>
+	<p>They’re also where “temporary” sharing tends to linger too long:</p>
+	<ul>
+		<li>
+			<p>A spreadsheet shared “Anyone with the link can edit” for a quick review.</p>
+		</li>
+		<li>
+			<p>A doc made company-wide for an all-hands, then quietly forgotten.</p>
+		</li>
+		<li>
+			<p>A sheet of customer records shared to a contractor’s personal email.</p>
+		</li>
+	</ul>
+	<p>For Microsoft 365, that means cleaning up risky shares in places like OneDrive and SharePoint. For Google Workspace, it means tightening sharing on Docs, Sheets, Slides, and other files stored in Drive.</p>
+	<p>Instead of exporting a CSV of risky files out of CASB, sending it to app owners, and hoping everyone gets around to fixing their share settings, <b>you can drive the clean-up directly from CASB and know when those risks have actually been addressed</b>.</p>
+	<p>And when you and your team use <a href="https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#remediate-findings"><u>CASB Remediation</u></a>, every action is logged in Cloudflare One’s <a href="https://developers.cloudflare.com/cloudflare-one/insights/logs"><u>Admin logs</u></a>, so you can see who took action on which files and when, or export that activity to your security information and event management tool (SIEM).</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works">How it works</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When architecting the system that supports CASB Remediations, we knew it had to do three things really well:</p>
+	<ul>
+		<li>
+			<p>Be fast, even at scale</p>
+		</li>
+		<li>
+			<p>Durable execution to handle surprises gracefully</p>
+		</li>
+		<li>
+			<p>Be easy for our customers to use&nbsp;</p>
+		</li>
+	</ul>
+	<p>To meet these goals, we built a system using several Cloudflare products: <a href="https://workers.cloudflare.com"><u>Workers</u></a>, <a href="https://workers.cloudflare.com/product/workflows"><u>Workflows</u></a>, <a href="https://workers.cloudflare.com/product/queues"><u>Queues</u></a>, <a href="https://workers.cloudflare.com/product/kv"><u>Workers KV</u></a>, <a href="https://developers.cloudflare.com/secrets-store"><u>Secrets Store</u></a>, and <a href="https://workers.cloudflare.com/product/hyperdrive"><u>Hyperdrive</u></a>.&nbsp;</p>
+	<p>When a remediation job is initiated, an API call is made to a Worker. That Worker writes the job to a Queue which is consumed by a second Worker to kick off a Workflow. Workers KV and Secrets Store are used to securely distribute credentials for use in the Workflow. The Workflow runs a series of steps to collect information and execute third-party API calls to complete the remediation. The final outcome of the action is recorded in a database via Hyperdrive.&nbsp;</p>
+	<p>At scale, we are guaranteed to encounter 429s from vendor APIs. Workflows’ native retries simplify handling this, and built-in step logging gives visibility into each retry. This means that there was no need for us to build a complex, single-purpose, state-tracking system or dozens of serverless functions for each action.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TMLm3Wqw5AQHPj6y26Ac4/9acc4fa8b1d1b8f378ab9a23f52e1bdd/image1.png" alt="" class="kg-image" width="1999" height="611" loading="lazy">
+	</figure>
+	<p>Performance results from load testing and early access customers have shown strong performance even under heavy load. The average (p50) end-to-end job completion time is 48 seconds, and the p90 is 72 seconds. Durable Execution (via Workflows) has made job management completely hands-off for our team, even when the Workflow encounters issues with third-party APIs. The simplicity of the final system has made troubleshooting issues fast and straightforward.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next-for-casb-remediation">What’s next for CASB Remediation</h2>
+		<a href="https://blog.cloudflare.com/#whats-next-for-casb-remediation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>File-sharing Remediation for Microsoft 365 and Google Workspace is just the first step.</p>
+	<p>In the near term, we’re working on bringing our customers new Quarantine actions, which can move or isolate high-risk files to safer locations. We are also introducing Custom Webhook actions, hooks that let you trigger downstream workflows, like ticket creation, chat notifications, or your own automation.</p>
+	<p>And more broadly, we’re excited to explore ways to make CASB even more of an active control plane:</p>
+	<ul>
+		<li>
+			<p>Autoremediation policies for carefully scoped, policy-driven fixes where you’re comfortable letting CASB take action automatically.</p>
+		</li>
+		<li>
+			<p>Custom CASB findings so you can define the exact patterns, data types, or access conditions that matter most to your organization.</p>
+		</li>
+		<li>
+			<p>Bulk Remediation that allows you to remediate many similar findings in a single operation.</p>
+		</li>
+		<li>
+			<p>Extending Remediation to additional SaaS integrations beyond Microsoft 365 and Google Workspace, so the same experience applies to tools like Box, Dropbox, Salesforce, GitHub, Slack, Atlassian, and more over time.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h2 id="how-to-get-started">How to get started</h2>
+		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>CASB Remediation requires a paid CASB license, but don’t let that stop you from trying CASB out today!</p>
+	<ul>
+		<li>
+			<p><b>For existing Cloudflare One / CASB customers:</b> Integrate your Microsoft 365 or Google Workspace tenant (or update your existing integration to Read-Write), and start remediating risky shares directly from the side panel within your file sharing-related finding types.</p>
+		</li>
+		<li>
+			<p><b>New to Cloudflare One?</b> <a href="https://dash.cloudflare.com/sign-up/zero-trust"><u>Sign up now</u></a> for 50 free seats to begin using CASB immediately. For larger deployments, request a <a href="https://www.cloudflare.com/contact/sase/?utm_medium=referral&amp;utm_source=blog"><u>consultation with our experts</u></a>.</p>
+		</li>
+	</ul>
+	<p>From there, talk to our team about enabling CASB with Remediation for your Microsoft 365 and Google Workspace tenants so you can find and fix overshared files in one place.</p>
+	<p>We’re excited to see how you use Remediation to clean up long-lived file-sharing risks — and to help shape what CASB’s next generation of remediation capabilities looks like.</p>
+</div>

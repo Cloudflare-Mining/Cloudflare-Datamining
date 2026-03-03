@@ -1,0 +1,101 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2C68t4XzJ3tbBucks6Qyoq/cdd5d2d7f4b44d05cee9764130907f54/image6.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p><a href="https://www.cloudflare.com/learning/email-security/what-is-email-security"><u>Email security</u></a> has always been defined by impermanence. It is a perpetual call-and-response arms race, where defenses are only as strong as the last bypass discovered and attackers iterate relentlessly for even marginal gains. Every control we deploy eventually becomes yesterday’s solution.</p>
+	<p>What makes this challenge especially difficult is that our biggest weaknesses are, by definition, invisible.</p>
+	<p>This problem is best illustrated by a classic example from World War II. Mathematician <a href="https://www.historyofdatascience.com/abraham-wald-a-statistical-hero"><u>Abraham Wald</u></a> was tasked with helping Allied engineers decide where to reinforce bomber aircraft. Engineers initially focused on the bullet holes visible on planes returning from missions. Wald pointed out the flaw: they were reinforcing the areas where planes could already take damage and survive. The true vulnerabilities were on the planes that never came back.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NxyKOOVeVCGbOz7hY5AFU/c382fc6186bc98fe63a7de35720f3618/image3.png" alt="" class="kg-image" width="1536" height="1024" loading="lazy">
+	</figure>
+	<p>Email security faces an identical hurdle: our detection gaps are unseen. By integrating LLMs, we advance email phishing protection and move from reactive to proactive detection improvement.</p>
+	<p>The limits of reactive defense</p>
+	<p>Traditional email security systems improve primarily through user-reported misses. For example, if we marked a spam message as clean, customers can send us the original EML to our pipelines for our analysts to analyze and update our models. This feedback loop is necessary and valuable, but it is inherently reactive. It depends on someone noticing a failure after the fact and taking the time to report it.</p>
+	<p>That means detection improvements are often driven by what attackers already succeeded at, rather than by what they are about to exploit next.</p>
+	<p>To close this gap, we need a way to systematically observe the “planes that didn’t make it back.”</p>
+	<div class="flex anchor relative">
+		<h3 id="mapping-the-threat-landscape-with-llms">Mapping the threat landscape with LLMs</h3>
+		<a href="https://blog.cloudflare.com/#mapping-the-threat-landscape-with-llms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>Large Language Models (LLMs)</u></a> hit the mainstream market in late 2022 and early 2023, fundamentally changing how we process unstructured data. At their core, LLMs use deep learning and massive datasets to predict the next token in a sequence, allowing them to understand context and nuance. They are particularly well-suited for email security because they can read natural language and characterize complex concepts (like intent, urgency, and deception) across millions of messages.</p>
+	<p>Every day, Cloudflare processes millions of unwanted emails. Historically, it was not feasible to deeply characterize each message beyond coarse classifications. Manually mapping emails to nuanced threat vectors simply did not scale.&nbsp;</p>
+	<p>Now, Cloudflare has integrated LLMs into our email security tools to identify threats before they strike. By using the power of LLMs, as we’ll describe below, we can finally see a clear and comprehensive picture of the evolving threat landscape.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/510saHtEz5iJRxg9Qp9zEN/8c59e619c6f6d62e8f6ced7e8f8dd401/image2.png" alt="" class="kg-image" width="888" height="823" loading="lazy">
+	</figure>
+	<p><sup><i>Our LLM-driven categorization shows clear spikes and persistent trends across several distinct categories, including "PrizeNotification" and "SalesOutreach".</i></sup></p>
+	<p>These LLM-generated tags provide Cloudflare analysts with high-fidelity signals in near real time. Tasks that previously required hours of manual investigation and complex querying can now be surfaced automatically, with relevant context attached. This directly increases the velocity at which we can build new targeted Machine Learning models or retrain existing ones to address emerging behaviors.</p>
+	<p>Because Cloudflare operates at global Internet scale, we can gather these insights earlier than ever before, often before a new technique becomes widely visible through customer-reported misses.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-sales-outreach-threat">The Sales Outreach threat</h3>
+		<a href="https://blog.cloudflare.com/#the-sales-outreach-threat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One of the clearest patterns we’ve identified using this new intelligence is the continued persistence of malicious messages structured to look like Sales Outreach-style phishing. These emails are designed to mimic legitimate B2B communication, often presenting opportunities to purchase or receive "special deals" on unique items or services, to lure targets into clicking malicious links or providing credentials.</p>
+	<p>Once LLM categorization surfaced Sales Outreach as a dominant vector, we moved from broad visibility to targeted data collection.&nbsp;</p>
+	<p>Using LLM-generated tags, we began systematically isolating messages that exhibited Sales Outreach characteristics across our global dataset. This produced a continuously growing, high-precision corpus of real-world examples, including confirmed malicious messages as well as borderline cases that traditional systems struggled to classify. From this corpus, we built a dedicated training pipeline.</p>
+	<p>First, we curated training data by grouping messages based on shared linguistic and structural traits identified by the LLMs. These traits included persuasive framing, manufactured urgency, transactional language, and subtle forms of social proof.</p>
+	<p>Next, we focused feature extraction on sentiment and intent rather than static indicators. The model learns how requests are phrased, how credibility is established, and how calls to action are embedded within otherwise normal business conversations.</p>
+	<p>Finally, we trained a purpose-built sentiment analysis model optimized specifically for Sales Outreach behavior. This avoided overloading a general phishing classifier and allowed us to tune precision and recall for this threat class.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uxwkalxVBOczIXJ1VebIs/ce1197d61c83f9756c3951d4dee77572/image4.png" alt="" class="kg-image" width="1280" height="918" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h4 id="turning-language-into-enforcement">Turning language into enforcement</h4>
+		<a href="https://blog.cloudflare.com/#turning-language-into-enforcement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The output of this model is a risk score that reflects how closely a message aligns with known Sales Outreach attack patterns. That score is evaluated alongside existing signals such as sender reputation, link behavior, and historical context to determine whether a message should be blocked, quarantined, or allowed.</p>
+	<p>This process is continuous. As attackers adapt their language, newly observed messages are fed back into the pipeline and used to refine the model without waiting for large volumes of user-reported misses. LLMs act as the discovery layer by surfacing new linguistic variants, while the specialized model performs fast and scalable enforcement.</p>
+	<p>This is what an all-out offensive looks like in practice. It is a feedback loop where large-scale language understanding drives focused, high-precision detection. The result is earlier intervention against a threat class that thrives on subtlety, and fewer malicious sales emails reaching the inbox.</p>
+	<div class="flex anchor relative">
+		<h3 id="results-of-the-undertaking">Results of the undertaking</h3>
+		<a href="https://blog.cloudflare.com/#results-of-the-undertaking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The visibility unlocked by LLM-driven mapping fundamentally changed how we improve detections. Instead of waiting for attackers to succeed and relying on downstream user reports, we gained the ability to identify systemic gaps earlier and address them at the source. This shift from reactive remediation to proactive reinforcement translated directly into measurable customer impact.</p>
+	<p>The most immediate signal of success was a marked reduction in customer friction. Sales Outreach–related phishing has historically generated a high volume of user-reported misses, largely because these messages closely resemble legitimate business communication and often evade traditional rule-based or reputation-driven systems. As our targeted models came online and were continuously refined using LLM-derived insights, fewer of these messages reached end users in the first place.</p>
+	<p>The data reflects this change clearly. Average daily Sales Outreach submissions — messages that we labeled as clean but were in fact Sales Outreach phishing emails, flagged by end users — dropped from 965 in Q3 2025 to 769 in Q4 2025, representing a <b>20.4% reduction in reported misses</b> <b>in a single quarter.</b></p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7plV0JarzggZYDPHKcgmya/8762112a2c7f4c1cec70e654a1a6a4ef/image1.png" alt="" class="kg-image" width="1297" height="721" loading="lazy">
+	</figure>
+	<p>This reduction is not just a metric improvement; it represents thousands fewer disruptive moments per day for security teams and end users alike. Each avoided submission is a phishing attempt that was stopped before it could erode trust, consume analyst time, or force a user to make a security judgment mid-workflow. We have seen this trend continue in Q1 of 2026 with average daily submissions decreasing by two-thirds.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Y6v2oNdWrJUmXzR5igzsL/72dc19cc052185f2753adad111ce0afb/image5.png" alt="" class="kg-image" width="1298" height="741" loading="lazy">
+	</figure>
+	<p>In effect, LLMs allowed us to “see” the planes that never made it back. By illuminating previously invisible failure modes, we were able to reinforce defenses precisely where attackers were concentrating their efforts. The result is a system that improves not only detection rates, but also the day-to-day experience of the people relying on it.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-next-front-in-the-arms-race">The next front in the arms race</h3>
+		<a href="https://blog.cloudflare.com/#the-next-front-in-the-arms-race" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our work with LLMs is just beginning.&nbsp;</p>
+	<p>To stay ahead of the next evolution of attacks, we are moving toward a model of total environmental awareness by refining LLM specificity to extract forensic-level detail from every interaction. This granular mapping allows us to identify specific tactical signatures rather than relying on broad labels.&nbsp;</p>
+	<p>Simultaneously, we are deploying specialized machine learning models purpose-built to hunt for emerging, high-obfuscation vectors at the "fringes" that traditional defenses miss. By leveraging this real-time LLM data as a strategic compass, we can shift our human expertise away from known noise and toward the critical gaps where the next strike is likely to land.</p>
+	<p>By illuminating the "planes that didn't make it back," we are doing more than just reacting to missed email; we are systematically narrowing the battlefield. In the email arms race, the advantage belongs to the side that can see the invisible first.</p>
+	<div class="flex anchor relative">
+		<h3 id="ready-to-enhance-your-email-security">Ready to enhance your email security?</h3>
+		<a href="https://blog.cloudflare.com/#ready-to-enhance-your-email-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We provide all organizations (whether a Cloudflare customer or not) with free access to our <a href="https://developers.cloudflare.com/cloudflare-one/email-security/retro-scan"><u>Retro Scan</u></a> tool, allowing them to use our predictive AI models to scan existing inbox messages in Microsoft 365.&nbsp;</p>
+	<p>Retro Scan will detect and highlight any threats found, enabling organizations to remediate them directly in their email accounts. With these insights, organizations can implement further controls, either using <a href="https://www.cloudflare.com/zero-trust/products/email-security"><u>Cloudflare Email Security</u></a> or their preferred solution, to prevent similar threats from reaching their inboxes in the future.</p>
+	<p>If you are interested in how Cloudflare can help secure your inboxes, sign up for a phishing risk assessment <a href="https://www.cloudflare.com/lp/email-security-self-guided-demo-request/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-modernsec-es-ge-general-ai_week_blog"><u>here</u></a>.</p>
+</div>
