@@ -349,7 +349,7 @@
 		caching: {
 			title: "Cache Responses",
 			description: "Serve requests from our cache rather than your original provider to lower costs and provide faster responses for your users.",
-			resume: (0, i.p)(m())
+			resume: (0, i.p)(g())
 		},
 		ratelimiting: {
 			title: "Rate Limit Requests",
@@ -357,7 +357,7 @@
 			configuration_1: "Limit requests when rate exceeds",
 			configuration_2: "requests over a",
 			configuration_3: "period.",
-			resume: (0, i.p)(g())
+			resume: (0, i.p)(m())
 		},
 		rename_gateway: {
 			title: "Edit Gateway",
@@ -418,6 +418,17 @@
 			modal: {
 				title: "Enable Zero Data Retention for <strong>%{gateway}</strong>?",
 				description: "Enabling ZDR will prevent AI providers from retaining request and response data. Note that features requiring data retention, such as prompt caching, may stop working when ZDR is enabled. This setting only impacts requests using Unified Billing on AI Gateway."
+			}
+		},
+		workers_ai_billing_mode: {
+			title: "Workers AI Billing",
+			description: "Choose how Workers AI usage through this gateway is billed.",
+			description_details: "Standard billing charges your account at the end of each billing cycle. Unified billing deducts from your AI Gateway credit balance in real time.",
+			unified: {
+				title: "Unified billing"
+			},
+			postpaid: {
+				title: "Standard billing"
 			}
 		},
 		otel: {
@@ -922,10 +933,22 @@
 		view_docs: "View Docs",
 		table: {
 			provider: "Provider / Alias",
+			provider_v2: "Provider",
 			last_updated: "Last Updated",
 			value: "Value",
+			key: "Key",
 			alias: "Alias"
 		},
+		section: {
+			configured: "Configured",
+			available: "Available"
+		},
+		add_key: "Add Key",
+		add_another_key: "Add another key",
+		delete_key_alias: 'Delete "%{alias}"',
+		not_configured: "Not configured",
+		keys_count: "keys",
+		configured_keys: "Configured Keys",
 		add_var: "+ Add another provider",
 		type: "Provider:",
 		secret_placeholder: "API Key",
@@ -935,7 +958,18 @@
 		key_count: "%{count} key",
 		key_count_plural: "%{count} keys",
 		expand_keys: "Show keys",
-		collapse_keys: "Hide keys"
+		collapse_keys: "Hide keys",
+		help: {
+			example_title: "Example Request",
+			example_description: 'With stored keys, no Authorization header needed. The key with the "default" alias is used automatically:',
+			example_note: "Your provider API key is injected at runtime.",
+			alias_title: "Using Key Aliases",
+			alias_description: "To use a different key, include the alias header:",
+			docs_title: "Documentation",
+			docs_link: "BYOK (Stored Keys) Guide"
+		},
+		delete_confirmation_mismatch: 'Please type "%{alias}" to confirm deletion.',
+		delete_error_fallback: "Failed to delete provider key"
 	},
 	edit_provider_modal: {
 		title_add: "Add",
@@ -953,11 +987,13 @@
 		alias_duplicate: "This alias already exists for this provider",
 		alias_invalid: "Alias can only contain letters, numbers, hyphens, and underscores",
 		google_vertex: {
+			description: "Configure your Google Vertex AI credentials.",
 			service_account_json: "Service Account JSON",
 			service_account_placeholder: "Paste your Google Cloud service account JSON here...",
 			region: "Region",
 			configuration: "Configuration"
 		},
+		learn_more: "Learn more",
 		azure_openai: {
 			resource_name: "Resource Name",
 			resource_name_placeholder: "Enter your Azure OpenAI resource name",
@@ -979,6 +1015,6 @@
 	confirm_provider_config_delete_modal: {
 		title: "Are you sure you want to delete the key for %{provider}?",
 		title_with_alias: 'Are you sure you want to delete the "%{alias}" key for %{provider}?',
-		description: "Deleting this key will cause all subsequent requests to requests hosted by %{provider} which depend on this key to fail."
+		description: "Deleting this key will cause all requests to %{provider} that depend on it to fail."
 	}
 }

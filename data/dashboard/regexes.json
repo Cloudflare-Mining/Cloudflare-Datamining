@@ -1473,6 +1473,7 @@
 	"/tract \\w+ hack/i",
 	"/trigger [']*([A-z0-9-]+)/i",
 	"/unknown host|unreachable/i",
+	"/used by Worker:\\s*(.+?)\\)/",
 	"/variable [']*([A-z0-9-]+)/i",
 	"/webpack/",
 	"/x/g",

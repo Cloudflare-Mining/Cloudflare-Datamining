@@ -230,7 +230,18 @@
 			billing_permissions_error_message: "You need permission to manage billing in order to renew a domain. Please reach out to a super-admin on the account for assistance.",
 			grace_period_message: "This domain expired on %{gracePeriodStart}, and you have a 40-day grace period to renew it, ending %{gracePeriodEnd}.",
 			continue_to_domain: "Continue to Domain",
-			back_to_domain: "Back to Domain Management"
+			back_to_domain: "Back to Domain Management",
+			redemption_banner_expired: "This domain expired %{daysAgo} and is currently in the redemption period. It can be restored until %{deadline}.",
+			redemption_banner_deleted: "This domain is currently in the redemption period. It can be restored until %{deadline}.",
+			expired_status: "Expired",
+			redemption_fee: "Redemption fee",
+			restore_notice: "Cloudflare can attempt to restore your domain, which will also extend its registration by 1 year. <0>Learn more</0>",
+			learn_more: "Learn more",
+			restore_button: "Restore domain",
+			restore_billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
+			restore_notification_success: "Domain successfully restored",
+			restore_notification_failure: "Domain restoration failed. Please try again or contact support for assistance.",
+			restore_notification_timeout: "Domain restoration is taking longer than expected. Please refresh the page to check status."
 		},
 		redemption_period: {
 			title: "Domain in Redemption Period",
@@ -266,7 +277,7 @@
 					restoration_failure: "We were unable to restore the domain at this time. Please wait a few minutes and try again. If the error persists please contact support for assistance. Your payment has been voided.",
 					restoration_renew_failure: "We were unable to renew the domain at this time. Please contact support for assistance.",
 					restoration_success: "The domain has been successfully restored. We are now attempting to renew the domain.",
-					restoration_renew_success: "The domain has been sucessfully renewed."
+					restoration_renew_success: "The domain has been successfully renewed."
 				}
 			}
 		}
@@ -387,6 +398,10 @@
 		auto_renewal: {
 			title: "Auto Renew",
 			description: (0, o.p)(Z(), "date")
+		},
+		email_verification: {
+			text: "Please check your registrant contact email inbox for a verification email from @emailverification.info. Be sure to check your spam or junk folder. If you have previously verified this contact email, no further action is needed. We are required to verify your email address. If not verified within 14 days, your domain will be suspended.",
+			title: "Email verification required"
 		}
 	},
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",

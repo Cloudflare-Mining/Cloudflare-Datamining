@@ -59,6 +59,11 @@
 		usage_based_analytics: "Usage-based analytics and logging",
 		data_ingestion: "Data Ingestion"
 	},
+	prod_acm: {
+		advanced_certificate_manager: "Advanced Certificate Manager",
+		subtitle: "Dedicated and custom SSL certificates for your domain",
+		monthly_pricing: "%{price}/mo"
+	},
 	prod_r2: {
 		title: "R2",
 		title_enterprise: "R2 for Enterprise",

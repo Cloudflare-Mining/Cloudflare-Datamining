@@ -156,7 +156,9 @@
 			}
 		},
 		filtersSection: {
-			emptyState: "Choose criteria to narrow down your results"
+			emptyState: "Choose criteria to narrow down your results",
+			andTooltip: "Results must match all filters",
+			orTooltip: "Results must match any filter"
 		},
 		groupBySection: {
 			removeGroupBy: "Remove group by"
@@ -349,7 +351,9 @@
 			resolved: "Resolved"
 		},
 		currentState: "Current State",
+		statusSince: "since",
 		nextCheck: "Next check",
+		checking: "Checking...",
 		checkedAt: "Checked At",
 		dataStart: "Data Start",
 		dataEnd: "Data End",

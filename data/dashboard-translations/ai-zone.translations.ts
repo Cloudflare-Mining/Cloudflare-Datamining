@@ -287,10 +287,10 @@
 			download_image: "Download",
 			copy_error: "Failed to copy to clipboard"
 		},
-		allowed_requests_chart: {
-			title: "Allowed requests over time",
-			description: "Review successful AI crawler requests over time for your domain.",
-			no_data_available: "No allowed requests data found"
+		requests_chart: {
+			title: "Requests over time",
+			description: "Review AI crawler requests over time for your domain.",
+			no_data_available: "No requests data found"
 		},
 		data_transfer_chart: {
 			title: "Data transfer over time",
@@ -344,7 +344,7 @@
 				path: "Path",
 				host: "Host",
 				content_type: "Content type",
-				requests: "Allowed requests",
+				requests: "Requests",
 				referral_traffic: "Referral Traffic",
 				bytes_transferred: "Bytes Transferred"
 			}
@@ -583,6 +583,22 @@
 		host: "Host",
 		waf: "WAF",
 		content_type: "Content type"
+	},
+	status_code_filter: {
+		all: "All",
+		"1xx": "1xx",
+		"2xx": "2xx",
+		"3xx": "3xx",
+		"4xx": "4xx",
+		"5xx": "5xx",
+		tooltip: {
+			all: "Show all requests regardless of status code",
+			"1xx": "Informational responses (100–199)",
+			"2xx": "Successful responses (200–299)",
+			"3xx": "Redirection responses (300–399)",
+			"4xx": "Client error responses (400–499)",
+			"5xx": "Server error responses (500–599)"
+		}
 	},
 	content_types: {
 		images: "Images",

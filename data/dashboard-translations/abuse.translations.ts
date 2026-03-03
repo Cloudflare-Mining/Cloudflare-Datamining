@@ -1,6 +1,7 @@
 {
 	page_title: "Abuse Reports",
 	page_description: "View abuse reports accepted against this account and any mitigations in place for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
+	abuse_contact_email: "Abuse contact email",
 	maintenance_banner: {
 		title: "Maintenance in progress",
 		description: "We are currently performing maintenance on the Abuse Reports page. If you expect to see a block but can't find it on this page, please visit the Blocked Content page to view any blocks against your account.",
@@ -62,8 +63,6 @@
 		not_appealable: "This mitigation type is not appealable."
 	},
 	emails_table: {
-		title: "Customer emails",
-		description: "Emails sent to the customer regarding this abuse report.",
 		empty_state: {
 			default: {
 				title: "No emails have been sent for this report",
@@ -162,7 +161,7 @@
 		blocked_content: "View blocked content mitigations that Cloudflare will take or has taken against your domain for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
 		mitigations: "View mitigations that Cloudflare will take or has taken against your account for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare’s Trust & Safety team.",
 		streaming_mitigations: "View streaming mitigations that Cloudflare will take or has taken against your account for potential terms of service violations. Once you have addressed a mitigation, or if you believe the mitigation was made in error, you can request review by Cloudflare's Trust & Safety team.",
-		emails: "View emails sent to the customer regarding this abuse report."
+		emails: "View emails sent to the abuse contact email address for this account."
 	},
 	report_summary_titles: {
 		report_summary: "Report summary",
