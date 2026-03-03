@@ -842,7 +842,8 @@
 		"enabled": false,
 		"branches": [
 			"sequenced-onboarding",
-			"wireframe-grid-onboarding"
+			"wireframe-grid-onboarding",
+			"none"
 		]
 	},
 	"dx-account-overview-audit-logs-widget": {
@@ -910,6 +911,9 @@
 			"baseline",
 			"experiment"
 		]
+	},
+	"dx-loading-improvements": {
+		"enabled": true
 	},
 	"dx-login-flows-kumo": {
 		"enabled": true
