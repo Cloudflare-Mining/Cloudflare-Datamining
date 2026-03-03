@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-sockrates",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.1.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -19,6 +19,72 @@
 					}
 				],
 				"unpackedSize": 121
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/realtimekit-sockrates",
+			"version": "0.1.0",
+			"dependencies": {
+				"events": "^3.3.0"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"vite": "4.1.2",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@types/events": "^3.0.0"
+			},
+			"peerDependencies": {
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "07e1790e62dee070d5224a27b9de2c24b3ad2ca2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-sockrates/-/realtimekit-sockrates-0.1.0.tgz",
+				"fileCount": 3,
+				"integrity": "sha512-lOuq4QNDGVL/Db/tpe79jHeVeKS5I885BAnfU3r+TupU1ukTruEoZX+SRdoesIdB1bP4F8DIu0BH2ua+6yIN4Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD6BRbtk+UJX6eSBf2kk+hnoYnYup3D05IFLlgxclg8LAIgDfTcJ7GcKqDsC4Nc8MrS3N6eYn4banPnfGQNiEy9x4w=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 13304
+			}
+		},
+		"0.1.1": {
+			"name": "@cloudflare/realtimekit-sockrates",
+			"version": "0.1.1",
+			"dependencies": {
+				"events": "^3.3.0"
+			},
+			"devDependencies": {
+				"@types/events": "^3.0.0",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"jest": "^29.7.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"typescript": "~5.5.4",
+				"vite": "4.1.2"
+			},
+			"peerDependencies": {
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-p8ZGFtmaDXQIU88El/N2bgCK96bnXcLQZCXosoQuQ5Hj9JbCZAndhzS6gQjNU2jApJDFPSx1Y/GHL5pUMFYfEg==",
+				"shasum": "574a49bf1e9911c86d6765379313bbeda7b869bc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-sockrates/-/realtimekit-sockrates-0.1.1.tgz",
+				"fileCount": 12,
+				"unpackedSize": 55812,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDT+h58v9vcqqyJ+llTCotXfME9VKVtosvkRZWHFQEFEQIgBvqjYpZvPFjkZ/q5miAPgFS9w4fQN/CHQenfVu9RPCQ="
+					}
+				]
 			}
 		}
 	}

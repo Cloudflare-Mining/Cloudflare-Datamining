@@ -1,22 +1,109 @@
 {
 	"name": "@cloudflare/realtimekit-utils",
 	"dist-tags": {
-		"latest": "0.0.0"
+		"latest": "0.0.1",
+		"staging": "0.0.1-staging.0"
 	},
 	"versions": {
 		"0.0.0": {
 			"name": "@cloudflare/realtimekit-utils",
 			"version": "0.0.0",
 			"dist": {
-				"integrity": "sha512-gzw2nOkH5o5fSujnWM6/Rk4pme/0wurfoJknzUyodZ0SD1+mqTRygXBIcsj08uhZ0fCu/138BvBhabFB/wOb8w==",
 				"shasum": "410e5a74c5951b72305b1fc10cd3a57ee5e64eaf",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-utils/-/realtimekit-utils-0.0.0.tgz",
 				"fileCount": 1,
-				"unpackedSize": 117,
+				"integrity": "sha512-gzw2nOkH5o5fSujnWM6/Rk4pme/0wurfoJknzUyodZ0SD1+mqTRygXBIcsj08uhZ0fCu/138BvBhabFB/wOb8w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCvZTQhUmsDGZl+AGo2WtjM7FQkXyXXZPhicPEeyILRRwIgbR0aZn6mNayP8uKElD6YrfPZpGiDlEJi+/QeM6pFoKw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 117
+			}
+		},
+		"0.0.1-staging.0": {
+			"name": "@cloudflare/realtimekit-utils",
+			"version": "0.0.1-staging.0",
+			"dependencies": {
+				"lodash-es": "^4.17.21"
+			},
+			"devDependencies": {
+				"jest": "^29.7.0",
+				"tsup": "8.0.1",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"eslint": "^8.56.0",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"prettier": "^3.1.1",
+				"commitizen": "^4.3.1",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"@types/lodash-es": "^4.17.6",
+				"eslint-plugin-import": "^2.32.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@typescript-eslint/eslint-plugin": "^7.0.0"
+			},
+			"dist": {
+				"shasum": "3e1a2cf93bb6220dddaec99c16bea04103c0b43d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-utils/-/realtimekit-utils-0.0.1-staging.0.tgz",
+				"fileCount": 7,
+				"integrity": "sha512-2kLGN6CgNFyhUU8D5X6fdLuTBrkvPCn2un9d46GmUk3LH0jd2Vofz8E/OcBPe0hZMyPRheqOUY/utwiPUEbUiw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCEvJxrF8/oPignLiU+MPnnYOGe0Q2wWBBvFAMdw5IiAAIhALB8+6ldledUVAhH2xd1dAjWcMDp6Qf9Z/5fdim9utt9",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 141380
+			}
+		},
+		"0.0.1": {
+			"name": "@cloudflare/realtimekit-utils",
+			"version": "0.0.1",
+			"dependencies": {
+				"lodash-es": "^4.17.21"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.29.8",
+				"@commitlint/cli": "^20.4.1",
+				"@commitlint/config-conventional": "^20.4.1",
+				"@types/jest": "^29.5.11",
+				"@types/lodash-es": "^4.17.6",
+				"@types/node": "^20.10.6",
+				"@typescript-eslint/eslint-plugin": "^7.0.0",
+				"@typescript-eslint/parser": "^7.0.0",
+				"commitizen": "^4.3.1",
+				"cz-conventional-changelog": "^3.3.0",
+				"eslint": "^8.56.0",
+				"eslint-config-airbnb-base": "^15.0.0",
+				"eslint-plugin-import": "^2.32.0",
+				"husky": "^9.1.7",
+				"is-ci": "^2.0.0",
+				"jest": "^29.7.0",
+				"prettier": "^3.1.1",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"tsup": "8.0.1",
+				"typescript": "~5.5.4"
+			},
+			"dist": {
+				"integrity": "sha512-5DdtjxLKgCpkfzjQk5UZruT/evWNFHKFEF8xcbQ3V6KggzEs5CYGAXu8rW94wXm0LAqQyCDXR0gjl4TlmMRzgQ==",
+				"shasum": "0d45e473d8e741d7159203f93d8c44a28810132a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-utils/-/realtimekit-utils-0.0.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 141370,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCvZTQhUmsDGZl+AGo2WtjM7FQkXyXXZPhicPEeyILRRwIgbR0aZn6mNayP8uKElD6YrfPZpGiDlEJi+/QeM6pFoKw="
+						"sig": "MEUCIFmVKDbxp8diHS5oJvt5XlGUke1aCRy5PY2HLWoFHPetAiEArUr43B6OgOh3Pot1DapV7cLZFGr9X5ZqI+S2hsGO+RI="
 					}
 				]
 			}
