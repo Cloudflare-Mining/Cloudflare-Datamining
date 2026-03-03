@@ -5,32 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Hybrid - Austin</p>
-<h4>About the Team</h4>
-<p>The Global Resource Management team is a small, focused group of engineers dedicated to driving organization and clarity across Cloudflare's platform. We develop and maintain applications that live in the foundational platform to enable features that span all of Cloudflare’s resources. The work we do is absolutely critical to enabling Cloudflare to scale its operations efficiently, reach new customers, and maintain the reliability our users expect. Joining us means working on the core of Cloudflare's ability to operate and grow.</p>
-<h4>What You’ll Do</h4>
-<p>As a System Engineer on the Global Resource Management team, you'll be at the forefront of tackling our most challenging system architecture problems:</p>
+<p><strong>Available Location: Austin, TX</strong></p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for an enthusiastic Threat Investigations Intern to join Cloudflare’s Trust and Safety team. If you’re passionate about making the web safer, fascinated by cyber threats, and eager to learn how to investigate and mitigate them, we’d love to talk.</p>
+<p>In this role, you will support real-world investigations, learn how to analyze abuse trends, and assist our technical teams in maintaining a secure platform. You’ll learn and grow alongside talented teammates who share your attention to detail and appetite for problem-solving. A passion for Trust &amp; Safety or Information Security, a high degree of curiosity, and a foundational understanding of web technologies are essential for this role.</p>
+<h3><strong>What you'll do&nbsp;</strong></h3>
+<p>As a Threats Investigation intern, you won’t just be checking boxes. Over 12 weeks, you will:</p>
 <ul>
-	<li>Solve Deep, Foundational Problems: Dive into complex, cross-cutting engineering challenges that benefit all Cloudflare products by creating organized, efficient, and well-managed applications.</li>
-	<li>Architect for Organization and Clarity: Design and make core architectural decisions focused on reducing fanout and simplifying system dependencies. The objective is to make platform adoption seamless and straightforward for product engineering teams.</li>
-	<li>Build Scalable Systems: Be responsible for proposing architectures, writing detailed specifications, and implementing high-quality, maintainable code to build scalable and highly available systems.</li>
-	<li>Drive Code Quality: Actively participate in thorough code reviews, provide constructive feedback on technical specifications and designs, and ensure all implementations adhere to best practices for reliability and security.</li>
+	<li>Assist in Investigations: Support senior investigators in conducting threat investigations related to the potential misuse of Cloudflare’s platform.</li>
+	<li>Analyze Trends: Help gather and analyze data on external abuse trends to provide insights for the Trust &amp; Safety and Cloudforce One teams.</li>
+	<li>System Maintenance &amp; Tooling: Help identify gaps where new tooling could improve team efficiency.</li>
+	<li>Reporting: Contribute to the creation of high-quality reports and briefings on abuse trends and investigative findings.</li>
+	<li>Research: Conduct guided research into emerging threats, tools, and methodologies to help enhance our platform abuse monitoring.</li>
+	<li>Documentation: Contribute to Trust &amp; Safety policies, procedures, and internal documentation.</li>
+	<li>Collaboration: Actively participate in cross-functional projects, coordinating and collaborating with various teams across the company, including the Trust &amp; Safety Engineering and Cloudforce One threat intelligence teams.</li>
 </ul>
-<h4>Skills, Knowledge, and Experience</h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Professional Experience: 3+ years of professional experience in software development, building and operating mission-critical, high-scale distributed systems.</li>
-	<li>Programming Languages: Strong proficiency in Go (Golang)&nbsp;</li>
-	<li>Systems Design: Proven experience in designing, building, and operating scalable, highly available services at cloud-scale.</li>
-	<li>Architectural Thinking: Understanding of concepts related to organization, dependency management, and resource orchestration in a large, multi-tenant environment.</li>
-	<li>Collaboration: Experience participating in a code review process and contributing thoughtful feedback to design specifications. Comfortable working across teams to identify shared challenges and propose platform-level solutions.</li>
+	<li>Education: Currently pursuing a degree in Cybersecurity, Computer Science, Information Systems, or a related field (or equivalent bootcamp/self-taught experience).</li>
+	<li>Curiosity &amp; Problem-Solving: A critical thinker who enjoys solving complex puzzles and learning new technical concepts.</li>
+	<li>Adaptability: Comfortable in a fast-paced environment and willing to roll up your sleeves to dig into the data.</li>
+	<li>Foundational Knowledge: A basic understanding of web infrastructure, web services architecture, and general security principles.</li>
+	<li>Communication: Strong written and verbal communication skills, with the ability to explain technical concepts clearly.</li>
+	<li>Data Skills: Familiarity with basic data analysis. You should be eager to learn how to query and manipulate large datasets.</li>
+	<li>Technical Exposure: Exposure to, or coursework involving, one or more of the following languages or technologies: Python, JavaScript, Go, Node.js, shell scripting, SQL.</li>
+	<li>Ability to commit to a minimum 12 week summer internship.</li>
+	<li>In the office 3-5 days a week in the Austin office</li>
 </ul>
-<h4>Bonus Skills:</h4>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Familiarity with Cloudflare's core technologies, such as edge computing or global networking.</li>
-	<li>Experience with Infrastructure as Code (IaC) tools and related technologies.</li>
+	<li>You understand DNS and the fundamentals of how the Internet works.</li>
+	<li>You have an interest in the intersection of technology, public policy, and the law.</li>
+	<li>You understand the basic responsibilities and requirements of being a hosting provider.</li>
+	<li>You have experience operating or building your own websites or home lab.</li>
+	<li>You have experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students</a>.</li>
 </ul>
-<p>Even if you don’t meet every qualification, we encourage you to apply — we’re looking for curious, driven engineers who want to make an impact on the platform that powers Cloudflare.</p>
-<p>&nbsp;</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

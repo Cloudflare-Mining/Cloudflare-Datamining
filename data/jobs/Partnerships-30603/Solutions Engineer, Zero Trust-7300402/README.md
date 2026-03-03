@@ -5,32 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Bengaluru, India</p>
-<p><strong>About the Role:</strong></p>
-<p>The Oracle Finance Functional Consultant will be a primary functional expert responsible for the configuration, validation, and optimization of the <strong>Oracle Fusion Cloud ERP Financials</strong> modules. This role is critical for the company-wide Oracle migration, focusing on configuring systems to accurately reflect accounting policies and compliance standards across General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</p>
-<p><strong>Key Responsibilities</strong></p>
+<h4><strong>Location: Netherlands (remote)</strong></h4>
+<h4><strong>What you'll do as a Zero Trust Solutions Engineer</strong></h4>
+<p>You will work with our clients to understand their business needs and understand their current applications landscape and access architecture with the goal of helping them develop a security posture that meets their needs while also keeping their employees and assets safe according to the most recent standards in cyber security. You will do this with the technological solutions in the Cloudflare One product portfolio, which encompasses different Zero Trust offerings, including our cutting edge Remote Browser Isolation and email security solutions.&nbsp;</p>
+<p>You will work closely with our Account Executives (AEs); generalist SEs, as well as every other team at Cloudflare, from Sales and Product to Engineering and Customer Support.&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
+<p>You serve as a trusted advisor to our customers; helping them find the best solution for their business needs with Cloudflare One.</p>
 <ul>
-	<li><strong>Financial Module Ownership:</strong> Define and own the functional configuration roadmap for key financial modules, including General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing<strong>.</strong></li>
-	<li><strong>Compliance and System Configuration:</strong> Directly design and configure Oracle Fusion to ensure enforcement of critical financial compliance standards (e.g., ASC 606/IFRS 15, SOX).</li>
-	<li><strong>Reporting Design:</strong> Define and develop robust financial reports and dashboards that meet the needs of internal and external stakeholders using Oracle Fusion reporting tools (e.g., OTBI, FRS, Smartview).</li>
-	<li><strong>Implementation &amp; Data Migration:</strong> Lead the configuration, unit testing, and cutover activities for financial modules, including defining the strategy and execution for data conversion of critical master and transactional data (e.g., customers, open invoices).</li>
-	<li><strong>Process Alignment:</strong> Partner with Finance Business Users and Business Systems Analysts to ensure system configurations align with corporate policy and drive process efficiency.</li>
+	<li>Guide qualified prospects through the Solution Design and Proof of Concept stages of sales engagements; showing them the key capabilities of the Cloudflare One portfolio</li>
+	<li>Work with your Sales Partners to consistently achieve Pipeline and Revenue goals</li>
+	<li>Understand our customers IT landscape and security requirements and develop an architecture for our customers to support their business needs</li>
+	<li>Articulate the benefits of the Cloudflare One product portfolio vs competing solutions</li>
+	<li>Promote retention by capturing and communicating gaps in product or features</li>
 </ul>
-<p><strong>Required Qualifications</strong></p>
+<p><strong>Skill Requirements</strong></p>
 <ul>
-	<li>10+ years of progressive experience as a Consultant, specifically supporting financial ERP systems.</li>
-	<li>5+ years of hands-on, end-to-end implementation and <strong>configuration experience with Oracle Fusion Cloud Financials</strong>, focusing on the General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</li>
-	<li>Deep functional understanding of core accounting principles.</li>
-	<li>Proven ability to create/translate detailed functional design documents and author system configuration from design through deployment.</li>
+	<li>Curiosity and Learning Agility</li>
+	<li>Fluent in English (written &amp; spoken), preferably Dutch as well</li>
+	<li>3+ years of prior Technical Sales, Systems Engineering, or related experience</li>
+	<li>Experience interacting with senior level/executives to communicate a message of network and security transformation</li>
+	<li>Familiar with trends in cyber security (e.g. RAT/trojans, malware, ransomware, phishing, adware, cryptomining, spam, botnets, info stealing, scareware)</li>
+	<li>Fundamental understanding of customer network and application architectures.</li>
+	<li>Technical curiosity and passion: Cloudflare is at the cutting edge of internet technology. It’s incumbent on us to stay up to date not only with Cloudflare’s specific products, but with industry trends.</li>
+	<li>Detailed understanding of workflow from user to application including hybrid architectures with Azure, AWS, GCP.</li>
+	<li>SASE concepts and Zero Trust Networking architectures</li>
+	<li>Secure Web Gateway, CASB, DLP, DNS, DNS over HTTPS</li>
+	<li>IdP/authentication, SAML, OTP</li>
+	<li>SaaS application integration and tenant controls</li>
+	<li>VPN and remote access challenges</li>
+	<li>SIEM and log analytics platforms</li>
+	<li>Client OS fundamentals and software distribution</li>
+	<li>Ability to jump in with hands-on configuration when needed</li>
+	<li>Ability to manage a project, work to deadlines, and prioritize between competing goals</li>
 </ul>
-<p><strong>Preferred Qualifications</strong></p>
+<p><strong>Other desirable skills areas include:</strong></p>
 <ul>
-	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
-	<li>Hands-on experience with other Oracle EPM modules like EDMCS, FCCS and ARCS.</li>
-	<li>Third-party supporting software experience like Avalara, Kyriba, Zip, etc.</li>
-	<li>Exposure to the Data Center Infrastructure industry</li>
-	<li>Relevant professional product/functional certifications (e.g., CPA, PMP, Oracle Cloud certifications)</li>
-	<li>Working knowledge of various AI Agents within Oracle Fusion Cloud Applications</li>
+	<li>Routing, subnetting, split tunnels. SD-WAN, local internet breakout</li>
+	<li>End user and application security risks - DDoS, malware, phishing, viruses</li>
+	<li>Knowledge of competitive market&nbsp; around CDN providers, Web application Firewall, Remote access solutions, Next generation Firewalls, CASB solutions , DDOS mitigations solutions, SD-WAN solutions , Secure Gateway solutions&nbsp;</li>
+	<li>Ideally knowledge of Cloudflare ZTNA solutions such as Access, Gateway, and Browser Isolation</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
