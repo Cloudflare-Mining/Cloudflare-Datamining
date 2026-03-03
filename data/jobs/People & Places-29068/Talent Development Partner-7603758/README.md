@@ -10,22 +10,24 @@
 <p>We are looking for a strategist to lead the design of our<strong> </strong>talent performance engine. In this role, you will own the end-to-end architecture for talent assessment, leadership bench-building and strategic workforce planning. You will act as the bridge between our talent philosophy and its execution, partnering with business leaders, HRBPs, Talent Acquisition, IT and Total Rewards to build a tech-enabled, AI-first ecosystem for career mobility and leadership growth. This is a strategic role for someone who is able to balance consistency and nuance for our hyper-growth environment and global scale.<br><br></p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Talent Management</li>
-	<ul>
-		<li>Own the design and implementation of company-wide Talent Review and Succession Planning processes to identify, assess, and develop employees for critical roles.</li>
-		<li>Develop and manage career pathing frameworks and competency models that support employee growth and organizational agility.</li>
-		<li>Architect the AI-Fluency Competency Model: Partner with key stakeholders to help define and embed the behavioral standards and technical competencies for AI fluency across the workforce (e.g., responsible use, prompt engineering).&nbsp;</li>
-		<li>Partner closely with People Analytics and HRBPs on our employee listening strategy; leverage insights to shape our learning &amp; talent strategies.</li>
-		<li>Analyze talent insights to inform workforce needs assessment, evaluate talent process effectiveness, and drive organizational decision making.</li>
-		<li>Integrate diversity and inclusion principles into all talent management and succession processes.</li>
-		<li>Embed AI into all talent workflows to elevate efficiency, accuracy, decision quality, and customer experience for employees and managers.</li>
-		<li>Own and design a comprehensive Performance Review strategy that is responsive to business needs and nuances (objective setting, check-ins, year-end reviews, calibration).</li>
-		<li>Analyze performance data to identify trends, ensure consistency, and recommend enhancements to drive higher employee engagement and productivity.</li>
-		<li>Collaborate with the People Technology team to design and implement system enhancements that streamline the talent and performance review cycle and improve the user experience.</li>
-		<li>Partner closely with Total Rewards to ensure our talent processes support pay for performance methodologies.</li>
-		<li>Facilitate sessions that feel more like conversations than presentations—engaging employees at every level.</li>
-		<li>Work directly with our Human Resource Business Partners and business leaders to identify real capability gaps—and solve them in ways that don’t always mean more training or workshops.</li>
-	</ul>
+	<li>Talent Management
+		<ul>
+			<li>You will act as a mini-CLTO designing learning and talent development solutions for specific business units, partnering with business leaders and HRBPs.</li>
+			<li>Own the design and implementation of company-wide Talent Review and Succession Planning processes to identify, assess, and develop employees for critical roles.</li>
+			<li>Develop and manage career pathing frameworks and competency models that support employee growth and organizational agility.</li>
+			<li>Architect the AI-Fluency Competency Model: Partner with key stakeholders to help define and embed the behavioral standards and technical competencies for AI fluency across the workforce (e.g., responsible use, prompt engineering).&nbsp;</li>
+			<li>Partner closely with People Analytics and HRBPs on our employee listening strategy; leverage insights to shape our learning &amp; talent strategies.</li>
+			<li>Analyze talent insights to inform workforce needs assessment, evaluate talent process effectiveness, and drive organizational decision making.</li>
+			<li>Integrate diversity and inclusion principles into all talent management and succession processes.</li>
+			<li>Embed AI into all talent workflows to elevate efficiency, accuracy, decision quality, and customer experience for employees and managers.</li>
+			<li>Own and design a comprehensive Performance Review strategy that is responsive to business needs and nuances (objective setting, check-ins, year-end reviews, calibration).</li>
+			<li>Analyze performance data to identify trends, ensure consistency, and recommend enhancements to drive higher employee engagement and productivity.</li>
+			<li>Collaborate with the People Technology team to design and implement system enhancements that streamline the talent and performance review cycle and improve the user experience.</li>
+			<li>Partner closely with Total Rewards to ensure our talent processes support pay for performance methodologies.</li>
+			<li>Facilitate sessions that feel more like conversations than presentations—engaging employees at every level.</li>
+			<li>Work directly with our Human Resource Business Partners and business leaders to identify real capability gaps—and solve them in ways that don’t always mean more training or workshops.</li>
+		</ul>
+	</li>
 </ul>
 <p>Strategic Workforce Planning (SWP)</p>
 <ul>
