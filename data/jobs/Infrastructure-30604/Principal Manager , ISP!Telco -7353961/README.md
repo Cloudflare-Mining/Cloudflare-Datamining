@@ -40,6 +40,7 @@
 	<li><strong>Next-Gen Impact:</strong> Be the leader responsible for scaling Cloudflare’s infrastructure, transitioning it from a high-capacity network to a next-generation <strong>compute and AI-ready platform</strong>.</li>
 	<li><strong>Global Visibility:</strong> Drive real-time business outcomes with senior-level visibility and collaboration across global infrastructure and product teams.</li>
 </ul>
+<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772638388456000&amp;usg=AOvVaw2OaFHNU_bwe1VCKwheTbXx">cloudflare.com</a>&nbsp;email addresses.</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

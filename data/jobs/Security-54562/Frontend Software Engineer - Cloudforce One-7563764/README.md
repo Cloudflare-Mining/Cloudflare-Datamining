@@ -22,7 +22,7 @@
 </ul>
 <p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>More than 3 years of experience designing, building and maintaining production web applications</li>
+	<li>2+ years of experience designing, building and maintaining production web applications</li>
 	<li>Strong knowledge of TypeScript, React, HTML and CSS</li>
 	<li>Experience with Cloudflare developer platform and tooling, specifically Pages and Workers ecosystem</li>
 	<li>Experience building high quality automated tests and leading user acceptance testing exercises</li>
