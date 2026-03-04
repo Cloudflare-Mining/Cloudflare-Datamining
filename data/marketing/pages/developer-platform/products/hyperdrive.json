@@ -52,7 +52,7 @@
 				},
 				"sys": {
 					"createdAt": "2023-09-28T13:22:46.260Z",
-					"updatedAt": "2026-03-03T23:45:20.360Z"
+					"updatedAt": "2026-03-04T02:51:06.747Z"
 				},
 				"contentfulId": "4i1usPVo6625lvcdhccDpy",
 				"contentTypeId": "page",
@@ -87,20 +87,7 @@
 								"openInNewTab": true,
 								"locale": "en-US"
 							},
-							"secondaryCta": {
-								"buttonAssetFile": null,
-								"buttonTextLoggedIn": null,
-								"contentTypeId": "button",
-								"contentfulId": "3odOSoLDolSM6fQcj0RARG",
-								"elementName": "Explore the developer docs",
-								"standardText": null,
-								"text": "Explore the developer docs",
-								"url": "https://developers.cloudflare.com/hyperdrive/",
-								"loggedInUrl": null,
-								"buttonModal": null,
-								"openInNewTab": true,
-								"locale": "en-US"
-							},
+							"secondaryCta": null,
 							"tertiaryCta": null
 						},
 						"rightHalf": {
@@ -174,42 +161,6 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "31uvkOuAcbyxKqa7HpnW5y",
-								"title": "Intelligent caching for your read queries",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Hyperdrive intelligently caches the most popular queries executed against your database, helping further improve performance and reduce database load.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "4fd99cc4-cde1-5f4e-8b21-4ec5e6a05307",
-									"altText": "Lightning bolt icon",
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tpIHSbWVmGHYltiwNqNZ8/0113bb1cdb4e813771661ceed1295707/performance-acceleration-bolt.svg"
-										},
-										"description": "Lightning bolt icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "1K20GpAkzrTqc2r4oJQnjE",
 								"title": "Integration with databases and libraries",
 								"makeTitleLink": false,
@@ -247,59 +198,6 @@
 						],
 						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
-					},
-					{
-						"contentfulId": "781px4Vn4el04pNP47oXKM",
-						"title": "Turn your regional database into a globally-distributed database",
-						"copy": "Cloudflare Hyperdrive manages the number of global connections to your origin database, helping you intelligently cache and accelerate your query responses while reducing database load.\n\nIt does this by creating a pool of connections that can be reused as your applications execute queries. Incoming requests are automatically routed to the nearest connection pool — making your centralized databases feel like they're global.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "ae7391d6-8cac-5d5c-8cdc-b0008329c18e",
-							"altText": "Hyperdrive How it works",
-							"title": "Hyperdrive How it works",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7un0XCLiLOa6850zMRMRvj/13ab11ab95abf35f9b079b86cf204c76/BDES-6252_Diagram_Hyperdrive.png"
-								},
-								"description": "Hyperdrive How it works"
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "HOW IT WORKS",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
-						"togglesTo": []
 					},
 					{
 						"contentfulId": "7LesRX0X4JtEQIBFtcdHlY",
@@ -355,21 +253,6 @@
 								"contentfulAsset": {
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3nG9l7TAuZE0aHfxPGh1rd/0f1fa6e6aad0a54d231f753983caf0db/logo_8x8_gray.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "320b153b-94ff-5d2f-8a97-af10d692025f",
-								"altText": "Applied Systems",
-								"title": null,
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ccFypTv38XuGPWyX4t3mJ/152157e5f3544e7e6ff283a1ed408857/logo_applied-sciences_gray.svg"
 									},
 									"description": null
 								},
@@ -540,42 +423,6 @@
 						"columnContent": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1XWlyJHVBMIZ0vrpc5BWLq",
-								"title": "Keep connection pools primed",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Create and manage a global pool of connections to your database, so requests are routed as efficiently and quickly as possible.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
-									"altText": "Performance routing ",
-									"title": "Performance routing ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/59OgNgdovYpxBuSbeO2TiK/f59c3c3b38689a5bc282dd9880ff977c/performance-routing.svg"
-										},
-										"description": "Smart routing icon"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "6VFDhbD35RqzbiIti3GYIu",
 								"title": "Cache frequently-run queries on our global network",
 								"makeTitleLink": false,
@@ -657,38 +504,6 @@
 						"htmlId": null
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "jKCChbG0EajCNBnJlc0T0",
-						"title": "Trusted by millions of Internet properties",
-						"titleSize": "medium",
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "3xIzhQVegUXrYb5IVzKzQR",
-							"elementName": "See case studies (main)",
-							"standardText": null,
-							"text": "See case studies",
-							"url": "/case-studies/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
 						"contentfulId": "4MRbxwc09EK3QaS1qroVNn",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -703,42 +518,6 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4f7mvSFziqfUrGTUGUzWOV",
-								"title": "Speed up queries with Hyperdrive",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "See how Hyperdrive uses the Cloudflare network to speed up queries — whether they're in a legacy cloud provider or with your favorite serverless database provider.",
-								"learnMoreUrl": "https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed",
-								"learnMoreText": "Read the blog post",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "bb0c6be9-0531-5573-923c-f00ca093e47e",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YGMIqqtWyen0H9EPX70CL/47fb34c9a8aae1587b6eda9384e36139/element-feature-topbar-image-2.png"
-										},
-										"description": "Resources card - Thin top orange line  - image"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "58DX0gZk49n12QVGZIt4Oc",
