@@ -27,6 +27,7 @@
 	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM</li>
 </ul>
 <p>BONUS QUALIFICATIONS: Contributed to open-source JavaScript tools and frameworks, knowledge of A/B testing and personalization platforms, such as Adobe Target and Analytics</p>
+<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

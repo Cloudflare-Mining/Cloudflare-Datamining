@@ -39,6 +39,7 @@
 	<li>Experience with cloud-native KMS solutions (e.g., AWS KMS, Azure Key Vault, GCP Cloud KMS).&nbsp;</li>
 	<li>Worked on similar organisations in the past as Cloudflare</li>
 </ul>
+<p><strong>Fraud Alert:</strong>&nbsp;<em>Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank">cloudflare.com</a>&nbsp;email addresses.</em></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

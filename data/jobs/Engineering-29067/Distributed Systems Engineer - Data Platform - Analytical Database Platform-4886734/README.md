@@ -5,36 +5,66 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About Us</strong><strong><br></strong><strong><br></strong>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<p><strong>What you’ll do</strong></p>
-<p>You will be on a team of passionate, talented engineers that are building critical features in Cloudflare One’s Zero Trust security platform. Throughout this product suite, we have offerings ranging from ZTNA (Zero Trust Network Architecture), to SWG (Secure Web Gateway), CASB (Cloud Access Security Broker), and many more that encompass a holistic platform to help secure some of the world’s most important and forward-looking organizations. This team spearheads a variety of innovative new product features across the whole product portfolio, and directly collaborates with many engineering teams while doing so.&nbsp;</p>
-<p>As an engineer on the team, you bring passion for building mission critical products and features, while thinking about the bigger picture of how your code will impact customers and advance their needs. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and networking challenges for our customers.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Locations Available: London (UK), Lisbon (Portugal)</strong></p>
+<p><strong>About Role</strong></p>
+<p><span style="font-weight: 400;">We are looking for an experienced and highly motivated engineer to join our team and contribute to our analytical database platform. The platform is a critical component of Cloudflare Analytics which provides real-time visibility into the health and performance of Cloudflare customers' online properties.</span></p>
+<p><span style="font-weight: 400;">The team builds and maintains a high-performance, scalable database platform powered by ClickHouse, optimized for analytical workloads. We help our customers, both internal and external, to gain a deeper understanding of their online properties, identify trends and patterns, and make informed decisions about how to optimize their web performance, security, and other key metrics. Our mission is to empower customers to leverage their data to drive better outcomes for their business.</span></p>
+<p><span style="font-weight: 400;">As a Distributed systems engineer - Analytical Database Platform, you will:</span></p>
 <ul>
-	<li>Core backend and API services are written in Go, Rust, and Python.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>We utilize Clickhouse, Postgres, and TimescaleDB as our data stores.</li>
-	<li>Redis is our cache.</li>
-	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Develop and implement new platform components for the Cloudflare Analytical Database Platform to improve functionality and performance.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Add more database clusters to accommodate the growing volume of data generated by Cloudflare products and services.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Monitor and maintain the performance and reliability of existing database platform clusters, and identify and troubleshoot any issues that may arise.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Work to identify and remove bottlenecks within the analytics database platform, including optimizing query performance and streamlining data ingestion processes.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Collaborate with the ClickHouse open-source community to add new features and functionality to the database, as well as contribute to the development of the upstream codebase.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Collaborate with other teams across Cloudflare to understand their data needs and build solutions that empower them to make data-driven decisions.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Participate in the development of the next generation of the database platform engine, including researching and evaluating new technologies and approaches that can improve the database's performance and scalability.</span></p>
+	</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<p><strong>Key qualifications:</strong></p>
 <ul>
-	<li>5 to 7+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Rust, Python, Typescript, Postgres, Clickhouse, Kafka, etc.</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">3+ years of experience working in software development covering distributed systems, and databases.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Strong programming skills (Golang, python, C++ are preferable), as well as a deep understanding of software development best practices and principles.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Strong knowledge of SQL and database internals, including experience with database design, optimization, and performance tuning.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">A solid foundation in computer science, including algorithms, data structures, distributed systems, and concurrency.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Ability to work collaboratively in a team environment, as well as communicate effectively with other teams across Cloudflare.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Strong analytical and problem-solving skills, as well as the ability to work independently and proactively identify and solve issues.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Experience with ClickHouse is a plus.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Experience with SALT or Terraform is a plus.</span></p>
+	</li>
+	<li style="font-weight: 400;">
+		<p><span style="font-weight: 400;">Experience with Linux container technologies, such as Docker and Kubernetes, is a plus.</span></p>
+	</li>
 </ul>
-<p><strong>Bonus</strong></p>
-<ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working on security products</li>
-</ul>
-<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</p>
+<p><span style="font-weight: 400;">If you're passionate about building scalable and performant databases using cutting-edge technologies, and want to work with a world-class team of engineers, then we want to hear from you! Join us in our mission to help build a better internet for everyone!</span></p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

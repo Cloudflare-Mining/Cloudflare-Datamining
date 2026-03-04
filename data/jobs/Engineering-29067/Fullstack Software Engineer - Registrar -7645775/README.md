@@ -5,36 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About Us</strong><strong><br></strong><strong><br></strong>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<p><strong>What you’ll do</strong></p>
-<p>You will be on a team of passionate, talented engineers that are building critical features in Cloudflare One’s Zero Trust security platform. Throughout this product suite, we have offerings ranging from ZTNA (Zero Trust Network Architecture), to SWG (Secure Web Gateway), CASB (Cloud Access Security Broker), and many more that encompass a holistic platform to help secure some of the world’s most important and forward-looking organizations. This team spearheads a variety of innovative new product features across the whole product portfolio, and directly collaborates with many engineering teams while doing so.&nbsp;</p>
-<p>As an engineer on the team, you bring passion for building mission critical products and features, while thinking about the bigger picture of how your code will impact customers and advance their needs. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and networking challenges for our customers.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Locations: Lisbon, Portugal or London, United Kingdom</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 200+ cities worldwide.</p>
+<p><strong>About the Team</strong></p>
+<p>Domain management is the foundation for any online presence and Cloudflare Registrar our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</p>
+<p><strong>What you'll do</strong></p>
+<p>We are looking for a talented systems engineer to be part of our Austin or Lisbon office. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</p>
+<p><strong>Responsibilities:&nbsp;</strong></p>
 <ul>
-	<li>Core backend and API services are written in Go, Rust, and Python.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>We utilize Clickhouse, Postgres, and TimescaleDB as our data stores.</li>
-	<li>Redis is our cache.</li>
-	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
+	<li>Designing, building, running and scaling tools and services that support the full spectrum of domain management.</li>
+	<li>Analyzing and communicating complex technical requirements and concepts, identifying the highest priority areas, and carving a path to delivery</li>
+	<li>Collaborating with product teams to understand goals and develop robust and scalable solutions that align with the customer need</li>
+	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</li>
+	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a better place</li>
+	<li>Ongoing monitoring and maintenance of production services, including participation in on-call rotations</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>5 to 7+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Rust, Python, Typescript, Postgres, Clickhouse, Kafka, etc.</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li>Experience working on, and deploying UI front ends implemented in Typescript</li>
+	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
+	<li>Strong programming skills</li>
+	<li>The ability to collaborate across teams</li>
+	<li>Excited by the idea of optimizing complex solutions to general problems that all websites face</li>
+	<li>Experience with a continuous integration workflow and using source control (we use git)&nbsp;</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working on security products</li>
+	<li>Experience with Javascript and Typescript&nbsp;</li>
+	<li>Experience with Gitlab CI</li>
+	<li>Experience with Cloudflare Workers &amp; Pages</li>
+	<li>Experience with Kibana, Grafana, and/or Prometheus</li>
+	<li>Experience with relational databases (e.g. Postgres)</li>
+	<li>Experience with DNS (and DNSSEC)</li>
+	<li>Experience with using AI</li>
 </ul>
-<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</p>
+<h4><strong><br><br></strong></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

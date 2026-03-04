@@ -5,36 +5,80 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About Us</strong><strong><br></strong><strong><br></strong>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<p><strong>What you’ll do</strong></p>
-<p>You will be on a team of passionate, talented engineers that are building critical features in Cloudflare One’s Zero Trust security platform. Throughout this product suite, we have offerings ranging from ZTNA (Zero Trust Network Architecture), to SWG (Secure Web Gateway), CASB (Cloud Access Security Broker), and many more that encompass a holistic platform to help secure some of the world’s most important and forward-looking organizations. This team spearheads a variety of innovative new product features across the whole product portfolio, and directly collaborates with many engineering teams while doing so.&nbsp;</p>
-<p>As an engineer on the team, you bring passion for building mission critical products and features, while thinking about the bigger picture of how your code will impact customers and advance their needs. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. You’ll be joining a team of bright, knowledge-seeking engineers who are truly missionaries in solving the security and networking challenges for our customers.</p>
-<p><strong>Technologies we use:</strong></p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Senior Revenue Accountant’s primary responsibility is helping to ensure the Company’s revenue recognition to be in compliance with US GAAP and Company policies.&nbsp; It is both advisory and operational in nature. The advisory role helps business partners make informed business decisions while maintaining accounting compliance.&nbsp; The operational role ensures accounting processes comply with policies and function in an effective and efficient manner while working with local partners to complete business transactions with customers.</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Core backend and API services are written in Go, Rust, and Python.</li>
-	<li>Our frontend is written in Typescript and React.</li>
-	<li>We utilize Clickhouse, Postgres, and TimescaleDB as our data stores.</li>
-	<li>Redis is our cache.</li>
-	<li>Kafka plays a large role at Cloudflare and this team with message streaming.</li>
-	<li>For service monitoring we use Prometheus and Grafana.</li>
-	<li>For service logging we use Elasticsearch and Kibana.</li>
+	<li>Participates in accounting close activities, including:</li>
+	<ul>
+		<li>partnering with other teams (legal, sales, etc.) to interpret, research, discuss, and / or process deal reviews</li>
+		<li>complete contract accounting of executed customer contracts</li>
+		<li>preparation / review of journal entries</li>
+		<li>preparation / review of reconciliations and related financial analysis for management and external reporting</li>
+	</ul>
+	<li>Participates in Company-wide initiatives and cross-functional projects that directly impact or relate to the revenue accounting area, particularly increasing the revenue analytical capabilities within Cloudflare</li>
+	<li>Develop and streamline processes using system automation and tools to maximize efficiency and accuracy of revenue accounting systems and processes</li>
+	<li>Takes a clean sheet of paper approach when revisiting operational processes and continually works to consolidate and streamline using automation and tools to maximize efficiency and accuracy</li>
+	<li>Stay current on the latest financial accounting and reporting developments and U.S GAAP reporting requirements, as applicable.</li>
+	<li>Effectively interacts with peers and shares knowledge</li>
+	<li>Mentors and supports junior members of the team and provides feedback</li>
+	<li>Communicates any problems to senior management timely</li>
+	<li>Present findings and solutions to the management team, while considering global impacts and subsequent guidance to influence other regions where appropriate to adopt a consistent process and policy</li>
+	<li>Establish and track Key Performance Indicators (KPI’s)</li>
+	<li>Prepares schedules in support of the external audit process</li>
+	<li>Coordinates with the auditors on accounting issues and audit related queries</li>
+	<li>Reviews and maintains controls as the business environment changes as a result of process, system and policy enhancements. Includes risk assessment and review of risk areas</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>Role Requirements&nbsp;</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>5 to 7+ years of professional experience building and managing reliable and performant software systems at scale, preferably with technologies like: Go, Rust, Python, Typescript, Postgres, Clickhouse, Kafka, etc.</li>
-	<li>Passion for making the digital world a more secure place</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies and systems</li>
-	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+	<li>Bachelor’s degree in Accounting, or a related field, or advanced experience</li>
+	<li>Active CPA</li>
+	<li>Accounting/Audit firm experience preferred&nbsp;</li>
+	<li>4 years of experience in accounting roles</li>
+	<li>Strong understanding of revenue accounting rules under ASC 606</li>
+	<li>Experience working with revenue related systems such as billing systems, ERP, and revenue recognition tool / subledger</li>
+	<li>Revenue accounting for SaaS revenue recognition and understanding of multi-element arrangements</li>
+	<li>Ability to work effectively with various departments, particularly Sales</li>
+	<li>Ability to manage multiple priorities</li>
+	<li>Flexibility to work under time constraints and deadlines</li>
+	<li>Must be meticulous, detail oriented, and organized</li>
+	<li>Strong interpersonal and communication skills</li>
+	<li>Ability to work independently, yet cooperatively and constructively in a team environment</li>
+	<li>Highly proficient in advanced MS Excel</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>Frontend programming experience in Typescript/Javascript</li>
-	<li>Previous experience working on security products</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</p>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
