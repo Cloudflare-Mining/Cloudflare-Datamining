@@ -5,38 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location: Sydney (Australia)</strong></p>
-<h3><strong>About the Team</strong></h3>
-<p>The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</p>
-<h3><strong>What You'll Do</strong></h3>
-<p>Do you love solving complex technical issues and interacting with people? Are you passionate about providing premium-level support to customers and are a standout colleague? Cloudflare is seeking an experienced <strong>Technical </strong><strong>Support Engineer</strong><strong> for CDN </strong>to join our team. You will work with our largest and most technically sophisticated customers on a variety of technical support issues to ensure they can deploy and operate Cloudflare's CDN solutions with confidence.&nbsp;</p>
+<p><strong>Location(s) Available: Bengaluru</strong><br><br><strong>About The Team</strong><br><br>Join Cloudflare’s Security Architecture Team with the following with the foll focus areas :&nbsp;</p>
 <ul>
-	<li>Serve as a trusted technical advisor for our Premium customers, responding to and resolving inquiries and incidents related to CDN services, while delivering timely, high-quality and personalized assistance.</li>
-	<li>Work directly with customers to diagnose, troubleshoot and resolve complex technical issues involving DDoS mitigation, firewall rules, SSL/TLS, network confirmation, and other security configurations.</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</li>
-	<li>Create and maintain knowledge base articles, technical guides, and troubleshooting documentation for internal and customer use.</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>Strategic Alignment: Translates the Organisations Cyber risk tolerance into specific technical blueprints and implements controls/prescriptive policies in mitigation/managing or remediating these risks</li>
+	<li>Preventative Focus: Focuses on "shifting left" to fix architectural flaws before they become bigger risks or cost&nbsp;</li>
+	<li>Technical Consulting: Acts as internal subject matter experts for Procurement (TPRM) and Engineering teams.</li>
 </ul>
-<h3><strong>What We're Looking For</strong></h3>
+<p><strong>About the role/</strong><strong>What You’ll Do</strong></p>
 <ul>
-	<li>You have a minimum of 4 years experience working as a Technical Support Engineer / Sr. Support Engineer supporting networking or web security products.</li>
-	<li>Exceptional troubleshooting and problem-solving skills, with the ability to simplify complex concepts for customers.</li>
-	<li>Strong customer service orientation and communication skills, both written and verbal, fluent in English and preferably a second language like Mandarin, Hindi, Tamil, Korean or Japanese.</li>
-	<li>Ability to work independently and collaboratively in a fast-paced, dynamic environment.</li>
-	<li>Strong understanding of network protocols, including TCP/IP, DNS, HTTP/S, and BGP, with a particular focus on anycast routing concepts and implementation, as well as tools such as iptables and looking glass.</li>
-	<li>Proven experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels, and performing packet capture analysis</li>
-	<li>Confident with command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>You are competent writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>Bachelor’s degree in Computer Science, Cybersecurity, or a related field (or equivalent experience)</li>
-	<li>Relevant certifications such as CISSP, GCIA GCIH, GCFA, GCFE or equivalent</li>
+	<li>Provide input on technical security requirements for new infrastructure and engineering initiatives.&nbsp;</li>
+	<li>Assist with documentation and maintenance of the corporate security architecture blueprints.&nbsp;</li>
+	<li>Participate in the design of robust PKI hierarchies (Root CAs, Intermediate CAs, Issuing CAs) and certificate policies, selecting appropriate hardware (HSMs) and software for scalable, secure deployments.</li>
+	<li>Provide security guidance and review of the deployment of encryption solutions across systems, applications, and networks.</li>
+	<li>Provide security guidance and review of the end-to-end lifecycle of cryptographic keys and digital certificates, including generation, secure storage, rotation, usage, backup, revocation and destruction.</li>
+	<li>Conduct analysis of existing encryption and management solutions to find weaknesses and identify gaps.</li>
+	<li>Ensure encryption implementations meet industry standards (e.g., NIST, FIPS) and compliance mandates (e.g., GDPR, HIPAA).</li>
+	<li>Document security requirements and architectural decisions.</li>
+	<li>Assist with defining security policies and standards, enforcing best practices, conducting risk assessments, and ensuring compliance with regulations.</li>
+	<li>Work with CISO, IT teams, developers, and engineers to implement secure designs.</li>
 </ul>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>Either advanced studies in Cybersecurity, Computer Science, Information Systems, or similar</li>
+	<li>Excellent written and verbal communication skills, including the ability to effectively collaborate with technical and senior business staff and management.</li>
+	<li><strong>12+ years</strong> of experience in information security, with <strong>7+ years</strong> focused on applied cryptography and Public Key Infrastructure (PKI).&nbsp;</li>
+	<li>Expert-level knowledge of cryptographic primitives, algorithms (AES, RSA, ECC), hashing functions, and digital signature standards.&nbsp;</li>
+	<li>Proven experience designing and deploying Hardware Security Modules (HSMs) and enterprise Key Management Systems (KMS).&nbsp;</li>
+	<li>Strong understanding of regulatory and compliance frameworks related to data protection and packaging&nbsp;</li>
+</ul>
+<p><strong>Preferred</strong></p>
+<ul>
+	<li>Certifications: CISSP, CISM, or CCSP.&nbsp;</li>
+	<li>Experience with cloud-native KMS solutions (e.g., AWS KMS, Azure Key Vault, GCP Cloud KMS).&nbsp;</li>
+	<li>Worked on similar organisations in the past as Cloudflare</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
