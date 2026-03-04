@@ -5,59 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Location: Washington DC or Austin TX</strong></p>
-<p>Cloudflare’s Infrastructure Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. We ensure that all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing, global customer base.</p>
-<p><strong>What you'll do</strong></p>
-<p data-path-to-node="5">As a Software Engineer: Distributed Systems, you will be part of a Resiliency Organization responsible for the core services that power Cloudflare’s global operations. We are looking for engineers to join the <strong data-path-to-node="7,0" data-index-in-node="210">Infrastructure Intelligence</strong> team and shape the transition toward model-driven network orchestration.</p>
-<p data-path-to-node="6">The team is building a cutting-edge 'Maintenance Coordination System', powered by an infrastructure dependency graph of one of the world's largest physical networks. This is&nbsp;a foundational step towards designing <strong data-path-to-node="6" data-index-in-node="122">intelligent, autonomous systems</strong> that will transform the orchestration of Cloudflare’s network. It forms the basis of many future projects to build the core data structures and services required to ensure our network optimization, network forecasting, and capacity planning are the state of the art.</p>
-<p data-path-to-node="7">By creating the robust primitives for global coordination today, you will be enabling the <strong data-path-to-node="7" data-index-in-node="90">next generation of data-driven infrastructure</strong> at Cloudflare. This is a unique opportunity to work on complex, globally distributed systems which underpin all Cloudflare products.&nbsp;</p>
-<p>Technologies we use:</p>
+<p><strong>Available Locations: Austin, Seattle</strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the Team</strong></h3>
+<p>ETI’s Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, performant, and scalable.</p>
+<p>You’ll be joining a highly motivated team that is building the next generation of distributed storage services.</p>
+<h3><strong>What You’ll Do</strong></h3>
+<p>In this role, you will help build and operate the next generation of globally distributed storage systems. You will own your code from inception to release, delivering solutions at all layers of the stack. On any given day, you might write a design document for a new provisioning system, model failure domain dependencies across edge locations, benchmark new storage hardware, build standardized observability and runbooks for distributed database clusters, or automate operational toil through purpose-built tooling and intelligent automation. You can expect to interact with a variety of languages and technologies including Rust, Go, Saltstack, and Terraform.</p>
+<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
 <ul>
-	<li>Cloudflare Workers, Workers KV, R2, and Durable Objects</li>
-	<li>Kubernetes</li>
-	<li>Go, Typescript, Python</li>
-	<li>For service monitoring we use Prometheus, Grafana and Sentry</li>
+	<li>Strong programming skills with languages like Rust, Go, or Python</li>
+	<li>A solid understanding of distributed systems concepts such as consistency, consensus, data replication, fault tolerance, and partition tolerance</li>
+	<li>Experience with distributed databases and storage systems</li>
+	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
+	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
+	<li>Experience building and maintaining high-throughput, low-latency systems</li>
+	<li>Understanding of network fundamentals as they relate to distributed storage -- bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
+	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
+	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
 </ul>
-<p>Because you’ll be<a href="https://blog.cloudflare.com/gateway-swg/"> solving problems of massive scale and significance</a>, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
-<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
-<p>A rough list of the skills we would love to see you bring:</p>
-<ul>
-	<li>A degree in Computer Science, Engineering, Mathematics, Statistics or related field; OR have relevant background/experience to the field.</li>
-	<li>Programming experience in Go, or similar languages</li>
-	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
-	<li>Experience with continuous delivery and deployment of a k8s hosted application</li>
-	<li>​​Understanding of security issues and responsibilities</li>
-	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
-	<li>Fluent in analyses of data sets such as logs</li>
-	<li>Strong English language oral and written communications skills</li>
-	<li>Designing and building APIs</li>
-	<li>Experience with the Cloudflare development stack is a plus</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>At least 4 years of hands-on software development experience on meaningfully complex systems.</li>
-	<li>Experience with graph theory and building services for graph generation, storage and retrieval.</li>
-	<li>An understanding of the systems architecture required to scale machine learning model-driven decision engines in a production environment</li>
-	<li>Experience building both backend systems and frontend widgets.</li>
-	<li>Ability to contribute to planning, development, and execution to meet commitments and deliver with predictability.</li>
-	<li>Experience implementing tools, processes, internal instrumentation, and methodologies.</li>
-	<li>Comfortable working on projects with tight deadlines and short release cycles.</li>
-	<li>Strong verbal and written English language skills.</li>
-	<li>Experience with DCIM, CMDB, IPAM, and other Data Center and Asset Lifecycle Management tools is a plus.</li>
-	<li>Experience with data ingestion and analysis - pulling metrics from hundreds of edge data centers.</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $140,000 - 172,000.</span></li>
-</ul>
+<p><br><br></p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
 <p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
