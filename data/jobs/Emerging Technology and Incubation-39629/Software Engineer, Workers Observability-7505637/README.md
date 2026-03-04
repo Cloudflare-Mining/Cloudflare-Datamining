@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX | Lisbon, Portugal | London, UK</strong></p>
+<p><strong>Available Locations: London, UK</strong></p>
 <p><strong>Role Summary</strong></p>
 <p>Workers Observability (WOBS) Team provides a growing suite of tools to monitor, troubleshoot and optimize applications on the Cloudflare Developer platform. These tools increasingly work across Cloudflare products to provide complete visibility into user applications. We aim to make these tools not only best-in-class but also frictionless and intuitive to use. All this within the context of Cloudflare's scale and globally distributed infrastructure.</p>
 <p>Team members help design and ship core software features across the observability stack - including the frontend customer experience, integrations with other Cloudflare primitives, and our internal data stores and ingestion pipelines. You will own code across the development lifecycle from design to release including QA, incident management, and performance optimization.&nbsp;</p>
