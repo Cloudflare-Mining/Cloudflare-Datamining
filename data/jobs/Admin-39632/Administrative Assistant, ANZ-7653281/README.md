@@ -5,56 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<h3><strong>About the Product Experience (PX) team</strong></h3>
-<p>We're a diverse group of creative people who love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and highly technical Senior Product Designer to join our team.</p>
-<p>Your work will impact the core infrastructure of a product used by millions of people daily. As a Senior Product Designer on the Platform team, you will focus on enterprise-readiness, ensuring our user experience is scalable and works for the most sophisticated needs while being approachable to everyone. We are looking for a "designer who builds" and leverages modern workflows, including AI-augmented design and development, to deliver quickly and bridge the gap between design intent and production.</p>
-<p>If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
-<h3><strong>What you’ll do</strong></h3>
+<p><strong>Available Locations:&nbsp;Singapore</strong></p>
+<div><strong>About the role</strong></div>
+<p>Cloudflare is looking for an Administrative Assistant to support members of our senior leadership team. We are looking for a dynamic dedicated candidate, preferably with experience of supporting VP level Executives or higher. The candidate must be comfortable with multi-tasking and prioritisation in a fast-speed environment with close attention to detail, accuracy, and timeliness.</p>
+<p>Your job is to keep our leader organised, prioritised and productive while we grow in the region. This role requires superior attention to detail, great organisational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned EA who understands the value in cultivating relationships and prides themselves in being a career EA.&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Design holistic, end-to-end experiences that transform complex technical constraints into approachable, enterprise-grade product experiences</li>
-	<li>Partner deeply with product and engineering leaders to navigate technical tradeoffs and shape the long-term platform roadmap, facilitate cross-functional design reviews</li>
-	<li>Collaborate across product areas to build shared patterns and design goals that ensure a cohesive experience for enterprise use-cases across products</li>
-	<li>Scale design’s impact and influence throughout the organization by sharing design decisions, concepts, and demos</li>
-	<li>Be an early adopter of AI-assisted design and "vibe coding" tools (Windsurf, OpenCode, etc.), experiment with modern workflows and share learnings with the broader team</li>
-	<li>Move fluidly between Figma and code, for example creating prototypes or designing in code; utilizing the right tools depending on the job</li>
+	<li>
+		<p><strong>Admin:</strong>&nbsp;Provide excellent administrative support to our leaders primarily with some level of admin support to 1-2 of their&nbsp;directs, exercising high attention to detail and discretion to every matter. Plan, coordinate and execute meeting set-up and events. Provide agendas, detailed data, information and resources to the executive in preparation for meetings. Prepare and manage expense reports.</p>
+	</li>
+	<li>
+		<p><strong>Calendar:</strong>&nbsp;Proactively own and flawlessly execute on our executives' calendar, prioritising with purpose, deflecting with tact, and understanding both the short and long-term impacts of each confirmed, declined, and rescheduled meeting. Ensure the executives are equipped with all the necessary meeting information and manage inbound and outbound requests.&nbsp;</p>
+	</li>
+	<li>
+		<p><strong>Travel:&nbsp;</strong>Plan all aspects of domestic and international travel, optimising and balancing executives' time with cost of travel; monitoring flights for up to the minute changes; ensuring all documents are secured and up-to-date.</p>
+	</li>
+	<li>
+		<p><strong>Special Projects</strong>: Coordinate and organise APJC-wide internal events (including our regular All-Hands and Leadership meetings). Support Cloudflare TV sessions for APJC region&nbsp;</p>
+	</li>
+	<li>
+		<p><strong>EA Team</strong>: Our EA team has a high degree of camaraderie and so the ideal candidate will enjoy partnering closely with their peers and foster teamwork.</p>
+	</li>
 </ul>
-<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>8+ years of professional experience in product design, ideally within enterprise or platform-centric environments</li>
-	<li>Strong systems thinker capable of managing complex logic and technical constraints without compromising on visual or interaction quality</li>
-	<li>Excellent visual, written, and verbal communication skills, with the ability to translate technical concepts into clear UX approaches and proposals</li>
-	<li>High technical fluency and comfort in a code editor; you are a "designer who builds" and understands how your work translates to production</li>
-	<li>Proactive use of generative AI and developer-centric tools to accelerate ideation and increase output quality</li>
-	<li>Experience with developer tools, network services, or cloud infrastructure is a significant plus</li>
-</ul>
-<p><br><br></p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>You have 7+ years experience as an Executive Assistant in a high growth environment, prior experience supporting the VP levels</li>
+	<li>Strong written and verbal communication skills in both English and Mandarin language is necessary</li>
+	<li>Working knowledge of Google Suite, NetSuite, and major airline carrier’s platforms</li>
+	<li>Exhibit a strong work ethic, professionalism, confidentiality and good judgment</li>
+	<li>Incredibly organised and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
+	<li>Strong sense of urgency and organisation</li>
+	<li>Ability to manage their own time with limited or no supervision</li>
+	<li>A "no task is too small" attitude</li>
+	<li>Ability to hit the ground running and take charge of the position will be highly advantageous</li>
+	<li>Start-up background is a plus</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

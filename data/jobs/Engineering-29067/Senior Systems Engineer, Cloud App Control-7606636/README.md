@@ -5,44 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London, UK</strong></p>
-<p><strong>About the Department:</strong></p>
-<p>Security Operations Center Engineers provide premium-level support for Cloudflare's security products and features. Our largest and most technically sophisticated customers will contact SOC for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This spans the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation (including Advanced TCP Protection and Advanced DNS Protection), and Magic Firewall, to using the Web Application Firewall (WAF), Spectrum, Bot Management, API Security, and Rate Limiting to help customers.</p>
-<p>Security Operations Center Analysts/Engineers analyze threats using customer-facing dashboards and internal tools, make detailed and informed suggestions for mitigation, and may implement mitigation strategies directly on behalf of the customer with appropriate approval. The team provides 24x7x365 proactive monitoring via our internal alerting systems, near real-time analysis of security events, and attack reporting beyond Cloudflare's self-service reports.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location: Sydney, Australia</strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base.</p>
+<p>The Cloudflare One group within the Engineering organization is taking on the mission of ensuring the people and teams within an organization can access the tools they need to do their job safe from malware and other online threats with the speed and reliability that Cloudflare is known for.</p>
+<h3><strong>What you’ll do</strong></h3>
+<p>In this role you’ll help us build features within Gateway, an ambitious product that aims to be the most secure and performant method for an organization’s devices to connect to the Internet. As an engineer on the Cloud App Control team, you will focus on our high-performance global edge network data plane services and will also contribute to the control plane API’s that configure the edge services. You will be joining a global team of bright, hard-working, and supportive engineers who really care about their craft.</p>
+<p>Example of systems that the team currently is building:</p>
 <ul>
-	<li>Monitor and investigate proactive alerts to identify attacks</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
-	<li>Communicate with customers via chat, email, and phone</li>
-	<li>Review alerts to determine relevancy and urgency; create tracking tickets for incidents requiring review or escalation</li>
-	<li>Adhere to SOC SLAs for alert response and customer communication</li>
-	<li>Configure and manage security monitoring rules; contribute to tool and threshold improvements</li>
-	<li>DDoS mitigation for OSI Layers 3, 4, &amp; 7: filter malicious traffic using Cloudflare tools including Magic Transit, Magic Firewall, Advanced TCP Protection, WAF, Custom Rules, IP Access Rules, and Rate Limiting</li>
-	<li>Maintain customer-specific SOC runbooks and escalation matrices</li>
-	<li>Support SOC customer onboarding and deliver monthly security reviews</li>
+	<li>A forward-proxy service running on every machine of Cloudflare’s extensive edge network, responsible for inspecting, filtering, and blocking device requests based on an organization’s configured policy.</li>
+	<li>A deployable forward-proxy that runs inside customer networks responsible for inspecting and filtering cloud API traffic to preventatively secure IaaC workloads.</li>
+	<li>Microservices that allow organizations to configure, manage, and observe their organization's devices and their respective traffic.</li>
 </ul>
-<p><strong>Key Skill Sets</strong></p>
+<p>Technologies we use:</p>
 <ul>
-	<li>Strong understanding of internet protocols (TCP, UDP, ICMP, GRE, BGP)</li>
-	<li>Networking fundamentals are crucial for success</li>
-	<li>Analysis of traffic for attack anomaly detection and creation of mitigation rules</li>
-	<li>Experience handling attack mitigation with knowledge of L3/4 and L7 attacks</li>
-	<li>Command line / Bash shell proficiency</li>
-	<li>Customer Facing or Technical support experience is mandatory</li>
-	<li>Strong communication skills, including with VIP customers during active attacks</li>
-	<li>Ability to remain calm under pressure</li>
-	<li>Ability to work 24x7 rotating shifts</li>
-	<li>Sysadmin skills - Linux, Mac, or Windows (Preferred)</li>
-	<li>Knowledge of Cloudflare Security Products &amp; Features (Preferred)</li>
-	<li>Scripting skills, Python preferred (Preferred)</li>
-	<li>Prometheus/Grafana monitoring experience (Preferred)</li>
-	<li>Packet capture tools such as tcpdump or Wireshark (Preferred)</li>
-	<li>API/GraphQL experience (Nice to have)</li>
-	<li>Foundational Certifications: BTL1, ISC2 CC, Network+, Security+, CCNA Security, or equivalent (Highly Valued)</li>
-	<li>Advanced Certifications: GCIH, GCIA, CISSP, CCNP, or equivalent (Considered a Plus)</li>
+	<li>Gateway’s core edge services are written in Rust and deployed globally to 200+ data centers&nbsp;</li>
+	<li>Our deployable proxy is written in Go providing a single binary that is easy for customers to integrate within their overall architecture.</li>
+	<li>Our REST API is written in Go, runs on Kubernetes, and uses Postgres as a data store.</li>
+	<li>Our frontend is written in Typescript and React.</li>
+	<li>For service monitoring we use Prometheus and Grafana.</li>
+	<li>For service logging we use Elasticsearch and Kibana.</li>
+	<li>For product analytics we use Clickhouse and BigQuery.&nbsp;</li>
 </ul>
-<p><em>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</em></p>
+<p>Because you’ll be solving problems of massive scale and significance, and shaping the future of the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
+<p>A rough list of the skills we would love to see you bring:</p>
+<ul>
+	<li>Programming experience in Rust, C++, or similar low level languages</li>
+	<li>Programming experience in Go and/or Typescript is a plus, but not required</li>
+	<li>A strong grasp of networking protocols in Layers 3-7 of the OSI Model</li>
+	<li>Solid understanding of HTTP protocols - including experience with HTTP/2 and bonus for HTTP/3 experience</li>
+	<li>Basic understanding of software security and encryption</li>
+	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
+	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</li>
+	<li>Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
