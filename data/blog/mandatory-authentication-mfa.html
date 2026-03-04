@@ -1,0 +1,102 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2n3XwVwhG5KLi8VwjSQXRe/f92f8e6c87e9b29f78818932e15fae3e/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>One of our favorite ask-me-anything questions for company meetings or panels at security conferences is the classic: “What keeps you up at night?”</p>
+	<p>For a <a href="https://www.cloudflare.com/ciso"><u>CISO</u></a>, that question is maybe a bit of a nightmare in itself. It does not have one single answer; it has dozens. It’s the constant tension between enabling a globally distributed workforce to do their best work, and ensuring that "best work" does not inadvertently open the door to a catastrophic breach.</p>
+	<p>We often talk about the "<a href="https://www.cloudflare.com/the-net/roadmap-zerotrust"><u>zero trust journey</u></a>," but the reality is that the journey is almost certainly paved with friction. If security is too cumbersome, users find creative (and dangerous) ways around it. If it’s seamless at the cost of effectiveness, it might not be secure enough to stop a determined adversary.</p>
+	<p>Today, we are excited to announce two new tools in Cloudflare’s <a href="https://www.cloudflare.com/learning/access-management/what-is-sase"><u>SASE</u></a> toolbox designed to modernize remote access by eliminating the "dark corners" of your network security without adding friction to the user experience: mandatory authentication and Cloudflare’s own <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication"><u>multi-factor authentication (MFA)</u></a>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="addressing-the-gap-between-installation-and-enforcement">Addressing the gap between installation and enforcement</h2>
+		<a href="https://blog.cloudflare.com/#addressing-the-gap-between-installation-and-enforcement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When you deploy the Cloudflare One Client, you gain incredible visibility and control. You can apply policies for permitted destinations, define the Internet traffic that routes through Cloudflare, and set up traffic inspection at both the application and network layer. But there has always been a visibility challenge from when there is no user actually authenticated.</p>
+	<p>This gap occurs in two primary scenarios:</p>
+	<ol>
+		<li>
+			<p>A new device: Cloudflare One Client is installed via mobile device management (MDM), but the user has not authenticated yet.</p>
+		</li>
+		<li>
+			<p>Re-authentication grey zone: The session expires, and the user, either out of forgetfulness or a desire to bypass restrictions, does not log back in.</p>
+		</li>
+	</ol>
+	<p>In either case, the device is now unknown. This is dangerous. You lose visibility, and your security posture reverts to whatever the local machine allows.</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-mandatory-authentication">Introducing mandatory authentication</h3>
+		<a href="https://blog.cloudflare.com/#introducing-mandatory-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To close this loop, we are introducing <b>mandatory authentication</b>. When enabled via your MDM configuration, the Cloudflare One Client becomes the gatekeeper of Internet access from the moment the machine boots up.</p>
+	<p>If a user is not actively authenticated, the Cloudflare One client will:</p>
+	<ul>
+		<li>
+			<p>Block all Internet traffic by default using the system firewall.</p>
+		</li>
+		<li>
+			<p>Allow traffic from the device client’s authentication flow using a process-specific exception.</p>
+		</li>
+		<li>
+			<p>Prompt users to authenticate, guiding them through the process, so they don’t have to hunt for the right buttons.</p>
+		</li>
+	</ul>
+	<p>By making authentication a prerequisite for connectivity, you ensure that every managed device is accounted for, all the time.</p>
+	<p><i>Note: mandatory authentication will become available in our Cloudflare One client on Windows initially, with support for other platforms to follow.&nbsp;</i></p>
+	<div class="flex anchor relative">
+		<h2 id="when-one-source-of-trust-is-not-enough">When one source of trust is not enough</h2>
+		<a href="https://blog.cloudflare.com/#when-one-source-of-trust-is-not-enough" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Most organizations have moved toward <a href="https://www.cloudflare.com/learning/access-management/what-is-sso"><u>single sign-on (SSO)</u></a> as their primary security anchor. If you use Okta, Entra ID, or Google, you likely require MFA at the initial login. That’s a great start, but in a modern threat landscape, it is no longer the finish line.</p>
+	<p>The hard truth is that <a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider"><u>identity providers (IdPs)</u></a> are high-value targets. If an attacker successfully compromises a user’s SSO session, perhaps through a sophisticated session hijacking or social engineering, they effectively hold the keys to every application behind that SSO.</p>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-independent-mfa-a-secondary-root-of-trust">Cloudflare’s independent MFA: a secondary root of trust</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-independent-mfa-a-secondary-root-of-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This is where Cloudflare’s MFA can help. Think of this as a "step-up MFA" that lives at the network edge, independent of your IdP.</p>
+	<p>By remaining separate from your IdP, this introduces another authority that has to “sign off” on any user trying to access a protected resource. That means even if your primary IdP credentials are compromised or spoofed, an attacker will hit a wall when trying to access something like your production database—because they do not have access to the second factor.</p>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/access"><u>Cloudflare Access</u></a> will offer a few different means of providing MFA:</p>
+	<ul>
+		<li>
+			<p>Biometrics (i.e., Windows Hello, Apple Touch ID, and Apple Face ID)</p>
+		</li>
+		<li>
+			<p>Security key (WebAuthn and FIDO2 as well as PIV for SSH with Access for Infrastructure)</p>
+		</li>
+		<li>
+			<p>Time-based one-time password (TOTP) through authenticator apps</p>
+		</li>
+	</ul>
+	<p>Administrators will have the flexibility to define how users must authenticate and how often. This can be configured not only at a global level (i.e., establish mandatory MFA for all Access applications), but also with more granular controls for specific applications or policies. For example, your organization may decide to allow lower assurance MFA methods for chat apps, but require a security key for access to source code.</p>
+	<p>Or, you could enforce strong MFA to sensitive resources for third-parties like contractors, who otherwise may use a personal email or social identity like LinkedIn. You can also easily add modern MFA methods to legacy apps that don’t otherwise support it natively, without touching a line of code.</p>
+	<p>End users will be able to enroll an MFA device easily through their <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher"><u>App Launcher</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/soh6QIt80EoRsWAaTKLIc/9398094837a2ef71025f012f28ffbd2e/image2.jpg" alt="" class="kg-image" width="1999" height="1343" loading="lazy">
+	</figure>
+	<p><sup><i>Example of what customizing MFA settings for an Access policy may look like. Note: This is a mockup and may change.</i></sup></p>
+	<p>Cloudflare’s independent MFA is in closed beta with new customers being onboarded each week. You can <a href="https://www.cloudflare.com/lp/access-independent-mfa"><u>request access here</u></a> to try out this new feature!</p>
+	<div class="flex anchor relative">
+		<h3 id="helping-cisos-sleep-at-night">Helping CISOs sleep at night</h3>
+		<a href="https://blog.cloudflare.com/#helping-cisos-sleep-at-night" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Security is often a game of "closing the loop." By ensuring that devices are registered and authenticated before they can touch the open Internet and by requiring an independent second layer of verification for your most precious assets, we are making the "blast radius" of a potential attack significantly smaller.</p>
+	<p>These features don't just add security; they add certainty. Certainty that your policies are being enforced and certainty that a single compromised password won't lead to a total breach.</p>
+	<p>We are moving beyond simple access control and into a world of continuous, automated posture enforcement. And we’re just getting started.</p>
+	<p>Ready to lock down your fleet? You can <a href="https://dash.cloudflare.com/sign-up/zero-trust"><u>get started today</u></a> with Cloudflare One for free for up to 50 users.&nbsp;</p>
+	<p>We’re excited to see how you use these tools to harden your perimeter and simplify your users’ day-to-day workflows. As always, we’d love to hear your feedback! Join us in the <a href="https://community.cloudflare.com"><u>Cloudflare Community</u></a> or reach out to your account team to share your thoughts.</p>
+</div>

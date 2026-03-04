@@ -1,0 +1,76 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1z9xqpVhQIL8I42exnZbKl/dbf5ea42f8ebf9b4a5a39a8174f87fae/image2.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Most security teams spend their days playing a high-stakes game of Whac-A-Mole. A user’s credentials get phished, or they accidentally download a malicious file, and suddenly you’re in incident response mode.&nbsp;</p>
+	<p>We built our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase"><u>SASE</u></a> platform, Cloudflare One, to stop that cycle. By placing Access and Gateway in front of your applications and Internet traffic, we gave you the tools to decide who gets in and where they can go.</p>
+	<p>Today, we’re making those decisions smarter. You can now incorporate <b>User Risk Scores</b> directly into your <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna"><u>zero trust network access (ZTNA)</u></a> policies. Instead of just checking "Who is this user?" and "Is their device healthy?", you can now ask, "How has this user been behaving lately?" and adjust their access in real time.</p>
+	<div class="flex anchor relative">
+		<h3 id="step-1-from-what-to-how">Step 1: From "what" to "how"</h3>
+		<a href="https://blog.cloudflare.com/#step-1-from-what-to-how" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>For years, traditional corporate access was binary. You either had the right login and the right certificate, or you didn’t. But identity is fluid. A legitimate user can become a risk if their account is compromised or if they start exhibiting "<a href="https://www.cloudflare.com/learning/access-management/what-is-an-insider-threat"><u>insider threat</u></a>" behaviors — like impossible travel, multiple failed login attempts, or triggering data loss prevention rules by moving sensitive data.</p>
+	<p>Cloudflare One now continuously calculates a risk score for every user in your organization based on these behaviors.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15N4TzN0c5kYtPjlpMWYDa/e8c621ba2c2c253c04e6d6dbff992117/image1.png" alt="" class="kg-image" width="1999" height="986" loading="lazy">
+	</figure>
+	<p><sup><i>Example list of users and their risk scores</i></sup></p>
+	<p>Once you’ve onboarded your team to Cloudflare One, you can navigate to the <b>Team &amp; Resources &gt; Users &gt; Risk Score </b>section of the dashboard. Here, you can define which behaviors matter to you. For example, you might decide that impossible travel has a "high" risk level, while using a device in need of an update is "medium."</p>
+	<p>Cloudflare’s risk engine continuously evaluates telemetry from across the SASE platform. For internal signals, the engine monitors logs from <a href="https://www.cloudflare.com/zero-trust/products/access"><u>Cloudflare Access</u></a> (e.g., successful/failed logins, geographic context) and <a href="https://www.cloudflare.com/zero-trust/products/gateway"><u>Cloudflare Gateway</u></a> (e.g., malware hits, risky browsing categories, or sensitive data triggers in DLP).</p>
+	<p>For third-party signals, we’ve built service-to-service integrations with partners like CrowdStrike and <a href="https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone"><u>SentinelOne</u></a>. These integrations allow Cloudflare to ingest external telemetry, such as <a href="https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/#device-posture-attributes"><u>CrowdStrike’s device posture attributes</u></a>, and map it to a user’s profile.</p>
+	<p>The calculation logic is designed to be deterministic:</p>
+	<ol>
+		<li>
+			<p><b>Selection:</b> Administrators choose which specific "risk behaviors" (impossible travel, DLP violations, and more) to enable for their organization.</p>
+		</li>
+		<li>
+			<p><b>Aggregation:</b> The engine identifies all risk events associated with a user.</p>
+		</li>
+		<li>
+			<p><b>Scoring:</b> A user’s risk score is determined by the highest risk level (low, medium, or high) of any <i>enabled</i> behavior triggered during that period.</p>
+		</li>
+		<li>
+			<p><b>Reset:</b> If an admin investigates and clears an incident, they can manually reset the user’s score, which preserves the history but resets their access based on risk data gathered going forward.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h3 id="step-2-easily-apply-adaptive-access">Step 2: Easily apply adaptive access</h3>
+		<a href="https://blog.cloudflare.com/#step-2-easily-apply-adaptive-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Knowing a user is risky is step one. Doing something about it — automatically — is step two.</p>
+	<p>In the past, if a security analyst saw a suspicious user, they’d have to manually revoke sessions or move the user into a "restricted" group in their <a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider"><u>Identity Provider (IdP)</u></a>. That takes time — time an attacker uses to move laterally.</p>
+	<p>Now, you can build <b>Adaptive Access</b> policies. When you create or edit an Access policy, you’ll find a new selector: <b>User Risk Score</b>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/23fnnidZJpbIsd0btV88uD/cc1ae840bf753758febd63f1f44cb851/image3.png" alt="" class="kg-image" width="1564" height="852" loading="lazy">
+	</figure>
+	<p><sup><i>Example of the new User Risk Score selector in an Access policy.</i></sup><sup>&nbsp;</sup></p>
+	<p>This allows you to create global or application-specific rules such as: "If a user's risk score is high, they cannot access the Finance Portal," or "If a user's risk score is medium, they must use a physical security key to log in." Such rules ensure corporate operations are not interrupted while additional layers of security are applied.</p>
+	<div class="flex anchor relative">
+		<h3 id="step-3-closing-the-loop">Step 3: Closing the loop</h3>
+		<a href="https://blog.cloudflare.com/#step-3-closing-the-loop" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The best part of this system is that it’s dynamic. If a user’s risk score drops after being reviewed and cleared by an investigator, their access is automatically restored based on your policy. Today, risk-based access can revoke access in the middle of an active session when risk score increases. In the future, we will explore expanding this to enforce step-up MFA in the middle of an active session when the risk score changes as well.&nbsp;</p>
+	<p>We’ve also made sure this works with the tools you already use. If you use Okta, Cloudflare can <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/#send-risk-score-to-okta"><u>share these risk signals back to Okta</u></a>, ensuring that a user flagged on the network is also restricted at the front door of your <a href="https://www.cloudflare.com/learning/access-management/what-is-sso"><u>SSO</u></a>. This integration uses the <a href="https://openid.net/specs/openid-sharedsignals-framework-1_0.html"><u>Shared Signals Framework</u></a>, which enables the sharing of risk signals across platforms.</p>
+	<div class="flex anchor relative">
+		<h3 id="move-faster-stay-secure">Move faster, stay secure</h3>
+		<a href="https://blog.cloudflare.com/#move-faster-stay-secure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We built Cloudflare One so that security teams could stop being the "department of no" and start being the department of "yes, and safely." Incorporating user risk scores into your Access policies is the next step in that journey. It moves your security from a static snapshot at login to a continuous, living conversation with your network architecture.</p>
+	<p>If you’re already a Cloudflare customer, you can start exploring these risk signals in your dashboard today. If you’re still wrestling with legacy VPNs or manual security reviews, we’d love to help you flip the switch.</p>
+	<p>You can <a href="https://dash.cloudflare.com/sign-up/zero-trust"><u>get started for free</u></a> for up to 50 users — no sales call required. For larger organizations looking to integrate third-party signals like CrowdStrike or SentinelOne into their global policies, our team is ready to walk you through a ZTNA pilot.</p>
+	<p><a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise"><u>Reach out to our team here</u></a> to see how adaptive access can fit into your SASE roadmap.</p>
+</div>

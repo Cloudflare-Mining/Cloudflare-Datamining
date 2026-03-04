@@ -1,0 +1,123 @@
+<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3hCbhuwnZhk6L8K0E2jHmy/e455a8fce4d01e8c57d6cfb828dab211/image1.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Trust is the most expensive vulnerability in modern security architecture. In recent years, the security industry has pivoted toward a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust"><u>zero trust model</u></a> for networks — assuming breach and verifying every request. Yet when it comes to the <i>people</i> behind those requests, we often default back to implicit trust. We <i>trust</i> that the person on the Zoom call is who they say they are. We <i>trust</i> that the documents uploaded to an HR portal are genuine.</p>
+	<p>That trust is now being weaponized at an unprecedented scale.</p>
+	<p>In our <a href="https://blog.cloudflare.com/2026-threat-report"><u>2026 Cloudflare Threat Report</u></a>, we highlight a rapidly accelerating threat vector: the rise of "remote IT worker" fraud. Often linked to nation-states, including North Korea, these are not just individual bad actors. They are organized operations running laptop farms: warehouses of devices remotely accessed by workers using stolen identities to infiltrate companies, steal intellectual property (IP), and funnel revenue illicitly.</p>
+	<p>These attackers have evolved and continue to do so with advancements in <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence"><u>artificial intelligence (AI)</u></a>. They use <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai"><u>generative AI</u></a> to pass interviews and deepfake tools to fabricate flawless government IDs. Traditional background checks and standard <a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider"><u>identity providers (IdPs)</u></a> are no longer enough. Bad actors are exploiting an <a href="https://www.go.nametag.co/2026-workforce-impersonation-report"><u>identity assurance gap</u></a>, which exists because most zero trust onboarding models verify devices and credentials, not people.</p>
+	<p>To close this gap, Cloudflare is partnering with <a href="https://getnametag.com"><u>Nametag</u></a>, a pioneer in workforce identity verification, to bring identity-verified onboarding and continuous identity assurance to our SASE platform, <a href="https://developers.cloudflare.com/cloudflare-one"><u>Cloudflare One</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="your-biggest-insider-threat-was-scheming-from-the-start">Your biggest insider threat was scheming from the start</h3>
+		<a href="https://blog.cloudflare.com/#your-biggest-insider-threat-was-scheming-from-the-start" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The challenge with insider risk is that companies naturally want to trust their employees. By the time malicious actors are detected by traditional <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp"><u>data loss prevention (DLP)</u></a> or <a href="https://www.cloudflare.com/learning/security/what-is-ueba"><u>user entity behavior analytics (UEBA)</u></a> tools, they are already inside the perimeter. They have valid credentials, a corporate laptop, and access to sensitive repositories.</p>
+	<p>The "remote IT worker" scheme exploits the gap between <i>hiring</i> and <i>onboarding</i>. Attackers use stolen or fabricated identities to get hired. Once the laptop is shipped to a "mule" address (typically a domestic laptop farm located in the country of the remote worker’s alleged employment), it is racked and connected to a keyboard, video, and mouse (KVM) switch. The remote actor then logs in via VPN (or perhaps remote desktop), appearing to be a legitimate employee.</p>
+	<p>Because the credentials are valid and the device is corporate-issued, standard <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna"><u>zero trust network access (ZTNA)</u></a> policies often see this traffic as "safe" — when in fact it’s an enormous risk to your business.</p>
+	<div class="flex anchor relative">
+		<h3 id="enter-identity-verified-zero-trust">Enter identity-verified zero trust</h3>
+		<a href="https://blog.cloudflare.com/#enter-identity-verified-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://www.cloudflare.com/zero-trust/products/access"><u>Cloudflare Access</u></a> already serves as the aggregation layer for your <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies"><u>security policies</u></a> — checking attributes such as device posture, location, and user group membership before granting access to applications, infrastructure, or <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp"><u>MCP servers</u></a>. <b>Through our partnership with Nametag, we are adding a critical new layer: workforce identity verification.</b></p>
+	<p>Previously, IT departments had no choice but to assume trust throughout the new user onboarding process. They could either ship a laptop to an address provided by the new hire and then send their initial credentials to their personal email, or require them to come in person –– costly and impractical in a world of distributed workforces and contractors.&nbsp;</p>
+	<p>Nametag replaces assumed trust with verified identity, ensuring that the person receiving, configuring, and connecting a device to protected resources is a real person, a legitimate person, and the right person throughout the entire process. This integration allows organizations to uncover and stop bad actors, including North Korean IT workers, <i>before</i> they gain access to any internal resources or data.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-it-works">How it works</h3>
+		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Nametag is integrated using <a href="https://openid.net/developers/discover-openid-and-openid-connect"><u>OpenID Connect</u></a> (OIDC). You can configure it as an IdP within Cloudflare Access or chain it as an external evaluation factor alongside your primary identity provider (like Okta or Microsoft Entra ID).</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qMAEp4s6PAD9zEBrbDYMF/dc269f1553141e7ee2b6cf9adb44caa0/image2.png" alt="" class="kg-image" width="1999" height="1954" loading="lazy">
+	</figure>
+	<p><i>Example of the Cloudflare Access login page prompting for a user to authenticate using Nametag.</i></p>
+	<p>Here is an example workflow for a high-security onboarding scenario:</p>
+	<ol>
+		<li>
+			<p><b>Trigger:</b> A new user attempts to access their initial onboarding portal (protected by Cloudflare Access).</p>
+		</li>
+		<li>
+			<p><b>Challenge:</b> Instead of just asking for a username and password, Cloudflare directs the user to Nametag for authentication via OIDC.</p>
+		</li>
+		<li>
+			<p><b>Verification:</b> The user enters their new work email address, then snaps a quick selfie and scans their government-issued photo ID using their phone.</p>
+		</li>
+		<li>
+			<p><b>Attestation:</b> Nametag’s <a href="https://getnametag.com/technology/deepfake-defense"><u>Deepfake Defense</u></a>™ identity verification engine leverages advanced cryptography, biometrics, AI and other features to ensure that the user is both a <i>real</i> person and the <i>right</i> person. Nametag’s technology uniquely prevents bad actors from using deepfake IDs and selfies in sophisticated injection attacks or presentation attacks (e.g., holding up a printed photo).</p>
+		</li>
+		<li>
+			<p><b>Enforcement: </b>If that check is successful, Nametag returns an ID token to Cloudflare to complete the OIDC flow. Cloudflare then grants or denies access to the application based on the user’s identity and the Access policies.</p>
+		</li>
+	</ol>
+	<p>All of this happens before the user can access email, code repositories, or other internal resources.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4z3lwwRE7KIq8655FOB9Dp/f3135a1da5f48360fb457ce88309cd20/image4.png" alt="" class="kg-image" width="1927" height="930" loading="lazy">
+	</figure>
+	<p>Verifying your identity with Nametag takes under 30 seconds to complete. No biometrics are stored after this interaction.</p>
+	<div class="flex anchor relative">
+		<h3 id="a-layered-defense">A layered defense</h3>
+		<a href="https://blog.cloudflare.com/#a-layered-defense" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This partnership complements Cloudflare’s existing suite of insider threat protections. Today, you can:</p>
+	<ul>
+		<li>
+			<p><b>Scan for data exfiltration</b> using our API-driven <a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention"><u>DLP</u></a>.</p>
+		</li>
+		<li>
+			<p><b>Reduce browsing risk</b> with <a href="https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation"><u>Remote Browser Isolation (RBI)</u></a>.</p>
+		</li>
+		<li>
+			<p><b>Identify shadow IT</b> and detect misconfigurations with our <a href="https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery"><u>shadow IT report</u></a> and our <a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas"><u>Cloud Access Security Broker (CASB</u></a>).</p>
+		</li>
+	</ul>
+	<p>Nametag provides the missing link: identity assurance. It moves us from knowing <i>what</i> account is logging in, to knowing exactly <i>who</i> is behind the keyboard.</p>
+	<p>In an era where AI can fake a face and a voice, cryptographic proof of identity is the only way to safely trust your workforce.</p>
+	<div class="flex anchor relative">
+		<h3 id="beyond-onboarding-continuous-verification">Beyond onboarding: continuous verification</h3>
+		<a href="https://blog.cloudflare.com/#beyond-onboarding-continuous-verification" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While stopping bad actors at the door is critical, the threat landscape is dynamic. Legitimate credentials can be sold, and legitimate employees can be compromised.</p>
+	<p>To protect against that present and ever-evolving risk, Cloudflare Access now incorporates <a href="https://blog.cloudflare.com/adaptive-access-user-risk-scoring"><u>user risk scores</u></a> so security teams can build context-aware policies. If a user’s risk score suddenly increases from low to high, access can be revoked to any (or all) applications.</p>
+	<p>In the future, you’ll be able to enforce step-up verification based on signals such as user risk score, in the middle of an active session. Rather than hitting the “big red button” and potentially disrupting a user who does have a legitimate reason for accessing the production billing system from an usual location, you will instead be able to challenge the user to verify with Nametag or by using Cloudflare’s independent MFA with strong authentication methods. If the user is a session hijacker or a bot, they will be unable to pass these checks.&nbsp;</p>
+	<p>This capability will also extend to self-service IT workflows. Password resets and MFA device registration are prime targets for social engineering (e.g., the <a href="https://www.bloomberg.com/news/articles/2023-09-16/mgm-resorts-hackers-broke-in-after-tricking-it-service-desk"><u>MGM Resorts help desk attacks</u></a>). By placing Nametag behind Cloudflare Access for these specific portals, you eliminate the possibility of a support agent being socially engineered into resetting a password for an attacker.</p>
+	<div class="flex anchor relative">
+		<h3 id="defend-against-the-future-now">Defend against the future, now</h3>
+		<a href="https://blog.cloudflare.com/#defend-against-the-future-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Security cannot rely on assumptions. As AI tools lower the barrier to entry for sophisticated fraud, your defenses must evolve to verify the human element with cryptographic certainty. The "remote IT worker" threat is not a hypothetical scenario—it is an active campaign targeting organizations globally.</p>
+	<p>You don't need to overhaul your entire infrastructure to stop it. You can layer these protections on top of your existing IdP and applications immediately.</p>
+	<p><b>Cloudflare One is free for up to 50 users</b>, allowing you to pilot identity-verified onboarding flows or protect high-risk internal portals right now.</p>
+	<ul>
+		<li>
+			<p><b>Get started:</b> <a href="https://dash.cloudflare.com/sign-up/zero-trust"><u>Sign up</u></a> for Cloudflare One to begin building your policy engine.</p>
+		</li>
+		<li>
+			<p><b>Deploy the integration:</b> Follow the <a href="https://getnametag.com/docs/cloudflare"><u>step-by-step guide</u></a> to connect Nametag to Cloudflare Access in minutes.</p>
+		</li>
+		<li>
+			<p><b>Understand the risk:</b> Read the full <a href="https://blog.cloudflare.com/2026-threat-report"><u>Cloudflare Threat Report</u></a> to see the data behind the rise in insider threats and AI impersonation.</p>
+		</li>
+	</ul>
+	<p>Don't wait for a breach to verify your workforce. Start implementing a SASE architecture that trusts nothing — not even the face on the screen — without verification.</p>
+</div>

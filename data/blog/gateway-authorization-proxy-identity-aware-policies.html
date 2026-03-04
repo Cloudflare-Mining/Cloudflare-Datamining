@@ -1,0 +1,123 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33oVPv1uAmEQc0aYwfbX2U/10fc282125b3d6c4ee6ea730a2f8b64e/image5.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>We often talk about the "ideal" state, one where every device has a managed client like the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp"><u>Cloudflare One Client</u></a> installed, providing deep visibility and seamless protection. However, reality often gets in the way.</p>
+	<p>Sometimes you are dealing with a company acquisition, managing virtual desktops, or working in a highly regulated environment where you simply cannot install software on an endpoint. You still need to protect that traffic, even when you don’t fully manage the device.</p>
+	<p>Closing this gap requires moving the identity challenge from the device to the network itself. By combining the browser’s native proxy capabilities with our global network, we can verify users and enforce granular policies on any device that can reach the Internet. We’ve built the <a href="https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints"><u>Gateway Authorization Proxy</u></a> and <a href="https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices"><u>Proxy Auto-Configuration (PAC) File Hosting</u></a> to automate this authentication and simplify how unmanaged devices connect to Cloudflare.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-problem-sometimes-ip-addresses-arent-enough"><b>The problem: sometimes IP addresses aren't enough</b></h3>
+		<a href="https://blog.cloudflare.com/#the-problem-sometimes-ip-addresses-arent-enough" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Back in 2022, we released <a href="https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#source-ip-endpoint"><u>proxy endpoints</u></a> that allowed you to route traffic through Cloudflare to apply filtering rules. It solved the immediate need for access, but it had a significant "identity crisis."</p>
+	<p>Because that system relied on static IP addresses to identify users, it was a bit like a security guard who only recognizes cars, not the people inside them. If a car (a specific IP) showed up, it was let in. But if the driver switched cars or worked from a different location, the guard got confused. This created a few major headaches:</p>
+	<ul>
+		<li>
+			<p><b>Anonymous Logs:</b> We knew the IP address, but we didn’t know the person.</p>
+		</li>
+		<li>
+			<p><b>Brittle Policies:</b> If a user moved to a new home or office, the endpoint broke or required an update.</p>
+		</li>
+		<li>
+			<p><b>Manual Maintenance:</b> You had to host your own PAC file (the "GPS" that tells your browser where the proxy is) — one more thing for your team to manage.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="the-solution-the-authorization-proxy"><b>The solution: the Authorization Proxy</b></h3>
+		<a href="https://blog.cloudflare.com/#the-solution-the-authorization-proxy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4keaUmegcmKUc2WxgcbTym/50b4a5fd446a7ad5a3bd0e12d2d2fb8d/image2.png" alt="" class="kg-image" width="1486" height="1190" loading="lazy">
+	</figure>
+	<p><i>Authorization proxy Access policy setup page</i></p>
+	<p>The new <a href="https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints"><u>Gateway Authorization Proxy</u></a> adds a "badge reader" at the entrance. Instead of just looking at where the traffic is coming from, we now use a Cloudflare Access-style login to verify who the user is, before enforcing Gateway filtering.</p>
+	<p>Think of this as moving from a guest list based on license plates, to a system where everyone has their own badge. This brings several massive benefits:</p>
+	<ul>
+		<li>
+			<p><b>True identity integration:</b> Your logs related to proxy endpoints now show exactly which user is accessing which site. You can write specific rules like "only the Finance team can access this accounting tool," even without a client installed on the device.</p>
+		</li>
+		<li>
+			<p><b>Multiple identity providers:</b> This is a superpower for large companies or those undergoing M&amp;A. You can choose which identity providers to show your users. You can display one or multiple login methods (like Okta and Azure AD) at the same time. This is a level of flexibility that competitors don't currently offer.</p>
+		</li>
+		<li>
+			<p><b>Simplified billing:</b> Each user simply occupies a "seat," exactly like they do with the Cloudflare One Client. There are no complicated new metrics to track.</p>
+		</li>
+	</ul>
+	<p>To make this possible, we had to overcome the technical hurdle of associating a user’s identity with every request, and without a device client. Read on to see how it works.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-authorization-proxy-tracks-identity"><b>How Authorization Proxy tracks identity</b></h3>
+		<a href="https://blog.cloudflare.com/#how-authorization-proxy-tracks-identity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The Authorization Proxy uses signed JWT cookies to maintain identity, but there's a catch: when you first visit a new domain through the proxy, there's no cookie yet. Think of it like showing your badge at each new building you enter.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ImFMDkJWfn6lAva3NtTzg/82d646b89e851e0826493e2a71f7c8fc/image3.png" alt="" class="kg-image" width="1999" height="1946" loading="lazy">
+	</figure>
+	<p>The flowchart above illustrates exactly how this authentication process works:</p>
+	<ul>
+		<li>
+			<p><b>First visit to a domain</b>: When you navigate to a new domain, the Gateway Authorization Proxy checks if a domain identity cookie is present. If not, you're redirected to Cloudflare Access, which then checks for an existing Cloudflare Access identity cookie. If you're already authenticated with Cloudflare Access, we generate a secure token specifically for that domain. If you're not, we redirect you to login with your identity provider(s).</p>
+		</li>
+		<li>
+			<p><b>Invisible to users</b>: This entire process happens in milliseconds thanks to Cloudflare's global edge network. The redirect is so fast that users don't notice it — they simply see their page load normally.</p>
+		</li>
+		<li>
+			<p><b>Repeat visits are instant</b>: Once the cookie is set, all subsequent requests to that domain (and its subdomains) are immediately authorized. No more redirects needed.</p>
+		</li>
+	</ul>
+	<p>Because of this approach, we can log and filter traffic per person across all domains they access, and revoke access in an instant when needed — all without requiring any software installation on the user's device.</p>
+	<div class="flex anchor relative">
+		<h3 id="no-more-hosting-your-own-pac-files"><b>No more hosting your own PAC files</b></h3>
+		<a href="https://blog.cloudflare.com/#no-more-hosting-your-own-pac-files" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are also taking the "homework" out of the setup process. You can now host your PAC files directly on Cloudflare, using <a href="https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices"><u>Proxy Auto-Configuration (PAC) File Hosting</u></a>.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KnkVcR1Kq6BbFxPbLezRO/89c6a69adc62105b9c9344c24df69a36/image4.png" alt="" class="kg-image" width="1394" height="1096" loading="lazy">
+	</figure>
+	<p><i>PAC file configuration page</i></p>
+	<p>To make it easy, we have included starter templates to get you up and running in minutes. We have also integrated our AI assistant, Cloudy, to provide summaries that help you understand exactly what your PAC file is doing, without having to read through lines of code.</p>
+	<div class="flex anchor relative">
+		<h3 id="is-this-right-for-your-team"><b>Is this right for your team?</b></h3>
+		<a href="https://blog.cloudflare.com/#is-this-right-for-your-team" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While we still recommend the Cloudflare One Client for greater control and the best user experience, the Auth Proxy is the perfect fit for specific scenarios:</p>
+	<ul>
+		<li>
+			<p><b>Virtual desktops (VDI):</b> Environments where users log into a virtual machine and use a browser to reach the Internet.</p>
+		</li>
+		<li>
+			<p><b>Mergers and acquisitions:</b> When you need to bring two different companies under one security umbrella quickly.</p>
+		</li>
+		<li>
+			<p><b>Compliance constraints:</b> When you are legally or technically prohibited from installing software on an endpoint.</p>
+		</li>
+	</ul>
+	<div class="flex anchor relative">
+		<h3 id="whats-next"><b>What’s next?</b></h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This expands our clientless security options to connect to Cloudflare One, and we are already working on expanding our supported identity methods related to Authorization Endpoints. Look out for Kerberos, mTLS, and traditional username/password authentication to give you even more flexibility in how you authenticate your users.</p>
+	<p>The <a href="https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#authorization-endpoint"><u>Gateway Authorization Proxy</u></a> and <a href="https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/best-practices"><u>PAC File Hosting</u></a> are available in open beta today for all account types. You can get started by going to the "Resolvers and Proxies" section of your Cloudflare dashboard.</p>
+</div>
