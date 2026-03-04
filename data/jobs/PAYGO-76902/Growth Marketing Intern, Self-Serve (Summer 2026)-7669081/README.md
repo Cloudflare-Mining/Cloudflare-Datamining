@@ -5,67 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<h1 id="Role:SecurityResearcher&amp;AnalystIDATeamAnalyst-Overview">Overview</h1>
-<p>Initially this is a very tactical role, focused on supporting Intel Team's day-to-day operations.</p>
-<p>Intel team consumes approximately 35 different threat data feeds, runs 5 different machine learning models, and has data integrated into six different products in the Cloudflare portfolio.&nbsp;</p>
-<h1 id="Role:SecurityResearcher&amp;AnalystIDATeamAnalyst-KeyResponsibilities">Key Responsibilities</h1>
+<p><strong>Available Locations:&nbsp;</strong>Austin, Texas</p>
+<p><strong>About the Role</strong></p>
+<p>The Self-Serve Team is responsible for Cloudflare’s PLG business that serves ~20% of the internet. We run growth marketing and product experimentation across all product categories including Application Services, Cloudflare One and Developer Platform, and all Plans such as Free, Pro, Business &amp; Enterprise. We work to grow the business by understanding our customers’ needs at every stage of their journey from Awareness to Activation to Expansion and Retention.&nbsp;</p>
+<p>We are looking for a detail-oriented <strong>Growth Marketing Intern</strong> to own the transformation of our marketing and transactional emails for our high-volume <strong>Self-Serve business</strong> (Free, Pro, and Business plans) and help develop and document our messaging strategy.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Review domain miscategorizations</li>
-	<li>Maintain Application classifications</li>
-	<li>Review email miscategorizations</li>
-	<li>Submit IOCs to data pipeline based on external reports</li>
-	<li>Define automations and software requirements for support tooling</li>
-	<li>Define processes and procedures to create 24x7 coverage of miscategorizations</li>
-	<li>Continually evaluate the quality of threat data feeds, work to maximize value from them, evaluate new potential sources of data</li>
-	<li>Research observed IoCs and network behavior patterns and label data</li>
-	<li>Work with data scientists to identify security threats and create machine learning models</li>
-	<li>Be a team SME and resource for data scientists building security models and application developers building security products</li>
-	<li>Become a subject matter expert for internal teams consuming Intel team security and categorization data</li>
-	<li>Become the owner for Intel Team's strategy for false positive controls
-		<ul>
-			<li>Learn and understand current processes</li>
-			<li>Identify gaps and risk areas</li>
-			<li>Work the data scientists to test remediation strategies</li>
-			<li>Work the engineering teams to implement remediation strategies</li>
-		</ul>
-	</li>
-	<li>Define and implement metrics for product efficacy
-		<ul>
-			<li>Research and plan potential software, data science or machine learning projects to improve false positive and false negative rates</li>
-			<li>Continually monitor data quality and bring data quality issues and proposed solutions to team leadership</li>
-		</ul>
-	</li>
-	<li>Identify topical areas in cybersecurity where Cloudflare's unique network can be leveraged to improve user security</li>
-	<li>Write blog posts and communicate both internally and externally about Intel Team's work</li>
-	<li>Execute daily operational tasks and define automations to streamline operational tasks</li>
-	<li>Work with team to define technical requirements for security products
-		<ul>
-			<li>Research threats, exploits, and TTPs being defended against in products and work with engineers to create products that defend against them</li>
-		</ul>
-	</li>
+	<li>Update our email templates following recommendations from our recent email audit ensuring all emails are accurate, on-brand and follow email best practices.&nbsp;</li>
+	<li>Update the multi-step logic behind all our automated email workflows following recommendations from our recent email audit.</li>
+	<li>Update and maintain our messaging matrix to map out possible customer states to the correct recommended messaging and email templates.</li>
+	<li>Map out the customer journey for each customer type and each product, across all channels as a whole and then, separately, across the website (all domains and subdomains including error pages, turnstile, ai., blog. etc) and the customer dashboard.</li>
+	<li>Update and maintain our messaging matrix to match the map above.</li>
+	<li>Help define and update the messaging framework for the self-serve persona.&nbsp;</li>
 </ul>
-<h1 id="Role:SecurityResearcher&amp;AnalystIDATeamAnalyst-RequiredSkills&amp;Abilities">Required Skills &amp; Abilities</h1>
+<h4>Must-Haves:&nbsp;</h4>
 <ul>
-	<li>Scripting in Python and Node/Javascript</li>
-	<li>Able to use git to create, edit, and review pull requests</li>
-	<li>Basic front-end or full-stack development skills preferred but not required</li>
-	<li>Knowledge of and passion for cybersecurity</li>
-	<li>Knowledge of cyber security industry terms and concepts
-		<ul>
-			<li>e.g. MITRE ATT&amp;CK Framework, Lockheed Killchain</li>
-			<li>Ability to learn about security threats and map them to the MITRE ATT&amp;CK framework and Lockheed Killchain</li>
-		</ul>
-	</li>
-	<li>Strong knowledge of networking and "how the Internet works"
-		<ul>
-			<li>DNS, HTTP, TCP/IP, TLS, public key encryption</li>
-		</ul>
-	</li>
-	<li>Ability to reliably execute several hours a day of operational support tasks</li>
-	<li>Ability to communicate to stakeholders and management when priorities change</li>
+	<li>Current enrollment in a Bachelor’s or Master’s degree program in Marketing or Business Administration.</li>
+	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week.</li>
+	<li>A can-do attitude to help you navigate obstacles and make progress despite challenges.</li>
+	<li>Exceptional attention to detail.</li>
+	<li>A strategic outlook. You are able to step back from individual marketing initiatives and see how they all interact, overlap and affect the customer experience at a higher level.</li>
+	<li>Excellent communication skills. You can articulate complex processes clearly and document your work so others can build upon it.</li>
+	<li>An ownership mentality. You are driven to take a project from an ambiguous problem statement to a working solution.</li>
 </ul>
-<p>&nbsp;</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<ul>
+	<li>Experience with email marketing, in particular, and marketing strategies and tactics in general.</li>
+	<li>Experience using Iterable or a similar email platform.&nbsp;</li>
+	<li>A strong understanding of what Cloudflare does and how it helps our customers.&nbsp;</li>
+	<li>Good knowledge of the internet and how websites/apps are being built, secured and improved in the backend.&nbsp;</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,40 +5,61 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX - Hybrid</strong></p>
-<h4><strong>About the team</strong></h4>
-<p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.</p>
-<h4><strong>About the role</strong></h4>
-<p>You will focus on building scalable, reliable AI/ML models, services and GenAI powered application backends, partnering closely with data and full-stack engineers to deliver new features and operate the pipelines and platforms behind our products. Our stack spans multiple languages and technologies, including Python, React, and TypeScript, and continues to evolve. Many of our applications also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Available Locations: London, UK or Lisbon, Portugal or Kuala Lumpur, Malasya&nbsp;</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>The Infrastructure Services Analyst is a foundational execution role within Cloudflare’s Integrated Hardware Systems team, supporting the delivery of outsourced data center and infrastructure services that enable global hardware deployments at scale. This role focuses on day-to-day service execution, delivery tracking, and operational follow-through across Cloudflare’s data center footprint. The analyst works closely with internal cross-functional partners and external service providers to identify risks, track performance, and ensure services are delivered reliably and consistently.</p>
+<p>&nbsp;</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>
-	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team to improve the data collection and quality.</li>
-	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
-	<li>Strong audience focused presentation and storytelling skills focused on key takeaways in a crisp and concise manner.</li>
-	<li>Define, implement, and train statistical, machine learning, deep learning and generative AI models.</li>
-	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
-	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
-	<li>Active role in hiring, growing, and mentoring the data scientist team in Austin.</li>
+	<li>Support the execution and oversight of outsourced data center and infrastructure services supporting hardware deployment and lifecycle operations.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
-	<li>5+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)</li>
-	<li>Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</li>
-	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
-	<li>Strong experience in scientific computing using Python.</li>
-	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;</li>
-	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
-	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
-	<li>Proficiency in large language models and the frameworks (Langchain, Langgraph, etc.) necessary for implementing GenAI applications, such as AI Agents, chatbots and related use cases.</li>
-	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
-	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
-	<li>Experience in hiring data scientists and establishing team best practices is preferred.</li>
+	<li>Track service delivery related to rack installation, deployment support, remote hands, and in-data-center activities, ensuring work is completed to defined expectations.</li>
 </ul>
 <p>&nbsp;</p>
+<ul>
+	<li>Identify delivery risks, service gaps, and recurring issues, escalating concerns and supporting resolution as needed.</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+	<li>Analyze service performance, deployment trends, and vendor metrics to support operational insight and reporting.</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+	<li>Maintain dashboards, trackers, and recurring operational reports used to monitor execution and service health.</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+	<li>Support service reviews, readiness assessments, and onboarding activities for new sites and deployment waves.</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+	<li>Serve as an operational liaison between Integrated Hardware Systems, Infrastructure Operations, Engineering, Procurement, and external service vendors to ensure clarity on responsibilities, handoffs, and escalation paths.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
+<p>Experience supporting infrastructure operations, data center services, or hardware deployment activities.</p>
+<p>&nbsp;</p>
+<p>Familiarity with data center environments, rack-level hardware, or infrastructure build-out processes.</p>
+<p>&nbsp;</p>
+<p>Strong analytical skills with experience using spreadsheets, dashboards, or trackers to monitor execution and performance.</p>
+<p>&nbsp;</p>
+<p>Comfort working with operational metrics, SLAs, and service indicators.</p>
+<p>&nbsp;</p>
+<p>Clear written and verbal communication skills, with the ability to coordinate across teams and with external vendors.</p>
+<p>&nbsp;</p>
+<p>Strong sense of ownership, follow-through, and accountability in execution-heavy environments.</p>
+<p>&nbsp;</p>
+<p>Ability to operate effectively in fast-moving, operationally complex settings.</p>
+<p>&nbsp;</p>
+<p><strong>Nice-to-Have Skills</strong></p>
+<p>Experience working with outsourced service providers or vendor-managed operational models.</p>
+<p>&nbsp;</p>
+<p>Exposure to large-scale infrastructure deployments or global data center operations.</p>
+<p>&nbsp;</p>
+<p>Familiarity with service reviews, vendor evaluations, or commercial performance tracking.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

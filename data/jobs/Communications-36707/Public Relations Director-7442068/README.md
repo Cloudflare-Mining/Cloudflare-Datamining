@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX and San Francisco, CA&nbsp;</strong></p>
+<p><strong>Available Locations: Austin, TX, San Francisco, CA, and New York, NY.&nbsp;&nbsp;</strong></p>
 <p><strong>About the Role</strong></p>
 <p>Cloudflare is seeking an experienced, strategic, and technically savvy Public Relations Director to own the communications landscape for our developer ecosystem and the game-changing Workers platform.&nbsp;This isn't your standard PR gig. You won't just be amplifying; you'll be a strategic storyteller for a platform that is redefining scale, speed, and reliability—from serverless functions to AI inference at the edge. We need a communicator with the technical depth to earn the trust of the most sophisticated developers and the strategic vision to position Cloudflare as the definitive platform for builders.</p>
 <p>You’ll be the critical bridge between our engineering innovation and the global technical community, directly shaping perception across mainstream, tech and developer media.</p>
