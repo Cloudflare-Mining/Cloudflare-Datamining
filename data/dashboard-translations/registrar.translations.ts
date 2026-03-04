@@ -296,6 +296,10 @@
 		notification_success: "Domain successfully renewed",
 		renew_dot_ai_notice: "Registry policy requires a minimum renewal period of 2 years for the .%{tld} extension.",
 		notification_failure: "Domain renewal failed. Please try again or contact support for assistance.",
+		notification_failure_domain_not_found: "This domain could not be found. Please contact support.",
+		notification_failure_permission_denied: "You don't have permission to renew this domain.",
+		notification_failure_years_exceeds_maximum: "The renewal period exceeds the maximum allowed for this domain.",
+		notification_failure_years_below_minimum: "The renewal period is below the minimum allowed for this domain.",
 		notification_timeout: "Domain renewal is taking longer than expected. Please refresh the page to check status."
 	},
 	domainPageNotifications: {
@@ -699,7 +703,7 @@
 			registry_status_clienthold: "Domain is on client hold. Contact your registrar to resolve.",
 			registry_status_serverhold: "Domain is on server hold. Contact the registry to resolve.",
 			registry_status_servertransferprohibited: "Transfer prohibited by registry. Contact the registry to resolve.",
-			registry_status_clienttransferprohibited: "Transfer prohibited by registrar. Contact your registrar to unlock.",
+			registry_status_clienttransferprohibited: "Locked at current registrar. Disable transfer lock, then recheck.",
 			registry_status_pendingdelete: "Domain is pending deletion. Contact the registry to prevent deletion.",
 			registry_status_pendingtransfer: "Domain has a pending transfer. Wait for it to complete or cancel it.",
 			registry_status_transferperiod: "Transfer temporarily unavailable. Domain was recently transferred.",
@@ -713,9 +717,10 @@
 			learn_more: "Learn more",
 			try_again: "Try again",
 			recheck_checking: "Checking...",
-			recheck_still_locked: "Still locked at registrar. Try again in %{seconds}s.",
+			recheck_in_seconds: "Recheck in %{seconds}s",
+			recheck_still_locked: "Still locked. May take a few hours.",
 			recheck_unlocked: "Unlocked! Moving to available...",
-			recheck_error: "Unable to check status. Try again in %{seconds}s.",
+			recheck_error: "Unable to check status. Please try again.",
 			empty_title: "No domains requiring action"
 		},
 		not_available_for_transfer_table: {

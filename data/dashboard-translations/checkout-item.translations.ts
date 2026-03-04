@@ -9,7 +9,8 @@
 		price_per_additional_units: "%{price} per additional %{units}",
 		price_per_count_units: "%{price} per %{count} %{units}",
 		price_per_additional_count_units: "%{price} per additional %{count} %{units}",
-		price_per_additional_count_million_units: "%{price} per additional %{count} million %{units}"
+		price_per_additional_count_million_units: "%{price} per additional %{count} million %{units}",
+		usage_based: "Usage based"
 	},
 	prod_argo: {
 		title: "Argo Smart Routing",
