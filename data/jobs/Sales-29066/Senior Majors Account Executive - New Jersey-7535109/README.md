@@ -43,7 +43,7 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Estimated annual salary of $320,000- $350,000 (base/variable)</li>
+	<li>Estimated annual salary of $350,000- $380,000 (base/variable)</li>
 </ul>
 <p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>

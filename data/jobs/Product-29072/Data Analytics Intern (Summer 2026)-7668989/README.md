@@ -5,51 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Lisbon, London<br></strong></p>
-<p><strong>Hiring will be focused on those residing within the greater Austin, TX, London, UK, &amp; Lisbon, Portugal metro areas. It will be a hybrid role, with the expectation of 2 days per week in the office.</strong></p>
-<p><strong>Software Engineer, All Levels</strong></p>
-<h2><strong>Software Engineer – Cloudflare One</strong></h2>
-<p>Cloudflare is building the future of the Internet through global infrastructure and cutting-edge security solutions. As a Software Engineer on our Network Services and Zero Trust teams, you will contribute to mission-critical systems powering millions of websites and devices.</p>
-<h2><strong>About the Organization</strong></h2>
-<p>Cloudflare One is a cloud-based network-as-a-service solution that brings together networking, application security, and access controls into a single platform for modern enterprises. It enables organizations to securely connect users, devices, offices, and applications regardless of location, replacing legacy solutions like VPNs and firewalls with a seamless, cloud-delivered model. Cloudflare One delivers fast, reliable, and consistent security controls, protecting remote workforces and distributed infrastructure while simplifying management with a unified control plane. You can read more about Cloudflare One <a href="https://blog.cloudflare.com/cloudflare-one/">here</a>.</p>
-<h2><strong>About the Role</strong></h2>
-<p>We are hiring engineers of all experience levels across many of our teams. Some of the things our teams work on include:</p>
+<p><strong>Available Locations:&nbsp;</strong>Austin, Texas</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare helps build a better Internet by protecting and accelerating millions of websites, APIs, and applications worldwide. Our global network spans hundreds of cities and powers everything from small startups to large enterprises. The Self-Serve and Growth teams focus on Cloudflare’s product-led growth (PLG) business—helping users discover, activate, and expand usage across products like CDN, Security, Workers, R2, Images, and Registrar.</p>
+<p>As a Data Analytics Intern, you’ll work with product managers, engineers, marketers, and data scientists to generate insights that influence product strategy and business growth.</p>
+<h4><strong>What You’ll Do</strong></h4>
 <ul>
-	<li>A Linux kernel-based networking dataplane which ingests and forwards traffic from some of the largest networks in the world</li>
-	<li>A userspace networking service which acts as a hub between our Network Services and Zero Trust systems, enabling every customer to access every product</li>
-	<li>Control plane systems which allow customers to simply express complex network configurations</li>
-	<li>Products that empower customers to gain deep visibility into Cloud/SaaS security opportunities and into trends in their network traffic and product use</li>
-	<li>A backend system that allows our customers to manage their devices via our Zero Trust Network solution</li>
-	<li>A MITM forward-proxy responsible for introspecting and filtering device traffic</li>
-	<li>Threat intelligence from a swath of external sources with intelligence mined from Cloudflare's world class data to provide threat intelligence used across a number of Cloudflare products</li>
+	<li>Analyze product and business data to uncover trends in acquisition, activation, retention, and monetization across Cloudflare’s self-serve customers.</li>
+	<li>Write SQL queries to explore large-scale datasets and build dashboards to track key metrics and experiments.</li>
+	<li>Partner with product, marketing, and engineering teams to define success metrics and answer high-impact business questions.</li>
+	<li>Support A/B tests and growth experiments by measuring impact and providing recommendations.</li>
+	<li>Help maintain and improve data pipelines, data models, and documentation.</li>
+	<li>Present findings and actionable insights to stakeholders in a clear, compelling way.</li>
+	<li>Contribute to improving analytics processes, data quality, and self-serve reporting.</li>
 </ul>
-<p>As a software engineer on our team, you will work across a wide range of technologies and systems to deliver new features, improve performance, and increase the scalability of our CF1 products. You’ll build, deploy, and operate your team’s systems on top of one of the largest edge networks in the world. You’ll partner with some of the best engineers and product managers to solve big problems that have a meaningful impact in the lives of our customers and users.</p>
-<p>We’re looking for curious, empathetic engineers who are excited to join us in changing the way networking is done!</p>
-<h2><strong>Responsibilities</strong></h2>
+<h4><strong>Example Projects</strong></h4>
 <ul>
-	<li>Design, build, and maintain scalable software systems for global network services and Zero Trust platforms.</li>
-	<li>Develop robust, high-performance networking code using modern programming languages (Rust, Go).</li>
-	<li>Collaborate closely with product managers and cross-functional engineering teams to deliver new solutions for connectivity, security, and performance.</li>
-	<li>Participate in the design and integration of RESTful APIs and backend systems, especially for asynchronous and distributed architectures.</li>
-	<li>Improve code quality through rigorous documentation, testing, and adherence to industry best practices.</li>
-	<li>Troubleshoot, optimize, and scale distributed systems deployed worldwide.</li>
-	<li>Work at both systems (operating system, networking primitives) and application (user and API-facing) layers.</li>
-	<li>Contribute to the reliability, security, and scalability of Cloudflare's infrastructure, including on-prem/cloud integrations.</li>
+	<li>Build dashboards tracking user activation and feature adoption across Cloudflare products.</li>
+	<li>Analyze funnel conversion from sign-up → first value → paid usage.</li>
+	<li>Identify segments of users most likely to upgrade or expand product usage.</li>
+	<li>Evaluate impact of product launches, pricing changes, or marketing campaigns.</li>
+	<li>Support forecasting and growth modeling for self-serve revenue.</li>
 </ul>
-<h2><strong>Required Qualifications</strong></h2>
+<h4><strong>Who You Are</strong></h4>
+<p><strong>Required:&nbsp;</strong></p>
 <ul>
-	<li>3+ years professional software engineering experience.</li>
-	<li>Bachelor’s or Master’s degree in Computer Science or equivalent practical experience.</li>
-	<li>Proficiency with Rust, Go, or similar systems-level programming languages.</li>
-	<li>Solid foundation in networking concepts (TCP/IP, UDP, VPNs, firewalls, DNS, QUIC, HTTP, proxying).</li>
-	<li>Familiarity with design and development of distributed, asynchronous backend architectures.</li>
-	<li>Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and system</li>
-	<li>Clear written and verbal communication skills, especially for cross-team collaboration.</li>
+	<li>Currently pursuing a Bachelor’s or Master’s degree in Data Science, Statistics, Computer Science, Economics, or a related quantitative field.</li>
+	<li>Strong analytical and problem-solving skills.</li>
+	<li>Experience with SQL and data analysis tools (e.g., Python, R, or spreadsheets).</li>
+	<li>Ability to communicate insights clearly to both technical and non-technical audiences.</li>
+	<li>Curiosity about product analytics, growth, and how data drives decisions.</li>
 </ul>
-<h2><strong>Preferred Qualifications</strong></h2>
+<p><strong>Preferred:</strong></p>
 <ul>
-	<li>Experience with Linux networking primitives, cloud technologies, and virtualization platforms.</li>
-	<li>Prior work on zero trust, cloud security, or enterprise networking products.</li>
+	<li>Experience with data visualization tools (e.g., Looker, Tableau, Mode, or similar).</li>
+	<li>Familiarity with experimentation, A/B testing, or product analytics.</li>
+	<li>Exposure to cloud data warehouses (BigQuery, Snowflake, etc.).</li>
+	<li>Interest in Internet infrastructure, security, or developer platforms.</li>
+</ul>
+<p><strong>What You’ll Gain</strong></p>
+<ul>
+	<li>Hands-on experience analyzing real-world product and business data at Internet scale.</li>
+	<li>Mentorship from experienced data analysts and data scientists.</li>
+	<li>Exposure to product-led growth strategy and cross-functional decision-making.</li>
+	<li>Opportunity to present your work to Cloudflare teams and leadership.</li>
+	<li>A final project that demonstrates measurable impact on product or growth strategy.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

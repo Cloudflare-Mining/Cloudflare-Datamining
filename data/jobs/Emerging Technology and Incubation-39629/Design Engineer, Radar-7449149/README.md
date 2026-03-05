@@ -5,31 +5,56 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Lisbon, London</strong></p>
-<p><strong>Hiring will be focused on those residing within the greater Austin, TX, London, UK, &amp; Lisbon, Portugal metro areas. It will be a hybrid role, with the expectation of 2 days per week in the office.</strong></p>
-<p><strong>We're hiring Software Engineers at all levels. This is a single pipeline position.</strong></p>
-<p><strong>About the team</strong></p>
-<p>The Magic Cloud Networking team builds an orchestration framework that empowers customers to take public cloud resources (e.g., AWS / Azure / GCP) and securely connect them to Cloudflare’s global data-center footprint. Working with public cloud networking resources provides unique challenges—each cloud models networking very differently, customers can modify resources out-of-band of our orchestration system (“shadow IT operations”), resources can fail in opaque and varied ways outside of our control, etc.. To solve these issues, our orchestration platform must be resilient and scalable, while also affording flexibility to the unique constraints of each cloud. Powering this orchestration framework are a set of Go and Rust-based microservices running in our core data-centers, leveraging Cloudflare’s infrastructure excellence.</p>
-<p>We are a team of engineers who obsess over building reliable services which leverage Cloudflare’s unique architecture and global network footprint.</p>
-<p>You can read more about what we work on here:</p>
+<p><strong>Available Locations: Lisbon, Portugal&nbsp;</strong></p>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the Role</strong></h3>
+<p>As a Design Engineer you’ll sit at the intersection of <strong>design, front-end engineering, and data visualization </strong>roles, working closely with product managers, engineers and also designers to craft fast, elegant, and reliable interfaces that make complex Internet trends and metrics easy to explore.<br><br>You’ll be part of a growing engineering team tasked to help build and evolve projects at ETI such as <strong>Cloudflare Radar</strong>, our public data-intelligence platform, <strong>Radar Display</strong>, our large-format visualization experience optimized for big screens and live event environments, Year in Review,&nbsp; and other tools which are part of our ecosystem where you will be able to enrich their user experience as well.<br><br></p>
+<h3><strong>What you’ll do</strong></h3>
+<p>We are looking for an experienced and empathetic <strong>Design Engineer</strong> who will help build and scale the platform that empowers millions of users to be successful with Cloudflare. In this role, you’ll use your skills to ensure we have a world-class user interface that gives customers relevant and up-to-date content whenever they need it. This is a cross-functional role where you’ll work collaboratively across the product, engineering and design teams.</p>
+<p>&nbsp;</p>
 <ul>
-	<li><a href="https://blog.cloudflare.com/introducing-magic-cloud-networking">https://blog.cloudflare.com/introducing-magic-cloud-networking</a></li>
+	<li><strong>Design User experiences and UI components</strong> that scale across ETI ensuring performance on desktop, mobile, and large-format displays.<br><br></li>
+	<li><strong>Build interactive visualizations</strong> (maps, charts, dashboards) that bring global Internet data to life.<br><br></li>
+	<li><strong>Prototype high-fidelity UI/UX concepts</strong> and iterate rapidly based on user feedback and real-world data.<br><br></li>
+	<li><strong>Translate product specs into clear UI/UX design </strong>using modern design tooling (e.g., Figma, Miro).<br><br></li>
+	<li>Champion <strong>design system consistency</strong>, contributing to new and reusable components to keep Radar cohesive and scalable in several distinct platforms.<br><br></li>
+	<li>Ensure our products and tools meet high standards for <strong>performance, accessibility, internationalization, and responsiveness</strong>.</li>
 </ul>
-<p><strong>About the role</strong></p>
-<p>As a software engineer on the Magic Cloud Networking team, you will contribute to features that shape Cloudflare One’s use of multi-cloud networking. You will build solutions that improve performance, scalability, manageability, and security of customer cloud footprints as well as connect them to our global network. This work requires close collaboration with other teams while leveraging frameworks and libraries that power many Cloudflare products. Our technology stack includes Go, Rust, OpenTofu, Public Clouds (e.g., AWS / Azure / GCP), Kubernetes, Docker, and Prometheus. We're looking for determined, curious, empathetic engineers to join our team!</p>
-<p><strong>Desirable skills, knowledge, and experience</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>Programming experience in Go or Rust</li>
-	<li>Familiarity with Layer 3 and Layer 4 networking; i.e, VPCs, transit gateways, BGP and GRE tunnels</li>
-	<li>Familiarity with network engineering and protocols used in data center switching and routing as well as Internet routing - BGP, BFP, OSPF, MPLS, etc</li>
-	<li>Experience building network orchestration platforms</li>
-	<li>Experience designing and integrating RESTful APIs and backend systems</li>
-	<li>Attention to detail and ability to solve complex customer problems</li>
-	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
-	<li>Able to work across teams and create common, sustainable solutions</li>
-	<li>Creative, open-minded, collaborative problem solver</li>
-	<li>Focus on clarity in written and verbal communication</li>
+	<li><strong>Maintain UX/UI high quality </strong>by performing rapidly fixes and small enhancements, polishing items, and bugs reported by customers and internal teams.<br><br></li>
+	<li>Support the creation and <strong>optimization of tools like the Radar Display</strong> layouts tailored for big screens (wallboards, NOCs, conferences, lobbies) and customized for diverse events.<br><br></li>
 </ul>
+<p><strong>Technologies We Use</strong></p>
+<ul>
+	<li>Figma, Miro</li>
+	<li>React, Tailwind, Storybook, TypeScript</li>
+	<li>Git, GitLab CI/CD</li>
+</ul>
+<p><strong>Qualifications</strong></p>
+<ul>
+	<li>3+ years of experience in a hybrid Design Engineer, UI Engineer, or Frontend Engineer role with a strong design focus.</li>
+	<li>Expertise in building modern, scalable, and responsive UI applications using React, TypeScript, and advanced CSS.</li>
+	<li>A strong portfolio showcasing your ability to translate complex design concepts (Figma, Miro, etc.) into high-quality, pixel-perfect code.</li>
+	<li>Hands-on experience building, maintaining, or contributing to a component library or design system (e.g., using Storybook).</li>
+	<li>Excellent communication and collaboration skills, with a proven ability to work effectively with designers and product managers to scope work and find scalable solutions.</li>
+	<li>A pragmatic and product-oriented mindset, capable of balancing technical debt, design intent, and development velocity.</li>
+</ul>
+<p><strong>Preferred Skills</strong></p>
+<ul>
+	<li>Experience with UX prototyping and iterating in both high-fidelity (Figma) and code-based tools.</li>
+	<li>Experience with web accessibility (WCAG) and building inclusive interfaces.</li>
+	<li>Experience working on large-scale products used by multiple teams.</li>
+</ul>
+<p><br><strong>Why Join Us?</strong></p>
+<ul>
+	<li>Bridge the gap between design and engineering on a high-visibility, high-impact Radar team solving real problems.</li>
+	<li>Directly address and solve customer pain points, improving the experience for millions of users.</li>
+	<li>Shape the future of the Cloudflare UI by building its foundational patterns and exploring ambitious "North Star" concepts.</li>
+	<li>Join a collaborative, fast-moving team that values high-quality, scalable design and rapid iteration.</li>
+</ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
