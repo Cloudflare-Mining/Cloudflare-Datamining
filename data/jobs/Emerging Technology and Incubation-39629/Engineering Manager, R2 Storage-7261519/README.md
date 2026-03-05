@@ -5,65 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin TX and San Francisco CA, Seattle WA and Denver CO</strong></p>
-<h4><strong>About the Role</strong></h4>
-<p>We are looking for talented Systems Reliability Engineers to build and operate our Edge platform running in more than 320 cities in over 120 countries. Our SREs come from diverse technical backgrounds and have built up their knowledge working in different environments, but common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence. We support our services in a “follow the sun” model with offices in East Asia, Europe and North America.</p>
-<p>This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows. We live at the boundary between systems, network, and software, and love improving the glue that holds them together. Working with us, you will build tools to constantly improve service availability, performance, and operational velocity. You will nurture a passion for an “automate everything” approach that makes systems failure resistant and ready to scale.</p>
-<p>SREs focus on the immediate state and functionality of the Cloudflare platform around the world, leveraging an array of monitoring, alerting and diagnostics tools while developing and enhancing the Cloudflare platform and its capabilities. We own a wide portfolio of applications and services, running a tight feedback loop of developer and operator patterns. The ideal SRE candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of networking, Linux and TLS along with coding ability in Go, Rust, or Python.</p>
-<h4><strong>Requisite Skills</strong></h4>
+<h3><strong>Available Locations: Austin, TX | Seattle, WA | London, UK</strong></h3>
+<h3><strong>About the Team: R2</strong></h3>
+<p>R2 is Cloudflare's object storage platform and one of the fastest-growing products in the company's history. The Gateway team owns the surface area that developers interact with: the S3-compatible API, Workers bindings, data migration tools, public buckets, custom domains, event notifications, and the tooling that ties it all together. R2 is experiencing explosive growth with some of the most demanding workloads on the internet, and there is still a lot to build. If a developer touches R2, they're touching code the Gateway team wrote.</p>
+<h3><strong>What You'll Do</strong></h3>
+<p>As the Engineering Manager for the R2 Gateway team, you will own the developer experience of R2. You will lead and grow the team, setting technical direction and hiring to expand. Your team is responsible for a wide surface area, from API compatibility and Workers integration to data migration and custom domains, and you'll thrive on navigating across these domains. You will be the face of R2 for developers: engaging with customers on Discord, joining calls with R2's largest accounts, writing blog posts, and often being the go-to person for internal teams building on R2. You will drive a roadmap that balances feature delivery with the reliability and performance work that keeps R2 trustworthy, shipping features that leverage Cloudflare's global network in ways other object stores cannot.</p>
+<h3><strong>Examples of Desirable Skills, Knowledge and Experience</strong></h3>
 <ul>
-	<li>Aptitude for identifying problems, owning them and working with others to solve them</li>
-	<li>Linux systems experience</li>
-	<li>3 years experience in an SRE role or a role with similar functions</li>
-	<li>Software development skills in some programming language such as Go, Rust, or Python</li>
-	<li>Understanding of distributed software systems and large scale system design tradeoffs</li>
-	<li>Intermediate experience of common network protocols like DNS and HTTP</li>
+	<li>Minimum 5 years of software engineering experience, with experience building or operating developer-facing data systems (object stores, databases, message queues, or similar).</li>
+	<li>Experience leading engineering teams, either as a manager or as a senior technical lead. We are open to both experienced managers and strong engineers stepping into management.</li>
+	<li>A track record of shipping developer-facing features where API design, ergonomics, and migration experience meaningfully impacted adoption.</li>
+	<li>Comfort engaging directly with developers through customer calls, community forums, blog posts, or open-source. You're energized by understanding how developers actually use your product.</li>
+	<li>Familiarity with distributed systems concepts. The Gateway codebase is primarily TypeScript on Cloudflare Workers, with Rust in adjacent services.</li>
 </ul>
-<h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Experience with the Linux kernel and Linux software packaging</li>
-	<li>Performance analysis and debugging</li>
-	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
-	<li>Workflow automation systems such as Temporal or Apache Airflow</li>
-	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Squid or Apache</li>
-	<li>SQL databases</li>
-	<li>Time series databases such as OpenTSDB, Graphite, Prometheus or Grafana</li>
-	<li>Key/Value stores</li>
-	<li>Internetworking and BGP</li>
+	<li>Experience with S3-compatible APIs, object storage systems, or cloud storage platforms.</li>
+	<li>Experience building or improving data migration tools where the goal was making a complex process feel simple.</li>
+	<li>Experience working with edge networks or CDN architecture.</li>
+	<li>Experience growing a team through hiring while delivering on an ambitious roadmap.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>Experience with continuous / rapid release engineering</li>
-	<li>Strong tooling and automation development experience</li>
-	<li>Experience working in a 24/7/365 service environment</li>
-	<li>Experience working with large scale production distributed systems</li>
-	<li>A history of contributing to Open Source Software</li>
-</ul>
-<h4><strong>Some tools that we use</strong></h4>
-<ul>
-	<li>Nginx</li>
-	<li>PostgreSQL</li>
-	<li>Docker</li>
-	<li>Prometheus</li>
-	<li>Grafana</li>
-	<li>Consul</li>
-	<li>Nomad</li>
-	<li>Temporal</li>
-	<li>Salt</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $144,000 - $198,000</span></li>
-	<li><span data-sheets-root="1">For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $133,000 - $163,000</span></li>
-	<li><span data-sheets-root="1">For Colorado based hires: Estimated annual salary of $115,000 - $141,000</span></li>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $220,000 - $303,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -74,19 +45,18 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
