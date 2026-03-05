@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><span style="font-size: 10pt;"><strong>Available location(s): Austin, TX&nbsp;</strong></span></h3>
+<h3><span style="font-size: 10pt;"><strong>Available location(s): Austin, TX and San Francisco, CA</strong></span></h3>
 <h3><span style="font-size: 10pt;"><strong>About the Role and People Team</strong></span></h3>
 <p><span style="font-size: 10pt;">At Cloudflare, we are helping build a better Internet, and our People Team is at the heart of that mission. We are looking for a highly organized, tech-savvy <strong>People Team Intern</strong> who is passionate about the intersection of Human Resources and Artificial Intelligence.</span></p>
 <p><span style="font-size: 10pt;">You will be embedded in one of these global HR functions to drive project efficiency and help us pioneer the use of AI in the workplace:</span></p>
@@ -42,9 +42,13 @@
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Familiarity with HR compliance, processes, program administration, and tools.</span></li>
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;">A background in Project Management (PMO) or Business Operations.</span></li>
 </ul>
-<p><span style="font-size: 10pt;"><strong>Deadline to Apply: </strong><strong><span data-rich-links="{&quot;dat_df&quot;:{&quot;fres_frt&quot;:1,&quot;dfie_ts&quot;:{&quot;tv&quot;:{&quot;tv_s&quot;:1772366400,&quot;tv_n&quot;:0}},&quot;dfie_l&quot;:&quot;en&quot;,&quot;dfie_p&quot;:{&quot;fres_frt&quot;:0,&quot;tres_tv&quot;:&quot;MMM d, y&quot;},&quot;dfie_dt&quot;:&quot;Mar 1, 2026&quot;,&quot;dfie_pt&quot;:3,&quot;dfie_tpt&quot;:0,&quot;dfie_tzi&quot;:&quot;&quot;},&quot;type&quot;:&quot;date&quot;}">Mar 1, 2026&nbsp;</span></strong></span></p>
+<p><span style="font-size: 10pt;"><strong>Deadline to Apply: </strong><strong><span data-rich-links="{&quot;dat_df&quot;:{&quot;fres_frt&quot;:1,&quot;dfie_ts&quot;:{&quot;tv&quot;:{&quot;tv_s&quot;:1772366400,&quot;tv_n&quot;:0}},&quot;dfie_l&quot;:&quot;en&quot;,&quot;dfie_p&quot;:{&quot;fres_frt&quot;:0,&quot;tres_tv&quot;:&quot;MMM d, y&quot;},&quot;dfie_dt&quot;:&quot;Mar 1, 2026&quot;,&quot;dfie_pt&quot;:3,&quot;dfie_tpt&quot;:0,&quot;dfie_tzi&quot;:&quot;&quot;},&quot;type&quot;:&quot;date&quot;}">Mar 10, 2026&nbsp;</span></strong></span></p>
 <ul>
 	<li style="font-size: 10pt;"><span style="font-size: 10pt;" data-rich-links="{&quot;dat_df&quot;:{&quot;fres_frt&quot;:1,&quot;dfie_ts&quot;:{&quot;tv&quot;:{&quot;tv_s&quot;:1772366400,&quot;tv_n&quot;:0}},&quot;dfie_l&quot;:&quot;en&quot;,&quot;dfie_p&quot;:{&quot;fres_frt&quot;:0,&quot;tres_tv&quot;:&quot;MMM d, y&quot;},&quot;dfie_dt&quot;:&quot;Mar 1, 2026&quot;,&quot;dfie_pt&quot;:3,&quot;dfie_tpt&quot;:0,&quot;dfie_tzi&quot;:&quot;&quot;},&quot;type&quot;:&quot;date&quot;}">We will be reviewing applications on a rolling basis.</span></li>
+</ul>
+<p><strong><span style="font-size: 10pt;" data-rich-links="{&quot;dat_df&quot;:{&quot;fres_frt&quot;:1,&quot;dfie_ts&quot;:{&quot;tv&quot;:{&quot;tv_s&quot;:1772366400,&quot;tv_n&quot;:0}},&quot;dfie_l&quot;:&quot;en&quot;,&quot;dfie_p&quot;:{&quot;fres_frt&quot;:0,&quot;tres_tv&quot;:&quot;MMM d, y&quot;},&quot;dfie_dt&quot;:&quot;Mar 1, 2026&quot;,&quot;dfie_pt&quot;:3,&quot;dfie_tpt&quot;:0,&quot;dfie_tzi&quot;:&quot;&quot;},&quot;type&quot;:&quot;date&quot;}">Compensation:</span></strong></p>
+<ul>
+	<li><span style="font-size: 10pt;" data-rich-links="{&quot;dat_df&quot;:{&quot;fres_frt&quot;:1,&quot;dfie_ts&quot;:{&quot;tv&quot;:{&quot;tv_s&quot;:1772366400,&quot;tv_n&quot;:0}},&quot;dfie_l&quot;:&quot;en&quot;,&quot;dfie_p&quot;:{&quot;fres_frt&quot;:0,&quot;tres_tv&quot;:&quot;MMM d, y&quot;},&quot;dfie_dt&quot;:&quot;Mar 1, 2026&quot;,&quot;dfie_pt&quot;:3,&quot;dfie_tpt&quot;:0,&quot;dfie_tzi&quot;:&quot;&quot;},&quot;type&quot;:&quot;date&quot;}">Estimated hourly rate is $24-25/hr.</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
