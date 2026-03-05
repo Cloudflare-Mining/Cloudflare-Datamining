@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Strategic Industry Leads </strong><strong><br></strong><strong>Director / Senior Director</strong><strong><br></strong><strong>Location: London, Lisbon, Munich&nbsp;</strong></p>
+<p><strong>Strategic Industry Lead&nbsp;</strong><strong><br></strong><strong>Location: London, Lisbon, Munich</strong></p>
 <p>Cloudflare recently announced key partnerships across multiple industries, enabling some of the world’s largest organizations and their millions of customers to benefit from Cloudflare’s faster, more reliable, and more secure edge network and connectivity cloud. To further drive these initiatives, we are seeking a&nbsp;<strong>Director or Senior Director, Industry Lead</strong>. This role reports to the VP, Global Head of Industries.</p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
