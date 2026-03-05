@@ -1,0 +1,47 @@
+<div class="content-intro">
+	<div><strong>About Us</strong></div>
+	<div>
+		<p>At Cloudflare, we are on a mission to help build a better Internet. Today the company runs one of the world’s largest networks that powers millions of websites and other Internet properties for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
+	</div>
+</div>
+<p><strong>Locations Available: Munich, Germany</strong></p>
+<p>&nbsp;</p>
+<p><strong>About the role:</strong></p>
+<p>As a People Ops - HR Generalist, you play a key role in supporting the full employment lifecycle and ensure smooth day-to-day HR Operations across Germany, Switzerland, the Netherlands and Sweden.&nbsp; Acting as a trusted partner for your area, this role provides expert guidance on People policies and driving consistent HR best practice across Cloudflare.&nbsp; You are responsible for ensuring that global People strategies are successfully translated into local operational excellence. You will manage the employee support escalations and ensure our employment practices remain fully compliant with ever-changing local labor laws. The ideal candidate is proactive, organised, solutions focused, able to build strong relationships across Cloudflare, and be confident advising on complex HR issues. You will also have experience working across different countries.</p>
+<p><strong>What you’ll do:</strong></p>
+<ul>
+	<li>Act as HR subject matter expert for local labour law, ensuring all people processes are executed in alignment with country-specific statutory requirements.&nbsp;</li>
+	<li>Local compliance/employment policy &amp; interpretation: Ensure all handbooks and policies are compliant with local employment laws. Act as the first point of contact when a "local nuance" is needed for a global policy. Conduct regular audits of people processes to mitigate legal risks and ensure we stay ahead of local legislative changes.</li>
+	<li>Works Council Support: Prepare all necessary data, documentation, and reporting necessary for Works Council meetings in Germany and the Netherlands. Ensure the company strictly adheres to "Right to Information" timelines and other statutory obligations regarding employee representative bodies.</li>
+	<li>In Germany in particular, acting as a central point of contact and partner with Talent Acquisition, HRBP, and managers to prepare the co-determination documents to ensure all hires and employees changes are captured, properly documented and approved by the Works Council in a timely manner.&nbsp;</li>
+	<li>Advisory and Resolution: Support Senior Managers and Directors ensuring a high-touch, solutions-focused experience. You will handle complex queries that fall outside of People Ops Specialists scope, specifically those involving legal interpretation or unique individual circumstances.&nbsp;</li>
+</ul>
+<ul>
+	<li>Manager Enablement: Supporting Regional HR strategies including developing training materials for managers on how to lead and manage international teams within the EMEA legal framework.</li>
+	<li>Operational Excellence: Contribute to improving HR processes, documentation, and workflows.</li>
+	<li>Stakeholder Management: Operate as a credible partner for HRBPs, Employee Relations (ER) and Legal teams. You will provide the operational 'how-to' for regional initiatives, ensuring that business goals are achieved without compromising local statutory requirements.</li>
+</ul>
+<p><strong>What we’re looking for</strong></p>
+<ul>
+	<li>Proven Experience: You will have previous experience working as an HR Generalist&nbsp; (ideally multi-country within EMEA) and work in an international environment with advisory responsibilities in a fast‑paced environment.</li>
+	<li>Works Council experience:&nbsp; in-depth knowledge of German labor law and being familiar with the German Works Constitution Act is a prerequisite for success in this position.</li>
+	<li>Technical Depth: Advanced understanding of international employment and labor law and statutory requirements within EMEA.</li>
+	<li>Analytical mindset with proven experience in continuous improvement and operational excellence.</li>
+	<li>Excellent communication skills with strong command of English and fluency in German with the ability to communicate with both Works Council and global teams.</li>
+	<li>Organised, pragmatic, and people-focused.</li>
+</ul>
+<ul>
+	<li>Experience using Workday and Zendeks or other HRIS tools</li>
+</ul>
+<div class="content-conclusion">
+	<p><strong>What Makes Cloudflare Special?</strong></p>
+	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
+	<p><a href="https://blog.cloudflare.com/protecting-free-expression-online/"><strong>Project Galileo</strong></a><span style="font-weight: 400;">: Since 2014, we've equipped more than 2,400 journalism and civil society organizations in 111 countries with powerful tools to defend themselves against attacks that would otherwise censor their work, technology already used by Cloudflare’s enterprise customers--at no cost.</span></p>
+	<p><strong><a href="https://www.cloudflare.com/athenian/">Athenian Project</a></strong><span style="font-weight: 400;">: In 2017, we created the Athenian Project to ensure that state and local governments have the highest level of protection and reliability for free, so that their constituents have access to election information and voter registration. Since the project, we've provided services to more than 425 local government election websites in 33 states.</span></p>
+	<p><a href="https://1.1.1.1/"><strong>1.1.1.1</strong></a><span style="font-weight: 400;">: We released</span><a href="https://1.1.1.1/"> <span style="font-weight: 400;">1.1.1.1</span></a><span style="font-weight: 400;"> to help fix the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. This is available publicly for everyone to use - it is the first consumer-focused service Cloudflare has ever released. Here’s the deal - we don’t store client IP addresses never, ever. We will continue to abide by our</span><a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver"> privacy commitment</a><span style="font-weight: 400;"> and ensure that no user data is sold to advertisers or used to target consumers.</span></p>
+	<p><span style="font-weight: 400;">Sound like something you’d like to be a part of? We’d love to hear from you!</span></p>
+	<p><span style="font-weight: 400;">This position may require access to information protected under U.S. export control laws, including the U.S. Export Administration Regulations. Please note that any offer of employment may be conditioned on your authorization to receive software or technology controlled under these U.S. export laws without sponsorship for an export license.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare is proud to be an equal opportunity employer. &nbsp;We are committed to providing equal employment opportunity for all people and place great value in both diversity and inclusiveness. &nbsp;All qualified applicants will be considered for employment without regard to their, or any other person's, perceived or actual</span> <span style="font-weight: 400;">race, color, religion, sex, gender, gender identity, gender expression, sexual orientation, national origin, ancestry, citizenship, age, physical or mental disability, medical condition, family care status, or any other basis protected by law. </span><span style="font-weight: 400;">We are an AA/Veterans/Disabled Employer.</span></p>
+	<p><span style="font-weight: 400;">Cloudflare provides reasonable accommodations to qualified individuals with disabilities. &nbsp;Please tell us if you require a reasonable accommodation to apply for a job. Examples of reasonable accommodations include, but are not limited to, changing the application process, providing documents in an alternate format, using a sign language interpreter, or using specialized equipment. &nbsp;If you require a reasonable accommodation to apply for a job, please contact us via e-mail at </span><span style="font-weight: 400;">hr@cloudflare.com</span><span style="font-weight: 400;"> or via mail at 101 Townsend St. San Francisco, CA 94107.</span></p>
+</div>
