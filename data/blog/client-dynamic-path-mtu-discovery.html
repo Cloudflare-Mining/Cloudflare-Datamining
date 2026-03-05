@@ -1,0 +1,56 @@
+<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qDXYDNphK3gqFTkyp8Pwi/1b3980c9b35cc924a3a5894b3416de76/image4.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<p>You’ve likely seen this support ticket countless times: a user’s Internet connection that worked just fine a moment ago for Slack and DNS lookups is suddenly hung the moment they attempt a large file upload, join a video call, or initiate an SSH session. The culprit isn't usually a bandwidth shortage or service outage issue, it is the "PMTUD Black Hole" — a frustration that occurs when packets are too large for a specific network path, but the network fails to communicate that limit back to the sender. This situation often happens when you’re locked into using networks you do not manage or vendors with <a href="https://www.cloudflare.com/learning/network-layer/what-is-mtu"><u>maximum transmission unit</u></a> (MTU) restrictions, and you have no means to address the problem.</p>
+	<p>Today, we are moving past these legacy networking constraints. By implementing <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/deployment/mdm-deployment/path-mtu-discovery"><u>Path MTU Discovery</u></a> (PMTUD), the Cloudflare One Client has shifted from a passive observer to an active participant in path discovery.</p>
+	<p>Dynamic Path MTU Discovery allows the client to intelligently and dynamically adjust to the optimal packet size for most network paths using MTUs above <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/deployment/mdm-deployment/path-mtu-discovery/#path-mtu-discovery"><u>1281 bytes</u></a>. This ensures that a user’s connection remains stable, whether they are on a high-speed corporate backbone or a restrictive cellular network.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-modern-security-meets-legacy-infrastructure-challenge">The “modern security meets legacy infrastructure” challenge<b>&nbsp;</b></h3>
+		<a href="https://blog.cloudflare.com/#the-modern-security-meets-legacy-infrastructure-challenge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To understand the solution, we have to look at how modern security protocols interact with the diversity of global Internet infrastructure. The MTU represents the largest data packet size a device can send over a network without fragmentation: typically 1500 bytes for standard Ethernet.</p>
+	<p>As the Cloudflare One client has evolved to support modern enterprise-grade requirements (such as <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/#fips-140-2"><u>FIPS 140-2 compliance</u></a>), the amount of metadata and encryption overhead within each packet has naturally increased. This is a deliberate choice to ensure our users have the highest level of protection available today.</p>
+	<p>However, much of the world’s Internet infrastructure was built decades ago with a rigid expectation of 1500-byte packets. On specialized networks like LTE/5G, satellite links, or public safety networks like FirstNet, the actual available space for data is often lower than the standard. When a secure, encrypted packet hits an older router with a lower limit (e.g., 1300 bytes), that router should ideally send an <a href="https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp"><u>Internet Control Message Protocol</u></a> (ICMP) message stating "Destination Unreachable" back to the sender to request a smaller size.</p>
+	<p>But that doesn’t always happen. The "Black Hole" occurs when firewalls or middleboxes silently drop those ICMP feedback messages. Without this feedback, the sender keeps trying to send large packets that never arrive, and the application simply waits in a "zombie" state until the connection eventually times out.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/N8nwoU8QnWvDeM0yymBX0/2482b85f8ebade81520fdd950f968341/image2.png" alt="" class="kg-image" width="1354" height="474" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="cloudflares-solution-active-probing-with-pmtud">Cloudflare’s solution: active probing with PMTUD</h3>
+		<a href="https://blog.cloudflare.com/#cloudflares-solution-active-probing-with-pmtud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Cloudflare’s implementation of <a href="https://datatracker.ietf.org/doc/html/rfc8899"><u>RFC 8899 Datagram Packetization Layer Path MTU Discovery (PMTUD)</u></a> removes the reliance on these fragile, legacy feedback loops. Because our modern client utilizes the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/configure-warp/warp-settings/#device-tunnel-protocol"><u>MASQUE protocol</u></a> — built on top of Cloudflare’s open source <a href="https://github.com/cloudflare/quiche"><u>QUIC library</u></a> — the client can perform active, end-to-end interrogation of the network path.</p>
+	<p>Instead of waiting for an error message that might never come, the client proactively sends encrypted packets of varying sizes to the Cloudflare edge. This probe tests MTUs from the upper bound of the supported MTU range to the midpoint, until the client narrows down to the exact MTU to match. This is a sophisticated, non-disruptive handshake happening in the background. If the Cloudflare edge receives a specific-sized probe, it acknowledges it; if a probe is lost, the client instantly knows the precise capacity of that specific network segment.</p>
+	<p>The client then dynamically resizes its virtual interface MTU on the fly, by periodically validating the capacity of the path that we established at connection onset. This ensures that if, for example, a user moves from a 1500-MTU Wi-Fi network at a station to a 1300-MTU cellular backhaul in the field, the transition is seamless. The application session remains uninterrupted because the client has already negotiated the best possible path for those secure packets.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bRWgjgUSJtxj6QQ7sn6Et/3dc26d7c97173909860d9c942202bf0e/image3.png" alt="" class="kg-image" width="1342" height="386" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="real-world-impact-from-first-responders-to-hybrid-workers">Real-world impact, from first responders to hybrid workers</h3>
+		<a href="https://blog.cloudflare.com/#real-world-impact-from-first-responders-to-hybrid-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This technical shift has profound implications for mission-critical connectivity. Consider the reliability needs of a first responder using a vehicle-mounted router. These systems often navigate complex NAT-traversal and priority-routing layers that aggressively shrink the available MTU. Without PMTUD, critical software like Computer Aided Dispatch (CAD) systems may experience frequent disconnects during tower handoffs or signal fluctuations. By using active discovery, the Cloudflare One Client maintains a sticky connection that shields the application from the underlying network volatility.</p>
+	<p>This same logic applies to the global hybrid workforce. A road warrior working from a hotel in a different country often encounters legacy middleboxes and complex double-NAT environments. Instead of choppy video calls and stalled file transfers, the client identifies the bottleneck in seconds and optimizes the packet flow — before the user even notices a change.</p>
+	<div class="flex anchor relative">
+		<h3 id="get-pmtud-for-your-devices">Get PMTUD for your devices</h3>
+		<a href="https://blog.cloudflare.com/#get-pmtud-for-your-devices" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Anyone using the Cloudflare One Client with the MASQUE protocol can try Path MTU Discovery now for free. Use our detailed <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/deployment/mdm-deployment/path-mtu-discovery"><u>documentation</u></a> to get started routing traffic through the Cloudflare edge with the speed and stability of PMTUD on your Windows, macOS, and Linux devices.</p>
+	<p>If you are new to Cloudflare One, you too can start protecting your first 50 users for free. Simply <a href="https://dash.cloudflare.com/sign-up/zero-trust"><u>create an account</u></a>, download the<a href="https://1.1.1.1"> <u>Cloudflare One Client</u></a>, and follow our<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp"> <u>onboarding guide</u></a> to experience a faster, more stable connection for your entire team.</p>
+</div>
