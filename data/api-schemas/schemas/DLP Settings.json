@@ -120,14 +120,18 @@
 												"payload_logging": {
 													"properties": {
 														"masking_level": {
-															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
-															"enum": [
-																"full",
-																"partial",
-																"clear",
-																"default"
-															],
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"enum": [
+																		"full",
+																		"partial",
+																		"clear",
+																		"default"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
@@ -140,7 +144,6 @@
 														}
 													},
 													"required": [
-														"masking_level",
 														"updated_at"
 													],
 													"type": "object"
@@ -660,14 +663,18 @@
 										"result": {
 											"properties": {
 												"masking_level": {
-													"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
-													"enum": [
-														"full",
-														"partial",
-														"clear",
-														"default"
-													],
-													"type": "string"
+													"allOf": [
+														{
+															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+															"enum": [
+																"full",
+																"partial",
+																"clear",
+																"default"
+															],
+															"type": "string"
+														}
+													]
 												},
 												"public_key": {
 													"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
@@ -680,7 +687,6 @@
 												}
 											},
 											"required": [
-												"masking_level",
 												"updated_at"
 											],
 											"type": "object"
@@ -945,14 +951,18 @@
 												"payload_logging": {
 													"properties": {
 														"masking_level": {
-															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
-															"enum": [
-																"full",
-																"partial",
-																"clear",
-																"default"
-															],
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"enum": [
+																		"full",
+																		"partial",
+																		"clear",
+																		"default"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
@@ -965,7 +975,6 @@
 														}
 													},
 													"required": [
-														"masking_level",
 														"updated_at"
 													],
 													"type": "object"
@@ -1137,12 +1146,14 @@
 						"description": "Request model for updating DLP account-level settings.\nAll fields are optional. Missing fields behave differently for PUT vs PATCH:\n- PUT: missing fields reset to initial (unconfigured) values.\n- PATCH: missing fields keep existing values.",
 						"properties": {
 							"ai_context_analysis": {
+								"default": false,
 								"description": "Whether AI context analysis is enabled at the account level.",
 								"nullable": true,
 								"type": "boolean",
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"ocr": {
+								"default": false,
 								"description": "Whether OCR is enabled at the account level.",
 								"nullable": true,
 								"type": "boolean",
@@ -1165,7 +1176,8 @@
 														],
 														"type": "string"
 													}
-												]
+												],
+												"default": "default"
 											},
 											"public_key": {
 												"description": "Base64-encoded public key for encrypting payload logs.\n\n- Set to a non-empty base64 string to enable payload logging with the given key.\n- Set to an empty string to disable payload logging.\n- Omit or set to null to leave unchanged (PATCH) or reset to disabled (PUT).",
@@ -1295,14 +1307,18 @@
 												"payload_logging": {
 													"properties": {
 														"masking_level": {
-															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
-															"enum": [
-																"full",
-																"partial",
-																"clear",
-																"default"
-															],
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"enum": [
+																		"full",
+																		"partial",
+																		"clear",
+																		"default"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
@@ -1315,7 +1331,6 @@
 														}
 													},
 													"required": [
-														"masking_level",
 														"updated_at"
 													],
 													"type": "object"
@@ -1893,14 +1908,18 @@
 										"result": {
 											"properties": {
 												"masking_level": {
-													"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
-													"enum": [
-														"full",
-														"partial",
-														"clear",
-														"default"
-													],
-													"type": "string"
+													"allOf": [
+														{
+															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+															"enum": [
+																"full",
+																"partial",
+																"clear",
+																"default"
+															],
+															"type": "string"
+														}
+													]
 												},
 												"public_key": {
 													"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
@@ -1913,7 +1932,6 @@
 												}
 											},
 											"required": [
-												"masking_level",
 												"updated_at"
 											],
 											"type": "object"
@@ -2076,12 +2094,14 @@
 						"description": "Request model for updating DLP account-level settings.\nAll fields are optional. Missing fields behave differently for PUT vs PATCH:\n- PUT: missing fields reset to initial (unconfigured) values.\n- PATCH: missing fields keep existing values.",
 						"properties": {
 							"ai_context_analysis": {
+								"default": false,
 								"description": "Whether AI context analysis is enabled at the account level.",
 								"nullable": true,
 								"type": "boolean",
 								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"ocr": {
+								"default": false,
 								"description": "Whether OCR is enabled at the account level.",
 								"nullable": true,
 								"type": "boolean",
@@ -2104,7 +2124,8 @@
 														],
 														"type": "string"
 													}
-												]
+												],
+												"default": "default"
 											},
 											"public_key": {
 												"description": "Base64-encoded public key for encrypting payload logs.\n\n- Set to a non-empty base64 string to enable payload logging with the given key.\n- Set to an empty string to disable payload logging.\n- Omit or set to null to leave unchanged (PATCH) or reset to disabled (PUT).",
@@ -2234,14 +2255,18 @@
 												"payload_logging": {
 													"properties": {
 														"masking_level": {
-															"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
-															"enum": [
-																"full",
-																"partial",
-																"clear",
-																"default"
-															],
-															"type": "string"
+															"allOf": [
+																{
+																	"description": "Masking level for payload logs.\n\n- `full`: The entire payload is masked.\n- `partial`: Only partial payload content is masked.\n- `clear`: No masking is applied to the payload content.\n- `default`: DLP uses its default masking behavior.",
+																	"enum": [
+																		"full",
+																		"partial",
+																		"clear",
+																		"default"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"public_key": {
 															"description": "Base64-encoded public key for encrypting payload logs. Null when payload logging is disabled.",
@@ -2254,7 +2279,6 @@
 														}
 													},
 													"required": [
-														"masking_level",
 														"updated_at"
 													],
 													"type": "object"

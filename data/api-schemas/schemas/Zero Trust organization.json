@@ -246,13 +246,6 @@
 													"type": "object",
 													"x-auditable": true
 												},
-												"mfa_configuration_allowed": {
-													"default": false,
-													"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
-													"example": true,
-													"type": "boolean",
-													"x-auditable": true
-												},
 												"mfa_required_for_all_apps": {
 													"default": false,
 													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
@@ -921,13 +914,6 @@
 								"type": "object",
 								"x-auditable": true
 							},
-							"mfa_configuration_allowed": {
-								"default": false,
-								"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
-								"example": true,
-								"type": "boolean",
-								"x-auditable": true
-							},
 							"mfa_required_for_all_apps": {
 								"default": false,
 								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
@@ -1202,13 +1188,6 @@
 														}
 													},
 													"type": "object",
-													"x-auditable": true
-												},
-												"mfa_configuration_allowed": {
-													"default": false,
-													"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												},
 												"mfa_required_for_all_apps": {
@@ -1762,13 +1741,6 @@
 								"type": "object",
 								"x-auditable": true
 							},
-							"mfa_configuration_allowed": {
-								"default": false,
-								"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
-								"example": true,
-								"type": "boolean",
-								"x-auditable": true
-							},
 							"mfa_required_for_all_apps": {
 								"default": false,
 								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured.",
@@ -2039,13 +2011,6 @@
 														}
 													},
 													"type": "object",
-													"x-auditable": true
-												},
-												"mfa_configuration_allowed": {
-													"default": false,
-													"description": "Indicates if this organization can enforce multi-factor authentication (MFA) requirements at the application and policy level.",
-													"example": true,
-													"type": "boolean",
 													"x-auditable": true
 												},
 												"mfa_required_for_all_apps": {

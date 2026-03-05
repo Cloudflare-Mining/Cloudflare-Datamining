@@ -1031,6 +1031,42 @@
 																	],
 																	"title": "Linked App Token",
 																	"type": "object"
+																},
+																{
+																	"description": "Matches a user's risk score.",
+																	"properties": {
+																		"user_risk_score": {
+																			"properties": {
+																				"user_risk_score": {
+																					"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																					"example": [
+																						"low",
+																						"medium"
+																					],
+																					"items": {
+																						"enum": [
+																							"low",
+																							"medium",
+																							"high",
+																							"unscored"
+																						],
+																						"type": "string"
+																					},
+																					"minItems": 1,
+																					"type": "array"
+																				}
+																			},
+																			"required": [
+																				"user_risk_score"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"user_risk_score"
+																	],
+																	"title": "User Risk Score",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -1652,6 +1688,42 @@
 																	],
 																	"title": "Linked App Token",
 																	"type": "object"
+																},
+																{
+																	"description": "Matches a user's risk score.",
+																	"properties": {
+																		"user_risk_score": {
+																			"properties": {
+																				"user_risk_score": {
+																					"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																					"example": [
+																						"low",
+																						"medium"
+																					],
+																					"items": {
+																						"enum": [
+																							"low",
+																							"medium",
+																							"high",
+																							"unscored"
+																						],
+																						"type": "string"
+																					},
+																					"minItems": 1,
+																					"type": "array"
+																				}
+																			},
+																			"required": [
+																				"user_risk_score"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"user_risk_score"
+																	],
+																	"title": "User Risk Score",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -2270,6 +2342,42 @@
 																		"linked_app_token"
 																	],
 																	"title": "Linked App Token",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches a user's risk score.",
+																	"properties": {
+																		"user_risk_score": {
+																			"properties": {
+																				"user_risk_score": {
+																					"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																					"example": [
+																						"low",
+																						"medium"
+																					],
+																					"items": {
+																						"enum": [
+																							"low",
+																							"medium",
+																							"high",
+																							"unscored"
+																						],
+																						"type": "string"
+																					},
+																					"minItems": 1,
+																					"type": "array"
+																				}
+																			},
+																			"required": [
+																				"user_risk_score"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"user_risk_score"
+																	],
+																	"title": "User Risk Score",
 																	"type": "object"
 																}
 															],
@@ -3166,6 +3274,42 @@
 																],
 																"title": "Linked App Token",
 																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -3787,6 +3931,42 @@
 																],
 																"title": "Linked App Token",
 																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -4405,6 +4585,42 @@
 																	"linked_app_token"
 																],
 																"title": "Linked App Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
 																"type": "object"
 															}
 														],
@@ -5189,6 +5405,42 @@
 											],
 											"title": "Linked App Token",
 											"type": "object"
+										},
+										{
+											"description": "Matches a user's risk score.",
+											"properties": {
+												"user_risk_score": {
+													"properties": {
+														"user_risk_score": {
+															"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+															"example": [
+																"low",
+																"medium"
+															],
+															"items": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high",
+																	"unscored"
+																],
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"required": [
+														"user_risk_score"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"user_risk_score"
+											],
+											"title": "User Risk Score",
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -5802,6 +6054,42 @@
 												"linked_app_token"
 											],
 											"title": "Linked App Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches a user's risk score.",
+											"properties": {
+												"user_risk_score": {
+													"properties": {
+														"user_risk_score": {
+															"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+															"example": [
+																"low",
+																"medium"
+															],
+															"items": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high",
+																	"unscored"
+																],
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"required": [
+														"user_risk_score"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"user_risk_score"
+											],
+											"title": "User Risk Score",
 											"type": "object"
 										}
 									],
@@ -6421,6 +6709,42 @@
 												"linked_app_token"
 											],
 											"title": "Linked App Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches a user's risk score.",
+											"properties": {
+												"user_risk_score": {
+													"properties": {
+														"user_risk_score": {
+															"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+															"example": [
+																"low",
+																"medium"
+															],
+															"items": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high",
+																	"unscored"
+																],
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"required": [
+														"user_risk_score"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"user_risk_score"
+											],
+											"title": "User Risk Score",
 											"type": "object"
 										}
 									],
@@ -7149,6 +7473,42 @@
 																],
 																"title": "Linked App Token",
 																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -7770,6 +8130,42 @@
 																],
 																"title": "Linked App Token",
 																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -8388,6 +8784,42 @@
 																	"linked_app_token"
 																],
 																"title": "Linked App Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
 																"type": "object"
 															}
 														],
@@ -9183,6 +9615,42 @@
 											],
 											"title": "Linked App Token",
 											"type": "object"
+										},
+										{
+											"description": "Matches a user's risk score.",
+											"properties": {
+												"user_risk_score": {
+													"properties": {
+														"user_risk_score": {
+															"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+															"example": [
+																"low",
+																"medium"
+															],
+															"items": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high",
+																	"unscored"
+																],
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"required": [
+														"user_risk_score"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"user_risk_score"
+											],
+											"title": "User Risk Score",
+											"type": "object"
 										}
 									],
 									"type": "object"
@@ -9796,6 +10264,42 @@
 												"linked_app_token"
 											],
 											"title": "Linked App Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches a user's risk score.",
+											"properties": {
+												"user_risk_score": {
+													"properties": {
+														"user_risk_score": {
+															"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+															"example": [
+																"low",
+																"medium"
+															],
+															"items": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high",
+																	"unscored"
+																],
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"required": [
+														"user_risk_score"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"user_risk_score"
+											],
+											"title": "User Risk Score",
 											"type": "object"
 										}
 									],
@@ -10415,6 +10919,42 @@
 												"linked_app_token"
 											],
 											"title": "Linked App Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches a user's risk score.",
+											"properties": {
+												"user_risk_score": {
+													"properties": {
+														"user_risk_score": {
+															"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+															"example": [
+																"low",
+																"medium"
+															],
+															"items": {
+																"enum": [
+																	"low",
+																	"medium",
+																	"high",
+																	"unscored"
+																],
+																"type": "string"
+															},
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"required": [
+														"user_risk_score"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"user_risk_score"
+											],
+											"title": "User Risk Score",
 											"type": "object"
 										}
 									],
@@ -11143,6 +11683,42 @@
 																],
 																"title": "Linked App Token",
 																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -11764,6 +12340,42 @@
 																],
 																"title": "Linked App Token",
 																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -12382,6 +12994,42 @@
 																	"linked_app_token"
 																],
 																"title": "Linked App Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches a user's risk score.",
+																"properties": {
+																	"user_risk_score": {
+																		"properties": {
+																			"user_risk_score": {
+																				"description": "A list of risk score levels to match. Values can be low, medium, high, or unscored.",
+																				"example": [
+																					"low",
+																					"medium"
+																				],
+																				"items": {
+																					"enum": [
+																						"low",
+																						"medium",
+																						"high",
+																						"unscored"
+																					],
+																					"type": "string"
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"user_risk_score"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"user_risk_score"
+																],
+																"title": "User Risk Score",
 																"type": "object"
 															}
 														],
