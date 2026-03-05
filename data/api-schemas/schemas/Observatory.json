@@ -4357,7 +4357,24 @@
 							"type": "string"
 						}
 					]
-				}
+				},
+				"x-stainless-terraform-configurability": "computed_optional"
+			},
+			{
+				"description": "The frequency of the scheduled test. Defaults to WEEKLY for free plans, DAILY for paid plans.",
+				"in": "query",
+				"name": "frequency",
+				"schema": {
+					"description": "The frequency of the test.",
+					"enum": [
+						"DAILY",
+						"WEEKLY"
+					],
+					"example": "DAILY",
+					"type": "string",
+					"x-auditable": true
+				},
+				"x-stainless-terraform-configurability": "computed_optional"
 			}
 		],
 		"responses": {

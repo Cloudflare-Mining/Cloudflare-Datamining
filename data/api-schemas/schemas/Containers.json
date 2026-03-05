@@ -135,10 +135,15 @@
 															"active": {
 																"description": "Number of instances with a running container.",
 																"type": "integer"
+															},
+															"assigned": {
+																"description": "Number of instances assigned to a container, but the container is not yet running.",
+																"type": "integer"
 															}
 														},
 														"required": [
 															"active",
+															"assigned",
 															"healthy",
 															"stopped",
 															"failed",

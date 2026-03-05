@@ -267,6 +267,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows": {
+		"description": "Lists all workflows configured for the account.",
 		"operationId": "wor-list-workflows",
 		"parameters": [
 			{
@@ -557,6 +558,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}": {
+		"description": "Retrieves configuration and metadata for a specific workflow.",
 		"operationId": "wor-get-workflow-details",
 		"parameters": [
 			{
@@ -879,6 +881,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances": {
+		"description": "Lists all instances of a workflow with their execution status.",
 		"operationId": "wor-list-workflow-instances",
 		"parameters": [
 			{
@@ -1270,6 +1273,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}": {
+		"description": "Retrieves logs and execution status for a specific workflow instance.",
 		"operationId": "wor-describe-workflow-instance",
 		"parameters": [
 			{
@@ -1291,6 +1295,34 @@
 					"maxLength": 100,
 					"minLength": 1,
 					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "When true, omits step details and returns only metadata with step_count.",
+				"in": "query",
+				"name": "simple",
+				"schema": {
+					"default": "false",
+					"description": "When true, omits step details and returns only metadata with step_count.",
+					"enum": [
+						"true",
+						"false"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Step ordering: \"asc\" (default, oldest first) or \"desc\" (newest first).",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "asc",
+					"description": "Step ordering: \"asc\" (default, oldest first) or \"desc\" (newest first).",
+					"enum": [
+						"asc",
+						"desc"
+					],
 					"type": "string"
 				}
 			},
@@ -1402,6 +1434,9 @@
 												"waiting"
 											],
 											"type": "string"
+										},
+										"step_count": {
+											"type": "integer"
 										},
 										"steps": {
 											"items": {
@@ -1719,6 +1754,7 @@
 										"queued",
 										"start",
 										"end",
+										"step_count",
 										"steps",
 										"success",
 										"error",
@@ -1912,6 +1948,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/instances/terminate": {
+		"description": "Gets the status of a bulk workflow instance termination job.",
 		"operationId": "wor-status-terminate-workflow-instances",
 		"parameters": [
 			{
@@ -2176,6 +2213,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions": {
+		"description": "Lists all deployed versions of a workflow.",
 		"operationId": "wor-list-workflow-versions",
 		"parameters": [
 			{
@@ -2275,6 +2313,15 @@
 											"id": {
 												"format": "uuid",
 												"type": "string"
+											},
+											"limits": {
+												"properties": {
+													"steps": {
+														"minimum": 1,
+														"type": "integer"
+													}
+												},
+												"type": "object"
 											},
 											"modified_on": {
 												"format": "date-time",
@@ -2427,6 +2474,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}": {
+		"description": "Retrieves details for a specific deployed workflow version.",
 		"operationId": "wor-describe-workflow-versions",
 		"parameters": [
 			{
@@ -2515,6 +2563,15 @@
 										"id": {
 											"format": "uuid",
 											"type": "string"
+										},
+										"limits": {
+											"properties": {
+												"steps": {
+													"minimum": 1,
+													"type": "integer"
+												}
+											},
+											"type": "object"
 										},
 										"modified_on": {
 											"format": "date-time",
@@ -2720,6 +2777,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/dag": {
+		"description": "Retrieves the directed acyclic graph (DAG) representation of a workflow version.",
 		"operationId": "wor-describe-workflow-versions-dag",
 		"parameters": [
 			{
@@ -2959,6 +3017,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/graph": {
+		"description": "Retrieves the graph visualization of a workflow version.",
 		"operationId": "wor-describe-workflow-versions-graph",
 		"parameters": [
 			{
@@ -3198,6 +3257,7 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status": {
+		"description": "Changes the execution status of a workflow instance (e.g., pause, resume, terminate).",
 		"operationId": "wor-change-status-workflow-instance",
 		"parameters": [
 			{
@@ -3562,6 +3622,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances": {
+		"description": "Creates a new instance of a workflow, starting its execution.",
 		"operationId": "wor-create-new-workflow-instance",
 		"parameters": [
 			{
@@ -3918,6 +3979,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}": {
+		"description": "Sends an event to a running workflow instance to trigger state transitions.",
 		"operationId": "wor-send-event-workflow-instance",
 		"parameters": [
 			{
@@ -4198,6 +4260,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch": {
+		"description": "Creates multiple workflow instances in a single batch operation.",
 		"operationId": "wor-batch-create-workflow-instance",
 		"parameters": [
 			{
@@ -4562,6 +4625,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/workflows/{workflow_name}/instances/batch/terminate": {
+		"description": "Terminates multiple workflow instances in a single batch operation.",
 		"operationId": "wor-batch-terminate-workflow-instances",
 		"parameters": [
 			{
@@ -4845,6 +4909,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/workflows/{workflow_name}": {
+		"description": "Creates a new workflow or updates an existing workflow definition.",
 		"operationId": "wor-create-or-modify-workflow",
 		"parameters": [
 			{
@@ -4876,6 +4941,15 @@
 								"maxLength": 255,
 								"minLength": 1,
 								"type": "string"
+							},
+							"limits": {
+								"properties": {
+									"steps": {
+										"minimum": 1,
+										"type": "integer"
+									}
+								},
+								"type": "object"
 							},
 							"script_name": {
 								"maxLength": 255,

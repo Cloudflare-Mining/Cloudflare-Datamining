@@ -116,10 +116,12 @@
 											"nullable": true,
 											"properties": {
 												"comment": {
+													"default": "",
 													"description": "An optional description of the subnet.",
 													"example": "example comment",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -143,9 +145,11 @@
 													"x-auditable": true
 												},
 												"is_default_network": {
+													"default": false,
 													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the subnet.",
@@ -269,10 +273,12 @@
 													"nullable": true,
 													"properties": {
 														"comment": {
+															"default": "",
 															"description": "An optional description of the subnet.",
 															"example": "example comment",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -296,9 +302,11 @@
 															"x-auditable": true
 														},
 														"is_default_network": {
+															"default": false,
 															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the subnet.",
@@ -703,10 +711,12 @@
 											"items": {
 												"properties": {
 													"comment": {
+														"default": "",
 														"description": "An optional description of the subnet.",
 														"example": "example comment",
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"created_at": {
 														"description": "Timestamp of when the resource was created.",
@@ -730,9 +740,11 @@
 														"x-auditable": true
 													},
 													"is_default_network": {
+														"default": false,
 														"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
 													},
 													"name": {
 														"description": "A user-friendly name for the subnet.",
@@ -897,10 +909,12 @@
 													"items": {
 														"properties": {
 															"comment": {
+																"default": "",
 																"description": "An optional description of the subnet.",
 																"example": "example comment",
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"created_at": {
 																"description": "Timestamp of when the resource was created.",
@@ -924,9 +938,11 @@
 																"x-auditable": true
 															},
 															"is_default_network": {
+																"default": false,
 																"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"name": {
 																"description": "A user-friendly name for the subnet.",
@@ -1188,10 +1204,12 @@
 										"result": {
 											"properties": {
 												"comment": {
+													"default": "",
 													"description": "An optional description of the subnet.",
 													"example": "example comment",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -1215,9 +1233,11 @@
 													"x-auditable": true
 												},
 												"is_default_network": {
+													"default": false,
 													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the subnet.",
@@ -1340,10 +1360,12 @@
 												"result": {
 													"properties": {
 														"comment": {
+															"default": "",
 															"description": "An optional description of the subnet.",
 															"example": "example comment",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -1367,9 +1389,11 @@
 															"x-auditable": true
 														},
 														"is_default_network": {
+															"default": false,
 															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the subnet.",
@@ -1551,10 +1575,12 @@
 					"schema": {
 						"properties": {
 							"comment": {
+								"default": "",
 								"description": "An optional description of the subnet.",
 								"example": "example comment",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "A user-friendly name for the subnet.",
@@ -1661,10 +1687,12 @@
 										"result": {
 											"properties": {
 												"comment": {
+													"default": "",
 													"description": "An optional description of the subnet.",
 													"example": "example comment",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -1688,9 +1716,11 @@
 													"x-auditable": true
 												},
 												"is_default_network": {
+													"default": false,
 													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the subnet.",
@@ -1813,10 +1843,12 @@
 												"result": {
 													"properties": {
 														"comment": {
+															"default": "",
 															"description": "An optional description of the subnet.",
 															"example": "example comment",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -1840,9 +1872,11 @@
 															"x-auditable": true
 														},
 														"is_default_network": {
+															"default": false,
 															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the subnet.",
@@ -2021,15 +2055,19 @@
 					"schema": {
 						"properties": {
 							"comment": {
+								"default": "",
 								"description": "An optional description of the subnet.",
 								"example": "example comment",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"is_default_network": {
+								"default": false,
 								"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "A user-friendly name for the subnet.",
@@ -2136,10 +2174,12 @@
 										"result": {
 											"properties": {
 												"comment": {
+													"default": "",
 													"description": "An optional description of the subnet.",
 													"example": "example comment",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -2163,9 +2203,11 @@
 													"x-auditable": true
 												},
 												"is_default_network": {
+													"default": false,
 													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the subnet.",
@@ -2288,10 +2330,12 @@
 												"result": {
 													"properties": {
 														"comment": {
+															"default": "",
 															"description": "An optional description of the subnet.",
 															"example": "example comment",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -2315,9 +2359,11 @@
 															"x-auditable": true
 														},
 														"is_default_network": {
+															"default": false,
 															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the subnet.",
@@ -2484,15 +2530,19 @@
 					"schema": {
 						"properties": {
 							"comment": {
+								"default": "",
 								"description": "An optional description of the subnet.",
 								"example": "example comment",
 								"type": "string",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"is_default_network": {
+								"default": false,
 								"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 								"type": "boolean",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-terraform-configurability": "computed_optional"
 							},
 							"name": {
 								"description": "A user-friendly name for the subnet.",
@@ -2603,10 +2653,12 @@
 										"result": {
 											"properties": {
 												"comment": {
+													"default": "",
 													"description": "An optional description of the subnet.",
 													"example": "example comment",
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"created_at": {
 													"description": "Timestamp of when the resource was created.",
@@ -2630,9 +2682,11 @@
 													"x-auditable": true
 												},
 												"is_default_network": {
+													"default": false,
 													"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "A user-friendly name for the subnet.",
@@ -2755,10 +2809,12 @@
 												"result": {
 													"properties": {
 														"comment": {
+															"default": "",
 															"description": "An optional description of the subnet.",
 															"example": "example comment",
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"created_at": {
 															"description": "Timestamp of when the resource was created.",
@@ -2782,9 +2838,11 @@
 															"x-auditable": true
 														},
 														"is_default_network": {
+															"default": false,
 															"description": "If `true`, this is the default subnet for the account. There can only be one default subnet per account.",
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "A user-friendly name for the subnet.",

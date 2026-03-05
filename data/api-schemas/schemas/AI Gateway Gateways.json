@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{id}": {
+		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-gateway",
 		"parameters": [
 			{
@@ -34,12 +35,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"authentication": {
 											"type": "boolean",
 											"x-auditable": true
@@ -157,10 +152,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"type": "string"
-										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -200,6 +191,14 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"type": "string"
+													},
+													"content_type": {
+														"default": "json",
+														"enum": [
+															"json",
+															"protobuf"
+														],
 														"type": "string"
 													},
 													"headers": {
@@ -275,6 +274,16 @@
 											"type": "object",
 											"x-auditable": true
 										},
+										"workers_ai_billing_mode": {
+											"default": "postpaid",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed",
+											"enum": [
+												"postpaid",
+												"unified"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"zdr": {
 											"type": "boolean",
 											"x-auditable": true
@@ -282,9 +291,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
@@ -379,6 +385,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways": {
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-gateway",
 		"parameters": [
 			{
@@ -427,12 +434,6 @@
 								"result": {
 									"items": {
 										"properties": {
-											"account_id": {
-												"type": "string"
-											},
-											"account_tag": {
-												"type": "string"
-											},
 											"authentication": {
 												"type": "boolean",
 												"x-auditable": true
@@ -550,10 +551,6 @@
 												"type": "string",
 												"x-auditable": true
 											},
-											"internal_id": {
-												"format": "uuid",
-												"type": "string"
-											},
 											"is_default": {
 												"type": "boolean",
 												"x-auditable": true
@@ -593,6 +590,14 @@
 												"items": {
 													"properties": {
 														"authorization": {
+															"type": "string"
+														},
+														"content_type": {
+															"default": "json",
+															"enum": [
+																"json",
+																"protobuf"
+															],
 															"type": "string"
 														},
 														"headers": {
@@ -668,6 +673,16 @@
 												"type": "object",
 												"x-auditable": true
 											},
+											"workers_ai_billing_mode": {
+												"default": "postpaid",
+												"description": "Controls how Workers AI inference calls routed through this gateway are billed",
+												"enum": [
+													"postpaid",
+													"unified"
+												],
+												"type": "string",
+												"x-auditable": true
+											},
 											"zdr": {
 												"type": "boolean",
 												"x-auditable": true
@@ -675,9 +690,6 @@
 										},
 										"required": [
 											"id",
-											"internal_id",
-											"account_id",
-											"account_tag",
 											"rate_limiting_interval",
 											"rate_limiting_limit",
 											"rate_limiting_technique",
@@ -774,6 +786,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}": {
+		"description": "Retrieves the endpoint URL for an AI Gateway.",
 		"operationId": "aig-config-get-gateway-url",
 		"parameters": [
 			{
@@ -901,6 +914,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{id}": {
+		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"operationId": "aig-config-fetch-gateway",
 		"parameters": [
 			{
@@ -935,12 +949,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"authentication": {
 											"type": "boolean",
 											"x-auditable": true
@@ -1058,10 +1066,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"type": "string"
-										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -1101,6 +1105,14 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"type": "string"
+													},
+													"content_type": {
+														"default": "json",
+														"enum": [
+															"json",
+															"protobuf"
+														],
 														"type": "string"
 													},
 													"headers": {
@@ -1176,6 +1188,16 @@
 											"type": "object",
 											"x-auditable": true
 										},
+										"workers_ai_billing_mode": {
+											"default": "postpaid",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed",
+											"enum": [
+												"postpaid",
+												"unified"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"zdr": {
 											"type": "boolean",
 											"x-auditable": true
@@ -1183,9 +1205,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
@@ -1281,6 +1300,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways": {
+		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-gateway",
 		"parameters": [
 			{
@@ -1323,10 +1343,6 @@
 								"minLength": 1,
 								"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
 								"type": "string",
-								"x-auditable": true
-							},
-							"is_default": {
-								"type": "boolean",
 								"x-auditable": true
 							},
 							"log_management": {
@@ -1376,6 +1392,16 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"workers_ai_billing_mode": {
+								"default": "postpaid",
+								"description": "Controls how Workers AI inference calls routed through this gateway are billed",
+								"enum": [
+									"postpaid",
+									"unified"
+								],
+								"type": "string",
+								"x-auditable": true
+							},
 							"zdr": {
 								"type": "boolean",
 								"x-auditable": true
@@ -1403,12 +1429,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"authentication": {
 											"type": "boolean",
 											"x-auditable": true
@@ -1526,10 +1546,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"type": "string"
-										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -1569,6 +1585,14 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"type": "string"
+													},
+													"content_type": {
+														"default": "json",
+														"enum": [
+															"json",
+															"protobuf"
+														],
 														"type": "string"
 													},
 													"headers": {
@@ -1644,6 +1668,16 @@
 											"type": "object",
 											"x-auditable": true
 										},
+										"workers_ai_billing_mode": {
+											"default": "postpaid",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed",
+											"enum": [
+												"postpaid",
+												"unified"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"zdr": {
 											"type": "boolean",
 											"x-auditable": true
@@ -1651,9 +1685,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",
@@ -1756,6 +1787,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{id}": {
+		"description": "Updates an existing AI Gateway dataset.",
 		"operationId": "aig-config-update-gateway",
 		"parameters": [
 			{
@@ -1891,10 +1923,6 @@
 									}
 								]
 							},
-							"is_default": {
-								"type": "boolean",
-								"x-auditable": true
-							},
 							"log_management": {
 								"maximum": 10000000,
 								"minimum": 10000,
@@ -1926,6 +1954,14 @@
 								"items": {
 									"properties": {
 										"authorization": {
+											"type": "string"
+										},
+										"content_type": {
+											"default": "json",
+											"enum": [
+												"json",
+												"protobuf"
+											],
 											"type": "string"
 										},
 										"headers": {
@@ -2001,6 +2037,16 @@
 								"type": "object",
 								"x-auditable": true
 							},
+							"workers_ai_billing_mode": {
+								"default": "postpaid",
+								"description": "Controls how Workers AI inference calls routed through this gateway are billed",
+								"enum": [
+									"postpaid",
+									"unified"
+								],
+								"type": "string",
+								"x-auditable": true
+							},
 							"zdr": {
 								"type": "boolean",
 								"x-auditable": true
@@ -2027,12 +2073,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"authentication": {
 											"type": "boolean",
 											"x-auditable": true
@@ -2150,10 +2190,6 @@
 											"type": "string",
 											"x-auditable": true
 										},
-										"internal_id": {
-											"format": "uuid",
-											"type": "string"
-										},
 										"is_default": {
 											"type": "boolean",
 											"x-auditable": true
@@ -2193,6 +2229,14 @@
 											"items": {
 												"properties": {
 													"authorization": {
+														"type": "string"
+													},
+													"content_type": {
+														"default": "json",
+														"enum": [
+															"json",
+															"protobuf"
+														],
 														"type": "string"
 													},
 													"headers": {
@@ -2268,6 +2312,16 @@
 											"type": "object",
 											"x-auditable": true
 										},
+										"workers_ai_billing_mode": {
+											"default": "postpaid",
+											"description": "Controls how Workers AI inference calls routed through this gateway are billed",
+											"enum": [
+												"postpaid",
+												"unified"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"zdr": {
 											"type": "boolean",
 											"x-auditable": true
@@ -2275,9 +2329,6 @@
 									},
 									"required": [
 										"id",
-										"internal_id",
-										"account_id",
-										"account_tag",
 										"rate_limiting_interval",
 										"rate_limiting_limit",
 										"rate_limiting_technique",

@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
+		"description": "Permanently removes an uploaded OpenAPI schema from API Shield. Operations using this schema will lose their validation rules.",
 		"operationId": "schema-validation-delete-schema",
 		"responses": {
 			"200": {
@@ -255,6 +256,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas": {
+		"description": "Lists all OpenAPI schemas uploaded to API Shield with pagination support.",
 		"operationId": "schema-validation-list-schemas-paginated",
 		"parameters": [
 			{
@@ -657,6 +659,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
+		"description": "Gets the contents and metadata of a specific OpenAPI schema uploaded to API Shield.",
 		"operationId": "schema-validation-get-schema",
 		"parameters": [
 			{
@@ -1873,6 +1876,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/schemas/hosts": {
+		"description": "Lists all unique hosts found in uploaded OpenAPI schemas for the zone.",
 		"operationId": "schema-validation-list-schema-hosts",
 		"parameters": [
 			{
@@ -2243,6 +2247,7 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/schema_validation/schemas/{schema_id}": {
+		"description": "Modifies an existing OpenAPI schema in API Shield, updating the validation rules for associated API operations.",
 		"operationId": "schema-validation-edit-schema",
 		"requestBody": {
 			"content": {
@@ -2581,6 +2586,7 @@
 		]
 	},
 	"POST /zones/{zone_id}/schema_validation/schemas": {
+		"description": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.",
 		"operationId": "schema-validation-create-schema",
 		"requestBody": {
 			"content": {

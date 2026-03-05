@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
+		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-dataset",
 		"parameters": [
 			{
@@ -43,12 +44,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -114,7 +109,8 @@
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
@@ -144,8 +140,6 @@
 										"filters",
 										"enable",
 										"id",
-										"account_id",
-										"account_tag",
 										"created_at",
 										"modified_at"
 									],
@@ -234,6 +228,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets": {
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-dataset",
 		"parameters": [
 			{
@@ -312,12 +307,6 @@
 								"result": {
 									"items": {
 										"properties": {
-											"account_id": {
-												"type": "string"
-											},
-											"account_tag": {
-												"type": "string"
-											},
 											"created_at": {
 												"format": "date-time",
 												"type": "string"
@@ -383,7 +372,8 @@
 													],
 													"type": "object"
 												},
-												"type": "array"
+												"type": "array",
+												"x-auditable": true
 											},
 											"gateway_id": {
 												"description": "gateway id",
@@ -413,8 +403,6 @@
 											"filters",
 											"enable",
 											"id",
-											"account_id",
-											"account_tag",
 											"created_at",
 											"modified_at"
 										],
@@ -505,6 +493,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
+		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"operationId": "aig-config-fetch-dataset",
 		"parameters": [
 			{
@@ -548,12 +537,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -619,7 +602,8 @@
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
@@ -649,8 +633,6 @@
 										"filters",
 										"enable",
 										"id",
-										"account_id",
-										"account_tag",
 										"created_at",
 										"modified_at"
 									],
@@ -740,6 +722,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets": {
+		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-dataset",
 		"parameters": [
 			{
@@ -832,7 +815,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"name": {
 								"type": "string",
@@ -857,12 +841,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -928,7 +906,8 @@
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
@@ -958,8 +937,6 @@
 										"filters",
 										"enable",
 										"id",
-										"account_id",
-										"account_tag",
 										"created_at",
 										"modified_at"
 									],
@@ -1056,6 +1033,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}": {
+		"description": "Updates an existing AI Gateway dataset.",
 		"operationId": "aig-config-update-dataset",
 		"parameters": [
 			{
@@ -1157,7 +1135,8 @@
 									],
 									"type": "object"
 								},
-								"type": "array"
+								"type": "array",
+								"x-auditable": true
 							},
 							"name": {
 								"type": "string",
@@ -1182,12 +1161,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -1253,7 +1226,8 @@
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-auditable": true
 										},
 										"gateway_id": {
 											"description": "gateway id",
@@ -1283,8 +1257,6 @@
 										"filters",
 										"enable",
 										"id",
-										"account_id",
-										"account_tag",
 										"created_at",
 										"modified_at"
 									],

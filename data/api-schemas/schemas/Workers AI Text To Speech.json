@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/aura model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura",
 		"parameters": [
 			{
@@ -82,6 +83,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-1": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/aura-1 model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-1",
 		"parameters": [
 			{
@@ -164,6 +166,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-1-internal": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/aura-1-internal model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-1-internal",
 		"parameters": [
 			{
@@ -246,6 +249,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-2": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/aura-2 model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-2",
 		"parameters": [
 			{
@@ -328,6 +332,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-2-en": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/aura-2-en model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-2-en",
 		"parameters": [
 			{
@@ -410,6 +415,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/aura-2-es": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/aura-2-es model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-aura-2-es",
 		"parameters": [
 			{
@@ -492,6 +498,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepgram/aura-1": {
+		"description": "Runs inference on the @cf/deepgram/aura-1 model.",
 		"operationId": "workers-ai-post-run-cf-deepgram-aura-1",
 		"parameters": [
 			{
@@ -678,6 +685,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepgram/aura-2-en": {
+		"description": "Runs inference on the @cf/deepgram/aura-2-en model.",
 		"operationId": "workers-ai-post-run-cf-deepgram-aura-2-en",
 		"parameters": [
 			{
@@ -892,6 +900,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepgram/aura-2-es": {
+		"description": "Runs inference on the @cf/deepgram/aura-2-es model.",
 		"operationId": "workers-ai-post-run-cf-deepgram-aura-2-es",
 		"parameters": [
 			{
@@ -1076,6 +1085,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/myshell-ai/melotts": {
+		"description": "Runs inference on the @cf/myshell-ai/melotts model.",
 		"operationId": "workers-ai-post-run-cf-myshell-ai-melotts",
 		"parameters": [
 			{

@@ -107,11 +107,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},
@@ -196,6 +194,33 @@
 					"maximum": 100,
 					"minimum": 1,
 					"type": "integer"
+				}
+			},
+			{
+				"description": "Order By Column Name",
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"default": "created_at",
+					"description": "Order By Column Name",
+					"enum": [
+						"created_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Order By Direction",
+				"in": "query",
+				"name": "order_by_direction",
+				"schema": {
+					"default": "desc",
+					"description": "Order By Direction",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
 				}
 			}
 		],
@@ -285,27 +310,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -313,7 +347,7 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			}
 		},
 		"security": [
@@ -440,6 +474,53 @@
 				},
 				"description": "Returns a single object if found"
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -449,11 +530,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},
@@ -640,16 +719,13 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
 												"type": "number"
 											},
 											"message": {
-												"example": "Input Validation Error",
 												"type": "string"
 											},
 											"path": {
 												"items": {
-													"example": "body",
 													"type": "string"
 												},
 												"type": "array"
@@ -849,16 +925,13 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
 												"type": "number"
 											},
 											"message": {
-												"example": "Input Validation Error",
 												"type": "string"
 											},
 											"path": {
 												"items": {
-													"example": "body",
 													"type": "string"
 												},
 												"type": "array"
@@ -899,11 +972,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},

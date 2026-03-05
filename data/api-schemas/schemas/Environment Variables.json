@@ -4,31 +4,31 @@
 		"operationId": "deleteEnvironmentVariable",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Trigger UUID",
 				"in": "path",
 				"name": "trigger_uuid",
 				"required": true,
 				"schema": {
+					"description": "Trigger UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Environment variable key",
 				"in": "path",
 				"name": "environment_variable_key",
 				"required": true,
 				"schema": {
+					"description": "Environment variable key.",
 					"example": "NODE_ENV",
 					"type": "string"
 				}
@@ -199,21 +199,21 @@
 		"operationId": "listEnvironmentVariables",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Trigger UUID",
 				"in": "path",
 				"name": "trigger_uuid",
 				"required": true,
 				"schema": {
+					"description": "Trigger UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -363,21 +363,21 @@
 		"operationId": "upsertEnvironmentVariables",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Trigger UUID",
 				"in": "path",
 				"name": "trigger_uuid",
 				"required": true,
 				"schema": {
+					"description": "Trigger UUID.",
 					"format": "uuid",
 					"type": "string"
 				}

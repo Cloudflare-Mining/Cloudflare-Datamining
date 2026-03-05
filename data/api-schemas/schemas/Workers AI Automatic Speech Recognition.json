@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/flux": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/flux model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-flux",
 		"parameters": [
 			{
@@ -82,6 +83,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/nova-3": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/nova-3 model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-nova-3",
 		"parameters": [
 			{
@@ -164,6 +166,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/deepgram/nova-3-internal": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/deepgram/nova-3-internal model.",
 		"operationId": "workers-ai-post-websocket-run-cf-deepgram-nova-3-internal",
 		"parameters": [
 			{
@@ -246,6 +249,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepgram/flux": {
+		"description": "Runs inference on the @cf/deepgram/flux model.",
 		"operationId": "workers-ai-post-run-cf-deepgram-flux",
 		"parameters": [
 			{
@@ -418,6 +422,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepgram/nova-3": {
+		"description": "Runs inference on the @cf/deepgram/nova-3 model.",
 		"operationId": "workers-ai-post-run-cf-deepgram-nova-3",
 		"parameters": [
 			{
@@ -723,6 +728,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/openai/whisper": {
+		"description": "Runs inference on the @cf/openai/whisper model.",
 		"operationId": "workers-ai-post-run-cf-openai-whisper",
 		"parameters": [
 			{
@@ -846,6 +852,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/openai/whisper-large-v3-turbo": {
+		"description": "Runs inference on the @cf/openai/whisper-large-v3-turbo model.",
 		"operationId": "workers-ai-post-run-cf-openai-whisper-large-v3-turbo",
 		"parameters": [
 			{
@@ -1043,6 +1050,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/openai/whisper-tiny-en": {
+		"description": "Runs inference on the @cf/openai/whisper-tiny-en model.",
 		"operationId": "workers-ai-post-run-cf-openai-whisper-tiny-en",
 		"parameters": [
 			{

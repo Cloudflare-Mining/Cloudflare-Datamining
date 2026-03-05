@@ -571,6 +571,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}": {
+		"description": "Retrieves detailed information about a specific version of a Workers script.",
 		"operationId": "worker-versions-get-version-detail",
 		"parameters": [
 			{

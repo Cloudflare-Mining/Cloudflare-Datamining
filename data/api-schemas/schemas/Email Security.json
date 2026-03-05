@@ -109,6 +109,7 @@
 				}
 			},
 			{
+				"description": "Filter by recipient. Matches either an email address or a domain.",
 				"example": "me@example.com",
 				"in": "query",
 				"name": "recipient",
@@ -117,6 +118,7 @@
 				}
 			},
 			{
+				"description": "Filter by sender. Matches either an email address or a domain.",
 				"example": "noreply@example.com",
 				"in": "query",
 				"name": "sender",
@@ -133,7 +135,7 @@
 				}
 			},
 			{
-				"description": "The sender domains the search filters by.",
+				"description": "Filter by a domain found in the email: sender domain, recipient domain, or a domain in a link.",
 				"example": "example.com",
 				"in": "query",
 				"name": "domain",
@@ -150,8 +152,17 @@
 				}
 			},
 			{
+				"description": "Search for messages containing individual keywords in any order within the subject.",
 				"in": "query",
 				"name": "subject",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Search for messages with an exact subject match.",
+				"in": "query",
+				"name": "exact_subject",
 				"schema": {
 					"type": "string"
 				}
@@ -423,6 +434,18 @@
 																"nullable": true,
 																"type": "string"
 															},
+															"post_delivery_operations": {
+																"items": {
+																	"enum": [
+																		"PREVIEW",
+																		"QUARANTINE_RELEASE",
+																		"SUBMISSION",
+																		"MOVE"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"postfix_id": {
 																"description": "The identifier of the message.",
 																"example": "4Njp3P0STMz2c02Q",
@@ -638,6 +661,7 @@
 													"is_phish_submission": false,
 													"is_quarantined": false,
 													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
+													"post_delivery_operations": [],
 													"postfix_id": "47JJcT1w6GztQV7",
 													"postfix_id_outbound": null,
 													"properties": {},
@@ -956,6 +980,18 @@
 																"nullable": true,
 																"type": "string"
 															},
+															"post_delivery_operations": {
+																"items": {
+																	"enum": [
+																		"PREVIEW",
+																		"QUARANTINE_RELEASE",
+																		"SUBMISSION",
+																		"MOVE"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
 															"postfix_id": {
 																"description": "The identifier of the message.",
 																"example": "4Njp3P0STMz2c02Q",
@@ -1171,6 +1207,7 @@
 													"is_phish_submission": false,
 													"is_quarantined": false,
 													"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
+													"post_delivery_operations": [],
 													"postfix_id": "47JJcT1w6GztQV7",
 													"postfix_id_outbound": null,
 													"properties": {},
@@ -1353,6 +1390,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}": {
+		"description": "Retrieves detailed information about a specific email message, including headers,\nmetadata, and security scan results.",
 		"operationId": "email_security_get_message",
 		"parameters": [
 			{
@@ -1615,6 +1653,18 @@
 															"nullable": true,
 															"type": "string"
 														},
+														"post_delivery_operations": {
+															"items": {
+																"enum": [
+																	"PREVIEW",
+																	"QUARANTINE_RELEASE",
+																	"SUBMISSION",
+																	"MOVE"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
 														"postfix_id": {
 															"description": "The identifier of the message.",
 															"example": "4Njp3P0STMz2c02Q",
@@ -1830,6 +1880,7 @@
 												"is_phish_submission": false,
 												"is_quarantined": false,
 												"message_id": "<4VAZPrAdg7IGNxdt1DWRNu0gvOeL_iZiwP4BQfo4DaE.Yw-woXuugQbeFhBpzwFQtqq_v2v1HOKznoMBqbciQpE@example.com>",
+												"post_delivery_operations": [],
 												"postfix_id": "47JJcT1w6GztQV7",
 												"postfix_id_outbound": null,
 												"properties": {},
@@ -2853,6 +2904,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{postfix_id}/trace": {
+		"description": "Gets the delivery trace for an email message, showing its path through email\nsecurity processing.",
 		"operationId": "email_security_get_message_trace",
 		"parameters": [
 			{
@@ -3124,6 +3176,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/phishguard/reports": {
+		"description": "Retrieves `PhishGuard` reports showing phishing attempts and suspicious email patterns\ndetected.",
 		"operationId": "email_security_get_phishguard_reports",
 		"parameters": [
 			{
@@ -3584,6 +3637,22 @@
 				}
 			},
 			{
+				"in": "query",
+				"name": "customer_status",
+				"schema": {
+					"allOf": [
+						{
+							"enum": [
+								"escalated",
+								"reviewed",
+								"unreviewed"
+							],
+							"type": "string"
+						}
+					]
+				}
+			},
+			{
 				"description": "The page number of paginated results.",
 				"in": "query",
 				"name": "page",
@@ -3673,6 +3742,18 @@
 										"result": {
 											"items": {
 												"properties": {
+													"customer_status": {
+														"allOf": [
+															{
+																"enum": [
+																	"escalated",
+																	"reviewed",
+																	"unreviewed"
+																],
+																"type": "string"
+															}
+														]
+													},
 													"original_disposition": {
 														"allOf": [
 															{
@@ -3917,6 +3998,7 @@
 		"x-api-token-group": null
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/move": {
+		"description": "Moves a single email message to a different folder or changes its quarantine status.",
 		"operationId": "email_security_post_message_move",
 		"parameters": [
 			{
@@ -4180,6 +4262,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{postfix_id}/reclassify": {
+		"description": "Submits an email message for reclassification, updating its threat assessment\nbased on new analysis.",
 		"operationId": "email_security_post_reclassify",
 		"parameters": [
 			{
@@ -4401,7 +4484,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Change email classfication",
+		"summary": "Change email classification",
 		"tags": [
 			"Email Security"
 		],
@@ -4682,6 +4765,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
+		"description": "Generates a preview of an email message for safe viewing without executing any\nembedded content.",
 		"operationId": "email_security_post_preview",
 		"parameters": [
 			{
@@ -4900,6 +4984,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
+		"description": "Releases a quarantined email message, allowing it to be delivered to the recipient.",
 		"operationId": "email_security_post_release",
 		"parameters": [
 			{

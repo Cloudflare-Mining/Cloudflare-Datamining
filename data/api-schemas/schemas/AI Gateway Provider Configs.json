@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
+		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-providers",
 		"parameters": [
 			{
@@ -42,12 +43,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"alias": {
 											"type": "string"
 										},
@@ -94,8 +89,6 @@
 										"default_config",
 										"gateway_id",
 										"modified_at",
-										"account_id",
-										"account_tag",
 										"alias",
 										"secret_id"
 									],
@@ -184,6 +177,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-providers",
 		"parameters": [
 			{
@@ -238,12 +232,6 @@
 								"result": {
 									"items": {
 										"properties": {
-											"account_id": {
-												"type": "string"
-											},
-											"account_tag": {
-												"type": "string"
-											},
 											"alias": {
 												"type": "string"
 											},
@@ -290,8 +278,6 @@
 											"default_config",
 											"gateway_id",
 											"modified_at",
-											"account_id",
-											"account_tag",
 											"alias",
 											"secret_id"
 										],
@@ -378,6 +364,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs": {
+		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-providers",
 		"parameters": [
 			{
@@ -452,12 +439,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"alias": {
 											"type": "string"
 										},
@@ -504,8 +485,6 @@
 										"default_config",
 										"gateway_id",
 										"modified_at",
-										"account_id",
-										"account_tag",
 										"alias",
 										"secret_id"
 									],
@@ -602,6 +581,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs/{id}": {
+		"description": "Updates an existing AI Gateway dataset.",
 		"operationId": "aig-config-update-providers",
 		"parameters": [
 			{
@@ -661,12 +641,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"alias": {
 											"type": "string"
 										},
@@ -713,8 +687,6 @@
 										"default_config",
 										"gateway_id",
 										"modified_at",
-										"account_id",
-										"account_tag",
 										"alias",
 										"secret_id"
 									],

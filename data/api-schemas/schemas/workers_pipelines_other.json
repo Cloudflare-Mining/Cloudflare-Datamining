@@ -1369,6 +1369,7 @@
 												"oneOf": [
 													{
 														"additionalProperties": false,
+														"description": "R2 Sink public configuration.",
 														"properties": {
 															"account_id": {
 																"description": "Cloudflare Account ID for the bucket",
@@ -1379,29 +1380,6 @@
 																"description": "R2 Bucket to write to",
 																"title": "Bucket",
 																"type": "string"
-															},
-															"credentials": {
-																"additionalProperties": false,
-																"properties": {
-																	"access_key_id": {
-																		"description": "Cloudflare Account ID for the bucket",
-																		"format": "var-str",
-																		"title": "Access Key ID",
-																		"type": "string"
-																	},
-																	"secret_access_key": {
-																		"description": "Cloudflare Account ID for the bucket",
-																		"format": "var-str",
-																		"title": "Access Key ID",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"access_key_id",
-																	"secret_access_key"
-																],
-																"title": "R2 Credentials",
-																"type": "object"
 															},
 															"file_naming": {
 																"additionalProperties": false,
@@ -1488,15 +1466,14 @@
 														},
 														"required": [
 															"account_id",
-															"bucket",
-															"credentials"
+															"bucket"
 														],
-														"title": "R2 Sink",
+														"title": "R2 Sink Public",
 														"type": "object"
 													},
 													{
 														"additionalProperties": false,
-														"description": "R2 Data Catalog Sink",
+														"description": "R2 Data Catalog Sink public configuration.",
 														"properties": {
 															"account_id": {
 																"description": "Cloudflare Account ID",
@@ -1547,21 +1524,14 @@
 																"description": "Table name",
 																"title": "Table Name",
 																"type": "string"
-															},
-															"token": {
-																"description": "Authentication token",
-																"example": "\"asdfkj2h34kjhkj\"",
-																"format": "var-str",
-																"type": "string"
 															}
 														},
 														"required": [
 															"account_id",
 															"bucket",
-															"token",
 															"table_name"
 														],
-														"title": "R2DataCatalogSinkTable",
+														"title": "R2DataCatalogSinkTablePublic",
 														"type": "object"
 													}
 												]
@@ -2165,6 +2135,7 @@
 											"oneOf": [
 												{
 													"additionalProperties": false,
+													"description": "R2 Sink public configuration.",
 													"properties": {
 														"account_id": {
 															"description": "Cloudflare Account ID for the bucket",
@@ -2175,29 +2146,6 @@
 															"description": "R2 Bucket to write to",
 															"title": "Bucket",
 															"type": "string"
-														},
-														"credentials": {
-															"additionalProperties": false,
-															"properties": {
-																"access_key_id": {
-																	"description": "Cloudflare Account ID for the bucket",
-																	"format": "var-str",
-																	"title": "Access Key ID",
-																	"type": "string"
-																},
-																"secret_access_key": {
-																	"description": "Cloudflare Account ID for the bucket",
-																	"format": "var-str",
-																	"title": "Access Key ID",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"access_key_id",
-																"secret_access_key"
-															],
-															"title": "R2 Credentials",
-															"type": "object"
 														},
 														"file_naming": {
 															"additionalProperties": false,
@@ -2284,15 +2232,14 @@
 													},
 													"required": [
 														"account_id",
-														"bucket",
-														"credentials"
+														"bucket"
 													],
-													"title": "R2 Sink",
+													"title": "R2 Sink Public",
 													"type": "object"
 												},
 												{
 													"additionalProperties": false,
-													"description": "R2 Data Catalog Sink",
+													"description": "R2 Data Catalog Sink public configuration.",
 													"properties": {
 														"account_id": {
 															"description": "Cloudflare Account ID",
@@ -2343,21 +2290,14 @@
 															"description": "Table name",
 															"title": "Table Name",
 															"type": "string"
-														},
-														"token": {
-															"description": "Authentication token",
-															"example": "\"asdfkj2h34kjhkj\"",
-															"format": "var-str",
-															"type": "string"
 														}
 													},
 													"required": [
 														"account_id",
 														"bucket",
-														"token",
 														"table_name"
 													],
-													"title": "R2DataCatalogSinkTable",
+													"title": "R2DataCatalogSinkTablePublic",
 													"type": "object"
 												}
 											]

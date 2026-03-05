@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/api_gateway/configuration": {
+		"description": "Gets the current API Shield configuration settings for a zone, including validation behavior and enforcement mode.",
 		"operationId": "api-shield-settings-retrieve-information-about-specific-configuration-properties",
 		"responses": {
 			"200": {
@@ -308,6 +309,7 @@
 		]
 	},
 	"PUT /zones/{zone_id}/api_gateway/configuration": {
+		"description": "Updates API Shield configuration settings for a zone. Can modify validation strictness, enforcement mode, and other global settings.",
 		"operationId": "api-shield-settings-set-configuration-properties",
 		"requestBody": {
 			"content": {

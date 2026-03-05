@@ -4,21 +4,21 @@
 		"operationId": "deleteBuildToken",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Build token UUID",
 				"in": "path",
 				"name": "build_token_uuid",
 				"required": true,
 				"schema": {
+					"description": "Build token UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -189,11 +189,11 @@
 		"operationId": "listBuildTokens",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
@@ -302,6 +302,7 @@
 														"type": "string"
 													},
 													"build_token_uuid": {
+														"description": "Build token UUID.",
 														"format": "uuid",
 														"type": "string"
 													},
@@ -376,11 +377,11 @@
 		"operationId": "createBuildToken",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
@@ -496,6 +497,7 @@
 													"type": "string"
 												},
 												"build_token_uuid": {
+													"description": "Build token UUID.",
 													"format": "uuid",
 													"type": "string"
 												},

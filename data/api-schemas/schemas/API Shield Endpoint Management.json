@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/operations": {
+		"description": "Bulk removes multiple API operations from API Shield endpoint management in a single request. Efficient for cleaning up unused endpoints.",
 		"operationId": "api-shield-endpoint-management-delete-multiple-operations",
 		"requestBody": {
 			"content": {
@@ -274,6 +275,7 @@
 		]
 	},
 	"DELETE /zones/{zone_id}/api_gateway/operations/{operation_id}": {
+		"description": "Removes a single API operation from API Shield endpoint management. The operation will no longer be tracked or protected by API Shield rules.",
 		"operationId": "api-shield-endpoint-management-delete-an-operation",
 		"responses": {
 			"200": {
@@ -496,6 +498,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/operations": {
+		"description": "Lists all API operations tracked by API Shield for a zone with pagination. Returns operation details including method, path, and feature configurations.",
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone",
 		"parameters": [
 			{
@@ -1344,6 +1347,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/operations/{operation_id}": {
+		"description": "Gets detailed information about a specific API operation in API Shield, including its schema validation settings and traffic statistics.",
 		"operationId": "api-shield-endpoint-management-retrieve-information-about-an-operation",
 		"parameters": [
 			{

@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai/run/@cf/sven/test-pipe-http": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/sven/test-pipe-http model.",
 		"operationId": "workers-ai-post-websocket-run-cf-sven-test-pipe-http",
 		"parameters": [
 			{
@@ -82,6 +83,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/black-forest-labs/flux-1-schnell": {
+		"description": "Runs inference on the @cf/black-forest-labs/flux-1-schnell model.",
 		"operationId": "workers-ai-post-run-cf-black-forest-labs-flux-1-schnell",
 		"parameters": [
 			{
@@ -221,6 +223,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/black-forest-labs/flux-2-dev": {
+		"description": "Runs inference on the @cf/black-forest-labs/flux-2-dev model.",
 		"operationId": "workers-ai-post-run-cf-black-forest-labs-flux-2-dev",
 		"parameters": [
 			{
@@ -359,6 +362,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/black-forest-labs/flux-2-klein-4b": {
+		"description": "Runs inference on the @cf/black-forest-labs/flux-2-klein-4b model.",
 		"operationId": "workers-ai-post-run-cf-black-forest-labs-flux-2-klein-4b",
 		"parameters": [
 			{
@@ -497,6 +501,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/black-forest-labs/flux-2-klein-9b": {
+		"description": "Runs inference on the @cf/black-forest-labs/flux-2-klein-9b model.",
 		"operationId": "workers-ai-post-run-cf-black-forest-labs-flux-2-klein-9b",
 		"parameters": [
 			{
@@ -635,6 +640,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/bytedance/stable-diffusion-xl-lightning": {
+		"description": "Runs inference on the @cf/bytedance/stable-diffusion-xl-lightning model.",
 		"operationId": "workers-ai-post-run-cf-bytedance-stable-diffusion-xl-lightning",
 		"parameters": [
 			{
@@ -829,6 +835,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/leonardo/lucid-origin": {
+		"description": "Runs inference on the @cf/leonardo/lucid-origin model.",
 		"operationId": "workers-ai-post-run-cf-leonardo-lucid-origin",
 		"parameters": [
 			{
@@ -999,6 +1006,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/leonardo/phoenix-1.0": {
+		"description": "Runs inference on the @cf/leonardo/phoenix-1.0 model.",
 		"operationId": "workers-ai-post-run-cf-leonardo-phoenix-1-0",
 		"parameters": [
 			{
@@ -1175,6 +1183,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/lykon/dreamshaper-8-lcm": {
+		"description": "Runs inference on the @cf/lykon/dreamshaper-8-lcm model.",
 		"operationId": "workers-ai-post-run-cf-lykon-dreamshaper-8-lcm",
 		"parameters": [
 			{
@@ -1369,6 +1378,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/runwayml/stable-diffusion-v1-5-img2img": {
+		"description": "Runs inference on the @cf/runwayml/stable-diffusion-v1-5-img2img model.",
 		"operationId": "workers-ai-post-run-cf-runwayml-stable-diffusion-v1-5-img2img",
 		"parameters": [
 			{
@@ -1563,6 +1573,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/runwayml/stable-diffusion-v1-5-inpainting": {
+		"description": "Runs inference on the @cf/runwayml/stable-diffusion-v1-5-inpainting model.",
 		"operationId": "workers-ai-post-run-cf-runwayml-stable-diffusion-v1-5-inpainting",
 		"parameters": [
 			{
@@ -1757,6 +1768,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/stabilityai/stable-diffusion-xl-base-1.0": {
+		"description": "Runs inference on the @cf/stabilityai/stable-diffusion-xl-base-1.0 model.",
 		"operationId": "workers-ai-post-run-cf-stabilityai-stable-diffusion-xl-base-1-0",
 		"parameters": [
 			{

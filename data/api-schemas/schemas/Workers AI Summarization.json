@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/ai/run/@cf/facebook/bart-large-cnn": {
+		"description": "Runs inference on the @cf/facebook/bart-large-cnn model.",
 		"operationId": "workers-ai-post-run-cf-facebook-bart-large-cnn",
 		"parameters": [
 			{
@@ -137,6 +138,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/facebook/omni-bart-large-cnn": {
+		"description": "Runs inference on the @cf/facebook/omni-bart-large-cnn model.",
 		"operationId": "workers-ai-post-run-cf-facebook-omni-bart-large-cnn",
 		"parameters": [
 			{

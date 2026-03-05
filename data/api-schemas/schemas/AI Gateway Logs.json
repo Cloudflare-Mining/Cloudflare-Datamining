@@ -801,6 +801,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}": {
+		"description": "Retrieves detailed information for a specific AI Gateway log entry.",
 		"operationId": "aig-config-get-gateway-log-detail",
 		"parameters": [
 			{
@@ -1020,6 +1021,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/request": {
+		"description": "Retrieves the original request payload for an AI Gateway log entry.",
 		"operationId": "aig-config-get-gateway-log-request",
 		"parameters": [
 			{
@@ -1135,6 +1137,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/response": {
+		"description": "Retrieves the response payload for an AI Gateway log entry.",
 		"operationId": "aig-config-get-gateway-log-response",
 		"parameters": [
 			{
@@ -1250,6 +1253,7 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}": {
+		"description": "Updates metadata for an AI Gateway log entry.",
 		"operationId": "aig-config-patch-gateway-log",
 		"parameters": [
 			{

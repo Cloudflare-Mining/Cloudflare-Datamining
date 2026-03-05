@@ -138,6 +138,22 @@
 													"example": "Cloudflare Dashboard",
 													"type": "string"
 												},
+												"source_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
+												},
 												"type": {
 													"description": "Category of the app.",
 													"example": "Development",
@@ -404,6 +420,22 @@
 																"example": "Cloudflare Dashboard",
 																"type": "string"
 															},
+															"source_subnets": {
+																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"items": {
+																	"allOf": [
+																		{
+																			"description": "A valid CIDR notation representing an IP range.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		{
+																			"example": "1.1.1.1/32"
+																		}
+																	]
+																},
+																"type": "array"
+															},
 															"type": {
 																"description": "Category of the app.",
 																"example": "Development",
@@ -452,6 +484,22 @@
 																"description": "Display name for the app.",
 																"example": "Cloudflare Dashboard",
 																"type": "string"
+															},
+															"source_subnets": {
+																"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+																"items": {
+																	"allOf": [
+																		{
+																			"description": "A valid CIDR notation representing an IP range.",
+																			"example": "192.0.2.0/24",
+																			"type": "string"
+																		},
+																		{
+																			"example": "1.1.1.1/32"
+																		}
+																	]
+																},
+																"type": "array"
 															},
 															"type": {
 																"description": "Category of the app.",
@@ -651,6 +699,12 @@
 									"ip_subnets"
 								],
 								"title": "Update App Subnets"
+							},
+							{
+								"required": [
+									"source_subnets"
+								],
+								"title": "Update App Source Subnets"
 							}
 						],
 						"properties": {
@@ -682,6 +736,22 @@
 								"description": "Display name for the app.",
 								"example": "Cloudflare Dashboard",
 								"type": "string"
+							},
+							"source_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								},
+								"type": "array"
 							},
 							"type": {
 								"description": "Category of the app.",
@@ -804,6 +874,22 @@
 													"description": "Display name for the app.",
 													"example": "Cloudflare Dashboard",
 													"type": "string"
+												},
+												"source_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
 												},
 												"type": {
 													"description": "Category of the app.",
@@ -968,6 +1054,12 @@
 									"ip_subnets"
 								],
 								"title": "Subnets"
+							},
+							{
+								"required": [
+									"source_subnets"
+								],
+								"title": "Source Subnets"
 							}
 						],
 						"properties": {
@@ -999,6 +1091,22 @@
 								"description": "Display name for the app.",
 								"example": "Cloudflare Dashboard",
 								"type": "string"
+							},
+							"source_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								},
+								"type": "array"
 							},
 							"type": {
 								"description": "Category of the app.",
@@ -1125,6 +1233,22 @@
 													"description": "Display name for the app.",
 													"example": "Cloudflare Dashboard",
 													"type": "string"
+												},
+												"source_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
 												},
 												"type": {
 													"description": "Category of the app.",
@@ -1317,6 +1441,12 @@
 									"ip_subnets"
 								],
 								"title": "Update App Subnets"
+							},
+							{
+								"required": [
+									"source_subnets"
+								],
+								"title": "Update App Source Subnets"
 							}
 						],
 						"properties": {
@@ -1348,6 +1478,22 @@
 								"description": "Display name for the app.",
 								"example": "Cloudflare Dashboard",
 								"type": "string"
+							},
+							"source_subnets": {
+								"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+								"items": {
+									"allOf": [
+										{
+											"description": "A valid CIDR notation representing an IP range.",
+											"example": "192.0.2.0/24",
+											"type": "string"
+										},
+										{
+											"example": "1.1.1.1/32"
+										}
+									]
+								},
+								"type": "array"
 							},
 							"type": {
 								"description": "Category of the app.",
@@ -1470,6 +1616,22 @@
 													"description": "Display name for the app.",
 													"example": "Cloudflare Dashboard",
 													"type": "string"
+												},
+												"source_subnets": {
+													"description": "IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported)",
+													"items": {
+														"allOf": [
+															{
+																"description": "A valid CIDR notation representing an IP range.",
+																"example": "192.0.2.0/24",
+																"type": "string"
+															},
+															{
+																"example": "1.1.1.1/32"
+															}
+														]
+													},
+													"type": "array"
 												},
 												"type": {
 													"description": "Category of the app.",

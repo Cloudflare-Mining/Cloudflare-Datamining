@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
+		"description": "Deletes an AI Gateway dataset.",
 		"operationId": "aig-config-delete-evaluations",
 		"parameters": [
 			{
@@ -43,12 +44,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -127,7 +122,8 @@
 															],
 															"type": "object"
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													},
 													"gateway_id": {
 														"description": "gateway id",
@@ -246,8 +242,6 @@
 									},
 									"required": [
 										"id",
-										"account_id",
-										"account_tag",
 										"gateway_id",
 										"name",
 										"created_at",
@@ -550,6 +544,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
+		"description": "Lists all AI Gateway evaluator types configured for the account.",
 		"operationId": "aig-config-list-evaluations",
 		"parameters": [
 			{
@@ -628,12 +623,6 @@
 								"result": {
 									"items": {
 										"properties": {
-											"account_id": {
-												"type": "string"
-											},
-											"account_tag": {
-												"type": "string"
-											},
 											"created_at": {
 												"format": "date-time",
 												"type": "string"
@@ -712,7 +701,8 @@
 																],
 																"type": "object"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"gateway_id": {
 															"description": "gateway id",
@@ -831,8 +821,6 @@
 										},
 										"required": [
 											"id",
-											"account_id",
-											"account_tag",
 											"gateway_id",
 											"name",
 											"created_at",
@@ -929,6 +917,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}": {
+		"description": "Retrieves details for a specific AI Gateway dataset.",
 		"operationId": "aig-config-fetch-evaluations",
 		"parameters": [
 			{
@@ -972,12 +961,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -1056,7 +1039,8 @@
 															],
 															"type": "object"
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													},
 													"gateway_id": {
 														"description": "gateway id",
@@ -1175,8 +1159,6 @@
 									},
 									"required": [
 										"id",
-										"account_id",
-										"account_tag",
 										"gateway_id",
 										"name",
 										"created_at",
@@ -1272,6 +1254,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
+		"description": "Creates a new AI Gateway.",
 		"operationId": "aig-config-create-evaluations",
 		"parameters": [
 			{
@@ -1340,12 +1323,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_id": {
-											"type": "string"
-										},
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -1424,7 +1401,8 @@
 															],
 															"type": "object"
 														},
-														"type": "array"
+														"type": "array",
+														"x-auditable": true
 													},
 													"gateway_id": {
 														"description": "gateway id",
@@ -1543,8 +1521,6 @@
 									},
 									"required": [
 										"id",
-										"account_id",
-										"account_tag",
 										"gateway_id",
 										"name",
 										"created_at",

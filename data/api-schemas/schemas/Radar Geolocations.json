@@ -72,6 +72,10 @@
 										"geolocations": {
 											"items": {
 												"properties": {
+													"code": {
+														"example": "PT-11",
+														"type": "string"
+													},
 													"geoId": {
 														"example": "2267056",
 														"type": "string"
@@ -94,6 +98,10 @@
 													},
 													"parent": {
 														"properties": {
+															"code": {
+																"example": "PT",
+																"type": "string"
+															},
 															"geoId": {
 																"example": "2264397",
 																"type": "string"
@@ -116,6 +124,10 @@
 															},
 															"parent": {
 																"properties": {
+																	"code": {
+																		"example": "EU",
+																		"type": "string"
+																	},
 																	"geoId": {
 																		"example": "6255148",
 																		"type": "string"
@@ -320,6 +332,10 @@
 									"properties": {
 										"geolocation": {
 											"properties": {
+												"code": {
+													"example": "PT-11",
+													"type": "string"
+												},
 												"geoId": {
 													"example": "2267056",
 													"type": "string"
@@ -342,6 +358,10 @@
 												},
 												"parent": {
 													"properties": {
+														"code": {
+															"example": "PT",
+															"type": "string"
+														},
 														"geoId": {
 															"example": "2264397",
 															"type": "string"
@@ -364,6 +384,10 @@
 														},
 														"parent": {
 															"properties": {
+																"code": {
+																	"example": "EU",
+																	"type": "string"
+																},
 																"geoId": {
 																	"example": "6255148",
 																	"type": "string"

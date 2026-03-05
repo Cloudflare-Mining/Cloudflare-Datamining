@@ -4,21 +4,21 @@
 		"operationId": "deleteRepoConnection",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Repository connection UUID",
 				"in": "path",
 				"name": "repo_connection_uuid",
 				"required": true,
 				"schema": {
+					"description": "Repository connection UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -189,11 +189,11 @@
 		"operationId": "upsertRepoConnection",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
@@ -205,6 +205,7 @@
 					"schema": {
 						"properties": {
 							"provider_account_id": {
+								"description": "Provider account identifier.",
 								"example": "cloudflare",
 								"type": "string"
 							},
@@ -220,6 +221,7 @@
 								"type": "string"
 							},
 							"repo_id": {
+								"description": "Repository identifier.",
 								"example": "workers-sdk",
 								"type": "string"
 							},
@@ -331,6 +333,7 @@
 													"type": "string"
 												},
 												"provider_account_id": {
+													"description": "Provider account identifier.",
 													"example": "cloudflare",
 													"type": "string"
 												},
@@ -346,10 +349,12 @@
 													"type": "string"
 												},
 												"repo_connection_uuid": {
+													"description": "Repository connection UUID.",
 													"format": "uuid",
 													"type": "string"
 												},
 												"repo_id": {
+													"description": "Repository identifier.",
 													"example": "workers-sdk",
 													"type": "string"
 												},

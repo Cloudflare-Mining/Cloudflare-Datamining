@@ -1,6 +1,7 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
 		"deprecated": true,
+		"description": "Permanently removes an uploaded OpenAPI schema from API Shield schema validation. Operations using this schema will lose their validation rules.",
 		"operationId": "api-shield-schema-delete-a-schema",
 		"responses": {
 			"200": {
@@ -581,6 +582,7 @@
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas": {
 		"deprecated": true,
+		"description": "Lists all OpenAPI schemas uploaded to API Shield for the zone, including their validation status and associated operations.",
 		"operationId": "api-shield-schema-validation-retrieve-information-about-all-schemas",
 		"parameters": [
 			{
@@ -970,6 +972,7 @@
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
 		"deprecated": true,
+		"description": "Gets detailed information about a specific uploaded OpenAPI schema, including its contents and validation configuration.",
 		"operationId": "api-shield-schema-validation-retrieve-information-about-specific-schema",
 		"parameters": [
 			{
@@ -2167,6 +2170,7 @@
 	},
 	"GET /zones/{zone_id}/api_gateway/user_schemas/hosts": {
 		"deprecated": true,
+		"description": "Lists all unique hosts found in uploaded OpenAPI schemas for the zone. Useful for understanding which domains have schema coverage.",
 		"operationId": "api-shield-schema-validation-retrieve-user-schema-hosts",
 		"responses": {
 			"200": {
@@ -3009,6 +3013,7 @@
 	},
 	"PATCH /zones/{zone_id}/api_gateway/user_schemas/{schema_id}": {
 		"deprecated": true,
+		"description": "Activates schema validation for an uploaded OpenAPI schema. Requests to matching endpoints will be validated against the schema definitions.",
 		"operationId": "api-shield-schema-validation-enable-validation-for-a-schema",
 		"requestBody": {
 			"content": {

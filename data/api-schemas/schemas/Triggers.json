@@ -4,21 +4,21 @@
 		"operationId": "deleteTrigger",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Trigger UUID",
 				"in": "path",
 				"name": "trigger_uuid",
 				"required": true,
 				"schema": {
+					"description": "Trigger UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -189,21 +189,21 @@
 		"operationId": "updateTrigger",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Trigger UUID",
 				"in": "path",
 				"name": "trigger_uuid",
 				"required": true,
 				"schema": {
+					"description": "Trigger UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -232,6 +232,7 @@
 							},
 							"build_caching_enabled": {
 								"default": false,
+								"example": false,
 								"type": "boolean"
 							},
 							"build_command": {
@@ -239,11 +240,12 @@
 								"type": "string"
 							},
 							"build_token_uuid": {
+								"description": "Build token UUID.",
 								"format": "uuid",
 								"type": "string"
 							},
 							"deploy_command": {
-								"example": "npm run deploy",
+								"example": "npx wrangler deploy",
 								"type": "string"
 							},
 							"path_excludes": {
@@ -256,8 +258,9 @@
 								"type": "array"
 							},
 							"path_includes": {
+								"default": "*",
 								"example": [
-									"src/**"
+									"*"
 								],
 								"items": {
 									"type": "string"
@@ -265,6 +268,7 @@
 								"type": "array"
 							},
 							"root_directory": {
+								"description": "Root directory path.",
 								"example": "/",
 								"type": "string"
 							},
@@ -372,6 +376,7 @@
 													"type": "array"
 												},
 												"build_caching_enabled": {
+													"default": false,
 													"example": false,
 													"type": "boolean"
 												},
@@ -384,6 +389,7 @@
 													"type": "string"
 												},
 												"build_token_uuid": {
+													"description": "Build token UUID.",
 													"format": "uuid",
 													"type": "string"
 												},
@@ -397,10 +403,11 @@
 													"type": "string"
 												},
 												"deploy_command": {
-													"example": "npm run deploy",
+													"example": "npx wrangler deploy",
 													"type": "string"
 												},
 												"external_script_id": {
+													"description": "External script identifier.",
 													"example": "my-worker",
 													"type": "string"
 												},
@@ -418,8 +425,9 @@
 													"type": "array"
 												},
 												"path_includes": {
+													"default": "*",
 													"example": [
-														"src/**"
+														"*"
 													],
 													"items": {
 														"type": "string"
@@ -442,6 +450,7 @@
 															"type": "string"
 														},
 														"provider_account_id": {
+															"description": "Provider account identifier.",
 															"example": "cloudflare",
 															"type": "string"
 														},
@@ -457,10 +466,12 @@
 															"type": "string"
 														},
 														"repo_connection_uuid": {
+															"description": "Repository connection UUID.",
 															"format": "uuid",
 															"type": "string"
 														},
 														"repo_id": {
+															"description": "Repository identifier.",
 															"example": "workers-sdk",
 															"type": "string"
 														},
@@ -472,6 +483,7 @@
 													"type": "object"
 												},
 												"root_directory": {
+													"description": "Root directory path.",
 													"example": "/",
 													"type": "string"
 												},
@@ -480,6 +492,7 @@
 													"type": "string"
 												},
 												"trigger_uuid": {
+													"description": "Trigger UUID.",
 													"format": "uuid",
 													"type": "string"
 												}
@@ -580,11 +593,11 @@
 		"operationId": "createTrigger",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
@@ -613,6 +626,7 @@
 							},
 							"build_caching_enabled": {
 								"default": false,
+								"example": false,
 								"type": "boolean"
 							},
 							"build_command": {
@@ -620,6 +634,7 @@
 								"type": "string"
 							},
 							"build_token_uuid": {
+								"description": "Build token UUID.",
 								"format": "uuid",
 								"type": "string"
 							},
@@ -628,6 +643,7 @@
 								"type": "string"
 							},
 							"external_script_id": {
+								"description": "External script identifier.",
 								"example": "my-worker",
 								"type": "string"
 							},
@@ -651,10 +667,12 @@
 								"type": "array"
 							},
 							"repo_connection_uuid": {
+								"description": "Repository connection UUID.",
 								"format": "uuid",
 								"type": "string"
 							},
 							"root_directory": {
+								"description": "Root directory path.",
 								"example": "/",
 								"type": "string"
 							},
@@ -775,6 +793,7 @@
 													"type": "array"
 												},
 												"build_caching_enabled": {
+													"default": false,
 													"example": false,
 													"type": "boolean"
 												},
@@ -787,6 +806,7 @@
 													"type": "string"
 												},
 												"build_token_uuid": {
+													"description": "Build token UUID.",
 													"format": "uuid",
 													"type": "string"
 												},
@@ -800,10 +820,11 @@
 													"type": "string"
 												},
 												"deploy_command": {
-													"example": "npm run deploy",
+													"example": "npx wrangler deploy",
 													"type": "string"
 												},
 												"external_script_id": {
+													"description": "External script identifier.",
 													"example": "my-worker",
 													"type": "string"
 												},
@@ -821,8 +842,9 @@
 													"type": "array"
 												},
 												"path_includes": {
+													"default": "*",
 													"example": [
-														"src/**"
+														"*"
 													],
 													"items": {
 														"type": "string"
@@ -845,6 +867,7 @@
 															"type": "string"
 														},
 														"provider_account_id": {
+															"description": "Provider account identifier.",
 															"example": "cloudflare",
 															"type": "string"
 														},
@@ -860,10 +883,12 @@
 															"type": "string"
 														},
 														"repo_connection_uuid": {
+															"description": "Repository connection UUID.",
 															"format": "uuid",
 															"type": "string"
 														},
 														"repo_id": {
+															"description": "Repository identifier.",
 															"example": "workers-sdk",
 															"type": "string"
 														},
@@ -875,6 +900,7 @@
 													"type": "object"
 												},
 												"root_directory": {
+													"description": "Root directory path.",
 													"example": "/",
 													"type": "string"
 												},
@@ -883,6 +909,7 @@
 													"type": "string"
 												},
 												"trigger_uuid": {
+													"description": "Trigger UUID.",
 													"format": "uuid",
 													"type": "string"
 												}
@@ -921,21 +948,21 @@
 		"operationId": "createManualBuild",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Trigger UUID",
 				"in": "path",
 				"name": "trigger_uuid",
 				"required": true,
 				"schema": {
+					"description": "Trigger UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -959,18 +986,29 @@
 						],
 						"properties": {
 							"branch": {
-								"description": "Git branch name (required if commit_hash not provided)",
-								"example": "main",
-								"type": "string"
+								"allOf": [
+									{
+										"description": "Git branch name.",
+										"example": "main",
+										"type": "string"
+									}
+								],
+								"description": "Git branch name (required if commit_hash not provided)"
 							},
 							"commit_hash": {
-								"description": "Git commit hash (required if branch not provided)",
-								"example": "abc123def456",
-								"type": "string"
+								"allOf": [
+									{
+										"description": "Git commit hash",
+										"example": "abc123def456",
+										"type": "string"
+									}
+								],
+								"description": "Git commit hash (required if branch not provided)"
 							},
 							"seed_repo": {
 								"properties": {
 									"branch": {
+										"description": "Git branch name.",
 										"example": "main",
 										"type": "string"
 									},
@@ -1116,6 +1154,7 @@
 										"result": {
 											"properties": {
 												"build_uuid": {
+													"description": "Build UUID.",
 													"format": "uuid",
 													"type": "string"
 												},
@@ -1158,21 +1197,21 @@
 		"operationId": "purgeBuildCache",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Trigger UUID",
 				"in": "path",
 				"name": "trigger_uuid",
 				"required": true,
 				"schema": {
+					"description": "Trigger UUID.",
 					"format": "uuid",
 					"type": "string"
 				}

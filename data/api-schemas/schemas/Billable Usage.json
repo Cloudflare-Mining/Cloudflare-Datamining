@@ -1,0 +1,321 @@
+{
+	"GET /accounts/{account_id}/billing/usage/paygo": {
+		"description": "Returns billable usage data for PayGo (self-serve) accounts within a specified date range. Supports two mutually exclusive query modes: billing-period mode (last_year_period_start + last_month_period_start) or date-range mode (from + to).",
+		"operationId": "billable-usage-get-paygo-account-usage",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Represents a Cloudflare resource identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Defines the start date for the usage query (e.g., 2025-02-01).",
+				"in": "query",
+				"name": "from",
+				"schema": {
+					"example": "2025-02-01",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Defines the end date for the usage query (e.g., 2025-03-01).",
+				"in": "query",
+				"name": "to",
+				"schema": {
+					"example": "2025-03-01",
+					"format": "date",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the year of the billing period to query (e.g., 2025). Must be provided together with last_month_period_start. Mutually exclusive with from/to.",
+				"in": "query",
+				"name": "last_year_period_start",
+				"schema": {
+					"example": 2025,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Specifies the month of the billing period to query (1-12). Must be provided together with last_year_period_start. Mutually exclusive with from/to.",
+				"in": "query",
+				"name": "last_month_period_start",
+				"schema": {
+					"example": 6,
+					"maximum": 12,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a successful response containing billable usage records.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details if the request failed.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the array of billable usage records.",
+									"items": {
+										"description": "Represents a single billable usage record.",
+										"properties": {
+											"BillingCurrency": {
+												"description": "Specifies the billing currency code (ISO 4217).",
+												"example": "USD",
+												"type": "string"
+											},
+											"BillingPeriodStart": {
+												"description": "Indicates the start of the billing period.",
+												"example": "2025-02-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"ChargePeriodEnd": {
+												"description": "Indicates the end of the charge period.",
+												"example": "2025-02-02T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"ChargePeriodStart": {
+												"description": "Indicates the start of the charge period.",
+												"example": "2025-02-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"ConsumedQuantity": {
+												"description": "Specifies the quantity consumed during this charge period.",
+												"example": 150000,
+												"type": "number"
+											},
+											"ConsumedUnit": {
+												"description": "Specifies the unit of measurement for consumed quantity.",
+												"example": "Requests",
+												"type": "string"
+											},
+											"ContractedCost": {
+												"description": "Specifies the cost for this charge period in the billing currency.",
+												"example": 0.75,
+												"type": "number"
+											},
+											"CumulatedContractedCost": {
+												"description": "Specifies the cumulated cost for the billing period in the billing currency.",
+												"example": 2.25,
+												"type": "number"
+											},
+											"CumulatedPricingQuantity": {
+												"description": "Specifies the cumulated pricing quantity for the billing period.",
+												"example": 4500000,
+												"type": "integer"
+											},
+											"PricingQuantity": {
+												"description": "Specifies the pricing quantity for this charge period.",
+												"example": 150000,
+												"type": "integer"
+											},
+											"ServiceName": {
+												"description": "Identifies the Cloudflare service.",
+												"example": "Workers Standard",
+												"type": "string"
+											}
+										},
+										"required": [
+											"ChargePeriodStart",
+											"ChargePeriodEnd",
+											"BillingPeriodStart",
+											"ServiceName",
+											"ConsumedQuantity",
+											"ConsumedUnit",
+											"PricingQuantity",
+											"CumulatedPricingQuantity",
+											"ContractedCost",
+											"CumulatedContractedCost",
+											"BillingCurrency"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates PayGo account usage data was successfully retrieved."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Represents a failed API response.",
+							"properties": {
+								"errors": {
+									"description": "Contains error details describing why the request failed.",
+									"example": [
+										{
+											"code": 1183,
+											"message": "Invalid request parameters: Please ensure all required parameters are included and correctly formatted."
+										}
+									],
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"description": "Contains informational notices about the response.",
+									"items": {
+										"description": "Represents an API notice or error detail.",
+										"properties": {
+											"code": {
+												"description": "Identifies the error or notice type.",
+												"type": "integer"
+											},
+											"message": {
+												"description": "Describes the error or notice.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"nullable": true,
+									"type": "array"
+								},
+								"result": {
+									"description": "Contains the response payload (always null on failure).",
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Indicates the request failed."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get PayGo Account Billable Usage",
+		"tags": [
+			"Billable Usage"
+		],
+		"x-api-token-group": [
+			"Billing Write",
+			"Billing Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": false,
+			"free": true,
+			"pro": true
+		}
+	}
+}

@@ -39,9 +39,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -388,7 +385,6 @@
 										"elements",
 										"created_at",
 										"modified_at",
-										"account_tag",
 										"gateway_id"
 									],
 									"type": "object"
@@ -1064,9 +1060,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -1467,7 +1460,6 @@
 										"elements",
 										"created_at",
 										"modified_at",
-										"account_tag",
 										"gateway_id",
 										"version",
 										"deployment"
@@ -1953,9 +1945,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_tag": {
-											"type": "string"
-										},
 										"active": {
 											"enum": [
 												"true",
@@ -2318,7 +2307,6 @@
 										"elements",
 										"created_at",
 										"modified_at",
-										"account_tag",
 										"gateway_id",
 										"version_id",
 										"data",
@@ -3665,9 +3653,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -4068,7 +4053,6 @@
 										"elements",
 										"created_at",
 										"modified_at",
-										"account_tag",
 										"gateway_id",
 										"version",
 										"deployment"
@@ -4219,9 +4203,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -4568,7 +4549,6 @@
 										"elements",
 										"created_at",
 										"modified_at",
-										"account_tag",
 										"gateway_id"
 									],
 									"type": "object"
@@ -5035,9 +5015,6 @@
 							"properties": {
 								"result": {
 									"properties": {
-										"account_tag": {
-											"type": "string"
-										},
 										"created_at": {
 											"format": "date-time",
 											"type": "string"
@@ -5384,7 +5361,6 @@
 										"elements",
 										"created_at",
 										"modified_at",
-										"account_tag",
 										"gateway_id"
 									],
 									"type": "object"

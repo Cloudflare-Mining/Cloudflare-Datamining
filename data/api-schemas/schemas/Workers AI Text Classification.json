@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/ai/run/@cf/baai/bge-reranker-base": {
+		"description": "Runs inference on the @cf/baai/bge-reranker-base model.",
 		"operationId": "workers-ai-post-run-cf-baai-bge-reranker-base",
 		"parameters": [
 			{
@@ -152,6 +153,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/huggingface/distilbert-sst-2-int8": {
+		"description": "Runs inference on the @cf/huggingface/distilbert-sst-2-int8 model.",
 		"operationId": "workers-ai-post-run-cf-huggingface-distilbert-sst-2-int8",
 		"parameters": [
 			{
@@ -284,6 +286,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/huggingface/omni-distilbert-sst-2-int8": {
+		"description": "Runs inference on the @cf/huggingface/omni-distilbert-sst-2-int8 model.",
 		"operationId": "workers-ai-post-run-cf-huggingface-omni-distilbert-sst-2-int8",
 		"parameters": [
 			{

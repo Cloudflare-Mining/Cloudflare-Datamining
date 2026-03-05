@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/ai/run/@cf/aisingapore/gemma-sea-lion-v4-27b-it": {
+		"description": "Runs inference on the @cf/aisingapore/gemma-sea-lion-v4-27b-it model.",
 		"operationId": "workers-ai-post-run-cf-aisingapore-gemma-sea-lion-v4-27b-it",
 		"parameters": [
 			{
@@ -886,6 +887,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepseek-ai/deepseek-math-7b-instruct": {
+		"description": "Runs inference on the @cf/deepseek-ai/deepseek-math-7b-instruct model.",
 		"operationId": "workers-ai-post-run-cf-deepseek-ai-deepseek-math-7b-instruct",
 		"parameters": [
 			{
@@ -1385,6 +1387,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b": {
+		"description": "Runs inference on the @cf/deepseek-ai/deepseek-r1-distill-qwen-32b model.",
 		"operationId": "workers-ai-post-run-cf-deepseek-ai-deepseek-r1-distill-qwen-32b",
 		"parameters": [
 			{
@@ -1884,6 +1887,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/defog/sqlcoder-7b-2": {
+		"description": "Runs inference on the @cf/defog/sqlcoder-7b-2 model.",
 		"operationId": "workers-ai-post-run-cf-defog-sqlcoder-7b-2",
 		"parameters": [
 			{
@@ -2383,6 +2387,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/fblgit/una-cybertron-7b-v2-bf16": {
+		"description": "Runs inference on the @cf/fblgit/una-cybertron-7b-v2-bf16 model.",
 		"operationId": "workers-ai-post-run-cf-fblgit-una-cybertron-7b-v2-bf16",
 		"parameters": [
 			{
@@ -2882,6 +2887,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/google/gemma-2b-it-lora": {
+		"description": "Runs inference on the @cf/google/gemma-2b-it-lora model.",
 		"operationId": "workers-ai-post-run-cf-google-gemma-2b-it-lora",
 		"parameters": [
 			{
@@ -3381,6 +3387,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/google/gemma-3-12b-it": {
+		"description": "Runs inference on the @cf/google/gemma-3-12b-it model.",
 		"operationId": "workers-ai-post-run-cf-google-gemma-3-12b-it",
 		"parameters": [
 			{
@@ -3860,6 +3867,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/google/gemma-7b-it-lora": {
+		"description": "Runs inference on the @cf/google/gemma-7b-it-lora model.",
 		"operationId": "workers-ai-post-run-cf-google-gemma-7b-it-lora",
 		"parameters": [
 			{
@@ -4359,6 +4367,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/ibm-granite/granite-4.0-h-micro": {
+		"description": "Runs inference on the @cf/ibm-granite/granite-4.0-h-micro model.",
 		"operationId": "workers-ai-post-run-cf-ibm-granite-granite-4-0-h-micro",
 		"parameters": [
 			{
@@ -4858,6 +4867,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta-llama/llama-2-7b-chat-hf-lora": {
+		"description": "Runs inference on the @cf/meta-llama/llama-2-7b-chat-hf-lora model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-llama-2-7b-chat-hf-lora",
 		"parameters": [
 			{
@@ -5357,6 +5367,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-2-7b-chat-fp16": {
+		"description": "Runs inference on the @cf/meta/llama-2-7b-chat-fp16 model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-2-7b-chat-fp16",
 		"parameters": [
 			{
@@ -5856,6 +5867,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-2-7b-chat-int8": {
+		"description": "Runs inference on the @cf/meta/llama-2-7b-chat-int8 model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-2-7b-chat-int8",
 		"parameters": [
 			{
@@ -6355,6 +6367,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3-8b-instruct": {
+		"description": "Runs inference on the @cf/meta/llama-3-8b-instruct model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-8b-instruct",
 		"parameters": [
 			{
@@ -6854,6 +6867,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3-8b-instruct-awq": {
+		"description": "Runs inference on the @cf/meta/llama-3-8b-instruct-awq model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-8b-instruct-awq",
 		"parameters": [
 			{
@@ -7353,6 +7367,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.1-70b-instruct-fp8-fast": {
+		"description": "Runs inference on the @cf/meta/llama-3.1-70b-instruct-fp8-fast model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-1-70b-instruct-fp8-fast",
 		"parameters": [
 			{
@@ -7852,6 +7867,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.1-8b-instruct-awq": {
+		"description": "Runs inference on the @cf/meta/llama-3.1-8b-instruct-awq model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-1-8b-instruct-awq",
 		"parameters": [
 			{
@@ -8351,6 +8367,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.1-8b-instruct-fp8": {
+		"description": "Runs inference on the @cf/meta/llama-3.1-8b-instruct-fp8 model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-1-8b-instruct-fp8",
 		"parameters": [
 			{
@@ -8850,6 +8867,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.1-8b-instruct-fp8-fast": {
+		"description": "Runs inference on the @cf/meta/llama-3.1-8b-instruct-fp8-fast model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-1-8b-instruct-fp8-fast",
 		"parameters": [
 			{
@@ -9349,6 +9367,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.2-11b-vision-instruct": {
+		"description": "Runs inference on the @cf/meta/llama-3.2-11b-vision-instruct model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-2-11b-vision-instruct",
 		"parameters": [
 			{
@@ -9881,6 +9900,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.2-1b-instruct": {
+		"description": "Runs inference on the @cf/meta/llama-3.2-1b-instruct model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-2-1b-instruct",
 		"parameters": [
 			{
@@ -10380,6 +10400,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.2-3b-instruct": {
+		"description": "Runs inference on the @cf/meta/llama-3.2-3b-instruct model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-2-3b-instruct",
 		"parameters": [
 			{
@@ -10879,6 +10900,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+		"description": "Runs inference on the @cf/meta/llama-3.3-70b-instruct-fp8-fast model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-3-3-70b-instruct-fp8-fast",
 		"parameters": [
 			{
@@ -11462,6 +11484,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-4-scout-17b-16e-instruct": {
+		"description": "Runs inference on the @cf/meta/llama-4-scout-17b-16e-instruct model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-4-scout-17b-16e-instruct",
 		"parameters": [
 			{
@@ -12418,6 +12441,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-guard-3-8b": {
+		"description": "Runs inference on the @cf/meta/llama-guard-3-8b model.",
 		"operationId": "workers-ai-post-run-cf-meta-llama-guard-3-8b",
 		"parameters": [
 			{
@@ -12591,6 +12615,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/microsoft/phi-2": {
+		"description": "Runs inference on the @cf/microsoft/phi-2 model.",
 		"operationId": "workers-ai-post-run-cf-microsoft-phi-2",
 		"parameters": [
 			{
@@ -13090,6 +13115,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1": {
+		"description": "Runs inference on the @cf/mistral/mistral-7b-instruct-v0.1 model.",
 		"operationId": "workers-ai-post-run-cf-mistral-mistral-7b-instruct-v0-1",
 		"parameters": [
 			{
@@ -13589,6 +13615,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.2-lora": {
+		"description": "Runs inference on the @cf/mistral/mistral-7b-instruct-v0.2-lora model.",
 		"operationId": "workers-ai-post-run-cf-mistral-mistral-7b-instruct-v0-2-lora",
 		"parameters": [
 			{
@@ -14088,6 +14115,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/mistralai/mistral-small-3.1-24b-instruct": {
+		"description": "Runs inference on the @cf/mistralai/mistral-small-3.1-24b-instruct model.",
 		"operationId": "workers-ai-post-run-cf-mistralai-mistral-small-3-1-24b-instruct",
 		"parameters": [
 			{
@@ -14594,6 +14622,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/openai/gpt-oss-120b": {
+		"description": "Runs inference on the @cf/openai/gpt-oss-120b model.",
 		"operationId": "workers-ai-post-run-cf-openai-gpt-oss-120b",
 		"parameters": [
 			{
@@ -15191,6 +15220,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/openai/gpt-oss-20b": {
+		"description": "Runs inference on the @cf/openai/gpt-oss-20b model.",
 		"operationId": "workers-ai-post-run-cf-openai-gpt-oss-20b",
 		"parameters": [
 			{
@@ -15788,6 +15818,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/openchat/openchat-3.5-0106": {
+		"description": "Runs inference on the @cf/openchat/openchat-3.5-0106 model.",
 		"operationId": "workers-ai-post-run-cf-openchat-openchat-3-5-0106",
 		"parameters": [
 			{
@@ -16287,6 +16318,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-0.5b-chat": {
+		"description": "Runs inference on the @cf/qwen/qwen1.5-0.5b-chat model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-0-5b-chat",
 		"parameters": [
 			{
@@ -16786,6 +16818,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-1.8b-chat": {
+		"description": "Runs inference on the @cf/qwen/qwen1.5-1.8b-chat model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-1-8b-chat",
 		"parameters": [
 			{
@@ -17285,6 +17318,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-14b-chat-awq": {
+		"description": "Runs inference on the @cf/qwen/qwen1.5-14b-chat-awq model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-14b-chat-awq",
 		"parameters": [
 			{
@@ -17784,6 +17818,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-7b-chat-awq": {
+		"description": "Runs inference on the @cf/qwen/qwen1.5-7b-chat-awq model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-7b-chat-awq",
 		"parameters": [
 			{
@@ -18283,6 +18318,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen2.5-coder-32b-instruct": {
+		"description": "Runs inference on the @cf/qwen/qwen2.5-coder-32b-instruct model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwen2-5-coder-32b-instruct",
 		"parameters": [
 			{
@@ -18761,6 +18797,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen3-30b-a3b-fp8": {
+		"description": "Runs inference on the @cf/qwen/qwen3-30b-a3b-fp8 model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwen3-30b-a3b-fp8",
 		"parameters": [
 			{
@@ -19647,6 +19684,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwq-32b": {
+		"description": "Runs inference on the @cf/qwen/qwq-32b model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwq-32b",
 		"parameters": [
 			{
@@ -20153,6 +20191,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/thebloke/discolm-german-7b-v1-awq": {
+		"description": "Runs inference on the @cf/thebloke/discolm-german-7b-v1-awq model.",
 		"operationId": "workers-ai-post-run-cf-thebloke-discolm-german-7b-v1-awq",
 		"parameters": [
 			{
@@ -20652,6 +20691,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/tiiuae/falcon-7b-instruct": {
+		"description": "Runs inference on the @cf/tiiuae/falcon-7b-instruct model.",
 		"operationId": "workers-ai-post-run-cf-tiiuae-falcon-7b-instruct",
 		"parameters": [
 			{
@@ -21151,6 +21191,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/tinyllama/tinyllama-1.1b-chat-v1.0": {
+		"description": "Runs inference on the @cf/tinyllama/tinyllama-1.1b-chat-v1.0 model.",
 		"operationId": "workers-ai-post-run-cf-tinyllama-tinyllama-1-1b-chat-v1-0",
 		"parameters": [
 			{
@@ -21650,6 +21691,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/zai-org/glm-4.7-flash": {
+		"description": "Runs inference on the @cf/zai-org/glm-4.7-flash model.",
 		"operationId": "workers-ai-post-run-cf-zai-org-glm-4-7-flash",
 		"parameters": [
 			{
@@ -23545,6 +23587,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/google/gemma-7b-it": {
+		"description": "Runs inference on the @hf/google/gemma-7b-it model.",
 		"operationId": "workers-ai-post-run-hf-google-gemma-7b-it",
 		"parameters": [
 			{
@@ -24044,6 +24087,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/mistral/mistral-7b-instruct-v0.2": {
+		"description": "Runs inference on the @hf/mistral/mistral-7b-instruct-v0.2 model.",
 		"operationId": "workers-ai-post-run-hf-mistral-mistral-7b-instruct-v0-2",
 		"parameters": [
 			{
@@ -24543,6 +24587,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/nexusflow/starling-lm-7b-beta": {
+		"description": "Runs inference on the @hf/nexusflow/starling-lm-7b-beta model.",
 		"operationId": "workers-ai-post-run-hf-nexusflow-starling-lm-7b-beta",
 		"parameters": [
 			{
@@ -25042,6 +25087,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/nousresearch/hermes-2-pro-mistral-7b": {
+		"description": "Runs inference on the @hf/nousresearch/hermes-2-pro-mistral-7b model.",
 		"operationId": "workers-ai-post-run-hf-nousresearch-hermes-2-pro-mistral-7b",
 		"parameters": [
 			{
@@ -25541,6 +25587,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/thebloke/deepseek-coder-6.7b-base-awq": {
+		"description": "Runs inference on the @hf/thebloke/deepseek-coder-6.7b-base-awq model.",
 		"operationId": "workers-ai-post-run-hf-thebloke-deepseek-coder-6-7b-base-awq",
 		"parameters": [
 			{
@@ -26040,6 +26087,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/thebloke/deepseek-coder-6.7b-instruct-awq": {
+		"description": "Runs inference on the @hf/thebloke/deepseek-coder-6.7b-instruct-awq model.",
 		"operationId": "workers-ai-post-run-hf-thebloke-deepseek-coder-6-7b-instruct-awq",
 		"parameters": [
 			{
@@ -26539,6 +26587,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/thebloke/llama-2-13b-chat-awq": {
+		"description": "Runs inference on the @hf/thebloke/llama-2-13b-chat-awq model.",
 		"operationId": "workers-ai-post-run-hf-thebloke-llama-2-13b-chat-awq",
 		"parameters": [
 			{
@@ -27038,6 +27087,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/thebloke/mistral-7b-instruct-v0.1-awq": {
+		"description": "Runs inference on the @hf/thebloke/mistral-7b-instruct-v0.1-awq model.",
 		"operationId": "workers-ai-post-run-hf-thebloke-mistral-7b-instruct-v0-1-awq",
 		"parameters": [
 			{
@@ -27537,6 +27587,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/thebloke/neural-chat-7b-v3-1-awq": {
+		"description": "Runs inference on the @hf/thebloke/neural-chat-7b-v3-1-awq model.",
 		"operationId": "workers-ai-post-run-hf-thebloke-neural-chat-7b-v3-1-awq",
 		"parameters": [
 			{
@@ -28036,6 +28087,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/thebloke/openhermes-2.5-mistral-7b-awq": {
+		"description": "Runs inference on the @hf/thebloke/openhermes-2.5-mistral-7b-awq model.",
 		"operationId": "workers-ai-post-run-hf-thebloke-openhermes-2-5-mistral-7b-awq",
 		"parameters": [
 			{
@@ -28535,6 +28587,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@hf/thebloke/zephyr-7b-beta-awq": {
+		"description": "Runs inference on the @hf/thebloke/zephyr-7b-beta-awq model.",
 		"operationId": "workers-ai-post-run-hf-thebloke-zephyr-7b-beta-awq",
 		"parameters": [
 			{

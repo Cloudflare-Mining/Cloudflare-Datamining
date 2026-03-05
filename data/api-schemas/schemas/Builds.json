@@ -4,21 +4,21 @@
 		"operationId": "getBuildsByVersionIds",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Comma-separated list of version UUIDs (max 20)",
 				"in": "query",
 				"name": "version_ids",
 				"required": true,
 				"schema": {
+					"description": "Comma-separated list of version UUIDs (max 20).",
 					"example": "123e4567-e89b-12d3-a456-426614174000,223e4567-e89b-12d3-a456-426614174001",
 					"type": "string"
 				}
@@ -121,6 +121,7 @@
 																		"type": "string"
 																	},
 																	"branch": {
+																		"description": "Git branch name.",
 																		"example": "main",
 																		"type": "string"
 																	},
@@ -133,6 +134,7 @@
 																		"type": "string"
 																	},
 																	"build_token_uuid": {
+																		"description": "Build token UUID.",
 																		"format": "uuid",
 																		"type": "string"
 																	},
@@ -147,6 +149,7 @@
 																		"type": "string"
 																	},
 																	"commit_hash": {
+																		"description": "Git commit hash",
 																		"example": "abc123def456",
 																		"type": "string"
 																	},
@@ -155,7 +158,7 @@
 																		"type": "string"
 																	},
 																	"deploy_command": {
-																		"example": "npm run deploy",
+																		"example": "npx wrangler deploy",
 																		"type": "string"
 																	},
 																	"environment_variables": {
@@ -180,6 +183,7 @@
 																		"type": "string"
 																	},
 																	"root_directory": {
+																		"description": "Root directory path.",
 																		"example": "/",
 																		"type": "string"
 																	}
@@ -187,6 +191,7 @@
 																"type": "object"
 															},
 															"build_uuid": {
+																"description": "Build UUID.",
 																"format": "uuid",
 																"type": "string"
 															},
@@ -242,18 +247,24 @@
 																"description": "Trigger information without build_token_uuid",
 																"properties": {
 																	"branch_excludes": {
+																		"example": [],
 																		"items": {
 																			"type": "string"
 																		},
 																		"type": "array"
 																	},
 																	"branch_includes": {
+																		"example": [
+																			"main"
+																		],
 																		"items": {
 																			"type": "string"
 																		},
 																		"type": "array"
 																	},
 																	"build_caching_enabled": {
+																		"default": false,
+																		"example": false,
 																		"type": "boolean"
 																	},
 																	"build_command": {
@@ -270,10 +281,11 @@
 																		"type": "string"
 																	},
 																	"deploy_command": {
-																		"example": "npm run deploy",
+																		"example": "npx wrangler deploy",
 																		"type": "string"
 																	},
 																	"external_script_id": {
+																		"description": "External script identifier.",
 																		"example": "my-worker",
 																		"type": "string"
 																	},
@@ -282,12 +294,19 @@
 																		"type": "string"
 																	},
 																	"path_excludes": {
+																		"example": [
+																			"*.md"
+																		],
 																		"items": {
 																			"type": "string"
 																		},
 																		"type": "array"
 																	},
 																	"path_includes": {
+																		"default": "*",
+																		"example": [
+																			"*"
+																		],
 																		"items": {
 																			"type": "string"
 																		},
@@ -309,6 +328,7 @@
 																				"type": "string"
 																			},
 																			"provider_account_id": {
+																				"description": "Provider account identifier.",
 																				"example": "cloudflare",
 																				"type": "string"
 																			},
@@ -324,10 +344,12 @@
 																				"type": "string"
 																			},
 																			"repo_connection_uuid": {
+																				"description": "Repository connection UUID.",
 																				"format": "uuid",
 																				"type": "string"
 																			},
 																			"repo_id": {
+																				"description": "Repository identifier.",
 																				"example": "workers-sdk",
 																				"type": "string"
 																			},
@@ -339,6 +361,7 @@
 																		"type": "object"
 																	},
 																	"root_directory": {
+																		"description": "Root directory path.",
 																		"example": "/",
 																		"type": "string"
 																	},
@@ -347,6 +370,7 @@
 																		"type": "string"
 																	},
 																	"trigger_uuid": {
+																		"description": "Trigger UUID.",
 																		"format": "uuid",
 																		"type": "string"
 																	}
@@ -394,21 +418,21 @@
 		"operationId": "getBuildByUuid",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Build UUID",
 				"in": "path",
 				"name": "build_uuid",
 				"required": true,
 				"schema": {
+					"description": "Build UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -508,6 +532,7 @@
 															"type": "string"
 														},
 														"branch": {
+															"description": "Git branch name.",
 															"example": "main",
 															"type": "string"
 														},
@@ -520,6 +545,7 @@
 															"type": "string"
 														},
 														"build_token_uuid": {
+															"description": "Build token UUID.",
 															"format": "uuid",
 															"type": "string"
 														},
@@ -534,6 +560,7 @@
 															"type": "string"
 														},
 														"commit_hash": {
+															"description": "Git commit hash",
 															"example": "abc123def456",
 															"type": "string"
 														},
@@ -542,7 +569,7 @@
 															"type": "string"
 														},
 														"deploy_command": {
-															"example": "npm run deploy",
+															"example": "npx wrangler deploy",
 															"type": "string"
 														},
 														"environment_variables": {
@@ -567,6 +594,7 @@
 															"type": "string"
 														},
 														"root_directory": {
+															"description": "Root directory path.",
 															"example": "/",
 															"type": "string"
 														}
@@ -574,6 +602,7 @@
 													"type": "object"
 												},
 												"build_uuid": {
+													"description": "Build UUID.",
 													"format": "uuid",
 													"type": "string"
 												},
@@ -629,18 +658,24 @@
 													"description": "Trigger information without build_token_uuid",
 													"properties": {
 														"branch_excludes": {
+															"example": [],
 															"items": {
 																"type": "string"
 															},
 															"type": "array"
 														},
 														"branch_includes": {
+															"example": [
+																"main"
+															],
 															"items": {
 																"type": "string"
 															},
 															"type": "array"
 														},
 														"build_caching_enabled": {
+															"default": false,
+															"example": false,
 															"type": "boolean"
 														},
 														"build_command": {
@@ -657,10 +692,11 @@
 															"type": "string"
 														},
 														"deploy_command": {
-															"example": "npm run deploy",
+															"example": "npx wrangler deploy",
 															"type": "string"
 														},
 														"external_script_id": {
+															"description": "External script identifier.",
 															"example": "my-worker",
 															"type": "string"
 														},
@@ -669,12 +705,19 @@
 															"type": "string"
 														},
 														"path_excludes": {
+															"example": [
+																"*.md"
+															],
 															"items": {
 																"type": "string"
 															},
 															"type": "array"
 														},
 														"path_includes": {
+															"default": "*",
+															"example": [
+																"*"
+															],
 															"items": {
 																"type": "string"
 															},
@@ -696,6 +739,7 @@
 																	"type": "string"
 																},
 																"provider_account_id": {
+																	"description": "Provider account identifier.",
 																	"example": "cloudflare",
 																	"type": "string"
 																},
@@ -711,10 +755,12 @@
 																	"type": "string"
 																},
 																"repo_connection_uuid": {
+																	"description": "Repository connection UUID.",
 																	"format": "uuid",
 																	"type": "string"
 																},
 																"repo_id": {
+																	"description": "Repository identifier.",
 																	"example": "workers-sdk",
 																	"type": "string"
 																},
@@ -726,6 +772,7 @@
 															"type": "object"
 														},
 														"root_directory": {
+															"description": "Root directory path.",
 															"example": "/",
 															"type": "string"
 														},
@@ -734,6 +781,7 @@
 															"type": "string"
 														},
 														"trigger_uuid": {
+															"description": "Trigger UUID.",
 															"format": "uuid",
 															"type": "string"
 														}
@@ -838,30 +886,30 @@
 		"operationId": "getBuildLogs",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Build UUID",
 				"in": "path",
 				"name": "build_uuid",
 				"required": true,
 				"schema": {
+					"description": "Build UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Pagination cursor for log retrieval",
 				"in": "query",
 				"name": "cursor",
 				"schema": {
+					"description": "Pagination cursor for log retrieval.",
 					"example": "eyJsaW5lIjoxMDAsInRpbWVzdGFtcCI6MTYzNjQ3MjQwMH0",
 					"type": "string"
 				}
@@ -944,8 +992,8 @@
 										"result": {
 											"properties": {
 												"cursor": {
+													"description": "Pagination cursor for log retrieval.",
 													"example": "eyJsaW5lIjoxMDAsInRpbWVzdGFtcCI6MTYzNjQ3MjQwMH0",
-													"nullable": true,
 													"type": "string"
 												},
 												"lines": {
@@ -1072,21 +1120,21 @@
 		"operationId": "getLatestBuildsByScripts",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Comma-separated list of external script IDs (max 20)",
 				"in": "query",
 				"name": "external_script_ids",
 				"required": true,
 				"schema": {
+					"description": "Comma-separated list of external script IDs (max 20).",
 					"example": "worker1,worker2,worker3",
 					"pattern": "^[\\w]+([,][\\w]+)*$",
 					"type": "string"
@@ -1190,6 +1238,7 @@
 																		"type": "string"
 																	},
 																	"branch": {
+																		"description": "Git branch name.",
 																		"example": "main",
 																		"type": "string"
 																	},
@@ -1202,6 +1251,7 @@
 																		"type": "string"
 																	},
 																	"build_token_uuid": {
+																		"description": "Build token UUID.",
 																		"format": "uuid",
 																		"type": "string"
 																	},
@@ -1216,6 +1266,7 @@
 																		"type": "string"
 																	},
 																	"commit_hash": {
+																		"description": "Git commit hash",
 																		"example": "abc123def456",
 																		"type": "string"
 																	},
@@ -1224,7 +1275,7 @@
 																		"type": "string"
 																	},
 																	"deploy_command": {
-																		"example": "npm run deploy",
+																		"example": "npx wrangler deploy",
 																		"type": "string"
 																	},
 																	"environment_variables": {
@@ -1249,6 +1300,7 @@
 																		"type": "string"
 																	},
 																	"root_directory": {
+																		"description": "Root directory path.",
 																		"example": "/",
 																		"type": "string"
 																	}
@@ -1256,6 +1308,7 @@
 																"type": "object"
 															},
 															"build_uuid": {
+																"description": "Build UUID.",
 																"format": "uuid",
 																"type": "string"
 															},
@@ -1311,18 +1364,24 @@
 																"description": "Trigger information without build_token_uuid",
 																"properties": {
 																	"branch_excludes": {
+																		"example": [],
 																		"items": {
 																			"type": "string"
 																		},
 																		"type": "array"
 																	},
 																	"branch_includes": {
+																		"example": [
+																			"main"
+																		],
 																		"items": {
 																			"type": "string"
 																		},
 																		"type": "array"
 																	},
 																	"build_caching_enabled": {
+																		"default": false,
+																		"example": false,
 																		"type": "boolean"
 																	},
 																	"build_command": {
@@ -1339,10 +1398,11 @@
 																		"type": "string"
 																	},
 																	"deploy_command": {
-																		"example": "npm run deploy",
+																		"example": "npx wrangler deploy",
 																		"type": "string"
 																	},
 																	"external_script_id": {
+																		"description": "External script identifier.",
 																		"example": "my-worker",
 																		"type": "string"
 																	},
@@ -1351,12 +1411,19 @@
 																		"type": "string"
 																	},
 																	"path_excludes": {
+																		"example": [
+																			"*.md"
+																		],
 																		"items": {
 																			"type": "string"
 																		},
 																		"type": "array"
 																	},
 																	"path_includes": {
+																		"default": "*",
+																		"example": [
+																			"*"
+																		],
 																		"items": {
 																			"type": "string"
 																		},
@@ -1378,6 +1445,7 @@
 																				"type": "string"
 																			},
 																			"provider_account_id": {
+																				"description": "Provider account identifier.",
 																				"example": "cloudflare",
 																				"type": "string"
 																			},
@@ -1393,10 +1461,12 @@
 																				"type": "string"
 																			},
 																			"repo_connection_uuid": {
+																				"description": "Repository connection UUID.",
 																				"format": "uuid",
 																				"type": "string"
 																			},
 																			"repo_id": {
+																				"description": "Repository identifier.",
 																				"example": "workers-sdk",
 																				"type": "string"
 																			},
@@ -1408,6 +1478,7 @@
 																		"type": "object"
 																	},
 																	"root_directory": {
+																		"description": "Root directory path.",
 																		"example": "/",
 																		"type": "string"
 																	},
@@ -1416,6 +1487,7 @@
 																		"type": "string"
 																	},
 																	"trigger_uuid": {
+																		"description": "Trigger UUID.",
 																		"format": "uuid",
 																		"type": "string"
 																	}
@@ -1463,21 +1535,21 @@
 		"operationId": "cancelBuildByUuid",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Build UUID",
 				"in": "path",
 				"name": "build_uuid",
 				"required": true,
 				"schema": {
+					"description": "Build UUID.",
 					"format": "uuid",
 					"type": "string"
 				}
@@ -1571,11 +1643,13 @@
 													"type": "string"
 												},
 												"build_uuid": {
+													"description": "Build UUID.",
 													"format": "uuid",
 													"type": "string"
 												},
 												"stopped_on": {
 													"format": "date-time",
+													"nullable": true,
 													"type": "string"
 												}
 											},

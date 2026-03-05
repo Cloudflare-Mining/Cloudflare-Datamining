@@ -4,11 +4,11 @@
 		"operationId": "getWorkerConfigAutofill",
 		"parameters": [
 			{
-				"description": "Account identifier",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Account identifier.",
 					"example": "account-123",
 					"type": "string"
 				}
@@ -27,40 +27,40 @@
 				}
 			},
 			{
-				"description": "Provider account identifier",
 				"in": "path",
 				"name": "provider_account_id",
 				"required": true,
 				"schema": {
+					"description": "Provider account identifier.",
 					"example": "cloudflare",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Repository identifier",
 				"in": "path",
 				"name": "repo_id",
 				"required": true,
 				"schema": {
+					"description": "Repository identifier.",
 					"example": "workers-sdk",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Git branch to analyze",
 				"in": "query",
 				"name": "branch",
 				"required": true,
 				"schema": {
+					"description": "Git branch name.",
 					"example": "main",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Root directory path",
 				"in": "query",
 				"name": "root_directory",
 				"schema": {
+					"description": "Root directory path.",
 					"example": "/",
 					"type": "string"
 				}

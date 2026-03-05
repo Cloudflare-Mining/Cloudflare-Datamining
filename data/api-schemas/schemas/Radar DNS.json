@@ -11,11 +11,13 @@
 				"schema": {
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
-						"IP_VERSION",
+						"AS",
 						"CACHE_HIT",
 						"DNSSEC",
 						"DNSSEC_AWARE",
 						"DNSSEC_E2E",
+						"IP_VERSION",
+						"LOCATION",
 						"MATCHING_ANSWER",
 						"PROTOCOL",
 						"QUERY_TYPE",
@@ -7216,11 +7218,13 @@
 				"schema": {
 					"description": "Specifies the attribute by which to group the results.",
 					"enum": [
-						"IP_VERSION",
+						"AS",
 						"CACHE_HIT",
 						"DNSSEC",
 						"DNSSEC_AWARE",
 						"DNSSEC_E2E",
+						"IP_VERSION",
+						"LOCATION",
 						"MATCHING_ANSWER",
 						"PROTOCOL",
 						"QUERY_TYPE",

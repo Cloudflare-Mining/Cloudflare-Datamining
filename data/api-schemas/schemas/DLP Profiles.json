@@ -700,6 +700,22 @@
 																		"format": "date-time",
 																		"type": "string"
 																	},
+																	"data_classes": {
+																		"description": "Data classes associated with this profile.",
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"data_tags": {
+																		"description": "Data tags associated with this profile.",
+																		"items": {
+																			"format": "uuid",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"description": {
 																		"description": "The description of the profile.",
 																		"nullable": true,
@@ -1127,6 +1143,25 @@
 																	"ocr_enabled": {
 																		"default": false,
 																		"type": "boolean"
+																	},
+																	"sensitivity_levels": {
+																		"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																		"items": {
+																			"items": {
+																				"allOf": [
+																					{
+																						"format": "uuid",
+																						"type": "string"
+																					},
+																					{
+																						"format": "uuid",
+																						"type": "string"
+																					}
+																				]
+																			},
+																			"type": "array"
+																		},
+																		"type": "array"
 																	},
 																	"shared_entries": {
 																		"items": {
@@ -3260,6 +3295,22 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"data_classes": {
+																	"description": "Data classes associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"data_tags": {
+																	"description": "Data tags associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": {
 																	"description": "The description of the profile.",
 																	"nullable": true,
@@ -3687,6 +3738,25 @@
 																"ocr_enabled": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"sensitivity_levels": {
+																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"items": {
+																		"items": {
+																			"allOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"type": "array"
 																},
 																"shared_entries": {
 																	"items": {
@@ -5806,6 +5876,22 @@
 														"format": "date-time",
 														"type": "string"
 													},
+													"data_classes": {
+														"description": "Data classes associated with this profile.",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"data_tags": {
+														"description": "Data tags associated with this profile.",
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"description": {
 														"description": "The description of the profile.",
 														"nullable": true,
@@ -6233,6 +6319,25 @@
 													"ocr_enabled": {
 														"default": false,
 														"type": "boolean"
+													},
+													"sensitivity_levels": {
+														"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+														"items": {
+															"items": {
+																"allOf": [
+																	{
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	{
+																		"format": "uuid",
+																		"type": "string"
+																	}
+																]
+															},
+															"type": "array"
+														},
+														"type": "array"
 													},
 													"shared_entries": {
 														"items": {
@@ -6980,6 +7085,22 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"data_classes": {
+																	"description": "Data classes associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"data_tags": {
+																	"description": "Data tags associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": {
 																	"description": "The description of the profile.",
 																	"nullable": true,
@@ -7407,6 +7528,25 @@
 																"ocr_enabled": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"sensitivity_levels": {
+																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"items": {
+																		"items": {
+																			"allOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"type": "array"
 																},
 																"shared_entries": {
 																	"items": {
@@ -9538,6 +9678,22 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"data_classes": {
+																	"description": "Data classes associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"data_tags": {
+																	"description": "Data tags associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": {
 																	"description": "The description of the profile.",
 																	"nullable": true,
@@ -9965,6 +10121,25 @@
 																"ocr_enabled": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"sensitivity_levels": {
+																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"items": {
+																		"items": {
+																			"allOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"type": "array"
 																},
 																"shared_entries": {
 																	"items": {
@@ -12691,6 +12866,22 @@
 								],
 								"type": "object"
 							},
+							"data_classes": {
+								"description": "Data class IDs to associate with the profile.",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"data_tags": {
+								"description": "Data tag IDs to associate with the profile.",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"type": "array"
+							},
 							"description": {
 								"description": "The description of the profile.",
 								"nullable": true,
@@ -12776,6 +12967,25 @@
 							"ocr_enabled": {
 								"default": false,
 								"type": "boolean"
+							},
+							"sensitivity_levels": {
+								"description": "Sensitivity levels to associate with the profile as (group_id, level_id) tuples.",
+								"items": {
+									"items": {
+										"allOf": [
+											{
+												"format": "uuid",
+												"type": "string"
+											},
+											{
+												"format": "uuid",
+												"type": "string"
+											}
+										]
+									},
+									"type": "array"
+								},
+								"type": "array"
 							},
 							"shared_entries": {
 								"description": "Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).",
@@ -12968,6 +13178,22 @@
 																	"description": "When the profile was created.",
 																	"format": "date-time",
 																	"type": "string"
+																},
+																"data_classes": {
+																	"description": "Data classes associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"data_tags": {
+																	"description": "Data tags associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"description": {
 																	"description": "The description of the profile.",
@@ -13396,6 +13622,25 @@
 																"ocr_enabled": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"sensitivity_levels": {
+																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"items": {
+																		"items": {
+																			"allOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"type": "array"
 																},
 																"shared_entries": {
 																	"items": {
@@ -15616,6 +15861,22 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"data_classes": {
+																	"description": "Data classes associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"data_tags": {
+																	"description": "Data tags associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": {
 																	"description": "The description of the profile.",
 																	"nullable": true,
@@ -16043,6 +16304,25 @@
 																"ocr_enabled": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"sensitivity_levels": {
+																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"items": {
+																		"items": {
+																			"allOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"type": "array"
 																},
 																"shared_entries": {
 																	"items": {
@@ -18836,6 +19116,24 @@
 								],
 								"type": "object"
 							},
+							"data_classes": {
+								"description": "Data class IDs to associate with the profile. If omitted, existing associations are unchanged.",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
+							},
+							"data_tags": {
+								"description": "Data tag IDs to associate with the profile. If omitted, existing associations are unchanged.",
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"nullable": true,
+								"type": "array"
+							},
 							"description": {
 								"description": "The description of the profile.",
 								"nullable": true,
@@ -18957,6 +19255,26 @@
 							"ocr_enabled": {
 								"default": false,
 								"type": "boolean"
+							},
+							"sensitivity_levels": {
+								"description": "Sensitivity levels to associate with the profile. If omitted, existing associations are unchanged.",
+								"items": {
+									"items": {
+										"allOf": [
+											{
+												"format": "uuid",
+												"type": "string"
+											},
+											{
+												"format": "uuid",
+												"type": "string"
+											}
+										]
+									},
+									"type": "array"
+								},
+								"nullable": true,
+								"type": "array"
 							},
 							"shared_entries": {
 								"description": "Other entries, e.g. predefined or integration.",
@@ -19149,6 +19467,22 @@
 																	"description": "When the profile was created.",
 																	"format": "date-time",
 																	"type": "string"
+																},
+																"data_classes": {
+																	"description": "Data classes associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"data_tags": {
+																	"description": "Data tags associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"description": {
 																	"description": "The description of the profile.",
@@ -19577,6 +19911,25 @@
 																"ocr_enabled": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"sensitivity_levels": {
+																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"items": {
+																		"items": {
+																			"allOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"type": "array"
 																},
 																"shared_entries": {
 																	"items": {
@@ -21790,6 +22143,22 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"data_classes": {
+																	"description": "Data classes associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"data_tags": {
+																	"description": "Data tags associated with this profile.",
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"description": {
 																	"description": "The description of the profile.",
 																	"nullable": true,
@@ -22217,6 +22586,25 @@
 																"ocr_enabled": {
 																	"default": false,
 																	"type": "boolean"
+																},
+																"sensitivity_levels": {
+																	"description": "Sensitivity levels associated with this profile as (group_id, level_id) tuples.",
+																	"items": {
+																		"items": {
+																			"allOf": [
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				},
+																				{
+																					"format": "uuid",
+																					"type": "string"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"type": "array"
 																},
 																"shared_entries": {
 																	"items": {

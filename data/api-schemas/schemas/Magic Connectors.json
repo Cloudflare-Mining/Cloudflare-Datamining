@@ -120,8 +120,39 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"interrupt_window_days_of_week": {
+													"description": "Allowed days of the week for upgrades. Default is all days.",
+													"items": {
+														"enum": [
+															"Sunday",
+															"Monday",
+															"Tuesday",
+															"Wednesday",
+															"Thursday",
+															"Friday",
+															"Saturday"
+														],
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"interrupt_window_duration_hours": {
+													"maximum": 24,
+													"minimum": 1,
 													"type": "number",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"interrupt_window_embargo_dates": {
+													"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+													"items": {
+														"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+														"type": "string"
+													},
+													"maxItems": 100,
+													"type": "array",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -164,7 +195,9 @@
 												"last_updated",
 												"timezone",
 												"interrupt_window_hour_of_day",
-												"interrupt_window_duration_hours"
+												"interrupt_window_duration_hours",
+												"interrupt_window_days_of_week",
+												"interrupt_window_embargo_dates"
 											],
 											"type": "object"
 										}
@@ -673,8 +706,39 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"interrupt_window_days_of_week": {
+														"description": "Allowed days of the week for upgrades. Default is all days.",
+														"items": {
+															"enum": [
+																"Sunday",
+																"Monday",
+																"Tuesday",
+																"Wednesday",
+																"Thursday",
+																"Friday",
+																"Saturday"
+															],
+															"type": "string"
+														},
+														"type": "array",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"interrupt_window_duration_hours": {
+														"maximum": 24,
+														"minimum": 1,
 														"type": "number",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"interrupt_window_embargo_dates": {
+														"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+														"items": {
+															"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+															"type": "string"
+														},
+														"maxItems": 100,
+														"type": "array",
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
@@ -717,7 +781,9 @@
 													"last_updated",
 													"timezone",
 													"interrupt_window_hour_of_day",
-													"interrupt_window_duration_hours"
+													"interrupt_window_duration_hours",
+													"interrupt_window_days_of_week",
+													"interrupt_window_embargo_dates"
 												],
 												"type": "object"
 											},
@@ -1165,8 +1231,39 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"interrupt_window_days_of_week": {
+													"description": "Allowed days of the week for upgrades. Default is all days.",
+													"items": {
+														"enum": [
+															"Sunday",
+															"Monday",
+															"Tuesday",
+															"Wednesday",
+															"Thursday",
+															"Friday",
+															"Saturday"
+														],
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"interrupt_window_duration_hours": {
+													"maximum": 24,
+													"minimum": 1,
 													"type": "number",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"interrupt_window_embargo_dates": {
+													"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+													"items": {
+														"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+														"type": "string"
+													},
+													"maxItems": 100,
+													"type": "array",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -1209,7 +1306,9 @@
 												"last_updated",
 												"timezone",
 												"interrupt_window_hour_of_day",
-												"interrupt_window_duration_hours"
+												"interrupt_window_duration_hours",
+												"interrupt_window_days_of_week",
+												"interrupt_window_embargo_dates"
 											],
 											"type": "object"
 										}
@@ -7151,8 +7250,39 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
+									"interrupt_window_days_of_week": {
+										"description": "Allowed days of the week for upgrades. Default is all days.",
+										"items": {
+											"enum": [
+												"Sunday",
+												"Monday",
+												"Tuesday",
+												"Wednesday",
+												"Thursday",
+												"Friday",
+												"Saturday"
+											],
+											"type": "string"
+										},
+										"type": "array",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"interrupt_window_duration_hours": {
+										"maximum": 24,
+										"minimum": 1,
 										"type": "number",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"interrupt_window_embargo_dates": {
+										"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+										"items": {
+											"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+											"type": "string"
+										},
+										"maxItems": 100,
+										"type": "array",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
@@ -7291,8 +7421,39 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"interrupt_window_days_of_week": {
+													"description": "Allowed days of the week for upgrades. Default is all days.",
+													"items": {
+														"enum": [
+															"Sunday",
+															"Monday",
+															"Tuesday",
+															"Wednesday",
+															"Thursday",
+															"Friday",
+															"Saturday"
+														],
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"interrupt_window_duration_hours": {
+													"maximum": 24,
+													"minimum": 1,
 													"type": "number",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"interrupt_window_embargo_dates": {
+													"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+													"items": {
+														"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+														"type": "string"
+													},
+													"maxItems": 100,
+													"type": "array",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -7335,7 +7496,9 @@
 												"last_updated",
 												"timezone",
 												"interrupt_window_hour_of_day",
-												"interrupt_window_duration_hours"
+												"interrupt_window_duration_hours",
+												"interrupt_window_days_of_week",
+												"interrupt_window_embargo_dates"
 											],
 											"type": "object"
 										}
@@ -7789,8 +7952,39 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
+									"interrupt_window_days_of_week": {
+										"description": "Allowed days of the week for upgrades. Default is all days.",
+										"items": {
+											"enum": [
+												"Sunday",
+												"Monday",
+												"Tuesday",
+												"Wednesday",
+												"Thursday",
+												"Friday",
+												"Saturday"
+											],
+											"type": "string"
+										},
+										"type": "array",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"interrupt_window_duration_hours": {
+										"maximum": 24,
+										"minimum": 1,
 										"type": "number",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"interrupt_window_embargo_dates": {
+										"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+										"items": {
+											"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+											"type": "string"
+										},
+										"maxItems": 100,
+										"type": "array",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
@@ -7915,8 +8109,39 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"interrupt_window_days_of_week": {
+													"description": "Allowed days of the week for upgrades. Default is all days.",
+													"items": {
+														"enum": [
+															"Sunday",
+															"Monday",
+															"Tuesday",
+															"Wednesday",
+															"Thursday",
+															"Friday",
+															"Saturday"
+														],
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"interrupt_window_duration_hours": {
+													"maximum": 24,
+													"minimum": 1,
 													"type": "number",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"interrupt_window_embargo_dates": {
+													"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+													"items": {
+														"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+														"type": "string"
+													},
+													"maxItems": 100,
+													"type": "array",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -7959,7 +8184,9 @@
 												"last_updated",
 												"timezone",
 												"interrupt_window_hour_of_day",
-												"interrupt_window_duration_hours"
+												"interrupt_window_duration_hours",
+												"interrupt_window_days_of_week",
+												"interrupt_window_embargo_dates"
 											],
 											"type": "object"
 										}
@@ -8464,8 +8691,39 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
+									"interrupt_window_days_of_week": {
+										"description": "Allowed days of the week for upgrades. Default is all days.",
+										"items": {
+											"enum": [
+												"Sunday",
+												"Monday",
+												"Tuesday",
+												"Wednesday",
+												"Thursday",
+												"Friday",
+												"Saturday"
+											],
+											"type": "string"
+										},
+										"type": "array",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"interrupt_window_duration_hours": {
+										"maximum": 24,
+										"minimum": 1,
 										"type": "number",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"interrupt_window_embargo_dates": {
+										"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+										"items": {
+											"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+											"type": "string"
+										},
+										"maxItems": 100,
+										"type": "array",
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
@@ -8604,8 +8862,39 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"interrupt_window_days_of_week": {
+													"description": "Allowed days of the week for upgrades. Default is all days.",
+													"items": {
+														"enum": [
+															"Sunday",
+															"Monday",
+															"Tuesday",
+															"Wednesday",
+															"Thursday",
+															"Friday",
+															"Saturday"
+														],
+														"type": "string"
+													},
+													"type": "array",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"interrupt_window_duration_hours": {
+													"maximum": 24,
+													"minimum": 1,
 													"type": "number",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"interrupt_window_embargo_dates": {
+													"description": "List of dates (YYYY-MM-DD) when upgrades are blocked.",
+													"items": {
+														"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+														"type": "string"
+													},
+													"maxItems": 100,
+													"type": "array",
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
@@ -8648,7 +8937,9 @@
 												"last_updated",
 												"timezone",
 												"interrupt_window_hour_of_day",
-												"interrupt_window_duration_hours"
+												"interrupt_window_duration_hours",
+												"interrupt_window_days_of_week",
+												"interrupt_window_embargo_dates"
 											],
 											"type": "object"
 										}

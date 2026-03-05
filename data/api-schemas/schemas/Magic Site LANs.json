@@ -167,6 +167,14 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"is_breakout": {
+													"description": "mark true to use this LAN for source-based breakout traffic",
+													"type": "boolean"
+												},
+												"is_prioritized": {
+													"description": "mark true to use this LAN for source-based prioritized traffic",
+													"type": "boolean"
+												},
 												"name": {
 													"type": "string"
 												},
@@ -587,6 +595,14 @@
 														"maxLength": 32,
 														"readOnly": true,
 														"type": "string"
+													},
+													"is_breakout": {
+														"description": "mark true to use this LAN for source-based breakout traffic",
+														"type": "boolean"
+													},
+													"is_prioritized": {
+														"description": "mark true to use this LAN for source-based prioritized traffic",
+														"type": "boolean"
 													},
 													"name": {
 														"type": "string"
@@ -1019,6 +1035,14 @@
 													"readOnly": true,
 													"type": "string"
 												},
+												"is_breakout": {
+													"description": "mark true to use this LAN for source-based breakout traffic",
+													"type": "boolean"
+												},
+												"is_prioritized": {
+													"description": "mark true to use this LAN for source-based prioritized traffic",
+													"type": "boolean"
+												},
 												"name": {
 													"type": "string"
 												},
@@ -1341,6 +1365,14 @@
 								"example": 2,
 								"type": "integer"
 							},
+							"is_breakout": {
+								"description": "mark true to use this LAN for source-based breakout traffic",
+								"type": "boolean"
+							},
+							"is_prioritized": {
+								"description": "mark true to use this LAN for source-based prioritized traffic",
+								"type": "boolean"
+							},
 							"name": {
 								"type": "string"
 							},
@@ -1601,6 +1633,14 @@
 													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
+												},
+												"is_breakout": {
+													"description": "mark true to use this LAN for source-based breakout traffic",
+													"type": "boolean"
+												},
+												"is_prioritized": {
+													"description": "mark true to use this LAN for source-based prioritized traffic",
+													"type": "boolean"
 												},
 												"name": {
 													"type": "string"
@@ -1914,6 +1954,14 @@
 								"description": "mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.",
 								"type": "boolean"
 							},
+							"is_breakout": {
+								"description": "mark true to use this LAN for source-based breakout traffic",
+								"type": "boolean"
+							},
+							"is_prioritized": {
+								"description": "mark true to use this LAN for source-based prioritized traffic",
+								"type": "boolean"
+							},
 							"name": {
 								"type": "string"
 							},
@@ -2175,6 +2223,14 @@
 														"maxLength": 32,
 														"readOnly": true,
 														"type": "string"
+													},
+													"is_breakout": {
+														"description": "mark true to use this LAN for source-based breakout traffic",
+														"type": "boolean"
+													},
+													"is_prioritized": {
+														"description": "mark true to use this LAN for source-based prioritized traffic",
+														"type": "boolean"
 													},
 													"name": {
 														"type": "string"
@@ -2493,6 +2549,14 @@
 								"example": 2,
 								"type": "integer"
 							},
+							"is_breakout": {
+								"description": "mark true to use this LAN for source-based breakout traffic",
+								"type": "boolean"
+							},
+							"is_prioritized": {
+								"description": "mark true to use this LAN for source-based prioritized traffic",
+								"type": "boolean"
+							},
 							"name": {
 								"type": "string"
 							},
@@ -2753,6 +2817,14 @@
 													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
+												},
+												"is_breakout": {
+													"description": "mark true to use this LAN for source-based breakout traffic",
+													"type": "boolean"
+												},
+												"is_prioritized": {
+													"description": "mark true to use this LAN for source-based prioritized traffic",
+													"type": "boolean"
 												},
 												"name": {
 													"type": "string"

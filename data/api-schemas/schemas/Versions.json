@@ -2149,6 +2149,18 @@
 														"type": "integer",
 														"x-auditable": true
 													},
+													"urls": {
+														"description": "All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.",
+														"example": [
+															"https://9387e76d-my-worker.my-subdomain.workers.dev"
+														],
+														"items": {
+															"format": "uri",
+															"type": "string"
+														},
+														"readOnly": true,
+														"type": "array"
+													},
 													"usage_model": {
 														"default": "standard",
 														"deprecated": true,
@@ -2166,6 +2178,7 @@
 												"required": [
 													"id",
 													"number",
+													"urls",
 													"created_on"
 												],
 												"type": "object"
@@ -4177,6 +4190,18 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"urls": {
+													"description": "All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.",
+													"example": [
+														"https://9387e76d-my-worker.my-subdomain.workers.dev"
+													],
+													"items": {
+														"format": "uri",
+														"type": "string"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
 												"usage_model": {
 													"default": "standard",
 													"deprecated": true,
@@ -4194,6 +4219,7 @@
 											"required": [
 												"id",
 												"number",
+												"urls",
 												"created_on"
 											],
 											"type": "object"
@@ -6104,6 +6130,18 @@
 								"type": "integer",
 								"x-auditable": true
 							},
+							"urls": {
+								"description": "All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.",
+								"example": [
+									"https://9387e76d-my-worker.my-subdomain.workers.dev"
+								],
+								"items": {
+									"format": "uri",
+									"type": "string"
+								},
+								"readOnly": true,
+								"type": "array"
+							},
 							"usage_model": {
 								"default": "standard",
 								"deprecated": true,
@@ -6121,6 +6159,7 @@
 						"required": [
 							"id",
 							"number",
+							"urls",
 							"created_on"
 						],
 						"type": "object"
@@ -7944,6 +7983,18 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"urls": {
+													"description": "All routable URLs that always point to this version. Does not include alias URLs, since aliases can be updated to point to a different version.",
+													"example": [
+														"https://9387e76d-my-worker.my-subdomain.workers.dev"
+													],
+													"items": {
+														"format": "uri",
+														"type": "string"
+													},
+													"readOnly": true,
+													"type": "array"
+												},
 												"usage_model": {
 													"default": "standard",
 													"deprecated": true,
@@ -7961,6 +8012,7 @@
 											"required": [
 												"id",
 												"number",
+												"urls",
 												"created_on"
 											],
 											"type": "object"

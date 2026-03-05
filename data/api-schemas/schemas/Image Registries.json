@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/containers/registries/{domain}/credentials": {
+		"description": "Generates temporary credentials for accessing Cloudflare's container image registry. Used for pulling and pushing container images.",
 		"operationId": "generateImageRegistryCredentials",
 		"parameters": [
 			{

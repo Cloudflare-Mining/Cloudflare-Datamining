@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/ai/run/@cf/baai/bge-base-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/bge-base-en-v1.5 model.",
 		"operationId": "workers-ai-post-run-cf-baai-bge-base-en-v1-5",
 		"parameters": [
 			{
@@ -205,6 +206,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/bge-large-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/bge-large-en-v1.5 model.",
 		"operationId": "workers-ai-post-run-cf-baai-bge-large-en-v1-5",
 		"parameters": [
 			{
@@ -410,6 +412,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/bge-m3": {
+		"description": "Runs inference on the @cf/baai/bge-m3 model.",
 		"operationId": "workers-ai-post-run-cf-baai-bge-m3",
 		"parameters": [
 			{
@@ -678,6 +681,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/bge-small-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/bge-small-en-v1.5 model.",
 		"operationId": "workers-ai-post-run-cf-baai-bge-small-en-v1-5",
 		"parameters": [
 			{
@@ -883,6 +887,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-base-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/omni-bge-base-en-v1.5 model.",
 		"operationId": "workers-ai-post-run-cf-baai-omni-bge-base-en-v1-5",
 		"parameters": [
 			{
@@ -1088,6 +1093,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-large-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/omni-bge-large-en-v1.5 model.",
 		"operationId": "workers-ai-post-run-cf-baai-omni-bge-large-en-v1-5",
 		"parameters": [
 			{
@@ -1293,6 +1299,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-m3": {
+		"description": "Runs inference on the @cf/baai/omni-bge-m3 model.",
 		"operationId": "workers-ai-post-run-cf-baai-omni-bge-m3",
 		"parameters": [
 			{
@@ -1561,6 +1568,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/omni-bge-small-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/omni-bge-small-en-v1.5 model.",
 		"operationId": "workers-ai-post-run-cf-baai-omni-bge-small-en-v1-5",
 		"parameters": [
 			{
@@ -1766,6 +1774,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/baai/ray-bge-large-en-v1.5": {
+		"description": "Runs inference on the @cf/baai/ray-bge-large-en-v1.5 model.",
 		"operationId": "workers-ai-post-run-cf-baai-ray-bge-large-en-v1-5",
 		"parameters": [
 			{
@@ -1971,6 +1980,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/google/embeddinggemma-300m": {
+		"description": "Runs inference on the @cf/google/embeddinggemma-300m model.",
 		"operationId": "workers-ai-post-run-cf-google-embeddinggemma-300m",
 		"parameters": [
 			{
@@ -2117,6 +2127,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/google/omni-embeddinggemma-300m": {
+		"description": "Runs inference on the @cf/google/omni-embeddinggemma-300m model.",
 		"operationId": "workers-ai-post-run-cf-google-omni-embeddinggemma-300m",
 		"parameters": [
 			{
@@ -2258,6 +2269,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/pfnet/plamo-embedding-1b": {
+		"description": "Runs inference on the @cf/pfnet/plamo-embedding-1b model.",
 		"operationId": "workers-ai-post-run-cf-pfnet-plamo-embedding-1b",
 		"parameters": [
 			{
@@ -2399,6 +2411,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen3-embedding-0.6b": {
+		"description": "Runs inference on the @cf/qwen/qwen3-embedding-0.6b model.",
 		"operationId": "workers-ai-post-run-cf-qwen-qwen3-embedding-0-6b",
 		"parameters": [
 			{

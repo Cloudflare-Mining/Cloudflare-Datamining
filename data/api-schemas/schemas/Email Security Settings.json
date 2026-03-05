@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
+		"description": "Removes an email allow policy. Previously allowed senders will be subject to normal\nsecurity scanning.",
 		"operationId": "email_security_delete_allow_policy",
 		"parameters": [
 			{
@@ -209,6 +210,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
+		"description": "Removes a sender from the email block list, allowing their messages to be delivered\nnormally.",
 		"operationId": "email_security_delete_blocked_sender",
 		"parameters": [
 			{
@@ -418,6 +420,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains": {
+		"description": "Bulk removes multiple domains from email security configuration in a single request.",
 		"operationId": "email_security_delete_domains",
 		"parameters": [
 			{
@@ -850,6 +853,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}": {
+		"description": "Removes a display name from impersonation protection monitoring.",
 		"operationId": "email_security_delete_display_name",
 		"parameters": [
 			{
@@ -1057,6 +1061,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
+		"description": "Removes a domain from the trusted domains list, subjecting it to normal security\nscanning.",
 		"operationId": "email_security_delete_trusted_domain",
 		"parameters": [
 			{
@@ -1758,6 +1763,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
+		"description": "Retrieves details for a specific email allow policy, including its matching criteria\nand scope.",
 		"operationId": "email_security_get_allow_policy",
 		"parameters": [
 			{
@@ -2088,6 +2094,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders": {
+		"description": "Lists all blocked sender entries with their patterns and block reasons.",
 		"operationId": "email_security_list_blocked_senders",
 		"parameters": [
 			{
@@ -2474,6 +2481,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
+		"description": "Gets information about a specific blocked sender entry, including the pattern and\nblock reason.",
 		"operationId": "email_security_get_blocked_sender",
 		"parameters": [
 			{
@@ -3356,6 +3364,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
+		"description": "Gets configuration details for a specific domain in email security.",
 		"operationId": "email_security_get_domain",
 		"parameters": [
 			{
@@ -4202,6 +4211,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}": {
+		"description": "Retrieves a display name entry used for impersonation protection.",
 		"operationId": "email_security_get_display_name",
 		"parameters": [
 			{
@@ -4872,6 +4882,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
+		"description": "Gets information about a specific trusted domain entry.",
 		"operationId": "email_security_get_trusted_domain",
 		"parameters": [
 			{
@@ -5153,6 +5164,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
+		"description": "Updates an existing email allow policy, modifying its matching criteria or scope.",
 		"operationId": "email_security_update_allow_policy",
 		"parameters": [
 			{
@@ -5554,6 +5566,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
+		"description": "Modifies a blocked sender entry, updating its pattern or block reason.",
 		"operationId": "email_security_update_blocked_sender",
 		"parameters": [
 			{
@@ -5876,6 +5889,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
+		"description": "Updates configuration for a domain in email security.",
 		"operationId": "email_security_update_domain",
 		"parameters": [
 			{
@@ -6444,6 +6458,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/impersonation_registry/{display_name_id}": {
+		"description": "Updates a display name entry used for impersonation protection.",
 		"operationId": "email_security_update_display_name",
 		"parameters": [
 			{
@@ -6754,6 +6769,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
+		"description": "Modifies a trusted domain entry's configuration.",
 		"operationId": "email_security_update_trusted_domain",
 		"parameters": [
 			{
@@ -7072,6 +7088,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies": {
+		"description": "Creates a new email allow policy that permits specific senders, domains, or patterns\nto bypass security scanning.",
 		"operationId": "email_security_create_allow_policy",
 		"parameters": [
 			{
@@ -8434,6 +8451,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders": {
+		"description": "Adds a sender pattern to the email block list, preventing messages from matching\nsenders from being delivered.",
 		"operationId": "email_security_create_blocked_sender",
 		"parameters": [
 			{
@@ -9420,6 +9438,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/impersonation_registry": {
+		"description": "Creates a display name entry for email security impersonation protection.",
 		"operationId": "email_security_create_display_name",
 		"parameters": [
 			{
@@ -9958,6 +9977,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains": {
+		"description": "Adds a domain to the trusted domains list for email security, reducing false positive\ndetections.",
 		"operationId": "email_security_create_trusted_domain",
 		"parameters": [
 			{

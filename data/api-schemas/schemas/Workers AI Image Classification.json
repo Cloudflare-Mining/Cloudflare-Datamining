@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/ai/run/@cf/microsoft/resnet-50": {
+		"description": "Runs inference on the @cf/microsoft/resnet-50 model.",
 		"operationId": "workers-ai-post-run-cf-microsoft-resnet-50",
 		"parameters": [
 			{

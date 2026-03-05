@@ -1282,12 +1282,13 @@
 				"in": "query",
 				"name": "normalization",
 				"schema": {
+					"default": "PERCENTAGE",
 					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"PERCENTAGE_CHANGE",
+						"PERCENTAGE",
 						"MIN0_MAX"
 					],
-					"example": "MIN0_MAX",
+					"example": "PERCENTAGE",
 					"type": "string"
 				}
 			},

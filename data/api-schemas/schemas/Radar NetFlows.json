@@ -424,6 +424,8 @@
 					"description": "Specifies the NetFlows attribute by which to group the results.",
 					"enum": [
 						"ADM1",
+						"AS",
+						"LOCATION",
 						"PRODUCT"
 					],
 					"type": "string"
@@ -1337,6 +1339,8 @@
 					"description": "Specifies the NetFlows attribute by which to group the results.",
 					"enum": [
 						"ADM1",
+						"AS",
+						"LOCATION",
 						"PRODUCT"
 					],
 					"type": "string"

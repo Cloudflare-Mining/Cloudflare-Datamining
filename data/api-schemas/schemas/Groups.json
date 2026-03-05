@@ -1,0 +1,998 @@
+{
+	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
+		"description": "Delete a group for an account",
+		"operationId": "delete_GroupDelete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"example": "12345678-1234-1234-1234-1234567890ab",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Group deleted successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete a group for an account",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members/{member_id}": {
+		"description": "Delete a group member",
+		"operationId": "delete_GroupMemberDelete",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"example": "12345678-1234-1234-1234-1234567890ab",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "member_id",
+				"required": true,
+				"schema": {
+					"example": "12345678-1234-1234-1234-1234567890ab",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created group member."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete a group member",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
+		"description": "List groups for an account",
+		"operationId": "get_GroupList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"createdAt": {
+										"example": "2022-04-01T00:00:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"description": {
+										"example": "Cloudforce subscribers",
+										"type": "string"
+									},
+									"name": {
+										"example": "loudforce-subscribers",
+										"type": "string"
+									},
+									"updatedAt": {
+										"example": "2022-04-01T00:00:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"uuid",
+									"name",
+									"description",
+									"createdAt",
+									"updatedAt"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns the list of groups."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List groups for an account",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
+		"description": "Read a group for an account",
+		"operationId": "get_GroupRead",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"example": "12345678-1234-1234-1234-1234567890ab",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"description": {
+									"example": "Cloudforce subscribers",
+									"type": "string"
+								},
+								"members": {
+									"items": {
+										"properties": {
+											"accountId": {
+												"example": "123",
+												"type": "string"
+											},
+											"createdAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"groupId": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"updatedAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"uuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											}
+										},
+										"required": [
+											"uuid",
+											"groupId",
+											"accountId"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"name": {
+									"example": "loudforce-subscribers",
+									"type": "string"
+								},
+								"updatedAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"description",
+								"createdAt",
+								"updatedAt",
+								"members"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Return the group."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Read a group for an account",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
+		"description": "List group members",
+		"operationId": "get_GroupMemberList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"example": "12345678-1234-1234-1234-1234567890ab",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"items": {
+								"properties": {
+									"accountId": {
+										"example": "123",
+										"type": "string"
+									},
+									"createdAt": {
+										"example": "2022-04-01T00:00:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"groupId": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									},
+									"updatedAt": {
+										"example": "2022-04-01T00:00:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"uuid": {
+										"example": "12345678-1234-1234-1234-1234567890ab",
+										"type": "string"
+									}
+								},
+								"required": [
+									"uuid",
+									"groupId",
+									"accountId"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "Returns the group members."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List group members",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups": {
+		"description": "Create a group",
+		"operationId": "post_GroupCreate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"example": "Cloudforce subscribers",
+								"type": "string"
+							},
+							"name": {
+								"example": "cloudforce-subscribers",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"description"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"description": {
+									"example": "Cloudforce subscribers",
+									"type": "string"
+								},
+								"name": {
+									"example": "loudforce-subscribers",
+									"type": "string"
+								},
+								"updatedAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"description",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created group."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a group",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}/members": {
+		"description": "Create a group member",
+		"operationId": "post_GroupMemberCreate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"example": "12345678-1234-1234-1234-1234567890ab",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"accountId": {
+								"example": "123",
+								"type": "string"
+							}
+						},
+						"required": [
+							"accountId"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"accountId": {
+									"example": "123",
+									"type": "string"
+								},
+								"createdAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"groupId": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								},
+								"updatedAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"groupId",
+								"accountId"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the created group member."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Create a group member",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"PUT /accounts/{account_id}/cloudforce-one/events/dataset/-/groups/{group_id}": {
+		"description": "Update a group",
+		"operationId": "put_GroupUpdate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "group_id",
+				"required": true,
+				"schema": {
+					"example": "12345678-1234-1234-1234-1234567890ab",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"description": {
+								"example": "Cloudforce subscribers",
+								"type": "string"
+							},
+							"name": {
+								"example": "cloudforce-subscribers",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"description"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"createdAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"description": {
+									"example": "Cloudforce subscribers",
+									"type": "string"
+								},
+								"name": {
+									"example": "loudforce-subscribers",
+									"type": "string"
+								},
+								"updatedAt": {
+									"example": "2022-04-01T00:00:00Z",
+									"format": "date-time",
+									"type": "string"
+								},
+								"uuid": {
+									"example": "12345678-1234-1234-1234-1234567890ab",
+									"type": "string"
+								}
+							},
+							"required": [
+								"uuid",
+								"name",
+								"description",
+								"createdAt",
+								"updatedAt"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns the updated group."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update a group",
+		"tags": [
+			"Groups"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	}
+}

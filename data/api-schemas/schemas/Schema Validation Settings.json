@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
+		"description": "Removes custom schema validation settings for a specific API operation, reverting to zone-level defaults.",
 		"operationId": "schema-validation-delete-per-operation-setting",
 		"responses": {
 			"200": {
@@ -258,6 +259,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/settings": {
+		"description": "Retrieves the current global schema validation settings for a zone.",
 		"operationId": "schema-validation-get-settings",
 		"responses": {
 			"200": {
@@ -529,6 +531,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations": {
+		"description": "Lists all per-operation schema validation settings configured for the zone.",
 		"operationId": "schema-validation-list-per-operation-settings",
 		"parameters": [
 			{
@@ -865,6 +868,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
+		"description": "Retrieves the schema validation settings configured for a specific API operation.",
 		"operationId": "schema-validation-get-per-operation-setting",
 		"responses": {
 			"200": {
@@ -1140,6 +1144,7 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings": {
+		"description": "Partially updates global schema validation settings for a zone using PATCH semantics.",
 		"operationId": "schema-validation-edit-settings",
 		"requestBody": {
 			"content": {
@@ -1442,6 +1447,7 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/schema_validation/settings/operations": {
+		"description": "Updates schema validation settings for multiple API operations in a single request. Efficient for applying consistent validation rules across endpoints.",
 		"operationId": "schema-validation-bulk-edit-per-operation-settings",
 		"requestBody": {
 			"content": {
@@ -1763,6 +1769,7 @@
 		]
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings": {
+		"description": "Fully updates global schema validation settings for a zone, replacing existing configuration.",
 		"operationId": "schema-validation-update-settings",
 		"requestBody": {
 			"content": {
@@ -2076,6 +2083,7 @@
 		]
 	},
 	"PUT /zones/{zone_id}/schema_validation/settings/operations/{operation_id}": {
+		"description": "Fully updates schema validation settings for a specific API operation.",
 		"operationId": "schema-validation-update-per-operation-setting",
 		"requestBody": {
 			"content": {

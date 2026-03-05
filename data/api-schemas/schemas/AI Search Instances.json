@@ -179,7 +179,7 @@
 											"x-auditable": true
 										},
 										"fusion_method": {
-											"default": "max",
+											"default": "rrf",
 											"enum": [
 												"max",
 												"rrf"
@@ -342,6 +342,42 @@
 										"retrieval_options": {
 											"nullable": true,
 											"properties": {
+												"boost_by": {
+													"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+													"example": [
+														{
+															"direction": "desc",
+															"field": "timestamp"
+														}
+													],
+													"items": {
+														"properties": {
+															"direction": {
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"enum": [
+																	"asc",
+																	"desc",
+																	"exists",
+																	"not_exists"
+																],
+																"type": "string"
+															},
+															"field": {
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"example": "timestamp",
+																"maxLength": 64,
+																"minLength": 1,
+																"type": "string"
+															}
+														},
+														"required": [
+															"field"
+														],
+														"type": "object"
+													},
+													"maxItems": 3,
+													"type": "array"
+												},
 												"keyword_match_mode": {
 													"default": "exact_match",
 													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
@@ -459,6 +495,38 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
+																"content_selector": {
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"example": [
+																		{
+																			"path": "**/blog/**",
+																			"selector": "article .post-body"
+																		}
+																	],
+																	"items": {
+																		"properties": {
+																			"path": {
+																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
+																				"example": "**/article/**",
+																				"maxLength": 200,
+																				"type": "string"
+																			},
+																			"selector": {
+																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
+																				"example": "article .post-body",
+																				"maxLength": 200,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"path",
+																			"selector"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
+																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -552,8 +620,6 @@
 									},
 									"required": [
 										"id",
-										"type",
-										"source",
 										"vectorize_name",
 										"created_at",
 										"modified_at"
@@ -583,11 +649,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},
@@ -680,6 +744,33 @@
 				"name": "search",
 				"schema": {
 					"description": "Search by id",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Order By Column Name",
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"default": "created_at",
+					"description": "Order By Column Name",
+					"enum": [
+						"created_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Order By Direction",
+				"in": "query",
+				"name": "order_by_direction",
+				"schema": {
+					"default": "desc",
+					"description": "Order By Direction",
+					"enum": [
+						"asc",
+						"desc"
+					],
 					"type": "string"
 				}
 			}
@@ -836,7 +927,7 @@
 												"x-auditable": true
 											},
 											"fusion_method": {
-												"default": "max",
+												"default": "rrf",
 												"enum": [
 													"max",
 													"rrf"
@@ -999,6 +1090,42 @@
 											"retrieval_options": {
 												"nullable": true,
 												"properties": {
+													"boost_by": {
+														"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+														"example": [
+															{
+																"direction": "desc",
+																"field": "timestamp"
+															}
+														],
+														"items": {
+															"properties": {
+																"direction": {
+																	"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																	"enum": [
+																		"asc",
+																		"desc",
+																		"exists",
+																		"not_exists"
+																	],
+																	"type": "string"
+																},
+																"field": {
+																	"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																	"example": "timestamp",
+																	"maxLength": 64,
+																	"minLength": 1,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"field"
+															],
+															"type": "object"
+														},
+														"maxItems": 3,
+														"type": "array"
+													},
 													"keyword_match_mode": {
 														"default": "exact_match",
 														"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
@@ -1116,6 +1243,38 @@
 														"properties": {
 															"parse_options": {
 																"properties": {
+																	"content_selector": {
+																		"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																		"example": [
+																			{
+																				"path": "**/blog/**",
+																				"selector": "article .post-body"
+																			}
+																		],
+																		"items": {
+																			"properties": {
+																				"path": {
+																					"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
+																					"example": "**/article/**",
+																					"maxLength": 200,
+																					"type": "string"
+																				},
+																				"selector": {
+																					"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
+																					"example": "article .post-body",
+																					"maxLength": 200,
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"path",
+																				"selector"
+																			],
+																			"type": "object"
+																		},
+																		"maxItems": 10,
+																		"type": "array"
+																	},
 																	"include_headers": {
 																		"additionalProperties": {
 																			"maxLength": 8192,
@@ -1209,8 +1368,6 @@
 										},
 										"required": [
 											"id",
-											"type",
-											"source",
 											"vectorize_name",
 											"created_at",
 											"modified_at"
@@ -1241,27 +1398,36 @@
 								"errors": {
 									"items": {
 										"properties": {
+											"code": {
+												"type": "number"
+											},
 											"message": {
 												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											}
 										},
 										"required": [
-											"message"
+											"code",
+											"message",
+											"path"
 										],
 										"type": "object"
 									},
 									"type": "array"
 								},
-								"result": {
-									"type": "object"
-								},
 								"success": {
-									"example": false,
+									"enum": [
+										false
+									],
 									"type": "boolean"
 								}
 							},
 							"required": [
-								"result",
 								"success",
 								"errors"
 							],
@@ -1269,7 +1435,7 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Input Validation Error"
 			}
 		},
 		"security": [
@@ -1477,7 +1643,7 @@
 											"x-auditable": true
 										},
 										"fusion_method": {
-											"default": "max",
+											"default": "rrf",
 											"enum": [
 												"max",
 												"rrf"
@@ -1640,6 +1806,42 @@
 										"retrieval_options": {
 											"nullable": true,
 											"properties": {
+												"boost_by": {
+													"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+													"example": [
+														{
+															"direction": "desc",
+															"field": "timestamp"
+														}
+													],
+													"items": {
+														"properties": {
+															"direction": {
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"enum": [
+																	"asc",
+																	"desc",
+																	"exists",
+																	"not_exists"
+																],
+																"type": "string"
+															},
+															"field": {
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"example": "timestamp",
+																"maxLength": 64,
+																"minLength": 1,
+																"type": "string"
+															}
+														},
+														"required": [
+															"field"
+														],
+														"type": "object"
+													},
+													"maxItems": 3,
+													"type": "array"
+												},
 												"keyword_match_mode": {
 													"default": "exact_match",
 													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
@@ -1757,6 +1959,38 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
+																"content_selector": {
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"example": [
+																		{
+																			"path": "**/blog/**",
+																			"selector": "article .post-body"
+																		}
+																	],
+																	"items": {
+																		"properties": {
+																			"path": {
+																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
+																				"example": "**/article/**",
+																				"maxLength": 200,
+																				"type": "string"
+																			},
+																			"selector": {
+																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
+																				"example": "article .post-body",
+																				"maxLength": 200,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"path",
+																			"selector"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
+																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -1850,8 +2084,6 @@
 									},
 									"required": [
 										"id",
-										"type",
-										"source",
 										"vectorize_name",
 										"created_at",
 										"modified_at"
@@ -1872,6 +2104,53 @@
 				},
 				"description": "Returns a single object if found"
 			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											},
+											"path": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"code",
+											"message",
+											"path"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Input Validation Error"
+			},
 			"404": {
 				"content": {
 					"application/json": {
@@ -1881,11 +2160,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},
@@ -2030,11 +2307,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},
@@ -2156,6 +2431,22 @@
 								],
 								"x-auditable": true
 							},
+							"cache": {
+								"default": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"cache_threshold": {
+								"default": "close_enough",
+								"enum": [
+									"super_strict_match",
+									"close_enough",
+									"flexible_friend",
+									"anything_goes"
+								],
+								"type": "string",
+								"x-auditable": true
+							},
 							"chunk": {
 								"default": true,
 								"type": "boolean",
@@ -2225,7 +2516,7 @@
 								"x-auditable": true
 							},
 							"fusion_method": {
-								"default": "max",
+								"default": "rrf",
 								"enum": [
 									"max",
 									"rrf"
@@ -2362,6 +2653,42 @@
 							"retrieval_options": {
 								"nullable": true,
 								"properties": {
+									"boost_by": {
+										"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+										"example": [
+											{
+												"direction": "desc",
+												"field": "timestamp"
+											}
+										],
+										"items": {
+											"properties": {
+												"direction": {
+													"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+													"enum": [
+														"asc",
+														"desc",
+														"exists",
+														"not_exists"
+													],
+													"type": "string"
+												},
+												"field": {
+													"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+													"example": "timestamp",
+													"maxLength": 64,
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"required": [
+												"field"
+											],
+											"type": "object"
+										},
+										"maxItems": 3,
+										"type": "array"
+									},
 									"keyword_match_mode": {
 										"default": "exact_match",
 										"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
@@ -2479,6 +2806,38 @@
 										"properties": {
 											"parse_options": {
 												"properties": {
+													"content_selector": {
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+														"example": [
+															{
+																"path": "**/blog/**",
+																"selector": "article .post-body"
+															}
+														],
+														"items": {
+															"properties": {
+																"path": {
+																	"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
+																	"example": "**/article/**",
+																	"maxLength": 200,
+																	"type": "string"
+																},
+																"selector": {
+																	"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
+																	"example": "article .post-body",
+																	"maxLength": 200,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"path",
+																"selector"
+															],
+															"type": "object"
+														},
+														"maxItems": 10,
+														"type": "array"
+													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
@@ -2562,9 +2921,7 @@
 							}
 						},
 						"required": [
-							"id",
-							"type",
-							"source"
+							"id"
 						],
 						"type": "object"
 					}
@@ -2722,7 +3079,7 @@
 											"x-auditable": true
 										},
 										"fusion_method": {
-											"default": "max",
+											"default": "rrf",
 											"enum": [
 												"max",
 												"rrf"
@@ -2885,6 +3242,42 @@
 										"retrieval_options": {
 											"nullable": true,
 											"properties": {
+												"boost_by": {
+													"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+													"example": [
+														{
+															"direction": "desc",
+															"field": "timestamp"
+														}
+													],
+													"items": {
+														"properties": {
+															"direction": {
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"enum": [
+																	"asc",
+																	"desc",
+																	"exists",
+																	"not_exists"
+																],
+																"type": "string"
+															},
+															"field": {
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"example": "timestamp",
+																"maxLength": 64,
+																"minLength": 1,
+																"type": "string"
+															}
+														},
+														"required": [
+															"field"
+														],
+														"type": "object"
+													},
+													"maxItems": 3,
+													"type": "array"
+												},
 												"keyword_match_mode": {
 													"default": "exact_match",
 													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
@@ -3002,6 +3395,38 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
+																"content_selector": {
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"example": [
+																		{
+																			"path": "**/blog/**",
+																			"selector": "article .post-body"
+																		}
+																	],
+																	"items": {
+																		"properties": {
+																			"path": {
+																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
+																				"example": "**/article/**",
+																				"maxLength": 200,
+																				"type": "string"
+																			},
+																			"selector": {
+																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
+																				"example": "article .post-body",
+																				"maxLength": 200,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"path",
+																			"selector"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
+																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -3095,8 +3520,6 @@
 									},
 									"required": [
 										"id",
-										"type",
-										"source",
 										"vectorize_name",
 										"created_at",
 										"modified_at"
@@ -3126,16 +3549,13 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
 												"type": "number"
 											},
 											"message": {
-												"example": "Input Validation Error",
 												"type": "string"
 											},
 											"path": {
 												"items": {
-													"example": "body",
 													"type": "string"
 												},
 												"type": "array"
@@ -3315,6 +3735,42 @@
 									},
 									"retrieval": {
 										"properties": {
+											"boost_by": {
+												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+												"example": [
+													{
+														"direction": "desc",
+														"field": "timestamp"
+													}
+												],
+												"items": {
+													"properties": {
+														"direction": {
+															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+															"enum": [
+																"asc",
+																"desc",
+																"exists",
+																"not_exists"
+															],
+															"type": "string"
+														},
+														"field": {
+															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+															"example": "timestamp",
+															"maxLength": 64,
+															"minLength": 1,
+															"type": "string"
+														}
+													},
+													"required": [
+														"field"
+													],
+													"type": "object"
+												},
+												"maxItems": 3,
+												"type": "array"
+											},
 											"context_expansion": {
 												"default": 0,
 												"maximum": 3,
@@ -3598,11 +4054,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},
@@ -3778,6 +4232,42 @@
 									},
 									"retrieval": {
 										"properties": {
+											"boost_by": {
+												"description": "Metadata fields to boost search results by. Overrides the instance-level boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+												"example": [
+													{
+														"direction": "desc",
+														"field": "timestamp"
+													}
+												],
+												"items": {
+													"properties": {
+														"direction": {
+															"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+															"enum": [
+																"asc",
+																"desc",
+																"exists",
+																"not_exists"
+															],
+															"type": "string"
+														},
+														"field": {
+															"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+															"example": "timestamp",
+															"maxLength": 64,
+															"minLength": 1,
+															"type": "string"
+														}
+													},
+													"required": [
+														"field"
+													],
+													"type": "object"
+												},
+												"maxItems": 3,
+												"type": "array"
+											},
 											"context_expansion": {
 												"default": 0,
 												"maximum": 3,
@@ -3983,11 +4473,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},
@@ -4209,7 +4697,7 @@
 								"x-auditable": true
 							},
 							"fusion_method": {
-								"default": "max",
+								"default": "rrf",
 								"enum": [
 									"max",
 									"rrf"
@@ -4342,6 +4830,42 @@
 							"retrieval_options": {
 								"nullable": true,
 								"properties": {
+									"boost_by": {
+										"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+										"example": [
+											{
+												"direction": "desc",
+												"field": "timestamp"
+											}
+										],
+										"items": {
+											"properties": {
+												"direction": {
+													"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+													"enum": [
+														"asc",
+														"desc",
+														"exists",
+														"not_exists"
+													],
+													"type": "string"
+												},
+												"field": {
+													"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+													"example": "timestamp",
+													"maxLength": 64,
+													"minLength": 1,
+													"type": "string"
+												}
+											},
+											"required": [
+												"field"
+											],
+											"type": "object"
+										},
+										"maxItems": 3,
+										"type": "array"
+									},
 									"keyword_match_mode": {
 										"default": "exact_match",
 										"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
@@ -4455,6 +4979,38 @@
 										"properties": {
 											"parse_options": {
 												"properties": {
+													"content_selector": {
+														"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+														"example": [
+															{
+																"path": "**/blog/**",
+																"selector": "article .post-body"
+															}
+														],
+														"items": {
+															"properties": {
+																"path": {
+																	"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
+																	"example": "**/article/**",
+																	"maxLength": 200,
+																	"type": "string"
+																},
+																"selector": {
+																	"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
+																	"example": "article .post-body",
+																	"maxLength": 200,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"path",
+																"selector"
+															],
+															"type": "object"
+														},
+														"maxItems": 10,
+														"type": "array"
+													},
 													"include_headers": {
 														"additionalProperties": {
 															"maxLength": 8192,
@@ -4748,7 +5304,7 @@
 											"x-auditable": true
 										},
 										"fusion_method": {
-											"default": "max",
+											"default": "rrf",
 											"enum": [
 												"max",
 												"rrf"
@@ -4911,6 +5467,42 @@
 										"retrieval_options": {
 											"nullable": true,
 											"properties": {
+												"boost_by": {
+													"description": "Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field.",
+													"example": [
+														{
+															"direction": "desc",
+															"field": "timestamp"
+														}
+													],
+													"items": {
+														"properties": {
+															"direction": {
+																"description": "Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps). 'asc' = lower values rank higher. 'exists' = boost chunks that have the field. 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc' for numeric fields, 'exists' for text/boolean fields.",
+																"enum": [
+																	"asc",
+																	"desc",
+																	"exists",
+																	"not_exists"
+																],
+																"type": "string"
+															},
+															"field": {
+																"description": "Metadata field name to boost by. Use 'timestamp' for document freshness, or any custom_metadata field. Numeric fields support asc/desc directions; text/boolean fields support exists/not_exists.",
+																"example": "timestamp",
+																"maxLength": 64,
+																"minLength": 1,
+																"type": "string"
+															}
+														},
+														"required": [
+															"field"
+														],
+														"type": "object"
+													},
+													"maxItems": 3,
+													"type": "array"
+												},
 												"keyword_match_mode": {
 													"default": "exact_match",
 													"description": "Controls how keyword search terms are matched. exact_match requires all terms to appear (AND); fuzzy_match returns results containing any term (OR). Defaults to exact_match.",
@@ -5028,6 +5620,38 @@
 													"properties": {
 														"parse_options": {
 															"properties": {
+																"content_selector": {
+																	"description": "List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed.",
+																	"example": [
+																		{
+																			"path": "**/blog/**",
+																			"selector": "article .post-body"
+																		}
+																	],
+																	"items": {
+																		"properties": {
+																			"path": {
+																				"description": "Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories.",
+																				"example": "**/article/**",
+																				"maxLength": 200,
+																				"type": "string"
+																			},
+																			"selector": {
+																				"description": "CSS selector to extract content from pages matching the path pattern. Supports standard CSS selectors including class, ID, element, and attribute selectors.",
+																				"example": "article .post-body",
+																				"maxLength": 200,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"path",
+																			"selector"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 10,
+																	"type": "array"
+																},
 																"include_headers": {
 																	"additionalProperties": {
 																		"maxLength": 8192,
@@ -5121,8 +5745,6 @@
 									},
 									"required": [
 										"id",
-										"type",
-										"source",
 										"vectorize_name",
 										"created_at",
 										"modified_at"
@@ -5152,16 +5774,13 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7001,
 												"type": "number"
 											},
 											"message": {
-												"example": "Input Validation Error",
 												"type": "string"
 											},
 											"path": {
 												"items": {
-													"example": "body",
 													"type": "string"
 												},
 												"type": "array"
@@ -5202,11 +5821,9 @@
 									"items": {
 										"properties": {
 											"code": {
-												"example": 7002,
 												"type": "number"
 											},
 											"message": {
-												"example": "Not Found",
 												"type": "string"
 											}
 										},

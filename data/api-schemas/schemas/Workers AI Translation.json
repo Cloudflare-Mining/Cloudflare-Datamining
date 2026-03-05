@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/ai/run/@cf/ai4bharat/indictrans2-en-indic-1B": {
+		"description": "Runs inference on the @cf/ai4bharat/indictrans2-en-indic-1B model.",
 		"operationId": "workers-ai-post-run-cf-ai4bharat-indictrans2-en-indic-1B",
 		"parameters": [
 			{
@@ -183,6 +184,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/ai4bharat/omni-indictrans2-en-indic-1b": {
+		"description": "Runs inference on the @cf/ai4bharat/omni-indictrans2-en-indic-1b model.",
 		"operationId": "workers-ai-post-run-cf-ai4bharat-omni-indictrans2-en-indic-1b",
 		"parameters": [
 			{
@@ -366,6 +368,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai/run/@cf/meta/m2m100-1.2b": {
+		"description": "Runs inference on the @cf/meta/m2m100-1.2b model.",
 		"operationId": "workers-ai-post-run-cf-meta-m2m100-1-2b",
 		"parameters": [
 			{

@@ -2628,6 +2628,67 @@
 																	"id": {
 																		"description": "ID of the zone setting.",
 																		"enum": [
+																			"redirects_for_ai_training"
+																		],
+																		"example": "redirects_for_ai_training"
+																	},
+																	"value": {
+																		"default": "off",
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"off",
+																			"on"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"description": "When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs\nfound in the HTML response, ensuring AI models train on authoritative content.",
+														"title": "Redirects for AI Training"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"default": true,
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"example": "development_mode",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
 																			"replace_insecure_js"
 																		],
 																		"example": "replace_insecure_js"
@@ -6641,6 +6702,67 @@
 													],
 													"description": "The value set for the Pseudo IPv4 setting.",
 													"title": "Pseudo IPv4 Value"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"default": true,
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"example": "development_mode",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"redirects_for_ai_training"
+																	],
+																	"example": "redirects_for_ai_training"
+																},
+																"value": {
+																	"default": "off",
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"off",
+																		"on"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"description": "When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs\nfound in the HTML response, ensuring AI models train on authoritative content.",
+													"title": "Redirects for AI Training"
 												},
 												{
 													"allOf": [
@@ -12145,6 +12267,67 @@
 												"id": {
 													"description": "ID of the zone setting.",
 													"enum": [
+														"redirects_for_ai_training"
+													],
+													"example": "redirects_for_ai_training"
+												},
+												"value": {
+													"default": "off",
+													"description": "Value of the zone setting.",
+													"enum": [
+														"off",
+														"on"
+													],
+													"type": "string"
+												}
+											}
+										}
+									],
+									"description": "When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs\nfound in the HTML response, ensuring AI models train on authoritative content.",
+									"title": "Redirects for AI Training"
+								},
+								{
+									"allOf": [
+										{
+											"properties": {
+												"editable": {
+													"default": true,
+													"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+													"enum": [
+														true,
+														false
+													],
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"id": {
+													"description": "Identifier of the zone setting.",
+													"example": "development_mode",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "last time this setting was modified.",
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"value": {
+													"description": "Current value of the zone setting.",
+													"example": "on"
+												}
+											},
+											"required": [
+												"id",
+												"value"
+											]
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "ID of the zone setting.",
+													"enum": [
 														"replace_insecure_js"
 													],
 													"example": "replace_insecure_js"
@@ -15876,6 +16059,67 @@
 																	"id": {
 																		"description": "ID of the zone setting.",
 																		"enum": [
+																			"redirects_for_ai_training"
+																		],
+																		"example": "redirects_for_ai_training"
+																	},
+																	"value": {
+																		"default": "off",
+																		"description": "Value of the zone setting.",
+																		"enum": [
+																			"off",
+																			"on"
+																		],
+																		"type": "string"
+																	}
+																}
+															}
+														],
+														"description": "When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs\nfound in the HTML response, ensuring AI models train on authoritative content.",
+														"title": "Redirects for AI Training"
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"editable": {
+																		"default": true,
+																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																		"enum": [
+																			true,
+																			false
+																		],
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Identifier of the zone setting.",
+																		"example": "development_mode",
+																		"type": "string"
+																	},
+																	"modified_on": {
+																		"description": "last time this setting was modified.",
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Current value of the zone setting.",
+																		"example": "on"
+																	}
+																},
+																"required": [
+																	"id",
+																	"value"
+																]
+															},
+															{
+																"properties": {
+																	"id": {
+																		"description": "ID of the zone setting.",
+																		"enum": [
 																			"replace_insecure_js"
 																		],
 																		"example": "replace_insecure_js"
@@ -17714,6 +17958,15 @@
 													"off",
 													"add_header",
 													"overwrite_header"
+												],
+												"type": "string"
+											},
+											{
+												"default": "off",
+												"description": "Value of the zone setting.",
+												"enum": [
+													"off",
+													"on"
 												],
 												"type": "string"
 											},
@@ -20600,6 +20853,67 @@
 													],
 													"description": "The value set for the Pseudo IPv4 setting.",
 													"title": "Pseudo IPv4 Value"
+												},
+												{
+													"allOf": [
+														{
+															"properties": {
+																"editable": {
+																	"default": true,
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"example": "development_mode",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Current value of the zone setting.",
+																	"example": "on"
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"redirects_for_ai_training"
+																	],
+																	"example": "redirects_for_ai_training"
+																},
+																"value": {
+																	"default": "off",
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"off",
+																		"on"
+																	],
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"description": "When enabled, Cloudflare will redirect verified AI training crawlers to canonical URLs\nfound in the HTML response, ensuring AI models train on authoritative content.",
+													"title": "Redirects for AI Training"
 												},
 												{
 													"allOf": [

@@ -1,5 +1,6 @@
 {
 	"POST /zones/{zone_id}/api_gateway/expression-template/fallthrough": {
+		"description": "Creates an expression template fallthrough rule for API Shield. Used for configuring default behavior when no other expression templates match.",
 		"operationId": "api-shield-expression-templates-fallthrough",
 		"requestBody": {
 			"content": {

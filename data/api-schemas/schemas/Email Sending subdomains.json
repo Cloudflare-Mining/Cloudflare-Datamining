@@ -1,0 +1,1092 @@
+{
+	"DELETE /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
+		"description": "Disables sending on a subdomain and removes its DNS records. If routing is still active on the subdomain, only sending is disabled.",
+		"operationId": "email-sending-subdomains-delete-sending-subdomain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "subdomain_id",
+				"required": true,
+				"schema": {
+					"description": "Sending subdomain identifier.",
+					"example": "aabbccdd11223344aabbccdd11223344",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete a sending subdomain response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a sending subdomain",
+		"tags": [
+			"Email Sending subdomains"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/email/sending/subdomains": {
+		"description": "Lists all sending-enabled subdomains for the zone.",
+		"operationId": "email-sending-subdomains-list-sending-subdomains",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"created": {
+																"description": "The date and time the destination address has been created.",
+																"example": "2014-01-02T02:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"email_sending_dkim_selector": {
+																"description": "The DKIM selector used for email signing.",
+																"example": "cf-bounce",
+																"readOnly": true,
+																"type": "string"
+															},
+															"email_sending_enabled": {
+																"description": "Whether Email Sending is enabled on this subdomain.",
+																"readOnly": true,
+																"type": "boolean"
+															},
+															"email_sending_return_path_domain": {
+																"description": "The return-path domain used for bounce handling.",
+																"example": "cf-bounce.sub.example.com",
+																"readOnly": true,
+																"type": "string"
+															},
+															"enabled": {
+																"description": "Whether Email Routing (receiving) is enabled on this subdomain. Read-only; included for informational purposes since both services share the subdomain row.",
+																"readOnly": true,
+																"type": "boolean"
+															},
+															"modified": {
+																"description": "The date and time the destination address was last modified.",
+																"example": "2014-01-02T02:20:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "The subdomain domain name.",
+																"example": "sub.example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tag": {
+																"description": "Sending subdomain identifier.",
+																"example": "aabbccdd11223344aabbccdd11223344",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"tag",
+															"name",
+															"email_sending_enabled"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List sending subdomains response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List sending subdomains",
+		"tags": [
+			"Email Sending subdomains"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}": {
+		"description": "Gets information for a specific sending subdomain.",
+		"operationId": "email-sending-subdomains-get-sending-subdomain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "subdomain_id",
+				"required": true,
+				"schema": {
+					"description": "Sending subdomain identifier.",
+					"example": "aabbccdd11223344aabbccdd11223344",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created": {
+															"description": "The date and time the destination address has been created.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"email_sending_dkim_selector": {
+															"description": "The DKIM selector used for email signing.",
+															"example": "cf-bounce",
+															"readOnly": true,
+															"type": "string"
+														},
+														"email_sending_enabled": {
+															"description": "Whether Email Sending is enabled on this subdomain.",
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"email_sending_return_path_domain": {
+															"description": "The return-path domain used for bounce handling.",
+															"example": "cf-bounce.sub.example.com",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether Email Routing (receiving) is enabled on this subdomain. Read-only; included for informational purposes since both services share the subdomain row.",
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"modified": {
+															"description": "The date and time the destination address was last modified.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The subdomain domain name.",
+															"example": "sub.example.com",
+															"type": "string",
+															"x-auditable": true
+														},
+														"tag": {
+															"description": "Sending subdomain identifier.",
+															"example": "aabbccdd11223344aabbccdd11223344",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"tag",
+														"name",
+														"email_sending_enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a sending subdomain response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a sending subdomain",
+		"tags": [
+			"Email Sending subdomains"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns": {
+		"description": "Returns the expected DNS records for a sending subdomain.",
+		"operationId": "email-sending-subdomains-get-sending-subdomain-dns",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "subdomain_id",
+				"required": true,
+				"schema": {
+					"description": "Sending subdomain identifier.",
+					"example": "aabbccdd11223344aabbccdd11223344",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "List of records needed to enable an Email Routing zone.",
+												"properties": {
+													"content": {
+														"description": "DNS record content.",
+														"example": "route1.mx.cloudflare.net",
+														"type": "string"
+													},
+													"name": {
+														"description": "DNS record name (or @ for the zone apex).",
+														"example": "example.com",
+														"maxLength": 255,
+														"type": "string",
+														"x-auditable": true
+													},
+													"priority": {
+														"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+														"example": 12,
+														"maximum": 65535,
+														"minimum": 0,
+														"type": "number",
+														"x-auditable": true
+													},
+													"ttl": {
+														"anyOf": [
+															{
+																"example": 3600,
+																"maximum": 86400,
+																"minimum": 1,
+																"type": "number"
+															},
+															{
+																"enum": [
+																	1
+																],
+																"type": "number"
+															}
+														],
+														"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+														"example": 1,
+														"type": "number",
+														"x-auditable": true
+													},
+													"type": {
+														"description": "DNS record type.",
+														"enum": [
+															"A",
+															"AAAA",
+															"CNAME",
+															"HTTPS",
+															"TXT",
+															"SRV",
+															"LOC",
+															"MX",
+															"NS",
+															"CERT",
+															"DNSKEY",
+															"DS",
+															"NAPTR",
+															"SMIMEA",
+															"SSHFP",
+															"SVCB",
+															"TLSA",
+															"URI"
+														],
+														"example": "NS",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get sending subdomain DNS records response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get sending subdomain DNS records",
+		"tags": [
+			"Email Sending subdomains"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write",
+			"Zone Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_id}/email/sending/subdomains": {
+		"description": "Creates a new sending subdomain or re-enables sending on an existing subdomain that had it disabled.",
+		"operationId": "email-sending-subdomains-create-sending-subdomain",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "The subdomain name. Must be within the zone.",
+								"example": "sub.example.com",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created": {
+															"description": "The date and time the destination address has been created.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"email_sending_dkim_selector": {
+															"description": "The DKIM selector used for email signing.",
+															"example": "cf-bounce",
+															"readOnly": true,
+															"type": "string"
+														},
+														"email_sending_enabled": {
+															"description": "Whether Email Sending is enabled on this subdomain.",
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"email_sending_return_path_domain": {
+															"description": "The return-path domain used for bounce handling.",
+															"example": "cf-bounce.sub.example.com",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether Email Routing (receiving) is enabled on this subdomain. Read-only; included for informational purposes since both services share the subdomain row.",
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"modified": {
+															"description": "The date and time the destination address was last modified.",
+															"example": "2014-01-02T02:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The subdomain domain name.",
+															"example": "sub.example.com",
+															"type": "string",
+															"x-auditable": true
+														},
+														"tag": {
+															"description": "Sending subdomain identifier.",
+															"example": "aabbccdd11223344aabbccdd11223344",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"tag",
+														"name",
+														"email_sending_enabled"
+													],
+													"type": "object"
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a sending subdomain response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a sending subdomain",
+		"tags": [
+			"Email Sending subdomains"
+		],
+		"x-api-token-group": [
+			"Zone Settings Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

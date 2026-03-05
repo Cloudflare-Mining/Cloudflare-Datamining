@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/ai/run/@cf/pipecat-ai/smart-turn-v2": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/pipecat-ai/smart-turn-v2 model.",
 		"operationId": "workers-ai-post-websocket-run-cf-pipecat-ai-smart-turn-v2",
 		"parameters": [
 			{
@@ -82,6 +83,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/pipecat-ai/smart-turn-v3": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/pipecat-ai/smart-turn-v3 model.",
 		"operationId": "workers-ai-post-websocket-run-cf-pipecat-ai-smart-turn-v3",
 		"parameters": [
 			{
@@ -164,6 +166,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai/run/@cf/test/hello-world-cog": {
+		"description": "Opens a WebSocket connection to stream inference results from the @cf/test/hello-world-cog model.",
 		"operationId": "workers-ai-post-websocket-run-cf-test-hello-world-cog",
 		"parameters": [
 			{

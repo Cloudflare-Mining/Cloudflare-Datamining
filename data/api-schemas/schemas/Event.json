@@ -2582,6 +2582,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/raw/{dataset_id}/{event_id}": {
+		"description": "Retrieves the raw data associated with an event. Searches across all shards in the dataset.",
 		"operationId": "get_EventRawReadDS",
 		"parameters": [
 			{
@@ -2626,15 +2627,16 @@
 									"type": "number"
 								},
 								"created": {
-									"example": "1970-01-01",
+									"example": "1970-01-01T00:00:00.000Z",
 									"type": "string"
 								},
 								"data": {
-									"type": "object"
+									"example": "{\"foo\": \"bar\"}",
+									"type": "string"
 								},
 								"id": {
-									"example": "1234",
-									"type": "string"
+									"example": 1,
+									"type": "number"
 								},
 								"source": {
 									"example": "https://example.com",
@@ -2646,10 +2648,10 @@
 								}
 							},
 							"required": [
+								"id",
 								"accountId",
 								"created",
 								"data",
-								"id",
 								"source",
 								"tlp"
 							],
@@ -2657,9 +2659,9 @@
 						}
 					}
 				},
-				"description": "Returns the raw event."
+				"description": "Returns the raw event data."
 			},
-			"400": {
+			"404": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2695,7 +2697,45 @@
 						}
 					}
 				},
-				"description": "Bad Request."
+				"description": "Not Found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Server Error."
 			}
 		},
 		"security": [
@@ -2703,7 +2743,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Reads data for a raw event",
+		"summary": "Reads raw data for an event by UUID",
 		"tags": [
 			"Event"
 		],
@@ -5161,6 +5201,15 @@
 					"description": "Dataset UUID.",
 					"format": "uuid",
 					"type": "string"
+				}
+			},
+			{
+				"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied). Raw data is always deleted from the source.",
+				"in": "query",
+				"name": "keepRawData",
+				"schema": {
+					"description": "If true, copies raw data to the destination dataset. Default is false (raw data is stripped/not copied). Raw data is always deleted from the source.",
+					"type": "boolean"
 				}
 			}
 		],
