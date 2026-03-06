@@ -493,6 +493,38 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"crawl_options": {
+															"properties": {
+																"depth": {
+																	"maximum": 100000,
+																	"minimum": 1,
+																	"type": "number"
+																},
+																"include_external_links": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_subdomains": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"max_age": {
+																	"maximum": 604800,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"source": {
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -562,7 +594,8 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss"
+																"feed-rss",
+																"crawl"
 															],
 															"type": "string"
 														},
@@ -1241,6 +1274,38 @@
 															"parse_type": "sitemap"
 														},
 														"properties": {
+															"crawl_options": {
+																"properties": {
+																	"depth": {
+																		"maximum": 100000,
+																		"minimum": 1,
+																		"type": "number"
+																	},
+																	"include_external_links": {
+																		"default": false,
+																		"type": "boolean"
+																	},
+																	"include_subdomains": {
+																		"default": false,
+																		"type": "boolean"
+																	},
+																	"max_age": {
+																		"maximum": 604800,
+																		"minimum": 0,
+																		"type": "number"
+																	},
+																	"source": {
+																		"default": "all",
+																		"enum": [
+																			"all",
+																			"sitemaps",
+																			"links"
+																		],
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
 															"parse_options": {
 																"properties": {
 																	"content_selector": {
@@ -1310,7 +1375,8 @@
 																"default": "sitemap",
 																"enum": [
 																	"sitemap",
-																	"feed-rss"
+																	"feed-rss",
+																	"crawl"
 																],
 																"type": "string"
 															},
@@ -1957,6 +2023,38 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"crawl_options": {
+															"properties": {
+																"depth": {
+																	"maximum": 100000,
+																	"minimum": 1,
+																	"type": "number"
+																},
+																"include_external_links": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_subdomains": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"max_age": {
+																	"maximum": 604800,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"source": {
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -2026,7 +2124,8 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss"
+																"feed-rss",
+																"crawl"
 															],
 															"type": "string"
 														},
@@ -2804,6 +2903,38 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
+											"crawl_options": {
+												"properties": {
+													"depth": {
+														"maximum": 100000,
+														"minimum": 1,
+														"type": "number"
+													},
+													"include_external_links": {
+														"default": false,
+														"type": "boolean"
+													},
+													"include_subdomains": {
+														"default": false,
+														"type": "boolean"
+													},
+													"max_age": {
+														"maximum": 604800,
+														"minimum": 0,
+														"type": "number"
+													},
+													"source": {
+														"default": "all",
+														"enum": [
+															"all",
+															"sitemaps",
+															"links"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
 											"parse_options": {
 												"properties": {
 													"content_selector": {
@@ -2873,7 +3004,8 @@
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
-													"feed-rss"
+													"feed-rss",
+													"crawl"
 												],
 												"type": "string"
 											},
@@ -3393,6 +3525,38 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"crawl_options": {
+															"properties": {
+																"depth": {
+																	"maximum": 100000,
+																	"minimum": 1,
+																	"type": "number"
+																},
+																"include_external_links": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_subdomains": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"max_age": {
+																	"maximum": 604800,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"source": {
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -3462,7 +3626,8 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss"
+																"feed-rss",
+																"crawl"
 															],
 															"type": "string"
 														},
@@ -4977,6 +5142,38 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
+											"crawl_options": {
+												"properties": {
+													"depth": {
+														"maximum": 100000,
+														"minimum": 1,
+														"type": "number"
+													},
+													"include_external_links": {
+														"default": false,
+														"type": "boolean"
+													},
+													"include_subdomains": {
+														"default": false,
+														"type": "boolean"
+													},
+													"max_age": {
+														"maximum": 604800,
+														"minimum": 0,
+														"type": "number"
+													},
+													"source": {
+														"default": "all",
+														"enum": [
+															"all",
+															"sitemaps",
+															"links"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
 											"parse_options": {
 												"properties": {
 													"content_selector": {
@@ -5046,7 +5243,8 @@
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
-													"feed-rss"
+													"feed-rss",
+													"crawl"
 												],
 												"type": "string"
 											},
@@ -5618,6 +5816,38 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
+														"crawl_options": {
+															"properties": {
+																"depth": {
+																	"maximum": 100000,
+																	"minimum": 1,
+																	"type": "number"
+																},
+																"include_external_links": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"include_subdomains": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"max_age": {
+																	"maximum": 604800,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"source": {
+																	"default": "all",
+																	"enum": [
+																		"all",
+																		"sitemaps",
+																		"links"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -5687,7 +5917,8 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss"
+																"feed-rss",
+																"crawl"
 															],
 															"type": "string"
 														},
