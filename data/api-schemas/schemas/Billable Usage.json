@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/billing/usage/paygo": {
-		"description": "Returns billable usage data for PayGo (self-serve) accounts within a specified date range. Supports two mutually exclusive query modes: billing-period mode (last_year_period_start + last_month_period_start) or date-range mode (from + to).",
+		"description": "Returns billable usage data for PayGo (self-serve) accounts.\nWhen no query parameters are provided, returns usage for the current\nbilling period. \n\nSupports two mutually exclusive query modes:\n\n**Billing period mode:** Use `last_year_period_start` and\n`last_month_period_start` to query a specific billing period.\n\n**Date range mode:** Use `from` and `to` to query a custom date range\n(maximum 62 days).\n\nThis endpoint is currently in beta and access is restricted to select\naccounts.\n",
 		"operationId": "billable-usage-get-paygo-account-usage",
 		"parameters": [
 			{
@@ -13,7 +13,6 @@
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"pattern": "^[0-9a-f]{32}$",
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -303,7 +302,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get PayGo Account Billable Usage",
+		"summary": "Get PayGo Account Billable Usage (Beta)",
 		"tags": [
 			"Billable Usage"
 		],
