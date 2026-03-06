@@ -1,0 +1,108 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WO223t4wamoqkOyEEVec4/c5af63b65674ca38ef24f73311f6ee83/image3.png" alt="">
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare One has grown a lot over the years. What started with securing traffic at the network now spans the endpoint and SaaS applications – because that’s where work happens.</p>
+	<p>But as the market has evolved, the core mission has become clear: data security is enterprise security.</p>
+	<p>Here’s why. We don’t enforce controls just to enforce controls. We do it because the downstream outcomes are costly: malware, credential theft, session hijacking, and eventually the thing that matters most: sensitive data leaving the organization. What looks like a simple access policy can be the first link in a chain that ends in incident response, customer impact, and reputational damage.</p>
+	<p>So when you take a step back, most security programs – even the ones that look different on paper – are trying to answer the same questions:</p>
+	<ul>
+		<li>
+			<p>Where is sensitive data?</p>
+		</li>
+		<li>
+			<p>Who can access it?</p>
+		</li>
+		<li>
+			<p>What paths exist for it to move somewhere it shouldn’t?</p>
+		</li>
+	</ul>
+	<p>That’s the backbone of our data security vision in <a href="https://www.cloudflare.com/sase"><u>Cloudflare One</u></a>: a single model that follows data across the places it moves, not a pile of siloed controls. That means:</p>
+	<ul>
+		<li>
+			<p>Protection in transit (across Internet + SaaS access)</p>
+		</li>
+		<li>
+			<p>Visibility and control at rest (inside SaaS)</p>
+		</li>
+		<li>
+			<p>Enforcement in use (on endpoints)</p>
+		</li>
+		<li>
+			<p>And now, coverage at the prompt (as AI becomes a new interface to enterprise data)</p>
+		</li>
+	</ul>
+	<p>Think of these as one connected system: visibility tells you what’s happening, controls constrain where data can move, and enforcement closes the last-mile gaps when content leaves an app. That’s the endpoint-to-prompt problem: data moves faster than product boundaries, so policy needs to follow the data, not the tool.</p>
+	<p>In this post, we’ll walk through a set of updates that push that vision forward – from browser-based Remote Desktop Protocol (RDP) controls, to operation-level logging, to endpoint data loss prevention (DLP), to AI security scanning for Microsoft 365 Copilot.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="remote-access-without-data-sprawl-browser-based-rdp-clipboard-controls">Remote access without data sprawl: browser-based RDP clipboard controls</h3>
+		<a href="https://blog.cloudflare.com/#remote-access-without-data-sprawl-browser-based-rdp-clipboard-controls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://blog.cloudflare.com/browser-based-rdp"><u>Browser-based RDP</u></a> is a practical way to provide remote access when you can’t assume a managed endpoint or installed client – common for contractors, partners, and occasional access workflows. Cloudflare One’s browser-based RDP adds visibility and policy controls to that access. But once you’re delivering a full RDP experience in the browser, the question becomes simple: how granular are your controls over where data can move, especially via the clipboard?</p>
+	<p>Today, we’re adding a setting that directly protects data: clipboard controls for browser-based RDP. With this <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#clipboard-controls"><u>new feature</u></a>, security and IT administrators will now be able to decide whether their users can copy or paste information between their local device and the browser-based RDP session.</p>
+	<p>Clipboard restrictions are a perfect example of the productivity-security tradeoff. If users can’t copy and paste in the workflow they rely on, they’ll route around the control, whether it’s by taking screenshots, retyping data, or shifting work to unmanaged tools. Clipboard controls let you be precise: allow the workflow where it’s safe, and block it where it isn’t.</p>
+	<p>With clipboard controls in browser-based RDP, administrators can enable the copy/paste workflow users expect while enforcing granular control over directionality and context. For example, if users access a customer support portal that contains sensitive customer information, you might allow copy/paste into the session for productivity, but block copy/paste out of the session to prevent data from landing on unmanaged endpoints.</p>
+	<p>This functionality is now available in Cloudflare One and can be configured as a new setting within Access Application Policies for browser-based RDP apps.</p>
+	<div class="flex anchor relative">
+		<h3 id="visibility-without-guesswork-operation-mapping-in-logs">Visibility without guesswork: operation mapping in logs</h3>
+		<a href="https://blog.cloudflare.com/#visibility-without-guesswork-operation-mapping-in-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>While remote access controls reduce risk, to tune them well, you also need to understand the specific actions users are taking inside SaaS apps.</p>
+	<p>We use a process called <b>operation mapping</b> (detailed in <a href="https://blog.cloudflare.com/ai-prompt-protection/#how-we-built-it"><u>a recent blog post</u></a>) to give visibility to these actions and simplify the way customers write policies for SaaS services. Our mapping process takes various elements of an HTTP request and interprets them as a single operation, e.g. ‘SendPrompt’, in the example of ChatGPT. We collect multiple operations that perform similar actions into an Application Control, e.g., ‘Share’ or ‘Upload’. The [what?] is viewable in our HTTP policy builder, allowing for simple policy authoring.&nbsp;</p>
+	<p>Today, we’ve taken that process a step further to enrich logs and provide greater visibility over how SaaS applications are being used in your organization – by extending that mapping into logging. Without any additional configuration, operations and application controls will now appear in log events for traffic that matches our <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/#compatible-applications"><u>operation maps</u></a>.</p>
+	<p>In log details, you’ll now see both the application control group and the specific operation (e.g., SendPrompt for ChatGPT). This makes investigations and policy tuning faster.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tkgCxY8qze9SeHupiYfPR/1563abb3c0386941ef461c3ffed018f0/log-details.png" alt="" class="kg-image" width="2164" height="1374" loading="lazy">
+	</figure>
+	<p>The added context helps you understand usage patterns, accelerate forensic analysis, and spot potentially risky behavior, so you can tune policy with less guesswork and disruption to users.</p>
+	<p>Visibility is step one. To protect data in use, especially what moves through the clipboard, you also need enforcement on the endpoint.</p>
+	<div class="flex anchor relative">
+		<h3 id="better-endpoint-protection-on-device-dlp-in-the-cloudflare-one-client">Better endpoint protection: on-device DLP in the Cloudflare One Client</h3>
+		<a href="https://blog.cloudflare.com/#better-endpoint-protection-on-device-dlp-in-the-cloudflare-one-client" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>In a modern enterprise, sensitive information routinely moves from managed applications into unmanaged contexts – often via the clipboard. The risk isn’t only a file leaving the organization; it can be a snippet of proprietary code or a customer record pasted into an unauthorized <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model"><u>large language model (LLM)</u></a> or personal tool.</p>
+	<p>Cloudflare One already helps protect data in transit with <a href="https://blog.cloudflare.com/casb-dlp/#understanding-dlp"><u>Gateway and DLP</u></a>, and provides visibility and control at rest through <a href="https://blog.cloudflare.com/casb-dlp/#understanding-casb"><u>CASB</u></a> and its <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations"><u>API integrations</u></a>. Now we’re extending coverage to data in use by bringing Endpoint DLP enforcement to the Cloudflare One Client, starting with high-signal workflows like clipboard movement, so data protection doesn’t stop the moment content leaves a browser tab.</p>
+	<p>That means sensitive data copied from a protected SaaS app doesn’t immediately become “policy-free” content the moment it hits the OS clipboard. With Endpoint DLP, teams can extend data protection to users’ fingertips without deploying a second agent or stitching together complex integrations.</p>
+	<p>For teams already using Cloudflare One for <a href="https://www.cloudflare.com/sase/use-cases/data-protection"><u>data protection</u></a>, Endpoint DLP completes the model by adding a consistent enforcement layer for data in use.</p>
+	<p>This is the endpoint-to-prompt problem: if sensitive data can be copied locally, it can be pasted into an AI assistant just as easily. Once you protect data in use, the next question becomes unavoidable – what happens when that same data is transformed at the prompt?</p>
+	<div class="flex anchor relative">
+		<h3 id="ai-visibility-without-blind-spots-m365-copilot-scanning-with-api-casb">AI visibility without blind spots: M365 Copilot scanning with API CASB</h3>
+		<a href="https://blog.cloudflare.com/#ai-visibility-without-blind-spots-m365-copilot-scanning-with-api-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Last year, Cloudflare One and API CASB became the <a href="https://blog.cloudflare.com/casb-ai-integrations"><u>first to offer API integrations with OpenAI ChatGPT, Anthropic Claude, and Google Gemini offerings</u></a> – and we’re not done yet.&nbsp;</p>
+	<p>Starting today, customers using Cloudflare One’s <a href="https://www.cloudflare.com/sase/products/casb"><u>API Cloud Access Security Broker</u></a> (CASB) – which scans SaaS apps via API for common, yet risky security issues – can now analyze <a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365"><u>Microsoft 365 Copilot</u></a> activity for data security issues, including chats and uploads that match DLP detection profiles.</p>
+	<p>Copilot findings surface with rich context (file references, profile matches, and interaction metadata) so teams can triage quickly instead of starting from raw audit logs.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2c2tzwBiDnF7sU0q983Gyl/9a84c088aa766bf0fd8b71a29a75aeae/image4.png" alt="" class="kg-image" width="1091" height="860" loading="lazy">
+	</figure>
+	<p><sup>A CASB Finding showing detection of a file used in M365 Copilot that matches an enabled DLP Profile</sup></p>
+	<p>Customers can now see when Copilot activity includes sensitive data. For example, user prompts, Copilot responses, and uploaded files that match DLP detection profiles.</p>
+	<p>Microsoft 365 Copilot findings are available by default as part of the Microsoft 365 integration. If you already use this integration, go to Integrations in the Cloudflare One dashboard, update your Microsoft 365 connection, and start receiving Copilot findings. If you’re new to the integration, connect your Microsoft 365 tenant to gain visibility into Copilot usage and associated data security findings.</p>
+	<p>As AI product sprawl continues, we’ll be massively expanding coverage across additional AI assistants and core SaaS platforms throughout 2026 – stay tuned!</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next-unified-data-security-in-cloudflare-one">What’s next: unified data security in Cloudflare One</h3>
+		<a href="https://blog.cloudflare.com/#whats-next-unified-data-security-in-cloudflare-one" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Over the last few years, enterprise security has expanded across more surfaces: SaaS, unmanaged endpoints, remote access patterns, and now AI assistants. But the objective – protecting sensitive data – hasn’t changed. The updates in this post reflect a single direction: consistent visibility and enforcement across data in transit, at rest, in use, and at the prompt. So policy follows data, not product boundaries.</p>
+	<p>Looking forward, our vision is broader than “data security features in data security products.” Over time, every Cloudflare One product will become more data-security-aware, with more data-oriented configurability, visibility, controls, and guardrails, built directly into the workflows teams already use across <a href="https://www.cloudflare.com/sase/products/access"><u>Access</u></a>, <a href="https://www.cloudflare.com/sase/products/gateway"><u>Gateway</u></a>, endpoint enforcement, and SaaS integrations. The goal is simple: wherever your users work and wherever data moves, Cloudflare One should be able to explain what’s happening and help you control it.</p>
+	<p>As the modern perimeter spreads across applications, browsers, endpoints, and AI prompts, patching together point solutions becomes harder to operate and easier to bypass. By building data security directly into Cloudflare One – from access controls to endpoint enforcement to AI visibility – and continuing to unify these layers, we’re helping teams build a clearer, more complete picture of their data risk and their data security posture from the endpoint to the prompt.</p>
+	<p>To get started, explore <a href="https://www.cloudflare.com/sase"><u>Cloudflare One</u></a> or <a href="https://www.cloudflare.com/contact/sase"><u>contact our team</u></a> to learn more about the platform and these new features.</p>
+</div>
