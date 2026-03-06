@@ -5,42 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: </strong>Hybrid - Austin</p>
+<h4>About the Team</h4>
+<p>The Global Resource Management team is a small, focused group of engineers dedicated to driving organization and clarity across Cloudflare's platform. We develop and maintain applications that live in the foundational platform to enable features that span all of Cloudflare’s resources. The work we do is absolutely critical to enabling Cloudflare to scale its operations efficiently, reach new customers, and maintain the reliability our users expect. Joining us means working on the core of Cloudflare's ability to operate and grow.</p>
+<h4>What You’ll Do</h4>
+<p>As a System Engineer on the Global Resource Management team, you'll be at the forefront of tackling our most challenging system architecture problems:</p>
+<ul>
+	<li>Solve Deep, Foundational Problems: Dive into complex, cross-cutting engineering challenges that benefit all Cloudflare products by creating organized, efficient, and well-managed applications.</li>
+	<li>Architect for Organization and Clarity: Design and make core architectural decisions focused on reducing fanout and simplifying system dependencies. The objective is to make platform adoption seamless and straightforward for product engineering teams.</li>
+	<li>Build Scalable Systems: Be responsible for proposing architectures, writing detailed specifications, and implementing high-quality, maintainable code to build scalable and highly available systems.</li>
+	<li>Drive Code Quality: Actively participate in thorough code reviews, provide constructive feedback on technical specifications and designs, and ensure all implementations adhere to best practices for reliability and security.</li>
+</ul>
+<h4>Skills, Knowledge, and Experience</h4>
+<ul>
+	<li>Professional Experience: 3+ years of professional experience in software development, building and operating mission-critical, high-scale distributed systems.</li>
+	<li>Programming Languages: Strong proficiency in Go (Golang)&nbsp;</li>
+	<li>Systems Design: Proven experience in designing, building, and operating scalable, highly available services at cloud-scale.</li>
+	<li>Architectural Thinking: Understanding of concepts related to organization, dependency management, and resource orchestration in a large, multi-tenant environment.</li>
+	<li>Collaboration: Experience participating in a code review process and contributing thoughtful feedback to design specifications. Comfortable working across teams to identify shared challenges and propose platform-level solutions.</li>
+</ul>
+<h4>Bonus Skills:</h4>
+<ul>
+	<li>Familiarity with Cloudflare's core technologies, such as edge computing or global networking.</li>
+	<li>Experience with Infrastructure as Code (IaC) tools and related technologies.</li>
+</ul>
+<p>Even if you don’t meet every qualification, we encourage you to apply — we’re looking for curious, driven engineers who want to make an impact on the platform that powers Cloudflare.</p>
 <p>&nbsp;</p>
-<p><strong>Available Locations: </strong>Mexico City, Mexico</p>
-<p><strong>About the role</strong></p>
-<p>The AP Specialist Role, will oversee a small team of AP specialists responsible for managing the full invoice lifecycle for a portfolio of global vendors. This role will be a hands-on team lead who ensures accuracy and efficiency, from initial invoice receipt through to payment processing and account reconciliation. This role requires strong leadership, problem-solving, and communication skills to manage team performance, maintain positive vendor relationships, and support the organization's financial goals.</p>
-<p><strong>What you'll do</strong></p>
-<ul>
-	<li>Mentor and lead a global team of AP specialists, fostering a collaborative and high-performance culture.</li>
-	<li>Provide ongoing guidance, training, and support to team members to ensure process consistency and professional growth.</li>
-	<li>Manage daily workload allocation and monitor key performance indicators (KPIs) to meet service level agreements (SLAs) and productivity targets.</li>
-	<li>Conduct performance reviews, provide constructive feedback, and identify opportunities for skills development within the team.</li>
-	<li>Oversee the end-to-end accounts payable process, including invoice receipt, verification, coding, and entry.</li>
-	<li>Ensure the timely and accurate processing of a high volume of vendor invoices using various Enterprise Resource Planning (ERP) systems.</li>
-	<li>Manage weekly and ad-hoc payment runs for global vendors in multiple currencies.</li>
-	<li>Implement and enforce AP policies and procedures to ensure accuracy and compliance with internal controls and company policies.</li>
-	<li>Serve as an escalation point for complex vendor inquiries and payment disputes, driving issues to resolution.</li>
-	<li>Oversee the monthly and yearly reconciliation of major vendor accounts to ensure account integrity and address discrepancies.</li>
-	<li>Cultivate and maintain positive, long-term relationships with external vendors.</li>
-	<li>Identify and implement opportunities for process automation and efficiency improvements within the AP workflow.</li>
-	<li>Analyze AP performance metrics and KPIs (e.g., invoice processing time, exception rates) to pinpoint root causes of inefficiencies and implement data-driven solutions.</li>
-	<li>Actively lead or participate in cross-functional projects focused on streamlining procure-to-pay (P2P) processes, such as the implementation or optimization of new systems and technologies.</li>
-	<li>Collaborate with internal departments (e.g., procurement, finance, operations, and IT) to resolve invoice discrepancies, address process bottlenecks, and improve overall payment accuracy.</li>
-	<li>Develop, maintain, and enforce standardized AP processes and procedures across all global teams to enhance consistency, control, and efficiency.</li>
-	<li>Leverage AP automation tools and ERP systems to streamline processes, reduce manual effort, and improve accuracy.</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Experience: Proven experience in a senior AP or accounting operations role, with a minimum of 2+ years in a leadership or supervisory capacity.</li>
-	<li>Education: A bachelor's degree in Accounting, Finance, or a related field is preferred.</li>
-	<li>Technical expertise: Strong proficiency with ERP systems (e.g., SAP, Oracle, NetSuite) and Microsoft Office Suite, particularly advanced Excel skills. Experience with AP automation tools is a plus.</li>
-	<li>Leadership: Demonstrated ability to lead, mentor, and motivate a team to achieve high performance.</li>
-	<li>Cross-functional collaboration: Exceptional interpersonal and communication skills with the ability to build effective relationships and influence stakeholders across various departments.</li>
-	<li>Problem-solving: Strong analytical skills with a proactive approach to resolving discrepancies and complex cross-functional issues.</li>
-	<li>Process improvement: Proven track record of identifying and successfully implementing process improvements in an accounts payable or related environment.</li>
-	<li>Detail-oriented: Meticulous attention to detail and accuracy in all financial record-keeping and reporting.</li>
-	<li>Global mindset: Experience working with a global or multinational team and managing accounts in different currencies.</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

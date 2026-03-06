@@ -20,7 +20,7 @@
 <p><strong>Role Requirements (Must-Have Skills)</strong></p>
 <ul>
 	<li><strong>Active Oracle Cloud EPM Certification(s)</strong> (e.g., Financial Consolidation and Close (FCCS), Account Reconciliation (ARCS), Enterprise Data Management (EDMCS), or EPM Data Integration).</li>
-	<li>Strong experience managing and supporting Oracle EPM applications, specifically FCCS, ARCS, and EDMCS.</li>
+	<li>6+ years of experience managing and supporting Oracle EPM applications, specifically FCCS, ARCS, and EDMCS.</li>
 	<li>Proven ability to manage daily operations, including integrations, consolidations, and reconciliations.</li>
 	<li>Exceptional troubleshooting skills, specifically regarding Smart View installations, connection settings, and resolving setup conflicts.</li>
 	<li>Experience managing user security, access roles, and maintaining compliance governance.</li>
