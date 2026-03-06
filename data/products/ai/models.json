@@ -2561,6 +2561,25 @@
 		]
 	},
 	{
+		"id": "1108e06e-95e5-49ab-8513-f7aff0c0bee2",
+		"source": 1,
+		"name": "@cf/facebook/nonomni-bart-large-cnn",
+		"description": "BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.",
+		"task": {
+			"id": "6f4e65d8-da0f-40d2-9aa4-db582a5a04fd",
+			"name": "Summarization",
+			"description": "Summarization is the task of producing a shorter version of a document while preserving its important information. Some models can extract text from the original input, while other models can generate entirely new text."
+		},
+		"created_at": "2026-03-05 21:29:49.280",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "beta",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "0f002249-7d86-4698-aabf-8529ed86cefb",
 		"source": 2,
 		"name": "@hf/google/gemma-7b-it",
