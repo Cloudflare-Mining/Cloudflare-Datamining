@@ -243,6 +243,10 @@
 															"id": {
 																"type": "string"
 															},
+															"registration_id": {
+																"description": "Unique identifier for the device registration",
+																"type": "string"
+															},
 															"status": {
 																"type": "string"
 															},
@@ -844,6 +848,10 @@
 																"example": "windows",
 																"type": "string"
 															},
+															"registrationId": {
+																"description": "Device registration identifier (UUID v4). On multi-user devices, this uniquely identifies a user's registration on the device.",
+																"type": "string"
+															},
 															"status": {
 																"description": "Network status",
 																"example": "connected",
@@ -1403,7 +1411,11 @@
 											"x-auditable": true
 										},
 										"device_id": {
-											"description": "Unique identifier for the device",
+											"description": "Unique identifier for the physical device",
+											"type": "string"
+										},
+										"registration_id": {
+											"description": "Unique identifier for the device registration. Required for multi-user devices to target the correct user session.",
 											"type": "string"
 										},
 										"user_email": {
@@ -1576,6 +1588,10 @@
 															},
 															"id": {
 																"description": "Unique identifier for the command",
+																"type": "string"
+															},
+															"registration_id": {
+																"description": "Unique identifier for the device registration",
 																"type": "string"
 															},
 															"status": {
