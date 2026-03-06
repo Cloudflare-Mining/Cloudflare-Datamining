@@ -137,9 +137,9 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_id}/ai/run/@cf/facebook/omni-bart-large-cnn": {
-		"description": "Runs inference on the @cf/facebook/omni-bart-large-cnn model.",
-		"operationId": "workers-ai-post-run-cf-facebook-omni-bart-large-cnn",
+	"POST /accounts/{account_id}/ai/run/@cf/facebook/nonomni-bart-large-cnn": {
+		"description": "Runs inference on the @cf/facebook/nonomni-bart-large-cnn model.",
+		"operationId": "workers-ai-post-run-cf-facebook-nonomni-bart-large-cnn",
 		"parameters": [
 			{
 				"in": "path",
@@ -255,7 +255,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/facebook/omni-bart-large-cnn model.",
+		"summary": "Execute @cf/facebook/nonomni-bart-large-cnn model.",
 		"tags": [
 			"Workers AI Summarization"
 		],

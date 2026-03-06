@@ -850,6 +850,7 @@
 																						"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																						"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																						"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																						"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																						"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																						"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																					},
@@ -1099,6 +1100,12 @@
 																								"type": "string",
 																								"x-auditable": true,
 																								"x-stainless-terraform-configurability": "computed_optional"
+																							},
+																							"dispatch_namespace": {
+																								"description": "The dispatch namespace the Durable Object script belongs to.",
+																								"example": "my-dispatch-namespace",
+																								"type": "string",
+																								"x-auditable": true
 																							},
 																							"environment": {
 																								"description": "The environment of the script_name to bind to.",
@@ -1483,7 +1490,8 @@
 																								"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
 																								"enum": [
 																									"eu",
-																									"fedramp"
+																									"fedramp",
+																									"fedramp-high"
 																								],
 																								"example": "eu",
 																								"type": "string",
@@ -1600,6 +1608,12 @@
 																					},
 																					{
 																						"properties": {
+																							"entrypoint": {
+																								"description": "Entrypoint to invoke on the target Worker.",
+																								"example": "MyHandler",
+																								"type": "string",
+																								"x-auditable": true
+																							},
 																							"environment": {
 																								"default": "production",
 																								"description": "Optional environment if the Worker utilizes one.",
@@ -1901,6 +1915,36 @@
 																							"name",
 																							"type",
 																							"part"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"name": {
+																								"description": "A JavaScript variable name for the binding.",
+																								"example": "myBinding",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"service_id": {
+																								"description": "Identifier of the VPC service to bind to.",
+																								"example": "8c8b1387108e49be85669169793e7bd2",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"type": {
+																								"description": "The kind of resource that the binding provides.",
+																								"enum": [
+																									"vpc_service"
+																								],
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"name",
+																							"type",
+																							"service_id"
 																						],
 																						"type": "object"
 																					}
@@ -2335,6 +2379,7 @@
 																								"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																								"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																								"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																								"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																								"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																								"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																							},
@@ -2584,6 +2629,12 @@
 																										"type": "string",
 																										"x-auditable": true,
 																										"x-stainless-terraform-configurability": "computed_optional"
+																									},
+																									"dispatch_namespace": {
+																										"description": "The dispatch namespace the Durable Object script belongs to.",
+																										"example": "my-dispatch-namespace",
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"environment": {
 																										"description": "The environment of the script_name to bind to.",
@@ -2968,7 +3019,8 @@
 																										"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
 																										"enum": [
 																											"eu",
-																											"fedramp"
+																											"fedramp",
+																											"fedramp-high"
 																										],
 																										"example": "eu",
 																										"type": "string",
@@ -3085,6 +3137,12 @@
 																							},
 																							{
 																								"properties": {
+																									"entrypoint": {
+																										"description": "Entrypoint to invoke on the target Worker.",
+																										"example": "MyHandler",
+																										"type": "string",
+																										"x-auditable": true
+																									},
 																									"environment": {
 																										"default": "production",
 																										"description": "Optional environment if the Worker utilizes one.",
@@ -3386,6 +3444,36 @@
 																									"name",
 																									"type",
 																									"part"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"service_id": {
+																										"description": "Identifier of the VPC service to bind to.",
+																										"example": "8c8b1387108e49be85669169793e7bd2",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"vpc_service"
+																										],
+																										"type": "string",
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"service_id"
 																								],
 																								"type": "object"
 																							}
@@ -3833,6 +3921,7 @@
 													"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 													"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 													"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+													"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 													"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 													"workflow": "#/components/schemas/workers_binding_kind_workflow"
 												},
@@ -4082,6 +4171,12 @@
 															"type": "string",
 															"x-auditable": true,
 															"x-stainless-terraform-configurability": "computed_optional"
+														},
+														"dispatch_namespace": {
+															"description": "The dispatch namespace the Durable Object script belongs to.",
+															"example": "my-dispatch-namespace",
+															"type": "string",
+															"x-auditable": true
 														},
 														"environment": {
 															"description": "The environment of the script_name to bind to.",
@@ -4466,7 +4561,8 @@
 															"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
 															"enum": [
 																"eu",
-																"fedramp"
+																"fedramp",
+																"fedramp-high"
 															],
 															"example": "eu",
 															"type": "string",
@@ -4583,6 +4679,12 @@
 												},
 												{
 													"properties": {
+														"entrypoint": {
+															"description": "Entrypoint to invoke on the target Worker.",
+															"example": "MyHandler",
+															"type": "string",
+															"x-auditable": true
+														},
 														"environment": {
 															"default": "production",
 															"description": "Optional environment if the Worker utilizes one.",
@@ -4884,6 +4986,36 @@
 														"name",
 														"type",
 														"part"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"service_id": {
+															"description": "Identifier of the VPC service to bind to.",
+															"example": "8c8b1387108e49be85669169793e7bd2",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"vpc_service"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"service_id"
 													],
 													"type": "object"
 												}
@@ -5197,6 +5329,7 @@
 																								"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																								"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																								"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																								"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																								"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																								"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																							},
@@ -5446,6 +5579,12 @@
 																										"type": "string",
 																										"x-auditable": true,
 																										"x-stainless-terraform-configurability": "computed_optional"
+																									},
+																									"dispatch_namespace": {
+																										"description": "The dispatch namespace the Durable Object script belongs to.",
+																										"example": "my-dispatch-namespace",
+																										"type": "string",
+																										"x-auditable": true
 																									},
 																									"environment": {
 																										"description": "The environment of the script_name to bind to.",
@@ -5830,7 +5969,8 @@
 																										"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
 																										"enum": [
 																											"eu",
-																											"fedramp"
+																											"fedramp",
+																											"fedramp-high"
 																										],
 																										"example": "eu",
 																										"type": "string",
@@ -5947,6 +6087,12 @@
 																							},
 																							{
 																								"properties": {
+																									"entrypoint": {
+																										"description": "Entrypoint to invoke on the target Worker.",
+																										"example": "MyHandler",
+																										"type": "string",
+																										"x-auditable": true
+																									},
 																									"environment": {
 																										"default": "production",
 																										"description": "Optional environment if the Worker utilizes one.",
@@ -6248,6 +6394,36 @@
 																									"name",
 																									"type",
 																									"part"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"properties": {
+																									"name": {
+																										"description": "A JavaScript variable name for the binding.",
+																										"example": "myBinding",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"service_id": {
+																										"description": "Identifier of the VPC service to bind to.",
+																										"example": "8c8b1387108e49be85669169793e7bd2",
+																										"type": "string",
+																										"x-auditable": true
+																									},
+																									"type": {
+																										"description": "The kind of resource that the binding provides.",
+																										"enum": [
+																											"vpc_service"
+																										],
+																										"type": "string",
+																										"x-auditable": true
+																									}
+																								},
+																								"required": [
+																									"name",
+																									"type",
+																									"service_id"
 																								],
 																								"type": "object"
 																							}
@@ -6699,6 +6875,7 @@
 																										"text_blob": "#/components/schemas/workers_binding_kind_text_blob",
 																										"vectorize": "#/components/schemas/workers_binding_kind_vectorize",
 																										"version_metadata": "#/components/schemas/workers_binding_kind_version_metadata",
+																										"vpc_service": "#/components/schemas/workers_binding_kind_vpc_service",
 																										"wasm_module": "#/components/schemas/workers_binding_kind_wasm_module",
 																										"workflow": "#/components/schemas/workers_binding_kind_workflow"
 																									},
@@ -6948,6 +7125,12 @@
 																												"type": "string",
 																												"x-auditable": true,
 																												"x-stainless-terraform-configurability": "computed_optional"
+																											},
+																											"dispatch_namespace": {
+																												"description": "The dispatch namespace the Durable Object script belongs to.",
+																												"example": "my-dispatch-namespace",
+																												"type": "string",
+																												"x-auditable": true
 																											},
 																											"environment": {
 																												"description": "The environment of the script_name to bind to.",
@@ -7332,7 +7515,8 @@
 																												"description": "The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.",
 																												"enum": [
 																													"eu",
-																													"fedramp"
+																													"fedramp",
+																													"fedramp-high"
 																												],
 																												"example": "eu",
 																												"type": "string",
@@ -7449,6 +7633,12 @@
 																									},
 																									{
 																										"properties": {
+																											"entrypoint": {
+																												"description": "Entrypoint to invoke on the target Worker.",
+																												"example": "MyHandler",
+																												"type": "string",
+																												"x-auditable": true
+																											},
 																											"environment": {
 																												"default": "production",
 																												"description": "Optional environment if the Worker utilizes one.",
@@ -7750,6 +7940,36 @@
 																											"name",
 																											"type",
 																											"part"
+																										],
+																										"type": "object"
+																									},
+																									{
+																										"properties": {
+																											"name": {
+																												"description": "A JavaScript variable name for the binding.",
+																												"example": "myBinding",
+																												"type": "string",
+																												"x-auditable": true
+																											},
+																											"service_id": {
+																												"description": "Identifier of the VPC service to bind to.",
+																												"example": "8c8b1387108e49be85669169793e7bd2",
+																												"type": "string",
+																												"x-auditable": true
+																											},
+																											"type": {
+																												"description": "The kind of resource that the binding provides.",
+																												"enum": [
+																													"vpc_service"
+																												],
+																												"type": "string",
+																												"x-auditable": true
+																											}
+																										},
+																										"required": [
+																											"name",
+																											"type",
+																											"service_id"
 																										],
 																										"type": "object"
 																									}

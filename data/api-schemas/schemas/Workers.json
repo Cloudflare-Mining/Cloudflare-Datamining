@@ -1499,6 +1499,34 @@
 					"minimum": 1,
 					"type": "integer"
 				}
+			},
+			{
+				"description": "Property to sort results by.",
+				"in": "query",
+				"name": "order_by",
+				"schema": {
+					"default": "deployed_on",
+					"enum": [
+						"deployed_on",
+						"updated_on",
+						"created_on",
+						"name"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Sort direction.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -1635,6 +1663,13 @@
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
+													},
+													"deployed_on": {
+														"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+														"format": "date-time",
+														"nullable": true,
+														"readOnly": true,
+														"type": "string"
 													},
 													"id": {
 														"description": "Immutable ID of the Worker.",
@@ -2406,6 +2441,13 @@
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",
@@ -3250,6 +3292,13 @@
 										"type": "string",
 										"x-auditable": true
 									},
+									"deployed_on": {
+										"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true,
+										"type": "string"
+									},
 									"id": {
 										"description": "Immutable ID of the Worker.",
 										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
@@ -3583,6 +3632,13 @@
 										"readOnly": true,
 										"type": "string",
 										"x-auditable": true
+									},
+									"deployed_on": {
+										"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true,
+										"type": "string"
 									},
 									"id": {
 										"description": "Immutable ID of the Worker.",
@@ -4008,6 +4064,13 @@
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",
@@ -5472,6 +5535,13 @@
 										"type": "string",
 										"x-auditable": true
 									},
+									"deployed_on": {
+										"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true,
+										"type": "string"
+									},
 									"id": {
 										"description": "Immutable ID of the Worker.",
 										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
@@ -5899,6 +5969,13 @@
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",
@@ -7206,6 +7283,13 @@
 										"type": "string",
 										"x-auditable": true
 									},
+									"deployed_on": {
+										"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+										"format": "date-time",
+										"nullable": true,
+										"readOnly": true,
+										"type": "string"
+									},
 									"id": {
 										"description": "Immutable ID of the Worker.",
 										"example": "e8f70fdbc8b1fb0b8ddb1af166186758",
@@ -7633,6 +7717,13 @@
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
+												},
+												"deployed_on": {
+													"description": "When the Worker's most recent deployment was created. `null` if the Worker has never been deployed.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
 												},
 												"id": {
 													"description": "Immutable ID of the Worker.",

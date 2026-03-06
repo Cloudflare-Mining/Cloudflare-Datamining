@@ -1,7 +1,7 @@
 {
-	"POST /accounts/{account_id}/ai/run/@cf/facebook/omni-detr-resnet-50": {
-		"description": "Runs inference on the @cf/facebook/omni-detr-resnet-50 model.",
-		"operationId": "workers-ai-post-run-cf-facebook-omni-detr-resnet-50",
+	"POST /accounts/{account_id}/ai/run/@cf/facebook/nonomni-detr-resnet-50": {
+		"description": "Runs inference on the @cf/facebook/nonomni-detr-resnet-50 model.",
+		"operationId": "workers-ai-post-run-cf-facebook-nonomni-detr-resnet-50",
 		"parameters": [
 			{
 				"in": "path",
@@ -103,7 +103,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Execute @cf/facebook/omni-detr-resnet-50 model.",
+		"summary": "Execute @cf/facebook/nonomni-detr-resnet-50 model.",
 		"tags": [
 			"Workers AI Object Detection"
 		],
