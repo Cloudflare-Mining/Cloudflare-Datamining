@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/vitest-pool-workers",
 	"dist-tags": {
-		"latest": "0.12.19"
+		"latest": "0.12.20"
 	},
 	"versions": {
 		"0.1.0": {
@@ -12103,10 +12103,68 @@
 			"name": "@cloudflare/vitest-pool-workers",
 			"version": "0.12.19",
 			"dependencies": {
+				"esbuild": "0.27.3",
+				"wrangler": "4.70.0",
+				"miniflare": "4.20260301.1",
+				"cjs-module-lexer": "^1.2.3"
+			},
+			"devDependencies": {
+				"zod": "^3.25.76",
+				"birpc": "0.2.14",
+				"eslint": "^9.39.1",
+				"semver": "^7.7.1",
+				"undici": "7.18.2",
+				"vitest": "~3.2.0",
+				"devalue": "^5.3.2",
+				"capnp-es": "^0.0.14",
+				"get-port": "^7.1.0",
+				"tree-kill": "^1.2.2",
+				"ts-dedent": "^2.2.0",
+				"typescript": "~5.8.3",
+				"@types/node": "^20.19.9",
+				"@types/semver": "^7.5.1",
+				"@vitest/runner": "~3.2.0",
+				"@vitest/snapshot": "~3.2.0",
+				"@cloudflare/workers-types": "^4.20260226.1",
+				"@cloudflare/workers-utils": "0.12.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workflows-shared": "0.5.0",
+				"@cloudflare/mock-npm-registry": "0.0.0",
+				"@cloudflare/eslint-config-shared": "1.2.1"
+			},
+			"peerDependencies": {
+				"vitest": "2.0.x - 3.2.x",
+				"@vitest/runner": "2.0.x - 3.2.x",
+				"@vitest/snapshot": "2.0.x - 3.2.x"
+			},
+			"dist": {
+				"shasum": "094c5322439414224dbc950c4995573963dfd341",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.12.19.tgz",
+				"fileCount": 36,
+				"integrity": "sha512-UB8rwWCctunes7nlclw/aOXfVjgM3X7RJAsh51gvGfKiFuk9xT8juazYTdAH6mWGvRqwFYiZa0lFsgQ5gADkHw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDEzwUF9XeYj4Th0d5HtpV6Gi1CVU8rVHNCUfFjAXtBhgIhAMZqlcIJ3q/WLN4UIzWIazANsQKZZKYyUywzDjT3Wlcu",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.12.19",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 828726
+			}
+		},
+		"0.12.20": {
+			"name": "@cloudflare/vitest-pool-workers",
+			"version": "0.12.20",
+			"dependencies": {
 				"cjs-module-lexer": "^1.2.3",
 				"esbuild": "0.27.3",
 				"miniflare": "4.20260301.1",
-				"wrangler": "4.70.0"
+				"wrangler": "4.71.0"
 			},
 			"devDependencies": {
 				"@cloudflare/workers-types": "^4.20260226.1",
@@ -12130,7 +12188,7 @@
 				"@cloudflare/mock-npm-registry": "0.0.0",
 				"@cloudflare/workers-tsconfig": "0.0.0",
 				"@cloudflare/workers-utils": "0.12.0",
-				"@cloudflare/workflows-shared": "0.5.0"
+				"@cloudflare/workflows-shared": "0.6.0"
 			},
 			"peerDependencies": {
 				"@vitest/runner": "2.0.x - 3.2.x",
@@ -12138,13 +12196,13 @@
 				"vitest": "2.0.x - 3.2.x"
 			},
 			"dist": {
-				"integrity": "sha512-UB8rwWCctunes7nlclw/aOXfVjgM3X7RJAsh51gvGfKiFuk9xT8juazYTdAH6mWGvRqwFYiZa0lFsgQ5gADkHw==",
-				"shasum": "094c5322439414224dbc950c4995573963dfd341",
-				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.12.19.tgz",
+				"integrity": "sha512-KzMZTwGTHNfkn8uT+oaVgNnCr6B9j4xeBIDN4XIcXc4MJYVbMyiXrl12aWh7E8GZCg7xm92/NJmjw7aE/2pQDw==",
+				"shasum": "f8aa6484aa0b7ac0d6a29e6e7e8fea721a82fa12",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.12.20.tgz",
 				"fileCount": 36,
 				"unpackedSize": 828726,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.12.19",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.12.20",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -12152,7 +12210,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDEzwUF9XeYj4Th0d5HtpV6Gi1CVU8rVHNCUfFjAXtBhgIhAMZqlcIJ3q/WLN4UIzWIazANsQKZZKYyUywzDjT3Wlcu"
+						"sig": "MEQCIDPvCeMEnnFdRr9zyTkSi57Yec8r9Mn96j5FqUxBrxYsAiBLfGg8EZwej7xpnWPrJYj2s+E8+77+hfhNYt57Ut+xog=="
 					}
 				]
 			}
