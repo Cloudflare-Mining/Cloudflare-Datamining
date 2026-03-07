@@ -1135,56 +1135,6 @@
 										"navigationItems": [
 											{
 												"contentTypeId": "navNavigationItem",
-												"contentfulId": "6CTZhAmBxe8kCfSgx816gK",
-												"locale": "en-US",
-												"name": "Getting Started",
-												"description": null,
-												"mainLink": null,
-												"navigationLinks": [
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "7dyyhm3ZJu05EeDdbj3QuV",
-														"locale": "en-US",
-														"title": "New to Cloudflare? Start here",
-														"description": null,
-														"url": "https://developers.cloudflare.com/learning-paths/get-started/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "6W3PfWQ8GUtaFv5tjuABUn",
-														"locale": "en-US",
-														"title": "Developer documentation hub",
-														"description": null,
-														"url": "https://developers.cloudflare.com/",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": true,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
-														"contentfulId": "5u8VEPclIFoEmdHGJ7Odp7",
-														"locale": "en-US",
-														"title": "Architecture center",
-														"description": null,
-														"url": "/architecture",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													}
-												],
-												"navIcon": null,
-												"showIconOnly": false,
-												"hideOnChinaSite": false,
-												"navigationItems": []
-											},
-											{
-												"contentTypeId": "navNavigationItem",
 												"contentfulId": "17ARM5mMCSAKHWVp2uMMaA",
 												"locale": "en-US",
 												"name": "Application Security",
@@ -2774,70 +2724,6 @@
 						"backgroundColor": "light-gray",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "medium",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
-						"contentfulId": "OxjhgGnjESMfCUvBakWge",
-						"title": null,
-						"copy": "[Secure access service edge (SASE)](https://www.cloudflare.com/learning/access-management/what-is-sase/) implementation simplifies traditional network architecture by merging network and security services on one global network. Instead of bottlenecking all traffic and users through a single, on-premise access point, SASE allows enterprises to route, inspect, and secure traffic in a single pass at the Internet edge.\n\nCloudflare is built on cloud-native infrastructure that we refer to as our global network. Our globally-distributed edge locations create a network fabric that brings security and performance capabilities as close to end users as possible, helping enterprises reduce latency, mitigate attacks close to the source, and seamlessly apply security controls to user connections.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R506geB2y9BSUXrlRmtAj/0258fe165deb2a8b4836f533e33f44f0/sase-network-model.svg"
-							},
-							"description": null
-						},
-						"imageAssetFile": {
-							"id": "aac25b46-6834-52da-900c-3695b5414edf",
-							"altText": "SASE network model",
-							"title": "SASE network model",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/R506geB2y9BSUXrlRmtAj/0258fe165deb2a8b4836f533e33f44f0/sase-network-model.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": {
-								"size": 59773,
-								"height": 1085,
-								"width": 1090,
-								"filename": "SASE-network-infrastructure-diagram.svg",
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/SASE-network-infrastructure-diagram.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
 						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": []
