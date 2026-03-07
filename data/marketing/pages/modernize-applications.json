@@ -215,21 +215,7 @@
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": {
-									"id": "bf6ae980-795b-592e-a924-87912db44874",
-									"altText": "Complexity blue",
-									"title": "Complexity blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mXIP8h0TLoryGL4I3Kirv/fd19d5f212786f86aad07daf558c4f57/Complexity.svg"
-										},
-										"description": "Complexity"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -511,7 +497,22 @@
 						"title": "Cloudflare customers eliminated $1.1M in legacy technology spend over three years",
 						"copy": "New Forrester research found that Cloudflare's connectivity cloud helped consolidate point solutions and eliminate spend on hardware, maintenance, and licensing fees.",
 						"toggleText": null,
-						"button": null,
+						"button": [
+							{
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "2A4fXlZdxIcUvtH6pgB4s1",
+								"elementName": "New Forrester study - Cloudflare customers boosted security team efficiency by 29% - CTA",
+								"standardText": null,
+								"text": "Read study",
+								"url": "https://www.cloudflare.com/lp/forrester-tei-study-2024/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							}
+						],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": [],
