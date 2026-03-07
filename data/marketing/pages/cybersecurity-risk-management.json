@@ -37,7 +37,19 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Cybersecurity risk management",
+					"metaDescription": " ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
+						},
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
+					},
+					"facebookCustomImage": null,
+					"author": []
+				},
 				"sys": {
 					"createdAt": "2024-05-07T02:55:10.455Z",
 					"updatedAt": "2026-03-07T06:19:07.315Z"
@@ -248,7 +260,21 @@
 								"openLinkInNewTab": null,
 								"removeCardBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "bf6ae980-795b-592e-a924-87912db44874",
+									"altText": "Complexity blue",
+									"title": "Complexity blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3mXIP8h0TLoryGL4I3Kirv/fd19d5f212786f86aad07daf558c4f57/Complexity.svg"
+										},
+										"description": "Complexity"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -1085,6 +1111,42 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "1QW597KjY8ZK7TbhM3cMwF",
+								"title": "Apply posture checks",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Check for identity and device posture for access requests with your IDP or EPP.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6fd865fc-5f0b-5650-a5a5-9ae0a9d24d1f",
+									"altText": "Yes check blue",
+									"title": "Yes check blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4oiO40TBTzUSAm1i5gAc7W/ae5829bb7b71eb63edeb8c87a02135f5/yes-check.svg"
+										},
+										"description": "Checkmark icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "42F16LdtCRjJy2tpsIYK94",
 								"title": "Logpush for further analysis",
 								"makeTitleLink": false,
@@ -1121,6 +1183,74 @@
 							}
 						],
 						"sectionPadding": "tile--no-top-padding",
+						"htmlId": null
+					},
+					{
+						"contentfulId": "25mC4k6gvfjrUV2FXIPT0Z",
+						"contentTypeId": "bladeFeaturedStatistics",
+						"title": "Cloudflare helps Indeed manage risk",
+						"statisticCopy": {
+							"nodeType": "document",
+							"content": [
+								{
+									"nodeType": "paragraph",
+									"content": [
+										{
+											"nodeType": "text",
+											"value": "Indeed is the No. 1 job site in the world (Comscore, Total Visits, October 2023) and allows job seekers to search millions of jobs in more than 60 countries and 28 languages."
+										}
+									]
+								},
+								{
+									"nodeType": "paragraph",
+									"content": [
+										{
+											"nodeType": "text",
+											"value": "More than 350 million unique visitors use Indeed each month to search for jobs, post resumes, research companies, and more."
+										}
+									]
+								}
+							]
+						},
+						"statisticQuote": {
+							"nodeType": "document",
+							"content": [
+								{
+									"nodeType": "paragraph",
+									"content": [
+										{
+											"nodeType": "text",
+											"value": "Cloudflare is helping us mitigate risk more effectively with less effort and simplifies how we deliver Zero Trust across my organization."
+										}
+									]
+								}
+							]
+						},
+						"headline": null,
+						"quotePersonName": "Anthony Moisant",
+						"quoteCompanyPosition": "SVP, Chief Information Officer and Chief Security Officer",
+						"quoteCompanyLogo": {
+							"id": "fd1ee314-1896-5136-8b3b-89b54eba7cdf",
+							"altText": "indeed logo",
+							"title": "indeed logo",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1kRciqoMm3NbiC2UNt4rH9/4cf70b2a18c97bb224cc46c736aa8bfe/iduIR7_80I_1745473132822_1.png"
+								},
+								"description": "Indeed logo"
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"statistics": [
+							{
+								"statistic": " ",
+								"description": " "
+							}
+						],
+						"sectionPadding": "tile--no-bottom-padding",
 						"htmlId": null
 					},
 					{
@@ -1379,7 +1509,20 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"primaryCtaButton": null,
+						"primaryCtaButton": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "gPmCNmYBcdE99hsO5JFNG",
+							"elementName": "Risk Posture - case studies CTA",
+							"standardText": null,
+							"text": "Case studies",
+							"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
 						"secondaryCtaButton": null
 					},
 					{
@@ -1614,6 +1757,28 @@
 								"titleSize": null,
 								"description": "Cloudflare accelerates the time-to-value for your application modernization strategy — whether you are rehosting, replatforming, refactoring, or building new apps.\n",
 								"learnMoreUrl": "/modernize-applications/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3zPxuV65TKuLn0s0dyMPB3",
+								"title": "Data compliance",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Global businesses use Cloudflare to streamline regulatory compliance, improve privacy practices, and reduce risk. ",
+								"learnMoreUrl": "/data",
 								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
