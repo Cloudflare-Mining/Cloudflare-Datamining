@@ -1135,6 +1135,56 @@
 										"navigationItems": [
 											{
 												"contentTypeId": "navNavigationItem",
+												"contentfulId": "6CTZhAmBxe8kCfSgx816gK",
+												"locale": "en-US",
+												"name": "Getting Started",
+												"description": null,
+												"mainLink": null,
+												"navigationLinks": [
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "7dyyhm3ZJu05EeDdbj3QuV",
+														"locale": "en-US",
+														"title": "New to Cloudflare? Start here",
+														"description": null,
+														"url": "https://developers.cloudflare.com/learning-paths/get-started/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "6W3PfWQ8GUtaFv5tjuABUn",
+														"locale": "en-US",
+														"title": "Developer documentation hub",
+														"description": null,
+														"url": "https://developers.cloudflare.com/",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": true,
+														"isExternalUrl": null
+													},
+													{
+														"contentTypeId": "elementNavLink",
+														"contentfulId": "5u8VEPclIFoEmdHGJ7Odp7",
+														"locale": "en-US",
+														"title": "Architecture center",
+														"description": null,
+														"url": "/architecture",
+														"badges": null,
+														"specialLinkType": null,
+														"openInNewWindow": false,
+														"isExternalUrl": null
+													}
+												],
+												"navIcon": null,
+												"showIconOnly": false,
+												"hideOnChinaSite": false,
+												"navigationItems": []
+											},
+											{
+												"contentTypeId": "navNavigationItem",
 												"contentfulId": "17ARM5mMCSAKHWVp2uMMaA",
 												"locale": "en-US",
 												"name": "Application Security",
@@ -3889,7 +3939,21 @@
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
-								"imageAssetFile": null,
+								"imageAssetFile": {
+									"id": "deb6a0ca-835c-5aa8-a588-44ee4b0f58ab",
+									"altText": "Cloudflare one week 2022 - PDF 2",
+									"title": "Cloudflare one week 2022 - PDF 2",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4n7gXRGksHKQz08zi0k29w/1056a239b757e5d6de1ee3bf7889ef4b/Welcome_to_CIO_Week_.png"
+										},
+										"description": "Cloudflare One Week - PDF 2 - SASE"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -4019,21 +4083,7 @@
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
-								"imageAssetFile": {
-									"id": "b9b9098e-0f0f-529f-95d6-bd7f1d909ab6",
-									"altText": "What is Zero Trust?",
-									"title": "Zero Trust image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/HkeaOWPCsVb2DCKfUhKUd/de62aed3a47b7b15fd61cfab778c7372/Tech_efficiency_-_Zero_Trust_image.png"
-										},
-										"description": "Illustration of an identity and a server"
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
