@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong>&nbsp;Austin, Denver, Atlanta, Washington DC, Seattle, New York, Toronto Canada preferred; other locations in North America also possible.</p>
-<p>&nbsp;</p>
+<p><strong>Available Locations:</strong> Austin, Denver, Atlanta, Washington DC, Seattle, New York, Toronto Canada preferred; other locations in North America also possible.</p>
 <div><strong>About the team</strong><br>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. This is not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.<br><br><strong>What you’ll do</strong><br>You’ll lead the team in building and operating secure and resilient distributed systems for secrets and key management, running across our network that spans more than 3<span class="il">1</span>0 cities in over&nbsp;<span class="il">1</span>20 countries. The team's focus is strengthening/re-architecting internal PKI and machine/workload identity. You’ll run and support the systems we build, both in an operational sense and by helping other internal developers use them.</div>
 <div>&nbsp;</div>
 <div>You'll organize and plan the team's long-term roadmap and day-to-day work. You'll review and sign off on technical designs, project plans, and code; providing guidance to ensure quality, resilience, and security. You'll participate in design and implementation, personally leading projects as needed. You'll support the growth and career development of your team, delegating tasks as appropriate. People management responsibilities (performance management, compensation planning, etc) may be entirely in your hands or supported by senior management, depending on your level and preferences.</div>
@@ -30,9 +29,6 @@
 		<li>Familiarity with Go and/or Python + Salt specifically.</li>
 	</ul>
 </div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>

@@ -16,8 +16,8 @@
 	<li><strong>Build the AI-assisted development stack:</strong> Code generation, automated review, intelligent debugging, workflow automation. Move beyond "developer uses a chatbot" toward systems that actively improve code quality and velocity</li>
 	<li><strong>Drive developer insights:</strong> Metrics, dashboards, and tooling that help teams understand their own velocity, quality, and bottlenecks, and that feed back into smarter automation</li>
 	<li><strong>Strengthen developer infrastructure:</strong> Build systems, CI/CD pipelines, and deployment automation that serve as the foundation for everything above</li>
+	<li><strong>Champion Cloudflare on Cloudflare:</strong> Use our own developer platform internally, and improve those products through real-world dogfooding</li>
 </ul>
-<p><strong>Champion Cloudflare on Cloudflare:</strong> Use our own developer platform internally, and improve those products through real-world dogfooding</p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
 	<li><strong>Own the DevTools roadmap:</strong> Define priorities, make tradeoffs, and maintain a clear view of what we’re building and why.</li>
