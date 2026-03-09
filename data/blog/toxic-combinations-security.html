@@ -1,4 +1,5 @@
-<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PmvEMAT9O9baPCM6c10L/f0545638b5eea241968bb490f73c7dbd/image5.png" alt="">
+<div class="mb2 gray5">14 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/toxic-combinations-security">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/toxic-combinations-security">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5PmvEMAT9O9baPCM6c10L/f0545638b5eea241968bb490f73c7dbd/image5.png" alt="">
 <div class="post-content lh-copy gray1">
 	<p>At 3 AM, a single IP requested a login page. Harmless. But then, across several hosts and paths, the same source began appending <code>?debug=true</code> — the sign of an attacker probing the environment to assess the technology stack and plan a breach.</p>
 	<p>Minor misconfigurations, overlooked firewall events, or request anomalies feel harmless on their own. But when these small signals converge, they can explode into security incidents known as “toxic combinations.” These are exploits where an attacker discovers and compounds many minor issues — such as a debug flag left on a web application or an unauthenticated application path — to breach systems or exfiltrate data.</p>
