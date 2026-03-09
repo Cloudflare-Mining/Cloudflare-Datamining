@@ -246,7 +246,7 @@
 		redemption_period: {
 			title: "Domain in Redemption Period",
 			description: (0, o.p)(q(), "expiresOn", "redemptionFee"),
-			description_domain_active: (0, o.p)(U(), "redemptionFee"),
+			description_domain_active: (0, o.p)(Y(), "redemptionFee"),
 			description_common: "<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><0>Learn more about domain restoration</0>.",
 			restore_cta: "Restore",
 			billing_permissions_error_message: "You need permission to manage billing in order to restore a domain. Please reach out to a super-admin on the account for assistance.",
@@ -263,7 +263,7 @@
 				}
 			},
 			messages: {
-				success: (0, o.p)(Y(), "domainName"),
+				success: (0, o.p)(U(), "domainName"),
 				error: (0, o.p)(W(), "domainName")
 			},
 			in_progress: {
@@ -301,6 +301,15 @@
 		notification_failure_years_exceeds_maximum: "The renewal period exceeds the maximum allowed for this domain.",
 		notification_failure_years_below_minimum: "The renewal period is below the minimum allowed for this domain.",
 		notification_timeout: "Domain renewal is taking longer than expected. Please refresh the page to check status."
+	},
+	restore: {
+		notification_failure: "Domain restoration failed. Please try again or contact support for assistance.",
+		notification_failure_domain_not_found: "This domain could not be found. Please contact support.",
+		notification_failure_not_cloudflare_registration: "This domain is not a Cloudflare registration and cannot be restored.",
+		notification_failure_not_in_redemption_period: "This domain is not in the redemption period and cannot be restored.",
+		notification_failure_double_pending_delete: "This domain cannot be restored due to its registry status. Please contact support.",
+		notification_failure_domain_blocked: "This domain is blocked and cannot be restored. Please contact support.",
+		notification_failure_permission_denied: "You don't have permission to restore this domain."
 	},
 	domainPageNotifications: {
 		expiration: "This domain will expire in <0>%{smart_count}</0> day. See registration options below.||||This domain will expire in <1>%{smart_count}</1> days. See registration options below.",

@@ -411,7 +411,7 @@
 	"dns.table.srv.placeholder": "E.g. _sip._tcp.example.com",
 	"dns.table.srv.error": "Invalid SRV record format. Use the format: priority weight port target (e.g., 10 60 5060 sipserver.example.com).",
 	"dns.dns_editor.title": "DNS management for <0>%{zoneName}</0>",
-	"dns.dns_editor.description": "Review, add, and edit DNS records. Edits will go into effect once saved.",
+	"dns.dns_editor.description": "Review, add, and edit DNS records. Changes propagate globally within minutes.",
 	"dns.dns_editor.action_bar.add_record": "Add record",
 	"dns.dns_editor.record_description.a": "<0>%{name}</0> points to <1>%{content}</1>.",
 	"dns.dns_editor.record_description.a.proxied": "<0>%{name}</0> points to <1>%{content}</1> and has its traffic proxied through Cloudflare.",

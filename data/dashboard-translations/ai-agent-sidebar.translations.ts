@@ -28,5 +28,12 @@
 			done: "Done",
 			view: "View"
 		}
+	},
+	conversations: {
+		new_conversation: "New conversation",
+		untitled: "Untitled",
+		search_placeholder: "Search...",
+		no_conversations: "No conversations yet",
+		no_results: "No results found"
 	}
 }

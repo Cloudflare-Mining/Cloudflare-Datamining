@@ -23,8 +23,6 @@
 	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/logs/[id]/*",
 	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/logs/[id]/request",
 	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/logs/[id]/response",
-	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/prompts",
-	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/prompts/[id]/*",
 	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/provider_configs",
 	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/provider_configs/[id]/*",
 	"/api/v4/accounts/[id]/ai-gateway/gateways/[id]/routes",
@@ -49,13 +47,11 @@
 	"/gateways/[id]/integrations",
 	"/gateways/[id]/logs",
 	"/gateways/[id]/overview",
-	"/gateways/[id]/prompts",
 	"/gateways/[id]/routing",
 	"/gateways/[id]/routing/[id]/*",
 	"/gateways/[id]/routing/[id]/edit",
 	"/gateways/[id]/routing/[id]/versions",
 	"/gateways/[id]/settings",
 	"/gateways/[id]/settings/tokens",
-	"/prompts",
 	"/settings"
 ]

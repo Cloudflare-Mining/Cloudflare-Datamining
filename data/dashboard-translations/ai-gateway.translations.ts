@@ -6,26 +6,17 @@
 		link: "Learn more",
 		hero: {
 			title: "AI Gateway",
-			subtitle: "One place to observe, control, and optimize all your AI applications. Connect any provider, track every request, and reduce costs.",
-			cta: "Create your first gateway"
+			subtitle: "One place to observe, control, and optimize all your AI applications. Connect any provider, track every request, and reduce costs."
 		},
-		features: {
-			analytics: {
-				title: "Unified Analytics",
-				description: "See all your AI spend and usage across providers in one dashboard. Track costs by model, monitor token usage, and identify optimization opportunities."
-			},
-			logging: {
-				title: "Request Logging",
-				description: "Store and search through prompts, responses, and metadata. Debug issues faster with full visibility into every request."
-			},
-			control: {
-				title: "Rate Limiting & Caching",
-				description: "Control costs with rate limits and serve repeated requests from cache. Reduce latency and provider spend without changing your code."
-			},
-			providers: {
-				title: "Any Provider, One API",
-				description: "Works with OpenAI, Anthropic, Google, Azure, AWS Bedrock, and 20+ other providers. Switch between providers without code changes."
-			}
+		customGateway: {
+			cta: "Create a custom gateway",
+			description: "Want more control? Use a named gateway with custom settings."
+		},
+		codeExamples: {
+			intro: "A default gateway will automatically be created on your first authenticated request.",
+			tokenHelpWorkersAI: "To run the example, create a token with AI Gateway and Workers AI permissions.",
+			tokenHelpOther: "To run the example, create a token with AI Gateway permissions and your provider's API key.",
+			createToken: "Create authentication token"
 		}
 	},
 	gettingStarted: {
@@ -68,7 +59,6 @@
 		settings: "Settings",
 		improved_logs: "Logs",
 		evaluations: "Evaluations",
-		prompts: "Prompts",
 		metrics: "Metrics",
 		dyn_routing: "Dynamic Routes",
 		billing: "Billing"
@@ -119,34 +109,6 @@
 		settings: {
 			title: "Settings",
 			description: "Important settings for your gateway, you can always change them later"
-		}
-	},
-	prompts: {
-		no_prompts: "No prompts",
-		new_prompt: "Add new prompt",
-		table: {
-			header: {
-				id: "ID",
-				data: "Data"
-			},
-			extra: {
-				edit: "Edit",
-				delete: "Delete"
-			}
-		},
-		modal: {
-			create: {
-				title: "Create a new Prompt",
-				description: "Choose an identifier and your data for your prompt.",
-				prompt_id: "Prompt ID",
-				prompt_data: "Prompt Data"
-			},
-			update: {
-				title: "Update you Prompt",
-				description: "Update your prompt data.",
-				prompt_id: "Prompt ID",
-				prompt_data: "Prompt Data"
-			}
 		}
 	},
 	logs: {
@@ -583,6 +545,31 @@
 		tabs: {
 			editor: "Editor",
 			versions: "Versions"
+		},
+		example: {
+			card_title: "Get started with an example route",
+			card_description: "Choose a template to get started quickly, or build from scratch.",
+			modal_title: "Create a new Route",
+			modal_description: "Choose a template to get started quickly, or build from scratch.",
+			template_label: "Start from example",
+			template_description: "Route to gpt-4o with automatic Workers AI fallback",
+			blank_label: "Start from scratch",
+			blank_description: "Build your own routing logic from scratch",
+			route_name: "Route Name",
+			route_name_hint: "This cannot be changed later",
+			usage_example: "Usage Example",
+			create: "Create",
+			creating: "Creating...",
+			cancel: "Cancel",
+			error: "Failed to create route. Please check the route name and try again.",
+			recommended: "Recommended"
+		},
+		delete_route: {
+			title: "Confirm",
+			message: "Are you sure you want to delete this route?",
+			cancel: "Cancel",
+			delete: "Delete",
+			error: "Failed to delete route. Please try again."
 		}
 	},
 	gateway_modal: {
@@ -763,11 +750,6 @@
 			public_key_length: "Public key must contain at least 16 characters",
 			unknown: "Unknown error occurred"
 		},
-		prompt: {
-			already_exist: "A prompt with this id already exists",
-			invalid_format: "Invalid format to a prompt",
-			input_length: "Prompt id must contain at most 32 characters"
-		},
 		evaluation: {
 			already_exist: "A evaluation with this name already exists"
 		},
@@ -876,8 +858,6 @@
 		tokens: "Tokens",
 		gateway: "Gateway",
 		gateways: "Gateways",
-		prompt: "Prompt",
-		prompts: "Prompts",
 		evaluation: "Evaluation",
 		evaluations: "Evaluations",
 		dataset: "Dataset",

@@ -157,6 +157,7 @@
 						title: "Source type",
 						sources: {
 							sitemap: "Sitemap",
+							crawl: "Web Crawl",
 							rss_feed: "RSS Feed"
 						}
 					},
@@ -196,6 +197,45 @@
 					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery.",
 					add_button: "Add sitemap",
 					placeholder: "https://example.com/sitemap.xml"
+				},
+				content_selector: {
+					title: "Content selectors",
+					description: "Define path-to-selector mappings to extract specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins.",
+					path_label: "Path",
+					selector_label: "Selector",
+					path_placeholder: "**/blog/**",
+					selector_placeholder: "article .post-body",
+					add_button: "Add selector",
+					remove_button: "Remove selector"
+				},
+				crawl_options: {
+					title: "Crawl options",
+					description: "Configure how the crawler traverses your website.",
+					depth: {
+						title: "Depth",
+						description: "Maximum number of pages to crawl (1-100,000)."
+					},
+					source: {
+						title: "Source",
+						description: "Which links to follow when crawling.",
+						options: {
+							all: "All",
+							sitemaps: "Sitemaps",
+							links: "Links"
+						}
+					},
+					max_age: {
+						title: "Max age (seconds)",
+						description: "Maximum age of cached content in seconds (0-604,800)."
+					},
+					include_external_links: {
+						title: "Include external links",
+						description: "Follow links to external domains."
+					},
+					include_subdomains: {
+						title: "Include subdomains",
+						description: "Follow links to subdomains of the source domain."
+					}
 				}
 			},
 			common: {
@@ -389,6 +429,20 @@
 				drawer: {
 					title: "Specific sitemaps",
 					description: "Specify specific sitemap URLs to crawl instead of using the default sitemap discovery."
+				}
+			},
+			content_selector: {
+				title: "Content selectors",
+				drawer: {
+					title: "Content selectors",
+					description: "Define path-to-selector mappings to extract specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed."
+				}
+			},
+			crawl_options: {
+				title: "Crawl options",
+				drawer: {
+					title: "Crawl options",
+					description: "Configure how the crawler traverses your website."
 				}
 			}
 		},

@@ -71,8 +71,10 @@
 				start_time: "Start Time",
 				end_time: "End Time",
 				total_connections: "Connections",
-				close_reason: "Close Reason"
-			}
+				close_reason: "Close Reason",
+				recording: "Recording"
+			},
+			view_recording: "View Recording"
 		},
 		connection: {
 			title: "Connections Log",
@@ -81,6 +83,36 @@
 				event: "event"
 			}
 		}
+	},
+	recording: {
+		replay: "Replay",
+		replay_too_short: "Recording is too short to display playback controls",
+		play: "Play",
+		pause: "Pause",
+		restart: "Restart",
+		session_recording: "Session Recording",
+		session_id_label: "Session ID:",
+		download_json: "Download JSON",
+		start_time: "Start Time",
+		end_time: "End Time",
+		duration: "Duration",
+		tabs_label: "Tabs",
+		status: "Status",
+		unknown: "Unknown",
+		session_completed: "Session Completed",
+		not_available: "N/A",
+		inspect: "Inspect",
+		tab_dom: "DOM",
+		tab_logs: "Logs",
+		tab_network: "Network",
+		tab: "Tab",
+		no_dom_data: "No DOM data available",
+		coming_soon: "Coming Soon",
+		logs_coming_soon: "Console logs and events will be available here.",
+		network_coming_soon: "Network requests and responses will be available here.",
+		no_data_title: "No data found",
+		no_data_description: "The session Id you looked up does not exist or has expired.",
+		go_back: "Go back to sessions"
 	},
 	onboarding: {
 		title: "Cloudflare Browser Rendering",

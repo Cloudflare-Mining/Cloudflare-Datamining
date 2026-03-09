@@ -352,6 +352,7 @@
 		},
 		currentState: "Current State",
 		statusSince: "since",
+		checkAt: "at",
 		nextCheck: "Next check",
 		checking: "Checking...",
 		checkedAt: "Checked At",
@@ -366,17 +367,27 @@
 		newAlert: "New Alert",
 		checkNow: "Check Now",
 		manageNotifications: "Manage Notifications",
+		empty: {
+			title: "No alerts yet",
+			description: "Create an alert to monitor your Workers and get notified when metrics exceed your thresholds."
+		},
 		table: {
 			name: "Name",
 			status: "Status",
 			latestChecks: "Latest Checks",
-			notifiers: "Notifiers",
-			notifierCount: "%{count} policies"
+			notifications: "Notifications",
+			notificationsNone: "None",
+			noNotifications: "No notification methods configured",
+			noTrigger: "No notification trigger selected",
+			methodEmail: "Email",
+			methodWebhook: "Webhook",
+			methodPagerDuty: "PagerDuty"
 		},
 		actions: {
 			edit: "Edit",
 			duplicate: "Duplicate",
-			delete: "Delete"
+			delete: "Delete",
+			testNotifications: "Test Notifications"
 		},
 		views: {
 			metrics: "Metrics",
@@ -422,6 +433,32 @@
 			results: "Results",
 			failingTotal: "(%{failingCount} failing / %{totalCount} total)",
 			loadMore: "Load More (%{remaining} remaining)"
+		},
+		notifications: {
+			title: "Notifications",
+			trigger: {
+				firingFailed: "Notify when fired",
+				normal: "Notify when resolved"
+			},
+			triggerWarning: "Select at least one notification trigger",
+			deliveryWarning: "Add at least one delivery method",
+			emails: {
+				label: "Email Recipients",
+				placeholder: "Enter email address",
+				add: "Add",
+				validation: "Please enter a valid email address"
+			},
+			configure: "Configure",
+			webhooks: {
+				label: "Webhooks",
+				placeholder: "Select a webhook...",
+				empty: "No webhooks configured"
+			},
+			pagerDuty: {
+				label: "PagerDuty",
+				placeholder: "Select an integration...",
+				empty: "No PagerDuty integrations configured"
+			}
 		}
 	},
 	usage: {
