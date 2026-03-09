@@ -155,6 +155,9 @@
 	"ai-pay-per-crawl-account": {
 		"enabled": true
 	},
+	"ai-security": {
+		"enabled": false
+	},
 	"ai-support-dashboard": {
 		"enabled": false
 	},
@@ -415,7 +418,7 @@
 		"enabled": true
 	},
 	"browser-rendering-session-recording": {
-		"enabled": false
+		"enabled": true
 	},
 	"bulk-redirects-feedback-survey": {
 		"enabled": false
@@ -665,6 +668,9 @@
 	"deprecate-workers-usage-models": {
 		"enabled": true
 	},
+	"deseng-account-selector": {
+		"enabled": false
+	},
 	"deseng-agent-sidebar": {
 		"enabled": true
 	},
@@ -796,6 +802,9 @@
 	},
 	"dns-optimisations": {
 		"enabled": true
+	},
+	"dns-private-routing": {
+		"enabled": false
 	},
 	"dns-records-quota": {
 		"enabled": true
@@ -1649,6 +1658,13 @@
 	"prg-lb-observatory-wayfinding": {
 		"enabled": false
 	},
+	"prg-lb-setup-banner": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-a"
+		]
+	},
 	"prg-load-balancing-personalized-messaging": {
 		"enabled": true
 	},
@@ -1844,6 +1860,9 @@
 			"variant-a",
 			"variant-b"
 		]
+	},
+	"prg-zone-plan-post-purchase-survey": {
+		"enabled": false
 	},
 	"programmable-flow-protection": {
 		"enabled": false
