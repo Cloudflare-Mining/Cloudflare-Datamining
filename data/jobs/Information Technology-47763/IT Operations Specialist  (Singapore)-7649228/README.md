@@ -5,61 +5,53 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London, UK or Lisbon, Portugal</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Infrastructure Services Analyst is a foundational execution role within Cloudflare’s Integrated Hardware Systems team, supporting the delivery of outsourced data center and infrastructure services that enable global hardware deployments at scale. This role focuses on day-to-day service execution, delivery tracking, and operational follow-through across Cloudflare’s data center footprint. The analyst works closely with internal cross-functional partners and external service providers to identify risks, track performance, and ensure services are delivered reliably and consistently.</p>
-<p>&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Location: Singapore</strong></p>
+<p><strong>About the Role</strong></p>
+<p>As an <strong>IT Operations Specialist I (P2)</strong>, you will provide essential onsite IT support to employees and assist with daily IT operations at our corporate office. This role is fully onsite, 5 days a week, and ensures that employees have a smooth and reliable technology experience. You will help maintain IT systems, support conference room technology, and provide hands-on assistance for devices and user requests.</p>
+<p>This role reports to the <strong>IT Operations Manager</strong> and works closely with the IT Service Desk, IT Operations Support team, and the Places &amp; Office team.</p>
+<p><strong>Responsibilities</strong></p>
+<p><strong>Onsite IT Operations &amp; Office Support</strong></p>
 <ul>
-	<li>Support the execution and oversight of outsourced data center and infrastructure services supporting hardware deployment and lifecycle operations.</li>
+	<ul>
+		<li>Act as the onsite IT support resource, responding to employee requests and incidents.</li>
+		<li>Ensure conference rooms, IT systems, and shared office equipment are functioning properly.</li>
+		<li>Assist with IT asset management, including device provisioning, check-in/check-out, and tracking.</li>
+		<li>Partner with IT and Security teams to follow access control and compliance policies.</li>
+	</ul>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Conference Room &amp; Event Support</strong></p>
 <ul>
-	<li>Track service delivery related to rack installation, deployment support, remote hands, and in-data-center activities, ensuring work is completed to defined expectations.</li>
+	<ul>
+		<li>Provide setup and basic troubleshooting for conference room AV technology and video conferencing platforms (Zoom, Google Meet).</li>
+		<li>Assist with small to mid-sized corporate meetings and events, including setup and technical support.</li>
+		<li>Escalate complex AV or event issues to senior specialists or vendors as needed.</li>
+	</ul>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Employee IT Support</strong></p>
 <ul>
-	<li>Identify delivery risks, service gaps, and recurring issues, escalating concerns and supporting resolution as needed.</li>
+	<ul>
+		<li>Provide in-person support for hardware, software, and network connectivity issues.</li>
+		<li>Help employees with device setup, account access, and secure remote connectivity.</li>
+		<li>Deliver professional, customer-focused service when working with employees at all levels.</li>
+	</ul>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Qualifications &amp; Skills</strong></p>
+<p><strong>Required:</strong></p>
 <ul>
-	<li>Analyze service performance, deployment trends, and vendor metrics to support operational insight and reporting.</li>
+	<li>1–2 years of IT support or helpdesk experience in a corporate environment.</li>
+	<li>Strong troubleshooting skills for common hardware, software, and connectivity issues.</li>
+	<li>Familiarity with video conferencing platforms (Zoom, Google Meet).</li>
+	<li>Knowledge of IT asset management practices.</li>
+	<li>Excellent communication and customer service skills.</li>
+	<li>Associate’s degree in Information Technology, Computer Science, or related field (or equivalent experience).</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Preferred:</strong></p>
 <ul>
-	<li>Maintain dashboards, trackers, and recurring operational reports used to monitor execution and service health.</li>
+	<li>Experience with IT ticketing systems (e.g., Jira Service Management).</li>
+	<li>Familiarity with device management tools such as JAMF or Intune.</li>
+	<li>Basic understanding of IT security best practices.</li>
+	<li>Certifications such as CompTIA A+, ITIL 4 Foundation, or Microsoft 365 Fundamentals.</li>
 </ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Support service reviews, readiness assessments, and onboarding activities for new sites and deployment waves.</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Serve as an operational liaison between Integrated Hardware Systems, Infrastructure Operations, Engineering, Procurement, and external service vendors to ensure clarity on responsibilities, handoffs, and escalation paths.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
-<p>Experience supporting infrastructure operations, data center services, or hardware deployment activities.</p>
-<p>&nbsp;</p>
-<p>Familiarity with data center environments, rack-level hardware, or infrastructure build-out processes.</p>
-<p>&nbsp;</p>
-<p>Strong analytical skills with experience using spreadsheets, dashboards, or trackers to monitor execution and performance.</p>
-<p>&nbsp;</p>
-<p>Comfort working with operational metrics, SLAs, and service indicators.</p>
-<p>&nbsp;</p>
-<p>Clear written and verbal communication skills, with the ability to coordinate across teams and with external vendors.</p>
-<p>&nbsp;</p>
-<p>Strong sense of ownership, follow-through, and accountability in execution-heavy environments.</p>
-<p>&nbsp;</p>
-<p>Ability to operate effectively in fast-moving, operationally complex settings.</p>
-<p>&nbsp;</p>
-<p><strong>Nice-to-Have Skills</strong></p>
-<p>Experience working with outsourced service providers or vendor-managed operational models.</p>
-<p>&nbsp;</p>
-<p>Exposure to large-scale infrastructure deployments or global data center operations.</p>
-<p>&nbsp;</p>
-<p>Familiarity with service reviews, vendor evaluations, or commercial performance tracking.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

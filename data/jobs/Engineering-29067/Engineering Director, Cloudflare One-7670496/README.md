@@ -5,61 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: London, UK or Lisbon, Portugal</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Infrastructure Services Analyst is a foundational execution role within Cloudflare’s Integrated Hardware Systems team, supporting the delivery of outsourced data center and infrastructure services that enable global hardware deployments at scale. This role focuses on day-to-day service execution, delivery tracking, and operational follow-through across Cloudflare’s data center footprint. The analyst works closely with internal cross-functional partners and external service providers to identify risks, track performance, and ensure services are delivered reliably and consistently.</p>
-<p>&nbsp;</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations: London</strong></p>
+<h1>About the role</h1>
+<p>We are seeking an Engineering Director to lead a team of engineers within our Cloudflare One engineering group. This role will have a strong focus on delivering quality products in our SASE suite. As an engineering leader at Cloudflare, this role will also provide mentorship and guidance to engineering managers and teams, contributing to company-wide technical practices. The ideal candidate will have a deep technical background, proven leadership experience, and a passion for developing people and cultivating a strong engineering culture.</p>
+<h1>Who you are</h1>
+<p>A qualified candidate will be equally skilled with people and technology, able to organize and inspire others while participating in technical discussions and planning.&nbsp;</p>
 <ul>
-	<li>Support the execution and oversight of outsourced data center and infrastructure services supporting hardware deployment and lifecycle operations.</li>
+	<li>Experience managing engineering managers.</li>
+	<li>Experience managing complex projects with external dependencies</li>
+	<li>Results and metrics driven</li>
+	<li>A strong attention to detail</li>
+	<li>Great communication skills</li>
+	<li>Experience hiring great engineers</li>
+	<li>A kind and generous attitude towards customers and coworkers alike</li>
+	<li>Ability to set technical direction and own decisions</li>
+</ul>
+<h1>What you’ll do</h1>
+<ul>
+	<li>Lead multiple teams of engineers delivering customer facing products in our Cloudflare One suite.</li>
+	<li>Partner with Product Management to define and execute a strategy and achieve audacious goals.</li>
+	<li>Work with peers around the world to drive cross organizational projects and develop best practices.</li>
+	<li>Foster a culture that is results oriented without sacrificing curiosity, kindness, and empathy for customers and co-workers alike.</li>
+	<li>Define metrics that guide the engineering teams.</li>
+	<li>Drive continuous improvement in your teams</li>
+	<li>Lead engineering recruiting efforts on your teams</li>
 </ul>
 <p>&nbsp;</p>
-<ul>
-	<li>Track service delivery related to rack installation, deployment support, remote hands, and in-data-center activities, ensuring work is completed to defined expectations.</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Identify delivery risks, service gaps, and recurring issues, escalating concerns and supporting resolution as needed.</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Analyze service performance, deployment trends, and vendor metrics to support operational insight and reporting.</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Maintain dashboards, trackers, and recurring operational reports used to monitor execution and service health.</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Support service reviews, readiness assessments, and onboarding activities for new sites and deployment waves.</li>
-</ul>
-<p>&nbsp;</p>
-<ul>
-	<li>Serve as an operational liaison between Integrated Hardware Systems, Infrastructure Operations, Engineering, Procurement, and external service vendors to ensure clarity on responsibilities, handoffs, and escalation paths.</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
-<p>Experience supporting infrastructure operations, data center services, or hardware deployment activities.</p>
-<p>&nbsp;</p>
-<p>Familiarity with data center environments, rack-level hardware, or infrastructure build-out processes.</p>
-<p>&nbsp;</p>
-<p>Strong analytical skills with experience using spreadsheets, dashboards, or trackers to monitor execution and performance.</p>
-<p>&nbsp;</p>
-<p>Comfort working with operational metrics, SLAs, and service indicators.</p>
-<p>&nbsp;</p>
-<p>Clear written and verbal communication skills, with the ability to coordinate across teams and with external vendors.</p>
-<p>&nbsp;</p>
-<p>Strong sense of ownership, follow-through, and accountability in execution-heavy environments.</p>
-<p>&nbsp;</p>
-<p>Ability to operate effectively in fast-moving, operationally complex settings.</p>
-<p>&nbsp;</p>
-<p><strong>Nice-to-Have Skills</strong></p>
-<p>Experience working with outsourced service providers or vendor-managed operational models.</p>
-<p>&nbsp;</p>
-<p>Exposure to large-scale infrastructure deployments or global data center operations.</p>
-<p>&nbsp;</p>
-<p>Familiarity with service reviews, vendor evaluations, or commercial performance tracking.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
