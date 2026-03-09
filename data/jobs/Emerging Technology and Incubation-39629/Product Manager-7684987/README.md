@@ -5,59 +5,48 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Atlanta, Austin, Denver, Toronto, Washington DC, Lisbon, London</strong></p>
-<p><strong>About Product Management at Cloudflare</strong></p>
-<p>As a Product Manager at Cloudflare, you will be responsible for building products and workflows that help us improve the way the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with other PMs, conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
-<p><strong>About the Role</strong></p>
-<p>As a Senior Product Manager for Internal Developer Tooling, your mission is to change how Cloudflare engineers build, test, and ship software. You'll own the strategy for internal developer tools and platforms, with a particular focus on how AI and automation can fundamentally improve engineering velocity and quality.</p>
-<p>This isn't a maintenance role. We're looking for someone who sees the current moment in AI-assisted development as an opportunity to rethink workflows from scratch, not just bolt copilots onto existing processes. You'll work with a strong engineering team and partner across the organization to:</p>
+<h3><strong>Available Locations: Austin, TX | New York, NY | Lisbon, Portugal (HYBRID)</strong></h3>
+<h3>About Product Management at Cloudflare&nbsp;</h3>
+<p>As a Product Manager at Cloudflare, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding what our customers, business, and the broader Internet.</p>
+<h3>About The Role</h3>
+<p>We're looking for a Product Manager to help build a more private and transparent Internet. You'll join a talented team working on Cloudflare's Privacy Platform — a suite of products that empowers developers to build privacy and transparency into application architecture. Our privacy products are deployed by some of the world's largest consumer <a href="https://blog.cloudflare.com/icloud-private-relay/">technology companies</a> and are built on cutting-edge cryptographic protocols and Internet standards.</p>
+<h3>This role spans two complementary domains:</h3>
 <ul>
-	<li><strong>Rethink developer workflows end-to-end:</strong> From code generation through production deployment, identify where automation and AI can eliminate entire categories of toil, not just speed up existing steps</li>
-	<li><strong>Build the AI-assisted development stack:</strong> Code generation, automated review, intelligent debugging, workflow automation. Move beyond "developer uses a chatbot" toward systems that actively improve code quality and velocity</li>
-	<li><strong>Drive developer insights:</strong> Metrics, dashboards, and tooling that help teams understand their own velocity, quality, and bottlenecks, and that feed back into smarter automation</li>
-	<li><strong>Strengthen developer infrastructure:</strong> Build systems, CI/CD pipelines, and deployment automation that serve as the foundation for everything above</li>
+	<li>Privacy: Products and protocols that minimize data collection and protect user identity, including <a href="https://developers.cloudflare.com/privacy-proxy/">Privacy Proxy</a> (MASQUE-powered tunneling) and <a href="https://developers.cloudflare.com/privacy-gateway/">Privacy Gateway</a> (Oblivious HTTP).</li>
+	<li>Transparency: Products that make cryptographic systems or the code binaries auditable and trustworthy, including Key Transparency (verifying end-to-end encryption keys for messaging apps like <a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users/">WhatsApp</a>), Certificate Transparency infrastructure, and emerging transparency log products.</li>
 </ul>
-<p><strong>Champion Cloudflare on Cloudflare:</strong> Use our own developer platform internally, and improve those products through real-world dogfooding</p>
-<p><strong>Key Responsibilities</strong></p>
+<p>These technologies have a few things in common: they use emerging cryptography to build privacy into the foundations of the networking stack, and help improve the trustworthiness of the Internet by not relying on any single party. This role will work closely with our Research team — engineers and researchers who are defining Internet standards at the IETF and deploying them at scale on Cloudflare's global network.<strong><br></strong></p>
+<h3>What You’ll Do</h3>
 <ul>
-	<li><strong>Own the DevTools roadmap:</strong> Define priorities, make tradeoffs, and maintain a clear view of what we’re building and why.</li>
-	<li><strong>Run discovery with engineering teams:</strong> Conduct regular research with internal developers to identify pain points, validate solutions, and measure adoption.</li>
-	<li><strong>Define and track success metrics:</strong> Establish measurable outcomes for developer productivity initiatives—build times, deployment frequency, developer satisfaction, etc.</li>
-	<li><strong>Write PRDs and specs:</strong> Author clear product documentation that frames the problem, success criteria, and constraints—while leaving room for engineering to determine the best approach.</li>
-	<li><strong>Partner with engineering leadership:</strong> Collaborate on quarterly planning, staffing allocation, and cross-team dependencies.</li>
-	<li><strong>Communicate across the org:</strong> Keep stakeholders informed on progress, decisions, and upcoming changes. Evangelize new tools and drive adoption.</li>
+	<li>Define and drive the product roadmap for privacy and transparency technologies deployed across Cloudflare's network</li>
+	<li>Partner with world-class cryptography researchers and engineers to translate emerging standards (OHTTP, MASQUE, Key Transparency) into production-ready products</li>
+	<li>Work with some of the world's largest consumer technology companies to co-develop privacy-preserving infrastructure for their products</li>
+	<li>Identify new applications for transparency log technology — anywhere cryptographic auditability can improve security and trust</li>
+	<li>Navigate complex technical tradeoffs between privacy guarantees, transparency requirements, performance, and usability</li>
+	<li>Collaborate with policy, legal, and communications teams to position Cloudflare as a leader in building a more trustworthy Internet</li>
+	<li>Represent Cloudflare in industry forums, standards bodies (IETF), and with partners shaping the future of Internet security</li>
 </ul>
-<p><strong>Key Competencies</strong></p>
+<h3><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></h3>
+<p>The ideal candidate is entrepreneurial, hands-on, and thrives in a fast-paced environment.&nbsp; You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. We are looking for:</p>
 <ul>
-	<li><strong>Problem-first thinking:</strong> You understand problems deeply before jumping to solutions. You bring the team along on the journey—sharing context, inviting input, and building shared understanding before arriving at a solution.</li>
-	<li><strong>Outcomes orientation:</strong> You define success in terms of measurable impact, not activities or deliverables. You ask “How will we know it worked?” before building.</li>
-	<li><strong>Cross-functional partnership:</strong> You collaborate effectively with engineering, design, and other product teams. You work well asynchronously and respect people’s time.</li>
-	<li><strong>Data-informed decision making:</strong> You use data to inform product decisions and measure impact—but you know when data is insufficient and judgment is required.</li>
-	<li><strong>Technical credibility:</strong> You can hold your own in conversations with engineers about architecture, tradeoffs, and implementation approaches.</li>
-	<li><strong>AI fluency:</strong> You actively use AI tools in your own work and stay current on how AI is changing software development. You can separate signal from hype and focus on what actually improves developer outcomes.</li>
-	<li><strong>Clear communication:</strong> You write and speak with precision. You prefer outcomes over activities, and direct feedback over hedging.</li>
+	<li>Understanding and passion for privacy on the Internet, and the ability to empathize with how it affects everyday people</li>
+	<li>3+ years of product management experience, ideally in infrastructure, privacy, or cryptography-adjacent products</li>
+	<li>Strong technical foundation or engineering background, and eagerness to get your hands dirty. Familiarity with modern software development practices and basic engineering concepts, and ability to understand the impact of technical and architectural decisions.</li>
+	<li>Experience working with or understanding of privacy-enhancing technologies (proxying, cryptographic primitives, transparency logs, proxy architectures, and/or network protocols )</li>
+	<li>Track record of shipping products that serve both enterprise customers and massive consumer scale</li>
+	<li>Excellent written and verbal communication skills — ability to explain complex concepts to diverse audiences and represent Cloudflare externally&nbsp;</li>
+	<li>Bonus: familiarity with IETF standards processes, prior work on end-to-end encrypted systems, privacy-oriented academic research&nbsp;</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>An engineering background or experience building software yourself. This gives you credibility with engineering teams and helps you understand their world.</li>
-	<li>Experience with developer productivity tools, build systems, or CI/CD pipelines—either as a PM or as a user.</li>
-	<li>Comfort with ambiguity. Internal platform work often lacks the clear market signals of customer-facing products. You’ll need to define success criteria and prioritize without perfect information.</li>
-	<li>Experience thoughtfully applying Generative AI to improve developer workflows—not just hype, but real impact on efficiency or quality.</li>
-	<li>Familiarity with how the Internet works (layers 2–7). If not, be prepared to speak with depth about another domain of similar complexity.</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<h3><strong>Compensation</strong></h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado, Illinois, Maryland and Minnesota based hires: Estimated annual salary of $156,000- $215,000.</li>
-	<li>For New York City, Washington, Washington D.C. and California (excluding Bay Area) based hires: Estimated annual salary of $172,000 - $237,000.</li>
+	<li><span data-sheets-root="1">For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $141,000 - $194,000</span></li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3><strong>Equity</strong></h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3><strong>Benefits</strong></h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Health &amp; Welfare Benefits</strong></h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -68,14 +57,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3><strong>Financial Benefits</strong></h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3><strong>Time Off</strong></h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
