@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/blindrsa-ts",
 	"dist-tags": {
-		"latest": "0.4.4"
+		"latest": "0.4.5"
 	},
 	"versions": {
 		"0.1.0": {
@@ -401,6 +401,52 @@
 			},
 			"engines": {
 				"node": ">=20"
+			}
+		},
+		"0.4.5": {
+			"name": "@cloudflare/blindrsa-ts",
+			"version": "0.4.5",
+			"dependencies": {
+				"sjcl": "1.0.8"
+			},
+			"devDependencies": {
+				"@eslint/js": "9.39.3",
+				"@types/benchmark": "2.1.5",
+				"@types/node": "25.3.0",
+				"@vitest/coverage-v8": "4.0.18",
+				"@vitest/eslint-plugin": "1.6.9",
+				"benchmark": "2.1.4",
+				"eslint": "9.39.3",
+				"eslint-config-prettier": "10.1.8",
+				"eslint-plugin-prettier": "5.5.5",
+				"eslint-plugin-security": "4.0.0",
+				"prettier": "3.8.1",
+				"rimraf": "6.1.3",
+				"typescript": "5.8.3",
+				"typescript-eslint": "8.36.0",
+				"vitest": "4.0.18"
+			},
+			"dist": {
+				"integrity": "sha512-fwVlqM/tWdic+rmDlRUxjo442R1p7ac5j9H2kmif7xzYD4RPvzh0yaEW/RooP6tYV78QOos3Iq1PKYQTJyLa8g==",
+				"shasum": "0729eef3454eccda9f062eeacadf7af7538ad092",
+				"tarball": "https://registry.npmjs.org/@cloudflare/blindrsa-ts/-/blindrsa-ts-0.4.5.tgz",
+				"fileCount": 26,
+				"unpackedSize": 313813,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fblindrsa-ts@0.4.5",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIBRHGnb0gLgcolcbwMNpZgU9WCLeUCas0Ax5pkDjZcxtAiEAwZNQgyBkuwkrVRmZNbj7TxXtw0qV9c9cYpsd4iqznQU="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=24"
 			}
 		}
 	}
