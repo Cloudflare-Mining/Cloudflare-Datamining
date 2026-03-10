@@ -5,36 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX or Lisbon, Portugal</strong></p>
+<p><strong>Available Locations: London</strong></p>
 <p><strong>About the role</strong></p>
-<p>Cloudflare is seeking an International Tax Analyst to join our collaborative team.&nbsp; This position will have a broad range of responsibilities with a focus on international taxation.&nbsp; You will report to the Director of International Tax and work with other members of the tax and finance teams, collaborating with cross-functional business partners from time-to-time</p>
-<p><strong>What you’ll do</strong></p>
+<p>As a Frontend Engineer on this team, you will own the entire software development lifecycle—from design and architecture to deployment and monitoring—for applications that serve both threat disruption and legal response efforts. You will be responsible for translating complex legal and security requirements into robust, scalable, and high-performance applications that have a direct impact on making the internet better, safer, and more powerful every day.</p>
+<p>This role will be based out of our London office.</p>
+<p><strong>What you'll do</strong></p>
+<p>As someone who will work closely with Product owners, UX designers, and Cloudforce One team members directly, you should be skilled in communicating with non-technical stakeholders. You will also collaborate with backend engineers across different Cloudforce One teams on design and functionality of APIs that power our UIs. We work iteratively and deploy often (can be several times a day). We build and maintain internal and external facing UIs which are TypeScript / React applications, as well as create and manage the underlying infrastructure that controls our deployments, CI/CD, monitoring, analytics, and testing frameworks.</p>
+<p><strong>Responsibilities include</strong></p>
 <ul>
-	<li>Prepare and review the international portions of the US federal tax returns</li>
-	<li>Prepare BEAT, GILTI, FDII and other key international provisions</li>
-	<li>Assist with the quarterly and annual international tax provision and forecast</li>
-	<li>Assist with quarterly and annual transfer pricing documents and calculations</li>
-	<li>Prepare foreign statutory tax returns and financial statements</li>
-	<li>Assist in special projects including but not limited to: M&amp;A, permanent establishment risk, audit defense</li>
-	<li>Research and document conclusions for international tax transactions</li>
-	<li>Assist with internal process documentation and automation</li>
+	<li>Designing, building, maintaining and scaling UIs to extend functionality of both internal Cloudforce One dashboards and external tooling for Cloudflare customers</li>
+	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
+	<li>Collaborating with product and design teams to understand goals and translate UI design into products that align with the customer need</li>
+	<li>Collaborating with other software engineers in the team to align on API designs and functionality</li>
+	<li>Working closely with Cloudflare's analyst teams, such as the Trust &amp; Safety team, to help make the internet a safer place</li>
+	<li>Facilitate technical collaboration with frontend engineers across the company on common experiences and components</li>
 </ul>
-<p><strong>Required</strong></p>
+<p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>Bachelors degree in Accounting, Finance or related field</li>
-	<li>2+ years of significant experience at a public accounting firm and/or corporate tax department of a multinational company</li>
-	<li>Proficient technology skills including excel and AI</li>
-	<li>Basic understanding of and experience with US and foreign tax returns, transfer pricing and tax provisions</li>
-	<li>Strong written and verbal communication skills with the ability to interact effectively internally as well as with external service providers.</li>
+	<li>2+ years of experience designing, building and maintaining production web applications</li>
+	<li>Strong knowledge of TypeScript, React, HTML and CSS</li>
+	<li>Experience with Cloudflare developer platform and tooling, specifically Pages and Workers ecosystem</li>
+	<li>Experience building high quality automated tests and leading user acceptance testing exercises</li>
+	<li>Track record of demonstrating empathy for the user in delivery of high quality UIs</li>
+	<li>Ability to work in cross-functional teams in a fast paced environment</li>
+	<li>Experience leveraging AI in a workplace setting to do research, planning, and development</li>
 </ul>
-<p><strong>Preferred</strong></p>
+<p><strong>Bonus</strong></p>
+<p>(Relevant but not required - we love to learn on the job!)</p>
 <ul>
-	<li>Masters in Tax or Accounting</li>
-	<li>Certified Public Accountant</li>
-	<li>Both public accounting and technology industry experience</li>
-	<li>Experience with Oracle, Alteryx and AI</li>
+	<li>Prior experience working in the Trust &amp; Safety domain space or building internal review tooling</li>
+	<li>Understanding of DNS, TLS/SSL and HTTP</li>
+	<li>Expertise in web security issues and industry standards for access control</li>
+	<li>Familiarity with other technologies commonly used on Cloudforce One teams, such as Terraform, Kubernetes, and Golang</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
